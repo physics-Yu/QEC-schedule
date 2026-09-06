@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QEC · Atom execution</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#edf1f6;color:#192b42;font:15px system-ui,sans-serif}main{max-width:1250px;margin:auto;padding:28px}header{display:flex;justify-content:space-between;align-items:center;gap:20px}h1{font-size:28px;margin:5px 0}p{color:#53677e;margin:8px 0}.eyebrow{letter-spacing:2px;font-size:11px;color:#387679;font-weight:700}.grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;margin-top:22px}.card{background:white;border:1px solid #d7e0e9;border-radius:14px;padding:18px;box-shadow:0 5px 20px #19334d06}canvas{display:block;width:100%;aspect-ratio:1/1}button,select{border:1px solid #ccd6e0;background:white;border-radius:7px;padding:9px 13px;color:#24394e;cursor:pointer}button:hover{background:#edf5f7}#play{background:#176c73;color:white;border-color:#176c73}input{width:100%;accent-color:#176c73;margin:20px 0 10px}.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.time{font-size:30px;font-variant-numeric:tabular-nums;margin:12px 0}.muted{font-size:12px;color:#64758a}.legend{line-height:2.2}#actions{font:12px ui-monospace,monospace;max-height:310px;overflow:auto;overflow-wrap:anywhere;line-height:1.8}.swatch{display:inline-block;width:12px;height:12px;margin-right:9px;border-radius:50%}h2{font-size:14px;margin:20px 0 10px}#state{color:#176c73;font-weight:600}@media(max-width:760px){.grid{grid-template-columns:1fr}main{padding:14px}header{display:block}}
+</style>
+<main><header><div><div class="eyebrow">QEC SCHEDULE / TRACE REPLAY</div><h1>Atom execution</h1><p>Memory → Entanglement → Measurement · Reservoir to the right</p></div><span id="state">Paused</span></header>
+<div class="grid"><section class="card"><canvas id="scene" width="1000" height="1000" aria-label="Atom positions and active operations"></canvas>
+<input id="seek" type="range" min="0" max="1" step="any" value="0" aria-label="Simulation time">
+<div class="controls"><button id="play">Play</button><button id="restart">Restart</button><button id="next">Next event</button><label>Speed <select id="speed"><option value="1">×1</option><option value="5">×5</option><option value="20">×20</option></select></label></div>
+<p class="muted">×1 = 100 μs per wall-clock second. Use Next event to inspect short laser pulses.</p></section>
+<aside class="card"><div class="eyebrow">SIMULATION TIME</div><div class="time" id="time"></div><div id="total" class="muted"></div>
+<h2>Atom types</h2><div class="legend"><div><span class="swatch" style="background:#3478cc"></span>Data · circle</div><div><span style="color:#df8a20;margin-right:9px">▲</span>X ancilla · triangle</div><div><span style="color:#875abd;margin-right:9px">■</span>Z ancilla · square</div><div><span style="color:#8693a2;margin-right:9px">◆</span>Reservoir · diamond</div></div>
+<h2>Active operations</h2><div id="actions"></div><h2>Reading the display</h2><p class="muted">Teal ring: single-qubit control. Red link: entangling pair. Gold ring: measurement. Dashed path: active transport.</p><h2>Model scope</h2><p class="muted">Straight-line transport; continuous collision avoidance is not modeled. No quantum state, noise or decoder simulation.</p></aside></div></main>
+<script id="trace" type="application/json">__TRACE_DATA__</script>
+<script>
+'use strict';
+const trace=JSON.parse(document.getElementById('trace').textContent), canvas=document.getElementById('scene'),ctx=canvas.getContext('2d');
+const seek=document.getElementById('seek'),play=document.getElementById('play'),speed=document.getElementById('speed');
+let time=0,playing=false,last=null;
+const eventTimes=[...new Set([0,...trace.actions.flatMap(a=>[a.start_time,a.end_time])])].sort((a,b)=>a-b);
+const bounds=trace.initial_state.zones.map(z=>z.bounds),xmin=Math.min(...bounds.map(b=>b[0]))-5,ymin=Math.min(...bounds.map(b=>b[1]))-7,xmax=Math.max(...bounds.map(b=>b[2]))+5,ymax=Math.max(...bounds.map(b=>b[3]))+5;
+const scale=Math.min(940/(xmax-xmin),940/(ymax-ymin)),X=x=>30+(x-xmin)*scale,Y=y=>30+(y-ymin)*scale;
+const titles={STORAGE:'Memory',ENTANGLING:'Entanglement',MEASUREMENT:'Measurement',RESERVOIR:'Reservoir'};
+const colors={STORAGE:'#eaf2fc',ENTANGLING:'#fcefeb',MEASUREMENT:'#fff6df',RESERVOIR:'#eef1f4'};
+function frame(t){
+ const atoms=Object.fromEntries(trace.initial_state.atoms.map(a=>[a.atom_id,{...a,position:[...a.position],active:null}])),active=[];
+ for(const a of trace.actions){if(a.start_time>t)break; for(let i=0;i<a.atoms.length;i++){const atom=atoms[a.atoms[i]],target=a.targets[i].position;if(a.end_time<=t){atom.position=target;atom.active=null}else{atom.active=a.type;if(a.type==='MOVE'){const f=(t-a.start_time)/a.duration;atom.position=a.sources[i].position.map((x,j)=>x+f*(target[j]-x))}}}if(t<a.end_time)active.push(a)}
+ return {atoms,active};
+}
+function render(){
+ const {atoms,active}=frame(time);ctx.clearRect(0,0,1000,1000);ctx.fillStyle='#fff';ctx.fillRect(0,0,1000,1000);
+ for(const zone of trace.initial_state.zones){const b=zone.bounds;ctx.fillStyle=colors[zone.kind];ctx.strokeStyle='#bbcbd9';ctx.lineWidth=1.5;ctx.fillRect(X(b[0]),Y(b[1]),(b[2]-b[0])*scale,(b[3]-b[1])*scale);ctx.strokeRect(X(b[0]),Y(b[1]),(b[2]-b[0])*scale,(b[3]-b[1])*scale);ctx.fillStyle='#38526b';ctx.font='bold 18px system-ui';ctx.fillText(titles[zone.kind]||zone.id,X(b[0])+9,Y(b[1])+23);for(const s of zone.sites){ctx.beginPath();ctx.strokeStyle='#9cafbf';ctx.arc(X(s.position[0]),Y(s.position[1]),5,0,Math.PI*2);ctx.stroke()}}
+ for(const a of active){if(a.type==='MOVE'){ctx.setLineDash([6,5]);ctx.strokeStyle='#59a6b0';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(X(a.sources[0].position[0]),Y(a.sources[0].position[1]));ctx.lineTo(X(a.targets[0].position[0]),Y(a.targets[0].position[1]));ctx.stroke();ctx.setLineDash([])}if(a.type==='ENTANGLE'){const p=a.atoms.map(id=>atoms[id].position);ctx.strokeStyle='#dc4354';ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(X(p[0][0]),Y(p[0][1]));ctx.lineTo(X(p[1][0]),Y(p[1][1]));ctx.stroke()}}
+ for(const a of Object.values(atoms)){const x=X(a.position[0]),y=Y(a.position[1]),r=8;ctx.fillStyle=a.atom_type==='DATA'?'#3478cc':a.atom_type==='RESERVOIR'?'#8693a2':a.syndrome_basis==='X'?'#df8a20':'#875abd';ctx.beginPath();if(a.atom_type==='RESERVOIR'){ctx.moveTo(x,y-r);ctx.lineTo(x+r,y);ctx.lineTo(x,y+r);ctx.lineTo(x-r,y);ctx.closePath()}else if(a.atom_type==='ANCILLA'&&a.syndrome_basis==='X'){ctx.moveTo(x,y-r-2);ctx.lineTo(x+r+1,y+r);ctx.lineTo(x-r-1,y+r);ctx.closePath()}else if(a.atom_type==='ANCILLA'){ctx.rect(x-r,y-r,2*r,2*r)}else ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();if(a.active){ctx.strokeStyle=a.active==='MEASURE'?'#edb222':a.active==='ENTANGLE'?'#dc4354':'#16938c';ctx.lineWidth=3;ctx.beginPath();ctx.arc(x,y,13,0,Math.PI*2);ctx.stroke()}ctx.fillStyle='#33475b';ctx.font='12px system-ui';ctx.fillText((a.assigned_qubit||a.atom_id).split(':').pop(),x+11,y-10)}
+ document.getElementById('time').textContent=time.toFixed(2)+' μs';document.getElementById('total').textContent='of '+trace.duration.toFixed(2)+' μs · '+trace.actions.length+' actions';seek.value=trace.duration?time/trace.duration:0;
+ const list=document.getElementById('actions');list.replaceChildren();if(!active.length)list.textContent=time>=trace.duration?'Cycle complete':'No active operations';for(const a of active){const row=document.createElement('div');row.textContent=a.type+' · '+a.atoms.map(id=>id.replace('atom:','')).join(' ↔ ');list.appendChild(row)}
+ document.getElementById('state').textContent=time>=trace.duration?'Complete':playing?'Playing':'Paused';play.textContent=playing?'Pause':'Play';
+}
+play.onclick=()=>{if(time>=trace.duration)time=0;playing=!playing;last=null;render()};
+document.getElementById('restart').onclick=()=>{time=0;playing=false;last=null;render()};
+document.getElementById('next').onclick=()=>{playing=false;time=eventTimes.find(t=>t>time+1e-8)??trace.duration;render()};
+seek.oninput=()=>{time=Number(seek.value)*trace.duration;playing=false;render()};
+function tick(stamp){if(playing&&last!==null){time=Math.min(trace.duration,time+(stamp-last)/1000*100*Number(speed.value));if(time>=trace.duration)playing=false;render()}last=stamp;requestAnimationFrame(tick)}
+render();requestAnimationFrame(tick);
+</script></html>

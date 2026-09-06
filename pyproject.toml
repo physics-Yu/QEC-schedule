@@ -14,3 +14,5 @@ visualization = ["matplotlib>=3.7,<4"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+[tool.setuptools.package-data]
+"qec_schedule.visualization" = ["*.html"]
