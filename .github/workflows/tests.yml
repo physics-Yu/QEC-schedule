@@ -16,3 +16,5 @@ jobs:
           PYTHONPATH: src
       - run: python examples/demo_code_topology.py
       - run: python examples/demo_syndrome_circuit.py
+      - run: python examples/demo_physical_dag.py
+      - run: python examples/demo_physical_dag.py --primitive CNOT --rounds 3 --output-dir results/dag_cnot

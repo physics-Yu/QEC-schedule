@@ -1,8 +1,9 @@
 # QEC-schedule
 
 面向中性原子容错量子计算的调度模拟平台，按步骤实施。
-当前已完成 **步骤 1、2**：LogicalIR、可替换的 QEC code 接口、
-默认 d=3 rotated surface code、显式 syndrome extraction 电路。
+当前已完成 **步骤 1–3**：LogicalIR、可替换的 QEC code 接口、
+默认 d=3 rotated surface code、显式 syndrome extraction 电路，以及
+PhysicalCircuitDAG 的依赖索引、动态 ready set 和执行状态推进。
 
 ## 快速运行
 
@@ -14,6 +15,7 @@ python examples/demo_code_topology.py
 python examples/demo_syndrome_circuit.py
 python examples/demo_syndrome_circuit.py --primitive CNOT --output results/syndrome_cnot.json
 python examples/demo_syndrome_circuit.py --rounds 3 --output results/syndrome_three_rounds.json
+python examples/demo_physical_dag.py
 
 $env:PYTHONPATH = 'src'
 python -m unittest discover -s tests -v
@@ -30,6 +32,12 @@ from qec_schedule.qec import create_code, default_registry
 code = create_code()  # 默认 rotated_surface, distance=3, block_id=L0
 circuit = code.syndrome_round(primitive="CZ", rounds=1)
 
+from qec_schedule.compiler import PhysicalCircuitDAG
+dag = PhysicalCircuitDAG(circuit)
+first = dag.ready_operations()[0]
+dag.start(first.id)
+dag.complete(first.id)  # 后续硬件层应在对应实验动作真正结束后调用
+
 # 可独立构造多个实例；未来替换编码不需要修改 hardware/scheduler。
 other_block = create_code(block_id="L1")
 # registry = default_registry()
@@ -44,7 +52,8 @@ LogicalIR 当前只提供表达与校验，不包含逻辑门的容错编译。
 ## 验收和设计
 
 - [步骤 1、2 验收说明](docs/acceptance_steps_1_2.md)
+- [步骤 3：DAG 接口与验收](docs/dag.md)
 - [QEC 接口、默认拓扑和电路约定](docs/qec_interfaces.md)
 - [完整平台规格](docs/NEUTRAL_ATOM_FTQC_PLATFORM_SPEC.md)
 
-下一步是 PhysicalCircuitDAG；硬件调度、atom 动画和资源估计尚未实现。
+下一步是 Atom、Zone、HardwareState；硬件调度、atom 动画和资源估计尚未实现。

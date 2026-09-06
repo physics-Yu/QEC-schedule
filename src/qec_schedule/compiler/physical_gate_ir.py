@@ -1,4 +1,4 @@
-"""Immutable gate records. Graph execution / ready-set API belongs to step 3."""
+"""Immutable gate records consumed by PhysicalCircuitDAG."""
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from enum import Enum

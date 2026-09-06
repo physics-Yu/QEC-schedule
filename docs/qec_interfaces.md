@@ -3,7 +3,8 @@
 ## 当前边界
 
 实现 LogicalIR、可替换 QECCode、默认 d=3 rotated surface code 和完整 syndrome 门序列。
-尚未实现 LogicalIR 到容错逻辑门的编译、PhysicalCircuitDAG ready-set、硬件模型或调度器。
+步骤 3 已补充 [PhysicalCircuitDAG 与 ready-set](dag.md)。
+尚未实现 LogicalIR 到容错逻辑门的编译、硬件模型或调度器。
 LogicalH / LogicalCNOT 出现在 IR 中只表示可表达，不表示已实现其容错编译。
 本阶段输出是 physical circuit JSON，不是带起止时间的实验 trace。
 
@@ -89,7 +90,7 @@ CSS validator 检查同 slot 的 data 冲突，以及相反基 checks 的共享 
 
 每个 physical gate 的 predecessors 记录涉及 qubit 的上一操作，加上显式轮次边界。
 因此独立 gate 不加全局 slot barrier，硬件调度可以延迟操作，但必须遵守依赖。
-第三步将在这些记录之上实现 DAG、successors 和 ready_set，不在本步引入 scheduler。
+第三步已在这些记录之上实现 DAG、successors 和 ready_set；未引入硬件 scheduler。
 
 测试使用含相位符号的 Clifford Pauli 传播，验证每个 measurement 实际对应目标 stabilizer，
 验证 CNOT 与 CZ 电路对完整 Pauli 生成集合的作用一致，并检查随机合法重排。
