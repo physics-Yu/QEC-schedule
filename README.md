@@ -1,10 +1,11 @@
 # QEC-schedule
 
 面向中性原子容错量子计算的调度模拟平台，按步骤实施。
-当前已完成 **步骤 1–4**：LogicalIR、可替换的 QEC code 接口、
+当前已完成 **步骤 1–5**：LogicalIR、可替换的 QEC code 接口、
 默认 d=3 rotated surface code、显式 syndrome extraction 电路，以及
 PhysicalCircuitDAG 的依赖索引、动态 ready set 和执行状态推进；
-现已加入 Atom / Zone / HardwareState、YAML 硬件布局与静态二维绘图。
+已加入 Atom / Zone / HardwareState、YAML 硬件布局与静态二维绘图，
+以及 physical gate 到 ExperimentalIR 的动作展开、预计时长与资源预留请求。
 
 ## 快速运行
 
@@ -19,6 +20,7 @@ python examples/demo_syndrome_circuit.py --primitive CNOT --output results/syndr
 python examples/demo_syndrome_circuit.py --rounds 3 --output results/syndrome_three_rounds.json
 python examples/demo_physical_dag.py
 python examples/demo_hardware_layout.py
+python examples/demo_gate_lowering.py
 
 $env:PYTHONPATH = 'src'
 python -m unittest discover -s tests -v
@@ -59,7 +61,8 @@ LogicalIR 当前只提供表达与校验，不包含逻辑门的容错编译。
 - [步骤 1、2 验收说明](docs/acceptance_steps_1_2.md)
 - [步骤 3：DAG 接口与验收](docs/dag.md)
 - [步骤 4：硬件模型、静态图与验收](docs/hardware_model.md)
+- [步骤 5：实验动作展开与验收](docs/gate_lowering.md)
 - [QEC 接口、默认拓扑和电路约定](docs/qec_interfaces.md)
 - [完整平台规格](docs/NEUTRAL_ATOM_FTQC_PLATFORM_SPEC.md)
 
-下一步是 ExperimentalIR 与 gate lowering；硬件调度、atom 动画和资源估计尚未实现。
+下一步是 AOD compatibility 与 movement epochs；硬件调度、atom 动画和资源估计尚未实现。

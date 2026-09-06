@@ -6,6 +6,16 @@ schema_version: 1
 units: {length: um, time: us}
 min_atom_separation: 1.0
 reservoir_atoms: 4
+# Step-5 estimates only. The scheduler will assign start times later.
+timing:
+  move_speed: 1.0  # um/us
+  pickup_duration: 1.0
+  dropoff_duration: 1.0
+  single_qubit_duration: 1.0
+  entangle_duration: 1.0
+  measurement_duration: 20.0
+  prepare_duration: 1.0
+  reset_duration: 1.0
 zones:
   - id: storage
     kind: STORAGE

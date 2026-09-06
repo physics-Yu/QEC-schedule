@@ -86,6 +86,7 @@ MOVING 的当前位置仍参与间距检查。LOST 的 position 是最后已知�
 不参与占位或碰撞；原 qubit 映射保留，调用方应检查 LOST 状态。
 这些是数据表示约定，不代表已实现移动或丢失流程。
 本步不检查连续轨迹、碰撞路径、Rydberg blockade、AOD field of view 或 laser 资源。
+步骤 5 已增加 [ExperimentalIR 与 gate lowering](gate_lowering.md)，生成动作和资源需求，仍未执行调度。
 
 ## QEC 替换与布局配置
 
@@ -108,8 +109,8 @@ state = build_initial_state(code, config, placements={
 本阶段一次构建一个 code 实例；更大 code 或多 block 集成需提供足够的布局容量。
 
 `configs/hardware_default.yaml` 使用安全 YAML loader，拒绝重复 key、未知字段、
-缺失字段、错误单位和不支持的 schema。现在只包含静态几何；后续 AOD、laser 和
-duration 参数会随对应实现加入 schema。仅创建容量或 pair slot 不代表已实现资源锁。
+缺失字段、错误单位和不支持的 schema。步骤 5 新增可选 timing 段，提供动作耗时和移动速度；
+后续 AOD/laser 能力参数随对应实现加入 schema。仅创建容量或 pair slot 不代表已实现资源锁。
 
 ## 运行与验收
 
@@ -144,4 +145,4 @@ MPLCONFIGDIR 指向项目结果目录，可以避免受限环境写入用户字�
 另外已人工检查默认图片，确认标签、图例和各区域内容可读。
 
 请验收默认区域位置、data/ancilla 排列、容量和占位图。
-通过后进入步骤 5：ExperimentalIR 与 gate lowering。
+当前已继续实现 [步骤 5：ExperimentalIR 与 gate lowering](gate_lowering.md)。

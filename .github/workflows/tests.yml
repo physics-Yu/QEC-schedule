@@ -20,10 +20,19 @@ jobs:
       - run: python examples/demo_physical_dag.py
       - run: python examples/demo_physical_dag.py --primitive CNOT --rounds 3 --output-dir results/dag_cnot
       - run: python examples/demo_hardware_layout.py
+      - run: python examples/demo_gate_lowering.py
+      - run: python examples/demo_gate_lowering.py --primitive CNOT --rounds 3 --output-dir results/lowering_cnot
       - uses: actions/upload-artifact@v4
         with:
           name: hardware-layout-python-${{ matrix.python-version }}
           path: |
             results/hardware_layout.png
             results/hardware_state.json
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: experimental-requests-python-${{ matrix.python-version }}
+          path: |
+            results/experimental_requests.json
+            results/lowering_cnot/experimental_requests.json
           if-no-files-found: error
