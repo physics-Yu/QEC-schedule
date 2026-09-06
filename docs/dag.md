@@ -62,6 +62,7 @@ new_ready = dag.ready_operations()
 使用 Python 3.10+，在项目根目录运行：
 
 ```powershell
+python -m pip install -e ".[visualization]"
 $env:PYTHONPATH = 'src'
 python -m unittest discover -s tests -v
 python examples/demo_physical_dag.py
@@ -101,4 +102,4 @@ data 已存在是步骤 2 的输入假设；CZ 分解前的独立 H 不依赖 an
 7. Surface/repetition code 的 CZ/CNOT 三轮电路，随机选择启动/完成，
    对照独立依赖条件计算 ready set，并检查运行中的 gate 不共享 qubit。
 
-步骤 3 等待验收；下一步才建立 Atom、Zone、HardwareState 和静态二维布局。
+步骤 3 已完成，现已继续实现 [步骤 4 的硬件模型与静态布局](hardware_model.md)。

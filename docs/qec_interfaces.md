@@ -4,7 +4,8 @@
 
 实现 LogicalIR、可替换 QECCode、默认 d=3 rotated surface code 和完整 syndrome 门序列。
 步骤 3 已补充 [PhysicalCircuitDAG 与 ready-set](dag.md)。
-尚未实现 LogicalIR 到容错逻辑门的编译、硬件模型或调度器。
+步骤 4 已补充 [硬件模型与静态布局](hardware_model.md)。
+尚未实现 LogicalIR 到容错逻辑门的编译或硬件调度器。
 LogicalH / LogicalCNOT 出现在 IR 中只表示可表达，不表示已实现其容错编译。
 本阶段输出是 physical circuit JSON，不是带起止时间的实验 trace。
 

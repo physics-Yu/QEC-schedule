@@ -1,0 +1,76 @@
+# Illustrative geometry, not calibrated experimental hardware.
+# All capacity values count ATOMS. Four entangling pair slots hold eight atoms.
+schema_version: 1
+units: {length: um, time: us}
+min_atom_separation: 1.0
+reservoir_atoms: 4
+zones:
+  - id: storage
+    kind: STORAGE
+    bounds: [0, 0, 45, 45]
+    capacity: 17
+    allowed_operations: [PREPARE, RESET, LOCAL_1Q]
+    # Automatic mapping fills sites in order: data qubits, then syndrome ancillas.
+    sites:
+      - {id: s0, position: [10, 12]}
+      - {id: s1, position: [20, 12]}
+      - {id: s2, position: [30, 12]}
+      - {id: s3, position: [10, 22]}
+      - {id: s4, position: [20, 22]}
+      - {id: s5, position: [30, 22]}
+      - {id: s6, position: [10, 32]}
+      - {id: s7, position: [20, 32]}
+      - {id: s8, position: [30, 32]}
+      - {id: s9, position: [15, 17]}
+      - {id: s10, position: [25, 27]}
+      - {id: s11, position: [25, 7]}
+      - {id: s12, position: [15, 37]}
+      - {id: s13, position: [25, 17]}
+      - {id: s14, position: [15, 27]}
+      - {id: s15, position: [5, 17]}
+      - {id: s16, position: [35, 27]}
+  - id: measurement
+    kind: MEASUREMENT
+    bounds: [55, 0, 100, 15]
+    capacity: 8
+    allowed_operations: [MEASURE, RESET]
+    sites:
+      - {id: m0, position: [60, 8]}
+      - {id: m1, position: [65, 8]}
+      - {id: m2, position: [70, 8]}
+      - {id: m3, position: [75, 8]}
+      - {id: m4, position: [80, 8]}
+      - {id: m5, position: [85, 8]}
+      - {id: m6, position: [90, 8]}
+      - {id: m7, position: [95, 8]}
+  - id: entangling
+    kind: ENTANGLING
+    bounds: [55, 20, 100, 45]
+    capacity: 8
+    allowed_operations: [ENTANGLE, LOCAL_1Q]
+    sites:
+      - {id: e0a, position: [65, 29]}
+      - {id: e0b, position: [69, 29]}
+      - {id: e1a, position: [85, 29]}
+      - {id: e1b, position: [89, 29]}
+      - {id: e2a, position: [65, 39]}
+      - {id: e2b, position: [69, 39]}
+      - {id: e3a, position: [85, 39]}
+      - {id: e3b, position: [89, 39]}
+    pair_slots:
+      - {id: p0, sites: [e0a, e0b]}
+      - {id: p1, sites: [e1a, e1b]}
+      - {id: p2, sites: [e2a, e2b]}
+      - {id: p3, sites: [e3a, e3b]}
+  - id: reservoir
+    kind: RESERVOIR
+    bounds: [0, 52, 45, 65]
+    capacity: 6
+    allowed_operations: [REFILL, PREPARE]
+    sites:
+      - {id: r0, position: [7, 59]}
+      - {id: r1, position: [13, 59]}
+      - {id: r2, position: [19, 59]}
+      - {id: r3, position: [25, 59]}
+      - {id: r4, position: [31, 59]}
+      - {id: r5, position: [37, 59]}

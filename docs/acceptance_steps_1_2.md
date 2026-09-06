@@ -4,8 +4,9 @@
 
 ## 运行条件
 
-Python 3.10+，运行与测试均无第三方依赖。项目使用 src layout。
-安装：`python -m pip install -e .`；或 PowerShell 设置 `$env:PYTHONPATH = 'src'`。
+Python 3.10+。步骤 1、2 本身无第三方依赖；项目使用 src layout。
+运行当前完整测试集请安装：`python -m pip install -e ".[visualization]"`。
+仅运行步骤 1、2 时，也可在 PowerShell 设置 `$env:PYTHONPATH = 'src'`。
 
 ## 步骤 1
 
