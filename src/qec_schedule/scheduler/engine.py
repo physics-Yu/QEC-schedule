@@ -4,7 +4,6 @@ Transport is an indivisible task with three timed trace phases. Only completion
 events advance the clock; phase boundaries have no dispatch opportunity because
 the AOD remains in custody until dropoff.
 """
-from collections import Counter
 from dataclasses import replace
 import heapq
 
@@ -38,9 +37,7 @@ def build_tasks(plan):
 class Scheduler:
     def __init__(self, config, *, device_capacities=None):
         self.config = config
-        self.device_capacities = {'device/aod': 1, 'device/local_1q': 1,
-                                  'device/rydberg': 1, 'device/imaging': 1,
-                                  'device/state_preparation': 1}
+        self.device_capacities = dict(config.device_capacities)
         if device_capacities:
             if set(device_capacities) - self.device_capacities.keys():
                 raise ValueError('Unknown device capacity')
@@ -59,12 +56,6 @@ class Scheduler:
                 capacities[f'zone/{zone.id}'] = zone.capacity
             capacities.update({f'site/{s.id}': 1 for s in zone.sites})
             capacities.update({f'pair/{zone.id}/{p.id}': 1 for p in zone.pair_slots})
-        # Lowering resource names are authoritative; accept only known site aliases.
-        for lease in leases.values():
-            for r in lease.required_resources:
-                if r.resource.startswith('site/') and r.resource not in capacities:
-                    if r.resource.split('/')[-1] in {s.id for z in initial_state.zones for s in z.sites}:
-                        capacities[r.resource] = 1
         locks = ResourceLock(capacities)
         active_leases, completed, events, records, spans, decisions = {}, set(), [], [], [], []
         positions = {a.atom_id: plan.home_sites.get(a.atom_id) for a in initial_state.atoms}
@@ -177,6 +168,7 @@ class Scheduler:
                 'initial_state': initial_state.to_dict(), 'final_state': final_state.to_dict(),
                 'duration': now, 'actions': sorted(records, key=lambda a: (a['start_time'], a['id'])),
                 'resource_spans': spans, 'resource_capacities': capacities, 'decisions': decisions,
+                'reservations': [r.to_dict() for r in leases.values()], 'aod': self.config.aod.to_dict(),
                 'gate_completion': {k: list(v) for k, v in plan.gate_completion.items()},
                 'model_limits': ['Straight-line transport; continuous collision/obstacle avoidance is not modeled.',
                                  'No quantum state, noise, loss or decoder simulation.']}

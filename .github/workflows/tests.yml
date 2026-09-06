@@ -24,6 +24,20 @@ jobs:
       - run: python examples/demo_gate_lowering.py --primitive CNOT --rounds 3 --output-dir results/lowering_cnot
       - run: python examples/demo_aod_movement.py
       - run: python examples/demo_aod_movement.py --rounds 3 --output-dir results/aod_three_rounds
+      - run: python examples/demo_surface_code_cycle.py
+      - run: python examples/demo_surface_code_cycle.py --primitive CNOT --rounds 3 --no-plot --output-dir results/cycle_cnot_three_rounds
+      - run: python examples/demo_parameter_sweep.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: completed-cycles-python-${{ matrix.python-version }}
+          path: |
+            results/trace.json
+            results/metrics.json
+            results/demo_animation.html
+            results/demo_timeline.png
+            results/cycle_cnot_three_rounds/
+            results/sweep/
+          if-no-files-found: error
       - uses: actions/upload-artifact@v4
         with:
           name: hardware-layout-python-${{ matrix.python-version }}

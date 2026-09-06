@@ -18,6 +18,11 @@ class TraceTests(unittest.TestCase):
         self.assertEqual(metrics(trace), self.result)
         self.assertTrue(all(0 <= u <= 1 + 1e-8 for u in self.result['resource_utilization'].values()))
         self.assertAlmostEqual(self.result['total_ready_wait_us'], self.result['blocked_task_time_us'])
+        samples = self.result['physical_gate_parallelism']
+        self.assertEqual(sum(s['N_executed'] for s in samples), self.result['physical_gate_count'])
+        self.assertTrue(all(s['N_executed'] <= s['N_ready'] for s in samples))
+        self.assertTrue(all(s['P'] is None or 0 <= s['P'] <= 1 for s in samples))
+        self.assertEqual(self.result['max_pairs_per_pulse'], 2)
 
     def test_reject_overlap_dependency_and_capacity_corruption(self):
         trace = copy.deepcopy(self.trace)

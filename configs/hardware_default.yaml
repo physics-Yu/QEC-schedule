@@ -3,6 +3,12 @@
 # parallel to the experimental platform; lengths remain illustrative.
 # All capacity values count ATOMS. Four entangling pair slots hold eight atoms.
 schema_version: 1
+devices:
+  device/aod: 1
+  device/local_1q: 1
+  device/rydberg: 1
+  device/imaging: 1
+  device/state_preparation: 1
 units: {length: um, time: us}
 min_atom_separation: 1.0
 reservoir_atoms: 4

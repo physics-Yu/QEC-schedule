@@ -1,12 +1,13 @@
 # QEC-schedule
 
 面向中性原子容错量子计算的调度模拟平台，按步骤实施。
-当前已完成 **步骤 1–6**：LogicalIR、可替换的 QEC code 接口、
+当前已完成 **步骤 1–12**：LogicalIR、可替换的 QEC code 接口、
 默认 d=3 rotated surface code、显式 syndrome extraction 电路，以及
 PhysicalCircuitDAG 的依赖索引、动态 ready set 和执行状态推进；
 已加入 Atom / Zone / HardwareState、YAML 硬件布局与静态二维绘图，
 以及 physical gate 到 ExperimentalIR 的动作展开、预计时长与资源预留请求；
-现已支持 AOD 同位移兼容性、tone/可达范围检查和 ready transports 的 epoch 分组。
+现已支持 AOD 同位移兼容性、tone/可达范围检查、RESST 风格事件调度、
+完整 syndrome cycle、trace/metrics、交互原子动画、设备/原子时间线及 YAML 参数扫描。
 
 ## 快速运行
 
@@ -23,6 +24,8 @@ python examples/demo_physical_dag.py
 python examples/demo_hardware_layout.py
 python examples/demo_gate_lowering.py
 python examples/demo_aod_movement.py
+python examples/demo_surface_code_cycle.py
+python examples/demo_parameter_sweep.py
 
 $env:PYTHONPATH = 'src'
 python -m unittest discover -s tests -v
@@ -31,7 +34,13 @@ python -m unittest discover -s tests -v
 本机已建立 `.venv`，可用 `.\.venv\Scripts\python.exe` 替换上面的 `python`。
 不需绘图时安装 `python -m pip install -e .`，运行硬件示例加 `--no-plot`。
 输出 `results/` 属于可重新生成的验收产物，不纳入 Git；
-GitHub Actions 上传布局 PNG 和状态 JSON 为可下载 artifact。
+GitHub Actions 上传布局、完整 trace/metrics、动画、时间线和扫描结果为可下载 artifact。
+
+完整示例默认输出 `results/trace.json`、`metrics.json`、`demo_animation.html`、
+`demo_timeline.png`。双击 HTML 即可离线播放，支持 Play/Pause/Restart、×1/×5/×20、
+时间拖动和逐事件前进。`--gif` 额外生成 Matplotlib GIF；`--no-plot` 仅导出 JSON。
+三轮示例：`python examples/demo_surface_code_cycle.py --rounds 3 --primitive CNOT --output-dir results/three_rounds`。
+参数扫描输出 `results/sweep/sweep.csv`、`sweep.json`、`sweep.png` 和每组参数的完整 trace。
 
 ## 接口使用
 
@@ -65,7 +74,10 @@ LogicalIR 当前只提供表达与校验，不包含逻辑门的容错编译。
 - [步骤 4：硬件模型、静态图与验收](docs/hardware_model.md)
 - [步骤 5：实验动作展开与验收](docs/gate_lowering.md)
 - [步骤 6：AOD 兼容性与 movement epochs](docs/aod_model.md)
+- [步骤 7–12：调度、运行、动画、时间线与参数扫描验收](docs/acceptance_steps_7_12.md)
 - [QEC 接口、默认拓扑和电路约定](docs/qec_interfaces.md)
 - [完整平台规格](docs/NEUTRAL_ATOM_FTQC_PLATFORM_SPEC.md)
 
-下一步是 RESST Task/Pool/Priority/ResourceLock；事件驱动调度、atom 动画和资源估计尚未实现。
+当前是架构级调度 MVP：动作时长为可配置估计值，不模拟量子态、噪声、loss、decoder 或脉冲。
+移动采用直线插值，检查端点占位和资源约束，尚未实现连续轨迹避碰。
+默认 code 仍为 d=3 surface code；可替换 QECCode 接口保留，已用另一种 code 验收完整调度链路。

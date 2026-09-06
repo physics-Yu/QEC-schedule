@@ -16,6 +16,7 @@ def main():
     parser.add_argument('--rounds', type=int, default=1)
     parser.add_argument('--output-dir', type=Path, default=ROOT / 'results')
     parser.add_argument('--no-plot', action='store_true', help='Export only trace and metrics')
+    parser.add_argument('--gif', action='store_true', help='Also render a Matplotlib animation GIF (slower)')
     args = parser.parse_args()
     try:
         trace, result = run_cycle(load_hardware_config(args.config), rounds=args.rounds, primitive=args.primitive)
@@ -25,6 +26,10 @@ def main():
             save_animation(trace, args.output_dir / 'demo_animation.html')
             from qec_schedule.visualization.timeline import save_timeline
             save_timeline(trace, args.output_dir / 'demo_timeline.png')
+            if args.gif:
+                from qec_schedule.visualization.animation import create_matplotlib_animation
+                animation = create_matplotlib_animation(trace)
+                animation.save(args.output_dir / 'demo_animation.gif', writer='pillow', fps=25)
     except (ValueError, OSError, RuntimeError) as exc:
         parser.error(str(exc))
     print(f"Completed {result['physical_gate_count']} gates / {result['action_count']} actions in {trace['duration']:.3f} us")

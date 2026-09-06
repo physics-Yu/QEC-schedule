@@ -2,6 +2,7 @@
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
+from types import MappingProxyType
 
 import yaml
 
@@ -41,8 +42,17 @@ class HardwareConfig:
     reservoir_atoms: int = 0
     timing: ActionTiming = field(default_factory=ActionTiming)
     aod: AODController | None = None
+    device_capacities: Mapping = field(default_factory=dict)
 
     def __post_init__(self):
+        devices = {'device/aod': 1, 'device/local_1q': 1, 'device/rydberg': 1,
+                   'device/imaging': 1, 'device/state_preparation': 1}
+        if not isinstance(self.device_capacities, Mapping) or set(self.device_capacities) - devices.keys():
+            raise ValueError('Unknown device capacities')
+        devices.update(self.device_capacities)
+        if any(type(v) is not int or v < 1 for v in devices.values()):
+            raise ValueError('Device capacities must be positive integers')
+        object.__setattr__(self, 'device_capacities', MappingProxyType(devices))
         object.__setattr__(self, "zones", tuple(self.zones))
         if not isinstance(self.timing, ActionTiming):
             raise ValueError("timing must be ActionTiming")
@@ -63,7 +73,7 @@ class HardwareConfig:
 def load_hardware_config(path: str | Path) -> HardwareConfig:
     try:
         raw = yaml.load(Path(path).read_text(encoding="utf-8"), Loader=_UniqueKeyLoader)
-        _keys(raw, ("schema_version", "units", "min_atom_separation", "reservoir_atoms", "zones"), ("timing", "aod"))
+        _keys(raw, ("schema_version", "units", "min_atom_separation", "reservoir_atoms", "zones"), ("timing", "aod", "devices"))
         if type(raw["schema_version"]) is not int or raw["schema_version"] != 1 or raw["units"] != {"length": "um", "time": "us"}:
             raise ValueError("Expected schema_version=1 and units length=um, time=us")
         if not isinstance(raw["zones"], list):
@@ -93,6 +103,6 @@ def load_hardware_config(path: str | Path) -> HardwareConfig:
             if "allowed_primitives" in settings and not isinstance(settings["allowed_primitives"], list):
                 raise ValueError("allowed_primitives must be a list")
             aod = AODController(**{**settings, "allowed_region": Bounds(*settings["allowed_region"])})
-        return HardwareConfig(tuple(zones), raw["min_atom_separation"], raw["reservoir_atoms"], ActionTiming(**timing), aod)
+        return HardwareConfig(tuple(zones), raw["min_atom_separation"], raw["reservoir_atoms"], ActionTiming(**timing), aod, raw.get('devices', {}))
     except (yaml.YAMLError, TypeError, KeyError) as exc:
         raise ValueError(f"Malformed hardware configuration: {exc}") from exc

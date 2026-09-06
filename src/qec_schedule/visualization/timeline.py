@@ -40,7 +40,7 @@ def create_timeline_figure(trace):
         ax.set_axisbelow(True)
         ax.spines[['top', 'right']].set_visible(False)
         ax.tick_params(labelsize=9)
-    fig.suptitle(f"Surface-code execution timeline  |  {trace['duration']:,.2f} μs", fontsize=17, color='#243c54')
+    fig.suptitle(f"QEC execution timeline  |  {trace['duration']:,.2f} μs", fontsize=17, color='#243c54')
     bottom.legend(handles=[Patch(color=c, label=k.replace('_', ' ').title()) for k, c in COLORS.items()],
                   loc='upper center', bbox_to_anchor=(.5, -.12), ncol=4, frameon=False, fontsize=9)
     return fig

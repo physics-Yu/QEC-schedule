@@ -1,0 +1,22 @@
+schema_version: 1
+cases:
+  - id: baseline
+    overrides: {}
+  - id: move_speed_half
+    overrides:
+      timing: {move_speed: 0.5}
+  - id: move_speed_double
+    overrides:
+      timing: {move_speed: 2.0}
+  - id: one_tone_per_axis
+    overrides:
+      aod: {max_x_tones: 1, max_y_tones: 1}
+  - id: entangling_two_atoms
+    overrides:
+      zone_capacities: {entangling: 2}
+  - id: measurement_two_atoms
+    overrides:
+      zone_capacities: {measurement: 2}
+  - id: two_aod_controllers
+    overrides:
+      devices: {device/aod: 2}
