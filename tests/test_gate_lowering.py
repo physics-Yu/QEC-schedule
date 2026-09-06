@@ -7,7 +7,7 @@ import unittest
 
 from qec_schedule.compiler import PhysicalCircuit, PhysicalGate
 from qec_schedule.hardware import ActionTiming, AtomState, HardwareState, build_initial_state, load_hardware_config
-from qec_schedule.lowering import GateLowerer, RoundRobinDestinations
+from qec_schedule.lowering import LegacyGateLowerer, RoundRobinDestinations
 from tests.test_step1 import RepetitionCode
 from qec_schedule.qec import create_code
 
@@ -20,7 +20,7 @@ class GateLoweringTests(unittest.TestCase):
         self.config = load_hardware_config(CONFIG)
         self.code = create_code()
         self.state = build_initial_state(self.code, self.config)
-        self.lowerer = GateLowerer(self.config.timing)
+        self.lowerer = LegacyGateLowerer(self.config.timing)
 
     def lower(self, *gates):
         return self.lowerer.lower(PhysicalCircuit(tuple(self.state.qubit_to_atom), gates), self.state)
@@ -93,7 +93,7 @@ class GateLoweringTests(unittest.TestCase):
         gate = PhysicalGate("cz", "CZ", ("L0:d0", "L0:d1"))
         circuit = PhysicalCircuit(tuple(self.state.qubit_to_atom), (gate,))
         timing = replace(self.config.timing, move_speed=2, pickup_duration=3, entangle_duration=5)
-        plan = GateLowerer(timing).lower(circuit, self.state)
+        plan = LegacyGateLowerer(timing).lower(circuit, self.state)
         by_id = {a.id:a for a in plan.actions}
         for action in plan.actions:
             if action.action_type == "MOVE":
@@ -197,7 +197,7 @@ class GateLoweringTests(unittest.TestCase):
         class LastSlot(RoundRobinDestinations):
             def pair(self, gate, candidates, index): return candidates[-1]
         circuit = PhysicalCircuit(("L0:d0", "L0:d1"), (PhysicalGate("cz", "CZ", ("L0:d0", "L0:d1")),))
-        plan = GateLowerer(destinations=LastSlot()).lower(circuit, self.state)
+        plan = LegacyGateLowerer(destinations=LastSlot()).lower(circuit, self.state)
         self.assertEqual(next(a for a in plan.actions if a.action_type == "ENTANGLE").metadata["pair_slot"], "p3")
         with self.assertRaises(ValueError): replace(plan.actions[0], start_time=0)
         with self.assertRaises(ValueError): replace(plan.actions[0], duration=-1)

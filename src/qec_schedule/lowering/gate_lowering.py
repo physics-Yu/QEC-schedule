@@ -1,8 +1,9 @@
-"""Compile physical gates into requests; choose destinations, never priorities/times."""
+"""Semantic gate lowering plus the explicitly named pre-refactor adapter."""
 from dataclasses import dataclass, replace
 from typing import Protocol
 
 from ..compiler import PhysicalCircuit, PhysicalCircuitDAG, PhysicalGate
+from ..compiler.semantic_requests import SemanticGateLowerer
 from ..hardware import ActionTiming, AtomState, HardwareState, ZoneKind
 from .experimental_ir import (ActionType, ExperimentalAction, ExperimentalPlan, Reservation,
                               ResourceRequirement, SiteRef)
@@ -29,13 +30,26 @@ class RoundRobinDestinations:
         return candidates[index % len(candidates)]
 
 
-class GateLowerer:
+class LegacyGateLowerer:
     def __init__(self, timing: ActionTiming | None = None, *, destinations: DestinationPolicy | None = None):
         self.timing = timing if timing is not None else ActionTiming()
         self.destinations = destinations if destinations is not None else RoundRobinDestinations()
 
     def lower(self, circuit: PhysicalCircuit, state: HardwareState) -> ExperimentalPlan:
         return _PlanBuilder(circuit, state, self.timing, self.destinations).build()
+
+
+class GateLowerer(SemanticGateLowerer):
+    """Public lowering entry point for the runtime refactor.
+
+    The optional timing argument is accepted for source compatibility with the
+    old API but is intentionally ignored: semantic requests contain no timing
+    or placement decisions. Use ``LegacyGateLowerer`` only for the migration
+    compatibility tests and examples that still exercise the old IR.
+    """
+
+    def __init__(self, timing=None):
+        self.timing = timing
 
 
 class _PlanBuilder:

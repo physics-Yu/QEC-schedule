@@ -5,7 +5,8 @@ import tempfile
 import unittest
 
 from qec_schedule.hardware import AODController, ActionTiming, Bounds, Position, Translation, build_initial_state, load_hardware_config
-from qec_schedule.lowering import AODMovementEpoch, GateLowerer, MoveRequest, MovementPlanner, SiteRef, TransportCatalog
+from qec_schedule.lowering import (AODMovementEpoch, LegacyGateLowerer, MoveRequest,
+                                    MovementPlanner, SiteRef, TransportCatalog)
 from qec_schedule.qec import create_code
 from examples.demo_aod_movement import inspect_frontiers, ten_translations
 
@@ -99,7 +100,7 @@ class AODTests(unittest.TestCase):
 
     def test_catalog_partial_and_inflight_requests(self):
         code = create_code()
-        plan = GateLowerer(self.config.timing).lower(code.syndrome_round(), build_initial_state(code, self.config))
+        plan = LegacyGateLowerer(self.config.timing).lower(code.syndrome_round(), build_initial_state(code, self.config))
         catalog = TransportCatalog(plan)
         self.assertEqual(len(catalog.requests), 112)
         self.assertEqual(len(catalog.transport_action_ids), 336)
@@ -124,7 +125,7 @@ class AODTests(unittest.TestCase):
     def test_full_plan_coverage_determinism_and_preserved_reservations(self):
         for rounds in (1, 3):
             code = create_code()
-            plan = GateLowerer(self.config.timing).lower(code.syndrome_round(rounds=rounds), build_initial_state(code, self.config))
+            plan = LegacyGateLowerer(self.config.timing).lower(code.syndrome_round(rounds=rounds), build_initial_state(code, self.config))
             before = plan.to_dict()
             catalog, frontiers = inspect_frontiers(plan, self.planner)
             covered = [i for f in frontiers for e in f["epochs"] for phase in e["phase_action_ids"].values() for i in phase]
