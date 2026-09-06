@@ -156,4 +156,4 @@ CNOT 输入同样生成 440 个动作；三轮生成 1320 个动作。
 另用独立的串行 endpoint replay 校验默认整轮的每个起止位置、占位和 zone 容量，
 最终恢复初始布局；该验证不模拟连续路径或实际并行时序。
 
-请验收动作展开与占用生命周期。下一步是步骤 6：AOD same-displacement compatibility 与 epoch 分组。
+动作展开与占用生命周期验收方法如上。现已继续实现 [步骤 6：AOD compatibility 与 epoch 分组](aod_model.md)。

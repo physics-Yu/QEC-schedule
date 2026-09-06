@@ -22,6 +22,8 @@ jobs:
       - run: python examples/demo_hardware_layout.py
       - run: python examples/demo_gate_lowering.py
       - run: python examples/demo_gate_lowering.py --primitive CNOT --rounds 3 --output-dir results/lowering_cnot
+      - run: python examples/demo_aod_movement.py
+      - run: python examples/demo_aod_movement.py --rounds 3 --output-dir results/aod_three_rounds
       - uses: actions/upload-artifact@v4
         with:
           name: hardware-layout-python-${{ matrix.python-version }}
@@ -35,4 +37,11 @@ jobs:
           path: |
             results/experimental_requests.json
             results/lowering_cnot/experimental_requests.json
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: aod-epochs-python-${{ matrix.python-version }}
+          path: |
+            results/aod_epochs.json
+            results/aod_three_rounds/aod_epochs.json
           if-no-files-found: error

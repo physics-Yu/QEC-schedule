@@ -9,6 +9,7 @@ from .geometry import Bounds, Position
 from .hardware_state import HardwareState
 from .zones import PairSlot, TrapSite, Zone
 from .timing import ActionTiming
+from .aod import AODController
 
 
 class _UniqueKeyLoader(yaml.SafeLoader):
@@ -39,12 +40,20 @@ class HardwareConfig:
     min_atom_separation: float
     reservoir_atoms: int = 0
     timing: ActionTiming = field(default_factory=ActionTiming)
+    aod: AODController | None = None
 
     def __post_init__(self):
         object.__setattr__(self, "zones", tuple(self.zones))
         if not isinstance(self.timing, ActionTiming):
             raise ValueError("timing must be ActionTiming")
         HardwareState((), self.zones, min_atom_separation=self.min_atom_separation)
+        if self.aod is None:
+            bounds = (Bounds(min(z.bounds.xmin for z in self.zones), min(z.bounds.ymin for z in self.zones),
+                             max(z.bounds.xmax for z in self.zones), max(z.bounds.ymax for z in self.zones))
+                      if self.zones else Bounds(0, 0, 1, 1))
+            object.__setattr__(self, "aod", AODController(20, 20, bounds))
+        elif not isinstance(self.aod, AODController):
+            raise ValueError("aod must be AODController")
         if type(self.reservoir_atoms) is not int or self.reservoir_atoms < 0:
             raise ValueError("reservoir_atoms must be a nonnegative integer")
         if self.reservoir_atoms > sum(z.capacity for z in self.zones if z.kind == "RESERVOIR"):
@@ -54,7 +63,7 @@ class HardwareConfig:
 def load_hardware_config(path: str | Path) -> HardwareConfig:
     try:
         raw = yaml.load(Path(path).read_text(encoding="utf-8"), Loader=_UniqueKeyLoader)
-        _keys(raw, ("schema_version", "units", "min_atom_separation", "reservoir_atoms", "zones"), ("timing",))
+        _keys(raw, ("schema_version", "units", "min_atom_separation", "reservoir_atoms", "zones"), ("timing", "aod"))
         if type(raw["schema_version"]) is not int or raw["schema_version"] != 1 or raw["units"] != {"length": "um", "time": "us"}:
             raise ValueError("Expected schema_version=1 and units length=um, time=us")
         if not isinstance(raw["zones"], list):
@@ -77,6 +86,13 @@ def load_hardware_config(path: str | Path) -> HardwareConfig:
                               frozenset(zone["allowed_operations"]), tuple(sites), tuple(pairs)))
         timing = raw.get("timing", {})
         _keys(timing, (), ActionTiming.__dataclass_fields__)
-        return HardwareConfig(tuple(zones), raw["min_atom_separation"], raw["reservoir_atoms"], ActionTiming(**timing))
+        aod = None
+        if "aod" in raw:
+            settings = raw["aod"]
+            _keys(settings, ("max_x_tones", "max_y_tones", "allowed_region"), ("allowed_primitives", "displacement_tolerance"))
+            if "allowed_primitives" in settings and not isinstance(settings["allowed_primitives"], list):
+                raise ValueError("allowed_primitives must be a list")
+            aod = AODController(**{**settings, "allowed_region": Bounds(*settings["allowed_region"])})
+        return HardwareConfig(tuple(zones), raw["min_atom_separation"], raw["reservoir_atoms"], ActionTiming(**timing), aod)
     except (yaml.YAMLError, TypeError, KeyError) as exc:
         raise ValueError(f"Malformed hardware configuration: {exc}") from exc

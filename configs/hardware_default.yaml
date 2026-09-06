@@ -6,6 +6,12 @@ schema_version: 1
 units: {length: um, time: us}
 min_atom_separation: 1.0
 reservoir_atoms: 4
+aod:
+  max_x_tones: 20
+  max_y_tones: 20
+  allowed_region: [0, 0, 100, 99]
+  allowed_primitives: [TRANSLATE]
+  displacement_tolerance: 1.0e-9  # Absolute um for floating-point comparisons.
 # Step-5 estimates only. The scheduler will assign start times later.
 timing:
   move_speed: 1.0  # um/us

@@ -110,7 +110,8 @@ state = build_initial_state(code, config, placements={
 
 `configs/hardware_default.yaml` 使用安全 YAML loader，拒绝重复 key、未知字段、
 缺失字段、错误单位和不支持的 schema。步骤 5 新增可选 timing 段，提供动作耗时和移动速度；
-后续 AOD/laser 能力参数随对应实现加入 schema。仅创建容量或 pair slot 不代表已实现资源锁。
+步骤 6 新增 [AOD tone、allowed_region 和 TRANSLATE 参数](aod_model.md)。
+后续 laser 能力参数随对应实现加入 schema。仅创建容量或 pair slot 不代表已实现资源锁。
 
 ## 运行与验收
 
