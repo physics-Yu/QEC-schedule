@@ -78,7 +78,7 @@ class HardwareTests(unittest.TestCase):
         with self.assertRaises(ValueError): replace(storage, capacity=18)
         with self.assertRaises(ValueError): replace(storage, capacity=True)
         with self.assertRaises(ValueError): replace(self.config, reservoir_atoms=7)
-        overlap = replace(others[0], bounds=Bounds(40, 0, 100, 15))
+        overlap = replace(others[0], bounds=Bounds(0, 0, 45, 99))
         with self.assertRaises(ValueError): replace(self.config, zones=(storage, overlap, *others[1:]))
 
     def test_sites_pairs_and_operation_capabilities(self):

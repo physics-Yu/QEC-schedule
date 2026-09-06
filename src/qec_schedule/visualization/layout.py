@@ -15,7 +15,7 @@ def create_layout_figure(state: HardwareState):
     state.validate()
     if not state.zones:
         raise ValueError("Layout rendering requires at least one zone")
-    figure = Figure(figsize=(12, 8.3), facecolor="#f8fafc")
+    figure = Figure(figsize=(12, 11), facecolor="#f8fafc")
     FigureCanvasAgg(figure)
     ax = figure.add_axes((0.07, 0.14, 0.9, 0.72))
     ax.set_facecolor("#f8fafc")
@@ -26,7 +26,8 @@ def create_layout_figure(state: HardwareState):
         ax.add_patch(Rectangle((bounds.xmin, bounds.ymin), bounds.xmax - bounds.xmin, bounds.ymax - bounds.ymin,
                                facecolor=colors[zone.kind.value], edgecolor="#99a6b5", linewidth=1.2, zorder=0))
         count = len(state.atoms_in_zone(zone.id))
-        title = f"{zone.kind.value.title()}  |  {count}/{zone.capacity} atoms"
+        name = {"STORAGE": "Memory", "ENTANGLING": "Entanglement"}.get(zone.kind.value, zone.kind.value.title())
+        title = f"{name}  |  {count}/{zone.capacity} atoms"
         if zone.kind.value.lower() != zone.id.lower():
             title += f"  [{zone.id}]"
         ax.text(bounds.xmin + 1.5, bounds.ymin + 2.5, title, fontsize=10, weight="bold", color="#253449")

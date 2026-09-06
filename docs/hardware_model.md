@@ -9,6 +9,13 @@ trap sites 和 entangling pair slots，并导出经过校验的状态快照与�
 默认布局是用于调试的示例参数，不是经过实验标定的机器。
 长度统一为 **um**，时间统一为 **us**。图的 x 向右、y 向下。
 
+实验布局约束：激光沿直线传播，并平行于实验平台，因此默认区域采用线性布置。
+Memory（内部 ID 为 storage）、Entanglement、Measurement 从上到下同列对齐，
+x 范围均为 [0,45]；y 范围分别为 [0,45]、[52,77]、[84,99]。
+Reservoir 位于 Memory 右侧，范围为 x=[55,100]、y=[0,45]。
+图中使用 Memory/Entanglement 名称，配置中的 STORAGE/ENTANGLING 类型保留。
+这项约束决定区域相对位置；具体光束宽度、入射方向和寻址能力尚未建模。
+
 ## 默认布局验收值
 
 | Zone | 初始原子数 | 容量（atoms） | trap sites | pair slots |
