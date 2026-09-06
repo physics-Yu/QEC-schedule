@@ -23,6 +23,8 @@ def main():
         if not args.no_plot:
             from qec_schedule.visualization.animation import save_animation
             save_animation(trace, args.output_dir / 'demo_animation.html')
+            from qec_schedule.visualization.timeline import save_timeline
+            save_timeline(trace, args.output_dir / 'demo_timeline.png')
     except (ValueError, OSError, RuntimeError) as exc:
         parser.error(str(exc))
     print(f"Completed {result['physical_gate_count']} gates / {result['action_count']} actions in {trace['duration']:.3f} us")
