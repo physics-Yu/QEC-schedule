@@ -21,7 +21,7 @@ class LayoutTests(unittest.TestCase):
         labels = {text.get_text() for text in axis.texts}
         for atom in state.atoms:
             self.assertIn(atom.assigned_qubit or atom.atom_id, labels)
-        self.assertEqual(len(axis.lines), 4)  # Configured empty entangling pair slots.
+        self.assertEqual(len(axis.lines), 3)  # Two interaction lanes plus the imaging FOV.
         with tempfile.TemporaryDirectory() as directory:
             output = save_layout(state, Path(directory) / "layout.png")
             self.assertEqual(output.read_bytes()[:8], b"\x89PNG\r\n\x1a\n")

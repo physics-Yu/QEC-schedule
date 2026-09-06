@@ -2,7 +2,7 @@
 # Reservoir sits to the right of Memory. Laser beams run in straight lines
 # parallel to the experimental platform; lengths remain illustrative.
 # All capacity values count ATOMS. Four entangling pair slots hold eight atoms.
-schema_version: 1
+schema_version: 2
 devices:
   device/aod: 1
   device/local_1q: 1
@@ -18,6 +18,24 @@ aod:
   allowed_region: [0, 0, 100, 99]
   allowed_primitives: [TRANSLATE]
   displacement_tolerance: 1.0e-9  # Absolute um for floating-point comparisons.
+# Dynamic working-region capabilities. The legacy pair_slots below remain only
+# for the pre-refactor compatibility layer; new planners use these geometries.
+entanglement:
+  bounds: [0, 52, 45, 77]
+  interaction_lanes: [61, 71]
+  preferred_axis: x
+  pair_distance: 4.0
+  pair_distance_tolerance: 0.2
+  inter_pair_guard_distance: 3.0
+  min_atom_spacing: 1.0
+  max_parallel_pairs: 6
+  max_atoms: 12
+measurement:
+  bounds: [0, 84, 45, 99]
+  imaging_bounds: [2, 85, 43, 97]
+  min_atom_spacing: 3.0
+  max_parallel_atoms: 8
+  field_of_view: [2, 85, 43, 97]
 # Step-5 estimates only. The scheduler will assign start times later.
 timing:
   move_speed: 1.0  # um/us
@@ -70,7 +88,7 @@ zones:
   - id: entangling
     kind: ENTANGLING
     bounds: [0, 52, 45, 77]
-    capacity: 8
+    capacity: 12
     allowed_operations: [ENTANGLE, LOCAL_1Q]
     sites:
       - {id: e0a, position: [10, 61]}

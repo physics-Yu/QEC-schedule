@@ -30,18 +30,34 @@ def create_layout_figure(state: HardwareState):
         title = f"{name}  |  {count}/{zone.capacity} atoms"
         if zone.kind.value.lower() != zone.id.lower():
             title += f"  [{zone.id}]"
+        if zone.entangling_geometry is not None or zone.measurement_geometry is not None:
+            title += "  | dynamic working region"
         ax.text(bounds.xmin + 1.5, bounds.ymin + 2.5, title, fontsize=10, weight="bold", color="#253449")
         sites = {s.id: s for s in zone.sites}
-        for site in zone.sites:
-            if site.id not in occupied:
-                ax.scatter(site.position.x, site.position.y, s=60, facecolors="none", edgecolors="#94a3b8", linewidths=1, zorder=2)
-                ax.annotate(site.id, (site.position.x, site.position.y), xytext=(0, -14), textcoords="offset points",
-                            ha="center", fontsize=7, color="#64748b")
-        for pair in zone.pair_slots:
-            left, right = (sites[s].position for s in pair.sites)
-            ax.plot((left.x, right.x), (left.y, right.y), color="#a9a095", linestyle="--", linewidth=1.2, zorder=1)
-            ax.annotate(pair.id, ((left.x + right.x)/2, (left.y + right.y)/2), xytext=(0, 11),
-                        textcoords="offset points", ha="center", fontsize=8, color="#665748")
+        # Dynamic zones are intentionally rendered as capabilities, not as a
+        # collection of predeclared destinations. Storage/reservoir sites are
+        # still shown because those zones retain discrete trap semantics.
+        if zone.entangling_geometry is None and zone.measurement_geometry is None:
+            for site in zone.sites:
+                if site.id not in occupied:
+                    ax.scatter(site.position.x, site.position.y, s=60, facecolors="none", edgecolors="#94a3b8", linewidths=1, zorder=2)
+                    ax.annotate(site.id, (site.position.x, site.position.y), xytext=(0, -14), textcoords="offset points",
+                                ha="center", fontsize=7, color="#64748b")
+        if zone.entangling_geometry is not None:
+            geometry = zone.entangling_geometry
+            lanes = geometry.interaction_lanes or ((geometry.bounds.ymin + geometry.bounds.ymax) / 2,)
+            for lane in lanes:
+                if geometry.preferred_axis == "x":
+                    ax.plot((geometry.bounds.xmin, geometry.bounds.xmax), (lane, lane),
+                            color="#d49a3a", linestyle=":", linewidth=1.0, zorder=1)
+                else:
+                    ax.plot((lane, lane), (geometry.bounds.ymin, geometry.bounds.ymax),
+                            color="#d49a3a", linestyle=":", linewidth=1.0, zorder=1)
+        if zone.measurement_geometry is not None:
+            field = zone.measurement_geometry.field_of_view
+            ax.plot((field.xmin, field.xmax, field.xmax, field.xmin, field.xmin),
+                    (field.ymin, field.ymin, field.ymax, field.ymax, field.ymin),
+                    color="#3d9a6c", linestyle=":", linewidth=1.0, zorder=1)
 
     styles = {"DATA": ("#2563eb", "o", "Data"), "X": ("#d97706", "^", "X ancilla"),
               "Z": ("#7c3aed", "s", "Z ancilla"), "OTHER": ("#0d9488", "p", "Other ancilla"),
@@ -82,7 +98,8 @@ def create_layout_figure(state: HardwareState):
                for key, (color, marker, label) in styles.items() if key in used_styles]
     handles.append(Line2D([], [], marker="o", linestyle="none", color="#94a3b8", markerfacecolor="none", label="Empty trap"))
     figure.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, 0.04), ncol=len(handles), frameon=False, fontsize=10)
-    figure.text(0.5, 0.018, "Illustrative geometry. Dashed pairs are reserved slots, not active gates.", ha="center", fontsize=9, color="#64748b")
+    figure.text(0.5, 0.018, "Illustrative geometry. Working-region lanes and imaging FOV are capabilities; placement is runtime-managed.",
+                ha="center", fontsize=9, color="#64748b")
     return figure
 
 
