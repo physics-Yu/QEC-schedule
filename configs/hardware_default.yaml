@@ -16,6 +16,11 @@ aod:
   max_x_tones: 20
   max_y_tones: 20
   allowed_region: [0, 0, 100, 99]
+  axis_execution: simultaneous
+  min_tone_spacing: 0.5
+  max_speed_x: 1.0
+  max_speed_y: 1.0
+  ordering_rule: preserve_order
   allowed_primitives: [TRANSLATE]
   displacement_tolerance: 1.0e-9  # Absolute um for floating-point comparisons.
 # Dynamic working-region capabilities. The legacy pair_slots below remain only

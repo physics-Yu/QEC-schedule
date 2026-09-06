@@ -152,7 +152,9 @@ def load_hardware_config(path: str | Path) -> HardwareConfig:
         aod = None
         if "aod" in raw:
             settings = raw["aod"]
-            _keys(settings, ("max_x_tones", "max_y_tones", "allowed_region"), ("allowed_primitives", "displacement_tolerance"))
+            _keys(settings, ("max_x_tones", "max_y_tones", "allowed_region"),
+                  ("allowed_primitives", "displacement_tolerance", "axis_execution",
+                   "min_tone_spacing", "max_speed_x", "max_speed_y", "ordering_rule"))
             if "allowed_primitives" in settings and not isinstance(settings["allowed_primitives"], list):
                 raise ValueError("allowed_primitives must be a list")
             aod = AODController(**{**settings, "allowed_region": Bounds(*settings["allowed_region"])})

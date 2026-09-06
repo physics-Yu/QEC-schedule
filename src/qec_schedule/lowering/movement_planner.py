@@ -125,14 +125,14 @@ class TransportCatalog:
 
 
 @dataclass(frozen=True)
-class AODMovementEpoch:
+class LegacyAODMovementEpoch:
     id: str
     requests: tuple[MoveRequest, ...]
     controller: AODController
 
     def __post_init__(self):
         object.__setattr__(self, "requests", tuple(self.requests))
-        reason = self.controller.incompatibility(r.translation for r in self.requests)
+        reason = self.controller.legacy_incompatibility(r.translation for r in self.requests)
         if reason:
             raise ValueError(f"Incompatible epoch: {reason}")
         if len({r.id for r in self.requests}) != len(self.requests):
@@ -173,16 +173,23 @@ class AODMovementEpoch:
                 "phase_action_ids": {phase: [getattr(r, phase).id for r in self.requests] for phase in ("pickup", "move", "dropoff")},
                 "phase_durations": dict(zip(("pickup", "move", "dropoff"), self.phase_durations)),
                 "duration": self.duration, "dependencies": list(self.dependencies),
-                "tone_counts": dict(zip(("x", "y"), self.controller.tone_counts(r.translation for r in self.requests))),
+                "tone_counts": _legacy_tone_counts(r.translation for r in self.requests),
                 "reservation": self.reservation.to_dict(), "replaces_reservation_ids": [r.reservation.id for r in self.requests],
                 "additional_reservation_ids": list(self.additional_reservation_ids)}
 
 
-class MovementPlanner:
+def _legacy_tone_counts(translations):
+    translations = tuple(translations)
+    return {axis: max(len({getattr(getattr(translation, endpoint), axis) for translation in translations})
+                       for endpoint in ("source", "target"))
+            for axis in ("x", "y")}
+
+
+class LegacyMovementPlanner:
     def __init__(self, controller: AODController):
         self.controller = controller
 
-    def plan(self, requests: Iterable[MoveRequest], *, completed_actions: Iterable[str] = ()) -> tuple[AODMovementEpoch, ...]:
+    def plan(self, requests: Iterable[MoveRequest], *, completed_actions: Iterable[str] = ()) -> tuple[LegacyAODMovementEpoch, ...]:
         """Stable first-fit grouping of a caller-selected ready frontier.
 
         Site/zone leases are retained for the future scheduler to check. This
@@ -201,19 +208,25 @@ class MovementPlanner:
         for request in requests:
             if not set(request.dependencies) <= completed:
                 raise ValueError(f"Transport is not ready: {request.id}")
-            reason = self.controller.incompatibility((request.translation,))
+            reason = self.controller.legacy_incompatibility((request.translation,))
             if reason:
                 raise ValueError(f"Unserviceable transport {request.id}: {reason}")
         batches = []
         for request in requests:
             for batch in batches:
-                if all(_same_timing(r.phase_durations, request.phase_durations) for r in batch) and self.controller.compatible(r.translation for r in (*batch, request)):
+                if all(_same_timing(r.phase_durations, request.phase_durations) for r in batch) and self.controller.legacy_compatible(r.translation for r in (*batch, request)):
                     batch.append(request)
                     break
             else:
                 batches.append([request])
-        return tuple(AODMovementEpoch(f"epoch/{batch[0].id}", tuple(batch), self.controller) for batch in batches)
+        return tuple(LegacyAODMovementEpoch(f"epoch/{batch[0].id}", tuple(batch), self.controller) for batch in batches)
 
     def plan_ready(self, catalog: TransportCatalog, completed_actions: Iterable[str], *, in_flight: Iterable[str] = ()):
         completed = tuple(completed_actions)
         return self.plan(catalog.ready_requests(completed, in_flight=in_flight), completed_actions=completed)
+
+
+# Compatibility names for the pre-R6 action IR. New execution epochs live in
+# qec_schedule.execution.epoch and do not use these aliases.
+AODMovementEpoch = LegacyAODMovementEpoch
+MovementPlanner = LegacyMovementPlanner
