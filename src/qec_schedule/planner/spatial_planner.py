@@ -111,7 +111,6 @@ class SpatialPlanner:
         axis = geometry.preferred_axis
         lanes = geometry.interaction_lanes or ((geometry.bounds.ymin + geometry.bounds.ymax) / 2
                                                if axis == "x" else (geometry.bounds.xmin + geometry.bounds.xmax) / 2,)
-        lane = lanes[0]
         along_min, along_max = ((geometry.bounds.xmin, geometry.bounds.xmax)
                                 if axis == "x" else (geometry.bounds.ymin, geometry.bounds.ymax))
         total_span = distance + max(0, count - 1) * (distance + guard)
@@ -120,26 +119,37 @@ class SpatialPlanner:
             raise PlacementError("PLACEMENT_FAILURE", {"requested_pairs": count, "required_span": total_span,
                                                         "available_span": along_max - along_min})
         start = along_min + max(0.0, margin)
-        placements = []
-        for index, request in enumerate(requests):
-            first = start + index * (distance + guard)
-            second = first + distance
-            if axis == "x":
-                positions = (Position(first, lane), Position(second, lane))
-            else:
-                positions = (Position(lane, first), Position(lane, second))
-            if any(not geometry.bounds.contains(position) for position in positions):
-                raise PlacementError("OUT_OF_BOUNDS", {"request_id": request.id})
-            placements.append(PairPlacement(request.id, request.atoms[0], request.atoms[1], *positions))
-
-        all_positions = [position for placement in placements for position in placement.positions]
-        if not _distance_ok(all_positions, geometry.min_atom_spacing):
-            raise PlacementError("MIN_SPACING", {"minimum": geometry.min_atom_spacing})
         requested_atoms = {atom for request in requests for atom in request.atoms}
         resident = [atom.position for atom in state.atoms_in_zone(zone.id) if atom.atom_id not in requested_atoms]
-        if resident and not _distance_ok((*all_positions, *resident), geometry.min_atom_spacing):
-            raise PlacementError("MIN_SPACING", {"resident_atoms": len(resident)})
-        return tuple(placements)
+        current_positions = {atom.atom_id: atom.position for atom in state.atoms}
+        for lane in lanes:
+            placements = []
+            for index, request in enumerate(requests):
+                first = start + index * (distance + guard)
+                second = first + distance
+                if axis == "x":
+                    positions = (Position(first, lane), Position(second, lane))
+                else:
+                    positions = (Position(lane, first), Position(lane, second))
+                if any(not geometry.bounds.contains(position) for position in positions):
+                    raise PlacementError("OUT_OF_BOUNDS", {"request_id": request.id})
+                placements.append(PairPlacement(request.id, request.atoms[0], request.atoms[1], *positions))
+            all_positions = [position for placement in placements for position in placement.positions]
+            if not _distance_ok(all_positions, geometry.min_atom_spacing):
+                raise PlacementError("MIN_SPACING", {"minimum": geometry.min_atom_spacing})
+            if not resident or _distance_ok((*all_positions, *resident), geometry.min_atom_spacing):
+                # AOD segments may be split by tone/order constraints.  Do
+                # not select a target that is occupied by a different atom at
+                # the current snapshot, even when both atoms belong to the
+                # requested batch; this keeps every intermediate completion
+                # snapshot valid while the batch is reconfigured.
+                atom_targets = {atom: position for placement in placements
+                                for atom, position in zip(placement.atoms, placement.positions)}
+                if all(atom == other or target.distance_to(position) + 1e-12 >= geometry.min_atom_spacing
+                       for atom, target in atom_targets.items()
+                       for other, position in current_positions.items()):
+                    return tuple(placements)
+        raise PlacementError("MIN_SPACING", {"resident_atoms": len(resident), "lanes_tried": len(lanes)})
 
     def plan_measurement(self, requests: Iterable[MeasureRequest], state: HardwareState):
         requests = self._as_measurements(requests)

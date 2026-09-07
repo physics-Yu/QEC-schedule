@@ -13,9 +13,14 @@ class AtomType(str, Enum):
 
 class AtomState(str, Enum):
     IDLE = "IDLE"
+    HELD_STATIC = "HELD_STATIC"
+    AOD_CAPTURED = "AOD_CAPTURED"
     MOVING = "MOVING"
     GATING = "GATING"
     MEASURING = "MEASURING"
+    IN_ENTANGLING_REGION = "IN_ENTANGLING_REGION"
+    IN_MEASUREMENT_REGION = "IN_MEASUREMENT_REGION"
+    MEASURED = "MEASURED"
     LOST = "LOST"
 
 
@@ -48,6 +53,10 @@ class Atom:
         if self.state in (AtomState.MOVING, AtomState.LOST):
             if self.zone is not None or self.site_id is not None:
                 raise ValueError("Moving/lost atoms must release their static zone and site")
+        elif self.state in (AtomState.AOD_CAPTURED, AtomState.IN_ENTANGLING_REGION,
+                            AtomState.IN_MEASUREMENT_REGION, AtomState.MEASURED):
+            if not self.zone or self.site_id is not None:
+                raise ValueError("Dynamic-region atoms need a zone and no fixed trap site")
         elif not self.zone or not self.site_id:
             raise ValueError("A stationary atom must occupy a zone and trap site")
 
