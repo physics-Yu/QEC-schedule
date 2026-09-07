@@ -5,9 +5,9 @@
 默认 d=3 rotated surface code、显式 syndrome extraction 电路，以及
 PhysicalCircuitDAG 的依赖索引、动态 ready set 和执行状态推进；
 已加入 Atom / Zone / HardwareState、YAML 硬件布局与静态二维绘图，
-以及 physical gate 到 ExperimentalIR 的动作展开、预计时长与资源预留请求；
-现已支持 AOD 同位移兼容性、tone/可达范围检查、RESST 风格事件调度、
-完整 syndrome cycle、trace/metrics、交互原子动画、设备/原子时间线及 YAML 参数扫描。
+以及 physical gate → semantic request → PhysicalEpoch 的执行链路；
+现已支持动态工作区、二维多 tone AOD、事件驱动资源调度、完整 syndrome cycle、
+epoch trace/metrics、交互回放、设备 custody/原子参与时间线及 YAML 资源扫描。
 
 ## 快速运行
 
@@ -38,7 +38,8 @@ GitHub Actions 上传布局、完整 trace/metrics、动画、时间线和扫描
 
 完整示例默认输出 `results/trace.json`、`metrics.json`、`demo_animation.html`、
 `demo_timeline.png`。双击 HTML 即可离线播放，支持 Play/Pause/Restart、×1/×5/×20、
-时间拖动和逐事件前进。`--gif` 额外生成 Matplotlib GIF；`--no-plot` 仅导出 JSON。
+时间拖动和逐 epoch 前进；动画、时间线和 metrics 都直接消费同一份 epoch trace。
+`--gif` 额外生成 Matplotlib GIF；`--no-plot` 仅导出 JSON。
 三轮示例：`python examples/demo_surface_code_cycle.py --rounds 3 --primitive CNOT --output-dir results/three_rounds`。
 参数扫描输出 `results/sweep/sweep.csv`、`sweep.json`、`sweep.png` 和每组参数的完整 trace。
 
@@ -75,6 +76,10 @@ LogicalIR 当前只提供表达与校验，不包含逻辑门的容错编译。
 - [步骤 5：实验动作展开与验收](docs/gate_lowering.md)
 - [步骤 6：AOD 兼容性与 movement epochs](docs/aod_model.md)
 - [步骤 7–12：调度、运行、动画、时间线与参数扫描验收](docs/acceptance_steps_7_12.md)
+- [R9：epoch trace 与 resident atoms](docs/refactor_r9_acceptance.md)
+- [R10：epoch animation](docs/refactor_r10_acceptance.md)
+- [R11：timeline 与 metrics](docs/refactor_r11_acceptance.md)
+- [R12：resource sweep](docs/refactor_r12_acceptance.md)
 - [QEC 接口、默认拓扑和电路约定](docs/qec_interfaces.md)
 - [完整平台规格](docs/NEUTRAL_ATOM_FTQC_PLATFORM_SPEC.md)
 

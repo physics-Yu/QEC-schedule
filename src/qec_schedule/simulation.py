@@ -9,17 +9,20 @@ from .scheduler.engine import Scheduler
 from .trace import metrics
 
 
-def run_cycle(config, *, code=None, rounds=1, primitive='CZ', device_capacities=None):
+def run_cycle(config, *, code=None, rounds=1, primitive='CZ', device_capacities=None,
+              rydberg_parallel_pairs=None):
     code = create_code() if code is None else code
     state = build_initial_state(code, config)
     circuit = code.syndrome_round(rounds=rounds, primitive=primitive)
     plan = GateLowerer().lower(circuit, state)
-    trace = RuntimeScheduler(config, device_capacities=device_capacities).run(plan, state)
+    trace = RuntimeScheduler(config, device_capacities=device_capacities,
+                             rydberg_parallel_pairs=rydberg_parallel_pairs).run(plan, state)
     trace['configuration'] = {'code': code.name, 'rounds': rounds, 'primitive': primitive,
                               'timing': config.timing.to_dict(), 'aod': config.aod.to_dict(),
                               'zones': [zone.to_dict() for zone in config.zones],
                               'device_capacities': {key: value for key, value in trace['resource_capacities'].items()
-                                                    if key.startswith('device/')}}
+                                                    if key.startswith('device/')},
+                              'rydberg_parallel_pairs': rydberg_parallel_pairs}
     result = metrics(trace)
     trace['metrics'] = result
     return trace, result

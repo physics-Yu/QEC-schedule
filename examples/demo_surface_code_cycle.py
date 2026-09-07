@@ -32,8 +32,8 @@ def main():
                 animation.save(args.output_dir / 'demo_animation.gif', writer='pillow', fps=25)
     except (ValueError, OSError, RuntimeError) as exc:
         parser.error(str(exc))
-    print(f"Completed {result['physical_gate_count']} gates / {result['action_count']} actions in {trace['duration']:.3f} us")
-    print(f"Movement epochs: {result['movement_epochs']}; entangling batches: {result['entangling_batches']}")
+    print(f"Completed {result['physical_gate_count']} gates / {result['epoch_count']} physical epochs in {trace['duration']:.3f} us")
+    print(f"AOD epochs: {result['movement_epoch_count']}; Rydberg epochs: {result['rydberg_epoch_count']}; imaging epochs: {result['imaging_epoch_count']}")
     print(args.output_dir.resolve())
 
 
