@@ -16,7 +16,10 @@ def run_cycle(config, *, code=None, rounds=1, primitive='CZ', device_capacities=
     plan = GateLowerer().lower(circuit, state)
     trace = RuntimeScheduler(config, device_capacities=device_capacities).run(plan, state)
     trace['configuration'] = {'code': code.name, 'rounds': rounds, 'primitive': primitive,
-                              'timing': config.timing.to_dict(), 'aod': config.aod.to_dict()}
+                              'timing': config.timing.to_dict(), 'aod': config.aod.to_dict(),
+                              'zones': [zone.to_dict() for zone in config.zones],
+                              'device_capacities': {key: value for key, value in trace['resource_capacities'].items()
+                                                    if key.startswith('device/')}}
     result = metrics(trace)
     trace['metrics'] = result
     return trace, result
@@ -30,7 +33,10 @@ def run_legacy_cycle(config, *, code=None, rounds=1, primitive='CZ', device_capa
     plan = LegacyGateLowerer(config.timing).lower(circuit, state)
     trace = Scheduler(config, device_capacities=device_capacities).run(plan, state)
     trace['configuration'] = {'code': code.name, 'rounds': rounds, 'primitive': primitive,
-                              'timing': config.timing.to_dict(), 'aod': config.aod.to_dict()}
+                              'timing': config.timing.to_dict(), 'aod': config.aod.to_dict(),
+                              'zones': [zone.to_dict() for zone in config.zones],
+                              'device_capacities': {key: value for key, value in trace['resource_capacities'].items()
+                                                    if key.startswith('device/')}}
     return trace, metrics(trace)
 
 

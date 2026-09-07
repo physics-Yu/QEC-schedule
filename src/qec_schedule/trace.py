@@ -436,6 +436,14 @@ def epoch_metrics(trace):
     occupied_wall = _interval_union_length([(epoch['start_time'], epoch['end_time']) for epoch in epochs])
     tone_x = [epoch.get('aod', {}).get('x_tones_used', 0) for epoch in movement]
     tone_y = [epoch.get('aod', {}).get('y_tones_used', 0) for epoch in movement]
+    aod_config = trace.get('aod', {})
+    aod_capacity = capacities.get('device/aod', 1)
+    x_tone_busy = sum(epoch.get('aod', {}).get('x_tones_used', 0) * epoch['duration']
+                      for epoch in movement)
+    y_tone_busy = sum(epoch.get('aod', {}).get('y_tones_used', 0) * epoch['duration']
+                      for epoch in movement)
+    x_tone_capacity = aod_config.get('max_x_tones', 0) * aod_capacity
+    y_tone_capacity = aod_config.get('max_y_tones', 0) * aod_capacity
     zone_atom_time = Counter()
     for epoch in movement:
         for zone in epoch.get('target_zones', {}).values():
@@ -444,6 +452,12 @@ def epoch_metrics(trace):
         zone_atom_time['entangling'] += len(epoch['atoms']) * epoch['duration']
     for epoch in imaging:
         zone_atom_time['measurement'] += len(epoch['atoms']) * epoch['duration']
+    zone_capacity = {zone['id']: zone['capacity']
+                     for zone in trace.get('initial_state', {}).get('zones', [])}
+    entanglement_capacity = zone_capacity.get('entangling', 0)
+    measurement_capacity = zone_capacity.get('measurement', 0)
+    entanglement_atom_time = sum(len(epoch['atoms']) * epoch['duration'] for epoch in rydberg)
+    measurement_atom_time = sum(len(epoch['atoms']) * epoch['duration'] for epoch in imaging)
     diagnostic_counts = Counter(item.get('reason') for item in trace.get('diagnostics', [])
                                 if item.get('reason'))
     utilization = {resource: busy[resource] / (capacity * duration) if duration else 0
@@ -475,6 +489,18 @@ def epoch_metrics(trace):
         'aod_utilization': utilization.get('device/aod', 0),
         'rydberg_utilization': utilization.get('device/rydberg', 0),
         'imaging_utilization': utilization.get('device/imaging', 0),
+        'aod_x_tone_utilization': x_tone_busy / (x_tone_capacity * duration)
+        if x_tone_capacity and duration else 0,
+        'aod_y_tone_utilization': y_tone_busy / (y_tone_capacity * duration)
+        if y_tone_capacity and duration else 0,
+        'x_tone_utilization': x_tone_busy / (x_tone_capacity * duration)
+        if x_tone_capacity and duration else 0,
+        'y_tone_utilization': y_tone_busy / (y_tone_capacity * duration)
+        if y_tone_capacity and duration else 0,
+        'entanglement_occupancy': entanglement_atom_time / (entanglement_capacity * duration)
+        if entanglement_capacity and duration else 0,
+        'measurement_occupancy': measurement_atom_time / (measurement_capacity * duration)
+        if measurement_capacity and duration else 0,
         'zone_atom_time_us': dict(zone_atom_time),
         'diagnostic_counts': dict(diagnostic_counts),
         'definitions': {

@@ -186,6 +186,13 @@ class RuntimeScheduler:
         if hasattr(self, "current_decision"):
             self.current_decision["rejections"].append(entry)
 
+    def _mark_selected(self, request_ids):
+        """Accumulate semantic requests selected during one dispatch pass."""
+        selected = self.current_decision.setdefault("selected", [])
+        for request_id in request_ids:
+            if request_id not in selected:
+                selected.append(request_id)
+
     def _target_map(self, target_by_atom):
         result = {}
         for atom_id, target in target_by_atom.items():
@@ -485,7 +492,7 @@ class RuntimeScheduler:
                 try:
                     if not self._start_transport(self._home_targets(outgoing), purpose="RETIRE_RESIDENTS"):
                         continue
-                    self.current_decision["selected"] = list(batch.request_ids)
+                    self._mark_selected(batch.request_ids)
                     self.current_decision["started"] += 1
                     return True
                 except PlacementError as exc:
@@ -513,12 +520,12 @@ class RuntimeScheduler:
                                        Infeasible(exc.reason, exc.diagnostics))
                 continue
             if not self.staged_entangle.keys() >= set(batch.request_ids):
-                self.current_decision["selected"] = list(batch.request_ids)
+                self._mark_selected(batch.request_ids)
                 self.current_decision["started"] += 1
                 return True
             # No movement was needed; the staged requests can be pulsed below
             # on the next scheduler pass, after this decision is recorded.
-            self.current_decision["selected"] = list(batch.request_ids)
+            self._mark_selected(batch.request_ids)
             self.current_decision["started"] += 1
             return True
         return False
@@ -534,7 +541,6 @@ class RuntimeScheduler:
             try:
                 if not self._start_transport(self._home_targets(data_to_home), purpose="RETURN_DATA"):
                     return False
-                self.current_decision["selected"] = []
                 self.current_decision["started"] += 1
                 return True
             except PlacementError as exc:
@@ -550,7 +556,7 @@ class RuntimeScheduler:
                 try:
                     if not self._start_transport(self._home_targets(outgoing), purpose="RETIRE_MEASUREMENT"):
                         continue
-                    self.current_decision["selected"] = list(batch.request_ids)
+                    self._mark_selected(batch.request_ids)
                     self.current_decision["started"] += 1
                     return True
                 except PlacementError as exc:
@@ -576,7 +582,7 @@ class RuntimeScheduler:
                 self._record_rejection("TRANSPORT", batch.request_ids,
                                        Infeasible(exc.reason, exc.diagnostics))
                 continue
-            self.current_decision["selected"] = list(batch.request_ids)
+            self._mark_selected(batch.request_ids)
             self.current_decision["started"] += 1
             return True
         return False
@@ -594,7 +600,7 @@ class RuntimeScheduler:
                 if not self._start_transport(self._home_targets(needs_home), purpose=f"STAGE_{kind}",
                                               request_ids=batch.request_ids):
                     return False
-                self.current_decision["selected"] = list(batch.request_ids)
+                self._mark_selected(batch.request_ids)
                 self.current_decision["started"] += 1
                 return True
         except RuntimeSchedulingError as exc:
@@ -617,7 +623,7 @@ class RuntimeScheduler:
             self._record_rejection(kind, batch.request_ids,
                                    Infeasible(exc.reason, exc.diagnostics))
             return False
-        self.current_decision["selected"] = list(batch.request_ids)
+        self._mark_selected(batch.request_ids)
         self.current_decision["started"] += 1
         return True
 
@@ -642,7 +648,7 @@ class RuntimeScheduler:
             self._record_rejection("ENTANGLE", ready_ids,
                                    Infeasible(exc.reason, exc.diagnostics))
             return False
-        self.current_decision["selected"] = ready_ids
+        self._mark_selected(ready_ids)
         self.current_decision["started"] += 1
         return True
 
@@ -665,7 +671,7 @@ class RuntimeScheduler:
             self._record_rejection("MEASURE", ready_ids,
                                    Infeasible(exc.reason, exc.diagnostics))
             return False
-        self.current_decision["selected"] = ready_ids
+        self._mark_selected(ready_ids)
         self.current_decision["started"] += 1
         return True
 
@@ -704,6 +710,11 @@ class RuntimeScheduler:
             else:
                 started = self._start_operation(ready, family) or started
         self.current_decision["started_any"] = started
+        self.current_decision["selected_count"] = len(self.current_decision["selected"])
+        self.current_decision["scheduled_request_count"] = len(self.current_decision["selected"])
+        self.current_decision["successful_batch_count"] = self.current_decision["started"]
+        self.current_decision["batch_size"] = len(self.current_decision["selected"])
+        self.current_decision["rejection_count"] = len(self.current_decision["rejections"])
         self.decisions.append(self.current_decision)
         return started
 
@@ -741,9 +752,19 @@ class RuntimeScheduler:
                 elif not self.final_cleanup_started:
                     self.current_decision = {"time": self.now, "ready_requests": 0,
                                              "ready_by_family": {}, "selected": [],
-                                             "started": 0, "rejections": []}
+                                             "started": 0, "rejections": [],
+                                             "selected_count": 0,
+                                             "scheduled_request_count": 0,
+                                             "successful_batch_count": 0,
+                                             "batch_size": 0,
+                                             "rejection_count": 0}
                     self._start_final_cleanup()
                     self.current_decision["started_any"] = bool(self.active_epochs)
+                    self.current_decision["selected_count"] = len(self.current_decision["selected"])
+                    self.current_decision["scheduled_request_count"] = len(self.current_decision["selected"])
+                    self.current_decision["successful_batch_count"] = self.current_decision["started"]
+                    self.current_decision["batch_size"] = len(self.current_decision["selected"])
+                    self.current_decision["rejection_count"] = len(self.current_decision["rejections"])
                     self.decisions.append(self.current_decision)
                     if not self.active_epochs:
                         break
@@ -808,6 +829,11 @@ class RuntimeScheduler:
                 "AOD ordering is conservative when ordering_rule=preserve_order; incompatible sets are split greedily.",
             ],
         }
+        # Keep the trace self-describing for callers that use RuntimeScheduler
+        # directly.  The public simulation wrapper recomputes the same report
+        # after adding its user-facing configuration block.
+        from ..trace import epoch_metrics
+        trace["metrics"] = epoch_metrics(trace)
         return trace
 
 
