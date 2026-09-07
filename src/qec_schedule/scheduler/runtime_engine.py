@@ -326,6 +326,32 @@ class RuntimeScheduler:
                      "batch_size": len(epoch.request_ids),
                      "stage_id": stage.id if stage is not None else None,
                      "purpose": stage.purpose if stage is not None else None})
+        # Keep logical provenance on the same trace record as the physical
+        # epoch.  The runtime remains responsible only for scheduling; this
+        # small denormalized view lets experiment reports and visualizations
+        # identify a concurrent logical layer without rebuilding a schedule.
+        request_metadata = {}
+        logical_operations = set()
+        interaction_groups = set()
+        for request_id in epoch.request_ids:
+            request = self.plan.requests_by_id.get(request_id)
+            if request is None:
+                continue
+            metadata = dict(request.metadata)
+            request_metadata[request_id] = metadata
+            for key in ("logical_operation_id", "logical_operation"):
+                value = metadata.get(key)
+                if isinstance(value, str) and value:
+                    logical_operations.add(value)
+            value = metadata.get("interaction_group_id")
+            if isinstance(value, str) and value:
+                interaction_groups.add(value)
+        if request_metadata:
+            data["request_metadata"] = request_metadata
+        if logical_operations:
+            data["logical_ops"] = sorted(logical_operations)
+        if interaction_groups:
+            data["interaction_group_ids"] = sorted(interaction_groups)
         positions = {atom.atom_id: atom.position.to_list() for atom in self.state.atoms
                      if atom.atom_id in epoch.atoms}
         zones = {atom.atom_id: atom.zone for atom in self.state.atoms

@@ -1,0 +1,170 @@
+# Optional comparison profile.  The logical program and physical DAG stay
+# identical to ghz4_rich.yaml; only runtime feasibility is made restrictive.
+schema_version: 2
+devices:
+  device/aod: 1
+  device/local_1q: 1
+  device/rydberg: 1
+  device/imaging: 1
+  device/state_preparation: 1
+units: {length: um, time: us}
+min_atom_separation: 1.0
+reservoir_atoms: 4
+aod:
+  # Keep transport geometrically feasible; this profile limits interaction
+  # and imaging batches, while the rich profile leaves all logical requests
+  # to the dynamic planner in one batch.
+  max_x_tones: 128
+  max_y_tones: 128
+  allowed_region: [0, 0, 120, 125]
+  axis_execution: simultaneous
+  min_tone_spacing: null
+  max_speed_x: 2.0
+  max_speed_y: 2.0
+  ordering_rule: none
+  allowed_primitives: [TRANSLATE]
+  displacement_tolerance: 1.0e-9
+entanglement:
+  bounds: [0, 52, 120, 85]
+  interaction_lanes: [58, 68, 78]
+  preferred_axis: x
+  pair_distance: 2.0
+  pair_distance_tolerance: 0.01
+  inter_pair_guard_distance: 1.0
+  min_atom_spacing: 1.0
+  max_parallel_pairs: 8
+  max_atoms: 16
+measurement:
+  bounds: [0, 90, 120, 125]
+  imaging_bounds: [2, 92, 118, 123]
+  min_atom_spacing: 2.0
+  max_parallel_atoms: 8
+  field_of_view: [2, 92, 118, 123]
+timing:
+  move_speed: 2.0
+  pickup_duration: 0.5
+  dropoff_duration: 0.5
+  single_qubit_duration: 0.5
+  entangle_duration: 1.0
+  measurement_duration: 4.0
+  prepare_duration: 0.5
+  reset_duration: 0.5
+zones:
+  - id: memory_l0
+    kind: STORAGE
+    bounds: [0, 0, 26, 21]
+    capacity: 17
+    allowed_operations: [PREPARE, RESET, LOCAL_1Q]
+    sites:
+      - {id: l0_00, position: [3, 3]}
+      - {id: l0_01, position: [8, 3]}
+      - {id: l0_02, position: [13, 3]}
+      - {id: l0_03, position: [18, 3]}
+      - {id: l0_04, position: [23, 3]}
+      - {id: l0_05, position: [3, 8]}
+      - {id: l0_06, position: [8, 8]}
+      - {id: l0_07, position: [13, 8]}
+      - {id: l0_08, position: [18, 8]}
+      - {id: l0_09, position: [23, 8]}
+      - {id: l0_10, position: [3, 13]}
+      - {id: l0_11, position: [8, 13]}
+      - {id: l0_12, position: [13, 13]}
+      - {id: l0_13, position: [18, 13]}
+      - {id: l0_14, position: [23, 13]}
+      - {id: l0_15, position: [3, 18]}
+      - {id: l0_16, position: [8, 18]}
+  - id: memory_l1
+    kind: STORAGE
+    bounds: [29, 0, 55, 21]
+    capacity: 17
+    allowed_operations: [PREPARE, RESET, LOCAL_1Q]
+    sites:
+      - {id: l1_00, position: [32, 3]}
+      - {id: l1_01, position: [37, 3]}
+      - {id: l1_02, position: [42, 3]}
+      - {id: l1_03, position: [47, 3]}
+      - {id: l1_04, position: [52, 3]}
+      - {id: l1_05, position: [32, 8]}
+      - {id: l1_06, position: [37, 8]}
+      - {id: l1_07, position: [42, 8]}
+      - {id: l1_08, position: [47, 8]}
+      - {id: l1_09, position: [52, 8]}
+      - {id: l1_10, position: [32, 13]}
+      - {id: l1_11, position: [37, 13]}
+      - {id: l1_12, position: [42, 13]}
+      - {id: l1_13, position: [47, 13]}
+      - {id: l1_14, position: [52, 13]}
+      - {id: l1_15, position: [32, 18]}
+      - {id: l1_16, position: [37, 18]}
+  - id: memory_l2
+    kind: STORAGE
+    bounds: [0, 24, 26, 45]
+    capacity: 17
+    allowed_operations: [PREPARE, RESET, LOCAL_1Q]
+    sites:
+      - {id: l2_00, position: [3, 27]}
+      - {id: l2_01, position: [8, 27]}
+      - {id: l2_02, position: [13, 27]}
+      - {id: l2_03, position: [18, 27]}
+      - {id: l2_04, position: [23, 27]}
+      - {id: l2_05, position: [3, 32]}
+      - {id: l2_06, position: [8, 32]}
+      - {id: l2_07, position: [13, 32]}
+      - {id: l2_08, position: [18, 32]}
+      - {id: l2_09, position: [23, 32]}
+      - {id: l2_10, position: [3, 37]}
+      - {id: l2_11, position: [8, 37]}
+      - {id: l2_12, position: [13, 37]}
+      - {id: l2_13, position: [18, 37]}
+      - {id: l2_14, position: [23, 37]}
+      - {id: l2_15, position: [3, 42]}
+      - {id: l2_16, position: [8, 42]}
+  - id: memory_l3
+    kind: STORAGE
+    bounds: [29, 24, 55, 45]
+    capacity: 17
+    allowed_operations: [PREPARE, RESET, LOCAL_1Q]
+    sites:
+      - {id: l3_00, position: [32, 27]}
+      - {id: l3_01, position: [37, 27]}
+      - {id: l3_02, position: [42, 27]}
+      - {id: l3_03, position: [47, 27]}
+      - {id: l3_04, position: [52, 27]}
+      - {id: l3_05, position: [32, 32]}
+      - {id: l3_06, position: [37, 32]}
+      - {id: l3_07, position: [42, 32]}
+      - {id: l3_08, position: [47, 32]}
+      - {id: l3_09, position: [52, 32]}
+      - {id: l3_10, position: [32, 37]}
+      - {id: l3_11, position: [37, 37]}
+      - {id: l3_12, position: [42, 37]}
+      - {id: l3_13, position: [47, 37]}
+      - {id: l3_14, position: [52, 37]}
+      - {id: l3_15, position: [32, 42]}
+      - {id: l3_16, position: [37, 42]}
+  - id: measurement
+    kind: MEASUREMENT
+    bounds: [0, 90, 120, 125]
+    capacity: 128
+    allowed_operations: [MEASURE, RESET]
+    sites: []
+  - id: entangling
+    kind: ENTANGLING
+    bounds: [0, 52, 120, 85]
+    capacity: 128
+    allowed_operations: [ENTANGLE, LOCAL_1Q]
+    sites: []
+  - id: reservoir
+    kind: RESERVOIR
+    bounds: [65, 0, 120, 45]
+    capacity: 8
+    allowed_operations: [REFILL, PREPARE]
+    sites:
+      - {id: r0, position: [70, 5]}
+      - {id: r1, position: [76, 5]}
+      - {id: r2, position: [82, 5]}
+      - {id: r3, position: [88, 5]}
+      - {id: r4, position: [94, 5]}
+      - {id: r5, position: [100, 5]}
+      - {id: r6, position: [106, 5]}
+      - {id: r7, position: [112, 5]}
