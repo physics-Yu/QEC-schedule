@@ -7,7 +7,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from qec_schedule.hardware import Position, build_initial_state, load_hardware_config
-from qec_schedule.lowering import GateLowerer, MoveRequest, MovementPlanner, SiteRef, TransportCatalog
+from qec_schedule.lowering import LegacyGateLowerer, MoveRequest, MovementPlanner, SiteRef, TransportCatalog
 from qec_schedule.qec import create_code
 
 
@@ -49,7 +49,7 @@ def main():
         planner = MovementPlanner(config.aod)
         acceptance = planner.plan(ten_translations(config.timing))
         code = create_code()
-        plan = GateLowerer(config.timing).lower(code.syndrome_round(rounds=args.rounds), build_initial_state(code, config))
+        plan = LegacyGateLowerer(config.timing).lower(code.syndrome_round(rounds=args.rounds), build_initial_state(code, config))
         catalog, frontiers = inspect_frontiers(plan, planner)
     except (ValueError, OSError) as exc:
         parser.error(str(exc))

@@ -17,29 +17,29 @@ class TraceTests(unittest.TestCase):
         self.assertTrue(validate_trace(trace))
         self.assertEqual(metrics(trace), self.result)
         self.assertTrue(all(0 <= u <= 1 + 1e-8 for u in self.result['resource_utilization'].values()))
-        self.assertAlmostEqual(self.result['total_ready_wait_us'], self.result['blocked_task_time_us'])
-        samples = self.result['physical_gate_parallelism']
-        self.assertEqual(sum(s['N_executed'] for s in samples), self.result['physical_gate_count'])
-        self.assertTrue(all(s['N_executed'] <= s['N_ready'] for s in samples))
-        self.assertTrue(all(s['P'] is None or 0 <= s['P'] <= 1 for s in samples))
-        self.assertEqual(self.result['max_pairs_per_pulse'], 2)
+        self.assertEqual(self.result['max_cz_pairs_per_rydberg_epoch'], 6)
+        self.assertEqual(self.result['max_measurement_batch_size'], 8)
+        self.assertGreater(self.result['max_atoms_per_aod_epoch'], 1)
+        self.assertEqual(sum(epoch['pair_count'] for epoch in self.trace['epochs']
+                             if epoch['type'] == 'RYDBERG'), 24)
 
     def test_reject_overlap_dependency_and_capacity_corruption(self):
         trace = copy.deepcopy(self.trace)
-        trace['resource_spans'].append(copy.deepcopy(next(s for s in trace['resource_spans'] if 'device/aod' in s['resources'])))
-        with self.assertRaisesRegex(ValueError, 'capacity'):
+        trace['resource_spans'].append(copy.deepcopy(trace['resource_spans'][0]))
+        with self.assertRaisesRegex(ValueError, 'Duplicate resource span'):
             validate_trace(trace)
         trace = copy.deepcopy(self.trace)
-        a = next(a for a in trace['actions'] if a['dependencies'])
-        a['start_time'], a['end_time'] = 0, a['duration']
-        with self.assertRaisesRegex(ValueError, 'Dependency'):
+        epoch = next(epoch for epoch in trace['epochs'] if epoch['dependencies'])
+        epoch['start_time'], epoch['end_time'] = 0, epoch['duration']
+        with self.assertRaisesRegex(ValueError, 'dependency'):
             validate_trace(trace)
 
     def test_move_interpolation_and_final_frame(self):
-        a = next(a for a in self.trace['actions'] if a['type'] == 'MOVE')
-        frame = frame_at(self.trace, (a['start_time'] + a['end_time']) / 2)
-        atom = next(x for x in frame['atoms'] if x['atom_id'] == a['atoms'][0])
-        for actual, start, end in zip(atom['position'], a['sources'][0]['position'], a['targets'][0]['position']):
+        epoch = next(epoch for epoch in self.trace['epochs'] if epoch['type'] == 'AOD_MOVEMENT')
+        frame = frame_at(self.trace, (epoch['start_time'] + epoch['end_time']) / 2)
+        atom_id = epoch['atoms'][0]
+        atom = next(x for x in frame['atoms'] if x['atom_id'] == atom_id)
+        for actual, start, end in zip(atom['position'], epoch['source_positions'][atom_id], epoch['target_positions'][atom_id]):
             self.assertAlmostEqual(actual, (start + end) / 2)
         self.assertEqual(frame_at(self.trace, self.trace['duration'])['atoms'], self.trace['final_state']['atoms'])
 
@@ -47,11 +47,12 @@ class TraceTests(unittest.TestCase):
         for primitive in ('CZ', 'CNOT'):
             trace, result = run_cycle(self.config, rounds=3, primitive=primitive)
             self.assertTrue(validate_trace(trace))
-            self.assertEqual(result['action_count'], 1320)
-            self.assertEqual(sum(a['type'] == 'MEASURE' for a in trace['actions']), 24)
+            self.assertEqual(result['physical_gate_count'], 312 if primitive == 'CZ' else 168)
+            self.assertEqual(sum(epoch['type'] == 'IMAGING' for epoch in trace['epochs']), 3)
 
     def test_replaceable_code(self):
         from test_step1 import RepetitionCode
         trace, result = run_cycle(self.config, code=RepetitionCode())
         self.assertTrue(validate_trace(trace))
-        self.assertEqual(sum(a['type'] == 'MEASURE' for a in trace['actions']), 2)
+        self.assertEqual(result['max_measurement_batch_size'], 2)
+        self.assertEqual(sum(epoch['type'] == 'IMAGING' for epoch in trace['epochs']), 1)

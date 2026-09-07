@@ -6,7 +6,8 @@ import tempfile
 import unittest
 
 from qec_schedule.hardware import (Atom, AtomState, AtomType, Bounds, HardwareConfig, HardwareState,
-                                  PairSlot, Position, TrapSite, Zone, build_initial_state, load_hardware_config)
+                                  MeasurementGeometry, PairSlot, Position, TrapSite, Zone,
+                                  build_initial_state, load_hardware_config)
 from qec_schedule.qec import create_code
 from tests.test_step1 import RepetitionCode
 
@@ -78,7 +79,12 @@ class HardwareTests(unittest.TestCase):
         with self.assertRaises(ValueError): replace(storage, capacity=18)
         with self.assertRaises(ValueError): replace(storage, capacity=True)
         with self.assertRaises(ValueError): replace(self.config, reservoir_atoms=7)
-        overlap = replace(others[0], bounds=Bounds(0, 0, 45, 99))
+        overlap_bounds = Bounds(0, 0, 45, 99)
+        overlap_geometry = replace(others[0].measurement_geometry,
+                                   bounds=overlap_bounds,
+                                   imaging_bounds=Bounds(2, 85, 43, 97),
+                                   field_of_view=Bounds(2, 85, 43, 97))
+        overlap = replace(others[0], bounds=overlap_bounds, measurement_geometry=overlap_geometry)
         with self.assertRaises(ValueError): replace(self.config, zones=(storage, overlap, *others[1:]))
 
     def test_sites_pairs_and_operation_capabilities(self):
@@ -134,7 +140,7 @@ class HardwareTests(unittest.TestCase):
             original + "\nreservoir_atoms: 2\n",
             original.replace("length: um", "length: mm"),
             original.replace("capacity: 17", "capcity: 17"),
-            original.replace("schema_version: 1", "schema_version: true"),
+            original.replace("schema_version: 2", "schema_version: true"),
             original.replace("[10, 12]", "[10]"),
             "!!python/object/apply:os.system ['echo forbidden']",
         )

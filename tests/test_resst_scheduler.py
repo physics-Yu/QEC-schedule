@@ -2,7 +2,7 @@ import unittest
 from dataclasses import replace
 from qec_schedule.hardware import build_initial_state, load_hardware_config
 from qec_schedule.qec import create_code
-from qec_schedule.lowering import GateLowerer
+from qec_schedule.lowering import LegacyGateLowerer
 from qec_schedule.scheduler.engine import Scheduler, build_tasks
 from qec_schedule.scheduler import Pool, TaskState
 
@@ -13,7 +13,7 @@ class SchedulerTests(unittest.TestCase):
         cls.config = load_hardware_config('configs/hardware_default.yaml')
         cls.code = create_code()
         cls.state = build_initial_state(cls.code, cls.config)
-        cls.plan = GateLowerer(cls.config.timing).lower(cls.code.syndrome_round(), cls.state)
+        cls.plan = LegacyGateLowerer(cls.config.timing).lower(cls.code.syndrome_round(), cls.state)
         cls.trace = Scheduler(cls.config).run(cls.plan, cls.state)
 
     def test_tasks_and_all_actions_complete(self):

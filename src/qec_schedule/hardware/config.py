@@ -8,7 +8,8 @@ import yaml
 
 from .geometry import Bounds, Position
 from .hardware_state import HardwareState
-from .zones import PairSlot, TrapSite, Zone
+from .zones import (EntanglingGeometry, MeasurementGeometry, PairSlot, TrapSite,
+                    Zone, ZoneKind)
 from .timing import ActionTiming
 from .aod import AODController
 
@@ -33,6 +34,45 @@ _UniqueKeyLoader.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
 def _keys(value, required, optional=()):
     if not isinstance(value, Mapping) or not set(required) <= value.keys() or value.keys() - set(required) - set(optional):
         raise ValueError(f"Expected keys {sorted(required)}, optional {sorted(optional)}")
+
+
+def _bounds(value, name):
+    if not isinstance(value, list) or len(value) != 4:
+        raise ValueError(f"{name} must be [xmin, ymin, xmax, ymax]")
+    return Bounds(*value)
+
+
+def _parse_entangling_geometry(value):
+    _keys(value, ("bounds",), ("interaction_lanes", "preferred_axis", "pair_distance",
+                                "pair_distance_tolerance", "inter_pair_guard_distance",
+                                "min_atom_spacing", "max_parallel_pairs", "max_atoms"))
+    lanes = value.get("interaction_lanes")
+    if lanes is not None and not isinstance(lanes, list):
+        raise ValueError("interaction_lanes must be a list or null")
+    return EntanglingGeometry(
+        _bounds(value["bounds"], "entanglement.bounds"),
+        None if lanes is None else tuple(lanes),
+        value.get("preferred_axis", "x"),
+        value.get("pair_distance", 1.0),
+        value.get("pair_distance_tolerance", 0.0),
+        value.get("inter_pair_guard_distance", 0.0),
+        value.get("min_atom_spacing", 1.0),
+        value.get("max_parallel_pairs"),
+        value.get("max_atoms"),
+    )
+
+
+def _parse_measurement_geometry(value):
+    _keys(value, ("bounds", "imaging_bounds"),
+          ("min_atom_spacing", "max_parallel_atoms", "field_of_view"))
+    field = value.get("field_of_view")
+    return MeasurementGeometry(
+        _bounds(value["bounds"], "measurement.bounds"),
+        _bounds(value["imaging_bounds"], "measurement.imaging_bounds"),
+        value.get("min_atom_spacing", 1.0),
+        value.get("max_parallel_atoms"),
+        None if field is None else _bounds(field, "measurement.field_of_view"),
+    )
 
 
 @dataclass(frozen=True)
@@ -73,11 +113,16 @@ class HardwareConfig:
 def load_hardware_config(path: str | Path) -> HardwareConfig:
     try:
         raw = yaml.load(Path(path).read_text(encoding="utf-8"), Loader=_UniqueKeyLoader)
-        _keys(raw, ("schema_version", "units", "min_atom_separation", "reservoir_atoms", "zones"), ("timing", "aod", "devices"))
-        if type(raw["schema_version"]) is not int or raw["schema_version"] != 1 or raw["units"] != {"length": "um", "time": "us"}:
-            raise ValueError("Expected schema_version=1 and units length=um, time=us")
+        _keys(raw, ("schema_version", "units", "min_atom_separation", "reservoir_atoms", "zones"),
+              ("timing", "aod", "devices", "entanglement", "measurement"))
+        if type(raw["schema_version"]) is not int or raw["schema_version"] not in (1, 2) or raw["units"] != {"length": "um", "time": "us"}:
+            raise ValueError("Expected schema_version=1 or 2 and units length=um, time=us")
         if not isinstance(raw["zones"], list):
             raise ValueError("zones must be a list")
+        entangling_geometry = (_parse_entangling_geometry(raw["entanglement"])
+                               if "entanglement" in raw else None)
+        measurement_geometry = (_parse_measurement_geometry(raw["measurement"])
+                                if "measurement" in raw else None)
         zones = []
         for zone in raw["zones"]:
             _keys(zone, ("id", "kind", "bounds", "capacity", "allowed_operations", "sites"), ("pair_slots",))
@@ -92,14 +137,24 @@ def load_hardware_config(path: str | Path) -> HardwareConfig:
                 if not isinstance(pair["sites"], list):
                     raise ValueError("Pair slot sites must be a list")
                 pairs.append(PairSlot(pair["id"], pair["sites"]))
-            zones.append(Zone(zone["id"], zone["kind"], Bounds(*zone["bounds"]), zone["capacity"],
-                              frozenset(zone["allowed_operations"]), tuple(sites), tuple(pairs)))
+            kind = ZoneKind(zone["kind"])
+            zone_bounds = Bounds(*zone["bounds"])
+            if kind == ZoneKind.ENTANGLING and entangling_geometry is not None and entangling_geometry.bounds != zone_bounds:
+                raise ValueError("entanglement.bounds must match the entangling zone bounds")
+            if kind == ZoneKind.MEASUREMENT and measurement_geometry is not None and measurement_geometry.bounds != zone_bounds:
+                raise ValueError("measurement.bounds must match the measurement zone bounds")
+            zones.append(Zone(zone["id"], kind, zone_bounds, zone["capacity"],
+                              frozenset(zone["allowed_operations"]), tuple(sites), tuple(pairs),
+                              entangling_geometry if kind == ZoneKind.ENTANGLING else None,
+                              measurement_geometry if kind == ZoneKind.MEASUREMENT else None))
         timing = raw.get("timing", {})
         _keys(timing, (), ActionTiming.__dataclass_fields__)
         aod = None
         if "aod" in raw:
             settings = raw["aod"]
-            _keys(settings, ("max_x_tones", "max_y_tones", "allowed_region"), ("allowed_primitives", "displacement_tolerance"))
+            _keys(settings, ("max_x_tones", "max_y_tones", "allowed_region"),
+                  ("allowed_primitives", "displacement_tolerance", "axis_execution",
+                   "min_tone_spacing", "max_speed_x", "max_speed_y", "ordering_rule"))
             if "allowed_primitives" in settings and not isinstance(settings["allowed_primitives"], list):
                 raise ValueError("allowed_primitives must be a list")
             aod = AODController(**{**settings, "allowed_region": Bounds(*settings["allowed_region"])})

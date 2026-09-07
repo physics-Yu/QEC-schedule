@@ -5,7 +5,8 @@ import tempfile
 import unittest
 
 from qec_schedule.hardware import AODController, ActionTiming, Bounds, Position, Translation, build_initial_state, load_hardware_config
-from qec_schedule.lowering import AODMovementEpoch, GateLowerer, MoveRequest, MovementPlanner, SiteRef, TransportCatalog
+from qec_schedule.lowering import (AODMovementEpoch, LegacyGateLowerer, MoveRequest,
+                                    MovementPlanner, SiteRef, TransportCatalog)
 from qec_schedule.qec import create_code
 from examples.demo_aod_movement import inspect_frontiers, ten_translations
 
@@ -42,7 +43,7 @@ class AODTests(unittest.TestCase):
     def test_different_vector_same_speed_and_opposite_directions(self):
         requests = (request(0, (1, 1), (1, 11)), request(1, (3, 1), (13, 1)), request(2, (5, 11), (5, 1)))
         self.assertEqual(len(self.planner.plan(requests)), 3)
-        self.assertFalse(self.controller.compatible(r.translation for r in requests))
+        self.assertFalse(self.controller.legacy_compatible(r.translation for r in requests))
         with self.assertRaises(ValueError): AODMovementEpoch("bad", requests, self.controller)
 
     def test_tone_budget_counts_lines_not_atoms(self):
@@ -59,7 +60,7 @@ class AODTests(unittest.TestCase):
 
     def test_field_of_view_and_invalid_controller(self):
         outside = request(0, (1, 1), (1, 100))
-        self.assertEqual(self.controller.incompatibility((outside.translation,)), "outside AOD allowed region")
+        self.assertEqual(self.controller.legacy_incompatibility((outside.translation,)), "outside AOD allowed region")
         with self.assertRaises(ValueError): self.planner.plan((outside,))
         self.assertTrue(self.controller.compatible((Translation("a", Position(0, 0), Position(100, 99)),)))
         for bad in (0, -1, True, 1.5):
@@ -73,9 +74,9 @@ class AODTests(unittest.TestCase):
         a = Translation("a", Position(1, 1), Position(1, 11))
         b = Translation("b", Position(2, 1), Position(2, 11+0.75e-9))
         c = Translation("c", Position(3, 1), Position(3, 11+1.5e-9))
-        self.assertTrue(controller.compatible((a, b)))
-        self.assertTrue(controller.compatible((b, c)))
-        self.assertFalse(controller.compatible((a, b, c)))
+        self.assertTrue(controller.legacy_compatible((a, b)))
+        self.assertTrue(controller.legacy_compatible((b, c)))
+        self.assertFalse(controller.legacy_compatible((a, b, c)))
         decimal = (request(0, (0.1, 1), (0.4, 1)), request(1, (0.2, 2), (0.5, 2)))
         self.assertEqual(len(self.planner.plan(decimal)), 1)
 
@@ -85,8 +86,8 @@ class AODTests(unittest.TestCase):
         self.assertEqual(len(self.planner.plan((a, b))), 2)
         with self.assertRaises(ValueError): self.planner.plan((a, a))
         same_atom = replace(b.translation, atom=a.atom)
-        self.assertFalse(self.controller.compatible((a.translation, same_atom)))
-        self.assertFalse(self.controller.compatible(()))
+        self.assertFalse(self.controller.legacy_compatible((a.translation, same_atom)))
+        self.assertFalse(self.controller.legacy_compatible(()))
         self.assertEqual(self.planner.plan(()), ())
 
     def test_dependencies_must_be_completed_not_just_same_displacement(self):
@@ -99,7 +100,7 @@ class AODTests(unittest.TestCase):
 
     def test_catalog_partial_and_inflight_requests(self):
         code = create_code()
-        plan = GateLowerer(self.config.timing).lower(code.syndrome_round(), build_initial_state(code, self.config))
+        plan = LegacyGateLowerer(self.config.timing).lower(code.syndrome_round(), build_initial_state(code, self.config))
         catalog = TransportCatalog(plan)
         self.assertEqual(len(catalog.requests), 112)
         self.assertEqual(len(catalog.transport_action_ids), 336)
@@ -124,7 +125,7 @@ class AODTests(unittest.TestCase):
     def test_full_plan_coverage_determinism_and_preserved_reservations(self):
         for rounds in (1, 3):
             code = create_code()
-            plan = GateLowerer(self.config.timing).lower(code.syndrome_round(rounds=rounds), build_initial_state(code, self.config))
+            plan = LegacyGateLowerer(self.config.timing).lower(code.syndrome_round(rounds=rounds), build_initial_state(code, self.config))
             before = plan.to_dict()
             catalog, frontiers = inspect_frontiers(plan, self.planner)
             covered = [i for f in frontiers for e in f["epochs"] for phase in e["phase_action_ids"].values() for i in phase]

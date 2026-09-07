@@ -11,12 +11,33 @@ cases:
   - id: one_tone_per_axis
     overrides:
       aod: {max_x_tones: 1, max_y_tones: 1}
+  - id: x_then_y_axes
+    overrides:
+      aod: {axis_execution: x_then_y}
+  - id: entanglement_three_pairs
+    overrides:
+      entanglement: {max_parallel_pairs: 3}
+  - id: entanglement_six_atoms
+    overrides:
+      entanglement: {max_atoms: 6, max_parallel_pairs: 3}
+  - id: pair_guard_large
+    overrides:
+      entanglement: {inter_pair_guard_distance: 6.0}
   - id: entangling_two_atoms
     overrides:
       zone_capacities: {entangling: 2}
+  - id: measurement_four_atoms
+    overrides:
+      measurement: {max_parallel_atoms: 4}
   - id: measurement_two_atoms
     overrides:
       zone_capacities: {measurement: 2}
+  - id: narrow_measurement_fov
+    overrides:
+      measurement: {field_of_view: [2, 85, 23, 97]}
+  - id: rydberg_three_pairs
+    overrides:
+      rydberg_parallel_pairs: 3
   - id: two_aod_controllers
     overrides:
       devices: {device/aod: 2}

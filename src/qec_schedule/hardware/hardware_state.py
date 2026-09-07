@@ -5,7 +5,7 @@ from types import MappingProxyType
 
 from .atom import Atom, AtomState
 from .geometry import finite_number
-from .zones import HardwareOperation, Zone
+from .zones import HardwareOperation, Zone, ZoneKind
 
 
 @dataclass(frozen=True)
@@ -68,16 +68,27 @@ class HardwareState:
                 continue
             if atom.zone not in zones:
                 raise ValueError(f"Unknown zone for atom {atom.atom_id}")
-            if atom.site_id not in sites or sites[atom.site_id] != (atom.zone, atom.position):
-                raise ValueError(f"Atom {atom.atom_id} position must match its declared trap site and zone")
-            if atom.site_id in occupied:
-                raise ValueError("Two atoms occupy the same site")
-            occupied.add(atom.site_id)
             zone = zones[atom.zone]
+            dynamic_state = atom.state in (AtomState.AOD_CAPTURED, AtomState.IN_ENTANGLING_REGION,
+                                           AtomState.IN_MEASUREMENT_REGION, AtomState.MEASURED)
+            if dynamic_state:
+                if atom.site_id is not None:
+                    raise ValueError(f"Dynamic atom {atom.atom_id} cannot claim a fixed trap site")
+                if not zone.bounds.contains(atom.position):
+                    raise ValueError(f"Atom {atom.atom_id} is outside its dynamic zone")
+            else:
+                if atom.site_id not in sites or sites[atom.site_id] != (atom.zone, atom.position):
+                    raise ValueError(f"Atom {atom.atom_id} position must match its declared trap site and zone")
+                if atom.site_id in occupied:
+                    raise ValueError("Two atoms occupy the same site")
+                occupied.add(atom.site_id)
             if atom.state == AtomState.MEASURING and not zone.allows(HardwareOperation.MEASURE):
                 raise ValueError("Measuring atom must be in a measurement-enabled zone")
-            if atom.state == AtomState.GATING and not (zone.allows(HardwareOperation.LOCAL_1Q) or zone.allows(HardwareOperation.ENTANGLE)):
+            if atom.state in (AtomState.GATING, AtomState.IN_ENTANGLING_REGION) and not (
+                    zone.allows(HardwareOperation.LOCAL_1Q) or zone.allows(HardwareOperation.ENTANGLE)):
                 raise ValueError("Gating atom must be in a gate-enabled zone")
+            if atom.state in (AtomState.MEASURED, AtomState.IN_MEASUREMENT_REGION) and not zone.allows(HardwareOperation.MEASURE):
+                raise ValueError("Measured atom must be in a measurement-enabled zone")
         for zone in self.zones:
             if len(self.atoms_in_zone(zone.id)) > zone.capacity:
                 raise ValueError(f"Zone capacity exceeded: {zone.id}")
