@@ -12,17 +12,17 @@ CONFIG = Path(__file__).resolve().parents[1] / "configs/hardware_default.yaml"
 
 
 class DynamicZoneGeometryTests(unittest.TestCase):
-    def test_default_geometry_represents_six_pairs_and_eight_measurements(self):
+    def test_default_geometry_is_uncapped_but_layout_capacity_remains_explicit(self):
         config = load_hardware_config(CONFIG)
         entangling = next(z for z in config.zones if z.id == "entangling")
         measurement = next(z for z in config.zones if z.id == "measurement")
 
         self.assertIsInstance(entangling.entangling_geometry, EntanglingGeometry)
-        self.assertEqual(entangling.entangling_geometry.max_parallel_pairs, 6)
-        self.assertEqual(entangling.entangling_geometry.max_atoms, 12)
+        self.assertIsNone(entangling.entangling_geometry.max_parallel_pairs)
+        self.assertIsNone(entangling.entangling_geometry.max_atoms)
         self.assertGreaterEqual(entangling.capacity, 12)
         self.assertIsInstance(measurement.measurement_geometry, MeasurementGeometry)
-        self.assertEqual(measurement.measurement_geometry.max_parallel_atoms, 8)
+        self.assertIsNone(measurement.measurement_geometry.max_parallel_atoms)
         self.assertEqual(measurement.capacity, 8)
         self.assertEqual(measurement.measurement_geometry.field_of_view,
                          Bounds(2, 85, 43, 97))

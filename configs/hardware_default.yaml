@@ -33,13 +33,16 @@ entanglement:
   pair_distance_tolerance: 0.2
   inter_pair_guard_distance: 3.0
   min_atom_spacing: 1.0
-  max_parallel_pairs: 6
-  max_atoms: 12
+  # null means no per-epoch parallelism cap; zone capacity remains the
+  # physical occupancy safety constraint for this layout.
+  max_parallel_pairs: null
+  max_atoms: null
 measurement:
   bounds: [0, 84, 45, 99]
   imaging_bounds: [2, 85, 43, 97]
   min_atom_spacing: 3.0
-  max_parallel_atoms: 8
+  # null means the imaging batch is not capped by this geometry parameter.
+  max_parallel_atoms: null
   field_of_view: [2, 85, 43, 97]
 # Step-5 estimates only. The scheduler will assign start times later.
 timing:
