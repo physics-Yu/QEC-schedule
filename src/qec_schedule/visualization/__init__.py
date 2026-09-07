@@ -1,1 +1,1 @@
-"""Hardware-state rendering now; scheduled-trace animation in later milestones."""
+"""Static hardware layout and epoch-trace visualization helpers."""
