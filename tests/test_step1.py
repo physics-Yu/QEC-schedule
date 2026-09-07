@@ -57,8 +57,20 @@ class Step1Tests(unittest.TestCase):
         with self.assertRaises(ValueError): registry.create("missing")
         a, b = create_code(block_id="A"), create_code(block_id="B")
         self.assertFalse(set(a.data_qubits() + a.ancilla_qubits()) & set(b.data_qubits() + b.ancilla_qubits()))
-        for distance in (1, 5, True):
+        for distance in (1, True):
             with self.assertRaises(ValueError): create_code(distance=distance)
+
+    def test_odd_surface_code_distance_five(self):
+        code = create_code(distance=5)
+        self.assertEqual(len(code.data_qubits()), 25)
+        self.assertEqual(len(code.ancilla_qubits()), 24)
+        self.assertEqual(len(code.x_stabilizers()), 12)
+        self.assertEqual(len(code.z_stabilizers()), 12)
+        self.assertEqual(sorted(len(s.operator.support) for s in code.stabilizers()),
+                         [2] * 8 + [4] * 16)
+        self.assertEqual(len(code.logical_x()[0].support), 5)
+        self.assertEqual(len(code.logical_z()[0].support), 5)
+        self.assertEqual(len(code.syndrome_round().gates), 336)
 
     def test_logical_program(self):
         prepare = LogicalInstruction("p", LogicalOp.PREPARE_0, ("L0",))

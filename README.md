@@ -2,7 +2,7 @@
 
 面向中性原子容错量子计算的调度模拟平台，按步骤实施。
 当前已完成 **步骤 1–12**：LogicalIR、可替换的 QEC code 接口、
-默认 d=3 rotated surface code、显式 syndrome extraction 电路，以及
+默认 d=3 rotated surface code（并支持奇数 d≥3）、显式 syndrome extraction 电路，以及
 PhysicalCircuitDAG 的依赖索引、动态 ready set 和执行状态推进；
 已加入 Atom / Zone / HardwareState、YAML 硬件布局与静态二维绘图，
 以及 physical gate → semantic request → PhysicalEpoch 的执行链路；
@@ -41,6 +41,9 @@ GitHub Actions 上传布局、完整 trace/metrics、动画、时间线和扫描
 时间拖动和逐 epoch 前进；动画、时间线和 metrics 都直接消费同一份 epoch trace。
 `--gif` 额外生成 Matplotlib GIF；`--no-plot` 仅导出 JSON。
 三轮示例：`python examples/demo_surface_code_cycle.py --rounds 3 --primitive CNOT --output-dir results/three_rounds`。
+距离 5 示例使用扩展的存储、纠缠和成像区域；其动态工作区并行参数保持为 `null`，
+由区域的物理 occupancy capacity 做安全边界：
+`python examples/demo_surface_code_cycle.py --config configs/hardware_d5.yaml --distance 5 --output-dir results/d5_demo`。
 参数扫描输出 `results/sweep/sweep.csv`、`sweep.json`、`sweep.png` 和每组参数的完整 trace。
 
 ## 接口使用
@@ -85,4 +88,5 @@ LogicalIR 当前只提供表达与校验，不包含逻辑门的容错编译。
 
 当前是架构级调度 MVP：动作时长为可配置估计值，不模拟量子态、噪声、loss、decoder 或脉冲。
 移动采用直线插值，检查端点占位和资源约束，尚未实现连续轨迹避碰。
-默认 code 仍为 d=3 surface code；可替换 QECCode 接口保留，已用另一种 code 验收完整调度链路。
+默认 code 仍为 d=3 surface code；可用 `create_code(distance=5)` 或示例命令运行 d=5，
+可替换 QECCode 接口仍保留，已用另一种 code 验收完整调度链路。

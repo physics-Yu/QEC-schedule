@@ -2,7 +2,8 @@
 
 ## 当前边界
 
-实现 LogicalIR、可替换 QECCode、默认 d=3 rotated surface code 和完整 syndrome 门序列。
+实现 LogicalIR、可替换 QECCode、默认 d=3 rotated surface code 和完整 syndrome 门序列；
+rotated surface code 现支持所有奇数 distance >= 3。
 步骤 3 已补充 [PhysicalCircuitDAG 与 ready-set](dag.md)。
 步骤 4 已补充 [硬件模型与静态布局](hardware_model.md)。
 尚未实现 LogicalIR 到容错逻辑门的编译或硬件调度器。
@@ -63,8 +64,10 @@ d6  d7  d8
 | Z3 | d5,d8 | 0,1 |
 
 Logical X = X(d0)X(d3)X(d6)；Logical Z = Z(d0)Z(d1)Z(d2)。
-只有 distance=3 是当前支持的实现，其他 distance 明确报错。
-测试穷举 stabilizer group 和 weight≤3 的 Pauli operators，验证 rank=8、distance=3。
+`RotatedSurfaceCode` 支持所有奇数 `distance >= 3`；默认仍为 distance=3。
+边界 interaction slots 会根据 bulk plaquette 已占用的颜色确定，保持 CSS extraction 的顺序约束。
+步骤 1 测试穷举默认 stabilizer group 和 weight≤3 的 Pauli operators，验证 rank=8、distance=3；
+另有 d=5 拓扑计数和完整执行链路测试。
 
 ## Syndrome 语义
 

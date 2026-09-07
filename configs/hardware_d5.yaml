@@ -1,0 +1,129 @@
+# Expanded layout for the distance-5 rotated surface-code demonstration.
+# Dynamic working-region caps are intentionally unbounded (null); the zone
+# capacities below remain physical occupancy safety limits for this layout.
+schema_version: 2
+devices:
+  device/aod: 1
+  device/local_1q: 1
+  device/rydberg: 1
+  device/imaging: 1
+  device/state_preparation: 1
+units: {length: um, time: us}
+min_atom_separation: 1.0
+reservoir_atoms: 6
+aod:
+  max_x_tones: 20
+  max_y_tones: 20
+  allowed_region: [0, 0, 150, 99]
+  axis_execution: simultaneous
+  min_tone_spacing: 0.5
+  max_speed_x: 1.0
+  max_speed_y: 1.0
+  ordering_rule: preserve_order
+  allowed_primitives: [TRANSLATE]
+  displacement_tolerance: 1.0e-9
+entanglement:
+  bounds: [0, 52, 150, 77]
+  interaction_lanes: [58, 70]
+  preferred_axis: x
+  pair_distance: 4.0
+  pair_distance_tolerance: 0.2
+  inter_pair_guard_distance: 3.0
+  min_atom_spacing: 1.0
+  max_parallel_pairs: null
+  max_atoms: null
+measurement:
+  bounds: [0, 84, 150, 99]
+  imaging_bounds: [2, 85, 148, 97]
+  min_atom_spacing: 3.0
+  max_parallel_atoms: null
+  field_of_view: [2, 85, 148, 97]
+timing:
+  move_speed: 1.0
+  pickup_duration: 1.0
+  dropoff_duration: 1.0
+  single_qubit_duration: 1.0
+  entangle_duration: 1.0
+  measurement_duration: 20.0
+  prepare_duration: 1.0
+  reset_duration: 1.0
+zones:
+  - id: storage
+    kind: STORAGE
+    bounds: [0, 0, 75, 45]
+    capacity: 49
+    allowed_operations: [PREPARE, RESET, LOCAL_1Q]
+    sites:
+      - {id: s0, position: [3, 3]}
+      - {id: s1, position: [14, 3]}
+      - {id: s2, position: [25, 3]}
+      - {id: s3, position: [36, 3]}
+      - {id: s4, position: [47, 3]}
+      - {id: s5, position: [58, 3]}
+      - {id: s6, position: [69, 3]}
+      - {id: s7, position: [3, 9]}
+      - {id: s8, position: [14, 9]}
+      - {id: s9, position: [25, 9]}
+      - {id: s10, position: [36, 9]}
+      - {id: s11, position: [47, 9]}
+      - {id: s12, position: [58, 9]}
+      - {id: s13, position: [69, 9]}
+      - {id: s14, position: [3, 15]}
+      - {id: s15, position: [14, 15]}
+      - {id: s16, position: [25, 15]}
+      - {id: s17, position: [36, 15]}
+      - {id: s18, position: [47, 15]}
+      - {id: s19, position: [58, 15]}
+      - {id: s20, position: [69, 15]}
+      - {id: s21, position: [3, 21]}
+      - {id: s22, position: [14, 21]}
+      - {id: s23, position: [25, 21]}
+      - {id: s24, position: [36, 21]}
+      - {id: s25, position: [47, 21]}
+      - {id: s26, position: [58, 21]}
+      - {id: s27, position: [69, 21]}
+      - {id: s28, position: [3, 27]}
+      - {id: s29, position: [14, 27]}
+      - {id: s30, position: [25, 27]}
+      - {id: s31, position: [36, 27]}
+      - {id: s32, position: [47, 27]}
+      - {id: s33, position: [58, 27]}
+      - {id: s34, position: [69, 27]}
+      - {id: s35, position: [3, 33]}
+      - {id: s36, position: [14, 33]}
+      - {id: s37, position: [25, 33]}
+      - {id: s38, position: [36, 33]}
+      - {id: s39, position: [47, 33]}
+      - {id: s40, position: [58, 33]}
+      - {id: s41, position: [69, 33]}
+      - {id: s42, position: [3, 39]}
+      - {id: s43, position: [14, 39]}
+      - {id: s44, position: [25, 39]}
+      - {id: s45, position: [36, 39]}
+      - {id: s46, position: [47, 39]}
+      - {id: s47, position: [58, 39]}
+      - {id: s48, position: [69, 39]}
+  - id: entangling
+    kind: ENTANGLING
+    bounds: [0, 52, 150, 77]
+    capacity: 40
+    allowed_operations: [ENTANGLE, LOCAL_1Q]
+    sites: []
+  - id: measurement
+    kind: MEASUREMENT
+    bounds: [0, 84, 150, 99]
+    capacity: 24
+    allowed_operations: [MEASURE, RESET]
+    sites: []
+  - id: reservoir
+    kind: RESERVOIR
+    bounds: [80, 0, 100, 45]
+    capacity: 6
+    allowed_operations: [REFILL, PREPARE]
+    sites:
+      - {id: r0, position: [85, 22]}
+      - {id: r1, position: [90, 22]}
+      - {id: r2, position: [95, 22]}
+      - {id: r3, position: [85, 30]}
+      - {id: r4, position: [90, 30]}
+      - {id: r5, position: [95, 30]}
