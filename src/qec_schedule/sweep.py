@@ -14,12 +14,19 @@ def apply_overrides(config, overrides):
     timing = overrides.get('timing', {})
     _keys(timing, (), config.timing.__dataclass_fields__)
     aod = overrides.get('aod', {})
-    _keys(aod, (), ('max_x_tones', 'max_y_tones', 'displacement_tolerance'))
+    _keys(aod, (), ('max_x_tones', 'max_y_tones', 'displacement_tolerance',
+                    'axis_execution', 'min_tone_spacing', 'max_speed_x',
+                    'max_speed_y', 'ordering_rule'))
     zones = overrides.get('zone_capacities', {})
     _keys(zones, (), [z.id for z in config.zones])
     devices = overrides.get('devices', {})
     _keys(devices, (), config.device_capacities)
-    return replace(config, timing=replace(config.timing, **timing), aod=replace(config.aod, **aod),
+    updated_timing = replace(config.timing, **timing)
+    updated_aod = replace(config.aod, **aod)
+    if 'move_speed' in timing and not ({'max_speed_x', 'max_speed_y'} & set(aod)):
+        updated_aod = replace(updated_aod, max_speed_x=timing['move_speed'],
+                              max_speed_y=timing['move_speed'])
+    return replace(config, timing=updated_timing, aod=updated_aod,
                    zones=tuple(replace(z, capacity=zones.get(z.id, z.capacity)) for z in config.zones),
                    device_capacities={**config.device_capacities, **devices})
 
