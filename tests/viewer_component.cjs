@@ -1,0 +1,47 @@
+const fs=require('node:fs'),assert=require('node:assert/strict'),{performance}=require('node:perf_hooks');
+const createHarness=require('./viewer_harness.cjs');
+const large=createHarness(fs.readFileSync('artifacts/visualization-scale/index.html','utf8'));
+const {get,el,nodes}=large;
+assert.equal(get('current.atoms.length'),512);
+assert.equal(get('viewer.getStatus().visible_atom_rows'),32);
+assert.equal(get('viewer.getStatus().visible_operation_rows'),0);
+assert.equal(el('pulse').disabled,true);
+const before=get('JSON.stringify(data)');
+el('atom-search').value='Q511';el('atom-search').oninput();
+assert.equal(get('viewer.getStatus().visible_atom_rows'),1);
+el('atom-Q511').onclick();assert(el('details').innerHTML.includes('Q511'));
+el('atom-search').value='';el('atom-search').oninput();
+el('atoms-next').onclick();assert.equal(get('viewer.getStatus().visible_atom_rows'),32);
+assert(!nodes.has('atom-Q000'));
+const start=performance.now();
+for(let i=0;i<120;i++){get(`seek(${i*2})`);large.texts.length=0;large.arcs.length=0;}
+const elapsed=performance.now()-start;
+assert.equal(get('JSON.stringify(data)'),before);
+assert(nodes.size<160,`DOM must remain bounded: ${nodes.size}`);
+get('var secondRoot=newContainer();var second=window.NeutralAtomViewer.mount(secondRoot,data);second.setTime(12);second.selectAtom("Q400")');
+assert.equal(get('second.getStatus().time_us'),12);
+assert.notEqual(get('viewer.getStatus().time_us'),12);
+assert.equal(get('second.getStatus().selected_atom'),'Q400');
+assert.equal(get('viewer.getStatus().selected_atom'),'Q511');
+assert.equal(get('document.listeners.size'),2);
+get('second.destroy()');assert.equal(get('document.listeners.size'),1);
+get('viewer.destroy()');assert.equal(get('document.listeners.size'),0);
+console.log(`PASS 512 atoms / 257 frames: bounded DOM, search/pages, two isolated mounts, cleanup, no mutation; 120 mocked redraws ${elapsed.toFixed(0)} ms (not browser FPS)`);
+
+const circuit=createHarness(fs.readFileSync('artifacts/milestone2/three_gate/animation.html','utf8'));
+assert.equal(circuit.get('viewer.getStatus().visible_operation_rows'),12);
+circuit.get('renderStages(3)');assert.equal(circuit.get('viewer.getStatus().visible_operation_rows'),1);
+assert(!circuit.nodes.has('stage-0'));
+circuit.get('seek(890.6)');assert.equal(circuit.get('current.f.gate_status'),'running');
+assert.equal(circuit.get('current.f.requested.join(",")'),'Q001,Q003');
+assert.equal(circuit.get('data.summary.categories.length'),7);
+assert(circuit.get('data.frames.every(f=>!f.scene&&!f.trace&&!f.world)'));
+
+const deform=createHarness(fs.readFileSync('artifacts/visualization-row-column/index.html','utf8'));
+const quarter=deform.get('data.operations.find(o=>o.label==="Reconfigure axes").start+(data.operations.find(o=>o.label==="Reconfigure axes").end-data.operations.find(o=>o.label==="Reconfigure axes").start)*.25');
+deform.get(`seek(${quarter})`);
+assert(Math.abs(deform.get('current.atoms.find(a=>a.id==="Q000").position.x_um')-2.734375)<1e-7);
+assert(Math.abs(deform.get('current.atoms.find(a=>a.id==="Q001").position.x_um')-7.265625)<1e-7);
+assert.equal(deform.get('current.atoms.find(a=>a.id==="Q002").activity'),'moving');
+assert(Math.abs(deform.get('current.atoms.find(a=>a.id==="Q002").position.x_um')-7.265625)<1e-7);
+console.log('PASS actual row/column recording: cubic interpolation, moving incidental intersection, abstract movement categories');

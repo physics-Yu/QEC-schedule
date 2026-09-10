@@ -1,0 +1,10 @@
+{
+  "gates": [
+    {"id":"G000","gate_type":"CZ","qubit_ids":["Q000","Q001"]},
+    {"id":"G001","gate_type":"CZ","qubit_ids":["Q002","Q003"]},
+    {"id":"G002","gate_type":"CZ","qubit_ids":["Q000","Q002"]},
+    {"id":"G003","gate_type":"CZ","qubit_ids":["Q001","Q003"]},
+    {"id":"G004","gate_type":"CZ","qubit_ids":["Q000","Q003"]},
+    {"id":"G005","gate_type":"CZ","qubit_ids":["Q001","Q002"]}
+  ]
+}

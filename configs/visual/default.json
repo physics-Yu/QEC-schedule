@@ -1,0 +1,17 @@
+{
+  "static_color": "#5364bc",
+  "zone_colors": [
+    "#eef3f5",
+    "#f0edf8",
+    "#eaf3ef"
+  ],
+  "failure_color": "#bd5362",
+  "font_size": 10,
+  "atom_size": 24,
+  "grid_color": "#dbe2e9",
+  "text_color": "#25334b",
+  "muted_color": "#8190a3",
+  "background": "#fafbfd",
+  "moving_color": "#e89438",
+  "active_color": "#d95360"
+}

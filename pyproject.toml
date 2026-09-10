@@ -3,16 +3,23 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "qec-schedule"
+name = "neutral-atom-env"
 version = "0.1.0"
-description = "Modular QEC compilation for neutral-atom scheduling"
-requires-python = ">=3.10"
-dependencies = ["PyYAML>=6,<7"]
+description = "Deterministic neutral atom scheduling foundations"
+requires-python = ">=3.11"
+dependencies = []
 
 [project.optional-dependencies]
-visualization = ["matplotlib>=3.7,<4"]
+test = ["pytest>=8", "matplotlib>=3.8"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
 [tool.setuptools.package-data]
-"qec_schedule.visualization" = ["*.html"]
+"neutral_atom_env.testing" = ["*.html"]
+"neutral_atom_env.visualization" = ["*.html", "*.js"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "--basetemp=artifacts/pytest-tmp"

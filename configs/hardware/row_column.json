@@ -1,0 +1,14 @@
+{
+  "backend": "row_column",
+  "load_duration_us": 100.0,
+  "offload_duration_us": 100.0,
+  "speed_um_per_us": 0.5,
+  "max_acceleration_um_per_us2": 0.01,
+  "max_jerk_um_per_us3": 0.001,
+  "minimum_axis_spacing_um": 1.01,
+  "minimum_clearance_um": 1.0,
+  "pulse_duration_us": 0.3,
+  "interaction_distance_um": 2.0,
+  "escape_um": 2.5,
+  "mobile_pair_center": {"x_um": 5.0, "y_um": -25.0}
+}
