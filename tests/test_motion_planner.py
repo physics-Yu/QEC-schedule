@@ -2,14 +2,15 @@
 from dataclasses import replace
 import json
 import pytest
-from neutral_atom_env.domain.models import Position2D,StaticTrap,GridCoord
+from neutral_atom_env.domain.models import Position2D, StaticTrap, GridCoord
 from neutral_atom_env.domain.aod import AODConfiguration
-from neutral_atom_env.domain.operations import ExecuteGateBatchIntent,OperationType as K
+from neutral_atom_env.domain.operations import ExecuteGateBatchIntent, OperationType as K
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.motion.compiler import MotionCompiler,exact_validate
-from neutral_atom_env.motion.planners import HalfGridPlanner,simplify_route
-from neutral_atom_env.simulation.milestone1_factory import make_single_gate_state
-from neutral_atom_env.simulation.row_column_factory import make_row_column_state
+from neutral_atom_strategies.motion.compiler import MotionCompiler
+from neutral_atom_env.program.binding import exact_validate
+from neutral_atom_strategies.motion.planners import HalfGridPlanner, simplify_route
+from neutral_atom_experiments.fixtures.milestone1_factory import make_single_gate_state
+from neutral_atom_experiments.fixtures.row_column_factory import make_row_column_state
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.hardware import get_backend
@@ -115,8 +116,8 @@ def test_upper_layer_can_choose_another_legal_interaction_layout():
 
 
 def test_scheduler_uses_injected_policy_compiler():
-    from neutral_atom_env.planning.eager_baseline import EagerBaseline
-    from neutral_atom_env.simulation.scheduler import EagerScheduler
+    from neutral_atom_strategies.planning.eager_baseline import EagerBaseline
+    from neutral_atom_strategies.scheduling.scheduler import EagerScheduler
     state=make_single_gate_state()
     policy=EagerBaseline(compiler=MotionCompiler(HalfGridPlanner(sides=(-1,),id='left-only')))
     assert EagerScheduler(state,policy=policy).run().status=='completed'

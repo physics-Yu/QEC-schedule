@@ -1,0 +1,148 @@
+{
+  "atoms": {
+    "Q000": {
+      "busy_time_us": 372.3,
+      "distance_um": 86.0,
+      "gate_counts": {
+        "CZ": 1
+      },
+      "load_count": 1,
+      "offload_count": 1,
+      "waiting_time_us": 994.6000000000001
+    },
+    "Q001": {
+      "busy_time_us": 372.3,
+      "distance_um": 86.0,
+      "gate_counts": {
+        "CZ": 1
+      },
+      "load_count": 1,
+      "offload_count": 1,
+      "waiting_time_us": 994.6000000000001
+    },
+    "Q002": {
+      "busy_time_us": 372.3,
+      "distance_um": 86.0,
+      "gate_counts": {
+        "CZ": 1
+      },
+      "load_count": 1,
+      "offload_count": 1,
+      "waiting_time_us": 994.6000000000001
+    },
+    "Q003": {
+      "busy_time_us": 372.3,
+      "distance_um": 86.0,
+      "gate_counts": {
+        "CZ": 1
+      },
+      "load_count": 1,
+      "offload_count": 1,
+      "waiting_time_us": 994.6000000000001
+    },
+    "Q004": {
+      "busy_time_us": 372.30000000000007,
+      "distance_um": 86.0,
+      "gate_counts": {
+        "CZ": 1
+      },
+      "load_count": 1,
+      "offload_count": 1,
+      "waiting_time_us": 994.6
+    },
+    "Q005": {
+      "busy_time_us": 372.3,
+      "distance_um": 86.0,
+      "gate_counts": {
+        "CZ": 1
+      },
+      "load_count": 1,
+      "offload_count": 1,
+      "waiting_time_us": 994.6000000000001
+    },
+    "Q006": {
+      "busy_time_us": 0.30000000000001137,
+      "distance_um": 0.0,
+      "gate_counts": {
+        "CZ": 1
+      },
+      "load_count": 0,
+      "offload_count": 0,
+      "waiting_time_us": 1366.6000000000001
+    },
+    "Q007": {
+      "busy_time_us": 0.3000000000000682,
+      "distance_um": 0.0,
+      "gate_counts": {
+        "CZ": 1
+      },
+      "load_count": 0,
+      "offload_count": 0,
+      "waiting_time_us": 1366.6
+    },
+    "Q008": {
+      "busy_time_us": 0.30000000000001137,
+      "distance_um": 0.0,
+      "gate_counts": {
+        "CZ": 1
+      },
+      "load_count": 0,
+      "offload_count": 0,
+      "waiting_time_us": 1366.6000000000001
+    },
+    "Q009": {
+      "busy_time_us": 0.3000000000000682,
+      "distance_um": 0.0,
+      "gate_counts": {
+        "CZ": 1
+      },
+      "load_count": 0,
+      "offload_count": 0,
+      "waiting_time_us": 1366.6
+    },
+    "Q010": {
+      "busy_time_us": 0.3000000000001819,
+      "distance_um": 0.0,
+      "gate_counts": {
+        "CZ": 1
+      },
+      "load_count": 0,
+      "offload_count": 0,
+      "waiting_time_us": 1366.6
+    },
+    "Q011": {
+      "busy_time_us": 0.30000000000001137,
+      "distance_um": 0.0,
+      "gate_counts": {
+        "CZ": 1
+      },
+      "load_count": 0,
+      "offload_count": 0,
+      "waiting_time_us": 1366.6000000000001
+    },
+    "Q012": {
+      "busy_time_us": 0.0,
+      "distance_um": 0.0,
+      "gate_counts": {},
+      "load_count": 0,
+      "offload_count": 0,
+      "waiting_time_us": 1366.9
+    },
+    "Q013": {
+      "busy_time_us": 0.0,
+      "distance_um": 0.0,
+      "gate_counts": {},
+      "load_count": 0,
+      "offload_count": 0,
+      "waiting_time_us": 1366.9
+    }
+  },
+  "counts_commit_at": "operation_completed",
+  "elapsed_us": 1366.9,
+  "format": "neutral-atom-statistics/1",
+  "pending_operations": 0,
+  "processed_records": 132,
+  "waiting_definition": "elapsed minus union of actual movement, transfer and applied effect intervals",
+  "window_end_us": 1366.9,
+  "window_start_us": 0.0
+}

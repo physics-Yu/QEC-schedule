@@ -1,103 +1,94 @@
 # 工程框架与模块边界
 
-2026-09-13 架构演进设计（PROPOSED，未实施）：[目标结构与决策](../docs/architecture_evolution_plan.md)、[A0–A8实施清单](../docs/architecture_evolution_backlog.md)。下文主体是2026-09-10历史审计，旧schema13及未跟踪量子态描述不代表当前状态；当前schema19、受限QEC测量/反馈和工作台以[handoff](handoff.md)为准。新设计接口不得当作已有API使用。
+2026-09-14新增受限实验：[SMT 联合批次对照](../docs/smt_batch_experiment.md)。`strategies/scheduling/smt_batch.py` 提供符号提案，`experiments/smt_comparison.py` 实验执行/核验，`app/smt_experiment.py` 独立进程与编辑界面；底层仍由 env 验证/执行。是固定 EZ、规则 rigid 轴、恢复式批次的实验插件，不代表通用候选接口、任意二维规划或 RL 已完成。原生产工作台没有默认切换到 SMT。
 
-用途：改依赖、接口或增加模块时读取。状态依据：2026-09-10 源码审计。物理契约见 [physics](physics.md)，状态字段见 [state_circuit](state_circuit.md)，完整进度见 [handoff](handoff.md)。
+2026-09-14。本文是当前维护导航，详细接口见[环境/策略边界](../docs/environment_strategy_boundary.md)，当前验收结果见[handoff](handoff.md)。历史架构方案与演进路线仍可参考，但不能将建议接口当成已实现功能。
 
-## 1. 要解决的问题
+## 1. 当前边界
 
-目标是让持续演化的物理 placement 支持 circuit 的依赖执行，并比较运输、返回、复用与资源占用的调度代价。当前仿真承诺是确定性几何和时间一致性，不是波函数、光学场或保真度仿真。
+研究对象是给定 PhysicalCircuit 到可验证的原子操作执行。环境模拟项目声明的几何、支撑、门作用、事件时间和受限QEC Clifford状态；没有模拟最底层光场、波包、波形或完整保真度。
 
-M1 为这个目标提供单门往返基准。已有通用程序支持不同终态的底座；后续操作级调度沿用同一世界和 holder，不为每个 gate 重建“初始布局”。已确认的目标接口见 [compiler_contract](compiler_contract.md)，其中 M3 的单 trap 持久任务/并发已实现，见 [M3](../docs/milestone3.md)，M4 返修点保留。
+```text
+neutral_atom_app          配置、控制程序、策略组装、HTTP作业、线路编辑器
+       │
+       ├── neutral_atom_experiments  电路/实验布局、协议、专用历史guard、验收工具
+       │                │
+       └── neutral_atom_strategies  选门、落点、寻路、批次、调度与排序
+                        │
+                 NeutralAtomEnv    提交、推进、观测、预测分支、恢复
+                        │
+                  唯一 Executor    提交真实状态与事件
+```
 
-## 2. 当前真实目录
+依赖方向：app → experiments/strategies/env；experiments → strategies/env；strategies → env。env不导入后三者。生产策略通过env执行，不直接构造Executor。底层物理验证与测试可以直接使用Executor。
 
-| 层 | 已有文件（相对 `src/neutral_atom_env/`） | 职责 |
-| --- | --- | --- |
-| domain | `models.py`, `operations.py`, `aod.py`, `errors.py` | 不可变值、操作计划、结构化错误 |
-| world | `world.py`, `config.py` | 静态世界、holder 映射、AOD runtime、布局配置 |
-| circuit | `physical_circuit.py`, `dynamic_dag.py` | 有序输入门集、依赖与门状态 |
-| hardware | `rigid_aod.py`, `partial_transfer.py`, `row_column_aod.py`, `__init__.py`, `measurement.py` | 几何/装卸/作用对验证、测量区域权限 |
-| motion | `compiler.py`, `single_trap.py`, `program.py`, `rigid_parking_compiler.py`, `parking_validation.py`, `row_column_compiler.py`, `planners.py`, `routing.py`, `validation.py` | 可替换路线规划、backend 计时、独立完整计划验证；见 [接口契约](motion_planning.md) |
-| planning | `eager_baseline.py`, `compilers.py` | 只读 eager 意图选择、按完整 READY frontier 找首个可编译计划 |
-| simulation | `pipeline.py`, `state.py`, `executor.py`, `physical_executor.py`, `event_queue.py`, `state_factory.py`, `milestone1_factory.py`, `milestone2_factory.py`, `row_column_factory.py`, `rigid_parking_factory.py`, `scheduler.py`, `runtime_validation.py` | 状态、事件提交、当前演示场景 |
-| replay | `serializer.py`, `checkpoint.py`, `operation_codec.py`, `trace.py`, `trajectory.py` | schema 13 编解码、可复现记录和采样 |
-| visualization | `recording.py`, `summary.py`, `viewer.py`, `viewer.js`, `viewer-shell.html` | 只读 recorder、固定统计、可嵌入运动组件 |
-| testing | `scene.py`, `theme.py`, `renderer.py`, `replay.html`, `acceptance.py`, `milestone1_report.py`, `milestone2_report.py`, `row_column_report.py`, `logical_executor.py`, `scenarios.py`, `artifacts.py` | 证据生成及观察型可视化 |
+## 2. 源码归属
 
-现有代码入口：[src](../src/neutral_atom_env/)。未建立 `rl/`、通用 `CandidateGenerator` 或 `ReservationTable` 类。不要把旧设计的建议文件名当成已存在 API。
+| 包/模块 | 职责 |
+| --- | --- |
+| env/environment.py | NeutralAtomEnv与去除私有仿真信息的Observation |
+| env/platform.py | 独立平台/电路/placement输入与初态建立 |
+| env/domain、world、circuit | 不可变值、静态几何、holder、逻辑依赖 |
+| env/hardware、quantum | 几何/捕获/交接/作用/读出规则及声明量子模型 |
+| env/program | 显式操作表达、状态绑定、完整计划独立校验；不选择落点或路线 |
+| env/simulation | Executor、事件队列、物理reducer、runtime校验 |
+| env/replay、statistics、visualization | schema19保存恢复、逐原子统计、无策略依赖的recording/viewer |
+| strategies/planning、motion、scheduling | 编译插件、路线与落点算法、M3/M4/row/patch/QEC控制循环 |
+| experiments | 电路生成、布局、协议、fixtures、验收工具；runners存特定时域历史guard |
+| app/control.py、pipeline.py、visualization | 策略组装与控制、端到端输入执行、工作台/作业/配置/前端 |
 
-## 3. 接口契约
+表中env/strategies/experiments/app分别指完整的neutral_atom_*包名。具体新需求先按[src职责表](../src/README.md)选择归属，不能为方便import把实验或控制程序移回环境。
+
+## 3. 实验平台控制接口
 
 ```python
-state = make_single_gate_state()
-intent = EagerBaseline().choose(state)
-plan = MotionCompiler().compile(intent, state)
-executor = Executor(state)
-executor.submit(plan)
-executor.run()
-saved = state.snapshot()
-restored = SimulationState.restore(saved)
+from neutral_atom_env import NeutralAtomEnv
+from neutral_atom_strategies import make_strategy
+from neutral_atom_app.control import ControlProgram
+
+env = NeutralAtomEnv.create(circuit, platform, placement, seed=7)
+controller = ControlProgram(make_strategy("greedy", adaptive_sites=True))
+result = controller.run(env)
+saved = env.snapshot()
+restored = NeutralAtomEnv.restore(saved)
 ```
 
-对应模块：`simulation.milestone1_factory`、`planning.eager_baseline`、`motion.compiler`、`simulation`、`simulation.state`。代码示例省略 import，仅说明当前调用链。
+- Strategy协议为 `id` 与 `run(env, *, on_event=None)`。实现该协议即可注入ControlProgram或app.pipeline.run_circuit，不要求继承环境。
+- `env.validate(plan)`独立验证；`submit(plan)`通过Executor审核入队；`step()`提交下一事件；`run()`只清空已提交队列。空队列不等于电路或声明终态完成。
+- `CompiledPlan`绑定版本及完整状态fingerprint。非法/过期计划不能部分提交；审核失败使用结构化ValidationError。
+- backend构建的推演状态和env.fork拥有的预测分支不能安装到实时环境；最终仍通过submit和唯一Executor提交。
+- `observe()`返回冻结的已提交观测，不暴露quantum_state、RNG、trace。`env.state`仍是旧编译器的特权冻结规划/核验视图，包含上述字段；本轮没有实现完整PlanningView或不可信策略沙箱。
+- Python旧算法导入路径已经迁移，没有环境反向引用策略的兼容壳。仓库内CLI与输入JSON保持，checkpoint为schema19。
 
-- `compile` 成功返回 `CompiledPlan`；失败抛出带 `ConstraintViolation` 的 `ValidationError`。当前不是 `result.is_success` 联合返回类型。
-- `exact_validate(plan,state)` 位于 `motion/compiler.py`；校验版本、全快照 fingerprint，再独立推演实际 operations。
-- backend 的 `load/move/offload` 返回推演状态，不安装实时状态；它们可以被 compiler 用来预测最终 placement。
-- `Executor.submit` 入队，`step` 提交一个事件，`run` 清空队列；`run` 不等价于“完成整个 circuit”或“自动发现 deadlock”。
-- `EagerScheduler.step()` 推进一个真实事件或返回 `ScheduleResult`；`run()` 连续执行整个电路，返回 completed/stalled，损坏 runtime 则抛错。
-- `snapshot()` 返回 JSON 字符串；`restore` 支持 schema 13，旧 schema 显式拒绝。
+## 4. 不可破坏的物理和状态职责
 
-## 4. 依赖方向
+- placement是holder真值；world是静态几何真值；atom不另存position或永久home。
+- DAG只处理逻辑依赖，READY不等于物理可执行；不得在DAG中查询路线、zone或AOD。
+- 策略、编译器、validator和renderer不改实时状态。只有Executor提交完整下一状态；successor根据真实门效果完成释放。
+- AOD活动trap是开行×开列的全部交点；非均匀间距、附带捕获、空交点扫掠与行列联动必须按物理合同处理。
+- 资源占用、动作时间、作用集合与支撑由环境核验，策略不能以收益或reward替代硬约束。
+- 当前门集、同类并行、光照间距、EZ四邻停驻、测量/反馈约束以[physics](physics.md)及其合同链接为准。本轮包分离没有修改这些规则。
+- 通用recording/viewer读取已提交记录；编辑器、预设、算法派发、HTTP作业属于app。
 
-```mermaid
-flowchart TD
-    DOMAIN[domain] --> WORLD[world]
-    DOMAIN --> CIRCUIT[circuit]
-    WORLD --> HW[hardware]
-    HW --> MOTION[motion]
-    CIRCUIT --> MOTION
-    MOTION --> PLAN[planning]
-    MOTION --> SIM[simulation]
-    CIRCUIT --> SIM
-    WORLD --> SIM
-    SIM --> OBS[replay / visualization / testing observers]
+## 5. 配置与实验隔离
+
+平台Config描述几何/能力与声明参数；runtime保存SLM/AOD启用、当前holder、时间和已报告测量位。初始配置不能替代运行态变化。
+
+工作台目录在configs/studio：完整demo锁定配套配置，电路示例只填gates，用户自定义策略仅显示通用能力。AOD容量和绝对坐标从行列及相对偏移派生。环境不读取demo目录、不隐式选择默认线路或算法。
+
+完整输入/编译流程见[配置归属](../docs/studio_configuration_layers.md)、[工作台合同](../docs/workbench_configurations.md)。
+
+## 6. 验收与下一阶段
+
+修改包边界后运行：
+
+```powershell
+python tools/check_architecture.py
+python -m pytest -q tests/test_environment_boundary.py
 ```
 
-箭头表示能力供给方向；import 的方向通常相反。硬件代码不得调用 policy；DAG 不得查询路径、AOD 或 zone；底层 domain 不依赖 runtime。
+还需按实际受影响行为执行相关回归；不能以import成功替代物理行为相同。本轮保留迁移前六策略完整checkpoint，迁移后逐字比较；具体结果见[本轮日志](logs/2026-09-14-environment-strategy-separation.md)。
 
-当前 `SimulationState` 调用 replay 的 serializer，checkpoint/scene 又使用局部 import 恢复 runtime。这是现有编解码适配，并不意味着可以在底层导入 executor 执行操作。未来若循环依赖扩大，应引入只读状态协议或独立 codec 边界，不以更多延迟 import 掩盖设计问题。
+[架构演进A0–A8](../docs/architecture_evolution_backlog.md)中的状态/历史拆分、统一候选决策循环、缓存和规划优化尚未因本次分包完成。下一步可在策略内部建立Frontier→Intent→Move/AOD batch→有限合法候选→Policy；本轮没有通用CandidateGenerator、RL策略或通用二维动态变距规划。
 
-## 5. 新行为应该放哪里
-
-| 新需求 | 所属层 | 不应采用的做法 |
-| --- | --- | --- |
-| AOD 捕获/转移方式改变 | hardware 新能力或 backend | 在 policy 中偷偷改 holder |
-| 作用点/回程/卸载点选择 | scheduler 给目标或允许域；motion 编译局部候选 | 在 scene 中重排原子 |
-| 决定返回还是 KEEP | planning/policy | backend 固定读未来电路并选策略 |
-| 释放 successor | circuit reducer，由 Executor 安装 | 候选生成时直接完成 gate |
-| 资源时间窗口与并发 | simulation + hardware 资源契约 | 仅依赖“门不共享 qubit”判并发 |
-| action mask/reward | 未来 RL 接口 | 把非法物理动作交给奖励惩罚补救 |
-| 新视觉符号/图层 | visualization component / testing renderer | 修改硬件参数让图更好看 |
-
-## 6. 配置与持续状态
-
-当前配置为 JSON：`configs/world/acceptance.json`、`configs/hardware/milestone1.json`、`configs/hardware/row_column.json`、`configs/visual/default.json`。旧 factory 仍保留测试场景布局；`simulation.pipeline` 已支持独立外部平台/电路/placement 输入，scheduler/runtime_validation 不应承担场景初始化。
-
-平台几何、容量与能力 Config 在 episode 内固定；目标契约中的 SLM/AOD 启用是 runtime 状态，不能继续固化在配置（M3-A 已实现）。runtime 经事件变化；plan 是基于一个版本的不可变推演；snapshot 是完整保存；trace 仅追加。M1 返回起始 trap 来自该次 `CaptureBinding`，不代表 atom 永久拥有 home。
-
-接口字段若改变，应明确 schema 迁移或拒绝旧产物，更新恢复、回放、报告和交接文档。原计划中的 `_advance_until_decision_point`、Gym `step`、候选缓存等仍是 [后续设计](planning_rl.md)，不能假称当前已有。
-
-
-## 通用输入与编译插件（当前）
-
-`simulation/pipeline.py` 定义 Platform.load、initialize、run_circuit；`planning/compilers.py` 定义 GateCompiler 协议与 CLI 内置策略工厂。`motion/single_trap.py` 是可替换运输策略，`motion/program.py` 是不依赖运输模板的程序构建与独立审核。输入平台/placement 不再必须经固定场景 factory。旧 factory 保留为测试案例。物理 backend（rigid/row_column）与编译策略（single_trap/legacy_eager）为不同选择。通用 plan 保存 initial_placement，逐次装卸显式绑定，checkpoint 当前 schema 13。详见 [接口](../docs/circuit_pipeline.md)。
-
-## 任务 IR 与下一层调度边界
-
-目标任务 → 局部候选 → 全局调度 → 独立校验 → 执行是 [compiler_contract](compiler_contract.md) 的正式方向。保持三种可替换接口独立：hardware backend（能力/合法性/成本）、compiler（目标到原子操作）、scheduler policy（任务选择/时间安排）。替换运输策略无需替换 circuit、Executor 或动画；更换 hardware 需重新验证能力和计划，不能沿用旧 trace。
-
-M3-B 已新增 `TaskIntent`、`TaskTarget`、`OperationInterval`、`TaskProgram` 与 `TargetTaskCompiler`，入口在 domain/operations.py、motion/tasks.py、task_validation.py；零 gate 运输、prepare/effect/cleanup、稳定 SLM 1Q、显式终态与唯一效果经同一 validator/Executor/recorder 执行，见 [任务 API](../docs/task_program.md)。`TaskCompiler` 与原 GateCompiler 协议并存。
-
-M3-C/D 已新增 motion/persistent.py、scheduled.py、family.py 与 simulation/m3.py、operation_program.py。运行时 scheduled program 内支持多个活动操作和按操作释放资源；legacy 路径保留串行语义。只有 Executor 提交最新状态。策略使用有限 Raman/MOVE 窗口，M4 可返修候选与决策边界。
+策略可替换指接口独立，不保证任意策略适用所有平台和QEC协议。硬件模型或整体架构的进一步变更按用户审批边界处理；普通工程修复自主记录和重验。

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
-from .serializer import canonical_json
+from neutral_atom_env.replay.serializer import canonical_json
 from functools import lru_cache
 from types import MappingProxyType
 import json

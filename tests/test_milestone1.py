@@ -1,13 +1,13 @@
 from dataclasses import replace, FrozenInstanceError
 import json
 import pytest
-from neutral_atom_env.domain.models import (Position2D, HolderRef, HolderType, SimulationEvent, EventType)
+from neutral_atom_env.domain.models import Position2D, HolderRef, HolderType, SimulationEvent, EventType
 from neutral_atom_env.domain.operations import ExecuteGateBatchIntent, OperationType, EndDisposition
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
-from neutral_atom_env.simulation.milestone1_factory import make_single_gate_state
-from neutral_atom_env.motion.compiler import MotionCompiler
+from neutral_atom_experiments.fixtures.milestone1_factory import make_single_gate_state
+from neutral_atom_strategies.motion.compiler import MotionCompiler
 from neutral_atom_env.hardware.rigid_aod import RigidRectangularAODBackend, distance, segment_clearance
 from neutral_atom_env.world import PlacementState
 
@@ -133,7 +133,7 @@ def test_failed_physical_event_is_atomic():
 
 def test_playback_interpolation_is_continuous_and_observer_only():
     from neutral_atom_env.replay.trajectory import sample_positions
-    from neutral_atom_env.testing.scene import build_scene
+    from neutral_atom_experiments.testing.scene import build_scene
     state=make_single_gate_state();snapshots=[state.snapshot()];ex=Executor(state);ex.submit(compile_plan(state))
     while state.event_queue:ex.step();snapshots.append(state.snapshot())
     before=state.snapshot()
@@ -150,7 +150,7 @@ def test_playback_interpolation_is_continuous_and_observer_only():
 
 
 def test_capture_closure_never_ignores_unaligned_atom():
-    from neutral_atom_env.domain.models import StaticTrap,GridCoord
+    from neutral_atom_env.domain.models import StaticTrap, GridCoord
     state=make_single_gate_state()
     traps=dict(state.world.traps);traps['S002']=replace(traps['S002'],position=Position2D(2,0))
     state=replace(state,world=replace(state.world,traps=traps,grid_spacing_um=1))
@@ -165,7 +165,7 @@ def test_two_micrometer_radius_is_not_relaxed_by_compiler():
 
 
 def test_eager_policy_is_read_only():
-    from neutral_atom_env.planning.eager_baseline import EagerBaseline
+    from neutral_atom_strategies.planning.eager_baseline import EagerBaseline
     state=make_single_gate_state();before=state.snapshot()
     intent=EagerBaseline().choose(state)
     assert intent.gate_ids==frozenset({'G000'}) and intent.end_disposition==EndDisposition.RETURN_AND_OFFLOAD

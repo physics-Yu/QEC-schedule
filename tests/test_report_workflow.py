@@ -1,10 +1,10 @@
 import json
 from dataclasses import replace
 import pytest
-from neutral_atom_env.testing import acceptance
-from neutral_atom_env.testing.scenarios import Evidence, Frame
-from neutral_atom_env.testing.theme import VisualTheme
-from neutral_atom_env.simulation import make_demo_state
+from neutral_atom_experiments.testing import acceptance
+from neutral_atom_experiments.testing.scenarios import Evidence, Frame
+from neutral_atom_env.visualization.theme import VisualTheme
+from neutral_atom_experiments.fixtures.state_factory import make_demo_state
 from neutral_atom_env.world.config import LayoutConfig
 from neutral_atom_env.domain.errors import ValidationError
 

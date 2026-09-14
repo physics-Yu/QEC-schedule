@@ -3,7 +3,8 @@ import argparse
 from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
-from neutral_atom_env.simulation import make_demo_state, Executor
+from neutral_atom_experiments.fixtures.state_factory import make_demo_state
+from neutral_atom_env.simulation import Executor
 from neutral_atom_env.domain.models import SimulationEvent, EventType
 from neutral_atom_env.replay.serializer import canonical_json
 

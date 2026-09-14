@@ -4,18 +4,17 @@ from math import isclose
 import json
 import pytest
 
-from neutral_atom_env.circuit import PhysicalCircuit,DynamicGateDAG
-from neutral_atom_env.domain.models import (Atom,PhysicalGate as Gate,Position2D as P,Rectangle,GridCoord,
-    StaticTrap,Zone,ZoneType,HolderRef,HolderType)
-from neutral_atom_env.domain.operations import TaskIntent,TaskTarget,OperationType as K
+from neutral_atom_env.circuit import PhysicalCircuit, DynamicGateDAG
+from neutral_atom_env.domain.models import Atom, PhysicalGate as Gate, Position2D as P, Rectangle, GridCoord, StaticTrap, Zone, ZoneType, HolderRef, HolderType
+from neutral_atom_env.domain.operations import TaskIntent, TaskTarget, OperationType as K
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.world import WorldState,PlacementState,AODRuntimeState
+from neutral_atom_env.world import WorldState, PlacementState, AODRuntimeState
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.simulation import Executor
-from neutral_atom_env.simulation.qec import readout_service
-from neutral_atom_env.motion.patch_array import PatchArrayCompiler
-from neutral_atom_env.motion.program import ProgramBuilder
-from neutral_atom_env.motion.qec_readout import choose_readout_service
+from neutral_atom_strategies.scheduling.qec import readout_service
+from neutral_atom_strategies.motion.patch_array import PatchArrayCompiler
+from neutral_atom_env.program.builder import ProgramBuilder
+from neutral_atom_strategies.motion.qec_readout import choose_readout_service
 from neutral_atom_env.quantum.stabilizer import StabilizerState
 
 

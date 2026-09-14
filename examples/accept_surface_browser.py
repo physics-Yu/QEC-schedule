@@ -10,7 +10,7 @@ import time
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
 from playwright.sync_api import sync_playwright
-from neutral_atom_env.experiments.surface_ghz import verify_gate_sequence
+from neutral_atom_experiments.surface_ghz import verify_gate_sequence
 
 
 def main(output,server_output):

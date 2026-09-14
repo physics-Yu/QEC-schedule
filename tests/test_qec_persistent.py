@@ -3,15 +3,14 @@ from dataclasses import replace
 import json
 from math import isclose
 
-from neutral_atom_env.circuit import PhysicalCircuit,DynamicGateDAG
-from neutral_atom_env.domain.models import (Atom,PhysicalGate as Gate,Position2D as P,Rectangle,GridCoord,
-    StaticTrap,Zone,ZoneType,HolderRef,HolderType)
+from neutral_atom_env.circuit import PhysicalCircuit, DynamicGateDAG
+from neutral_atom_env.domain.models import Atom, PhysicalGate as Gate, Position2D as P, Rectangle, GridCoord, StaticTrap, Zone, ZoneType, HolderRef, HolderType
 from neutral_atom_env.domain.operations import HardwareConfig
-from neutral_atom_env.world import WorldState,PlacementState,AODRuntimeState
+from neutral_atom_env.world import WorldState, PlacementState, AODRuntimeState
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.simulation import Executor
-from neutral_atom_env.simulation.qec import run_qec
-from neutral_atom_env.simulation.qec_persistent import run_qec_persistent
+from neutral_atom_strategies.scheduling.qec import run_qec
+from neutral_atom_strategies.scheduling.qec_persistent import run_qec_persistent
 from neutral_atom_env.quantum.stabilizer import StabilizerState
 from neutral_atom_env.visualization.recording import VisualRecorder
 

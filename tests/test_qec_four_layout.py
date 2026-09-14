@@ -1,5 +1,5 @@
 import pytest
-from neutral_atom_env.experiments.qec_four_layout import build_qec_four_inputs,coordinates
+from neutral_atom_experiments.qec_four_layout import build_qec_four_inputs, coordinates
 
 
 def test_explicit_small_aod_changes_actual_capacity_instead_of_silently_using98():

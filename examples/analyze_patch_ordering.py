@@ -7,14 +7,14 @@ from math import hypot
 from time import perf_counter
 from collections import Counter
 
-from neutral_atom_env.domain.models import Position2D as P,HolderRef,HolderType
+from neutral_atom_env.domain.models import Position2D as P, HolderRef, HolderType
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.world import PlacementState
-from neutral_atom_env.visualization.workbench import build_inputs
-from neutral_atom_env.simulation.pipeline import initialize
-from neutral_atom_env.simulation.patch_greedy import patch_assignment
-from neutral_atom_env.simulation.row_greedy import empty_graph_distance
-from neutral_atom_env.motion.patch_array import PatchArrayCompiler
+from neutral_atom_app.visualization.workbench import build_inputs
+from neutral_atom_env.platform import initialize
+from neutral_atom_strategies.scheduling.patch_greedy import patch_assignment
+from neutral_atom_strategies.scheduling.row_greedy import empty_graph_distance
+from neutral_atom_strategies.motion.patch_array import PatchArrayCompiler
 
 
 def historical_candidate_groups(state,gates,strategy):

@@ -70,7 +70,7 @@ y(row, column, t) = pose.y_um(t) + row    * spacing_um
 M1 默认 rigid 基准覆盖单 READY CZ、单刚性 AOD、固定初始捕获范围、单作用位置以及返回卸载。一个目标伙伴初始预置在 entanglement 区；后续 rigid 联合停车和 single_trap 已实现两目标全 SZ 起步的受限准备；尚缺动态开关、活动空阱避碰及通用持久起态。rigid 模型采用恒速直线段；row_column 的三次计时、双 mobile 编译范围和当前测试见 [后端规范](aod_backends.md)。两者均不模拟加热、损失或真实量子态。
 
 - [硬件几何与占据验证](../src/neutral_atom_env/hardware/rigid_aod.py)：capture closure、连续移动、整段 clearance、卸载与实际作用对。
-- [运动编译器](../src/neutral_atom_env/motion/compiler.py)：生成计划，拒绝不支持或不满足约束的场景。
+- [运动编译器](../src/neutral_atom_strategies/motion/compiler.py)：生成计划，拒绝不支持或不满足约束的场景。
 - [物理事件执行](../src/neutral_atom_env/simulation/physical_executor.py)：经事件更新 holder、pose、门状态和指标。
 - [M1 说明](../docs/milestone1.md)：配置、验收案例与预期指标。
 

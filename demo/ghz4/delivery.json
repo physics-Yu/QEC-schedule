@@ -1,0 +1,25 @@
+{
+  "status": "ready",
+  "source": "artifacts\\qec-roadmap\\step4C-resumed-attempt3",
+  "reused_verified_compilation": true,
+  "fresh_physical_compile": false,
+  "atom_count": 68,
+  "completed_slots": 1868,
+  "duration_us": 105285.60000000036,
+  "compiler_free_replay": "PASS",
+  "recording_sha256": "ec36a438d96c7d5c2ad676bef60e54500a1c7dcaeea1c012a06523a3c24c315f",
+  "animation_sha256": "6c80524f12afa76abe44a896787e9fe4a7aed428355e3eebd95899f7b548419a",
+  "default_speed": 32,
+  "playback_check": {
+    "status": "PASS",
+    "errors": [],
+    "playback_seconds": 124.75,
+    "duration_us": 105285.60000000036,
+    "completed_slots": 1868,
+    "returned_atoms": 68,
+    "exact_initial_holders_and_positions": true,
+    "offline_html_load": "PASS"
+  },
+  "source_animation_sha256": "9369e21178ab33b38a6bfe2519b12559baaa85222e5c92ce33917c3d97312f27",
+  "portable_wrapper_change": "Historical editor URL replaced by ../index.html; embedded execution unchanged."
+}

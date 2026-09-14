@@ -5,12 +5,11 @@ import json
 
 import pytest
 
-from neutral_atom_env.experiments.surface_qec import experiment_input as qec_input
-from neutral_atom_env.experiments.surface_qec_temporal import experiment_input as temporal_input
-from neutral_atom_env.experiments.surface_qec_temporal_four import experiment_input as four_input
-from neutral_atom_env.visualization.workbench import (validate_input,build_inputs,compile_input,preview,
-                                                       M4_STRATEGIES,ROW_STRATEGIES,PATCH_STRATEGIES)
-from neutral_atom_env.visualization.workbench_server import CompileJobs
+from neutral_atom_experiments.surface_qec import experiment_input as qec_input
+from neutral_atom_experiments.surface_qec_temporal import experiment_input as temporal_input
+from neutral_atom_experiments.surface_qec_temporal_four import experiment_input as four_input
+from neutral_atom_app.visualization.workbench import validate_input, build_inputs, compile_input, preview, M4_STRATEGIES, ROW_STRATEGIES, PATCH_STRATEGIES
+from neutral_atom_app.visualization.workbench_server import CompileJobs
 
 
 def physical():

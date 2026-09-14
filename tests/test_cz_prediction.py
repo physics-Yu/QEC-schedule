@@ -4,12 +4,11 @@ import pytest
 
 from neutral_atom_env.circuit import PhysicalCircuit, DynamicGateDAG
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.domain.models import (Atom, GateStatus, GridCoord, HolderRef, HolderType,
-    MobileCellIndex, PhysicalGate, Position2D, Rectangle, StaticTrap, Zone, ZoneType)
+from neutral_atom_env.domain.models import Atom, GateStatus, GridCoord, HolderRef, HolderType, MobileCellIndex, PhysicalGate, Position2D, Rectangle, StaticTrap, Zone, ZoneType
 from neutral_atom_env.domain.operations import HardwareConfig, OperationType as K, TaskIntent, TaskTarget
 from neutral_atom_env.hardware.ez_neighbors import next_cz
-from neutral_atom_env.motion.greedy import GreedyCompiler
-from neutral_atom_env.motion.program import ProgramBuilder, replay_program
+from neutral_atom_strategies.motion.greedy import GreedyCompiler
+from neutral_atom_env.program.builder import ProgramBuilder, replay_program
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.world import WorldState, PlacementState, AODRuntimeState

@@ -3,13 +3,13 @@ import argparse,json,sys
 from time import perf_counter
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
-from neutral_atom_env.visualization.workbench import build_inputs
-from neutral_atom_env.simulation.pipeline import initialize
-from neutral_atom_env.simulation.m3 import initial_terminal
-from neutral_atom_env.simulation.m4 import run_m4
+from neutral_atom_app.visualization.workbench import build_inputs
+from neutral_atom_env.platform import initialize
+from neutral_atom_strategies.scheduling.m3 import initial_terminal
+from neutral_atom_strategies.scheduling.m4 import run_m4
 from neutral_atom_env.visualization import VisualRecorder
-from neutral_atom_env.replay.serializer import canonical_json,primitive
-from neutral_atom_env.motion.family import validate_family
+from neutral_atom_env.replay.serializer import canonical_json, primitive
+from neutral_atom_strategies.motion.family import validate_family
 
 
 def scale_input(count):
@@ -49,10 +49,10 @@ def main():
         result=run_m4(state,terminal=terminal,max_decisions=args.max_decisions,on_event=recorder.observe,
                       adaptive_sites=value.get('ez_policy')=='adaptive')
     else:
-        from neutral_atom_env.simulation.m3 import run_m3
+        from neutral_atom_strategies.scheduling.m3 import run_m3
         result=run_m3(state,compiler=args.compiler,terminal=terminal,overlap=not args.serial,max_decisions=args.max_decisions,on_event=recorder.observe)
     compile_seconds=perf_counter()-started
-    from neutral_atom_env.visualization.workbench import failure_report
+    from neutral_atom_app.visualization.workbench import failure_report
     output=Path(args.output);output.mkdir(parents=True,exist_ok=True)
     for name,data in [('input',value),('family',family),('result',primitive(result)|{'metrics':state.metrics(),'compile_seconds':compile_seconds}),('terminal',terminal),
                       ('run_options',{'compiler':args.compiler,'overlap':not args.serial,'max_decisions':args.max_decisions}),

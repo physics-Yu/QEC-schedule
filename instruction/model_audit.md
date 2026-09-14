@@ -1,5 +1,13 @@
 # 模型审计与待处理问题
 
+2026-09-14工程边界更新（物理模型不变）：
+
+| ID | 状态 | 范围与证据 |
+| --- | --- | --- |
+| ARCH-001 | FIXED | 环境混入算法/应用/实验：迁移到独立strategies/app/experiments，生产策略经NeutralAtomEnv操作；依赖审计与六策略完整checkpoint逐字一致，见[日志](logs/2026-09-14-environment-strategy-separation.md) |
+| TEST-001 | FIXED | 旧M0集成fixture违反后加EZ四邻保护；迁移前同样失败，仅修正fixture为合法10μm布局，保留硬约束；证据与重验见上述日志 |
+| ARCH-002 | OPEN | 旧编译器仍经env.state读取完整冻结状态；Observation已排除量子态/RNG/trace，但完整PlanningView与RL信息隔离尚未实施，见[合同](../docs/environment_strategy_boundary.md) |
+
 审计日期：2026-09-10。此页是“已实现”和“应当实现”的分界，不是新的物理功能。2026-09-10 M2 更新：BUG-001/002、EXT-001、EXT-002 的物理别名问题与 META-001 已修复；能力限制继续保留。复现步骤与原始输出见 [审计日志](logs/2026-09-10-audit.md)。
 
 ## 简化、限制、错误

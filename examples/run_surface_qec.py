@@ -9,8 +9,8 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 
 
 def main():
-    from neutral_atom_env.experiments.surface_qec import experiment_input
-    from neutral_atom_env.visualization.workbench import compile_input
+    from neutral_atom_experiments.surface_qec import experiment_input
+    from neutral_atom_app.visualization.workbench import compile_input
     from neutral_atom_env.visualization.viewer import write_html
     from neutral_atom_env.replay.serializer import canonical_json
     parser=argparse.ArgumentParser()

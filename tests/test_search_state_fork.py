@@ -14,13 +14,13 @@ import pytest
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.domain.models import EventType, SimulationEvent
 from neutral_atom_env.domain.operations import OperationType as K, TaskIntent
-from neutral_atom_env.motion.greedy import GreedyCompiler
+from neutral_atom_strategies.motion.greedy import GreedyCompiler
 from neutral_atom_env.simulation import Executor
-from neutral_atom_env.simulation.m3 import initial_terminal
-from neutral_atom_env.simulation.m4 import fill_raman
-from neutral_atom_env.simulation.pipeline import initialize
+from neutral_atom_strategies.scheduling.m3 import initial_terminal
+from neutral_atom_strategies.scheduling.m4 import fill_raman
+from neutral_atom_env.platform import initialize
 from neutral_atom_env.simulation.state import SimulationState
-from neutral_atom_env.visualization.workbench import build_inputs
+from neutral_atom_app.visualization.workbench import build_inputs
 
 
 def make(gates):

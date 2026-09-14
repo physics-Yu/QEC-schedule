@@ -2,8 +2,8 @@
 from pathlib import Path
 import subprocess
 
-from neutral_atom_env.simulation.milestone1_factory import make_single_gate_state
-from neutral_atom_env.simulation.scheduler import EagerScheduler
+from neutral_atom_experiments.fixtures.milestone1_factory import make_single_gate_state
+from neutral_atom_strategies.scheduling.scheduler import EagerScheduler
 from neutral_atom_env.visualization import VisualRecorder
 
 

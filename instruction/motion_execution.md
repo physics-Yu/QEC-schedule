@@ -14,7 +14,7 @@
 
 ## 1. M1/M2 编译契约
 
-入口：[MotionCompiler.compile](../src/neutral_atom_env/motion/compiler.py)。
+入口：[MotionCompiler.compile](../src/neutral_atom_strategies/motion/compiler.py)。
 
 ```text
 输入：ExecuteGateBatchIntent({gate_id}, RETURN_AND_OFFLOAD), current state

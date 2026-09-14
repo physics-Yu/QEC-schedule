@@ -9,8 +9,8 @@ import pytest
 from test_quantum_readout import state_for,build,Gate,K,Executor
 from neutral_atom_env.visualization.recording import VisualRecorder
 from neutral_atom_env.visualization.viewer import write_html
-from neutral_atom_env.experiments.surface_qec import experiment_input
-from neutral_atom_env.visualization.workbench import build_inputs,validate_input
+from neutral_atom_experiments.surface_qec import experiment_input
+from neutral_atom_app.visualization.workbench import build_inputs, validate_input
 
 
 @pytest.mark.parametrize('expected_bits',[(0,0),(0,1),(1,1)])

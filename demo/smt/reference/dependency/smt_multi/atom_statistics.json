@@ -1,0 +1,92 @@
+{
+  "atoms": {
+    "Q000": {
+      "busy_time_us": 252.5999999999999,
+      "distance_um": 26.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 1,
+      "offload_count": 1,
+      "waiting_time_us": 1026.6000000000001
+    },
+    "Q001": {
+      "busy_time_us": 0.599999999999909,
+      "distance_um": 0.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 0,
+      "offload_count": 0,
+      "waiting_time_us": 1278.6000000000001
+    },
+    "Q002": {
+      "busy_time_us": 524.5999999999999,
+      "distance_um": 62.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 2,
+      "offload_count": 2,
+      "waiting_time_us": 754.6000000000001
+    },
+    "Q003": {
+      "busy_time_us": 0.599999999999909,
+      "distance_um": 0.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 0,
+      "offload_count": 0,
+      "waiting_time_us": 1278.6000000000001
+    },
+    "Q004": {
+      "busy_time_us": 504.5999999999999,
+      "distance_um": 52.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 2,
+      "offload_count": 2,
+      "waiting_time_us": 774.6000000000001
+    },
+    "Q005": {
+      "busy_time_us": 252.5999999999999,
+      "distance_um": 26.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 1,
+      "offload_count": 1,
+      "waiting_time_us": 1026.6000000000001
+    },
+    "Q006": {
+      "busy_time_us": 524.5999999999999,
+      "distance_um": 62.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 2,
+      "offload_count": 2,
+      "waiting_time_us": 754.6000000000001
+    },
+    "Q007": {
+      "busy_time_us": 0.5999999999999659,
+      "distance_um": 0.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 0,
+      "offload_count": 0,
+      "waiting_time_us": 1278.6000000000001
+    }
+  },
+  "counts_commit_at": "operation_completed",
+  "elapsed_us": 1279.2,
+  "format": "neutral-atom-statistics/1",
+  "pending_operations": 0,
+  "processed_records": 158,
+  "waiting_definition": "elapsed minus union of actual movement, transfer and applied effect intervals",
+  "window_end_us": 1279.2,
+  "window_start_us": 0.0
+}

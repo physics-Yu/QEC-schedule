@@ -1,7 +1,7 @@
 from dataclasses import dataclass, replace
 from types import MappingProxyType
 from collections.abc import Mapping
-from .physical_circuit import PhysicalCircuit
+from neutral_atom_env.circuit.physical_circuit import PhysicalCircuit
 from neutral_atom_env.domain.models import GateStatus, PhysicalGate
 
 

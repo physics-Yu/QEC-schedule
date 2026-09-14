@@ -8,7 +8,7 @@ import pytest
 
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.domain.models import GateStatus
-from neutral_atom_env.simulation import patch_greedy as module
+from neutral_atom_strategies.scheduling import patch_greedy as module
 from test_patch_greedy import initial
 
 

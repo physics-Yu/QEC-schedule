@@ -10,10 +10,10 @@ import pytest
 from neutral_atom_env.domain.models import GateStatus, Position2D
 from neutral_atom_env.quantum.stabilizer import StabilizerState
 from neutral_atom_env.replay.serializer import canonical_json
-from neutral_atom_env.simulation.m3 import initial_terminal
-from neutral_atom_env.simulation.qec_joint import run_qec_joint
+from neutral_atom_strategies.scheduling.m3 import initial_terminal
+from neutral_atom_strategies.scheduling.qec_joint import run_qec_joint
 from neutral_atom_env.simulation.state import SimulationState
-from neutral_atom_env.visualization.workbench import build_inputs, initialize_input
+from neutral_atom_app.visualization.workbench import build_inputs, initialize_input
 
 
 def initial_state():

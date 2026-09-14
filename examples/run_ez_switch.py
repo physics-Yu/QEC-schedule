@@ -5,15 +5,15 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 from dataclasses import replace
 from neutral_atom_env.domain.models import HolderRef, HolderType as H, MobileCellIndex
-from neutral_atom_env.domain.operations import TaskIntent,TaskTarget
+from neutral_atom_env.domain.operations import TaskIntent, TaskTarget
 from neutral_atom_env.hardware.dynamic_traps import trap_state
-from neutral_atom_env.motion.persistent import PersistentTargetCompiler
-from neutral_atom_env.motion.greedy import GreedyCompiler
-from neutral_atom_env.simulation.pipeline import initialize
+from neutral_atom_strategies.motion.persistent import PersistentTargetCompiler
+from neutral_atom_strategies.motion.greedy import GreedyCompiler
+from neutral_atom_env.platform import initialize
 from neutral_atom_env.simulation import Executor
-from neutral_atom_env.simulation.m3 import initial_terminal
-from neutral_atom_env.simulation.m4 import run_m4
-from neutral_atom_env.visualization.workbench import build_inputs
+from neutral_atom_strategies.scheduling.m3 import initial_terminal
+from neutral_atom_strategies.scheduling.m4 import run_m4
+from neutral_atom_app.visualization.workbench import build_inputs
 from neutral_atom_env.visualization import VisualRecorder
 from neutral_atom_env.replay.serializer import canonical_json
 

@@ -8,10 +8,10 @@ from neutral_atom_env.domain.aod import AODConfiguration
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.domain.operations import ExecuteGateBatchIntent
 from neutral_atom_env.hardware import get_backend
-from neutral_atom_env.motion.compiler import MotionCompiler
+from neutral_atom_strategies.motion.compiler import MotionCompiler
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
-from neutral_atom_env.simulation.row_column_factory import make_row_column_state
+from neutral_atom_experiments.fixtures.row_column_factory import make_row_column_state
 
 
 @pytest.mark.parametrize('backend',['rigid','row_column'])

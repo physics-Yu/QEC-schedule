@@ -9,8 +9,8 @@ import pytest
 
 def test_closed_and_empty_slm_layers_preserve_atoms_and_aod(tmp_path):
     from neutral_atom_env.domain.models import StaticTrap, GridCoord, Position2D
-    from neutral_atom_env.simulation.milestone1_factory import make_single_gate_state
-    from neutral_atom_env.simulation.scheduler import EagerScheduler
+    from neutral_atom_experiments.fixtures.milestone1_factory import make_single_gate_state
+    from neutral_atom_strategies.scheduling.scheduler import EagerScheduler
     from neutral_atom_env.visualization import VisualRecorder
 
     node=shutil.which('node')

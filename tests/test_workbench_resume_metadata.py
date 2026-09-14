@@ -1,12 +1,12 @@
 """Read-only saved-result metadata regression; fixture is not a physics claim."""
 import json
 import pytest
-from neutral_atom_env.visualization.workbench_server import CompileJobs
+from neutral_atom_app.visualization.workbench_server import CompileJobs
 
 
 @pytest.mark.parametrize('suffix',[False,True])
 def test_saved_resume_scope_and_parent_observation_are_preserved(tmp_path,monkeypatch,suffix):
-    monkeypatch.setattr('neutral_atom_env.visualization.workbench_server.validate_input',lambda x:x)
+    monkeypatch.setattr('neutral_atom_app.visualization.workbench_server.validate_input',lambda x:x)
     source=tmp_path/'saved';source.mkdir()
     saved={'status':'checks_passed_replay_pending','actual_strategy':'qec_temporal_four',
            'compile_seconds':631.276,'metrics':{'completed_gate_count':1,'simulation_time_us':10}}

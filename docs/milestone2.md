@@ -16,8 +16,8 @@ node tests/replay_controls.cjs
 M2 报告为 `artifacts/milestone2/index.html`；包含初始/最终 state、逐事件快照、所有 plans、trace、metrics、diagnostics、真实关键帧/DAG、timeline 和共享模板回放。无解场景的 PASS 指预期拒绝被验证，其执行结果仍为 stalled。
 
 ```python
-from neutral_atom_env.simulation.milestone2_factory import make_circuit_state
-from neutral_atom_env.simulation.scheduler import EagerScheduler
+from neutral_atom_experiments.fixtures.milestone2_factory import make_circuit_state
+from neutral_atom_strategies.scheduling.scheduler import EagerScheduler
 from neutral_atom_env.simulation.state import SimulationState
 
 state = make_circuit_state('three_gate')

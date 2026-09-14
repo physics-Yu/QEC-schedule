@@ -1,5 +1,5 @@
 """Axis-safe partial handoffs, gated by the explicit hardware capability."""
-from .dynamic_traps import transfer as handoff
+from neutral_atom_env.hardware.dynamic_traps import transfer as handoff
 from neutral_atom_env.domain.operations import OperationType as K
 
 

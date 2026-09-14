@@ -9,7 +9,7 @@ from hashlib import sha256
 from sys import getsizeof
 from threading import RLock
 
-from .serializer import canonical_json
+from neutral_atom_env.replay.serializer import canonical_json
 
 
 class TraceEncodingCache:

@@ -7,14 +7,13 @@ import pytest
 from neutral_atom_env.circuit import PhysicalCircuit, DynamicGateDAG
 from neutral_atom_env.domain.aod import AODConfiguration
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.domain.models import (Atom, GridCoord, HolderRef, HolderType,
-    MobileCellIndex, Position2D, Rectangle, StaticTrap, Zone, ZoneType)
+from neutral_atom_env.domain.models import Atom, GridCoord, HolderRef, HolderType, MobileCellIndex, Position2D, Rectangle, StaticTrap, Zone, ZoneType
 from neutral_atom_env.domain.operations import HardwareConfig, TaskIntent, TaskTarget, CaptureBinding, OperationType as K
 from neutral_atom_env.hardware import get_backend
-from neutral_atom_env.motion.astar import AStarHalfGridPlanner
-from neutral_atom_env.motion.planners import RouteRequest, OrthogonalHalfGridPlanner
-from neutral_atom_env.motion.program import ProgramBuilder
-from neutral_atom_env.motion.single_trap import route
+from neutral_atom_strategies.motion.astar import AStarHalfGridPlanner
+from neutral_atom_strategies.motion.planners import RouteRequest, OrthogonalHalfGridPlanner
+from neutral_atom_env.program.builder import ProgramBuilder
+from neutral_atom_strategies.motion.single_trap import route
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.world import WorldState, PlacementState, AODRuntimeState

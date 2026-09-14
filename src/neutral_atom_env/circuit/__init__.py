@@ -1,2 +1,2 @@
-from .physical_circuit import PhysicalCircuit
-from .dynamic_dag import DynamicGateDAG
+from neutral_atom_env.circuit.physical_circuit import PhysicalCircuit
+from neutral_atom_env.circuit.dynamic_dag import DynamicGateDAG

@@ -1,2 +1,4 @@
 # Preserve reference PDFs exactly; do not apply Windows text conversion.
 *.pdf binary
+# Curated export hashes must survive checkout on every operating system.
+demo/** -text whitespace=cr-at-eol

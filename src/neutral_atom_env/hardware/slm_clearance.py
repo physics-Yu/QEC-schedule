@@ -1,7 +1,7 @@
 """Conservative geometric exclusion around enabled SLM traps, including empty ones."""
 from math import hypot
 from neutral_atom_env.domain.errors import ValidationError
-from .rigid_aod import distance, segment_clearance
+from neutral_atom_env.hardware.rigid_aod import distance, segment_clearance
 
 
 def validate_slm_clearance(state,end,phase=None,bindings=()):

@@ -29,7 +29,7 @@
 ```python
 from neutral_atom_env.domain.models import HolderRef, HolderType
 from neutral_atom_env.domain.operations import TaskIntent, TaskTarget
-from neutral_atom_env.motion.tasks import TargetTaskCompiler
+from neutral_atom_strategies.motion.tasks import TargetTaskCompiler
 from neutral_atom_env.simulation import Executor
 
 task = TaskIntent(
@@ -51,7 +51,7 @@ executor.run()
 ## 准备 / 脉冲 / 清理
 
 ```python
-from neutral_atom_env.motion.tasks import split_gate_program
+from neutral_atom_env.program.tasks import split_gate_program
 
 # full_plan 已由 SingleTrapCompiler 等通用 program 路径编译并验证。
 recipes = split_gate_program(full_plan, state, task_prefix='cz-0')

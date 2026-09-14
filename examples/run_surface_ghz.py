@@ -8,13 +8,13 @@ from time import perf_counter
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
-from neutral_atom_env.visualization.workbench import compile_input
+from neutral_atom_app.visualization.workbench import compile_input
 from neutral_atom_env.visualization.viewer import write_html
 from neutral_atom_env.replay.serializer import canonical_json
 
 
 def run(strategy,output,*,input_path=None):
-    from neutral_atom_env.experiments.surface_ghz import experiment_input
+    from neutral_atom_experiments.surface_ghz import experiment_input
     value=json.loads(Path(input_path).read_text(encoding='utf-8')) if input_path else experiment_input(compiler=strategy)
     value['compiler']=strategy
     output=Path(output);output.mkdir(parents=True,exist_ok=True)
@@ -30,7 +30,7 @@ def run(strategy,output,*,input_path=None):
             stream.write(line+'\n');stream.flush();print(line,flush=True)
         result,state=compile_input(value,progress)
     if result['status']=='completed':
-        from neutral_atom_env.experiments.surface_ghz import verify_gate_sequence
+        from neutral_atom_experiments.surface_ghz import verify_gate_sequence
         gates={g['id']:g for g in result['input']['gates']}
         effects=[]
         for raw in state.trace.records:

@@ -3,15 +3,14 @@ from dataclasses import replace
 import json
 import pytest
 
-from neutral_atom_env.domain.models import (Atom,PhysicalGate as Gate,Position2D as P,GridCoord,StaticTrap,Zone,ZoneType,
-    Rectangle,HolderRef,HolderType,GateStatus)
-from neutral_atom_env.domain.operations import OperationType as K,TaskIntent,TaskTarget,HardwareConfig
+from neutral_atom_env.domain.models import Atom, PhysicalGate as Gate, Position2D as P, GridCoord, StaticTrap, Zone, ZoneType, Rectangle, HolderRef, HolderType, GateStatus
+from neutral_atom_env.domain.operations import OperationType as K, TaskIntent, TaskTarget, HardwareConfig
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.circuit import PhysicalCircuit,DynamicGateDAG
-from neutral_atom_env.world import WorldState,PlacementState,AODRuntimeState
+from neutral_atom_env.circuit import PhysicalCircuit, DynamicGateDAG
+from neutral_atom_env.world import WorldState, PlacementState, AODRuntimeState
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.simulation import Executor
-from neutral_atom_env.motion.program import ProgramBuilder
+from neutral_atom_env.program.builder import ProgramBuilder
 from neutral_atom_env.quantum.stabilizer import StabilizerState
 from neutral_atom_env.replay.operation_codec import plan_from_dict
 from neutral_atom_env.replay.serializer import primitive
@@ -146,7 +145,7 @@ def test_readout_requires_measurement_zone_and_stable_support():
 
 def test_recorder_results_control_resources_and_post_program_rng():
     from neutral_atom_env.visualization.recording import VisualRecorder
-    from neutral_atom_env.domain.models import SimulationEvent,EventType
+    from neutral_atom_env.domain.models import SimulationEvent, EventType
     state=state_for([Gate('m','MEASURE',('q0',)),Gate('skip','X',('q1',),condition=(('m',1),))])
     plan,_=build(state,[(K.MEASUREMENT,('m',)),(K.RAMAN_ROTATION,('skip',))])
     recorder=VisualRecorder(state);executor=Executor(state);executor.submit(plan)

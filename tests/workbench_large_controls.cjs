@@ -12,7 +12,7 @@ class Element{
 }
 function parse(html){for(const m of html.matchAll(/<[^>]+\bid="([^"]+)"[^>]*>/g)){const e=new Element(m[1]);e.value=m[0].match(/value="([^"]*)"/)?.[1]||'';e.hidden=/\bhidden(?:\s|=|>)/.test(m[0]);nodes.set(m[1],e);}}
 const el=id=>{assert(nodes.has(id),id);return nodes.get(id);};
-parse(fs.readFileSync('src/neutral_atom_env/visualization/workbench.html','utf8'));
+parse(fs.readFileSync('src/neutral_atom_app/visualization/workbench.html','utf8'));
 const q=i=>'Q'+String(i).padStart(3,'0');
 function recording(n){return {scene:{bounds:{lower:{x_um:-10,y_um:-60},upper:{x_um:400,y_um:20}},zones:[],traps:[]},frames:[{atom_updates:Array.from({length:n},(_,i)=>({id:q(i),position:{x_um:i*10,y_um:0}}))}],operations:[],duration:1,summary:{metrics:{completed_gate_count:194}}};}
 const example={compiler:'row_greedy',layout:'row',atom_count:36,aod_traps:36,ez_policy:'adaptive',seed:0,compile_timeout_s:3600,row_candidate_budget:4096,route_expansions:100000,gates:Array.from({length:194},(_,i)=>({id:'e'+i,gate_type:'H',qubit_ids:[q(i%36)],parameters:[],column:Math.floor(i/36)}))};
@@ -31,7 +31,7 @@ const sandbox={console,AbortController,Blob,setTimeout,clearTimeout,
   else data={status:'cancelled'};
   return {ok:true,json:async()=>data};
  }};
-vm.createContext(sandbox);vm.runInContext(fs.readFileSync('src/neutral_atom_env/visualization/workbench.js','utf8'),sandbox);
+vm.createContext(sandbox);vm.runInContext(fs.readFileSync('src/neutral_atom_app/visualization/workbench.js','utf8'),sandbox);
 const exported=async()=>{el('export-input').onclick();return JSON.parse(await blob.text());};
 async function main(){
  await new Promise(r=>setImmediate(r));assert(mounts>0);

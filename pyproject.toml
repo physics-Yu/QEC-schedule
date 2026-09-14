@@ -11,13 +11,16 @@ dependencies = []
 
 [project.optional-dependencies]
 test = ["pytest>=8", "matplotlib>=3.8"]
+smt = ["z3-solver>=4.12,<6"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+namespaces = false
 
 [tool.setuptools.package-data]
-"neutral_atom_env.testing" = ["*.html"]
+"neutral_atom_experiments.testing" = ["*.html"]
 "neutral_atom_env.visualization" = ["*.html", "*.js"]
+"neutral_atom_app.visualization" = ["*.html", "*.js"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

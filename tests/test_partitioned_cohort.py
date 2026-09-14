@@ -10,17 +10,17 @@ from time import perf_counter
 
 from neutral_atom_env.domain.models import HolderType, ZoneType
 from neutral_atom_env.domain.operations import OperationType as K, TaskIntent, TaskTarget
-from neutral_atom_env.experiments.qec_four_layout import build_qec_four_inputs, coordinates
-from neutral_atom_env.motion.partitioned_cohort import PartitionedCohortCompiler
-from neutral_atom_env.motion.compiler import exact_validate
-from neutral_atom_env.motion.program import ProgramBuilder
-from neutral_atom_env.motion.task_validation import validate_target
+from neutral_atom_experiments.qec_four_layout import build_qec_four_inputs, coordinates
+from neutral_atom_strategies.motion.partitioned_cohort import PartitionedCohortCompiler
+from neutral_atom_env.program.binding import exact_validate
+from neutral_atom_env.program.builder import ProgramBuilder
+from neutral_atom_env.program.task_validation import validate_target
 from neutral_atom_env.replay.operation_codec import plan_from_dict
 from neutral_atom_env.replay.serializer import primitive
 from neutral_atom_env.simulation import Executor
-from neutral_atom_env.simulation.m3 import initial_terminal
-from neutral_atom_env.simulation.patch_greedy import patch_assignment
-from neutral_atom_env.simulation.pipeline import initialize
+from neutral_atom_strategies.scheduling.m3 import initial_terminal
+from neutral_atom_strategies.scheduling.patch_greedy import patch_assignment
+from neutral_atom_env.platform import initialize
 from neutral_atom_env.simulation.state import SimulationState
 
 

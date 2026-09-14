@@ -1,0 +1,92 @@
+{
+  "atoms": {
+    "Q000": {
+      "busy_time_us": 504.6,
+      "distance_um": 52.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 2,
+      "offload_count": 2,
+      "waiting_time_us": 1016.9
+    },
+    "Q001": {
+      "busy_time_us": 252.60000000000002,
+      "distance_um": 26.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 1,
+      "offload_count": 1,
+      "waiting_time_us": 1268.9
+    },
+    "Q002": {
+      "busy_time_us": 272.6,
+      "distance_um": 36.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 1,
+      "offload_count": 1,
+      "waiting_time_us": 1248.9
+    },
+    "Q003": {
+      "busy_time_us": 524.5999999999999,
+      "distance_um": 62.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 2,
+      "offload_count": 2,
+      "waiting_time_us": 996.9000000000001
+    },
+    "Q004": {
+      "busy_time_us": 252.60000000000002,
+      "distance_um": 26.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 1,
+      "offload_count": 1,
+      "waiting_time_us": 1268.9
+    },
+    "Q005": {
+      "busy_time_us": 0.6000000000000227,
+      "distance_um": 0.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 0,
+      "offload_count": 0,
+      "waiting_time_us": 1520.9
+    },
+    "Q006": {
+      "busy_time_us": 0.599999999999909,
+      "distance_um": 0.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 0,
+      "offload_count": 0,
+      "waiting_time_us": 1520.9
+    },
+    "Q007": {
+      "busy_time_us": 252.60000000000002,
+      "distance_um": 26.0,
+      "gate_counts": {
+        "CZ": 2
+      },
+      "load_count": 1,
+      "offload_count": 1,
+      "waiting_time_us": 1268.9
+    }
+  },
+  "counts_commit_at": "operation_completed",
+  "elapsed_us": 1521.5,
+  "format": "neutral-atom-statistics/1",
+  "pending_operations": 0,
+  "processed_records": 194,
+  "waiting_definition": "elapsed minus union of actual movement, transfer and applied effect intervals",
+  "window_end_us": 1521.5,
+  "window_start_us": 0.0
+}

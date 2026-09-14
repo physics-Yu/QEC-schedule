@@ -7,7 +7,7 @@ import sys
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
-from neutral_atom_env.experiments.surface_ghz import verify
+from neutral_atom_experiments.surface_ghz import verify
 
 
 def render():

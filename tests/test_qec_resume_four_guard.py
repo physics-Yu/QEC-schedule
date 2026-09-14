@@ -7,9 +7,9 @@ from types import SimpleNamespace
 
 import pytest
 
-import neutral_atom_env.simulation.qec_temporal_four as wrapper
-from neutral_atom_env.experiments.surface_qec_temporal_four import HISTORY_IDS,CORRECTION_PREFIX
-from neutral_atom_env.simulation.m4 import M4Result
+import neutral_atom_experiments.runners.qec_temporal_four as wrapper
+from neutral_atom_experiments.surface_qec_temporal_four import HISTORY_IDS, CORRECTION_PREFIX
+from neutral_atom_strategies.scheduling.m4 import M4Result
 
 
 def completed_protocol_view(*,terminal=False):

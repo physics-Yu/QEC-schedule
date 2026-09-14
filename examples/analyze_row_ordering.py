@@ -13,9 +13,9 @@ from pathlib import Path
 from time import perf_counter
 
 from neutral_atom_env.domain.models import Position2D as P
-from neutral_atom_env.simulation.pipeline import initialize
-from neutral_atom_env.simulation.row_greedy import row_assignment, empty_graph_distance
-from neutral_atom_env.visualization.workbench import build_inputs
+from neutral_atom_env.platform import initialize
+from neutral_atom_strategies.scheduling.row_greedy import row_assignment, empty_graph_distance
+from neutral_atom_app.visualization.workbench import build_inputs
 
 
 def analyze(value, *, depth=8, width=32):

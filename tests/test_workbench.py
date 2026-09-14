@@ -5,8 +5,8 @@ import time
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 import pytest
-from neutral_atom_env.visualization.workbench import validate_input, build_inputs, compile_input, preview
-from neutral_atom_env.visualization.workbench_server import CompileJobs, create_server
+from neutral_atom_app.visualization.workbench import validate_input, build_inputs, compile_input, preview
+from neutral_atom_app.visualization.workbench_server import CompileJobs, create_server
 
 
 def request(layout='row',count=4,gates=None):

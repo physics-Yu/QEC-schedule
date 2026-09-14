@@ -1,9 +1,6 @@
 import pytest
 
-from neutral_atom_env.experiments.surface_qec import (
-    DATA_IDS, X_CHECKS, Z_CHECKS, X_ORDER, Z_ORDER, protocol, simulate_ideal,
-    decode, correction_table, data,
-)
+from neutral_atom_experiments.surface_qec import DATA_IDS, X_CHECKS, Z_CHECKS, X_ORDER, Z_ORDER, protocol, simulate_ideal, decode, correction_table, data
 
 
 @pytest.mark.parametrize('seed', range(12))

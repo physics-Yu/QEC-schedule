@@ -6,10 +6,10 @@ from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.simulation.event_queue import EventQueue
-from neutral_atom_env.simulation.milestone1_factory import make_single_gate_state
-from neutral_atom_env.simulation.milestone2_factory import make_circuit_state
-from neutral_atom_env.simulation.scheduler import EagerScheduler
-from neutral_atom_env.motion.compiler import MotionCompiler
+from neutral_atom_experiments.fixtures.milestone1_factory import make_single_gate_state
+from neutral_atom_experiments.fixtures.milestone2_factory import make_circuit_state
+from neutral_atom_strategies.scheduling.scheduler import EagerScheduler
+from neutral_atom_strategies.motion.compiler import MotionCompiler
 from neutral_atom_env.domain.operations import ExecuteGateBatchIntent
 
 
@@ -143,7 +143,7 @@ def test_stalled_diagnostics_and_read_only_candidate_search():
 
 
 def test_feasible_ready_gate_is_not_hidden_by_first_failure():
-    from neutral_atom_env.circuit import PhysicalCircuit,DynamicGateDAG
+    from neutral_atom_env.circuit import PhysicalCircuit, DynamicGateDAG
     from neutral_atom_env.domain.models import PhysicalGate
     state=make_circuit_state()
     gates=(PhysicalGate('G000','H',('Q001',)),PhysicalGate('G001','CZ',('Q000','Q002')))
@@ -165,7 +165,7 @@ def test_episode_origin_excludes_wait_before_first_plan():
 
 
 def test_parameterized_gate_is_rejected_without_aliasing_cz():
-    from neutral_atom_env.circuit import PhysicalCircuit,DynamicGateDAG
+    from neutral_atom_env.circuit import PhysicalCircuit, DynamicGateDAG
     state=make_single_gate_state()
     gate=replace(state.dag.circuit.gates[0],gate_type='CPHASE',parameters=(.7,))
     state=replace(state,dag=DynamicGateDAG(PhysicalCircuit((gate,))))
@@ -208,7 +208,7 @@ def test_empty_queue_active_runtime_cannot_silently_finish():
 
 
 def test_new_source_capture_includes_incidental_atom_in_full_cycle():
-    from neutral_atom_env.domain.models import Atom,StaticTrap,GridCoord,HolderRef,HolderType
+    from neutral_atom_env.domain.models import Atom, StaticTrap, GridCoord, HolderRef, HolderType
     from neutral_atom_env.world import PlacementState
     state=make_circuit_state()
     traps=dict(state.world.traps);traps['S004']=StaticTrap('S004',GridCoord(5,1),Position2D(25,5))

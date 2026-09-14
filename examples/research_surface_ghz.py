@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
-from neutral_atom_env.experiments.surface_ghz import input_payload, phase_columns, verify
+from neutral_atom_experiments.surface_ghz import input_payload, phase_columns, verify
 
 
 if __name__ == '__main__':

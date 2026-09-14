@@ -8,7 +8,7 @@ from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.domain.models import HolderType as H, HolderRef, MobileCellIndex
 from neutral_atom_env.domain.operations import OperationType as K, TrapState, TransferRuntime
 from neutral_atom_env.world import PlacementState
-from .rigid_aod import distance, segment_clearance
+from neutral_atom_env.hardware.rigid_aod import distance, segment_clearance
 
 
 LOADS = {K.AOD_LOAD, K.AOD_RECAPTURE}
@@ -69,7 +69,7 @@ def switch_traps(state, target):
     if state.aod.is_moving or state.transfer is not None:
         raise ValidationError('TRAP_SWITCH_BUSY', 'Switch requires stationary geometry outside a handoff')
     result = with_traps(state, target)  # Checks every holder before any commit.
-    from . import get_backend
+    from neutral_atom_env.hardware import get_backend
     backend = get_backend(state.hardware)
     backend.validate_pose(result, result.aod.pose)
     validate_active_sweep(result, result.aod)

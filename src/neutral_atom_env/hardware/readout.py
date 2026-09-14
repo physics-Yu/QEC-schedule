@@ -4,7 +4,7 @@ No readout fidelity, heating, loss or crosstalk model is inferred. The 500/100 u
 defaults are explicit simulation assumptions, not a hardware calibration.
 """
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.domain.models import HolderType,ZoneType
+from neutral_atom_env.domain.models import HolderType, ZoneType
 from neutral_atom_env.domain.operations import OperationType as K
 
 

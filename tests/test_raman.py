@@ -6,9 +6,10 @@ from neutral_atom_env.circuit import PhysicalCircuit
 from neutral_atom_env.domain.models import PhysicalGate, GateStatus, HolderType, HolderRef, MobileCellIndex
 from neutral_atom_env.domain.operations import ExecuteGateBatchIntent, OperationType as K
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.motion.single_trap import SingleTrapCompiler
-from neutral_atom_env.motion.compiler import exact_validate
-from neutral_atom_env.simulation.pipeline import Platform, initialize, run_circuit
+from neutral_atom_strategies.motion.single_trap import SingleTrapCompiler
+from neutral_atom_env.program.binding import exact_validate
+from neutral_atom_env.platform import Platform, initialize
+from neutral_atom_app.pipeline import run_circuit
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.visualization import VisualRecorder

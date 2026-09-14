@@ -5,14 +5,14 @@ import pytest
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.domain.models import HolderRef, HolderType, GateStatus
 from neutral_atom_env.domain.operations import TaskIntent, TaskTarget, OperationType as K
-from neutral_atom_env.motion.multi_trap import MultiTrapGreedyCompiler
-from neutral_atom_env.motion.program import ProgramBuilder
-from neutral_atom_env.motion.scheduled import scheduled_program
+from neutral_atom_strategies.motion.multi_trap import MultiTrapGreedyCompiler
+from neutral_atom_env.program.builder import ProgramBuilder
+from neutral_atom_env.program.scheduled import scheduled_program
 from neutral_atom_env.simulation import Executor
-from neutral_atom_env.simulation.m3 import initial_terminal
-from neutral_atom_env.simulation.pipeline import initialize
+from neutral_atom_strategies.scheduling.m3 import initial_terminal
+from neutral_atom_env.platform import initialize
 from neutral_atom_env.simulation.state import SimulationState
-from neutral_atom_env.visualization.workbench import build_inputs
+from neutral_atom_app.visualization.workbench import build_inputs
 
 
 def make(n,capacity=None,gates=(),layout='row'):

@@ -59,7 +59,7 @@ X check：ancilla初态0，先H到 `|+>`，按下列顺序做 `CX(ancilla,data)`
 
 ```python
 from neutral_atom_env.quantum.stabilizer import StabilizerState
-from neutral_atom_env.experiments.surface_qec import (
+from neutral_atom_experiments.surface_qec import (
     experiment_input, protocol, decode, simulate_ideal, summarize, quantum_summary,
 )
 raw = experiment_input(fault={'pauli': 'Y', 'qubit_id': 'Q013'})

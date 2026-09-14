@@ -10,9 +10,8 @@ from urllib.request import Request, urlopen
 import pytest
 
 from neutral_atom_env.domain.models import MobileCellIndex
-from neutral_atom_env.visualization.workbench import (MAX_ATOMS, MAX_COLUMNS, MAX_GATES,
-    SEARCH_LIMITS, build_inputs, compile_input, validate_input)
-from neutral_atom_env.visualization.workbench_server import CompileJobs, create_server
+from neutral_atom_app.visualization.workbench import MAX_ATOMS, MAX_COLUMNS, MAX_GATES, SEARCH_LIMITS, build_inputs, compile_input, validate_input
+from neutral_atom_app.visualization.workbench_server import CompileJobs, create_server
 
 
 def experiment(**changes):
@@ -98,7 +97,7 @@ def test_timeout_is_enforced_even_if_worker_always_has_progress(tmp_path,monkeyp
     job = {'id':'fake','status':'compiling','started':0,'timeout_seconds':1,
            'process':process,'input':experiment(),'progress':{}}
     clock = iter([.2, .4, 1.1])
-    monkeypatch.setattr('neutral_atom_env.visualization.workbench_server.time.monotonic',lambda:next(clock))
+    monkeypatch.setattr('neutral_atom_app.visualization.workbench_server.time.monotonic',lambda:next(clock))
     jobs._monitor(job,connection)
     assert job['error']['code'] == 'COMPILE_TIMEOUT'
     assert process.terminated and connection.closed
@@ -136,7 +135,7 @@ def test_editor_deep_links_use_real_api_and_recompile_saved_input(tmp_path):
     thread = threading.Thread(target=server.serve_forever,daemon=True)
     thread.start()
     try:
-        value = experiment(atom_count=2, aod_traps=2, gates=[
+        value = experiment(studio={'mode':'custom'}, atom_count=2, aod_traps=2, gates=[
             {'id':f'h{i}','gate_type':'H','qubit_ids':[f'Q{i:03d}'],'column':0}
             for i in range(2)])
         key = server.jobs.start(value)

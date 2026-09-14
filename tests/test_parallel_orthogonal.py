@@ -3,13 +3,13 @@ import json
 from collections import Counter
 from dataclasses import replace
 import pytest
-from neutral_atom_env.visualization.workbench import compile_input,build_inputs
-from neutral_atom_env.simulation.pipeline import initialize
-from neutral_atom_env.simulation.m4 import run_m4,fill_raman
+from neutral_atom_app.visualization.workbench import compile_input, build_inputs
+from neutral_atom_env.platform import initialize
+from neutral_atom_strategies.scheduling.m4 import run_m4, fill_raman
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
-from neutral_atom_env.motion.greedy import GreedyCompiler
-from neutral_atom_env.motion.scheduled import scheduled_program
+from neutral_atom_strategies.motion.greedy import GreedyCompiler
+from neutral_atom_env.program.scheduled import scheduled_program
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.domain.models import GateStatus
 from neutral_atom_env.visualization import VisualRecorder

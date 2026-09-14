@@ -4,12 +4,12 @@ import pytest
 
 from neutral_atom_env.domain.operations import TaskIntent, TaskTarget
 from neutral_atom_env.domain.models import Position2D
-from neutral_atom_env.motion.multi_trap import MultiTrapGreedyCompiler
-from neutral_atom_env.motion.program import ProgramBuilder
-from neutral_atom_env.simulation.pipeline import initialize
+from neutral_atom_strategies.motion.multi_trap import MultiTrapGreedyCompiler
+from neutral_atom_env.program.builder import ProgramBuilder
+from neutral_atom_env.platform import initialize
 from neutral_atom_env.simulation.executor import Executor
-from neutral_atom_env.simulation.row_greedy import run_row, row_assignment, gate_service, service_lower_bound
-from neutral_atom_env.visualization.workbench import build_inputs
+from neutral_atom_strategies.scheduling.row_greedy import run_row, row_assignment, gate_service, service_lower_bound
+from neutral_atom_app.visualization.workbench import build_inputs
 from neutral_atom_env.replay.operation_codec import event_from_dict
 import json
 
@@ -69,7 +69,7 @@ def test_bounds_against_all_legal_orientations_and_lights():
 def test_budget_exhaustion_is_visible_and_geometry_rejection_is_atomic(monkeypatch):
     # Deliberately loose, still admissible bounds ensure this tests the budget
     # branch even when the production graph bound exactly proves the winner.
-    monkeypatch.setattr('neutral_atom_env.simulation.row_greedy.service_lower_bound',lambda *args:0.)
+    monkeypatch.setattr('neutral_atom_strategies.scheduling.row_greedy.service_lower_bound',lambda *args:0.)
     state=initial();result=run_row(state,strategy='row_greedy',candidate_budget=1)
     assert result.status=='completed'
     assert any(d.get('budget_omitted',0)>0 and not d['local_optimum_certified'] for d in result.decision_log)
@@ -95,8 +95,8 @@ def test_empty_graph_bound_matches_independent_dijkstra_and_respects_footprint()
     from heapq import heappop,heappush
     from types import SimpleNamespace
     from neutral_atom_env.domain.aod import AODConfiguration
-    from neutral_atom_env.motion.astar import AStarHalfGridPlanner
-    from neutral_atom_env.simulation.row_greedy import empty_graph_distance
+    from neutral_atom_strategies.motion.astar import AStarHalfGridPlanner
+    from neutral_atom_strategies.scheduling.row_greedy import empty_graph_distance
     from neutral_atom_env.domain.errors import ValidationError
     state=initial();bounds=state.world.bounds;span=30
     for a,b in [(Position2D(0,0),Position2D(30,-25)),

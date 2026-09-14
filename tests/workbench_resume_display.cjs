@@ -1,5 +1,5 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
-const path=process.argv[2]||'src/neutral_atom_env/visualization/workbench.js';
+const path=process.argv[2]||'src/neutral_atom_app/visualization/workbench.js';
 const source=fs.readFileSync(path,'utf8');
 const helpers=source.slice(source.indexOf('function resumedExecutionText('),source.indexOf('function renderDecisions('));
 assert(helpers.includes('function resumedCompileSummary('));

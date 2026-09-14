@@ -3,8 +3,8 @@ import json
 
 import pytest
 
-from neutral_atom_env.experiments.surface_qec import experiment_input
-from neutral_atom_env.visualization.workbench import build_inputs,validate_input,preview
+from neutral_atom_experiments.surface_qec import experiment_input
+from neutral_atom_app.visualization.workbench import build_inputs, validate_input, preview
 
 
 def test_old_normalized_input_does_not_gain_origins():

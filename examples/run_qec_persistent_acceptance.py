@@ -12,15 +12,15 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 
 
 def main():
-    from neutral_atom_env.visualization.workbench import build_inputs
-    from neutral_atom_env.simulation.pipeline import initialize
-    from neutral_atom_env.simulation.qec_persistent import run_qec_persistent
+    from neutral_atom_app.visualization.workbench import build_inputs
+    from neutral_atom_env.platform import initialize
+    from neutral_atom_strategies.scheduling.qec_persistent import run_qec_persistent
     from neutral_atom_env.quantum.stabilizer import StabilizerState
-    from neutral_atom_env.experiments.surface_qec import summarize
+    from neutral_atom_experiments.surface_qec import summarize
     from neutral_atom_env.replay.serializer import canonical_json
     from neutral_atom_env.replay.checkpoint import restore
-    from neutral_atom_env.motion.task_validation import validate_target
-    from neutral_atom_env.simulation.m3 import initial_terminal
+    from neutral_atom_env.program.task_validation import validate_target
+    from neutral_atom_strategies.scheduling.m3 import initial_terminal
     from neutral_atom_env.visualization import VisualRecorder
     from neutral_atom_env.visualization.viewer import write_html
     from qec_roadmap_status import update

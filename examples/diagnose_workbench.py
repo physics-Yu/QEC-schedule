@@ -10,10 +10,10 @@ import sys
 from time import perf_counter
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'src'))
-from neutral_atom_env.simulation import m4
-from neutral_atom_env.motion.multi_trap import MultiTrapGreedyCompiler
-from neutral_atom_env.motion.greedy import GreedyCompiler
-from neutral_atom_env.visualization.workbench import compile_input
+from neutral_atom_strategies.scheduling import m4
+from neutral_atom_strategies.motion.multi_trap import MultiTrapGreedyCompiler
+from neutral_atom_strategies.motion.greedy import GreedyCompiler
+from neutral_atom_app.visualization.workbench import compile_input
 from neutral_atom_env.visualization.viewer import write_html
 from neutral_atom_env.replay.serializer import canonical_json
 

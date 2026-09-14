@@ -5,15 +5,15 @@ import json
 from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'src'))
-from neutral_atom_env.simulation.pipeline import Platform, load_circuit, initialize
-from neutral_atom_env.simulation.scheduler import EagerScheduler
-from neutral_atom_env.planning.eager_baseline import EagerBaseline
-from neutral_atom_env.planning.compilers import make_compiler
+from neutral_atom_env.platform import Platform, load_circuit, initialize
+from neutral_atom_strategies.scheduling.scheduler import EagerScheduler
+from neutral_atom_strategies.planning.eager_baseline import EagerBaseline
+from neutral_atom_strategies.planning.compilers import make_compiler
 from neutral_atom_env.replay.serializer import canonical_json
 from neutral_atom_env.visualization import VisualRecorder, write_bundle, render_summary
-from neutral_atom_env.testing.renderer import render_layout, render_dag
-from neutral_atom_env.testing.theme import VisualTheme
-from neutral_atom_env.testing.artifacts import page
+from neutral_atom_experiments.testing.renderer import render_layout, render_dag
+from neutral_atom_env.visualization.theme import VisualTheme
+from neutral_atom_experiments.testing.artifacts import page
 
 
 def build(circuit_path, platform_path, placement_path, output, *, strategy='single_trap', anchor_order='forward'):

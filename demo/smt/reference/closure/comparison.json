@@ -1,0 +1,556 @@
+{
+  "input": {
+    "name": "矩形闭包：启发式遗漏的 2×2 子集",
+    "positions": [
+      [
+        0,
+        0
+      ],
+      [
+        10,
+        0
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        20,
+        20
+      ],
+      [
+        0,
+        20
+      ],
+      [
+        40,
+        0
+      ],
+      [
+        50,
+        0
+      ],
+      [
+        40,
+        10
+      ],
+      [
+        50,
+        10
+      ],
+      [
+        60,
+        20
+      ],
+      [
+        40,
+        20
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        60,
+        0
+      ]
+    ],
+    "aod_rows": 3,
+    "aod_columns": 7,
+    "gates": [
+      {
+        "type": "CZ",
+        "qubits": [
+          0,
+          6
+        ]
+      },
+      {
+        "type": "CZ",
+        "qubits": [
+          1,
+          7
+        ]
+      },
+      {
+        "type": "CZ",
+        "qubits": [
+          2,
+          8
+        ]
+      },
+      {
+        "type": "CZ",
+        "qubits": [
+          3,
+          9
+        ]
+      },
+      {
+        "type": "CZ",
+        "qubits": [
+          4,
+          10
+        ]
+      },
+      {
+        "type": "CZ",
+        "qubits": [
+          5,
+          11
+        ]
+      }
+    ],
+    "timeout_s": 60,
+    "solver_timeout_ms": 5000,
+    "model_budget": 24,
+    "route_expansions": 20000
+  },
+  "results": [
+    {
+      "baseline_log": [
+        {
+          "bound_pruned": 87,
+          "constructed": 1,
+          "heuristic_candidates": 96,
+          "implementation": "existing candidate_groups + preflight_group + batch_service; fixed EZ start",
+          "objective": "actual restoring duration per completed gate"
+        },
+        {
+          "bound_pruned": 31,
+          "constructed": 1,
+          "heuristic_candidates": 40,
+          "implementation": "existing candidate_groups + preflight_group + batch_service; fixed EZ start",
+          "objective": "actual restoring duration per completed gate"
+        },
+        {
+          "bound_pruned": 7,
+          "constructed": 1,
+          "heuristic_candidates": 8,
+          "implementation": "existing candidate_groups + preflight_group + batch_service; fixed EZ start",
+          "objective": "actual restoring duration per completed gate"
+        }
+      ],
+      "compile_seconds": 1.6710034999996424,
+      "compile_timing_scope": "planning + validation + actual execution + recording; excludes imports, replay, export",
+      "cz_batch_sizes": [
+        3,
+        2,
+        1
+      ],
+      "cz_stages": 3,
+      "decisions": [
+        {
+          "gate_ids": [
+            "g000",
+            "g002",
+            "g005"
+          ],
+          "kind": "CZ",
+          "members": [
+            [
+              "g000",
+              "Q006",
+              "Q000"
+            ],
+            [
+              "g002",
+              "Q008",
+              "Q002"
+            ],
+            [
+              "g005",
+              "Q011",
+              "Q005"
+            ]
+          ],
+          "shift": [
+            38.0,
+            0
+          ]
+        },
+        {
+          "gate_ids": [
+            "g001",
+            "g003"
+          ],
+          "kind": "CZ",
+          "members": [
+            [
+              "g001",
+              "Q007",
+              "Q001"
+            ],
+            [
+              "g003",
+              "Q009",
+              "Q003"
+            ]
+          ],
+          "shift": [
+            38.0,
+            0
+          ]
+        },
+        {
+          "gate_ids": [
+            "g004"
+          ],
+          "kind": "CZ",
+          "members": [
+            [
+              "g004",
+              "Q010",
+              "Q004"
+            ]
+          ],
+          "shift": [
+            38.0,
+            0
+          ]
+        }
+      ],
+      "effects_once": true,
+      "error": null,
+      "execution_recording_seconds": 1.2453860000823624,
+      "initial_sha256": "fe336f267e568fef5e1065cee7ff0fd0ae295760a9ab4042bcbe52d45df497a9",
+      "input_sha256": "5ef8e208eef3c750b23d1aee2221687c45ee4240f106ecf9375d101a231448fe",
+      "max_cz_batch": 3,
+      "metrics": {
+        "aod_busy_time_us": 1366.8999999999999,
+        "aod_load_count": 3,
+        "aod_offload_count": 3,
+        "aod_utilization": 0.9999999999999999,
+        "captured_atom_count_total": 6,
+        "circuit_makespan_us": 1060.9,
+        "committed_events": 132,
+        "completed_gate_count": 6,
+        "completed_plan_count": 4,
+        "cycle_makespan_us": 120.0,
+        "episode_start_us": 0.0,
+        "episode_wall_time_us": 1366.9,
+        "incidental_atom_transport_total": 0,
+        "laser_busy_time_us": 0.8999999999999999,
+        "laser_utilization": 0.0006584241714829174,
+        "last_cycle_duration_us": 120.0,
+        "last_pulse_elapsed_us": 1060.9,
+        "last_pulse_time_us": 1060.9,
+        "logical_completion_elapsed_us": 1060.9,
+        "measurement_busy_time_us": 0.0,
+        "raman_busy_time_us": 0.0,
+        "raman_utilization": 0.0,
+        "reset_busy_time_us": 0.0,
+        "simulation_time_us": 1366.9,
+        "throughput_gates_per_us": 0.004389494476552783,
+        "total_aod_distance_um": 383.0,
+        "total_atom_distance_um": 516.0
+      },
+      "physical_optimality_claim": false,
+      "realization_seconds": 0.4255026000319049,
+      "rejection_count": 16,
+      "replay_equal": true,
+      "replay_seconds": 1.1744693999644369,
+      "scope": "fixed EZ layout, 10um rigid axes, restoring batches, canonical pickup origin; no persistent or deformable routing",
+      "solver_build_seconds": 0,
+      "solver_log": [],
+      "solver_seconds": 0,
+      "solver_version": "5.1.0",
+      "status": "completed",
+      "strategy": "greedy",
+      "terminal_verified": true,
+      "process_wall_seconds": 3.28865569998743
+    },
+    {
+      "baseline_log": [],
+      "compile_seconds": 1.4185904000187293,
+      "compile_timing_scope": "planning + validation + actual execution + recording; excludes imports, replay, export",
+      "cz_batch_sizes": [
+        5,
+        1
+      ],
+      "cz_stages": 2,
+      "decisions": [
+        {
+          "gate_ids": [
+            "g000",
+            "g001",
+            "g002",
+            "g003",
+            "g005"
+          ],
+          "kind": "CZ",
+          "members": [
+            [
+              "g000",
+              "Q006",
+              "Q000"
+            ],
+            [
+              "g001",
+              "Q007",
+              "Q001"
+            ],
+            [
+              "g002",
+              "Q008",
+              "Q002"
+            ],
+            [
+              "g003",
+              "Q009",
+              "Q003"
+            ],
+            [
+              "g005",
+              "Q011",
+              "Q005"
+            ]
+          ],
+          "shift": [
+            38.0,
+            0.0
+          ]
+        },
+        {
+          "gate_ids": [
+            "g004"
+          ],
+          "kind": "CZ",
+          "members": [
+            [
+              "g004",
+              "Q010",
+              "Q004"
+            ]
+          ],
+          "shift": [
+            38.0,
+            0.0
+          ]
+        }
+      ],
+      "effects_once": true,
+      "error": null,
+      "execution_recording_seconds": 0.920061299984809,
+      "initial_sha256": "fe336f267e568fef5e1065cee7ff0fd0ae295760a9ab4042bcbe52d45df497a9",
+      "input_sha256": "5ef8e208eef3c750b23d1aee2221687c45ee4240f106ecf9375d101a231448fe",
+      "max_cz_batch": 5,
+      "metrics": {
+        "aod_busy_time_us": 984.5999999999999,
+        "aod_load_count": 2,
+        "aod_offload_count": 2,
+        "aod_utilization": 0.9999999999999999,
+        "captured_atom_count_total": 6,
+        "circuit_makespan_us": 678.6,
+        "committed_events": 94,
+        "completed_gate_count": 6,
+        "completed_plan_count": 3,
+        "cycle_makespan_us": 120.0,
+        "episode_start_us": 0.0,
+        "episode_wall_time_us": 984.6,
+        "incidental_atom_transport_total": 0,
+        "laser_busy_time_us": 0.6,
+        "laser_utilization": 0.0006093845216331504,
+        "last_cycle_duration_us": 120.0,
+        "last_pulse_elapsed_us": 678.6,
+        "last_pulse_time_us": 678.6,
+        "logical_completion_elapsed_us": 678.6,
+        "measurement_busy_time_us": 0.0,
+        "raman_busy_time_us": 0.0,
+        "raman_utilization": 0.0,
+        "reset_busy_time_us": 0.0,
+        "simulation_time_us": 984.6,
+        "throughput_gates_per_us": 0.006093845216331505,
+        "total_aod_distance_um": 292.0,
+        "total_atom_distance_um": 516.0
+      },
+      "physical_optimality_claim": false,
+      "realization_seconds": 0.21300499996868894,
+      "rejection_count": 0,
+      "replay_equal": true,
+      "replay_seconds": 0.9222577000036836,
+      "scope": "fixed EZ layout, 10um rigid axes, restoring batches, canonical pickup origin; no persistent or deformable routing",
+      "solver_build_seconds": 0.19348010001704097,
+      "solver_log": [
+        {
+          "assertions": 876,
+          "batch_sizes": [
+            5
+          ],
+          "build_s": 0.11275369999930263,
+          "horizon": 1,
+          "previous_realizer_exclusions": 0,
+          "solve_s": 0.03534469997975975,
+          "status": "SAT",
+          "symbolic_optimality_scope": "restoring endpoint model after recorded search exclusions"
+        },
+        {
+          "assertions": 811,
+          "batch_sizes": [
+            1
+          ],
+          "build_s": 0.08072640001773834,
+          "horizon": 1,
+          "previous_realizer_exclusions": 0,
+          "solve_s": 0.010393199976533651,
+          "status": "SAT",
+          "symbolic_optimality_scope": "restoring endpoint model after recorded search exclusions"
+        }
+      ],
+      "solver_seconds": 0.045737899956293404,
+      "solver_version": "5.1.0",
+      "status": "completed",
+      "strategy": "smt_single",
+      "terminal_verified": true,
+      "process_wall_seconds": 2.6772997000371106
+    },
+    {
+      "baseline_log": [],
+      "compile_seconds": 1.7451577000319958,
+      "compile_timing_scope": "planning + validation + actual execution + recording; excludes imports, replay, export",
+      "cz_batch_sizes": [
+        2,
+        4
+      ],
+      "cz_stages": 2,
+      "decisions": [
+        {
+          "gate_ids": [
+            "g000",
+            "g001"
+          ],
+          "kind": "CZ",
+          "members": [
+            [
+              "g000",
+              "Q006",
+              "Q000"
+            ],
+            [
+              "g001",
+              "Q007",
+              "Q001"
+            ]
+          ],
+          "shift": [
+            38.0,
+            0.0
+          ]
+        },
+        {
+          "gate_ids": [
+            "g002",
+            "g003",
+            "g004",
+            "g005"
+          ],
+          "kind": "CZ",
+          "members": [
+            [
+              "g002",
+              "Q008",
+              "Q002"
+            ],
+            [
+              "g003",
+              "Q009",
+              "Q003"
+            ],
+            [
+              "g004",
+              "Q010",
+              "Q004"
+            ],
+            [
+              "g005",
+              "Q011",
+              "Q005"
+            ]
+          ],
+          "shift": [
+            38.0,
+            0.0
+          ]
+        }
+      ],
+      "effects_once": true,
+      "error": null,
+      "execution_recording_seconds": 0.9165284999762662,
+      "initial_sha256": "fe336f267e568fef5e1065cee7ff0fd0ae295760a9ab4042bcbe52d45df497a9",
+      "input_sha256": "5ef8e208eef3c750b23d1aee2221687c45ee4240f106ecf9375d101a231448fe",
+      "max_cz_batch": 4,
+      "metrics": {
+        "aod_busy_time_us": 874.5999999999999,
+        "aod_load_count": 2,
+        "aod_offload_count": 2,
+        "aod_utilization": 0.9999999999999999,
+        "captured_atom_count_total": 6,
+        "circuit_makespan_us": 628.5999999999999,
+        "committed_events": 86,
+        "completed_gate_count": 6,
+        "completed_plan_count": 1,
+        "cycle_makespan_us": 874.6,
+        "episode_start_us": 0.0,
+        "episode_wall_time_us": 874.6,
+        "incidental_atom_transport_total": 0,
+        "laser_busy_time_us": 0.6,
+        "laser_utilization": 0.000686027898467871,
+        "last_cycle_duration_us": 874.6,
+        "last_pulse_elapsed_us": 628.5999999999999,
+        "last_pulse_time_us": 628.5999999999999,
+        "logical_completion_elapsed_us": 628.5999999999999,
+        "measurement_busy_time_us": 0.0,
+        "raman_busy_time_us": 0.0,
+        "raman_utilization": 0.0,
+        "reset_busy_time_us": 0.0,
+        "simulation_time_us": 874.6,
+        "throughput_gates_per_us": 0.00686027898467871,
+        "total_aod_distance_um": 237.0,
+        "total_atom_distance_um": 516.0
+      },
+      "physical_optimality_claim": false,
+      "realization_seconds": 0.25543919997289777,
+      "rejection_count": 0,
+      "replay_equal": true,
+      "replay_seconds": 0.8811854000086896,
+      "scope": "fixed EZ layout, 10um rigid axes, restoring batches, canonical pickup origin; no persistent or deformable routing",
+      "solver_build_seconds": 0.39103840006282553,
+      "solver_log": [
+        {
+          "assertions": 876,
+          "build_s": 0.13756320002721623,
+          "horizon": 1,
+          "previous_realizer_exclusions": 0,
+          "solve_s": 0.012342099973466247,
+          "status": "UNSAT"
+        },
+        {
+          "assertions": 1728,
+          "batch_sizes": [
+            2,
+            4
+          ],
+          "build_s": 0.2534752000356093,
+          "horizon": 2,
+          "previous_realizer_exclusions": 0,
+          "solve_s": 0.12635770003544167,
+          "status": "SAT",
+          "symbolic_optimality_scope": "restoring endpoint model after recorded search exclusions"
+        }
+      ],
+      "solver_seconds": 0.13869980000890791,
+      "solver_version": "5.1.0",
+      "status": "completed",
+      "strategy": "smt_multi",
+      "terminal_verified": true,
+      "process_wall_seconds": 2.944153800024651
+    }
+  ],
+  "same_initial_state": true,
+  "fresh_process_per_strategy": true,
+  "status": "completed"
+}

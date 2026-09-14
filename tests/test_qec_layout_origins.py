@@ -1,13 +1,13 @@
 """4A first-attempt layout contracts; no compiler or physics substitution."""
 import pytest
 
-from neutral_atom_env.experiments.qec_layout import build_qec_inputs,coordinates,normalize_patch_origins
-from neutral_atom_env.domain.models import Position2D as P,Rectangle,StaticTrap,GridCoord,Zone,ZoneType
+from neutral_atom_experiments.qec_layout import build_qec_inputs, coordinates, normalize_patch_origins
+from neutral_atom_env.domain.models import Position2D as P, Rectangle, StaticTrap, GridCoord, Zone, ZoneType
 from neutral_atom_env.domain.operations import HardwareConfig
-from neutral_atom_env.world import WorldState,AODRuntimeState
-from neutral_atom_env.simulation.pipeline import Platform,initialize
+from neutral_atom_env.world import WorldState, AODRuntimeState
+from neutral_atom_env.platform import Platform, initialize
 from neutral_atom_env.replay.serializer import canonical_json
-from neutral_atom_env.motion.patch_array import PatchArrayCompiler
+from neutral_atom_strategies.motion.patch_array import PatchArrayCompiler
 
 
 def legacy_platform():

@@ -7,10 +7,11 @@ from neutral_atom_env.domain.models import PhysicalGate, HolderRef, HolderType, 
 from neutral_atom_env.domain.operations import TaskIntent, TaskTarget, ExecuteGateBatchIntent, OperationType as K
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.hardware.dynamic_traps import trap_state
-from neutral_atom_env.motion.single_trap import SingleTrapCompiler
-from neutral_atom_env.motion.tasks import TargetTaskCompiler, TaskProgram, split_gate_program
-from neutral_atom_env.motion.program import ProgramBuilder
-from neutral_atom_env.simulation.pipeline import initialize, Platform
+from neutral_atom_strategies.motion.single_trap import SingleTrapCompiler
+from neutral_atom_strategies.motion.tasks import TargetTaskCompiler
+from neutral_atom_env.program.tasks import TaskProgram, split_gate_program
+from neutral_atom_env.program.builder import ProgramBuilder
+from neutral_atom_env.platform import initialize, Platform
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.visualization import VisualRecorder
@@ -125,7 +126,7 @@ def test_effect_task_can_run_on_stable_slm_while_other_atom_remains_loaded_seria
     with pytest.raises(ValidationError,match='RAMAN_NEIGHBOR_TOO_CLOSE'):
         TargetTaskCompiler().compile(h,state)
     # Keep the partner loaded, but explicitly separate the 2 um CZ pair.
-    from neutral_atom_env.motion.persistent import PersistentTargetCompiler
+    from neutral_atom_strategies.motion.persistent import PersistentTargetCompiler
     original_axes=state.aod.configuration()
     away=replace(original_axes,x_um=(original_axes.x_um[0]-5,))
     execute(state,PersistentTargetCompiler().compile(TaskIntent('separate-for-h',TaskTarget(aod_configuration=away)),state))

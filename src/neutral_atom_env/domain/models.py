@@ -4,7 +4,7 @@ from math import isfinite
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from .operations import CompiledPlan
+    from neutral_atom_env.domain.operations import CompiledPlan
 
 
 @dataclass(frozen=True)

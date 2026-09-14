@@ -1,5 +1,7 @@
 # 可视化自动生成规范
 
+2026-09-14 对外入口统一为 `demo/`，使用 `python demo/launch.py` 启动同源工作台/SMT后端及首页；生成源仍在src，不手改导出副本。`tools/build_demo_bundle.py` 导出已批准参考与HTML/JS，`tools/check_demo_bundle.py` 核验哈希/链接；新任务输出与参考隔离。跨电脑说明与真实测试边界见 [交付核验](../docs/demo_delivery_validation.md)。
+
 2026-09-13 当前修订：[配置分层合同](../docs/workbench_configurations.md)。工作台仅手动编译；主页面为线路与回放，平台与编译配置独立管理。当前QEC/schema19范围见handoff，下方早期schema/U3验收记录仅为历史。
 
 2026-09-11 连接更新：8767 独立 HTTP 服务和 CUA 内置浏览器已恢复，本轮真实验证 U3 编辑/物理重编译、门定位、资源图及两种模式 32× 播放终态。八个实例另有 Node 完整 1×/32× 检查，两份 EZ 产物通过独立物理重放；证据见 [连接恢复日志](logs/2026-09-11-local-service-browser-recovery.md)。外部浏览器、全局枚举和长时间 FPS 未验收。
@@ -67,6 +69,8 @@ Executor 提交事件 -> VisualRecorder.observe(state) -> 静态场景 + 差量�
 
 ## 4. 交互约定
 
+2026-09-14工作台配置交互：顶部选择锁定完整demo或自定义；自定义保留原子/初态、独立平台与六种通用编译策略。电路示例只写门列表，不能改变平台或策略；专用GHZ/QEC算法只归demo。切回自定义恢复此前草稿，无自动编译。AOD字段是相对首行首列偏移，实际交点加整体pose；不兼容当前规划能力的几何可预览保存，但界面禁编译、API在启动worker前拒绝。见[分层规范](../docs/studio_configuration_layers.md)。
+
 - 编号支持“全部显示”“悬停 / 选中”“全部隐藏”，默认“悬停 / 选中”。隐藏仅作用于画布标签，侧栏仍保留编号供选择。静态报告无悬停能力，默认显示编号。
 - 画布右上方提供 `SLM traps` 和 `AOD traps` 两个独立开关，默认均打开。网格默认打开，选中原子轨迹默认关闭。隐藏 trap 图层只隐藏圆环和该层禁用标记，不隐藏原子、修改承载关系或移除侧栏详情。
 - 普通滚轮用于页面滚动；Ctrl/Meta＋滚轮或按钮缩放。支持拖动画布、全景适配、聚焦原子（只改变视图）。原子选择既能在画布进行，也能通过侧栏按钮进行。
@@ -120,7 +124,7 @@ node tests/viewer_component.cjs
 
 程序接入示例生成 `artifacts/visualization/index.html`、`recording.json`、`atom-viewer.js`。M1/M2 报告直接嵌入运动视图、摘要，图片和详细证据按需展开。`timeline.png` 文件名为兼容旧报告保留，内容为固定八行的真实时序图，右侧保留累计占用；`summary.json` 提供结构化统计。静态关键帧用于小场景验收，不是通用记录器要求。
 
-M0 的已有证据重绘仍使用 `python -m neutral_atom_env.testing.acceptance --rerender --theme configs/visual/default.json`。M1/M2/row_column 重建使用各自示例入口；不要误用 M0 参数。
+M0 的已有证据重绘仍使用 `python -m neutral_atom_experiments.testing.acceptance --rerender --theme configs/visual/default.json`。M1/M2/row_column 重建使用各自示例入口；不要误用 M0 参数。
 
 ## 7. 验收与扩展边界
 

@@ -15,13 +15,13 @@ from neutral_atom_env.hardware.raman import validate_rotation_batch, validate_ro
 from neutral_atom_env.hardware.gate_contract import compatible_gate_types
 from neutral_atom_env.domain.aod import motion_target
 from neutral_atom_env.world import PlacementState
-from neutral_atom_env.motion.validation import require
-from neutral_atom_env.motion.program import operation_duration
-from neutral_atom_env.motion.task_validation import operation_demand, origin_dag, validate_target, EFFECTS
+from neutral_atom_env.program.validation import require
+from neutral_atom_env.program.builder import operation_duration
+from neutral_atom_env.program.task_validation import operation_demand, origin_dag, validate_target, EFFECTS
 from neutral_atom_env.replay.serializer import canonical_json
-from .event_queue import EventQueue
+from neutral_atom_env.simulation.event_queue import EventQueue
 from neutral_atom_env.replay.trace import _event_data
-from .quantum_effects import complete_effects,condition_applies
+from neutral_atom_env.simulation.quantum_effects import complete_effects, condition_applies
 from neutral_atom_env.hardware.readout import validate_readout
 
 
@@ -277,7 +277,7 @@ def audit(plan,state,*,metadata=True):
 
 
 def validate_program(plan,state,restoring=False):
-    from neutral_atom_env.motion.compiler import fingerprint
+    from neutral_atom_env.program.binding import fingerprint
     if not restoring:
         require(not(state.active_plan or state.event_queue or state.reservations or state.transfer),'Program needs an idle submit boundary')
         for record in state.trace.records:
@@ -306,7 +306,7 @@ def validate_program(plan,state,restoring=False):
 
 
 def reduce_program(state,event,queue):
-    from .physical_executor import task_metadata
+    from neutral_atom_env.simulation.physical_executor import task_metadata
     if event.event_type==E.PLAN_STARTED:
         plan=event.plan
         validate_program(plan,replace(state,event_queue=EventQueue((),state.event_queue.next_sequence-1)))

@@ -38,13 +38,14 @@ PhysicalCircuit → DynamicGateDAG → READY frontier
                     新 placement / DAG / metrics → observer
 ```
 
-`GateCompiler` 是 [编译策略协议](../src/neutral_atom_env/planning/compilers.py)，物理 `hardware.backend` 是另一层。前者决定如何实现门，后者决定哪些运动/交接/作用合法。不能为了更换运输策略去修改 circuit 或 renderer。
+`GateCompiler` 是 [编译策略协议](../src/neutral_atom_strategies/planning/compilers.py)，物理 `hardware.backend` 是另一层。前者决定如何实现门，后者决定哪些运动/交接/作用合法。不能为了更换运输策略去修改 circuit 或 renderer。
 
 ```python
 import json
 from pathlib import Path
-from neutral_atom_env.simulation.pipeline import Platform, load_circuit, run_circuit
-from neutral_atom_env.motion.single_trap import SingleTrapCompiler
+from neutral_atom_env.platform import Platform, load_circuit
+from neutral_atom_app.pipeline import run_circuit
+from neutral_atom_strategies.motion.single_trap import SingleTrapCompiler
 
 circuit = load_circuit('configs/circuits/single_trap.json')
 platform = Platform.load('configs/platforms/single_trap.json')
@@ -82,7 +83,7 @@ recorder.write('artifacts/custom-circuit/index.html')
 
 ## 通用程序校验
 
-[ProgramBuilder 与 replay_program](../src/neutral_atom_env/motion/program.py) 建立独立于运输模板的执行契约：
+[ProgramBuilder 与 replay_program](../src/neutral_atom_env/program/builder.py) 建立独立于运输模板的执行契约：
 
 - 每个 LOAD/OFFLOAD 明确声明 `Operation.transfer_bindings`，包括实际 atom、cell、源或目的 SLM trap。`plan.bindings` 只汇总各原子的首次装载，不能当作每次装卸的共同目标。
 - `initial_placement` 与 `predicted_placement` 分开，恢复不再假设终点等于起点。另保存 initial_traps/predicted_traps，checkpoint 为 **schema 13**，旧 1–12 拒绝恢复，需重新生成。

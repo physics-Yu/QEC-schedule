@@ -3,11 +3,8 @@ from math import isclose, sqrt
 
 import pytest
 
-from neutral_atom_env.experiments.surface_ghz import (
-    X_CHECKS, LOGICAL_X, encoder, experiment_input, mask, verify,
-    verify_gate_sequence,
-)
-from neutral_atom_env.visualization.workbench import validate_input
+from neutral_atom_experiments.surface_ghz import X_CHECKS, LOGICAL_X, encoder, experiment_input, mask, verify, verify_gate_sequence
+from neutral_atom_app.visualization.workbench import validate_input
 
 
 @pytest.mark.parametrize('plus', [False, True])

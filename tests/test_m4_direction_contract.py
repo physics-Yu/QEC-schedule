@@ -12,7 +12,7 @@ from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.domain.models import HolderRef, HolderType, MobileCellIndex
 from neutral_atom_env.domain.operations import TaskIntent, TaskTarget
 from neutral_atom_env.hardware import get_backend
-from neutral_atom_env.motion.persistent import PersistentTargetCompiler
+from neutral_atom_strategies.motion.persistent import PersistentTargetCompiler
 
 
 @pytest.mark.parametrize('dx,dy', [(-2, 0), (2, 0), (0, -2), (0, 2), (0, 4)])

@@ -10,11 +10,11 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 
 
 def verify(directory):
-    from neutral_atom_env.visualization.workbench import build_inputs
-    from neutral_atom_env.simulation.pipeline import initialize
+    from neutral_atom_app.visualization.workbench import build_inputs
+    from neutral_atom_env.platform import initialize
     from neutral_atom_env.simulation.executor import Executor
     from neutral_atom_env.quantum.stabilizer import StabilizerState
-    from neutral_atom_env.experiments.surface_qec import summarize,quantum_summary
+    from neutral_atom_experiments.surface_qec import summarize, quantum_summary
     from neutral_atom_env.replay.checkpoint import restore
     from neutral_atom_env.replay.operation_codec import event_from_dict
     directory=Path(directory);started=perf_counter()

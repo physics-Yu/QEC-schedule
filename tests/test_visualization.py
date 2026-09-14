@@ -1,10 +1,10 @@
 import json
 from dataclasses import replace
 import pytest
-from neutral_atom_env.visualization import VisualRecorder,summarize_trace
+from neutral_atom_env.visualization import VisualRecorder, summarize_trace
 from neutral_atom_env.visualization.summary import summarize_intervals
-from neutral_atom_env.simulation.milestone2_factory import make_circuit_state
-from neutral_atom_env.simulation.scheduler import EagerScheduler
+from neutral_atom_experiments.fixtures.milestone2_factory import make_circuit_state
+from neutral_atom_strategies.scheduling.scheduler import EagerScheduler
 
 
 def recorded_circuit():
@@ -63,8 +63,8 @@ def test_recorder_is_read_only_and_export_contains_no_checkpoint_history(tmp_pat
 def test_compact_recorder_does_not_call_snapshot_and_scales_with_changes(tmp_path,monkeypatch):
     from neutral_atom_env.world.config import LayoutConfig
     from neutral_atom_env.world import PlacementState
-    from neutral_atom_env.domain.models import Atom,HolderRef,HolderType,SimulationEvent,EventType
-    from neutral_atom_env.circuit import PhysicalCircuit,DynamicGateDAG
+    from neutral_atom_env.domain.models import Atom, HolderRef, HolderType, SimulationEvent, EventType
+    from neutral_atom_env.circuit import PhysicalCircuit, DynamicGateDAG
     from neutral_atom_env.simulation import Executor
     from neutral_atom_env.simulation.state import SimulationState
     world=LayoutConfig(columns=32,rows=16,zone_height_um=100).build()
@@ -96,7 +96,7 @@ def test_recorder_supports_no_plan_and_equal_timestamp_commits():
 
 
 def test_row_column_recording_preserves_profile_and_stationary_intersection():
-    from neutral_atom_env.simulation.row_column_factory import make_row_column_state
+    from neutral_atom_experiments.fixtures.row_column_factory import make_row_column_state
     from pathlib import Path
     state=make_row_column_state('incidental');recorder=VisualRecorder(state)
     assert EagerScheduler(state).run(on_event=recorder.observe).status=='completed'

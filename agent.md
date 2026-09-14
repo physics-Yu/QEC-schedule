@@ -1,5 +1,7 @@
 # Agent 工作准则与工程导航
 
+2026-09-14 用户授权环境/策略大分离已落地：[包边界与接口](docs/environment_strategy_boundary.md)。`neutral_atom_env` 不得导入 strategies/app/experiments；路径、目标分配、驻留、调度算法放 `src/neutral_atom_strategies`，生产控制通过 `NeutralAtomEnv` 提交/推进，工作台和策略组装在 `neutral_atom_app`，专用QEC协议与场景在 `neutral_atom_experiments`。旧CLI/输入/schema19保持，Python算法导入路径已迁移；下方历史路径以新映射为准。更改边界后运行 `python tools/check_architecture.py` 和 `tests/test_environment_boundary.py`。这不代表候选流水线/RL或通用二维规划已实现。
+
 2026-09-12 最新用户审批边界：测试脚本、界面交互、序列化和一般工程缺陷可自主修复、记录并重新验收；不再因这类失败请求审批。只有物理模型/物理事实可能出错、需要改动物理硬约束，或整体架构需要调整时才暂停相关方向，给出事实与方案并请求用户批准。不得放宽物理条件、掩盖失败或以改断言冒充通过；保留每次尝试证据。此规则取代此前“任何正式失败都需审批”的规定。 四步仍按顺序验收，当前状态见instruction/handoff.md与artifacts/qec-roadmap/status.json。
 
 2026-09-12 最新扩展：两个/四个 surface logical qubit 的测量制备、GHZ、稳定子重复读出及声明单事件恢复。四步1–4及4A/4B/4C均按声明合同通过；四块1868槽完整物理执行、独立重放与真实可编辑UI验收通过。状态以 [handoff](instruction/handoff.md) 为准；[两块时域验收](docs/qec_temporal_acceptance.md)、[四块协议](docs/surface_qec_temporal_four_protocol.md)、[读出核心](docs/quantum_readout_core.md)、[工作台](docs/qec_workbench.md)。checkpoint schema19；QEC模式显式保存Clifford量子态，measurement_results保存报告位，真实投影与报告翻转在提交trace中分别记录。普通模式仍不跟踪量子态。不是完整M5/M6或全电路噪声容错证明。
@@ -36,6 +38,8 @@
 
 ### 默认可视化 pipeline（用户已确认并固化）
 
+2026-09-14最新用户要求已实现：[配置减法与分层](docs/studio_configuration_layers.md)。顶部完整实验demo锁定初态/平台/电路/专用算法；自定义模式只列通用策略（含简单单原子搬运），电路示例仅替换gates。配置归属、AOD相对偏移及规划能力前置校验以该文档为准；下文按profile隐式推荐、模板带平台的描述为旧UI兼容合同。旧输入API不改物理语义，新UI将无studio标识输入按只读历史处理。通用多交点M4当前仅支持1×N/10μm等间距，不把demo二维非均匀运输当作通用已接入。
+
 2026-09-12修订：[二维surface研究](docs/surface_2d_research.md)、[本轮日志](instruction/logs/2026-09-12-surface-2d-parallel.md)。四块真实3×3 patch、非均匀6×6 AOD与真实批量CZ，仍为完整194门理想GHZ、可编辑并重编译。此前 [单行实验](docs/surface_ghz_experiment.md) 是历史受限对照，不能冒充二维surface排布/并行成绩。该批量底座当时使用schema18；当前schema19，旧输入需重编译。批量CZ底座按用户此次并行要求补入，不代表测量纠错或完整M5已完成；动态变距仍未由本轮策略搜索。
 
 后续可视化功能沿用 **初始条件 → 可编辑量子线路 → 真实物理编译 → Executor → VisualRecorder → 共用 viewer**。入口 `python examples/circuit_workbench.py --port 8766`；离线复现使用 `examples/compile_workbench.py`。页面先设置原子数/layout，再设置 gate，不另造跳过物理校验的动画管线。单比特光固定 **1 μs**，不作为界面或编译输入可选项；回放倍率最高 **32×**，只改变播放速度。门集合与并行规则以 [门规范](docs/gate_contract.md) 为准。新草稿使用独立 `compilation.strategy=recommended`（普通平台映射 M4 greedy）；`circuit_profile` 管协议，编译配置不改线路。仅线路卡片内按钮启动编译，不保留自动编译。平台/编译配置可分别命名保存、导入导出；AOD容量由行列派生。旧 M3/M4 实现通过历史 JSON 精确兼容，详见 [配置分层](docs/workbench_configurations.md)。具体 API、维护入口和边界见 [工作台规范](docs/circuit_workbench.md) 和 [M4 四策略](docs/milestone4_complete.md)。
@@ -47,7 +51,7 @@
   -> 持续 state / trace / metrics -> observer visualization
 ```
 
-以上是已确认目标，不是全部已实现。当前 `simulation.pipeline` 接收独立输入，`planning.compilers.GateCompiler` 可替换单 CZ 编译，`planning/eager_baseline.py` 和 `simulation/scheduler.py` 保留串行兼容路径；`simulation/m3.py` 使用两个持久构造器与 scheduled operations 执行最小并发。动态 masks、交接支撑和空阱 sweep 已完成 M3-A；参数化 1Q、独立目标任务、单 trap 持久编译、操作级资源释放与最小重叠已实现，见 [M3 API/平台族](docs/milestone3.md)；M4 详细设计时按用户要求返修策略/候选/时间窗口接口；具体边界见 [compiler_contract](instruction/compiler_contract.md) 与 [architecture](instruction/architecture.md)。主目标为包含声明终态的总完成时间，逻辑完成单列；一个全局时钟，不以完整门后归还阻塞所有后继。
+以上是已确认目标，不是全部已实现。当前 `neutral_atom_app.pipeline` 接收独立输入，`neutral_atom_strategies.planning.compilers.GateCompiler` 可替换单 CZ 编译；策略包的 `planning/eager_baseline.py` 与 `scheduling/scheduler.py` 保留串行兼容路径，`scheduling/m3.py` 使用两个持久构造器与环境 `program/scheduled.py` 执行最小并发。动态 masks、交接支撑和空阱 sweep 已完成 M3-A；参数化 1Q、独立目标任务、单 trap 持久编译、操作级资源释放与最小重叠已实现，见 [M3 API/平台族](docs/milestone3.md)；后续统一策略内部候选与决策边界，具体见 [compiler_contract](instruction/compiler_contract.md) 与 [architecture](instruction/architecture.md)。主目标为包含声明终态的总完成时间，逻辑完成单列；一个全局时钟，不以完整门后归还阻塞所有后继。
 
 ## 按任务选读
 

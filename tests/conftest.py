@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 import pytest
-from neutral_atom_env.simulation import make_demo_state
+from neutral_atom_experiments.fixtures.state_factory import make_demo_state
 
 
 def pytest_addoption(parser):
@@ -28,5 +28,5 @@ def pytest_sessionfinish(session, exitstatus):
     directory.mkdir(parents=True,exist_ok=True)
     (directory/'machine-tests.json').write_text(json.dumps({'exitstatus':int(exitstatus),'tests':_results},indent=2),encoding='utf-8')
     if session.config.getoption('--visual'):
-        from neutral_atom_env.testing.acceptance import build_report
+        from neutral_atom_experiments.testing.acceptance import build_report
         build_report(directory)

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from .models import Position2D
+from neutral_atom_env.domain.models import Position2D
 
 
 @dataclass(frozen=True)

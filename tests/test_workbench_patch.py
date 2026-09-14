@@ -7,15 +7,15 @@ import pytest
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.domain.models import MobileCellIndex as Cell, Position2D as P
 from neutral_atom_env.domain.operations import HardwareConfig, OperationType as K, TaskIntent, TaskTarget
-from neutral_atom_env.experiments.surface_ghz import experiment_input
+from neutral_atom_experiments.surface_ghz import experiment_input
 from neutral_atom_env.hardware import get_backend
 from neutral_atom_env.hardware.ez_neighbors import reservations
-from neutral_atom_env.motion.program import ProgramBuilder
-from neutral_atom_env.motion.scheduled import scheduled_program
+from neutral_atom_env.program.builder import ProgramBuilder
+from neutral_atom_env.program.scheduled import scheduled_program
 from neutral_atom_env.simulation import Executor, operation_program
 from neutral_atom_env.simulation.runtime_validation import validate_runtime
 from neutral_atom_env.simulation.state import SimulationState
-from neutral_atom_env.visualization.workbench import build_inputs, validate_input, preview
+from neutral_atom_app.visualization.workbench import build_inputs, validate_input, preview
 from test_ez_neighbors import dense_state
 
 

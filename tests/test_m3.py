@@ -2,19 +2,19 @@
 import json
 from dataclasses import replace
 import pytest
-from neutral_atom_env.domain.models import HolderType as H,HolderRef,GateStatus,EventType
-from neutral_atom_env.domain.operations import TaskIntent,TaskTarget,OperationType as K
+from neutral_atom_env.domain.models import HolderType as H, HolderRef, GateStatus, EventType
+from neutral_atom_env.domain.operations import TaskIntent, TaskTarget, OperationType as K
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.motion.persistent import PersistentTargetCompiler,ResidentCompiler
-from neutral_atom_env.motion.scheduled import scheduled_program
-from neutral_atom_env.motion.task_validation import validate_target
-from neutral_atom_env.motion.family import validate_family
+from neutral_atom_strategies.motion.persistent import PersistentTargetCompiler, ResidentCompiler
+from neutral_atom_env.program.scheduled import scheduled_program
+from neutral_atom_env.program.task_validation import validate_target
+from neutral_atom_strategies.motion.family import validate_family
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
-from neutral_atom_env.simulation.pipeline import initialize
-from neutral_atom_env.simulation.m3 import run_m3,initial_terminal
+from neutral_atom_env.platform import initialize
+from neutral_atom_strategies.scheduling.m3 import run_m3, initial_terminal
 from neutral_atom_env.visualization import VisualRecorder
-from neutral_atom_env.visualization.workbench import build_inputs,compile_input
+from neutral_atom_app.visualization.workbench import build_inputs, compile_input
 from neutral_atom_env.visualization.summary import summarize_trace
 
 
@@ -228,7 +228,7 @@ def test_program_and_recording_determinism_across_process_hashseeds():
 import sys,json,hashlib
 sys.path.insert(0,'tests')
 from test_m3 import make
-from neutral_atom_env.simulation.m3 import run_m3
+from neutral_atom_strategies.scheduling.m3 import run_m3
 from neutral_atom_env.visualization import VisualRecorder
 from neutral_atom_env.replay.serializer import canonical_json
 s=make([('CZ',(0,1)),('H',(0,)),('X',(2,))]);r=VisualRecorder(s)

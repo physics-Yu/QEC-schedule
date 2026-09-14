@@ -11,7 +11,7 @@ from neutral_atom_env.domain.aod import AODConfiguration
 from neutral_atom_env.domain.models import Position2D, MobileCellIndex, HolderType
 from neutral_atom_env.domain.operations import CaptureBinding
 from neutral_atom_env.domain.errors import ValidationError
-from .rigid_aod import RigidRectangularAODBackend, distance, segment_clearance
+from neutral_atom_env.hardware.rigid_aod import RigidRectangularAODBackend, distance, segment_clearance
 
 
 class RowColumnAODBackend(RigidRectangularAODBackend):
@@ -28,7 +28,7 @@ class RowColumnAODBackend(RigidRectangularAODBackend):
     def validate_pose(self, state, target):
         aod=self.target_aod(state.aod,target)
         config=aod.configuration()
-        from .trap_spacing import validate_trap_spacing
+        from neutral_atom_env.hardware.trap_spacing import validate_trap_spacing
         validate_trap_spacing(aod,state.hardware)
         for x in (config.x_um[0],config.x_um[-1]):
             for y in (config.y_um[0],config.y_um[-1]):

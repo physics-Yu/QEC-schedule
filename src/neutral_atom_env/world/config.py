@@ -5,7 +5,7 @@ from pathlib import Path
 from math import isfinite
 from neutral_atom_env.domain.models import Position2D, GridCoord, Rectangle, Zone, ZoneType, StaticTrap
 from neutral_atom_env.domain.errors import ValidationError
-from .world import WorldState
+from neutral_atom_env.world.world import WorldState
 
 
 @dataclass(frozen=True)

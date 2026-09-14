@@ -57,7 +57,7 @@ def main():
     dump(args.output / 'trace-analysis.json', summary)
     print(json.dumps({k: summary[k] for k in ('trace_bytes', 'counts', 'operations', 'suffix_rejections')}), flush=True)
 
-    from neutral_atom_env.visualization.workbench import build_inputs, initialize_input
+    from neutral_atom_app.visualization.workbench import build_inputs, initialize_input
     from neutral_atom_env.replay.operation_codec import plan_from_dict
     from neutral_atom_env.simulation.executor import Executor
     raw = json.loads((args.source / 'input.json').read_text(encoding='utf-8'))

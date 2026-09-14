@@ -7,10 +7,10 @@ from neutral_atom_env.domain.models import Position2D, MobileCellIndex, StaticTr
 from neutral_atom_env.domain.operations import ExecuteGateBatchIntent, OperationType, HardwareConfig
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.hardware import get_backend
-from neutral_atom_env.simulation.row_column_factory import make_row_column_state
+from neutral_atom_experiments.fixtures.row_column_factory import make_row_column_state
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.simulation import Executor
-from neutral_atom_env.motion.compiler import MotionCompiler
+from neutral_atom_strategies.motion.compiler import MotionCompiler
 from neutral_atom_env.world import PlacementState
 
 
@@ -133,7 +133,7 @@ def test_incidental_atom_can_create_unintended_pair():
 def test_restore_every_boundary_and_reject_axis_or_target_corruption():
     final,plan,saved=run_case('incidental')
     for snap in saved:
-        from neutral_atom_env.simulation.scheduler import EagerScheduler
+        from neutral_atom_strategies.scheduling.scheduler import EagerScheduler
         restored=SimulationState.restore(snap);EagerScheduler(restored).run();assert restored.snapshot()==final.snapshot()
         data=json.loads(snap)
         if not data['active_plan']:continue
@@ -155,7 +155,7 @@ def test_mobile_static_gate_remains_supported_on_new_backend():
 
 def test_cubic_observer_and_stationary_intersection_activity():
     from neutral_atom_env.replay.trajectory import sample_positions
-    from neutral_atom_env.testing.scene import build_scene
+    from neutral_atom_experiments.testing.scene import build_scene
     final,plan,saved=run_case('incidental',target_configuration=AODConfiguration((5.5,7.5,10),(-25,-20)))
     start=next(s for s in saved if json.loads(s)['aod']['is_moving'] and
                json.loads(s)['active_plan']['plan']['operations'][json.loads(s)['active_plan']['operation_index']]['label']=='Reconfigure axes')

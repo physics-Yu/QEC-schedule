@@ -1,10 +1,10 @@
 import json
 from dataclasses import replace
 
-from neutral_atom_env.experiments.qec_layout import build_qec_inputs
-from neutral_atom_env.simulation.pipeline import initialize
+from neutral_atom_experiments.qec_layout import build_qec_inputs
+from neutral_atom_env.platform import initialize
 from neutral_atom_env.quantum.stabilizer import StabilizerState
-from neutral_atom_env.simulation.qec import run_qec
+from neutral_atom_strategies.scheduling.qec import run_qec
 from neutral_atom_env.simulation.executor import Executor
 from neutral_atom_env.replay.operation_codec import event_from_dict
 from neutral_atom_env.replay.checkpoint import restore

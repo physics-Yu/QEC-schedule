@@ -3,15 +3,15 @@ from collections import Counter
 from dataclasses import replace
 import json
 import pytest
-from neutral_atom_env.visualization.workbench import build_inputs, compile_input, validate_input
-from neutral_atom_env.simulation.pipeline import initialize
-from neutral_atom_env.simulation.m3 import initial_terminal
-from neutral_atom_env.simulation.m4 import run_m4
-from neutral_atom_env.motion.greedy import GreedyCompiler
-from neutral_atom_env.motion.task_validation import validate_target
+from neutral_atom_app.visualization.workbench import build_inputs, compile_input, validate_input
+from neutral_atom_env.platform import initialize
+from neutral_atom_strategies.scheduling.m3 import initial_terminal
+from neutral_atom_strategies.scheduling.m4 import run_m4
+from neutral_atom_strategies.motion.greedy import GreedyCompiler
+from neutral_atom_env.program.task_validation import validate_target
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.domain.models import StaticTrap, GridCoord, Position2D, Zone, ZoneType, Rectangle
-from neutral_atom_env.visualization.workbench import failure_report
+from neutral_atom_app.visualization.workbench import failure_report
 
 
 def circuit(pairs, layout='row', n=4):

@@ -5,7 +5,7 @@ from pathlib import Path
 from collections import Counter
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
-from neutral_atom_env.experiments.surface_ghz import verify_gate_sequence
+from neutral_atom_experiments.surface_ghz import verify_gate_sequence
 
 
 def audit():

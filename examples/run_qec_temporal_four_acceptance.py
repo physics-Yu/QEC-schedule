@@ -26,8 +26,8 @@ def sources():
 
 
 def check_final(state,circuit,terminal):
-    from neutral_atom_env.experiments.surface_qec_temporal_four import summarize,validate_history
-    from neutral_atom_env.motion.task_validation import validate_target
+    from neutral_atom_experiments.surface_qec_temporal_four import summarize, validate_history
+    from neutral_atom_env.program.task_validation import validate_target
     from neutral_atom_env.replay.checkpoint import restore
     validate_target(terminal,state)
     report=summarize(state)
@@ -50,12 +50,12 @@ def check_final(state,circuit,terminal):
 
 
 def compile_case(output,attempt=1):
-    from neutral_atom_env.experiments.surface_qec_temporal_four import experiment_input,summarize
-    from neutral_atom_env.visualization.workbench import build_inputs,initialize_input,recording_payload
+    from neutral_atom_experiments.surface_qec_temporal_four import experiment_input, summarize
+    from neutral_atom_app.visualization.workbench import build_inputs, initialize_input, recording_payload
     from neutral_atom_env.visualization import VisualRecorder
     from neutral_atom_env.visualization.viewer import write_html
-    from neutral_atom_env.simulation.qec_temporal_four import run_qec_temporal_four
-    from neutral_atom_env.simulation.m3 import initial_terminal
+    from neutral_atom_experiments.runners.qec_temporal_four import run_qec_temporal_four
+    from neutral_atom_strategies.scheduling.m3 import initial_terminal
     from neutral_atom_env.replay.serializer import primitive
     output.mkdir(parents=True,exist_ok=True)
     raw=experiment_input({'kind':'readout','round':2,'patch':0,'check_type':'X','check_index':0})
@@ -105,11 +105,11 @@ def compile_case(output,attempt=1):
 
 
 def verify_case(output):
-    from neutral_atom_env.visualization.workbench import build_inputs,initialize_input
-    from neutral_atom_env.simulation.m3 import initial_terminal
+    from neutral_atom_app.visualization.workbench import build_inputs, initialize_input
+    from neutral_atom_strategies.scheduling.m3 import initial_terminal
     from neutral_atom_env.simulation import Executor
     from neutral_atom_env.replay.operation_codec import event_from_dict
-    from neutral_atom_env.experiments.surface_qec_temporal_four import HISTORY_IDS,validate_history
+    from neutral_atom_experiments.surface_qec_temporal_four import HISTORY_IDS, validate_history
     value,circuit,platform,placement=build_inputs(json.loads((output/'input.json').read_text(encoding='utf-8')))
     state=initialize_input(value,circuit,platform,placement);terminal=initial_terminal(state)
     started=perf_counter();plans=0;checked=False

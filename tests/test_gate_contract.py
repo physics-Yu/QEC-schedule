@@ -4,9 +4,9 @@ import pytest
 from neutral_atom_env.domain.models import PhysicalGate
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.hardware.raman import validate_rotation
-from neutral_atom_env.visualization.workbench import validate_input, compile_input
-from neutral_atom_env.motion.greedy import GreedyCompiler
-from neutral_atom_env.motion.scheduled import scheduled_program
+from neutral_atom_app.visualization.workbench import validate_input, compile_input
+from neutral_atom_strategies.motion.greedy import GreedyCompiler
+from neutral_atom_env.program.scheduled import scheduled_program
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
 from test_parallel_orthogonal import raw, state_for

@@ -1,6 +1,6 @@
 # 四个 surface-code logical qubit 的 GHZ：实验定义与独立核验
 
-核验日期：2026-09-11。量子定义已实现于 `src/neutral_atom_env/experiments/surface_ghz.py`，物理执行由工作台及实验调度器负责。这里给出包含完整编码的 36 个数据原子线路：四块旋转 `[[9,1,3]]` surface code，制备 `( |0000>_L + |1111>_L ) / sqrt(2)`。这是理想无噪声编码和编译实验，不含 syndrome 测量、纠错轮次、decoder、测量后选择或保真度模拟；不称完整容错 QEC。
+核验日期：2026-09-11。量子定义已实现于 `src/neutral_atom_experiments/surface_ghz.py`，物理执行由工作台及实验调度器负责。这里给出包含完整编码的 36 个数据原子线路：四块旋转 `[[9,1,3]]` surface code，制备 `( |0000>_L + |1111>_L ) / sqrt(2)`。这是理想无噪声编码和编译实验，不含 syndrome 测量、纠错轮次、decoder、测量后选择或保真度模拟；不称完整容错 QEC。
 
 ## 一手依据与适用边界
 
@@ -66,7 +66,7 @@
 测试另用 512 维稠密实振幅直接演化每个 9 数据比特编码器，与上述 CSS 均匀叠加定义比较，作为与 signed tableau 不同实现的检查。`tests/test_surface_ghz.py` 本轮 **6 passed**。
 
 ```python
-from neutral_atom_env.experiments.surface_ghz import (
+from neutral_atom_experiments.surface_ghz import (
     experiment_input, experiment_stages, phase_columns, verify_gate_sequence, verify,
 )
 raw = experiment_input(compiler='row_greedy')  # 或 row_symmetric

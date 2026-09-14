@@ -1,5 +1,7 @@
 # Physical circuit 到原子操作：已确认的目标契约
 
+2026-09-14接口位置更新：[环境/策略分离](../docs/environment_strategy_boundary.md)。所有寻路与调度算法迁至 `neutral_atom_strategies`；环境内保留 `program` 显式操作表达/验证与唯一 Executor。生产策略通过 `NeutralAtomEnv` 提交、推进和私有分支预测；策略可通过 `Strategy.run(env, on_event=...)` 替换。下文目标语义保持，旧Python模块路径不再使用。
+
 2026-09-12 最新QEC扩展优先：当前checkpoint为schema19，QEC模式显式跟踪Clifford量子态，支持MEASURE/RESET与测量位条件控制；见[读出核心](../docs/quantum_readout_core.md)。第三步首次尝试新增同型不同目标RAMAN的原生`gate_ids`批次（固定1μs，逐目标条件与物理校验，一个AOD锁），见[批光合同](../docs/batch_raman_contract.md)。74项首次小规模验收通过，完整481槽对照仍运行，尚未宣称该阶段通过。下文不含测量及旧schema17/18描述为历史施工边界，不代表当前QEC模式。
 
 2026-09-12更新：用户要求二维surface并行后，真实批量CZ底座已提前接入`TaskIntent(phase='program',gate_effects=...)`及`Operation.gate_ids`，一个全局pulse完成全部声明门，整个EZ实际作用集合严格匹配。checkpoint schema18。下文“M5才扩展多个CZ”是原施工顺序，现由[批量合同](../docs/batch_cz_contract.md)取代；不表示完整M5完成。四邻保护可按显式字段关闭，其他硬条件不变。

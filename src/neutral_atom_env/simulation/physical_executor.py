@@ -2,12 +2,12 @@
 from dataclasses import replace
 from math import isclose
 from neutral_atom_env.domain.models import EventType, SimulationEvent, GateStatus
-from neutral_atom_env.domain.operations import (OperationType, PlanRuntime, ResourceReservation, TaskIntent)
+from neutral_atom_env.domain.operations import OperationType, PlanRuntime, ResourceReservation, TaskIntent
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.hardware import get_backend
 from neutral_atom_env.domain.aod import motion_target
-from neutral_atom_env.motion.compiler import exact_validate
-from .event_queue import EventQueue
+from neutral_atom_env.program.binding import exact_validate
+from neutral_atom_env.simulation.event_queue import EventQueue
 from neutral_atom_env.hardware.dynamic_traps import begin_transfer, finish_transfer, switch_traps, trap_state, TRANSFERS
 from neutral_atom_env.hardware.raman import validate_rotation
 
@@ -18,7 +18,7 @@ PHYSICAL_EVENTS={EventType.PLAN_STARTED,EventType.OPERATION_STARTED,EventType.OP
 def reduce_physical(state,event,queue):
     plan=event.plan if event.event_type==EventType.PLAN_STARTED else state.active_plan.plan if state.active_plan else None
     if plan is not None and plan.execution_mode=='scheduled':
-        from .operation_program import reduce_program
+        from neutral_atom_env.simulation.operation_program import reduce_program
         return reduce_program(state,event,queue)
     backend=get_backend(state.hardware);extra={}
     if event.event_type==EventType.PLAN_STARTED:
@@ -48,7 +48,7 @@ def reduce_physical(state,event,queue):
         if trap_state(state)!=plan.predicted_traps or state.transfer is not None:
             raise ValidationError('END_STATE_MISMATCH','Final support state differs from validated prediction')
         if isinstance(plan.intent,TaskIntent):
-            from neutral_atom_env.motion.task_validation import validate_target
+            from neutral_atom_env.program.task_validation import validate_target
             validate_target(plan.intent.target,state)
         extra={'plan_duration_us':event.time_us-runtime.started_us,'gate_id':gate}
         return replace(state,active_plan=None,reservations=(),physical_metrics=replace(metrics,

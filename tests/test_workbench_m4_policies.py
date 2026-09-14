@@ -1,7 +1,7 @@
 """Editor inputs select a real policy while preserving identical hardware."""
 import pytest
 
-from neutral_atom_env.visualization.workbench import build_inputs, validate_input, compile_input
+from neutral_atom_app.visualization.workbench import build_inputs, validate_input, compile_input
 from neutral_atom_env.replay.serializer import primitive
 
 

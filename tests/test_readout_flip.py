@@ -9,7 +9,7 @@ from test_quantum_readout import state_for, build
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.domain.models import PhysicalGate as Gate
 from neutral_atom_env.domain.operations import OperationType as K, TaskIntent, TaskTarget
-from neutral_atom_env.motion.program import ProgramBuilder
+from neutral_atom_env.program.builder import ProgramBuilder
 from neutral_atom_env.replay.serializer import primitive, canonical_json
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState

@@ -22,10 +22,10 @@ row_column 不是单个点的二维寻路：配置包含 C 条列坐标与 R 条
 `MotionCompiler(planner=...)` 默认使用 `HalfGridPlanner`。`compile(intent,state,target_configuration=...)` 允许上层替换作用位置与轴配置；仍受支持的捕获/目标族以及实际 CZ 几何约束限制。该 legacy 路线编译路径使用 RETURN_AND_OFFLOAD：完整回源并恢复起始配置。另有 single_trap/program 的逐次装卸与 KEEP 终态底座，不能用此处 legacy 限制代表全部程序接口；非 gate 任务和单 trap 持久起态已实现；任意布局完备路由仍不承诺，见 [M3 平台族](../docs/milestone3.md)。
 
 ```python
-from neutral_atom_env.motion.compiler import MotionCompiler
-from neutral_atom_env.motion.planners import HalfGridPlanner
-from neutral_atom_env.planning.eager_baseline import EagerBaseline
-from neutral_atom_env.simulation.scheduler import EagerScheduler
+from neutral_atom_strategies.motion.compiler import MotionCompiler
+from neutral_atom_strategies.motion.planners import HalfGridPlanner
+from neutral_atom_strategies.planning.eager_baseline import EagerBaseline
+from neutral_atom_strategies.scheduling.scheduler import EagerScheduler
 
 compiler = MotionCompiler(HalfGridPlanner(sides=(-1,), id='left-first'))
 result = EagerScheduler(state, policy=EagerBaseline(compiler=compiler)).run()

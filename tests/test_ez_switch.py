@@ -6,8 +6,8 @@ from neutral_atom_env.domain.models import HolderRef, HolderType as H, MobileCel
 from neutral_atom_env.domain.operations import TaskIntent, TaskTarget, OperationType as K
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.hardware.dynamic_traps import trap_state
-from neutral_atom_env.motion.persistent import PersistentTargetCompiler
-from neutral_atom_env.motion.greedy import GreedyCompiler
+from neutral_atom_strategies.motion.persistent import PersistentTargetCompiler
+from neutral_atom_strategies.motion.greedy import GreedyCompiler
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.simulation import Executor
 

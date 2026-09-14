@@ -16,7 +16,7 @@ from neutral_atom_env.visualization import VisualRecorder
 
 def test_real_single_trap_distances_handoffs_and_cz_partners():
     from test_single_trap_pipeline import inputs, schedule
-    from neutral_atom_env.simulation.pipeline import initialize
+    from neutral_atom_env.platform import initialize
     state = initialize(*inputs())
     recorder = VisualRecorder(state)
     assert schedule(state, observe=recorder.observe).status == 'completed'
@@ -192,7 +192,7 @@ def test_exports_match_json_and_csv(tmp_path):
 
 
 def test_workbench_worker_and_offline_cli_export_actual_gate_counts(tmp_path):
-    from neutral_atom_env.visualization.workbench_server import _worker
+    from neutral_atom_app.visualization.workbench_server import _worker
     from test_workbench import request
     kinds = ['H', 'X', 'Y', 'Z', 'T', 'CZ']
     gates = [dict(id='g'+str(i), gate_type=kind, column=i,

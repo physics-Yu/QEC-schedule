@@ -2,17 +2,17 @@
 from dataclasses import replace
 import json
 import pytest
-from neutral_atom_env.visualization.workbench import build_inputs,compile_input,validate_input
-from neutral_atom_env.simulation.pipeline import initialize
+from neutral_atom_app.visualization.workbench import build_inputs, compile_input, validate_input
+from neutral_atom_env.platform import initialize
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
-from neutral_atom_env.simulation.m3 import initial_terminal
-from neutral_atom_env.simulation.m4 import run_m4
-from neutral_atom_env.motion.multi_trap import MultiTrapGreedyCompiler,RigidArrayOrthogonalPlanner
-from neutral_atom_env.motion.planners import RouteRequest
+from neutral_atom_strategies.scheduling.m3 import initial_terminal
+from neutral_atom_strategies.scheduling.m4 import run_m4
+from neutral_atom_strategies.motion.multi_trap import MultiTrapGreedyCompiler, RigidArrayOrthogonalPlanner
+from neutral_atom_strategies.motion.planners import RouteRequest
 from neutral_atom_env.domain.aod import AODConfiguration
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.hardware.dynamic_traps import switch_traps,trap_state
+from neutral_atom_env.hardware.dynamic_traps import switch_traps, trap_state
 from neutral_atom_env.hardware import get_backend
 from neutral_atom_env.domain.models import Position2D
 from neutral_atom_env.domain.operations import CaptureBinding

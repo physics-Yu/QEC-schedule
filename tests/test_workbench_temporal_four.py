@@ -7,10 +7,10 @@ from types import SimpleNamespace
 
 import pytest
 
-from neutral_atom_env.experiments.surface_qec_temporal_four import experiment_input
-from neutral_atom_env.experiments.surface_qec import experiment_input as two_input
-from neutral_atom_env.visualization.workbench import validate_input,build_inputs,preview,compile_input,aod_shape,aod_offsets
-from neutral_atom_env.visualization.workbench_server import create_server,CompileJobs
+from neutral_atom_experiments.surface_qec_temporal_four import experiment_input
+from neutral_atom_experiments.surface_qec import experiment_input as two_input
+from neutral_atom_app.visualization.workbench import validate_input, build_inputs, preview, compile_input, aod_shape, aod_offsets
+from neutral_atom_app.visualization.workbench_server import create_server, CompileJobs
 from neutral_atom_env.domain.models import PhysicalGate
 from neutral_atom_env.domain.errors import ValidationError
 
@@ -110,7 +110,7 @@ def test_real_example_endpoint_supplies_representative_flip_without_compiling(tm
 
 
 def guard_state(*,omit_history=False,bits=None,ordinary=False):
-    from neutral_atom_env.experiments.surface_qec_temporal_four import HISTORY_IDS,CORRECTION_PREFIX
+    from neutral_atom_experiments.surface_qec_temporal_four import HISTORY_IDS, CORRECTION_PREFIX
     assert len(HISTORY_IDS)==128
     correction=PhysicalGate(CORRECTION_PREFIX+'edited','X',('Q000',))
     gates=([PhysicalGate('edited','H',('Q000',))] if ordinary else
@@ -119,7 +119,7 @@ def guard_state(*,omit_history=False,bits=None,ordinary=False):
 
 
 def test_four_guard_missing_named_history_stalls_before_joint(monkeypatch):
-    from neutral_atom_env.simulation import qec_temporal_four as runner
+    from neutral_atom_experiments.runners import qec_temporal_four as runner
     state,_=guard_state(omit_history=True)
     monkeypatch.setattr(runner,'run_qec_joint',lambda *args,**kwargs:pytest.fail('Missing named history reached physical compiler'))
     result=runner.run_qec_temporal_four(state)
@@ -130,9 +130,9 @@ def test_four_guard_missing_named_history_stalls_before_joint(monkeypatch):
 
 @pytest.mark.parametrize('all_ones,expected',[(False,'INCOMPLETE_SYNDROME_HISTORY'),(True,'UNSUPPORTED_SYNDROME_HISTORY')])
 def test_four_guard_rejects_premature_or_unsupported_ready_correction(monkeypatch,all_ones,expected):
-    from neutral_atom_env.simulation import qec_temporal_four as runner
-    from neutral_atom_env.experiments.surface_qec_temporal_four import HISTORY_IDS
-    from neutral_atom_env.motion.partitioned_cohort import PartitionedCohortCompiler
+    from neutral_atom_experiments.runners import qec_temporal_four as runner
+    from neutral_atom_experiments.surface_qec_temporal_four import HISTORY_IDS
+    from neutral_atom_strategies.motion.partitioned_cohort import PartitionedCohortCompiler
     state,correction=guard_state(bits=dict.fromkeys(HISTORY_IDS,1) if all_ones else {})
     before=dict(state.measurement_results)
     def joint(current,**options):
@@ -146,8 +146,8 @@ def test_four_guard_rejects_premature_or_unsupported_ready_correction(monkeypatc
 
 
 def test_four_guard_allows_ordinary_short_and_dispatches_partitioned_compiler(monkeypatch):
-    from neutral_atom_env.simulation import qec_temporal_four as runner
-    from neutral_atom_env.motion.partitioned_cohort import PartitionedCohortCompiler
+    from neutral_atom_experiments.runners import qec_temporal_four as runner
+    from neutral_atom_strategies.motion.partitioned_cohort import PartitionedCohortCompiler
     state,_=guard_state(ordinary=True);observed=[];expected=SimpleNamespace(status='completed')
     def joint(current,**options):
         assert current is state and options['compiler_type'] is PartitionedCohortCompiler

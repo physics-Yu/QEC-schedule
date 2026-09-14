@@ -57,7 +57,7 @@ def main():
     assert timed('new_cold_stream_hash', lambda: snapshot_digest(state.snapshot_data(), cache=cache)) == expected
     repo = Path(__file__).resolve().parents[1]
     files = ['src/neutral_atom_env/simulation/state.py', 'src/neutral_atom_env/replay/snapshot_encoding.py',
-             'src/neutral_atom_env/replay/serializer.py', 'src/neutral_atom_env/motion/compiler.py',
+             'src/neutral_atom_env/replay/serializer.py', 'src/neutral_atom_strategies/motion/compiler.py',
              'examples/benchmark_snapshot_encoding.py']
     result = dict(status='PASS', checkpoint=str(args.checkpoint.resolve()), checkpoint_bytes=byte_count,
                   checkpoint_sha256=expected, trace_records=len(state.trace.records), timings_seconds=timings,

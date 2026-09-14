@@ -21,7 +21,7 @@ def dump(path, value):
 
 
 def input_for(case):
-    from neutral_atom_env.experiments.surface_qec import experiment_input
+    from neutral_atom_experiments.surface_qec import experiment_input
     if case == 'staggered_patches':
         value = json.loads((ROOT / 'artifacts/qec-roadmap/baseline-input.json').read_text(encoding='utf-8'))
         value.update(compiler='qec_joint', qec_patch_origins=[[0, 0], [45, 5]],
@@ -45,13 +45,13 @@ def sources():
 
 
 def compile_case(case, output):
-    from neutral_atom_env.visualization.workbench import build_inputs
-    from neutral_atom_env.simulation.pipeline import initialize
-    from neutral_atom_env.simulation.qec_joint import run_qec_joint
-    from neutral_atom_env.simulation.m3 import initial_terminal
-    from neutral_atom_env.motion.task_validation import validate_target
+    from neutral_atom_app.visualization.workbench import build_inputs
+    from neutral_atom_env.platform import initialize
+    from neutral_atom_strategies.scheduling.qec_joint import run_qec_joint
+    from neutral_atom_strategies.scheduling.m3 import initial_terminal
+    from neutral_atom_env.program.task_validation import validate_target
     from neutral_atom_env.quantum.stabilizer import StabilizerState
-    from neutral_atom_env.experiments.surface_qec import summarize
+    from neutral_atom_experiments.surface_qec import summarize
     from neutral_atom_env.replay.checkpoint import restore
     from neutral_atom_env.replay.serializer import canonical_json, primitive
     from neutral_atom_env.visualization import VisualRecorder
@@ -140,8 +140,8 @@ def verify_case(case, output):
         from verify_surface_qec import verify
         verify(output)
         return 0
-    from neutral_atom_env.visualization.workbench import build_inputs
-    from neutral_atom_env.simulation.pipeline import initialize
+    from neutral_atom_app.visualization.workbench import build_inputs
+    from neutral_atom_env.platform import initialize
     from neutral_atom_env.simulation import Executor
     from neutral_atom_env.quantum.stabilizer import StabilizerState
     from neutral_atom_env.replay.operation_codec import event_from_dict

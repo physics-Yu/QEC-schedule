@@ -25,11 +25,11 @@ class RigidRectangularAODBackend:
     motion_profile = 'linear'
 
     def park(self,state,bindings):
-        from .partial_transfer import transfer
+        from neutral_atom_env.hardware.partial_transfer import transfer
         return transfer(self,state,bindings)
 
     def recapture(self,state,bindings):
-        from .partial_transfer import transfer
+        from neutral_atom_env.hardware.partial_transfer import transfer
         return transfer(self,state,bindings,recapture=True)
 
     def target_aod(self, aod, target):
@@ -50,7 +50,7 @@ class RigidRectangularAODBackend:
 
     def validate_pose(self,state,pose):
         aod=self.target_aod(state.aod,pose)
-        from .trap_spacing import validate_trap_spacing
+        from neutral_atom_env.hardware.trap_spacing import validate_trap_spacing
         validate_trap_spacing(aod,state.hardware)
         for row in (0,aod.rows-1):
             for col in (0,aod.columns-1):
@@ -84,7 +84,7 @@ class RigidRectangularAODBackend:
         return tuple(bindings)
 
     def load(self,state,bindings):
-        from .dynamic_traps import transfer
+        from neutral_atom_env.hardware.dynamic_traps import transfer
         from neutral_atom_env.domain.operations import OperationType
         return transfer(self,state,bindings,OperationType.AOD_LOAD)
 
@@ -110,11 +110,11 @@ class RigidRectangularAODBackend:
         if state.transfer is not None:
             raise ValidationError('TRANSFER_BUSY','Motion cannot interrupt a handoff')
         self.validate_geometry_move(state,target)
-        from .dynamic_traps import validate_active_sweep
+        from neutral_atom_env.hardware.dynamic_traps import validate_active_sweep
         validate_active_sweep(state,self.target_aod(state.aod,target))
-        from .slm_clearance import validate_slm_clearance
+        from neutral_atom_env.hardware.slm_clearance import validate_slm_clearance
         validate_slm_clearance(state,self.target_aod(state.aod,target),transfer,bindings)
-        from .ez_neighbors import validate_ez_neighbors
+        from neutral_atom_env.hardware.ez_neighbors import validate_ez_neighbors
         validate_ez_neighbors(state, aod=self.target_aod(state.aod,target))
 
     def move(self,state,target,*,transfer=None,bindings=()):
@@ -122,7 +122,7 @@ class RigidRectangularAODBackend:
         return replace(state,aod=replace(state.aod,pose=target,is_moving=False))
 
     def offload(self,state,bindings):
-        from .dynamic_traps import transfer
+        from neutral_atom_env.hardware.dynamic_traps import transfer
         from neutral_atom_env.domain.operations import OperationType
         return transfer(self,state,bindings,OperationType.AOD_OFFLOAD)
 

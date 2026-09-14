@@ -4,12 +4,13 @@ import json
 import sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
-from neutral_atom_env.visualization.workbench import build_inputs
+from neutral_atom_app.visualization.workbench import build_inputs
 from neutral_atom_env.visualization import VisualRecorder
-from neutral_atom_env.simulation.pipeline import initialize
+from neutral_atom_env.platform import initialize
 from neutral_atom_env.simulation import Executor
-from neutral_atom_env.motion.single_trap import SingleTrapCompiler
-from neutral_atom_env.motion.tasks import split_gate_program, TargetTaskCompiler
+from neutral_atom_strategies.motion.single_trap import SingleTrapCompiler
+from neutral_atom_env.program.tasks import split_gate_program
+from neutral_atom_strategies.motion.tasks import TargetTaskCompiler
 from neutral_atom_env.domain.operations import ExecuteGateBatchIntent, TaskIntent, TaskTarget
 from neutral_atom_env.domain.models import HolderRef, HolderType
 from neutral_atom_env.domain.errors import ValidationError

@@ -1,15 +1,15 @@
 from types import SimpleNamespace
 
-from neutral_atom_env.experiments.qec_layout import build_qec_inputs
-from neutral_atom_env.simulation.pipeline import initialize
-from neutral_atom_env.simulation.patch_greedy import patch_assignment, preflight_group, batch_service
-from neutral_atom_env.simulation.qec import measurement_destinations, readout_groups, qec_cz_groups
-from neutral_atom_env.motion.patch_array import PatchArrayCompiler
-from neutral_atom_env.motion.program import ProgramBuilder
+from neutral_atom_experiments.qec_layout import build_qec_inputs
+from neutral_atom_env.platform import initialize
+from neutral_atom_strategies.scheduling.patch_greedy import patch_assignment, preflight_group, batch_service
+from neutral_atom_strategies.scheduling.qec import measurement_destinations, readout_groups, qec_cz_groups
+from neutral_atom_strategies.motion.patch_array import PatchArrayCompiler
+from neutral_atom_env.program.builder import ProgramBuilder
 from neutral_atom_env.domain.operations import TaskIntent, TaskTarget
 from neutral_atom_env.domain.models import ZoneType
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.motion.single_trap import in_zone
+from neutral_atom_strategies.motion.single_trap import in_zone
 
 
 def staged(gates=()):

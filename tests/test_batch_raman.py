@@ -11,16 +11,13 @@ import pytest
 
 from neutral_atom_env.circuit import DynamicGateDAG, PhysicalCircuit
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.domain.models import (
-    Atom, GridCoord, HolderRef, HolderType as H, MobileCellIndex as Cell,
-    PhysicalGate as Gate, Position2D as P, Rectangle, StaticTrap, Zone, ZoneType,
-)
+from neutral_atom_env.domain.models import Atom, GridCoord, HolderRef, HolderType as H, MobileCellIndex as Cell, PhysicalGate as Gate, Position2D as P, Rectangle, StaticTrap, Zone, ZoneType
 from neutral_atom_env.domain.operations import CaptureBinding, HardwareConfig, OperationType as K, TaskIntent, TaskTarget
 from neutral_atom_env.hardware import get_backend
 from neutral_atom_env.hardware.dynamic_traps import begin_transfer
 from neutral_atom_env.hardware.raman import validate_rotation_batch
-from neutral_atom_env.motion.program import ProgramBuilder
-from neutral_atom_env.motion.scheduled import scheduled_program
+from neutral_atom_env.program.builder import ProgramBuilder
+from neutral_atom_env.program.scheduled import scheduled_program
 from neutral_atom_env.quantum.stabilizer import StabilizerState
 from neutral_atom_env.replay.operation_codec import plan_from_dict
 from neutral_atom_env.replay.serializer import primitive

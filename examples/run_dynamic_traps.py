@@ -8,15 +8,15 @@ from neutral_atom_env.circuit import PhysicalCircuit
 from neutral_atom_env.domain.models import Position2D
 from neutral_atom_env.domain.operations import OperationType as K, ExecuteGateBatchIntent
 from neutral_atom_env.hardware.dynamic_traps import trap_state
-from neutral_atom_env.motion.single_trap import SingleTrapCompiler
-from neutral_atom_env.motion.program import ProgramBuilder
-from neutral_atom_env.simulation.pipeline import Platform, load_circuit, initialize
+from neutral_atom_strategies.motion.single_trap import SingleTrapCompiler
+from neutral_atom_env.program.builder import ProgramBuilder
+from neutral_atom_env.platform import Platform, load_circuit, initialize
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.visualization import VisualRecorder
 from neutral_atom_env.visualization.summary import render_summary
-from neutral_atom_env.testing.renderer import render_layout
-from neutral_atom_env.testing.theme import VisualTheme
+from neutral_atom_experiments.testing.renderer import render_layout
+from neutral_atom_env.visualization.theme import VisualTheme
 from neutral_atom_env.replay.serializer import canonical_json
 
 

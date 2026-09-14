@@ -7,13 +7,13 @@ from dataclasses import replace
 import pytest
 from neutral_atom_env.domain.models import SimulationEvent, EventType, Position2D
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.simulation import make_demo_state
-from neutral_atom_env.testing.logical_executor import LogicalTestExecutor as Executor
+from neutral_atom_experiments.fixtures.state_factory import make_demo_state
+from neutral_atom_experiments.testing.logical_executor import LogicalTestExecutor as Executor
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.replay.trace import Trace
 from neutral_atom_env.world.config import LayoutConfig
-from neutral_atom_env.testing.scenarios import SCENARIOS
-from neutral_atom_env.testing.scene import build_scene
+from neutral_atom_experiments.testing.scenarios import SCENARIOS
+from neutral_atom_experiments.testing.scene import build_scene
 
 
 @pytest.mark.parametrize('name,title,question,run',SCENARIOS,ids=[s[0] for s in SCENARIOS])
@@ -39,7 +39,7 @@ def test_cross_process_checkpoint_and_hash_seed(tmp_path):
     code="""import sys
 from pathlib import Path
 from neutral_atom_env.simulation.state import SimulationState
-from neutral_atom_env.testing.logical_executor import LogicalTestExecutor as Executor
+from neutral_atom_experiments.testing.logical_executor import LogicalTestExecutor as Executor
 s=SimulationState.restore(Path(sys.argv[1]).read_text(encoding='utf-8'))
 Executor(s).run()
 Path(sys.argv[2]).write_text(s.snapshot(),encoding='utf-8')
@@ -102,8 +102,8 @@ def test_grid_origin_and_allowed_static_regions():
 
 
 def test_render_theme_changes_only_output(tmp_path):
-    from neutral_atom_env.testing.theme import VisualTheme
-    from neutral_atom_env.testing.renderer import render_layout,render_dag
+    from neutral_atom_env.visualization.theme import VisualTheme
+    from neutral_atom_experiments.testing.renderer import render_layout, render_dag
     state=make_demo_state();before=state.snapshot();scene=build_scene(before)
     render_layout(before,tmp_path/'original.svg')
     changed=replace(VisualTheme.load(),static_color='#123456',atom_size=40)
@@ -124,7 +124,7 @@ def test_dictionary_permutation_preserves_scene_and_checkpoint():
 def test_unified_qubit_identity_across_state_scene_and_checkpoint():
     from dataclasses import fields
     from neutral_atom_env.domain.models import Atom
-    from neutral_atom_env.testing.scene import SceneAtom
+    from neutral_atom_experiments.testing.scene import SceneAtom
     state=make_demo_state()
     assert set(state.atoms)=={'Q000','Q001','Q002','Q003'}
     assert 'physical_qubit_id' not in {f.name for f in fields(Atom)}

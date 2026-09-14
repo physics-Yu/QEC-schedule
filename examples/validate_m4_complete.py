@@ -14,11 +14,11 @@ from time import perf_counter
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 from neutral_atom_env.replay.serializer import canonical_json, primitive
-from neutral_atom_env.simulation.m3 import initial_terminal
-from neutral_atom_env.simulation.m4 import run_m4
-from neutral_atom_env.simulation.pipeline import initialize
+from neutral_atom_strategies.scheduling.m3 import initial_terminal
+from neutral_atom_strategies.scheduling.m4 import run_m4
+from neutral_atom_env.platform import initialize
 from neutral_atom_env.visualization import VisualRecorder
-from neutral_atom_env.visualization.workbench import build_inputs, failure_report
+from neutral_atom_app.visualization.workbench import build_inputs, failure_report
 from verify_m3 import verify
 
 STRATEGIES = ('basic', 'greedy', 'critical_path', 'lookahead')
@@ -155,7 +155,7 @@ def terminal_witness(output):
     gate and exact return, then independently replay each complete trace.
     """
     from neutral_atom_env.domain.operations import TaskIntent
-    from neutral_atom_env.motion.greedy import GreedyCompiler
+    from neutral_atom_strategies.motion.greedy import GreedyCompiler
     from neutral_atom_env.simulation import Executor
     raw = circuit([('CZ', (0, 1)), ('CZ', (0, 2))])
     keys = ('G000/Q000/right/EZ_0_25', 'G000/Q000/left/EZ_15_25')

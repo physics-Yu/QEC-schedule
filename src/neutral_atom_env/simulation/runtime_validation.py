@@ -7,7 +7,7 @@ from neutral_atom_env.domain.models import EventType, GateStatus, HolderRef, Hol
 from neutral_atom_env.domain.operations import OperationType, TaskIntent
 from neutral_atom_env.replay.operation_codec import event_from_dict
 from neutral_atom_env.hardware.rigid_aod import distance
-from .event_queue import EventQueue
+from neutral_atom_env.simulation.event_queue import EventQueue
 from neutral_atom_env.replay.trace import _event_data
 
 
@@ -24,16 +24,16 @@ def validate_runtime(state):
               (e := _event_data(r))['event_type'].startswith(('plan_', 'operation_'))]
     previous=next((event_from_dict(e).plan for e in reversed(physical) if e['event_type']=='plan_started'),None) if runtime is None else None
     if runtime is not None and runtime.plan.execution_mode=='scheduled':
-        from .operation_program import validate_program_runtime
+        from neutral_atom_env.simulation.operation_program import validate_program_runtime
         validate_program_runtime(state,runtime.plan)
         return
     if runtime is None and previous is not None and previous.execution_mode=='scheduled':
-        from .operation_program import validate_program_runtime
+        from neutral_atom_env.simulation.operation_program import validate_program_runtime
         validate_program_runtime(replace(state,event_queue=EventQueue()) if pending else state,previous)
         if any(e.event_type.value.startswith(('plan_','operation_')) for e in pending):
             require(len(pending)==1 and pending[0].event_type==EventType.PLAN_STARTED,'Unexpected event after program')
             require(pending[0].time_us==state.time_us and pending[0].plan_id==pending[0].plan.id,'Invalid pending plan start')
-            from neutral_atom_env.motion.compiler import exact_validate
+            from neutral_atom_env.program.binding import exact_validate
             exact_validate(pending[0].plan,replace(state,event_queue=EventQueue((),state.event_queue.next_sequence-1)))
         else:
             require(all(e.event_type in {EventType.WAIT_COMPLETED,EventType.RNG_DRAW} for e in pending),'Unexpected nonphysical event after program')
@@ -49,7 +49,7 @@ def validate_runtime(state):
             previous=next(event_from_dict(e).plan for e in reversed(physical) if e['event_type']=='plan_started')
             require(trap_state(state)==previous.predicted_traps,'Idle supports differ from completed program')
             if isinstance(previous.intent,TaskIntent):
-                from neutral_atom_env.motion.task_validation import validate_target, validate_task_dag
+                from neutral_atom_env.program.task_validation import validate_target, validate_task_dag
                 require(tuple(sorted(state.placement.atom_to_holder.items()))==previous.predicted_placement, 'Idle task placement mismatch')
                 validate_target(previous.intent.target,state)
                 validate_task_dag(previous,state,GateStatus.COMPLETED if previous.intent.effect_gate_id else None)
@@ -58,7 +58,7 @@ def validate_runtime(state):
             require(len(pending)==1 and pending[0].event_type==EventType.PLAN_STARTED, 'Orphan or duplicate physical event')
             event=pending[0]
             require(event.time_us==state.time_us and event.plan_id==event.plan.id, 'Invalid pending plan start')
-            from neutral_atom_env.motion.compiler import exact_validate
+            from neutral_atom_env.program.binding import exact_validate
             exact_validate(event.plan,replace(state,event_queue=EventQueue((),state.event_queue.next_sequence-1)))
         return
 
@@ -75,7 +75,7 @@ def validate_runtime(state):
     require(first.plan==plan and first.time_us==runtime.started_us, 'Runtime plan differs from committed plan')
     require(first.plan.state_version==state.version-len(suffix), 'Plan version or trace cursor differs')
 
-    from neutral_atom_env.motion.validation import validate_plan
+    from neutral_atom_env.program.validation import validate_plan
     validate_plan(plan,state,restoring=True)
 
     # Eager plans return every atom and the AOD to their per-plan starting state.
@@ -137,8 +137,8 @@ def validate_runtime(state):
     require(state.aod.is_moving==moving, 'Movement flag differs from operation boundary')
     # Reconstruct supports from the declared origin, never from current masks.
     from neutral_atom_env.hardware.dynamic_traps import trap_state, begin_transfer, TRANSFERS
-    from neutral_atom_env.motion.program import apply_operation
-    from neutral_atom_env.motion.validation import plan_origin_dag
+    from neutral_atom_env.program.builder import apply_operation
+    from neutral_atom_env.program.validation import plan_origin_dag
     from neutral_atom_env.world import PlacementState
     work=replace(state,placement=PlacementState(dict(plan.initial_placement if plan.initial_placement is not None else plan.predicted_placement)),
                  aod=replace(state.aod.configured(plan.initial_aod_configuration),is_moving=False,
@@ -156,7 +156,7 @@ def validate_runtime(state):
              and plan.operations[runtime.operation_index].operation_type in (OperationType.ENTANGLING_PULSE,OperationType.RAMAN_ROTATION))
     status=GateStatus.COMPLETED if pulse_done else GateStatus.RUNNING if running else GateStatus.RESERVED
     if isinstance(plan.intent,TaskIntent):
-        from neutral_atom_env.motion.task_validation import validate_task_dag
+        from neutral_atom_env.program.task_validation import validate_task_dag
         validate_task_dag(plan,state,status if gate else None)
     elif gate:
         require(state.dag.nodes[gate].status==status, 'Gate status differs from pulse boundary')

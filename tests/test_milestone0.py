@@ -2,12 +2,12 @@ from dataclasses import FrozenInstanceError, replace
 import json
 import pytest
 from neutral_atom_env.domain.models import *
-from neutral_atom_env.simulation import make_demo_state
-from neutral_atom_env.testing.logical_executor import LogicalTestExecutor as Executor
+from neutral_atom_experiments.fixtures.state_factory import make_demo_state
+from neutral_atom_experiments.testing.logical_executor import LogicalTestExecutor as Executor
 from neutral_atom_env.simulation.event_queue import EventQueue
 from neutral_atom_env.world import PlacementState
 from neutral_atom_env.circuit import PhysicalCircuit, DynamicGateDAG
-from neutral_atom_env.testing.artifacts import render
+from neutral_atom_experiments.testing.artifacts import render
 
 
 def test_world_layout(test_context):
@@ -33,7 +33,11 @@ def test_ready_frontier(test_context):
 
 def test_event_integration(test_context):
     state = test_context["state"]
-    traps = {key: replace(trap, position=Position2D(trap.position.x_um, -20)) for key, trap in state.world.traps.items()}
+    # This is a logical event harness, but its backing physical state must still
+    # satisfy today's EZ parking rule. Use legal 10 um spacing inside the zone.
+    ez = next(z for z in state.world.zones if z.zone_type == ZoneType.ENTANGLEMENT)
+    traps = {key: replace(trap, position=Position2D(10*(i % 2), ez.bounds.lower.y_um+10*(i // 2)))
+             for i, (key, trap) in enumerate(state.world.traps.items())}
     state = replace(state, world=replace(state.world, traps=traps))
     test_context.update(state=state, initial=state.snapshot())
     executor = Executor(state)
@@ -145,7 +149,7 @@ def test_shared_predecessor_deduplicated():
 
 def test_failure_artifact(tmp_path, test_context):
     from neutral_atom_env.domain.errors import ValidationError
-    from neutral_atom_env.testing.renderer import render_layout
+    from neutral_atom_experiments.testing.renderer import render_layout
     state = test_context['state']
     holders = dict(state.placement.atom_to_holder)
     holders['Q001'] = holders['Q000']
@@ -188,7 +192,7 @@ def test_dictionary_order_independent(test_context):
 
 @pytest.mark.parametrize('activity', ['idle', 'moving', 'gating', 'measuring'])
 def test_activity_colors(activity, test_context):
-    from neutral_atom_env.testing.scene import atom_activity, activity_color, gate_label
+    from neutral_atom_experiments.testing.scene import atom_activity, activity_color, gate_label
     state = test_context['state']
     holders = dict(state.placement.atom_to_holder)
     holders['Q000'] = HolderRef(HolderType.MOBILE, MobileCellIndex(1, 1))

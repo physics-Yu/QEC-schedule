@@ -2,7 +2,7 @@
 import json,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
-from neutral_atom_env.visualization.workbench import compile_input
+from neutral_atom_app.visualization.workbench import compile_input
 from neutral_atom_env.visualization.viewer import write_html
 from neutral_atom_env.replay.serializer import canonical_json
 from verify_m3 import verify

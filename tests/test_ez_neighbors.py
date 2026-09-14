@@ -9,17 +9,13 @@ import pytest
 
 from neutral_atom_env.circuit import DynamicGateDAG, PhysicalCircuit
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.domain.models import (Atom, GateStatus, GridCoord, HolderRef,
-    HolderType as H, MobileCellIndex as Cell, PhysicalGate, Position2D as P,
-    Rectangle, StaticTrap, Zone, ZoneType)
-from neutral_atom_env.domain.operations import (CaptureBinding as Binding,
-    HardwareConfig, OperationType as K, TaskIntent, TaskTarget)
+from neutral_atom_env.domain.models import Atom, GateStatus, GridCoord, HolderRef, HolderType as H, MobileCellIndex as Cell, PhysicalGate, Position2D as P, Rectangle, StaticTrap, Zone, ZoneType
+from neutral_atom_env.domain.operations import CaptureBinding as Binding, HardwareConfig, OperationType as K, TaskIntent, TaskTarget
 from neutral_atom_env.hardware import get_backend
-from neutral_atom_env.hardware.dynamic_traps import (begin_transfer, finish_transfer,
-    switch_traps, trap_state)
+from neutral_atom_env.hardware.dynamic_traps import begin_transfer, finish_transfer, switch_traps, trap_state
 from neutral_atom_env.hardware.ez_neighbors import reservations, validate_ez_neighbors
-from neutral_atom_env.motion.program import ProgramBuilder
-from neutral_atom_env.motion.scheduled import scheduled_program
+from neutral_atom_env.program.builder import ProgramBuilder
+from neutral_atom_env.program.scheduled import scheduled_program
 from neutral_atom_env.simulation import Executor, operation_program
 from neutral_atom_env.simulation.runtime_validation import validate_runtime
 from neutral_atom_env.simulation.state import SimulationState

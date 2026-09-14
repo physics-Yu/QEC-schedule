@@ -1,12 +1,12 @@
 import json
 from dataclasses import replace
 import pytest
-from neutral_atom_env.experiments.surface_ghz import experiment_input
-from neutral_atom_env.visualization.workbench import build_inputs
-from neutral_atom_env.simulation.pipeline import initialize
-from neutral_atom_env.simulation.patch_greedy import run_patch, candidate_groups
-from neutral_atom_env.simulation.patch_greedy import spatial_components, preflight_group, patch_assignment
-from neutral_atom_env.motion.patch_array import PatchArrayCompiler
+from neutral_atom_experiments.surface_ghz import experiment_input
+from neutral_atom_app.visualization.workbench import build_inputs
+from neutral_atom_env.platform import initialize
+from neutral_atom_strategies.scheduling.patch_greedy import run_patch, candidate_groups
+from neutral_atom_strategies.scheduling.patch_greedy import spatial_components, preflight_group, patch_assignment
+from neutral_atom_strategies.motion.patch_array import PatchArrayCompiler
 from neutral_atom_env.domain.models import Position2D
 from neutral_atom_env.hardware import get_backend
 from neutral_atom_env.replay.operation_codec import event_from_dict

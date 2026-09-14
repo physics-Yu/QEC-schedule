@@ -6,9 +6,9 @@ import shutil
 
 import pytest
 
-from neutral_atom_env.experiments.surface_qec import experiment_input
-from neutral_atom_env.visualization.workbench import build_inputs,validate_input
-from neutral_atom_env.visualization.workbench_server import CompileJobs
+from neutral_atom_experiments.surface_qec import experiment_input
+from neutral_atom_app.visualization.workbench import build_inputs, validate_input
+from neutral_atom_app.visualization.workbench_server import CompileJobs
 
 
 def test_persistent_strategy_keeps_actual_edited_circuit():

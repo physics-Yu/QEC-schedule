@@ -1,6 +1,6 @@
 # 候选、调度策略与未来 RL 接口
 
-状态：2026-09-11。M3 单 trap 持久任务、并发和恢复已实现；M4 greedy 首版已接入可编辑工作台，包含局部候选成本和连续 Raman 填窗。critical-path、有限 lookahead、在线候选注入和 RL 尚未实现。当前 API/预算/非抢占边界见 [M4 greedy](../docs/milestone4_greedy.md)，正式目标接口见 [compiler_contract](compiler_contract.md)。
+状态更新：2026-09-14。现有 M4 已含 basic/greedy/critical_path/有限 lookahead，见 [M4 四策略](../docs/milestone4_complete.md)。环境与策略已分包；新 [SMT 联合批次实验](../docs/smt_batch_experiment.md) 在固定 EZ、10μm rigid 轴、恢复式批次内联合求解门子集、方向、位移与捕获闭包，支持单步/小规模多阶段，并经过共同物理执行和重放。它不是将启发式完整候选列表交给 Z3 排序。统一动作构造接口、通用二维规划、在线候选注入和 RL 仍未实现；下文有限候选 RL 是历史目标设计，不代表已落地或唯一可选结构。
 
 ## 1. 调度与编译分工
 

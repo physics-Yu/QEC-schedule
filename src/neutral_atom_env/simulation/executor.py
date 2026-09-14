@@ -1,8 +1,8 @@
 from neutral_atom_env.domain.models import EventType, GateStatus, SimulationEvent
 from dataclasses import replace, fields
 import random
-from .state import SimulationState
-from .physical_executor import reduce_physical, PHYSICAL_EVENTS
+from neutral_atom_env.simulation.state import SimulationState
+from neutral_atom_env.simulation.physical_executor import reduce_physical, PHYSICAL_EVENTS
 from neutral_atom_env.domain.errors import ValidationError
 
 
@@ -27,12 +27,12 @@ class Executor:
         raise ValidationError('PHYSICAL_PLAN_REQUIRED', 'Gate transitions require Executor.submit(plan)')
 
     def submit(self, plan):
-        from neutral_atom_env.motion.compiler import exact_validate
+        from neutral_atom_env.program.binding import exact_validate
         exact_validate(plan,self.state)
         self.schedule(SimulationEvent(self.state.time_us,EventType.PLAN_STARTED,plan_id=plan.id,plan=plan))
 
     def step(self):
-        from .runtime_validation import validate_runtime
+        from neutral_atom_env.simulation.runtime_validation import validate_runtime
         validate_runtime(self.state)
         state = self.state
         event = state.event_queue.peek()
@@ -71,7 +71,7 @@ class Executor:
         return event
 
     def run(self):
-        from .runtime_validation import validate_runtime
+        from neutral_atom_env.simulation.runtime_validation import validate_runtime
         validate_runtime(self.state)
         while self.state.event_queue:
             self.step()

@@ -8,14 +8,14 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 
 
 def run():
-    from neutral_atom_env.experiments.surface_qec import experiment_input
-    from neutral_atom_env.experiments.qec_layout import build_qec_inputs
-    from neutral_atom_env.simulation.pipeline import initialize
+    from neutral_atom_experiments.surface_qec import experiment_input
+    from neutral_atom_experiments.qec_layout import build_qec_inputs
+    from neutral_atom_env.platform import initialize
     from neutral_atom_env.quantum.stabilizer import StabilizerState
-    from neutral_atom_env.simulation.patch_greedy import patch_assignment
-    from neutral_atom_env.motion.patch_array import PatchArrayCompiler
-    from neutral_atom_env.motion.program import ProgramBuilder
-    from neutral_atom_env.domain.operations import TaskIntent,TaskTarget
+    from neutral_atom_strategies.scheduling.patch_greedy import patch_assignment
+    from neutral_atom_strategies.motion.patch_array import PatchArrayCompiler
+    from neutral_atom_env.program.builder import ProgramBuilder
+    from neutral_atom_env.domain.operations import TaskIntent, TaskTarget
     from neutral_atom_env.simulation.executor import Executor
     _,c,p,h=build_qec_inputs(experiment_input())
     state=initialize(c,p,h)

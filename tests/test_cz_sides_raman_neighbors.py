@@ -2,14 +2,14 @@
 from dataclasses import replace
 import pytest
 from test_m4 import make,execute
-from neutral_atom_env.domain.models import Position2D,HolderRef,HolderType,MobileCellIndex
-from neutral_atom_env.domain.operations import TaskIntent,TaskTarget,OperationType as K
+from neutral_atom_env.domain.models import Position2D, HolderRef, HolderType, MobileCellIndex
+from neutral_atom_env.domain.operations import TaskIntent, TaskTarget, OperationType as K
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.hardware.raman import validate_rotation
-from neutral_atom_env.motion.greedy import GreedyCompiler
-from neutral_atom_env.motion.program import ProgramBuilder
-from neutral_atom_env.motion.persistent import PersistentTargetCompiler
-from neutral_atom_env.motion.scheduled import scheduled_program
+from neutral_atom_strategies.motion.greedy import GreedyCompiler
+from neutral_atom_env.program.builder import ProgramBuilder
+from neutral_atom_strategies.motion.persistent import PersistentTargetCompiler
+from neutral_atom_env.program.scheduled import scheduled_program
 from neutral_atom_env.world import PlacementState
 
 

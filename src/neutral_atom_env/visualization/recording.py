@@ -3,12 +3,12 @@ from collections import Counter
 from math import ceil, floor
 import json
 from pathlib import Path
-from neutral_atom_env.replay.serializer import primitive,canonical_json
-from neutral_atom_env.replay.trajectory import axes_from_dict,target_axes
+from neutral_atom_env.replay.serializer import primitive, canonical_json
+from neutral_atom_env.replay.trajectory import axes_from_dict, target_axes
 from neutral_atom_env.domain.models import Position2D
 from neutral_atom_env.domain.operations import TaskIntent
-from neutral_atom_env.testing.theme import VisualTheme
-from .summary import operation_category,movement_mode,summarize_intervals
+from neutral_atom_env.visualization.theme import VisualTheme
+from neutral_atom_env.visualization.summary import operation_category, movement_mode, summarize_intervals
 from neutral_atom_env.simulation.quantum_effects import condition_applies
 from neutral_atom_env.statistics import AtomStatistics
 
@@ -194,7 +194,7 @@ class VisualRecorder:
             'captured':first.get('captured',[]),'gate_label':self.frames[0]['gate_label']}))
 
     def write(self,path):
-        from .viewer import write_html
+        from neutral_atom_env.visualization.viewer import write_html
         return write_html(self.payload(),path)
 
     def write_json(self,path):

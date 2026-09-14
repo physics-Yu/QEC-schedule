@@ -1,15 +1,16 @@
 import json
 from dataclasses import replace
 import pytest
-from neutral_atom_env.domain.models import HolderType,HolderRef,Position2D,EventType,MobileCellIndex
-from neutral_atom_env.domain.operations import ExecuteGateBatchIntent,OperationType as K
+from neutral_atom_env.domain.models import HolderType, HolderRef, Position2D, EventType, MobileCellIndex
+from neutral_atom_env.domain.operations import ExecuteGateBatchIntent, OperationType as K
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.hardware import get_backend
-from neutral_atom_env.motion.compiler import MotionCompiler,exact_validate
+from neutral_atom_strategies.motion.compiler import MotionCompiler
+from neutral_atom_env.program.binding import exact_validate
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
-from neutral_atom_env.simulation.scheduler import EagerScheduler
-from neutral_atom_env.simulation.rigid_parking_factory import make_rigid_parking_state
+from neutral_atom_strategies.scheduling.scheduler import EagerScheduler
+from neutral_atom_experiments.fixtures.rigid_parking_factory import make_rigid_parking_state
 from neutral_atom_env.visualization import VisualRecorder
 from neutral_atom_env.world import PlacementState
 

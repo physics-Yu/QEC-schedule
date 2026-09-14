@@ -3,15 +3,14 @@ import json
 from dataclasses import replace
 import pytest
 from neutral_atom_env.circuit import PhysicalCircuit, DynamicGateDAG
-from neutral_atom_env.domain.models import (Atom, HolderRef, HolderType as H, MobileCellIndex as Cell,
-    Position2D as P, Rectangle, StaticTrap, GridCoord, Zone, ZoneType)
+from neutral_atom_env.domain.models import Atom, HolderRef, HolderType as H, MobileCellIndex as Cell, Position2D as P, Rectangle, StaticTrap, GridCoord, Zone, ZoneType
 from neutral_atom_env.domain.operations import CaptureBinding as Binding, OperationType as K, ExecuteGateBatchIntent
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.world import WorldState, PlacementState, AODRuntimeState
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.hardware import get_backend
-from neutral_atom_env.hardware.dynamic_traps import (trap_state, switch_traps, begin_transfer, finish_transfer)
+from neutral_atom_env.hardware.dynamic_traps import trap_state, switch_traps, begin_transfer, finish_transfer
 
 
 def array_state(count=4, rows=2, columns=2):
@@ -137,9 +136,9 @@ def test_slm_switch_is_individual_and_cannot_remove_an_occupied_support():
 
 @pytest.fixture(scope='module')
 def switched_program():
-    from neutral_atom_env.simulation.pipeline import initialize, Platform, load_circuit
-    from neutral_atom_env.motion.single_trap import SingleTrapCompiler
-    from neutral_atom_env.motion.program import ProgramBuilder
+    from neutral_atom_env.platform import initialize, Platform, load_circuit
+    from neutral_atom_strategies.motion.single_trap import SingleTrapCompiler
+    from neutral_atom_env.program.builder import ProgramBuilder
     from neutral_atom_env.visualization import VisualRecorder
     platform = Platform.load('configs/platforms/single_trap.json')
     platform = replace(platform,aod=replace(platform.aod,pose=P(-5,0)))

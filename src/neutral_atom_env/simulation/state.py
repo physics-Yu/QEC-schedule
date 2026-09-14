@@ -9,7 +9,7 @@ from dataclasses import asdict
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.world import WorldState, PlacementState, AODRuntimeState
 from neutral_atom_env.circuit import DynamicGateDAG
-from .event_queue import EventQueue
+from neutral_atom_env.simulation.event_queue import EventQueue
 from neutral_atom_env.replay.trace import Trace
 
 

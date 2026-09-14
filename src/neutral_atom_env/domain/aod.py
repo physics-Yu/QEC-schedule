@@ -1,8 +1,8 @@
 """Ordered Cartesian AOD axes in physical micrometres, independent of SLM sites."""
 from dataclasses import dataclass
 from math import isfinite
-from .errors import ValidationError
-from .models import Position2D
+from neutral_atom_env.domain.errors import ValidationError
+from neutral_atom_env.domain.models import Position2D
 
 
 @dataclass(frozen=True)

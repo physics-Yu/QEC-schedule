@@ -3,7 +3,7 @@ from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.domain.models import HolderType, Position2D
 from neutral_atom_env.domain.operations import OperationType as K
 from neutral_atom_env.domain.aod import motion_target
-from .gate_contract import SINGLE_QUBIT_GATES
+from neutral_atom_env.hardware.gate_contract import SINGLE_QUBIT_GATES
 
 
 def validate_rotation_batch(state, gate_ids, *, time_us=None, check_neighbors=True):
@@ -37,7 +37,7 @@ def validate_rotation_batch_sweep(state,gate_ids,target=None,start_fraction=0.,e
 
 def validate_rotation(state, gate_id, *, time_us=None, check_neighbors=True):
     gate = state.dag.nodes[gate_id].gate
-    from neutral_atom_env.simulation.quantum_effects import condition_applies,validate_tracked_unitary
+    from neutral_atom_env.simulation.quantum_effects import condition_applies, validate_tracked_unitary
     validate_tracked_unitary(state,gate)
     if not condition_applies(state,gate):return gate
     if gate.gate_type not in SINGLE_QUBIT_GATES:
@@ -74,8 +74,8 @@ def validate_rotation_sweep(state,gate_id,target=None,start_fraction=0.,end_frac
     Both backends follow a straight spatial segment, with linear or shared
     cubic time progress. Fractions are physical elapsed-time fractions.
     """
-    from . import get_backend
-    from .rigid_aod import segment_clearance
+    from neutral_atom_env.hardware import get_backend
+    from neutral_atom_env.hardware.rigid_aod import segment_clearance
     gate=validate_rotation(state,gate_id,check_neighbors=False)
     from neutral_atom_env.simulation.quantum_effects import condition_applies
     if not condition_applies(state,gate):return

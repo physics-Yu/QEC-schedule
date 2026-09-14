@@ -3,9 +3,9 @@ from pathlib import Path
 import argparse
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
-from neutral_atom_env.simulation.milestone2_factory import make_circuit_state
-from neutral_atom_env.simulation.scheduler import EagerScheduler
-from neutral_atom_env.visualization import VisualRecorder,write_bundle
+from neutral_atom_experiments.fixtures.milestone2_factory import make_circuit_state
+from neutral_atom_strategies.scheduling.scheduler import EagerScheduler
+from neutral_atom_env.visualization import VisualRecorder, write_bundle
 
 
 def main():

@@ -3,12 +3,12 @@ import pytest
 
 from neutral_atom_env.domain.models import HolderType
 from neutral_atom_env.domain.operations import TaskTarget
-from neutral_atom_env.motion.task_validation import validate_target
-from neutral_atom_env.simulation.m3 import initial_terminal
-from neutral_atom_env.simulation.m4 import run_m4
-from neutral_atom_env.simulation.m4_policies import critical_paths
-from neutral_atom_env.simulation.pipeline import initialize
-from neutral_atom_env.visualization.workbench import build_inputs
+from neutral_atom_env.program.task_validation import validate_target
+from neutral_atom_strategies.scheduling.m3 import initial_terminal
+from neutral_atom_strategies.scheduling.m4 import run_m4
+from neutral_atom_strategies.scheduling.m4_policies import critical_paths
+from neutral_atom_env.platform import initialize
+from neutral_atom_app.visualization.workbench import build_inputs
 
 
 def make(gates, n=4):
@@ -113,7 +113,7 @@ def test_exact_node_limit_with_complete_unique_branch_is_not_search_truncation()
 @pytest.mark.parametrize('strategy',['basic','lookahead'])
 def test_all_policy_branches_failed_preserves_audit_evidence_without_live_mutation(monkeypatch,strategy):
     from neutral_atom_env.domain.errors import ValidationError
-    from neutral_atom_env.simulation import m4, m4_policies
+    from neutral_atom_strategies.scheduling import m4, m4_policies
     state=make([('H',(0,))],n=1); before=state.snapshot()
     def reject(*args,**kwargs):
         raise ValidationError('INJECTED_BRANCH_AUDIT', 'Independent audit rejected this speculative branch')
@@ -136,7 +136,7 @@ def test_all_policy_branches_failed_preserves_audit_evidence_without_live_mutati
 
 def test_future_candidate_failure_keeps_original_reason_and_rollout_counts(monkeypatch):
     from neutral_atom_env.domain.errors import ValidationError
-    from neutral_atom_env.motion.greedy import GreedyCompiler
+    from neutral_atom_strategies.motion.greedy import GreedyCompiler
     original=GreedyCompiler.alternatives
     def fail_future(self,gate_id,state,**kwargs):
         if state.version>0:

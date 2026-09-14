@@ -19,8 +19,8 @@ python examples/run_rigid_parking.py --circuit configs/circuits/rigid_parking.js
 ```python
 from neutral_atom_env.circuit import PhysicalCircuit
 from neutral_atom_env.domain.models import PhysicalGate
-from neutral_atom_env.simulation.rigid_parking_factory import make_rigid_parking_state
-from neutral_atom_env.simulation.scheduler import EagerScheduler
+from neutral_atom_experiments.fixtures.rigid_parking_factory import make_rigid_parking_state
+from neutral_atom_strategies.scheduling.scheduler import EagerScheduler
 from neutral_atom_env.visualization import VisualRecorder
 
 circuit = PhysicalCircuit((PhysicalGate('G000', 'CZ', ('Q000', 'Q003')),))

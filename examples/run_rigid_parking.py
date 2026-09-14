@@ -6,14 +6,14 @@ import json
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 from neutral_atom_env.circuit import PhysicalCircuit
-from neutral_atom_env.domain.models import PhysicalGate,EventType
-from neutral_atom_env.simulation.rigid_parking_factory import make_rigid_parking_state
-from neutral_atom_env.simulation.scheduler import EagerScheduler
-from neutral_atom_env.visualization import VisualRecorder,write_bundle,render_summary
+from neutral_atom_env.domain.models import PhysicalGate, EventType
+from neutral_atom_experiments.fixtures.rigid_parking_factory import make_rigid_parking_state
+from neutral_atom_strategies.scheduling.scheduler import EagerScheduler
+from neutral_atom_env.visualization import VisualRecorder, write_bundle, render_summary
 from neutral_atom_env.replay.serializer import canonical_json
-from neutral_atom_env.testing.renderer import render_layout,render_dag
-from neutral_atom_env.testing.theme import VisualTheme
-from neutral_atom_env.testing.artifacts import page
+from neutral_atom_experiments.testing.renderer import render_layout, render_dag
+from neutral_atom_env.visualization.theme import VisualTheme
+from neutral_atom_experiments.testing.artifacts import page
 
 
 def build(output,scenario='circuit',circuit_path=None):

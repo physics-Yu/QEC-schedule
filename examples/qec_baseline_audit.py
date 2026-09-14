@@ -9,12 +9,12 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 
 
 def audit(source,output):
-    from neutral_atom_env.visualization.workbench import build_inputs
-    from neutral_atom_env.simulation.pipeline import initialize
-    from neutral_atom_env.simulation.m3 import initial_terminal
+    from neutral_atom_app.visualization.workbench import build_inputs
+    from neutral_atom_env.platform import initialize
+    from neutral_atom_strategies.scheduling.m3 import initial_terminal
     from neutral_atom_env.replay.checkpoint import restore
-    from neutral_atom_env.replay.serializer import primitive,canonical_json
-    from neutral_atom_env.experiments.surface_qec import summarize
+    from neutral_atom_env.replay.serializer import primitive, canonical_json
+    from neutral_atom_experiments.surface_qec import summarize
     source=Path(source).resolve();output=Path(output);output.mkdir(parents=True,exist_ok=True)
     read=lambda name:json.loads((source/name).read_text(encoding='utf-8'))
     value,circuit,platform,placement=build_inputs(read('input.json'))
@@ -32,7 +32,7 @@ def audit(source,output):
     assert quantum['syndrome_bits']==verified['measurement_results']
     origin=initialize(circuit,platform,placement,seed=value['seed'])
     target=initial_terminal(origin)
-    from neutral_atom_env.motion.task_validation import validate_target
+    from neutral_atom_env.program.task_validation import validate_target
     validate_target(target,state)
     hashes={name:hashlib.sha256((source/name).read_bytes()).hexdigest() for name in
         ('input.json','checkpoint.json','trace.jsonl','recording.json','result.json','verification.json','browser-acceptance.json')}

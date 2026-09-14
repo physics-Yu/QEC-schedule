@@ -7,7 +7,7 @@ import random
 import pytest
 
 from neutral_atom_env.domain.models import EventType, SimulationEvent, PhysicalGate, StaticTrap, GridCoord, Position2D
-from neutral_atom_env.motion.compiler import fingerprint
+from neutral_atom_env.program.binding import fingerprint
 from neutral_atom_env.replay.serializer import canonical_json
 from neutral_atom_env.replay.snapshot_encoding import TraceEncodingCache, encode_snapshot, snapshot_digest
 from neutral_atom_env.simulation import Executor

@@ -74,7 +74,7 @@ def boundary(state):
 
 
 def original_input(parent):
-    from neutral_atom_env.visualization.workbench import build_inputs, initialize_input
+    from neutral_atom_app.visualization.workbench import build_inputs, initialize_input
     raw = read_json(parent / 'input.json')
     value, circuit, platform, placement = build_inputs(raw)
     assert value == raw, 'Original normalized input changed under the current API'
@@ -121,12 +121,12 @@ def inputs_unchanged(output):
 
 
 def resume_case(output, parent, attempt, classification, review_note):
-    from neutral_atom_env.simulation.m3 import initial_terminal
-    from neutral_atom_env.motion.task_validation import validate_target
-    from neutral_atom_env.simulation.qec_temporal_four import run_qec_temporal_four
+    from neutral_atom_strategies.scheduling.m3 import initial_terminal
+    from neutral_atom_env.program.task_validation import validate_target
+    from neutral_atom_experiments.runners.qec_temporal_four import run_qec_temporal_four
     from neutral_atom_env.replay.serializer import primitive
     from neutral_atom_env.replay.trace import _event_data
-    from neutral_atom_env.experiments.surface_qec_temporal_four import summarize
+    from neutral_atom_experiments.surface_qec_temporal_four import summarize
     from neutral_atom_env.domain.errors import ValidationError
 
     value, circuit, initial = original_input(parent)
@@ -240,11 +240,11 @@ def resume_case(output, parent, attempt, classification, review_note):
 
 def verify_case(output):
     from neutral_atom_env.simulation import Executor
-    from neutral_atom_env.simulation.m3 import initial_terminal
+    from neutral_atom_strategies.scheduling.m3 import initial_terminal
     from neutral_atom_env.replay.operation_codec import event_from_dict
-    from neutral_atom_env.experiments.surface_qec_temporal_four import HISTORY_IDS, validate_history
+    from neutral_atom_experiments.surface_qec_temporal_four import HISTORY_IDS, validate_history
     from neutral_atom_env.visualization import VisualRecorder
-    from neutral_atom_env.visualization.workbench import recording_payload
+    from neutral_atom_app.visualization.workbench import recording_payload
     from neutral_atom_env.visualization.viewer import write_html
 
     inputs_unchanged(output)

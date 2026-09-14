@@ -38,7 +38,7 @@ python examples/circuit_workbench.py --port 8766
 `ResidentCompiler.compile_gate(gate_id, state)` 保留 EZ 静态锚点和已装载伙伴；重复同一 CZ 可以只包含脉冲，换伙伴时显式卸下旧伙伴再装新伙伴。`ReturningCompiler.compile_gate` 每门构造完整起态归还。二者共用基础运输原语，生成的操作序列与装卸数实质不同；validator、Executor、codec 和 viewer 不按 compiler 名字放行。最终由相同 `initial_terminal` 要求全体 holders、AOD axes 和 masks 回到初始状态。
 
 ```python
-from neutral_atom_env.simulation.m3 import initial_terminal, run_m3
+from neutral_atom_strategies.scheduling.m3 import initial_terminal, run_m3
 terminal = initial_terminal(state)  # 在第一次执行前保存；恢复时继续传同一个目标
 result = run_m3(state, compiler='resident', terminal=terminal,
                 overlap=True, max_decisions=10000, on_event=recorder.observe)

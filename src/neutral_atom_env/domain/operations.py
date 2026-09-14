@@ -2,8 +2,8 @@
 from dataclasses import dataclass
 from enum import Enum
 from math import isfinite
-from .models import Position2D, MobileCellIndex, HolderRef, Atom
-from .aod import AODConfiguration
+from neutral_atom_env.domain.models import Position2D, MobileCellIndex, HolderRef, Atom
+from neutral_atom_env.domain.aod import AODConfiguration
 
 
 class EndDisposition(str, Enum):

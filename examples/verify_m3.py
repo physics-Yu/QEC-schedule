@@ -4,13 +4,13 @@ from collections import Counter,defaultdict
 from math import isclose
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
-from neutral_atom_env.visualization.workbench import build_inputs
-from neutral_atom_env.simulation.pipeline import initialize
+from neutral_atom_app.visualization.workbench import build_inputs
+from neutral_atom_env.platform import initialize
 from neutral_atom_env.simulation import Executor
 from neutral_atom_env.simulation.state import SimulationState
 from neutral_atom_env.replay.operation_codec import event_from_dict
-from neutral_atom_env.simulation.m3 import initial_terminal
-from neutral_atom_env.motion.task_validation import validate_target
+from neutral_atom_strategies.scheduling.m3 import initial_terminal
+from neutral_atom_env.program.task_validation import validate_target
 from neutral_atom_env.replay.serializer import canonical_json
 
 

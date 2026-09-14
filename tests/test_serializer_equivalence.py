@@ -3,7 +3,7 @@ from collections.abc import Mapping
 from dataclasses import fields,is_dataclass,dataclass
 from enum import Enum,IntEnum
 
-from neutral_atom_env.replay.serializer import primitive,canonical_json
+from neutral_atom_env.replay.serializer import primitive, canonical_json
 
 
 def original(value):

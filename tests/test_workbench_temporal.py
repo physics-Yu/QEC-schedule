@@ -4,8 +4,8 @@ import pytest
 
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.domain.models import PhysicalGate
-from neutral_atom_env.experiments.surface_qec import experiment_input
-from neutral_atom_env.visualization.workbench import validate_input,build_inputs
+from neutral_atom_experiments.surface_qec import experiment_input
+from neutral_atom_app.visualization.workbench import validate_input, build_inputs
 
 
 def short_input():
@@ -38,8 +38,8 @@ def test_flip_requires_actual_boolean(value):
 
 
 def test_history_guard_runs_before_any_edited_early_correction(monkeypatch):
-    from neutral_atom_env.simulation import qec_temporal as runner
-    from neutral_atom_env.experiments.surface_qec_temporal import HISTORY_IDS,CORRECTION_PREFIX
+    from neutral_atom_experiments.runners import qec_temporal as runner
+    from neutral_atom_experiments.surface_qec_temporal import HISTORY_IDS, CORRECTION_PREFIX
     gates=[PhysicalGate(gid,'MEASURE',('Q018',)) for gid in HISTORY_IDS]
     correction=PhysicalGate(CORRECTION_PREFIX+'edited','X',('Q000',))
     state=SimpleNamespace(dag=SimpleNamespace(circuit=SimpleNamespace(gates=gates+[correction])),measurement_results={})
@@ -54,8 +54,8 @@ def test_history_guard_runs_before_any_edited_early_correction(monkeypatch):
 
 
 def test_complete_but_unsupported_reported_history_rejects_before_correction(monkeypatch):
-    from neutral_atom_env.simulation import qec_temporal as runner
-    from neutral_atom_env.experiments.surface_qec_temporal import HISTORY_IDS,CORRECTION_PREFIX
+    from neutral_atom_experiments.runners import qec_temporal as runner
+    from neutral_atom_experiments.surface_qec_temporal import HISTORY_IDS, CORRECTION_PREFIX
     gates=[PhysicalGate(gid,'MEASURE',('Q018',)) for gid in HISTORY_IDS]
     correction=PhysicalGate(CORRECTION_PREFIX+'edited','X',('Q000',))
     state=SimpleNamespace(dag=SimpleNamespace(circuit=SimpleNamespace(gates=gates+[correction])),
@@ -69,7 +69,7 @@ def test_complete_but_unsupported_reported_history_rejects_before_correction(mon
 
 
 def test_arbitrary_short_edits_do_not_require_full_named_protocol(monkeypatch):
-    from neutral_atom_env.simulation import qec_temporal as runner
+    from neutral_atom_experiments.runners import qec_temporal as runner
     state=SimpleNamespace(dag=SimpleNamespace(circuit=SimpleNamespace(gates=[PhysicalGate('edited','H',('Q000',))])),
                           measurement_results={})
     expected=SimpleNamespace(status='completed')
