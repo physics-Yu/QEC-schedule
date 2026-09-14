@@ -1,5 +1,7 @@
 # 程序接入原子运动可视化
 
+> 范围更新：本文描述当前可复用 viewer 的串行数据格式。M3-A 已加入真实动态光阱/交接阶段；多活动操作和并行 schedule 仍待实现；当前层显示开关不代表物理光阱开关，512 原子静态检查也不是完整编译运输基准。新验收见 [visualization instruction](../instruction/visualization.md) 与 [validation](../instruction/validation.md)。
+
 运动视图是 `neutral_atom_env.visualization` 中的只读组件。它观察已提交的状态，支持当前单 AOD 的 rigid 和 row_column 后端；不创建计划、不修改 holder，也不执行物理操作。
 
 ## Python 接入
@@ -50,10 +52,10 @@ fetch('recording.json').then(r => r.json()).then(recording => {
 
 ## 数据和统计口径
 
-主要指标下的 schedule 表以真实仿真时间为横轴、固定七类操作为行，分别显示每次操作的起止区间与右侧累计耗时。点击色块可跳转运动回放，虚线游标随回放移动；短门脉冲使用最小 2 px 标记并保留真实时长。`summary.schedule` 是按起始时间排序的 `{start, end, category}` 列表，包含空闲间隙；它是显示格式的新增字段，物理 checkpoint 不变。
+主要指标下的 schedule 表以真实仿真时间为横轴、固定八类操作为行，分别显示每次操作的起止区间与右侧累计耗时。点击色块可跳转运动回放，虚线游标随回放移动；短门脉冲使用最小 2 px 标记并保留真实时长。`summary.schedule` 是按起始时间排序的 `{start, end, category}` 列表，包含空闲间隙；它是显示格式的新增字段，物理 checkpoint 不变。
 
-- `neutral-atom-view/1` 是可视化数据格式，与物理 checkpoint schema 8 分开。world 几何仅保存一次；每帧保存时间、设备轴、当前门和改变的 `atom_updates`，不重复 trace 和完整 world。已有快照可经 `VisualRecorder.from_snapshots()` 转换。
-- 汇总固定七类：装载、载原子运输、载原子回程、卸载、门脉冲、空载移动、等待。回程指同一计划门脉冲之后的载原子移动。类别累计的是设备占用 μs，同一段不会按原子数重复加总。
+- `neutral-atom-view/2` 是可视化数据格式，与物理 checkpoint schema 11 分开，旧 /1 需重新生成。SLM masks 首帧及变化时保存（null 沿用前帧），AOD masks 和 transfer 随事件帧记录。world 几何仅保存一次；每帧保存时间、设备轴、当前门和改变的 `atom_updates`，不重复 trace 和完整 world。已有快照可经 `VisualRecorder.from_snapshots()` 转换。
+- 汇总固定八类：装载、载原子运输、载原子回程、卸载、门脉冲、空载移动、独立光阱开关、等待。回程指同一计划门脉冲之后的载原子移动。类别累计的是设备占用 μs，同一段不会按原子数重复加总。
 - 移动模式抽象为整体平移和行列变形，另列段数、设备时间。`transport_atom_time_us` 为 MOVE 段时长乘以承载原子数，单位 atom·μs；包括行列变形中承载但原位不动的交点，不能解释成每颗原子实际移动时长。原子总路程仍取物理 metrics。
 - 汇总窗口从本次观察开始与 episode 开始的较晚时刻到最后记录时刻；逻辑完成指标来自 episode metrics。若从中途接入，两者起点可能不同。当前只支持串行设备区间；重叠操作明确拒绝，未来并发必须增加资源维度。
 

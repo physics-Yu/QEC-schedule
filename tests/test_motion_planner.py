@@ -47,7 +47,7 @@ def test_different_legal_planners_submit_and_resume_without_default_recompilatio
 def test_empty_enabled_trap_blocks_direct_route_but_candidate_dots_do_not(enabled):
     state=make_single_gate_state();traps=dict(state.world.traps)
     traps['EMPTY']=StaticTrap('EMPTY',GridCoord(0,-1),Position2D(0,-5),enabled=enabled)
-    state=replace(state,world=replace(state.world,traps=traps));before=state.snapshot()
+    state=replace(state,world=replace(state.world,traps=traps),slm_enabled=None);before=state.snapshot()
     if enabled:
         with pytest.raises(ValidationError,match='SLM_PATH_BLOCKED'):
             MotionCompiler(DirectVerticalPlanner()).compile(INTENT,state)
@@ -61,7 +61,7 @@ def test_incidental_atom_is_also_checked_against_empty_slm():
     state=make_row_column_state('incidental');traps=dict(state.world.traps)
     traps['S002']=replace(traps['S002'],position=Position2D(10,5),grid=GridCoord(2,1))
     traps['EMPTY']=StaticTrap('EMPTY',GridCoord(2,-1),Position2D(10,-5))
-    state=replace(state,world=replace(state.world,traps=traps))
+    state=replace(state,world=replace(state.world,traps=traps),slm_enabled=None)
     with pytest.raises(ValidationError,match='SLM_PATH_BLOCKED') as caught:
         MotionCompiler(DirectVerticalPlanner()).compile(INTENT,state)
     assert caught.value.violation.atom_ids==('Q002',)
@@ -87,7 +87,9 @@ def test_plan_validation_rejects_semantic_corruption_atomically(damage):
 def test_backend_departure_is_not_an_arbitrary_overlap_exemption():
     state=make_single_gate_state();backend=get_backend(state.hardware);bindings=backend.capture_closure(state,state.aod.pose)
     state=backend.load(state,bindings)
-    with pytest.raises(ValidationError,match='SLM_PATH_BLOCKED'):backend.move(state,Position2D(2.5,0))
+    # LOAD extinguishes its source SLM; an unannotated backend move is safe.
+    assert not state.slm_enabled[bindings[0].static_trap_id]
+    backend.move(state,Position2D(2.5,0))
     with pytest.raises(ValidationError,match='INVALID_TRANSFER_PATH'):
         backend.move(state,Position2D(.5,0),transfer='depart',bindings=bindings)
     moved=backend.move(state,Position2D(2.5,0),transfer='depart',bindings=bindings)

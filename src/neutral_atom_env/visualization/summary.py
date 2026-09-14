@@ -5,12 +5,16 @@ from pathlib import Path
 
 CATEGORIES=(('load','装载','Load'),('transport','载原子运输','Loaded transport'),
             ('return','载原子回程','Loaded return'),('offload','卸载','Offload'),
-            ('pulse','门脉冲','Gate pulse'),('empty','空载移动','Empty motion'),('idle','等待 / 空闲','Idle'))
-COLORS=('#5364bc','#e89438','#d5aa64','#8190a3','#d95360','#bfc9d9','#e3e7ee')
+            ('pulse','门脉冲','Gate pulse'),('empty','空载移动','Empty motion'),('switch','光阱开关','Trap switching'),
+            ('idle','等待 / 空闲','Idle'))
+COLORS=('#5364bc','#e89438','#d5aa64','#8190a3','#d95360','#bfc9d9','#659e90','#e3e7ee')
 
 
 def operation_category(record,pulse_seen):
     kind=record['operation_type']
+    if kind=='raman_rotation':return 'control' if record.get('applied') is False else 'raman'
+    if kind in ('measurement','reset'):return kind
+    if kind=='trap_switch':return 'switch'
     if kind in ('aod_load','aod_recapture'):return 'load'
     if kind in ('aod_offload','aod_park'):return 'offload'
     if kind=='entangling_pulse':return 'pulse'
@@ -37,21 +41,32 @@ def summarize_trace(trace,metrics=None):
     start=metrics.get('episode_start_us')
     if start is None:start=min(starts,default=0.0)
     end=metrics.get('simulation_time_us',max((r['event']['time_us'] for r in records),default=start))
-    operations=[];seen=set()
+    operations=[];seen=set();plans={}
     for record in records:
         event=record['event'];plan=event.get('plan_id')
+        if event['event_type']=='plan_started':plans[plan]=event['plan']
         if event['event_type']!='operation_started':continue
-        category=operation_category(record,plan in seen)
+        origin=plans.get(plan,{})
+        interval=next((i for i in origin.get('operation_intervals',()) if i['operation_id']==event['operation_id']),None)
+        resources=record.get('resources',interval['resources'] if interval else origin.get('resources',()))
+        category=operation_category(record,plan in seen or record.get('task_phase')=='cleanup')
         if category=='pulse':seen.add(plan)
         operations.append({'start':event['time_us'],'end':event['time_us']+record['duration_us'],
-            'category':category,'moving_count':len(record.get('moving_atom_ids',())),
+            'category':category,'resources':resources,'moving_count':len(record.get('moving_atom_ids',())),
             'mode':movement_mode(record)})
-    return summarize_intervals(operations,start,end,metrics)
+    return summarize_intervals(operations,start,end,metrics,allow_overlap=any(r['event'].get('plan',{}).get('execution_mode')=='scheduled' for r in records if r['event'].get('plan')))
 
 
-def summarize_intervals(operations,start,end,metrics=None):
+def summarize_intervals(operations,start,end,metrics=None,*,allow_overlap=False):
     """Intervals clipped to observed time; serial device occupancy, never summed per atom."""
-    wall=max(0,end-start);totals={key:0.0 for key,_,_ in CATEGORIES}
+    optional=(('raman','Raman 单比特','Raman 1Q','#9a65bc'),
+              ('measurement','辅助原子测量','Ancilla measurement','#398896'),
+              ('reset','原位复位','Reset to zero','#a57942'),
+              ('control','未触发的条件控制','Conditional no-pulse slot','#8b929c'))
+    present=tuple(row for row in optional if any(op['category']==row[0] for op in operations))
+    categories=CATEGORIES+tuple(row[:3] for row in present)
+    colors=COLORS+tuple(row[3] for row in present)
+    wall=max(0,end-start);totals={key:0.0 for key,_,_ in categories}
     modes={};counts={key:0 for key in totals};atom_time=0.0;intervals=[];schedule=[]
     for op in operations:
         left=max(start,op['start']);right=min(end,op['end'])
@@ -64,19 +79,37 @@ def summarize_intervals(operations,start,end,metrics=None):
             mode['duration_us']+=duration;mode['segments']+=1
             mode['atom_time_us']+=duration*op['moving_count']
             atom_time+=duration*op['moving_count']
-    previous=start
+    previous=start;overlapping=False
     for left,right in sorted(intervals):
-        if left<previous-1e-8:raise ValueError('Summary supports serial device intervals; overlapping operations require resource lanes')
+        if left<previous-1e-8:
+            if not allow_overlap:raise ValueError('Summary supports serial device intervals; overlapping operations require resource lanes')
+            overlapping=True
         if left>previous:schedule.append({'start':previous,'end':left,'category':'idle'})
-        previous=right
+        previous=max(previous,right)
     if previous<end:schedule.append({'start':previous,'end':end,'category':'idle'})
-    totals['idle']=max(0,wall-sum(totals.values()))
+    def union(values):
+        last=None;total=0.
+        for a,b in sorted(values):
+            if last is None or a>last:total+=b-a
+            elif b>last:total+=b-last
+            last=max(last or b,b)
+        return total
+    occupied=union(intervals)
+    if allow_overlap:
+        for key in totals:totals[key]=union([(s['start'],s['end']) for s in schedule if s['category']==key])
+    totals['idle']=max(0,wall-occupied)
+    resource_intervals={}
+    for op in operations:
+        for resource in op.get('resources',()):
+            resource_intervals.setdefault(resource,[]).append((max(start,op['start']),min(end,op['end'])))
     return {'window_start_us':start,'window_end_us':end,'wall_time_us':wall,
         'categories':[{'key':key,'label':cn,'label_en':en,'duration_us':totals[key],
                        'fraction':totals[key]/wall if wall else 0,'segments':counts[key],'color':color}
-                      for (key,cn,en),color in zip(CATEGORIES,COLORS)],
+                      for (key,cn,en),color in zip(categories,colors)],
         'schedule':sorted(schedule,key=lambda op:op['start']),
-        'movement_modes':modes,'transport_atom_time_us':atom_time,'metrics':metrics or {}}
+        'movement_modes':modes,'transport_atom_time_us':atom_time,'metrics':metrics or {},
+        'overlapping':overlapping,'overlap_time_us':sum(b-a for a,b in intervals)-occupied,
+        'resource_busy_us':{r:union([(a,b) for a,b in v if b>a]) for r,v in sorted(resource_intervals.items())}}
 
 
 def summary_html(summary):

@@ -1,0 +1,148 @@
+{
+  "world": {
+    "bounds": {
+      "lower": {
+        "x_um": -10,
+        "y_um": -65
+      },
+      "upper": {
+        "x_um": 85,
+        "y_um": 20
+      }
+    },
+    "grid_spacing_um": 5,
+    "zones": [
+      {
+        "id": "SZ",
+        "zone_type": "storage",
+        "bounds": {
+          "lower": {
+            "x_um": -10,
+            "y_um": -5
+          },
+          "upper": {
+            "x_um": 85,
+            "y_um": 20
+          }
+        }
+      },
+      {
+        "id": "EZ",
+        "zone_type": "entanglement",
+        "bounds": {
+          "lower": {
+            "x_um": -10,
+            "y_um": -45
+          },
+          "upper": {
+            "x_um": 85,
+            "y_um": -20
+          }
+        }
+      },
+      {
+        "id": "MZ",
+        "zone_type": "measurement",
+        "bounds": {
+          "lower": {
+            "x_um": -10,
+            "y_um": -65
+          },
+          "upper": {
+            "x_um": 85,
+            "y_um": -50
+          }
+        }
+      }
+    ],
+    "traps": [
+      {
+        "id": "S000",
+        "position": {
+          "x_um": 0,
+          "y_um": 0
+        }
+      },
+      {
+        "id": "S001",
+        "position": {
+          "x_um": 10,
+          "y_um": 0
+        }
+      },
+      {
+        "id": "S002",
+        "position": {
+          "x_um": 20,
+          "y_um": 0
+        }
+      },
+      {
+        "id": "S003",
+        "position": {
+          "x_um": 30,
+          "y_um": 0
+        }
+      },
+      {
+        "id": "S004",
+        "position": {
+          "x_um": 40,
+          "y_um": 0
+        }
+      },
+      {
+        "id": "S005",
+        "position": {
+          "x_um": 50,
+          "y_um": 0
+        }
+      },
+      {
+        "id": "S006",
+        "position": {
+          "x_um": 60,
+          "y_um": 0
+        }
+      },
+      {
+        "id": "S007",
+        "position": {
+          "x_um": 70,
+          "y_um": 0
+        }
+      },
+      {
+        "id": "EZ0",
+        "position": {
+          "x_um": 5,
+          "y_um": -35
+        }
+      },
+      {
+        "id": "EZ1",
+        "position": {
+          "x_um": 45,
+          "y_um": -35
+        }
+      }
+    ]
+  },
+  "hardware": {
+    "backend": "rigid",
+    "selective_transfer_enabled": false,
+    "interaction_offset": {
+      "x_um": -2,
+      "y_um": 0
+    }
+  },
+  "aod": {
+    "rows": 1,
+    "columns": 1,
+    "spacing_um": 5,
+    "pose": {
+      "x_um": 0,
+      "y_um": 0
+    }
+  }
+}

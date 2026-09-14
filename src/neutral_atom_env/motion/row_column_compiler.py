@@ -53,6 +53,9 @@ def compile_mobile_pair(intent,state,fingerprint,planner,target_configuration=No
     plan=CompiledPlan('plan_'+fingerprint[:12],state.version,fingerprint,intent,bindings,requested,captured-requested,
         tuple(operations),resources,sum(o.duration_us for o in operations),travel,
         tuple(sorted(work.placement.atom_to_holder.items())),initial,planner.id)
+    from dataclasses import replace
+    from neutral_atom_env.hardware.dynamic_traps import trap_state
+    plan=replace(plan,initial_traps=trap_state(state),predicted_traps=trap_state(work))
     from .compiler import exact_validate
     exact_validate(plan,state)
     return plan

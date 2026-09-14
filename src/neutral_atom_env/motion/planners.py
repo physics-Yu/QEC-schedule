@@ -1,6 +1,6 @@
 """Replaceable geometric routing policy. Backend remains the authority on legality."""
 from dataclasses import dataclass
-from math import floor
+from math import floor, ceil
 from typing import Protocol, Iterable
 from neutral_atom_env.domain.aod import AODConfiguration
 
@@ -14,6 +14,10 @@ class RouteRequest:
     bindings: tuple
     world: object
     hardware: object
+    state: object = None
+    depart: tuple = ()
+    approach: tuple = ()
+    edge_validator: object = None
 
 
 class MotionPlanner(Protocol):
@@ -60,3 +64,37 @@ class HalfGridPlanner:
                 elbow=depart.translated(0,vertical*half)
                 across=elbow.translated(near-elbow.x_um[0],0)
                 yield (a,depart,elbow,across,across.translated(0,b.y_um[0]-across.y_um[0]),b)
+
+
+class OrthogonalHalfGridPlanner:
+    """Single-cell Manhattan corridors at x/y = 2.5 + 5k um.
+
+    Only the first/last short segment joins a site or interaction pose to a
+    corridor. Every candidate still needs the backend's complete sweep audit.
+    """
+    id='orthogonal-half-grid-v1'
+    orthogonal=True
+
+    def candidates(self,request):
+        a,b=request.start,request.target
+        if len(a.x_um)!=1 or len(a.y_um)!=1:return
+        def near(v):
+            return sorted({2.5+5*floor((v-2.5)/5),2.5+5*ceil((v-2.5)/5)})
+        def config(x,y):return a.translated(x-a.x_um[0],y-a.y_um[0])
+        def portals(p):
+            x,y=p.x_um[0],p.y_um[0]
+            for hx in near(x):
+                for hy in near(y):
+                    yield (p,config(hx,y),config(hx,hy))
+                    yield (p,config(x,hy),config(hx,hy))
+        routes={}
+        for left in portals(a):
+            for right in portals(b):
+                s,t=left[-1],right[-1]
+                for elbow in (config(t.x_um[0],s.y_um[0]),config(s.x_um[0],t.y_um[0])):
+                    points=simplify_route((*left,elbow,*reversed(right)))
+                    distance=sum(abs(v.x_um[0]-u.x_um[0])+abs(v.y_um[0]-u.y_um[0]) for u,v in zip(points,points[1:]))
+                    key=tuple((p.x_um[0],p.y_um[0]) for p in points)
+                    routes[key]=(distance,points)
+        for key,(distance,points) in sorted(routes.items(),key=lambda item:(item[1][0],len(item[1][1]),item[0])):
+            yield points

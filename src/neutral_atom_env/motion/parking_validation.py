@@ -50,7 +50,10 @@ def replay_parking(intent,state,bindings,operations):
                 require(work.aod.configuration()==parking_axes,'Restore pre-gate rigid configuration before recapture')
                 work=backend.recapture(work,parked)
             elif kind==K.AOD_OFFLOAD:work=backend.offload(work,bindings)
-            else:backend.validate_pulse(work,gate.gate.id)
+            else:
+                backend.validate_pulse(work,gate.gate.id)
+                from .program import predict_cz_completion
+                work=predict_cz_completion(work,gate.gate.id)
         require(isclose(op.duration_us,duration,rel_tol=0,abs_tol=1e-9),'Operation timing differs from hardware')
     require(work.placement==state.placement and work.aod.configuration()==state.aod.configuration(),'Joint return must restore the full initial capture set and AOD')
     return work,travel

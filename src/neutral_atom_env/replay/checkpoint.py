@@ -8,7 +8,7 @@ from neutral_atom_env.circuit import PhysicalCircuit, DynamicGateDAG
 from neutral_atom_env.simulation.event_queue import EventQueue
 from .trace import Trace
 from .serializer import canonical_json
-from .operation_codec import event_from_dict, hardware_from_dict, runtime_from_dict
+from .operation_codec import event_from_dict, hardware_from_dict, runtime_from_dict, transfer_from_dict
 from neutral_atom_env.domain.operations import ResourceReservation, PhysicalMetrics
 
 
@@ -22,8 +22,8 @@ def restore(snapshot):
         return Rectangle(Position2D(**value['lower']), Position2D(**value['upper']))
     try:
         data = json.loads(snapshot)
-        if data['schema_version'] != 8:
-            raise ValueError('Only checkpoint schema 8 (explicit partial transfer bindings) is supported; regenerate older checkpoints')
+        if data['schema_version'] != 19:
+            raise ValueError('Only checkpoint schema 19 (quantum measurement/reset and conditional effects) is supported; regenerate older checkpoints')
         w = data['world']
         world = WorldState(rect(w['bounds']), {key: StaticTrap(t['id'], GridCoord(**t['grid']),
             Position2D(**t['position']), t['enabled']) for key,t in w['traps'].items()},
@@ -53,13 +53,28 @@ def restore(snapshot):
             previous_time = event['time_us']
         if len(trace.records) != data['version']:
             raise ValueError('Trace length/version mismatch')
+        from neutral_atom_env.quantum.stabilizer import StabilizerState
+        quantum=StabilizerState.from_dict(data['quantum_state']) if data['quantum_state'] is not None else None
         state = SimulationState(world,placement,{key: Atom(**a) for key,a in data['atoms'].items()},aod,dag,
             seed=data['seed'],version=data['version'],time_us=data['time_us'],event_queue=queue,trace=trace,
             committed_events=data['metrics']['committed_events'],rng_state=_tuple_tree(data['rng_state']),
             hardware=hardware_from_dict(data['hardware']),active_plan=runtime_from_dict(data['active_plan']),
             reservations=tuple(ResourceReservation(**r) for r in data['reservations']),
-            physical_metrics=PhysicalMetrics(**data['physical_metrics']))
+            physical_metrics=PhysicalMetrics(**data['physical_metrics']),slm_enabled=data['slm_enabled'],transfer=transfer_from_dict(data['transfer']),
+            quantum_state=quantum,measurement_results=data['measurement_results'])
         from neutral_atom_env.simulation.runtime_validation import validate_runtime
+        from neutral_atom_env.simulation.quantum_effects import validate_readout_trace
+        validate_readout_trace(state)
+        # Restoration audits future scheduled operations too, not only the prefix.
+        scheduled=state.active_plan.plan if state.active_plan else None
+        if scheduled is None:
+            for record in reversed(trace.records):
+                event=json.loads(record)['event']
+                if event['event_type']=='plan_started':
+                    scheduled=event_from_dict(event).plan;break
+        if scheduled is not None and scheduled.execution_mode=='scheduled':
+            from neutral_atom_env.simulation.operation_program import validate_program
+            validate_program(scheduled,state,restoring=True)
         validate_runtime(state)
         if state.snapshot() != canonical_json(data):
             raise ValueError('Checkpoint fields or derived data inconsistent')

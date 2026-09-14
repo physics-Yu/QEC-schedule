@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from functools import cached_property
 from types import MappingProxyType
 from math import isfinite
 from collections.abc import Mapping
@@ -16,6 +17,8 @@ class AODRuntimeState:
     spacing_um: float = 5.0
     column_offsets_um: tuple[float, ...] | None = None
     row_offsets_um: tuple[float, ...] | None = None
+    enabled_rows: tuple[bool, ...] | None = None
+    enabled_columns: tuple[bool, ...] | None = None
 
     def __post_init__(self):
         if type(self.rows) is not int or type(self.columns) is not int or self.rows < 1 or self.columns < 1 or not isfinite(self.spacing_um) or self.spacing_um <= 0:
@@ -28,11 +31,33 @@ class AODRuntimeState:
                 if len(values) != count or values[0] != 0:
                     raise ValidationError('INVALID_AOD_AXES', 'Offsets must match axis counts and start at zero')
         self.configuration()
+        for name, count in (('enabled_rows', self.rows), ('enabled_columns', self.columns)):
+            values = getattr(self, name)
+            values = (False,) * count if values is None else tuple(values)
+            if len(values) != count or any(type(v) is not bool for v in values):
+                raise ValidationError('INVALID_AOD_MASK', 'Boolean masks must match the fixed axis capacity')
+            object.__setattr__(self, name, values)
 
-    def configuration(self):
+    def is_enabled(self, cell):
+        self.position(cell)
+        return self.enabled_rows[cell.row] and self.enabled_columns[cell.column]
+
+    @property
+    def active_cells(self):
+        return tuple(MobileCellIndex(r, c) for r in range(self.rows) for c in range(self.columns)
+                     if self.enabled_rows[r] and self.enabled_columns[c])
+
+    @cached_property
+    def _configuration(self):
+        # Instance-local derived geometry preserves numeric representation, even
+        # for equal int/float or signed-zero inputs. It is not serialized as a
+        # dataclass field; new poses/shapes still run every geometry check.
         xs = self.column_offsets_um if self.column_offsets_um is not None else tuple(i*self.spacing_um for i in range(self.columns))
         ys = self.row_offsets_um if self.row_offsets_um is not None else tuple(i*self.spacing_um for i in range(self.rows))
-        return AODConfiguration(tuple(self.pose.x_um+x for x in xs), tuple(self.pose.y_um+y for y in ys))
+        return AODConfiguration(tuple(self.pose.x_um+dx for dx in xs), tuple(self.pose.y_um+dy for dy in ys))
+
+    def configuration(self):
+        return self._configuration
 
     def configured(self, configuration):
         from dataclasses import replace
@@ -132,7 +157,7 @@ class PlacementState:
                 raise ValidationError('DUPLICATE_HOLDER', 'Duplicate holder occupancy', atom_ids=(occupied[holder], atom_id), holder_id=holder.holder_id, position=self.position(atom_id, world, aod))
             occupied[holder] = atom_id
             if holder.holder_type == HolderType.STATIC:
-                if holder.holder_id not in world.traps or not world.traps[holder.holder_id].enabled:
+                if holder.holder_id not in world.traps:
                     raise ValidationError('UNAVAILABLE_STATIC_TRAP', 'Unknown or disabled static trap', atom_ids=(atom_id,), holder_id=holder.holder_id,
                         position=world.traps[holder.holder_id].position if holder.holder_id in world.traps else None)
             try:

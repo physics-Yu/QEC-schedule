@@ -17,7 +17,10 @@ def make_single_gate_state(scenario='baseline'):
     hardware=HardwareConfig(**values)
     positions=[Position2D(0,0),Position2D(5,-25),Position2D(15,5),Position2D(20,5)]
     if scenario=='incidental':positions[2]=Position2D(10,5)
-    elif scenario=='unintended':positions[2:]=[Position2D(5,0),Position2D(10,-25)]
+    # Keep the negative extra-pair witness while respecting the EZ anchor's
+    # reserved neighbor sites in the initial state. The incidental column-2
+    # atom reaches x=13 and forms an unintended pair with the atom at x=15.
+    elif scenario=='unintended':positions[2:]=[Position2D(10,0),Position2D(15,-25)]
     elif scenario=='blocked':positions[3]=Position2D(3,-10)
     elif scenario=='both_storage':positions[1]=Position2D(5,0)
     elif scenario!='baseline':raise ValueError('Unknown M1 scenario')

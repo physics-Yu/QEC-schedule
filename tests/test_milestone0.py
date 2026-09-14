@@ -104,7 +104,7 @@ def test_mobile_derived_position(test_context):
     state = test_context["state"]
     mapping = dict(state.placement.atom_to_holder)
     mapping["Q000"] = HolderRef(HolderType.MOBILE, MobileCellIndex(1, 1))
-    state = replace(state, placement=PlacementState(mapping))
+    state = replace(state, placement=PlacementState(mapping),aod=replace(state.aod,enabled_rows=(False,True),enabled_columns=(False,True)))
     test_context.update(state=state, initial=state.snapshot())
     assert state.placement.position("Q000", state.world, state.aod) == Position2D(5, 5)
     assert "s0" not in state.placement.static_occupancy
@@ -164,10 +164,8 @@ def test_missing_holder_and_disabled_trap(test_context):
     del mapping["Q000"]
     with pytest.raises(ValueError):
         replace(state, placement=PlacementState(mapping))
-    traps = dict(state.world.traps)
-    traps["s0"] = replace(traps["s0"], enabled=False)
     with pytest.raises(ValueError):
-        replace(state, world=replace(state.world, traps=traps))
+        replace(state, slm_enabled=dict(state.slm_enabled)|{"s0":False})
 
 
 def test_lost_atom(test_context):
@@ -195,7 +193,7 @@ def test_activity_colors(activity, test_context):
     holders = dict(state.placement.atom_to_holder)
     holders['Q000'] = HolderRef(HolderType.MOBILE, MobileCellIndex(1, 1))
     state = replace(state, placement=PlacementState(holders),
-                    aod=replace(state.aod, is_moving=activity == 'moving'))
+                    aod=replace(state.aod, is_moving=activity == 'moving',enabled_rows=(False,True),enabled_columns=(False,True)))
     if activity in {'gating', 'measuring'}:
         # Prepared initial placement, not a simulated transport event.
         holders = dict(state.placement.atom_to_holder)

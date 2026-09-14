@@ -1,0 +1,11 @@
+const fs=require('node:fs'),assert=require('node:assert/strict');
+const h=require('./viewer_harness.cjs')(fs.readFileSync(process.argv[2]||'artifacts/multi-trap/capacity-4/index.html','utf8'));
+assert.equal(h.el('joint').hidden,false);h.el('joint').onclick();
+assert.equal(h.get('current.atoms.filter(a=>a.activity==="moving").length'),4);
+assert.equal(h.get('current.f.aod.columns'),4);
+assert.equal(h.get('current.f.aod.enabled_columns.filter(Boolean).length'),4);
+for(const q of ['Q000','Q001','Q002','Q003'])assert(h.el('atom-'+q).querySelector('.atom-state').textContent.includes('AOD'));
+h.get('seek(data.duration)');assert.equal(h.get('current.f.gate_counts.completed'),4);
+assert.equal(h.get('current.atoms.filter(a=>a.holder.holder_type==="mobile").length'),0);
+assert.equal(h.get('current.f.aod.enabled_columns.filter(Boolean).length'),0);
+console.log('PASS four real mobile atoms, active columns, joint seek and complete terminal');

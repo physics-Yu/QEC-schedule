@@ -1,5 +1,7 @@
 # Milestone 1：单 CZ / rigid AOD / eager return
 
+> 范围更新：本文是 M1 受限 mobile–static 基线的历史验收说明，保留原配置和数字。后续全 SZ 准备已另有实现；新增动态光阱/空阱避碰/混合电路要求尚待 M3 验收，不能由本文历史 PASS 推出。当前规范见 [milestones](../instruction/milestones.md) 与 [physics](../instruction/physics.md)。
+
 本文件保留 M1 的具体实例与指标。整体路线见 [milestones](../instruction/milestones.md)，编译/事件细节见 [motion_execution](../instruction/motion_execution.md)，当前未修正问题见 [model_audit](../instruction/model_audit.md)。
 
 ## 范围和实现边界
@@ -51,7 +53,7 @@ Zone 保持从上到下 storage / entanglement / measurement。
 
 `python examples/run_single_gate.py` 生成 `artifacts/milestone1/index.html`；基准和 incidental 场景各输出真实事件快照、动画、时间线、编译计划和指标。
 `python -m pytest tests/test_milestone1.py` 验证物理几何与事件提交。完整回归使用 `python -m pytest --visual`。
-快照 schema 8 保存硬件参数、当前 physical plan、operation 游标、reservation 和累计指标，支持在每个事件边界恢复；不自动转换旧 schema。
+快照 schema 9 保存硬件参数、当前 physical plan、operation 游标、reservation 和累计指标，支持在每个事件边界恢复；不自动转换旧 schema。
 运动学采用恒速线段，无加速度/jerk/温度模型；真实 trap loss、RF 波形与量子态不在本里程碑范围内。
 
 ## 回放显示与交互

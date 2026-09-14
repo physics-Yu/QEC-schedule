@@ -15,7 +15,9 @@ def validate_slm_clearance(state,end,phase=None,bindings=()):
         if phase and binding is not None and binding.cell!=cell:
             raise ValidationError('INVALID_TRANSFER_BINDING','Transfer requires the actual atom/cell binding',atom_ids=(atom,))
         for trap in state.world.traps.values():
-            if not trap.enabled:continue
+            # Keep the declared transfer segment's aligned/cleared endpoint contract
+            # even when LOAD has already extinguished its source SLM support.
+            if not state.slm_enabled[trap.id] and not (phase and binding is not None and trap.id==binding.static_trap_id):continue
             p=trap.position
             if phase and binding is not None and trap.id==binding.static_trap_id:
                 near,far=(start,finish) if phase=='depart' else (finish,start)

@@ -167,7 +167,7 @@ def test_episode_origin_excludes_wait_before_first_plan():
 def test_parameterized_gate_is_rejected_without_aliasing_cz():
     from neutral_atom_env.circuit import PhysicalCircuit,DynamicGateDAG
     state=make_single_gate_state()
-    gate=replace(state.dag.circuit.gates[0],gate_type='CPHASE')
+    gate=replace(state.dag.circuit.gates[0],gate_type='CPHASE',parameters=(.7,))
     state=replace(state,dag=DynamicGateDAG(PhysicalCircuit((gate,))))
     before=state.snapshot()
     with pytest.raises(ValidationError,match='UNSUPPORTED_GATE'):plan(state)
@@ -214,7 +214,7 @@ def test_new_source_capture_includes_incidental_atom_in_full_cycle():
     traps=dict(state.world.traps);traps['S004']=StaticTrap('S004',GridCoord(5,1),Position2D(25,5))
     atoms=dict(state.atoms);atoms['Q004']=Atom('Q004')
     holders=dict(state.placement.atom_to_holder);holders['Q004']=HolderRef(HolderType.STATIC,'S004')
-    state=replace(state,world=replace(state.world,traps=traps),atoms=atoms,placement=PlacementState(holders))
+    state=replace(state,world=replace(state.world,traps=traps),slm_enabled=None,atoms=atoms,placement=PlacementState(holders))
     assert EagerScheduler(state).run().status=='completed'
     m=state.metrics()
     assert m['episode_wall_time_us']==pytest.approx(1116.9)

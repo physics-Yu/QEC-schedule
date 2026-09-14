@@ -1,4 +1,3 @@
-from hashlib import sha256
 from neutral_atom_env.domain.models import GateStatus, HolderType, Position2D, ZoneType
 from neutral_atom_env.domain.operations import CompiledPlan, EndDisposition, Operation, OperationType
 from neutral_atom_env.domain.errors import ValidationError
@@ -6,7 +5,8 @@ from neutral_atom_env.hardware import get_backend
 
 
 def fingerprint(state):
-    return sha256(state.snapshot().encode('utf-8')).hexdigest()
+    from neutral_atom_env.replay.snapshot_encoding import snapshot_digest
+    return snapshot_digest(state.snapshot_data())
 
 
 class MotionCompiler:
@@ -92,6 +92,9 @@ class MotionCompiler:
         plan=CompiledPlan('plan_'+before[:12],state.version,before,intent,bindings,requested,frozenset(captured-requested),
             tuple(operations),resources,sum(o.duration_us for o in operations),total_distance,
             tuple(sorted(work.placement.atom_to_holder.items())),initial_config,self.planner.id)
+        from dataclasses import replace
+        from neutral_atom_env.hardware.dynamic_traps import trap_state
+        plan=replace(plan,initial_traps=trap_state(state),predicted_traps=trap_state(work))
         exact_validate(plan,state)
         return plan
 

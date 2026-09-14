@@ -1,0 +1,14 @@
+const fs=require('node:fs'),assert=require('node:assert/strict');
+const h=require('./viewer_harness.cjs')(fs.readFileSync(process.argv[2]||'artifacts/aod-raman/aod-t-reuse/index.html','utf8'));
+h.get("seek((data.operations.find(o=>o.kind==='raman_rotation').start+data.operations.find(o=>o.kind==='raman_rotation').end)/2)");
+assert.equal(h.get('current.atoms.filter(a=>a.activity==="gating").length'),2);
+assert.equal(h.el('status').textContent,'执行中 2 门');
+assert(h.el('operation-caption').textContent.includes('静止 AOD'));
+assert(h.el('operation-caption').textContent.includes('SLM'));
+assert(h.el('operation-caption').textContent.includes('≥5'));
+h.get('viewer.selectAtom(current.atoms.find(a=>a.holder.holder_type==="mobile").id)');
+assert(h.el('details').innerHTML.includes('AOD'));
+assert(h.el('summary').innerHTML.includes('Raman Q000'));
+assert(h.el('summary').innerHTML.includes('Raman Q001'));
+h.get('seek(data.duration)');assert.equal(h.get('current.f.gate_counts.completed'),4);
+console.log('PASS AOD/SLM simultaneous T effects, holder labels, inspector, resources and terminal');

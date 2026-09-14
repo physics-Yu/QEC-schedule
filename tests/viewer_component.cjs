@@ -28,16 +28,16 @@ get('second.destroy()');assert.equal(get('document.listeners.size'),1);
 get('viewer.destroy()');assert.equal(get('document.listeners.size'),0);
 console.log(`PASS 512 atoms / 257 frames: bounded DOM, search/pages, two isolated mounts, cleanup, no mutation; 120 mocked redraws ${elapsed.toFixed(0)} ms (not browser FPS)`);
 
-const circuit=createHarness(fs.readFileSync('artifacts/milestone2/three_gate/animation.html','utf8'));
+const circuit=createHarness(fs.readFileSync(process.argv[2]||'artifacts/milestone2/three_gate/animation.html','utf8'));
 assert.equal(circuit.get('viewer.getStatus().visible_operation_rows'),12);
 circuit.get('renderStages(3)');assert.equal(circuit.get('viewer.getStatus().visible_operation_rows'),1);
 assert(!circuit.nodes.has('stage-0'));
 circuit.get('seek(890.6)');assert.equal(circuit.get('current.f.gate_status'),'running');
 assert.equal(circuit.get('current.f.requested.join(",")'),'Q001,Q003');
-assert.equal(circuit.get('data.summary.categories.length'),7);
+assert.equal(circuit.get('data.summary.categories.length'),8);
 assert(circuit.get('data.frames.every(f=>!f.scene&&!f.trace&&!f.world)'));
 
-const deform=createHarness(fs.readFileSync('artifacts/visualization-row-column/index.html','utf8'));
+const deform=createHarness(fs.readFileSync(process.argv[3]||'artifacts/visualization-row-column/index.html','utf8'));
 const quarter=deform.get('data.operations.find(o=>o.label==="Reconfigure axes").start+(data.operations.find(o=>o.label==="Reconfigure axes").end-data.operations.find(o=>o.label==="Reconfigure axes").start)*.25');
 deform.get(`seek(${quarter})`);
 assert(Math.abs(deform.get('current.atoms.find(a=>a.id==="Q000").position.x_um')-2.734375)<1e-7);

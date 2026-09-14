@@ -1,5 +1,6 @@
 """Derive visual activity from immutable snapshots; never modify simulation state."""
 from dataclasses import dataclass
+from dataclasses import replace
 import json
 from math import ceil, floor
 from neutral_atom_env.domain.models import Position2D, StaticTrap, Zone, Rectangle, HolderRef
@@ -38,7 +39,7 @@ def build_scene(snapshot: str) -> VisualScene:
     ys = axis(world.bounds.lower.y_um,world.bounds.upper.y_um,world.grid_origin.y_um)
     return VisualScene(world.bounds,world.grid_spacing_um,xs,ys,
         tuple(Position2D(x,y) for x in xs for y in ys if world.is_candidate_site(Position2D(x,y))),
-        world.zones,tuple(t for _,t in sorted(world.traps.items())),
+        world.zones,tuple(replace(t,enabled=state.slm_enabled[k]) for k,t in sorted(world.traps.items())),
         tuple(SceneAtom(a.id,state.placement.atom_to_holder[a.id],
             state.placement.position(a.id,world,state.aod),atom_activity(data,a.id),a.measured)
             for _,a in sorted(state.atoms.items())))

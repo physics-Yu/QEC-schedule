@@ -60,6 +60,7 @@ def render_layout(snapshot, path, theme=None, violation=None, show_aod=False, tr
             # Each discrete AOD site is a ring, including currently empty sites.
             for row in range(aod['rows']):
                 for column in range(aod['columns']):
+                    if not aod['enabled_rows'][row] or not aod['enabled_columns'][column]:continue
                     ax.scatter(axes.x_um[column],axes.y_um[row],
                         s=theme.trap_size,facecolors='none',edgecolors=theme.moving_color,lw=1,zorder=4)
             runtime=data['active_plan']

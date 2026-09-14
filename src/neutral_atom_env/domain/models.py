@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 from math import isfinite
 from typing import TYPE_CHECKING
@@ -107,14 +107,51 @@ class PhysicalGate:
     id: str
     gate_type: str
     qubit_ids: tuple[str, ...]
+    parameters: tuple[float, ...] = ()
+    condition: tuple[tuple[str, int], ...] = ()
+    depends_on: tuple[str, ...] = ()
+    readout_flip: bool = field(default=False, metadata={'omit_if_false': True})
 
     def __post_init__(self):
         object.__setattr__(self, "qubit_ids", tuple(self.qubit_ids))
+        object.__setattr__(self, "parameters", tuple(self.parameters))
+        object.__setattr__(self, 'condition', tuple(tuple(c) for c in self.condition))
+        object.__setattr__(self, 'depends_on', tuple(self.depends_on))
+        if type(self.readout_flip) is not bool:
+            raise ValueError('readout_flip must be a boolean')
+        if self.readout_flip and self.gate_type not in {'MEASURE','MZ'}:
+            raise ValueError('readout_flip is only valid for MEASURE/MZ')
+        if (len(set(self.depends_on))!=len(self.depends_on) or
+                any(not isinstance(g,str) or not g for g in self.depends_on)):
+            raise ValueError('Explicit dependencies require unique gate IDs')
+        if self.condition and (self.gate_type not in {'X','Z'} or
+                any(len(c)!=2 or not isinstance(c[0],str) or not c[0] or type(c[1]) is not int or c[1] not in (0,1) for c in self.condition)
+                or len({c[0] for c in self.condition})!=len(self.condition)):
+            raise ValueError('Only X/Z corrections support distinct measurement-bit equality conditions')
         arity = 2 if self.gate_type in {"CZ", "CPHASE"} else 1
-        if self.gate_type not in {"X", "Y", "Z", "H", "RX", "RY", "RZ", "CZ", "CPHASE", "MEASURE"}:
+        if self.gate_type not in {"U", "U3", "I", "X", "Y", "Z", "H", "S", "Sdg", "T", "Tdg", "RX", "RY", "RZ", "CZ", "CPHASE", "MEASURE", "MZ", "RESET"}:
             raise ValueError("Unsupported gate type")
         if not self.id or len(self.qubit_ids) != arity or len(set(self.qubit_ids)) != arity:
             raise ValueError("Invalid gate identity or qubits")
+        count = 3 if self.gate_type in {'U', 'U3'} else 1 if self.gate_type in {'RX', 'RY', 'RZ', 'CPHASE'} else 0
+        if len(self.parameters) != count or any(type(p) not in (int, float) or not isfinite(p) for p in self.parameters):
+            raise ValueError(f'{self.gate_type} requires {count} finite real parameters in radians')
+
+    @property
+    def u_parameters(self):
+        """Canonical U(theta, phi, lambda), up to global phase for aliases."""
+        from math import pi
+        if self.gate_type in {'U', 'U3'}:
+            return self.parameters
+        aliases = {'I': (0, 0, 0), 'X': (pi, 0, pi), 'Y': (pi, pi/2, pi/2),
+                   'Z': (0, 0, pi), 'H': (pi/2, 0, pi), 'S': (0, 0, pi/2),
+                   'Sdg': (0, 0, -pi/2), 'T': (0, 0, pi/4), 'Tdg': (0, 0, -pi/4)}
+        if self.gate_type in aliases:
+            return aliases[self.gate_type]
+        if self.gate_type in {'RX', 'RY', 'RZ'}:
+            angle = self.parameters[0]
+            return {'RX': (angle, -pi/2, pi/2), 'RY': (angle, 0, 0), 'RZ': (0, 0, angle)}[self.gate_type]
+        return None
 
     @property
     def is_two_qubit(self):

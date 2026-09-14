@@ -23,7 +23,7 @@ class DynamicGateDAG:
     def __init__(self, circuit):
         previous, predecessors, successors = {}, {}, {g.id: set() for g in circuit.gates}
         for gate in circuit.gates:
-            deps = {previous[q] for q in gate.qubit_ids if q in previous}
+            deps = {previous[q] for q in gate.qubit_ids if q in previous} | set(gate.depends_on) | {g for g,_ in gate.condition}
             predecessors[gate.id] = deps
             for parent in deps:
                 successors[parent].add(gate.id)
@@ -60,7 +60,10 @@ class DynamicGateDAG:
                 remaining = child.remaining_predecessors - 1
                 nodes[successor] = replace(child, remaining_predecessors=remaining,
                     status=GateStatus.READY if remaining == 0 else child.status)
-        result = DynamicGateDAG(self.circuit)
+        # Dependencies are immutable and were validated at construction. Copy
+        # only runtime nodes; rebuilding the same circuit here is redundant.
+        result = object.__new__(DynamicGateDAG)
+        object.__setattr__(result, 'circuit', self.circuit)
         object.__setattr__(result, '_nodes', MappingProxyType(nodes))
         return result
 
@@ -70,10 +73,13 @@ class DynamicGateDAG:
         if set(runtime) != set(result.nodes):
             raise ValueError('Snapshot DAG IDs do not match circuit')
         statuses = {key: GateStatus(n['status']) for key, n in runtime.items()}
+        parents_by_id = {key: [] for key in result.nodes}
+        for parent, node in result.nodes.items():
+            for child in node.successors:parents_by_id[child].append(parent)
         nodes = {}
         for key, node in result.nodes.items():
             data = runtime[key]
-            parents = [p for p, n in result.nodes.items() if key in n.successors]
+            parents = parents_by_id[key]
             remaining = sum(statuses[p] != GateStatus.COMPLETED for p in parents)
             status = statuses[key]
             if (set(data['successors']) != node.successors or data['remaining_predecessors'] != remaining or

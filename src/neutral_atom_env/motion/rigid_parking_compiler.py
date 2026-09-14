@@ -23,7 +23,7 @@ def compile_parked_pair(intent,state,fingerprint,planner):
             for col in range(state.aod.columns):
                 pose=Position2D(p.x_um-col*state.aod.spacing_um,p.y_um-row*state.aod.spacing_um)
                 if pose not in sources:sources.append(pose)
-    traps=[t for _,t in sorted(state.world.traps.items()) if t.enabled and not state.placement.static_occupancy.get(t.id) and any(z.zone_type==ZoneType.ENTANGLEMENT and z.bounds.contains(t.position) for z in state.world.zones)]
+    traps=[t for _,t in sorted(state.world.traps.items()) if not state.placement.static_occupancy.get(t.id) and any(z.zone_type==ZoneType.ENTANGLEMENT and z.bounds.contains(t.position) for z in state.world.zones)]
     errors=[];attempts=0
     for source in sources[:64]:
         try:
@@ -73,7 +73,10 @@ def compile_parked_pair(intent,state,fingerprint,planner):
                         if original<=separation:raise ValidationError('PAIR_GEOMETRY_UNSUPPORTED','Local approach expects separated source cells')
                         gate_pose=Position2D(target.x_um+dx*(separation/original-1),target.y_um+dy*(separation/original-1))
                         move(gate_pose,'Local approach to parked operand')
-                        backend.validate_pulse(work,next(iter(intent.gate_ids)));add(K.ENTANGLING_PULSE,'CZ pulse',state.hardware.pulse_duration_us)
+                        backend.validate_pulse(work,next(iter(intent.gate_ids)))
+                        from .program import predict_cz_completion
+                        work=predict_cz_completion(work,next(iter(intent.gate_ids)))
+                        add(K.ENTANGLING_PULSE,'CZ pulse',state.hardware.pulse_duration_us)
                         move(target,'Restore joint transport configuration')
                         work=backend.recapture(work,parked);add(K.AOD_RECAPTURE,'Recapture parked operand',state.hardware.load_duration_us,transfer_bindings=parked)
                         for i,config in enumerate(reversed(route[:-1])):
@@ -82,6 +85,9 @@ def compile_parked_pair(intent,state,fingerprint,planner):
                         move(state.aod.pose,'Empty return to initial pose')
                         captured=frozenset(b.atom_id for b in bindings)
                         plan=CompiledPlan('plan_'+fingerprint[:12],state.version,fingerprint,intent,bindings,requested,captured-requested,tuple(ops),plan_resources(state,requested,bindings,ops),sum(op.duration_us for op in ops),travel,tuple(sorted(work.placement.atom_to_holder.items())),state.aod.configuration(),'rigid-parking/'+planner.id)
+                        from dataclasses import replace
+                        from neutral_atom_env.hardware.dynamic_traps import trap_state
+                        plan=replace(plan,initial_traps=trap_state(state),predicted_traps=trap_state(work))
                         validate_plan(plan,state);return plan
                     except ValidationError as error:errors.append(error)
                 if attempts>256:break

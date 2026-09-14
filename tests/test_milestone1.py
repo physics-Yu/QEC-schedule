@@ -78,17 +78,14 @@ def test_segment_interior_collision_is_detected():
     assert segment_clearance(obstacle,start,end)==(0,obstacle)
 
 
-@pytest.mark.parametrize('failure,code',[('occupied','OFFLOAD_OCCUPIED'),('misaligned','OFFLOAD_MISALIGNMENT'),('disabled','OFFLOAD_DISABLED')])
+@pytest.mark.parametrize('failure,code',[('occupied','TRANSFER_DESTINATION_OCCUPIED'),('misaligned','TRANSFER_MISALIGNMENT')])
 def test_offload_constraints(failure,code):
     state=make_single_gate_state();plan=compile_plan(state);backend=RigidRectangularAODBackend()
     state=backend.load(state,plan.bindings)
     if failure=='occupied':
         holders=dict(state.placement.atom_to_holder);holders['Q003']=HolderRef(HolderType.STATIC,'S000')
-        state=replace(state,placement=PlacementState(holders))
+        state=replace(state,placement=PlacementState(holders),slm_enabled=dict(state.slm_enabled)|{'S000':True})
     elif failure=='misaligned':state=replace(state,aod=replace(state.aod,pose=Position2D(.1,0)))
-    else:
-        traps=dict(state.world.traps);traps['S000']=replace(traps['S000'],enabled=False)
-        state=replace(state,world=replace(state.world,traps=traps))
     before=state.snapshot()
     with pytest.raises(ValidationError,match=code):backend.offload(state,plan.bindings)
     assert state.snapshot()==before

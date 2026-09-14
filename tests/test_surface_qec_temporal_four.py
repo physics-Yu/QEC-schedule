@@ -1,0 +1,175 @@
+"""Temporal single-event recovery checked against independent Pauli algebra."""
+from collections import Counter
+from copy import deepcopy
+import pytest
+
+from neutral_atom_env.domain.errors import ValidationError
+from neutral_atom_env.experiments.surface_qec_temporal_four import (
+    DATA_IDS,QUBIT_IDS,ROUNDS,HISTORY_IDS,CORRECTION_PREFIX,FAULT_GATE_ID,
+    X_CHECKS,Z_CHECKS,protocol,experiment_input,supported_faults,supported_histories,
+    simulate_ideal,decode,validate_history,normalize_fault,css_history_table)
+
+
+CASES=tuple(enumerate(supported_faults()))
+
+
+def independent_history(fault):
+    """Symplectic commutator, independent of the decoder/support generator."""
+    physical={};reported={}
+    for t,r in enumerate(ROUNDS,1):
+        for block in range(4):
+            for check_kind,checks in (('X',X_CHECKS),('Z',Z_CHECKS)):
+                for i,check in enumerate(checks):
+                    gid=f'{r}_{check_kind}{block}_{i}';outcome=0
+                    if fault and fault['kind']=='data' and t>=fault['round']:
+                        index=DATA_IDS.index(fault['qubit_id']);local=index%9
+                        error_x=int(fault['pauli'] in ('X','Y'));error_z=int(fault['pauli'] in ('Z','Y'))
+                        check_x=int(check_kind=='X');check_z=int(check_kind=='Z')
+                        outcome=((error_x*check_z+error_z*check_x)%2)*int(index//9==block and local in check)
+                    physical[gid]=outcome
+                    flipped=bool(fault and fault['kind']=='readout' and t==fault['round'] and block==fault['patch']
+                                 and check_kind==fault['check_type'] and i==fault['check_index'])
+                    reported[gid]=outcome^int(flipped)
+    return physical,reported
+
+
+@pytest.mark.parametrize('index,fault',CASES,ids=[f'case-{i}' for i,_ in CASES])
+def test_all_421_single_events_have_expected_true_reported_history_and_recover(index,fault):
+    quantum,report=simulate_ideal(seed=7+17*index,fault=fault)
+    physical,reported=independent_history(fault)
+    assert {g:report['true_measurement_results'][g] for g in HISTORY_IDS}==physical
+    assert {g:report['reported_measurement_results'][g] for g in HISTORY_IDS}==reported
+    assert report['history_complete'] and report['history_supported']
+    assert report['measurement_protocol_complete'] and all(report['syndrome_rounds_complete'].values())
+    assert report['verified_logical_ghz4']
+    assert len(report['stabilizer_expectations'])==32 and set(report['stabilizer_expectations'].values())=={1}
+    assert report['logical_xxxx']==1 and report['logical_zz_pairs']=={'AB':1,'BC':1,'CD':1}
+    assert all(quantum.expectation({q:'Z'})==1 for q in QUBIT_IDS[36:])
+    actual=Counter((g['gate_type'],tuple(g['qubit_ids'])) for g in report['corrections'] if g['gate_id'].startswith(CORRECTION_PREFIX))
+    assert actual==Counter((g['gate_type'],tuple(g['qubit_ids'])) for g in decode(reported))
+    if not fault or fault['kind']=='readout':assert not decode(reported)
+
+
+def test_supported_global_set_is_fixed_deduplicated_and_includes_no_correction_histories():
+    assert len(CASES)==421 and len(supported_histories())==373
+    independent={tuple(independent_history(f)[1][g] for g in HISTORY_IDS) for _,f in CASES}
+    assert supported_histories()==independent
+    base=protocol()
+    def corrections(definition):
+        return [(g['id'],g['gate_type'],g['qubit_ids'],g['condition']) for g in definition['gates']
+                if g['id'].startswith(CORRECTION_PREFIX)]
+    for f in ({'kind':'data','round':1,'pauli':'Y','qubit_id':'Q014'},
+              {'kind':'readout','round':3,'patch':1,'check_type':'Z','check_index':3}):
+        assert corrections(protocol(f))==corrections(base)
+    assert all(len(condition)==16 and {ref for ref,bit in condition}<=set(HISTORY_IDS)
+               for _,_,_,condition in corrections(base))
+
+
+def test_unknown_joint_history_rejected_even_when_each_css_subhistory_is_supported():
+    bits=dict.fromkeys(HISTORY_IDS,0)
+    bits['round1_X0_0']=1;bits['round1_Z3_0']=1
+    for block in range(4):
+        for kind in ('X','Z'):
+            local=tuple(bits[f'{r}_{kind}{block}_{i}'] for r in ROUNDS for i in range(4))
+            assert local in css_history_table(block,kind)
+    with pytest.raises(ValidationError,match='UNSUPPORTED_SYNDROME_HISTORY'):decode(bits)
+    with pytest.raises(ValidationError,match='INCOMPLETE_SYNDROME_HISTORY'):validate_history({})
+    bits=dict.fromkeys(HISTORY_IDS,0);bits[HISTORY_IDS[0]]=True
+    with pytest.raises(ValidationError,match='INVALID_SYNDROME_HISTORY'):validate_history(bits)
+
+
+def test_actual_two_readout_flips_are_stopped_before_temporal_correction():
+    gates=deepcopy(protocol()['gates'])
+    for gid in ('round1_X0_0','round1_Z3_0'):next(g for g in gates if g['id']==gid)['readout_flip']=True
+    with pytest.raises(ValidationError,match='UNSUPPORTED_SYNDROME_HISTORY'):simulate_ideal(gates,seed=7)
+
+
+def test_closing_round_and_data_boundary_are_actual_gates_with_global_barriers():
+    definition=protocol({'kind':'data','round':2,'pauli':'X','qubit_id':'Q014'})
+    counts=Counter(g['gate_type'] for g in definition['gates'])
+    assert counts['MEASURE']==counts['RESET']==160 and counts['CZ']==507
+    assert len(definition['readouts'])==160 and len(definition['history_ids'])==128
+    fault=next(g for g in definition['gates'] if g['id']==FAULT_GATE_ID)
+    assert fault['gate_type']=='X' and fault['qubit_ids']==['Q014']
+    stages={s['gate_id']:s['stage'] for s in definition['stages']}
+    parents={};last={}
+    ordered=sorted(definition['gates'],key=lambda g:(g['column'],g['id']))
+    for gate in ordered:
+        direct=set(gate.get('depends_on',()))|{g for g,_ in gate.get('condition',())}|{last[q] for q in gate['qubit_ids'] if q in last}
+        assert direct<=parents.keys()
+        parents[gate['id']]=direct|set().union(*(parents[g] for g in direct))
+        for q in gate['qubit_ids']:last[q]=gate['id']
+    previous={gid for gid,stage in stages.items() if stage.startswith('round1-')}
+    assert previous<=parents[FAULT_GATE_ID]
+    assert all(FAULT_GATE_ID in parents[gid] for gid,stage in stages.items() if stage.startswith('round2-') and gid!=FAULT_GATE_ID)
+    for previous_round,following in zip(ROUNDS,ROUNDS[1:]):
+        before={gid for gid,stage in stages.items() if stage.startswith(previous_round+'-')}
+        after=[gid for gid,stage in stages.items() if stage.startswith(following+'-')]
+        assert all(before<=parents[gid] for gid in after)
+    assert all(set(HISTORY_IDS)<=parents[g['id']] for g in ordered if g['id'].startswith(CORRECTION_PREFIX))
+
+
+def test_only_selected_noisy_readout_has_report_flip_and_input_metadata_is_display_only():
+    fault={'kind':'readout','round':2,'patch':0,'check_type':'X','check_index':0}
+    value=experiment_input(fault)
+    assert value['compiler']=='qec_temporal_four' and 'qec_fault' not in value
+    flips=[g for g in value['gates'] if g.get('readout_flip')]
+    assert [(g['id'],g['gate_type']) for g in flips]==[('round2_X0_0','MEASURE')]
+    assert value['qec_protocol']['noise_event']==fault
+    _,report=simulate_ideal(value['gates'],seed=7)
+    bits=dict(report['reported_measurement_results'])
+    baseline=decode(bits)
+    for gid in list(bits):
+        if gid.startswith('prepare_'):bits[gid]^=1
+    bits['fault_truth_metadata']={'pauli':'Y','qubit_id':'Q008'}
+    assert decode(bits)==baseline
+
+
+def test_optimized_and_raw_physical_gate_lists_have_same_temporal_histories():
+    fault={'kind':'data','round':3,'pauli':'Z','qubit_id':'Q010'}
+    _,optimized=simulate_ideal(seed=31,fault=fault)
+    _,raw=simulate_ideal(protocol(fault,optimize=False)['gates'],seed=31)
+    assert raw['reported_measurement_results']==optimized['reported_measurement_results']
+    assert raw['true_measurement_results']==optimized['true_measurement_results']
+    assert raw['verified_logical_ghz4'] and raw['measurement_protocol_complete']
+
+
+@pytest.mark.parametrize('fault',[{'kind':'data','round':4,'pauli':'X','qubit_id':'Q000'},
+    {'kind':'readout','round':4,'patch':0,'check_type':'X','check_index':0},
+    {'kind':'data','round':1,'pauli':'X','qubit_id':'Q036'},
+    {'kind':'data','round':True,'pauli':'X','qubit_id':'Q000'},
+    {'kind':'readout','round':1,'patch':0,'check_type':'X','check_index':4}])
+def test_declared_fault_domain_rejects_closing_or_out_of_model_events(fault):
+    with pytest.raises(ValueError):normalize_fault(fault)
+
+
+def test_four_patch_identity_tree_and_editable_profile_are_explicit():
+    definition=protocol()
+    stages={s['gate_id']:s['stage'] for s in definition['stages']}
+    layers={name:[g for g in definition['gates'] if stages[g['id']]==name and g['gate_type']=='CZ']
+            for name in ('logical-tree-AB','logical-tree-AC-BD')}
+    assert {tuple(g['qubit_ids']) for g in layers['logical-tree-AB']}=={
+        (f'Q{q:03d}',f'Q{9+q:03d}') for q in range(9)}
+    second=layers['logical-tree-AC-BD']
+    assert {tuple(g['qubit_ids']) for g in second}=={
+        (f'Q{9*a+q:03d}',f'Q{9*b+q:03d}') for a,b in ((0,2),(1,3)) for q in range(9)}
+    assert len({q for g in second for q in g['qubit_ids']})==36
+    assert len({g['id'] for g in definition['gates']})==len(definition['gates'])
+    assert all(g['id'].isascii() and len(g['id'])<40 for g in definition['gates'])
+    roles=definition['atom_roles']
+    assert set(roles)==set(QUBIT_IDS)
+    assert Counter(r['role'] for r in roles.values())=={'data':36,'ancilla':32}
+    assert len(HISTORY_IDS)==128 and len(set(HISTORY_IDS))==128
+    value=experiment_input()
+    assert value['layout']=='surface_qec_ghz4' and value['atom_count']==68
+    assert value['qec_patch_origins']==[[0,0],[40,0],[0,40],[40,40]]
+    assert value['aod_traps']==98 and value['aod_rows']*value['aod_columns']==98
+    assert value['qec_protocol']['patch_count']==value['qec_protocol']['logical_count']==4
+
+
+@pytest.mark.parametrize('seed',[0,1,29,1024])
+def test_random_preparation_branches_recover_the_same_four_logical_state(seed):
+    quantum,report=simulate_ideal(seed=seed)
+    assert report['verified_logical_ghz4'] and report['measurement_protocol_complete']
+    assert report['logical_zz_pairs']=={'AB':1,'BC':1,'CD':1}
+    assert all(quantum.expectation({q:'Z'})==1 for q in QUBIT_IDS[36:])

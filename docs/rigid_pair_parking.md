@@ -1,5 +1,7 @@
 # 全 SZ 起步的 rigid 联合运输与 EZ 临时交接
 
+> 范围更新：本文保留既有联合停车基线及其当时模型的证据。最新 [物理契约](../instruction/physics.md) 要求动态 SLM/AOD 开关、整行列支撑检查与活动空阱避碰；当前 selective_transfer_enabled/PARK 仅提供理想部分交接，尚不满足这些要求，也不是单 cell 可独立开关的证明。新的主基线采用单 trap，见 [M3 计划](../instruction/milestones.md)。
+
 本轮实现用户明确选择的流程：两个目标随同一个 rigid AOD 一起运到 EZ，将一个目标转交给预配置的空 SLM trap，剩余 AOD 原子局部平移，执行 CZ；随后恢复进 EZ 时的构型、重新接回目标，一起返回 SZ 并卸载。所有运输、交接和门操作都由实际事件提交。
 
 这是一个完整 CZ 电路的可执行运输基线，涉及门内动态 holder；原路线中跨计划 KEEP、RETURN_ONLY、REPOSITION_AND_KEEP 的通用 M3 动作空间仍未全部实现。
@@ -34,7 +36,7 @@ recorder.write('artifacts/custom-parking/index.html')
 
 `HardwareConfig.selective_transfer_enabled` 默认 False。新演示以 `backend='rigid'`、该能力 True 初始化；其他既有基准不自动获得部分交接能力。
 
-rigid 只约束所有 AOD trap 的相对坐标不变；选择性 AOD↔SLM 交接是另外一项明确的理想硬件能力。该开关表达可控制目标站点的转移，不表示已模拟光强、RF 波形、温度、势阱竞争或实验保真度。空 AOD trap 光场对被 SLM 保留原子的扰动仍未模拟。
+rigid 只约束所有 AOD trap 的相对坐标不变；选择性 AOD↔SLM 交接是另外一项明确的理想硬件能力。该开关表达可控制目标站点的转移，不表示已模拟光强、RF 波形、温度、势阱竞争或实验保真度。当前空 AOD 对被 SLM 保留原子的几何扫掠未检查；按最新约定必须补齐，精细光场仍不模拟。
 
 新增操作 `AOD_PARK` 和 `AOD_RECAPTURE` 各携带不可变 `Operation.transfer_bindings`，明确 atom ID、mobile cell 和 SLM trap ID。backend 强制验证：能力开启、阵列静止、binding 集非空且无重复、实际源 holder 正确、目标空闲、SLM trap 启用且在 EZ、cell 与 trap 对齐、原子几何合法。未列入交接集的 holder 保持不变。
 
@@ -93,7 +95,7 @@ SLM 避让的局部豁免只能在紧邻交接的 approach/depart 段使用，�
 
 ## 恢复、动画与边界
 
-checkpoint 升级为 **schema 8**，保存逐操作交接集和显式能力，拒绝 schema 1–7；旧产物需重建。runtime 校验从初始 placement 逐操作推导 holder，不能再用一个全局 loaded 布尔值代表所有原子。
+该功能最初使用 **schema 8** 保存逐操作交接集和显式能力；当前通用编译管线已升级到 **schema 9**，拒绝 schema 1–8；旧产物需重建。runtime 校验从初始 placement 逐操作推导 holder，不能再用一个全局 loaded 布尔值代表所有原子。
 
 播放器只对本次 PARK/RECAPTURE 集合做交接形变；其他原子不切换 marker。停在 SLM 的原子在移动段保持真实静态坐标，计划路径叠加也在停车处停止该原子的去程。时序表将 PARK 归入卸载、RECAPTURE 归入装载，按真实操作区间定位。图中的圆环大小不代表物理距离。
 

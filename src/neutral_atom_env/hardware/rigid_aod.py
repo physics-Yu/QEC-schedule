@@ -35,8 +35,8 @@ class RigidRectangularAODBackend:
     def target_aod(self, aod, target):
         if not isinstance(target, Position2D):
             raise ValidationError('UNSUPPORTED_DEFORMATION', 'Rigid AOD only accepts a translation pose')
-        if aod.column_offsets_um is not None or aod.row_offsets_um is not None:
-            raise ValidationError('UNSUPPORTED_DEFORMATION', 'Rigid AOD requires fixed uniform spacing')
+        # Rigid means preserving relative offsets, not requiring uniform pitch.
+        # The actual Cartesian axes may have different/nonuniform spacings.
         return replace(aod, pose=target, is_moving=False)
 
     def move_distance(self, aod, target):
@@ -58,33 +58,35 @@ class RigidRectangularAODBackend:
                 if not state.world.bounds.contains(p):
                     raise ValidationError('AOD_OUTSIDE_WORLD','AOD footprint outside world',position=p)
 
-    def capture_closure(self,state,pose):
+    def capture_closure(self,state,pose,*,active_only=False):
         if state.placement.mobile_occupancy or state.aod.is_moving:
             raise ValidationError('AOD_BUSY','Capture requires an empty idle AOD')
         self.validate_pose(state,pose)
         aod=replace(state.aod,pose=pose);tol=state.hardware.alignment_tolerance_um
-        bindings=[]
+        bindings=[];axes=aod.configuration()
         for key,holder in sorted(state.placement.atom_to_holder.items()):
             if holder.holder_type!=HolderType.STATIC:continue
             p=state.placement.position(key,state.world,aod)
-            if (pose.x_um-tol<=p.x_um<=pose.x_um+(aod.columns-1)*aod.spacing_um+tol and
-                pose.y_um-tol<=p.y_um<=pose.y_um+(aod.rows-1)*aod.spacing_um+tol):
-                row=round((p.y_um-pose.y_um)/aod.spacing_um);col=round((p.x_um-pose.x_um)/aod.spacing_um)
+            if (axes.x_um[0]-tol<=p.x_um<=axes.x_um[-1]+tol and
+                axes.y_um[0]-tol<=p.y_um<=axes.y_um[-1]+tol):
+                row=min(range(aod.rows),key=lambda i:abs(axes.y_um[i]-p.y_um))
+                col=min(range(aod.columns),key=lambda i:abs(axes.x_um[i]-p.x_um))
                 cell=MobileCellIndex(row,col)
+                # During a bound LOAD, only enabled intersections have fields.
+                # A distant atom between inactive capacity cells is not captured.
+                # Keep the legacy footprint planner's conservative default.
+                if active_only and all(distance(aod.position(c),p)>=state.hardware.minimum_clearance_um
+                                       for c in aod.active_cells):
+                    continue
                 if distance(aod.position(cell),p)>tol:
                     raise ValidationError('CAPTURE_MISALIGNMENT','Atom within footprint does not align with a mobile cell',atom_ids=(key,),position=p)
                 bindings.append(CaptureBinding(key,cell,holder.holder_id))
         return tuple(bindings)
 
     def load(self,state,bindings):
-        actual=self.capture_closure(state,state.aod.pose)
-        if actual!=bindings:
-            raise ValidationError('CAPTURE_CHANGED','Capture closure differs from the plan',atom_ids=tuple(b.atom_id for b in actual))
-        holders=dict(state.placement.atom_to_holder)
-        for b in bindings:holders[b.atom_id]=HolderRef(HolderType.MOBILE,b.cell)
-        result=replace(state,placement=PlacementState(holders))
-        self.validate_geometry_move(result,result.aod.pose)
-        return result
+        from .dynamic_traps import transfer
+        from neutral_atom_env.domain.operations import OperationType
+        return transfer(self,state,bindings,OperationType.AOD_LOAD)
 
     def validate_geometry_move(self,state,target):
         self.validate_pose(state,state.aod.pose);self.validate_pose(state,target)
@@ -105,31 +107,24 @@ class RigidRectangularAODBackend:
                     raise ValidationError('PATH_BLOCKED',f'Swept clearance {d:g} um is below {clearance:g} um',atom_ids=(atom,other),position=closest)
 
     def validate_move(self,state,target,*,transfer=None,bindings=()):
+        if state.transfer is not None:
+            raise ValidationError('TRANSFER_BUSY','Motion cannot interrupt a handoff')
         self.validate_geometry_move(state,target)
+        from .dynamic_traps import validate_active_sweep
+        validate_active_sweep(state,self.target_aod(state.aod,target))
         from .slm_clearance import validate_slm_clearance
         validate_slm_clearance(state,self.target_aod(state.aod,target),transfer,bindings)
+        from .ez_neighbors import validate_ez_neighbors
+        validate_ez_neighbors(state, aod=self.target_aod(state.aod,target))
 
     def move(self,state,target,*,transfer=None,bindings=()):
         self.validate_move(state,target,transfer=transfer,bindings=bindings)
         return replace(state,aod=replace(state.aod,pose=target,is_moving=False))
 
     def offload(self,state,bindings):
-        loaded={a for a,h in state.placement.atom_to_holder.items() if h.holder_type==HolderType.MOBILE}
-        if loaded!={b.atom_id for b in bindings}:
-            raise ValidationError('OFFLOAD_SET_MISMATCH','Offload must account for every loaded atom',atom_ids=tuple(sorted(loaded)))
-        holders=dict(state.placement.atom_to_holder);targets=set()
-        for b in bindings:
-            trap=state.world.traps.get(b.static_trap_id)
-            if not trap or not trap.enabled:
-                raise ValidationError('OFFLOAD_DISABLED','Offload trap unavailable',atom_ids=(b.atom_id,),holder_id=b.static_trap_id)
-            occupant=state.placement.static_occupancy.get(trap.id)
-            if occupant or trap.id in targets:
-                raise ValidationError('OFFLOAD_OCCUPIED','Offload trap already occupied',atom_ids=tuple(a for a in (b.atom_id,occupant) if a),holder_id=trap.id,position=trap.position)
-            p=state.placement.position(b.atom_id,state.world,state.aod)
-            if distance(p,trap.position)>state.hardware.alignment_tolerance_um:
-                raise ValidationError('OFFLOAD_MISALIGNMENT','Mobile atom must align with the offload trap',atom_ids=(b.atom_id,),holder_id=trap.id,position=p)
-            targets.add(trap.id);holders[b.atom_id]=HolderRef(HolderType.STATIC,trap.id)
-        return replace(state,placement=PlacementState(holders))
+        from .dynamic_traps import transfer
+        from neutral_atom_env.domain.operations import OperationType
+        return transfer(self,state,bindings,OperationType.AOD_OFFLOAD)
 
     def actual_pairs(self,state):
         eligible=[]
@@ -142,10 +137,27 @@ class RigidRectangularAODBackend:
                          if distance(pa,pb)<=state.hardware.interaction_distance_um+1e-9)
 
     def validate_pulse(self,state,gate_id):
+        return self.validate_pulse_batch(state,(gate_id,))
+
+    def validate_pulse_batch(self,state,gate_ids):
+        gate_ids=tuple(gate_ids)
+        if not gate_ids or len(set(gate_ids))!=len(gate_ids) or any(g not in state.dag.nodes for g in gate_ids):
+            raise ValidationError('INVALID_CZ_BATCH','CZ batch requires known unique gates')
+        gates=tuple(state.dag.nodes[g].gate for g in gate_ids)
+        if any(g.gate_type!='CZ' for g in gates):
+            raise ValidationError('UNSUPPORTED_GATE','Entangling pulse only executes CZ')
+        qubits=tuple(q for g in gates for q in g.qubit_ids)
+        if any(not state.atoms[q].alive or state.atoms[q].measured for q in qubits):
+            raise ValidationError('CZ_TARGET_UNAVAILABLE','CZ targets must be alive and reset after measurement',atom_ids=qubits)
+        if len(set(qubits))!=len(qubits):
+            raise ValidationError('OVERLAPPING_CZ_BATCH','Parallel CZ gates must have disjoint qubits',atom_ids=qubits)
+        if len(gate_ids)>1:
+            statuses={state.dag.nodes[g].status.value for g in gate_ids}
+            if len(statuses)!=1 or not statuses<={'ready','reserved','running'}:
+                raise ValidationError('CZ_BATCH_NOT_READY','CZ batch is blocked or already completed, or has mixed execution phases')
         if state.aod.is_moving:raise ValidationError('AOD_MOVING','Pulse requires stationary atoms')
         self.validate_move(state,state.aod.pose)
-        gate=state.dag.nodes[gate_id].gate
-        expected=frozenset((tuple(sorted(gate.qubit_ids)),))
+        expected=frozenset(tuple(sorted(g.qubit_ids)) for g in gates)
         actual=self.actual_pairs(state)
         if actual!=expected:
             raise ValidationError('UNINTENDED_PAIR',f'Actual pairs {sorted(actual)} != intended {sorted(expected)}',

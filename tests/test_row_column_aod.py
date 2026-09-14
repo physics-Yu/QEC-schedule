@@ -89,10 +89,20 @@ def test_swept_mobile_pair_collision_with_safe_endpoints():
     state=make_row_column_state();traps=dict(state.world.traps)
     traps['S000']=replace(traps['S000'],position=Position2D(0,0))
     traps['S001']=replace(traps['S001'],position=Position2D(2,4))
-    aod=replace(state.aod,rows=2,columns=2).configured(AODConfiguration((0,2),(0,4)))
+    aod=replace(state.aod,rows=2,columns=2,enabled_rows=None,enabled_columns=None).configured(AODConfiguration((0,2),(0,4)))
     state=replace(state,world=replace(state.world,traps=traps,grid_spacing_um=1),aod=aod,
                   hardware=replace(state.hardware,minimum_clearance_um=4.3))
-    backend=get_backend(state.hardware);state=backend.load(state,backend.capture_closure(state,state.aod.pose))
+    backend=get_backend(state.hardware)
+    # Establishing this diagonal capture under 4.3 um static-atom exclusion is
+    # now correctly forbidden: the other Cartesian cells are only 2 um away.
+    with pytest.raises(ValidationError,match='ACTIVE_TRAP_SWEEP'):
+        backend.load(state,backend.capture_closure(state,state.aod.pose))
+    # Independent loaded-state geometry test, not evidence for that forbidden load.
+    state=replace(state,aod=replace(state.aod,enabled_rows=(True,True),enabled_columns=(True,True)),
+                  placement=PlacementState(dict(state.placement.atom_to_holder)|{
+                      'Q000':HolderRef(HolderType.MOBILE,MobileCellIndex(0,0)),
+                      'Q001':HolderRef(HolderType.MOBILE,MobileCellIndex(1,1))}),
+                  slm_enabled=dict(state.slm_enabled)|{'S000':False,'S001':False})
     before=state.snapshot()
     with pytest.raises(ValidationError,match='MOBILE_CLEARANCE'):
         backend.move(state,AODConfiguration((0,4),(0,2)))

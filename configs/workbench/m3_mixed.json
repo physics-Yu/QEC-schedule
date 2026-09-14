@@ -1,0 +1,85 @@
+{
+  "atom_count": 6,
+  "layout": "shuffled",
+  "seed": 7,
+  "anchor_order": "forward",
+  "compiler": "resident",
+  "gates": [
+    {
+      "id": "G000",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q000",
+        "Q001"
+      ],
+      "parameters": [],
+      "column": 0
+    },
+    {
+      "id": "G001",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q000"
+      ],
+      "parameters": [],
+      "column": 1
+    },
+    {
+      "id": "G002",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q000",
+        "Q002"
+      ],
+      "parameters": [],
+      "column": 2
+    },
+    {
+      "id": "G003",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q000"
+      ],
+      "parameters": [],
+      "column": 3
+    },
+    {
+      "id": "G004",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q001",
+        "Q003"
+      ],
+      "parameters": [],
+      "column": 4
+    },
+    {
+      "id": "G005",
+      "gate_type": "X",
+      "qubit_ids": [
+        "Q001"
+      ],
+      "parameters": [],
+      "column": 5
+    },
+    {
+      "id": "G006",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q004",
+        "Q005"
+      ],
+      "parameters": [],
+      "column": 6
+    },
+    {
+      "id": "G007",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q004"
+      ],
+      "parameters": [],
+      "column": 7
+    }
+  ]
+}

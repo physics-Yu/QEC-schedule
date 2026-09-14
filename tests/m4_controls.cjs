@@ -1,0 +1,20 @@
+// Actual greedy recording and shared viewer; offline DOM/Canvas controls.
+const fs=require('node:fs'),assert=require('node:assert/strict');
+const {get,el}=require('./viewer_harness.cjs')(fs.readFileSync(process.argv[2]||'artifacts/m4-parallel-orthogonal/mixed-row/index.html','utf8'));
+const original=get('JSON.stringify(data)'),ops=JSON.parse(get('JSON.stringify(data.operations)'));
+const rotations=ops.filter(o=>['G001','G002','G003','G004'].includes(o.gate_id)&&o.kind==='raman_rotation');
+assert.equal(rotations.length,4);
+const byId=Object.fromEntries(rotations.map(o=>[o.gate_id,o]));
+assert.equal(byId.G001.start,0);assert.equal(byId.G004.start,0);
+assert.equal(byId.G002.start,1);assert.equal(byId.G003.start,2);
+get('seek(.5)');assert.equal(get('current.atoms.filter(a=>a.activity==="gating").length'),2);
+assert(get("operationsAt(.5).some(o=>o.kind==='aod_load')"));
+for(const op of rotations)assert.equal(op.end-op.start,1);
+assert.equal(get('data.summary.resource_busy_us["RAMAN:Q002"]'),3);
+assert.equal(get('data.summary.resource_busy_us["RAMAN:Q003"]'),1);
+get('seek(data.duration)');assert.equal(get('current.f.gate_counts.completed'),8);
+assert.equal(get('current.atoms.every(a=>a.holder.holder_type==="static")'),true);
+el('resource-schedule').onclick({target:{getAttribute:k=>k==='data-start'?String(rotations[1].start):null}});
+assert.equal(get('ui.time'),rotations[1].start);
+assert.equal(get('JSON.stringify(data)'),original);
+console.log('PASS M4 shared viewer: parallel per-qubit Raman, dependency release, handoff overlap, actual terminal, resource seeking, immutable recording');

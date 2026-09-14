@@ -31,6 +31,8 @@ def plan_transport(planner,state,target,bindings,gate_id,start_index):
                 ops.append(Operation(f'op{start_index+len(ops):02d}',K.AOD_MOVE,label,duration,transfer_phase=phase,**fields))
             for i,config in enumerate(route[1:]):move(config,'depart' if i==0 else None)
             backend.validate_pulse(work,gate_id)
+            from .program import predict_cz_completion
+            work=predict_cz_completion(work,gate_id)
             ops.append(Operation(f'op{start_index+len(ops):02d}',K.ENTANGLING_PULSE,'CZ pulse',state.hardware.pulse_duration_us))
             for config in reversed(route[:-1]):move(config,'approach' if config==source else None,True)
             return work,ops,travel

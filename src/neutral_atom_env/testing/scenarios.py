@@ -75,7 +75,7 @@ def holder_scenario():
     state=make_world()
     holders=dict(state.placement.atom_to_holder)
     for i in range(4):holders[f'Q{i:03d}']=HolderRef(HolderType.MOBILE,MobileCellIndex(i//2,i%2))
-    mixed=replace(state,placement=PlacementState(holders))
+    mixed=replace(state,placement=PlacementState(holders),aod=replace(state.aod,enabled_rows=(True,True),enabled_columns=(True,True)))
     positions={}
     for key,holder in mixed.placement.atom_to_holder.items():
         p=mixed.placement.position(key,mixed.world,mixed.aod)
@@ -145,14 +145,13 @@ def diagnostic_scenario():
                 bad=holders|{'Q000':HolderRef(HolderType.MOBILE,MobileCellIndex(0,0))}
                 replace(base,placement=PlacementState(bad),aod=replace(base.aod,pose=Position2D(200,200)))
             elif kind=='disabled':
-                traps=dict(base.world.traps);traps['S000']=replace(traps['S000'],enabled=False)
-                replace(base,world=replace(base.world,traps=traps))
+                replace(base,slm_enabled=dict(base.slm_enabled)|{'S000':False})
             else:
                 traps=dict(base.world.traps);traps['S000']=replace(traps['S000'],position=Position2D(.2,0))
                 replace(base,world=replace(base.world,traps=traps))
         except ValidationError as error:violations.append(error.violation)
         else:raise AssertionError(f'{kind} was incorrectly accepted')
-    assert [v.code for v in violations]==['DUPLICATE_HOLDER','HOLDER_SET_MISMATCH','ATOM_OUTSIDE_WORLD','UNAVAILABLE_STATIC_TRAP','INVALID_STATIC_SITE']
+    assert [v.code for v in violations]==['DUPLICATE_HOLDER','HOLDER_SET_MISMATCH','ATOM_OUTSIDE_WORLD','HOLDER_SUPPORT_DISABLED','INVALID_STATIC_SITE']
     assert violations[0].atom_ids==('Q000','Q001') and violations[0].position==Position2D(0,0)
     assert violations[1].atom_ids==('Q000',)
     assert violations[2].position==Position2D(200,200)

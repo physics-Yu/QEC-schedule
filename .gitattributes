@@ -1,0 +1,2 @@
+# Preserve reference PDFs exactly; do not apply Windows text conversion.
+*.pdf binary

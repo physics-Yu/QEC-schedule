@@ -18,7 +18,7 @@ def test_summary_independent_time_budget_and_no_atom_double_count():
     state,recorder=recorded_circuit()
     summary=summarize_trace(state.trace.records,state.metrics())
     actual={row['key']:row['duration_us'] for row in summary['categories']}
-    assert actual==pytest.approx({'load':300,'transport':218,'return':218,'offload':300,'pulse':.9,'empty':80,'idle':0})
+    assert actual==pytest.approx({'load':300,'transport':218,'return':218,'offload':300,'pulse':.9,'empty':80,'switch':0,'idle':0})
     assert sum(actual.values())==pytest.approx(1116.9)
     assert summary['transport_atom_time_us']==pytest.approx(436)
     assert summary==recorder.payload()['summary']
@@ -51,7 +51,7 @@ def test_recorder_is_read_only_and_export_contains_no_checkpoint_history(tmp_pat
     state,recorder=recorded_circuit();before=state.snapshot();payload=recorder.payload()
     assert 'scene' in payload and all('scene' not in f and 'trace' not in f and 'world' not in f for f in payload['frames'])
     assert sum(len(f['atom_updates']) for f in payload['frames'])<len(payload['frames'])*4
-    assert len(payload['summary']['categories'])==7
+    assert len(payload['summary']['categories'])==8
     recorder.write(tmp_path/'viewer.html');recorder.write_json(tmp_path/'recording.json')
     assert state.snapshot()==before
     payload['frames'][0]['atom_updates'].clear()
@@ -70,7 +70,7 @@ def test_compact_recorder_does_not_call_snapshot_and_scales_with_changes(tmp_pat
     world=LayoutConfig(columns=32,rows=16,zone_height_um=100).build()
     atoms={f'Q{i:03d}':Atom(f'Q{i:03d}') for i in range(512)}
     holders=PlacementState({q:HolderRef(HolderType.STATIC,f'S{i:03d}') for i,q in enumerate(atoms)})
-    state=replace(make_circuit_state(),world=world,atoms=atoms,placement=holders,dag=DynamicGateDAG(PhysicalCircuit(())))
+    state=replace(make_circuit_state(),world=world,slm_enabled=None,atoms=atoms,placement=holders,dag=DynamicGateDAG(PhysicalCircuit(())))
     monkeypatch.setattr(SimulationState,'snapshot',lambda self:pytest.fail('Recorder must not serialize full checkpoints'))
     recorder=VisualRecorder(state);executor=Executor(state)
     for t in range(1,257):

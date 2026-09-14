@@ -61,20 +61,19 @@ def test_restore_every_transfer_boundary_and_pending_plan():
         assert resumed.snapshot()==final.snapshot()
 
 
-def test_all_sz_full_circuit_keeps_incidental_atoms_and_gate_dependencies():
-    final,snapshots,recorder=run('circuit')
-    initial=SimulationState.restore(snapshots[0])
-    assert final.metrics()['completed_gate_count']==final.metrics()['completed_plan_count']==6
-    assert final.placement==initial.placement and final.aod==initial.aod
-    trace=[json.loads(r) for r in final.trace.records]
-    pulses=[r for r in trace if r.get('operation_type')=='entangling_pulse' and r['event']['event_type']=='operation_completed']
-    assert [r['actual_pairs'] for r in pulses]==[[sorted(g.qubit_ids)] for g in initial.dag.circuit.gates]
-    assert all(len(o['captured'])==4 for o in recorder.operations if o['kind']=='aod_load')
-    assert final.metrics()['incidental_atom_transport_total']==12
-    # Resume at a partial-transfer boundary in a later plan, with prior gates complete.
-    saved=next(s for s in snapshots if json.loads(s)['metrics']['completed_plan_count']==3 and any(h['holder_type']=='static' and h['holder_id']=='EZ_PARK' for h in json.loads(s)['placement']['atom_to_holder'].values()))
-    resumed=SimulationState.restore(saved);assert EagerScheduler(resumed).run().status=='completed'
-    assert resumed.snapshot()==final.snapshot()
+def test_full_cartesian_load_rejects_unsafe_single_atom_parking():
+    # Old selective-cell model accepted this four-atom layout. Row/column masks
+    # cannot extinguish the parked cell without dropping a remaining atom.
+    state=make_rigid_parking_state('circuit')
+    result=EagerScheduler(state).run()
+    assert result.status=='stalled'
+    assert 'SHARED_AXIS_SUPPORT' in str(result.diagnostics)
+    # Four row/column pairs have alternate legal capture footprints; diagonal
+    # pairs require all four atoms and cannot park only one of them safely.
+    assert state.metrics()['completed_gate_count']==4
+    assert [g.id for g in state.dag.ready_gates()]==['G004','G005']
+    before=state.snapshot()
+    assert EagerScheduler(state).run().status=='stalled' and state.snapshot()==before
 
 
 @pytest.mark.parametrize('damage',['capability','misaligned','wrong_cell','empty','duplicate','moving','occupied'])
@@ -127,7 +126,7 @@ def test_damaged_parked_checkpoint_and_completion_are_rejected():
 
 def test_no_ez_parking_trap_reports_stalled_without_hidden_preparation():
     state=make_rigid_parking_state('pair')
-    state=replace(state,world=replace(state.world,traps={k:v for k,v in state.world.traps.items() if k!='EZ_PARK'}))
+    state=replace(state,world=replace(state.world,traps={k:v for k,v in state.world.traps.items() if k!='EZ_PARK'}),slm_enabled={k:v for k,v in state.slm_enabled.items() if k!='EZ_PARK'})
     before=state.snapshot();result=EagerScheduler(state).run()
     assert result.status=='stalled' and result.diagnostics['candidate_failures']
     assert state.snapshot()==before

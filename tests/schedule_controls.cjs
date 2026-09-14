@@ -1,6 +1,6 @@
 // Schedule geometry and navigation, using actual generated event data.
 const fs=require('node:fs'),assert=require('node:assert/strict');
-const {get,el}=require('./viewer_harness.cjs')(fs.readFileSync('artifacts/visualization/index.html','utf8'));
+const {get,el}=require('./viewer_harness.cjs')(fs.readFileSync(process.argv[2]||'artifacts/visualization/index.html','utf8'));
 const html=el('summary').innerHTML;
 const bars=[...html.matchAll(/data-start="([^"]+)" data-end="([^"]+)" data-category="([^"]+)" x="([^"]+)" y="([^"]+)" width="([^"]+)"/g)].map(m=>({start:+m[1],end:+m[2],category:m[3],x:+m[4],y:+m[5],width:+m[6]}));
 assert.equal(bars.length,37);

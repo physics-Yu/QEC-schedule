@@ -1,5 +1,7 @@
 # Milestone 2 · 连续 eager 电路
 
+> 范围更新：本文记录 M2 当时的串行 mobile–static 电路族与独立数字。新的 [M3 目标契约](../instruction/compiler_contract.md) 允许非 gate 任务、持续驻留与操作级并行，并要求动态光阱硬逻辑；这些不是 M2 已完成能力。历史报告保留，不改写为符合新规则的证据。
+
 实现范围：单刚性矩形 AOD、单 CZ、每个计划 RETURN_AND_OFFLOAD。所有门使用同一持续 state；静态伙伴始终不动，源原子的真实装载、运输、卸载和空载移动通过 Executor 事件提交。
 
 ## 运行与恢复
