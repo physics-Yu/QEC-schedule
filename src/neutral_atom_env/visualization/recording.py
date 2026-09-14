@@ -10,6 +10,7 @@ from neutral_atom_env.domain.operations import TaskIntent
 from neutral_atom_env.testing.theme import VisualTheme
 from .summary import operation_category,movement_mode,summarize_intervals
 from neutral_atom_env.simulation.quantum_effects import condition_applies
+from neutral_atom_env.statistics import AtomStatistics
 
 
 class VisualRecorder:
@@ -28,6 +29,8 @@ class VisualRecorder:
         self.frames=[];self.operations=[];self.plans={};self._atoms={};self._operation_keys=set();self._last_plan=None
         self._initial_time=state.time_us;self._version=None;self.metrics={}
         self._slm=None
+        self.atom_statistics=AtomStatistics(state.atoms,state.dag.circuit.gates)
+        self._statistics_unavailable=None
         self.observe(state)
 
     def observe(self,state,event=None):
@@ -37,6 +40,17 @@ class VisualRecorder:
         if self.frames and state.time_us<self.frames[-1]['time']:
             raise ValueError('VisualRecorder requires monotonic simulation time')
         self._version=state.version
+        if self.atom_statistics is not None:
+            for raw in state.trace.records[self.atom_statistics.processed_records:]:
+                record=json.loads(raw)
+                if record['event']['event_type'].startswith('gate_'):
+                    # LogicalTestExecutor demonstrations contain no physical execution.
+                    self._statistics_unavailable='Logical-only trace has no physical atom accounting'
+                    self.atom_statistics=None
+                    break
+                self.atom_statistics.consume(record)
+            if self.atom_statistics is not None and not state.trace.records:
+                self.atom_statistics.time_us=state.time_us
         runtime=state.active_plan
         if runtime:
             self._last_plan=runtime.plan
@@ -174,7 +188,9 @@ class VisualRecorder:
         # Serialization detaches caller-owned data from this recorder's internal buffers.
         return json.loads(canonical_json({'format':'neutral-atom-view/2','scene':self.scene,'frames':self.frames,
             'theme':self.theme,'backend':self.backend,'duration':self.frames[-1]['time'],'start_time':self._initial_time,
-            'operations':self.operations,'plans':list(self.plans.values()),'summary':summary,'requested':self.frames[0]['requested'],
+            'operations':self.operations,'plans':list(self.plans.values()),'summary':summary,
+            'atom_statistics':self.atom_statistics.report() if self.atom_statistics is not None else None,
+            'atom_statistics_unavailable':self._statistics_unavailable,'requested':self.frames[0]['requested'],
             'captured':first.get('captured',[]),'gate_label':self.frames[0]['gate_label']}))
 
     def write(self,path):

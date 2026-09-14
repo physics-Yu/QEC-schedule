@@ -146,6 +146,8 @@ M3-A 已使动态 masks 和 transfer 阶段进入操作、预测、精确验证�
 
 第 6 节指标名称和数字是 M2 历史兼容口径。新增并发统计按资源占用区间并集计时，区分 Raman、运输、交接、CZ 及持续占位；跨资源时间可重叠，不相加为 wall。程序总时间从统一 episode 起点计入必要初始准备/等待及尾部终止条件，逻辑完成单列。不得未经 schema/报告迁移把旧 aod_busy 字段解释成新的并发定义。
 
+2026-09-14 新增独立只读 `statistics.AtomStatistics`：消费完整已提交 trace，按原子统计路程、LOAD/RECAPTURE、OFFLOAD/PARK、实际各类门次数与等待时间。等待=运行 elapsed 减该原子实际移动/交接/已触发效果区间并集；支撑保持、资源预约和未触发控制槽不等于忙碌。批量 CZ 两个原子各计一次，装卸为原子次，不覆盖旧批次指标。支持增量观察、checkpoint 完整历史重建及独立 JSON/CSV；不修改 Atom/Executor/checkpoint。详细口径、部分执行及导出见 [统计合同](../docs/atom_statistics.md)。
+
 ## M3 scheduled program（schema 13）
 
 完整实现见 [M3 API](../docs/milestone3.md)：operation_program.audit 审核整个候选；transition 按最新状态纯归约，Executor 独占提交。running_operations/completed_operation_ids 保存并发进度，预约随各操作释放；同时间完成优先、再按 op ID 开始，恢复检查完整事件后缀。Raman 固定 1 μs，稳定 SLM 可与另一个原子的 MOVE 重叠；2026-09-11 M4 已取消全局 HANDOFF_GUARD/RAMAN_0，独立 qubit 的稳定 SLM 同类型旋转可直接并行并与他原子的交接/运输重叠；目标 atom/trap 资源保护同原子冲突。当前 schema 17，Raman busy time 取时间并集。

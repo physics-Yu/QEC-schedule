@@ -1,5 +1,7 @@
 # 当前交接状态
 
+**2026-09-14 最新：独立逐原子统计已完成，用户要求唯一分支统一为 `main`。** `statistics.AtomStatistics` 从已提交 trace 增量统计每原子路程、装卸、实际门数、忙碌与等待；VisualRecorder/工作台 worker/离线 CLI 输出 JSON+CSV，schema19 与物理模型不变。最终29项专项通过，现有四逻辑68原子/8360记录独立补算：62282μm、853/853原子次装卸，实际门计数与旧审计一致，347未触发槽排除；未重新完整编译或量子重放。接口与限制见[统计合同](../docs/atom_statistics.md)、[本轮日志及Git核对](logs/2026-09-14-atom-statistics.md)。GUI逐原子表未新增；旧服务需重启加载。后续从main继续，以下snapshot默认分支记录为本次规整前历史。
+
 **2026-09-14 分支规整完成：** GitHub `physics-Yu/QEC-schedule`仅保留`codex/snapshot-2026-09-14`并设为默认。已删除main、旧execution-refactor及revert分支；当前完整文件基线37012c4保留，历史bundle仅存本地。见[清理日志](logs/2026-09-14-branch-cleanup.md)。后续从此默认分支继续，架构迁移仍未开始。
 
 **2026-09-14 Git阶段快照：** 用户指定仓库`physics-Yu/QEC-schedule`，本次分支`codex/snapshot-2026-09-14`基于远端main的`dcc849f`，范围为源码/配置/测试/文档/复现脚本，artifacts沿用忽略规则。README同步当前门集、手动编译与schema19；62项专项测试、248个Python语法及13个JSON检查通过，未跑全仓suite或新完整GHZ。远端提交结果以Git分支为准；[日志](logs/2026-09-14-github-snapshot.md)。架构A0–A8仍待实施，建议下一步先统一计时和减少重复计算。

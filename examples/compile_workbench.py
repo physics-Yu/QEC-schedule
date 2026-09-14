@@ -20,6 +20,8 @@ def main():
     for name,data in [('input',result['input']),('recording',result['recording']),('diagnostics',result['diagnostics'])]:
         (output/(name+'.json')).write_text(canonical_json(data),encoding='utf-8')
     (output/'checkpoint.json').write_text(state.snapshot(),encoding='utf-8')
+    from neutral_atom_env.statistics import write_atom_statistics
+    write_atom_statistics(result['recording']['atom_statistics'],output)
     write_html(result['recording'],output/'index.html')
     print(canonical_json({'status':result['status'],'metrics':state.metrics(),'operations':len(result['recording']['operations'])}))
     return 0 if result['status']=='completed' else 1

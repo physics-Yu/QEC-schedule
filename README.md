@@ -14,6 +14,8 @@ python examples/circuit_workbench.py --port 8766
 
 Git 仓库包含源码、测试、配置、文档和复现脚本；`artifacts/` 中的生成动画、运行记录与 checkpoint 不随 Git 提交。文档中历史产物链接和本机服务地址需要在相应环境重新生成或启动。
 
+新增独立的 [逐原子执行统计](docs/atom_statistics.md)：累计路程、装载/卸载次数、实际各类门次数、忙碌与等待时间。新编译自动导出 JSON/CSV；已有完整 trace 可用 `examples/summarize_atoms.py` 补算，无需重新编译。统计只读，未触发条件门不计数。
+
 该快照之后新增 [M3-B 独立任务与操作 IR](docs/task_program.md)：零门运输、准备/效果/清理拆分及 schema 12 恢复。`python examples/run_task_program.py` 使用同一工作台输入生成独立任务回放；该入口保留串行；[M3-C–F](docs/milestone3.md) 另有持久编译与真实 1Q/运输并行，入口 `python examples/run_m3.py`。
 
 

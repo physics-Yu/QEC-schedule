@@ -22,6 +22,8 @@ def _worker(value, output, connection):
         directory=Path(output); directory.mkdir(parents=True,exist_ok=True)
         (directory/'input.json').write_text(canonical_json(result['input']),encoding='utf-8')
         (directory/'recording.json').write_text(canonical_json(result['recording']),encoding='utf-8')
+        from neutral_atom_env.statistics import write_atom_statistics
+        write_atom_statistics(result['recording']['atom_statistics'],directory)
         write_html(result['recording'],directory/'index.html')
         (directory/'checkpoint.json').write_text(state.snapshot(),encoding='utf-8')
         (directory/'diagnostics.json').write_text(canonical_json(result['diagnostics']),encoding='utf-8')
