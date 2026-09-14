@@ -1,6 +1,6 @@
 # 2026-09-14 · README 与可移植 Demo 入口
 
-- 状态：COMPLETED（本地交付和核验完成，Git 发布结果由后续提交记录确认）
+- 状态：COMPLETED（交付、核验、GitHub main 发布完成）
 - 用户目标：对外重写 README，精选 SMT 与完整编辑器可视化到 demo/，跨电脑运行，并上传自己的 GitHub main。
 - 基线：main b2eb16d；本地已有环境/策略拆包、配置分层、电路审计及 SMT 未提交。本轮包含这些源码，避免新入口缺少后端实现。
 - 范围：文档、导出与启动包装；不改变物理规则或调度目标。
@@ -22,3 +22,5 @@
 - 证据：artifacts/portable-check；公开摘要见 docs/demo_delivery_validation.md。
 - 未验收 macOS/Linux实机，未跑全仓测试或小时级QEC重编译/重放；此前证据不冒充本轮通过。
 - 发布使用普通main提交与推送，保留现有历史；不强推、不删除远端分支。
+- 实现提交 `5e65491` 已成功推送 physics-Yu/QEC-schedule 的 main。直连两次失败；读取用户现有系统代理127.0.0.1:7897后，通过单条Git参数推送成功，未改变全局Git配置。
+- 最终提交的Git archive再次核验120个demo哈希一致。当前本机入口 http://127.0.0.1:8800/，服务PID26248；这些地址/PID仅为交接，不是跨电脑运行依赖。
