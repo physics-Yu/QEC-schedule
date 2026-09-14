@@ -1,5 +1,7 @@
 # 当前交接状态
 
+**2026-09-14 分支规整完成：** GitHub `physics-Yu/QEC-schedule`仅保留`codex/snapshot-2026-09-14`并设为默认。已删除main、旧execution-refactor及revert分支；当前完整文件基线37012c4保留，历史bundle仅存本地。见[清理日志](logs/2026-09-14-branch-cleanup.md)。后续从此默认分支继续，架构迁移仍未开始。
+
 **2026-09-14 Git阶段快照：** 用户指定仓库`physics-Yu/QEC-schedule`，本次分支`codex/snapshot-2026-09-14`基于远端main的`dcc849f`，范围为源码/配置/测试/文档/复现脚本，artifacts沿用忽略规则。README同步当前门集、手动编译与schema19；62项专项测试、248个Python语法及13个JSON检查通过，未跑全仓suite或新完整GHZ。远端提交结果以Git分支为准；[日志](logs/2026-09-14-github-snapshot.md)。架构A0–A8仍待实施，建议下一步先统一计时和减少重复计算。
 
 **2026-09-13 外部编译器调研完成，尚未适配/跑分：** [对比报告](../docs/external_compiler_research.md)、[日志](logs/2026-09-13-external-compiler-research.md)。核查ZAC/MQT/Shuttle选定源码32文件及论文，建议补充TransportJob、落点与运输批次的双向代价、有限候选搜索和可选QEC离线周期核。原A0–A8仍待实施；物理模型、生产编译器与动画未改。NEAT仅论文核查，不能宣称外部方案已在本平台验收。
