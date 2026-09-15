@@ -1,6 +1,6 @@
 # 2026-09-15 · 非 RL 版本整理与 GitHub 发布
 
-- 状态：IN_PROGRESS（整理及本地验收完成，待推送核验）
+- 状态：COMPLETED（整理、验收、主实现推送及远端核验完成）
 - 用户目标：整理当前版本、补充说明，上传 physics-Yu/QEC-schedule；新增 RL 工作不纳入。
 - 基线：main / 7fe9f59；最新工作台为测量落点策略版本（开发机 8798）。
 - 相关规范：agent.md、instruction/workflow.md、docs/environment_strategy_boundary.md。
@@ -40,4 +40,4 @@ HTTP 首次检查因验收脚本错误假定 JS 导出名 `QECEditor` 而失败�
 
 ## 发布核验
 
-待推送到 `https://github.com/physics-Yu/QEC-schedule.git` 的 `main` 并核对远端 SHA；未使用强制推送或额外分支。
+主实现提交 [`1d49cc0`](https://github.com/physics-Yu/QEC-schedule/commit/1d49cc0dc51844f9a0cd22ea4c1c6ce5c1d44150) 已推送到 `main`，`git ls-remote origin refs/heads/main` 返回相同完整 SHA。仓库默认分支仍为 main；本记录随后以独立文档提交同步。未使用强制推送或创建额外分支。新增 RL 内容仍留在工作区；未包含在主实现的 73 个变更文件中。
