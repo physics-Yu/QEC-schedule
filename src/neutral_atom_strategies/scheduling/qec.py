@@ -88,7 +88,7 @@ def measurement_destinations(state, atoms):
     return [item[3] for item in sorted(choices,key=lambda item:item[:3])]
 
 
-def readout_service(state,compiler,gates):
+def readout_service(state,compiler,gates,*,placement_policy=None):
     atoms=tuple(g.qubit_ids[0] for g in gates)
     source={q:state.placement.atom_to_holder[q].holder_id for q in atoms}
     # Each immediately ready RESET successor can share the same MZ visit.
@@ -101,6 +101,8 @@ def readout_service(state,compiler,gates):
             if candidate.gate_type=='RESET' and candidate.qubit_ids==gate.qubit_ids and parents<=available:
                 resets.append(candidate)
     all_ids=tuple(g.id for g in gates)+tuple(g.id for g in resets)
+    if placement_policy is not None:
+        return placement_policy.plan(state,compiler,gates,resets)
     destinations=[source] if all(in_zone(state,state.placement.position(q,state.world,state.aod),ZoneType.MEASUREMENT) for q in atoms) else measurement_destinations(state,atoms)
     last=None
     for destination in destinations:

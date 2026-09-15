@@ -72,8 +72,8 @@ class HardwareConfig:
                      'minimum_axis_spacing_um','max_acceleration_um_per_us2','max_jerk_um_per_us3'):
             value=getattr(self,name)
             if not isfinite(value) or value<=0:raise ValueError(f'{name} must be finite and positive')
-        if self.backend not in {'rigid', 'row_column'}:
-            raise ValueError('Unknown AOD backend; choose rigid or row_column')
+        if self.backend not in {'rigid', 'row_column', 'row_column_orthogonal'}:
+            raise ValueError('Unknown AOD backend; choose rigid, row_column or row_column_orthogonal')
 
 
 @dataclass(frozen=True)

@@ -1,5 +1,13 @@
 # 可替换的路径规划与物理验证
 
+2026-09-15测量策略接入：`ReadoutPlacementPolicy`负责AOD/SLM支撑、落点候选和低成本评分，`OrderedTransfer.move_loaded`只接收已选构型规划实际路线；少量合法服务反馈真实成本。不是movement自己决定测量落点。当前有序QEC通过`readout_service(..., placement_policy=...)`注入，原物理读出/支撑规则不变；[接口与验收](../docs/readout_placement_policy.md)。
+
+2026-09-15最新：`motion/axis_hold_routes.py` 增加直接X→Y/Y→X、逐行列提前到位并保持的通用候选；贪心、SMT和群组运输共用 `motion_router=axis_hold`，与硬件backend独立。旧 `legacy_corridor` 显式保留作复现。按真实运动时间选择，经占据网格筛选及完整连续物理校验；没有按原子编号/仿真时间特判，没有完备高维最短路保证。原Q000/783μs绕路来自候选遗漏，同后端修复验证与完整QEC结果见[报告](../docs/axis_hold_strategy_fix.md)。
+
+2026-09-15 QEC对照已接入有序行列ROUTES V2：`ordered_transfer.py`提供SLM组间交接，共用于SZ/EZ/MZ服务。关闭且空的目的SLM可以合法直达后由OFFLOAD建立支撑，不再人为越过再折返；保留实际源departure与全部backend检查。[完整QEC/SMT结果](../docs/qec_ordered_smt_comparison.md)。
+
+2026-09-15 有序行列实验 ROUTES V2：新 `strategies/motion/ordered_routes.py` 使用2.5+2.5k离散通道候选，SLM静态原子占据格仅作只读障碍预筛选，不关闭实际支撑；全活动交点与连续扫掠仍校验。同向直行合并、转弯/反向保留零速停点。该有限候选族不是下方rigid A*的高维扩展。[证据与范围](../docs/ordered_routes_v2.md)。
+
 **当前门规则（2026-09-11 最新）**：仅 H/X/Y/Z/T/CZ 可执行；仅同类型门可并行，异类型门（含 CZ/1Q）不得重叠。内部 U 参数仅记录固定门效果。checkpoint schema 15，拒绝旧 1–14；旧输入不自动转换。详见 [门规范](../docs/gate_contract.md)。本页旧门集和任意类型并行描述以该规范为准。
 
 用途：修改路线、接入调度策略或后续 RL 时先读本文件；后端方程见 [aod_backends](aod_backends.md)，事件与指标见 [motion_execution](motion_execution.md)。保持 M0→M6 顺序。本文主体描述已有有限路线接口；KEEP 终态已有执行底座，通用目标任务设计见 [compiler_contract](compiler_contract.md)。

@@ -35,7 +35,13 @@ def main():
         servers.append(workbench)
         smt = smt_server(output / 'smt', 0, reference=demo / 'smt/reference', ui_file=demo / 'smt/index.html')
         servers.append(smt)
+        qec = smt_server(output / 'qec', 0,
+                         experiment_module='neutral_atom_experiments.qec_ordered_comparison',
+                         worker_script='run_qec_ordered_experiment.py',
+                         ui_file=ROOT / 'src/neutral_atom_app/visualization/qec_ordered_experiment.html')
+        servers.append(qec)
         links = {'workbench': f'http://127.0.0.1:{workbench.server_port}/',
+                 'qec': f'http://127.0.0.1:{qec.server_port}/',
                  'smt': f'http://127.0.0.1:{smt.server_port}/'}
 
         class Gallery(SimpleHTTPRequestHandler):

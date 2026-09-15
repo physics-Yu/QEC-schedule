@@ -24,7 +24,7 @@ def sample_aod(state,time_us):
     if state['aod']['is_moving'] and runtime:
         op=runtime['plan']['operations'][runtime['operation_index']]
         u=max(0,min(1,(time_us-runtime['operation_started_us'])/op['duration_us']))
-        if state['hardware']['backend']=='row_column':u=u*u*(3-2*u)
+        if state['hardware']['backend'] in {'row_column','row_column_orthogonal'}:u=u*u*(3-2*u)
         target=target_axes(state['aod'],op)
         axes=AODConfiguration(tuple(a+u*(b-a) for a,b in zip(axes.x_um,target.x_um)),
                               tuple(a+u*(b-a) for a,b in zip(axes.y_um,target.y_um)))

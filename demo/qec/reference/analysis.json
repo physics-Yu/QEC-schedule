@@ -1,0 +1,131 @@
+{
+  "same_initial_state": true,
+  "strategies": {
+    "ordered_greedy": {
+      "status": "completed",
+      "total_time_us": 24337.38074559301,
+      "time_by_operation_us": {
+        "aod_load": 2700.0,
+        "aod_move": 14093.280745593,
+        "aod_offload": 2700.0,
+        "raman_rotation": 39.0,
+        "entangling_pulse": 5.099999999994225,
+        "measurement": 4000.0,
+        "reset": 800.0
+      },
+      "operation_counts": {
+        "aod_load": 27,
+        "aod_move": 146,
+        "aod_offload": 27,
+        "raman_rotation": 39,
+        "entangling_pulse": 17,
+        "measurement": 8,
+        "reset": 8
+      },
+      "move_segments": 146,
+      "nonorthogonal_moves": [],
+      "redundant_straight_stops": [],
+      "logical_cnot_cz_batches": [
+        [
+          "QEC0302",
+          "QEC0303",
+          "QEC0304",
+          "QEC0305",
+          "QEC0306",
+          "QEC0307",
+          "QEC0308",
+          "QEC0309",
+          "QEC0310"
+        ]
+      ],
+      "cz_batch_sizes": [
+        8,
+        8,
+        4,
+        4,
+        8,
+        8,
+        4,
+        4,
+        9,
+        8,
+        8,
+        4,
+        4,
+        8,
+        8,
+        4,
+        4
+      ],
+      "total_atom_distance_um": 13252.0,
+      "atom_loads": 205,
+      "atom_offloads": 205,
+      "solver_build_seconds": 0,
+      "solver_check_seconds": 0,
+      "validation_passed": true
+    },
+    "smt_ordered": {
+      "status": "completed",
+      "total_time_us": 24975.21903595713,
+      "time_by_operation_us": {
+        "aod_load": 2700.0,
+        "aod_move": 14731.119035957116,
+        "aod_offload": 2700.0,
+        "raman_rotation": 39.0,
+        "entangling_pulse": 5.099999999993543,
+        "measurement": 4000.0,
+        "reset": 800.0
+      },
+      "operation_counts": {
+        "aod_load": 27,
+        "aod_move": 167,
+        "aod_offload": 27,
+        "raman_rotation": 39,
+        "entangling_pulse": 17,
+        "measurement": 8,
+        "reset": 8
+      },
+      "move_segments": 167,
+      "nonorthogonal_moves": [],
+      "redundant_straight_stops": [],
+      "logical_cnot_cz_batches": [
+        [
+          "QEC0302",
+          "QEC0303",
+          "QEC0304",
+          "QEC0305",
+          "QEC0306",
+          "QEC0307",
+          "QEC0308",
+          "QEC0309",
+          "QEC0310"
+        ]
+      ],
+      "cz_batch_sizes": [
+        8,
+        8,
+        4,
+        4,
+        8,
+        8,
+        4,
+        4,
+        9,
+        8,
+        8,
+        4,
+        4,
+        8,
+        8,
+        4,
+        4
+      ],
+      "total_atom_distance_um": 13270.0,
+      "atom_loads": 205,
+      "atom_offloads": 205,
+      "solver_build_seconds": 3.236679699984961,
+      "solver_check_seconds": 0.32026220000261674,
+      "validation_passed": true
+    }
+  }
+}

@@ -10,3 +10,5 @@
 新增算法放 `neutral_atom_strategies`，通过 `NeutralAtomEnv` 控制模拟；不要把算法、默认电路或工作台配置放回环境。只有 Executor 提交真实状态。
 
 完整接口与迁移说明见 [环境与策略边界](../docs/environment_strategy_boundary.md)。
+
+当前有序 QEC 的 CZ 候选、measurement target 和 movement 入口见 [版本导航](../docs/current_version.md#分层与所有权)。研究策略由专用实验组装，不自动暴露为旧通用工作台的能力。

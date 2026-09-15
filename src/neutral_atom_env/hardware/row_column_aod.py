@@ -94,3 +94,19 @@ class RowColumnAODBackend(RigidRectangularAODBackend):
     def move(self, state, target, *, transfer=None, bindings=()):
         self.validate_move(state,target,transfer=transfer,bindings=bindings)
         return replace(state,aod=self.target_aod(state.aod,target))
+
+
+class OrthogonalRowColumnAODBackend(RowColumnAODBackend):
+    """Ordered axes with optional held coordinates and orthogonal primitives.
+
+    Unchanged coordinates stay fixed for the whole cubic segment. A changed
+    column still moves every enabled trap on that column, and likewise rows.
+    Routing and the decision to hold an axis are deliberately outside the env.
+    """
+    name = 'row_column_orthogonal'
+
+    def validate_geometry_move(self,state,target):
+        start=state.aod.configuration();end=self.target_aod(state.aod,target).configuration()
+        if start.x_um!=end.x_um and start.y_um!=end.y_um:
+            raise ValidationError('ORTHOGONAL_MOVE_REQUIRED','A primitive may change columns or rows, not both; unchanged axes remain held')
+        super().validate_geometry_move(state,target)

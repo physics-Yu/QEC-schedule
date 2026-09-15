@@ -112,7 +112,7 @@ class VisualRecorder:
             value=primitive(op);kind=op.operation_type.value
             if kind=='aod_move':
                 movement={'start':started,'duration':op.duration_us,'target':value['target_pose'],
-                    'target_axes':primitive(target_axes(aod,value)),'profile':'cubic' if self.backend=='row_column' else 'linear'}
+                    'target_axes':primitive(target_axes(aod,value)),'profile':'cubic' if self.backend in {'row_column','row_column_orthogonal'} else 'linear'}
             key=(runtime.plan.id,op.id)
             if key not in self._operation_keys:
                 self._operation_keys.add(key)

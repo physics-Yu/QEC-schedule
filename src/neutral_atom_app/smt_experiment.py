@@ -7,6 +7,7 @@ import mimetypes
 import subprocess
 import sys
 import threading
+from importlib import import_module
 from time import perf_counter
 from urllib.parse import urlsplit, unquote
 from uuid import uuid4
@@ -14,8 +15,9 @@ from uuid import uuid4
 ROOT=Path(__file__).resolve().parents[2]
 
 
-def isolated_comparison(spec, directory, progress=print):
-    from neutral_atom_experiments.smt_comparison import STRATEGIES, validate_spec
+def isolated_comparison(spec, directory, progress=print, *, experiment_module='neutral_atom_experiments.smt_comparison', worker_script='run_smt_experiment.py'):
+    module=import_module(experiment_module)
+    STRATEGIES,validate_spec=module.STRATEGIES,module.validate_spec
     validate_spec(spec)
     directory=Path(directory).resolve();directory.mkdir(parents=True,exist_ok=True)
     source=directory/'input.json';source.write_text(json.dumps(spec,ensure_ascii=False),encoding='utf-8')
@@ -26,9 +28,9 @@ def isolated_comparison(spec, directory, progress=print):
         tick=perf_counter()
         with (target/'worker.log').open('w',encoding='utf-8') as log:
             try:
-                child=subprocess.run([sys.executable,str(ROOT/'examples/run_smt_experiment.py'),'--one',strategy,'--input',str(source),
+                child=subprocess.run([sys.executable,str(ROOT/'examples'/worker_script),'--one',strategy,'--input',str(source),
                     '--output',str(target)],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT,
-                    timeout=spec.get('timeout_s',60)+30,
+                    timeout=spec.get('timeout_s',60)*(2 if experiment_module.endswith('qec_ordered_comparison') else 1)+30,
                     creationflags=getattr(subprocess,'CREATE_NO_WINDOW',0))
                 if child.returncode:raise RuntimeError(f'worker exited {child.returncode}; see worker.log')
                 result=json.loads((target/'result.json').read_text(encoding='utf-8'))
@@ -45,8 +47,11 @@ def isolated_comparison(spec, directory, progress=print):
     return report
 
 
-def create_server(output,port=8793,reference=None,ui_file=None):
-    from neutral_atom_experiments.smt_comparison import demos, make_state
+def create_server(output,port=8793,reference=None,ui_file=None, *, experiment_module='neutral_atom_experiments.smt_comparison', worker_script='run_smt_experiment.py'):
+    module=import_module(experiment_module)
+    demos,make_state=module.demos,module.make_state
+    ordered=experiment_module.endswith('ordered_axis_comparison')
+    qec=experiment_module.endswith('qec_ordered_comparison')
     output=Path(output).resolve();output.mkdir(parents=True,exist_ok=True)
     reference=Path(reference).resolve() if reference else None
     jobs={};lock=threading.Lock()
@@ -61,9 +66,19 @@ def create_server(output,port=8793,reference=None,ui_file=None):
             if path=='/':
                 page=Path(ui_file) if ui_file else Path(__file__).with_name('visualization').joinpath('smt_experiment.html')
                 return self.send(page.read_bytes(),kind='text/html; charset=utf-8')
-            if path=='/api/catalog':return self.send({'demos':demos(),'suite':'/data/attempt2/suite.json'})
+            if path=='/assets/qec_editor.js' and qec:
+                return self.send(Path(__file__).with_name('visualization').joinpath('qec_editor.js').read_bytes(),kind='text/javascript; charset=utf-8')
+            if path=='/api/catalog':return self.send({'demos':demos(),'suite':'/data/suite.json' if ordered or qec else '/data/attempt2/suite.json','ordered_axes':ordered,'qec_ordered':qec})
             if path.startswith('/api/jobs/'):
                 with lock:data=dict(jobs.get(path.split('/')[-1],{}))
+                if qec and data.get('status')=='compiling':
+                    progress=dict(data.get('progress',{}));strategy=progress.get('strategy')
+                    if strategy:
+                        root=output/'interactive'/data['id']/strategy
+                        for filename,key in (('progress.json','execution'),('verification-progress.json','verification')):
+                            try:progress[key]=json.loads((root/filename).read_text(encoding='utf-8'))
+                            except (OSError,ValueError):pass
+                        data['progress']=progress
                 return self.send(data,200 if data else 404)
             if path.startswith('/data/'):
                 base=reference if reference and path.startswith('/data/attempt2/') else output
@@ -78,7 +93,7 @@ def create_server(output,port=8793,reference=None,ui_file=None):
             if origin and origin!=f'http://127.0.0.1:{self.server.server_port}':return self.send({'error':'origin rejected'},403)
             try:
                 size=int(self.headers.get('Content-Length','0'))
-                if not 0<size<=65536:raise ValueError('invalid body size')
+                if not 0<size<=(1048576 if qec else 65536):raise ValueError('invalid body size')
                 spec=json.loads(self.rfile.read(size));make_state(spec)
             except Exception as e:
                 return self.send({'error':{'code':type(e).__name__,'message':str(e)}},400)
@@ -90,7 +105,7 @@ def create_server(output,port=8793,reference=None,ui_file=None):
                 try:
                     def progress(p):
                         with lock:jobs[key]['progress']=p
-                    report=isolated_comparison(spec,directory,progress)
+                    report=isolated_comparison(spec,directory,progress,experiment_module=experiment_module,worker_script=worker_script)
                     with lock:jobs[key].update(status=report['status'],report=report)
                 except Exception as e:
                     with lock:jobs[key].update(status='failed',error={'code':type(e).__name__,'message':str(e)})

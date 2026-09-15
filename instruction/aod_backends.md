@@ -1,5 +1,11 @@
 # 可选择的 AOD 运动后端
 
+2026-09-15最新：新增 `row_column_orthogonal`（`configs/hardware/row_column_orthogonal.json`），继承有序行列完整物理校验，单MOVE只改x或y；未变轴全程保持。`row_column`原本就支持独立轴保持，截图绕路来自策略候选缺失。共享 `motion_router=axis_hold` 与backend分别选择，两种行列后端均验收；正交约束在env，直接/分轴保持候选在strategies。Q000原8门反事实与完整QEC结果见[修复报告](../docs/axis_hold_strategy_fix.md)。schema19结构不变；切后端须重新编译，旧检查点不自动改变后端。
+
+2026-09-15扩展：新的`SMTOrderedAxisPlanner`和贪心已在同一34原子完整QEC GHZ上比较有序行列配置，包含真实MZ读出/恢复。二者同17CZ批次、最大9对并行，完整物理/量子/重放通过；新SMT并未更快。旧`smt_batch.py`仍为rigid受限实验；本次不将其冒称已升级或全局SMT。[报告](../docs/qec_ordered_smt_comparison.md)。
+
+2026-09-15：策略包新增 `scheduling/ordered_greedy.py`，已在固定EZ/每批归还的小规模编辑实验中搜索独立有序行列目标，包含先提取、非均匀变距、真实合批和全部扫掠校验。环境后端未改。不能再把“所有策略只支持固定axes平移”当作当前结论；原patch/SMT实验仍是该限制。[范围与对照](../docs/ordered_axis_greedy.md)。
+
 2026-09-12当前：工作台支持rows×columns总容量≤128和两组非均匀offset，rigid只保持这些相对坐标而不要求等间距。二维6×6/36数据原子联合装卸与9/18CZ并行已有执行证据。捕获基于真实活动交点而非外接矩形内全吸取。动态变距backend仍存在，但新patch策略只搜索固定axes平移。schema18；[批量CZ](../docs/batch_cz_contract.md)、[二维研究](../docs/surface_2d_research.md)。下方uniform/single-pulse限制是历史实现范围。
 
 **当前工作台更新（2026-09-11）**：单台 rigid AOD 可选 1×1 / 1×2 / 1×4，后两者固定 10 μm 列间距；M4 联合准备/运输已接入可编辑线路，具体范围见 [多 trap 试验](../docs/multi_trap.md)。不是多个 AOD，也不是任意多 cell 持久服务或 batch CZ。当前 schema 17；下文早期 schema 和 planner 能力说明保留历史范围。

@@ -214,7 +214,11 @@ class ProgramBuilder:
                              initial_measurement_results=tuple(sorted(state.measurement_results.items())),initial_rng_state=state.rng_state)
                 final,intervals,actual_bindings,travel=audit(plan,state,metadata=False)
                 affected=frozenset(q for i in intervals for q in i.atom_ids)
+                # Event completion must use the exact interval endpoint. Python
+                # float sum and incremental interval accumulation can differ by
+                # an ULP, placing PLAN_COMPLETED before the final operation.
                 plan=replace(plan,operation_intervals=intervals,bindings=actual_bindings,estimated_distance_um=travel,
+                    estimated_duration_us=max(i.end_us for i in intervals),
                     incidental_atom_ids=affected-requested,resources=tuple(sorted({r for i in intervals for r in i.resources})),
                     predicted_placement=tuple(sorted(final.placement.atom_to_holder.items())),predicted_traps=trap_state(final))
                 exact_validate(plan,state)
