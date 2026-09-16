@@ -9,13 +9,14 @@ const isTemporal=()=>['qec_temporal','qec_temporal_four'].includes(draft.compile
 const availableTypes=()=>draft.qec_enabled?['H','X','Y','Z','CZ','MEASURE','RESET']:types;
 const roleOf=q=>draft.qec_enabled?(Number(q.slice(1))<qecDataCount()?'data':'ancilla'):'';
 const MAX_ATOMS=128,MAX_GATES=4096,MAX_COLUMNS=4096,PAGE_SIZE=64;
-const policyNames={basic:'逐门归还基线',greedy:'贪心',critical_path:'关键路径',lookahead:'有限前瞻',row_symmetric:'对称逐门基线',row_greedy:'行预置 · 下界剪枝贪心',patch_symmetric:'二维 patch · 对称基线',patch_greedy:'二维 patch · 并行贪心'};
+const ordered=()=>['ordered_greedy','smt_ordered'].includes(draft.compiler);
+const policyNames={ordered_greedy:'有序轴贪心 · 当前版',smt_ordered:'SMT 有序轴批次 · 当前版',basic:'逐门归还基线',greedy:'贪心',critical_path:'关键路径',lookahead:'有限前瞻',row_symmetric:'对称逐门基线',row_greedy:'行预置 · 下界剪枝贪心',patch_symmetric:'二维 patch · 对称基线',patch_greedy:'二维 patch · 并行贪心'};
 policyNames.qec_ghz2='QEC · 测量与条件纠错';
 policyNames.qec_temporal_four='QEC · 四逻辑比特多轮 GHZ';
 policyNames.qec_temporal='QEC · 多轮 syndrome 与报告位噪声';
 policyNames.qec_joint='QEC · 批光与读出联合优化';
 policyNames.qec_persistent='QEC · 保留 AOD 状态与复用';
-const policyNotes={basic:'每门后归还；与其他 M4 策略共用动作空间，方便同条件对比。',greedy:'优先比较当前合法服务的实际成本，保留可复用位置。',critical_path:'先处理后继依赖较长的门，再比较物理成本。',lookahead:'有限推演后续门，比较驻留、归还和终态成本；更多搜索可能增加编译时间。',row_symmetric:'整行预置 EZ，按固定方向逐门服务后恢复行布局，最后统一归还。要求 row 初态与覆盖整行的 AOD。',row_greedy:'与对称基线共用整行平台和终态，按下界筛选后验证服务候选；只在声明的行服务动作族内比较。'};
+const policyNotes={ordered_greedy:'独立于电路的有序行列合批，2.5 μm 占据格筛选和 axis-hold 路线；按容量分批运输，保留全部物理校验。',smt_ordered:'独立 SMT 约束选择当前 READY CZ 批次，复用有序路线与实际物理执行；不保证全电路最优。',basic:'每门后归还；与其他 M4 策略共用动作空间，方便同条件对比。',greedy:'优先比较当前合法服务的实际成本，保留可复用位置。',critical_path:'先处理后继依赖较长的门，再比较物理成本。',lookahead:'有限推演后续门，比较驻留、归还和终态成本；更多搜索可能增加编译时间。',row_symmetric:'整行预置 EZ，按固定方向逐门服务后恢复行布局，最后统一归还。要求 row 初态与覆盖整行的 AOD。',row_greedy:'与对称基线共用整行平台和终态，按下界筛选后验证服务候选；只在声明的行服务动作族内比较。'};
 policyNotes.patch_symmetric='二维 patch 保持真实坐标，使用对称服务与完整归还；并行效果由实际物理执行记录展示。';
 policyNotes.patch_greedy='在二维布局中搜索可并行门与运输，显式检查实际作用对；可切换四邻格停驻保护，其他安全校验保持。';
 policyNotes.qec_ghz2='实际编辑线路经物理执行、辅助原子测量和条件 X/Z 纠错；最终逻辑校验来自量子状态，不保证任意改写仍得到 GHZ。';
@@ -34,8 +35,8 @@ const workspaceMode=()=>draft.studio?.mode||'history';
 const locked=()=>workspaceMode()!=='custom';
 let previewController=null,job=null,viewer=null,result=null,resultRevision=-1,startQueue=Promise.resolve();
 let failureBundle=null,replayFocused=false;
-const budgetKeys=['max_decisions','ready_limit','site_limit','lookahead_depth','beam_width','rollout_budget','compile_timeout_s','row_candidate_budget','route_expansions'];
-const platformKeys=['aod_rows','aod_columns','aod_row_offsets_um','aod_column_offsets_um','ez_neighbor_guard_enabled','ez_policy'];
+const budgetKeys=['max_decisions','ready_limit','site_limit','lookahead_depth','beam_width','rollout_budget','compile_timeout_s','row_candidate_budget','route_expansions','plan_budget','route_budget','solver_timeout_ms','model_budget','readout_candidate_budget','readout_top_k','motion_router','readout_mode'];
+const platformKeys=['aod_backend','aod_rows','aod_columns','aod_row_offsets_um','aod_column_offsets_um','ez_neighbor_guard_enabled','ez_policy'];
 function normalizeConfiguration(value){
  value.circuit_profile??=value.compiler==='qec_temporal_four'?'qec_temporal_four':value.compiler==='qec_temporal'?'qec_temporal':value.qec_enabled?'qec_ghz2':'physical';
  if(!value.compilation){
@@ -85,7 +86,10 @@ function renderConfiguration(){
  $('compiler').innerHTML=locked()?'<option value="locked">'+escape(policyNames[draft.compiler]||draft.compiler)+' · 配套锁定</option>':compilationPresets.map(p=>{const reason=presetUnavailable(p);return '<option value="preset:'+p.id+'" '+(reason?'disabled':'')+'>'+p.label+(reason?'（'+reason+'）':'')+'</option>';}).join('');
  $('compiler').value=locked()?'locked':'preset:'+implementation;
  $('compiler').disabled=locked();
- $('strategy-preset-note').textContent=locked()?'专用调度属于整个实验，不进入自定义算法列表。':'算法不会随电路示例切换。单原子搬运策略要求 1 × 1 AOD；多交点规划目前支持单行、10 μm 等间距。';
+ $('strategy-preset-note').textContent=locked()?'专用调度属于整个实验，不进入自定义算法列表。':'算法不会随电路示例切换。单原子搬运策略要求 1 × 1 AOD；新版有序策略支持二维/非均匀轴；旧 M4 多交点仍限单行 10 μm。';
+ $('aod-backend').value=draft.aod_backend||'rigid';$('aod-backend').disabled=locked();
+ $('ordered-controls').hidden=!ordered();
+ for(const [id,key,fallback]of [['ordered-beam','beam_width',64],['plan-budget','plan_budget',4],['route-budget','route_budget',128],['solver-timeout','solver_timeout_ms',5000],['model-budget','model_budget',24],['readout-budget','readout_candidate_budget',16],['readout-top-k','readout_top_k',3],['motion-router','motion_router','axis_hold'],['readout-mode','readout_mode','adaptive']]){$(id).value=c[key]??fallback;$(id).disabled=locked();}
  $('policy-note').textContent=locked()?(studioCatalog.demos.find(d=>d.id===draft.studio?.demo_id)?.note||'保持历史输入的实际实现与参数。'):(policyNotes[draft.compiler]||'单活动 trap 搬运；按当前线路依赖安排门与运输。');
  $('initial-summary').textContent=draft.atom_count+' 个原子 · '+({row:'单行',grid:'网格',shuffled:'随机映射',surface_patches:'四个 surface patch',surface_qec_ghz2:'两块 data + ancilla',surface_qec_ghz4:'四块 data + ancilla'}[draft.layout]||draft.layout);
  $('circuit-profile-summary').textContent=profileNames[draft.circuit_profile]||draft.circuit_profile;
@@ -130,6 +134,10 @@ $('experiment-demo').onchange=async()=>{
  try{const value=await api('/api/studio/demos/'+id);if(rev!==revision)throw Error('载入期间草稿已变化，请重新选择。');replaceWorkspace(value);}
  catch(e){render();toast('Demo 载入失败：'+e.message);}
 };
+$('aod-backend').onchange=()=>{if(!locked())change(()=>{draft.aod_backend=$('aod-backend').value;});};
+for(const [id,key,text]of [['ordered-beam','beam_width'],['plan-budget','plan_budget'],['route-budget','route_budget'],['solver-timeout','solver_timeout_ms'],['model-budget','model_budget'],['readout-budget','readout_candidate_budget'],['readout-top-k','readout_top_k'],['motion-router','motion_router',true],['readout-mode','readout_mode',true]]){
+ $(id).onchange=()=>{if(!locked())change(()=>{draft.compilation[key]=text?$(id).value:Number($(id).value);});};
+}
 $('compiler').onchange=()=>{
  const preset=compilationPresets.find(p=>'preset:'+p.id===$('compiler').value);
  if(locked()||!preset||presetUnavailable(preset)){render();return;}
@@ -220,7 +228,7 @@ function resumedCompileSummary(next,serviceCount){
 }
 function renderDecisions(next){const allEntries=next.decision_log||[],reuse=allEntries.find(d=>d.kind==='reuse_summary'),entries=allEntries.filter(d=>d.kind!=='reuse_summary');$('greedy-decisions').hidden=!entries.length;if(!entries.length)return;
  const slots=entries.reduce((n,d)=>n+(d.raman_slots?.length??d.raman_count??0),0),count=entries.reduce((n,d)=>n+(d.candidates?.length??d.readout_search?.candidates?.length??d.candidate_count??0),0);
- $('greedy-summary').textContent=`${policyNames[next.input?.compiler]||'调度'} · 编译 ${(next.compile_seconds||0).toFixed(2)} s · ${entries.length} 个服务段 · ${count} 个候选 · 补充 ${slots} 个 Raman 时隙`;
+ $('greedy-summary').textContent=`${policyNames[next.input?.compiler]||'调度'} · ${next.input?.aod_backend||'rigid'} · 编译 ${(next.compile_seconds||0).toFixed(2)} s · ${entries.length} 个服务段 · ${count} 个候选 · 补充 ${slots} 个 Raman 时隙`;
  if(reuse)$('greedy-summary').textContent=`${policyNames[next.input?.compiler]} · 历史编译 ${(next.compile_seconds||0).toFixed(2)} s · ${entries.length} 个服务段 · 实际复用 ${reuse.reuse_count} 次 · 释放 ${reuse.flush_count} 次`;
  if(next.compile_timing_scope==='suffix_only')$('greedy-summary').textContent=(policyNames[next.input?.compiler]||'调度')+' · '+resumedCompileSummary(next,entries.length);
  if(next.input?.compiler==='qec_joint'&&reuse)$('greedy-summary').textContent+=' · AOD 读出 '+reuse.loaded_readout_visits+' 次 · 读出服务节省 '+reuse.readout_saved_us.toFixed(2)+' μs';
@@ -263,9 +271,9 @@ function render(){
  const rowMode=['row_symmetric','row_greedy','patch_symmetric','patch_greedy','qec_ghz2','qec_persistent','qec_joint','qec_temporal','qec_temporal_four'].includes(draft.compiler);
  for(const [id,key,fallback] of [['ready-limit','ready_limit',16],['site-limit','site_limit',4],['lookahead-depth','lookahead_depth',2],['beam-width','beam_width',3],['rollout-budget','rollout_budget',12]]){$(id).value=draft[key]||fallback;$(id).disabled=!policyNames[draft.compiler]||rowMode;}
  $('row-controls').hidden=!rowMode;$('row-candidate-budget').value=draft.row_candidate_budget||4096;$('route-expansions').value=draft.route_expansions||100000;
- $('geometry-note').textContent=draft.qec_enabled?'按实际 AOD 几何构造分组运输；只使用当前协议支持的调度实现。':draft.compiler?.startsWith('patch_')?'二维实验需 AOD 行列覆盖所选原子组；具体捕获和并行门均由物理后端检查。':'行实验要求 row 初态、AOD 覆盖整行；保持 10 μm 占据间距和 5 μm 候选格点。';
+ $('geometry-note').textContent=draft.qec_enabled?'按实际 AOD 几何构造分组运输；只使用当前协议支持的调度实现。':draft.compiler?.startsWith('patch_')?'二维实验需 AOD 行列覆盖所选原子组；具体捕获和并行门均由物理后端检查。':ordered()?'有序轴：按实际布局与 AOD 容量拆分捕获；行列可非均匀，活动交点均校验。':'旧通用策略受其原有平台能力限制。';
  $('lookahead-controls').hidden=draft.compiler!=='lookahead';
- for(const id of ['ready-limit','site-limit'])$(id).parentElement.hidden=['returning','resident'].includes(draft.compiler);
+ for(const id of ['ready-limit','site-limit'])$(id).parentElement.hidden=['returning','resident'].includes(draft.compiler)||ordered();
  $('max-decisions').disabled=!draft.compiler||draft.compiler==='legacy';
  $('anchor-order').disabled=Boolean(draft.compiler&&draft.compiler!=='legacy');
  $('palette').innerHTML=availableTypes().map(t=>`<button type="button" draggable="true" data-tool="${t}" aria-pressed="${tool===t}" title="放置 ${t}">${t}</button>`).join('');

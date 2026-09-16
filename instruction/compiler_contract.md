@@ -1,5 +1,7 @@
 # Physical circuit 到原子操作：已确认的目标契约
 
+2026-09-16：[通用工作台接入有序轴策略](../docs/ordered_workbench.md)。`ordered_controller.run_ordered(env)` 在策略包内通过环境提交/推进，复用有序 CZ 和测量目标策略；不导入固定实验工厂。平台/电路保持独立，可选旧策略。当前仍分批归还与串行完整服务，不代表下文所有跨服务并发目标实现。
+
 2026-09-14接口位置更新：[环境/策略分离](../docs/environment_strategy_boundary.md)。所有寻路与调度算法迁至 `neutral_atom_strategies`；环境内保留 `program` 显式操作表达/验证与唯一 Executor。生产策略通过 `NeutralAtomEnv` 提交、推进和私有分支预测；策略可通过 `Strategy.run(env, on_event=...)` 替换。下文目标语义保持，旧Python模块路径不再使用。
 
 2026-09-12 最新QEC扩展优先：当前checkpoint为schema19，QEC模式显式跟踪Clifford量子态，支持MEASURE/RESET与测量位条件控制；见[读出核心](../docs/quantum_readout_core.md)。第三步首次尝试新增同型不同目标RAMAN的原生`gate_ids`批次（固定1μs，逐目标条件与物理校验，一个AOD锁），见[批光合同](../docs/batch_raman_contract.md)。74项首次小规模验收通过，完整481槽对照仍运行，尚未宣称该阶段通过。下文不含测量及旧schema17/18描述为历史施工边界，不代表当前QEC模式。

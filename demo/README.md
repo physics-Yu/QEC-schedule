@@ -43,3 +43,7 @@ GHZ 回放对应 [原始输入](ghz4/circuit.json)。当前工作台模板后来
 有序 QEC 编辑器直接使用维护中的 `src/neutral_atom_app/visualization/qec_ordered_experiment.html`，无需另行复制 UI；新任务写入 `artifacts/demo-runs/qec/interactive/`。首次打开载入完整电路但不自动编译，保存结果在首页的独立回放入口；临时作业列表不跨服务重启恢复。
 
 参考目录 `qec/reference/` 包含完整输入、两份动画、结果诊断、对比分析和逐原子 CSV（约 8 MB）。大型 trace/checkpoint/plans 仍由本地复现生成；不把它们的缺失隐藏为完整原始轨迹交付。导出器读取 `artifacts/qec-readout-policy/attempt1/qec_ghz2/`（若存在），否则保留仓库参考文件。更多分层、固定规则与可选配置见 [当前版本说明](../docs/current_version.md)。
+
+## 2026-09-16 · 原通用工作台已更新
+
+“线路工作台”现在可直接选择有序轴贪心 / SMT 和行列后端，保留原子数量、布局、非均匀 AOD、随机线路与独立配置。新草稿默认新版；旧输入和旧算法不被自动改写。需要试验旧算法时同时显式选择兼容的 rigid 平台。顶部另有当前两逻辑 QEC 完整 demo。详情见 [通用接入说明](../docs/ordered_workbench.md)。启动器和已启动的服务是不同进程，更新后须重启 `demo/launch.py`。

@@ -1,5 +1,7 @@
 # 工作台减法、配置归属与演进路线
 
+**2026-09-16 更新**：[有序策略已接入原通用工作台](ordered_workbench.md)。新增有序轴贪心/SMT、可选行列后端，取消新版策略对单行等间距的旧限制；下文的“六种策略/仅 rigid”是旧版范围，旧算法能力仍保留。
+
 2026-09-14。本轮把产品配置边界与实验实现分开，保留现有物理核和 checkpoint schema19。配置文件版入口为 `http://127.0.0.1:8791/`；旧输入、实验脚本与历史物理结果继续保留。
 
 配置真值已外置到 [`configs/studio/workbench.json`](../configs/studio/workbench.json)：通用算法、默认预算/初态、电路目录和 demo 索引。五份完整实验输入固定在 `configs/studio/demos/*.json`，不再随生成器默认值漂移；`studio_config` 负责读取与校验，前后端共用。修改方法与重启规则见[配置文件说明](../configs/studio/README.md)。

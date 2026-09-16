@@ -24,6 +24,7 @@ def custom(algorithm='greedy'):
 @pytest.mark.parametrize('algorithm', [a['id'] for a in ALGORITHMS])
 def test_each_general_algorithm_executes_an_ordinary_edited_circuit(algorithm):
     value = custom(algorithm)
+    if algorithm in {'ordered_greedy','smt_ordered'}:value['aod_backend']='row_column_orthogonal'
     original = deepcopy(value)
     result, state = compile_input(value)
     assert value == original

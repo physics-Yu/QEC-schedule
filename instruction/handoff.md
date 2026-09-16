@@ -1,5 +1,7 @@
 # 当前交接状态
 
+**2026-09-16 原通用工作台已接入新版：** 自定义继续保留 1–128 原子、row/grid/shuffled、AOD 非均匀偏移及配置保存，新增 ordered_greedy / smt_ordered 和行列后端；外部通用 Ordered Controller 复用实际有序/axis-hold/测量策略，无固定34原子替换。旧策略及限制保留，环境与RL不变。完整480槽QEC/64计划及独立逐字重放通过；相关145测试最终分组通过，实际JS事件+HTTP双策略编辑编译通过，GUI连接仍失败未验收。新入口 http://127.0.0.1:63791/?job=8b98c4f10f154241ae11c6b32ca6cf06 ，PID36940；旧8797保留。[说明](../docs/ordered_workbench.md)、[日志](logs/2026-09-16-current-workbench.md)。
+
 ## 当前非 RL 发布基线
 
 2026-09-15，main；主实现 `1d49cc0` 已推送 GitHub 并核对远端 SHA。本轮整理发布进度见 [发布日志](logs/2026-09-15-stable-release.md)，当前功能、复现及固定/计算/可选配置见 [版本说明](../docs/current_version.md)。早期逐轮摘要已移至 [发布前归档](logs/2026-09-15-pre-release-handoff.md)，追溯时按需读取。新增 RL 工作留在本地，本次不纳入 GitHub 提交。

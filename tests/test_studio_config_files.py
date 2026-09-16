@@ -22,7 +22,7 @@ def test_frontend_reads_changed_catalog_defaults_without_js_edits():
     config = catalog()
     config['default_algorithm'] = 'returning'
     config['default_circuit'] = 'mixed'
-    config['workspace_defaults'].update(atom_count=2, layout='row')
+    config['workspace_defaults'].update(atom_count=2, layout='row',aod_backend='rigid',aod_rows=1,aod_columns=1,aod_row_offsets_um=[0],aod_column_offsets_um=[0])
     config['compilation_defaults']['max_decisions'] = 27
     draft = frontend_default(config)
     result = validate_input(draft)
@@ -30,7 +30,7 @@ def test_frontend_reads_changed_catalog_defaults_without_js_edits():
     assert result['atom_count'] == 2 and result['layout'] == 'row'
     assert result['max_decisions'] == 27
     assert [g['gate_type'] for g in result['gates']] == ['H', 'CZ', 'T']
-    assert catalog()['default_algorithm'] == 'greedy'  # returned config is detached
+    assert catalog()['default_algorithm'] == 'ordered_greedy'  # returned config is detached
 
 
 @pytest.mark.parametrize('damage', ['specialized_algorithm', 'duplicate_id', 'bad_budget', 'path_escape'])

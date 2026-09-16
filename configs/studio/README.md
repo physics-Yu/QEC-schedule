@@ -19,3 +19,5 @@
 运行进程按启动时配置快照工作，修改后**重启工作台服务，再刷新页面**。已打开的草稿不会自动套用新默认值；浏览器保存的用户配置也不会被静默覆盖。缺失文件、未知算法、重复 ID、越界预算或目录外 demo 路径会明确报错。
 
 模式边界保持：完整 demo 配套锁定、自定义独立选算法、电路示例仅替换门、手动编译。当前通用多交点规划仍限单行 10 μm 等间距；配置文件不能使未实现的二维非均匀规划自动可用。详细归属与路线见 [架构说明](../../docs/studio_configuration_layers.md)。
+
+2026-09-16：默认算法改为 `ordered_greedy`，平台默认 `row_column_orthogonal`；有序贪心/SMT 已接入原通用工作台。`aod_backend` 属于平台，`motion_router`/`readout_mode` 与搜索预算属于 compilation。保留旧算法与原 demo 文件，新增 `demos/ordered-qec-ghz2.json`。详见 [通用工作台升级](../../docs/ordered_workbench.md)。

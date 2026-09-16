@@ -19,7 +19,15 @@ def configured_strategy(value):
     """Resolve historical workbench configurations outside the physical package."""
     implementation = value['compiler']
     shared = {'max_decisions': value.get('max_decisions', 10000)}
-    if implementation in {'qec_ghz2', 'qec_persistent', 'qec_joint', 'qec_temporal', 'qec_temporal_four'}:
+    if implementation in {'ordered_greedy','smt_ordered'}:
+        from neutral_atom_strategies.scheduling.ordered_controller import run_ordered as runner
+        options=dict(shared,strategy=implementation,compile_timeout_s=value.get('compile_timeout_s',300),
+                     beam_width=value.get('beam_width',64),plan_budget=value.get('plan_budget',4),
+                     route_budget=value.get('route_budget',128),solver_timeout_ms=value.get('solver_timeout_ms',5000),
+                     model_budget=value.get('model_budget',24),motion_router=value.get('motion_router','axis_hold'),
+                     readout_mode=value.get('readout_mode','adaptive'),
+                     readout_candidate_budget=value.get('readout_candidate_budget',16),readout_top_k=value.get('readout_top_k',3))
+    elif implementation in {'qec_ghz2', 'qec_persistent', 'qec_joint', 'qec_temporal', 'qec_temporal_four'}:
         if value['circuit_profile'] == 'qec_temporal_four':
             from neutral_atom_experiments.runners.qec_temporal_four import run_qec_temporal_four as runner
         elif value['circuit_profile'] == 'qec_temporal':

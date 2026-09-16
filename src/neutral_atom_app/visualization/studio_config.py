@@ -11,7 +11,7 @@ from pathlib import Path
 
 CONFIG_PATH = Path(__file__).resolve().parents[3] / 'configs/studio/workbench.json'
 # Executable implementations/generators are code capabilities, not user-extensible imports.
-GENERAL_IMPLEMENTATIONS = frozenset({'greedy', 'critical_path', 'lookahead', 'basic', 'returning', 'resident'})
+GENERAL_IMPLEMENTATIONS = frozenset({'greedy', 'critical_path', 'lookahead', 'basic', 'returning', 'resident', 'ordered_greedy', 'smt_ordered'})
 CIRCUIT_GENERATORS = frozenset({'parallel1q', 'ghz', 'chain', 'mixed', 'rotations', 'empty'})
 
 
@@ -24,7 +24,7 @@ def load_catalog(path=CONFIG_PATH):
                 'workspace_defaults', 'circuit_presets'}
     if not isinstance(value, dict) or set(value) != required or value['schema'] != 'atom-studio-catalog/v1':
         raise ValueError('Invalid studio catalog schema or fields')
-    if value['architecture'] != 'rigid' or value['coordinate_mode'] != 'relative_offsets':
+    if value['architecture'] not in {'rigid','row_column','row_column_orthogonal'} or value['coordinate_mode'] != 'relative_offsets':
         raise ValueError('Catalog cannot advertise an unimplemented architecture or coordinate mode')
     def entries(key, allowed=None):
         items = value[key]
@@ -42,8 +42,8 @@ def load_catalog(path=CONFIG_PATH):
     entries('demos')
     if value['default_algorithm'] not in algorithms or value['default_circuit'] not in circuits:
         raise ValueError('Defaults must reference catalog entries')
-    from neutral_atom_app.visualization.workbench import SEARCH_LIMITS, MAX_COMPILE_TIMEOUT_S
-    limits = dict(SEARCH_LIMITS, max_decisions=10000, compile_timeout_s=MAX_COMPILE_TIMEOUT_S)
+    from neutral_atom_app.visualization.workbench import ORDERED_SEARCH_LIMITS, MAX_COMPILE_TIMEOUT_S
+    limits = dict(ORDERED_SEARCH_LIMITS, max_decisions=10000, compile_timeout_s=MAX_COMPILE_TIMEOUT_S)
     for budgets in [value['compilation_defaults'], *(a.get('defaults') for a in value['algorithms'])]:
         if (not isinstance(budgets, dict) or set(budgets)-limits.keys() or
                 any(type(v) is not int or not 1 <= v <= limits[k] for k, v in budgets.items())):
@@ -97,9 +97,15 @@ def demo_input(identifier):
 
 def configuration_issue(value):
     """Planning capability, distinct from representable hardware geometry."""
+    from neutral_atom_app.visualization.workbench import aod_shape, aod_offsets, M4_STRATEGIES
+    ordered=value['compiler'] in {'ordered_greedy','smt_ordered'}
+    backend=value.get('aod_backend','rigid')
+    if ordered and backend not in {'row_column','row_column_orthogonal'}:
+        return '有序轴策略需要 row_column 或 row_column_orthogonal 后端；请在平台配置中选择，线路和原子布局不变。'
+    if not ordered and backend!='rigid':
+        return '旧策略仅接入 rigid 后端；请显式切换平台或选择新版有序策略。'
     if value.get('studio', {}).get('mode') != 'custom':
         return None
-    from neutral_atom_app.visualization.workbench import aod_shape, aod_offsets, M4_STRATEGIES
     rows, columns = aod_shape(value)
     y, x = aod_offsets(value, rows, columns)
     if (value['compiler'] in M4_STRATEGIES and rows*columns > 1 and

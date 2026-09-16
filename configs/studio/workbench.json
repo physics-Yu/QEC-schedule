@@ -1,6 +1,34 @@
 {
   "algorithms": [
     {
+      "id": "ordered_greedy",
+      "label": "有序轴贪心 · 当前版",
+      "defaults": {
+        "beam_width": 64,
+        "plan_budget": 4,
+        "route_budget": 128,
+        "compile_timeout_s": 300,
+        "solver_timeout_ms": 5000,
+        "model_budget": 24,
+        "readout_candidate_budget": 16,
+        "readout_top_k": 3
+      }
+    },
+    {
+      "id": "smt_ordered",
+      "label": "SMT 有序轴批次 · 当前版",
+      "defaults": {
+        "beam_width": 64,
+        "plan_budget": 4,
+        "route_budget": 128,
+        "compile_timeout_s": 300,
+        "solver_timeout_ms": 5000,
+        "model_budget": 24,
+        "readout_candidate_budget": 16,
+        "readout_top_k": 3
+      }
+    },
+    {
       "id": "greedy",
       "label": "贪心并行与运输",
       "defaults": {
@@ -56,6 +84,12 @@
       "input_file": "demos/parallel-h.json"
     },
     {
+      "id": "ordered-qec-ghz2",
+      "label": "两逻辑 QEC · 当前有序轴与测量策略",
+      "note": "34 原子；有序轴贪心、axis-hold、AOD/SLM 测量目标比较；固定完整协议。",
+      "input_file": "demos/ordered-qec-ghz2.json"
+    },
+    {
       "id": "surface-ghz",
       "label": "四逻辑 GHZ · 酉编码",
       "note": "36 data；二维布局与专用 patch 调度，无稳定子测量。",
@@ -80,13 +114,13 @@
       "input_file": "demos/surface-qec-temporal-four.json"
     }
   ],
-  "architecture": "rigid",
+  "architecture": "row_column_orthogonal",
   "coordinate_mode": "relative_offsets",
   "schema": "atom-studio-catalog/v1",
   "compilation_defaults": {
     "max_decisions": 10000
   },
-  "default_algorithm": "greedy",
+  "default_algorithm": "ordered_greedy",
   "default_circuit": "parallel1q",
   "workspace_defaults": {
     "studio": {
@@ -98,15 +132,18 @@
     "seed": 7,
     "anchor_order": "forward",
     "ez_policy": "adaptive",
-    "aod_rows": 1,
-    "aod_columns": 1,
+    "aod_rows": 2,
+    "aod_columns": 2,
     "aod_row_offsets_um": [
-      0
+      0,
+      10
     ],
     "aod_column_offsets_um": [
-      0
+      0,
+      10
     ],
-    "ez_neighbor_guard_enabled": true
+    "ez_neighbor_guard_enabled": true,
+    "aod_backend": "row_column_orthogonal"
   },
   "circuit_presets": [
     {

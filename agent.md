@@ -1,5 +1,7 @@
 # Agent 工作准则与工程导航
 
+2026-09-16 当前工作台更新：[通用有序策略接入](docs/ordered_workbench.md)。原 Atom Studio 现可选择 `ordered_greedy` / `smt_ordered` 和行列后端，保留 1–128 原子、row/grid/shuffled 与 AOD 配置；旧 M3/M4 仍保留 rigid 平台限制。本文后续“通用仅 rigid/单行”的描述仅指旧算法，不能据此否定新版入口。环境物理代码与 RL 本轮未改。
+
 2026-09-14 用户授权环境/策略大分离已落地：[包边界与接口](docs/environment_strategy_boundary.md)。`neutral_atom_env` 不得导入 strategies/app/experiments；路径、目标分配、驻留、调度算法放 `src/neutral_atom_strategies`，生产控制通过 `NeutralAtomEnv` 提交/推进，工作台和策略组装在 `neutral_atom_app`，专用QEC协议与场景在 `neutral_atom_experiments`。旧CLI/输入/schema19保持，Python算法导入路径已迁移；下方历史路径以新映射为准。更改边界后运行 `python tools/check_architecture.py` 和 `tests/test_environment_boundary.py`。这不代表候选流水线/RL或通用二维规划已实现。
 
 2026-09-12 最新用户审批边界：测试脚本、界面交互、序列化和一般工程缺陷可自主修复、记录并重新验收；不再因这类失败请求审批。只有物理模型/物理事实可能出错、需要改动物理硬约束，或整体架构需要调整时才暂停相关方向，给出事实与方案并请求用户批准。不得放宽物理条件、掩盖失败或以改断言冒充通过；保留每次尝试证据。此规则取代此前“任何正式失败都需审批”的规定。 四步仍按顺序验收，当前状态见instruction/handoff.md与artifacts/qec-roadmap/status.json。

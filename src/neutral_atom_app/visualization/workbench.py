@@ -31,12 +31,16 @@ MAX_COMPILE_TIMEOUT_S = 86400
 SEARCH_LIMITS = {'ready_limit':128, 'site_limit':128, 'lookahead_depth':8,
                  'beam_width':32, 'rollout_budget':4096,
                  'row_candidate_budget':65536, 'route_expansions':1000000}
+ORDERED_SEARCH_LIMITS = dict(SEARCH_LIMITS, beam_width=512, plan_budget=128, route_budget=256,
+                             solver_timeout_ms=60000, model_budget=256, readout_candidate_budget=64, readout_top_k=64)
+ORDERED_STRATEGIES = frozenset({'ordered_greedy','smt_ordered'})
+COMPILATION_OPTIONS = frozenset({'motion_router','readout_mode'})
 M4_STRATEGIES = frozenset({'basic', 'greedy', 'critical_path', 'lookahead'})
 ROW_STRATEGIES = frozenset({'row_symmetric', 'row_greedy'})
 PATCH_STRATEGIES = frozenset({'patch_symmetric', 'patch_greedy'})
 CIRCUIT_PROFILES = ('physical','qec_ghz2','qec_temporal','qec_temporal_four')
-COMPILATION_BUDGETS = frozenset(SEARCH_LIMITS) | {'max_decisions','compile_timeout_s'}
-ALL_COMPILERS = {'legacy','resident','returning'} | M4_STRATEGIES | ROW_STRATEGIES | PATCH_STRATEGIES | QEC_STRATEGIES
+COMPILATION_BUDGETS = frozenset(ORDERED_SEARCH_LIMITS) | {'max_decisions','compile_timeout_s'}
+ALL_COMPILERS = {'legacy','resident','returning'} | M4_STRATEGIES | ROW_STRATEGIES | PATCH_STRATEGIES | QEC_STRATEGIES | ORDERED_STRATEGIES
 
 
 def resolve_compilation(value):
@@ -61,7 +65,7 @@ def resolve_compilation(value):
     if 'compilation' in value:
         config=value['compilation']
         if not isinstance(config,dict):raise ValueError('compilation must be an object')
-        if set(config)-({'strategy','implementation'} | COMPILATION_BUDGETS):
+        if set(config)-({'strategy','implementation'} | COMPILATION_BUDGETS | COMPILATION_OPTIONS):
             raise ValueError('Unknown compilation configuration field')
         config=dict(config)
         strategy=config.get('strategy','recommended')
@@ -83,11 +87,11 @@ def resolve_compilation(value):
             raise ValueError(f'compilation.strategy={strategy} is not supported for circuit_profile={profile}; only the existing guarded joint strategy is available')
         compiler=choices[strategy]
     compatible=(ALL_COMPILERS-QEC_STRATEGIES if profile=='physical' else
-                {'qec_ghz2','qec_persistent','qec_joint'} if profile=='qec_ghz2' else {profile})
+                ({'qec_ghz2','qec_persistent','qec_joint'} | ORDERED_STRATEGIES) if profile=='qec_ghz2' else {profile})
     if compiler not in compatible:
         raise ValueError('Compiler implementation does not support the declared circuit_profile; protocol guards cannot be bypassed')
     config['strategy']=strategy
-    for key in COMPILATION_BUDGETS:
+    for key in COMPILATION_BUDGETS | COMPILATION_OPTIONS:
         if key in config:value[key]=config[key]
         elif 'compilation' in value:value.pop(key,None)
         elif key in value:config[key]=value[key]
@@ -101,6 +105,9 @@ def resolve_compilation(value):
                 if profile in {'qec_temporal','qec_temporal_four'} else
                 'Existing two-patch Clifford QEC transport family' if qec else
                 'Existing physical circuit and declared layout family; finite search may fail')})
+    if compiler in ORDERED_STRATEGIES:
+        value['compilation_backend']['kernel']='ordered-axis-readout-v1'
+        value['compilation_backend']['scope']='Generic ordered-axis controller; finite routes, per-batch return, no fixed demo circuit'
     return value
 
 
@@ -123,7 +130,7 @@ def validate_input(value,*,max_atoms=MAX_ATOMS):
     qec = value.get('qec_enabled', False)
     if type(qec) is not bool:
         raise ValueError('qec_enabled must be boolean')
-    if qec != (value.get('compiler') in QEC_STRATEGIES) or qec != (layout in QEC_LAYOUTS):
+    if (value.get('compiler') not in ORDERED_STRATEGIES and qec != (value.get('compiler') in QEC_STRATEGIES)) or qec != (layout in QEC_LAYOUTS):
         raise ValueError('QEC requires qec_enabled=true, a QEC compiler and its QEC layout together')
     four = value['circuit_profile'] == 'qec_temporal_four'
     if qec and layout != ('surface_qec_ghz4' if four else 'surface_qec_ghz2'):
@@ -180,7 +187,7 @@ def validate_input(value,*,max_atoms=MAX_ATOMS):
             'circuit_profile':value['circuit_profile'],'compilation':value['compilation'],
             'compilation_backend':value['compilation_backend']}
     if 'compiler' in value:
-        if value['compiler'] not in {'legacy','resident','returning'} | M4_STRATEGIES | ROW_STRATEGIES | PATCH_STRATEGIES | QEC_STRATEGIES:raise ValueError('Unknown compiler strategy')
+        if value['compiler'] not in {'legacy','resident','returning'} | M4_STRATEGIES | ROW_STRATEGIES | PATCH_STRATEGIES | QEC_STRATEGIES | ORDERED_STRATEGIES:raise ValueError('Unknown compiler strategy')
         result['compiler']=value['compiler']
     if qec:
         result['qec_enabled']=True
@@ -211,9 +218,17 @@ def validate_input(value,*,max_atoms=MAX_ATOMS):
         result['max_decisions']=integer(value['max_decisions'],1,10000,'max_decisions')
     if 'compile_timeout_s' in value:
         result['compile_timeout_s']=integer(value['compile_timeout_s'],1,MAX_COMPILE_TIMEOUT_S,'compile_timeout_s')
-    for key, maximum in SEARCH_LIMITS.items():
+    for key, maximum in ORDERED_SEARCH_LIMITS.items():
         if key in value:
-            result[key]=integer(value[key],1,maximum,key)
+            limit=32 if key=='beam_width' and value['compiler'] not in ORDERED_STRATEGIES else maximum
+            result[key]=integer(value[key],1,limit,key)
+    backend=value.get('aod_backend','rigid')
+    if backend not in {'rigid','row_column','row_column_orthogonal'}:raise ValueError('Unknown AOD backend')
+    if 'aod_backend' in value:result['aod_backend']=backend
+    for key,allowed in {'motion_router':{'axis_hold','legacy_corridor'},'readout_mode':{'adaptive','aod_only','slm_only'}}.items():
+        if key in value:
+            if value[key] not in allowed:raise ValueError('Invalid '+key)
+            result[key]=value[key]
     if 'ez_neighbor_guard_enabled' in value:
         if type(value['ez_neighbor_guard_enabled']) is not bool:
             raise ValueError('ez_neighbor_guard_enabled must be boolean')
@@ -240,7 +255,7 @@ def validate_input(value,*,max_atoms=MAX_ATOMS):
                 or offsets[0]!=0 or any(b<=a for a,b in zip(offsets,offsets[1:]))):
             raise ValueError(f'{key} must contain {count} finite, strictly increasing numbers starting at zero')
         result[key]=list(offsets)
-    if aod_rows*aod_columns>1 and (result.get('compiler') not in M4_STRATEGIES | ROW_STRATEGIES | PATCH_STRATEGIES | QEC_STRATEGIES or result.get('ez_policy')!='adaptive'):
+    if aod_rows*aod_columns>1 and (result.get('compiler') not in M4_STRATEGIES | ROW_STRATEGIES | PATCH_STRATEGIES | QEC_STRATEGIES | ORDERED_STRATEGIES or result.get('ez_policy')!='adaptive'):
         raise ValueError('Multiple AOD traps require an M4 strategy or patch/row strategy + adaptive EZ')
     from neutral_atom_app.visualization.studio_config import validate_studio
     return validate_studio(value, result)
@@ -253,7 +268,11 @@ def build_inputs(value,*,max_atoms=MAX_ATOMS):
             from neutral_atom_experiments.qec_four_layout import build_qec_four_inputs as build_qec_inputs
         else:
             from neutral_atom_experiments.qec_layout import build_qec_inputs
-        return build_qec_inputs(value)
+        value,circuit,platform,placement=build_qec_inputs(value)
+        if value.get('aod_backend','rigid')!='rigid':
+            from dataclasses import replace
+            platform=replace(platform,hardware=replace(platform.hardware,backend=value.get('aod_backend','rigid')))
+        return value,circuit,platform,placement
     n = value['atom_count']
     columns = n if value['layout'] == 'row' else ceil(sqrt(n))
     surface=value['layout']=='surface_patches'
@@ -277,17 +296,29 @@ def build_inputs(value,*,max_atoms=MAX_ATOMS):
     else:
         for i,x in enumerate((5,width-10)):
             traps[f'EZ{i}'] = StaticTrap(f'EZ{i}',GridCoord(x//5,-7),Position2D(x,-35))
+    if value.get('aod_backend','rigid')!='rigid':
+        # Whole-layout staging is a policy; provide matching EZ sites for the
+        # user's layout, rather than replacing it with a fixed demo factory.
+        ez_bottom=min(ez_bottom,-35-max(y for x,y in positions))
+        if value.get('ez_policy')=='adaptive':
+            for y in range(ez_bottom+5,-20,5):
+                for x in range(0,width-4,5):
+                    key=f'EZ_{x}_{-y}'
+                    traps.setdefault(key,StaticTrap(key,GridCoord(x//5,y//5),Position2D(x,y),enabled=False))
     # Inactive capacity axes also stay within world bounds. Add explicit space,
     # without enlarging the storage/entanglement addressing zones.
     left=-20 if surface else -10
     bottom=min(-140,ez_bottom-20) if surface else ez_bottom-20
     right=max(160,width+column_offsets[-1]) if surface else width+column_offsets[-1]
     upper=max(140,top+row_offsets[-1]) if surface else top+row_offsets[-1]
+    if value.get('aod_backend','rigid')!='rigid':
+        right=max(right,width+10*(aod_columns-1)+10)
+        upper=max(upper,top+10*(aod_rows-1)+10)
     world = WorldState(rect(left,bottom,right,upper), traps,
         (Zone('SZ',ZoneType.STORAGE,rect(left,-5,width,top)),
          Zone('EZ',ZoneType.ENTANGLEMENT,rect(left,ez_bottom,width,-20)),
          Zone('MZ',ZoneType.MEASUREMENT,rect(left,bottom,width,ez_bottom-5))), grid_spacing_um=5)
-    platform = Platform(world,HardwareConfig(ez_neighbor_guard_enabled=value.get('ez_neighbor_guard_enabled',True)),
+    platform = Platform(world,HardwareConfig(backend=value.get('aod_backend','rigid'),ez_neighbor_guard_enabled=value.get('ez_neighbor_guard_enabled',True)),
                         AODRuntimeState(rows=aod_rows,columns=aod_columns,
                             spacing_um=5 if aod_rows*aod_columns==1 else 10,pose=Position2D(0,0),
                             row_offsets_um=row_offsets if row_offsets!=tuple(i*(5 if aod_rows*aod_columns==1 else 10) for i in range(aod_rows)) else None,

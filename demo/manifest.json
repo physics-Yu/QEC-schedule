@@ -18,8 +18,8 @@
       "sha256": "006cdb008bad9cc486e637de994cc68a3a9b09b5c25ac8172869e0c2e5460562"
     },
     "index.html": {
-      "bytes": 5328,
-      "sha256": "e01538ec43cbec1f3b01193a9988537f1c7e3c3e32a01b8b6a79cec157de02f4"
+      "bytes": 5353,
+      "sha256": "3dd5547ce949de4aa00757f1191ade1e33f4446acb43ea53550f31aab065f9e3"
     },
     "launch-links.js": {
       "bytes": 74,
@@ -78,8 +78,8 @@
       "sha256": "0bba30040eb58e30c504939ddf2ecde12ebc43eddaa69317d2c91f338c996e4f"
     },
     "README.md": {
-      "bytes": 4066,
-      "sha256": "cbc87f382e643ae30f2f44068f28b2224055c0b2f09925b4cf76e16ccb1fc386"
+      "bytes": 4604,
+      "sha256": "a3b87bbd7ae18ba236dae660489c15894fc0fc076cdb817a67d399df4c83abfa"
     },
     "smt/index.html": {
       "bytes": 17127,
@@ -514,20 +514,20 @@
       "sha256": "f30f2ec83e170a30831c899259b8486c827f3dc8787f465a3b0ca9ec8414e74d"
     },
     "workbench/index.html": {
-      "bytes": 28400,
-      "sha256": "8def2d7c36075f55bc8aaf3104a753e011d3429c2cd21ece322ffd20413f8c2f"
+      "bytes": 29973,
+      "sha256": "42d75f4323e9c98c44adad4a2783c84baf3b22dd0decd9ce31771e2be576c713"
     },
     "workbench/studio-catalog.js": {
-      "bytes": 2499,
-      "sha256": "91f484c25eb27c884a41c552fc6f1592b7361dd59322876b31ddcff1ef6db447"
+      "bytes": 3335,
+      "sha256": "be8d8ab55a2f89a786185ae367e2183f6a69f635cbbc43a78ff3dafb934d16c0"
     },
     "workbench/studio-model.js": {
       "bytes": 1682,
       "sha256": "5ac7d650d121da1d298f0875134ff9a79b10fff25e084fb26c5921a02659ad0d"
     },
     "workbench/workbench.js": {
-      "bytes": 55752,
-      "sha256": "e50cfb5da002297e369c56fe218a52ae83d995f5a4e1ac4a38fbaa432ade8338"
+      "bytes": 57648,
+      "sha256": "0805307b9b14055ea3e172f86a08321b32197b3e312b9c8b8ba1c35baf8b237e"
     }
   },
   "sources": {
