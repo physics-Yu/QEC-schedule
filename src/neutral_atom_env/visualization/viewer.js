@@ -63,6 +63,16 @@ const escapeHTML=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&
 // Presentation time is a monotone mapping of simulation time, never a state edit.
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 const smooth=u=>u*u*(3-2*u);
+const offsets=values=>values.map(v=>v-values[0]);
+const axisText=values=>'['+values.map(v=>Number(v.toFixed(2))).join(', ')+']';
+// Older recordings already carry axes in movement frames. Keep them replayable.
+const axisMoves=data.operations.filter(o=>o.kind==='aod_move').map(o=>{
+ const f=frames[Math.max(0,upperBound(frames,o.start+1e-8,'time')-1)];
+ const source=o.source_axes||f.axes,target=o.target_axes||f.movement?.target_axes;
+ const reshape=target&&['x_um','y_um'].some(k=>offsets(source[k]).some((v,i)=>Math.abs(v-offsets(target[k])[i])>1e-7));
+ return {...o,source_axes:source,target_axes:target,reshape};
+});
+const reshapes=axisMoves.filter(o=>o.reshape),loadedReshapes=reshapes.filter(o=>o.moving_count>0);
 const US_PER_MS=.025; // Physical proportion: 1x = 25 simulation microseconds / screen second.
 // Only presentation boundaries are grouped; recorded physical times stay intact.
 const timeTolerance=(a,b)=>16*Number.EPSILON*Math.max(1,Math.abs(a),Math.abs(b));
@@ -234,6 +244,10 @@ $('slm-empty').disabled=!$('slm').checked;$('slm-off').disabled=!$('slm').checke
 const gaps=[...current.columns.slice(1).map((x,i)=>x-current.columns[i]),...current.rows.slice(1).map((y,i)=>y-current.rows[i])];
 const minGap=gaps.length?Math.min(...gaps):null,limit=data.scene.aod_minimum_spacing_um??1.01;
 $('spacing-readout').textContent='AOD 活动 / 容量：'+(f.aod.enabled_rows.filter(Boolean).length*f.aod.enabled_columns.filter(Boolean).length)+' / '+(f.aod.rows*f.aod.columns)+'；当前最小中心距：'+(minGap==null?'单 trap，无邻居':minGap.toFixed(3)+' μm')+'；硬约束 > '+limit+' μm（包括空 trap）。SLM 中心排斥边界半径：'+data.scene.slm_clearance_um+' μm。';
+const axisMove=axisMoves.find(o=>o.start<=ui.time&&ui.time<o.end);
+const on=mask=>mask.flatMap((v,i)=>v?[i]:[]).join(', ')||'无';
+$('axis-live-summary').textContent=(['row_column','row_column_orthogonal'].includes(data.backend)?'可变行列 AOD':'固定间距 AOD')+' · '+(axisMove?(axisMove.reshape?'正在改变相对间距':'正在整体平移'):'静止')+' · 承载 '+atoms.filter(a=>a.holder.holder_type==='mobile').length+' 原子';
+$('axis-live-coordinates').textContent='当前绝对坐标 / μm：x '+axisText(current.columns)+'；y '+axisText(current.rows)+'\n当前相对首轴 / μm：Δx '+axisText(offsets(current.columns))+'；Δy '+axisText(offsets(current.rows))+'\n活动列（从 0 编号）：'+on(f.aod.enabled_columns)+'；活动行：'+on(f.aod.enabled_rows)+(axisMove?.target_axes?'\n本段目标 / μm：x '+axisText(axisMove.target_axes.x_um)+'；y '+axisText(axisMove.target_axes.y_um):'');
 if(data.summary){const s=data.summary,x=150+700*clamp((ui.time-s.window_start_us)/(s.wall_time_us||1),0,1);$('schedule-playhead').setAttribute('x1',x);$('schedule-playhead').setAttribute('x2',x);$('schedule-current').textContent=`当前 ${ui.time.toFixed(2)} μs`+(op?` · ${op.gate_id||''} ${labels[op.label]||op.label} · ${op.start.toFixed(2)}–${op.end.toFixed(2)} μs`:' · 记录结束')}
 $('clock').textContent=ui.time.toFixed(2);$('version').textContent='STATE v'+String(f.version).padStart(2,'0');$('gate').textContent=effects.length?effects.map(effectLabel).join(' · '):f.gate_label;$('status').textContent=effects.length?'执行中 '+effects.reduce((n,o)=>n+(o.gate_ids?.length||1),0)+' 门':statuses[f.gate_status]||f.gate_status;$('frontier').textContent='READY '+f.ready_count+': '+(f.ready_frontier.join(', ')||'—')+(f.ready_count>20?' …':'');$('gate-states').textContent=Object.entries(f.gate_counts).map(([status,count])=>(statuses[status]||status)+' '+count).join(' · ');$('event').textContent=op?(labels[op.label]||op.label):'周期完成';$('readout').textContent=ui.time.toFixed(2)+' / '+data.duration.toFixed(2)+' μs';$('slider').value=ui.mode==='keyframe'?displayAt(ui.time):ui.time;$('play').textContent=ui.playing?'暂停':'播放';$('previous').disabled=ui.time<=(data.start_time||0);$('next').disabled=ui.time>=data.duration;if(op&&op.index>=0&&Math.floor(op.index/STAGE_PAGE)!==stagePage)renderStages(Math.floor(op.index/STAGE_PAGE));for(const o of visibleOperations)$('stage-'+o.index).setAttribute('aria-current',String(operationsAt(ui.time).some(active=>active.index===o.index)));
 const progress=op?clamp((ui.time-op.start)/(op.end-op.start),0,1):1;
@@ -305,6 +319,11 @@ $('atoms-prev').onclick=()=>{atomPage--;renderAtoms();draw()};$('atoms-next').on
 $('stages-prev').onclick=()=>renderStages(stagePage-1);$('stages-next').onclick=()=>renderStages(stagePage+1);
 renderAtoms();renderStages(0);
 const jointMove=data.operations.find(o=>o.kind==='aod_move'&&o.moving_count>1);
+const reshapeTargets=loadedReshapes.length?loadedReshapes:reshapes;
+$('axis-next-reshape').disabled=!reshapeTargets.length;
+$('axis-next-reshape').textContent=loadedReshapes.length?'查看下一次载原子变距':'查看下一次空载变距';
+$('axis-next-reshape').onclick=()=>{const move=reshapeTargets.find(o=>o.start>ui.time+1e-8)||reshapeTargets[0];if(move)seek((move.start+move.end)/2)};
+$('axis-plan-summary').textContent=reshapes.length+' 个变距运动段，其中 '+loadedReshapes.length+' 段承载原子。平移不计为变距；往返分别计数。';
 $('joint').hidden=!jointMove;$('joint').onclick=()=>{if(jointMove)seek((jointMove.start+jointMove.end)/2)};
 $('summary').innerHTML=summaryMarkup(data.summary,data.operations);
 if(data.summary){

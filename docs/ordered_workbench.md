@@ -1,5 +1,7 @@
 # 通用工作台接入有序 AOD 策略 · 2026-09-16
 
+动态行列偏移的配置边界、实时显示和可编辑变距案例见 [动态 AOD](dynamic_aod_workbench.md)。偏移输入属于初态；有序策略会自动决定执行过程中的抓取、作用和中间轴坐标。
+
 本轮不是重定向到固定 34 原子实验页。`demo/workbench/` 继续使用 Atom Studio 的原子数、布局、AOD 配置、随机载入、门编辑、配置保存和手动编译流程；生产调用新增 `ordered_controller.run_ordered(env)`，复用已有有序贪心/SMT、axis-hold、占据格预筛选及测量目标策略。
 
 ## 使用

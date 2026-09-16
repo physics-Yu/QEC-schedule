@@ -510,24 +510,24 @@
       "sha256": "f0f93404c490b66a89a3713cc835e26e022a25132694d2f84cea59298edccb17"
     },
     "workbench/atom-viewer.js": {
-      "bytes": 61487,
-      "sha256": "f30f2ec83e170a30831c899259b8486c827f3dc8787f465a3b0ca9ec8414e74d"
+      "bytes": 64412,
+      "sha256": "d3c139f93939d35bd43397ac0627b11ecc18bac9f3b8b22cfc8026e484ce3bd2"
     },
     "workbench/index.html": {
-      "bytes": 29973,
-      "sha256": "42d75f4323e9c98c44adad4a2783c84baf3b22dd0decd9ce31771e2be576c713"
+      "bytes": 30133,
+      "sha256": "df0fbf0e0d27bd9fca0606176ab79f161147628e20f0154c57bc0d4ea099833e"
     },
     "workbench/studio-catalog.js": {
-      "bytes": 3335,
-      "sha256": "be8d8ab55a2f89a786185ae367e2183f6a69f635cbbc43a78ff3dafb934d16c0"
+      "bytes": 3434,
+      "sha256": "2d1a1de942befb5f8bfb113e733bbd9122995d3b40683502005842173df9c656"
     },
     "workbench/studio-model.js": {
-      "bytes": 1682,
-      "sha256": "5ac7d650d121da1d298f0875134ff9a79b10fff25e084fb26c5921a02659ad0d"
+      "bytes": 1873,
+      "sha256": "6dd182e12f458e7a9f6054366114fced5b2440dd98f40563c87666d7cb53fb73"
     },
     "workbench/workbench.js": {
-      "bytes": 57648,
-      "sha256": "0805307b9b14055ea3e172f86a08321b32197b3e312b9c8b8ba1c35baf8b237e"
+      "bytes": 58211,
+      "sha256": "cdcafe096fdbbcd582b3edb2cc25ccfff86d7dcefca8a27b6493f8f2f496279a"
     }
   },
   "sources": {

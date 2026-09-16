@@ -1,0 +1,56 @@
+{
+  "studio": {
+    "mode": "custom"
+  },
+  "circuit_profile": "physical",
+  "atom_count": 6,
+  "layout": "row",
+  "seed": 7,
+  "ez_policy": "adaptive",
+  "ez_neighbor_guard_enabled": true,
+  "aod_backend": "row_column_orthogonal",
+  "aod_rows": 1,
+  "aod_columns": 3,
+  "aod_row_offsets_um": [
+    0
+  ],
+  "aod_column_offsets_um": [
+    0,
+    15,
+    35
+  ],
+  "compilation": {
+    "strategy": "legacy",
+    "implementation": "ordered_greedy",
+    "compile_timeout_s": 90
+  },
+  "gates": [
+    {
+      "id": "G000",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q000",
+        "Q001"
+      ],
+      "column": 0
+    },
+    {
+      "id": "G001",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q002",
+        "Q004"
+      ],
+      "column": 0
+    },
+    {
+      "id": "G002",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q003",
+        "Q005"
+      ],
+      "column": 0
+    }
+  ]
+}

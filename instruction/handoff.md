@@ -1,5 +1,7 @@
 # 当前交接状态
 
+**2026-09-16 动态 AOD 可查验交付：** 已核实原通用有序策略会自动选择抓取/作用轴，初始偏移并非固定间距。本次增加实时绝对/相对坐标、载原子变距跳转、CZ 构型表、仅电路示例与可导入6原子输入；执行器/物理规则/算法不变。贪心及SMT均3对CZ同批、真实载原子变距和终态/独立重放通过；94相关测试及实际JS+HTTP、viewer替身检查通过，GUI连接仍失败。新工作台 http://127.0.0.1:49870/?job=cd31e74422b8455f9e3c6cc9123c8b66 ，PID28096，旧服务保留。[说明](../docs/dynamic_aod_workbench.md)、[日志](logs/2026-09-16-dynamic-aod-workbench.md)。
+
 **2026-09-16 原通用工作台已接入新版：** 自定义继续保留 1–128 原子、row/grid/shuffled、AOD 非均匀偏移及配置保存，新增 ordered_greedy / smt_ordered 和行列后端；外部通用 Ordered Controller 复用实际有序/axis-hold/测量策略，无固定34原子替换。旧策略及限制保留，环境与RL不变。完整480槽QEC/64计划及独立逐字重放通过；相关145测试最终分组通过，实际JS事件+HTTP双策略编辑编译通过，GUI连接仍失败未验收。新入口 http://127.0.0.1:63791/?job=8b98c4f10f154241ae11c6b32ca6cf06 ，PID36940；旧8797保留。[说明](../docs/ordered_workbench.md)、[日志](logs/2026-09-16-current-workbench.md)。
 
 ## 当前非 RL 发布基线

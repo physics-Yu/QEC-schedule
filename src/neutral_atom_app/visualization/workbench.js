@@ -226,6 +226,12 @@ function resumedCompileSummary(next,serviceCount){
  const seconds=typeof next.compile_seconds==='number'?next.compile_seconds.toFixed(2)+' s':'未记录';
  return `后缀续编译 ${seconds} · 后缀 ${serviceCount} 个服务段 · `+resumedExecutionText(next);
 }
+function axisDecision(d){
+ if(!d.pickup||!d.target)return '见回放实际行列坐标';
+ const axis=c=>'x ['+c.x_um.join(', ')+']; y ['+c.y_um.join(', ')+']';
+ return escape('抓取 '+axis(d.pickup))+'<br>'+escape('作用 '+axis(d.target))+'<br><button data-axis-time="'+d.start_us+'">查看本批过程</button>';
+}
+$('greedy-rows').onclick=e=>{const button=e.target.closest('[data-axis-time]');if(button&&viewer){viewer.setTime(Number(button.dataset.axisTime));$('viewer').scrollIntoView({behavior:'smooth',block:'start'});}};
 function renderDecisions(next){const allEntries=next.decision_log||[],reuse=allEntries.find(d=>d.kind==='reuse_summary'),entries=allEntries.filter(d=>d.kind!=='reuse_summary');$('greedy-decisions').hidden=!entries.length;if(!entries.length)return;
  const slots=entries.reduce((n,d)=>n+(d.raman_slots?.length??d.raman_count??0),0),count=entries.reduce((n,d)=>n+(d.candidates?.length??d.readout_search?.candidates?.length??d.candidate_count??0),0);
  $('greedy-summary').textContent=`${policyNames[next.input?.compiler]||'调度'} · ${next.input?.aod_backend||'rigid'} · 编译 ${(next.compile_seconds||0).toFixed(2)} s · ${entries.length} 个服务段 · ${count} 个候选 · 补充 ${slots} 个 Raman 时隙`;
@@ -233,7 +239,7 @@ function renderDecisions(next){const allEntries=next.decision_log||[],reuse=allE
  if(next.compile_timing_scope==='suffix_only')$('greedy-summary').textContent=(policyNames[next.input?.compiler]||'调度')+' · '+resumedCompileSummary(next,entries.length);
  if(next.input?.compiler==='qec_joint'&&reuse)$('greedy-summary').textContent+=' · AOD 读出 '+reuse.loaded_readout_visits+' 次 · 读出服务节省 '+reuse.readout_saved_us.toFixed(2)+' μs';
  $('decision-raw').textContent=JSON.stringify(allEntries,null,2);
- $('greedy-rows').innerHTML=entries.map(d=>`<tr><td>${d.decision+1}</td><td>${d.start_us.toFixed(2)} μs</td><td>${escape(d.selected==='explicit-terminal'?'统一终态归还':d.selected||d.kind||'实际服务')}</td><td>${d.duration_us.toFixed(2)} μs</td><td>${escape(decisionReason(d))}</td><td>${d.candidates?.length??d.readout_search?.candidates?.length??d.candidate_count??0}${d.truncated?'（截断 '+d.truncated+'）':''}</td><td>${(d.ez_changes||[]).map(c=>escape(c.site)+' '+(c.enabled?'开启':'关闭')).join('<br>')||'见实际操作'}</td><td>${(d.raman_slots||[]).map(s=>escape(s.gate_id)+' @ '+s.start_us.toFixed(2)+'–'+s.end_us.toFixed(2)).join('<br>')||(d.kind==='raman'&&next.input?.compiler==='qec_joint'?d.batch_size+' 门 / 1 个原生批次':d.raman_count?d.raman_count+' 个时隙':'—')}</td></tr>`).join('');}
+ $('greedy-rows').innerHTML=entries.map(d=>`<tr><td>${d.decision+1}</td><td>${d.start_us.toFixed(2)} μs</td><td>${escape(d.selected==='explicit-terminal'?'统一终态归还':d.selected||d.kind||'实际服务')}</td><td>${d.duration_us.toFixed(2)} μs</td><td>${escape(decisionReason(d))}</td><td>${d.candidates?.length??d.readout_search?.candidates?.length??d.candidate_count??0}${d.truncated?'（截断 '+d.truncated+'）':''}</td><td>${axisDecision(d)}</td><td>${(d.ez_changes||[]).map(c=>escape(c.site)+' '+(c.enabled?'开启':'关闭')).join('<br>')||'见实际操作'}</td><td>${(d.raman_slots||[]).map(s=>escape(s.gate_id)+' @ '+s.start_us.toFixed(2)+'–'+s.end_us.toFixed(2)).join('<br>')||(d.kind==='raman'&&next.input?.compiler==='qec_joint'?d.batch_size+' 门 / 1 个原生批次':d.raman_count?d.raman_count+' 个时隙':'—')}</td></tr>`).join('');}
 function change(mutator){if(locked()){toast('当前实验已锁定，请切回自定义工作区。');return;}history.push(clone(draft));if(history.length>60)history.shift();future=[];mutator();selected=null;pending=null;edited()}
 function edited(){revision++;inputValid=false;$('compile').disabled=true;syncCompilation(draft);toast();$('diagnostics').hidden=true;$('revision').textContent='DRAFT '+revision;render();markStale();
  if(job){const old=job;job=null;api('/api/jobs/'+old+'/cancel',{}).catch(()=>{});}$('cancel').disabled=true;

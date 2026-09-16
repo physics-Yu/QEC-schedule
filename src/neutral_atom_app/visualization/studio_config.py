@@ -12,7 +12,7 @@ from pathlib import Path
 CONFIG_PATH = Path(__file__).resolve().parents[3] / 'configs/studio/workbench.json'
 # Executable implementations/generators are code capabilities, not user-extensible imports.
 GENERAL_IMPLEMENTATIONS = frozenset({'greedy', 'critical_path', 'lookahead', 'basic', 'returning', 'resident', 'ordered_greedy', 'smt_ordered'})
-CIRCUIT_GENERATORS = frozenset({'parallel1q', 'ghz', 'chain', 'mixed', 'rotations', 'empty'})
+CIRCUIT_GENERATORS = frozenset({'parallel1q', 'ghz', 'chain', 'mixed', 'rotations', 'empty', 'nonuniform_pairs'})
 
 
 def load_catalog(path=CONFIG_PATH):

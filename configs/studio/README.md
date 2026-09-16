@@ -1,5 +1,7 @@
 # 工作台配置入口
 
+有序后端的 x/y 偏移为**初始相对偏移**，不是运行期间固定的轴间距。编译器自动重构抓取和作用行列，终态恢复初态；`rigid` 才固定间距。`nonuniform_pairs` 是仅替换门列表的 6 原子以上 CZ 示例，完整复现输入见 `../workbench/dynamic_aod.json`，见 [说明](../../docs/dynamic_aod_workbench.md)。
+
 维护入口为 [workbench.json](workbench.json)，由 Python 读取并通过 `/studio-catalog.js` 提供给浏览器。目录、初始默认值和预算不再分别硬编码在 Python/JavaScript 中。
 
 | 配置 | 用途 |

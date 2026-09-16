@@ -53,6 +53,13 @@ async function main(){
  await el('compile').onclick();assert.equal(el('compile-state').dataset.state,'completed');
  assert.equal(mounted.at(-1).summary.metrics.completed_gate_count,second.gates.length);
  assert.equal((await exported()).compiler,'smt_ordered');
+ el('layout').value='row';el('layout').onchange();await waitPreview();
+ el('preset').value='nonuniform_pairs';el('preset').onchange();await waitPreview();
+ const dynamic=await exported();assert.equal(dynamic.atom_count,6);assert.equal(dynamic.gates.length,3);
+ assert.deepEqual(dynamic.aod_column_offsets_um,[0,15,35]);
+ await el('compile').onclick();assert.equal(el('compile-state').dataset.state,'completed');
+ assert.match(el('greedy-rows').innerHTML,/抓取/);assert.match(el('greedy-rows').innerHTML,/作用/);
+ assert(mounted.at(-1).operations.some(o=>o.kind==='aod_move'&&o.moving_count===3&&['x_um','y_um'].some(k=>o.source_axes[k].some((x,i)=>Math.abs(x-o.source_axes[k][0]-o.target_axes[k][i]+o.target_axes[k][0])>1e-7))));
  el('platform-export').onclick(); // exercises configuration serialization handlers
  el('compiler').value='preset:greedy';el('compiler').onchange();await pause(800);
  assert.equal(el('compile').disabled,true,'old strategy cannot silently consume ordered hardware');

@@ -147,6 +147,10 @@
   },
   "circuit_presets": [
     {
+      "id": "nonuniform_pairs",
+      "label": "非均匀 CZ 配对（至少 6 原子；仅替换电路）"
+    },
+    {
       "id": "parallel1q",
       "label": "全部原子并行 H"
     },

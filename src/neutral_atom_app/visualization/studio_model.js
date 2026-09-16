@@ -15,6 +15,9 @@ function circuitPreset(kind,n){
   for(let i=1;i<n;i++)add('CZ',[i-1,i],i-1);
  }else if(kind==='mixed'){
   add('H',[0],0);if(n>1)add('CZ',[0,1],1);add('T',[0],2);
+ }else if(kind==='nonuniform_pairs'){
+  if(n<6)throw Error('非均匀配对示例需要至少 6 个原子；请先调整原子数。');
+  for(const pair of [[0,1],[2,4],[3,5]])add('CZ',pair,0);
  }else throw Error('未知电路示例。');
  return gates;
 }

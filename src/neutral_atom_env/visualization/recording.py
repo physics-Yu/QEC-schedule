@@ -145,6 +145,15 @@ class VisualRecorder:
                     'resources':list(interval.resources) if interval else list(active.resources),
                     'category':operation_category(record,pulse_seen or phase=='cleanup'),'mode':movement_mode(record),
                     'moving_count':len(state.placement.mobile_occupancy) if kind=='aod_move' else 0})
+                if kind=='aod_move':
+                    # Read-only evidence of the executed configuration, not a
+                    # second planner or renderer-invented deformation.
+                    self.operations[-1].update({
+                        'source_axes':record['source_configuration'],
+                        'target_axes':record['target_configuration'],
+                        'moving_atom_ids':list(record['moving_atom_ids']),
+                        'enabled_rows':list(state.aod.enabled_rows),
+                        'enabled_columns':list(state.aod.enabled_columns)})
                 if kind=='raman_rotation' and len(effect_ids)>1:
                     self.operations[-1].update({
                         'applied_by_gate':applied_by_gate,
