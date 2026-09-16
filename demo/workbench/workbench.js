@@ -79,19 +79,33 @@ $('edit-initial').onclick=()=>{$('initial-body').hidden=!$('initial-body').hidde
 const profileNames={physical:'普通物理线路',qec_ghz2:'两逻辑比特 · 单轮 QEC',qec_temporal:'两逻辑比特 · 多轮 QEC',qec_temporal_four:'四逻辑比特 · 多轮 QEC'};
 const strategyNames={recommended:'推荐调度',baseline:'基线对照',legacy:'历史配置'};
 const compilationPresets=studioCatalog.algorithms;
+for(const p of compilationPresets)policyNames[p.id]=p.label;
+const needsUpgrade=()=>!locked()&&(!compilationPresets.some(p=>p.id===draft.compiler)||(draft.aod_backend||'rigid')!=='row_column_orthogonal'||(draft.compilation.motion_router||'axis_hold')!=='axis_hold');
 function presetUnavailable(p){return p.single_trap&&draft.aod_rows*draft.aod_columns!==1?'需要 1 × 1 AOD':'';}
 function renderConfiguration(){
  const c=draft.compilation;
  const implementation=c.strategy==='legacy'?c.implementation:c.strategy==='baseline'?'basic':'greedy';
  const currentPreset=compilationPresets.find(p=>p.id===implementation);
- $('compiler').innerHTML=locked()?'<option value="locked">'+escape(policyNames[draft.compiler]||draft.compiler)+' · 配套锁定</option>':compilationPresets.map(p=>{const reason=presetUnavailable(p);return '<option value="preset:'+p.id+'" '+(reason?'disabled':'')+'>'+p.label+(reason?'（'+reason+'）':'')+'</option>';}).join('');
+ $('compiler').innerHTML=locked()?'<option value="locked">'+escape(policyNames[draft.compiler]||draft.compiler)+' · 配套锁定</option>':compilationPresets.map(p=>{const reason=presetUnavailable(p);return '<option value="preset:'+p.id+'" '+(reason?'disabled':'')+'>'+p.label+(reason?'（'+reason+'）':'')+'</option>';}).join('')+(!currentPreset?'<option disabled value="preset:'+escape(implementation)+'">历史配置：'+escape(policyNames[implementation]||implementation)+'</option>':'');
  $('compiler').value=locked()?'locked':'preset:'+implementation;
  $('compiler').disabled=locked();
- $('strategy-preset-note').textContent=locked()?'专用调度属于整个实验，不进入自定义算法列表。':'算法不会随电路示例切换。单原子搬运策略要求 1 × 1 AOD；新版有序策略支持二维/非均匀轴；旧 M4 多交点仍限单行 10 μm。';
+ $('strategy-preset-note').textContent=locked()?'此实验使用已验证的配套配置，不自动替换其协议或算法。':needsUpgrade()?'此草稿含旧算法、后端或路线。点击下方更新按钮会显式换成当前默认流程，保留原子数、布局、初始偏移和门列表；之后需重新编译。':'算法独立于电路示例；这里只列出已接入完整工作台流程的两个版本。旧单原子、刚性阵列和实验对照实现不再混入常用菜单。';
+ $('upgrade-current').hidden=!needsUpgrade();
+ $('compiler-guide').innerHTML=currentPreset?'<h3>'+escape(currentPreset.version)+'</h3>'+[['如何作决定',currentPreset.decision],['取舍与限制',currentPreset.tradeoff],['验证范围',currentPreset.validation]].map(([k,v])=>'<p><strong>'+k+'：</strong>'+escape(v)+'</p>').join(''):'<p>历史或专用实现：保留原设置与执行语义，不能把旧回放视为当前版本重新编译的结果。</p>';
+ $('greedy-budget-fields').hidden=draft.compiler!=='ordered_greedy';
+ $('smt-budget-fields').hidden=draft.compiler!=='smt_ordered';
+ $('readout-budget-fields').hidden=!draft.gates.some(g=>['MEASURE','RESET'].includes(g.gate_type));
+ $('aod-backend').innerHTML='<option value="row_column_orthogonal">有序行列 · 横平竖直分段移动</option>'+((draft.aod_backend||'rigid')!=='row_column_orthogonal'?'<option disabled value="'+escape(draft.aod_backend||'rigid')+'">历史后端：'+escape(draft.aod_backend||'rigid')+'</option>':'');
+ $('platform-title').textContent=(draft.aod_backend||'rigid')==='rigid'?'平台 · 历史固定间距 AOD':'平台 · 可变行列 AOD';
+ $('aod-coordinate-note').innerHTML=(draft.aod_backend||'rigid')==='rigid'?'<strong>此记录使用历史固定间距后端</strong><p>初始偏移在运行中保持不变，直接决定可抓取的几何形状。更新到当前版本后才能自动重构行列。</p>':'<strong>通常只需要设置行数和列数</strong><p>编译器按每批原子的实际位置选择抓取轴、作用轴和运输偏移，不要求预先填好所有抓取点。</p><p>初始偏移定义起始和最终归还构型，会影响空载定位、归还耗时及世界边界；通常可保留 10 μm 等间距。</p>';
+ $('aod-backend-label').textContent=(draft.aod_backend||'rigid')==='row_column_orthogonal'?'有序行列 · 横平竖直分段移动':'历史后端：'+(draft.aod_backend||'rigid');
+ $('motion-router-label').textContent=(c.motion_router||'axis_hold')==='axis_hold'?'自动直接到位 / 分轴保持':'历史通道路线';
  $('aod-backend').value=draft.aod_backend||'rigid';$('aod-backend').disabled=locked();
  $('ordered-controls').hidden=!ordered();
+ $('current-compiler-flow').hidden=!ordered();
+ $('motion-router').innerHTML='<option value="axis_hold">自动直接到位 / 分轴保持</option>'+((c.motion_router||'axis_hold')!=='axis_hold'?'<option disabled value="legacy_corridor">历史通道路线</option>':'');
  for(const [id,key,fallback]of [['ordered-beam','beam_width',64],['plan-budget','plan_budget',4],['route-budget','route_budget',128],['solver-timeout','solver_timeout_ms',5000],['model-budget','model_budget',24],['readout-budget','readout_candidate_budget',16],['readout-top-k','readout_top_k',3],['motion-router','motion_router','axis_hold'],['readout-mode','readout_mode','adaptive']]){$(id).value=c[key]??fallback;$(id).disabled=locked();}
- $('policy-note').textContent=locked()?(studioCatalog.demos.find(d=>d.id===draft.studio?.demo_id)?.note||'保持历史输入的实际实现与参数。'):(policyNotes[draft.compiler]||'单活动 trap 搬运；按当前线路依赖安排门与运输。');
+ $('policy-note').textContent=locked()?(studioCatalog.demos.find(d=>d.id===draft.studio?.demo_id)?.note||'保持历史输入的实际实现与参数。'):(currentPreset?.purpose||policyNotes[draft.compiler]||'保留历史实现。');
  $('initial-summary').textContent=draft.atom_count+' 个原子 · '+({row:'单行',grid:'网格',shuffled:'随机映射',surface_patches:'四个 surface patch',surface_qec_ghz2:'两块 data + ancilla',surface_qec_ghz4:'四块 data + ancilla'}[draft.layout]||draft.layout);
  $('circuit-profile-summary').textContent=profileNames[draft.circuit_profile]||draft.circuit_profile;
  $('open-platform').textContent='平台 · AOD '+draft.aod_rows+' × '+draft.aod_columns;
@@ -119,7 +133,7 @@ function renderMode(){
  $('seed').disabled=isLocked||draft.layout!=='shuffled';
  $('seed').parentElement.hidden=draft.layout!=='shuffled';
  $('undo').disabled=isLocked||!history.length;$('redo').disabled=isLocked||!future.length;
- $('compile').disabled=!inputValid||Boolean(job)||mode==='history'||Boolean(draft.compilation_backend?.configuration_error);
+ $('compile').disabled=!inputValid||Boolean(job)||mode==='history'||needsUpgrade()||Boolean(draft.compilation_backend?.configuration_error);
  if(draft.compilation_backend?.configuration_error)$('compilation-compatibility').textContent=draft.compilation_backend.configuration_error;
  $('compilation-compatibility').classList.toggle('configuration-error',Boolean(draft.compilation_backend?.configuration_error));
  const x=$('aod-column-offsets').value.split(',').map(Number),y=$('aod-row-offsets').value.split(',').map(Number);
@@ -128,6 +142,8 @@ function renderMode(){
 function replaceWorkspace(value){
  draft=normalizeConfiguration(value);history=[];future=[];selected=null;pending=null;columns=8;page=0;edited();
 }
+$('reset-aod-offsets').onclick=()=>{if(locked())return;change(()=>{draft.aod_column_offsets_um=Array.from({length:draft.aod_columns},(_,i)=>i*10);draft.aod_row_offsets_um=Array.from({length:draft.aod_rows},(_,i)=>i*10);});};
+$('upgrade-current').onclick=()=>{if(locked())return;change(()=>{const p=compilationPresets.find(p=>p.id===studioCatalog.default_algorithm);for(const key of budgetKeys)delete draft[key];draft.compilation={strategy:'legacy',implementation:p.id,...studioCatalog.compilation_defaults,...p.defaults,motion_router:'axis_hold',readout_mode:'adaptive'};draft.compiler=p.id;draft.aod_backend='row_column_orthogonal';delete draft.compilation_backend;});};
 $('experiment-demo').onchange=async()=>{
  const id=$('experiment-demo').value,rev=revision;
  if(!locked())customDraft=clone(draft);
@@ -281,7 +297,7 @@ function render(){
  $('geometry-note').textContent=draft.qec_enabled?'按实际 AOD 几何构造分组运输；只使用当前协议支持的调度实现。':draft.compiler?.startsWith('patch_')?'二维实验需 AOD 行列覆盖所选原子组；具体捕获和并行门均由物理后端检查。':ordered()?'有序轴：按实际布局与 AOD 容量拆分捕获；行列可非均匀，活动交点均校验。':'旧通用策略受其原有平台能力限制。';
  $('lookahead-controls').hidden=draft.compiler!=='lookahead';
  for(const id of ['ready-limit','site-limit'])$(id).parentElement.hidden=['returning','resident'].includes(draft.compiler)||ordered();
- $('max-decisions').disabled=!draft.compiler||draft.compiler==='legacy';
+ $('max-decisions').disabled=locked()||!draft.compiler||draft.compiler==='legacy';
  $('anchor-order').disabled=Boolean(draft.compiler&&draft.compiler!=='legacy');
  $('palette').innerHTML=availableTypes().map(t=>`<button type="button" draggable="true" data-tool="${t}" aria-pressed="${tool===t}" title="放置 ${t}">${t}</button>`).join('');
  columns=Math.min(MAX_COLUMNS,Math.max(columns,...draft.gates.map(g=>g.column+2),8));

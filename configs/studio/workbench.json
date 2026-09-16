@@ -2,78 +2,37 @@
   "algorithms": [
     {
       "id": "ordered_greedy",
-      "label": "有序轴贪心 · 当前版",
+      "label": "有序贪心调度（默认）",
       "defaults": {
         "beam_width": 64,
         "plan_budget": 4,
         "route_budget": 128,
         "compile_timeout_s": 300,
-        "solver_timeout_ms": 5000,
-        "model_budget": 24,
         "readout_candidate_budget": 16,
         "readout_top_k": 3
-      }
+      },
+      "version": "2026.09 · 工作台验证版",
+      "validation": "已验证普通可编辑线路、非均匀 AOD 载原子变距与独立物理重放；固定 QEC 协议另有完整执行证据。输入范围可配置，不代表所有电路都可编译。",
+      "purpose": "日常编辑、快速尝试电路和 AOD 配置。",
+      "decision": "从依赖已满足的 CZ 门出发，尝试双方谁移动、四个作用方向以及可合并的门组；有限分支搜索产生候选。优先选择通过物理校验的较大批次，同规模比较完整运输、装卸、门操作和归还的实际时长。",
+      "tradeoff": "不需求解器；搜索宽度和实际评估候选数可调。候选会截断，可能错过更好的组合。"
     },
     {
       "id": "smt_ordered",
-      "label": "SMT 有序轴批次 · 当前版",
+      "label": "SMT 批次调度（对照）",
       "defaults": {
-        "beam_width": 64,
-        "plan_budget": 4,
         "route_budget": 128,
         "compile_timeout_s": 300,
         "solver_timeout_ms": 5000,
         "model_budget": 24,
         "readout_candidate_budget": 16,
         "readout_top_k": 3
-      }
-    },
-    {
-      "id": "greedy",
-      "label": "贪心并行与运输",
-      "defaults": {
-        "ready_limit": 16,
-        "site_limit": 4
-      }
-    },
-    {
-      "id": "critical_path",
-      "label": "关键路径优先",
-      "defaults": {
-        "ready_limit": 16,
-        "site_limit": 4
-      }
-    },
-    {
-      "id": "lookahead",
-      "label": "有限前瞻与复用",
-      "defaults": {
-        "ready_limit": 16,
-        "site_limit": 4,
-        "lookahead_depth": 2,
-        "beam_width": 3,
-        "rollout_budget": 12
-      }
-    },
-    {
-      "id": "basic",
-      "label": "逐门归还基线",
-      "defaults": {
-        "ready_limit": 16,
-        "site_limit": 4
-      }
-    },
-    {
-      "id": "returning",
-      "label": "单原子搬运 · 每门归还",
-      "single_trap": true,
-      "defaults": {}
-    },
-    {
-      "id": "resident",
-      "label": "单原子搬运 · 驻留复用",
-      "single_trap": true,
-      "defaults": {}
+      },
+      "version": "2026.09 · 工作台验证版",
+      "validation": "已验证普通可编辑线路、非均匀 AOD 载原子变距与独立物理重放；固定 QEC 协议另有完整执行证据。输入范围可配置，不代表所有电路都可编译。",
+      "purpose": "研究当前一批门能否并行更多，与贪心进行同条件比较。",
+      "decision": "把当前可执行 CZ 的操作数选择、行列容量、序关系、捕获闭包和实际作用对写成约束；优先增大当前批次门数，再减小最大曼哈顿位移。求解出的模型继续经过完整路径和物理检查，失败则排除此模型重试。",
+      "tradeoff": "需要 Z3（安装项目 smt 依赖）；求解耗时可能更长。求解目标只覆盖当前批次，路线和终态仍由共用控制器处理，不保证全电路最快或全局最优。"
     }
   ],
   "demos": [

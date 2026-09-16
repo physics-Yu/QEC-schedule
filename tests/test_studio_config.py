@@ -7,7 +7,7 @@ import subprocess
 import pytest
 
 from neutral_atom_env.domain.models import Position2D, MobileCellIndex
-from neutral_atom_app.visualization.studio_config import ALGORITHMS, DEMOS, demo_input
+from neutral_atom_app.visualization.studio_config import ALGORITHMS, GENERAL_IMPLEMENTATIONS, DEMOS, demo_input
 from neutral_atom_app.visualization.workbench import build_inputs, compile_input, validate_input
 
 
@@ -21,7 +21,7 @@ def custom(algorithm='greedy'):
                       {'id': 't', 'gate_type': 'T', 'qubit_ids': ['Q001'], 'column': 2}]}
 
 
-@pytest.mark.parametrize('algorithm', [a['id'] for a in ALGORITHMS])
+@pytest.mark.parametrize('algorithm', sorted(GENERAL_IMPLEMENTATIONS))
 def test_each_general_algorithm_executes_an_ordinary_edited_circuit(algorithm):
     value = custom(algorithm)
     if algorithm in {'ordered_greedy','smt_ordered'}:value['aod_backend']='row_column_orthogonal'

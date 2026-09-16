@@ -1,5 +1,7 @@
 # 可选择的 AOD 运动后端
 
+2026-09-16 工作台目录收敛：当前平台固定展示正交有序行列，初始偏移移入高级设置；旧后端通过历史输入读取，不在常用菜单推荐。物理实现未删改。[能力和配置说明](../docs/workstation_compilers.md)。
+
 2026-09-15最新：新增 `row_column_orthogonal`（`configs/hardware/row_column_orthogonal.json`），继承有序行列完整物理校验，单MOVE只改x或y；未变轴全程保持。`row_column`原本就支持独立轴保持，截图绕路来自策略候选缺失。共享 `motion_router=axis_hold` 与backend分别选择，两种行列后端均验收；正交约束在env，直接/分轴保持候选在strategies。Q000原8门反事实与完整QEC结果见[修复报告](../docs/axis_hold_strategy_fix.md)。schema19结构不变；切后端须重新编译，旧检查点不自动改变后端。
 
 2026-09-15扩展：新的`SMTOrderedAxisPlanner`和贪心已在同一34原子完整QEC GHZ上比较有序行列配置，包含真实MZ读出/恢复。二者同17CZ批次、最大9对并行，完整物理/量子/重放通过；新SMT并未更快。旧`smt_batch.py`仍为rigid受限实验；本次不将其冒称已升级或全局SMT。[报告](../docs/qec_ordered_smt_comparison.md)。

@@ -12,6 +12,7 @@ from pathlib import Path
 CONFIG_PATH = Path(__file__).resolve().parents[3] / 'configs/studio/workbench.json'
 # Executable implementations/generators are code capabilities, not user-extensible imports.
 GENERAL_IMPLEMENTATIONS = frozenset({'greedy', 'critical_path', 'lookahead', 'basic', 'returning', 'resident', 'ordered_greedy', 'smt_ordered'})
+WORKBENCH_IMPLEMENTATIONS = frozenset({'ordered_greedy', 'smt_ordered'})
 CIRCUIT_GENERATORS = frozenset({'parallel1q', 'ghz', 'chain', 'mixed', 'rotations', 'empty', 'nonuniform_pairs'})
 
 
@@ -37,7 +38,7 @@ def load_catalog(path=CONFIG_PATH):
         if any(not isinstance(i.get('label'), str) or not i['label'] for i in items):
             raise ValueError(key + ' requires labels')
         return set(ids)
-    algorithms = entries('algorithms', GENERAL_IMPLEMENTATIONS)
+    algorithms = entries('algorithms', WORKBENCH_IMPLEMENTATIONS)
     circuits = entries('circuit_presets', CIRCUIT_GENERATORS)
     entries('demos')
     if value['default_algorithm'] not in algorithms or value['default_circuit'] not in circuits:
@@ -49,6 +50,9 @@ def load_catalog(path=CONFIG_PATH):
                 any(type(v) is not int or not 1 <= v <= limits[k] for k, v in budgets.items())):
             raise ValueError('Invalid compilation defaults')
     for algorithm in value['algorithms']:
+        for field in ('version', 'purpose', 'decision', 'tradeoff', 'validation'):
+            if not isinstance(algorithm.get(field), str) or not algorithm[field].strip():
+                raise ValueError('Algorithm requires a complete user-facing capability guide')
         if bool(algorithm.get('single_trap')) != (algorithm['id'] in {'returning', 'resident'}):
             raise ValueError('single_trap must match the implemented algorithm capability')
     workspace = value['workspace_defaults']
@@ -133,7 +137,7 @@ def validate_studio(raw, normalized):
             raise ValueError('Custom workspace cannot carry demo settings')
         if (normalized['circuit_profile'] != 'physical' or
                 normalized['layout'] not in {'row', 'grid', 'shuffled'} or
-                normalized['compiler'] not in {a['id'] for a in ALGORITHMS}):
+                normalized['compiler'] not in GENERAL_IMPLEMENTATIONS):
             raise ValueError('Custom mode requires a general algorithm and row/grid/shuffled physical layout; specialized QEC/patch algorithms belong to demos')
         if normalized.get('ez_policy') != 'adaptive':
             raise ValueError('Custom mode uses demand-driven EZ sites')

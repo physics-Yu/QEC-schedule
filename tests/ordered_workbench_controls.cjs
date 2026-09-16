@@ -35,6 +35,7 @@ async function main(){
  const page=await boot('');const {el,exported,requests,mounted}=page;
  const waitPreview=async()=>{await pause(700);for(let i=0;i<200&&el('compile').disabled;i++)await pause(30);assert.equal(el('compile').disabled,false,el('compilation-compatibility').textContent);};
  let draft=await exported();assert.equal(draft.compilation.implementation,'ordered_greedy');assert.equal(draft.aod_backend,'row_column_orthogonal');
+ assert.match(el('aod-backend-label').textContent,/横平竖直/);assert.match(el('aod-coordinate-note').innerHTML,/归还耗时/);assert.match(el('platform-title').textContent,/可变行列/);
  assert(!requests.some(r=>r.path==='/api/compile'));
  el('atom-count').value='6';el('atom-count').onchange();await waitPreview();
  el('layout').value='shuffled';el('layout').onchange();await waitPreview();
@@ -60,18 +61,25 @@ async function main(){
  await el('compile').onclick();assert.equal(el('compile-state').dataset.state,'completed');
  assert.match(el('greedy-rows').innerHTML,/抓取/);assert.match(el('greedy-rows').innerHTML,/作用/);
  assert(mounted.at(-1).operations.some(o=>o.kind==='aod_move'&&o.moving_count===3&&['x_um','y_um'].some(k=>o.source_axes[k].some((x,i)=>Math.abs(x-o.source_axes[k][0]-o.target_axes[k][i]+o.target_axes[k][0])>1e-7))));
- el('platform-export').onclick(); // exercises configuration serialization handlers
- el('compiler').value='preset:greedy';el('compiler').onchange();await pause(800);
- assert.equal(el('compile').disabled,true,'old strategy cannot silently consume ordered hardware');
- assert.equal((await exported()).aod_backend,'row_column_orthogonal');
- el('aod-backend').value='rigid';el('aod-backend').onchange();await pause(800);
- assert.equal(el('compile').disabled,true,'old M4 still rejects nonuniform array');
- el('compiler').value='preset:ordered_greedy';el('compiler').onchange();el('aod-backend').value='row_column_orthogonal';el('aod-backend').onchange();await waitPreview();
+ assert(!el('compiler').innerHTML.includes('preset:returning'));assert(!el('compiler').innerHTML.includes('preset:greedy'));
+ assert.equal(el('greedy-budget-fields').hidden,true);assert.equal(el('smt-budget-fields').hidden,false);
+ assert.match(el('compiler-guide').innerHTML,/全局最优/);assert.equal(el('readout-budget-fields').hidden,true);
+ const old={...await exported(),aod_backend:'rigid',compilation:{strategy:'legacy',implementation:'greedy'}};
+ delete old.compiler;delete old.compilation_backend;
+ el('import-file').files=[{size:1000,text:async()=>JSON.stringify(old)}];await el('import-file').onchange();await pause(800);
+ assert.equal(el('compile').disabled,true);assert.equal(el('upgrade-current').hidden,false);
+ const preserved=await exported();el('upgrade-current').onclick();await waitPreview();
+ const upgraded=await exported();assert.equal(upgraded.compiler,'ordered_greedy');assert.equal(upgraded.aod_backend,'row_column_orthogonal');
+ for(const key of ['gates','atom_count','layout','aod_column_offsets_um','aod_row_offsets_um'])assert.deepEqual(upgraded[key],preserved[key]);
+ assert.equal(el('smt-budget-fields').hidden,true);assert.equal(el('greedy-budget-fields').hidden,false);
+ el('reset-aod-offsets').onclick();await waitPreview();
+ assert.deepEqual((await exported()).aod_column_offsets_um,[0,10,20]);assert.deepEqual((await exported()).gates,upgraded.gates);
+ el('platform-export').onclick();
  const before=JSON.stringify((await exported()).gates);
  el('experiment-demo').value='ordered-qec-ghz2';await el('experiment-demo').onchange();await waitPreview();
  assert.equal((await exported()).compiler,'ordered_greedy');assert.equal((await exported()).atom_count,34);assert.equal(el('aod-backend').disabled,true);
  el('experiment-demo').value='custom';await el('experiment-demo').onchange();await waitPreview();
  assert.equal(JSON.stringify((await exported()).gates),before);assert.equal((await exported()).atom_count,6);
- console.log('PASS actual editor handlers + HTTP: arbitrary atom/layout/nonuniform axes, no auto compile, greedy and SMT real CZ compilation, independent configurations, incompatible old backend rejected, QEC demo and custom draft restored. DOM/viewer host doubles, not a browser.');
+ console.log('PASS actual editor handlers + HTTP: arbitrary atom/layout/nonuniform axes, no auto compile, greedy and SMT real CZ compilation, independent configurations, retired options removed, explicit legacy upgrade preserves circuit/layout, initial offsets reset, QEC demo and custom draft restored. DOM/viewer host doubles, not a browser.');
 }
 main().catch(e=>{console.error(e);process.exit(1)});
