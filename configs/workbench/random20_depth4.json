@@ -1,0 +1,755 @@
+{
+  "atom_count": 20,
+  "layout": "grid",
+  "seed": 20260921,
+  "anchor_order": "forward",
+  "gates": [
+    {
+      "id": "R000",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q000"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R001",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q001"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R002",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q002"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R003",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q003"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R004",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q004"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R005",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q005"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R006",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q006"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R007",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q007"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R008",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q008"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R009",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q009"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R010",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q010"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R011",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q011"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R012",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q012"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R013",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q013"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R014",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q014"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R015",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q015"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R016",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q016"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R017",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q017"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R018",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q018"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R019",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q019"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 0
+    },
+    {
+      "id": "R020",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q004",
+        "Q009"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 1
+    },
+    {
+      "id": "R021",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q014",
+        "Q015"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 1
+    },
+    {
+      "id": "R022",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q012",
+        "Q019"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 1
+    },
+    {
+      "id": "R023",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q000",
+        "Q008"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 1
+    },
+    {
+      "id": "R024",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q003",
+        "Q010"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 1
+    },
+    {
+      "id": "R025",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q005",
+        "Q017"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 1
+    },
+    {
+      "id": "R026",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q011",
+        "Q016"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 1
+    },
+    {
+      "id": "R027",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q013",
+        "Q018"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 1
+    },
+    {
+      "id": "R028",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q002",
+        "Q006"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 1
+    },
+    {
+      "id": "R029",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q001",
+        "Q007"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 1
+    },
+    {
+      "id": "R030",
+      "gate_type": "Z",
+      "qubit_ids": [
+        "Q000"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R031",
+      "gate_type": "X",
+      "qubit_ids": [
+        "Q001"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R032",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q002"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R033",
+      "gate_type": "Y",
+      "qubit_ids": [
+        "Q003"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R034",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q004"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R035",
+      "gate_type": "Y",
+      "qubit_ids": [
+        "Q005"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R036",
+      "gate_type": "X",
+      "qubit_ids": [
+        "Q006"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R037",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q007"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R038",
+      "gate_type": "Y",
+      "qubit_ids": [
+        "Q008"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R039",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q009"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R040",
+      "gate_type": "Z",
+      "qubit_ids": [
+        "Q010"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R041",
+      "gate_type": "X",
+      "qubit_ids": [
+        "Q011"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R042",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q012"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R043",
+      "gate_type": "Y",
+      "qubit_ids": [
+        "Q013"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R044",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q014"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R045",
+      "gate_type": "Z",
+      "qubit_ids": [
+        "Q015"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R046",
+      "gate_type": "Y",
+      "qubit_ids": [
+        "Q016"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R047",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q017"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R048",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q018"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R049",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q019"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 2
+    },
+    {
+      "id": "R050",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q002",
+        "Q015"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 3
+    },
+    {
+      "id": "R051",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q006",
+        "Q009"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 3
+    },
+    {
+      "id": "R052",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q001",
+        "Q019"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 3
+    },
+    {
+      "id": "R053",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q012",
+        "Q014"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 3
+    },
+    {
+      "id": "R054",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q010",
+        "Q013"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 3
+    },
+    {
+      "id": "R055",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q007",
+        "Q017"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 3
+    },
+    {
+      "id": "R056",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q005",
+        "Q008"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 3
+    },
+    {
+      "id": "R057",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q003",
+        "Q016"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 3
+    },
+    {
+      "id": "R058",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q004",
+        "Q011"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 3
+    },
+    {
+      "id": "R059",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q000",
+        "Q018"
+      ],
+      "parameters": [],
+      "condition": [],
+      "depends_on": [],
+      "column": 3
+    }
+  ],
+  "circuit_profile": "physical",
+  "compilation": {
+    "strategy": "legacy",
+    "implementation": "ordered_greedy",
+    "max_decisions": 10000,
+    "beam_width": 64,
+    "plan_budget": 4,
+    "route_budget": 128,
+    "compile_timeout_s": 180,
+    "readout_candidate_budget": 16,
+    "readout_top_k": 3
+  },
+  "compilation_backend": {
+    "compiler": "ordered_greedy",
+    "available_strategies": [
+      "recommended",
+      "baseline"
+    ],
+    "legacy": true,
+    "scope": "Generic ordered-axis controller; finite routes, per-batch return, no fixed demo circuit",
+    "kernel": "ordered-axis-readout-v1",
+    "configuration_error": null
+  },
+  "compiler": "ordered_greedy",
+  "ez_policy": "adaptive",
+  "max_decisions": 10000,
+  "compile_timeout_s": 180,
+  "beam_width": 64,
+  "plan_budget": 4,
+  "route_budget": 128,
+  "readout_candidate_budget": 16,
+  "readout_top_k": 3,
+  "aod_backend": "row_column_orthogonal",
+  "ez_neighbor_guard_enabled": true,
+  "aod_rows": 8,
+  "aod_columns": 8,
+  "aod_row_offsets_um": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70
+  ],
+  "aod_column_offsets_um": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70
+  ],
+  "placement_search": {
+    "enabled": true,
+    "proposal_pool": 256,
+    "evaluations": 16,
+    "workers": 4,
+    "terminal_mode": "stable",
+    "expand_storage": true
+  },
+  "studio": {
+    "mode": "custom"
+  }
+}

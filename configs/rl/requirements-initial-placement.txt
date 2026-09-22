@@ -1,0 +1,3 @@
+# Isolated research runtime; does not modify production dependencies.
+torch==2.2.2
+numpy==1.26.4

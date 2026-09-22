@@ -1,5 +1,21 @@
 # Physical circuit 到原子操作：已确认的目标契约
 
+2026-09-22：[交互意图合同](../docs/interaction_ir.md)新增坐标无关 MoveToInteraction 和显式 ApplyInteraction；只有后者对应门效果。resolver 选择具体交互构型并绑定状态，lowerer 编译共享轴 AOD 操作。准备/脉冲语义拆分，普通 zoned 服务仍原子提交完整计划；不把 movement 当做动画插值，也不删除下层物理坐标。当前覆盖 CZ / EZ / 稳定 SLM 起态。
+
+2026-09-22：[ZAC 原生SA初始化](../docs/zac_initial_placement.md)已接入。初态在创建环境前确定；固定/SA × reuse关/开四组保持同电路/平台并恢复同一固定绝对终态。SA代理、作者求解秒与本地物理μs分开，初次制备布局不计入。只有完整执行/效果/重放/共同终态通过才比较；失败映射保留诊断。
+
+2026-09-21 新通用 `zoned_ids` 合同见 [分层编译](../docs/zoned_compiler.md)。READY 前沿按需入 EZ；部分捕获矩形可待补全，实际完整批次必须严格闭包。CZ 后可驻留 EZ，换伙伴时保留合法工作位置；stable / fixed 终态明确，循环 holder 归还允许显式空位缓冲。搜索不能修改 live env，物理规则没有放宽。
+
+2026-09-21 用户授权[并行初态优化及取消末尾归还](../docs/parallel_initial_placement.md)：`run_ordered(restore_layout=False)`完整执行门及服务后仅验证稳定结束，不指定原holder/轴/开关；批内CZ归还保持。app的`terminal_mode=stable/workers=4`经独立snapshot进程并行评估，256候选池、确定波次、严格重放；原fixed终态和串行API兼容。不是从日志扣时间，也不改变物理硬规则。
+
+2026-09-21：[自由初态选址](../docs/free_initial_placement.md)新增独立 `placement/free.py` 与 `app.optimize_free_layout`，不固定原占据形状，允许完整已配置SZ域内空闲/关闭站点；创建env前准备初始支撑，不修改运行态或世界几何。完整编译、共同绝对终态、门效果及独立重放作为接受条件；保留旧排列入口。有限搜索不证明全局最优。
+
+2026-09-21最新：[通用初态优化](../docs/compiler_initial_placement.md)将用户选定几何与完整电路固定，仅搜索 qubit→SLM；真实执行反馈参与后续提案。普通有序控制器新增 `terminal_target` 可选参数，为所有初态使用相同绝对终态；未提供时原行为不变。物理时长与编译墙钟分别报告，失败、基线及独立重放均保留。
+
+2026-09-21：[初态放置](../docs/initial_placement.md)在创建环境前独立求解 qubit→SLM，保留完整电路。`PlacementResult.status=estimated` 不表示物理通过；显式短名单可经既有控制器完整执行/重放，再按共同终态时间选择。锁定、预算和代理未覆盖成本均可导出。没有给运行中的环境安装新mapping，也没有默认替换现有编译策略。
+
+2026-09-20：[ZAC reuse接入](../docs/zac_reuse.md)。外部作者前端负责CZ分层、复用匹配和动态placement；`ZACPlacementStrategy`从完整映射序列构造本平台合法运输并实际提交，保留EZ SLM跨层驻留，最终恢复共同初态。五例10份执行通过，包含reuse总时间变差反例；CZ-only、单AOD有限路线，不代表完整论文AE或通用1Q/QEC实现。
+
 2026-09-16：[通用工作台接入有序轴策略](../docs/ordered_workbench.md)。`ordered_controller.run_ordered(env)` 在策略包内通过环境提交/推进，复用有序 CZ 和测量目标策略；不导入固定实验工厂。平台/电路保持独立，可选旧策略。当前仍分批归还与串行完整服务，不代表下文所有跨服务并发目标实现。
 
 2026-09-14接口位置更新：[环境/策略分离](../docs/environment_strategy_boundary.md)。所有寻路与调度算法迁至 `neutral_atom_strategies`；环境内保留 `program` 显式操作表达/验证与唯一 Executor。生产策略通过 `NeutralAtomEnv` 提交、推进和私有分支预测；策略可通过 `Strategy.run(env, on_event=...)` 替换。下文目标语义保持，旧Python模块路径不再使用。
@@ -106,3 +122,6 @@ legacy 的单操作 active_plan、全计划预约和“唯一下一事件”恢�
 优先补动态光阱与交接/避碰硬逻辑，再做独立任务、合法持久起态和退出、参数化 1Q 及最小 1Q/运输并行。验收同一输入可替换两个实质不同的 compiler，仍共用独立 validator、Executor、trace 与动画；保留 basic 作为对照。M4 再扩展全局启发式，M5 扩展批量 CZ 和更广并发，M6 接 RL。详细行为验收见 [validation](validation.md)。
 
 2026-09-11 M4 修订：不同 qubit 单比特直接并行，逐 qubit RAMAN 资源与 atom/trap 冲突保护，旧全局通道/交接保护不再作为当前约束；原子可用窗口跨无关 AOD 操作边界合并。checkpoint schema 14。贪心路径限定 2.5+5k μm 正交通道和短端点接入，详见 physics 与 motion_planning。
+# 2026-09-21 ZAC大实例补充
+
+ZAC输入支持2–128原子/1–4096物理CZ，规模上限不承诺编译成功。可选 `bounded_spares=True` 只改变闲置轴候选配置（10/2.5/硬件下限+0.01 μm），在既有世界内保持共同轴索引、次序、严格间距和全物理验证；旧有序策略默认False。实际整条线路、同初态/终态、每门恰好一次和独立重放同时通过才计性能。门已完成但终态归还失败不计加速比。详见[benchmark](../docs/zac_benchmark.md)及[日志](logs/2026-09-21-zac-large-benchmark.md)。

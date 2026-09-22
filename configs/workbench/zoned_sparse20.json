@@ -1,0 +1,187 @@
+{
+  "anchor_order": "forward",
+  "aod_backend": "row_column_orthogonal",
+  "aod_column_offsets_um": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70
+  ],
+  "aod_columns": 8,
+  "aod_row_offsets_um": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70
+  ],
+  "aod_rows": 8,
+  "atom_count": 20,
+  "circuit_profile": "physical",
+  "compilation": {
+    "strategy": "legacy",
+    "implementation": "zoned_ids",
+    "compile_timeout_s": 120
+  },
+  "ez_neighbor_guard_enabled": true,
+  "ez_policy": "adaptive",
+  "gates": [
+    {
+      "column": 0,
+      "condition": [],
+      "depends_on": [],
+      "gate_type": "H",
+      "id": "G000",
+      "parameters": [],
+      "qubit_ids": [
+        "Q019"
+      ]
+    },
+    {
+      "column": 1,
+      "condition": [],
+      "depends_on": [],
+      "gate_type": "CZ",
+      "id": "G001",
+      "parameters": [],
+      "qubit_ids": [
+        "Q003",
+        "Q006"
+      ]
+    },
+    {
+      "column": 2,
+      "condition": [],
+      "depends_on": [],
+      "gate_type": "T",
+      "id": "G002",
+      "parameters": [],
+      "qubit_ids": [
+        "Q013"
+      ]
+    },
+    {
+      "column": 3,
+      "condition": [],
+      "depends_on": [],
+      "gate_type": "T",
+      "id": "G003",
+      "parameters": [],
+      "qubit_ids": [
+        "Q009"
+      ]
+    },
+    {
+      "column": 4,
+      "condition": [],
+      "depends_on": [],
+      "gate_type": "Y",
+      "id": "G004",
+      "parameters": [],
+      "qubit_ids": [
+        "Q015"
+      ]
+    },
+    {
+      "column": 5,
+      "condition": [],
+      "depends_on": [],
+      "gate_type": "Y",
+      "id": "G005",
+      "parameters": [],
+      "qubit_ids": [
+        "Q004"
+      ]
+    },
+    {
+      "column": 6,
+      "condition": [],
+      "depends_on": [],
+      "gate_type": "CZ",
+      "id": "G006",
+      "parameters": [],
+      "qubit_ids": [
+        "Q004",
+        "Q014"
+      ]
+    },
+    {
+      "column": 7,
+      "condition": [],
+      "depends_on": [],
+      "gate_type": "Y",
+      "id": "G007",
+      "parameters": [],
+      "qubit_ids": [
+        "Q000"
+      ]
+    },
+    {
+      "column": 8,
+      "condition": [],
+      "depends_on": [],
+      "gate_type": "CZ",
+      "id": "G008",
+      "parameters": [],
+      "qubit_ids": [
+        "Q005",
+        "Q004"
+      ]
+    },
+    {
+      "column": 9,
+      "condition": [],
+      "depends_on": [],
+      "gate_type": "Z",
+      "id": "G009",
+      "parameters": [],
+      "qubit_ids": [
+        "Q008"
+      ]
+    },
+    {
+      "column": 10,
+      "condition": [],
+      "depends_on": [],
+      "gate_type": "CZ",
+      "id": "G010",
+      "parameters": [],
+      "qubit_ids": [
+        "Q016",
+        "Q007"
+      ]
+    },
+    {
+      "column": 11,
+      "condition": [],
+      "depends_on": [],
+      "gate_type": "CZ",
+      "id": "G011",
+      "parameters": [],
+      "qubit_ids": [
+        "Q013",
+        "Q006"
+      ]
+    }
+  ],
+  "layout": "grid",
+  "placement_search": {
+    "enabled": false,
+    "evaluations": 16,
+    "expand_storage": true,
+    "proposal_pool": 256,
+    "terminal_mode": "stable",
+    "workers": 4
+  },
+  "seed": 20260921,
+  "studio": {
+    "mode": "custom"
+  }
+}

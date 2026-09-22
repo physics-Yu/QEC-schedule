@@ -1,0 +1,733 @@
+{
+  "atom_count": 16,
+  "source_rows": 6,
+  "source_columns": 8,
+  "spacing_um": 10,
+  "aod_rows": 4,
+  "aod_columns": 8,
+  "evaluations": 6,
+  "seed": 7,
+  "compile_timeout_s": 90,
+  "gates": [
+    {
+      "id": "prepare_0",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q000"
+      ]
+    },
+    {
+      "id": "prepare_1",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q001"
+      ]
+    },
+    {
+      "id": "prepare_2",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q002"
+      ]
+    },
+    {
+      "id": "prepare_3",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q003"
+      ]
+    },
+    {
+      "id": "prepare_4",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q004"
+      ]
+    },
+    {
+      "id": "prepare_5",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q005"
+      ]
+    },
+    {
+      "id": "prepare_6",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q006"
+      ]
+    },
+    {
+      "id": "prepare_7",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q007"
+      ]
+    },
+    {
+      "id": "prepare_8",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q008"
+      ]
+    },
+    {
+      "id": "prepare_9",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q009"
+      ]
+    },
+    {
+      "id": "prepare_10",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q010"
+      ]
+    },
+    {
+      "id": "prepare_11",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q011"
+      ]
+    },
+    {
+      "id": "prepare_12",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q012"
+      ]
+    },
+    {
+      "id": "prepare_13",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q013"
+      ]
+    },
+    {
+      "id": "prepare_14",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q014"
+      ]
+    },
+    {
+      "id": "prepare_15",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q015"
+      ]
+    },
+    {
+      "id": "grid_0_0",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q000",
+        "Q001"
+      ]
+    },
+    {
+      "id": "grid_0_1",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q002",
+        "Q003"
+      ]
+    },
+    {
+      "id": "grid_0_2",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q004",
+        "Q005"
+      ]
+    },
+    {
+      "id": "grid_0_3",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q006",
+        "Q007"
+      ]
+    },
+    {
+      "id": "grid_0_4",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q008",
+        "Q009"
+      ]
+    },
+    {
+      "id": "grid_0_5",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q010",
+        "Q011"
+      ]
+    },
+    {
+      "id": "grid_0_6",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q012",
+        "Q013"
+      ]
+    },
+    {
+      "id": "grid_0_7",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q014",
+        "Q015"
+      ]
+    },
+    {
+      "id": "grid_0_8",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q001",
+        "Q002"
+      ]
+    },
+    {
+      "id": "grid_0_9",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q005",
+        "Q006"
+      ]
+    },
+    {
+      "id": "grid_0_10",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q009",
+        "Q010"
+      ]
+    },
+    {
+      "id": "grid_0_11",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q013",
+        "Q014"
+      ]
+    },
+    {
+      "id": "grid_0_12",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q000",
+        "Q004"
+      ]
+    },
+    {
+      "id": "grid_0_13",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q001",
+        "Q005"
+      ]
+    },
+    {
+      "id": "grid_0_14",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q002",
+        "Q006"
+      ]
+    },
+    {
+      "id": "grid_0_15",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q003",
+        "Q007"
+      ]
+    },
+    {
+      "id": "grid_0_16",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q008",
+        "Q012"
+      ]
+    },
+    {
+      "id": "grid_0_17",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q009",
+        "Q013"
+      ]
+    },
+    {
+      "id": "grid_0_18",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q010",
+        "Q014"
+      ]
+    },
+    {
+      "id": "grid_0_19",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q011",
+        "Q015"
+      ]
+    },
+    {
+      "id": "grid_0_20",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q004",
+        "Q008"
+      ]
+    },
+    {
+      "id": "grid_0_21",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q005",
+        "Q009"
+      ]
+    },
+    {
+      "id": "grid_0_22",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q006",
+        "Q010"
+      ]
+    },
+    {
+      "id": "grid_0_23",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q007",
+        "Q011"
+      ]
+    },
+    {
+      "id": "mix_0_0",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q000"
+      ]
+    },
+    {
+      "id": "mix_0_1",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q001"
+      ]
+    },
+    {
+      "id": "mix_0_2",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q002"
+      ]
+    },
+    {
+      "id": "mix_0_3",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q003"
+      ]
+    },
+    {
+      "id": "mix_0_4",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q004"
+      ]
+    },
+    {
+      "id": "mix_0_5",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q005"
+      ]
+    },
+    {
+      "id": "mix_0_6",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q006"
+      ]
+    },
+    {
+      "id": "mix_0_7",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q007"
+      ]
+    },
+    {
+      "id": "mix_0_8",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q008"
+      ]
+    },
+    {
+      "id": "mix_0_9",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q009"
+      ]
+    },
+    {
+      "id": "mix_0_10",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q010"
+      ]
+    },
+    {
+      "id": "mix_0_11",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q011"
+      ]
+    },
+    {
+      "id": "mix_0_12",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q012"
+      ]
+    },
+    {
+      "id": "mix_0_13",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q013"
+      ]
+    },
+    {
+      "id": "mix_0_14",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q014"
+      ]
+    },
+    {
+      "id": "mix_0_15",
+      "gate_type": "H",
+      "qubit_ids": [
+        "Q015"
+      ]
+    },
+    {
+      "id": "grid_1_0",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q000",
+        "Q001"
+      ]
+    },
+    {
+      "id": "grid_1_1",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q002",
+        "Q003"
+      ]
+    },
+    {
+      "id": "grid_1_2",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q004",
+        "Q005"
+      ]
+    },
+    {
+      "id": "grid_1_3",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q006",
+        "Q007"
+      ]
+    },
+    {
+      "id": "grid_1_4",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q008",
+        "Q009"
+      ]
+    },
+    {
+      "id": "grid_1_5",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q010",
+        "Q011"
+      ]
+    },
+    {
+      "id": "grid_1_6",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q012",
+        "Q013"
+      ]
+    },
+    {
+      "id": "grid_1_7",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q014",
+        "Q015"
+      ]
+    },
+    {
+      "id": "grid_1_8",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q001",
+        "Q002"
+      ]
+    },
+    {
+      "id": "grid_1_9",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q005",
+        "Q006"
+      ]
+    },
+    {
+      "id": "grid_1_10",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q009",
+        "Q010"
+      ]
+    },
+    {
+      "id": "grid_1_11",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q013",
+        "Q014"
+      ]
+    },
+    {
+      "id": "grid_1_12",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q000",
+        "Q004"
+      ]
+    },
+    {
+      "id": "grid_1_13",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q001",
+        "Q005"
+      ]
+    },
+    {
+      "id": "grid_1_14",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q002",
+        "Q006"
+      ]
+    },
+    {
+      "id": "grid_1_15",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q003",
+        "Q007"
+      ]
+    },
+    {
+      "id": "grid_1_16",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q008",
+        "Q012"
+      ]
+    },
+    {
+      "id": "grid_1_17",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q009",
+        "Q013"
+      ]
+    },
+    {
+      "id": "grid_1_18",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q010",
+        "Q014"
+      ]
+    },
+    {
+      "id": "grid_1_19",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q011",
+        "Q015"
+      ]
+    },
+    {
+      "id": "grid_1_20",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q004",
+        "Q008"
+      ]
+    },
+    {
+      "id": "grid_1_21",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q005",
+        "Q009"
+      ]
+    },
+    {
+      "id": "grid_1_22",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q006",
+        "Q010"
+      ]
+    },
+    {
+      "id": "grid_1_23",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q007",
+        "Q011"
+      ]
+    },
+    {
+      "id": "mix_1_0",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q000"
+      ]
+    },
+    {
+      "id": "mix_1_1",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q001"
+      ]
+    },
+    {
+      "id": "mix_1_2",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q002"
+      ]
+    },
+    {
+      "id": "mix_1_3",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q003"
+      ]
+    },
+    {
+      "id": "mix_1_4",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q004"
+      ]
+    },
+    {
+      "id": "mix_1_5",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q005"
+      ]
+    },
+    {
+      "id": "mix_1_6",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q006"
+      ]
+    },
+    {
+      "id": "mix_1_7",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q007"
+      ]
+    },
+    {
+      "id": "mix_1_8",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q008"
+      ]
+    },
+    {
+      "id": "mix_1_9",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q009"
+      ]
+    },
+    {
+      "id": "mix_1_10",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q010"
+      ]
+    },
+    {
+      "id": "mix_1_11",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q011"
+      ]
+    },
+    {
+      "id": "mix_1_12",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q012"
+      ]
+    },
+    {
+      "id": "mix_1_13",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q013"
+      ]
+    },
+    {
+      "id": "mix_1_14",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q014"
+      ]
+    },
+    {
+      "id": "mix_1_15",
+      "gate_type": "T",
+      "qubit_ids": [
+        "Q015"
+      ]
+    }
+  ]
+}

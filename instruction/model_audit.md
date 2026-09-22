@@ -1,5 +1,21 @@
 # 模型审计与待处理问题
 
+2026-09-22 发布审查（物理模型不变）：
+
+| ID | 状态 | 范围与证据 |
+|---|---|---|
+| IR-001 | FIXED | IDS 的合法部分前沿被新 IR 完整性检查当作整个服务错误，导致控制器未尝试较小请求。`zoned/controller.py` 内置适配器延后精确前缀候选，按原宽度回退重新建立完整 Move/Apply；不改变独立 IR 验证或环境。回归 `test_controller_retries_smaller_intent_for_partial_placement` 验证单门真实执行、余门 READY 与独立重放；[发布日志](logs/2026-09-22-repository-release.md) |
+| CONSTRAINT-001 | OPEN | 目标/抓取/路径/整计划/runtime 判据调用与错误分类尚未统一；EZ 预约仍从环境扫描下一 CZ 推导。审计与分层方案见 [constraint/placement](../docs/constraint_placement_audit.md)，尚未实施重构或性能验收 |
+
+2026-09-21 分层编译器适配（物理模型不变）：
+
+| ID | 状态 | 范围与证据 |
+| --- | --- | --- |
+| ARCH-003 | FIXED（新通用入口） | 新增独立 `strategies/zoned` 的调度、驻留、落点、分组、物理展开及控制层；抽出共享 motion 工具，原 Studio/初态搜索接通。旧策略保留作对照，198 模块依赖检查通过；见[实现](../docs/zoned_compiler.md)与[本轮日志](logs/2026-09-21-zoned-compiler-refactor.md) |
+| ZONED-001 | FIXED | 搜索中未完成矩形被过早按完整捕获闭包拒绝；部分组合可补全，最终执行仍严格检查。16 原子四轮均 8 对真实 CZ，独立重放通过；`tests/test_zoned_compiler.py` |
+| ZONED-002 | FIXED（新控制器） | EZ 边缘读出因闲置 AOD 轴单侧填充越界而候选全空；读出策略增加显式 bounded_spares 选项，新控制器开启；保留旧调用默认。回归及完整 480 槽 QEC/量子态/独立重放通过 |
+| ZONED-003 | OPEN | 启发式落点评分与完整路线代价存在偏差，多轮 syndrome 分组碎片化；QEC 同输入同终态从 17→81 个 CZ 脉冲、23472.44→83766.54 μs，性能验收未通过。负例、耗时与复现命令见上述日志；原 QEC demo 保持原策略，不关闭校验规避退化 |
+
 2026-09-14工程边界更新（物理模型不变）：
 
 | ID | 状态 | 范围与证据 |

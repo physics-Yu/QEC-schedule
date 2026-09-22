@@ -1,6 +1,12 @@
 # 工作台配置入口
 
-当前目录仅列出有序贪心 / SMT 批次两个工作台验证版，并维护其版本、用途、决策方式、限制和验证范围。见 [编译说明](../../docs/workstation_compilers.md)。旧实现保留历史 API 兼容，不进入当前选择菜单。
+2026-09-22：`default_algorithm=qmap_native`，新草稿 `placement_search.enabled=false`（固定初态手动编译）。菜单包含 QMAP 原生、本地分层驻留、有序贪心和 SMT 对照。原生算法使用成对 SLM 平台及作者映射，需独立 setup；见 [当前版本](../../docs/current_version.md)。现有 JSON 和锁定 demo 不自动换算法。`zoned_ids` 在固定初态模式也读取 `placement_search.terminal_mode`；缺省仍为 fixed，配置 stable 时不追加统一归还。
+
+`workspace_defaults.placement_search.enabled=true`设置新草稿的统一编译方式为“优化初态”；false使用原固定初态流程。该开关与候选预算随线路输入保存，使用同一个编译按钮；旧输入缺整个placement_search时保持固定初态。见[统一流程](../../docs/unified_compilation_workflow.md)。
+
+初态优化默认值在 `workspace_defaults.placement_search`：`proposal_pool=256`、`evaluations=16`、`workers=4`、`terminal_mode=stable`、`expand_storage=true`。与线路一起保存/导入导出，独立于门编译策略。stable不追加末尾原layout归还；expand_storage显式允许在现有SZ内增加关闭的5μm候选SLM。详情见[接入说明](../../docs/studio_initial_placement.md)。
+
+目录维护每个算法的版本、用途、决策方式、限制和验证范围。旧实现保留历史 API 兼容，不自动进入当前选择菜单。初态搜索支持 ordered_greedy / smt_ordered / zoned_ids，不支持 qmap_native；各策略能力不能互相推定。
 
 有序后端的 x/y 偏移为**初始相对偏移**，不是运行期间固定的轴间距。编译器自动重构抓取和作用行列，终态恢复初态；`rigid` 才固定间距。`nonuniform_pairs` 是仅替换门列表的 6 原子以上 CZ 示例，完整复现输入见 `../workbench/dynamic_aod.json`，见 [说明](../../docs/dynamic_aod_workbench.md)。
 

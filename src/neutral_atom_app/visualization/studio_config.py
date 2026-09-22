@@ -11,8 +11,8 @@ from pathlib import Path
 
 CONFIG_PATH = Path(__file__).resolve().parents[3] / 'configs/studio/workbench.json'
 # Executable implementations/generators are code capabilities, not user-extensible imports.
-GENERAL_IMPLEMENTATIONS = frozenset({'greedy', 'critical_path', 'lookahead', 'basic', 'returning', 'resident', 'ordered_greedy', 'smt_ordered'})
-WORKBENCH_IMPLEMENTATIONS = frozenset({'ordered_greedy', 'smt_ordered'})
+GENERAL_IMPLEMENTATIONS = frozenset({'greedy', 'critical_path', 'lookahead', 'basic', 'returning', 'resident', 'ordered_greedy', 'smt_ordered', 'zoned_ids','qmap_native'})
+WORKBENCH_IMPLEMENTATIONS = frozenset({'ordered_greedy', 'smt_ordered', 'zoned_ids','qmap_native'})
 CIRCUIT_GENERATORS = frozenset({'parallel1q', 'ghz', 'chain', 'mixed', 'rotations', 'empty', 'nonuniform_pairs'})
 
 
@@ -45,9 +45,11 @@ def load_catalog(path=CONFIG_PATH):
         raise ValueError('Defaults must reference catalog entries')
     from neutral_atom_app.visualization.workbench import ORDERED_SEARCH_LIMITS, MAX_COMPILE_TIMEOUT_S
     limits = dict(ORDERED_SEARCH_LIMITS, max_decisions=10000, compile_timeout_s=MAX_COMPILE_TIMEOUT_S)
+    options = {'qmap_routing': {'strict','relaxed'}}
     for budgets in [value['compilation_defaults'], *(a.get('defaults') for a in value['algorithms'])]:
-        if (not isinstance(budgets, dict) or set(budgets)-limits.keys() or
-                any(type(v) is not int or not 1 <= v <= limits[k] for k, v in budgets.items())):
+        if (not isinstance(budgets, dict) or set(budgets)-(limits.keys() | options.keys()) or
+                any((type(v) is not str or v not in options[k]) if k in options else
+                    (type(v) is not int or not 1 <= v <= limits[k]) for k, v in budgets.items())):
             raise ValueError('Invalid compilation defaults')
     for algorithm in value['algorithms']:
         for field in ('version', 'purpose', 'decision', 'tradeoff', 'validation'):
@@ -102,7 +104,19 @@ def demo_input(identifier):
 def configuration_issue(value):
     """Planning capability, distinct from representable hardware geometry."""
     from neutral_atom_app.visualization.workbench import aod_shape, aod_offsets, M4_STRATEGIES
-    ordered=value['compiler'] in {'ordered_greedy','smt_ordered'}
+    if value['compiler']=='qmap_native':
+        if value.get('aod_backend')!='row_column_orthogonal':
+            return 'QMAP 本地适配目前使用 row_column_orthogonal 有序正交后端。'
+        if value['layout']!='qmap_paired':
+            return '原生 QMAP 需要显式采用成对 SLM 平台；请选择 QMAP 配套初态。'
+        if value.get('ez_neighbor_guard_enabled',True):
+            return 'QMAP 成对 SLM 平台不使用方格四邻停驻保护；需显式关闭此选项。'
+        if value.get('placement_search',{}).get('enabled'):
+            return 'QMAP 已负责初始/动态落点，不能叠加旧版初态搜索。'
+        return None
+    if value['layout']=='qmap_paired':
+        return '成对 SLM 平台属于原生 QMAP 接口；旧策略请选择 row/grid/shuffled。'
+    ordered=value['compiler'] in {'ordered_greedy','smt_ordered','zoned_ids'}
     backend=value.get('aod_backend','rigid')
     if ordered and backend not in {'row_column','row_column_orthogonal'}:
         return '有序轴策略需要 row_column 或 row_column_orthogonal 后端；请在平台配置中选择，线路和原子布局不变。'
@@ -136,7 +150,7 @@ def validate_studio(raw, normalized):
         if set(studio) != {'mode'}:
             raise ValueError('Custom workspace cannot carry demo settings')
         if (normalized['circuit_profile'] != 'physical' or
-                normalized['layout'] not in {'row', 'grid', 'shuffled'} or
+                normalized['layout'] not in {'row', 'grid', 'shuffled','qmap_paired'} or
                 normalized['compiler'] not in GENERAL_IMPLEMENTATIONS):
             raise ValueError('Custom mode requires a general algorithm and row/grid/shuffled physical layout; specialized QEC/patch algorithms belong to demos')
         if normalized.get('ez_policy') != 'adaptive':

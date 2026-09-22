@@ -51,6 +51,10 @@ const root=container.shadowRoot||container.attachShadow({mode:'open'});
 root.innerHTML=SHELL;
 if(options.compact)root.querySelector('.shell').classList.add('compact');
 const $=id=>root.getElementById(id), canvas=$('canvas'), ctx=canvas.getContext('2d');
+// Display sampling only; the full geometry remains in the recording/backend.
+const gridStep=options.gridStepUm??data.scene.display_grid_step_um;
+const displayGridStep=Number.isFinite(gridStep)&&gridStep>0?gridStep:null;
+const showCandidateSites=options.showCandidateSites??data.scene.show_candidate_sites??true;
 const TRAP_RADIUS=7;
 const view={zoom:1,panX:0,panY:0}, ui={time:data.start_time||0,mode:'keyframe',playing:false,selected:null,hover:null};
 let width=0,height=0,last=null,displayTime=null,hits=[],drag=null,current=null,disposed=false,raf=null;
@@ -104,10 +108,14 @@ if(parallel){
  for(const op of segments){op.displayStart=displayAt(op.start);op.displayEnd=displayAt(op.end)}
 }
 let activeCacheTime=null,activeCache=[];
-function operationsAt(time){if(time!==activeCacheTime){activeCacheTime=time;activeCache=data.operations.filter(o=>o.start<=time&&time<o.end)}return activeCache}
-function operationAt(time){if(parallel){const active=segments.filter(o=>o.start<=time&&time<o.end);return active.find(o=>['raman_rotation','entangling_pulse','measurement','reset'].includes(o.kind))||active[0]||null}const i=upperBound(segments,time,'start')-1;const op=segments[i];return op&&time<op.end?op:null}
+// Recorded event times and start + duration can differ by a few float ULPs.
+// Use the same display tolerance as the timeline; never edit source timings.
+const activeAt=(op,time)=>op.start<=time&&time<op.end-timeTolerance(op.end,time);
+function operationsAt(time){if(time!==activeCacheTime){activeCacheTime=time;activeCache=data.operations.filter(o=>activeAt(o,time))}return activeCache}
+function operationAt(time){if(parallel){const active=segments.filter(o=>activeAt(o,time));return active.find(o=>['raman_rotation','entangling_pulse','measurement','reset'].includes(o.kind))||active[0]||null}const i=upperBound(segments,time,'start')-1;const op=segments[i];return op&&activeAt(op,time)?op:null}
 function displayAt(time){
-    const op=parallel?timeSlices.find(s=>s.start<=time&&time<s.end):operationAt(time);
+    if(time>=data.duration-timeTolerance(time,data.duration))return presentationEnd;
+    const op=parallel?timeSlices.find(s=>activeAt(s,time)):operationAt(time);
     if(!op){
         if(time>=data.duration)return presentationEnd;
         const mapping=parallel?timeSlices:segments,next=mapping[upperBound(mapping,time,'start')];
@@ -148,7 +156,7 @@ function appliedQubits(o){
  if(Array.isArray(o.applied_gate_ids)&&o.gate_qubits)return o.applied_gate_ids.flatMap(id=>o.gate_qubits[id]||[]);
  return o.qubit_ids||[];
 }
-function atomColor(a){if(operationsAt(ui.time).some(o=>o.qubit_ids?.includes(a.id)&&!appliedQubits(o).includes(a.id)))return theme.static_color;return a.activity==='moving'?theme.moving_color:['gating','measuring','resetting'].includes(a.activity)?theme.active_color:theme.static_color}
+function atomColor(a){const custom=options.atomColors?.[a.id];if(/^#[0-9a-f]{6}$/i.test(custom||''))return custom;if(operationsAt(ui.time).some(o=>o.qubit_ids?.includes(a.id)&&!appliedQubits(o).includes(a.id)))return theme.static_color;return a.activity==='moving'?theme.moving_color:['gating','measuring','resetting'].includes(a.activity)?theme.active_color:theme.static_color}
 function ramanCaption(op,effects){
  const illuminated=effects.filter(o=>o.kind==='raman_rotation').flatMap(o=>appliedQubits(o).map(q=>[q,o.target_holders?.[q]]));
  const inactive=effects.filter(o=>o.kind==='raman_rotation').flatMap(o=>(o.qubit_ids||[]).filter(q=>!appliedQubits(o).includes(q)));
@@ -190,7 +198,7 @@ function gateEffect(pair,op,X,Y){
 function draw(){if(!width||!height)return;current=sample(ui.time);const {f,pose,columns,rows,atoms}=current,{X,Y,scale}=projection(),scene=f.scene,b=scene.bounds;
 ctx.clearRect(0,0,width,height);ctx.font='10px system-ui';ctx.textAlign='left';ctx.textBaseline='alphabetic';
 if($('zones').checked)scene.zones.forEach((z,i)=>{const zi={storage:0,entanglement:1,measurement:2}[z.zone_type]??i;ctx.fillStyle=theme.zone_colors[zi%theme.zone_colors.length];ctx.fillRect(X(z.bounds.lower.x_um),Y(z.bounds.upper.y_um),(z.bounds.upper.x_um-z.bounds.lower.x_um)*scale,(z.bounds.upper.y_um-z.bounds.lower.y_um)*scale)});
-if($('grid').checked){for(const x of scene.grid_x)line(X(x),Y(b.upper.y_um),X(x),Y(b.lower.y_um),theme.grid_color,.6);for(const y of scene.grid_y)line(X(b.lower.x_um),Y(y),X(b.upper.x_um),Y(y),theme.grid_color,.6);const configuredSlm=new Set(scene.traps.map(t=>t.position.x_um+','+t.position.y_um));for(const p of scene.candidates)if(!configuredSlm.has(p.x_um+','+p.y_um))circle(X(p.x_um),Y(p.y_um),1.4,theme.muted_color);ctx.fillStyle=theme.muted_color;ctx.textAlign='center';let lastX=-Infinity;for(const x of scene.grid_x){if(X(x)-lastX>=32){ctx.fillText(x,X(x),Y(b.lower.y_um)+18);lastX=X(x)}}ctx.textAlign='right';let lastY=Infinity;for(const y of scene.grid_y){if(lastY-Y(y)>=18){ctx.fillText(y,X(b.lower.x_um)-10,Y(y)+3);lastY=Y(y)}}}
+if($('grid').checked){const sampled=v=>!displayGridStep||Math.abs(v/displayGridStep-Math.round(v/displayGridStep))<1e-8;const gridX=scene.grid_x.filter(sampled),gridY=scene.grid_y.filter(sampled);for(const x of gridX)line(X(x),Y(b.upper.y_um),X(x),Y(b.lower.y_um),theme.grid_color,.6);for(const y of gridY)line(X(b.lower.x_um),Y(y),X(b.upper.x_um),Y(y),theme.grid_color,.6);const configuredSlm=new Set(scene.traps.map(t=>t.position.x_um+','+t.position.y_um));if(showCandidateSites)for(const p of scene.candidates)if(!configuredSlm.has(p.x_um+','+p.y_um))circle(X(p.x_um),Y(p.y_um),1.4,theme.muted_color);ctx.fillStyle=theme.muted_color;ctx.textAlign='center';let lastX=-Infinity;for(const x of gridX){if(X(x)-lastX>=32){ctx.fillText(x,X(x),Y(b.lower.y_um)+18);lastX=X(x)}}ctx.textAlign='right';let lastY=Infinity;for(const y of gridY){if(lastY-Y(y)>=18){ctx.fillText(y,X(b.lower.x_um)-10,Y(y)+3);lastY=Y(y)}}}
 ctx.textAlign='left';if($('zones').checked)scene.zones.forEach((z,i)=>{const label={storage:'STORAGE',entanglement:'ENTANGLEMENT',measurement:'MEASUREMENT'}[z.zone_type]||z.id;const text=String(i+1).padStart(2,'0')+'  '+label;const x=X(z.bounds.lower.x_um)+9,y=Y(z.bounds.upper.y_um)+17;ctx.fillStyle='rgba(250,251,253,.92)';ctx.fillRect(x-4,y-11,126,16);ctx.fillStyle=theme.muted_color;ctx.fillText(text,x,y)});
 const routePlan=(data.plans||[]).find(p=>p.id===f.plan_id)||(data.plans||[])[0];
 const routeAtom=ui.selected||(routePlan?.requested.find(q=>routePlan.paths[q]));
@@ -204,7 +212,7 @@ if($('slm').checked){
  for(const trap of scene.traps){
   if(!$('slm-empty').checked&&!occupied.has(trap.id))continue;
   const x=X(trap.position.x_um),y=Y(trap.position.y_um);
-  if(trap.enabled)circle(x,y,TRAP_RADIUS,null,theme.muted_color,1.2);
+  if(trap.enabled||(options.dashedEmptySlm&&$('slm-off').checked)){if(options.dashedEmptySlm&&!occupied.has(trap.id))ctx.setLineDash([3,3]);circle(x,y,TRAP_RADIUS,null,theme.muted_color,1.2);ctx.setLineDash([]);}
   else if($('slm-off').checked)circle(x,y,1.6,'#bac4d1');
  }
 }
@@ -244,7 +252,7 @@ $('slm-empty').disabled=!$('slm').checked;$('slm-off').disabled=!$('slm').checke
 const gaps=[...current.columns.slice(1).map((x,i)=>x-current.columns[i]),...current.rows.slice(1).map((y,i)=>y-current.rows[i])];
 const minGap=gaps.length?Math.min(...gaps):null,limit=data.scene.aod_minimum_spacing_um??1.01;
 $('spacing-readout').textContent='AOD 活动 / 容量：'+(f.aod.enabled_rows.filter(Boolean).length*f.aod.enabled_columns.filter(Boolean).length)+' / '+(f.aod.rows*f.aod.columns)+'；当前最小中心距：'+(minGap==null?'单 trap，无邻居':minGap.toFixed(3)+' μm')+'；硬约束 > '+limit+' μm（包括空 trap）。SLM 中心排斥边界半径：'+data.scene.slm_clearance_um+' μm。';
-const axisMove=axisMoves.find(o=>o.start<=ui.time&&ui.time<o.end);
+const axisMove=axisMoves.find(o=>activeAt(o,ui.time));
 const on=mask=>mask.flatMap((v,i)=>v?[i]:[]).join(', ')||'无';
 $('axis-live-summary').textContent=(['row_column','row_column_orthogonal'].includes(data.backend)?'可变行列 AOD':'固定间距 AOD')+' · '+(axisMove?(axisMove.reshape?'正在改变相对间距':'正在整体平移'):'静止')+' · 承载 '+atoms.filter(a=>a.holder.holder_type==='mobile').length+' 原子';
 $('axis-live-coordinates').textContent='当前绝对坐标 / μm：x '+axisText(current.columns)+'；y '+axisText(current.rows)+'\n当前相对首轴 / μm：Δx '+axisText(offsets(current.columns))+'；Δy '+axisText(offsets(current.rows))+'\n活动列（从 0 编号）：'+on(f.aod.enabled_columns)+'；活动行：'+on(f.aod.enabled_rows)+(axisMove?.target_axes?'\n本段目标 / μm：x '+axisText(axisMove.target_axes.x_um)+'；y '+axisText(axisMove.target_axes.y_um):'');
@@ -254,6 +262,7 @@ const progress=op?clamp((ui.time-op.start)/(op.end-op.start),0,1):1;
 $('operation-title').textContent=op?(transfer?(['aod_load','aod_recapture'].includes(op.kind)?'SLM → AOD · 原位抓取':'AOD → SLM · 原位释放'):['entangling_pulse','raman_rotation','measurement','reset'].includes(op.kind)?effects.map(effectLabel).join(' · '):(labels[op.label]||op.label)):'记录结束 · 已显示全部已提交状态';
 $('operation-caption').textContent=transfer?transfer.ids.join(' / ')+' · 目标支撑已建立 · 交接预览；承载与源支撑在操作结束时提交':op?.applied===false?'条件不满足 · '+(op.end-op.start).toFixed(2)+' μs 控制时隙 · 未施加激光':op?.kind==='measurement'?'MZ 投影测量 · '+(op.end-op.start).toFixed(2)+' μs（本次仿真假设）· 结果在操作结束提交':op?.kind==='reset'?'MZ 原位复位到 |0⟩ · '+(op.end-op.start).toFixed(2)+' μs（本次仿真假设）':op?.kind==='raman_rotation'?ramanCaption(op,effects):op?.kind==='trap_switch'?'光阱开关 · 完成时提交启用状态':op?.kind==='idle'?'无设备操作 · 原子位置保持不变':op?.kind==='entangling_pulse'?'真实脉冲 '+(op.end-op.start).toFixed(2)+' μs · 红色连线表示作用对':op?(atoms.some(a=>a.holder.holder_type==='mobile')?(['row_column','row_column_orthogonal'].includes(data.backend)?'行列联动 · 同步三次轨迹 · 保持行列顺序':'刚性平移 · 所有已捕获原子同步移动'):(f.aod.enabled_rows.some(Boolean)&&f.aod.enabled_columns.some(Boolean)?'开启的空 AOD 移动 · 全轨迹安全已验证':'AOD 关灯定位 · 运动显式计时')):'所有时间与物理指标来自原始事件';
 if(op?.transfer_phase)$('operation-caption').textContent+=(op.transfer_phase==='depart'?' · 仅允许离开自身源 trap':' · 仅允许接近自身卸载 trap');
+if(options.modelCaption){$('operation-caption').textContent=op?.description||options.modelCaption;$('version').textContent='模板阶段 '+f.version;$('status').textContent=options.modelCaption;}
 if(parallel&&operationsAt(ui.time).length>1)$('operation-caption').textContent+=' · 同时执行：'+operationsAt(ui.time).filter(o=>o.index!==op?.index).map(o=>o.gate_id?effectLabel(o):(labels[o.label]||o.label)).join('、');
 $('operation-progress').textContent=Math.round(progress*100)+'%';
 $('operation-fill').style.width=(progress*100)+'%';
@@ -265,7 +274,7 @@ if(root.activeElement!==$('seek-time'))$('seek-time').value=String(Number(ui.tim
 if(!data.operations.length){$('event').textContent='无执行操作';$('operation-title').textContent='静态布局 · 无运输或门操作';$('operation-caption').textContent='此处显示当前记录的原子与光阱位置。';}
 $('mode-note').textContent=ui.mode==='keyframe'?(parallel?'关键帧演示：并行操作共享同一时间映射；短门展示 1.8 s（1×），运输同步推进。':'关键帧演示：装载 1.8 s · 卸载 1.6 s · 短门 1.8 s（1×）；阶段内按原轨迹推进。展示时长不计入物理指标。'):'真实时间比例：1× = 25 μs 仿真 / 1 s 屏幕时间，所有操作统一缩放；0.3 μs 门约显示 12 ms。';
 for(const a of atoms.filter(a=>visibleAtoms.includes(a.id))){const row=$('atom-'+a.id);row.setAttribute('aria-pressed',String(ui.selected===a.id));row.querySelector('.symbol').style.background=atomColor(a);row.querySelector('.symbol').className='symbol '+(a.holder.holder_type==='mobile'?'diamond':'circle');row.querySelector('.atom-state').textContent=(a.holder.holder_type==='mobile'?'AOD':'SLM')+' · '+(names[a.activity]||a.activity)}
-const a=atoms.find(a=>a.id===ui.selected);if(a){const h=a.holder,holder=h.holder_type==='mobile'?`AOD · row ${h.holder_id.row}, col ${h.holder_id.column}`:`SLM · ${h.holder_id}`;const batchPair=effects.flatMap(o=>o.intended_pairs||[]).find(pair=>pair.includes(a.id));const partner=batchPair?batchPair.filter(id=>id!==a.id).join(', '):f.requested.includes(a.id)?f.requested.filter(id=>id!==a.id).join(', '):'无（附带 / 旁观原子）';const active=transfer?.ids.includes(a.id)?(['aod_load','aod_recapture'].includes(op.kind)?'装载中（目标支撑已建立）':'卸载中（目标支撑已建立）'):a.activity==='gating'||a.activity==='measuring'||a.activity==='resetting'?(effects.filter(o=>effectQubits(o).includes(a.id)).map(effectLabel).join(' · ')||f.gate_label):a.holder.holder_type==='mobile'&&op?(labels[op.label]||op.label):'空闲';$('details').innerHTML='<dl>'+[['原子',a.id],...(data.scene.atom_roles?.[a.id]?[['角色',data.scene.atom_roles[a.id].role+' · patch '+data.scene.atom_roles[a.id].patch]]:[]),['坐标',a.position?`${a.position.x_um.toFixed(2)}, ${a.position.y_um.toFixed(2)} μm`:'—'],['承载',holder],['当前操作',active],['目标伙伴',partner]].map(([k,v])=>`<dt>${escapeHTML(k)}</dt><dd>${escapeHTML(v)}</dd>`).join('')+'</dl>'}else $('details').textContent='点击画布或列表中的原子，查看位置、承载 trap 和当前操作。'}
+const a=atoms.find(a=>a.id===ui.selected);if(a){const h=a.holder,holder=h.holder_type==='mobile'?`AOD · row ${h.holder_id.row}, col ${h.holder_id.column}`:`SLM · ${h.holder_id}`;const batchPair=effects.flatMap(o=>o.intended_pairs||[]).find(pair=>pair.includes(a.id))||data.operations.filter(o=>o.start>=ui.time&&o.applied!==false).flatMap(o=>o.intended_pairs||[]).find(pair=>pair.includes(a.id));const partner=batchPair?batchPair.filter(id=>id!==a.id).join(', '):f.requested.length===2&&f.requested.includes(a.id)?f.requested.filter(id=>id!==a.id).join(', '):'无明确配对';const active=transfer?.ids.includes(a.id)?(['aod_load','aod_recapture'].includes(op.kind)?'装载中（目标支撑已建立）':'卸载中（目标支撑已建立）'):a.activity==='gating'||a.activity==='measuring'||a.activity==='resetting'?(effects.filter(o=>effectQubits(o).includes(a.id)).map(effectLabel).join(' · ')||f.gate_label):a.holder.holder_type==='mobile'&&op?(labels[op.label]||op.label):'空闲';$('details').innerHTML='<dl>'+[['原子',a.id],...(data.scene.atom_roles?.[a.id]?[['角色',data.scene.atom_roles[a.id].role+' · patch '+data.scene.atom_roles[a.id].patch]]:[]),['坐标',a.position?`${a.position.x_um.toFixed(2)}, ${a.position.y_um.toFixed(2)} μm`:'—'],['承载',holder],['当前操作',active],['目标伙伴',partner]].map(([k,v])=>`<dt>${escapeHTML(k)}</dt><dd>${escapeHTML(v)}</dd>`).join('')+'</dl>'}else $('details').textContent='点击画布或列表中的原子，查看位置、承载 trap 和当前操作。'}
 function seek(time){if(!Number.isFinite(time))throw new Error('Simulation time must be finite');ui.playing=false;last=null;displayTime=null;ui.time=Math.max(data.start_time||0,Math.min(data.duration,time));draw()}
 function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;const dpr=window.devicePixelRatio||1;canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);draw()}
 function zoom(factor,x=width/2,y=height/2){const next=Math.max(.65,Math.min(8,view.zoom*factor)),ratio=next/view.zoom;view.panX=x-width/2-(x-width/2-view.panX)*ratio;view.panY=y-height/2-(y-height/2-view.panY)*ratio;view.zoom=next;draw()}
@@ -351,6 +360,8 @@ function tick(now){
 $('backend-caption').textContent=hasMeasurements?'QEC · 物理运输 / MZ 测量复位 / 测量条件控制 · 同一物理时钟':parallel?'门操作 / AOD 重叠 · 同一物理时钟':data.operations.some(op=>op.task_id)?'独立任务 · 准备 / 门效果 / 清理 · 当前串行执行':data.operations.some(op=>op.kind==='raman_rotation')?'CZ / RAMAN · 单 trap 串行调度 · 1Q 静止 SLM / AOD 原位执行':data.operations.length===0?'初始布局 / 无物理操作 · trap 与 holder 来自输入':['row_column','row_column_orthogonal'].includes(data.backend)?'ROW / COLUMN AOD · 行列伸缩与平移 · 返回并卸载':data.operations.some(op=>op.planner_id?.startsWith('single-trap-return'))?'SINGLE TRAP · a → EZ SLM · b → CZ · b / a 依次返回 SZ':data.operations.some(op=>op.kind==='aod_park')?'RIGID AOD · SZ 同运 → EZ 局部交接 → CZ → 恢复构型并同返':'RIGID AOD · 刚性平移 · 静态伙伴配对 · 返回并卸载';
 $('motion-note').textContent=['row_column','row_column_orthogonal'].includes(data.backend)?'按行列坐标与三次轨迹采样；采用配置的峰值速度/加速度/段内 jerk 限制，未模拟光场、加热与损失。':'轨迹按移动事件线性插值，未模拟加速度与加热。';
 const observer=new ResizeObserver(resize);observer.observe($('viewport'));resize();raf=requestAnimationFrame(tick);
+if(options.modelCaption){$('backend-caption').textContent=options.modelCaption;$('motion-note').textContent=options.modelCaption;}
+if(options.atomColors)root.querySelector('.legend').innerHTML='<span><i class="symbol ring" style="border-color:#8190a3"></i>SLM 格点 · 空位虚线</span><span><i class="symbol ring"></i>AOD 交点</span><span><i class="swatch" style="background:#db4b50"></i>移动目标（全程红色）</span><span><i class="swatch" style="background:#3879c7"></i>固定原子（蓝色）</span><span>圆形：SLM 承载 · 菱形：AOD 承载</span>';
 
 const api={setTime:seek,selectAtom(id){ui.selected=id;draw()},
  play(){ui.playing=true;last=null;displayTime=null},pause(){ui.playing=false;last=null;draw()},

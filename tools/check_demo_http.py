@@ -32,6 +32,11 @@ with (output/'launcher.log').open('w',encoding='utf-8') as log:
         js=fetch(links['gallery']+'launch-links.js').decode()
         assert links['qec'] in js
         checks.append('dynamic QEC link')
+        assert links['parking'] == 'parking/index.html'
+        parking = fetch(links['gallery'] + links['parking'])
+        assert parking == (root/'demo/parking/index.html').read_bytes()
+        assert b'ParkingTemplate' in parking and b'__ENGINE__' not in parking
+        checks.append('standalone Parking Lab served unchanged, no parking compiler service')
         catalog=json.loads(fetch(links['qec']+'api/catalog'))
         spec=catalog['demos']['qec_ghz2']
         assert len(spec['gates'])==483 and spec['readout_policy']=={'mode':'adaptive','candidate_budget':16,'top_k':3}

@@ -3,14 +3,15 @@ from time import perf_counter
 from neutral_atom_env.domain.operations import CaptureBinding, OperationType as K
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.program.builder import ProgramBuilder
-from neutral_atom_strategies.scheduling.ordered_greedy import build_batch, empty_reconfigure, corridor_routes
+from neutral_atom_strategies.motion.ordered_primitives import build_batch, empty_reconfigure, corridor_routes
 from neutral_atom_strategies.motion.ordered_routes import OccupiedSLMGrid
 from neutral_atom_env.hardware import get_backend
 from .axis_hold_routes import transfer_annotation
 
 
 class OrderedTransfer:
-    def __init__(self, deadline=float('inf'), route_budget=128, motion_router='axis_hold'):
+    def __init__(self, deadline=float('inf'), route_budget=128, motion_router='axis_hold', *, bounded_spares=False):
+        self.bounded_spares=bounded_spares
         self.motion_router=motion_router
         self.deadline=deadline; self.route_budget=route_budget; self.rejections=[]
 
@@ -47,7 +48,7 @@ class OrderedTransfer:
         for q,t in sorted(destinations.items()):
             pos=p.state.world.traps[t].position
             assignments.append((q,q,q,pos.x_um,pos.y_um))
-        batch=build_batch(p.state,assignments,check_interactions=False)
+        batch=build_batch(p.state,assignments,check_interactions=False,bounded_spares=self.bounded_spares)
         unload=tuple(CaptureBinding(b.atom_id,b.cell,destinations[b.atom_id]) for b in batch.bindings)
         prepared=ProgramBuilder(p.origin,p.intent)
         prepared.state=p.state;prepared.operations=list(p.operations);prepared.bindings=dict(p.bindings);prepared.distance=p.distance

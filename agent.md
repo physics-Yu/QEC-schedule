@@ -1,5 +1,11 @@
 # Agent 工作准则与工程导航
 
+2026-09-21 后续用户要求直接复用作者实现：当前自定义默认更新为 `qmap_native`（QMAP 3.5.0 原生 C++），见 [原生接入与验收](docs/qmap_native.md)。五组原普通电路、原 AOD 容量的物理/重放通过，但使用显式成对 SLM 平台，不能称原几何上的加速；带测量/反馈 QEC 保持旧协议策略。原生求解与本地物理适配计时分开，后者仍慢。`zoned_ids` 保留实验对照；不要再将它称为作者实现。物理判据不放宽，partial PARK 仅在显式 selective-transfer 能力下开放。
+
+2026-09-22 整理导航：[当前版本](docs/current_version.md)、[框架总览](docs/general_framework_summary.md)、[交互 IR](docs/interaction_ir.md)、[约束与 placement 审计](docs/constraint_placement_audit.md)。IR 已接本地 zoned；统一 constraint 重构尚未实施。最新交接保持简短，早期逐轮记录按日志索引读取。
+
+2026-09-21 历史默认 `zoned_ids`（后被上述 `qmap_native` 替代），见 [分层驻留编译器](docs/zoned_compiler.md)：DAG 分层、未来伙伴/驻留、有限 IDS 落点、兼容运输组、独立物理 codegen。旧有序贪心和 SMT 保留作对照，锁定协议保持原配置；初态优化改为显式可选。公共行列/program 工具位于 `strategies/motion/ordered_primitives.py`，物理环境不导入算法。下方旧默认描述按历史版本理解。
+
 2026-09-16 当前工作台更新：[通用有序策略接入](docs/ordered_workbench.md)。原 Atom Studio 现可选择 `ordered_greedy` / `smt_ordered` 和行列后端，保留 1–128 原子、row/grid/shuffled 与 AOD 配置；旧 M3/M4 仍保留 rigid 平台限制。本文后续“通用仅 rigid/单行”的描述仅指旧算法，不能据此否定新版入口。环境物理代码与 RL 本轮未改。
 
 2026-09-14 用户授权环境/策略大分离已落地：[包边界与接口](docs/environment_strategy_boundary.md)。`neutral_atom_env` 不得导入 strategies/app/experiments；路径、目标分配、驻留、调度算法放 `src/neutral_atom_strategies`，生产控制通过 `NeutralAtomEnv` 提交/推进，工作台和策略组装在 `neutral_atom_app`，专用QEC协议与场景在 `neutral_atom_experiments`。旧CLI/输入/schema19保持，Python算法导入路径已迁移；下方历史路径以新映射为准。更改边界后运行 `python tools/check_architecture.py` 和 `tests/test_environment_boundary.py`。这不代表候选流水线/RL或通用二维规划已实现。

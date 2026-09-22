@@ -90,8 +90,10 @@ def begin_transfer(backend, state, bindings, kind):
                             for key in ('atom_id', 'cell', 'static_trap_id'))):
         raise ValidationError('INVALID_TRANSFER_SET', 'Transfer bindings must be nonempty and unique')
     loading = kind in LOADS
-    if kind in {K.AOD_PARK, K.AOD_RECAPTURE} and (backend.name != 'rigid' or not state.hardware.selective_transfer_enabled):
-        raise ValidationError('SELECTIVE_TRANSFER_UNSUPPORTED', 'Partial transfer requires explicit rigid capability')
+    ordered_incremental = kind == K.AOD_RECAPTURE and backend.name in {'row_column', 'row_column_orthogonal'}
+    ordered_partial = backend.name in {'row_column', 'row_column_orthogonal'}
+    if kind in {K.AOD_PARK, K.AOD_RECAPTURE} and (not state.hardware.selective_transfer_enabled or (backend.name != 'rigid' and not ordered_partial)):
+        raise ValidationError('SELECTIVE_TRANSFER_UNSUPPORTED', 'Partial transfer requires an explicitly enabled supported capability')
     if kind == K.AOD_LOAD and state.placement.mobile_occupancy:
         raise ValidationError('AOD_BUSY', 'LOAD requires empty AOD; use an explicit partial recapture')
     if kind == K.AOD_OFFLOAD and set(state.placement.mobile_occupancy.values()) != {b.atom_id for b in bindings}:
@@ -117,9 +119,9 @@ def begin_transfer(backend, state, bindings, kind):
             slm[trap.id] = True
     overlap = TrapState(tuple(rows), tuple(cols), tuple(sorted(slm.items())))
     # Full capture closure includes incidental atoms; inactive aligned cells do not capture.
-    if kind == K.AOD_LOAD:
+    if kind == K.AOD_LOAD or ordered_incremental:
         candidate = with_traps(state, overlap)
-        options={'active_only':True} if backend.name=='rigid' else {}
+        options={'active_only':True} if backend.name=='rigid' else {'allow_loaded':True} if ordered_incremental else {}
         actual = tuple(b for b in backend.capture_closure(candidate, candidate.aod.pose,**options) if candidate.aod.is_enabled(b.cell))
         if actual != bindings:
             raise ValidationError('CAPTURE_CHANGED', 'Bindings must cover the full active capture set')

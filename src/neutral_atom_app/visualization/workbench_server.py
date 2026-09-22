@@ -183,6 +183,12 @@ class CompileJobs:
 
 def create_server(port=8766,output='artifacts/workbench',timeout=90,restore_job_dir=None,ui_root=None):
     jobs=CompileJobs(output,timeout)
+    from neutral_atom_app.studio_placement import StudioPlacementJobs
+    placement_jobs=StudioPlacementJobs(Path(output)/'placement')
+    close_compile=jobs.close
+    def close_all():
+        close_compile();placement_jobs.close()
+    jobs.close=close_all
     restored_job=jobs.restore(restore_job_dir) if restore_job_dir else None
     root=Path(ui_root) if ui_root else Path(__file__).parent
     class Handler(BaseHTTPRequestHandler):
@@ -251,6 +257,9 @@ def create_server(port=8766,output='artifacts/workbench',timeout=90,restore_job_
                 except Exception as error:
                     return self.respond(422,{'error':str(error)})
             parts=path.strip('/').split('/')
+            if len(parts) in (3,4) and parts[:2]==['api','placement']:
+                data=placement_jobs.get(parts[2],len(parts)==4 and parts[3]=='result')
+                if data is not None:return self.respond(200,data)
             if len(parts) in (3,4) and parts[:2]==['api','jobs']:
                 result=len(parts)==4 and parts[3]=='result'
                 data=jobs.get(parts[2],result)
@@ -269,7 +278,12 @@ def create_server(port=8766,output='artifacts/workbench',timeout=90,restore_job_
                 path=urlsplit(self.path).path
                 if path=='/api/preview': return self.respond(200,preview(value))
                 if path=='/api/compile': return self.respond(202,{'id':jobs.start(value)})
+                if path=='/api/placement':
+                    key=placement_jobs.start(value)
+                    return self.respond(202,{'id':key,'reused':placement_jobs.get(key).get('cache_hits',0)>0})
                 parts=path.strip('/').split('/')
+                if len(parts)==4 and parts[:2]==['api','placement'] and parts[3]=='cancel':
+                    placement_jobs.cancel(parts[2]);return self.respond(200,{'status':'cancelling'})
                 if len(parts)==4 and parts[:2]==['api','jobs'] and parts[3]=='cancel':
                     jobs.cancel(parts[2]); return self.respond(200,{'status':'cancelled'})
                 self.respond(404,{'error':'Not found'})
@@ -279,6 +293,7 @@ def create_server(port=8766,output='artifacts/workbench',timeout=90,restore_job_
                 self.respond(422,{'error':str(error)})
     server=ThreadingHTTPServer(('127.0.0.1',port),Handler)
     server.jobs=jobs
+    server.placement_jobs=placement_jobs
     server.restored_job=restored_job
     return server
 

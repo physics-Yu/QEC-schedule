@@ -61,10 +61,11 @@ def make_state(spec):
     return replace(state,quantum_state=StabilizerState.zero(tuple(sorted(state.atoms))))
 
 
-def run_one(spec,strategy,directory):
+def run_one(spec,strategy,directory,*,initial_state=None,terminal_target=None,render=True):
     if strategy not in STRATEGIES:raise ValueError('Unknown strategy')
     directory=Path(directory);directory.mkdir(parents=True,exist_ok=True)
-    env=NeutralAtomEnv(make_state(spec));initial=env.snapshot();terminal=initial_terminal(env.state)
+    env=NeutralAtomEnv(initial_state if initial_state is not None else make_state(spec))
+    initial=env.snapshot();terminal=terminal_target or initial_terminal(env.state)
     recorder=VisualRecorder(env.state);recorder.scene['atom_roles']=atom_roles()
     started=perf_counter();deadline=started+spec.get('timeout_s',1800)
     planner=(OrderedAxisGreedy(beam_width=spec.get('beam_width',64),plan_budget=spec.get('plan_budget',4),route_budget=spec.get('route_budget',128),motion_router=spec.get('motion_router','axis_hold'))
@@ -133,6 +134,8 @@ def run_one(spec,strategy,directory):
     for name,value in [('input.json',spec),('result.json',result),('recording.json',payload),('plans.json',plans),('rejections.json',planner.rejections+transport.rejections)]:
         (directory/name).write_text(canonical_json(value),encoding='utf-8')
     (directory/'initial.json').write_text(initial,encoding='utf-8');(directory/'checkpoint.json').write_text(env.snapshot(),encoding='utf-8')
-    env.state.trace.write(directory/'trace.jsonl');recorder.write(directory/'animation.html');write_atom_statistics(payload['atom_statistics'],directory)
+    env.state.trace.write(directory/'trace.jsonl')
+    if render:recorder.write(directory/'animation.html')
+    write_atom_statistics(payload['atom_statistics'],directory)
     if not equal or (error is None and not once):raise AssertionError('QEC replay/effect audit failed')
     return result

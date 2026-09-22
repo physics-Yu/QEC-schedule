@@ -97,9 +97,9 @@ def test_qec_readout_uses_policy_and_independent_physical_replay():
 
 
 def test_current_catalog_defaults_and_platform_are_not_fixed_qec():
-    c=catalog();assert c['default_algorithm']=='ordered_greedy'
+    c=catalog();assert c['default_algorithm']=='qmap_native'
     assert c['workspace_defaults']['atom_count']==4
-    assert c['workspace_defaults']['layout']=='grid'
+    assert c['workspace_defaults']['layout']=='qmap_paired'
     assert c['workspace_defaults']['aod_backend']=='row_column_orthogonal'
 
 

@@ -18,7 +18,7 @@ from neutral_atom_env.replay.serializer import primitive
 
 from neutral_atom_env.hardware.gate_contract import EXECUTABLE_GATES
 GATES = EXECUTABLE_GATES
-LAYOUTS = ('row', 'grid', 'shuffled', 'surface_patches', 'surface_qec_ghz2', 'surface_qec_ghz4')
+LAYOUTS = ('row', 'grid', 'shuffled', 'qmap_paired', 'surface_patches', 'surface_qec_ghz2', 'surface_qec_ghz4')
 QEC_LAYOUTS = frozenset({'surface_qec_ghz2','surface_qec_ghz4'})
 QEC_GATES = frozenset({'H','X','Y','Z','CZ','MEASURE','RESET'})
 QEC_STRATEGIES = frozenset({'qec_ghz2','qec_persistent','qec_joint','qec_temporal','qec_temporal_four'})
@@ -33,8 +33,8 @@ SEARCH_LIMITS = {'ready_limit':128, 'site_limit':128, 'lookahead_depth':8,
                  'row_candidate_budget':65536, 'route_expansions':1000000}
 ORDERED_SEARCH_LIMITS = dict(SEARCH_LIMITS, beam_width=512, plan_budget=128, route_budget=256,
                              solver_timeout_ms=60000, model_budget=256, readout_candidate_budget=64, readout_top_k=64)
-ORDERED_STRATEGIES = frozenset({'ordered_greedy','smt_ordered'})
-COMPILATION_OPTIONS = frozenset({'motion_router','readout_mode'})
+ORDERED_STRATEGIES = frozenset({'ordered_greedy','smt_ordered','zoned_ids','qmap_native'})
+COMPILATION_OPTIONS = frozenset({'motion_router','readout_mode','qmap_routing'})
 M4_STRATEGIES = frozenset({'basic', 'greedy', 'critical_path', 'lookahead'})
 ROW_STRATEGIES = frozenset({'row_symmetric', 'row_greedy'})
 PATCH_STRATEGIES = frozenset({'patch_symmetric', 'patch_greedy'})
@@ -108,6 +108,14 @@ def resolve_compilation(value):
     if compiler in ORDERED_STRATEGIES:
         value['compilation_backend']['kernel']='ordered-axis-readout-v1'
         value['compilation_backend']['scope']='Generic ordered-axis controller; finite routes, per-batch return, no fixed demo circuit'
+    if compiler=='zoned_ids':
+        value['compilation_backend']['kernel']='zoned-ids-v1'
+        value['compilation_backend']['scope']='Layer scheduling, EZ residency, bounded routing-aware placement, compatible batches, validated physical codegen'
+    if compiler=='qmap_native':
+        if profile!='physical':
+            raise ValueError('Native QMAP unitary frontend does not implement measurement/reset/feedback')
+        value['compilation_backend']['kernel']='mqt.qmap-3.5.0-native-cpp'
+        value['compilation_backend']['scope']='Author scheduler/reuse/IDS/router/codegen; checked local physical adapter'
     return value
 
 
@@ -225,7 +233,7 @@ def validate_input(value,*,max_atoms=MAX_ATOMS):
     backend=value.get('aod_backend','rigid')
     if backend not in {'rigid','row_column','row_column_orthogonal'}:raise ValueError('Unknown AOD backend')
     if 'aod_backend' in value:result['aod_backend']=backend
-    for key,allowed in {'motion_router':{'axis_hold','legacy_corridor'},'readout_mode':{'adaptive','aod_only','slm_only'}}.items():
+    for key,allowed in {'motion_router':{'axis_hold','legacy_corridor'},'readout_mode':{'adaptive','aod_only','slm_only'},'qmap_routing':{'strict','relaxed'}}.items():
         if key in value:
             if value[key] not in allowed:raise ValueError('Invalid '+key)
             result[key]=value[key]
@@ -257,12 +265,20 @@ def validate_input(value,*,max_atoms=MAX_ATOMS):
         result[key]=list(offsets)
     if aod_rows*aod_columns>1 and (result.get('compiler') not in M4_STRATEGIES | ROW_STRATEGIES | PATCH_STRATEGIES | QEC_STRATEGIES | ORDERED_STRATEGIES or result.get('ez_policy')!='adaptive'):
         raise ValueError('Multiple AOD traps require an M4 strategy or patch/row strategy + adaptive EZ')
+    if 'placement_search' in value:
+        from neutral_atom_app.studio_placement import search_options
+        result['placement_search']=search_options(value['placement_search'])
     from neutral_atom_app.visualization.studio_config import validate_studio
     return validate_studio(value, result)
 
 
 def build_inputs(value,*,max_atoms=MAX_ATOMS):
     value = validate_input(value,max_atoms=max_atoms)
+    if value['compiler']=='qmap_native':
+        from neutral_atom_app.qmap_native import preview_state
+        state=preview_state(value)
+        return value,state.dag.circuit,Platform(state.world,state.hardware,state.aod),{
+            q:h.holder_id for q,h in state.placement.atom_to_holder.items()}
     if value.get('qec_enabled'):
         if value['layout']=='surface_qec_ghz4':
             from neutral_atom_experiments.qec_four_layout import build_qec_four_inputs as build_qec_inputs
@@ -365,7 +381,7 @@ def failure_report(result, state, value):
     groups={}
     for rejection in getattr(result,'candidate_rejections',()):
         violation=rejection.get('violation',{})
-        code=violation.get('code','UNKNOWN')
+        code=violation.get('code',rejection.get('code','UNKNOWN'))
         group=groups.setdefault(code,{'code':code,'count':0,'example':rejection})
         group['count']+=1
     return {'status':result.status,'phase':first.get('phase','candidate_search'),
@@ -374,12 +390,16 @@ def failure_report(result, state, value):
             'unfinished_gates':first.get('unfinished_gates',[]),
             'budgets':{k:first.get(k,value.get(k)) for k in ('max_decisions','ready_limit','site_limit',
                        'lookahead_depth','beam_width','rollout_budget','row_candidate_budget','route_expansions')},
-            'search':first.get('search_log',[]),'causes':list(groups.values()),
+            'search':first.get('search_log',[]), 'placement_search':first.get('placement_search'), 'codegen':first.get('codegen'), 'route_rejections':first.get('route_rejections',[]),'causes':list(groups.values()),
             'note':'有限候选搜索未完成，不代表该线路在物理上不可能。已执行片段保留；可修改线路、布局或预算后重新编译。'}
 
 
 def compile_input(value, progress=None):
     started=perf_counter()
+    value=validate_input(value)
+    if value['compiler']=='qmap_native':
+        from neutral_atom_app.qmap_native import compile_workbench
+        return compile_workbench(value,progress)
     value,circuit,platform,placement = build_inputs(value)
     from neutral_atom_app.visualization.studio_config import configuration_issue
     if issue := configuration_issue(value):

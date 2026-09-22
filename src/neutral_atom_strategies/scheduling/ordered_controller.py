@@ -6,7 +6,7 @@ SLM layouts are staged into the existing EZ, splitting transfers to AOD capacity
 from time import perf_counter
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.domain.models import ZoneType
-from neutral_atom_env.domain.operations import OperationType as K
+from neutral_atom_env.domain.operations import OperationType as K, TaskTarget
 from neutral_atom_env.program.task_validation import validate_target
 from neutral_atom_env.replay.serializer import primitive
 from neutral_atom_strategies.scheduling.m3 import initial_terminal
@@ -22,10 +22,15 @@ from neutral_atom_strategies.scheduling.qec import readout_groups, readout_servi
 def run_ordered(env, *, strategy='ordered_greedy', max_decisions=10000, compile_timeout_s=300,
                 beam_width=64, plan_budget=4, route_budget=128, solver_timeout_ms=5000,
                 model_budget=24, motion_router='axis_hold', readout_mode='adaptive',
-                readout_candidate_budget=16, readout_top_k=3, on_event=None):
+                readout_candidate_budget=16, readout_top_k=3, on_event=None, terminal_target=None,
+                restore_layout=True):
     if strategy not in {'ordered_greedy','smt_ordered'}:
         raise ValueError('Unknown ordered strategy')
-    state=env.state; terminal=initial_terminal(state); deadline=perf_counter()+compile_timeout_s
+    if type(restore_layout) is not bool or (not restore_layout and terminal_target is not None):
+        raise ValueError('Stable completion must not also request a fixed terminal layout')
+    state=env.state
+    terminal=terminal_target if terminal_target is not None else initial_terminal(state)
+    deadline=perf_counter()+compile_timeout_s
     if strategy=='smt_ordered':
         from .smt_ordered import SMTOrderedAxisPlanner
         planner=SMTOrderedAxisPlanner(solver_timeout_ms,model_budget,route_budget,motion_router)
@@ -109,10 +114,11 @@ def run_ordered(env, *, strategy='ordered_greedy', max_decisions=10000, compile_
                 if plan is None:raise last
                 execute(plan,{'kind':group[0].gate_type,'gate_ids':[g.id for g in group],
                               'readout_target':readout.log[-1]['selected'],'readout_search':readout.log[-1]})
-        phase='terminal_restore'
-        transfer({q:h.holder_id for q,h in terminal.holders},'Return to initial SLM')
-        execute(restore(env.state,terminal),{'kind':'terminal','selected':'explicit-terminal'})
-        validate_target(terminal,env.state)
+        if restore_layout:
+            phase='terminal_restore'
+            transfer({q:h.holder_id for q,h in terminal.holders},'Return to initial SLM')
+            execute(restore(env.state,terminal),{'kind':'terminal','selected':'explicit-terminal'})
+        validate_target(terminal if restore_layout else TaskTarget(),env.state)
         return M4Result('completed',(),tuple(rejections),len(log),tuple(log))
     except (ValidationError,TimeoutError) as error:
         violation=getattr(error,'violation',None)

@@ -1,30 +1,36 @@
 # 当前交接状态
 
-**2026-09-16 工作台配置已收敛：** 当前常用目录只保留有序贪心/SMT批次两个验证版，完整用途/选择方式/代价/限制/验证范围固化在配置；正交有序后端和axis-hold作为当前流程。初始偏移折叠并可恢复10μm初态；预算按算法/是否读出显示。旧自定义输入保留原值，显式更新后再编译；协议demo不擅自迁移。修复850–950px旧侧栏样式污染，配置卡内容单列，1100px以下上下排列。4×6 AOD / 6原子 / 3CZ实际编译同批通过；相关79用例分组覆盖、实际JS+HTTP通过，真实GUI仍连接失败。[详细说明](../docs/workstation_compilers.md)、[日志](logs/2026-09-16-stable-workstation.md)。入口 http://127.0.0.1:50652/?job=83c81f63376c4c05ad4d80478d444bab ，PID34060；旧49870保留历史服务，需用新入口获取新目录。
+截至 2026-09-22，当前源码在 `main`。本轮用户授权整理全部当前内容并推送 GitHub，发布验证与提交状态见 [本轮日志](logs/2026-09-22-repository-release.md)。[发布前交接原文](handoff-2026-09-22-archive.md) 按原字节保留；其中旧端口/PID、默认算法、未推送表述只对应当时快照。
 
-**2026-09-16 动态 AOD 可查验交付：** 已核实原通用有序策略会自动选择抓取/作用轴，初始偏移并非固定间距。本次增加实时绝对/相对坐标、载原子变距跳转、CZ 构型表、仅电路示例与可导入6原子输入；执行器/物理规则/算法不变。贪心及SMT均3对CZ同批、真实载原子变距和终态/独立重放通过；94相关测试及实际JS+HTTP、viewer替身检查通过，GUI连接仍失败。新工作台 http://127.0.0.1:49870/?job=cd31e74422b8455f9e3c6cc9123c8b66 ，PID28096，旧服务保留。[说明](../docs/dynamic_aod_workbench.md)、[日志](logs/2026-09-16-dynamic-aod-workbench.md)。
+## 当前入口与已实现能力
 
-**2026-09-16 原通用工作台已接入新版：** 自定义继续保留 1–128 原子、row/grid/shuffled、AOD 非均匀偏移及配置保存，新增 ordered_greedy / smt_ordered 和行列后端；外部通用 Ordered Controller 复用实际有序/axis-hold/测量策略，无固定34原子替换。旧策略及限制保留，环境与RL不变。完整480槽QEC/64计划及独立逐字重放通过；相关145测试最终分组通过，实际JS事件+HTTP双策略编辑编译通过，GUI连接仍失败未验收。新入口 http://127.0.0.1:63791/?job=8b98c4f10f154241ae11c6b32ca6cf06 ，PID36940；旧8797保留。[说明](../docs/ordered_workbench.md)、[日志](logs/2026-09-16-current-workbench.md)。
+- 当前自定义默认 `qmap_native`：作者 QMAP 3.5.0 原生内核 → 本地显式成对 SLM / AOD 适配 → Env 执行与共用回放。先运行 `python tools/setup_qmap_native.py`，再 `python demo/launch.py --port 0`。普通 H/X/Y/Z/T/CZ 已接入，测量/反馈 QEC 保持旧协议。
+- 同工作台保留本地 `zoned_ids`、`ordered_greedy`、`smt_ordered`；锁定 demo 不自动迁移。各策略的几何、终态和候选族不同，不能直接排名。详见 [当前版本](../docs/current_version.md)。
+- 初态 `placement/` 支持合法 SLM 域的站点/占据形状搜索、真实编译反馈、并行评估。工作台默认关闭搜索；本地三策略可选，QMAP 使用作者映射。当前默认 pool256 / evaluations16 / workers4 / stable；stable 与 fixed 终态必须分开比较。
+- Parking 朴素版保留已匹配轴、跳过无目标行/列；兼容优化及方向选择已实现，最优范围是声明模板中的抓取批数。离线分享模板与真实 Env 执行的证据分开。
+- 交互 IR 已接本地 zoned：Move/Apply 不携带具体 trap，resolver 选择落点，lowerer 展开物理计划；准备不打门、显式 pulse、状态/前缀绑定。仍为完整事务提交，未统一迁移所有策略。见 [IR](../docs/interaction_ir.md)、[实现日志](logs/2026-09-22-interaction-ir.md)。
+- 发布审查修复 IR-001（IDS 部分前沿阻断缩小批次回退）及实验 RL 摘要的 NumPy ABI 依赖；最终229项不同专项用例通过，216模块架构、134文件bundle与11项HTTP检查通过。完整1889项压力套件未跑完，717通过/1失败的初次记录及失败修复分别保留；发布总验收见本轮日志，不能宣称全量通过。
+- ZAC 固定/SA × reuse、QMAP/Enola 原生规模实验、隔离 RL 源码一并收录；来源、依赖、失败和验证边界在专题报告。模型权重/完整运行 artifacts 不上传。独立 `QEC-scheduler-next` 实现在仓库外，本仓库仅保留 [迁移日志](logs/2026-09-22-qec-next-bootstrap.md)。
 
-## 当前非 RL 发布基线
+## 必须保留的边界
 
-2026-09-15，main；主实现 `1d49cc0` 已推送 GitHub 并核对远端 SHA。本轮整理发布进度见 [发布日志](logs/2026-09-15-stable-release.md)，当前功能、复现及固定/计算/可选配置见 [版本说明](../docs/current_version.md)。早期逐轮摘要已移至 [发布前归档](logs/2026-09-15-pre-release-handoff.md)，追溯时按需读取。新增 RL 工作留在本地，本次不纳入 GitHub 提交。
+环境只拥有状态、硬件判据和执行，不导入策略；只有 Executor 提交真实下一状态。策略控制完整活动行×列、附带捕获、空阱扫掠和连续轨迹，不得以可行性为由放宽物理。单比特门固定 1 μs；EZ 四邻停车保护是可配置实验合同。
 
-- **分层**：环境只负责物理模拟/约束/执行；外部算法在 strategies，协议在 experiments，控制与 UI 在 app。不得为了候选可行而放宽环境约束。
-- **最新功能**：有序行列贪心与独立 SMT、2.5 μm 占据格预筛选、正交运动及 axis-hold、测量支撑/落点策略、含测量/条件门的编辑器。Q000 绕路已在共享策略修复；Q019 旧测量目标首个合法即接受已在显式注入的新策略中修复，旧调用保留兼容路径。
-- **入口**：`python demo/launch.py` → 有序 AOD · QEC；最新两份完整动画在 `demo/qec/replays.html`。开发机原 8798 服务保留；新克隆不依赖这个端口或旧 artifacts。
-- **完整案例证据**：34 原子、483 槽、105 CZ、32 测量、32 复位；同初态双方 66 计划独立重放/效果/量子/终态通过，17 批 CZ / 最大 9 对。贪心 24337.381 μs，SMT 24975.219 μs；各 8 次 AOD 测量，LOAD/OFFLOAD 各 27 次。是既有完整执行结果，本轮不重新大规模编译。
-- **物理范围**：固定 QEC 平台、Clifford 理想量子态和声明故障；不是完整噪声容错。M0–M4 及 QEC 分步的历史验收限于声明平台族，不宣称通用二维最优规划。
+本地 Env 重放、原生离散指令审计、Parking 浏览器模板和 RL 离散见证是不同验证范围。大型历史结果与本轮源码回归分别记账；原生编译时间不等于本地适配/审核/回放耗时。QEC 当前是声明 Clifford 协议及有限故障验收，不是一般噪声阈值证明。
 
 ## OPEN 与下一步
 
-1. 最新 GUI 真实浏览器验收尚未完成，前轮连接失败；HTTP、离线 DOM/Canvas 和完整物理重放不能替代真实交互。
-2. 有限目标/路线/SMT 搜索、每批 CZ 归还、测量后归还、完整服务串行仍限制性能；优先拆分这些策略组织规则，再评估跨批驻留与并发。测量第 12–14 项已替换，其余规则未隐式修改。
-3. `ReadoutPlacementPolicy` 当前从 SLM 源位/空 AOD 开始，不支持任意混合 holder 服务起点。环境允许静止 AOD 测量不代表真实光学串扰已验证。
-4. 物理条件或整体架构需变更时向用户报告；普通工程修复自主执行并保留失败证据。
+1. **Constraint 重构未实施。** 当前检查分散于落点、捕获、运动、完整计划与 runtime；EZ reservation 仍在 env 扫描下一 CZ。建议显式上层预约、阶段化错误、寻路前目标预筛、可靠绑定下复用审核结论。先冻结合法/非法语料和 profile，再做等价改造。见 [本次审计](../docs/constraint_placement_audit.md)。
+2. 动态 placement 尚未统一：初态优化、zoned CZ 落地、readout、ZAC 各有入口。完整服务仍多为串行，任意 AOD 跨批带载续接/统一全局调度未完成。
+3. `zoned_ids` QEC 性能退化仍 OPEN（历史 17→81 CZ 批次、约 3.57 倍物理时间），不替换旧 QEC。原生 QMAP 未迁移测量/反馈，同几何公平比较与本地执行性能仍待优化。
+4. Enola/QMAP 2000/5000 三正则图双方在 300 s 预算内失败；QMAP 5000 GHZ 链成功仅为原生离散验收，不能代替高并行图或连续物理验收。
+5. RL 尚无稳定超越启发式的结论；自由初态优化有成功与无收益案例，不能假定 surface QEC 普遍获益。
+6. 当前发布补齐依赖提示；ZAC/Enola 等研究工具尚非跨平台一键安装。物理模型或整体架构需变更时请用户确认，普通工程修复自主执行并保留失败证据。
 
-## 证据入口
+## 证据导航
 
-- [测量落点合同/结果](../docs/readout_placement_policy.md)；[Q000 根因修复](../docs/axis_hold_strategy_fix.md)。
-- [有序 QEC 与 SMT](../docs/qec_ordered_smt_comparison.md)；[有序贪心](../docs/ordered_axis_greedy.md)；[路线 V2](../docs/ordered_routes_v2.md)。
-- [当前发布核验](logs/2026-09-15-stable-release.md)；[环境边界](../docs/environment_strategy_boundary.md)。
+- [框架总览](../docs/general_framework_summary.md) · [源码职责](../src/README.md) · [环境/策略边界](../docs/environment_strategy_boundary.md)
+- [QMAP 与本地执行](../docs/qmap_native.md) · [运动修正](logs/2026-09-22-qmap-motion.md) · [Enola scaling](../docs/enola_scaling_benchmark.md)
+- [初态搜索](../docs/compiler_initial_placement.md) · [统一编译流程](../docs/unified_compilation_workflow.md) · [Parking](../docs/parking_compatibility.md)
+- [ZAC 复用](../docs/zac_reuse.md) · [ZAC SA](../docs/zac_initial_placement.md) · [RL 初态](../docs/rl_initial_placement.md)
+- [QEC 有序对照](../docs/qec_ordered_smt_comparison.md) · [历史发布](logs/2026-09-15-stable-release.md)

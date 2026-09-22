@@ -1,0 +1,3 @@
+# Isolated stage-B runtime; do not change the production interpreter.
+torch==2.2.2
+numpy==1.26.4

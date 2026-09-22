@@ -1,0 +1,29 @@
+{
+  "schema": "rl-random-v1",
+  "training_seeds": [11, 29],
+  "workers": 2,
+  "slots": 4,
+  "updates": 24,
+  "fragment_length": 16,
+  "hidden": 32,
+  "learning_rate": 0.0005,
+  "ppo_epochs": 4,
+  "imitation_epochs": 20,
+  "validation_interval": 8,
+  "distribution": {
+    "gate_set": "HXYZT",
+    "wire_length": [2, 5],
+    "reject_adjacent_equal": true,
+    "train": {"seed": 1601, "count": 48, "atom_counts": [4]},
+    "validation": {"seed": 1607, "count": 24, "atom_counts": [4]},
+    "test": {"seed": 1613, "count": 32, "atom_counts": [4, 6]}
+  },
+  "episode": {
+    "time_limit_us": 100000.0,
+    "max_decisions": 1000,
+    "ready_limit": 8,
+    "candidate_budget": 24,
+    "route_budget": 16,
+    "planning_seconds": 60.0
+  }
+}

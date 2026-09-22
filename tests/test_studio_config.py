@@ -24,7 +24,13 @@ def custom(algorithm='greedy'):
 @pytest.mark.parametrize('algorithm', sorted(GENERAL_IMPLEMENTATIONS))
 def test_each_general_algorithm_executes_an_ordinary_edited_circuit(algorithm):
     value = custom(algorithm)
-    if algorithm in {'ordered_greedy','smt_ordered'}:value['aod_backend']='row_column_orthogonal'
+    if algorithm == 'qmap_native':
+        from neutral_atom_strategies.qmap_native.client import native_python
+        try: native_python()
+        except RuntimeError: pytest.skip('Optional native QMAP runtime is not installed')
+        value.update(layout='qmap_paired',aod_backend='row_column_orthogonal',
+                     ez_neighbor_guard_enabled=False,aod_columns=2,aod_column_offsets_um=[0,2])
+    if algorithm in {'ordered_greedy','smt_ordered','zoned_ids'}:value['aod_backend']='row_column_orthogonal'
     original = deepcopy(value)
     result, state = compile_input(value)
     assert value == original

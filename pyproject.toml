@@ -21,6 +21,7 @@ namespaces = false
 "neutral_atom_experiments.testing" = ["*.html"]
 "neutral_atom_env.visualization" = ["*.html", "*.js"]
 "neutral_atom_app.visualization" = ["*.html", "*.js"]
+"neutral_atom_strategies.motion" = ["*.js"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

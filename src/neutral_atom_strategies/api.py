@@ -30,6 +30,9 @@ class FunctionStrategy:
 
 def make_strategy(name='greedy', **options) -> Strategy:
     """Built-in general strategies; experimental protocol guards live elsewhere."""
+    if name == 'zoned_ids':
+        from .zoned import run_zoned
+        return FunctionStrategy(name,run_zoned,dict(options,strategy=name))
     if name in {'ordered_greedy','smt_ordered'}:
         from .scheduling.ordered_controller import run_ordered
         return FunctionStrategy(name,run_ordered,dict(options,strategy=name))

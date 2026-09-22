@@ -1,0 +1,85 @@
+<div id="rl-placement-explorer">
+  <style>
+    #rl-placement-explorer { color:var(--foreground); }
+    #rl-placement-explorer .rp-pair { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px; }
+    #rl-placement-explorer .rp-map,#rl-placement-explorer .rp-curve { display:block;width:100%; }
+    #rl-placement-explorer .rp-map text,#rl-placement-explorer .rp-curve text { fill:var(--foreground); }
+    #rl-placement-explorer .rp-detail { min-height:3em; }
+    #rl-placement-explorer .rp-spacer { margin-block:16px; }
+    #rl-placement-explorer .rp-gates { display:flex;flex-wrap:wrap;gap:8px; }
+    #rl-placement-explorer .rp-layer { display:grid;grid-template-columns:54px 1fr;gap:8px;align-items:start;margin-block:10px; }
+    #rl-placement-explorer .rp-swatch { display:inline-block;width:20px;height:3px;vertical-align:middle;background:var(--viz-series-1); }
+    #rl-placement-explorer .rp-swatch-second { background:var(--viz-series-2); }
+    #rl-placement-explorer .rp-prob-row { display:grid;grid-template-columns:1fr 70px;gap:10px;margin-block:14px; }
+    #rl-placement-explorer .rp-prob-track { grid-column:1/-1;height:7px;background:var(--muted); }
+    #rl-placement-explorer .rp-prob-fill { height:100%;background:var(--viz-series-1); }
+    #rl-placement-explorer .rp-legend { display:flex;flex-wrap:wrap;gap:16px;margin-block:8px; }
+    #rl-placement-explorer .rp-chart-wrap { position:relative; }
+    #rl-placement-explorer .rp-series-toggle { appearance:none;background:transparent;border:0;padding:0;color:var(--foreground);font:inherit; }
+    @media (max-width:680px) { #rl-placement-explorer .rp-pair,#rl-placement-explorer .rp-layer { grid-template-columns:1fr; } }
+    @media (prefers-reduced-motion:no-preference) { #rl-placement-explorer .rp-prob-fill { transition:width .2s; } }
+  </style>
+  <h2>初始布局 → 快速编译</h2>
+  <div class="viz-controls">
+    <label class="form-label">策略 / 随机种子<select class="form-select" data-role="variant"></select></label>
+    <label class="form-label">评测线路<select class="form-select" data-role="case"></select></label>
+    <label class="form-label">评价场景<select class="form-select" data-role="scenario"></select></label>
+  </div>
+  <div class="rp-spacer text-small text-muted" data-role="scope">离散编译模型 · 时间含终态归还 · 非连续物理验证</div>
+  <div class="nav nav-pills" role="tablist" aria-label="展示内容">
+    <button class="nav-link active" id="rp-replay-tab" role="tab" aria-controls="rp-replay-panel" aria-selected="true" type="button">布局与编译</button>
+    <button class="nav-link" id="rp-learning-tab" role="tab" aria-controls="rp-learning-panel" aria-selected="false" type="button">训练与对手</button>
+  </div>
+  <div id="rp-replay-panel" role="tabpanel" aria-labelledby="rp-replay-tab">
+    <div class="rp-spacer viz-row">
+      <button class="btn btn-primary" data-role="play" type="button">播放</button>
+      <button class="btn" data-role="start" type="button">初态</button>
+      <button class="btn" data-role="prev" type="button">上一事件</button>
+      <button class="btn" data-role="next" type="button">下一事件</button>
+      <button class="btn" data-role="end" type="button">终态</button>
+    </div>
+    <label class="form-label">共同模型时间 <span class="tabular-nums" data-role="time-label"></span><input class="form-range" data-role="time" type="range" min="0" max="1" step="any" value="0" aria-label="共同模型时间，微秒"></label>
+    <div class="text-small text-muted">事件结束时更新位置；虚线仅连接搬运源与目标。播放速率 40 模型 μs / 秒。</div>
+    <div class="rp-pair rp-spacer">
+      <section aria-label="启发式布局编译回放">
+        <h3>交互图启发式</h3>
+        <div class="tabular-nums" data-role="baseline-total"></div>
+        <svg class="rp-map" data-role="baseline-map" role="img" aria-label="启发式布局：存储区、纠缠区和全部原子"></svg>
+        <div class="rp-detail text-small" data-role="baseline-detail"></div>
+      </section>
+      <section aria-label="RL布局编译回放">
+        <h3>RL 单次推理</h3>
+        <div class="tabular-nums" data-role="policy-total"></div>
+        <svg class="rp-map" data-role="policy-map" role="img" aria-label="RL布局：存储区、纠缠区和全部原子"></svg>
+        <div class="rp-detail text-small" data-role="policy-detail"></div>
+      </section>
+    </div>
+    <div class="rp-legend text-small"><span>○ SLM 承载</span><span>◇ AOD 承载</span><span>□ 静态站点</span><span>＋ 活动 AOD 交点</span></div>
+    <div class="rp-spacer" aria-live="polite" data-role="selection-status"></div>
+    <h3>完整 CZ 线路</h3>
+    <div class="text-small text-muted">点击门定位 RL 脉冲；基 / RL 分别显示同一时刻的门状态。</div>
+    <div data-role="circuit"></div>
+  </div>
+  <div id="rp-learning-panel" role="tabpanel" aria-labelledby="rp-learning-tab" hidden>
+    <h3>验证集选点与对手分布</h3>
+    <div class="rp-pair">
+      <section>
+        <div class="rp-legend" data-role="series-controls"></div>
+        <div class="rp-chart-wrap" data-role="curve-wrap"><svg class="rp-curve" data-role="curve" role="img" aria-label="验证集最坏场景有界遗憾，越低越好"></svg><div class="tooltip" data-role="curve-tooltip" role="tooltip" hidden></div></div>
+        <div class="text-small" data-role="checkpoint"></div>
+      </section>
+      <section>
+        <div data-role="opponent-title"></div>
+        <div data-role="probabilities"></div>
+        <div class="text-small text-muted" data-role="opponent-caption"></div>
+      </section>
+    </div>
+    <h3>留出评测 · nominal 平均耗时变化</h3>
+    <div class="text-small text-muted">相对同线路交互图启发式；负值表示模型耗时减少。</div>
+    <div class="table-responsive"><table class="table table-sm"><thead><tr><th>方法</th><th class="text-end">6 比特测试集</th><th class="text-end">8 比特外推集</th></tr></thead><tbody data-role="aggregate"></tbody></table></div>
+    <div class="text-small text-muted">小规模试验 · 2 个种子 · 16 次更新 · 对抗训练优势尚未成立</div>
+  </div>
+  <script type="application/json" id="rl-placement-data">__PLACEMENT_DATA__</script>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script>__PLACEMENT_SCRIPT__</script>

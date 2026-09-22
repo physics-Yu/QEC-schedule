@@ -34,7 +34,8 @@ async function boot(search){
 async function main(){
  const page=await boot('');const {el,exported,requests,mounted}=page;
  const waitPreview=async()=>{await pause(700);for(let i=0;i<200&&el('compile').disabled;i++)await pause(30);assert.equal(el('compile').disabled,false,el('compilation-compatibility').textContent);};
- let draft=await exported();assert.equal(draft.compilation.implementation,'ordered_greedy');assert.equal(draft.aod_backend,'row_column_orthogonal');
+ el('compile-mode').value='fixed';el('compile-mode').onchange();await waitPreview();
+ let draft=await exported();assert.equal(draft.compilation.implementation,'zoned_ids');assert.equal(draft.aod_backend,'row_column_orthogonal');
  assert.match(el('aod-backend-label').textContent,/横平竖直/);assert.match(el('aod-coordinate-note').innerHTML,/归还耗时/);assert.match(el('platform-title').textContent,/可变行列/);
  assert(!requests.some(r=>r.path==='/api/compile'));
  el('atom-count').value='6';el('atom-count').onchange();await waitPreview();
@@ -69,7 +70,7 @@ async function main(){
  el('import-file').files=[{size:1000,text:async()=>JSON.stringify(old)}];await el('import-file').onchange();await pause(800);
  assert.equal(el('compile').disabled,true);assert.equal(el('upgrade-current').hidden,false);
  const preserved=await exported();el('upgrade-current').onclick();await waitPreview();
- const upgraded=await exported();assert.equal(upgraded.compiler,'ordered_greedy');assert.equal(upgraded.aod_backend,'row_column_orthogonal');
+ const upgraded=await exported();assert.equal(upgraded.compiler,'zoned_ids');assert.equal(upgraded.aod_backend,'row_column_orthogonal');
  for(const key of ['gates','atom_count','layout','aod_column_offsets_um','aod_row_offsets_um'])assert.deepEqual(upgraded[key],preserved[key]);
  assert.equal(el('smt-budget-fields').hidden,true);assert.equal(el('greedy-budget-fields').hidden,false);
  el('reset-aod-offsets').onclick();await waitPreview();

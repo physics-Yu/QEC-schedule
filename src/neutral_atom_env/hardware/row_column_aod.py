@@ -53,8 +53,8 @@ class RowColumnAODBackend(RigidRectangularAODBackend):
         end=self.target_aod(state.aod,target)
         return sum(distance(state.aod.position(cell),end.position(cell)) for cell in state.placement.mobile_occupancy)
 
-    def capture_closure(self, state, pose):
-        if state.placement.mobile_occupancy or state.aod.is_moving:
+    def capture_closure(self, state, pose, *, allow_loaded=False):
+        if (state.placement.mobile_occupancy and not allow_loaded) or state.aod.is_moving:
             raise ValidationError('AOD_BUSY', 'Capture requires an empty idle AOD')
         self.validate_pose(state,pose)
         aod=self.target_aod(state.aod,pose)

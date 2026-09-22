@@ -1,0 +1,16 @@
+{
+  "schema": "rl-stage-a-v1",
+  "fragment_length": 4,
+  "seeds": [0, 7],
+  "workers": 1,
+  "policies": ["random", "local_cost"],
+  "episode": {
+    "time_limit_us": 100000.0,
+    "reward_scale_us": 1000.0,
+    "max_decisions": 1000,
+    "ready_limit": 8,
+    "candidate_budget": 24,
+    "route_budget": 16,
+    "planning_seconds": 30.0
+  }
+}

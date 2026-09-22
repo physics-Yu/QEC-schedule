@@ -42,7 +42,8 @@ def main():
         servers.append(qec)
         links = {'workbench': f'http://127.0.0.1:{workbench.server_port}/',
                  'qec': f'http://127.0.0.1:{qec.server_port}/',
-                 'smt': f'http://127.0.0.1:{smt.server_port}/'}
+                 'smt': f'http://127.0.0.1:{smt.server_port}/',
+                 'parking': 'parking/index.html'}
 
         class Gallery(SimpleHTTPRequestHandler):
             def do_GET(self):

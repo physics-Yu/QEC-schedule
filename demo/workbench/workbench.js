@@ -10,14 +10,23 @@ const isTemporal=()=>['qec_temporal','qec_temporal_four'].includes(draft.compile
 const availableTypes=()=>draft.qec_enabled?['H','X','Y','Z','CZ','MEASURE','RESET']:types;
 const roleOf=q=>draft.qec_enabled?(Number(q.slice(1))<qecDataCount()?'data':'ancilla'):'';
 const MAX_ATOMS=128,MAX_GATES=4096,MAX_COLUMNS=4096,PAGE_SIZE=64;
-const ordered=()=>['ordered_greedy','smt_ordered'].includes(draft.compiler);
-const policyNames={ordered_greedy:'有序轴贪心 · 当前版',smt_ordered:'SMT 有序轴批次 · 当前版',basic:'逐门归还基线',greedy:'贪心',critical_path:'关键路径',lookahead:'有限前瞻',row_symmetric:'对称逐门基线',row_greedy:'行预置 · 下界剪枝贪心',patch_symmetric:'二维 patch · 对称基线',patch_greedy:'二维 patch · 并行贪心'};
+const ordered=()=>['ordered_greedy','smt_ordered','zoned_ids'].includes(draft.compiler);
+const nativeQmap=()=>draft.compiler==='qmap_native';
+function useNativePlatform(implementation){
+ if(implementation==='qmap_native'){
+  draft.layout='qmap_paired';draft.aod_backend='row_column_orthogonal';draft.ez_neighbor_guard_enabled=false;
+  draft.placement_search={...draft.placement_search,enabled:false};
+  draft.aod_row_offsets_um=Array.from({length:draft.aod_rows},(_,i)=>i*2);
+  draft.aod_column_offsets_um=Array.from({length:draft.aod_columns},(_,i)=>i*2);
+ }else if(draft.layout==='qmap_paired'){draft.layout='grid';}
+}
+const policyNames={zoned_ids:'分层驻留 · IDS',ordered_greedy:'有序轴贪心 · 当前版',smt_ordered:'SMT 有序轴批次 · 当前版',basic:'逐门归还基线',greedy:'贪心',critical_path:'关键路径',lookahead:'有限前瞻',row_symmetric:'对称逐门基线',row_greedy:'行预置 · 下界剪枝贪心',patch_symmetric:'二维 patch · 对称基线',patch_greedy:'二维 patch · 并行贪心'};
 policyNames.qec_ghz2='QEC · 测量与条件纠错';
 policyNames.qec_temporal_four='QEC · 四逻辑比特多轮 GHZ';
 policyNames.qec_temporal='QEC · 多轮 syndrome 与报告位噪声';
 policyNames.qec_joint='QEC · 批光与读出联合优化';
 policyNames.qec_persistent='QEC · 保留 AOD 状态与复用';
-const policyNotes={ordered_greedy:'独立于电路的有序行列合批，2.5 μm 占据格筛选和 axis-hold 路线；按容量分批运输，保留全部物理校验。',smt_ordered:'独立 SMT 约束选择当前 READY CZ 批次，复用有序路线与实际物理执行；不保证全电路最优。',basic:'每门后归还；与其他 M4 策略共用动作空间，方便同条件对比。',greedy:'优先比较当前合法服务的实际成本，保留可复用位置。',critical_path:'先处理后继依赖较长的门，再比较物理成本。',lookahead:'有限推演后续门，比较驻留、归还和终态成本；更多搜索可能增加编译时间。',row_symmetric:'整行预置 EZ，按固定方向逐门服务后恢复行布局，最后统一归还。要求 row 初态与覆盖整行的 AOD。',row_greedy:'与对称基线共用整行平台和终态，按下界筛选后验证服务候选；只在声明的行服务动作族内比较。'};
+const policyNotes={zoned_ids:'门依赖 → 驻留复用 → 有限 IDS 落点 → 兼容分组 → 正交物理动作；保留完整物理校验。',ordered_greedy:'独立于电路的有序行列合批，2.5 μm 占据格筛选和 axis-hold 路线；按容量分批运输，保留全部物理校验。',smt_ordered:'独立 SMT 约束选择当前 READY CZ 批次，复用有序路线与实际物理执行；不保证全电路最优。',basic:'每门后归还；与其他 M4 策略共用动作空间，方便同条件对比。',greedy:'优先比较当前合法服务的实际成本，保留可复用位置。',critical_path:'先处理后继依赖较长的门，再比较物理成本。',lookahead:'有限推演后续门，比较驻留、归还和终态成本；更多搜索可能增加编译时间。',row_symmetric:'整行预置 EZ，按固定方向逐门服务后恢复行布局，最后统一归还。要求 row 初态与覆盖整行的 AOD。',row_greedy:'与对称基线共用整行平台和终态，按下界筛选后验证服务候选；只在声明的行服务动作族内比较。'};
 policyNotes.patch_symmetric='二维 patch 保持真实坐标，使用对称服务与完整归还；并行效果由实际物理执行记录展示。';
 policyNotes.patch_greedy='在二维布局中搜索可并行门与运输，显式检查实际作用对；可切换四邻格停驻保护，其他安全校验保持。';
 policyNotes.qec_ghz2='实际编辑线路经物理执行、辅助原子测量和条件 X/Z 纠错；最终逻辑校验来自量子状态，不保证任意改写仍得到 GHZ。';
@@ -36,7 +45,8 @@ const workspaceMode=()=>draft.studio?.mode||'history';
 const locked=()=>workspaceMode()!=='custom';
 let previewController=null,job=null,viewer=null,result=null,resultRevision=-1,startQueue=Promise.resolve();
 let failureBundle=null,replayFocused=false;
-const budgetKeys=['max_decisions','ready_limit','site_limit','lookahead_depth','beam_width','rollout_budget','compile_timeout_s','row_candidate_budget','route_expansions','plan_budget','route_budget','solver_timeout_ms','model_budget','readout_candidate_budget','readout_top_k','motion_router','readout_mode'];
+let placementJob=null,placementReport=null,placementRevision=-1;
+const budgetKeys=['max_decisions','ready_limit','site_limit','lookahead_depth','beam_width','rollout_budget','compile_timeout_s','row_candidate_budget','route_expansions','plan_budget','route_budget','solver_timeout_ms','model_budget','readout_candidate_budget','readout_top_k','motion_router','readout_mode','qmap_routing'];
 const platformKeys=['aod_backend','aod_rows','aod_columns','aod_row_offsets_um','aod_column_offsets_um','ez_neighbor_guard_enabled','ez_policy'];
 function normalizeConfiguration(value){
  value.circuit_profile??=value.compiler==='qec_temporal_four'?'qec_temporal_four':value.compiler==='qec_temporal'?'qec_temporal':value.qec_enabled?'qec_ghz2':'physical';
@@ -68,6 +78,7 @@ function syncCompilation(value){
 }
 normalizeConfiguration(draft);
 function showWorkspace(config=false){
+ $('placement-panel').hidden=config||replayFocused||!(placementReport||placementJob);
  $('configuration-workspace').hidden=!config;$('circuit-workspace').hidden=config||replayFocused;
  $('execution-workspace').hidden=config;
  $('tab-circuit').setAttribute('aria-pressed',String(!config));$('tab-config').setAttribute('aria-pressed',String(config));
@@ -89,10 +100,13 @@ function renderConfiguration(){
  $('compiler').innerHTML=locked()?'<option value="locked">'+escape(policyNames[draft.compiler]||draft.compiler)+' · 配套锁定</option>':compilationPresets.map(p=>{const reason=presetUnavailable(p);return '<option value="preset:'+p.id+'" '+(reason?'disabled':'')+'>'+p.label+(reason?'（'+reason+'）':'')+'</option>';}).join('')+(!currentPreset?'<option disabled value="preset:'+escape(implementation)+'">历史配置：'+escape(policyNames[implementation]||implementation)+'</option>':'');
  $('compiler').value=locked()?'locked':'preset:'+implementation;
  $('compiler').disabled=locked();
- $('strategy-preset-note').textContent=locked()?'此实验使用已验证的配套配置，不自动替换其协议或算法。':needsUpgrade()?'此草稿含旧算法、后端或路线。点击下方更新按钮会显式换成当前默认流程，保留原子数、布局、初始偏移和门列表；之后需重新编译。':'算法独立于电路示例；这里只列出已接入完整工作台流程的两个版本。旧单原子、刚性阵列和实验对照实现不再混入常用菜单。';
+ $('strategy-preset-note').textContent=locked()?'此实验使用已验证的配套配置，不自动替换其协议或算法。':needsUpgrade()?'此草稿含旧算法、后端或路线。点击下方更新按钮会显式换成当前默认流程，保留原子数、布局、初始偏移和门列表；之后需重新编译。':'算法独立于电路示例；这里只列出已接入完整工作台流程的版本。旧单原子、刚性阵列和实验对照实现不再混入常用菜单。';
  $('upgrade-current').hidden=!needsUpgrade();
  $('compiler-guide').innerHTML=currentPreset?'<h3>'+escape(currentPreset.version)+'</h3>'+[['如何作决定',currentPreset.decision],['取舍与限制',currentPreset.tradeoff],['验证范围',currentPreset.validation]].map(([k,v])=>'<p><strong>'+k+'：</strong>'+escape(v)+'</p>').join(''):'<p>历史或专用实现：保留原设置与执行语义，不能把旧回放视为当前版本重新编译的结果。</p>';
- $('greedy-budget-fields').hidden=draft.compiler!=='ordered_greedy';
+ $('greedy-budget-fields').hidden=!['ordered_greedy','zoned_ids'].includes(draft.compiler);
+ $('zoned-budget-fields').hidden=draft.compiler!=='zoned_ids';
+ $('ordered-beam-label').textContent=draft.compiler==='zoned_ids'?'IDS 备选队列容量':'每层保留的候选组合数';
+ $('plan-budget-label').textContent=draft.compiler==='zoned_ids'?'IDS 完成候选数':'实际评估的完整计划数';
  $('smt-budget-fields').hidden=draft.compiler!=='smt_ordered';
  $('readout-budget-fields').hidden=!draft.gates.some(g=>['MEASURE','RESET'].includes(g.gate_type));
  $('aod-backend').innerHTML='<option value="row_column_orthogonal">有序行列 · 横平竖直分段移动</option>'+((draft.aod_backend||'rigid')!=='row_column_orthogonal'?'<option disabled value="'+escape(draft.aod_backend||'rigid')+'">历史后端：'+escape(draft.aod_backend||'rigid')+'</option>':'');
@@ -104,7 +118,7 @@ function renderConfiguration(){
  $('ordered-controls').hidden=!ordered();
  $('current-compiler-flow').hidden=!ordered();
  $('motion-router').innerHTML='<option value="axis_hold">自动直接到位 / 分轴保持</option>'+((c.motion_router||'axis_hold')!=='axis_hold'?'<option disabled value="legacy_corridor">历史通道路线</option>':'');
- for(const [id,key,fallback]of [['ordered-beam','beam_width',64],['plan-budget','plan_budget',4],['route-budget','route_budget',128],['solver-timeout','solver_timeout_ms',5000],['model-budget','model_budget',24],['readout-budget','readout_candidate_budget',16],['readout-top-k','readout_top_k',3],['motion-router','motion_router','axis_hold'],['readout-mode','readout_mode','adaptive']]){$(id).value=c[key]??fallback;$(id).disabled=locked();}
+ for(const [id,key,fallback]of [['zoned-site-limit','site_limit',8],['ordered-beam','beam_width',64],['plan-budget','plan_budget',4],['route-budget','route_budget',128],['solver-timeout','solver_timeout_ms',5000],['model-budget','model_budget',24],['readout-budget','readout_candidate_budget',16],['readout-top-k','readout_top_k',3],['motion-router','motion_router','axis_hold'],['readout-mode','readout_mode','adaptive']]){$(id).value=c[key]??fallback;$(id).disabled=locked();}
  $('policy-note').textContent=locked()?(studioCatalog.demos.find(d=>d.id===draft.studio?.demo_id)?.note||'保持历史输入的实际实现与参数。'):(currentPreset?.purpose||policyNotes[draft.compiler]||'保留历史实现。');
  $('initial-summary').textContent=draft.atom_count+' 个原子 · '+({row:'单行',grid:'网格',shuffled:'随机映射',surface_patches:'四个 surface patch',surface_qec_ghz2:'两块 data + ancilla',surface_qec_ghz4:'四块 data + ancilla'}[draft.layout]||draft.layout);
  $('circuit-profile-summary').textContent=profileNames[draft.circuit_profile]||draft.circuit_profile;
@@ -112,6 +126,17 @@ function renderConfiguration(){
  $('open-compilation').textContent='算法 · '+(locked()?'实验配套':currentPreset?.label||'请选择');
  $('legacy-controls').hidden=true;
  $('compilation-compatibility').textContent=locked()?'初态、平台、线路和编译配置已锁定。返回顶部选择自定义工作区可恢复自己的草稿。':'通用指不依赖某份 demo 的门编号或协议阶段；有限搜索仍可能失败，并不保证任意布局可行或最优。';
+ if(!$('qmap-routing')){
+  const label=document.createElement('label');label.id='qmap-routing-field';label.textContent='作者运输分组';
+  const select=document.createElement('select');select.id='qmap-routing';select.innerHTML='<option value="strict">Strict · 同批保持序关系</option><option value="relaxed">Relaxed · 分次装载 / 分列卸载</option>';
+  select.onchange=()=>{if(!locked())change(()=>{draft.compilation.qmap_routing=select.value;});};label.appendChild(select);$('compiler').parentElement.after(label);
+ }
+ $('qmap-routing-field').hidden=!nativeQmap();$('qmap-routing').value=c.qmap_routing||'strict';$('qmap-routing').disabled=locked();
+ if(nativeQmap()){
+  $('initial-summary').textContent=draft.atom_count+' 个原子 · QMAP 成对 SLM 平台';
+  $('aod-coordinate-note').innerHTML='<strong>作者选初态、落点和运输分组；这里配置 AOD 容量</strong><p>SZ 间距 10 μm；EZ 的 SLM 成对间距 2 μm。方格四邻停驻规则关闭；碰撞、完整活动交点、支撑和 5 μm 单比特光间距仍检查。</p><p>初始空 AOD 坐标由兼容层生成，不作为搜索参数。作者分组超过行列容量时明确报错。</p>';
+  $('compilation-compatibility').textContent='原生 C++ 编译与本地物理执行分别计时。此平台不冒充旧 row/grid 布局；H/X/Y/Z/T/CZ 仍可编辑。测量与反馈保留原 QEC 入口。';
+ }
  renderMode();
 }
 function renderMode(){
@@ -132,8 +157,10 @@ function renderMode(){
  if(isLocked)$('hint').textContent='锁定实验线路 · 可查看门详情和定位执行；编辑请切回自定义工作区。';
  $('seed').disabled=isLocked||draft.layout!=='shuffled';
  $('seed').parentElement.hidden=draft.layout!=='shuffled';
+ for(const id of ['layout','aod-row-offsets','aod-column-offsets','ez-neighbor-guard','reset-aod-offsets'])if($(id))$(id).disabled=isLocked||nativeQmap();
  $('undo').disabled=isLocked||!history.length;$('redo').disabled=isLocked||!future.length;
- $('compile').disabled=!inputValid||Boolean(job)||mode==='history'||needsUpgrade()||Boolean(draft.compilation_backend?.configuration_error);
+ $('compile').disabled=!inputValid||Boolean(job)||Boolean(placementJob)||mode==='history'||needsUpgrade()||Boolean(draft.compilation_backend?.configuration_error);
+ renderPlacementControls();
  if(draft.compilation_backend?.configuration_error)$('compilation-compatibility').textContent=draft.compilation_backend.configuration_error;
  $('compilation-compatibility').classList.toggle('configuration-error',Boolean(draft.compilation_backend?.configuration_error));
  const x=$('aod-column-offsets').value.split(',').map(Number),y=$('aod-row-offsets').value.split(',').map(Number);
@@ -143,7 +170,7 @@ function replaceWorkspace(value){
  draft=normalizeConfiguration(value);history=[];future=[];selected=null;pending=null;columns=8;page=0;edited();
 }
 $('reset-aod-offsets').onclick=()=>{if(locked())return;change(()=>{draft.aod_column_offsets_um=Array.from({length:draft.aod_columns},(_,i)=>i*10);draft.aod_row_offsets_um=Array.from({length:draft.aod_rows},(_,i)=>i*10);});};
-$('upgrade-current').onclick=()=>{if(locked())return;change(()=>{const p=compilationPresets.find(p=>p.id===studioCatalog.default_algorithm);for(const key of budgetKeys)delete draft[key];draft.compilation={strategy:'legacy',implementation:p.id,...studioCatalog.compilation_defaults,...p.defaults,motion_router:'axis_hold',readout_mode:'adaptive'};draft.compiler=p.id;draft.aod_backend='row_column_orthogonal';delete draft.compilation_backend;});};
+$('upgrade-current').onclick=()=>{if(locked())return;change(()=>{const p=compilationPresets.find(p=>p.id===studioCatalog.default_algorithm);for(const key of budgetKeys)delete draft[key];draft.compilation={strategy:'legacy',implementation:p.id,...studioCatalog.compilation_defaults,...p.defaults,motion_router:'axis_hold',readout_mode:'adaptive'};draft.compiler=p.id;draft.aod_backend='row_column_orthogonal';useNativePlatform(p.id);delete draft.compilation_backend;});};
 $('experiment-demo').onchange=async()=>{
  const id=$('experiment-demo').value,rev=revision;
  if(!locked())customDraft=clone(draft);
@@ -152,13 +179,13 @@ $('experiment-demo').onchange=async()=>{
  catch(e){render();toast('Demo 载入失败：'+e.message);}
 };
 $('aod-backend').onchange=()=>{if(!locked())change(()=>{draft.aod_backend=$('aod-backend').value;});};
-for(const [id,key,text]of [['ordered-beam','beam_width'],['plan-budget','plan_budget'],['route-budget','route_budget'],['solver-timeout','solver_timeout_ms'],['model-budget','model_budget'],['readout-budget','readout_candidate_budget'],['readout-top-k','readout_top_k'],['motion-router','motion_router',true],['readout-mode','readout_mode',true]]){
+for(const [id,key,text]of [['zoned-site-limit','site_limit'],['ordered-beam','beam_width'],['plan-budget','plan_budget'],['route-budget','route_budget'],['solver-timeout','solver_timeout_ms'],['model-budget','model_budget'],['readout-budget','readout_candidate_budget'],['readout-top-k','readout_top_k'],['motion-router','motion_router',true],['readout-mode','readout_mode',true]]){
  $(id).onchange=()=>{if(!locked())change(()=>{draft.compilation[key]=text?$(id).value:Number($(id).value);});};
 }
 $('compiler').onchange=()=>{
  const preset=compilationPresets.find(p=>'preset:'+p.id===$('compiler').value);
  if(locked()||!preset||presetUnavailable(preset)){render();return;}
- change(()=>{const timeout=draft.compilation.compile_timeout_s;draft.compilation={strategy:'legacy',implementation:preset.id,...studioCatalog.compilation_defaults,...preset.defaults};if(timeout!==undefined)draft.compilation.compile_timeout_s=timeout;});
+ change(()=>{const timeout=draft.compilation.compile_timeout_s;draft.compilation={strategy:'legacy',implementation:preset.id,...studioCatalog.compilation_defaults,...preset.defaults};if(timeout!==undefined)draft.compilation.compile_timeout_s=timeout;useNativePlatform(preset.id);});
 };
 function savedConfigurations(kind){try{return JSON.parse(window.localStorage?.getItem('atom-studio.configurations.'+kind)||'{}');}catch{return {};}}
 function renderSavedConfigurations(kind){const saved=savedConfigurations(kind);$(''+kind+'-saved').innerHTML='<option value="">选择配置…</option>'+Object.keys(saved).map(name=>'<option value="'+escape(name)+'">'+escape(name)+'</option>').join('');}
@@ -224,6 +251,8 @@ function decisionReason(d){
  if(d.selected==='explicit-terminal')return '满足完整终态';
  if(strategy==='qec_joint'&&d.readout_search){const r=d.readout_search;return '选用 '+(r.selected_family==='loaded_return'?'静止 AOD 读出':'SLM 落地读出')+' · '+r.selected_duration_us.toFixed(2)+' μs · 较落地服务节省 '+r.saved_us.toFixed(2)+' μs · '+r.candidates.map(c=>c.family+': '+(c.status==='valid'?c.duration_us.toFixed(2)+' μs':c.violation?.code||'拒绝')).join(' / ');}
  if(['qec_persistent','qec_joint','qec_temporal','qec_temporal_four'].includes(strategy))return d.kind==='cohort_release'?'释放保留原子：'+d.reason:d.cohort_reused?'复用保留 AOD 原子：'+(d.retained_atoms||[]).join(', '):(d.retained_atoms?.length?'保留 AOD：'+d.retained_atoms.join(', '):d.kind||'实际服务');
+ if(strategy==='zoned_ids'&&d.placement_search)return 'IDS 展开 '+d.placement_search.expanded+' 个节点；'+(d.cz_batches||[]).map(b=>b.length+' 对 CZ').join(' / ')+'；先落点分组，后物理路径；规划 '+d.planning_seconds.toFixed(3)+' s';
+ if(strategy==='qmap_native')return '作者 NAViz 第 '+d.line+' 行 · '+(d.kind==='CZ'?'保持原生 CZ 分层':d.reason||'本地物理兼容');
  if(strategy==='basic')return '逐门归还';
  if(strategy==='row_symmetric')return '固定对称行服务';
  if(strategy==='row_greedy')return `构造 ${d.constructed||0} · 下界剪枝 ${d.bound_pruned||0}${d.local_optimum_certified?' · 本步候选族已覆盖':''}`;
@@ -244,14 +273,16 @@ function resumedCompileSummary(next,serviceCount){
  return `后缀续编译 ${seconds} · 后缀 ${serviceCount} 个服务段 · `+resumedExecutionText(next);
 }
 function axisDecision(d){
+ if(d.strategy==='zoned_ids'&&d.placements)return d.placements.map(p=>escape(p.gate_id)+': '+escape(p.anchor)+' 驻留 '+escape(p.site)+'；抓取 '+escape(p.mobile)+' → ('+p.x+', '+p.y+') μm').join('<br>');
  if(!d.pickup||!d.target)return '见回放实际行列坐标';
  const axis=c=>'x ['+c.x_um.join(', ')+']; y ['+c.y_um.join(', ')+']';
  return escape('抓取 '+axis(d.pickup))+'<br>'+escape('作用 '+axis(d.target))+'<br><button data-axis-time="'+d.start_us+'">查看本批过程</button>';
 }
 $('greedy-rows').onclick=e=>{const button=e.target.closest('[data-axis-time]');if(button&&viewer){viewer.setTime(Number(button.dataset.axisTime));$('viewer').scrollIntoView({behavior:'smooth',block:'start'});}};
-function renderDecisions(next){const allEntries=next.decision_log||[],reuse=allEntries.find(d=>d.kind==='reuse_summary'),entries=allEntries.filter(d=>d.kind!=='reuse_summary');$('greedy-decisions').hidden=!entries.length;if(!entries.length)return;
+function renderDecisions(next){const allEntries=next.decision_log||[],reuse=allEntries.find(d=>d.kind==='reuse_summary'),entries=allEntries.filter(d=>d.kind!=='reuse_summary');$('greedy-decisions').hidden=!entries.length&&next.input?.compiler!=='qmap_native';if(!entries.length&&next.input?.compiler!=='qmap_native')return;
  const slots=entries.reduce((n,d)=>n+(d.raman_slots?.length??d.raman_count??0),0),count=entries.reduce((n,d)=>n+(d.candidates?.length??d.readout_search?.candidates?.length??d.candidate_count??0),0);
  $('greedy-summary').textContent=`${policyNames[next.input?.compiler]||'调度'} · ${next.input?.aod_backend||'rigid'} · 编译 ${(next.compile_seconds||0).toFixed(2)} s · ${entries.length} 个服务段 · ${count} 个候选 · 补充 ${slots} 个 Raman 时隙`;
+ if(next.input?.compiler==='qmap_native'){const t=next.diagnostics?.find(x=>x.strategy==='qmap_native');if(t)$('greedy-summary').textContent='作者 C++ 内核 '+t.native_compile_seconds.toFixed(4)+' s · 前端进程（含导入） '+t.frontend_process_seconds.toFixed(2)+' s · 本地物理适配/执行/记录 '+t.physical_adapter_execute_record_seconds.toFixed(2)+' s · CZ '+t.author_metrics.cz_layers+' 层 / 最多 '+t.author_metrics.max_parallel_cz+' 门并行';}
  if(reuse)$('greedy-summary').textContent=`${policyNames[next.input?.compiler]} · 历史编译 ${(next.compile_seconds||0).toFixed(2)} s · ${entries.length} 个服务段 · 实际复用 ${reuse.reuse_count} 次 · 释放 ${reuse.flush_count} 次`;
  if(next.compile_timing_scope==='suffix_only')$('greedy-summary').textContent=(policyNames[next.input?.compiler]||'调度')+' · '+resumedCompileSummary(next,entries.length);
  if(next.input?.compiler==='qec_joint'&&reuse)$('greedy-summary').textContent+=' · AOD 读出 '+reuse.loaded_readout_visits+' 次 · 读出服务节省 '+reuse.readout_saved_us.toFixed(2)+' μs';
@@ -259,11 +290,13 @@ function renderDecisions(next){const allEntries=next.decision_log||[],reuse=allE
  $('greedy-rows').innerHTML=entries.map(d=>`<tr><td>${d.decision+1}</td><td>${d.start_us.toFixed(2)} μs</td><td>${escape(d.selected==='explicit-terminal'?'统一终态归还':d.selected||d.kind||'实际服务')}</td><td>${d.duration_us.toFixed(2)} μs</td><td>${escape(decisionReason(d))}</td><td>${d.candidates?.length??d.readout_search?.candidates?.length??d.candidate_count??0}${d.truncated?'（截断 '+d.truncated+'）':''}</td><td>${axisDecision(d)}</td><td>${(d.ez_changes||[]).map(c=>escape(c.site)+' '+(c.enabled?'开启':'关闭')).join('<br>')||'见实际操作'}</td><td>${(d.raman_slots||[]).map(s=>escape(s.gate_id)+' @ '+s.start_us.toFixed(2)+'–'+s.end_us.toFixed(2)).join('<br>')||(d.kind==='raman'&&next.input?.compiler==='qec_joint'?d.batch_size+' 门 / 1 个原生批次':d.raman_count?d.raman_count+' 个时隙':'—')}</td></tr>`).join('');}
 function change(mutator){if(locked()){toast('当前实验已锁定，请切回自定义工作区。');return;}history.push(clone(draft));if(history.length>60)history.shift();future=[];mutator();selected=null;pending=null;edited()}
 function edited(){revision++;inputValid=false;$('compile').disabled=true;syncCompilation(draft);toast();$('diagnostics').hidden=true;$('revision').textContent='DRAFT '+revision;render();markStale();
+ if(placementJob)api('/api/placement/'+placementJob+'/cancel',{}).catch(()=>{});
+ if(placementReport)$('placement-result-label').textContent='草稿已修改：下方是旧版本对照，请重新优化。';
  if(job){const old=job;job=null;api('/api/jobs/'+old+'/cancel',{}).catch(()=>{});}$('cancel').disabled=true;
  status('idle','草稿已更新',`版本 ${revision} · 点击线路区的编译按钮生成动画`);
  updatePreview(revision);
 }
-function mount(recording){if(viewer)viewer.destroy();viewer=window.NeutralAtomViewer.mount($('viewer'),recording,{compact:true})}
+function mount(recording){if(viewer)viewer.destroy();viewer=window.NeutralAtomViewer.mount($('viewer'),recording,{compact:true,...(nativeQmap()?{gridStepUm:10,showCandidateSites:false}:{})})}
 async function updatePreview(rev){if(previewController)previewController.abort();previewController=new AbortController();try{
  const p=await api('/api/preview',clone(draft),previewController.signal);if(rev!==revision)return;
  inputValid=true;
@@ -287,7 +320,7 @@ function render(){
   $(id).value=offsets.join(', ');
  }
  $('ez-neighbor-guard').checked=draft.ez_neighbor_guard_enabled??true;
- $('atom-count').value=draft.atom_count;$('layout').innerHTML=locked()?'<option value="'+escape(draft.layout)+'">'+escape(draft.layout)+' · 配套布局</option>':'<option value="row">单行排列</option><option value="grid">紧凑网格</option><option value="shuffled">网格 + 随机映射</option>';$('layout').value=draft.layout;$('seed').value=draft.seed;$('anchor-order').value=draft.anchor_order;renderConfiguration();
+ $('atom-count').value=draft.atom_count;$('layout').innerHTML=nativeQmap()?'<option value="qmap_paired">QMAP 成对 SLM · 作者初态</option>':locked()?'<option value="'+escape(draft.layout)+'">'+escape(draft.layout)+' · 配套布局</option>':'<option value="row">单行排列</option><option value="grid">紧凑网格</option><option value="shuffled">网格 + 随机映射</option>';$('layout').value=draft.layout;$('seed').value=draft.seed;$('anchor-order').value=draft.anchor_order;renderConfiguration();
  $('ez-policy').value=draft.ez_policy||'pair';$('max-decisions').value=draft.max_decisions||10000;
  $('compile-timeout').value=draft.compile_timeout_s??'';
 
@@ -436,7 +469,7 @@ function acceptResult(next,rev,value,id){
  const m=next.recording.summary.metrics;status(next.status==='completed'?'completed':'failed',next.status==='completed'?'编译完成 · 动画已更新':'编译停滞 · 已保留实际执行片段',`${m.completed_gate_count} / ${value.gates.length} 门 · 总耗时 ${next.recording.duration.toFixed(3)} μs · ${next.recording.operations.length} 个物理操作`,1);
  if(next.status==='stalled'){$('diagnostics').hidden=false;$('diagnostics').textContent=JSON.stringify(next.diagnostics,null,2);showFailure(next.failure_report||{...next.diagnostics[0],phase:'candidate_search'},value,{job_id:id,diagnostics:next.diagnostics,candidate_rejections:next.candidate_rejections,decision_log:next.decision_log,recording:next.recording});}renderDetails();
 }
-async function compile(){if(job||$('compile').disabled||workspaceMode()==='history')return;$('compile').disabled=true;const rev=revision,value=clone(syncCompilation(draft));$('diagnostics').hidden=true;toast();status('compiling','正在编译当前线路',`版本 ${rev} · 准备物理输入…`);$('cancel').disabled=false;
+async function compile(){if(job||placementJob||$('compile').disabled||workspaceMode()==='history')return;if(placementEnabled())return compilePlacement();$('placement-comparison').hidden=true;placementReport=null;$('placement-panel').hidden=true;$('compile').disabled=true;const rev=revision,value=clone(syncCompilation(draft));$('diagnostics').hidden=true;toast();status('compiling','正在编译当前线路',`版本 ${rev} · 准备物理输入…`);$('cancel').disabled=false;
  // Serialize starts so a late response cannot replace a newer job on the local server.
  const start=startQueue.then(async()=>{if(rev!==revision)return null;const started=await api('/api/compile',value);if(rev!==revision){await api('/api/jobs/'+started.id+'/cancel',{});return null;}return started.id;});startQueue=start.catch(()=>{});
  try{const id=await start;if(!id)return;job=id;while(rev===revision&&job===id){const state=await api('/api/jobs/'+id);if(rev!==revision||job!==id)return;
@@ -445,18 +478,18 @@ async function compile(){if(job||$('compile').disabled||workspaceMode()==='histo
   }else if(state.status==='cancelled'){status('idle','本次编译已取消','保留当前草稿，可重新编译。');}
   else{status('failed','编译失败',state.error?.message||'未知错误');$('diagnostics').hidden=false;$('diagnostics').textContent=JSON.stringify(state.error,null,2);showFailure({...state,phase:'worker'},value,{job_id:id});}
   job=null;$('cancel').disabled=true;return;
- }}catch(e){if(rev===revision){status('failed','编译请求失败',e.message);$('cancel').disabled=true;job=null;showFailure({phase:'request',message:e.message},value);}}finally{if(rev===revision)$('compile').disabled=false;}
+ }}catch(e){if(rev===revision){status('failed','编译请求失败',e.message);$('cancel').disabled=true;job=null;showFailure({phase:'request',message:e.message},value);}}finally{if(rev===revision){$('compile').disabled=false;renderPlacementControls();}}
 }
 $('compile').onclick=compile;
-$('cancel').onclick=()=>{$('compile').disabled=false;revision++;$('revision').textContent='DRAFT '+revision;markStale();const old=job;job=null;if(old)api('/api/jobs/'+old+'/cancel',{}).catch(e=>toast(e.message));$('cancel').disabled=true;status('idle','编译已取消','草稿已保留，点击编译可再次运行。');};
+$('cancel').onclick=()=>{if(placementJob){if(placementJob!=='starting')api('/api/placement/'+placementJob+'/cancel',{}).catch(e=>toast(e.message));$('placement-status').textContent='正在停止：等待当前批次退出，不再开始后续候选。';return;}$('compile').disabled=false;revision++;$('revision').textContent='DRAFT '+revision;markStale();const old=job;job=null;if(old)api('/api/jobs/'+old+'/cancel',{}).catch(e=>toast(e.message));$('cancel').disabled=true;status('idle','编译已取消','草稿已保留，点击编译可再次运行。');};
 function download(name,body,type){const url=URL.createObjectURL(new Blob([body],{type})),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),30000);}
 $('export-input').onclick=()=>download('atom-circuit.json',JSON.stringify(draft,null,2),'application/json');
 $('import-input').onclick=()=>$('import-file').click();
 $('import-file').onchange=async()=>{const file=$('import-file').files[0];if(!file)return;const rev=revision;try{if(file.size>2*1024*1024)throw Error('线路文件不能超过 2 MiB');const parsed=JSON.parse(await file.text()),valid=await api('/api/preview',parsed);if(rev!==revision)throw Error('导入期间草稿已变化，请再次导入。');replaceWorkspace(valid.input);}catch(e){toast('导入失败：'+e.message);}finally{$('import-file').value='';}};
-$('export-replay').onclick=async()=>{const saved=result,rev=resultRevision;if(!saved)return;try{const response=await fetch('/atom-viewer.js');if(!response.ok)throw Error('读取回放组件失败');const bundle=await response.text(),payload=JSON.stringify(saved.recording).replace(/</g,'\\u003c');
+$('export-replay').onclick=async()=>{const saved=result,rev=resultRevision;if(!saved)return;try{const response=await fetch('/atom-viewer.js');if(!response.ok)throw Error('读取回放组件失败');const bundle=await response.text(),payload=JSON.stringify(saved.input?.compiler==='qmap_native'?{...saved.recording,scene:{...saved.recording.scene,display_grid_step_um:10,show_candidate_sites:false}}:saved.recording).replace(/</g,'\\u003c');
  const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Atom Studio replay</title><body style="margin:20px;background:#f3f6f3"><p>版本 '+rev+' · '+escape(saved.status)+' · 只读编译回放</p><div id="viewer"></div><script>'+bundle.replace(/<\/script/gi,'<\\/script')+'</'+'script><script>NeutralAtomViewer.mount(document.getElementById("viewer"),'+payload+');</'+'script></body></html>';
  download('atom-replay-v'+rev+'.html',html,'text/html');}catch(e){toast(e.message);}};
-window.addEventListener('beforeunload',()=>{if(job)fetch('/api/jobs/'+job+'/cancel',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}',keepalive:true}).catch(()=>{});});
+window.addEventListener('beforeunload',()=>{if(placementJob&&placementJob!=='starting')fetch('/api/placement/'+placementJob+'/cancel',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}',keepalive:true}).catch(()=>{});if(job)fetch('/api/jobs/'+job+'/cancel',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}',keepalive:true}).catch(()=>{});});
 async function openInitialLink(){
  const search=window.location?.search||'';
  if(!search){edited();return;}
@@ -485,7 +518,84 @@ async function openInitialLink(){
  }catch(e){if(rev===revision){toast('链接载入失败：'+e.message);status('failed','链接载入失败',e.message+' 当前草稿已保留。');}}
  finally{$('compile').disabled=!inputValid||workspaceMode()==='history'||Boolean(draft.compilation_backend?.configuration_error);}
 }
-openInitialLink();
+
+function placementSettings(){return {enabled:Boolean(draft.placement_search),proposal_pool:256,evaluations:16,workers:4,terminal_mode:'stable',expand_storage:true,...draft.placement_search};}
+function placementEnabled(){return !locked()&&ordered()&&!draft.qec_enabled&&placementSettings().enabled;}
+$('compile-mode').onchange=()=>{const enabled=$('compile-mode').value==='optimize';change(()=>{draft.placement_search={...placementSettings(),enabled};});};
+function renderPlacementControls(){
+ const o=placementSettings(),eligible=!locked()&&ordered()&&!draft.qec_enabled;
+ $('compile-mode').value=placementEnabled()?'optimize':'fixed';$('compile-mode').disabled=!eligible||Boolean(job)||Boolean(placementJob);
+ $('compile-mode').options[0].textContent=nativeQmap()?'作者初态与动态落点':'固定初态';
+ $('compile').textContent=placementEnabled()?'编译：优化初态并生成动画 ↗':'编译并生成动画 ↗';
+ $('placement-panel').hidden=!$('configuration-workspace').hidden||replayFocused||!(placementReport||placementJob);
+ $('placement-search-options').hidden=!eligible;
+ $('placement-eligibility').textContent=eligible?'当前 '+(policyNames[draft.compiler]||draft.compiler)+' · 基线使用你选定的初态；优化只更改原子的初始站点。':'仅适用于自定义物理线路 + 当前有序轴贪心 / SMT；专用协议保持原配置。';
+ for(const [id,key] of [['placement-pool','proposal_pool'],['placement-evaluations','evaluations'],['placement-workers','workers'],['placement-terminal','terminal_mode']]){$(id).value=o[key];$(id).disabled=!eligible;}
+ $('placement-expand').checked=o.expand_storage;$('placement-expand').disabled=!eligible;
+ $('placement-search-summary').textContent=`搜索配置 · 候选池 ${o.proposal_pool} / 评估 ${o.evaluations} / ${o.workers} 进程`;
+ for(const name of ['baseline','optimized'])$('placement-'+name).disabled=placementRevision!==revision;
+}
+for(const [id,key] of [['placement-pool','proposal_pool'],['placement-evaluations','evaluations'],['placement-workers','workers'],['placement-terminal','terminal_mode'],['placement-expand','expand_storage']])$(id).onchange=()=>{
+ const value=key==='terminal_mode'?$(id).value:key==='expand_storage'?$(id).checked:Number($(id).value);
+ change(()=>{draft.placement_search={...placementSettings(),[key]:value};});
+};
+function placementMap(target,mapping){
+ const sites=placementReport.candidate_sites,bySite=new Map(mapping.map(([q,s])=>[s,q]));
+ const xs=sites.map(s=>s.x_um),ys=sites.map(s=>s.y_um),minX=Math.min(...xs),minY=Math.min(...ys),dx=Math.max(...xs)-minX,dy=Math.max(...ys)-minY;
+ const scale=Math.min(400/Math.max(dx,10),210/Math.max(dy,10)),w=70+dx*scale,h=65+dy*scale;
+ $(target).innerHTML=`<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:260px" role="img" aria-label="原子初态格点布局">`+sites.map(s=>{const q=bySite.get(s.id),x=35+(s.x_um-minX)*scale,y=25+(s.y_um-minY)*scale;return `<g><title>${escape(s.id)} (${s.x_um}, ${s.y_um}) μm ${q||'空位'}</title><circle cx="${x}" cy="${y}" r="${q?5:2}" fill="${q?'#5364bc':'none'}" stroke="${q?'#5364bc':'#c4cfca'}" ${q?'':'stroke-dasharray="2 2"'}/>${q?`<text x="${x}" y="${y+15}" text-anchor="middle" font-size="9">${escape(q)}</text>`:''}</g>`;}).join('')+'</svg>';
+}
+function showPlacementReplay(which){
+ if(!placementReport||placementRevision!==revision)return;
+ const r=placementReport,recording=r.recordings[which];
+ acceptResult({status:'completed',input:r.input,recording,diagnostics:[],decision_log:[],compile_seconds:r.wall_seconds},revision,r.input,'placement');
+ $('playback-revision').textContent=(which==='baseline'?'当前布局基线':'优化布局')+' · 版本 '+revision;
+ $('playback-note').textContent=(r.options.terminal_mode==='stable'?'不追加原 layout 归还；保留每批 CZ 收尾。':'恢复共同终态。')+' 初态为已准备状态，未计装配时间。';
+ for(const name of ['baseline','optimized'])$('placement-'+name).setAttribute('aria-pressed',String(name===which));
+}
+function acceptPlacement(r,id){
+ placementReport=r;placementRevision=revision;$('placement-comparison').hidden=false;
+ $('placement-result-label').textContent=`${r.input.atom_count} 原子 · ${r.input.gates.length} 门 · ${r.trials.length} 次评估（${r.trials.filter(t=>t.valid).length} 个有效） · ${r.options.workers} 编译进程 · ${r.improvement_percent>0?'物理完成时间下降 '+r.improvement_percent.toFixed(2)+'%':'预算内无更快候选，保留基线'}`;
+ placementMap('placement-baseline-map',r.baseline.mapping);placementMap('placement-optimized-map',r.selected.mapping);
+ const a=r.recordings.baseline,b=r.recordings.optimized,ma=a.summary.metrics,mb=b.summary.metrics;
+ $('placement-metrics').textContent=`物理完成时间 ${a.duration.toFixed(3)} → ${b.duration.toFixed(3)} μs；装载 ${ma.aod_load_count} → ${mb.aod_load_count} 批；原子总路程 ${ma.total_atom_distance_um.toFixed(1)} → ${mb.total_atom_distance_um.toFixed(1)} μm。`;
+ $('placement-trials').textContent=r.trials.map(t=>`${t.index===0?'基线':t.index} · ${t.origin} · ${t.valid?t.time_us.toFixed(3)+' μs':t.failure}`).join('\n');
+ $('placement-status').textContent=`完成 · 基线与选中结果的物理校验、独立重放通过 · 搜索及录制 ${r.wall_seconds.toFixed(1)} 秒`;
+ historyReplacePlacement(id);renderPlacementControls();showPlacementReplay('optimized');
+}
+function historyReplacePlacement(id){window.history.replaceState(null,'','/?placement='+encodeURIComponent(id));}
+$('placement-baseline').onclick=()=>showPlacementReplay('baseline');$('placement-optimized').onclick=()=>showPlacementReplay('optimized');
+$('placement-initial').onclick=()=>viewer?.setTime(0);$('placement-end').onclick=()=>viewer?.setTime(result?.recording.duration||0);
+$('placement-report').onclick=()=>{if(placementReport)download('placement-comparison.json',JSON.stringify(placementReport,null,2),'application/json');};
+async function compilePlacement(){
+ if(!inputValid||!placementEnabled()||placementJob||job)return;
+ const rev=revision,value=clone(syncCompilation(draft));value.placement_search=placementSettings();placementJob='starting';renderPlacementControls();$('compile').disabled=true;$('cancel').disabled=true;
+ $('placement-status').textContent='正在准备当前线路与布局基线…';status('compiling','正在优化当前线路初态','各候选独立编译；进度见下方初态优化区。');
+ try{
+  const started=await api('/api/placement',value),{id}=started;placementJob=id;$('cancel').disabled=false;
+  if(rev!==revision)await api('/api/placement/'+id+'/cancel',{});
+  while(true){const state=await api('/api/placement/'+id),p=state.progress||{};
+   $('placement-status').textContent=state.status==='cancelling'?'正在停止，等待当前批次退出…':p.trial!==undefined?`已评估 ${p.trial}/${p.budget} · ${p.valid?p.time_us.toFixed(3)+' μs':'候选失败，原因已记录'}`:p.message||state.status;
+   if(['running','cancelling'].includes(state.status)){status('compiling',state.status==='cancelling'?'正在停止初态搜索':p.phase==='recording'?'生成已验证计划的回放':p.trial?'并行评估候选布局':'编译当前布局基线',$('placement-status').textContent,p.trial?(p.trial/p.budget):0);await sleep(600);continue;}
+   if(state.status==='completed'&&rev===revision){const r=await api('/api/placement/'+id+'/result');if(rev===revision){acceptPlacement(r,id);if(started.reused){$('placement-status').textContent='复用同输入、同配置的已验证结果；本次没有重新编译。';status('completed','已复用编译结果','输入和配置未变化，直接载入两份已验证动画。',1);}}}
+   else if(state.status==='failed'){
+    const r=await api('/api/placement/'+id+'/result').catch(()=>null),message=state.error||r?.trials?.filter(t=>!t.valid).map(t=>t.failure).join('\n')||'没有完整有效的基线与优化结果';
+    $('placement-status').textContent='优化失败：'+message;status('failed','初态搜索失败',message);showFailure({phase:'initial_placement',message},value,{job_id:id,comparison:r});
+   }else {$('placement-status').textContent='已停止；保留当前草稿。';status('idle','初态搜索已停止','保留当前草稿与旧回放。');}
+   break;
+  }
+ }catch(e){$('placement-status').textContent='优化失败：'+e.message;status('failed','初态搜索失败',e.message);showFailure({phase:'initial_placement',message:e.message},value);}
+ finally{placementJob=null;$('cancel').disabled=true;renderConfiguration();}
+};
+async function openPlacementLink(){
+ const id=new URLSearchParams(window.location.search).get('placement');
+ if(!id){openInitialLink();return;}
+ edited();const rev=revision;
+ try{if(!/^[a-f0-9]{32}$/.test(id))throw Error('无效的初态搜索任务编号');const r=await api('/api/placement/'+id+'/result');if(rev!==revision)return;if(r.status!=='completed')throw Error('该搜索未完成');replaceWorkspace(r.input);acceptPlacement(r,id);}
+ catch(e){toast(e.message);}
+}
+openPlacementLink();
+
 })();
 
 }

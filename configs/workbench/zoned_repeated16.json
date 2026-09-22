@@ -1,0 +1,349 @@
+{
+  "atom_count": 16,
+  "layout": "grid",
+  "seed": 20260921,
+  "anchor_order": "forward",
+  "gates": [
+    {
+      "id": "CZ_0_0",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q000",
+        "Q001"
+      ],
+      "column": 0
+    },
+    {
+      "id": "CZ_0_1",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q002",
+        "Q003"
+      ],
+      "column": 0
+    },
+    {
+      "id": "CZ_0_2",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q004",
+        "Q005"
+      ],
+      "column": 0
+    },
+    {
+      "id": "CZ_0_3",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q006",
+        "Q007"
+      ],
+      "column": 0
+    },
+    {
+      "id": "CZ_0_4",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q008",
+        "Q009"
+      ],
+      "column": 0
+    },
+    {
+      "id": "CZ_0_5",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q010",
+        "Q011"
+      ],
+      "column": 0
+    },
+    {
+      "id": "CZ_0_6",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q012",
+        "Q013"
+      ],
+      "column": 0
+    },
+    {
+      "id": "CZ_0_7",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q014",
+        "Q015"
+      ],
+      "column": 0
+    },
+    {
+      "id": "CZ_1_0",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q000",
+        "Q001"
+      ],
+      "column": 1
+    },
+    {
+      "id": "CZ_1_1",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q002",
+        "Q003"
+      ],
+      "column": 1
+    },
+    {
+      "id": "CZ_1_2",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q004",
+        "Q005"
+      ],
+      "column": 1
+    },
+    {
+      "id": "CZ_1_3",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q006",
+        "Q007"
+      ],
+      "column": 1
+    },
+    {
+      "id": "CZ_1_4",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q008",
+        "Q009"
+      ],
+      "column": 1
+    },
+    {
+      "id": "CZ_1_5",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q010",
+        "Q011"
+      ],
+      "column": 1
+    },
+    {
+      "id": "CZ_1_6",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q012",
+        "Q013"
+      ],
+      "column": 1
+    },
+    {
+      "id": "CZ_1_7",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q014",
+        "Q015"
+      ],
+      "column": 1
+    },
+    {
+      "id": "CZ_2_0",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q000",
+        "Q001"
+      ],
+      "column": 2
+    },
+    {
+      "id": "CZ_2_1",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q002",
+        "Q003"
+      ],
+      "column": 2
+    },
+    {
+      "id": "CZ_2_2",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q004",
+        "Q005"
+      ],
+      "column": 2
+    },
+    {
+      "id": "CZ_2_3",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q006",
+        "Q007"
+      ],
+      "column": 2
+    },
+    {
+      "id": "CZ_2_4",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q008",
+        "Q009"
+      ],
+      "column": 2
+    },
+    {
+      "id": "CZ_2_5",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q010",
+        "Q011"
+      ],
+      "column": 2
+    },
+    {
+      "id": "CZ_2_6",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q012",
+        "Q013"
+      ],
+      "column": 2
+    },
+    {
+      "id": "CZ_2_7",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q014",
+        "Q015"
+      ],
+      "column": 2
+    },
+    {
+      "id": "CZ_3_0",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q000",
+        "Q001"
+      ],
+      "column": 3
+    },
+    {
+      "id": "CZ_3_1",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q002",
+        "Q003"
+      ],
+      "column": 3
+    },
+    {
+      "id": "CZ_3_2",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q004",
+        "Q005"
+      ],
+      "column": 3
+    },
+    {
+      "id": "CZ_3_3",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q006",
+        "Q007"
+      ],
+      "column": 3
+    },
+    {
+      "id": "CZ_3_4",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q008",
+        "Q009"
+      ],
+      "column": 3
+    },
+    {
+      "id": "CZ_3_5",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q010",
+        "Q011"
+      ],
+      "column": 3
+    },
+    {
+      "id": "CZ_3_6",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q012",
+        "Q013"
+      ],
+      "column": 3
+    },
+    {
+      "id": "CZ_3_7",
+      "gate_type": "CZ",
+      "qubit_ids": [
+        "Q014",
+        "Q015"
+      ],
+      "column": 3
+    }
+  ],
+  "circuit_profile": "physical",
+  "compilation": {
+    "strategy": "legacy",
+    "implementation": "zoned_ids",
+    "compile_timeout_s": 120
+  },
+  "compilation_backend": {
+    "compiler": "ordered_greedy",
+    "available_strategies": [
+      "recommended",
+      "baseline"
+    ],
+    "legacy": true,
+    "scope": "Generic ordered-axis controller; finite routes, per-batch return, no fixed demo circuit",
+    "kernel": "ordered-axis-readout-v1",
+    "configuration_error": null
+  },
+  "compiler": "ordered_greedy",
+  "ez_policy": "adaptive",
+  "max_decisions": 10000,
+  "compile_timeout_s": 180,
+  "beam_width": 64,
+  "plan_budget": 4,
+  "route_budget": 128,
+  "readout_candidate_budget": 16,
+  "readout_top_k": 3,
+  "aod_backend": "row_column_orthogonal",
+  "ez_neighbor_guard_enabled": true,
+  "aod_rows": 4,
+  "aod_columns": 4,
+  "aod_row_offsets_um": [
+    0,
+    10,
+    20,
+    30
+  ],
+  "aod_column_offsets_um": [
+    0,
+    10,
+    20,
+    30
+  ],
+  "placement_search": {
+    "enabled": false,
+    "proposal_pool": 256,
+    "evaluations": 16,
+    "workers": 4,
+    "terminal_mode": "stable",
+    "expand_storage": true
+  },
+  "studio": {
+    "mode": "custom"
+  }
+}

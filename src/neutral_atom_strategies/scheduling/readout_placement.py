@@ -10,7 +10,7 @@ from neutral_atom_env.domain.models import ZoneType,HolderType,Position2D
 from neutral_atom_env.domain.operations import OperationType as K
 from neutral_atom_env.domain.errors import ValidationError
 from neutral_atom_env.hardware.rigid_aod import segment_clearance
-from neutral_atom_strategies.scheduling.ordered_greedy import build_batch,new_builder,finish,empty_reconfigure
+from neutral_atom_strategies.motion.ordered_primitives import build_batch,new_builder,finish,empty_reconfigure
 
 
 @dataclass(frozen=True)
@@ -28,11 +28,12 @@ class ReadoutPlacementPolicy:
     Source holders are restored after the service. Cross-service residency and
     concurrent release of the AOD are deliberately not optimized by this policy.
     """
-    def __init__(self,mode='adaptive',candidate_budget=16,top_k=3):
+    def __init__(self,mode='adaptive',candidate_budget=16,top_k=3,*,bounded_spares=False):
         if mode not in ('adaptive','aod_only','slm_only'):raise ValueError('Unknown readout placement mode')
         if type(candidate_budget)!=int or not 1<=candidate_budget<=64:raise ValueError('Readout candidate budget must be 1..64')
         if type(top_k)!=int or not 1<=top_k<=candidate_budget:raise ValueError('Readout top_k must be 1..candidate_budget')
         self.mode=mode;self.candidate_budget=candidate_budget;self.top_k=top_k;self.log=[]
+        self.bounded_spares=bounded_spares
         self.generation_rejections={}
 
     def candidates(self,state,atoms):
@@ -53,7 +54,7 @@ class ReadoutPlacementPolicy:
         def add(support,positions,slm=()):
             positions=tuple(sorted(positions.items()));key=(support,positions)
             if key in targets:return
-            try:batch=build_batch(state,tuple((q,q,q,x,y) for q,(x,y) in positions),check_interactions=False)
+            try:batch=build_batch(state,tuple((q,q,q,x,y) for q,(x,y) in positions),check_interactions=False,bounded_spares=self.bounded_spares)
             except ValidationError as e:
                 code=e.violation.code
                 self.generation_rejections[code]=self.generation_rejections.get(code,0)+1
@@ -120,7 +121,7 @@ class ReadoutPlacementPolicy:
         batch=None
         if target.support=='slm':compiler.transfer_group(p,dict(target.slm),'Move readout atoms to selected MZ SLM')
         else:
-            batch=build_batch(state,tuple((q,q,q,x,y) for q,(x,y) in target.positions),check_interactions=False)
+            batch=build_batch(state,tuple((q,q,q,x,y) for q,(x,y) in target.positions),check_interactions=False,bounded_spares=self.bounded_spares)
             empty_reconfigure(p,batch.pickup);p.add(K.AOD_LOAD,'Load readout group for AOD measurement',bindings=batch.bindings)
             compiler.move_loaded(p,batch.target,'Move supported atoms to selected MZ position')
         p.add(K.MEASUREMENT if gates[0].gate_type=='MEASURE' else K.RESET,

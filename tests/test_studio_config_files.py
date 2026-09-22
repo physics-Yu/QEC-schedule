@@ -30,7 +30,7 @@ def test_frontend_reads_changed_catalog_defaults_without_js_edits():
     assert result['atom_count'] == 2 and result['layout'] == 'row'
     assert result['max_decisions'] == 27
     assert [g['gate_type'] for g in result['gates']] == ['H', 'CZ', 'T']
-    assert catalog()['default_algorithm'] == 'ordered_greedy'  # returned config is detached
+    assert catalog()['default_algorithm'] == 'qmap_native'  # returned config is detached
 
 
 @pytest.mark.parametrize('damage', ['specialized_algorithm', 'duplicate_id', 'bad_budget', 'path_escape', 'retired_algorithm', 'missing_guide'])
@@ -61,8 +61,10 @@ def test_demo_files_are_explicit_inputs_without_derived_mirrors():
 
 def test_station_catalog_has_distinct_documented_current_methods():
     config=catalog()
-    assert [a['id'] for a in config['algorithms']]==['ordered_greedy','smt_ordered']
-    greedy,smt=config['algorithms']
+    assert [a['id'] for a in config['algorithms']]==['qmap_native','zoned_ids','ordered_greedy','smt_ordered']
+    native,zoned,greedy,smt=config['algorithms']
+    assert native['defaults']['qmap_routing']=='strict'
+    assert zoned['defaults']['site_limit']==8
     assert greedy['decision']!=smt['decision']
     assert 'solver_timeout_ms' not in greedy['defaults']
     assert 'beam_width' not in smt['defaults']

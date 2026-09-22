@@ -17,7 +17,7 @@ def main():
     ui = ROOT / 'src/neutral_atom_app/visualization'
     workbench = target / 'workbench'
     workbench.mkdir(parents=True, exist_ok=True)
-    offline = r'''<script>if(location.protocol==='file:'){document.addEventListener('DOMContentLoaded',()=>{document.body.innerHTML='<main style="font:18px/1.8 system-ui;max-width:760px;margin:70px auto;padding:24px"><h1>启动可编辑工作台</h1><p>编译由本地 Python 后端执行。请在仓库根目录运行：</p><pre>python -m pip install -e ".[smt]"\npython demo/launch.py</pre><p>然后从自动打开的 Demo 首页进入此工作台。</p><a href="../index.html">返回 Demo 首页与离线动画</a></main>';});}</script>'''
+    offline = r'''<script>if(location.protocol==='file:'){document.addEventListener('DOMContentLoaded',()=>{document.body.innerHTML='<main style="font:18px/1.8 system-ui;max-width:760px;margin:70px auto;padding:24px"><h1>启动可编辑工作台</h1><p>编译由本地 Python 后端执行。请在仓库根目录运行：</p><pre>python -m pip install -e ".[smt]"\npython tools/setup_qmap_native.py\npython demo/launch.py</pre><p>然后从自动打开的 Demo 首页进入此工作台。</p><a href="../index.html">返回 Demo 首页与离线动画</a></main>';});}</script>'''
     html = (ui / 'workbench.html').read_text(encoding='utf-8')
     html = html.replace('<head>', '<head>' + offline).replace('src="/', 'src="')
     (workbench / 'index.html').write_text(html, encoding='utf-8')
@@ -108,6 +108,8 @@ def main():
         '<a href="reference/comparison.json">原始报告</a> · <a href="../../docs/current_version.md">版本说明与限制</a></p>'
         '<p>编辑电路：运行 <code>python demo/launch.py</code>，从首页选择“有序 AOD · QEC 编译”。'
         '编译由电路区域按钮手动触发。最新界面已做 HTTP / 离线控件核验，真实 GUI 验收尚未完成。</p></html>', encoding='utf-8')
+    from build_parking_portable import build as build_parking
+    build_parking(target / 'parking/index.html')
     entries = {str(p.relative_to(target)).replace('\\', '/'): {'bytes': p.stat().st_size, 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()}
                for p in sorted(target.rglob('*')) if p.is_file() and p.name not in {'manifest.json'} and '__pycache__' not in p.parts}
     (target / 'manifest.json').write_text(json.dumps({'schema': 'curated-demos/v1', 'files': entries,

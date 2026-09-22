@@ -1,5 +1,17 @@
 # 工程框架与模块边界
 
+2026-09-22：[constraint 与 placement 审计](../docs/constraint_placement_audit.md)记录当前检查链、初态/动态落点/运行态的不同职责，以及尚未实施的显式预约、分层检查和拒绝原因重构。新交互 IR 不等于约束系统已经统一。
+
+2026-09-22：[程序框架系统总结](../docs/general_framework_summary.md)按当前源码汇总四包职责、旧有序/zoned/QMAP等实际入口、可复用模块、认识演进和验证边界。下文按日期增补的旧状态不代表各新分支都相同；特别区分统一Env操作接口与尚未统一的内部调度、初态evaluator及应用入口。
+
+2026-09-22：[交互意图 IR](../docs/interaction_ir.md)新增 `strategies/ir`，MoveToInteraction/ApplyInteraction 不含 trap/坐标；`zoned/interaction` 将请求解析为绑定状态的 LayerPlacement，再由 PhysicalCodegen 生成物理计划。`run_zoned` 已走该入口；native 已解析 NAViz 保持原适配层，旧策略未宣称全迁移。Env 和 viewer 职责不变。
+
+2026-09-21：[分层驻留编译器](../docs/zoned_compiler.md) 已接入原 Studio 和并行 placement worker。新 `strategies/zoned` 将 schedule/reuse/placement/routing/landing/codegen/controller 分开；几何假设使用轻量 PlacementView，不能提交为环境状态。只有所选方案进入 program 校验和 env.submit/run。旧 greedy/SMT 不改语义。
+
+2026-09-21最新：`placement/verified.py` 是独立于 demo 和具体下游编译器的初态优化循环；`app/placement_execution.py` 组装有序编译器及真实执行/重放 evaluator。layout 几何、电路、平台和共同终态固定，初态 mapping 可变；不在 env 中注入搜索，不修改运行态。详见[合同](../docs/compiler_initial_placement.md)。
+
+2026-09-21：`neutral_atom_strategies/placement` 独立容纳初态优化、成本估计、统一结果与动态落点接口；自定义输入/Platform适配在app，物理对照在experiments。代理布局不修改env；初态在创建环境前提供，中途重排必须编译真实运输。动态新算法未因建立接口而完成，详见[初态合同](../docs/initial_placement.md)。
+
 2026-09-14新增受限实验：[SMT 联合批次对照](../docs/smt_batch_experiment.md)。`strategies/scheduling/smt_batch.py` 提供符号提案，`experiments/smt_comparison.py` 实验执行/核验，`app/smt_experiment.py` 独立进程与编辑界面；底层仍由 env 验证/执行。是固定 EZ、规则 rigid 轴、恢复式批次的实验插件，不代表通用候选接口、任意二维规划或 RL 已完成。原生产工作台没有默认切换到 SMT。
 
 2026-09-14。本文是当前维护导航，详细接口见[环境/策略边界](../docs/environment_strategy_boundary.md)，当前验收结果见[handoff](handoff.md)。历史架构方案与演进路线仍可参考，但不能将建议接口当成已实现功能。

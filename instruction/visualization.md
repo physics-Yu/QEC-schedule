@@ -1,5 +1,31 @@
 # 可视化自动生成规范
 
+2026-09-22：[RL初始placement离散对照](../docs/rl_initial_placement.md)新增只读inline检查器 `neutral_atom_app/visualization/placement_rl_inline.html` / `.js`，从冻结实验显示启发式/greedy初态、完整CZ、同模型时间回放、验证曲线和最终对手概率；导出 `tools/export_placement_rl_visualization.py`。四组训练配置、十条线路、五场景共400见证去重150份，29,530事件/5,440CZ精确保留；178,780次Node状态检查含44,959次反向定位通过，213模块架构通过。源点/终点连线只表示运输意图，事件结束提交坐标和承载，无连续路径插值/物理验收；生产UI与Env不变。真实浏览器筛选、CZ同步、训练展示、320/360px窄屏和自动播放到12CZ/AOD空终态均通过，见[本轮日志](logs/2026-09-22-rl-placement-visual.md)。
+
+2026-09-22：[5000原子原生诊断视图](../docs/qmap_large_benchmark.md)直接读取已审计QASM/NAViz，以指令索引展示坐标、load/store、CZ与线路对应；这是标明范围的编译输出检查器，不冒充Env/VisualRecorder录制。端点插值仅示意，无完整空AOD/SLM开关推断；真实物理实验仍走下述共用viewer流水线。源文件 `neutral_atom_app/visualization/qmap_native_inspector.*`，导出 `examples/export_qmap_native_view.py`。
+
+2026-09-22：[ZAC初态四组对照](../docs/zac_initial_placement.md)包含同尺度固定/SA初态、代理与物理成本、五种比较、阶段分解及完整CZ/共用回放。失败组顶部标识前缀，默认打开可完整回放的SA组；原编辑器支持初始化方案及完整输入导回。16/32实例GUI、16录制Node两模式与独立产物审计已验收。
+
+2026-09-21：[ZAC大实例](../docs/zac_benchmark.md)新增可筛选benchmark、CSV、失败前缀与完整线路回放，输入/预算/闲置轴选项可带回原编辑器。完整128原子512CZ与32原子随机128CZ已做GUI核验。共享viewer的active/end使用既有ULP显示容差，防止已到录制终点仍显示运动；不改变物理数据。
+
+2026-09-21：[统一编译流程](../docs/unified_compilation_workflow.md)替代两个启动按钮。编译方式选择固定初态或优化初态，共用线路区compile/cancel，预算放入编译配置，结果复用原viewer；同服务会话同合同成功结果可直接复用。20原子60门/逻辑4层随机例已交付，有限搜索无收益如实保留基线。
+
+2026-09-21：Demo首页原可编辑线路工作台已接[初态并行优化](../docs/studio_initial_placement.md)。继承图形门编辑输入；下方手动搜索、候选失败与有效数量、两份初态格点图、共用viewer切换。更新草稿后标记旧结果，保存地址可恢复但不自动编译。专用QEC配置不通过此入口重排。
+
+2026-09-21 初态页新增候选池、编译进程、结束条件三个配置，默认256/4/stable。历史输入按fixed/串行载入；指标及说明区分“不含末尾归还”与“含共同终态”，stable不宣称两版终态位置相同，仍录制最后CZ服务收尾。详见[合同](../docs/parallel_initial_placement.md)。
+
+2026-09-21：[自由初态对照工作台](../docs/free_initial_placement.md)，`examples/placement_workbench.py`：初态平台→可编辑完整物理电路→手动编译→顺序/自由布局同尺度格点对照→共用viewer。自由选择完整候选域内站点，比较含共同终态的实际时间；失败与无改进均展示。真实浏览器已验收门定位、32×自动结束、编辑重编译和错误反馈，未改通用Atom Studio或Parking原入口。
+
+2026-09-20：[ZAC reuse实验台](../docs/zac_reuse.md)。可编辑CZ输入→作者前端→真实物理执行→完整线路/留驻holder/共用viewer；五例开关对照、真实浏览器门定位与32×终态通过。viewer新增可选`gridStepUm/showCandidateSites`，仅控制辅助网格/未配置候选点，不改变几何或录制；ZAC 1μm坐标格显示为10μm辅助网格，其他页默认不变。
+
+2026-09-17 Parking v2：工作台保留原布局与共用viewer；朴素保留已匹配轴，优化项改为实际可用的兼容批量抓取。显示行/列最少批数、选中方向、跳过行列、每批源编号；新增10×10空位兼容示例。离线标准构造与Python完整审计分别报告，详见[合同](../docs/parking_compatibility.md)。
+
+2026-09-17 用户纠正分享版必须保留原工作台与格点界面：Parking分享页恢复原三部分结构，回放直接打包共用`viewer.js/viewer-shell.html`，通过`parking_recording.js`适配标准模板，不另维护简化的运动画布。`mount`增加可选`atomColors/dashedEmptySlm/modelCaption`，未传选项的其他工作台显示不变。红蓝颜色表示目标/固定，圆菱形表示holder，两者不混淆。详见[界面恢复日志](logs/2026-09-17-parking-workbench-ui.md)。
+
+2026-09-17 用户要求 Parking 可分享且无需本地编译程序，新增独立教学合同：[Parking Lab](../docs/parking_portable.md)。`parking_template.js` 纯构造策略 + `parking_portable.html/js` 视图，生成单 HTML；仅隔离规则 patch，浏览器无搜索、无后端，明确非完整环境审计。保留全部活动交点、共享轴联动、交接结束才改变 holder。完整 Python Executor 工作台仍保留。此例外不用于线路/QEC实验冒充物理执行。生成与验证入口见文档。
+
+2026-09-16 用户明确要求RL演示必须包含所示完整电路。`neutral_atom_experiments.rl.circuit_replay.write_circuit_replay(case, payload, path)`在共用viewer外展示全部门/Q编号/CZ连线，点击门调用公开`setTime`，按真实脉冲/服务区间同步准备、作用与完成状态；不能把电路依赖层横坐标当物理时间，门完成也不等于运输清理完成。RL阶段A/B/horizon/random/CZ导出统一接入。当前文件浏览器导航限制用loopback服务验收，不以静态检查冒充真实交互；[合同](../docs/rl_cz_experiment.md)。
+
 2026-09-14 对外入口统一为 `demo/`，使用 `python demo/launch.py` 启动同源工作台/SMT后端及首页；生成源仍在src，不手改导出副本。`tools/build_demo_bundle.py` 导出已批准参考与HTML/JS，`tools/check_demo_bundle.py` 核验哈希/链接；新任务输出与参考隔离。跨电脑说明与真实测试边界见 [交付核验](../docs/demo_delivery_validation.md)。
 
 2026-09-13 当前修订：[配置分层合同](../docs/workbench_configurations.md)。工作台仅手动编译；主页面为线路与回放，平台与编译配置独立管理。当前QEC/schema19范围见handoff，下方早期schema/U3验收记录仅为历史。

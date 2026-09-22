@@ -1,5 +1,7 @@
 # 可选择的 AOD 运动后端
 
+2026-09-17 Parking 增量拾取：独立演示显式开启 `selective_transfer_enabled` 后，有序行列 `AOD_RECAPTURE` 允许保留载荷并装入下一组；新增 bindings 必须覆盖全部活动交点计算出的真实新增捕获集合，不是逐原子选择性寻址。默认能力仍关闭，`AOD_LOAD` 仍要求空载、有序部分卸载仍不支持；支撑/扫掠/边界/序关系检查不变。逐行/逐列策略在 env 外，实现与验证见 [Parking 合同](../docs/parking_pickup.md)。
+
 2026-09-16 工作台目录收敛：当前平台固定展示正交有序行列，初始偏移移入高级设置；旧后端通过历史输入读取，不在常用菜单推荐。物理实现未删改。[能力和配置说明](../docs/workstation_compilers.md)。
 
 2026-09-15最新：新增 `row_column_orthogonal`（`configs/hardware/row_column_orthogonal.json`），继承有序行列完整物理校验，单MOVE只改x或y；未变轴全程保持。`row_column`原本就支持独立轴保持，截图绕路来自策略候选缺失。共享 `motion_router=axis_hold` 与backend分别选择，两种行列后端均验收；正交约束在env，直接/分轴保持候选在strategies。Q000原8门反事实与完整QEC结果见[修复报告](../docs/axis_hold_strategy_fix.md)。schema19结构不变；切后端须重新编译，旧检查点不自动改变后端。

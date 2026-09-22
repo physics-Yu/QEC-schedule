@@ -1,8 +1,8 @@
 // DOM/Canvas doubles for the component contract. Real browser checks are separate.
 const vm=require('node:vm'),assert=require('node:assert/strict');
 module.exports=function createHarness(html){
- const texts=[],arcs=[];
- const ctx=new Proxy({measureText:t=>({width:t.length*6}),fillText:t=>texts.push(t),arc:(...a)=>arcs.push(a)}, {get:(o,k)=>o[k]??(()=>{})});
+ const texts=[],arcs=[],colors=[];
+ const ctx=new Proxy({measureText:t=>({width:t.length*6}),fillText:t=>texts.push(t),arc:(...a)=>arcs.push(a),fill:()=>colors.push(ctx.fillStyle)}, {get:(o,k)=>o[k]??(()=>{})});
  class Element{
   constructor(id,root){this.id=id;this.root=root;this.owned=[];this.listeners={};this.attrs={};this.style={};this.children={};this.classList={add(){},remove(){}};
    this.value=({mode:'keyframe',labels:'focus',speed:'1'})[id]||'';this.checked=['effects','aod','slm','slm-empty','slm-off','grid','planned-path','zones'].includes(id);}
@@ -22,5 +22,5 @@ module.exports=function createHarness(html){
  class Container{attachShadow(){return this.shadowRoot=new Root();}}
  const container=new Container();const sandbox={document:{hidden:false,listeners:new Set(),addEventListener(k,f){this[k]=f;this.listeners.add(f);},removeEventListener(k,f){this.listeners.delete(f);},getElementById(id){assert.equal(id,'atom-viewer');return container;}},window:{devicePixelRatio:2},ResizeObserver:class{observe(){} disconnect(){}},requestAnimationFrame(){return 1},cancelAnimationFrame(){},console,newContainer:()=>new Container()};
  vm.createContext(sandbox);vm.runInContext(html.match(/<script>([\s\S]*)<\/script>/)[1],sandbox);
- return {sandbox,texts,arcs,nodes:container.shadowRoot.nodes,get:code=>vm.runInContext(`with(viewer.debug){${code}}`,sandbox),el:id=>container.shadowRoot.getElementById(id)};
+ return {sandbox,texts,arcs,colors,nodes:container.shadowRoot.nodes,get:code=>vm.runInContext(`with(viewer.debug){${code}}`,sandbox),el:id=>container.shadowRoot.getElementById(id)};
 };

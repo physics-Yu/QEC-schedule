@@ -1,8 +1,36 @@
 {
   "algorithms": [
     {
+      "id": "qmap_native",
+      "label": "QMAP 原生 C++ · IDS",
+      "defaults": {"compile_timeout_s": 300, "qmap_routing": "strict"},
+      "version": "作者 QMAP 3.5.0 · 原生内核",
+      "validation": "作者原生 QFT1000 的 37620 CZ / 3994 层 / 4937.91 ms 重排时间与论文对齐；本地物理兼容另行校验，不把千比特原生编译视为千比特物理重放。",
+      "purpose": "直接调用作者的调度、复用分析、IDS 落点、路由分组与指令生成；使用我们自己的物理执行与回放。",
+      "decision": "作者 C++ 内核决定分层、分组和落点；strict / relaxed 路由可选。兼容层保持 CZ 层、复用关系和装卸落点；运输中间点只作避障提示，比较直接或经逃逸点的正交路径，经连续校验后省去冗余折点，空闲轴尽量保持原位。运输组超过本地轴容量时拆批；邻近 1Q 先显式分离到 5 μm 再归位。",
+      "tradeoff": "要求成对 SLM 平台与作者初始映射（SZ 10 μm / EZ 配对 2 μm），不使用方格四邻停驻规则。支持编辑 H/X/Y/Z/T/CZ；测量、反馈仍走原 QEC 策略。容量拆批会增加运输时间；路径不兼容会明确失败，不静默改用自写贪心。原生耗时、进程开销和本地物理执行分别报告。"
+    },
+    {
+      "id": "zoned_ids",
+      "label": "本地分层驻留（实验对照）",
+      "defaults": {
+        "beam_width": 64,
+        "plan_budget": 4,
+        "site_limit": 8,
+        "route_budget": 128,
+        "compile_timeout_s": 300,
+        "readout_candidate_budget": 16,
+        "readout_top_k": 3
+      },
+      "version": "2026.09 · 分层工作台版",
+      "validation": "已验证 20 原子可编辑线路、非均匀 AOD、CZ 合批、按需搬运及独立重放；有限候选可能失败，不代表任意大电路已验收。",
+      "purpose": "把门调度、驻留、落点和物理路径分开；只按当前门需求搬运，允许 CZ 后留在 EZ。",
+      "decision": "按门依赖及关键路径取前沿；比较原地复用、逐门分工落点和当前前沿的成组预置。IDS 优先沿低代价分支下降，保留有限备选；评分计入装卸、运动及下一伙伴。整组检查 AOD 共享行列、序关系和捕获闭包后，再生成正交轨迹；全部动作交环境验证执行。",
+      "tradeoff": "借鉴 QMAP 分层和 IDS 思路，适配本项目 SLM–AOD CZ。不是作者算法的逐行移植；没有千比特性能保证。落点、队列、完整候选和路线都有预算；下一伙伴变化时优先保留合法 EZ 工作位置；新入区或重复伙伴优先选择近处空闲 EZ SLM，失败再退回源 SLM。保留旧流程和 SMT 作为对照，不保证每条线路执行时间更短。"
+    },
+    {
       "id": "ordered_greedy",
-      "label": "有序贪心调度（默认）",
+      "label": "有序贪心调度（旧流程对照）",
       "defaults": {
         "beam_width": 64,
         "plan_budget": 4,
@@ -79,7 +107,7 @@
   "compilation_defaults": {
     "max_decisions": 10000
   },
-  "default_algorithm": "ordered_greedy",
+  "default_algorithm": "qmap_native",
   "default_circuit": "parallel1q",
   "workspace_defaults": {
     "studio": {
@@ -87,22 +115,30 @@
     },
     "circuit_profile": "physical",
     "atom_count": 4,
-    "layout": "grid",
+    "layout": "qmap_paired",
     "seed": 7,
     "anchor_order": "forward",
     "ez_policy": "adaptive",
-    "aod_rows": 2,
-    "aod_columns": 2,
+    "aod_rows": 4,
+    "aod_columns": 32,
     "aod_row_offsets_um": [
       0,
-      10
+      2, 4, 6
     ],
     "aod_column_offsets_um": [
       0,
-      10
+      2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62
     ],
-    "ez_neighbor_guard_enabled": true,
-    "aod_backend": "row_column_orthogonal"
+    "ez_neighbor_guard_enabled": false,
+    "aod_backend": "row_column_orthogonal",
+    "placement_search": {
+      "proposal_pool": 256,
+      "evaluations": 16,
+      "workers": 4,
+      "terminal_mode": "stable",
+      "expand_storage": true,
+      "enabled": false
+    }
   },
   "circuit_presets": [
     {
