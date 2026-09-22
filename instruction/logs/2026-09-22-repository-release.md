@@ -1,6 +1,6 @@
 # 2026-09-22 · 全量工作区整理与 GitHub 发布
 
-- 状态：IN_PROGRESS
+- 状态：COMPLETED
 - 用户目标：整理目前全部内容，更新 README、日志与交接，上传 `physics-Yu/QEC-schedule`。
 - 起始版本：`main` / `0e8821c`；本轮 fetch 后与 `origin/main` 无分叉。
 - 范围：本仓库累计的源码、配置、测试、说明和精选 Demo；实验 RL 一并收录并标明研究状态。忽略的运行产物、训练权重、安装环境不上传；独立 `QEC-scheduler-next` 不属于本仓库。
@@ -55,7 +55,8 @@ python -m pip --disable-pip-version-check wheel --no-cache-dir --no-index --no-d
 ### 保存和发布
 
 - 发布前 handoff 原文为 `instruction/handoff-2026-09-22-archive.md`，SHA256 `0a63398557722ed0b1e6a94c511552b44a6e9695efbd48b76b4898dd8f8dcb00`；放在原目录层级以保持相对链接有效。
-- 暂存共311个变更文件；检查和修复已完成，准备提交/推送。发布前 fetch 核对 GitHub `origin/main` 与 `0e8821c` 一致，不 force push。实际发布确认在推送后追加。
+- 主变更提交 `8cb547b6b524413b5231117e5734da76e2edf130`：311个变更文件，已成功推送 `origin/main`。`git ls-remote origin refs/heads/main` 返回同一 SHA；推送后工作区干净。发布前 fetch 与 `0e8821c` 一致，无 force push、无分支删除。
+- 本次完成状态指代码/文档整理及 GitHub 发布完成，不表示全量压力测试、constraint重构或所有研究目标完成。本段为发布后的确认补录。
 
 ## 物理与范围
 
