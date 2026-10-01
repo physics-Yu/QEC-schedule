@@ -1,5 +1,13 @@
 # 当前交接状态
 
+## 2026-10-02 QEC/PBC GitHub 发布验证
+
+用户授权仅上传QEC/PBC部分，基于最新远端main04dc69b构建独立发布快照，保留远端已有研究和本地其他未提交工作。**干净快照274项回归与223模块架构扫描通过；单check物理smoke为3726.6μs/158事件、7门/2CZ/8计划，完整测量/终态/效果/独立重放通过。** 10月1日本地3221.711190μs/150事件对应未发布Enola默认参数，不能用作此次远端默认计时。代码上传及提交核验进行中，详见[发布日志](logs/2026-10-02-qec-pbc-publication.md)；完整memory/容错/noise边界保持。
+
+## 2026-10-01 QEC / PBC 上游架构与 d=3 原型完成
+
+用户确认 PBC=Pauli-based computation；新增 `experiments/qec_pbc` role-based 协议 IR、signed Pauli、固定 d=3 syndrome/memory/logical PPM、X/Z parity→PhysicalCircuit、measurement/detector/observable/frame sidecar 与现有平台适配。**Z/X memory 为17 roles、416/434槽、各96CZ；35-role logical PBC Bell 理想语义通过。274专项/回归测试、架构扫描通过。** 单 `Z0Z3` check 已经既有 Executor 真实执行：7门/2CZ/8计划/150事件、**3221.711190μs** 含最终归还，效果各一次、测量/复位/终态/独立 plan replay 一致；两次证据均保留。**完整memory/Bell尚未物理验收，裸ancilla不承诺容错；Y measurement、标准Clifford+T→PBC、magic state、通用时域decoder与fidelity尚未实现。** [架构/入口](../docs/qec_pbc_architecture.md)、[日志](logs/2026-10-01-qec-pbc-architecture.md)。下一步先完成17原子memory平台适配和完整物理重放，再选择容错logical PPM backend；原物理核/硬件/旧未提交工作保持，未提交推送。
+
 截至 2026-09-22，当前源码在 `main`。本轮整理的主变更 `8cb547b` 已推送 GitHub并核对远端 SHA，发布验证与确认补录见 [本轮日志](logs/2026-09-22-repository-release.md)。[发布前交接原文](handoff-2026-09-22-archive.md) 按原字节保留；其中旧端口/PID、默认算法、未推送表述只对应当时快照。
 
 ## 当前入口与已实现能力

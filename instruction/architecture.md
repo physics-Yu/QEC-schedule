@@ -1,5 +1,7 @@
 # 工程框架与模块边界
 
+2026-10-01 上游增量：[QEC/PBC 架构](../docs/qec_pbc_architecture.md)。`experiments/qec_pbc` 实现 role-based Pauli measurement IR、固定 rotated d=3 memory / logical PPM 与 X/Z parity → `PhysicalCircuit` 编译，保留 syndrome/结果符号/detector/observable/provenance。标准算法 PBC 化简、magic state、通用时域 decoder 与容错 Logical PPM 尚未实现；裸 ancilla 明确仅理想 instrument，要求 FT 会拒绝。现有 environment 与策略依赖方向不变；本轮验收见 [日志](logs/2026-10-01-qec-pbc-architecture.md)。
+
 2026-09-22：[constraint 与 placement 审计](../docs/constraint_placement_audit.md)记录当前检查链、初态/动态落点/运行态的不同职责，以及尚未实施的显式预约、分层检查和拒绝原因重构。新交互 IR 不等于约束系统已经统一。
 
 2026-09-22：[程序框架系统总结](../docs/general_framework_summary.md)按当前源码汇总四包职责、旧有序/zoned/QMAP等实际入口、可复用模块、认识演进和验证边界。下文按日期增补的旧状态不代表各新分支都相同；特别区分统一Env操作接口与尚未统一的内部调度、初态evaluator及应用入口。
