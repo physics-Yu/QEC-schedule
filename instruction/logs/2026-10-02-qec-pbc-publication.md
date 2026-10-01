@@ -1,6 +1,6 @@
 # 2026-10-02 · QEC/PBC 上传 GitHub
 
-- 状态：IN_PROGRESS
+- 状态：COMPLETED（QEC/PBC主变更已上传并核验；本日志的完成记录随后补录）
 - 用户授权：将上一轮 QEC/PBC 架构部分上传到 GitHub QEC-schedule。
 - 目标仓库：`physics-Yu/QEC-schedule`，默认分支 main。
 - 范围：QEC/PBC 新代码、测试、示例、架构文档、2026-10-01 日志与相关导航插入；不发布其他本地未提交研究或硬件变更。
@@ -9,7 +9,7 @@
 
 ## 发布与验证
 
-发布前验证完成，GitHub提交及远端ref核验仍进行中。
+发布前验证、GitHub提交和主变更远端核验均完成。
 
 - 远端父提交：`04dc69b416da5d35fd3e16739075a543643ef42e`，tree `2e96c2a8a33212a82bfb57ca6d11de0f7566f892`。
 - 只选18文件：7个qec_pbc模块、2个examples、3个tests、架构文档、10月1日/2日日志，以及architecture/compiler_contract/handoff的QEC/PBC增补。共享导航基于最新远端正文插入；没有覆盖较新的QMAP/placement/RL/交互IR等内容。
@@ -27,7 +27,13 @@
 
 ## 发布结果
 
-待GitHub connector建立commit并以`force=false`推进main后记录提交SHA、远端文件核验与本地守护结果。
+- 主提交：[`3b0cde11db7fd18d1b0a52135270fd798c9ecc9e`](https://github.com/physics-Yu/QEC-schedule/commit/3b0cde11db7fd18d1b0a52135270fd798c9ecc9e)，18文件/1821新增行；tree `54a5eacc122232b2616cfb5b508fae25e605ce04`。
+- GitHub connector创建tree/commit并以`force=false`推进main；随后GitHub ref API和独立`git fetch origin main`均确认该主提交。
+- 基于fetch后的真实Git对象逐文件核对18个blob SHA，全部与发布payload一致；与父提交的变化路径精确等于allowlist。其他远端文件未改，24个无关本地tracked dirty文件的SHA256保持。
+- 本地HEAD仍为9e28b2e，原index未修改；未执行checkout/reset/stash，不将其他本地研究带入main。默认pushurl=DISABLED保持，未来本地同步需保留这些未提交工作。
+- 证据：`artifacts/qec-pbc-publication-2026-10-02/{manifest,scope-audit,publication-verification}.json`。完成日志与handoff另作小提交补录，不改变已验收代码。
+
+首次读取API tree payload时，Windows默认GBK stdout无法编码数学减号，命令报UnicodeEncodeError且未执行远端写入。改用Python `-X utf8`后成功；没有改变源内容或验收条件。
 
 ## 已知边界
 

@@ -2,7 +2,7 @@
 
 ## 2026-10-02 QEC/PBC GitHub 发布验证
 
-用户授权仅上传QEC/PBC部分，基于最新远端main04dc69b构建独立发布快照，保留远端已有研究和本地其他未提交工作。**干净快照274项回归与223模块架构扫描通过；单check物理smoke为3726.6μs/158事件、7门/2CZ/8计划，完整测量/终态/效果/独立重放通过。** 10月1日本地3221.711190μs/150事件对应未发布Enola默认参数，不能用作此次远端默认计时。代码上传及提交核验进行中，详见[发布日志](logs/2026-10-02-qec-pbc-publication.md)；完整memory/容错/noise边界保持。
+QEC/PBC已上传到`physics-Yu/QEC-schedule` main，主提交[`3b0cde1`](https://github.com/physics-Yu/QEC-schedule/commit/3b0cde11db7fd18d1b0a52135270fd798c9ecc9e)。基于远端04dc69b仅增加18个相关文件/导航，GitHub API与独立fetch核对18个blob全部一致，原远端研究和24个其他本地dirty文件保持。**干净快照274项回归与223模块架构扫描通过；单check物理smoke为3726.6μs/158事件、7门/2CZ/8计划，完整测量/终态/效果/独立重放通过。** 10月1日本地3221.711190μs/150事件对应未发布Enola默认参数，不能用作此次远端默认计时。详见[发布日志](logs/2026-10-02-qec-pbc-publication.md)；完整memory/容错/noise边界保持。本地HEAD保留9e28b2e及原未提交工作，发布通过connector，pushurl=DISABLED未改。
 
 ## 2026-10-01 QEC / PBC 上游架构与 d=3 原型完成
 
