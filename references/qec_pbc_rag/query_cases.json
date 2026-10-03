@@ -173,6 +173,18 @@
       "expected_any": [
         "K44"
       ]
+    },
+    {
+      "query": "encoded_resource_reference CSS isometry 17RESET encoded T Tdg 44CNOT251257 131072 dense prepared consumedfalse GateTask没有T trackedENV拒绝",
+      "expected_any": [
+        "K45"
+      ]
+    },
+    {
+      "query": "真实完整encoded ZZ Executor 1860gates456plans19212events294pulse max3 268091.2 originalinitialreplay true timeout strictresume XXpending",
+      "expected_any": [
+        "K46"
+      ]
     }
   ]
 }

@@ -487,7 +487,7 @@
       "id": "L17",
       "kind": "repository_snapshot",
       "title": "三patch物理runner、strict续跑、完整历史decode cache与边界planner",
-      "version": "third physical continuation snapshot 2026-10-04",
+      "version": "completed ZZ with strict continuation; XX pending 2026-10-04",
       "paths": [
         "src/neutral_atom_experiments/qec_pbc/encoded_physical.py",
         "examples/run_encoded_parity.py",
@@ -503,7 +503,7 @@
         "docs/qec_shor15_stage.md",
         "tests/test_trace_event_cache.py"
       ],
-      "verified_scope": "clean七fastresume+十三cache新专项通过，32k focused45及旧相关125PASS/3旧artifact skip；原workspace一轮positive通过，完整clean三轮ZZ/XX严格续跑中",
+      "verified_scope": "七fastresume/十三cache新专项与旧125PASS3SKIP；clean ZZ三轮1860 native完整Executor与original-initial replay通过；XX三轮续跑待验",
       "retrieved_at": "2026-10-04",
       "sha256_normalization": "text_lf",
       "sha256": {
@@ -518,7 +518,7 @@
         "src/neutral_atom_env/replay/trace.py": "17d377b4524eb559c565b1b7300b885782bf7bc05669f8f7bb01fdf59e392b13",
         "src/neutral_atom_env/simulation/runtime_validation.py": "6b2ab1608d79b842bf750fd577a3376d7beb6210d5a2394d56f00654c13789cd",
         "tests/test_trace_history_cache.py": "f28a30b355570fcd2632bb89578be271d81848cb013a886ad2b55d78311e95d6",
-        "docs/qec_shor15_stage.md": "0509adddb4858be24d9b0df8649a692befee3175ac88a6c5357a1bff0faaad12",
+        "docs/qec_shor15_stage.md": "0da0fcc6c54e5e13d46b30bf1134d19d5c43d2031261fa075dd177fde3d6a9a0",
         "tests/test_trace_event_cache.py": "b3f23180531b8e254b27e94a809cc247344b01f00eb6ef710bcb42fcc788f5fd"
       },
       "raw_sha256": {
@@ -733,6 +733,48 @@
         "src/neutral_atom_experiments/qec_pbc/mixed_xz_cat.py": "36541be29f8f3e23d1449d7264baad8d983eb383f085d6dde27874bdb92e5e5b",
         "tests/test_qec_mixed_xz_cat.py": "26d0701c3eb9ca18ddb40f54c87c683e7cdc1739fbae38d33f56dd621a95d83e",
         "docs/qec_mixed_xz_cat.md": "137229132f3832e3f7770f37702a4b1a2030733ab98c5c158c866f04803c240d"
+      }
+    },
+    {
+      "id": "L26",
+      "kind": "repository_snapshot",
+      "title": "d3 encoded T/Tdg原生制备生产者与独立dense参考审计",
+      "version": "standalone native resource producer verified 2026-10-04",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/encoded_resource_reference.py",
+        "tests/test_qec_encoded_resource_reference.py",
+        "docs/qec_encoded_resource_reference.md"
+      ],
+      "verified_scope": "clean23新+9适用旧共32passed；实际17-qubit T/Tdg native制备CLI两者通过；consumer/ENV/FT/factory/physical false",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_resource_reference.py": "c903a1753b2d7963beb7e720f3aa2bbcbb984df3cd83ec32cd332d2c4e05acce",
+        "tests/test_qec_encoded_resource_reference.py": "139d71da5a4a8b47d2dd0b27430e197e43d40d86751a410de6b3312e351cffac",
+        "docs/qec_encoded_resource_reference.md": "653bfc48eec6c0c57dc7f3be5e8cafa757216ed754b14e0fe072ecc83a8bd1b3"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_resource_reference.py": "c903a1753b2d7963beb7e720f3aa2bbcbb984df3cd83ec32cd332d2c4e05acce",
+        "tests/test_qec_encoded_resource_reference.py": "139d71da5a4a8b47d2dd0b27430e197e43d40d86751a410de6b3312e351cffac",
+        "docs/qec_encoded_resource_reference.md": "653bfc48eec6c0c57dc7f3be5e8cafa757216ed754b14e0fe072ecc83a8bd1b3"
+      }
+    },
+    {
+      "id": "L27",
+      "kind": "repository_snapshot",
+      "title": "三轮encoded ZZ完整Executor/原initial独立重放与streaming指纹小摘要",
+      "version": "completed ZZ physical only; XX pending 2026-10-04",
+      "paths": [
+        "references/qec_pbc_validation/encoded_zz_physical_r3.json"
+      ],
+      "verified_scope": "ZZ1860门456plans19212events，14top+4quantum布尔audit全部true，exit0；原失败prefix不改，XX仍pending",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "references/qec_pbc_validation/encoded_zz_physical_r3.json": "facb0cee8c4e747017536a0c25673b8d74f53fdd9da67798f604c4cb9164225d"
+      },
+      "raw_sha256": {
+        "references/qec_pbc_validation/encoded_zz_physical_r3.json": "17825e6b9811b6b17cb3a1e0dd2dbc03cd91ee8773844316db2efebc92d71f83"
       }
     }
   ]

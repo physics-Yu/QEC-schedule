@@ -2,7 +2,7 @@
 
 研究与工作树核对日期：**2026-10-04**（历史来源保留各自日期）。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
 
-主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，44 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、25 组本地来源与75个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
+主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，46 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、27 组本地来源与79个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
 
 ## 1. 最终要连起来的链路
 
@@ -237,7 +237,9 @@ clean新增25专项通过，累计631项不同相关测试。实际signed prefix
 
 组合native instrument的理想channel已验证；组合链的fault audit/decoder、既有placement的物理适配与完整Shor Executor尚未验收。C回收只指联合测量辅助patch，不代表magic工厂已实现。
 
-## 12. 2026-10-03物理预算超时与严格续跑：验收中
+## 12. 2026-10-03物理预算超时与严格续跑：历史工程阶段
+
+本节保存预算与工程修复时的历史状态。10-04后续ZZ完整终态/原initial独立重放已实际通过，XX待验，最新见§19/K46。
 
 clean ZZ第二次真实执行完成1605/1860门、390accepted plans后触发2400秒wall预算；物理时间约226532.6 μs。该次attempt因wall预算失败，原prefix已完整导出并保留。旧runner的独立replay把accepted末计划完成到尾而没有截在Timeout前缀版本，结果为false；新helper须按原checkpoint版本验真。完整协议终态仍等待严格续跑验收。
 
@@ -282,3 +284,17 @@ seed7分支的3500 joint中2168含Y、2437为mixed data，最大data12/joint13�
 K44及[混合X/Z接口](qec_mixed_xz_cat.md)把实际已制备canonical输入的signed逻辑X/Z product接到真实H/CZ/RESET/MEASURE；保持prefix/incoming测量历史/两个外部Choi reference，不RESET输入data。±XZ64raw cat结果均验证理想signed projector与全部256 logical/reference期望、16closing sectors；非对易XZ→ZZ可显式复用同7resource，每epoch真实重置/制备/核验。41新测试与54旧项clean95通过（50.44s），累计741distinct=740clean＋1original恢复正例；architecture252modules0违规。
 
 XZ阶段新增1295native、106detectors和1signedobservable；41roles、加入2refs时43，不是物理peak或时长。cat两遍核验须在coupling_entry前读取真实报告，verification_status缺位pending、非零rejected。静态compile没有abort/retry，不能直接把整circuit执行当成会自动拒坏cat的生产controller；下一物理步骤必须分段提交。前后3rounds syndrome与2遍cat核验不代表3次PPM重复或FT。Y/nativeS/magic、多patch动态frame标签、fault/distance/noisydecoder、完整Executor和整体encodedShor均仍待验。
+
+## 18. Encoded T/Tdg standalone native资源制备已验
+
+K45与[资源制备接口](qec_encoded_resource_reference.md)从全部17角色真实RESET起步，GF2 CSS isometry的44 CNOT全展开H–CZ–H；正资源1T、负资源7T，不安装预计算encoded state。默认一完整syndrome round，T/Tdg分别251/257native，实际17qubit dense维度131072，复振幅L2 1.11e-16/2.22e-16、8真实check bits全0，aux/8stabilizer残差0。
+
+clean23新＋9旧共32通过（5.03s），与741零交集，总764distinct=763clean＋1original长恢复正例；architecture253modules0违规。prepared仅是dense reference事实，consumed=false，PBC GateTask没有T、tracked ENV仍拒绝T；会RESET全部资源角色，不能保留incoming algorithm data。没有production consumer、factory/distillation、noisyFT或physical magic结论。此前各阶段magic缺口应按此standalone producer与未完成consumer边界解读。
+
+## 19. 三轮ZZ完整Executor与original-initial独立重放通过
+
+K46与[可发布指纹摘要](../references/qec_pbc_validation/encoded_zz_physical_r3.json)记录实际ZZ exit0：51atoms、1860native、456accepted/completedplans、19212events、294CZ pulses/max3；逻辑267201.2μs、含归还268091.2μs。14top与4quantum布尔审计全true，retained A/B、signed sectors、coherence、经典parity、全部physical时序/依赖/量子reference与终态通过，从original initial重提交全部accepted plans快照完全相等。
+
+真实2400wall预算失败1605门/16422events/replayfalse原证据保留；2400wall第一次strict续跑1767门/18352events/full-initial replaytrue；7200wall第二strict续跑完成，含replay/export实际wall1370.254s。原initial、quantum/RNG/time/measurement/pending均继承，不重RESET数据/不抵扣物理时间；loaded16k旧helper与新32k/helper316519/memo93c9由launch provenance区分，streaming SHA全保存，无GB原trace或私人绝对路径入Git。
+
+XX独立strict续跑仍pending，不能按ZZ推定完成。51atom初始layout预排成本unknown/未计，没有transport/idle/loss/fidelity模型、带噪retained FT、magic consumer/factory或完整encoded physical Shor，也未做真实浏览器视觉验收。
