@@ -2,7 +2,9 @@
 
 研究与工作树核对日期：**2026-10-04**（历史来源保留各自日期）。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
 
-主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，49 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、30 组本地来源与88个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
+主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，51 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、32 组本地来源与93个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
+
+最新第十一阶段：bounded encoded consumer reference 已验；独立三轮XX/ZZ physical与fullinitial重放均通过。历史§18–22保留当时producer/pending/事故快照，当前完成与限制以§23–24及K50/K51为准；完整encoded physical Shor仍未完成。
 
 ## 1. 最终要连起来的链路
 
@@ -322,3 +324,19 @@ K49与[第二次失败摘要](../references/qec_pbc_validation/encoded_xx_recove
 [恢复接口](qec_encoded_export_recovery.md)的局部exclusive nonreentrant context只将hash改为exactstr plan.id bucket，equality保留原完整13字段tuple。peer发现初版wrapper普通parts赋值可破坏证书，现frozen wrapper拒set/delete；强碰撞/同ID修改不授权，32state LRU、cursor/fork、origin/transition和所有原validator保留，finally恢复原函数/cache对象。ENV/shared源码、152sourceguard/物理条件未改；adapter和producer/ENV指纹单独记录。
 
 clean43旧recovery＋35新cache＋13旧fast共91PASS23.36s/1已跑long deselected；35与842零交集，累计877distinct=876clean＋1original，fresh architecture255/0。Poisoned深dataclass hash零调用、全部13static字段碰撞、warm/cold/fork完整snapshot oracle、原runtime拒例、32LRU和异常恢复均通过；短真实三native fixture仍不是完整1860XX验收。新actual sole-process全457重放使用冻结源，exit0/exactbytes/全部量子与完整导出仍pending；没有生成XX/combined completed摘要，旧事故和缺source/decisions事实保留。
+
+## 23. 编码资源真正消费：native-factorized reference已验
+
+K50/L31与[consumer接口](qec_encoded_injection_reference.md)从actual17q producer的真正T/7T向量，连接qualified signed Q_AZ_R cat、真实9H/9MEASURE/9RESET和完整signedframe。未知输入A.d0/ref保留，其他16A角色真实RESET＋92H44CZ encoder；caller input边界不是ENV全零制备。固定resourceX0/X3/X6 raw parity不写虚构ENV XOR，receipt核complete native/hash/fragment/raw历史与理想1/2概率后单次消费。显式同R回收只在全部测量/reset/release后下一epoch真实17RESET重制备。
+
+clean36新＋35Y旧共71PASS/119.86s，new与877零交集，累计913distinct=912clean＋1original长正例；fresharchitecture256modules0违规。三轮seed7两resources实际m/r(1,1),(0,1)，3641native=2062H903CZ10T288MEASURE378RESET，51declaredroles/666projectionrecords，phase-sensitive源误差1.7714e-15。独立无producer/emulator/frame/surface导入的512-row binaryCSS/Fourier与48groupedKrausChoi误差1.39e-16，数学另计不增test。
+
+最大retained2^19向量与actual17q producer/18q canonicalChoi/cat小kernels，fullnativefragment资格后精确factorized边界；不是全51roles逐门dense、ENV committed report、生产非Cliffordstate或物理T。branch/source globalphase、外部refcoherence、完整frame/liveencodedoutput均核对；realize含残余Clifford仅logicalsemantic。FT/factory/noisyretained/completeencodedShor仍false。
+
+## 24. XX与ZZ三轮完整物理验收通过，事故档案保持
+
+K51/L32与[XX最终小摘要](../references/qec_pbc_validation/encoded_xx_physical_r3.json)、[XX/ZZ联合摘要](../references/qec_pbc_validation/encoded_parity_physical_r3.json)记录实际XXattempt2exit0：51atoms/1860native/457plans/19214events/294CZpulses/max3，logic267202.2μs、terminal268092.2μs。14top+4quantum全部true，从originalinitial真实重提交全457并比较完整canonicalbytes/EOF，完整recording/animation/schedule/evidence实际导出。verification-only不forward或重复prepare；1454.1170824s仅audit/replay/export，不是原执行全部wall。
+
+独立stream十原corefiles全部bytes/SHA与firstcrashed相同，recording116919753bytes/animation116986439bytes另有SHA。ZZ历史456plans/19212events/logic267201.2/terminal268091.2μs/fullinitialtrue保留。原Timeout1596prefix和两次0xc0000005失败不回写，第二次321savedprogress不是exactcrash位置，底层机制仍unknown。152capturedsources只有reviewed316519→EB580例外；3原未捕获source为null、completeprovenancefalse、缺decisions/candidatesunknown保持。
+
+两basis属于独立理想retained XX/ZZ instrument；没有证明全Shor mixed/Y或magic的完整physical链。layout预排成本unknown/排除，transport/idle/loss/fidelity/noisyretainedFT与真实浏览器视觉验收未声明。smallsummary入Git，GB原档不入Git；当前consumer仅§23reference，完整encoded physical Shor仍是后续目标。

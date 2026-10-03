@@ -141,10 +141,12 @@ class MixedPauliCat:
 
 
 def _native_prefix(prefix):
+    if isinstance(prefix, NativeCatProgram):
+        return prefix
     if isinstance(prefix, MixedPauliCat):
         return prefix.program
     if not isinstance(prefix, PBCProgram):
-        raise TypeError('Prefix must be a PBCProgram or a prior MixedPauliCat experiment')
+        raise TypeError('Prefix must be a PBCProgram, NativeCatProgram or prior MixedPauliCat experiment')
     compiled = lower_to_physical(prefix)
     reverse = {q: role for role, q in compiled.bindings}
     gates = tuple(replace(g, qubit_ids=tuple(reverse[q] for q in g.qubit_ids)) for g in compiled.circuit.gates)
@@ -157,6 +159,8 @@ def append_mixed_pauli_cat(prefix, incoming_sectors: Mapping, logical_product: P
                            namespace='paulicat', resource_reuse=False, pending_operations=()):
     """Append a signed product without resetting or changing encoded inputs.
 
+    A validated NativeCatProgram is accepted as an experiment-only prefix,
+    preserving actual non-Clifford producer gates without extending PBC IR.
     Y is CZ→H_d CZ H_d→T_c T_c. Coupling is uninterrupted; only the cat receives
     the phase. Original raw gates and semantic history are retained verbatim.
     """

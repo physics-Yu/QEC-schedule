@@ -1,6 +1,6 @@
 # 2026-10-03 · d=3编码Shor自主推进与阶段发布
 
-- 状态：IN_PROGRESS
+- 状态：PARTIAL（本轮十一阶段能力已验收，已有十次阶段提交；最终完整d=3 encoded physical Shor未完成）
 - 用户授权：沿最终愿景自主继续；阶段成果提交GitHub。阶段算法已确认N=15，每个logical wire使用3×3 data的d=3 patch。
 - 本轮目标：完整N15 logical reference、encoded ZZ/XX协议、resource-aware PPR测量桥与物理集成；每项按真实验收范围发布，不以reference替代Executor。
 - 初始基线：canonical memory已有物理证据；完整PBC/encoded T桥缺失；远端main实时核对为5f3286defd95a269b94b2211960984319c797817，本地HEAD与大量dirty保持。
@@ -150,3 +150,25 @@
 - 小tracked `references/qec_pbc_validation/encoded_xx_recovery_export_interruption.json`保存第二次真实exit1/Windows+faulthandler定位与最后落盘progress，所有checkpoint/plans/trace/initial streaming SHA均与首次crashed archive完全相等；原文件不改，原3uncaptured与decisions保持unknown/null，GB证据不入Git。该文件completed_validation_claim=false/full_original_initial_replay_accepted=false；新的primitive-hash完整重放仍需实际exit0与最后bytes/recording/evidence。
 - 单进程bounded结构诊断实际exit0：只读代表plan321（非声称确切crash计划）与original initial，不调用deep hash、不执行physical gate。旧完整key有13字段、833traps/51atoms/1860gates、54234可达nodes、container depth7/dataclass depth4/no mapping，代表plan21ops/initial_dag2167198chars；不能据此宣称递归过深或FrozenMap根因。source076f冻结后唯一完整恢复session49799启动，新独立输出`encoded-xx-clean-export-recovered-verified-attempt2`/新faulthandler，全部152来源/11file guards保持，actual457fullreplay仍pending。
 - 第十RAG实际49chunks/42sources/88local paths，clean freshness 0错误、34/34 retrieval、11/11 portable全部通过。K49/L30保留第二次事故与冻结完整13-field证书，L29只刷新已验adapter3file；L28/Y仍clean第八阶段已验fingerprint，不复制或记录正在开发的第十一consumer候选。root3与remote handoff段外原文保持，第十11path冻结manifest parent d0b162e，新的actualXX全replay仍pending。
+- 第十阶段11路径提交`112d2b2f7d8571d2863a4f332bfdfb7d0b6756fe`（parent `d0b162e`），tree `74c2f594c9f92ababf25f5d4bef9c2e322f7fed5` 与本地staged/GitHub/独立fetch完全一致，cached diff zero、clean expected-old ref前移后无dirty。PR #3实际head同步112d2b2；877tests/255modules/49chunks/42sources/34queries及两次XX失败/新独立fullreplay pending准确更新，未将候选consumer或完整XX纳入已验能力。
+
+## 第十一阶段编码资源消费与XX完整物理验收
+
+- XX verification-only attempt2/session49799实际exit0。ordinary Executor从original initial重新submit/run全部457plans/1860native，最终完整canonical snapshot逐字节及EOF相同，full VisualRecorder/animation/schedule/evidence实际导出；14个topboolean及4个quantumboolean全true，136detectors全0、16signed output sectors、18coherence约束均通过。actual19214committed events、294CZ pulses/max3，logical267202.19999999856μs、terminal268092.19999999856μs；wall1454.1170824000146s只计恢复审计/重放/导出，不伪推crashed总wall（null）。root独立读取evidence及6个导出文件，actor报真实exit，所有accepted plans并非suffix重放。
+- 原checkpoint/plans/trace/initial streaming SHA与保存原档逐一相同，连同protocol/compiled/platform/destinations/placement/run_metadata，十个原关键文件总计bytes/SHA不变；root/pub独立核14+4、metrics/source152与实际文件。原frozen11另含loaded provenance，不宣称新producer有同名副本。新evidence SHA `964c541220e8d546e963c6876c0990ac81a57eb94e78e18529a288df9e6c4a05`，animation116986439bytes、recording116919753bytes。small tracked `encoded_xx_physical_r3.json` / `encoded_parity_physical_r3.json`保留成功、严格来源例外与两次事故链，旧ZZ/两事故摘要不改；GB原文件不入Git。076f producer/core同旧来源、zero forward真实记录，3uncaptured与decisions/candidate history继续unknown/null，不声称全部原源码一致。
+- encoded injection consumer候选完成真正A16RESET（保留caller A.d0/ref）/136gateCSS encoder、17q+T或7T负资源producer、qualified Q_AZ_R cat、资源9H/9M/9RESET与signed frame/consumed生命周期。原34new＋35oldY actual69通过，3round/seed7双非对易资源/R复用CLI导出3641native（H2062/CZ903/T10/M288/RESET378）与666真实测量/复位记录，51declaredroles包含已释放旧cat，不当作physicalpeak。一般复数input/ref及所有48单注入、16双注入分支独立matrix/globalphase对照，L2约1.77e-15；all512raw X读出与独立CSS orbit/Fourier预期核对。当前peer/clean69/实际CLI仍进行中，不先累计到877已验发布统计。
+- 输入boundary是caller-supplied裸A.d0/reference，由实际16RESET＋isometry编码；不是ENV从全零执行。cat/syndrome以已资格native边界Kraus精确收缩，保留全部gate/cost，活跃18data＋ref而非全44/51q逐门dense。receipt消耗本参考真实投影产生的报告，并严格核native/hash/fullhistory/27suffix/lifecycle；不是ENV committed-report控制器。指定逻辑X为X0X3X6，理想prepared+Xcheck sector中xor9同样等价，拒其receipt仅固定contract，不声明数学不同。tracked ENV仍拒T，FT/factory/fullphysical Shor未实现。
+- pre-fix consumer clean69PASS120.56s/34new collector与877零交集；cleanCLI3641gates/51declared/666projections/2consumed及1.77e-15误差真通过，256modules0违规。额外math peer不导入producer/emulator/frame/surface，独立CSS orbit/Fourier构建512 raw bras/32nonzero，全部48 signedXYZ/±resource/m/r grouped Choi相等，rawoperator max2.78e-17/groupedChoi1.39e-16，不额外增加test计数。
+- 第二独立peer发现公开`commit_encoded_receipt`仅校验有限概率，能接收0.75的m/r metadata；实际投影与主audit正确，但此理想T/Tdg+signedjoint+X instrument的两个logical conditional Born概率恒为0.5。root批准最小fail-closed 0.5 guard（2e-11数值容差）＋直接commit 0.75拒绝/不修改frame和资源记录的反例，原69/34候选事实保留，3consumer文件重新冻结/clean复验待结果，不沿用911候选累计声明发布最终通过。
+- 最终consumer原source SHA `321f3639cecf10ec206d55a089a635374d5cbe3a6ed97422cfa1b3f6797cfb5b`，test `ea130c5618fe734cd2b81cbb13efe54ff218199f9ea9b8a585b9d8559a959141`，doc `0ce31498df339e4cd64b48012846c84ebd8123a4e697a2da0600224dcf059b31`；Y仅加入validated NativeCatProgram前门，SHA `e495a0f58e9a2033ee96089e8136cade739967586579d1f73725abc76165daf9`，没有改ENV/PBC IR。新增0.75拒例与双pm/pr容差/原子性检查使新nodeids36（不是先前34/35），clean最终71PASS119.86s，36差集与877零交集，总913=912clean＋1original，256modules0违规。两独立peer无阻塞，额外概率focused2PASS不另计test；全48/16branch矩阵与512 raw Fourier oracle仍通过，新3roundCLI再次实际PASS/4.616s，3641/51/666/两资源consumed/L2 1.77e-15不变。
+- 第十一RAG候选实际51chunks/44sources/93local paths、36/36检索/schema0errors；K50/L31明确singlepatch consumer reference、K51/L32明确ZZ/XX complete且全Shor未完成。K45–49原历史/事故保持后加后续链接，L28此时才刷新已验Y入口。最终root3与stage-doc指纹同步后的freshness/11portable/13pathmanifest尚待最后freeze。
+
+## 当前未完成与下一条可执行任务
+
+完整12算法patch、3500资源的encoded physical Shor未运行；204算法基础原子之外的峰值、时延、噪声FT/factory/fidelity均未测，不能外推ZZ/XX或单patchreference成本。新动画未做真实浏览器交互验收。当前normal非tracking T定时与本参考非Clifford执行不能冒充tracked ENV量子演化。
+
+下一最小工程任务为有限Clifford X/Z cat `CommittedCatController`：预声明完整有限native DAG，由外部controller按prepare/verify→真实committed报告→accept或abort→data/read/decode→ledger分段提交；bad verifier必须在任何data coupling前停。它可留在experiments且不改physics/core，先声明不retry，不伪造semantic XOR报告键。后续完整算法仍需显式受限非Clifford表示与一般Born熵接口、旧Clifford RNG/bytes兼容、Executor拥有的合法circuit revision和完整初态重放。现checkpoint/plan-origin仅StabilizerState、DAG不可直接append；不允许控制器直接改state/snapshot替换线路或把QEC策略移入ENV。具体生产边界已只读核对应source，未改物理硬条件、整体包职责或原workspace HEAD/dirty。
+
+## 最终发布验收
+
+第十一root3最终副本同步并仅合并本轮handoff heading，remote原文段外逐字LF相同；L17只刷新当前stage-doc fingerprint，源码/原summary不改。最终RAG实际51chunks/44sources/93local paths、36/36 retrieval、11/11 LF/CRLF/CR及其他portability全部PASS/0errors。最终913相关不同tests、consumer71/36new及256modules/0的已过检查未无理由重复运行。13path allowlist为consumer3＋validated native-prefix1＋actualXX/combined2＋RAG4＋root3，parent112d2b2；original HEAD/pushurl/其他dirty不触及，原GB档案留在ignored且十关键文件stream字节相同。最终Git tree/commit/独立fetch核对待实际提交结果。

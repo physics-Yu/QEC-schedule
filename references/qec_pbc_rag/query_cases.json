@@ -209,6 +209,18 @@
       "expected_any": [
         "K49"
       ]
+    },
+    {
+      "query": "encoded injection native-factorized consumer actual T Tdg producer raw512 resource X0 X3 X6 receipt frame 3641 666",
+      "expected_any": [
+        "K50"
+      ]
+    },
+    {
+      "query": "XX ZZ physical completed 457 original initial replay 19214 canonical bytes EOF 14 4 ten raw SHA recovery exit0",
+      "expected_any": [
+        "K51"
+      ]
     }
   ]
 }

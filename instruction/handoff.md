@@ -2,9 +2,9 @@
 
 ## 2026-10-03 d=3 Shor15自主推进与阶段提交
 
-截至10-04，九checkpoint已提交至 `d0b162e` / [PR #3](https://github.com/physics-Yu/QEC-schedule/pull/3)，第十修复阶段待提交。完整N15理想PBC/frame真实恢复3/5，native XYZ与17原子T/T†制备reference已验；tracked ENV仍拒T，完整physical Shor/FT未实现。累计877不同tests=876clean＋1original，255clean模块0违规；第九RAG48/41/33通过。
+截至10-04，十checkpoint已提交至 `112d2b2` / [PR #3](https://github.com/physics-Yu/QEC-schedule/pull/3)，第十一最终阶段已验待提交。完整N15理想PBC/frame真实恢复3/5；编码资源制备→联合测量→9data X读出→frame/消费参考链已验，双资源3641native/51declared/666投影/L2约1.77e-15。clean36new＋35oldY联合71通过，总913=912clean＋1original，256modules0违规；RAG51/44/36检索通过。
 
-三轮ZZ51原子1860门完整Executor/fullinitial replay通过，legacy terminal268091.2μs。XX保存1860门/457plans/19214events及terminal268092.2μs已inspect；两次访问冲突保留，第二次最后落盘321plans/1310门，深hash路径已定位但机制unknown。局部不可变cache certificate修复clean91通过，ENV bytes/152captured来源guard与唯一316→EB580例外保持，3原未捕获依赖与缺decisions透明unknown。新sole-heavy session49799从original initial重放全部457plans，最终exit/fullbytes/导出仍pending；下一encoded injection consumer实验正在实施。原硬约束/HEAD/其他dirty保持。见[阶段入口](../docs/qec_shor15_stage.md)、[日志](logs/2026-10-03-shor15-autonomous-stage.md)。
+三轮ZZ/XX各51原子1860native、294模拟CZ pulses/max3，完整Executor/originalinitial重放、14＋4审计与保留coherence均通过，legacy terminal268091.2/268092.2μs。XX新recovery session49799真正exit0/1454.117s，全snapshot bytes/EOF一致且完整导出；两失败档案/未知底层机制保留，152captured守护/唯一316→EB580例外保持，3uncaptured/decisions unknown。tracked ENV仍拒T，完整physical Shor/FT未实现；下一步有限Clifford cat controller读取实际committed核验后才允许data coupling，再接显式非Clifford表示/Born及合法线路续接，不写live state或伪造XOR键。原硬约束/HEAD/其他dirty保持。见[阶段入口](../docs/qec_shor15_stage.md)、[日志](logs/2026-10-03-shor15-autonomous-stage.md)。
 
 ## 2026-10-02 QEC/PBC GitHub 发布验证
 

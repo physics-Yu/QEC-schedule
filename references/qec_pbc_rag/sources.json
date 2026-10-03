@@ -518,7 +518,7 @@
         "src/neutral_atom_env/replay/trace.py": "17d377b4524eb559c565b1b7300b885782bf7bc05669f8f7bb01fdf59e392b13",
         "src/neutral_atom_env/simulation/runtime_validation.py": "6b2ab1608d79b842bf750fd577a3376d7beb6210d5a2394d56f00654c13789cd",
         "tests/test_trace_history_cache.py": "f28a30b355570fcd2632bb89578be271d81848cb013a886ad2b55d78311e95d6",
-        "docs/qec_shor15_stage.md": "698a8ce0a27f313bafb7c0e80cd4d406b629d76dfcb3026c1e1cb3c049895c30",
+        "docs/qec_shor15_stage.md": "4150c91bf7a74e14c24d5a107a48e6ae682ae83e6c16954eac175b46629abc9a",
         "tests/test_trace_event_cache.py": "b3f23180531b8e254b27e94a809cc247344b01f00eb6ef710bcb42fcc788f5fd"
       },
       "raw_sha256": {
@@ -768,7 +768,7 @@
         "references/qec_pbc_validation/encoded_zz_physical_r3.json",
         "references/qec_pbc_validation/encoded_xx_physical_export_interruption.json"
       ],
-      "verified_scope": "ZZ完整1860/456plans19212events/fullinitial replay通过；XX已存1860/457plans19214events但PythonAV exit1缺最终evidence/fullreplay，独立恢复待验",
+      "verified_scope": "ZZ完整1860/456plans19212events/fullinitial replay通过；XX已存1860/457plans19214events但PythonAV exit1缺最终evidence/fullreplay，独立恢复待验；本来源保留stage7/8历史快照；同日stage11最终XXcompleted证据另见L32，不回写原事故",
       "retrieved_at": "2026-10-04",
       "sha256_normalization": "text_lf",
       "sha256": {
@@ -784,17 +784,17 @@
       "id": "L28",
       "kind": "repository_snapshot",
       "title": "含Y的signed cat PPM native producer、严格TT精确参考与完整fragment allraw证明",
-      "version": "qualified ideal-native Y reference verified 2026-10-04",
+      "version": "qualified Y plus NativeCatProgram experiment-prefix acceptance verified 2026-10-04 stage11",
       "paths": [
         "src/neutral_atom_experiments/qec_pbc/mixed_pauli_cat.py",
         "tests/test_qec_mixed_pauli_cat.py",
         "docs/qec_mixed_pauli_cat.md"
       ],
-      "verified_scope": "clean35new+41XZold共76PASS10.97s；六±Y/XYZ/YY实际reference与完整allraw math、独立52矩阵/7TT拒例通过；ENV/PBCIR/FT/physical/magic false",
+      "verified_scope": "clean35new+41XZold共76PASS10.97s；六±Y/XYZ/YY实际reference与完整allraw math、独立52矩阵/7TT拒例通过；ENV/PBCIR/FT/physical/magic false；同日stage11仅新增NativeCatProgram prefix入口，71consumer+Yold联合通过，strict单T/7T Clifford拒绝保留",
       "retrieved_at": "2026-10-04",
       "sha256_normalization": "text_lf",
       "sha256": {
-        "src/neutral_atom_experiments/qec_pbc/mixed_pauli_cat.py": "dbbe77fff21e83dc0b38bcd9f41e6cded3f1c8453283b9479d7e7e735d320551",
+        "src/neutral_atom_experiments/qec_pbc/mixed_pauli_cat.py": "e495a0f58e9a2033ee96089e8136cade739967586579d1f73725abc76165daf9",
         "tests/test_qec_mixed_pauli_cat.py": "075b2118df33f5239b6a4ca78bb489cdc21cfea7ea74a328ef7b93e23b2f8afa",
         "docs/qec_mixed_pauli_cat.md": "befffcdb842a2823e806679cc0a8a564235acbeee3e26caab241f8ccfa364038"
       },
@@ -808,7 +808,7 @@
       "id": "L29",
       "kind": "repository_snapshot",
       "title": "已完成checkpoint的verification-only独立核验、全initial重放与低峰值导出恢复",
-      "version": "second recovery interrupted; frozen full-certificate primitive-hash recovery adapter verified 2026-10-04",
+      "version": "frozen full-certificate primitive-hash recovery adapter and actual XX full replay verified 2026-10-04",
       "paths": [
         "src/neutral_atom_experiments/qec_pbc/encoded_export_recovery.py",
         "src/neutral_atom_experiments/qec_pbc/encoded_physical.py",
@@ -816,7 +816,7 @@
         "docs/qec_encoded_export_recovery.md",
         "tests/test_qec_recovery_prefix_cache.py"
       ],
-      "verified_scope": "clean旧43recovery+新35cache+13oldfast共91PASS23.36s/1原long deselected；35与842无交集，152sourceguard/core/shared未改；实际新457fullreplay仍pending",
+      "verified_scope": "clean旧43recovery+新35cache+13oldfast共91PASS23.36s/1原long deselected；35与842无交集，152sourceguard/core/shared未改；实际新457fullreplay仍pending；同日最终actualattempt2exit0/457fullinitialreplay+EOF相等，missingdecisions/3uncaptured source依旧unknown，见L32",
       "retrieved_at": "2026-10-04",
       "sha256_normalization": "text_lf",
       "sha256": {
@@ -850,6 +850,51 @@
       },
       "raw_sha256": {
         "references/qec_pbc_validation/encoded_xx_recovery_export_interruption.json": "15395c1bf8d4ecfed6aa7faad2177fee296426d325b34295af2e1ae7a683449d"
+      }
+    },
+    {
+      "id": "L31",
+      "kind": "repository_snapshot",
+      "title": "真实编码资源native-factorized消费、raw报告receipt与deferred Clifford frame",
+      "version": "independently verified clean snapshot 2026-10-04 stage11",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/encoded_injection_reference.py",
+        "tests/test_qec_encoded_injection_reference.py",
+        "docs/qec_encoded_injection_reference.md"
+      ],
+      "verified_scope": "clean36新consumer+35Yold共71PASS/119.86s；actual3rounds2resources3641native/666projection/phaseL2 1.7714e-15；reference非ENV/全registerdense/FT/physical/fullencodedShor",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_injection_reference.py": "321f3639cecf10ec206d55a089a635374d5cbe3a6ed97422cfa1b3f6797cfb5b",
+        "tests/test_qec_encoded_injection_reference.py": "ea130c5618fe734cd2b81cbb13efe54ff218199f9ea9b8a585b9d8559a959141",
+        "docs/qec_encoded_injection_reference.md": "0ce31498df339e4cd64b48012846c84ebd8123a4e697a2da0600224dcf059b31"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_injection_reference.py": "321f3639cecf10ec206d55a089a635374d5cbe3a6ed97422cfa1b3f6797cfb5b",
+        "tests/test_qec_encoded_injection_reference.py": "ea130c5618fe734cd2b81cbb13efe54ff218199f9ea9b8a585b9d8559a959141",
+        "docs/qec_encoded_injection_reference.md": "0ce31498df339e4cd64b48012846c84ebd8123a4e697a2da0600224dcf059b31"
+      }
+    },
+    {
+      "id": "L32",
+      "kind": "repository_snapshot",
+      "title": "三轮XX完整物理checkpoint与457plan全initial核验恢复；XX/ZZ联合可发布摘要",
+      "version": "independently verified clean snapshot 2026-10-04 stage11",
+      "paths": [
+        "references/qec_pbc_validation/encoded_xx_physical_r3.json",
+        "references/qec_pbc_validation/encoded_parity_physical_r3.json"
+      ],
+      "verified_scope": "actualXXverification-onlyrecoveryexit0/14+4true/full457initialreplay/canonicalbytesEOFequal；independent10originalcorefilesstreamSHA相同及完整recording/animation导出；两次nativeAV原证据不改",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "references/qec_pbc_validation/encoded_xx_physical_r3.json": "9ccacc8ee98bd115e32557520d3b4ea0382c195a9231c3323278d5405ab72197",
+        "references/qec_pbc_validation/encoded_parity_physical_r3.json": "5f4621f25b06a592a4931ea3727cac424f9fca575f633b3aa4a2a93bd4b02389"
+      },
+      "raw_sha256": {
+        "references/qec_pbc_validation/encoded_xx_physical_r3.json": "9ccacc8ee98bd115e32557520d3b4ea0382c195a9231c3323278d5405ab72197",
+        "references/qec_pbc_validation/encoded_parity_physical_r3.json": "5f4621f25b06a592a4931ea3727cac424f9fca575f633b3aa4a2a93bd4b02389"
       }
     }
   ]
