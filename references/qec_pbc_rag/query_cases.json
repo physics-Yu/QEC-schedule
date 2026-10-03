@@ -167,6 +167,12 @@
       "expected_any": [
         "K43"
       ]
+    },
+    {
+      "query": "mixed X_A Z_B cat GHZ signed 64raw Choi41roles1295native verification_status compile没有abort retry same7resource RESET epoch",
+      "expected_any": [
+        "K44"
+      ]
     }
   ]
 }

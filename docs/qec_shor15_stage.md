@@ -1,6 +1,6 @@
 # d=3 surface-code Shor：阶段实现与验收
 
-目标是把完整 N=15、a=2 Shor 通过 Pauli-based computation 和 d=3 rotated surface code 接到中性原子的 PhysicalCircuit、真实调度与 Executor。每个算法逻辑比特使用 9 个 data 与 8 个 syndrome 原子。2026-10-03 至10-04已验收完整逻辑参考、全部 QFT 的 Clifford+T 综合、实际完整 PBC 测量与因子恢复，以及可连续组合的编码 ZZ/XX；整体编码 Shor 仍是后续目标。共 **700 个不同相关测试通过**：699在远端main独立发布副本，另1项真实中断→恢复→无中断快照比较在原workspace；旧缓存/readout/恢复回归另有125通过、3项缺历史artifact跳过。RAG最新检索、新鲜度及251模块架构零违规的证据见[本轮日志](../instruction/logs/2026-10-03-shor15-autonomous-stage.md)。ZZ/XX完整三轮物理续跑仍在验收，不预报通过。
+目标是把完整 N=15、a=2 Shor 通过 Pauli-based computation 和 d=3 rotated surface code 接到中性原子的 PhysicalCircuit、真实调度与 Executor。每个算法逻辑比特使用 9 个 data 与 8 个 syndrome 原子。2026-10-03 至10-04已验收完整逻辑参考、全部 QFT 的 Clifford+T 综合、实际完整 PBC 测量与因子恢复，以及可连续组合的编码 ZZ/XX；整体编码 Shor 仍是后续目标。共 **741 个不同相关测试通过**：740在远端main独立发布副本，另1项真实中断→恢复→无中断快照比较在原workspace；旧缓存/readout/恢复回归另有125通过、3项缺历史artifact跳过。RAG最新检索、新鲜度及252模块架构零违规的证据见[本轮日志](../instruction/logs/2026-10-03-shor15-autonomous-stage.md)。ZZ/XX完整三轮物理续跑仍在验收，不预报通过。
 
 | 层 | 本阶段行为 | 限制 |
 | --- | --- | --- |
@@ -11,6 +11,7 @@
 | 完整 Clifford frame | 24个signed generator、真实m/r改变后续测量标签、保留完整纠正ledger与residual；终端在未兑现frame的向量上实际投影 | 理想逻辑controller；已完整恢复3/5，尚未接committed native measurements与encoded资源 |
 | 编码 ZZ/XX | 完整辅助 d=3 patch；前后各三轮 checks、18 个 transversal CZ、保留两个输出 patch | 51 原子协议；理想完整 instrument，native-fault parity audit 范围另列 |
 | 编码连续组合 | 接收既有 A/B 编码态与 syndrome 历史，显式消耗并重新制备 C；同 C 连续 ZZ→XX | 53 roles 含两个外部 reference、4081 native；理想 native-channel 验证，尚未物理组合执行 |
+| 编码 mixed X/Z | 已准备的两patch signed product，cat制备与两遍核验、完整耦合、真实读出/RESET，同辅助原子连续非对易测量 | 41 roles（Choi另2ref），默认新增1295native/106detectors；核验边界仅参考审计拒绝，尚无生产abort/retry、Y/FT或物理执行 |
 | 物理执行 | 独立声明有限 51 原子场景，所有 RESET、MEASURE、CZ、运输经过普通 Executor 与重放 | 不含初态布局准备时间、transport/idle/loss 噪声或整体 Shor |
 
 ## 核心入口
@@ -68,5 +69,7 @@ python examples/run_encoded_parity.py --basis Z --rounds 3 --seed 0 --resume-fro
 [mixed/Y 后端设计](qec_mixed_pauli_backend_design.md) 给出保留9+8 patch结构的分布式cat测量、signed Clifford frame、显式 Clifford-resource 纠正和原生报告位的控制接口。可发布公式审计工具复建144纠正分支与64非对易注入分支，误差小于6e-16；这是数学/reference验算，没有把后端、FT或physical能力改成已实现。
 
 [完整frame实现](qec_conditional_clifford_frame.md)每次只投影真实`F†PF`，纠正留在24-generator frame与完整复相位ledger中；最终测量`F†C_res†Z_jC_resF`而不重采样eager结果。完整3500-resource零输入与纠缠reference对照通过，兑现frame后对eager L2误差约1.26e-14，对原CT约1.05e-13。fresh framed Shor seed7/8/9实际读出128/0/192，失败保留，第三次验证周期4与因子3/5；共10500资源、21000注入测量与24终端投影。该seed7实际标签含Y2168项、mixed2437项，data最大12/joint13；固定3/5代表的cat模板最大45（18项），仅为template shape，资源峰值未定。分批终端读出仍保存完整namespace/history/dependencies。27项新增独立检查已在干净发布副本验收，native S/encoded/FT/physical均保持false。
+
+[mixed X/Z native参考](qec_mixed_xz_cat.md)已实现signed `X_A Z_B`的完整cat线路，保留原prefix/data/sectors与外部纠缠。全部64个raw cat-X报告组合逐分支Choi验证，正/负号和两semantic分支正确；连续非对易`X_A Z_B→Z_A Z_B`同7cat/verifier原子真实再RESET，两个边界均核对256个logical/reference Pauli与16 stabilizers。默认3+3轮新增1295native（735H/319CZ/129RESET/112M），106detectors；41项新增检查与54项旧PPM/组合回归在clean联合95通过。它将核验结果/边界显式导出，静态compile不会主动abort/retry，未来物理controller须在数据耦合前等待真实核验并拒绝异常。没有Y、magic factory、噪声FT或完整Executor声明。
 
 详细协议见 [完整 Shor 参考](qec_shor15.md)、[编码联合测量](qec_encoded_ppm.md)、[资源测量桥](qec_adaptive_pbc.md)；事实与实现快照见 [RAG](qec_pbc_rag.md)。

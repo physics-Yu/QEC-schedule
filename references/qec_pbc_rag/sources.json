@@ -518,7 +518,7 @@
         "src/neutral_atom_env/replay/trace.py": "17d377b4524eb559c565b1b7300b885782bf7bc05669f8f7bb01fdf59e392b13",
         "src/neutral_atom_env/simulation/runtime_validation.py": "6b2ab1608d79b842bf750fd577a3376d7beb6210d5a2394d56f00654c13789cd",
         "tests/test_trace_history_cache.py": "f28a30b355570fcd2632bb89578be271d81848cb013a886ad2b55d78311e95d6",
-        "docs/qec_shor15_stage.md": "343a21bcd3d569e6dc6dc14f7a008f561ef646dd294990962b4b4655db20b78a",
+        "docs/qec_shor15_stage.md": "0509adddb4858be24d9b0df8649a692befee3175ac88a6c5357a1bff0faaad12",
         "tests/test_trace_event_cache.py": "b3f23180531b8e254b27e94a809cc247344b01f00eb6ef710bcb42fcc788f5fd"
       },
       "raw_sha256": {
@@ -709,6 +709,30 @@
         "tests/test_qec_conditional_clifford_frame.py": "cc7948692d0b35d22ee1b8ab0c4fc4c4e3df97d40d116d28ac394e17bde40369",
         "docs/qec_conditional_clifford_frame.md": "f2e2c92d88d4870164e8bab2fafab3f3f5ef3a5136c3e1ce23aeda2b30441c9f",
         "tools/audit_conditional_clifford_frame.py": "7e198b813615d0b86f48db31040a05fe121aee21057a543f3895ae55df6abd82"
+      }
+    },
+    {
+      "id": "L25",
+      "kind": "repository_snapshot",
+      "title": "带符号mixed X/Z cat逻辑测量的理想native retained instrument",
+      "version": "two canonical patch ideal native X/Z cat snapshot 2026-10-04",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/mixed_xz_cat.py",
+        "tests/test_qec_mixed_xz_cat.py",
+        "docs/qec_mixed_xz_cat.md"
+      ],
+      "verified_scope": "clean41新+54旧共95passed；实际encoded Choi prefix、64 raw branches与同7resource非对易组合；未Executor/FT/noisy controller",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/mixed_xz_cat.py": "36541be29f8f3e23d1449d7264baad8d983eb383f085d6dde27874bdb92e5e5b",
+        "tests/test_qec_mixed_xz_cat.py": "26d0701c3eb9ca18ddb40f54c87c683e7cdc1739fbae38d33f56dd621a95d83e",
+        "docs/qec_mixed_xz_cat.md": "137229132f3832e3f7770f37702a4b1a2030733ab98c5c158c866f04803c240d"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/mixed_xz_cat.py": "36541be29f8f3e23d1449d7264baad8d983eb383f085d6dde27874bdb92e5e5b",
+        "tests/test_qec_mixed_xz_cat.py": "26d0701c3eb9ca18ddb40f54c87c683e7cdc1739fbae38d33f56dd621a95d83e",
+        "docs/qec_mixed_xz_cat.md": "137229132f3832e3f7770f37702a4b1a2030733ab98c5c158c866f04803c240d"
       }
     }
   ]
