@@ -518,7 +518,7 @@
         "src/neutral_atom_env/replay/trace.py": "17d377b4524eb559c565b1b7300b885782bf7bc05669f8f7bb01fdf59e392b13",
         "src/neutral_atom_env/simulation/runtime_validation.py": "6b2ab1608d79b842bf750fd577a3376d7beb6210d5a2394d56f00654c13789cd",
         "tests/test_trace_history_cache.py": "f28a30b355570fcd2632bb89578be271d81848cb013a886ad2b55d78311e95d6",
-        "docs/qec_shor15_stage.md": "ab1fd2899d2f9c55f03e11f72cbae49d5b5fbaadb4d555a20176e1f7da758907",
+        "docs/qec_shor15_stage.md": "c983141e4e63594dc4d6855306c4fb4afdfeb6f0013c7584bffb19f3d59a6e05",
         "tests/test_trace_event_cache.py": "b3f23180531b8e254b27e94a809cc247344b01f00eb6ef710bcb42fcc788f5fd"
       },
       "raw_sha256": {
@@ -661,6 +661,27 @@
       "raw_sha256": {
         "docs/qec_mixed_pauli_backend_design.md": "7cb0be18563e8c684e6fa58e2f9fc713bc135a75b80be8eeda1acd8b0474fa36",
         "tools/audit_mixed_pauli_design.py": "c4ce0d7460c83d9f3831b64ec63ae984526f5792daa4595cca24e7945043dfc6"
+      }
+    },
+    {
+      "id": "L23",
+      "kind": "repository_snapshot",
+      "title": "完整canonical preimage的单项snapshot digest memo与独立哈希oracle",
+      "version": "exact-preimage memo reviewed 2026-10-04",
+      "paths": [
+        "src/neutral_atom_env/replay/snapshot_encoding.py",
+        "tests/test_snapshot_digest_memo.py"
+      ],
+      "verified_scope": "clean 21新memo测试及35适用旧回归通过；schema/serialized bytes/SHA与独立canonical JSON一致，非全物理完成证据",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_env/replay/snapshot_encoding.py": "5f777a3d4605db3fe4d61be581dff38bb1acadad278d15747cf1976ce877b487",
+        "tests/test_snapshot_digest_memo.py": "51f1f766e7ff594e333bfe0a1078e945782913d143028abc022dbe1afd158d2e"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_env/replay/snapshot_encoding.py": "93c9a1a44e950517abc191c4fec14f3e5f4604d8bd7d0ba763ab0859a5d32995",
+        "tests/test_snapshot_digest_memo.py": "51f1f766e7ff594e333bfe0a1078e945782913d143028abc022dbe1afd158d2e"
       }
     }
   ]

@@ -155,6 +155,12 @@
       "expected_any": [
         "K41"
       ]
+    },
+    {
+      "query": "strict resume snapshot_digest memo fresh canonical nontrace full immutable trace exactpreimage 1536MiB SHA不变 自定义encoder伪func拒绝",
+      "expected_any": [
+        "K42"
+      ]
     }
   ]
 }

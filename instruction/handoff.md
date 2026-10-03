@@ -2,7 +2,7 @@
 
 ## 2026-10-03 d=3 Shor15自主推进与阶段提交
 
-截至10-04，已提交 `4ee2669`、`6ddfbf8` / [PR #3](https://github.com/physics-Yu/QEC-schedule/pull/3)。完整N15,a2 Shor已实际执行理想PBC与终端分解：8993 Clifford+T、每shot3500resources、seed7两次读出恢复3/5；12 algorithm patches基础204原子，资源peak未定。连续X/Z与同C回收接口通过53roles/4081native两阶段reference审计。新增严格checkpoint恢复、不可变历史cache与可复建mixed/Y设计；652不同tests按651 clean＋1原workspace真实恢复对照记录，旧回归125通过/3缺历史artifact跳过。三patchZZ/XX 1860门原run超时前缀完整保留，新ZZ正在严格续跑与全replay验收，XX随后串行；不能预报物理通过。整体encoded physical Shor、mixed/Y后端、编码Clifford反馈与magic制备/FT仍待实现。硬约束与原workspace其他dirty/HEAD保持；见[阶段入口](../docs/qec_shor15_stage.md)、[本轮日志](logs/2026-10-03-shor15-autonomous-stage.md)。
+截至10-04，已提交 `4ee2669`、`6ddfbf8`、`f389f70` / [PR #3](https://github.com/physics-Yu/QEC-schedule/pull/3)。完整N15,a2 Shor已实际执行理想PBC与终端分解：8993 Clifford+T、每shot3500resources、seed7两次读出恢复3/5；12 algorithm patches基础204原子，资源peak未定。连续X/Z与同C回收接口通过53roles/4081native两阶段reference审计。严格checkpoint恢复、不可变历史cache与可复建mixed/Y设计已发布；新exact-preimage摘要复用21项clean验收通过，累计673不同tests按672 clean＋1原workspace真实恢复对照记录，旧回归125通过/3缺历史artifact跳过。三patchZZ/XX 1860门原run超时前缀完整保留，新ZZ正在严格续跑与全replay验收，XX随后串行；不能预报物理通过。整体encoded physical Shor、mixed/Y后端、编码Clifford反馈与magic制备/FT仍待实现。硬约束与原workspace其他dirty/HEAD保持；见[阶段入口](../docs/qec_shor15_stage.md)、[本轮日志](logs/2026-10-03-shor15-autonomous-stage.md)。
 
 ## 2026-10-02 QEC/PBC GitHub 发布验证
 

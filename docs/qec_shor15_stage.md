@@ -1,6 +1,6 @@
 # d=3 surface-code Shor：阶段实现与验收
 
-目标是把完整 N=15、a=2 Shor 通过 Pauli-based computation 和 d=3 rotated surface code 接到中性原子的 PhysicalCircuit、真实调度与 Executor。每个算法逻辑比特使用 9 个 data 与 8 个 syndrome 原子。2026-10-03 至10-04已验收完整逻辑参考、全部 QFT 的 Clifford+T 综合、实际完整 PBC 测量与因子恢复，以及可连续组合的编码 ZZ/XX；整体编码 Shor 仍是后续目标。共 **652 个不同相关测试通过**：651在远端main独立发布副本，另1项真实中断→恢复→无中断快照比较在原workspace；旧缓存/readout/恢复回归另有125通过、3项缺历史artifact跳过。RAG最新检索、新鲜度及250模块架构零违规的证据见[本轮日志](../instruction/logs/2026-10-03-shor15-autonomous-stage.md)。ZZ/XX完整三轮物理续跑仍在验收，不预报通过。
+目标是把完整 N=15、a=2 Shor 通过 Pauli-based computation 和 d=3 rotated surface code 接到中性原子的 PhysicalCircuit、真实调度与 Executor。每个算法逻辑比特使用 9 个 data 与 8 个 syndrome 原子。2026-10-03 至10-04已验收完整逻辑参考、全部 QFT 的 Clifford+T 综合、实际完整 PBC 测量与因子恢复，以及可连续组合的编码 ZZ/XX；整体编码 Shor 仍是后续目标。共 **673 个不同相关测试通过**：672在远端main独立发布副本，另1项真实中断→恢复→无中断快照比较在原workspace；旧缓存/readout/恢复回归另有125通过、3项缺历史artifact跳过。RAG最新检索、新鲜度及250模块架构零违规的证据见[本轮日志](../instruction/logs/2026-10-03-shor15-autonomous-stage.md)。ZZ/XX完整三轮物理续跑仍在验收，不预报通过。
 
 | 层 | 本阶段行为 | 限制 |
 | --- | --- | --- |
@@ -47,6 +47,8 @@ python examples/run_encoded_parity.py --basis Z --rounds 3 --seed 0 --resume-fro
 恢复入口在创建新输出前核对协议、编译结果、平台、初始 placement、seed 与 original initial；accepted plan 的完整内容须与 checkpoint trace 或未开始的 pending plan 相同。它先完成已接受的尾计划，再编译新计划，保留原量子态、RNG、测量历史和绝对物理时间。新的 wall budget 只覆盖续跑；最终独立重放与完整动画仍从最初 initial 开始。部分计划无法导出完整 schedule 时保持原失败与 `null` 统计，不伪报已完成。
 
 历史事件解码默认使用32768条/3GiB的稳定前缀缓存，每次仍审核所有历史与最新状态；超出任一预算的后缀仍解析。旧 LRU 越过16384条会循环淘汰，最初稳定前缀版保留16384条后又在真实16422-event续跑中暴露后缀解析成本，所以仅将entry上限调到32768，3GiB字节界保持。20k条独立回归验证完整热扫描0次JSON重新解析，不把小记录测试外推为任意大trace都拟合预算。已运行的16k进程保留原行为，新进程加载32k；缓存命中只复用不可变字符串的解码，不构成验收通过。snapshot/schema及物理条件不变。
+
+快照摘要另有至多1项、1536MiB保守引用预算的复用。每次重新canonicalize全部非trace字段，完整比较immutable trace值；只有完整序列化前像相等才复用SHA。同version嵌套编辑、history首尾分叉、自定义encoder、非exact字符串/keys及超预算均由独立canonical JSON/SHA预期验收，21项新增检查在干净发布副本通过。小型实际候选编译的三次同摘要成本由124.79ms降至80.79ms，仅是该只读profile；不能推断整段物理运行倍率。缓存不省略任何物理或历史校验。
 
 物理场景在执行前声明全部 EZ/MZ sites，三块以 70 μm 横向偏移放置，data 间距 20 μm。AOD 为同一台 7×14、98 交点，沿用原硬件默认、容量、碰撞、空阱扫掠、光照和全 EZ CZ pair 校验。场景的有限区域更宽以容纳三块；没有在策略内部新增 trap 或放宽 validator。两块原平台保持原样。初态是已排好的 EZ holder，量子态仍从物理零态开始，所有编码制备在真实 circuit 内完成。
 

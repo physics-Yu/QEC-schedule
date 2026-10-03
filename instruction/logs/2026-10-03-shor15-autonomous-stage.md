@@ -75,3 +75,13 @@
 - 固定canonical X/Z3、Y5代表元对完整3500词实际展开，最大joint support为37原子；tool与需求doc更新。此37和原logical weight9都是固定导出的统计，不能作为运行时Cliffordframe后端的通用上界。
 - 真实三轮旧prefix16422已越过16k；新ZZ已加载的16k版本在继续增长的cold后缀仍有成本。后续default entry调为32768，**3GiB retained-byte界不变**；原16k边界回归显式构造16384缓存，新增default20k三轮全history扫描0decode/60000hit且retainedbytes不增长。原focused45通过，clean复验待汇总；新default不会影响已经运行的ZZ，XX新process将使用它。相关测试总计652（651 clean＋1 original），不能把源测试45再次加入总数。
 - mixed/Y设计与portable `tools/audit_mixed_pauli_design.py` 已发布准备；clean实际复建144 Clifford纠正branches＋64 noncommuting T injection branches，误差最大5.98e-16。独立复算actual inventory 1683odd-Y、642非零even-Y、max37。新文档一手依据包括Shor quant-ph/9605011v2、twist surgery、Game of Surface Codes、BSS和官方Stim；强调native/track S、non-Clifford表示与真正parity controller的能力缺口，均为设计/数学，不计新的backend/test/FT/physical通过。
+- clean 32k focused45通过（3.77s），13新增cache与32旧检查；当前RAG41 chunks/34 sources/66本地路径、25检索cases，最后新鲜度检查按发布清单固定。source Shor quant-ph/9605011v2核对为5Mar1997版本，保留v1/v2年份区别，不更新历史10-03资料日期为新日期。
+- 新ZZ resume1在2394.22s到1767/1860门、436plans、242174.3us；仍可能再次Timeout，不能把pending写成完成。后续精确preimage摘要memo只针对重新序列化完整nontrace字段＋immutable trace全部值的相等输入，仍在实现/独立验收，本阶段发布先排除未验的snapshot修改。
+- 第三阶段18个稳定增量路径已提交 `f389f705080a4d120fdc08bafb946a4e47b5a48f`（parent `6ddfbf8`），远端 tree `fec568ae49da7c283e6539b65f53d0e478b0b203` 与本地暂存、独立fetch完全一致，cached diff为零；EOF空白检查已修，RAG关联指纹同步刷新。clean branch用expected-old前移，原workspace HEAD/dirty/defaults保持。PR #3按最终已验证范围更新，仍为draft；新digest memo及未完成物理run不在此commit。
+
+## 第四阶段完整前像摘要与Clifford frame推进
+
+- `snapshot_encoding.py`新增单entry exact-preimage memo，1536MiB保守收费，nontrace全部新canonical fragments＋完整exact tuple[str]值构成certificate；hash miss使用同一份captured fragments，不以state/version/部分digest代替前像比较。自定义cache、替换default encoder、伪造`__func__` callable、wrong-self method、非exact keys/strings、零/超字节预算走原计算路径。独立只读review发现的customencoder伪装边界已实际修复与补cold/warm反例。
+- 新增21项memo检查，原workspace相关56通过/3显式排除；clean同56项通过10.96s，21新nodeids差集明确，另35为已计数旧检查。合计673不同相关项=672clean＋1original长正例；2历史saved-artifact和1已完成1977s长恢复对照不重复跑。250modules架构零违规。source SHA256 `93c9a1a44e950517abc191c4fec14f3e5f4604d8bd7d0ba763ab0859a5d32995`，test `51f1f766e7ff594e333bfe0a1078e945782913d143028abc022dbe1afd158d2e`。
+- 原实际低roundprefix纯编译profile保持：19ops/3CZ、plan9d5c...、完整SHA e53dbc...、compile/validate期间不submit，state/trace/version/time不变。旧3次hash42.49/41.30/41.00ms总124.79ms，新42.27/19.22/19.29ms总80.79ms，1miss/2hits收费34.19MB；只说明此小profile的hash成本约35%下降。旧`low-round-fingerprint-profile.json`与新`low-round-fingerprint-profile-memo.json`分开保存；不推断完整r3倍率/不计physical通过。新ZZresume2和XX进程再加载此源，已运行resume1保持16k/旧helper。
+- 下一logical reference独立推进`conditional_clifford_frame.py`：signed inverse-frame全部2n generators、真实测量结果改变后续标签、完整correction/global-phase/dependency ledger及终端residual pullback。此时仍在实现，未计入上述673或encoded/physical能力。

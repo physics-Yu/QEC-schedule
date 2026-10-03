@@ -2,7 +2,7 @@
 
 研究与工作树核对日期：**2026-10-04**（历史来源保留各自日期）。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
 
-主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，41 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、22 组本地来源与66个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
+主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，42 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、23 组本地来源与68个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
 
 ## 1. 最终要连起来的链路
 
@@ -239,7 +239,7 @@ clean新增25专项通过，累计631项不同相关测试。实际signed prefix
 
 ## 12. 2026-10-03物理预算超时与严格续跑：验收中
 
-clean ZZ第二次真实执行完成1605/1860门、390accepted plans后触发2400秒wall预算；物理时间约226532.6 μs。该次attempt因wall预算失败，原prefix的导出与独立replay仍在进行；完整协议终态须等待续跑验收。
+clean ZZ第二次真实执行完成1605/1860门、390accepted plans后触发2400秒wall预算；物理时间约226532.6 μs。该次attempt因wall预算失败，原prefix已完整导出并保留。旧runner的独立replay把accepted末计划完成到尾而没有截在Timeout前缀版本，结果为false；新helper须按原checkpoint版本验真。完整协议终态仍等待严格续跑验收。
 
 `execute_encoded_parity(resume_from=...)`已通过七项clean fast检查：逐内容核对protocol/compiled/platform/原initial与seed、accepted计划及pending future；同ID的operation内容篡改也拒绝。继续原quantum/RNG/placement/time/trace，保留原initial并重建全部前缀动画，不重新RESET输入或抵扣已发生物理时间。原workspace另有一轮708门actual mid-plan正例通过，resumed与无中断baseline的checkpoint/plans/metrics精确一致；其进程加载性能修复前cache，不能用于宣称新cache长执行已验。完整clean三轮ZZ/XX终态、量子结果和全部计划重放仍待验收。
 
@@ -262,3 +262,9 @@ K41与[下一后端设计](qec_mixed_pauli_backend_design.md)给出保留编码�
 可发布数学工具在clean真实复建144纠正分支及64个完整noncommuting注入分支，最大误差5.98e-16；并对实际export核对3500/1683oddY/642非零evenY/max37。输出为`reference_math_passed`，encoded/FT/physical均false，不增加backend测试计数。
 
 新增固定一手来源S12：[Shor, Fault-tolerant quantum computation v2](https://arxiv.org/pdf/quant-ph/9605011v2)，§4的cat核验、逐数据耦合与syndrome读出重复原则已核对。文档中的两条核验链/三次d3 PPM是项目候选，需独立native故障、retained channel和物理验收；没有用论文容错结论替代本项目证明。
+
+## 15. 2026-10-04完整preimage digest memo：兼容原SHA的工程修复
+
+K42/L23覆盖单项snapshot digest memo。每次fresh canonical序列化全部nontrace字段，并逐值比较完整immutable trace；完全相同才复用SHA。1536MiB独立保守byte界、自定义encoder/subclass/mutable trace fallback及无预算保留合同明确，不改变schema、checkpoint bytes、SHA或物理predicate，也不是缓存validator结论。trace decode默认32k/3GiB与trace JSON编码历史16k/1536MiB是不同预算。
+
+clean新21测试通过，连同35适用旧回归为56通过/3显式deselected；独立完整JSON/SHA oracle检查nested mutation、全trace篡改、Unicode、custom encoder与异常。相关不同nodeids累计673：672clean＋1原workspace真实恢复正例；56专项的旧项不重复加，数学设计仍另计。原小40MB级profile只有1miss/2hit的重复hash改善，不能外推完整物理吞吐。运行中的ZZ第一次strict续跑早于该修复启动，继续保持launch provenance；后续新进程使用稳定源，三轮full physical仍待实际终态与original-initial replay。
