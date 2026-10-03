@@ -18,6 +18,7 @@ where = ["src"]
 namespaces = false
 
 [tool.setuptools.package-data]
+"neutral_atom_experiments.qec_pbc" = ["visual_report.html", "visual_*_panels.js"]
 "neutral_atom_experiments.testing" = ["*.html"]
 "neutral_atom_env.visualization" = ["*.html", "*.js"]
 "neutral_atom_app.visualization" = ["*.html", "*.js"]

@@ -1,0 +1,118 @@
+{
+  "schema": "qec-pbc-rag-query-cases/1",
+  "top_k": 5,
+  "cases": [
+    {
+      "query": "当前 PPR 是完整 PBC 吗",
+      "expected_any": [
+        "K03",
+        "K23"
+      ]
+    },
+    {
+      "query": "surface code d3 logical X logical Z checks 编号",
+      "expected_any": [
+        "K10"
+      ]
+    },
+    {
+      "query": "为什么 hook error 不能随意重排 CNOT 顺序",
+      "expected_any": [
+        "K12"
+      ]
+    },
+    {
+      "query": "PBC T injection 条件 S Sdg 能物理执行吗",
+      "expected_any": [
+        "K23"
+      ]
+    },
+    {
+      "query": "Pauli rotation PZ MX magic state 四个 Kraus 分支",
+      "expected_any": [
+        "K07"
+      ]
+    },
+    {
+      "query": "Y measurement twist lattice surgery",
+      "expected_any": [
+        "K18"
+      ]
+    },
+    {
+      "query": "四层 syndrome 是否四次 actual CZ pulses",
+      "expected_any": [
+        "K13"
+      ]
+    },
+    {
+      "query": "从 logical circuit 到 physical circuit 完整产物",
+      "expected_any": [
+        "K01",
+        "K26"
+      ]
+    },
+    {
+      "query": "detector MPP 是否硬件指令",
+      "expected_any": [
+        "K14"
+      ]
+    },
+    {
+      "query": "现在 memory 已实现 Executor prearranged",
+      "expected_any": [
+        "K22"
+      ]
+    },
+    {
+      "query": "裸 ZZ ancilla 是否 fault tolerant",
+      "expected_any": [
+        "K16",
+        "K28"
+      ]
+    },
+    {
+      "query": "decoder distance 3 transport loss fidelity fault model",
+      "expected_any": [
+        "K24"
+      ]
+    },
+    {
+      "query": "下一步 encoded ZZ XX T 完成验收",
+      "expected_any": [
+        "K27",
+        "K29"
+      ]
+    },
+    {
+      "query": "BK T-type magic state 与 A T|+> 同一态吗",
+      "expected_any": [
+        "K08"
+      ]
+    },
+    {
+      "query": "35 role bus 34 原子 ancilla capacity",
+      "expected_any": [
+        "K31"
+      ]
+    },
+    {
+      "query": "full N15 N=15 a=2 完整Shor逆QFT连分数3和5现在完成什么",
+      "expected_any": [
+        "K35"
+      ]
+    },
+    {
+      "query": "encoded XX ZZ 三patch 51原子 136detectors decoded parity 无损Choi",
+      "expected_any": [
+        "K36"
+      ]
+    },
+    {
+      "query": "resource-aware injection PPR adaptive PBC 桥 35resources70测量 globalphase",
+      "expected_any": [
+        "K37"
+      ]
+    }
+  ]
+}

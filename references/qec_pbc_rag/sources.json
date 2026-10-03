@@ -1,0 +1,537 @@
+{
+  "schema": "qec-pbc-rag-sources/1",
+  "reviewed_at": "2026-10-03",
+  "scope": "定向一手文献与当前工作树能力快照；非穷尽最新论文；不含自动更新",
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "paper",
+      "title": "Surface codes: Towards practical large-scale quantum computation",
+      "authors": "Fowler, Mariantoni, Martinis, Cleland",
+      "version": "arXiv:1208.0928v2",
+      "url": "https://arxiv.org/pdf/1208.0928v2",
+      "publication": "Phys. Rev. A 86, 032324 (2012)",
+      "verified_scope": "全文 §III–V；syndrome circuit及稳定子测量",
+      "retrieved_at": "2026-10-03",
+      "notation_caution": "Fowler §II/Appendix A使用非标准Yhat=-iσ_y；本语料统一Hermitian Y=iXZ=σ_y。X/Z syndrome摘要不受影响。"
+    },
+    {
+      "id": "S02",
+      "kind": "paper",
+      "title": "Low-distance Surface Codes under Realistic Quantum Noise",
+      "authors": "Tomita, Svore",
+      "version": "arXiv:1404.3747v3",
+      "url": "https://arxiv.org/html/1404.3747v3",
+      "publication": "Phys. Rev. A 90, 062320 (2014)",
+      "verified_scope": "§III.2 / Fig.5；CNOT ordering及hook传播",
+      "retrieved_at": "2026-10-03"
+    },
+    {
+      "id": "S03",
+      "kind": "paper",
+      "title": "Trading classical and quantum computational resources",
+      "authors": "Bravyi, Smith, Smolin",
+      "version": "arXiv:1506.01396v1",
+      "url": "https://arxiv.org/pdf/1506.01396v1",
+      "publication": "Phys. Rev. X 6, 021043 (2016)",
+      "verified_scope": "§I PBC定义与Theorem 2；§V转换",
+      "retrieved_at": "2026-10-03"
+    },
+    {
+      "id": "S04",
+      "kind": "paper",
+      "title": "A Game of Surface Codes: Large-Scale Quantum Computing with Lattice Surgery",
+      "authors": "Daniel Litinski",
+      "version": "arXiv:1808.02892v3 (2019-02-03)",
+      "url": "https://arxiv.org/pdf/1808.02892v3",
+      "publication": "Quantum 3, 128 (2019)",
+      "verified_scope": "§1–1.1；Appendix A / Figs.38–41；tile、Pauli rotation、资源及实际check展开",
+      "retrieved_at": "2026-10-03"
+    },
+    {
+      "id": "S05",
+      "kind": "paper",
+      "title": "Surface code quantum computing by lattice surgery",
+      "authors": "Horsman, Fowler, Devitt, Van Meter",
+      "version": "arXiv:1111.4022v3",
+      "url": "https://arxiv.org/html/1111.4022v3",
+      "publication": "New J. Phys. 14, 123011 (2012)；v3 revised 2013-02-21",
+      "verified_scope": "§3 merging/splitting；§4.1–4.3；§7.1",
+      "retrieved_at": "2026-10-03"
+    },
+    {
+      "id": "S06",
+      "kind": "paper",
+      "title": "Lattice Surgery with a Twist: Simplifying Clifford Gates of Surface Codes",
+      "authors": "Litinski, von Oppen",
+      "version": "arXiv:1709.02318v2 (2018-04-17)",
+      "url": "https://arxiv.org/pdf/1709.02318v2",
+      "publication": "Quantum 2, 62 (2018)；DOI 10.22331/q-2018-05-04-62",
+      "verified_scope": "twist-based任意Pauli product测量与Y访问",
+      "retrieved_at": "2026-10-03"
+    },
+    {
+      "id": "S07",
+      "kind": "paper",
+      "title": "Universal quantum computation with ideal Clifford gates and noisy ancillas",
+      "authors": "Bravyi, Kitaev",
+      "version": "arXiv:quant-ph/0403025v2",
+      "url": "https://arxiv.org/html/quant-ph/0403025v2",
+      "publication": "Phys. Rev. A 71, 022316 (2005)；v2 2004-12-16",
+      "verified_scope": "§I–III及distillation定义；原文magic state命名",
+      "retrieved_at": "2026-10-03"
+    },
+    {
+      "id": "S08",
+      "kind": "official_source",
+      "title": "Stim surface-code generator",
+      "authors": "quantumlib/Stim",
+      "version": "commit 42e0b9e099180e8570407c33f87b4683cac00d81 (v1.15.0)",
+      "url": "https://github.com/quantumlib/Stim/blob/42e0b9e099180e8570407c33f87b4683cac00d81/src/stim/gen/gen_surface_code.cc",
+      "publication": "官方固定版本源码",
+      "verified_scope": "generate_surface_code_circuit；interaction orders、cycles、head/body/tail detectors",
+      "retrieved_at": "2026-10-03"
+    },
+    {
+      "id": "S09",
+      "kind": "official_documentation",
+      "title": "Stim gate reference",
+      "authors": "quantumlib/Stim",
+      "version": "v1.15.0",
+      "url": "https://github.com/quantumlib/Stim/blob/v1.15.0/doc/gates.md",
+      "publication": "官方固定版本文档",
+      "verified_scope": "MPP、DETECTOR、OBSERVABLE_INCLUDE、TICK",
+      "retrieved_at": "2026-10-03"
+    },
+    {
+      "id": "S10",
+      "kind": "paper",
+      "title": "Sparse Blossom: correcting a million errors per core second with minimum-weight matching",
+      "authors": "Higgott, Gidney",
+      "version": "arXiv:2303.15933v2",
+      "url": "https://arxiv.org/html/2303.15933v2",
+      "publication": "Quantum 9, 1600 (2025)",
+      "verified_scope": "MWPM decoding / PyMatching 2；decoder性能适用条件",
+      "retrieved_at": "2026-10-03"
+    },
+    {
+      "id": "S11",
+      "kind": "paper",
+      "title": "Logical quantum processor based on reconfigurable atom arrays",
+      "authors": "Bluvstein et al.",
+      "version": "arXiv:2312.03982v1",
+      "url": "https://arxiv.org/html/2312.03982v1",
+      "publication": "Nature 626, 58–65 (2024)；online 2023-12-06",
+      "verified_scope": "Fig.1；Methods Shuttling and transfers / Local Raman rotations / Mid-circuit readout",
+      "retrieved_at": "2026-10-03"
+    },
+    {
+      "id": "L01",
+      "kind": "repository_snapshot",
+      "title": "当前PBC实现审计",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "docs/qec_pbc_implementation_audit.md"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "docs/qec_pbc_implementation_audit.md": "adb5bf2ef3fe5b68ca39f535e8e9cf8b9d81770f0578b85126683756dd7c1b30"
+      },
+      "raw_sha256": {
+        "docs/qec_pbc_implementation_audit.md": "adb5bf2ef3fe5b68ca39f535e8e9cf8b9d81770f0578b85126683756dd7c1b30"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L02",
+      "kind": "repository_snapshot",
+      "title": "精确PPR前端",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "docs/qec_logical_pauli.md",
+        "src/neutral_atom_experiments/qec_pbc/logical_pauli.py"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "docs/qec_logical_pauli.md": "133abab1ad5a3811414e122b6169dbd6135f9e9af409370f82ff6503f7602227",
+        "src/neutral_atom_experiments/qec_pbc/logical_pauli.py": "b0e343777a23296ab95f2aebf4b2460cddf3b84c471b22332f29b4b84b1a384f"
+      },
+      "raw_sha256": {
+        "docs/qec_logical_pauli.md": "133abab1ad5a3811414e122b6169dbd6135f9e9af409370f82ff6503f7602227",
+        "src/neutral_atom_experiments/qec_pbc/logical_pauli.py": "b0e343777a23296ab95f2aebf4b2460cddf3b84c471b22332f29b4b84b1a384f"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L03",
+      "kind": "repository_snapshot",
+      "title": "逻辑magic injection合同",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "docs/qec_magic_injection.md",
+        "src/neutral_atom_experiments/qec_pbc/magic_injection.py"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "docs/qec_magic_injection.md": "4a6ecde4d85fa1b16f0d540b29d783454c22e4253d20096338f9830d250ef6da",
+        "src/neutral_atom_experiments/qec_pbc/magic_injection.py": "0b6f6a6c8d528d7d55881349dc49fb6afcfd72a49b2d82c9616040d8826c53c3"
+      },
+      "raw_sha256": {
+        "docs/qec_magic_injection.md": "4a6ecde4d85fa1b16f0d540b29d783454c22e4253d20096338f9830d250ef6da",
+        "src/neutral_atom_experiments/qec_pbc/magic_injection.py": "0b6f6a6c8d528d7d55881349dc49fb6afcfd72a49b2d82c9616040d8826c53c3"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L04",
+      "kind": "repository_snapshot",
+      "title": "canonical memory物理基线",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "docs/qec_stage_a_baseline.md",
+        "src/neutral_atom_experiments/qec_pbc/canonical.py",
+        "src/neutral_atom_experiments/qec_pbc/baseline.py"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "docs/qec_stage_a_baseline.md": "35935a8d1f5a746e1c6c61114150ddac5be1c51583c6f8f2821116d1a344c6f8",
+        "src/neutral_atom_experiments/qec_pbc/canonical.py": "e01c5251ff67bdb992a1414e070075e769577c9049ba03e8a7c0acf9549dab01",
+        "src/neutral_atom_experiments/qec_pbc/baseline.py": "af014b925b0b8d855fac6cb5e1fdf912d944b0b849098dabd8af8ee6b0550861"
+      },
+      "raw_sha256": {
+        "docs/qec_stage_a_baseline.md": "35935a8d1f5a746e1c6c61114150ddac5be1c51583c6f8f2821116d1a344c6f8",
+        "src/neutral_atom_experiments/qec_pbc/canonical.py": "e01c5251ff67bdb992a1414e070075e769577c9049ba03e8a7c0acf9549dab01",
+        "src/neutral_atom_experiments/qec_pbc/baseline.py": "af014b925b0b8d855fac6cb5e1fdf912d944b0b849098dabd8af8ee6b0550861"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L05",
+      "kind": "repository_snapshot",
+      "title": "协议IR及裸ancilla lowering",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/ir.py",
+        "src/neutral_atom_experiments/qec_pbc/lowering.py"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/ir.py": "be73640d7f27c5dd288a69c4f3fcbe202ea83ddec9b58a497532134bb74df30d",
+        "src/neutral_atom_experiments/qec_pbc/lowering.py": "e0933de5cbf5287d1c422b6d40243805e4caeb82947004e12adaea48df00e1c9"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/ir.py": "be73640d7f27c5dd288a69c4f3fcbe202ea83ddec9b58a497532134bb74df30d",
+        "src/neutral_atom_experiments/qec_pbc/lowering.py": "e0933de5cbf5287d1c422b6d40243805e4caeb82947004e12adaea48df00e1c9"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L06",
+      "kind": "repository_snapshot",
+      "title": "码约定及逻辑代表",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "src/neutral_atom_experiments/surface_ghz.py",
+        "src/neutral_atom_experiments/qec_pbc/surface.py"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "src/neutral_atom_experiments/surface_ghz.py": "2c6d61b7241dc9c13a0241ce1a617c6e64be23dead073edbf3a1d869730f51e3",
+        "src/neutral_atom_experiments/qec_pbc/surface.py": "2a968480e0ecaffadd6d8e1b6492681124aac6c15b108db02344167c39777e1d"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/surface_ghz.py": "a94f7aabfb3f2390b50317784d43b834aa94f4f1a0d167c90d0d8de38ff09101",
+        "src/neutral_atom_experiments/qec_pbc/surface.py": "2a968480e0ecaffadd6d8e1b6492681124aac6c15b108db02344167c39777e1d"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L07",
+      "kind": "repository_snapshot",
+      "title": "后端与角色binding",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/backend_contract.py",
+        "src/neutral_atom_experiments/qec_pbc/neutral_atom.py",
+        "docs/qec_backend_contract.md"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/backend_contract.py": "1ba1dd6defdb6e08ff94a0c0b0ec0a1a9aa8f17ad8820f274dd98671b903a37f",
+        "src/neutral_atom_experiments/qec_pbc/neutral_atom.py": "39f1f5ddf99d2ac4be195428263a587b85fcaaa4675a075dfa75206b164e0471",
+        "docs/qec_backend_contract.md": "40eac8be2dd3de3006417d1f9b929cce1303b223fc916a9493f9180ac0ddc856"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/backend_contract.py": "1ba1dd6defdb6e08ff94a0c0b0ec0a1a9aa8f17ad8820f274dd98671b903a37f",
+        "src/neutral_atom_experiments/qec_pbc/neutral_atom.py": "39f1f5ddf99d2ac4be195428263a587b85fcaaa4675a075dfa75206b164e0471",
+        "docs/qec_backend_contract.md": "40eac8be2dd3de3006417d1f9b929cce1303b223fc916a9493f9180ac0ddc856"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L08",
+      "kind": "repository_snapshot",
+      "title": "门条件及QEC状态跟踪",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "src/neutral_atom_env/domain/models.py",
+        "src/neutral_atom_env/quantum/stabilizer.py",
+        "src/neutral_atom_experiments/qec_pbc/verification.py"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "src/neutral_atom_env/domain/models.py": "6a0ed2481070268070b9ddd0eb07b5171ae3526788416b0c975c8a04a1296fb3",
+        "src/neutral_atom_env/quantum/stabilizer.py": "4d4b9eb0da9cb10dfdcc53f972e4b072a2fead88e56ea219a867a2e525109e9d",
+        "src/neutral_atom_experiments/qec_pbc/verification.py": "f690e8276cdb3f8f3cc719ba71cbd31a4ea1ebd57efd313da059accf50813141"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_env/domain/models.py": "9eeb8900940b4be511255be8eb5ab6f4ec5f182f3dc3c68e11c1ca57b7356f2a",
+        "src/neutral_atom_env/quantum/stabilizer.py": "f168304f116416fa55cf489ffade9892a8e7d4aa0ef0ec6b51ed99ba3e3437d7",
+        "src/neutral_atom_experiments/qec_pbc/verification.py": "f690e8276cdb3f8f3cc719ba71cbd31a4ea1ebd57efd313da059accf50813141"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L09",
+      "kind": "repository_snapshot",
+      "title": "未实现桥的拒绝回归",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "tests/test_qec_missing_physical_lowering.py"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "tests/test_qec_missing_physical_lowering.py": "761b3152477fc31d62e73416d0492d4a3dbacb3c3c3a53942cbf14eb326c763a"
+      },
+      "raw_sha256": {
+        "tests/test_qec_missing_physical_lowering.py": "761b3152477fc31d62e73416d0492d4a3dbacb3c3c3a53942cbf14eb326c763a"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L10",
+      "kind": "repository_snapshot",
+      "title": "理想PPM/injection独立预期",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "tests/test_qec_pbc_instrument.py",
+        "tests/test_qec_magic_injection.py"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "tests/test_qec_pbc_instrument.py": "641870e94e068790dc897b11d73e9aeedf204e0d21361ee5a29a44d5843e9d20",
+        "tests/test_qec_magic_injection.py": "e79832e3faaae02951a6637d091132b497ff015744552097ed37684f4b3047cc"
+      },
+      "raw_sha256": {
+        "tests/test_qec_pbc_instrument.py": "641870e94e068790dc897b11d73e9aeedf204e0d21361ee5a29a44d5843e9d20",
+        "tests/test_qec_magic_injection.py": "e79832e3faaae02951a6637d091132b497ff015744552097ed37684f4b3047cc"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L11",
+      "kind": "repository_snapshot",
+      "title": "受限native fault审计",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/canonical_audit.py",
+        "tests/test_qec_canonical_audit.py"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/canonical_audit.py": "80115e29cad00faabd224baa13c7657395c44c66aacf108b9ece977331d1c712",
+        "tests/test_qec_canonical_audit.py": "09f3dd166ab21025959b0ca87541b02fe3839ea47e3e8a873b1436e4e61898bc"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/canonical_audit.py": "80115e29cad00faabd224baa13c7657395c44c66aacf108b9ece977331d1c712",
+        "tests/test_qec_canonical_audit.py": "09f3dd166ab21025959b0ca87541b02fe3839ea47e3e8a873b1436e4e61898bc"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L12",
+      "kind": "repository_snapshot",
+      "title": "synthetic noise与Stim桥",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "docs/qec_noise_bridge.md",
+        "src/neutral_atom_experiments/qec_pbc/noise.py",
+        "src/neutral_atom_experiments/qec_pbc/stim_bridge.py"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "docs/qec_noise_bridge.md": "b98ea4fd1b0e600f9645206008b5b71a2d6d2d340f227abf45bd418b90de8aeb",
+        "src/neutral_atom_experiments/qec_pbc/noise.py": "1fcf4b617a74ed52670430f3ed6ca8d48566137208bbe6018979f1d15929e8f3",
+        "src/neutral_atom_experiments/qec_pbc/stim_bridge.py": "14a70c97b7d2ec5211f5724e4720f46febb9d0bf3ce6cb985cf66193a8660788"
+      },
+      "raw_sha256": {
+        "docs/qec_noise_bridge.md": "b98ea4fd1b0e600f9645206008b5b71a2d6d2d340f227abf45bd418b90de8aeb",
+        "src/neutral_atom_experiments/qec_pbc/noise.py": "1fcf4b617a74ed52670430f3ed6ca8d48566137208bbe6018979f1d15929e8f3",
+        "src/neutral_atom_experiments/qec_pbc/stim_bridge.py": "14a70c97b7d2ec5211f5724e4720f46febb9d0bf3ce6cb985cf66193a8660788"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L13",
+      "kind": "repository_snapshot",
+      "title": "环境/策略依赖边界",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "docs/environment_strategy_boundary.md"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "docs/environment_strategy_boundary.md": "42c67be67fa51efc7db1b40dece976401bc76b53e0df0f8fe497ab94594cbde0"
+      },
+      "raw_sha256": {
+        "docs/environment_strategy_boundary.md": "42d95311ee6ed1028ca3f4f0e01426afe512bc47d25da4e873930b68afd25a2a"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L14",
+      "kind": "repository_snapshot",
+      "title": "encoded Clifford片段",
+      "version": "working-tree snapshot 2026-10-03",
+      "paths": [
+        "docs/qec_logical_gadgets.md",
+        "src/neutral_atom_experiments/qec_pbc/logical_gadgets.py"
+      ],
+      "verified_scope": "当前文件与符号；非新物理运行",
+      "retrieved_at": "2026-10-03",
+      "sha256": {
+        "docs/qec_logical_gadgets.md": "dde3022c02ce21d78ba7a7d26df3b3818c87012df486322b640c1814697ddd4d",
+        "src/neutral_atom_experiments/qec_pbc/logical_gadgets.py": "40680be5d1a1903d1c8de43898fd9aaafe357e31fb66524a94d5089c053b6a2c"
+      },
+      "raw_sha256": {
+        "docs/qec_logical_gadgets.md": "dde3022c02ce21d78ba7a7d26df3b3818c87012df486322b640c1814697ddd4d",
+        "src/neutral_atom_experiments/qec_pbc/logical_gadgets.py": "40680be5d1a1903d1c8de43898fd9aaafe357e31fb66524a94d5089c053b6a2c"
+      },
+      "sha256_normalization": "text_lf"
+    },
+    {
+      "id": "L15",
+      "kind": "repository_snapshot",
+      "title": "完整N15 Shor理想逻辑参考",
+      "version": "Shor15 stage snapshot 2026-10-03",
+      "paths": [
+        "docs/qec_shor15.md",
+        "src/neutral_atom_experiments/qec_pbc/shor15.py",
+        "examples/run_shor15.py",
+        "tests/test_qec_shor15.py"
+      ],
+      "verified_scope": "完整逻辑算法及clean-main 29项专项；未编码、未PBC、未物理执行",
+      "retrieved_at": "2026-10-03",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "docs/qec_shor15.md": "6e94d144a3e4df7242a02896262f7dd4727c707f7c4875f61574643c55894177",
+        "src/neutral_atom_experiments/qec_pbc/shor15.py": "998cda894ea6f7de12874809da84c77292a7ecb52ae12c2b728438567fc5efa9",
+        "examples/run_shor15.py": "d7114602fccb6a7e83529ce96cd4d0946d14b4522bfb302ea880c0777c78405d",
+        "tests/test_qec_shor15.py": "edfede12dc8d257795f099ef91949152009d21a26141e4df4394ddff393dfb30"
+      },
+      "raw_sha256": {
+        "docs/qec_shor15.md": "6e94d144a3e4df7242a02896262f7dd4727c707f7c4875f61574643c55894177",
+        "src/neutral_atom_experiments/qec_pbc/shor15.py": "998cda894ea6f7de12874809da84c77292a7ecb52ae12c2b728438567fc5efa9",
+        "examples/run_shor15.py": "d7114602fccb6a7e83529ce96cd4d0946d14b4522bfb302ea880c0777c78405d",
+        "tests/test_qec_shor15.py": "edfede12dc8d257795f099ef91949152009d21a26141e4df4394ddff393dfb30"
+      }
+    },
+    {
+      "id": "L16",
+      "kind": "repository_snapshot",
+      "title": "三d3 patch encoded XX/ZZ协议与受限fault/instrument审计",
+      "version": "Shor15 encoded-parity stage snapshot 2026-10-03",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/encoded_ppm.py",
+        "tests/test_qec_encoded_ppm.py",
+        "docs/qec_encoded_ppm.md"
+      ],
+      "verified_scope": "encoded/reference与受限classical parity故障审计；非物理完成或全噪声FT",
+      "retrieved_at": "2026-10-03",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_ppm.py": "cad3d643a16b3d83ff09cdf52abd45ce1025b5b973e7d617b729be154606fa20",
+        "tests/test_qec_encoded_ppm.py": "437f46ccf6270b799491cfccb85094e02b49f0a8c9d421ef70107106b4834c75",
+        "docs/qec_encoded_ppm.md": "9a21dde36fc12b790b52dfb9620aec1916e5a83c0d4a2d899f76d7ffc64426ed"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_ppm.py": "cad3d643a16b3d83ff09cdf52abd45ce1025b5b973e7d617b729be154606fa20",
+        "tests/test_qec_encoded_ppm.py": "437f46ccf6270b799491cfccb85094e02b49f0a8c9d421ef70107106b4834c75",
+        "docs/qec_encoded_ppm.md": "9a21dde36fc12b790b52dfb9620aec1916e5a83c0d4a2d899f76d7ffc64426ed"
+      }
+    },
+    {
+      "id": "L17",
+      "kind": "repository_snapshot",
+      "title": "三patch物理runner与完整axes边界planner修复",
+      "version": "Shor15 stage snapshot 2026-10-03",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/encoded_physical.py",
+        "examples/run_encoded_parity.py",
+        "tests/test_qec_encoded_physical.py",
+        "tests/test_qec_encoded_physical_failure.py",
+        "src/neutral_atom_strategies/motion/patch_array.py",
+        "src/neutral_atom_strategies/scheduling/patch_greedy.py",
+        "tests/test_patch_array_boundary_embedding.py"
+      ],
+      "verified_scope": "clean-main physical输入/输出/failure-prefix与planner专项通过；完整ZZ/XX Executor复验中",
+      "retrieved_at": "2026-10-03",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_physical.py": "5cb981868882069bfc58d9d30a234398ac0fcf70ca44992b22547787a88b8faf",
+        "examples/run_encoded_parity.py": "75999df9573fc0575858f1aa57a9311ed95616172ce7cec6fa6c9dd76461e104",
+        "tests/test_qec_encoded_physical.py": "1242cabbeeb5fd3bc54c3b6ee8aac0426ecfdd1e2f6646759c63aea796cc2181",
+        "tests/test_qec_encoded_physical_failure.py": "ea46fed07c73bf6dafb48286083749459d45e6796412a6b25c0c0ba279991835",
+        "src/neutral_atom_strategies/motion/patch_array.py": "4fd889ffbcada860ca686adce23f4aef8c8ddaa71f49b1995e6f5643b774bbb2",
+        "src/neutral_atom_strategies/scheduling/patch_greedy.py": "1f30e4be79b1887c115971597fab19718baf5f40ba97991de68401ca6999d632",
+        "tests/test_patch_array_boundary_embedding.py": "cb3dd5088a8341b3706119a300e9b05dfa66f76da5530aa4c412d91d4c7f0d6d"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_physical.py": "5cb981868882069bfc58d9d30a234398ac0fcf70ca44992b22547787a88b8faf",
+        "examples/run_encoded_parity.py": "75999df9573fc0575858f1aa57a9311ed95616172ce7cec6fa6c9dd76461e104",
+        "tests/test_qec_encoded_physical.py": "1242cabbeeb5fd3bc54c3b6ee8aac0426ecfdd1e2f6646759c63aea796cc2181",
+        "tests/test_qec_encoded_physical_failure.py": "ea46fed07c73bf6dafb48286083749459d45e6796412a6b25c0c0ba279991835",
+        "src/neutral_atom_strategies/motion/patch_array.py": "afd3a68ffc62aba61b57bd20c0a9be1a1eca60040bebb16a26202b1651348a59",
+        "src/neutral_atom_strategies/scheduling/patch_greedy.py": "63223e3b2b2f043b6560ade35c5823f0ac2c3535c62c295f7aab4601e21eeea3",
+        "tests/test_patch_array_boundary_embedding.py": "cb3dd5088a8341b3706119a300e9b05dfa66f76da5530aa4c412d91d4c7f0d6d"
+      }
+    },
+    {
+      "id": "L18",
+      "kind": "repository_snapshot",
+      "title": "signed PPR到自适应外供资源测量逻辑程序",
+      "version": "Shor15 stage snapshot 2026-10-03",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/adaptive_pbc.py",
+        "tests/test_qec_adaptive_pbc.py",
+        "docs/qec_adaptive_pbc.md"
+      ],
+      "verified_scope": "clean-main 37专项通过；非encoded magic/factory/native/Executor",
+      "retrieved_at": "2026-10-03",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/adaptive_pbc.py": "a3295e8a88e5bdaa58cf9bce1121d43c64e2a6b133c379fad95efb5e494c3319",
+        "tests/test_qec_adaptive_pbc.py": "15f2583e52d65987eb5de3b85a848792ca3527d1c4960d8e7165825708345244",
+        "docs/qec_adaptive_pbc.md": "72cd0402a5fcc64d3d940ed620075b5293f6693f1d69050efe5fbc1a1849fbd6"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/adaptive_pbc.py": "a3295e8a88e5bdaa58cf9bce1121d43c64e2a6b133c379fad95efb5e494c3319",
+        "tests/test_qec_adaptive_pbc.py": "15f2583e52d65987eb5de3b85a848792ca3527d1c4960d8e7165825708345244",
+        "docs/qec_adaptive_pbc.md": "72cd0402a5fcc64d3d940ed620075b5293f6693f1d69050efe5fbc1a1849fbd6"
+      }
+    }
+  ]
+}

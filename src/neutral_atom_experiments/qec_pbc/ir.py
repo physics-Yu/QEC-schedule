@@ -130,7 +130,7 @@ class MemoryContract:
         if (not isinstance(self.patch, str) or not self.patch or self.basis not in ('X', 'Z') or
                 type(self.closing_round) is not int or self.closing_round < 1 or
                 not isinstance(self.observable_id, str) or not self.observable_id or
-                self.decoder != 'perfect_readout_single_data_pauli'):
+                self.decoder not in {'perfect_readout_single_data_pauli', 'canonical_detector_memory'}):
             raise ValueError('Invalid ideal memory decoding contract')
 
 

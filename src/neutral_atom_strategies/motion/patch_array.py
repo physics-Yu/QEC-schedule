@@ -21,7 +21,14 @@ class PatchArrayCompiler:
     def route(self, builder, target, **kwargs):
         route(builder, target, self.planner, **kwargs)
 
-    def bindings(self, state, atoms):
+    def bindings(self, state, atoms, *, required_shifts=()):
+        """Choose an embedding valid for the complete rigid axes at endpoints.
+
+        Empty/disabled axes retain coordinates and must fit the world too.
+        A matching first-column embedding can be invalid near the boundary;
+        try the other configured columns/rows before declaring no fit.
+        Swept-path, capture and pulse checks still validate the final plan.
+        """
         if state.hardware.backend != 'rigid':
             raise ValidationError('PATCH_PLATFORM', 'This transport family uses rigid translation of configurable rectangular axes')
         if state.placement.mobile_occupancy:
@@ -35,16 +42,28 @@ class PatchArrayCompiler:
         axes=state.aod.configuration()
         xs=tuple(x-state.aod.pose.x_um for x in axes.x_um)
         ys=tuple(y-state.aod.pose.y_um for y in axes.y_um)
-        def align(values, offsets):
+        shifts = ((0., 0.), *tuple(required_shifts))
+        def align(values, offsets, lower, upper, deltas):
             first=min(values)
+            matched = False
             for offset in offsets:
                 origin=first-offset
                 indices={v:next((i for i,o in enumerate(offsets) if abs(origin+o-v)<1e-7),None)
                          for v in values}
-                if all(i is not None for i in indices.values()):return origin,indices
+                if all(i is not None for i in indices.values()):
+                    matched = True
+                    if all(lower-1e-7 <= origin+min(offsets)+delta and
+                           origin+max(offsets)+delta <= upper+1e-7 for delta in deltas):
+                        return origin,indices
+            if matched:
+                raise ValidationError('PATCH_AOD_BOUNDS',
+                    'No configured rigid-axis embedding fits source and required endpoints inside world bounds')
             raise ValidationError('PATCH_CAPACITY', 'Selected atoms do not fit the configured nonuniform AOD axes')
-        x,columns=align({t.position.x_um for t in sites.values()},xs)
-        y,rows=align({t.position.y_um for t in sites.values()},ys)
+        bounds = state.world.bounds
+        x,columns=align({t.position.x_um for t in sites.values()},xs,
+            bounds.lower.x_um, bounds.upper.x_um, tuple(dx for dx, _ in shifts))
+        y,rows=align({t.position.y_um for t in sites.values()},ys,
+            bounds.lower.y_um, bounds.upper.y_um, tuple(dy for _, dy in shifts))
         origin = Position2D(x,y)
         bindings = []
         for q, site in sites.items():
@@ -57,18 +76,23 @@ class PatchArrayCompiler:
                         if p.state.placement.atom_to_holder[q].holder_id != site}
         if not destinations:
             return
-        origin, bindings = self.bindings(p.state, destinations)
-        shifts = set(); unload = []
+        shifts = set()
+        for q, site in destinations.items():
+            source = p.state.placement.position(q, p.state.world, p.state.aod)
+            destination = p.state.world.traps[site].position
+            shifts.add((destination.x_um-source.x_um, destination.y_um-source.y_um))
+        if len(shifts) != 1:
+            raise ValidationError('PATCH_SHAPE', 'Group destinations must be one rigid translation')
+        shift = next(iter(shifts))
+        origin, bindings = self.bindings(p.state, destinations, required_shifts=(shift,))
+        unload = []
         for b in bindings:
             destination = p.state.world.traps[destinations[b.atom_id]]
             if destination.id in p.state.placement.static_occupancy:
                 raise ValidationError('OCCUPIED_TASK_TARGET', 'Array destination must be free')
             source = p.state.world.traps[b.static_trap_id].position
-            shifts.add((destination.position.x_um-source.x_um, destination.position.y_um-source.y_um))
             unload.append(CaptureBinding(b.atom_id, b.cell, destination.id))
-        if len(shifts) != 1:
-            raise ValidationError('PATCH_SHAPE', 'Group destinations must be one rigid translation')
-        dx, dy = shifts.pop(); unload = tuple(unload)
+        dx, dy = shift; unload = tuple(unload)
         self.route(p, origin)
         p.add(K.AOD_LOAD, f'{label}: load {len(bindings)} atoms', bindings=bindings)
         self.route(p, Position2D(origin.x_um+dx, origin.y_um+dy), depart=bindings,
@@ -87,7 +111,8 @@ class PatchArrayCompiler:
 
     def pulse_group(self, p, members, shift):
         """members=(gate_id, anchor, mobile), identical source-to-pair shift."""
-        origin, bindings = self.bindings(p.state, [mobile for _,_,mobile in members])
+        origin, bindings = self.bindings(p.state, [mobile for _,_,mobile in members],
+                                        required_shifts=(shift,))
         self.route(p, origin)
         p.add(K.AOD_LOAD, f'Load {len(bindings)} parallel CZ operands', bindings=bindings)
         start = len(p.operations)

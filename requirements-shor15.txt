@@ -1,0 +1,6 @@
+# Isolated, reproducible dependencies for the Shor15/QEC/PBC milestone.
+# Ordinary physical environment remains independent of these libraries.
+numpy==2.5.3
+pytest==9.1.1
+stim==1.15.0
+pymatching==2.3.1

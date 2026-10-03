@@ -7,6 +7,7 @@
 **当前整理：2026-09-22。** 覆盖可编辑工作台、Parking、初态优化、有序贪心/SMT、本地分层驻留、QMAP 原生接入、ZAC 对照、交互 IR，以及隔离的 RL/大规模原生实验。当前自定义默认是 `qmap_native`；研究模块的范围分别说明，不代表全部算法或 QEC 优化已完成。
 
 - [当前版本、能力与限制](docs/current_version.md)
+- [d=3 Shor15 / PBC 阶段入口与验收边界](docs/qec_shor15_stage.md)
 - [整体架构与可复用模块](docs/general_framework_summary.md)
 - [当前交接及下一步](instruction/handoff.md) · [本次整理与验证记录](instruction/logs/2026-09-22-repository-release.md)
 
