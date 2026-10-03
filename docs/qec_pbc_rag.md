@@ -2,7 +2,7 @@
 
 研究与工作树核对日期：**2026-10-03**。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
 
-主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，37 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，11 个固定版本一手外部来源、18 组本地来源与46个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
+主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，39 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，11 个固定版本一手外部来源、20 组本地来源与56个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
 
 ## 1. 最终要连起来的链路
 
@@ -205,7 +205,7 @@ RAG生成答案时使用以下约束：
 
 本地源变化后 `--check` 会报 stale；需要先重新审计受影响知识块，再更新快照 hash。外部资料固定版本且有核对日期，不会自动宣称“最新”。固定检索用例仅验证证据召回，不证明语言模型答案质量或物理容错性。
 
-## 9. 2026-10-03 Shor15推进阶段：最新能力快照
+## 9. 2026-10-03 Shor15第一逻辑阶段：历史能力快照
 
 新增[K35](../references/qec_pbc_rag/knowledge.jsonl)与[完整Shor15说明](qec_shor15.md)：N=15、a=2完整未编码理想Shor已经包括12逻辑比特、72酉门、8项测量、逆QFT、连分数、周期验证、gcd与失败重试。seed7经过一次失败重试得到周期4、因子3和5。完整4096复振幅与独立FFT对照通过，clean-main新增29项专项通过。
 
@@ -218,3 +218,21 @@ RAG生成答案时使用以下约束：
 新增K37与[资源测量桥说明](qec_adaptive_pbc.md)：`compile_adaptive_pbc`把signed PPR变为明确外供T/Tdg资源、PZ/MX测量、条件多体Clifford/Pauli纠正与资源消耗的逻辑程序。理想executor实际投影并执行反馈；clean-main37专项通过，含非对易64分支与35资源/70测量的Shor算术前缀。该前缀仍不含逆QFT；encoded Y/Clifford反馈、magic制备/蒸馏及全部PhysicalCircuit/Executor桥保持缺口。
 
 首次clean ZZ物理尝试保留65plans的失败证据：完整AOD axes在C的边界移动越界。现已修复planner的现有行列embedding选择，同时检查source与required target端点的全部axes；没有扩大world或放宽安全、配对与路径验证。clean旧patch-greedy5项与新边界2项全部通过，完整ZZ/XX物理复验另行进行。
+
+## 10. 2026-10-03第二逻辑阶段：完整近似Shor资源测量已执行
+
+最新能力以K38及[QFT/PBC说明](qec_qft_synthesis.md)为准：原完整Shor的28个CP已保留原角度、按总operator预算ε=1e-3综合为Clifford+T，经过signed PPR到adaptive资源测量的整条理想执行。默认8993个CT门、3500份资源、7000次真实投影与条件纠正；第一阶段的35资源/70测量仅为算术前缀。外部整体相位实际施加，极小分支概率保存log2=-7000。
+
+clean新增14专项与完整模块CLI通过，8bit QFT的全部256列SVD operator误差6.78e-5，低于1e-3预算；一般data/reference纠缠输入另验。新的`run_shor15_stage.py --complete-pbc --epsilon 1e-3`支持完整阶段导出。旧K35/K37与第9节的未综合CP陈述现明确限定第一逻辑阶段；没有覆盖原历史报告。
+
+完整算法终端读出也已接入：`run_shor15_pbc`从实际资源测量所得PBC状态计算phase分布，再逐比特执行8项实际Z投影，使用投影结果进入连分数、周期验证、gcd与失败重试。seed7真实测得128（失败）后192，得周期4、因子3和5；不会用精确Shor参考分布替代采样。每次shot重新制备逻辑输入、分配3500份新资源；本例两次shot总消耗7000份资源、14000次资源测量与16次算法终端测量。clean新增3项专项通过，连同此前589项相关回归和14项综合测试，共606项通过。
+
+整体d3编码Shor与物理执行仍未完成。已有输入的XX/ZZ组合接口已在下一节按自身合同验证；一般mixed/Y PPM、encoded Clifford反馈、magic资源制备/消耗、完整算法平台和原子计划/Executor仍需实现。3500总消耗不等于同时magic patch数量，且不宣称最优T数或真实硬件fidelity。
+
+## 11. 2026-10-03已有编码输入组合与辅助patch回收
+
+K39与[编码组合接口说明](qec_encoded_composition.md)记录`append_encoded_parity`：保留prefix数据、依赖、实测semantic measurement与signed sector历史，只制备C辅助patch。A/B不RESET或重新制备；16项incoming sectors必须引用真实prefix测量，关闭时返回16项实测sector expressions。默认fresh C；明确请求回收且C全部data已破坏性读出/RESET、syndrome已RESET/release时，下一epoch仍真实执行17RESET和所需H。
+
+clean新增25专项通过，累计631项不同相关测试。实际signed prefix的ZZ→XX同C审计也通过：53 roles、4081 native gates，seed0/7每个边界检查全部256 logical/reference Pauli期望、144 detectors和16 retained sectors，保留实际输入态与外部纠缠。该数字含两个reference，表示声明native角色，不是全平台实测峰值。
+
+组合native instrument的理想channel已验证；组合链的fault audit/decoder、既有placement的物理适配与完整Shor Executor尚未验收。C回收只指联合测量辅助patch，不代表magic工厂已实现。

@@ -1,5 +1,7 @@
 # 完整 N=15 Shor 逻辑参考
 
+后续阶段已完成全部 CP 的带预算 Clifford+T 综合及整条理想资源测量执行，见[完整 QFT/PBC 阶段](qec_qft_synthesis.md)。下文关于未综合 CP 的描述限定为本文件的72门精确逻辑参考；该原始电路输出仍保持未编码/未物理执行。
+
 2026-10-03：新增 [`qec_pbc/shor15.py`](../src/neutral_atom_experiments/qec_pbc/shor15.py) 和 [`run_shor15.py`](../examples/run_shor15.py)。现在可运行 **N=15、a=2 的完整理想 Shor**：准备指数叠加、受控模幂、逆 QFT、采样、连分数恢复与验证周期、gcd 分解、失败重试。
 
 这是一条完整的**未编码逻辑参考线路**。surface-code / PBC / 原子物理执行仍需继续连接，不能将本结果当作 d=3 编码 Shor 已执行。与[阶段 A memory](qec_stage_a_baseline.md)的既有物理证据分开记账；后续协议沿用 [RAG 路线与验收合同](qec_pbc_rag.md)。

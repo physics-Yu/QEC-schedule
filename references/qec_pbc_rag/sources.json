@@ -433,11 +433,11 @@
         "examples/run_shor15.py",
         "tests/test_qec_shor15.py"
       ],
-      "verified_scope": "完整逻辑算法及clean-main 29项专项；未编码、未PBC、未物理执行",
+      "verified_scope": "完整逻辑算法及clean-main 29项专项；未编码、未PBC、未物理执行；2026-10-03补第二逻辑阶段链接，历史raw哈希保留",
       "retrieved_at": "2026-10-03",
       "sha256_normalization": "text_lf",
       "sha256": {
-        "docs/qec_shor15.md": "6e94d144a3e4df7242a02896262f7dd4727c707f7c4875f61574643c55894177",
+        "docs/qec_shor15.md": "f71bb238831c0beefb84f3e0cd97f44b6f9b31b372316764f7a57592561175dd",
         "src/neutral_atom_experiments/qec_pbc/shor15.py": "998cda894ea6f7de12874809da84c77292a7ecb52ae12c2b728438567fc5efa9",
         "examples/run_shor15.py": "d7114602fccb6a7e83529ce96cd4d0946d14b4522bfb302ea880c0777c78405d",
         "tests/test_qec_shor15.py": "edfede12dc8d257795f099ef91949152009d21a26141e4df4394ddff393dfb30"
@@ -519,18 +519,78 @@
         "tests/test_qec_adaptive_pbc.py",
         "docs/qec_adaptive_pbc.md"
       ],
-      "verified_scope": "clean-main 37专项通过；非encoded magic/factory/native/Executor",
+      "verified_scope": "clean-main 37专项通过；非encoded magic/factory/native/Executor；2026-10-03补第二逻辑阶段链接，历史raw哈希保留",
       "retrieved_at": "2026-10-03",
       "sha256_normalization": "text_lf",
       "sha256": {
         "src/neutral_atom_experiments/qec_pbc/adaptive_pbc.py": "a3295e8a88e5bdaa58cf9bce1121d43c64e2a6b133c379fad95efb5e494c3319",
         "tests/test_qec_adaptive_pbc.py": "15f2583e52d65987eb5de3b85a848792ca3527d1c4960d8e7165825708345244",
-        "docs/qec_adaptive_pbc.md": "72cd0402a5fcc64d3d940ed620075b5293f6693f1d69050efe5fbc1a1849fbd6"
+        "docs/qec_adaptive_pbc.md": "490bac7494a7f4526a3e7bc829fd4c203624134902379cd61bcb8101f26d9eff"
       },
       "raw_sha256": {
         "src/neutral_atom_experiments/qec_pbc/adaptive_pbc.py": "a3295e8a88e5bdaa58cf9bce1121d43c64e2a6b133c379fad95efb5e494c3319",
         "tests/test_qec_adaptive_pbc.py": "15f2583e52d65987eb5de3b85a848792ca3527d1c4960d8e7165825708345244",
         "docs/qec_adaptive_pbc.md": "72cd0402a5fcc64d3d940ed620075b5293f6693f1d69050efe5fbc1a1849fbd6"
+      }
+    },
+    {
+      "id": "L19",
+      "kind": "repository_snapshot",
+      "title": "完整Shor QFT Clifford+T近似综合、资源测量与真实终端读出",
+      "version": "second logical stage snapshot 2026-10-03",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/qft_synthesis.py",
+        "tests/test_qec_qft_synthesis.py",
+        "docs/qec_qft_synthesis.md",
+        "requirements-qft-synthesis.txt",
+        "examples/run_shor15_stage.py",
+        "src/neutral_atom_experiments/qec_pbc/shor15_pbc_run.py",
+        "tests/test_qec_shor15_pbc_run.py"
+      ],
+      "verified_scope": "clean14综合专项+3真实PBC终端/重试专项及完整stageCLI；未编码、未物理执行",
+      "retrieved_at": "2026-10-03",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/qft_synthesis.py": "e4b7483be8dfb35cd456ac04f874f92503422139838fe54f4fefd4ae9709b33a",
+        "tests/test_qec_qft_synthesis.py": "f3e6da5bc28f7b6d4a8160fad3e3191cb64188ba392022b6ed98a9794989899e",
+        "docs/qec_qft_synthesis.md": "c88b1a732acec612f9c6098979919da9026ecc508afa469f3b269cb027e469a0",
+        "requirements-qft-synthesis.txt": "0efc62e8de8ad343bc08ec70cf81ccac8a0e01218352d6fae70e2ab07146e507",
+        "examples/run_shor15_stage.py": "48136bb8b54f8fba31f87d1ab61f0210a0be6cee23637a3abe6768cf21a00f8b",
+        "src/neutral_atom_experiments/qec_pbc/shor15_pbc_run.py": "bf2c20200b98d47b2ef07aedde71decefa90cf50122a36724c274fad46ecce41",
+        "tests/test_qec_shor15_pbc_run.py": "c60d6cfd53aa88d3d9596f9c0aca8b383451f656ffea49db9ce521b9b2e55456"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/qft_synthesis.py": "e4b7483be8dfb35cd456ac04f874f92503422139838fe54f4fefd4ae9709b33a",
+        "tests/test_qec_qft_synthesis.py": "f3e6da5bc28f7b6d4a8160fad3e3191cb64188ba392022b6ed98a9794989899e",
+        "docs/qec_qft_synthesis.md": "1649ff181e1465022485c301f0167801be2b7d11a7d7dcfc0158619fabddc859",
+        "requirements-qft-synthesis.txt": "0efc62e8de8ad343bc08ec70cf81ccac8a0e01218352d6fae70e2ab07146e507",
+        "examples/run_shor15_stage.py": "0a7731c35260625eefe4243bb708fe94a6447d5473cdcf3706f49053305f1065",
+        "src/neutral_atom_experiments/qec_pbc/shor15_pbc_run.py": "bf2c20200b98d47b2ef07aedde71decefa90cf50122a36724c274fad46ecce41",
+        "tests/test_qec_shor15_pbc_run.py": "c60d6cfd53aa88d3d9596f9c0aca8b383451f656ffea49db9ce521b9b2e55456"
+      }
+    },
+    {
+      "id": "L20",
+      "kind": "repository_snapshot",
+      "title": "已有编码数据/sector历史组合XX/ZZ与显式C patch回收",
+      "version": "retained input composition snapshot 2026-10-03",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/encoded_composition.py",
+        "tests/test_qec_encoded_composition.py",
+        "docs/qec_encoded_composition.md"
+      ],
+      "verified_scope": "clean25专项及signed prefix ZZ→XX同C参考审计通过；未组合fault audit/物理Executor/完整编码Shor",
+      "retrieved_at": "2026-10-03",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_composition.py": "c104ddf75469604ca20fac2811fcc170d329f6d40ae1b79185eed57b075c6214",
+        "tests/test_qec_encoded_composition.py": "56f72e1810ca9955f04d6f6cd3a5c49d96a2b4d233a3d50a1d0dba2b899b1d03",
+        "docs/qec_encoded_composition.md": "bb3ab8a37fcdd5109a8033de10f415794a9d48ef64cfd903c39dfb4adc43c16b"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_composition.py": "c104ddf75469604ca20fac2811fcc170d329f6d40ae1b79185eed57b075c6214",
+        "tests/test_qec_encoded_composition.py": "56f72e1810ca9955f04d6f6cd3a5c49d96a2b4d233a3d50a1d0dba2b899b1d03",
+        "docs/qec_encoded_composition.md": "bb3ab8a37fcdd5109a8033de10f415794a9d48ef64cfd903c39dfb4adc43c16b"
       }
     }
   ]

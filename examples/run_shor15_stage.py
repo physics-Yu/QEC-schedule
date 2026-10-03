@@ -21,6 +21,8 @@ def main():
     parser.add_argument('--seed', type=int, default=7)
     parser.add_argument('--fault-audit', action='store_true', help='Exhaustive declared single-native-fault parity audit')
     parser.add_argument('--physical', action='store_true', help='Full ZZ and XX Executor runs, including independent replay')
+    parser.add_argument('--complete-pbc', action='store_true', help='Synthesize all QFT CP gates and execute the complete logical PBC instrument')
+    parser.add_argument('--epsilon', type=float, default=1e-3, help='Full-circuit operator error budget for --complete-pbc')
     parser.add_argument('--wall-budget', type=float, default=2400)
     args = parser.parse_args()
     output = fresh_output(args.output)
@@ -36,6 +38,27 @@ def main():
                         ('arithmetic_measurement_audit.json', adaptive_audit)):
         (output/name).write_text(json.dumps(value, indent=2), encoding='utf-8')
     parity_reports = {}
+    complete = None
+    if args.complete_pbc:
+        from neutral_atom_experiments.qec_pbc.qft_synthesis import (
+            synthesize_shor15, audit_complete_shor_pbc, audit_qft_synthesis)
+        from neutral_atom_experiments.qec_pbc.shor15_pbc_run import run_shor15_pbc
+        synthesis = synthesize_shor15(total_error_budget=args.epsilon, seed=args.seed)
+        complete = {'qft_operator_audit': audit_qft_synthesis(synthesis),
+                    'measurement_audit': audit_complete_shor_pbc(synthesis, seed=args.seed)}
+        pbc_shots = run_shor15_pbc(synthesis, seed=args.seed, include_measurement_records=True)
+        complete['shor_execution'] = pbc_shots | {'passed': pbc_shots['success']}
+        full_pauli = synthesis.compile_pauli()
+        full_adaptive = compile_adaptive_pbc(full_pauli, resource_quality='ideal_reference',
+            resource_provenance='Ideal logical resources for the complete synthesized Shor reference')
+        for name, value in (('complete_clifford_t.json', synthesis.to_dict()),
+                            ('complete_logical_pauli.json', full_pauli.to_dict()),
+                            ('complete_adaptive_pbc.json', full_adaptive.to_dict() | {
+                                'external_global_phase_radians': synthesis.global_phase_radians,
+                                'external_phase_action': 'multiply final instrument state by exp(i*external_global_phase_radians)',
+                                'instrument_statevector_bit_order': 'big-endian data wires then external reference'}),
+                            ('complete_pbc_audit.json', complete)):
+            (output/name).write_text(json.dumps(value, indent=2), encoding='utf-8')
     for basis in ('Z', 'X'):
         protocol = encoded_parity_program(basis=basis)
         compiled = compile_encoded_parity(protocol)
@@ -58,21 +81,25 @@ def main():
         parity_reports[basis] = report
     passed = (shor['success'] and adaptive_audit['passed']
         and all(r['instrument_audit']['passed'] for r in parity_reports.values())
+        and (complete is None or all(report['passed'] for report in complete.values()))
         and all(r.get('native_fault_parity_audit', {}).get('passed', True) for r in parity_reports.values())
         and all(r.get('physical', {}).get('status', 'completed') == 'completed' for r in parity_reports.values()))
     summary = {'schema': 'qec-shor15-stage/1', 'passed': passed,
         'output_directory': str(output.resolve()), 'seed': args.seed,
         'complete_shor_logical_reference': shor['success'],
         'arithmetic_resource_measurement_bridge': adaptive_audit,
+        'complete_shor_logical_pbc': complete,
         'encoded_parity': parity_reports,
-        'full_shor_pbc_compiled': False, 'full_shor_encoded': False,
+        'full_shor_pbc_compiled': bool(complete and complete['measurement_audit']['passed']), 'full_shor_encoded': False,
         'full_shor_physical_executed': False,
-        'remaining': ['inverse-QFT CP synthesis and error budget',
+        'remaining': ([] if complete else ['inverse-QFT CP synthesis and error budget']) + [
                       'encoded mixed/Y Pauli and Clifford feedback',
                       'encoded resource preparation/injection and full algorithm physical execution']}
     (output/'stage_report.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
-    print(json.dumps({'passed': passed, 'factors': shor['factors'],
-        'resource_consumptions': len(adaptive.injections), 'output': str(output.resolve()),
+    print(json.dumps({'passed': passed, 'factors': complete['shor_execution']['factors'] if complete else shor['factors'],
+        'resource_consumptions': len(full_adaptive.injections) if complete else len(adaptive.injections),
+        'full_shor_pbc_compiled': bool(complete and complete['measurement_audit']['passed']),
+        'output': str(output.resolve()),
         'full_shor_physical_executed': False}, indent=2))
     return 0 if passed else 1
 

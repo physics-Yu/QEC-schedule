@@ -1,5 +1,7 @@
 # signed Pauli rotations → 自适应资源测量程序
 
+后续完整算法阶段已将 inverse QFT 的全部 CP 综合并接到本桥，默认 ε=1e-3 时完成3500个resource/7000测量的整条理想Shor，见[完整 QFT/PBC 验收](qec_qft_synthesis.md)。本文件的35resource结果是较早的算术前缀验收；encoded preparation/feedback/physical边界保持。
+
 2026-10-03：[`adaptive_pbc.py`](../src/neutral_atom_experiments/qec_pbc/adaptive_pbc.py) 新增真正执行理想 measurement instrument 的资源桥。它接收既有 `LogicalPauliProgram`，将每个正/负 π/8 指数 Pauli rotation 转成外供 T/Tdg resource、两次 Pauli 测量、测量条件 Clifford/Pauli 纠正，再执行 residual Clifford。
 
 它保留 data 逻辑寄存器及任意输入/量子输出合同，没有执行 BSS 的 stabilizer-register 消去。输出为**logical resource-aware measurement program**；encoded PPM、encoded magic 制备、原生门、原子运输和 Executor 是后续接口。既有 surface memory 的物理证据与此理想 instrument 证据分别记账。

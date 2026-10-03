@@ -1,0 +1,4 @@
+# Optional, isolated synthesis core. Existing NumPy/runtime is used for QA.
+# Install with --no-deps --target artifacts/qft-synthesis-deps to avoid graph/UI extras.
+pygridsynth==1.2.0
+mpmath==1.3.0

@@ -2,7 +2,7 @@
 
 ## 2026-10-03 d=3 Shor15自主推进与阶段提交
 
-已实现完整N15,a2理想逻辑Shor（12w/72酉门/8测量与周期验证、gcd/retry）、35magic算术PPR→真实理想资源测量/反馈桥，以及三patch encoded ZZ/XX（前后各3轮、1860native、136detectors、两Choi分支与声明native-fault classicalparity audit）。**远端main独立发布副本589不同相关tests、18/18 RAG检索、247模块架构0违规；37知识块/29来源与跨平台LF新鲜度通过。** 完整ZZ/XX physical Executor重跑正在验收，首轮AOD列选择越界的失败与策略修复保留；不预报完整物理通过。整体encoded Shor、QFT CP综合、mixed/Y、magic制备/FT与既有编码输入组合接口保持后续；原hardware/validator不放宽，本地其他dirty及HEAD保持。见[阶段入口](../docs/qec_shor15_stage.md)、[本轮日志](logs/2026-10-03-shor15-autonomous-stage.md)。
+第一阶段已提交 `4ee2669` / [PR #3](https://github.com/physics-Yu/QEC-schedule/pull/3)。完整 N15,a2 Shor 已综合全部 QFT 并实际执行理想 PBC：8993 Clifford+T gates、每 shot 3500 resources，seed7 两次终端 Z 读出恢复 3/5；12 wires 基础编码需204原子，资源峰值未定。**远端独立副本631不同tests通过；RAG39知识块/31来源、21/21检索、250模块架构零违规**。X/Z 连续编码组合与同 C 显式回收实现，53 roles/4081 native、25专项及clean两阶段reference审计通过。三patch ZZ/XX 1860门物理重跑在最后一轮因 wall budget 超时，严格 checkpoint 续跑与性能定位中；未预报完整物理通过。整体 encoded physical Shor、mixed/Y、编码 Clifford反馈、magic制备/FT保持后续；原硬约束、本地其他dirty及HEAD保持。见[阶段入口](../docs/qec_shor15_stage.md)、[本轮日志](logs/2026-10-03-shor15-autonomous-stage.md)。
 
 ## 2026-10-02 QEC/PBC GitHub 发布验证
 

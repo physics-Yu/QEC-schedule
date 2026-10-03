@@ -113,6 +113,24 @@
       "expected_any": [
         "K37"
       ]
+    },
+    {
+      "query": "完整Shor QFT 28CP综合 3500resources 7000measurement epsilon1e-3",
+      "expected_any": [
+        "K38"
+      ]
+    },
+    {
+      "query": "实际PBC输出态 phase terminal readout 8项Z投影 128失败192成功 fresh shot 7000资源14000测量 retry",
+      "expected_any": [
+        "K38"
+      ]
+    },
+    {
+      "query": "已有encoded input retained A B data不RESET signed sector history 连续ZZ XX 同C resource_reuse 53roles",
+      "expected_any": [
+        "K39"
+      ]
     }
   ]
 }

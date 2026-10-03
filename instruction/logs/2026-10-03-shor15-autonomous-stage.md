@@ -46,3 +46,17 @@
 - clean `run_shor15_stage.py --fault-audit` 实际passed，完整理想Shor因子3/5，算术35resources测量桥与ZZ/XX独立instrument/fault校验；full_shor_physical_executed=false。
 - 原29tracked dirty指纹保持（此前独占RAG/test fixture常规修复除外）；远端env/hardware/config不复制本地未发布Enola整组，两planner diff逐段仅本次bounds选列修复。
 - 当前ZZ/XX两个完整物理重跑已跨首轮失效点，尚不预报最终通过。
+
+## 第一阶段已提交 GitHub
+
+- 独立干净发布分支 `codex/d3-shor15-stages`，commit `4ee266936949717565e233b74542e0eaff5f6417`，draft PR [#3](https://github.com/physics-Yu/QEC-schedule/pull/3)。90 个相关文件，父提交为前述远端 main；独立 fetch 后完整 tree 与 staged tree 一致，逐个 blob 核对。原 workspace HEAD `9e28b2e`、pushurl=DISABLED 和其他未提交工作保持。
+
+## 第二阶段完整逻辑 PBC 与连续编码接口
+
+- 全部 28 个逆 QFT CP 展开成 84 Rz，使用固定官方 pygridsynth 1.2.0 核心与全局相位合同综合。默认 ε=1e-3/seed7：8993 Clifford+T gates、3500 T/Tdg resources；独立 256 列完整 QFT 算子误差 6.78e-5，小于预算；一般与 work/reference 纠缠输入另验。
+- 完整算法实际执行 3500 ideal-resource 消耗和 7000 projection/feedback，逐分支全局相位与 residual Clifford 实际应用；zero 和一般 data-reference 输入的 instrument 复振幅误差约 1.05e-13。整体对精确 Shor L2 误差 3.57e-5/2.53e-5。未以 arithmetic-only 或理想酉替代全部 PBC 测量。
+- `shor15_pbc_run.py` 在实际 PBC 输出态上执行 8 次终端 Z 投影，再周期验证/gcd/retry；seed7 第一次 128 未给出因子，第二次 192 恢复 r4 与 3/5。两 shot 共 7000 fresh resources、14000 resource measurements、16 terminal measurements；使用不同 resource instance namespace，保留失败 shot。
+- clean 新增 QFT 14 项、终端测量 3 项真实通过，连同第一批为 606 个不同相关测试。`--complete-pbc` CLI 在正确 isolated Stim/pygridsynth PYTHONPATH 下通过；第一次缺 Stim 的依赖失败证据保留。RAG 当时 38 chunks/30 sources/53 本地路径，20/20 检索、11 新鲜度检查；249 modules 架构零违规。
+- `encoded_composition.py` 接受 prefix 和全部 incoming sectors，无 A/B data RESET；fresh C 或显式已消耗 C 的 epoch reuse。原 prefix 保留，连接真实 native gates 与依赖。ZZ→XX 使用同 C 为 53 roles 含两个 reference、4081 native；seed0/7/19 两阶段分别验证全部 256 个逻辑/reference Pauli 期望、144 detectors 和 16 closing sectors。25 项专项通过；clean 复验与 RAG 新增记录待汇总。这里未包含组合 physical 或 magic factory。
+- clean ZZ/XX 完整物理重跑分别在 1605/1596 个已完成门附近因 2400s wall budget 超时。物理最后一轮执行仍有效，未发生新的物理约束失败；checkpoint、accepted plans 与 pending future 导出/重放进行中。新增严格 resume 只接续原 quantum/RNG/time/trace，不能重做输入制备。性能问题另定位，不跳过任何历史校验。
+- 第二阶段 clean 组合 25 项通过（5.99s），累计 **631 个不同相关测试**。signed-prefix、两外部 references 的同 C ZZ→XX 实际 audit 通过：53 roles/4081 native，seed0/7 两边界各256 Pauli expectations、144 detectors 和16 closing sectors全部满足。RAG 加 K39/L20 后39 chunks/31 sources/56 本地路径，21/21 检索、新鲜度与11跨平台检查通过；250 modules 架构零违规。第二阶段发布包括这些稳定内容，resume/performance 仍在单独验收。
