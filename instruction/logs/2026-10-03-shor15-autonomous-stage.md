@@ -1,6 +1,6 @@
 # 2026-10-03 · d=3编码Shor自主推进与阶段发布
 
-- 状态：PARTIAL（本轮十一阶段能力已验收，已有十次阶段提交；最终完整d=3 encoded physical Shor未完成）
+- 状态：PARTIAL（本轮十一阶段能力已验收并提交；最终完整d=3 encoded physical Shor未完成）
 - 用户授权：沿最终愿景自主继续；阶段成果提交GitHub。阶段算法已确认N=15，每个logical wire使用3×3 data的d=3 patch。
 - 本轮目标：完整N15 logical reference、encoded ZZ/XX协议、resource-aware PPR测量桥与物理集成；每项按真实验收范围发布，不以reference替代Executor。
 - 初始基线：canonical memory已有物理证据；完整PBC/encoded T桥缺失；远端main实时核对为5f3286defd95a269b94b2211960984319c797817，本地HEAD与大量dirty保持。
@@ -171,4 +171,6 @@
 
 ## 最终发布验收
 
-第十一root3最终副本同步并仅合并本轮handoff heading，remote原文段外逐字LF相同；L17只刷新当前stage-doc fingerprint，源码/原summary不改。最终RAG实际51chunks/44sources/93local paths、36/36 retrieval、11/11 LF/CRLF/CR及其他portability全部PASS/0errors。最终913相关不同tests、consumer71/36new及256modules/0的已过检查未无理由重复运行。13path allowlist为consumer3＋validated native-prefix1＋actualXX/combined2＋RAG4＋root3，parent112d2b2；original HEAD/pushurl/其他dirty不触及，原GB档案留在ignored且十关键文件stream字节相同。最终Git tree/commit/独立fetch核对待实际提交结果。
+第十一root3最终副本同步并仅合并本轮handoff heading，remote原文段外逐字LF相同；L17只刷新当前stage-doc fingerprint，源码/原summary不改。最终RAG实际51chunks/44sources/93local paths、36/36 retrieval、11/11 LF/CRLF/CR及其他portability全部PASS/0errors。最终913相关不同tests、consumer71/36new及256modules/0的已过检查未无理由重复运行。13path allowlist为consumer3＋validated native-prefix1＋actualXX/combined2＋RAG4＋root3，parent112d2b2；original HEAD/pushurl/其他dirty不触及，原GB档案留在ignored且十关键文件stream字节相同。
+
+第十一提交实际成功：`344d09d6942db05eaa599ca805975d1141897657`（parent `112d2b2`），tree `90c3a5568816ff58c8267cd1177a7a82ea8b43a9` 与本地staged/GitHub/独立fetch完全一致；cached diff zero，clean expected-old ref前移无dirty。PR #3实际head同步344d09d、11commits、135changedfiles，标题改为Shor15 PBC/encodedresource/physical d3 ZZXX范围，913/256/51/44/36及fullphysical Shor未完成准确更新。原HEAD9e28b2e/pushurl DISABLED保持。此后仅补日志与handoff的发布回执，不改源码、RAG数据、物理证据或验收合同；回执所记录的能力commit为344d09d。
