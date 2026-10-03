@@ -197,6 +197,12 @@
       "expected_any": [
         "K46"
       ]
+    },
+    {
+      "query": "encoded_export_recovery verification-only noforward completedcheckpoint missingdecisions 152captured3uncaptured sourceguard exactsnapshotbytes EOF fullinitial457 pending",
+      "expected_any": [
+        "K48"
+      ]
     }
   ]
 }

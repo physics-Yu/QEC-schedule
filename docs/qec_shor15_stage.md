@@ -1,6 +1,6 @@
 # d=3 surface-code Shor：阶段实现与验收
 
-目标是把完整 N=15、a=2 Shor 通过 Pauli-based computation 和 d=3 rotated surface code 接到中性原子的 PhysicalCircuit、真实调度与 Executor。每个算法逻辑比特使用 9 个 data 与 8 个 syndrome 原子。2026-10-03 至10-04已验收完整逻辑参考、全部 QFT 的 Clifford+T 综合、实际完整 PBC 测量与因子恢复、可连续组合的编码测量，以及17原子编码T/T†资源制备参考；整体编码 Shor 仍是后续目标。共 **799 个不同相关测试通过**：798在远端main独立发布副本，另1项真实中断→恢复→无中断快照比较在原workspace；旧缓存/readout/恢复回归另有125通过、3项缺历史artifact跳过。RAG最新检索、新鲜度及254模块架构零违规的证据见[本轮日志](../instruction/logs/2026-10-03-shor15-autonomous-stage.md)。ZZ完整三轮物理续跑已完成；XX执行checkpoint已齐，访问冲突后的独立导出恢复仍在验收。
+目标是把完整 N=15、a=2 Shor 通过 Pauli-based computation 和 d=3 rotated surface code 接到中性原子的 PhysicalCircuit、真实调度与 Executor。每个算法逻辑比特使用 9 个 data 与 8 个 syndrome 原子。2026-10-03 至10-04已验收完整逻辑参考、全部 QFT 的 Clifford+T 综合、实际完整 PBC 测量与因子恢复、可连续组合的编码测量，以及17原子编码T/T†资源制备参考；整体编码 Shor 仍是后续目标。共 **842 个不同相关测试通过**：841在远端main独立发布副本，另1项真实中断→恢复→无中断快照比较在原workspace；旧缓存/readout/恢复回归另有125通过、3项缺历史artifact跳过。RAG最新检索、新鲜度及255模块架构零违规的证据见[本轮日志](../instruction/logs/2026-10-03-shor15-autonomous-stage.md)。ZZ完整三轮物理续跑已完成；XX执行checkpoint已齐，访问冲突后的独立导出恢复仍在验收。
 
 | 层 | 本阶段行为 | 限制 |
 | --- | --- | --- |
@@ -84,3 +84,8 @@ python examples/run_encoded_parity.py --basis Z --rounds 3 --seed 0 --resume-fro
 [含Y的原生cat参考](qec_mixed_pauli_cat.md)已在clean通过35新＋41旧XZ联合76检查。单±Y全部32raw编码Choi分支，±XYZ全部2048raw、±YY全部1024raw的完整受控因子/GHZ/真实读出bras逐项核对；真实三reference probes各检查4096个Pauli期望。非对易−Y_A X_B→Y_A Z_B全部四分支同9辅助原子真实MEASURE/RESET复用，保留signed incoming与外部纠缠。public allraw审计先严格核对完整native tail/sidecar/DAG，六种突变均拒绝；旧未资格产物保留且排除当期证据。最大qualified Kraus误差2.39e-16。13patch/12Y+资源Z的63cat/285roles/24T仅结构编译例，不是完整channel或物理peak。原生T没有被删除，参考TT=S资格不允许单T、中间fault、竞争后继或wire绕过；core仍拒绝tracked T。
 
 XX中断事实与已有checkpoint检查见[原样保留的事故摘要](../references/qec_pbc_validation/encoded_xx_physical_export_interruption.json)。独立export recovery只重新审核与重放，不能伪补原始completed文件、重做输入制备或由缺失decision log推断成功。已实现的逻辑frame和native XYZ reference仍需committed-report控制、非Clifford状态表示与资源consumer才能连接成完整physical Shor。
+
+
+[导出恢复入口](qec_encoded_export_recovery.md)只接受native DAG已完成、pending为空的冻结checkpoint，先核对所有输入、seed、11个原文件指纹、launch source与父级plan/trace完整内容，再复用原completed quantum/effect/timing/resources/retained-output审计。最后必须从original initial逐个真实submit/run所有plans，比较完整canonical字节与EOF，重新生成完整VisualRecorder。逐record/plan导出不改schema或任何physical predicate，原档案及其子目录禁止写入。缺scheduler decision log明确unavailable、candidate history为null；三个原未捕获的实验依赖原SHA保持null，不能声称全部原源码一致。
+
+新43项与13既有fast检查在clean联合56通过（18.24s），原1977s完整恢复对照已完成而未重复；不同nodeids总842=841clean＋1original，255modules0违规。轻量fixture只有三个真实RESET/H/M物理门，并显式替换encoded-output检查，只验证恢复机制。实际152个captured source依赖匹配，已复核shared runner316519→eb580仅提取原predicate与compact audit。三轮XX已开始独立457plan完整初态重放，实际最终结果仍待确认。

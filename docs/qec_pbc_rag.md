@@ -2,7 +2,7 @@
 
 研究与工作树核对日期：**2026-10-04**（历史来源保留各自日期）。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
 
-主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，47 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、28 组本地来源与83个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
+主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，48 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、29 组本地来源与86个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
 
 ## 1. 最终要连起来的链路
 
@@ -306,3 +306,11 @@ K47与[含Y接口](qec_mixed_pauli_cat.md)使用独立NativeCatProgram envelope�
 clean35新＋41旧XZ共76PASS10.97s，35与764无交集，总799distinct=798clean＋1original长恢复正例；architecture254modules0违规。六±Y/XYZ/YY actualqualified导出均PASS：32/2048/1024全raw数学、seed0/7真实encoded/ref probes，最大Kraus2.388e-16；独立NumPy52controlled矩阵max2.22e-16。peer发现旧审计筛选遗漏实际readout后，现严格验完整orderedtail/phaseledger、canonical boundaries/prepare/verify/couple/readout/release/sidecar，再收缩actualreadoutunitary bras；改H为Z/缺门/提前RESET/额外coupling/坏verify/semanticflip均拒绝，六case不被统计为六newtest。
 
 单roundbefore+after新增Y312/XYZ858/YY643native；default3round成本不能沿用该数。13patch12Y+Z只结构compile：63cat+1verifier/285roles/24T，不是channel/FT/physical或actualframepeak；完整allraw只L≤16、channel穷举只logical+ref≤6。cat核验后生产abort/retry、TT之间native故障、magic消费、全dynamicframe控制与完整Executor/encodedShor仍待验。
+
+## 21. Verification-only核验/导出恢复：基础设施通过，XX完整重放待验
+
+K48/L29与[恢复接口](qec_encoded_export_recovery.md)只接受完整DAG/无pending的saved checkpoint，不调用scheduler、不forward或重RESET。原crashed及parent档案保持原样，独立新输出与faulthandler路径拒绝原档案及Windowsjunction别名。11raw文件全SHA/长度、输入/seed/platform/initial、全部parent plans/trace前缀与当前trace/planbody核对；随后共享原quantum/physical/terminal判定，再从originalinitial真实重提交全部457plans，并比较所有canonical snapshot字节及EOF，重建完整recording。
+
+clean43新恢复infra＋13旧fast共56PASS18.24s，原已跑长正例显式deselected；43与799无交集，累计842distinct=841clean＋1original，architecture255modules0违规。152capturedsource严格匹配，仅允许已review shared runner316519→eb580；原surface_ghz/surface_qec/qec_layout未捕获，原SHA=null、完整原source provenance=false，当前恢复源码另列。短fixture为真实51原子三native门，fixture替换encoded-output审计，不能当成1860门XX channel验收。
+
+丢失decisions/candidatehistory保持unknown/null，原parent Timeout/replayfalse不改；crashed总wall未知，恢复wall只计输入核验/重放/导出，访问冲突机制未确定。早期输入/source/parent/shared审计拒绝不建output，建立输出后的普通重放/导出异常才保存recovery_failure。实际XX recovery已启动全initial重放，最终exit0、所有quantum/exactsnapshot、完整导出/evidence仍pending；K46中断摘要不能被基础设施测试改写成完成，实际终态另行发表。没有新增noise/FT、magic consumer或完整encoded physical Shor能力。

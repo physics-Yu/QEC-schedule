@@ -167,6 +167,54 @@ def encoded_output_audit(protocol, inputs, state):
         'detectors_zero': all(v == 0 for v in outputs['detectors'].values())}
 
 
+def compact_audit_trace(records):
+    """Keep every timing/effect/reset field, without retaining plan payloads.
+
+    One complete raw record is decoded at a time. The completed-state audit
+    never needs the enormous plan_started.plan bodies; replay and provenance
+    validation independently compare those complete bodies where required.
+    """
+    for raw in records:
+        row = json.loads(raw)
+        event = row['event']
+        yield {'event': {key: event.get(key) for key in
+                         ('event_type', 'plan_id', 'operation_id', 'time_us')},
+               'reset_projection_results': row.get('reset_projection_results', {}),
+               'effect_completed': row.get('effect_completed', False),
+               'effect_gate_ids': row.get('effect_gate_ids'),
+               'effect_gate_id': row.get('effect_gate_id')}
+
+
+def audit_completed_encoded_state(protocol, inputs, state, plans, initial_quantum,
+                                 terminal, *, decision_logs=()):
+    """Shared complete quantum/effect/timing/output audit for run and recovery."""
+    validate_target(terminal, state)
+    trace = list(compact_audit_trace(state.trace.records))
+    resets = {g: bit for row in trace for g, bit in row['reset_projection_results'].items()}
+    reference = verify_native_quantum(inputs.circuit, initial_quantum, state.quantum_state,
+                                      state.measurement_results, resets)
+    operations, gate_times = operation_schedule(plans, trace)
+    counts = Counter(g for row in trace if row['effect_completed'] for g in
+        (row['effect_gate_ids'] or ([row['effect_gate_id']] if row['effect_gate_id'] else [])))
+    audit = encoded_output_audit(protocol, inputs, state) | {
+        'dag_complete': state.dag.completed, 'terminal_verified': True,
+        'event_queue_empty': not state.event_queue.entries,
+        'effects_exactly_once': counts == Counter(g.id for g in inputs.circuit.gates),
+        'dependency_timing_verified': all(all(
+            gate_times[p][1] <= gate_times[g.id][0] + 1e-7 for p in g.depends_on)
+            for g in inputs.circuit.gates),
+        'quantum_reference': reference,
+        'reference_state_equal': reference['reference_state_equal'],
+        'operation_timing_and_resources_verified': True,
+        'no_layout_staging': not any(row['kind'] in ('stage_atom', 'terminal_atom')
+                                    for row in decision_logs)
+            and not any(any(f'qec-sparse-{kind}/' in getattr(plan.intent, 'task_id', '')
+                            for kind in ('stage_atom', 'terminal_atom')) for plan in plans)}
+    if not all(value for value in audit.values() if isinstance(value, bool)):
+        raise AssertionError('Encoded output audit failed: '+str({k:v for k,v in audit.items() if v is False}))
+    return audit, operations
+
+
 def execute_encoded_parity(protocol, output, *, seed=0, wall_budget_s=1800,
                            max_decisions=4096, progress=None, resume_from=None):
     """Execute or strictly resume the same instrument and retain all evidence.
@@ -304,30 +352,8 @@ def execute_encoded_parity(protocol, output, *, seed=0, wall_budget_s=1800,
             readout_groups_factory=lambda s, g: encoded_readout_groups(s, g, inputs.compiled))
         if result.status != 'completed':
             raise AssertionError(f'Encoded physical execution {result.status}: {result.diagnostics}')
-        validate_target(terminal, env.state)
-        trace = [json.loads(row) for row in env.state.trace.records]
-        resets = {g: bit for row in trace for g, bit in row.get('reset_projection_results', {}).items()}
-        reference = verify_native_quantum(inputs.circuit, initial_quantum, env.state.quantum_state,
-                                          env.state.measurement_results, resets)
-        operations, gate_times = operation_schedule(plans, trace)
-        counts = Counter(g for row in trace if row.get('effect_completed') for g in
-            (row.get('effect_gate_ids') or ([row['effect_gate_id']] if row.get('effect_gate_id') else [])))
-        audit = encoded_output_audit(protocol, inputs, env.state) | {
-            'dag_complete': env.state.dag.completed, 'terminal_verified': True,
-            'event_queue_empty': not env.pending,
-            'effects_exactly_once': counts == Counter(g.id for g in inputs.circuit.gates),
-            'dependency_timing_verified': all(all(
-                gate_times[p][1] <= gate_times[g.id][0] + 1e-7 for p in g.depends_on)
-                for g in inputs.circuit.gates),
-            'quantum_reference': reference,
-            'reference_state_equal': reference['reference_state_equal'],
-            'operation_timing_and_resources_verified': True,
-            'no_layout_staging': not any(row['kind'] in ('stage_atom', 'terminal_atom')
-                                        for row in (*inherited_decisions, *result.decision_log))
-                and not any(any(f'qec-sparse-{kind}/' in getattr(plan.intent, 'task_id', '')
-                                for kind in ('stage_atom', 'terminal_atom')) for plan in plans)}
-        if not all(v for v in audit.values() if isinstance(v, bool)):
-            raise AssertionError('Encoded output audit failed: '+str({k:v for k,v in audit.items() if v is False}))
+        audit, _ = audit_completed_encoded_state(protocol, inputs, env.state, plans,
+            initial_quantum, terminal, decision_logs=(*inherited_decisions, *result.decision_log))
     except Exception as exc:
         error = {'type': type(exc).__name__, 'message': str(exc)}
     # Save the committed prefix before independent verification or rendering.
@@ -362,7 +388,7 @@ def execute_encoded_parity(protocol, output, *, seed=0, wall_budget_s=1800,
     # An interrupted accepted plan legitimately lacks future timing boundaries.
     (output/'recording.json').write_text(canonical_json(recorder.payload()), encoding='utf-8')
     recorder.write(output/'animation.html')
-    trace = [json.loads(row) for row in env.state.trace.records]
+    trace = compact_audit_trace(env.state.trace.records)
     try:
         operations, gate_times = operation_schedule(plans, trace)
         schedule_complete = True
