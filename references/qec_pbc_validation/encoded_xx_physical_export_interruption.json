@@ -1,0 +1,161 @@
+{
+  "schema": "qec-encoded-parity-export-interruption-summary/1",
+  "reviewed_at": "2026-10-04",
+  "basis": "XX",
+  "seed": 7,
+  "rounds_before_and_after": 3,
+  "status": "interrupted_export_requires_independent_recovery",
+  "process_exit_code": 1,
+  "completed_validation_claim": false,
+  "full_original_initial_replay_accepted": false,
+  "raw_artifacts_unmodified": true,
+  "raw_artifacts_git_included": false,
+  "artifact_directory": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified",
+  "windows_application_error": {
+    "event_id": 1000,
+    "provider": "Application Error",
+    "timestamp": "2026-10-04T02:19:15.2465532+08:00",
+    "faulting_module": "python312.dll",
+    "exception_code": "0xc0000005",
+    "fault_offset": "0x0000000000022fbf",
+    "runtime": "Python 3.12.14",
+    "cause": "undetermined; no OOM cause is established"
+  },
+  "related_windows_error_reporting_event_ids": [
+    1001,
+    1001
+  ],
+  "missing_exports": [
+    "evidence.json",
+    "decisions.json",
+    "schedule.json",
+    "recording.json",
+    "animation.html"
+  ],
+  "raw_artifact_fingerprints": {
+    "checkpoint.json": {
+      "sha256_raw": "4e2f66d6160341c9cdc4a671a5bc5f443920a05967753a334f2d9f04100d6df5",
+      "bytes": 1360761302
+    },
+    "plans.json": {
+      "sha256_raw": "1025de9f6ddc73c2d5a8bd187dc556b107555a821b977550cfc6a6f1c8d52a85",
+      "bytes": 1106491514
+    },
+    "trace.jsonl": {
+      "sha256_raw": "bc3486acf2a7239a6e9d3121ff45cbc80f20ddbe526fc5c4a748c0192ed5e192",
+      "bytes": 1185609700
+    },
+    "initial.json": {
+      "sha256_raw": "ab55938e7a02f955601546049fb494fdde19650717ca70cdf23d11b031700c68",
+      "bytes": 3393904
+    },
+    "compiled.json": {
+      "sha256_raw": "06b49d7ab85a620c732dc309cd8af6715243bab41e587981f0784e62e8b27e4b",
+      "bytes": 2365156
+    },
+    "protocol.json": {
+      "sha256_raw": "e010af03bae266bad6b23b494c0eb8049a42108a000b1aca75c791d0e646fb44",
+      "bytes": 1153603
+    },
+    "platform.json": {
+      "sha256_raw": "b840e16325c65ad9c65f2ef52c02a46fc826ef7cbbf315acb69c29220df61d0c",
+      "bytes": 88435
+    },
+    "run_metadata.json": {
+      "sha256_raw": "48a519cac39a4ee1c8fc82f5c16d0e57d05f5903c683d91d4a264005dc84ad07",
+      "bytes": 21401
+    },
+    "loaded_runtime_provenance.json": {
+      "sha256_raw": "5921d35fdbe6564f60646edad8c0edb361a1372345b6751031de216a0f4369a0",
+      "bytes": 2937
+    }
+  },
+  "read_only_saved_state_inspection": {
+    "scope": "Read-only public restore/terminal/output inspection; full plan replay not yet accepted",
+    "checkpoint_restored": true,
+    "same_circuit_and_hardware": true,
+    "dag_complete": true,
+    "native_gate_count": 1860,
+    "event_queue_empty": true,
+    "terminal_verified": true,
+    "seconds": 19.50413059996208,
+    "independent_plan_replay_verified": false,
+    "metrics": {
+      "completed_gate_count": 1860,
+      "completed_plan_count": 457,
+      "committed_events": 19214,
+      "logical_completion_elapsed_us": 267202.19999999856,
+      "simulation_time_us": 268092.19999999856
+    },
+    "output_boolean_audits": {
+      "output_code_sectors_verified": true,
+      "retained_data_unmeasured": true,
+      "branch_logical_parity_verified": true,
+      "retained_output_coherence_verified": true,
+      "detectors_zero": true
+    }
+  },
+  "inspection_source": {
+    "artifact": "artifacts/qec-shor15-2026-10-03/encoded-xx-crash-diagnostic/saved-state-inspection.json",
+    "sha256_raw": "2aed72f50d8de8e352b89e1d6a14e7d47c0ed56cd5decd9f7c40c1ab209e4365",
+    "bytes": 17893
+  },
+  "windows_events_source": {
+    "artifact": "artifacts/qec-shor15-2026-10-03/encoded-xx-crash-diagnostic/windows-python-application-events.json",
+    "sha256_raw": "485831d96395752aa6ed5dddea6e91e6b773f208976fa9c39ac8517fab1a2825",
+    "bytes": 5350
+  },
+  "loaded_runtime_provenance": {
+    "schema": "encoded-parity-loaded-runtime-provenance/1",
+    "basis": "X",
+    "rounds": 3,
+    "seed": 7,
+    "wall_budget_seconds": 7200,
+    "resume_from": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-verified",
+    "output_expected": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified",
+    "old_worker_exited_before_start": true,
+    "zz_forward_replay_export_exit_zero_before_start": true,
+    "sha256_raw_at_process_start": {
+      "src/neutral_atom_experiments/qec_pbc/encoded_physical.py": "316519e025b0a910b2114282b9a3a35bd6528d16ccfc79bd6c02d030439f94c7",
+      "src/neutral_atom_env/replay/trace.py": "a3c9840158f00a3689bac09efc87ecfd04e94a1304c01b573e2991bbfd4b86db",
+      "src/neutral_atom_env/replay/snapshot_encoding.py": "93c9a1a44e950517abc191c4fec14f3e5f4604d8bd7d0ba763ab0859a5d32995",
+      "src/neutral_atom_env/simulation/runtime_validation.py": "aaa144dd3d5672cbc3a2e062cbcc76c6990b294c5c02f26b34881a20b0211775",
+      "examples/run_encoded_parity.py": "8de44cfc4ac9d48b16f8e83002a8438fe90e3fe11bf2b741c52e04621ab5eb1c"
+    },
+    "source_capture_definition": "Selected module source bytes recorded by initialization run_metadata; CLI bytes independently reviewed at launch and unchanged. Owners held these files frozen during this process. No live-module introspection is claimed.",
+    "loaded_decode_cache_entries": 32768,
+    "loaded_decode_cache_max_bytes": 3221225472,
+    "loaded_snapshot_digest_memo_max_bytes": 1610612736,
+    "known_Git_HEAD_at_start": null,
+    "Git_HEAD_capture_note": "Git HEAD was not independently captured at launch; source bytes and exact compiled/platform/protocol hashes govern strict resume.",
+    "inherited_prefix": {
+      "inherited_accepted_plans": 391,
+      "inherited_completed_gates": 1596,
+      "inherited_pending_events": 32,
+      "inherited_simulation_time_us": 226827.59999999907,
+      "original_initial_sha256": "ab55938e7a02f955601546049fb494fdde19650717ca70cdf23d11b031700c68",
+      "prefix_checkpoint_sha256": "63e4e01326628302042ea8bdc7836446e7aa9e747953f25e52386d90383a459f",
+      "prefix_directory": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-verified",
+      "prefix_error": {
+        "message": "Encoded parity exceeded 2400.0s",
+        "type": "TimeoutError"
+      },
+      "prefix_run_metadata_sha256": "a9f7054fd0fa46ac46ef51f0df4f2034c75d0dd8a5004b9e0473f0373ce5cd76",
+      "prefix_status": "failed",
+      "preparation_timing": "Original preparation remains in inherited physical time; completed RESET/H/input-sign gates are not repeated",
+      "wall_budget_scope": "This continuation only; inherited simulation time is not discounted"
+    },
+    "unified_session_id": 61572,
+    "note": "Fresh Python imports from the clean worktree; original failed evidence is preserved. Wall budget covers new continuation only; original physical clock and preparation are inherited."
+  },
+  "recovery_contract": [
+    "Do not manufacture missing original evidence/decisions or rewrite the crashed archive.",
+    "New verification-only archive must validate exact inputs/seed/initial/compiled/platform, all accepted plans against committed trace, terminal and full quantum/operation audit.",
+    "No replay completion may be claimed until all original-initial plans reproduce the full saved checkpoint bytes exactly.",
+    "Read-only restored 1860-gate state and valid retained output do not replace missing independent replay/export."
+  ],
+  "scope_limitations": [
+    "Ideal finite platform only; initial layout preparation time excluded.",
+    "No transport/idle/loss/fidelity model, retained noisy FT, magic factory or full encoded physical Shor."
+  ]
+}

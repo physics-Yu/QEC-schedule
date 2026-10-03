@@ -116,7 +116,7 @@ def spatial_components(state):
 
 def preflight_group(state,compiler,shift,members):
     """Cheap necessary endpoint conditions; never replaces swept validation."""
-    source,bindings=compiler.bindings(state,[m for _,_,m in members])
+    source,bindings=compiler.bindings(state,[m for _,_,m in members], required_shifts=(shift,))
     points={q:state.placement.position(q,state.world,state.aod) for q,a in state.atoms.items() if a.alive}
     selected={b.atom_id for b in bindings}
     xs={points[q].x_um for q in selected};ys={points[q].y_um for q in selected}

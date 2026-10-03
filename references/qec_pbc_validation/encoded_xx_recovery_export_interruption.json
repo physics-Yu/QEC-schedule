@@ -1,0 +1,235 @@
+{
+  "schema": "qec-encoded-parity-recovery-interruption-summary/1",
+  "reviewed_at": "2026-10-04",
+  "basis": "XX",
+  "seed": 7,
+  "rounds_before_and_after": 3,
+  "status": "verification_only_recovery_interrupted_during_independent_replay",
+  "process_exit_code": 1,
+  "completed_validation_claim": false,
+  "full_original_initial_replay_accepted": false,
+  "raw_artifacts_unmodified": true,
+  "raw_artifacts_git_included": false,
+  "artifact_directory": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified",
+  "original_crashed_archive": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified",
+  "original_parent_archive": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-verified",
+  "historical_original_export_interruption_summary": "references/qec_pbc_validation/encoded_xx_physical_export_interruption.json",
+  "windows_application_error": {
+    "event_id": 1000,
+    "timestamp": "2026-10-04T03:22:57.1459181+08:00",
+    "faulting_module": "python312.dll",
+    "runtime": "Python3.12.14",
+    "exception_code": "0xc0000005",
+    "fault_offset": "0x000000000012e384",
+    "process_id": "0x6B30",
+    "cause": "unknown; OOM and a Python root cause are not established"
+  },
+  "last_saved_independent_replay_progress": {
+    "completed_gates": 1310,
+    "physical_time_us": 187910.49999999962,
+    "plans_replayed": 321,
+    "recovery_wall_seconds": 884.9272607000312,
+    "stage": "independent_replay",
+    "total_plans": 457
+  },
+  "progress_scope": "Progress is written every 16 plans; this is the last committed progress record, not the exact faulting plan/event.",
+  "faulthandler_stack": [
+    {
+      "source": "<generated dataclass>",
+      "line": 3,
+      "function": "__hash__"
+    },
+    {
+      "source": "<generated dataclass>",
+      "line": 3,
+      "function": "__hash__"
+    },
+    {
+      "source": "src/neutral_atom_env/simulation/operation_program.py",
+      "line": 60,
+      "function": "_expected_prefix"
+    },
+    {
+      "source": "src/neutral_atom_env/simulation/operation_program.py",
+      "line": 342,
+      "function": "validate_program_runtime"
+    },
+    {
+      "source": "src/neutral_atom_env/simulation/runtime_validation.py",
+      "line": 29,
+      "function": "validate_runtime"
+    },
+    {
+      "source": "src/neutral_atom_env/simulation/executor.py",
+      "line": 68,
+      "function": "step"
+    },
+    {
+      "source": "src/neutral_atom_env/environment.py",
+      "line": 84,
+      "function": "step"
+    },
+    {
+      "source": "src/neutral_atom_env/environment.py",
+      "line": 93,
+      "function": "run"
+    },
+    {
+      "source": "src/neutral_atom_experiments/qec_pbc/encoded_export_recovery.py",
+      "line": 375,
+      "function": "recover_encoded_export"
+    },
+    {
+      "source": "src/neutral_atom_experiments/qec_pbc/encoded_export_recovery.py",
+      "line": 451,
+      "function": "main"
+    },
+    {
+      "source": "src/neutral_atom_experiments/qec_pbc/encoded_export_recovery.py",
+      "line": 463,
+      "function": "<module>"
+    },
+    {
+      "source": "<frozen runpy>",
+      "line": 88,
+      "function": "_run_code"
+    },
+    {
+      "source": "<frozen runpy>",
+      "line": 198,
+      "function": "_run_module_as_main"
+    }
+  ],
+  "fault_location_observed": "Deep generated dataclass __hash__ invoked at operation_program._expected_prefix expected-state cache insertion. This location does not establish the native access-violation mechanism.",
+  "diagnostic_fingerprints": {
+    "faulthandler": {
+      "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-crash-diagnostic/recovery-faulthandler.txt",
+      "bytes": 1612,
+      "sha256_raw": "b252402dc87fcb525ac27d1a8c385243ead794def874c70ae617d00060e0d82a"
+    },
+    "windows_application_events": {
+      "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-crash-diagnostic/recovery-windows-application-events.json",
+      "bytes": 5213,
+      "sha256_raw": "628de868397bbae45e44d40faa78b5e098e6c22a6b0f28ac19a2bc5d698c6ba3"
+    }
+  },
+  "raw_artifact_fingerprints": {
+    "checkpoint.json": {
+      "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified/checkpoint.json",
+      "bytes": 1360761302,
+      "sha256_raw": "4e2f66d6160341c9cdc4a671a5bc5f443920a05967753a334f2d9f04100d6df5"
+    },
+    "plans.json": {
+      "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified/plans.json",
+      "bytes": 1106491514,
+      "sha256_raw": "1025de9f6ddc73c2d5a8bd187dc556b107555a821b977550cfc6a6f1c8d52a85"
+    },
+    "trace.jsonl": {
+      "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified/trace.jsonl",
+      "bytes": 1185609700,
+      "sha256_raw": "bc3486acf2a7239a6e9d3121ff45cbc80f20ddbe526fc5c4a748c0192ed5e192"
+    },
+    "initial.json": {
+      "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified/initial.json",
+      "bytes": 3393904,
+      "sha256_raw": "ab55938e7a02f955601546049fb494fdde19650717ca70cdf23d11b031700c68"
+    },
+    "compiled.json": {
+      "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified/compiled.json",
+      "bytes": 2365156,
+      "sha256_raw": "06b49d7ab85a620c732dc309cd8af6715243bab41e587981f0784e62e8b27e4b"
+    },
+    "protocol.json": {
+      "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified/protocol.json",
+      "bytes": 1153603,
+      "sha256_raw": "e010af03bae266bad6b23b494c0eb8049a42108a000b1aca75c791d0e646fb44"
+    },
+    "platform.json": {
+      "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified/platform.json",
+      "bytes": 88435,
+      "sha256_raw": "b840e16325c65ad9c65f2ef52c02a46fc826ef7cbbf315acb69c29220df61d0c"
+    },
+    "run_metadata.json": {
+      "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified/run_metadata.json",
+      "bytes": 21401,
+      "sha256_raw": "48a519cac39a4ee1c8fc82f5c16d0e57d05f5903c683d91d4a264005dc84ad07"
+    },
+    "recovery_provenance.json": {
+      "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified/recovery_provenance.json",
+      "bytes": 59778,
+      "sha256_raw": "465e2b9e86ed6cdc1b5a50dca6607073ed8bb15363ef5c08d107a2987b2b99d2"
+    },
+    "recovery_progress.json": {
+      "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified/recovery_progress.json",
+      "bytes": 172,
+      "sha256_raw": "2b6038d7f6c785bacdc3e1a23acc4250a2b3fe5281152e5d702df4b54db9c39c"
+    }
+  },
+  "saved_checkpoint_plan_trace_initial_equal_original_crashed_bytes": {
+    "checkpoint.json": true,
+    "plans.json": true,
+    "trace.jsonl": true,
+    "initial.json": true
+  },
+  "pre_replay_audit_scope": {
+    "frozen_original_11file_manifest_checked": true,
+    "compiled_protocol_platform_seed_originalinitial_checked": true,
+    "current_trace_and_full_plan_body_checked": true,
+    "full_parent_plans_and_exact_committed_trace_prefix_checked": true,
+    "shared_completed_target_physical_quantum_retained_audit_passed": true,
+    "scope_note": "These validations preceded output creation and the observed replay progress in the frozen producer; they do not replace full original-initial replay."
+  },
+  "recovery_execution": {
+    "forward_gates_executed": 0,
+    "original_physical_preparation_not_repeated": true,
+    "source_capture_scope": "Only originally captured environment/strategy and ten selected physical QEC frontend files; uncaptured experiment dependencies are unknown",
+    "captured_source_files_checked": 152,
+    "original_source_compatibility_complete": false,
+    "uncaptured_original_dependencies": {
+      "neutral_atom_experiments/qec_layout.py": {
+        "original": null,
+        "recovery": "4250b007fa71e343492e1cb83624c604cc24270861c8431940f06023dd74a9de"
+      },
+      "neutral_atom_experiments/surface_ghz.py": {
+        "original": null,
+        "recovery": "a94f7aabfb3f2390b50317784d43b834aa94f4f1a0d167c90d0d8de38ff09101"
+      },
+      "neutral_atom_experiments/surface_qec.py": {
+        "original": null,
+        "recovery": "d854d77f97e0aab09c096395c75afe614cc9fed2a1ad687af44432a0aa50aa1c"
+      }
+    },
+    "recovery_source_sha256": {
+      "examples/run_encoded_parity.py": "8de44cfc4ac9d48b16f8e83002a8438fe90e3fe11bf2b741c52e04621ab5eb1c",
+      "neutral_atom_experiments/qec_pbc/encoded_export_recovery.py": "1dfc61c5ee025efdd56b5e30586daac749e6dcecd0422d5cea256e3dd354d462",
+      "neutral_atom_experiments/qec_pbc/encoded_physical.py": "eb580abf3ce475fb3c2cb18448fb3deac64528271e5c121188ef1dc2f4cea288"
+    },
+    "scheduler_decisions_available": false,
+    "candidate_rejections": null,
+    "missing_original_artifacts": [
+      "evidence.json",
+      "decisions.json",
+      "recording.json",
+      "animation.html",
+      "schedule.json"
+    ],
+    "crashed_total_wall_seconds": null,
+    "recovery_total_wall_seconds": null,
+    "recovery_wall_at_last_saved_progress_seconds": 884.9272607000312,
+    "wall_seconds_scope": "This independent recovery audit/replay/export only",
+    "recording_scope_required": "complete_committed_prefix_from_original_initial"
+  },
+  "missing_recovery_exports": [
+    "evidence.json",
+    "recording.json",
+    "animation.html",
+    "schedule.json",
+    "decisions_unavailable.json",
+    "recovery_failure.json"
+  ],
+  "scope_limitations": [
+    "Original Timeout, first export access violation, and this verification-only recovery interruption remain failed historical evidence; no completed XX/combined physical validation summary is produced.",
+    "A cache-key engineering experiment will retain the complete old equality certificate and all runtime predicates; it still requires independent tests and a new actual full replay.",
+    "No transport/idle/loss/fidelity/noisy retained FT, magic consumer/factory, full encoded physical Shor, or browser visual acceptance claim."
+  ]
+}

@@ -1,0 +1,3 @@
+# Optional, isolated dependency for the independent canonical-memory audit.
+# It is not imported by the physical environment or ordinary QEC frontend.
+stim==1.15.0

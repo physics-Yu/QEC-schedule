@@ -1,5 +1,11 @@
 # 当前交接状态
 
+## 2026-10-03 d=3 Shor15自主推进与阶段提交
+
+截至10-04，十一能力checkpoint已提交至 `344d09d` / [PR #3](https://github.com/physics-Yu/QEC-schedule/pull/3)，本轮阶段成果已验收发布并独立fetch逐字核对。完整N15理想PBC/frame真实恢复3/5；编码资源制备→联合测量→9data X读出→frame/消费参考链已验，双资源3641native/51declared/666投影/L2约1.77e-15。clean36new＋35oldY联合71通过，总913=912clean＋1original，256modules0违规；RAG51/44/36检索及11portable通过。
+
+三轮ZZ/XX各51原子1860native、294模拟CZ pulses/max3，完整Executor/originalinitial重放、14＋4审计与保留coherence均通过，legacy terminal268091.2/268092.2μs。XX新recovery session49799真正exit0/1454.117s，全snapshot bytes/EOF一致且完整导出；两失败档案/未知底层机制保留，152captured守护/唯一316→EB580例外保持，3uncaptured/decisions unknown。tracked ENV仍拒T，完整physical Shor/FT未实现；下一步有限Clifford cat controller读取实际committed核验后才允许data coupling，再接显式非Clifford表示/Born及合法线路续接，不写live state或伪造XOR键。原硬约束/HEAD/其他dirty保持。见[阶段入口](../docs/qec_shor15_stage.md)、[日志](logs/2026-10-03-shor15-autonomous-stage.md)。
+
 ## 2026-10-02 QEC/PBC GitHub 发布验证
 
 QEC/PBC已上传到`physics-Yu/QEC-schedule` main，主提交[`3b0cde1`](https://github.com/physics-Yu/QEC-schedule/commit/3b0cde11db7fd18d1b0a52135270fd798c9ecc9e)。基于远端04dc69b仅增加18个相关文件/导航，GitHub API与独立fetch核对18个blob全部一致，原远端研究和24个其他本地dirty文件保持。**干净快照274项回归与223模块架构扫描通过；单check物理smoke为3726.6μs/158事件、7门/2CZ/8计划，完整测量/终态/效果/独立重放通过。** 10月1日本地3221.711190μs/150事件对应未发布Enola默认参数，不能用作此次远端默认计时。详见[发布日志](logs/2026-10-02-qec-pbc-publication.md)；完整memory/容错/noise边界保持。本地HEAD保留9e28b2e及原未提交工作，发布通过connector，pushurl=DISABLED未改。

@@ -63,6 +63,9 @@ All current parity gadgets use a bare ancilla. Requiring fault tolerance fails
 closed; accepting a functional prototype never silently changes that promise.
 Y products stay valid IR but are rejected until native S/Sdg support exists.
 """
+    if not isinstance(program, PBCProgram):
+        raise TypeError('lower_to_physical requires PBCProgram; LogicalPauliProgram and '
+                        'MagicInjection have no implemented physical lowering')
     if require_fault_tolerant:
         raise ValueError('No validated fault-tolerant Pauli-measurement backend is installed')
     ids = tuple(r.id for r in program.roles)

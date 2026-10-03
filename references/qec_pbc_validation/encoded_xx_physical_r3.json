@@ -1,0 +1,467 @@
+{
+  "schema": "qec-encoded-parity-physical-validation-summary/2",
+  "reviewed_at": "2026-10-04",
+  "derivation": "Derived from actual exit0 recovery evidence and independent streaming raw SHA256. The original crashed and parent archives remain unmodified; this summary is not a replacement checkpoint.",
+  "basis_status": {
+    "ZZ": "completed at stage7",
+    "XX": "completed by verification-only recovery"
+  },
+  "validation_scope": "Ideal finite-platform encoded nondestructive logical XX; three syndrome rounds before and after the joint interaction.",
+  "completed_basis": {
+    "basis": "X",
+    "status": "completed",
+    "process_exit_code": 0,
+    "raw_artifacts_unmodified": true,
+    "raw_artifacts_git_included": false,
+    "physical_atom_count": 51,
+    "native_gate_count": 1860,
+    "gate_counts": {
+      "CZ": 450,
+      "H": 1062,
+      "MEASURE": 153,
+      "RESET": 195
+    },
+    "accepted_plans": 457,
+    "completed_plans": 457,
+    "committed_events": 19214,
+    "physical_cz_pulses": 294,
+    "max_parallel_cz": 3,
+    "logical_completion_us": 267202.19999999856,
+    "terminal_completion_us": 268092.19999999856,
+    "wall_seconds": 1454.1170824000146,
+    "wall_seconds_scope": "This independent recovery audit/replay/export only",
+    "top_boolean_audits": {
+      "branch_logical_parity_verified": true,
+      "dag_complete": true,
+      "dependency_timing_verified": true,
+      "detectors_zero": true,
+      "effects_exactly_once": true,
+      "event_queue_empty": true,
+      "independent_plan_replay_equal": true,
+      "no_layout_staging": true,
+      "operation_timing_and_resources_verified": true,
+      "output_code_sectors_verified": true,
+      "reference_state_equal": true,
+      "retained_data_unmeasured": true,
+      "retained_output_coherence_verified": true,
+      "terminal_verified": true
+    },
+    "quantum_boolean_audits": {
+      "conditions_verified": true,
+      "measurements_complete": true,
+      "reference_state_equal": true,
+      "reset_projections_complete": true
+    },
+    "recording_scope": "complete_committed_prefix_from_original_initial",
+    "resume": {
+      "inherited_accepted_plans": 391,
+      "inherited_completed_gates": 1596,
+      "inherited_pending_events": 32,
+      "inherited_simulation_time_us": 226827.59999999907,
+      "original_initial_sha256": "ab55938e7a02f955601546049fb494fdde19650717ca70cdf23d11b031700c68",
+      "prefix_checkpoint_sha256": "63e4e01326628302042ea8bdc7836446e7aa9e747953f25e52386d90383a459f",
+      "prefix_directory": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-verified",
+      "prefix_error": {
+        "message": "Encoded parity exceeded 2400.0s",
+        "type": "TimeoutError"
+      },
+      "prefix_run_metadata_sha256": "a9f7054fd0fa46ac46ef51f0df4f2034c75d0dd8a5004b9e0473f0373ce5cd76",
+      "prefix_status": "failed",
+      "preparation_timing": "Original preparation remains in inherited physical time; completed RESET/H/input-sign gates are not repeated",
+      "wall_budget_scope": "This continuation only; inherited simulation time is not discounted"
+    },
+    "loaded_runtime_provenance": {
+      "Git_HEAD_capture_note": "Git HEAD was not independently captured at launch; source bytes and exact compiled/platform/protocol hashes govern strict resume.",
+      "basis": "X",
+      "inherited_prefix": {
+        "inherited_accepted_plans": 391,
+        "inherited_completed_gates": 1596,
+        "inherited_pending_events": 32,
+        "inherited_simulation_time_us": 226827.59999999907,
+        "original_initial_sha256": "ab55938e7a02f955601546049fb494fdde19650717ca70cdf23d11b031700c68",
+        "prefix_checkpoint_sha256": "63e4e01326628302042ea8bdc7836446e7aa9e747953f25e52386d90383a459f",
+        "prefix_directory": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-verified",
+        "prefix_error": {
+          "message": "Encoded parity exceeded 2400.0s",
+          "type": "TimeoutError"
+        },
+        "prefix_run_metadata_sha256": "a9f7054fd0fa46ac46ef51f0df4f2034c75d0dd8a5004b9e0473f0373ce5cd76",
+        "prefix_status": "failed",
+        "preparation_timing": "Original preparation remains in inherited physical time; completed RESET/H/input-sign gates are not repeated",
+        "wall_budget_scope": "This continuation only; inherited simulation time is not discounted"
+      },
+      "known_Git_HEAD_at_start": null,
+      "loaded_decode_cache_entries": 32768,
+      "loaded_decode_cache_max_bytes": 3221225472,
+      "loaded_snapshot_digest_memo_max_bytes": 1610612736,
+      "note": "Fresh Python imports from the clean worktree; original failed evidence is preserved. Wall budget covers new continuation only; original physical clock and preparation are inherited.",
+      "old_worker_exited_before_start": true,
+      "output_expected": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified",
+      "resume_from": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-verified",
+      "rounds": 3,
+      "schema": "encoded-parity-loaded-runtime-provenance/1",
+      "seed": 7,
+      "sha256_raw_at_process_start": {
+        "examples/run_encoded_parity.py": "8de44cfc4ac9d48b16f8e83002a8438fe90e3fe11bf2b741c52e04621ab5eb1c",
+        "src/neutral_atom_env/replay/snapshot_encoding.py": "93c9a1a44e950517abc191c4fec14f3e5f4604d8bd7d0ba763ab0859a5d32995",
+        "src/neutral_atom_env/replay/trace.py": "a3c9840158f00a3689bac09efc87ecfd04e94a1304c01b573e2991bbfd4b86db",
+        "src/neutral_atom_env/simulation/runtime_validation.py": "aaa144dd3d5672cbc3a2e062cbcc76c6990b294c5c02f26b34881a20b0211775",
+        "src/neutral_atom_experiments/qec_pbc/encoded_physical.py": "316519e025b0a910b2114282b9a3a35bd6528d16ccfc79bd6c02d030439f94c7"
+      },
+      "source_capture_definition": "Selected module source bytes recorded by initialization run_metadata; CLI bytes independently reviewed at launch and unchanged. Owners held these files frozen during this process. No live-module introspection is claimed.",
+      "unified_session_id": 61572,
+      "wall_budget_seconds": 7200,
+      "zz_forward_replay_export_exit_zero_before_start": true
+    },
+    "recovery_provenance": {
+      "entry_point": "python -m neutral_atom_experiments.qec_pbc.encoded_export_recovery",
+      "forward_gates_executed": 0,
+      "recovery_python_version": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "recovery_executable_basename": "python.exe",
+      "source_sha256": {
+        "examples/run_encoded_parity.py": "8de44cfc4ac9d48b16f8e83002a8438fe90e3fe11bf2b741c52e04621ab5eb1c",
+        "neutral_atom_experiments/qec_pbc/encoded_export_recovery.py": "076f7e0e7c5693696842d75976e5ce7db72e513b7f561cad5870d9559d16b885",
+        "neutral_atom_experiments/qec_pbc/encoded_physical.py": "eb580abf3ce475fb3c2cb18448fb3deac64528271e5c121188ef1dc2f4cea288"
+      },
+      "runtime_prefix_cache_adapter": {
+        "adapted_environment_source_sha256": "a61459a307567ebdcb83ca3370028c5577873aa9734607310de22be9b1c2a194",
+        "adapted_function": "neutral_atom_env.simulation.operation_program._replay_key",
+        "adapter_implementation_source_sha256": "076f7e0e7c5693696842d75976e5ce7db72e513b7f561cad5870d9559d16b885",
+        "enabled": true,
+        "equality_certificate": "Complete original immutable _replay_key tuple, no digest/ID-only authorization",
+        "hash_bucket": "Exact base-string plan ID only",
+        "incident_scope": "Avoids observed deep dataclass __hash__ path; underlying access-violation mechanism remains unknown",
+        "retention": "Original 32-state LRU and cursor/fork reconstruction unchanged",
+        "scope": "Exclusive single-process non-reentrant recovery context; original function/cache objects restored in finally"
+      },
+      "captured_source_compatibility_checked": 152,
+      "captured_source_compatibility_table_sha256": "5d08424144c249a18a753964961df4d15132ec64a39a8d87138e7b487d9f781b",
+      "reviewed_runner_source_change": {
+        "original": "316519e025b0a910b2114282b9a3a35bd6528d16ccfc79bd6c02d030439f94c7",
+        "recovery": "eb580abf3ce475fb3c2cb18448fb3deac64528271e5c121188ef1dc2f4cea288"
+      },
+      "uncaptured_original_dependencies": {
+        "neutral_atom_experiments/qec_layout.py": {
+          "original": null,
+          "recovery": "4250b007fa71e343492e1cb83624c604cc24270861c8431940f06023dd74a9de"
+        },
+        "neutral_atom_experiments/surface_ghz.py": {
+          "original": null,
+          "recovery": "a94f7aabfb3f2390b50317784d43b834aa94f4f1a0d167c90d0d8de38ff09101"
+        },
+        "neutral_atom_experiments/surface_qec.py": {
+          "original": null,
+          "recovery": "d854d77f97e0aab09c096395c75afe614cc9fed2a1ad687af44432a0aa50aa1c"
+        }
+      },
+      "original_source_compatibility_complete": false,
+      "source_capture_scope": "Only originally captured environment/strategy and ten selected physical QEC frontend files; uncaptured experiment dependencies are unknown",
+      "original_run_metadata_scope": "Original interrupted process metadata, preserved exactly as a separate producer record",
+      "scheduler_decisions_available": false,
+      "candidate_rejections": null,
+      "missing_original_artifacts": [
+        "evidence.json",
+        "decisions.json",
+        "recording.json",
+        "animation.html",
+        "schedule.json"
+      ],
+      "crashed_total_wall_seconds": null
+    },
+    "raw_artifact_fingerprints": {
+      "checkpoint.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/checkpoint.json",
+        "bytes": 1360761302,
+        "sha256": "4e2f66d6160341c9cdc4a671a5bc5f443920a05967753a334f2d9f04100d6df5"
+      },
+      "plans.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/plans.json",
+        "bytes": 1106491514,
+        "sha256": "1025de9f6ddc73c2d5a8bd187dc556b107555a821b977550cfc6a6f1c8d52a85"
+      },
+      "trace.jsonl": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/trace.jsonl",
+        "bytes": 1185609700,
+        "sha256": "bc3486acf2a7239a6e9d3121ff45cbc80f20ddbe526fc5c4a748c0192ed5e192"
+      },
+      "initial.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/initial.json",
+        "bytes": 3393904,
+        "sha256": "ab55938e7a02f955601546049fb494fdde19650717ca70cdf23d11b031700c68"
+      },
+      "compiled.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/compiled.json",
+        "bytes": 2365156,
+        "sha256": "06b49d7ab85a620c732dc309cd8af6715243bab41e587981f0784e62e8b27e4b"
+      },
+      "protocol.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/protocol.json",
+        "bytes": 1153603,
+        "sha256": "e010af03bae266bad6b23b494c0eb8049a42108a000b1aca75c791d0e646fb44"
+      },
+      "platform.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/platform.json",
+        "bytes": 88435,
+        "sha256": "b840e16325c65ad9c65f2ef52c02a46fc826ef7cbbf315acb69c29220df61d0c"
+      },
+      "run_metadata.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/run_metadata.json",
+        "bytes": 21401,
+        "sha256": "48a519cac39a4ee1c8fc82f5c16d0e57d05f5903c683d91d4a264005dc84ad07"
+      },
+      "recovery_provenance.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/recovery_provenance.json",
+        "bytes": 60580,
+        "sha256": "e9f39f1b87c0ead79bc7d032462b3e13a3be3e894d7f2bcab6b25d222ded9648"
+      },
+      "evidence.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/evidence.json",
+        "bytes": 124555,
+        "sha256": "964c541220e8d546e963c6876c0990ac81a57eb94e78e18529a288df9e6c4a05"
+      },
+      "decisions_unavailable.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/decisions_unavailable.json",
+        "bytes": 208,
+        "sha256": "1706600b5f2cf344748da2a4e7e646051bf09bb5337cc4df161d14466da70d6b"
+      },
+      "working_destinations.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/working_destinations.json",
+        "bytes": 953,
+        "sha256": "79b362c77fbf748824b925133ab8d72fe1120e0404bcd1c672cefe370aae2895"
+      },
+      "initial_placement.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/initial_placement.json",
+        "bytes": 953,
+        "sha256": "79b362c77fbf748824b925133ab8d72fe1120e0404bcd1c672cefe370aae2895"
+      },
+      "recording.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/recording.json",
+        "bytes": 116919753,
+        "sha256": "ad519101a43985583a7d7db057a2c671c884908fc3e81251ce704b3dc928aa26"
+      },
+      "animation.html": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/animation.html",
+        "bytes": 116986439,
+        "sha256": "11351e592a645fb387b11b36e0a653cd010d31bd89ec36ed459c573575b5767f"
+      },
+      "schedule.json": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2/schedule.json",
+        "bytes": 2829244,
+        "sha256": "0447925adbb3415d20d91d9c8ba33bf703af7f2b03e9be129f1a20793739c1d0"
+      }
+    },
+    "recovery_checkpoint_plan_trace_initial_bytes_equal_original": {
+      "checkpoint.json": true,
+      "plans.json": true,
+      "trace.jsonl": true,
+      "initial.json": true
+    },
+    "initial_placement": "prearranged",
+    "layout_preparation_time_included": false,
+    "upstream_layout_preparation_time_us": null,
+    "scope": "Ideal retained encoded parity, saved complete physical state independently reaudited/replayed/exported",
+    "full_fault_tolerance_claim": false,
+    "transport_noise_model": false,
+    "retained_quantum_noisy_ft": false,
+    "complete_encoded_shor": false,
+    "recovery_all_ten_original_core_files_bytes_equal_original": {
+      "checkpoint.json": true,
+      "plans.json": true,
+      "trace.jsonl": true,
+      "initial.json": true,
+      "protocol.json": true,
+      "compiled.json": true,
+      "platform.json": true,
+      "working_destinations.json": true,
+      "initial_placement.json": true,
+      "run_metadata.json": true
+    }
+  },
+  "physical_execution_and_recovery_chain": [
+    {
+      "archive": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-verified",
+      "role": "original physical run wall-timeout prefix",
+      "status": "failed",
+      "error": {
+        "message": "Encoded parity exceeded 2400.0s",
+        "type": "TimeoutError"
+      },
+      "process_exit_code": 1,
+      "completed_gates": 1596,
+      "accepted_plans": 391,
+      "completed_plans": 390,
+      "committed_events": 16424,
+      "simulation_time_us": 226827.59999999907,
+      "independent_plan_replay_equal": false,
+      "raw_archive_unchanged": true,
+      "evidence_fingerprint": {
+        "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-verified/evidence.json",
+        "bytes": 2100,
+        "sha256": "ea2b00ba026c9efcac8f235fc16c84d8fa5bd354dd25710761ce0df1c5e4b5f6"
+      }
+    },
+    {
+      "archive": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified",
+      "role": "strict continuation saved complete physical checkpoint; export interrupted",
+      "status": "interrupted_export",
+      "process_exit_code": 1,
+      "windows_exception": "0xc0000005",
+      "windows_exception_module": "python312.dll",
+      "exception_mechanism": "unknown; OOM not established",
+      "saved_complete_gate_count": 1860,
+      "accepted_plans": 457,
+      "committed_events": 19214,
+      "simulation_time_us": 268092.19999999856,
+      "original_initial_replay_completed_at_that_stage": false,
+      "crashed_total_wall_seconds": null,
+      "wall_budget_seconds": 7200,
+      "loaded_runtime_provenance": {
+        "Git_HEAD_capture_note": "Git HEAD was not independently captured at launch; source bytes and exact compiled/platform/protocol hashes govern strict resume.",
+        "basis": "X",
+        "inherited_prefix": {
+          "inherited_accepted_plans": 391,
+          "inherited_completed_gates": 1596,
+          "inherited_pending_events": 32,
+          "inherited_simulation_time_us": 226827.59999999907,
+          "original_initial_sha256": "ab55938e7a02f955601546049fb494fdde19650717ca70cdf23d11b031700c68",
+          "prefix_checkpoint_sha256": "63e4e01326628302042ea8bdc7836446e7aa9e747953f25e52386d90383a459f",
+          "prefix_directory": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-verified",
+          "prefix_error": {
+            "message": "Encoded parity exceeded 2400.0s",
+            "type": "TimeoutError"
+          },
+          "prefix_run_metadata_sha256": "a9f7054fd0fa46ac46ef51f0df4f2034c75d0dd8a5004b9e0473f0373ce5cd76",
+          "prefix_status": "failed",
+          "preparation_timing": "Original preparation remains in inherited physical time; completed RESET/H/input-sign gates are not repeated",
+          "wall_budget_scope": "This continuation only; inherited simulation time is not discounted"
+        },
+        "known_Git_HEAD_at_start": null,
+        "loaded_decode_cache_entries": 32768,
+        "loaded_decode_cache_max_bytes": 3221225472,
+        "loaded_snapshot_digest_memo_max_bytes": 1610612736,
+        "note": "Fresh Python imports from the clean worktree; original failed evidence is preserved. Wall budget covers new continuation only; original physical clock and preparation are inherited.",
+        "old_worker_exited_before_start": true,
+        "output_expected": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified",
+        "resume_from": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-verified",
+        "rounds": 3,
+        "schema": "encoded-parity-loaded-runtime-provenance/1",
+        "seed": 7,
+        "sha256_raw_at_process_start": {
+          "examples/run_encoded_parity.py": "8de44cfc4ac9d48b16f8e83002a8438fe90e3fe11bf2b741c52e04621ab5eb1c",
+          "src/neutral_atom_env/replay/snapshot_encoding.py": "93c9a1a44e950517abc191c4fec14f3e5f4604d8bd7d0ba763ab0859a5d32995",
+          "src/neutral_atom_env/replay/trace.py": "a3c9840158f00a3689bac09efc87ecfd04e94a1304c01b573e2991bbfd4b86db",
+          "src/neutral_atom_env/simulation/runtime_validation.py": "aaa144dd3d5672cbc3a2e062cbcc76c6990b294c5c02f26b34881a20b0211775",
+          "src/neutral_atom_experiments/qec_pbc/encoded_physical.py": "316519e025b0a910b2114282b9a3a35bd6528d16ccfc79bd6c02d030439f94c7"
+        },
+        "source_capture_definition": "Selected module source bytes recorded by initialization run_metadata; CLI bytes independently reviewed at launch and unchanged. Owners held these files frozen during this process. No live-module introspection is claimed.",
+        "unified_session_id": 61572,
+        "wall_budget_seconds": 7200,
+        "zz_forward_replay_export_exit_zero_before_start": true
+      },
+      "frozen_raw_artifact_fingerprints": {
+        "checkpoint.json": {
+          "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified/checkpoint.json",
+          "bytes": 1360761302,
+          "sha256": "4e2f66d6160341c9cdc4a671a5bc5f443920a05967753a334f2d9f04100d6df5"
+        },
+        "compiled.json": {
+          "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified/compiled.json",
+          "bytes": 2365156,
+          "sha256": "06b49d7ab85a620c732dc309cd8af6715243bab41e587981f0784e62e8b27e4b"
+        },
+        "initial.json": {
+          "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified/initial.json",
+          "bytes": 3393904,
+          "sha256": "ab55938e7a02f955601546049fb494fdde19650717ca70cdf23d11b031700c68"
+        },
+        "initial_placement.json": {
+          "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified/initial_placement.json",
+          "bytes": 953,
+          "sha256": "79b362c77fbf748824b925133ab8d72fe1120e0404bcd1c672cefe370aae2895"
+        },
+        "loaded_runtime_provenance.json": {
+          "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified/loaded_runtime_provenance.json",
+          "bytes": 2937,
+          "sha256": "5921d35fdbe6564f60646edad8c0edb361a1372345b6751031de216a0f4369a0"
+        },
+        "plans.json": {
+          "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified/plans.json",
+          "bytes": 1106491514,
+          "sha256": "1025de9f6ddc73c2d5a8bd187dc556b107555a821b977550cfc6a6f1c8d52a85"
+        },
+        "platform.json": {
+          "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified/platform.json",
+          "bytes": 88435,
+          "sha256": "b840e16325c65ad9c65f2ef52c02a46fc826ef7cbbf315acb69c29220df61d0c"
+        },
+        "protocol.json": {
+          "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified/protocol.json",
+          "bytes": 1153603,
+          "sha256": "e010af03bae266bad6b23b494c0eb8049a42108a000b1aca75c791d0e646fb44"
+        },
+        "run_metadata.json": {
+          "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified/run_metadata.json",
+          "bytes": 21401,
+          "sha256": "48a519cac39a4ee1c8fc82f5c16d0e57d05f5903c683d91d4a264005dc84ad07"
+        },
+        "trace.jsonl": {
+          "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified/trace.jsonl",
+          "bytes": 1185609700,
+          "sha256": "bc3486acf2a7239a6e9d3121ff45cbc80f20ddbe526fc5c4a748c0192ed5e192"
+        },
+        "working_destinations.json": {
+          "path": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-resumed-verified/working_destinations.json",
+          "bytes": 953,
+          "sha256": "79b362c77fbf748824b925133ab8d72fe1120e0404bcd1c672cefe370aae2895"
+        }
+      },
+      "raw_archive_unchanged": true,
+      "historical_public_incident": "references/qec_pbc_validation/encoded_xx_physical_export_interruption.json"
+    },
+    {
+      "archive": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified",
+      "role": "first verification-only recovery interrupted during independent replay",
+      "status": "interrupted_independent_replay",
+      "process_exit_code": 1,
+      "windows_exception": "0xc0000005",
+      "last_saved_plans_replayed": 321,
+      "last_saved_native_gates_replayed": 1310,
+      "progress_is_not_exact_crash_location": true,
+      "full_original_initial_replay_accepted": false,
+      "source_producer_raw_sha256": "1dfc61c5ee025efdd56b5e30586daac749e6dcecd0422d5cea256e3dd354d462",
+      "raw_archive_unchanged": true,
+      "historical_public_incident": "references/qec_pbc_validation/encoded_xx_recovery_export_interruption.json"
+    },
+    {
+      "archive": "artifacts/qec-shor15-2026-10-03/encoded-xx-clean-export-recovered-verified-attempt2",
+      "role": "verification-only full-original-initial replay and export",
+      "status": "completed",
+      "process_exit_code": 0,
+      "forward_gates_executed": 0,
+      "initial_replay_plan_count": 457,
+      "initial_replay_exact_snapshot_equal": true,
+      "wall_seconds": 1454.1170824000146,
+      "wall_seconds_scope": "This independent recovery audit/replay/export only",
+      "completed_validation_claim": true
+    }
+  ],
+  "raw_artifacts_git_included": false,
+  "raw_artifact_path_base": "repository root; machine-local ignored artifacts",
+  "limitations": [
+    "Only ideal encoded retained XX on the declared finite legacy platform; no transport/idle/loss/fidelity or noisy retained FT claim.",
+    "51-atom initial placement was prearranged; upstream layout preparation time is unknown and excluded.",
+    "Recovery performs zero forward work and preserves original physical time/preparation. Its wall time covers only input audit, full replay, and export.",
+    "Original access violation and failed Timeout evidence remain unchanged; missing scheduler decisions/candidate history and three uncaptured original source fingerprints remain unknown.",
+    "Complete native replay and animation export are not browser visual acceptance, magic factory/consumer, or complete encoded physical Shor."
+  ],
+  "related_test_scope": {
+    "scope_checkpoint": "stage10 verified engineering scope; later independent logical stages are recorded separately",
+    "distinct_related": 877,
+    "clean": 876,
+    "original_long_positive": 1,
+    "recovery_infrastructure_new": 43,
+    "recovery_cache_new": 35,
+    "recovery_focused_including_old": 91,
+    "short_fixture_is_not_full_XX_validation": true
+  }
+}

@@ -1,0 +1,226 @@
+{
+  "schema": "qec-pbc-rag-query-cases/1",
+  "top_k": 5,
+  "cases": [
+    {
+      "query": "当前 PPR 是完整 PBC 吗",
+      "expected_any": [
+        "K03",
+        "K23"
+      ]
+    },
+    {
+      "query": "surface code d3 logical X logical Z checks 编号",
+      "expected_any": [
+        "K10"
+      ]
+    },
+    {
+      "query": "为什么 hook error 不能随意重排 CNOT 顺序",
+      "expected_any": [
+        "K12"
+      ]
+    },
+    {
+      "query": "PBC T injection 条件 S Sdg 能物理执行吗",
+      "expected_any": [
+        "K23"
+      ]
+    },
+    {
+      "query": "Pauli rotation PZ MX magic state 四个 Kraus 分支",
+      "expected_any": [
+        "K07"
+      ]
+    },
+    {
+      "query": "Y measurement twist lattice surgery",
+      "expected_any": [
+        "K18"
+      ]
+    },
+    {
+      "query": "四层 syndrome 是否四次 actual CZ pulses",
+      "expected_any": [
+        "K13"
+      ]
+    },
+    {
+      "query": "从 logical circuit 到 physical circuit 完整产物",
+      "expected_any": [
+        "K01",
+        "K26"
+      ]
+    },
+    {
+      "query": "detector MPP 是否硬件指令",
+      "expected_any": [
+        "K14"
+      ]
+    },
+    {
+      "query": "现在 memory 已实现 Executor prearranged",
+      "expected_any": [
+        "K22"
+      ]
+    },
+    {
+      "query": "裸 ZZ ancilla 是否 fault tolerant",
+      "expected_any": [
+        "K16",
+        "K28"
+      ]
+    },
+    {
+      "query": "decoder distance 3 transport loss fidelity fault model",
+      "expected_any": [
+        "K24"
+      ]
+    },
+    {
+      "query": "下一步 encoded ZZ XX T 完成验收",
+      "expected_any": [
+        "K27",
+        "K29"
+      ]
+    },
+    {
+      "query": "BK T-type magic state 与 A T|+> 同一态吗",
+      "expected_any": [
+        "K08"
+      ]
+    },
+    {
+      "query": "35 role bus 34 原子 ancilla capacity",
+      "expected_any": [
+        "K31"
+      ]
+    },
+    {
+      "query": "full N15 N=15 a=2 完整Shor逆QFT连分数3和5现在完成什么",
+      "expected_any": [
+        "K35"
+      ]
+    },
+    {
+      "query": "encoded XX ZZ 三patch 51原子 136detectors decoded parity 无损Choi",
+      "expected_any": [
+        "K36"
+      ]
+    },
+    {
+      "query": "resource-aware injection PPR adaptive PBC 桥 35resources70测量 globalphase",
+      "expected_any": [
+        "K37"
+      ]
+    },
+    {
+      "query": "完整Shor QFT 28CP综合 3500resources 7000measurement epsilon1e-3",
+      "expected_any": [
+        "K38"
+      ]
+    },
+    {
+      "query": "实际PBC输出态 phase terminal readout 8项Z投影 128失败192成功 fresh shot 7000资源14000测量 retry",
+      "expected_any": [
+        "K38"
+      ]
+    },
+    {
+      "query": "已有encoded input retained A B data不RESET signed sector history 连续ZZ XX 同C resource_reuse 53roles",
+      "expected_any": [
+        "K39"
+      ]
+    },
+    {
+      "query": "encoded physical wall budget 超时 strict resume checkpoint pending future quantum RNG 原initial plans同ID篡改",
+      "expected_any": [
+        "K36"
+      ]
+    },
+    {
+      "query": "完整Shor encoding requirements 3500 joint 2325含Y 3138mixed weight9 356shape 204原子peaknull",
+      "expected_any": [
+        "K40"
+      ]
+    },
+    {
+      "query": "完整PBC physical support37 canonical logical X Z weight3 Y weight5 展开不是cat FT资源数量",
+      "expected_any": [
+        "K40"
+      ]
+    },
+    {
+      "query": "下一设计 mixed Y cat PPM retained instrument conditional Clifford frame S_P Y_s raw AND semantic XOR 37 63",
+      "expected_any": [
+        "K41"
+      ]
+    },
+    {
+      "query": "strict resume snapshot_digest memo fresh canonical nontrace full immutable trace exactpreimage 1536MiB SHA不变 自定义encoder伪func拒绝",
+      "expected_any": [
+        "K42"
+      ]
+    },
+    {
+      "query": "完整conditional Clifford frame FdagPF signed full24generators terminal projector 三freshshots1280 192 truepostmeasurement framed joint13 template45",
+      "expected_any": [
+        "K43"
+      ]
+    },
+    {
+      "query": "mixed X_A Z_B cat GHZ signed 64raw Choi41roles1295native verification_status compile没有abort retry same7resource RESET epoch",
+      "expected_any": [
+        "K44"
+      ]
+    },
+    {
+      "query": "encoded_resource_reference CSS isometry 17RESET encoded T Tdg 44CNOT251257 131072 dense prepared consumedfalse GateTask没有T trackedENV拒绝",
+      "expected_any": [
+        "K45"
+      ]
+    },
+    {
+      "query": "真实完整encoded ZZ Executor 1860gates456plans19212events294pulse max3 268091.2 originalinitialreplay true timeout strictresume XXpending",
+      "expected_any": [
+        "K46"
+      ]
+    },
+    {
+      "query": "mixed_pauli_cat encodedY CZ H CZ H TT phase NativeCatProgram exactTT qualified fulltail actualreadoutbras allraw63cat compileonly",
+      "expected_any": [
+        "K47"
+      ]
+    },
+    {
+      "query": "XX saved1860 gates457plans19214events python312.dll0xc0000005 APPCRASH exit1 missingevidence fullinitialreplayfalse verificationonly recoverypending",
+      "expected_any": [
+        "K46"
+      ]
+    },
+    {
+      "query": "encoded_export_recovery verification-only noforward completedcheckpoint missingdecisions 152captured3uncaptured sourceguard exactsnapshotbytes EOF fullinitial457 pending",
+      "expected_any": [
+        "K48"
+      ]
+    },
+    {
+      "query": "recovery prefixcache primitivehash exactstr planid frozenfullcertificate full13equality hashcollision poisoneddataclass nonreentrant finallyrestore secondcrash321 lastprogress XXpending",
+      "expected_any": [
+        "K49"
+      ]
+    },
+    {
+      "query": "encoded injection native-factorized consumer actual T Tdg producer raw512 resource X0 X3 X6 receipt frame 3641 666",
+      "expected_any": [
+        "K50"
+      ]
+    },
+    {
+      "query": "XX ZZ physical completed 457 original initial replay 19214 canonical bytes EOF 14 4 ten raw SHA recovery exit0",
+      "expected_any": [
+        "K51"
+      ]
+    }
+  ]
+}
