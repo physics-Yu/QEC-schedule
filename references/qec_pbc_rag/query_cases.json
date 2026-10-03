@@ -185,6 +185,18 @@
       "expected_any": [
         "K46"
       ]
+    },
+    {
+      "query": "mixed_pauli_cat encodedY CZ H CZ H TT phase NativeCatProgram exactTT qualified fulltail actualreadoutbras allraw63cat compileonly",
+      "expected_any": [
+        "K47"
+      ]
+    },
+    {
+      "query": "XX saved1860 gates457plans19214events python312.dll0xc0000005 APPCRASH exit1 missingevidence fullinitialreplayfalse verificationonly recoverypending",
+      "expected_any": [
+        "K46"
+      ]
     }
   ]
 }

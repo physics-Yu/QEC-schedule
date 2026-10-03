@@ -2,7 +2,7 @@
 
 ## 2026-10-03 d=3 Shor15自主推进与阶段提交
 
-截至10-04，已提交至 `6aaed7a` / [PR #3](https://github.com/physics-Yu/QEC-schedule/pull/3)，下一checkpoint验收完成待提交。完整N15,a2理想PBC与24-generator Clifford frame均真实恢复3/5；12算法patch基础204原子、资源peak未定。同C ZZ→XX和mixed X/Z cat保留编码data/外部纠缠并真实消耗/RESET辅助原子。新17原子编码T/T†资源native reference 251/257门实际dense执行PASS，23新增/静态码距3，但tracked ENV仍拒绝T、非FT/factory/physical。累计764不同tests=763clean＋1original真实恢复对照，旧125通过/3缺历史artifact跳过；253clean模块零违规。**三轮ZZ51原子1860门完整Executor与full-original-initial replay通过**：456plans/19212events/294CZ pulses/max3、terminal268091.2μs(远端legacy)，布局准备排除。原失败/Timeout前缀保留；XX从1596门严格串行续跑，尚未最终验收。完整encoded physical Shor、Y、核验/frame接native测量与magic表示/FT待实现。硬约束与原workspace其他dirty/HEAD保持；见[阶段入口](../docs/qec_shor15_stage.md)、[本轮日志](logs/2026-10-03-shor15-autonomous-stage.md)。
+截至10-04，七checkpoint已提交至 `82fae18` / [PR #3](https://github.com/physics-Yu/QEC-schedule/pull/3)，下一Y阶段验收完成待提交。完整N15,a2理想PBC与24-generator frame真实恢复3/5；12patch基础204原子、peak未定。连续编码ZZ/XX与native XYZ cat参考保留data/ref，完整CY含真实2T，参考严格TT=S、不扩PBC IR/ENV。新Y35与旧XZ41 clean76通过；累计799不同tests=798clean＋1original，旧125通过/3缺artifact跳过；254clean模块0违规。17原子编码T/T†制备native reference251/257门已验，非FT/factory/physical。三轮ZZ51原子1860门完整Executor/fullinitial replay通过：456plans/19212events/294CZ pulses/max3、terminal268091.2μs(legacy)，布局准备排除。XX访问冲突exit1；savedcheckpoint独立确认1860/457plans19214events/terminal268092.2μs，但fullinitial重放与导出恢复待验，原最终evidence/decisions缺失不能伪補或称通过。原失败不改。完整encoded physical Shor、committed核验/frame控制与magic表示/consumer/FT待实现。硬约束与其他dirty/HEAD保持；见[阶段入口](../docs/qec_shor15_stage.md)、[本轮日志](logs/2026-10-03-shor15-autonomous-stage.md)。
 
 ## 2026-10-02 QEC/PBC GitHub 发布验证
 

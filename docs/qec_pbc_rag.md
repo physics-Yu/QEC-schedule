@@ -2,7 +2,7 @@
 
 研究与工作树核对日期：**2026-10-04**（历史来源保留各自日期）。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
 
-主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，46 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、27 组本地来源与79个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
+主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，47 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、28 组本地来源与83个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
 
 ## 1. 最终要连起来的链路
 
@@ -297,4 +297,12 @@ K46与[可发布指纹摘要](../references/qec_pbc_validation/encoded_zz_physic
 
 真实2400wall预算失败1605门/16422events/replayfalse原证据保留；2400wall第一次strict续跑1767门/18352events/full-initial replaytrue；7200wall第二strict续跑完成，含replay/export实际wall1370.254s。原initial、quantum/RNG/time/measurement/pending均继承，不重RESET数据/不抵扣物理时间；loaded16k旧helper与新32k/helper316519/memo93c9由launch provenance区分，streaming SHA全保存，无GB原trace或私人绝对路径入Git。
 
-XX独立strict续跑仍pending，不能按ZZ推定完成。51atom初始layout预排成本unknown/未计，没有transport/idle/loss/fidelity模型、带噪retained FT、magic consumer/factory或完整encoded physical Shor，也未做真实浏览器视觉验收。
+XXstrict续跑已存1860门终态，但Python0xc0000005于独立replay/导出阶段exit1，缺原最终evidence/decisions/fullrecording；read-only public restore通过不能替代fullinitialreplay。见[小中断摘要](../references/qec_pbc_validation/encoded_xx_physical_export_interruption.json)，独立恢复仍pending，不能按ZZ推定完成。51atom初始layout预排成本unknown/未计，没有transport/idle/loss/fidelity模型、带噪retained FT、magic consumer/factory或完整encoded physical Shor，也未做真实浏览器视觉验收。
+
+## 20. 含Y的native cat producer与严格精确参考已验
+
+K47与[含Y接口](qec_mixed_pauli_cat.md)使用独立NativeCatProgram envelope保留完整native prefix，不扩展现GateTask。CY的真实顺序为CZ→H(data)CZ H(data)→T(cat)T(cat)，cat相位补齐XZ=-iY，全部actual门与两T成本保留；理想参考仅将严格相邻同atom、directchain/successor隔离的TT精确合为S，trackedENV仍拒T。保留actual输入、signed sectors、外部reference与原semantic历史，同9辅助非对易YX→YZ全部4branch验证；不会把预期态安装为输入。
+
+clean35新＋41旧XZ共76PASS10.97s，35与764无交集，总799distinct=798clean＋1original长恢复正例；architecture254modules0违规。六±Y/XYZ/YY actualqualified导出均PASS：32/2048/1024全raw数学、seed0/7真实encoded/ref probes，最大Kraus2.388e-16；独立NumPy52controlled矩阵max2.22e-16。peer发现旧审计筛选遗漏实际readout后，现严格验完整orderedtail/phaseledger、canonical boundaries/prepare/verify/couple/readout/release/sidecar，再收缩actualreadoutunitary bras；改H为Z/缺门/提前RESET/额外coupling/坏verify/semanticflip均拒绝，六case不被统计为六newtest。
+
+单roundbefore+after新增Y312/XYZ858/YY643native；default3round成本不能沿用该数。13patch12Y+Z只结构compile：63cat+1verifier/285roles/24T，不是channel/FT/physical或actualframepeak；完整allraw只L≤16、channel穷举只logical+ref≤6。cat核验后生产abort/retry、TT之间native故障、magic消费、全dynamicframe控制与完整Executor/encodedShor仍待验。

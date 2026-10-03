@@ -487,7 +487,7 @@
       "id": "L17",
       "kind": "repository_snapshot",
       "title": "三patch物理runner、strict续跑、完整历史decode cache与边界planner",
-      "version": "completed ZZ with strict continuation; XX pending 2026-10-04",
+      "version": "completed ZZ; XX export recovery pending 2026-10-04",
       "paths": [
         "src/neutral_atom_experiments/qec_pbc/encoded_physical.py",
         "examples/run_encoded_parity.py",
@@ -503,7 +503,7 @@
         "docs/qec_shor15_stage.md",
         "tests/test_trace_event_cache.py"
       ],
-      "verified_scope": "七fastresume/十三cache新专项与旧125PASS3SKIP；clean ZZ三轮1860 native完整Executor与original-initial replay通过；XX三轮续跑待验",
+      "verified_scope": "七fastresume/十三cache与旧125PASS3SKIP；ZZ完整Executor/originalinitial replay通过；XXcheckpoint1860但AV中断fullreplay/导出，恢复另验",
       "retrieved_at": "2026-10-04",
       "sha256_normalization": "text_lf",
       "sha256": {
@@ -518,7 +518,7 @@
         "src/neutral_atom_env/replay/trace.py": "17d377b4524eb559c565b1b7300b885782bf7bc05669f8f7bb01fdf59e392b13",
         "src/neutral_atom_env/simulation/runtime_validation.py": "6b2ab1608d79b842bf750fd577a3376d7beb6210d5a2394d56f00654c13789cd",
         "tests/test_trace_history_cache.py": "f28a30b355570fcd2632bb89578be271d81848cb013a886ad2b55d78311e95d6",
-        "docs/qec_shor15_stage.md": "0da0fcc6c54e5e13d46b30bf1134d19d5c43d2031261fa075dd177fde3d6a9a0",
+        "docs/qec_shor15_stage.md": "32a3731af2ee7b4c42854252811f84d5684faa3b7917b82ffd069e2ab3756645",
         "tests/test_trace_event_cache.py": "b3f23180531b8e254b27e94a809cc247344b01f00eb6ef710bcb42fcc788f5fd"
       },
       "raw_sha256": {
@@ -762,19 +762,46 @@
     {
       "id": "L27",
       "kind": "repository_snapshot",
-      "title": "三轮encoded ZZ完整Executor/原initial独立重放与streaming指纹小摘要",
-      "version": "completed ZZ physical only; XX pending 2026-10-04",
+      "title": "ZZ完整物理摘要与XX真实导出中断/未验fullreplay诊断",
+      "version": "completed ZZ; XX0xc0000005 export interrupted 2026-10-04",
       "paths": [
-        "references/qec_pbc_validation/encoded_zz_physical_r3.json"
+        "references/qec_pbc_validation/encoded_zz_physical_r3.json",
+        "references/qec_pbc_validation/encoded_xx_physical_export_interruption.json"
       ],
-      "verified_scope": "ZZ1860门456plans19212events，14top+4quantum布尔audit全部true，exit0；原失败prefix不改，XX仍pending",
+      "verified_scope": "ZZ完整1860/456plans19212events/fullinitial replay通过；XX已存1860/457plans19214events但PythonAV exit1缺最终evidence/fullreplay，独立恢复待验",
       "retrieved_at": "2026-10-04",
       "sha256_normalization": "text_lf",
       "sha256": {
-        "references/qec_pbc_validation/encoded_zz_physical_r3.json": "facb0cee8c4e747017536a0c25673b8d74f53fdd9da67798f604c4cb9164225d"
+        "references/qec_pbc_validation/encoded_zz_physical_r3.json": "facb0cee8c4e747017536a0c25673b8d74f53fdd9da67798f604c4cb9164225d",
+        "references/qec_pbc_validation/encoded_xx_physical_export_interruption.json": "487d95cbef0fb0a28af1d67cc36c5815cd56ab5814ad074a53672d3d38408a80"
       },
       "raw_sha256": {
-        "references/qec_pbc_validation/encoded_zz_physical_r3.json": "17825e6b9811b6b17cb3a1e0dd2dbc03cd91ee8773844316db2efebc92d71f83"
+        "references/qec_pbc_validation/encoded_zz_physical_r3.json": "17825e6b9811b6b17cb3a1e0dd2dbc03cd91ee8773844316db2efebc92d71f83",
+        "references/qec_pbc_validation/encoded_xx_physical_export_interruption.json": "f7eb89967542e8bf1cf16a1a599556343d9a2264800707a885c15b8e2233e571"
+      }
+    },
+    {
+      "id": "L28",
+      "kind": "repository_snapshot",
+      "title": "含Y的signed cat PPM native producer、严格TT精确参考与完整fragment allraw证明",
+      "version": "qualified ideal-native Y reference verified 2026-10-04",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/mixed_pauli_cat.py",
+        "tests/test_qec_mixed_pauli_cat.py",
+        "docs/qec_mixed_pauli_cat.md"
+      ],
+      "verified_scope": "clean35new+41XZold共76PASS10.97s；六±Y/XYZ/YY实际reference与完整allraw math、独立52矩阵/7TT拒例通过；ENV/PBCIR/FT/physical/magic false",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/mixed_pauli_cat.py": "dbbe77fff21e83dc0b38bcd9f41e6cded3f1c8453283b9479d7e7e735d320551",
+        "tests/test_qec_mixed_pauli_cat.py": "075b2118df33f5239b6a4ca78bb489cdc21cfea7ea74a328ef7b93e23b2f8afa",
+        "docs/qec_mixed_pauli_cat.md": "befffcdb842a2823e806679cc0a8a564235acbeee3e26caab241f8ccfa364038"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/mixed_pauli_cat.py": "dbbe77fff21e83dc0b38bcd9f41e6cded3f1c8453283b9479d7e7e735d320551",
+        "tests/test_qec_mixed_pauli_cat.py": "075b2118df33f5239b6a4ca78bb489cdc21cfea7ea74a328ef7b93e23b2f8afa",
+        "docs/qec_mixed_pauli_cat.md": "befffcdb842a2823e806679cc0a8a564235acbeee3e26caab241f8ccfa364038"
       }
     }
   ]
