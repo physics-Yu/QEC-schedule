@@ -518,7 +518,7 @@
         "src/neutral_atom_env/replay/trace.py": "17d377b4524eb559c565b1b7300b885782bf7bc05669f8f7bb01fdf59e392b13",
         "src/neutral_atom_env/simulation/runtime_validation.py": "6b2ab1608d79b842bf750fd577a3376d7beb6210d5a2394d56f00654c13789cd",
         "tests/test_trace_history_cache.py": "f28a30b355570fcd2632bb89578be271d81848cb013a886ad2b55d78311e95d6",
-        "docs/qec_shor15_stage.md": "c983141e4e63594dc4d6855306c4fb4afdfeb6f0013c7584bffb19f3d59a6e05",
+        "docs/qec_shor15_stage.md": "343a21bcd3d569e6dc6dc14f7a008f561ef646dd294990962b4b4655db20b78a",
         "tests/test_trace_event_cache.py": "b3f23180531b8e254b27e94a809cc247344b01f00eb6ef710bcb42fcc788f5fd"
       },
       "raw_sha256": {
@@ -682,6 +682,33 @@
       "raw_sha256": {
         "src/neutral_atom_env/replay/snapshot_encoding.py": "93c9a1a44e950517abc191c4fec14f3e5f4604d8bd7d0ba763ab0859a5d32995",
         "tests/test_snapshot_digest_memo.py": "51f1f766e7ff594e333bfe0a1078e945782913d143028abc022dbe1afd158d2e"
+      }
+    },
+    {
+      "id": "L24",
+      "kind": "repository_snapshot",
+      "title": "完整signed Clifford frame控制器、真实理想资源/terminal投影与完整Shor分解审计",
+      "version": "ideal deferred measurement controller verified 2026-10-04",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/conditional_clifford_frame.py",
+        "tests/test_qec_conditional_clifford_frame.py",
+        "docs/qec_conditional_clifford_frame.md",
+        "tools/audit_conditional_clifford_frame.py"
+      ],
+      "verified_scope": "clean 27新frame+37旧eager共64passed；实际3500资源zero/ref与3freshshots终端分解3/5；encoded/FT/physical/nativeS均false",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/conditional_clifford_frame.py": "a4b1d5aab2543c18d39bc070847fa5c01fd5a5c02dc36758b60626ab470d3b2d",
+        "tests/test_qec_conditional_clifford_frame.py": "cc7948692d0b35d22ee1b8ab0c4fc4c4e3df97d40d116d28ac394e17bde40369",
+        "docs/qec_conditional_clifford_frame.md": "f2e2c92d88d4870164e8bab2fafab3f3f5ef3a5136c3e1ce23aeda2b30441c9f",
+        "tools/audit_conditional_clifford_frame.py": "7e198b813615d0b86f48db31040a05fe121aee21057a543f3895ae55df6abd82"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/conditional_clifford_frame.py": "a4b1d5aab2543c18d39bc070847fa5c01fd5a5c02dc36758b60626ab470d3b2d",
+        "tests/test_qec_conditional_clifford_frame.py": "cc7948692d0b35d22ee1b8ab0c4fc4c4e3df97d40d116d28ac394e17bde40369",
+        "docs/qec_conditional_clifford_frame.md": "f2e2c92d88d4870164e8bab2fafab3f3f5ef3a5136c3e1ce23aeda2b30441c9f",
+        "tools/audit_conditional_clifford_frame.py": "7e198b813615d0b86f48db31040a05fe121aee21057a543f3895ae55df6abd82"
       }
     }
   ]

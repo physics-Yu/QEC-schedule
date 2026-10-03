@@ -161,6 +161,12 @@
       "expected_any": [
         "K42"
       ]
+    },
+    {
+      "query": "完整conditional Clifford frame FdagPF signed full24generators terminal projector 三freshshots1280 192 truepostmeasurement framed joint13 template45",
+      "expected_any": [
+        "K43"
+      ]
     }
   ]
 }

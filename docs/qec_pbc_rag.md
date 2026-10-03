@@ -2,7 +2,7 @@
 
 研究与工作树核对日期：**2026-10-04**（历史来源保留各自日期）。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
 
-主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，42 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、23 组本地来源与68个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
+主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，43 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、24 组本地来源与72个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
 
 ## 1. 最终要连起来的链路
 
@@ -268,3 +268,11 @@ K41与[下一后端设计](qec_mixed_pauli_backend_design.md)给出保留编码�
 K42/L23覆盖单项snapshot digest memo。每次fresh canonical序列化全部nontrace字段，并逐值比较完整immutable trace；完全相同才复用SHA。1536MiB独立保守byte界、自定义encoder/subclass/mutable trace fallback及无预算保留合同明确，不改变schema、checkpoint bytes、SHA或物理predicate，也不是缓存validator结论。trace decode默认32k/3GiB与trace JSON编码历史16k/1536MiB是不同预算。
 
 clean新21测试通过，连同35适用旧回归为56通过/3显式deselected；独立完整JSON/SHA oracle检查nested mutation、全trace篡改、Unicode、custom encoder与异常。相关不同nodeids累计673：672clean＋1原workspace真实恢复正例；56专项的旧项不重复加，数学设计仍另计。原小40MB级profile只有1miss/2hit的重复hash改善，不能外推完整物理吞吐。运行中的ZZ第一次strict续跑早于该修复启动，继续保持launch provenance；后续新进程使用稳定源，三轮full physical仍待实际终态与original-initial replay。
+
+## 16. 完整signed Clifford frame：理想测量执行已验
+
+K43及[完整frame接口](qec_conditional_clifford_frame.md)已经实现2n generator的signed pullback、精确correction ledger与严格资源/结果依赖控制。每次真实Q⊗Z及resource-X投影后推迟纠正，最后真实兑现frame/residual/global phase；终端Z标签也pullback并真正投影，分批保留全历史。encoded、FT、physical和nativeS都为false，§14的设计快照不能再解释为logical frame仍未实现。
+
+clean27新项＋37旧eager共64通过（1.91s），相关不同nodeids累计700：699clean＋1original恢复正例，数学reference另计。actual已导出的8993 CT输入在zero/reference case各消耗3500资源，deferred/eager复振幅相符；另3fresh algorithm shots实际读128失败、0失败、192成功，恢复r4及3/5，共10500resources/21000injector projections/24terminal projections。
+
+seed7分支的3500 joint中2168含Y、2437为mixed data，最大data12/joint13；固定d3代表template最大45、18项。它与eager固定词max37、设计保守63是不同数字，均不能宣称新encoded物理峰值。clean统一architecture251模块0违规，原工作树184的扫描范围在接口doc明确区分。下一步是让native mixed/Y与decoded measurement反馈实际接受这些动态signed labels。

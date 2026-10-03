@@ -1,6 +1,6 @@
 # d=3 surface-code Shor：阶段实现与验收
 
-目标是把完整 N=15、a=2 Shor 通过 Pauli-based computation 和 d=3 rotated surface code 接到中性原子的 PhysicalCircuit、真实调度与 Executor。每个算法逻辑比特使用 9 个 data 与 8 个 syndrome 原子。2026-10-03 至10-04已验收完整逻辑参考、全部 QFT 的 Clifford+T 综合、实际完整 PBC 测量与因子恢复，以及可连续组合的编码 ZZ/XX；整体编码 Shor 仍是后续目标。共 **673 个不同相关测试通过**：672在远端main独立发布副本，另1项真实中断→恢复→无中断快照比较在原workspace；旧缓存/readout/恢复回归另有125通过、3项缺历史artifact跳过。RAG最新检索、新鲜度及250模块架构零违规的证据见[本轮日志](../instruction/logs/2026-10-03-shor15-autonomous-stage.md)。ZZ/XX完整三轮物理续跑仍在验收，不预报通过。
+目标是把完整 N=15、a=2 Shor 通过 Pauli-based computation 和 d=3 rotated surface code 接到中性原子的 PhysicalCircuit、真实调度与 Executor。每个算法逻辑比特使用 9 个 data 与 8 个 syndrome 原子。2026-10-03 至10-04已验收完整逻辑参考、全部 QFT 的 Clifford+T 综合、实际完整 PBC 测量与因子恢复，以及可连续组合的编码 ZZ/XX；整体编码 Shor 仍是后续目标。共 **700 个不同相关测试通过**：699在远端main独立发布副本，另1项真实中断→恢复→无中断快照比较在原workspace；旧缓存/readout/恢复回归另有125通过、3项缺历史artifact跳过。RAG最新检索、新鲜度及251模块架构零违规的证据见[本轮日志](../instruction/logs/2026-10-03-shor15-autonomous-stage.md)。ZZ/XX完整三轮物理续跑仍在验收，不预报通过。
 
 | 层 | 本阶段行为 | 限制 |
 | --- | --- | --- |
@@ -8,6 +8,7 @@
 | 完整 Clifford+T | 全部28 CP保留并综合；默认8993门、3500次T/Tdg消耗 | ε=1e-3预算，独立完整QFT算子误差6.78e-5 |
 | 算术 PPR | 5 个 CCX 精确分解为 35 个 T/Tdg，带 signed Pauli 与 residual Clifford | 不包括逆 QFT |
 | 资源测量桥 | 显式 magic resource、联合 Pauli 测量、资源 X 读出和条件 Clifford/Pauli 反馈；完整Shor已执行3500资源/7000测量 | 理想逻辑 instrument；尚未 encoded magic preparation/feedback |
+| 完整 Clifford frame | 24个signed generator、真实m/r改变后续测量标签、保留完整纠正ledger与residual；终端在未兑现frame的向量上实际投影 | 理想逻辑controller；已完整恢复3/5，尚未接committed native measurements与encoded资源 |
 | 编码 ZZ/XX | 完整辅助 d=3 patch；前后各三轮 checks、18 个 transversal CZ、保留两个输出 patch | 51 原子协议；理想完整 instrument，native-fault parity audit 范围另列 |
 | 编码连续组合 | 接收既有 A/B 编码态与 syndrome 历史，显式消耗并重新制备 C；同 C 连续 ZZ→XX | 53 roles 含两个外部 reference、4081 native；理想 native-channel 验证，尚未物理组合执行 |
 | 物理执行 | 独立声明有限 51 原子场景，所有 RESET、MEASURE、CZ、运输经过普通 Executor 与重放 | 不含初态布局准备时间、transport/idle/loss 噪声或整体 Shor |
@@ -60,10 +61,12 @@ python examples/run_encoded_parity.py --basis Z --rounds 3 --seed 0 --resume-fro
 
 独立 `encoded_parity_program` 包含输入 patch 的制备/RESET。连续线路使用新的 [`append_encoded_parity`](qec_encoded_composition.md)，保留 prefix、A/B data、全部测量记录与 syndrome sector 历史。默认分配 fresh C；`resource_reuse=True` 只在完整 C 的 9 data 明确 MEASURE/RESET、8 syndrome RESET/released 后允许使用同一组原子，下一 epoch 仍真实执行 C RESET/reprepare。ZZ→XX 同 C 实跑 53 roles/4081 native，两个外部 reference 保留；逐阶段全部 256 个逻辑/reference Pauli 期望、144 detectors、16 closing sectors 验证通过，25 项组合测试通过。这里的复用是联合测量辅助 patch 生命周期，不代表 magic factory 已实现。
 
-12 个算法 patch 基础为 204 原子；magic、联合测量辅助 patch、缓存和备用另计，实际峰值保持未定。CP综合、完整理想PBC与 X/Z 编码组合接口已完成，接下来依赖顺序是：mixed/Y Pauli 与可执行编码 Clifford feedback → encoded magic preparation/injection → 全算法 patch/资源生命周期与合法原子平台 → 完整 Executor、测量反馈、解码和独立重放。每一项按自身合同提交阶段成果。
+12 个算法 patch 基础为 204 原子；magic、联合测量辅助 patch、缓存和备用另计，实际峰值保持未定。CP综合、完整理想PBC、完整signed Clifford frame与 X/Z 编码组合接口已完成，接下来依赖顺序是：mixed/Y encoded Pauli → 将frame controller接到committed native measurements和真实资源生命周期 → encoded magic representation/preparation/injection → 全算法patch与合法原子平台 → 完整 Executor、解码和独立重放。每一项按自身合同提交阶段成果。
 
 [实际后端需求审计](qec_shor15_encoding_requirements.md) 从完整导出逐项统计：3500 项 joint measurements 中2325含Y、3138混合basis，最大weight9。这给下一阶段的协议范围提供具体输入，避免以双patch ZZ/XX覆盖整个算法的假设。
 
 [mixed/Y 后端设计](qec_mixed_pauli_backend_design.md) 给出保留9+8 patch结构的分布式cat测量、signed Clifford frame、显式 Clifford-resource 纠正和原生报告位的控制接口。可发布公式审计工具复建144纠正分支与64非对易注入分支，误差小于6e-16；这是数学/reference验算，没有把后端、FT或physical能力改成已实现。
+
+[完整frame实现](qec_conditional_clifford_frame.md)每次只投影真实`F†PF`，纠正留在24-generator frame与完整复相位ledger中；最终测量`F†C_res†Z_jC_resF`而不重采样eager结果。完整3500-resource零输入与纠缠reference对照通过，兑现frame后对eager L2误差约1.26e-14，对原CT约1.05e-13。fresh framed Shor seed7/8/9实际读出128/0/192，失败保留，第三次验证周期4与因子3/5；共10500资源、21000注入测量与24终端投影。该seed7实际标签含Y2168项、mixed2437项，data最大12/joint13；固定3/5代表的cat模板最大45（18项），仅为template shape，资源峰值未定。分批终端读出仍保存完整namespace/history/dependencies。27项新增独立检查已在干净发布副本验收，native S/encoded/FT/physical均保持false。
 
 详细协议见 [完整 Shor 参考](qec_shor15.md)、[编码联合测量](qec_encoded_ppm.md)、[资源测量桥](qec_adaptive_pbc.md)；事实与实现快照见 [RAG](qec_pbc_rag.md)。
