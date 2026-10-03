@@ -518,7 +518,7 @@
         "src/neutral_atom_env/replay/trace.py": "17d377b4524eb559c565b1b7300b885782bf7bc05669f8f7bb01fdf59e392b13",
         "src/neutral_atom_env/simulation/runtime_validation.py": "6b2ab1608d79b842bf750fd577a3376d7beb6210d5a2394d56f00654c13789cd",
         "tests/test_trace_history_cache.py": "f28a30b355570fcd2632bb89578be271d81848cb013a886ad2b55d78311e95d6",
-        "docs/qec_shor15_stage.md": "458ae8c53f121092d8265b1c2531bd1c511b3a29f432bc9031708977ee3881a0",
+        "docs/qec_shor15_stage.md": "698a8ce0a27f313bafb7c0e80cd4d406b629d76dfcb3026c1e1cb3c049895c30",
         "tests/test_trace_event_cache.py": "b3f23180531b8e254b27e94a809cc247344b01f00eb6ef710bcb42fcc788f5fd"
       },
       "raw_sha256": {
@@ -808,27 +808,48 @@
       "id": "L29",
       "kind": "repository_snapshot",
       "title": "已完成checkpoint的verification-only独立核验、全initial重放与低峰值导出恢复",
-      "version": "reviewed recovery infrastructure verified; actual XX fullreplay pending 2026-10-04",
+      "version": "second recovery interrupted; frozen full-certificate primitive-hash recovery adapter verified 2026-10-04",
       "paths": [
         "src/neutral_atom_experiments/qec_pbc/encoded_export_recovery.py",
         "src/neutral_atom_experiments/qec_pbc/encoded_physical.py",
         "tests/test_qec_encoded_export_recovery.py",
-        "docs/qec_encoded_export_recovery.md"
+        "docs/qec_encoded_export_recovery.md",
+        "tests/test_qec_recovery_prefix_cache.py"
       ],
-      "verified_scope": "clean43新恢复infra+13旧fast共56PASS18.24s/1已跑long deselected；152capturedsource匹配，仅reviewed runner316519→eb580；实际XX457plans全initial重放/最终evidence仍pending",
+      "verified_scope": "clean旧43recovery+新35cache+13oldfast共91PASS23.36s/1原long deselected；35与842无交集，152sourceguard/core/shared未改；实际新457fullreplay仍pending",
       "retrieved_at": "2026-10-04",
       "sha256_normalization": "text_lf",
       "sha256": {
-        "src/neutral_atom_experiments/qec_pbc/encoded_export_recovery.py": "d028228369582e877c4b41d13bfb76a188bba430e329a5f22c97d024c68af958",
+        "src/neutral_atom_experiments/qec_pbc/encoded_export_recovery.py": "7ce23addaaa2f05db2c00c7304537973b407f30a633ad9b82649d7232e934eac",
         "src/neutral_atom_experiments/qec_pbc/encoded_physical.py": "eb580abf3ce475fb3c2cb18448fb3deac64528271e5c121188ef1dc2f4cea288",
         "tests/test_qec_encoded_export_recovery.py": "a3c621e7becc59f54ab41df69fb5cb4db1fe32f1fbfed37caca0f9ee224d5f30",
-        "docs/qec_encoded_export_recovery.md": "2c1d0a68528cbc1dd8ff2afed872cee700f9c2461f6f8df41c47d1a81ceb248a"
+        "docs/qec_encoded_export_recovery.md": "8e14f5089999a3a190e2ec85bcbef461e769f4a5d758d9b849c40c7f6b072647",
+        "tests/test_qec_recovery_prefix_cache.py": "94cfe3f176e50e12b4acba3161bd0c2d2d90762435ccf95d5322f1676c34ac72"
       },
       "raw_sha256": {
         "src/neutral_atom_experiments/qec_pbc/encoded_export_recovery.py": "1dfc61c5ee025efdd56b5e30586daac749e6dcecd0422d5cea256e3dd354d462",
         "src/neutral_atom_experiments/qec_pbc/encoded_physical.py": "eb580abf3ce475fb3c2cb18448fb3deac64528271e5c121188ef1dc2f4cea288",
         "tests/test_qec_encoded_export_recovery.py": "a3c621e7becc59f54ab41df69fb5cb4db1fe32f1fbfed37caca0f9ee224d5f30",
-        "docs/qec_encoded_export_recovery.md": "2c1d0a68528cbc1dd8ff2afed872cee700f9c2461f6f8df41c47d1a81ceb248a"
+        "docs/qec_encoded_export_recovery.md": "2c1d0a68528cbc1dd8ff2afed872cee700f9c2461f6f8df41c47d1a81ceb248a",
+        "tests/test_qec_recovery_prefix_cache.py": "94cfe3f176e50e12b4acba3161bd0c2d2d90762435ccf95d5322f1676c34ac72"
+      }
+    },
+    {
+      "id": "L30",
+      "kind": "repository_snapshot",
+      "title": "第二次XX verification-only重放访问冲突的不可变失败摘要",
+      "version": "actual recovery exit1 and saved-progress/hash-path diagnosis 2026-10-04",
+      "paths": [
+        "references/qec_pbc_validation/encoded_xx_recovery_export_interruption.json"
+      ],
+      "verified_scope": "实际session16749exit1/Windows1000与faulthandler；stream四大raw文件与首次crashed相等，最后321progress非精确crash位置；completion false",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "references/qec_pbc_validation/encoded_xx_recovery_export_interruption.json": "15395c1bf8d4ecfed6aa7faad2177fee296426d325b34295af2e1ae7a683449d"
+      },
+      "raw_sha256": {
+        "references/qec_pbc_validation/encoded_xx_recovery_export_interruption.json": "15395c1bf8d4ecfed6aa7faad2177fee296426d325b34295af2e1ae7a683449d"
       }
     }
   ]

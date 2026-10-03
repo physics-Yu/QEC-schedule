@@ -2,7 +2,7 @@
 
 研究与工作树核对日期：**2026-10-04**（历史来源保留各自日期）。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
 
-主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，48 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、29 组本地来源与86个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
+主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，49 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、30 组本地来源与88个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
 
 ## 1. 最终要连起来的链路
 
@@ -314,3 +314,11 @@ K48/L29与[恢复接口](qec_encoded_export_recovery.md)只接受完整DAG/无pe
 clean43新恢复infra＋13旧fast共56PASS18.24s，原已跑长正例显式deselected；43与799无交集，累计842distinct=841clean＋1original，architecture255modules0违规。152capturedsource严格匹配，仅允许已review shared runner316519→eb580；原surface_ghz/surface_qec/qec_layout未捕获，原SHA=null、完整原source provenance=false，当前恢复源码另列。短fixture为真实51原子三native门，fixture替换encoded-output审计，不能当成1860门XX channel验收。
 
 丢失decisions/candidatehistory保持unknown/null，原parent Timeout/replayfalse不改；crashed总wall未知，恢复wall只计输入核验/重放/导出，访问冲突机制未确定。早期输入/source/parent/shared审计拒绝不建output，建立输出后的普通重放/导出异常才保存recovery_failure。实际XX recovery已启动全initial重放，最终exit0、所有quantum/exactsnapshot、完整导出/evidence仍pending；K46中断摘要不能被基础设施测试改写成完成，实际终态另行发表。没有新增noise/FT、magic consumer或完整encoded physical Shor能力。
+
+## 22. 第二次XX重放访问冲突与完整cache证书工程修复
+
+K49与[第二次失败摘要](../references/qec_pbc_validation/encoded_xx_recovery_export_interruption.json)保留真实exit1：Windows1000的0xc0000005和faulthandler定位深dataclass hash→expected-prefix cache插入。最新落盘321/457plans、1310native、187910.5μs、wall884.927s；progress每16plans写入，不能当作精确crash位置。新checkpoint/plans/trace/initial独立stream SHA均与原crashed相等，初步saved-target审计通过，完整originalinitial replay/recording/evidence仍未完成；底层异常原因unknown。
+
+[恢复接口](qec_encoded_export_recovery.md)的局部exclusive nonreentrant context只将hash改为exactstr plan.id bucket，equality保留原完整13字段tuple。peer发现初版wrapper普通parts赋值可破坏证书，现frozen wrapper拒set/delete；强碰撞/同ID修改不授权，32state LRU、cursor/fork、origin/transition和所有原validator保留，finally恢复原函数/cache对象。ENV/shared源码、152sourceguard/物理条件未改；adapter和producer/ENV指纹单独记录。
+
+clean43旧recovery＋35新cache＋13旧fast共91PASS23.36s/1已跑long deselected；35与842零交集，累计877distinct=876clean＋1original，fresh architecture255/0。Poisoned深dataclass hash零调用、全部13static字段碰撞、warm/cold/fork完整snapshot oracle、原runtime拒例、32LRU和异常恢复均通过；短真实三native fixture仍不是完整1860XX验收。新actual sole-process全457重放使用冻结源，exit0/exactbytes/全部量子与完整导出仍pending；没有生成XX/combined completed摘要，旧事故和缺source/decisions事实保留。

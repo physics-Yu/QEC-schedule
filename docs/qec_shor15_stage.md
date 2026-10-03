@@ -1,6 +1,6 @@
 # d=3 surface-code Shor：阶段实现与验收
 
-目标是把完整 N=15、a=2 Shor 通过 Pauli-based computation 和 d=3 rotated surface code 接到中性原子的 PhysicalCircuit、真实调度与 Executor。每个算法逻辑比特使用 9 个 data 与 8 个 syndrome 原子。2026-10-03 至10-04已验收完整逻辑参考、全部 QFT 的 Clifford+T 综合、实际完整 PBC 测量与因子恢复、可连续组合的编码测量，以及17原子编码T/T†资源制备参考；整体编码 Shor 仍是后续目标。共 **842 个不同相关测试通过**：841在远端main独立发布副本，另1项真实中断→恢复→无中断快照比较在原workspace；旧缓存/readout/恢复回归另有125通过、3项缺历史artifact跳过。RAG最新检索、新鲜度及255模块架构零违规的证据见[本轮日志](../instruction/logs/2026-10-03-shor15-autonomous-stage.md)。ZZ完整三轮物理续跑已完成；XX执行checkpoint已齐，访问冲突后的独立导出恢复仍在验收。
+目标是把完整 N=15、a=2 Shor 通过 Pauli-based computation 和 d=3 rotated surface code 接到中性原子的 PhysicalCircuit、真实调度与 Executor。每个算法逻辑比特使用 9 个 data 与 8 个 syndrome 原子。2026-10-03 至10-04已验收完整逻辑参考、全部 QFT 的 Clifford+T 综合、实际完整 PBC 测量与因子恢复、可连续组合的编码测量，以及17原子编码T/T†资源制备参考；整体编码 Shor 仍是后续目标。共 **877 个不同相关测试通过**：876在远端main独立发布副本，另1项真实中断→恢复→无中断快照比较在原workspace；旧缓存/readout/恢复回归另有125通过、3项缺历史artifact跳过。RAG阶段检索、新鲜度及255模块架构零违规的证据见[本轮日志](../instruction/logs/2026-10-03-shor15-autonomous-stage.md)。ZZ完整三轮物理续跑已完成；XX执行checkpoint已齐，访问冲突后的独立导出恢复仍在验收。
 
 | 层 | 本阶段行为 | 限制 |
 | --- | --- | --- |
@@ -88,4 +88,6 @@ XX中断事实与已有checkpoint检查见[原样保留的事故摘要](../refer
 
 [导出恢复入口](qec_encoded_export_recovery.md)只接受native DAG已完成、pending为空的冻结checkpoint，先核对所有输入、seed、11个原文件指纹、launch source与父级plan/trace完整内容，再复用原completed quantum/effect/timing/resources/retained-output审计。最后必须从original initial逐个真实submit/run所有plans，比较完整canonical字节与EOF，重新生成完整VisualRecorder。逐record/plan导出不改schema或任何physical predicate，原档案及其子目录禁止写入。缺scheduler decision log明确unavailable、candidate history为null；三个原未捕获的实验依赖原SHA保持null，不能声称全部原源码一致。
 
-新43项与13既有fast检查在clean联合56通过（18.24s），原1977s完整恢复对照已完成而未重复；不同nodeids总842=841clean＋1original，255modules0违规。轻量fixture只有三个真实RESET/H/M物理门，并显式替换encoded-output检查，只验证恢复机制。实际152个captured source依赖匹配，已复核shared runner316519→eb580仅提取原predicate与compact audit。三轮XX已开始独立457plan完整初态重放，实际最终结果仍待确认。
+新43项与13既有fast检查在clean联合56通过（18.24s），原1977s完整恢复对照已完成而未重复；不同nodeids总842=841clean＋1original，255modules0违规。轻量fixture只有三个真实RESET/H/M物理门，并显式替换encoded-output检查，只验证恢复机制。实际152个captured source依赖匹配，已复核shared runner316519→eb580仅提取原predicate与compact audit。三轮XX verification-only重放进程再次访问冲突exit1，最后落盘321/457plans、1310重放门，尚未通过完整初态重放或导出。真实faulthandler定位runtime prefix cache插入的深dataclass hash路径，Python机制仍未知；现采用局部cache certificate修复并独立验收，保留完整原值相等检查和每一物理predicate。原保存1860门完整state及两次失败档案不改。
+
+cache certificate已冻结，只以exactstr plan.id作hash bucket，用完整旧13-field tuple判等；保留32项LRU、cursor/fork、全部origin/transition与物理predicate，exclusive/non-reentrant context正常或异常finally恢复原function/cache对象。35新增检查包含强碰撞、每个旧静态字段变动、同ID不同body、poison CompiledPlan/PhysicalCircuit hash零调用、冻结证书拒绝修改和真实短恢复。clean43旧recovery＋35new＋13oldfast联合91通过23.36s，总877=876clean＋1original，255modules0违规。第二事故与stream指纹见[恢复重放事故摘要](../references/qec_pbc_validation/encoded_xx_recovery_export_interruption.json)；新的完整XX重放结果仍待实际确认。

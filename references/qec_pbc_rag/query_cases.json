@@ -203,6 +203,12 @@
       "expected_any": [
         "K48"
       ]
+    },
+    {
+      "query": "recovery prefixcache primitivehash exactstr planid frozenfullcertificate full13equality hashcollision poisoneddataclass nonreentrant finallyrestore secondcrash321 lastprogress XXpending",
+      "expected_any": [
+        "K49"
+      ]
     }
   ]
 }

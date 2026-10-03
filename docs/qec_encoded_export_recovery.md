@@ -8,6 +8,8 @@
 
 完整状态重新通过 shared quantum reference、真实投影/报告、exactly-once native effects、依赖时序、operation/resource intervals、终态、保留数据、signed sectors、parity/coherence 和 detectors 审计。随后在新环境从原 initial 逐计划真实 submit/run，并用固定 canonical chunk 序列比较全部 snapshot 字节与 EOF。完整 VisualRecorder 来自这次真实重放，覆盖原前缀与末尾。Checkpoint 与 plans 逐条写出，需等于原文件 SHA；流式 serializer 的 Unicode、转义、嵌套对象、float、sets 和截断边界均与完整 public canonical serializer 的独立 byte oracle 对照。
 
+首次恢复在每 16 个计划保存的最后 progress 为 321/457 时再次发生原生访问冲突；该数字不代表精确崩溃计划。Faulthandler 定位到 `operation_program._expected_prefix` 的 OrderedDict 插入与两层 dataclass `__hash__`，底层机制未确认。后续恢复使用 exclusive、不可重入的进程局部 adapter：完整原 `_replay_key` tuple 保持为 equality certificate，哈希桶只取 exact base-string plan ID；碰撞、同 ID 改 plan body 或任一 world/hardware/atoms/circuit 字段都不能复用旧证明。32-entry LRU、cursor/fork 重建、origin/transition、全历史和所有 validator 判定均保留，退出或异常时恢复原函数和缓存对象。源文件未改 ENV，adapter 实现 SHA 和被适配 ENV 源码 SHA 在新 producer provenance 中明确记录。该 adapter 绕开已观察到的 deep-hash 路径，不能视为解释器根因已证明；下一完整 457 计划重放仍须实际通过。
+
 原 scheduler decisions 缺失时不补空日志；保存 unavailable 说明，candidate rejections 为 null。`no_layout_staging` 的证据范围明确为全部 accepted-plan intents 与实际存在的 parent decisions。原 crashed 总 wall time 未知，保存 null；新 wall time 仅计此次恢复输入核验、审计、重放和导出。Windows `0xc0000005` 是原现场记录的访问冲突，机制未知，不定性为 OOM。新诊断文件和输出经路径解析后均禁止位于任一原 archive 内。新输出建立后的重放/导出普通异常保存 `recovery_failure.json`，不能生成 completed evidence；输入、source、parent 与初步完成审计的早期拒绝不建立新输出。CLI faulthandler 诊断保留解释器异常。
 
 入口：

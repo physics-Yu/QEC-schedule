@@ -4,12 +4,15 @@ There is no scheduler or forward execution path. Original artifacts remain
 unchanged, missing decision logs are disclosed, and all completion/quantum/
 timing/physical replay checks must actually pass in a fresh process.
 """
-from collections import Counter
+from collections import Counter, OrderedDict
+from contextlib import contextmanager
+from dataclasses import dataclass
 from itertools import zip_longest
 import hashlib
 import json
 from pathlib import Path, PurePosixPath
 import sys
+from threading import Lock
 from time import perf_counter
 
 from neutral_atom_env import NeutralAtomEnv
@@ -20,6 +23,51 @@ from neutral_atom_strategies.scheduling.m3 import initial_terminal
 
 from .encoded_physical import audit_completed_encoded_state, encoded_parity_inputs
 from .physical import fresh_output
+
+
+@dataclass(frozen=True, eq=False, slots=True)
+class _ExactReplayKey:
+    """Hash a primitive bucket; compare the complete original immutable key."""
+    parts: tuple
+
+    def __post_init__(self):
+        if type(self.parts) is not tuple or type(self.parts[0].id) is not str:
+            raise TypeError('Recovery cache requires an exact tuple and exact string plan ID')
+
+    def __hash__(self):
+        return hash(self.parts[0].id)
+
+    def __eq__(self, other):
+        return type(other) is _ExactReplayKey and self.parts == other.parts
+
+
+_prefix_cache_lock = Lock()
+
+
+@contextmanager
+def exclusive_recovery_prefix_cache():
+    """Exclusive, non-reentrant process-local adapter; no validation is skipped.
+
+    The original key captures full immutable plan/world/hardware/atom/circuit
+    values. Only its hash bucket changes; equality, 32-state LRU, cursor/fork
+    reconstruction, origin/transition and all later predicates remain original.
+    This avoids the deep-dataclass-hash path recorded by faulthandler. It does
+    not establish the interpreter access violation's underlying mechanism.
+    """
+    if not _prefix_cache_lock.acquire(blocking=False):
+        raise RuntimeError('Recovery prefix-cache adapter is exclusive and non-reentrant')
+    try:
+        from neutral_atom_env.simulation import operation_program as program
+        original_key, original_cache = program._replay_key, program._runtime_prefixes
+        def exact_key(plan, state):
+            return _ExactReplayKey(original_key(plan, state))
+        program._replay_key, program._runtime_prefixes = exact_key, OrderedDict()
+        try:
+            yield
+        finally:
+            program._replay_key, program._runtime_prefixes = original_key, original_cache
+    finally:
+        _prefix_cache_lock.release()
 
 
 def file_sha256(path):
@@ -297,6 +345,7 @@ def _validate_crash_provenance(crashed, metadata, manifest_path, protocol, seed)
             'launch_provenance':launch, 'source_capture_scope':'Only originally captured environment/strategy and ten selected physical QEC frontend files; uncaptured experiment dependencies are unknown'}
 
 
+@exclusive_recovery_prefix_cache()
 def recover_encoded_export(protocol, crashed, parent, output, *, seed=0,
                            crash_manifest, reviewed_runner_change=None, progress=None):
     """Reaudit a complete saved state and replay/export, without forward work."""
@@ -347,6 +396,15 @@ def recover_encoded_export(protocol, crashed, parent, output, *, seed=0,
             'neutral_atom_experiments/qec_pbc/encoded_physical.py': file_sha256(Path(__file__).with_name('encoded_physical.py')),
             'examples/run_encoded_parity.py': file_sha256(Path(__file__).resolve().parents[3]/'examples/run_encoded_parity.py')},
         'recovery_entry_point': 'python -m neutral_atom_experiments.qec_pbc.encoded_export_recovery',
+        'runtime_prefix_cache_adapter': {
+            'enabled':True, 'scope':'Exclusive single-process non-reentrant recovery context; original function/cache objects restored in finally',
+            'hash_bucket':'Exact base-string plan ID only',
+            'equality_certificate':'Complete original immutable _replay_key tuple, no digest/ID-only authorization',
+            'retention':'Original 32-state LRU and cursor/fork reconstruction unchanged',
+            'adapted_function':'neutral_atom_env.simulation.operation_program._replay_key',
+            'adapted_environment_source_sha256':file_sha256(Path(__file__).resolve().parents[2]/'neutral_atom_env/simulation/operation_program.py'),
+            'adapter_implementation_source_sha256':file_sha256(__file__),
+            'incident_scope':'Avoids observed deep dataclass __hash__ path; underlying access-violation mechanism remains unknown'},
         'recovery_python': {'version':sys.version, 'executable':sys.executable},
         'run_metadata_scope': 'Original interrupted process metadata, preserved exactly as a separate producer record',
         'crash_provenance': crash_provenance,
