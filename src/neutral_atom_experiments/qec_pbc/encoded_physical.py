@@ -18,6 +18,7 @@ from neutral_atom_env.domain.models import (GridCoord, Position2D, Rectangle,
 from neutral_atom_env.domain.operations import HardwareConfig
 from neutral_atom_env.platform import Platform
 from neutral_atom_env.program.task_validation import validate_target
+from neutral_atom_env.replay.operation_codec import plan_from_dict
 from neutral_atom_env.replay.serializer import canonical_json
 from neutral_atom_env.visualization import VisualRecorder
 from neutral_atom_env.world import AODRuntimeState, WorldState
@@ -167,24 +168,94 @@ def encoded_output_audit(protocol, inputs, state):
 
 
 def execute_encoded_parity(protocol, output, *, seed=0, wall_budget_s=1800,
-                           max_decisions=4096, progress=None):
-    """Execute a full ideal instrument and preserve failed prefixes as evidence."""
+                           max_decisions=4096, progress=None, resume_from=None):
+    """Execute or strictly resume the same instrument and retain all evidence.
+
+    Resume inherits the original physical clock, quantum/RNG state, accepted
+    plans and initial terminal contract. Its wall budget covers only this new
+    continuation. No completed native gate, including preparation, is repeated.
+    """
     if protocol.close_data_basis is not None:
         raise ValueError('This physical runner requires the retained-output instrument')
     if wall_budget_s <= 0:
         raise ValueError('Positive wall budget required')
     inputs, destinations = encoded_parity_inputs(protocol, seed=seed)
-    output = fresh_output(output)
     plans = []
+    initial = inputs.create_environment().snapshot()
+    starting_state = NeutralAtomEnv.restore(initial).state
+    resume_metadata, inherited_decisions = None, []
+    inherited_rejections = []
+    if resume_from is not None:
+        prefix = Path(resume_from).resolve()
+        expected_files = {'protocol.json': protocol.to_dict(),
+                          'compiled.json': inputs.compiled.to_dict(),
+                          'platform.json': inputs.platform,
+                          'working_destinations.json': destinations,
+                          'initial_placement.json': dict(inputs.placement)}
+        for filename, expected in expected_files.items():
+            actual = json.loads((prefix/filename).read_text(encoding='utf-8'))
+            if canonical_json(actual) != canonical_json(expected):
+                raise ValueError(f'Resume {filename} differs from current experiment inputs')
+        saved_initial = (prefix/'initial.json').read_text(encoding='utf-8')
+        if saved_initial != initial:
+            raise ValueError('Resume initial checkpoint differs from current inputs or seed')
+        checkpoint = (prefix/'checkpoint.json').read_text(encoding='utf-8')
+        starting_state = NeutralAtomEnv.restore(checkpoint).state
+        if starting_state.dag.circuit != inputs.circuit or starting_state.hardware != inputs.platform.hardware:
+            raise ValueError('Resume checkpoint circuit or hardware differs from current inputs')
+        plans = [plan_from_dict(value) for value in json.loads((prefix/'plans.json').read_text(encoding='utf-8'))]
+        plan_ids = [p.id for p in plans]
+        started_events = [json.loads(row)['event'] for row in starting_state.trace.records
+                          if json.loads(row)['event']['event_type'] == 'plan_started']
+        trace_ids = [event['plan_id'] for event in started_events]
+        if (len(set(plan_ids)) != len(plan_ids) or plan_ids[:len(trace_ids)] != trace_ids
+                or len(plan_ids) not in (len(trace_ids), len(trace_ids) + 1)):
+            raise ValueError('Resume accepted plans do not match committed plan history')
+        for plan, event in zip(plans, started_events):
+            if event.get('plan') is None or canonical_json(plan) != canonical_json(event['plan']):
+                raise ValueError('Resume accepted plan contents differ from committed plan_started trace')
+        pending_starts = []
+        if len(plans) == len(started_events) + 1:
+            pending_starts = [entry[2] for entry in starting_state.event_queue.entries
+                              if entry[2].event_type.value == 'plan_started']
+            if (len(pending_starts) != 1 or pending_starts[0].plan is None
+                    or pending_starts[0].plan_id != plans[-1].id
+                    or canonical_json(plans[-1]) != canonical_json(pending_starts[0].plan)):
+                raise ValueError('Resume unstarted accepted plan differs from pending PLAN_STARTED')
+        future_ids = {entry[2].plan_id for entry in starting_state.event_queue.entries}
+        if future_ids and (not plans or future_ids != {plans[-1].id}):
+            raise ValueError('Resume pending future is not the last accepted plan')
+        prefix_metadata_path = prefix/'run_metadata.json'
+        prefix_evidence = json.loads((prefix/'evidence.json').read_text(encoding='utf-8'))
+        inherited_decisions = json.loads((prefix/'decisions.json').read_text(encoding='utf-8'))
+        inherited_rejections = list(prefix_evidence.get('candidate_rejections', ()))
+        resume_metadata = {
+            'prefix_directory': str(prefix),
+            'prefix_checkpoint_sha256': hashlib.sha256(checkpoint.encode()).hexdigest(),
+            'original_initial_sha256': hashlib.sha256(initial.encode()).hexdigest(),
+            'prefix_run_metadata_sha256': hashlib.sha256(prefix_metadata_path.read_bytes()).hexdigest(),
+            'prefix_status': prefix_evidence['status'], 'prefix_error': prefix_evidence.get('error'),
+            'inherited_simulation_time_us': starting_state.time_us,
+            'inherited_completed_gates': starting_state.metrics()['completed_gate_count'],
+            'inherited_accepted_plans': len(plans),
+            'inherited_pending_events': len(starting_state.event_queue.entries),
+            'preparation_timing': 'Original preparation remains in inherited physical time; '
+                                  'completed RESET/H/input-sign gates are not repeated',
+            'wall_budget_scope': 'This continuation only; inherited simulation time is not discounted'}
+        # The validated checkpoint string and decoded plan-start payloads may
+        # each occupy gigabytes. Their provenance is saved and the restored
+        # state/accepted plans remain authoritative for continuation and replay.
+        del checkpoint, started_events, pending_starts
+    output = fresh_output(output)
     class RecordingEnvironment(NeutralAtomEnv):
         def submit(self, plan):
             answer = super().submit(plan)
             plans.append(plan)
             return answer
-    env = RecordingEnvironment(inputs.create_environment().state)
-    initial = env.snapshot()
-    initial_quantum = NeutralAtomEnv.restore(initial).state.quantum_state
-    terminal = initial_terminal(env.state)
+    env = RecordingEnvironment(starting_state)
+    original = NeutralAtomEnv.restore(initial)
+    initial_quantum = original.state.quantum_state
+    terminal = initial_terminal(original.state)
     recorder = VisualRecorder(env.state)
     source_root = Path(__file__).resolve().parents[2]
     source_hashes = {str(p.relative_to(source_root)).replace('\\', '/'):
@@ -201,7 +272,8 @@ def execute_encoded_parity(protocol, output, *, seed=0, wall_budget_s=1800,
                             'hardware_source': 'native HardwareConfig defaults; only authorized EZ neighbor guard disabled',
                             'geometry_scope': 'declared finite 51-atom experiment; original two-patch platform unchanged',
                             'initial_placement': 'prearranged; all quantum preparations remain circuit tasks',
-                            'upstream_layout_preparation_time_us': None})):
+                            'upstream_layout_preparation_time_us': None,
+                            'resume': resume_metadata})):
         (output/name).write_text(canonical_json(value), encoding='utf-8')
     (output/'initial.json').write_text(initial, encoding='utf-8')
     started, last_progress = perf_counter(), 0.
@@ -221,6 +293,10 @@ def execute_encoded_parity(protocol, output, *, seed=0, wall_budget_s=1800,
             raise TimeoutError(f'Encoded parity exceeded {wall_budget_s}s')
     result, audit, error = None, {}, None
     try:
+        # Complete the already accepted tail before requesting any new plan.
+        # It is present in inherited plans and must never be resubmitted.
+        if env.pending:
+            env.run(on_event=observe)
         result = run_qec_sparse(env, working_destinations=destinations, terminal=terminal,
             on_event=observe, max_decisions=max_decisions, route_expansions=50000,
             candidate_budget=256,
@@ -247,29 +323,43 @@ def execute_encoded_parity(protocol, output, *, seed=0, wall_budget_s=1800,
             'reference_state_equal': reference['reference_state_equal'],
             'operation_timing_and_resources_verified': True,
             'no_layout_staging': not any(row['kind'] in ('stage_atom', 'terminal_atom')
-                                        for row in result.decision_log)}
+                                        for row in (*inherited_decisions, *result.decision_log))
+                and not any(any(f'qec-sparse-{kind}/' in getattr(plan.intent, 'task_id', '')
+                                for kind in ('stage_atom', 'terminal_atom')) for plan in plans)}
         if not all(v for v in audit.values() if isinstance(v, bool)):
             raise AssertionError('Encoded output audit failed: '+str({k:v for k,v in audit.items() if v is False}))
     except Exception as exc:
         error = {'type': type(exc).__name__, 'message': str(exc)}
+    # Save the committed prefix before independent verification or rendering.
+    # A continuation also retains its observer's suffix as a separate artifact.
+    (output/'checkpoint.json').write_text(env.snapshot(), encoding='utf-8')
+    env.state.trace.write(output/'trace.jsonl')
+    (output/'plans.json').write_text(canonical_json(plans), encoding='utf-8')
+    if resume_metadata is not None:
+        (output/'suffix_recording.json').write_text(canonical_json(recorder.payload()), encoding='utf-8')
+    recording_scope = 'continuation_suffix' if resume_metadata is not None else 'complete_committed_prefix'
     try:
         replay = NeutralAtomEnv.restore(initial)
+        full_recorder = VisualRecorder(replay.state)
         for plan in plans:
             replay.submit(plan)
-            replay.run()
+            # A failed run may stop inside its last accepted plan. Replay the
+            # same committed prefix, retaining its validated pending future.
+            while replay.pending and replay.state.version < env.state.version:
+                event = replay.step()
+                full_recorder.observe(replay.state, event)
+            if replay.pending:
+                break
         audit['independent_plan_replay_equal'] = replay.snapshot() == env.snapshot()
         if not audit['independent_plan_replay_equal']:
             raise AssertionError('Encoded physical plan replay differs')
+        recorder = full_recorder
+        recording_scope = 'complete_committed_prefix_from_original_initial'
     except Exception as exc:
         audit['independent_plan_replay_equal'] = False
         audit['replay_error'] = {'type': type(exc).__name__, 'message': str(exc)}
         error = error or audit['replay_error']
-    # Preserve the committed prefix before attempting a complete-plan timing
-    # export. An interrupted accepted plan legitimately lacks future operation
-    # boundaries, so operation_schedule may reject it even though the prefix
-    # is valuable failure evidence.
-    (output/'checkpoint.json').write_text(env.snapshot(), encoding='utf-8')
-    env.state.trace.write(output/'trace.jsonl')
+    # An interrupted accepted plan legitimately lacks future timing boundaries.
     (output/'recording.json').write_text(canonical_json(recorder.payload()), encoding='utf-8')
     recorder.write(output/'animation.html')
     trace = [json.loads(row) for row in env.state.trace.records]
@@ -291,6 +381,8 @@ def execute_encoded_parity(protocol, output, *, seed=0, wall_budget_s=1800,
         'native_gate_count': len(inputs.circuit.gates),
         'gate_counts': dict(Counter(g.gate_type for g in inputs.circuit.gates)),
         'plans': len(plans), 'wall_seconds': perf_counter()-started,
+        'wall_seconds_scope': 'Current continuation and verification' if resume_metadata else 'Full execution and verification',
+        'resume': resume_metadata, 'recording_scope': recording_scope,
         'schedule_complete': schedule_complete,
         'physical_pulse_count': len(pulse_sizes) if schedule_complete else None,
         'max_parallel_cz': max(pulse_sizes, default=0) if schedule_complete else None,
@@ -298,9 +390,9 @@ def execute_encoded_parity(protocol, output, *, seed=0, wall_budget_s=1800,
         'upstream_layout_preparation_time_us': None,
         'metrics': env.state.metrics(), 'audit': audit,
         'diagnostics': getattr(result, 'diagnostics', ()),
-        'candidate_rejections': getattr(result, 'candidate_rejections', ())}
+        'candidate_rejections': (*inherited_rejections, *getattr(result, 'candidate_rejections', ()))}
     for name, value in (('evidence.json', evidence), ('plans.json', plans),
                         ('schedule.json', operations),
-                        ('decisions.json', getattr(result, 'decision_log', ()))):
+                        ('decisions.json', (*inherited_decisions, *getattr(result, 'decision_log', ())))):
         (output/name).write_text(canonical_json(value), encoding='utf-8')
     return evidence

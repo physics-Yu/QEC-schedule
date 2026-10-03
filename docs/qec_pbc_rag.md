@@ -1,8 +1,8 @@
 # Surface code / Pauli-based computation RAG：从逻辑电路到物理执行
 
-研究与工作树核对日期：**2026-10-03**。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
+研究与工作树核对日期：**2026-10-04**（历史来源保留各自日期）。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
 
-主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，39 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，11 个固定版本一手外部来源、20 组本地来源与56个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
+主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，41 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、22 组本地来源与66个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
 
 ## 1. 最终要连起来的链路
 
@@ -236,3 +236,29 @@ K39与[编码组合接口说明](qec_encoded_composition.md)记录`append_encode
 clean新增25专项通过，累计631项不同相关测试。实际signed prefix的ZZ→XX同C审计也通过：53 roles、4081 native gates，seed0/7每个边界检查全部256 logical/reference Pauli期望、144 detectors和16 retained sectors，保留实际输入态与外部纠缠。该数字含两个reference，表示声明native角色，不是全平台实测峰值。
 
 组合native instrument的理想channel已验证；组合链的fault audit/decoder、既有placement的物理适配与完整Shor Executor尚未验收。C回收只指联合测量辅助patch，不代表magic工厂已实现。
+
+## 12. 2026-10-03物理预算超时与严格续跑：验收中
+
+clean ZZ第二次真实执行完成1605/1860门、390accepted plans后触发2400秒wall预算；物理时间约226532.6 μs。该次attempt因wall预算失败，原prefix的导出与独立replay仍在进行；完整协议终态须等待续跑验收。
+
+`execute_encoded_parity(resume_from=...)`已通过七项clean fast检查：逐内容核对protocol/compiled/platform/原initial与seed、accepted计划及pending future；同ID的operation内容篡改也拒绝。继续原quantum/RNG/placement/time/trace，保留原initial并重建全部前缀动画，不重新RESET输入或抵扣已发生物理时间。原workspace另有一轮708门actual mid-plan正例通过，resumed与无中断baseline的checkpoint/plans/metrics精确一致；其进程加载性能修复前cache，不能用于宣称新cache长执行已验。完整clean三轮ZZ/XX终态、量子结果和全部计划重放仍待验收。
+
+稳定trace decode cache保留全部history审核，只缓存exact immutable字符串的deepreadonly解析结果，避免循环逐出历史prefix。首版为16384 entries；实际16422-event prefix诊断后默认改为32768，3 GiB保守retained byte界保持。32k版clean focused45通过（13新cache＋32旧cache/search-state），原16k边界仍显式验；前次旧cache/readout/QEC恢复/snapshot/boundary/M3回归125通过、3旧保存artifact缺失跳过。
+
+clean相关不同测试累计651，另有原workspace一轮真实positive，合计652；数学reference另计。正在运行的ZZ首次strict续跑仍加载16k/6AD0 helper，之后的316519临时对象释放和32k default供新进程使用；`loaded_runtime_provenance.json`保留此区别。未据synthetic decode或prefix测试填写全物理完成/性能数字。阶段说明也列入L17新鲜度检查，防止物理结论更新后RAG静默沿用旧快照。
+
+## 13. 完整PBC实际导出的编码后端需求
+
+K40及[需求inventory说明](qec_shor15_encoding_requirements.md)直接读取本次clean完整CLI的`complete_adaptive_pbc.json`。默认每shot3500项joint measurements中2325项含Y、3138项mixed basis；data weight为1–8，加入magic Z后的joint weight为2–9。现有uniform XX/ZZ只覆盖部分形状，356项support2 homogeneousZ也仍缺encoded magic输入，不能据形状宣称物理可执行。
+
+该只读统计已经clean复算，提供下一阶段mixed/Y measurement、条件编码Clifford/Pauli反馈、magic制备/消耗及完整调度的具体输入需求。204原子是12算法patch基础；magic patch与全物理平台峰值仍为null，3500表示资源消耗总量。
+
+2026-10-04进一步按固定canonical logical X/Z（weight3）与Y（weight5）代表展开这3500项，实际最大物理observable支撑为37，有20项达到该值；完整histogram可由同一工具复算。这是固定代表下的支撑计数，不是已验cat测量线路、FT辅助资源数或物理peak。
+
+## 14. mixed/Y和条件Clifford：下一设计，数学reference已验
+
+K41与[下一后端设计](qec_mixed_pauli_backend_design.md)给出保留编码输入、signed product/sector/resource epoch的cat PPM、条件Clifford frame与`|Y_s>`候选。现有门集的mixedX/Z及明确even-Y候选先做独立native reference；nativeS、non-Clifford量子表示、raw conjunction与semantic decoded XOR的控制合同另需实现。使用frame时必须动态计算signed pullback；实际eager最大37不能当作动态后端上界，12data wires固定代表的保守界63也不是实测framed峰值。
+
+可发布数学工具在clean真实复建144纠正分支及64个完整noncommuting注入分支，最大误差5.98e-16；并对实际export核对3500/1683oddY/642非零evenY/max37。输出为`reference_math_passed`，encoded/FT/physical均false，不增加backend测试计数。
+
+新增固定一手来源S12：[Shor, Fault-tolerant quantum computation v2](https://arxiv.org/pdf/quant-ph/9605011v2)，§4的cat核验、逐数据耦合与syndrome读出重复原则已核对。文档中的两条核验链/三次d3 PPM是项目候选，需独立native故障、retained channel和物理验收；没有用论文容错结论替代本项目证明。

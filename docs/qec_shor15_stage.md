@@ -1,6 +1,6 @@
 # d=3 surface-code Shor：阶段实现与验收
 
-目标是把完整 N=15、a=2 Shor 通过 Pauli-based computation 和 d=3 rotated surface code 接到中性原子的 PhysicalCircuit、真实调度与 Executor。每个算法逻辑比特使用 9 个 data 与 8 个 syndrome 原子。2026-10-03 已验收完整逻辑参考、全部 QFT 的 Clifford+T 综合、实际完整 PBC 测量与因子恢复，以及可连续组合的编码 ZZ/XX；整体编码 Shor 仍是后续目标。发布副本共 **631 个不同相关测试通过**（589 联合＋14 综合＋3 终端 PBC＋25 组合）；RAG 39知识块/31来源、21/21检索与新鲜度检查通过，250模块架构零违规。ZZ/XX完整物理执行与后续新增检查按[本轮日志](../instruction/logs/2026-10-03-shor15-autonomous-stage.md)更新。
+目标是把完整 N=15、a=2 Shor 通过 Pauli-based computation 和 d=3 rotated surface code 接到中性原子的 PhysicalCircuit、真实调度与 Executor。每个算法逻辑比特使用 9 个 data 与 8 个 syndrome 原子。2026-10-03 至10-04已验收完整逻辑参考、全部 QFT 的 Clifford+T 综合、实际完整 PBC 测量与因子恢复，以及可连续组合的编码 ZZ/XX；整体编码 Shor 仍是后续目标。共 **652 个不同相关测试通过**：651在远端main独立发布副本，另1项真实中断→恢复→无中断快照比较在原workspace；旧缓存/readout/恢复回归另有125通过、3项缺历史artifact跳过。RAG最新检索、新鲜度及250模块架构零违规的证据见[本轮日志](../instruction/logs/2026-10-03-shor15-autonomous-stage.md)。ZZ/XX完整三轮物理续跑仍在验收，不预报通过。
 
 | 层 | 本阶段行为 | 限制 |
 | --- | --- | --- |
@@ -38,6 +38,16 @@ python examples/run_shor15_stage.py --complete-pbc --epsilon 1e-3 --seed 7 --out
 
 执行证据保存在新的输出目录。已有目录会自动追加 attempt 编号，失败前缀也保留。`animation.html` 来自真实 `VisualRecorder`；`plans.json`、`trace.jsonl`、`schedule.json`、初态和终态 checkpoint 可核对效果、物理时间及独立重放。离线生成动画不等于真实浏览器交互验收。
 
+发生 wall-budget 超时后，用相同协议和 seed 续接已经导出的前缀：
+
+```sh
+python examples/run_encoded_parity.py --basis Z --rounds 3 --seed 0 --resume-from artifacts/shor15/zz --wall-budget 2400 --output artifacts/shor15/zz-resumed
+```
+
+恢复入口在创建新输出前核对协议、编译结果、平台、初始 placement、seed 与 original initial；accepted plan 的完整内容须与 checkpoint trace 或未开始的 pending plan 相同。它先完成已接受的尾计划，再编译新计划，保留原量子态、RNG、测量历史和绝对物理时间。新的 wall budget 只覆盖续跑；最终独立重放与完整动画仍从最初 initial 开始。部分计划无法导出完整 schedule 时保持原失败与 `null` 统计，不伪报已完成。
+
+历史事件解码默认使用32768条/3GiB的稳定前缀缓存，每次仍审核所有历史与最新状态；超出任一预算的后缀仍解析。旧 LRU 越过16384条会循环淘汰，最初稳定前缀版保留16384条后又在真实16422-event续跑中暴露后缀解析成本，所以仅将entry上限调到32768，3GiB字节界保持。20k条独立回归验证完整热扫描0次JSON重新解析，不把小记录测试外推为任意大trace都拟合预算。已运行的16k进程保留原行为，新进程加载32k；缓存命中只复用不可变字符串的解码，不构成验收通过。snapshot/schema及物理条件不变。
+
 物理场景在执行前声明全部 EZ/MZ sites，三块以 70 μm 横向偏移放置，data 间距 20 μm。AOD 为同一台 7×14、98 交点，沿用原硬件默认、容量、碰撞、空阱扫掠、光照和全 EZ CZ pair 校验。场景的有限区域更宽以容纳三块；没有在策略内部新增 trap 或放宽 validator。两块原平台保持原样。初态是已排好的 EZ holder，量子态仍从物理零态开始，所有编码制备在真实 circuit 内完成。
 
 远端 main 与本地未发布的 Enola 默认参数不同。本阶段发布验证从远端 main 的独立工作树进行，其实际硬件记录在 `platform.json`，不能混用本地历史计时。
@@ -49,5 +59,9 @@ python examples/run_shor15_stage.py --complete-pbc --epsilon 1e-3 --seed 7 --out
 独立 `encoded_parity_program` 包含输入 patch 的制备/RESET。连续线路使用新的 [`append_encoded_parity`](qec_encoded_composition.md)，保留 prefix、A/B data、全部测量记录与 syndrome sector 历史。默认分配 fresh C；`resource_reuse=True` 只在完整 C 的 9 data 明确 MEASURE/RESET、8 syndrome RESET/released 后允许使用同一组原子，下一 epoch 仍真实执行 C RESET/reprepare。ZZ→XX 同 C 实跑 53 roles/4081 native，两个外部 reference 保留；逐阶段全部 256 个逻辑/reference Pauli 期望、144 detectors、16 closing sectors 验证通过，25 项组合测试通过。这里的复用是联合测量辅助 patch 生命周期，不代表 magic factory 已实现。
 
 12 个算法 patch 基础为 204 原子；magic、联合测量辅助 patch、缓存和备用另计，实际峰值保持未定。CP综合、完整理想PBC与 X/Z 编码组合接口已完成，接下来依赖顺序是：mixed/Y Pauli 与可执行编码 Clifford feedback → encoded magic preparation/injection → 全算法 patch/资源生命周期与合法原子平台 → 完整 Executor、测量反馈、解码和独立重放。每一项按自身合同提交阶段成果。
+
+[实际后端需求审计](qec_shor15_encoding_requirements.md) 从完整导出逐项统计：3500 项 joint measurements 中2325含Y、3138混合basis，最大weight9。这给下一阶段的协议范围提供具体输入，避免以双patch ZZ/XX覆盖整个算法的假设。
+
+[mixed/Y 后端设计](qec_mixed_pauli_backend_design.md) 给出保留9+8 patch结构的分布式cat测量、signed Clifford frame、显式 Clifford-resource 纠正和原生报告位的控制接口。可发布公式审计工具复建144纠正分支与64非对易注入分支，误差小于6e-16；这是数学/reference验算，没有把后端、FT或physical能力改成已实现。
 
 详细协议见 [完整 Shor 参考](qec_shor15.md)、[编码联合测量](qec_encoded_ppm.md)、[资源测量桥](qec_adaptive_pbc.md)；事实与实现快照见 [RAG](qec_pbc_rag.md)。

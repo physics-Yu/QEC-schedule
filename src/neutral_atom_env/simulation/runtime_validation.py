@@ -14,6 +14,7 @@ from neutral_atom_env.replay.trace import _event_data
 def validate_runtime(state):
     from neutral_atom_env.hardware.ez_neighbors import validate_ez_neighbors
     validate_ez_neighbors(state)
+    _event_data.activate_history(state.trace.records)
     def require(condition, message, code='INVALID_RUNTIME'):
         if not condition:
             raise ValidationError(code, message)

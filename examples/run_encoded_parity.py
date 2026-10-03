@@ -16,11 +16,13 @@ def main():
     parser.add_argument('--seed', type=int, default=0)
     parser.add_argument('--wall-budget', type=float, default=1800)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--resume-from', type=Path,
+                        help='Strictly resume this same protocol/seed from preserved evidence')
     args = parser.parse_args()
     output = args.output or Path('artifacts/qec-shor15-2026-10-03') / f'encoded-{args.basis.lower()}{args.basis.lower()}-physical'
     protocol = encoded_parity_program(basis=args.basis, rounds=args.rounds)
     evidence = execute_encoded_parity(protocol, output, seed=args.seed,
-        wall_budget_s=args.wall_budget,
+        wall_budget_s=args.wall_budget, resume_from=args.resume_from,
         progress=lambda row: print(json.dumps(row), flush=True))
     print(json.dumps({k: evidence[k] for k in ('status', 'error', 'output_directory',
         'native_gate_count', 'plans', 'physical_pulse_count', 'max_parallel_cz', 'wall_seconds')}, indent=2))

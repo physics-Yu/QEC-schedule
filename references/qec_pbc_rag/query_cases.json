@@ -131,6 +131,30 @@
       "expected_any": [
         "K39"
       ]
+    },
+    {
+      "query": "encoded physical wall budget 超时 strict resume checkpoint pending future quantum RNG 原initial plans同ID篡改",
+      "expected_any": [
+        "K36"
+      ]
+    },
+    {
+      "query": "完整Shor encoding requirements 3500 joint 2325含Y 3138mixed weight9 356shape 204原子peaknull",
+      "expected_any": [
+        "K40"
+      ]
+    },
+    {
+      "query": "完整PBC physical support37 canonical logical X Z weight3 Y weight5 展开不是cat FT资源数量",
+      "expected_any": [
+        "K40"
+      ]
+    },
+    {
+      "query": "下一设计 mixed Y cat PPM retained instrument conditional Clifford frame S_P Y_s raw AND semantic XOR 37 63",
+      "expected_any": [
+        "K41"
+      ]
     }
   ]
 }

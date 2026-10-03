@@ -1,6 +1,6 @@
 {
   "schema": "qec-pbc-rag-sources/1",
-  "reviewed_at": "2026-10-03",
+  "reviewed_at": "2026-10-04",
   "scope": "定向一手文献与当前工作树能力快照；非穷尽最新论文；不含自动更新",
   "sources": [
     {
@@ -124,6 +124,16 @@
       "publication": "Nature 626, 58–65 (2024)；online 2023-12-06",
       "verified_scope": "Fig.1；Methods Shuttling and transfers / Local Raman rotations / Mid-circuit readout",
       "retrieved_at": "2026-10-03"
+    },
+    {
+      "id": "S12",
+      "kind": "paper",
+      "title": "Fault-tolerant quantum computation",
+      "authors": "Peter W. Shor",
+      "version": "arXiv:quant-ph/9605011v2, 5 March 1997; first submitted 13 May 1996 / FOCS 1996",
+      "url": "https://arxiv.org/pdf/quant-ph/9605011v2",
+      "verified_scope": "§4 PDF pp5–7：先核验cat再与data逐点耦合，syndrome/readout仍需重复；仅一般文献原则，不给本项目d3候选FT结论",
+      "retrieved_at": "2026-10-04"
     },
     {
       "id": "L01",
@@ -476,8 +486,8 @@
     {
       "id": "L17",
       "kind": "repository_snapshot",
-      "title": "三patch物理runner与完整axes边界planner修复",
-      "version": "Shor15 stage snapshot 2026-10-03",
+      "title": "三patch物理runner、strict续跑、完整历史decode cache与边界planner",
+      "version": "third physical continuation snapshot 2026-10-04",
       "paths": [
         "src/neutral_atom_experiments/qec_pbc/encoded_physical.py",
         "examples/run_encoded_parity.py",
@@ -485,19 +495,31 @@
         "tests/test_qec_encoded_physical_failure.py",
         "src/neutral_atom_strategies/motion/patch_array.py",
         "src/neutral_atom_strategies/scheduling/patch_greedy.py",
-        "tests/test_patch_array_boundary_embedding.py"
+        "tests/test_patch_array_boundary_embedding.py",
+        "tests/test_qec_encoded_physical_resume.py",
+        "src/neutral_atom_env/replay/trace.py",
+        "src/neutral_atom_env/simulation/runtime_validation.py",
+        "tests/test_trace_history_cache.py",
+        "docs/qec_shor15_stage.md",
+        "tests/test_trace_event_cache.py"
       ],
-      "verified_scope": "clean-main physical输入/输出/failure-prefix与planner专项通过；完整ZZ/XX Executor复验中",
-      "retrieved_at": "2026-10-03",
+      "verified_scope": "clean七fastresume+十三cache新专项通过，32k focused45及旧相关125PASS/3旧artifact skip；原workspace一轮positive通过，完整clean三轮ZZ/XX严格续跑中",
+      "retrieved_at": "2026-10-04",
       "sha256_normalization": "text_lf",
       "sha256": {
-        "src/neutral_atom_experiments/qec_pbc/encoded_physical.py": "5cb981868882069bfc58d9d30a234398ac0fcf70ca44992b22547787a88b8faf",
-        "examples/run_encoded_parity.py": "75999df9573fc0575858f1aa57a9311ed95616172ce7cec6fa6c9dd76461e104",
+        "src/neutral_atom_experiments/qec_pbc/encoded_physical.py": "316519e025b0a910b2114282b9a3a35bd6528d16ccfc79bd6c02d030439f94c7",
+        "examples/run_encoded_parity.py": "8de44cfc4ac9d48b16f8e83002a8438fe90e3fe11bf2b741c52e04621ab5eb1c",
         "tests/test_qec_encoded_physical.py": "1242cabbeeb5fd3bc54c3b6ee8aac0426ecfdd1e2f6646759c63aea796cc2181",
         "tests/test_qec_encoded_physical_failure.py": "ea46fed07c73bf6dafb48286083749459d45e6796412a6b25c0c0ba279991835",
         "src/neutral_atom_strategies/motion/patch_array.py": "4fd889ffbcada860ca686adce23f4aef8c8ddaa71f49b1995e6f5643b774bbb2",
         "src/neutral_atom_strategies/scheduling/patch_greedy.py": "1f30e4be79b1887c115971597fab19718baf5f40ba97991de68401ca6999d632",
-        "tests/test_patch_array_boundary_embedding.py": "cb3dd5088a8341b3706119a300e9b05dfa66f76da5530aa4c412d91d4c7f0d6d"
+        "tests/test_patch_array_boundary_embedding.py": "cb3dd5088a8341b3706119a300e9b05dfa66f76da5530aa4c412d91d4c7f0d6d",
+        "tests/test_qec_encoded_physical_resume.py": "c4ac584c8333abe950c30fc1950bdcf24a8eff782e2ec25da7008f0440546e56",
+        "src/neutral_atom_env/replay/trace.py": "17d377b4524eb559c565b1b7300b885782bf7bc05669f8f7bb01fdf59e392b13",
+        "src/neutral_atom_env/simulation/runtime_validation.py": "6b2ab1608d79b842bf750fd577a3376d7beb6210d5a2394d56f00654c13789cd",
+        "tests/test_trace_history_cache.py": "f28a30b355570fcd2632bb89578be271d81848cb013a886ad2b55d78311e95d6",
+        "docs/qec_shor15_stage.md": "ab1fd2899d2f9c55f03e11f72cbae49d5b5fbaadb4d555a20176e1f7da758907",
+        "tests/test_trace_event_cache.py": "b3f23180531b8e254b27e94a809cc247344b01f00eb6ef710bcb42fcc788f5fd"
       },
       "raw_sha256": {
         "src/neutral_atom_experiments/qec_pbc/encoded_physical.py": "5cb981868882069bfc58d9d30a234398ac0fcf70ca44992b22547787a88b8faf",
@@ -506,7 +528,13 @@
         "tests/test_qec_encoded_physical_failure.py": "ea46fed07c73bf6dafb48286083749459d45e6796412a6b25c0c0ba279991835",
         "src/neutral_atom_strategies/motion/patch_array.py": "afd3a68ffc62aba61b57bd20c0a9be1a1eca60040bebb16a26202b1651348a59",
         "src/neutral_atom_strategies/scheduling/patch_greedy.py": "63223e3b2b2f043b6560ade35c5823f0ac2c3535c62c295f7aab4601e21eeea3",
-        "tests/test_patch_array_boundary_embedding.py": "cb3dd5088a8341b3706119a300e9b05dfa66f76da5530aa4c412d91d4c7f0d6d"
+        "tests/test_patch_array_boundary_embedding.py": "cb3dd5088a8341b3706119a300e9b05dfa66f76da5530aa4c412d91d4c7f0d6d",
+        "tests/test_qec_encoded_physical_resume.py": "0550660134ccbe07807339a17ef206a6c3a5d99a1581864d93303fdcfe0372d8",
+        "src/neutral_atom_env/replay/trace.py": "4ce02c52bce0e673e47273ab3c969d2aa9efc58f9d55de40055638c414320740",
+        "src/neutral_atom_env/simulation/runtime_validation.py": "aaa144dd3d5672cbc3a2e062cbcc76c6990b294c5c02f26b34881a20b0211775",
+        "tests/test_trace_history_cache.py": "1f1f9c0b8aec0e0b00a5734af1029a406d1f67d8cd21f836473dc0c2cd670925",
+        "docs/qec_shor15_stage.md": "9e6740c9a361c3ce10d2d555aa49cd5693bdc919485850f303f40b13e77a4bb7",
+        "tests/test_trace_event_cache.py": "28b9664a896d628d575b7b5ce28f084fb479a949ce796f5c05ab821e159f2360"
       }
     },
     {
@@ -591,6 +619,48 @@
         "src/neutral_atom_experiments/qec_pbc/encoded_composition.py": "c104ddf75469604ca20fac2811fcc170d329f6d40ae1b79185eed57b075c6214",
         "tests/test_qec_encoded_composition.py": "56f72e1810ca9955f04d6f6cd3a5c49d96a2b4d233a3d50a1d0dba2b899b1d03",
         "docs/qec_encoded_composition.md": "bb3ab8a37fcdd5109a8033de10f415794a9d48ef64cfd903c39dfb4adc43c16b"
+      }
+    },
+    {
+      "id": "L21",
+      "kind": "repository_snapshot",
+      "title": "实际完整Shor PBC导出的编码后端需求inventory",
+      "version": "actual default export and fixed-representative inventory 2026-10-04",
+      "paths": [
+        "tools/audit_shor15_encoding_requirements.py",
+        "docs/qec_shor15_encoding_requirements.md"
+      ],
+      "verified_scope": "clean实际complete-pbc导出只读inventory一致；非encoded/native/physical实现或资源peak估计",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "tools/audit_shor15_encoding_requirements.py": "d8e0501b54ea8b7b738ab0adf3516cb4102d8eab202dfc0cd69d4686709953da",
+        "docs/qec_shor15_encoding_requirements.md": "a9020725639c11ef620fc9c3b48846b1866d669f4a6f896fcb46781ff5a6b2e2"
+      },
+      "raw_sha256": {
+        "tools/audit_shor15_encoding_requirements.py": "459d652208249c99d4c4ce42f0bfc768ba6118203aa216ff00b0d0b88a38635d",
+        "docs/qec_shor15_encoding_requirements.md": "0ad823f246add6c92c8b3a47183009f696f1adeac7e2bd124e1fba23b7387ada"
+      }
+    },
+    {
+      "id": "L22",
+      "kind": "repository_snapshot",
+      "title": "mixed/Y encoded PPM与条件Clifford下一设计及独立数学校核",
+      "version": "proposed design and reference math snapshot 2026-10-04",
+      "paths": [
+        "docs/qec_mixed_pauli_backend_design.md",
+        "tools/audit_mixed_pauli_design.py"
+      ],
+      "verified_scope": "clean独立NumPy144纠正+64完整分支reference_math_passed，实际eager导出inventory一致；无backend/FT/physical实现",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "docs/qec_mixed_pauli_backend_design.md": "7cb0be18563e8c684e6fa58e2f9fc713bc135a75b80be8eeda1acd8b0474fa36",
+        "tools/audit_mixed_pauli_design.py": "c4ce0d7460c83d9f3831b64ec63ae984526f5792daa4595cca24e7945043dfc6"
+      },
+      "raw_sha256": {
+        "docs/qec_mixed_pauli_backend_design.md": "7cb0be18563e8c684e6fa58e2f9fc713bc135a75b80be8eeda1acd8b0474fa36",
+        "tools/audit_mixed_pauli_design.py": "c4ce0d7460c83d9f3831b64ec63ae984526f5792daa4595cca24e7945043dfc6"
       }
     }
   ]

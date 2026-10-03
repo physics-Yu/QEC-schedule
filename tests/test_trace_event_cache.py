@@ -20,12 +20,17 @@ def test_distinct_records_survive_repeated_full_sequential_scans(count):
     for i, raw in enumerate(records):
         assert _event_data(raw)['time_us'] == i
     cold = _event_data.cache_info()
-    assert cold.maxsize == 16384 and cold.currsize == cold.misses == count and cold.hits == 0
+    assert type(cold.maxsize) is int and 0 < cold.currsize <= cold.maxsize
+    assert cold.currsize == cold.misses == count and cold.hits == 0
+    retained = _event_data.stats()
+    assert retained['records'] == count
+    assert 0 < retained['retained_bytes'] <= retained['max_bytes']
     for _ in range(3):
         for i, raw in enumerate(records):
             assert _event_data(raw)['time_us'] == i
     warm = _event_data.cache_info()
     assert warm.misses == count and warm.hits == 3 * count
+    assert _event_data.stats()['retained_bytes'] == retained['retained_bytes']
 
 
 def test_cached_event_is_deeply_immutable_and_raw_record_is_exact_key():
