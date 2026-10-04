@@ -1,0 +1,36 @@
+{
+  "schema": "factory-transport-interface-github-publication/1",
+  "date": "2026-10-05",
+  "status": "verified",
+  "repository": "physics-Yu/QEC-schedule",
+  "branch": "codex/d3-shor15-stages",
+  "design_review_commit": "02cb6975bffa40460dd4f6c55a60f9b82a2842dc",
+  "parent_commit": "51c7073fe67ea602be8b3da1a824c87ef3f3afaa",
+  "tree": "5c5de5fee1f5b35bb2cd70d2d14872dcdc4fefaa",
+  "changed_blob_count": 8,
+  "changed_blobs": {
+    "docs/factory_transport_interface.md": "2a3c1206bbcbe275656ee5f9148800b0222260f9",
+    "docs/modular_aod_transport.md": "9cac939fb9e5d4cd25c9e00ae567d425755a8363",
+    "instruction/handoff.md": "c7631f3201820fa18bc81a907b27358fbcb0d52f",
+    "instruction/logs/2026-10-05-factory-transport-interface-review.md": "bb8d7c6e633cf11ef14f99e8bd2a6e3714a75d51",
+    "references/qec_pbc_rag/knowledge.jsonl": "7c2b067a9f6e884248bef3de28a391cfab7903ad",
+    "references/qec_pbc_rag/query_cases.json": "29fa0f9d63b0f9ff60ad828ba59208fa925356da",
+    "references/qec_pbc_rag/sources.json": "54ba12c8322a3ad9c1890dda610c96a26a5b7bb3",
+    "references/qec_pbc_validation/factory_transport_interface_review_2026_10_05.json": "85e135837fd65d00eab89597c34eaf553046bc8f"
+  },
+  "independent_fetch": {
+    "commit_parent_exact": true,
+    "full_tree_exact": true,
+    "every_changed_blob_exact": true,
+    "local_staged_bytes_exact": true,
+    "remote_branch_exact": true
+  },
+  "static_review": "references/qec_pbc_validation/factory_transport_interface_review_2026_10_05.json",
+  "static_review_raw_sha256": "b73ecaad951c89ce16acef236978704ec2abb6a5be56b8e79b6593f5c1851cc9",
+  "pull_request": "https://github.com/physics-Yu/QEC-schedule/pull/3",
+  "draft": true,
+  "merged": false,
+  "pushurl": "DISABLED",
+  "large_run_artifacts_published": false,
+  "original_checkout_written": false
+}
