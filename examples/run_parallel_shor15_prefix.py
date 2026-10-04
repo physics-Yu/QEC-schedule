@@ -1,6 +1,7 @@
 """Compile and physically execute a bounded saved Shor15 Clifford prefix."""
 import argparse
 from collections import Counter
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -22,6 +23,11 @@ def main():
     parser.add_argument('--output', required=True)
     parser.add_argument('--patches', type=int, choices=(1, 2, 4, 12), default=12)
     parser.add_argument('--algorithm-only', action='store_true', help='Omit the actual right-side resource Clifford prefix')
+    parser.add_argument('--layout', choices=('legacy', 'interleaved', 'enola'), default='legacy')
+    parser.add_argument('--proposal', help='Frozen 5x5 / 10 um official Enola SA proposal JSON')
+    parser.add_argument('--pair-search', action='store_true', help='Search CZ moving operand and finite isolated endpoints')
+    parser.add_argument('--intra-patch', action='store_true', help='Use closed same-shift matchings within canonical layers')
+    parser.add_argument('--intra-services', action='store_true', help='Also batch closed data/ancilla MZ visits inside patches')
     parser.add_argument('--wall-budget', type=float, default=1800.)
     parser.add_argument('--max-decisions', type=int, default=512)
     parser.add_argument('--skip-replay', action='store_true', help='Preserve the run but leave replay explicitly unverified')
@@ -29,9 +35,21 @@ def main():
     output = Path(args.output)
     output.mkdir(parents=True, exist_ok=False)
     prefix = load_native_parallel_prefix(args.source, patch_count=args.patches, include_magic=not args.algorithm_only)
-    env, platform, placement, metadata = create_parallel_prefix_environment(prefix)
+    if (args.intra_patch or args.intra_services or args.pair_search) and args.layout == 'legacy':
+        parser.error('Intra-patch batching requires the explicitly declared interleaved platform')
+    if args.layout == 'enola':
+        if not args.proposal or not args.pair_search:
+            parser.error('--layout enola requires --proposal and --pair-search')
+        from neutral_atom_experiments.qec_pbc.patch_layout import create_enola_environment
+        env, platform, placement, metadata = create_enola_environment(prefix, args.proposal)
+    elif args.layout == 'interleaved':
+        from neutral_atom_experiments.qec_pbc.patch_layout import create_interleaved_environment
+        env, platform, placement, metadata = create_interleaved_environment(prefix)
+    else:
+        env, platform, placement, metadata = create_parallel_prefix_environment(prefix)
     initial = env.snapshot()
-    recorder = VisualRecorder(env.state, scene_metadata=metadata)
+    recorder = VisualRecorder(env.state, scene_metadata={k: v for k, v in metadata.items()
+                                                        if k != 'layout_contract'})
     plans, progress = [], []
     def save(name, value):
         (output / name).write_text(canonical_json(value), encoding='utf-8')
@@ -42,6 +60,17 @@ def main():
     save('initial-placement.json', placement)
     (output / 'initial.json').write_text(initial, encoding='utf-8')
     started = perf_counter()
+    root = Path(__file__).resolve().parents[1]
+    producer_files = [Path(__file__).relative_to(root).as_posix(),
+        'src/neutral_atom_experiments/qec_pbc/parallel_prefix.py',
+        'src/neutral_atom_strategies/scheduling/parallel_patch.py']
+    if args.layout != 'legacy':
+        producer_files.append('src/neutral_atom_experiments/qec_pbc/patch_layout.py')
+    if args.intra_services:
+        producer_files.append('src/neutral_atom_strategies/scheduling/patch_service_groups.py')
+    save('producer-source.json', {'schema': 'native-prefix-producer-source/1',
+        'sha256': {name: hashlib.sha256((root/name).read_bytes()).hexdigest() for name in producer_files},
+        'options': vars(args)})
     def accepted(plan, entry):
         plans.append(plan)
         progress.append(entry)
@@ -56,7 +85,10 @@ def main():
     error, result = None, None
     try:
         result = run_parallel_patch(env, atom_roles=metadata['atom_roles'], on_event=observe,
-            on_plan=accepted, max_decisions=args.max_decisions, wall_budget_s=args.wall_budget)
+            on_plan=accepted, max_decisions=args.max_decisions, wall_budget_s=args.wall_budget,
+            intra_patch=args.intra_patch, intra_services=args.intra_services,
+            pair_search=args.pair_search,
+            mz_translation_um=-400. if args.layout != 'legacy' else -300.)
         if result.status != 'completed':
             error = {'type': 'CompilationStalled', 'diagnostics': result.diagnostics}
     except Exception as exc:
@@ -121,6 +153,10 @@ def main():
         'physical_prefix_executed': not bool(error), 'complete_physical_shor_executed': False,
         'magic_state_preparation_executed': False, 'factory_or_noise_claimed': False,
         'resource_clifford_prefix_included': prefix.source.get('resource_clifford_prefix_included', False),
+        'placement_layout': args.layout, 'intra_patch_enabled': args.intra_patch,
+        'intra_services_enabled': args.intra_services,
+        'pair_search_enabled': args.pair_search,
+        'layout_contract': metadata.get('layout_contract'),
         'scope': 'Saved all-zero RESET/CSS and first canonical round on selected algorithm patches; optional actual first resource RESET/H prefix stops immediately before its T'}
     save('summary.json', summary)
     save('plans.json', plans)

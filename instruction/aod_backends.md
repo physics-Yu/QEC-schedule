@@ -1,5 +1,7 @@
 # 可选择的 AOD 运动后端
 
+2026-10-04 QEC 码内批次：[布局适配](../docs/qec_patch_parallel_layout.md)为每块复制实际 rigid 3×3 footprint，12块为9列×12行=108容量，并按候选配置活动 masks；全部活动行×列与全部启用/禁用轴边界均参与既有审核。Enola 10 μm homes 不表示所有六对能同时捕获，源 Cartesian 闭包可包含额外data，须拆合法组。初始 world/envelope 声明必须容纳边界角色跟随时的完整 spare footprint，再执行；不能在失败后绕过 envelope。此次没有新增 row_column 规划器或放宽碰撞阈值。
+
 2026-10-04：用户授权双设备平台的实现见[独立 AOD 合同](../docs/multi_aod_contract.md)。MobileCellIndex / Operation 携带 aod_id；全局 registry 保存每台 runtime，设备拥有固定分离 envelope。相同 row / column 在不同设备上是不同 holder；全局原子、CZ 旁观对、SLM 支撑不能按设备拆成独立仿真。初版拒绝交叉工作域、AOD→AOD 直接交接及 CZ 与任一设备运动重叠。此受限多设备能力不表示旧单台策略自动适用。
 
 2026-09-17 Parking 增量拾取：独立演示显式开启 `selective_transfer_enabled` 后，有序行列 `AOD_RECAPTURE` 允许保留载荷并装入下一组；新增 bindings 必须覆盖全部活动交点计算出的真实新增捕获集合，不是逐原子选择性寻址。默认能力仍关闭，`AOD_LOAD` 仍要求空载、有序部分卸载仍不支持；支撑/扫掠/边界/序关系检查不变。逐行/逐列策略在 env 外，实现与验证见 [Parking 合同](../docs/parking_pickup.md)。

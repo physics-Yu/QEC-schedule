@@ -22,6 +22,7 @@ def main():
                '/atom-viewer.js': ('atom-viewer.js', 'text/javascript; charset=utf-8'),
                '/recording.json': ('recording.json', 'application/json; charset=utf-8'),
                '/summary.json': ('summary.json', 'application/json; charset=utf-8'),
+               '/patch-parallel-audit.json': ('patch-parallel-audit.json', 'application/json; charset=utf-8'),
                '/independent-audit.json': ('independent-audit.json', 'application/json; charset=utf-8')}
 
     class Handler(BaseHTTPRequestHandler):
@@ -34,6 +35,9 @@ def main():
                 self.send_error(404)
                 return
             name, content_type = allowed[request.path]
+            if not (root/name).is_file():
+                self.send_error(404)
+                return
             data = (root/name).read_bytes()
             self.send_response(200)
             self.send_header('Content-Type', content_type)

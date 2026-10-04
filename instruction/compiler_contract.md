@@ -1,5 +1,7 @@
 # Physical circuit 到原子操作：已确认的目标契约
 
+2026-10-04 码内优化：`parallel_patch.run_parallel_patch` 新增显式 `intra_patch`、`intra_services` 和 `pair_search`，旧默认保持。只合并当前 READY 且几何兼容的同类操作，不重排 canonical 四层、H 边界、hook 次序或 CSS encoder 依赖链。MZ MEASURE 与该批原门的后继 RESET 可同次运输服务，不能据预期 syndrome 位跳过投影。有限 CZ 候选可移动原门任一端，保持原 ID/targets，检查全局真实作用对与非配对 ≥10 μm；有限候选无解不代表物理无解。Enola 仅复用官方 SA 初态 proposer，实际计划仍经 backend/Executor/完整初态 replay；相同初态对照与不同布局比较分开报告。详见 [布局与复现](../docs/qec_patch_parallel_layout.md)，本轮只是声明 Clifford 前缀，factory-first 主线不变。
+
 2026-10-04 bounded encoded-native adapter：`experiments/qec_pbc/parallel_prefix.py`只接纳完整 Shor 保存包的首 24 个初始化 / canonical functions。来源 hash、原门 ID / 类型 / 目标 / 报告保留；恢复模板门序与 canonical 阶段门禁后允许不同码块同操作合批。`strategies/scheduling/parallel_patch.py`选择 placement / 路线 / 批次，仍经 ENV 完整审核与 Executor 提交。不能将丢弃导出 serial 边的方法直接用于 adaptive injection / factory / frame / consume / retry 协议。
 
 2026-10-01 新增上游实验合同：[QEC/PBC → PhysicalCircuit](../docs/qec_pbc_architecture.md)。研究底座仍从 PhysicalCircuit 开始；新的 `neutral_atom_experiments.qec_pbc` 在底座之前生成带测量与解码 sidecar 的原生电路，不把码、PBC 化简或 decoder 放入 environment。支持固定 d=3 memory 与 X/Z Pauli measurement 的理想语义；Y 测量和要求容错的 backend 明确拒绝，硬件时间仍须实际调度/Executor 执行。该扩展不意味着通用逻辑容错编译或 M5/M6 完成。

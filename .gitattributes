@@ -4,3 +4,4 @@
 demo/** -text whitespace=cr-at-eol
 # Authenticated raw prefix packets retain original JSON/JSONL bytes on Windows.
 references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04/** -text whitespace=cr-at-eol
+references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json -text whitespace=cr-at-eol

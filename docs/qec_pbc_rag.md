@@ -385,7 +385,7 @@ K51/L32与[XX最终小摘要](../references/qec_pbc_validation/encoded_xx_physic
 
 ## 29. 用户确认的factory-first共享协议与ID合并
 
-原工作区并行政策任务的K55–K57／L34保留原内容与ID：当前顺序为F1标准QEC／15-to-1原生供应与同一资源单T参考闭环，F2 committed Executor反馈，F3逐周期带噪供给，F4 MSC后端，F5连续T／完整Shor。MSC／MSD、资源身份库存与接受条件质量分别见政策块。共享协议为[instruction/qec_factory_pipeline.md](../instruction/qec_factory_pipeline.md)，只读政策固化不表示这些阶段已实现。
+原工作区并行政策任务的K55–K57／L34保留历史内容与ID：当时顺序为F1标准QEC／15-to-1原生供应与同一资源单T参考闭环，F2 committed Executor反馈，F3逐周期带噪供给，F4 MSC后端，F5连续T／完整Shor。MSC／MSD、资源身份库存与接受条件质量分别见政策块。共享协议为[instruction/qec_factory_pipeline.md](../instruction/qec_factory_pipeline.md)，只读政策固化不表示这些阶段已实现。
 
 本批独立生成器、宽cat、observer和失败重试使用K58–K61／L35–L37，避免覆盖上述已占用ID。旧K54保留原建议正文并采用政策任务的supersession前缀、限制、状态与当前来源，不能按旧Shor-first安排下一任务；K52–K54另链接当前参考成果。完整算法参考与资源供应主线分别验收。
 
@@ -404,3 +404,13 @@ K62–K64 / L38–L40记录本轮实际3006门/413投影/221原子的12patch初�
 K65/L41固化[呈现方案](qec_viewer_presentation.md)。原子半径为SLM/AOD trap的1.15倍，标记/线宽/选择/门与交接动效按同一投影随按钮及响应式画布缩放。X/Z内部几何字形从canonical role绑定产生，保留活动填色；12算法块48X/48Z，资源4X/4Z只是首T前未编码模板辅助位。全宽画布后默认展开主统计、类别时间与五设备占用，逐项实验/状态/原子/操作以及653资源明细默认折叠；选择原子自动打开对应父层。
 
 同一3006门recording与summary/source/audit字节保持，只重建观察器产物。31当轮不同pytest、真实full12缩放/fit检查和独立653资源区间并集通过；七真实书签、X/Z/resource详情、按钮缩放、390/320px与console0错误实际浏览器验收。当前65chunks/53sources/145本地路径、60检索用例；旧raw历史保持，新L41保存当前准确字节。见[摘要](../references/qec_pbc_validation/qec_viewer_presentation_2026_10_04.json)、[日志](../instruction/logs/2026-10-04-qec-viewer-scale-hierarchy.md)。这是观察器修订，不增加物理执行或工厂、tracked T/Born、noise/FT、完整physical Shor能力。
+
+## 32. 10μm单码块布局、官方Enola初始SA与真实12块码内并行
+
+K66/K67与L42–L44新增[布局复现](qec_patch_parallel_layout.md)、[冻结作者SA提案](../references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json)及[六run验收摘要](../references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json)。原canonical四层/H/hook/CSS及全部native门身份不变，READY的几何子组与真正MZ服务合批；标准single同initial/source/circuit字节对照84.684→79.208ms（CZ-only减6.47%），全服务40.504ms（减52.17%）。作者固定未修改`place_qubit`仅给初始SA提案，其distance proxy不当作物理时间或fidelity；本项目adapter实际执行有限配对、捕获闭包、运输、读出与完整重放。
+
+新Enola full12实际3006门/413投影/221原子/2AOD/161plans、52CZ共816对/max36，四层各2pulse/块，终态33.409196973ms含归还；完整原初态replay、signed Stim、全局pair与9401依赖、patch独审全部通过。标准full12 CZ-only另通过54CZ/max72/79.207855129ms，布局、服务与配对策略同时变化，不能称纯Enola同平台加速。驻留与CZ时非配对原子≥10μm，实际伙伴3/4.243μm，finite CZ6μm与运输连续1μm判据保持。
+
+最终8774页11实际功能书签、双AOD带载运输、四真实层、同步atom/trap/AOD/XZ、主统计展开/细项折叠、390/320px和console0错误通过；两Node viewer检查不计入174不同pytest，265modules0架构违规。旧默认5plans逐字兼容。本任务未写原工作区，末次基线209文件bytes相同、5个政策/交接文件由并行任务更新，HEAD保持且变化未覆盖。大型物理档案留本地，小摘要固定原始artifact SHA与各run实际provenance；新增记录功能前的历史standard runs明确未保存producer-source，不倒填当前代码hash。
+
+未来中心跨块配对需interaction staging或旁观辅助位搬移：固定四10μm邻位且仅移动单端，非零安全距离至少√200≈14.142μm，与finite6μm冲突；这是局部路由限制，不是所有物理方案无解，也不影响已完成prefix。最新用户共享协议v2已同步：后续为完整工厂纯调度S1、同token单injection S2、processor按需接入S3，runtime不强制量子态/Born；旧K54–K57保留历史正文并前置supersession，独立质量研究另验。本轮没有新增工厂/injection或完整physical Shor完成声明。当前67chunks/56sources/160本地路径、67检索用例；旧claim正文、历史raw/旧normalized指纹保留，本轮source刷新仅对应明确的兼容变更。可移植换行与拒绝反例另做11检查，详见[本轮日志](../instruction/logs/2026-10-04-patch-parallel-layout.md)。

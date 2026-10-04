@@ -1,5 +1,9 @@
 # Agent 工作准则与工程导航
 
+2026-10-04 最新用户范围修正：[共享协议v2的当前任务目标](instruction/qec_factory_pipeline.md#当前任务目标纯调度模拟)为完整magic factory调度模块→同token单injection闭环→完整processor按需接入（S1–S3）。运行时不要求量子态振幅或非Clifford/Born后端；报告源须声明并在合法读出完成后由Executor提交。量子参考/质量研究独立可选，覆盖下方旧F1/F2中强制态后端的前置门槛；物理约束与包边界保持。
+
+2026-10-04 单码块布局与并行编译入口见 [d=3 码内合批与 Enola 适配](docs/qec_patch_parallel_layout.md)。显式 `interleaved/enola` 初态与 `intra_patch/intra_services/pair_search` 保持 canonical/hook/CSS 源协议和有限 CZ；Enola 仅官方初始 SA proposer，实际运输走本项目 Executor 与完整初态重放。此入口服务下方 factory-first 主线，不把 Clifford 前缀推广为完整物理 Shor 或魔态工厂。
+
 2026-10-04 用户确认的 QEC/PBC 主线已固化为 [QEC 工厂供应与逐周期质量协议](instruction/qec_factory_pipeline.md)。**涉及 QEC/PBC、MSC/MSD、magic factory、编码库存、T 消费、fidelity 或 Shor 集成，必须先读并遵守该协议，再按下表选读相关模块。** 以标准码/协议组件和真实资源供应为核心，先工厂到单个 T 的闭环，再逐周期带噪供给、MSC backend、连续 T 与完整 Shor；旧 Shor-first 下一步由此覆盖。文档固化不表示工厂、含噪容错或完整物理 Shor 已实现。
 
 2026-09-21 后续用户要求直接复用作者实现：当前自定义默认更新为 `qmap_native`（QMAP 3.5.0 原生 C++），见 [原生接入与验收](docs/qmap_native.md)。五组原普通电路、原 AOD 容量的物理/重放通过，但使用显式成对 SLM 平台，不能称原几何上的加速；带测量/反馈 QEC 保持旧协议策略。原生求解与本地物理适配计时分开，后者仍慢。`zoned_ids` 保留实验对照；不要再将它称为作者实现。物理判据不放宽，partial PARK 仅在显式 selective-transfer 能力下开放。

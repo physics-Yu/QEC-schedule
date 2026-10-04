@@ -1,5 +1,7 @@
 # 可视化自动生成规范
 
+2026-10-04 码内布局结果：共用 `native_parallel_report.py` 对 `interleaved/enola` 还要求该次 `patch-parallel-audit.json` 通过且绑定录制 SHA。四个稳定子层书签从实际提交 `.check.*.layerN.cz.*` pulse生成，标明该层真实脉冲数，不把四个协议层画成四个物理批次。Enola proposal 是初态来源，动画坐标仍来自同一 Executor/VisualRecorder；主统计、尺寸同步与X/Z字形合同沿用，不向场景填入计划外移动。
+
 2026-10-04 用户修订：[QEC 回放呈现合同](../docs/qec_viewer_presentation.md)。共用画布的原子比 SLM/AOD trap 略大，所有空间标记、线宽、门/交接动效按同一投影比例随按钮缩放和响应式画布变化；不再采用固定 CSS px 半径。X/Z 辅助角色由 canonical metadata 持久标识，保留操作填充色，资源未编码模板角色须明确区分。主要统计和真实时间占用优先展开，逐项逻辑/原子/操作及大量资源明细默认折叠。显示改动不能改录制几何、物理指标或验收边界。
 
 2026-10-04 双 AOD 的真实观察扩展：VisualRecorder 在同一个 committed frame 保存 `aods` / `axes_by_aod` / `movements` / 各设备 transfer，并保留 primary 单台字段。共用 viewer 按 holder 的 aod_id 插值和显示设备资源 lane，scene_metadata 只增加码块 / 区域 / 设备名称，不能覆盖几何。`native_parallel_report.py`包裹同一共用 viewer，提供 MZ、跨码块同类脉冲和双运输书签；必须来自实际 completed run 与 independent audit。旧完整 native 索引视图继续保持 reference-only 边界。

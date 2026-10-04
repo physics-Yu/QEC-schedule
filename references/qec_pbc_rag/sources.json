@@ -936,9 +936,13 @@
       "retrieved_at": "2026-10-04",
       "sha256_normalization": "text_lf",
       "sha256": {
-        "instruction/qec_factory_pipeline.md": "b07e90dde5fba5ca3d474e9d56456fa9bac1001ee8967d2ea022ceb934559485"
+        "instruction/qec_factory_pipeline.md": "308a8710df419b026f125398b6113a89686e01da168e7afc50dbd4f63cabd77a"
       },
       "raw_sha256": {
+        "instruction/qec_factory_pipeline.md": "b07e90dde5fba5ca3d474e9d56456fa9bac1001ee8967d2ea022ceb934559485"
+      },
+      "current_source_note": "Explicit latest user policy v2 supersedes mandatory quantum-state/Born backend gates for current S1-S3 scheduling; historical policy claims/raw hashes retained and chunks carry the override.",
+      "historical_before_patch_parallel_normalized_sha256": {
         "instruction/qec_factory_pipeline.md": "b07e90dde5fba5ca3d474e9d56456fa9bac1001ee8967d2ea022ceb934559485"
       }
     },
@@ -1052,10 +1056,10 @@
       "sha256_normalization": "text_lf",
       "sha256": {
         "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
-        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "fe0d4259b12ff7b39b0aac0f0e918ea898f7f7720c920b1ff96ba899305be868",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "2b43d45507b0d5fa07f1118ed15896b1b2913e9f3e946bc8f3c5a0062a6afc0e",
         "tests/test_qec_parallel_prefix.py": "b2792c1e88971c5a41040fbad870110dff488ef31fc2b90d8b47866b3c665fd4",
         "tests/test_native_prefix_packet.py": "4e8c67c6d40efe9926b935ea4042821bf660d539aa2b466f881cf5ab15c92d34",
-        "examples/run_parallel_shor15_prefix.py": "c015c55c6924ffaef7d4ed3e22c0dd218329a53ed45626f2375262aa504c2115",
+        "examples/run_parallel_shor15_prefix.py": "6076f8486b39fb09fdce9a00b56439fce2d0384cca4ec670e7eeb5d3b6b3d754",
         "examples/export_shor15_prefix_packet.py": "7515ed8cde95ecc37ea3b2f5c5373d35e7ce0f05dfd88e9b8f614f3d4480af3d",
         "tools/audit_native_parallel_physical.py": "0e1f908be88d93c47a911e63426b4dba07a49908bc2eeeef2c18108c7c592fb5",
         "tests/test_native_parallel_independent_audit.py": "ed6804e8b555134234632c615ebfe7d4532d5c00e73c672a0a498d5b2896d439",
@@ -1075,7 +1079,12 @@
         "docs/qec_native_parallel_prefix.md": "aa16091f73477341f5a8a46cca9fad7e2543e915132af919df7a027a81028c4c",
         "references/qec_pbc_validation/native_parallel_physical_2026_10_04.json": "3a4512195593b7bd8a798e7552d7e77d91cb9f10f1638b91f7eee38b912a7391",
         "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04/manifest.json": "171a7bf91d7e6117aed287f2a720b12a776b5f5a0acfdf3ddbdc3a447fa3a7ff"
-      }
+      },
+      "historical_before_patch_parallel_normalized_sha256": {
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "fe0d4259b12ff7b39b0aac0f0e918ea898f7f7720c920b1ff96ba899305be868",
+        "examples/run_parallel_shor15_prefix.py": "c015c55c6924ffaef7d4ed3e22c0dd218329a53ed45626f2375262aa504c2115"
+      },
+      "current_source_note": "Compatible current source after explicit patch parallel layout/observer updates; historical raw bytes and prior claims retained."
     },
     {
       "id": "L39",
@@ -1147,10 +1156,10 @@
       "sha256": {
         "src/neutral_atom_env/visualization/recording.py": "c8c842762453fd97b121e9fa63bed09ee67de7e4a83485402d974f386c00043c",
         "src/neutral_atom_env/visualization/viewer.js": "995fc9ed672fd9a9bb5d758d4faa1a26edb51afeb4fd225c3bcff2849e1d1691",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "132418f42686b2013c8686e52a4505c7d9afb135abb36bba4edca361f93b3f11",
-        "examples/serve_native_parallel.py": "5fc1dfd161a0487e70f17a6a709244311c3a6827e9e5343f9273d1e1d14dd898",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04",
+        "examples/serve_native_parallel.py": "e7e176be9da806a3ecc167cedd18c394b9f344af047f6befc18b7598096ef335",
         "tests/test_multi_aod_visualization.py": "6e8150916b612e08e853f8c922f9ddc39d2a738a72c48631c799d5436c2b8804",
-        "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146",
+        "tests/test_native_parallel_report.py": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3",
         "tests/viewer_fit_resize.cjs": "13b7dc002cf03b6ec652c7ff92d053525450e1c01f5ad5105a501eff58d90f08",
         "tests/multi_aod_viewer.cjs": "b81dc7f14add3c6a8e3e60a2c45c7b4e08e7195ab2258a00883f04d727075fbc",
         "docs/multi_aod_visualization.md": "b9390a107da6bef8bc2844264eecc130a90f29d39cad6946a3e5c88c7a87e05c"
@@ -1165,7 +1174,13 @@
         "tests/viewer_fit_resize.cjs": "13b7dc002cf03b6ec652c7ff92d053525450e1c01f5ad5105a501eff58d90f08",
         "tests/multi_aod_viewer.cjs": "b81dc7f14add3c6a8e3e60a2c45c7b4e08e7195ab2258a00883f04d727075fbc",
         "docs/multi_aod_visualization.md": "e699cfd93a2279a830677cc771a47eda51d4b4ae686b812c152ec7c5da7de432"
-      }
+      },
+      "historical_before_patch_parallel_normalized_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "132418f42686b2013c8686e52a4505c7d9afb135abb36bba4edca361f93b3f11",
+        "examples/serve_native_parallel.py": "5fc1dfd161a0487e70f17a6a709244311c3a6827e9e5343f9273d1e1d14dd898",
+        "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146"
+      },
+      "current_source_note": "Compatible current source after explicit patch parallel layout/observer updates; historical raw bytes and prior claims retained."
     },
     {
       "id": "L41",
@@ -1187,12 +1202,12 @@
       "sha256_normalization": "text_lf",
       "sha256": {
         "docs/qec_viewer_presentation.md": "a74b98a10dee1ce0b79771b3299b3ab93e51e1ae18f5bcb890c491c7fa031749",
-        "instruction/visualization.md": "6f807284bc1ec77cccd37ced084d9abdac5d314468c5c42109211bd4c5c3f483",
+        "instruction/visualization.md": "85a8f1b5aadcef9e1092843a5de536672de5340c6b495ed6503f58de09e053c8",
         "src/neutral_atom_env/visualization/viewer.js": "995fc9ed672fd9a9bb5d758d4faa1a26edb51afeb4fd225c3bcff2849e1d1691",
         "src/neutral_atom_env/visualization/viewer-shell.html": "4cc971635687c19eb7b3abde78d8d3127591a3d7d0cfa364d435c7767da5f795",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "132418f42686b2013c8686e52a4505c7d9afb135abb36bba4edca361f93b3f11",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04",
         "tests/viewer_qec_scale.cjs": "2bddb0449c3482cb127915bff188a2cc8ce0db12eef47a9c07edbba36d9d33e5",
-        "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146",
+        "tests/test_native_parallel_report.py": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3",
         "references/qec_pbc_validation/qec_viewer_presentation_2026_10_04.json": "ffa9a395c3d1f567c482d79af8fa3b5d9d7e1660f7ea19244926f25db64f333c"
       },
       "raw_sha256": {
@@ -1204,7 +1219,116 @@
         "tests/viewer_qec_scale.cjs": "dee926dea389dc61a35d351c44a1cdedbe29cf298bad63b43e022658be7f5bbd",
         "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146",
         "references/qec_pbc_validation/qec_viewer_presentation_2026_10_04.json": "43e49ad55428b461d5fb550be05dc020535893ec469f52a3d86f022794d40cf4"
+      },
+      "historical_before_patch_parallel_normalized_sha256": {
+        "instruction/visualization.md": "6f807284bc1ec77cccd37ced084d9abdac5d314468c5c42109211bd4c5c3f483",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "132418f42686b2013c8686e52a4505c7d9afb135abb36bba4edca361f93b3f11",
+        "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146"
+      },
+      "current_source_note": "Compatible current source after explicit patch parallel layout/observer updates; historical raw bytes and prior claims retained."
+    },
+    {
+      "id": "L42",
+      "kind": "repository_snapshot",
+      "title": "Canonical码内合批、Enola初始placement适配与真实12patch验收",
+      "version": "bounded unchanged Clifford native-prefix stage 2026-10-04",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/patch_layout.py",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py",
+        "src/neutral_atom_strategies/scheduling/patch_service_groups.py",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py",
+        "examples/run_parallel_shor15_prefix.py",
+        "examples/serve_native_parallel.py",
+        "tools/propose_enola_patch_layout.py",
+        "tools/audit_enola_patch_proposal.py",
+        "tools/audit_patch_parallel_layout.py",
+        "tests/test_qec_patch_layout.py",
+        "tests/test_enola_patch_layout.py",
+        "tests/test_enola_patch_endpoint_audit.py",
+        "tests/test_patch_parallel_audit.py",
+        "tests/test_patch_service_groups.py",
+        "tests/test_native_parallel_report.py",
+        "instruction/compiler_contract.md",
+        "instruction/aod_backends.md",
+        "instruction/visualization.md",
+        "docs/qec_patch_parallel_layout.md",
+        "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json",
+        "references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json"
+      ],
+      "verified_scope": "Saved deterministic Clifford initialization and first canonical syndrome extraction, stopping before first resource T",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "79ae4023fb039978ba243891c8e9e0ca14096a9dfe54b1e8dabb7d6e2fe1bc2f",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "2b43d45507b0d5fa07f1118ed15896b1b2913e9f3e946bc8f3c5a0062a6afc0e",
+        "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04",
+        "examples/run_parallel_shor15_prefix.py": "6076f8486b39fb09fdce9a00b56439fce2d0384cca4ec670e7eeb5d3b6b3d754",
+        "examples/serve_native_parallel.py": "e7e176be9da806a3ecc167cedd18c394b9f344af047f6befc18b7598096ef335",
+        "tools/propose_enola_patch_layout.py": "2ece8100d659affb49ddcf6fc1ddcd76e5f6c43b215a9b1b493a71934c28bbc1",
+        "tools/audit_enola_patch_proposal.py": "f220c22576f47200ab0169815ae2c975a1a9a6833cb74e015315421af64896c6",
+        "tools/audit_patch_parallel_layout.py": "d3810f0b8d8dbc816f255232627dd2415e51035abba1539b5ebc657c7bee42e3",
+        "tests/test_qec_patch_layout.py": "7e25b7a28a03b0f45ae669428fcbc7c7ede0951ba9a82f24b337b1a5da2d0398",
+        "tests/test_enola_patch_layout.py": "6f88b5e9c0034e7b8eeebd6505286f1baacdc9c716a962af1ba0c5c962ba8d4d",
+        "tests/test_enola_patch_endpoint_audit.py": "40d01628842a170516f1d67f027d844d56cf1b2a7c7bb505ebfa5b5b97ca9899",
+        "tests/test_patch_parallel_audit.py": "43426be91c2fe1159b6581ddb4c4b17783d87991b70adbc2c8312eac67df7731",
+        "tests/test_patch_service_groups.py": "c109ca8e681e9b83afdef3271ded000ee9c8ce788301f359f381981a519f7189",
+        "tests/test_native_parallel_report.py": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3",
+        "instruction/compiler_contract.md": "d78b057159b6479355f6d0785877910f1e8128ec2ac4639dc1b222f5df67f393",
+        "instruction/aod_backends.md": "3cd97b0c94481643ba56da41b93469f847dbf2b76779ab417b54ee001b5e5ca9",
+        "instruction/visualization.md": "85a8f1b5aadcef9e1092843a5de536672de5340c6b495ed6503f58de09e053c8",
+        "docs/qec_patch_parallel_layout.md": "9518211b9d0d6ac3c6809a4cb28cc15a4880bd36fa3512b4c4db21853eef0dda",
+        "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json": "7d80808959f235952461b25ee81f8236b6b8c4966293b40f765bfba0be5cedf1",
+        "references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json": "dd15ca36de8eca15a5b4f8895437b2cfd9781161237f686f5adab50cba754fa4"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "79ae4023fb039978ba243891c8e9e0ca14096a9dfe54b1e8dabb7d6e2fe1bc2f",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "2b43d45507b0d5fa07f1118ed15896b1b2913e9f3e946bc8f3c5a0062a6afc0e",
+        "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04",
+        "examples/run_parallel_shor15_prefix.py": "6076f8486b39fb09fdce9a00b56439fce2d0384cca4ec670e7eeb5d3b6b3d754",
+        "examples/serve_native_parallel.py": "e7e176be9da806a3ecc167cedd18c394b9f344af047f6befc18b7598096ef335",
+        "tools/propose_enola_patch_layout.py": "2ece8100d659affb49ddcf6fc1ddcd76e5f6c43b215a9b1b493a71934c28bbc1",
+        "tools/audit_enola_patch_proposal.py": "f220c22576f47200ab0169815ae2c975a1a9a6833cb74e015315421af64896c6",
+        "tools/audit_patch_parallel_layout.py": "d3810f0b8d8dbc816f255232627dd2415e51035abba1539b5ebc657c7bee42e3",
+        "tests/test_qec_patch_layout.py": "7e25b7a28a03b0f45ae669428fcbc7c7ede0951ba9a82f24b337b1a5da2d0398",
+        "tests/test_enola_patch_layout.py": "6f88b5e9c0034e7b8eeebd6505286f1baacdc9c716a962af1ba0c5c962ba8d4d",
+        "tests/test_enola_patch_endpoint_audit.py": "40d01628842a170516f1d67f027d844d56cf1b2a7c7bb505ebfa5b5b97ca9899",
+        "tests/test_patch_parallel_audit.py": "43426be91c2fe1159b6581ddb4c4b17783d87991b70adbc2c8312eac67df7731",
+        "tests/test_patch_service_groups.py": "c109ca8e681e9b83afdef3271ded000ee9c8ce788301f359f381981a519f7189",
+        "tests/test_native_parallel_report.py": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3",
+        "instruction/compiler_contract.md": "177bdf4225b873f9710b5d85e6076679187d5ea177f70f22b9ab371353a10e8a",
+        "instruction/aod_backends.md": "aab8581cdc6e59dc2c606affc5efbc32de9d544d858b1f8f3665e937567645ee",
+        "instruction/visualization.md": "d33795d844ff441380bc18344b7881b90015ee6fc3f70c1ccde0994c6ae07b63",
+        "docs/qec_patch_parallel_layout.md": "9518211b9d0d6ac3c6809a4cb28cc15a4880bd36fa3512b4c4db21853eef0dda",
+        "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
+        "references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json": "ba4ad2aa34c5a7862999c14dc3f22b02806c6ac628b98874d3870818b20db0cf"
+      },
+      "historical_before_patch_parallel_normalized_sha256": {
+        "docs/qec_patch_parallel_layout.md": "f288df122bebdc22ffb467b0812c86c0847bd19cfe396c8ae928c3035c5340a3",
+        "references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json": "9f6adc98eb3eb5663eb5172ff6e082f06f2d9674def90fd60fce6dbc8ecf0d5d"
       }
+    },
+    {
+      "id": "L43",
+      "kind": "software",
+      "title": "UCLA-VAST/Enola official initial SA placer",
+      "authors": "UCLA-VAST",
+      "version": "commit 2944dbf4e163e8d2eeeec607add0d9139edce689",
+      "url": "https://github.com/UCLA-VAST/Enola/blob/2944dbf4e163e8d2eeeec607add0d9139edce689/enola/placer/placer.py",
+      "retrieved_at": "2026-10-04",
+      "official_placer_raw_sha256": "d256c84490bd72d525515f24acb081d7b21bcd5f7bbc31302a3bbf79a16997cf",
+      "used_scope": "Only unmodified place_qubit initial placement; no official full routing/codegen evidence"
+    },
+    {
+      "id": "L44",
+      "kind": "paper",
+      "title": "Compilation for Dynamically Field-Programmable Qubit Arrays with Efficient and Provably Near-Optimal Scheduling",
+      "authors": "Daniel Bochen Tan, Wan-Hsuan Lin, Jason Cong",
+      "version": "arXiv:2405.15095v2, revised 2024-11-02",
+      "url": "https://arxiv.org/html/2405.15095v2",
+      "retrieved_at": "2026-10-04",
+      "used_scope": "Scheduling/placement/routing distinction and commuting/dependency scope, not a QEC reorder proof"
     }
   ]
 }

@@ -1,0 +1,1623 @@
+{
+  "schema": "qec-patch-parallel-layout-acceptance/1",
+  "reviewed_at": "2026-10-04",
+  "scope": "Saved deterministic Clifford initialization and first canonical syndrome extraction, stopping before first resource T",
+  "accepted_runs": {
+    "single-baseline-attempt3": {
+      "status": "independently_accepted_with_complete_original_initial_replay",
+      "run_directory": "artifacts/patch-parallel-2026-10-04/single-baseline-attempt3",
+      "patch_count": 1,
+      "atom_count": 34,
+      "device_count": 2,
+      "native_gate_count": 267,
+      "native_projection_count": 50,
+      "native_gate_counts": {
+        "RESET": 42,
+        "H": 149,
+        "CZ": 68,
+        "MEASURE": 8
+      },
+      "physical_pulse_counts": {
+        "RESET": 25,
+        "H": 103,
+        "CZ": 68,
+        "MEASURE": 8
+      },
+      "maximum_batch_by_gate_type": {
+        "RESET": 18,
+        "H": 6,
+        "CZ": 1,
+        "MEASURE": 1
+      },
+      "layout": "interleaved",
+      "plans": 196,
+      "physical_time_us": 84684.13070118,
+      "logical_completion_us": 83764.33171130678,
+      "execution_plus_replay_wall_seconds": 93.48849920002976,
+      "producer_checks": {
+        "all_output_code_logical_zero_and_aux_checks_plus_one": true,
+        "all_saved_report_ids_preserved": true,
+        "dag_complete": true,
+        "effects_exactly_once": true,
+        "event_queue_empty": true,
+        "independent_plan_replay_equal": true,
+        "same_source_resource_carriers_before_first_t": true
+      },
+      "core_independent_audit": {
+        "schema": "native-prefix-independent-physical-audit/1",
+        "passed": true,
+        "source_native_gate_count": 267,
+        "physical_gate_count": 267,
+        "algorithm_native_gate_count": 249,
+        "resource_native_gate_count": 18,
+        "algorithm_qubits": 17,
+        "original_state_constraints": 17,
+        "original_projections": 50,
+        "committed_effects_once": 267,
+        "committed_projection_checks": 50,
+        "dependency_interval_checks": 799,
+        "committed_effect_interval_checks": 267,
+        "cz_pulses_global_pair_checks": 68,
+        "cz_native_effects": 68,
+        "actual_mz_projection_geometry_checks": 50,
+        "raman_native_separation_checks": 149,
+        "max_cz_batch": 1,
+        "move_devices": [
+          "AOD_0",
+          "AOD_MAGIC"
+        ],
+        "cross_device_move_overlaps": 9,
+        "stim_version": "1.15.0",
+        "cross_device_loaded_move_overlaps": 8,
+        "physical_time_us": 84684.13070118,
+        "full_shor_physical": false,
+        "magic_factory_validated": false,
+        "fault_tolerance_validated": false
+      },
+      "layout_audit": null,
+      "artifact_raw_sha256": {
+        "checkpoint-final.json": "3c545500eeb5e6dbf5fe4a20303b12d4dfc8e96f54ed1be98429b5472eb57208",
+        "independent-audit.json": "8f0b6139b477327d95a5ab9c7129daeb532ec09d405fae0346ea2dfc2935079b",
+        "initial-placement.json": "de8ced3a958cf6a3491a8e9526df2d831554f30139cbb1e50ce194743dce8bc7",
+        "initial.json": "d6680c959427e2c5ecc9639c4342508ef45c429eef83921b88c9c2fcda60def5",
+        "parallel-phases.json": "3a4ebb3f40405218d4d1fe7c916504003970d69127c205969c74380ba8a79743",
+        "plans.json": "4dcaf5700371253b3a4184558250f6ac72cab74c2df7a265adba53f34428dac8",
+        "prefix-circuit.json": "98aa857a1abf155c28413b2eec8af99487f768e0c6f9a41b2af010b4d6541b16",
+        "recording.json": "fcd0ca9497b3686f980e991e6b0b5062785da95eca4755867922d09e2ac00c67",
+        "source-prefix.json": "f270fa115e66e71309b25b64b1680c47f87c571df848a2df84c5cae090a076fa",
+        "summary.json": "98529db6d472f23cb343a3fe30454cac370015ea7d3ea43ca030d309e626f4bc",
+        "trace.jsonl": "9a824474ee11aa805031c825adfb52d1d3aa2ed1336cf1d80416255c473be4e4"
+      },
+      "producer_source": {
+        "status": "not_recorded_at_run_start_before_this_feature",
+        "scope": "Do not retroactively attribute current source hashes to this historical run"
+      },
+      "complete_physical_shor": false,
+      "magic_factory_or_fault_tolerance": false
+    },
+    "single-intra-attempt3": {
+      "status": "independently_accepted_with_complete_original_initial_replay",
+      "run_directory": "artifacts/patch-parallel-2026-10-04/single-intra-attempt3",
+      "patch_count": 1,
+      "atom_count": 34,
+      "device_count": 2,
+      "native_gate_count": 267,
+      "native_projection_count": 50,
+      "native_gate_counts": {
+        "RESET": 42,
+        "H": 149,
+        "CZ": 68,
+        "MEASURE": 8
+      },
+      "physical_pulse_counts": {
+        "RESET": 25,
+        "H": 103,
+        "CZ": 54,
+        "MEASURE": 8
+      },
+      "maximum_batch_by_gate_type": {
+        "RESET": 18,
+        "H": 6,
+        "CZ": 6,
+        "MEASURE": 1
+      },
+      "layout": "interleaved",
+      "plans": 182,
+      "physical_time_us": 79207.85512942438,
+      "logical_completion_us": 78288.05613955116,
+      "execution_plus_replay_wall_seconds": 81.24205980001716,
+      "producer_checks": {
+        "all_output_code_logical_zero_and_aux_checks_plus_one": true,
+        "all_saved_report_ids_preserved": true,
+        "dag_complete": true,
+        "effects_exactly_once": true,
+        "event_queue_empty": true,
+        "independent_plan_replay_equal": true,
+        "same_source_resource_carriers_before_first_t": true
+      },
+      "core_independent_audit": {
+        "schema": "native-prefix-independent-physical-audit/1",
+        "passed": true,
+        "source_native_gate_count": 267,
+        "physical_gate_count": 267,
+        "algorithm_native_gate_count": 249,
+        "resource_native_gate_count": 18,
+        "algorithm_qubits": 17,
+        "original_state_constraints": 17,
+        "original_projections": 50,
+        "committed_effects_once": 267,
+        "committed_projection_checks": 50,
+        "dependency_interval_checks": 799,
+        "committed_effect_interval_checks": 267,
+        "cz_pulses_global_pair_checks": 54,
+        "cz_native_effects": 68,
+        "actual_mz_projection_geometry_checks": 50,
+        "raman_native_separation_checks": 149,
+        "max_cz_batch": 6,
+        "move_devices": [
+          "AOD_0",
+          "AOD_MAGIC"
+        ],
+        "cross_device_move_overlaps": 9,
+        "stim_version": "1.15.0",
+        "cross_device_loaded_move_overlaps": 8,
+        "physical_time_us": 79207.85512942438,
+        "full_shor_physical": false,
+        "magic_factory_validated": false,
+        "fault_tolerance_validated": false
+      },
+      "layout_audit": null,
+      "artifact_raw_sha256": {
+        "checkpoint-final.json": "a17a997a6d20bd8b2e0a5f1a41286925788deb92c893c862c6e16a7bcb3d4c58",
+        "independent-audit.json": "8bdd80672939b01a6db64a4ae2c96933ebdfdd220ca9a39a477a93e5ae42d9bf",
+        "initial-placement.json": "de8ced3a958cf6a3491a8e9526df2d831554f30139cbb1e50ce194743dce8bc7",
+        "initial.json": "d6680c959427e2c5ecc9639c4342508ef45c429eef83921b88c9c2fcda60def5",
+        "parallel-phases.json": "3a4ebb3f40405218d4d1fe7c916504003970d69127c205969c74380ba8a79743",
+        "plans.json": "11104b5fa5a44187ebe888f9ad9c24bb33d49ddd879b8dfae4e4a98d76354007",
+        "prefix-circuit.json": "98aa857a1abf155c28413b2eec8af99487f768e0c6f9a41b2af010b4d6541b16",
+        "recording.json": "e8a8bf213e542271e59cb0d7cc60d5fce9af77f7c774ea6a8c758f438ab30eb4",
+        "source-prefix.json": "f270fa115e66e71309b25b64b1680c47f87c571df848a2df84c5cae090a076fa",
+        "summary.json": "a836c6453a737037679ed0f1cd246e5a392e4d5287d2df731c4948062d407179",
+        "trace.jsonl": "a5e31c203be00d9e0e77fe685bc48f400a1f73c8b0e4d112dc5dfc0416f38f4b"
+      },
+      "producer_source": {
+        "status": "not_recorded_at_run_start_before_this_feature",
+        "scope": "Do not retroactively attribute current source hashes to this historical run"
+      },
+      "complete_physical_shor": false,
+      "magic_factory_or_fault_tolerance": false
+    },
+    "single-all-intra-attempt1": {
+      "status": "independently_accepted_with_complete_original_initial_replay",
+      "run_directory": "artifacts/patch-parallel-2026-10-04/single-all-intra-attempt1",
+      "patch_count": 1,
+      "atom_count": 34,
+      "device_count": 2,
+      "native_gate_count": 267,
+      "native_projection_count": 50,
+      "native_gate_counts": {
+        "RESET": 42,
+        "H": 149,
+        "CZ": 68,
+        "MEASURE": 8
+      },
+      "physical_pulse_counts": {
+        "RESET": 7,
+        "H": 103,
+        "CZ": 54,
+        "MEASURE": 3
+      },
+      "maximum_batch_by_gate_type": {
+        "RESET": 26,
+        "H": 6,
+        "CZ": 6,
+        "MEASURE": 6
+      },
+      "layout": "interleaved",
+      "plans": 164,
+      "physical_time_us": 40504.46518302837,
+      "logical_completion_us": 39584.66619315514,
+      "execution_plus_replay_wall_seconds": 78.3414529999718,
+      "producer_checks": {
+        "all_output_code_logical_zero_and_aux_checks_plus_one": true,
+        "all_saved_report_ids_preserved": true,
+        "dag_complete": true,
+        "effects_exactly_once": true,
+        "event_queue_empty": true,
+        "independent_plan_replay_equal": true,
+        "same_source_resource_carriers_before_first_t": true
+      },
+      "core_independent_audit": {
+        "schema": "native-prefix-independent-physical-audit/1",
+        "passed": true,
+        "source_native_gate_count": 267,
+        "physical_gate_count": 267,
+        "algorithm_native_gate_count": 249,
+        "resource_native_gate_count": 18,
+        "algorithm_qubits": 17,
+        "original_state_constraints": 17,
+        "original_projections": 50,
+        "committed_effects_once": 267,
+        "committed_projection_checks": 50,
+        "dependency_interval_checks": 799,
+        "committed_effect_interval_checks": 267,
+        "cz_pulses_global_pair_checks": 54,
+        "cz_native_effects": 68,
+        "actual_mz_projection_geometry_checks": 50,
+        "raman_native_separation_checks": 149,
+        "max_cz_batch": 6,
+        "move_devices": [
+          "AOD_0",
+          "AOD_MAGIC"
+        ],
+        "cross_device_move_overlaps": 9,
+        "stim_version": "1.15.0",
+        "cross_device_loaded_move_overlaps": 8,
+        "physical_time_us": 40504.46518302837,
+        "full_shor_physical": false,
+        "magic_factory_validated": false,
+        "fault_tolerance_validated": false
+      },
+      "layout_audit": {
+        "schema": "patch-parallel-layout-independent-audit/1",
+        "passed": true,
+        "scope": "unchanged deterministic native prefix; declared placement and legal intra-patch CZ batches",
+        "protocol": {
+          "canonical_phases_checked": 16,
+          "canonical_dependency_edges_checked": 488,
+          "css_native_gates_checked": 136
+        },
+        "batches": {
+          "mode": "layer",
+          "css_cz_pulses": 44,
+          "canonical_round_cz_pulses": 10,
+          "total_cz_pulses": 54,
+          "cz_native_effects": 68,
+          "per_patch": {
+            "phase0": {
+              "maximum_pairs_in_one_canonical_pulse": 6,
+              "round_pulses": 10,
+              "pairs_per_pulse_histogram": {
+                "6": 2,
+                "2": 4,
+                "1": 4
+              },
+              "pulses_per_layer": {
+                "1": 1,
+                "2": 4,
+                "3": 4,
+                "4": 1
+              }
+            }
+          }
+        },
+        "home_layout": {
+          "canonical_coordinate_scale_um": 10.0,
+          "minimum_occupied_home_distance_um": 10.0,
+          "slm_candidate_grid_um": 5,
+          "occupied_carriers_checked": 34,
+          "algorithm_aod_capacity": 9,
+          "finite_cz_distance_um": 6,
+          "cz_pair_offset_um": [
+            -3,
+            0
+          ]
+        },
+        "move_evidence": {
+          "committed_moves_checked": 520,
+          "carrier_endpoint_checks": 1684,
+          "deforming_axis_move_count": 0,
+          "backend": "rigid",
+          "axis_order_and_spacing_certified_for_shared_monotone_progress": true,
+          "continuous_atom_slm_sweep_validation": "Executor plus complete original-initial-state plan replay"
+        },
+        "nonpair_cz_spacing": {
+          "minimum_required_nonpair_spacing_um": 10.0,
+          "minimum_actual_nonpair_spacing_um": 10.0,
+          "nonpair_distance_checks": 30226,
+          "scope": "all alive atoms including resource carriers at every actual CZ pulse"
+        },
+        "physical_time_us": 40504.46518302837,
+        "complete_physical_shor": false,
+        "magic_factory_or_fault_tolerance_claimed": false
+      },
+      "artifact_raw_sha256": {
+        "checkpoint-final.json": "68f367b16d96915e6ca3e9d533c63ddddfac93d1feef69a392ae84b1336bae23",
+        "independent-audit.json": "1e66bc933e556b5144db694cf8bbe25e9fdefb0b7db5e192bd4131b2476c476c",
+        "initial-placement.json": "de8ced3a958cf6a3491a8e9526df2d831554f30139cbb1e50ce194743dce8bc7",
+        "initial.json": "d6680c959427e2c5ecc9639c4342508ef45c429eef83921b88c9c2fcda60def5",
+        "parallel-phases.json": "3a4ebb3f40405218d4d1fe7c916504003970d69127c205969c74380ba8a79743",
+        "patch-parallel-audit.json": "872f7889b7a5f7d93814fb71429a26f56e1f4397ea237581a6cb23cccd8acf80",
+        "plans.json": "bde5e92adc4a245bb0e9f2993e11f44e43a640ad8d7ce3a335d1af00293da2eb",
+        "prefix-circuit.json": "98aa857a1abf155c28413b2eec8af99487f768e0c6f9a41b2af010b4d6541b16",
+        "producer-source.json": "c63c790ca584a12853bd338e9f9faa54659d1090e3c7621483faaf0fd6a134f2",
+        "recording.json": "b71b73549b0d73a1eb44f974a20c772861733a8c09e42266813e44ada19acf30",
+        "source-prefix.json": "f270fa115e66e71309b25b64b1680c47f87c571df848a2df84c5cae090a076fa",
+        "summary.json": "d91345291b43c93dd3e651a3c4a639114738b171272a85fac785da6f739ea7e8",
+        "trace.jsonl": "b57f0d1872bb9b817ed784da2c6efe4f6c30da9de1ff6b5fbe8f40c598c9c442"
+      },
+      "producer_source": {
+        "options": {
+          "algorithm_only": false,
+          "intra_patch": true,
+          "intra_services": true,
+          "layout": "interleaved",
+          "max_decisions": 512,
+          "output": "artifacts/patch-parallel-2026-10-04/single-all-intra-attempt1",
+          "pair_search": false,
+          "patches": 1,
+          "proposal": null,
+          "skip_replay": false,
+          "source": "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04",
+          "wall_budget": 1800.0
+        },
+        "schema": "native-prefix-producer-source/1",
+        "sha256": {
+          "examples/run_parallel_shor15_prefix.py": "6076f8486b39fb09fdce9a00b56439fce2d0384cca4ec670e7eeb5d3b6b3d754",
+          "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
+          "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "e69583cafc89e2c8009ba522876da502702bf392ecb6c4355be873001dfa7ad8",
+          "src/neutral_atom_strategies/scheduling/parallel_patch.py": "4e55de2d93d795c0efa412af415444d8ca6dba93002e39c102e1182439767b62",
+          "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806"
+        }
+      },
+      "complete_physical_shor": false,
+      "magic_factory_or_fault_tolerance": false
+    },
+    "single-enola-attempt1": {
+      "status": "independently_accepted_with_complete_original_initial_replay",
+      "run_directory": "artifacts/patch-parallel-2026-10-04/single-enola-attempt1",
+      "patch_count": 1,
+      "atom_count": 34,
+      "device_count": 2,
+      "native_gate_count": 267,
+      "native_projection_count": 50,
+      "native_gate_counts": {
+        "RESET": 42,
+        "H": 149,
+        "CZ": 68,
+        "MEASURE": 8
+      },
+      "physical_pulse_counts": {
+        "RESET": 6,
+        "H": 103,
+        "CZ": 52,
+        "MEASURE": 2
+      },
+      "maximum_batch_by_gate_type": {
+        "RESET": 22,
+        "H": 6,
+        "CZ": 3,
+        "MEASURE": 4
+      },
+      "layout": "enola",
+      "plans": 161,
+      "physical_time_us": 33409.19697259952,
+      "logical_completion_us": 32489.397982726303,
+      "execution_plus_replay_wall_seconds": 74.36392580001848,
+      "producer_checks": {
+        "all_output_code_logical_zero_and_aux_checks_plus_one": true,
+        "all_saved_report_ids_preserved": true,
+        "dag_complete": true,
+        "effects_exactly_once": true,
+        "event_queue_empty": true,
+        "independent_plan_replay_equal": true,
+        "same_source_resource_carriers_before_first_t": true
+      },
+      "core_independent_audit": {
+        "schema": "native-prefix-independent-physical-audit/1",
+        "passed": true,
+        "source_native_gate_count": 267,
+        "physical_gate_count": 267,
+        "algorithm_native_gate_count": 249,
+        "resource_native_gate_count": 18,
+        "algorithm_qubits": 17,
+        "original_state_constraints": 17,
+        "original_projections": 50,
+        "committed_effects_once": 267,
+        "committed_projection_checks": 50,
+        "dependency_interval_checks": 799,
+        "committed_effect_interval_checks": 267,
+        "cz_pulses_global_pair_checks": 52,
+        "cz_native_effects": 68,
+        "actual_mz_projection_geometry_checks": 50,
+        "raman_native_separation_checks": 149,
+        "max_cz_batch": 3,
+        "move_devices": [
+          "AOD_0",
+          "AOD_MAGIC"
+        ],
+        "cross_device_move_overlaps": 9,
+        "stim_version": "1.15.0",
+        "cross_device_loaded_move_overlaps": 8,
+        "physical_time_us": 33409.19697259952,
+        "full_shor_physical": false,
+        "magic_factory_validated": false,
+        "fault_tolerance_validated": false
+      },
+      "layout_audit": {
+        "schema": "patch-parallel-layout-independent-audit/1",
+        "passed": true,
+        "scope": "unchanged deterministic native prefix; declared placement and legal intra-patch CZ batches",
+        "protocol": {
+          "canonical_phases_checked": 16,
+          "canonical_dependency_edges_checked": 488,
+          "css_native_gates_checked": 136
+        },
+        "batches": {
+          "mode": "enola",
+          "css_cz_pulses": 44,
+          "canonical_round_cz_pulses": 8,
+          "total_cz_pulses": 52,
+          "cz_native_effects": 68,
+          "per_patch": {
+            "phase0": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            }
+          }
+        },
+        "home_layout": {
+          "canonical_coordinate_scale_um": null,
+          "minimum_occupied_home_distance_um": 10.0,
+          "slm_candidate_grid_um": 5,
+          "occupied_carriers_checked": 34,
+          "algorithm_aod_capacity": 9,
+          "finite_cz_distance_um": 6,
+          "cz_pair_offset_um": "searched finite offsets",
+          "enola_proposal": {
+            "proposal_raw_sha256": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
+            "placement_mapping_sha256": "49a2c2d531af2bad5e77d8d368c6809dd8386ffe19c3fe166c7e23882b44337c",
+            "official_placer_commit": "2944dbf4e163e8d2eeeec607add0d9139edce689",
+            "official_placer_sha256": "d256c84490bd72d525515f24acb081d7b21bcd5f7bbc31302a3bbf79a16997cf",
+            "physical_evidence_scope": "frozen placement authenticated; physical run audited separately"
+          }
+        },
+        "move_evidence": {
+          "committed_moves_checked": 479,
+          "carrier_endpoint_checks": 1608,
+          "deforming_axis_move_count": 0,
+          "backend": "rigid",
+          "axis_order_and_spacing_certified_for_shared_monotone_progress": true,
+          "continuous_atom_slm_sweep_validation": "Executor plus complete original-initial-state plan replay"
+        },
+        "nonpair_cz_spacing": {
+          "minimum_required_nonpair_spacing_um": 10.0,
+          "minimum_actual_nonpair_spacing_um": 10.0,
+          "nonpair_distance_checks": 29104,
+          "scope": "all alive atoms including resource carriers at every actual CZ pulse"
+        },
+        "physical_time_us": 33409.19697259952,
+        "complete_physical_shor": false,
+        "magic_factory_or_fault_tolerance_claimed": false
+      },
+      "artifact_raw_sha256": {
+        "checkpoint-final.json": "ca2c4980e6723ab60d2d8fe54f6147cdf7cbed669b342c50796a5af602acc6b8",
+        "independent-audit.json": "1b4b8d416f9340e56d01d65dbf8a81aa330ff46729668d654311f420e90bf931",
+        "initial-placement.json": "86f16b0153d098d9641b882747a73e556e7aa6650a4efc2da324a3f98cab8c4d",
+        "initial.json": "2e238fd478942bfb687f2c8db505f48078c1d443e65c6fcd4cc837f51ecb99f6",
+        "parallel-phases.json": "3a4ebb3f40405218d4d1fe7c916504003970d69127c205969c74380ba8a79743",
+        "patch-parallel-audit.json": "bb62be3b3aa6b8b1eaddd34ece50a9b7c5f97f1f2758f6589dc07dabdda80f62",
+        "plans.json": "133e645b0865085e54b833a898302cc8148481793b401074cd90708310d4bd63",
+        "prefix-circuit.json": "98aa857a1abf155c28413b2eec8af99487f768e0c6f9a41b2af010b4d6541b16",
+        "producer-source.json": "3ec38e032484d55383148ad84e740f60860b616318d958bf0a0e7553e45acdc8",
+        "recording.json": "2d7bfc3b3fc74034723001e1b8946663461414b03336f3a3d0ff80db97b25840",
+        "source-prefix.json": "f270fa115e66e71309b25b64b1680c47f87c571df848a2df84c5cae090a076fa",
+        "summary.json": "5f4b23fc217861654646e3864ffdfeeb8420a14169638265736fa2d35901138e",
+        "trace.jsonl": "5bb51ebfb48a78c12c0bb744729dc78685b25d6867eb2a5a25004a15eb04e2c0"
+      },
+      "producer_source": {
+        "options": {
+          "algorithm_only": false,
+          "intra_patch": true,
+          "intra_services": true,
+          "layout": "enola",
+          "max_decisions": 512,
+          "output": "artifacts/patch-parallel-2026-10-04/single-enola-attempt1",
+          "pair_search": true,
+          "patches": 1,
+          "proposal": "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json",
+          "skip_replay": false,
+          "source": "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04",
+          "wall_budget": 1800.0
+        },
+        "schema": "native-prefix-producer-source/1",
+        "sha256": {
+          "examples/run_parallel_shor15_prefix.py": "6076f8486b39fb09fdce9a00b56439fce2d0384cca4ec670e7eeb5d3b6b3d754",
+          "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
+          "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "e69583cafc89e2c8009ba522876da502702bf392ecb6c4355be873001dfa7ad8",
+          "src/neutral_atom_strategies/scheduling/parallel_patch.py": "4e55de2d93d795c0efa412af415444d8ca6dba93002e39c102e1182439767b62",
+          "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806"
+        }
+      },
+      "complete_physical_shor": false,
+      "magic_factory_or_fault_tolerance": false
+    },
+    "full12-intra-attempt1": {
+      "status": "independently_accepted_with_complete_original_initial_replay",
+      "run_directory": "artifacts/patch-parallel-2026-10-04/full12-intra-attempt1",
+      "patch_count": 12,
+      "atom_count": 221,
+      "device_count": 2,
+      "native_gate_count": 3006,
+      "native_projection_count": 413,
+      "native_gate_counts": {
+        "RESET": 317,
+        "H": 1777,
+        "CZ": 816,
+        "MEASURE": 96
+      },
+      "physical_pulse_counts": {
+        "RESET": 25,
+        "H": 103,
+        "CZ": 54,
+        "MEASURE": 8
+      },
+      "maximum_batch_by_gate_type": {
+        "RESET": 29,
+        "H": 72,
+        "CZ": 72,
+        "MEASURE": 12
+      },
+      "layout": "interleaved",
+      "plans": 182,
+      "physical_time_us": 79207.85512942438,
+      "logical_completion_us": 78288.05613955116,
+      "execution_plus_replay_wall_seconds": 1389.0049355000374,
+      "producer_checks": {
+        "all_output_code_logical_zero_and_aux_checks_plus_one": true,
+        "all_saved_report_ids_preserved": true,
+        "dag_complete": true,
+        "effects_exactly_once": true,
+        "event_queue_empty": true,
+        "independent_plan_replay_equal": true,
+        "same_source_resource_carriers_before_first_t": true
+      },
+      "core_independent_audit": {
+        "schema": "native-prefix-independent-physical-audit/1",
+        "passed": true,
+        "source_native_gate_count": 3006,
+        "physical_gate_count": 3006,
+        "algorithm_native_gate_count": 2988,
+        "resource_native_gate_count": 18,
+        "algorithm_qubits": 204,
+        "original_state_constraints": 204,
+        "original_projections": 413,
+        "committed_effects_once": 3006,
+        "committed_projection_checks": 413,
+        "dependency_interval_checks": 9401,
+        "committed_effect_interval_checks": 3006,
+        "cz_pulses_global_pair_checks": 54,
+        "cz_native_effects": 816,
+        "actual_mz_projection_geometry_checks": 413,
+        "raman_native_separation_checks": 1777,
+        "max_cz_batch": 72,
+        "move_devices": [
+          "AOD_0",
+          "AOD_MAGIC"
+        ],
+        "cross_device_move_overlaps": 9,
+        "stim_version": "1.15.0",
+        "cross_device_loaded_move_overlaps": 8,
+        "physical_time_us": 79207.85512942438,
+        "full_shor_physical": false,
+        "magic_factory_validated": false,
+        "fault_tolerance_validated": false
+      },
+      "layout_audit": {
+        "schema": "patch-parallel-layout-independent-audit/1",
+        "passed": true,
+        "scope": "unchanged deterministic native prefix; declared placement and legal intra-patch CZ batches",
+        "protocol": {
+          "canonical_phases_checked": 192,
+          "canonical_dependency_edges_checked": 5856,
+          "css_native_gates_checked": 1632
+        },
+        "batches": {
+          "mode": "layer",
+          "css_cz_pulses": 44,
+          "canonical_round_cz_pulses": 10,
+          "total_cz_pulses": 54,
+          "cz_native_effects": 816,
+          "per_patch": {
+            "phase0": {
+              "maximum_pairs_in_one_canonical_pulse": 6,
+              "round_pulses": 10,
+              "pairs_per_pulse_histogram": {
+                "6": 2,
+                "2": 4,
+                "1": 4
+              },
+              "pulses_per_layer": {
+                "1": 1,
+                "2": 4,
+                "3": 4,
+                "4": 1
+              }
+            },
+            "phase1": {
+              "maximum_pairs_in_one_canonical_pulse": 6,
+              "round_pulses": 10,
+              "pairs_per_pulse_histogram": {
+                "6": 2,
+                "2": 4,
+                "1": 4
+              },
+              "pulses_per_layer": {
+                "1": 1,
+                "2": 4,
+                "3": 4,
+                "4": 1
+              }
+            },
+            "phase2": {
+              "maximum_pairs_in_one_canonical_pulse": 6,
+              "round_pulses": 10,
+              "pairs_per_pulse_histogram": {
+                "6": 2,
+                "2": 4,
+                "1": 4
+              },
+              "pulses_per_layer": {
+                "1": 1,
+                "2": 4,
+                "3": 4,
+                "4": 1
+              }
+            },
+            "phase3": {
+              "maximum_pairs_in_one_canonical_pulse": 6,
+              "round_pulses": 10,
+              "pairs_per_pulse_histogram": {
+                "6": 2,
+                "2": 4,
+                "1": 4
+              },
+              "pulses_per_layer": {
+                "1": 1,
+                "2": 4,
+                "3": 4,
+                "4": 1
+              }
+            },
+            "phase4": {
+              "maximum_pairs_in_one_canonical_pulse": 6,
+              "round_pulses": 10,
+              "pairs_per_pulse_histogram": {
+                "6": 2,
+                "2": 4,
+                "1": 4
+              },
+              "pulses_per_layer": {
+                "1": 1,
+                "2": 4,
+                "3": 4,
+                "4": 1
+              }
+            },
+            "phase5": {
+              "maximum_pairs_in_one_canonical_pulse": 6,
+              "round_pulses": 10,
+              "pairs_per_pulse_histogram": {
+                "6": 2,
+                "2": 4,
+                "1": 4
+              },
+              "pulses_per_layer": {
+                "1": 1,
+                "2": 4,
+                "3": 4,
+                "4": 1
+              }
+            },
+            "phase6": {
+              "maximum_pairs_in_one_canonical_pulse": 6,
+              "round_pulses": 10,
+              "pairs_per_pulse_histogram": {
+                "6": 2,
+                "2": 4,
+                "1": 4
+              },
+              "pulses_per_layer": {
+                "1": 1,
+                "2": 4,
+                "3": 4,
+                "4": 1
+              }
+            },
+            "phase7": {
+              "maximum_pairs_in_one_canonical_pulse": 6,
+              "round_pulses": 10,
+              "pairs_per_pulse_histogram": {
+                "6": 2,
+                "2": 4,
+                "1": 4
+              },
+              "pulses_per_layer": {
+                "1": 1,
+                "2": 4,
+                "3": 4,
+                "4": 1
+              }
+            },
+            "work0": {
+              "maximum_pairs_in_one_canonical_pulse": 6,
+              "round_pulses": 10,
+              "pairs_per_pulse_histogram": {
+                "6": 2,
+                "2": 4,
+                "1": 4
+              },
+              "pulses_per_layer": {
+                "1": 1,
+                "2": 4,
+                "3": 4,
+                "4": 1
+              }
+            },
+            "work1": {
+              "maximum_pairs_in_one_canonical_pulse": 6,
+              "round_pulses": 10,
+              "pairs_per_pulse_histogram": {
+                "6": 2,
+                "2": 4,
+                "1": 4
+              },
+              "pulses_per_layer": {
+                "1": 1,
+                "2": 4,
+                "3": 4,
+                "4": 1
+              }
+            },
+            "work2": {
+              "maximum_pairs_in_one_canonical_pulse": 6,
+              "round_pulses": 10,
+              "pairs_per_pulse_histogram": {
+                "6": 2,
+                "2": 4,
+                "1": 4
+              },
+              "pulses_per_layer": {
+                "1": 1,
+                "2": 4,
+                "3": 4,
+                "4": 1
+              }
+            },
+            "work3": {
+              "maximum_pairs_in_one_canonical_pulse": 6,
+              "round_pulses": 10,
+              "pairs_per_pulse_histogram": {
+                "6": 2,
+                "2": 4,
+                "1": 4
+              },
+              "pulses_per_layer": {
+                "1": 1,
+                "2": 4,
+                "3": 4,
+                "4": 1
+              }
+            }
+          }
+        },
+        "home_layout": {
+          "canonical_coordinate_scale_um": 10.0,
+          "minimum_occupied_home_distance_um": 10.0,
+          "slm_candidate_grid_um": 5,
+          "occupied_carriers_checked": 221,
+          "algorithm_aod_capacity": 108,
+          "finite_cz_distance_um": 6,
+          "cz_pair_offset_um": [
+            -3,
+            0
+          ]
+        },
+        "move_evidence": {
+          "committed_moves_checked": 682,
+          "carrier_endpoint_checks": 17216,
+          "deforming_axis_move_count": 0,
+          "backend": "rigid",
+          "axis_order_and_spacing_certified_for_shared_monotone_progress": true,
+          "continuous_atom_slm_sweep_validation": "Executor plus complete original-initial-state plan replay"
+        },
+        "nonpair_cz_spacing": {
+          "minimum_required_nonpair_spacing_um": 10.0,
+          "minimum_actual_nonpair_spacing_um": 10.0,
+          "nonpair_distance_checks": 1311924,
+          "scope": "all alive atoms including resource carriers at every actual CZ pulse"
+        },
+        "physical_time_us": 79207.85512942438,
+        "complete_physical_shor": false,
+        "magic_factory_or_fault_tolerance_claimed": false
+      },
+      "artifact_raw_sha256": {
+        "checkpoint-final.json": "6de8ed2018e6e73467dea91b6c77ba0889d356fa81180a8c554992ffdb03ddae",
+        "independent-audit.json": "8e801489213ff5fbcf67ce7ed07085916e733d78231180ad25d0a4551905ab30",
+        "initial-placement.json": "aacd92f7e21d1c66c488457abe357a6ea9a00c5e271daeb4a737bc3aa581eada",
+        "initial.json": "69ae2374819702e043a0c72e83efc6d56136aecea6d70b8d965e233bd86072b7",
+        "parallel-phases.json": "302f8d95476b3e17cc150b0068af8214881bc13c327c8756a446c1b55309a112",
+        "patch-parallel-audit.json": "888b48861b3cc4370a2c0572571755e9fd369434e483a127121c67a0512eb2da",
+        "plans.json": "a5c27cbc290e67e56b0d09d571a90ddf5b1578874271767fe810a2898a26e395",
+        "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+        "recording.json": "9a64e346d7da4ee1e15c50a3fa018e7d3938485e7e96caa8e57ccb8043b9835d",
+        "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+        "summary.json": "2d240c2d28936cd52d23944ee195885ade0d154f938e293c2c433e2e26270b0e",
+        "trace.jsonl": "0bad2f9d74a0c09fb2d2e559ae068d04426b61e03a6594d55fbe0044ec22e13a"
+      },
+      "producer_source": {
+        "status": "not_recorded_at_run_start_before_this_feature",
+        "scope": "Do not retroactively attribute current source hashes to this historical run"
+      },
+      "complete_physical_shor": false,
+      "magic_factory_or_fault_tolerance": false
+    },
+    "full12-enola-attempt1": {
+      "status": "independently_accepted_with_complete_original_initial_replay",
+      "run_directory": "artifacts/patch-parallel-2026-10-04/full12-enola-attempt1",
+      "patch_count": 12,
+      "atom_count": 221,
+      "device_count": 2,
+      "native_gate_count": 3006,
+      "native_projection_count": 413,
+      "native_gate_counts": {
+        "RESET": 317,
+        "H": 1777,
+        "CZ": 816,
+        "MEASURE": 96
+      },
+      "physical_pulse_counts": {
+        "RESET": 6,
+        "H": 103,
+        "CZ": 52,
+        "MEASURE": 2
+      },
+      "maximum_batch_by_gate_type": {
+        "RESET": 77,
+        "H": 72,
+        "CZ": 36,
+        "MEASURE": 48
+      },
+      "layout": "enola",
+      "plans": 161,
+      "physical_time_us": 33409.19697259952,
+      "logical_completion_us": 32489.397982726303,
+      "execution_plus_replay_wall_seconds": 1264.264192499977,
+      "producer_checks": {
+        "all_output_code_logical_zero_and_aux_checks_plus_one": true,
+        "all_saved_report_ids_preserved": true,
+        "dag_complete": true,
+        "effects_exactly_once": true,
+        "event_queue_empty": true,
+        "independent_plan_replay_equal": true,
+        "same_source_resource_carriers_before_first_t": true
+      },
+      "core_independent_audit": {
+        "schema": "native-prefix-independent-physical-audit/1",
+        "passed": true,
+        "source_native_gate_count": 3006,
+        "physical_gate_count": 3006,
+        "algorithm_native_gate_count": 2988,
+        "resource_native_gate_count": 18,
+        "algorithm_qubits": 204,
+        "original_state_constraints": 204,
+        "original_projections": 413,
+        "committed_effects_once": 3006,
+        "committed_projection_checks": 413,
+        "dependency_interval_checks": 9401,
+        "committed_effect_interval_checks": 3006,
+        "cz_pulses_global_pair_checks": 52,
+        "cz_native_effects": 816,
+        "actual_mz_projection_geometry_checks": 413,
+        "raman_native_separation_checks": 1777,
+        "max_cz_batch": 36,
+        "move_devices": [
+          "AOD_0",
+          "AOD_MAGIC"
+        ],
+        "cross_device_move_overlaps": 9,
+        "stim_version": "1.15.0",
+        "cross_device_loaded_move_overlaps": 8,
+        "physical_time_us": 33409.19697259952,
+        "full_shor_physical": false,
+        "magic_factory_validated": false,
+        "fault_tolerance_validated": false
+      },
+      "layout_audit": {
+        "schema": "patch-parallel-layout-independent-audit/1",
+        "passed": true,
+        "scope": "unchanged deterministic native prefix; declared placement and legal intra-patch CZ batches",
+        "protocol": {
+          "canonical_phases_checked": 192,
+          "canonical_dependency_edges_checked": 5856,
+          "css_native_gates_checked": 1632
+        },
+        "batches": {
+          "mode": "enola",
+          "css_cz_pulses": 44,
+          "canonical_round_cz_pulses": 8,
+          "total_cz_pulses": 52,
+          "cz_native_effects": 816,
+          "per_patch": {
+            "phase0": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase1": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase2": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase3": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase4": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase5": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase6": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase7": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "work0": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "work1": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "work2": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "work3": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            }
+          }
+        },
+        "home_layout": {
+          "canonical_coordinate_scale_um": null,
+          "minimum_occupied_home_distance_um": 10.0,
+          "slm_candidate_grid_um": 5,
+          "occupied_carriers_checked": 221,
+          "algorithm_aod_capacity": 108,
+          "finite_cz_distance_um": 6,
+          "cz_pair_offset_um": "searched finite offsets",
+          "enola_proposal": {
+            "proposal_raw_sha256": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
+            "placement_mapping_sha256": "49a2c2d531af2bad5e77d8d368c6809dd8386ffe19c3fe166c7e23882b44337c",
+            "official_placer_commit": "2944dbf4e163e8d2eeeec607add0d9139edce689",
+            "official_placer_sha256": "d256c84490bd72d525515f24acb081d7b21bcd5f7bbc31302a3bbf79a16997cf",
+            "physical_evidence_scope": "frozen placement authenticated; physical run audited separately"
+          }
+        },
+        "move_evidence": {
+          "committed_moves_checked": 479,
+          "carrier_endpoint_checks": 16304,
+          "deforming_axis_move_count": 0,
+          "backend": "rigid",
+          "axis_order_and_spacing_certified_for_shared_monotone_progress": true,
+          "continuous_atom_slm_sweep_validation": "Executor plus complete original-initial-state plan replay"
+        },
+        "nonpair_cz_spacing": {
+          "minimum_required_nonpair_spacing_um": 10.0,
+          "minimum_actual_nonpair_spacing_um": 10.0,
+          "nonpair_distance_checks": 1263304,
+          "scope": "all alive atoms including resource carriers at every actual CZ pulse"
+        },
+        "physical_time_us": 33409.19697259952,
+        "complete_physical_shor": false,
+        "magic_factory_or_fault_tolerance_claimed": false
+      },
+      "artifact_raw_sha256": {
+        "checkpoint-final.json": "ea3b0c9b4c78775e48927a2230220bfa4aeda310ed023831ecce921e75410e4e",
+        "independent-audit.json": "4d225c83ddb33dbbaf85ada25373baf1732a377ad67ba082051a2dfbb323da28",
+        "initial-placement.json": "2d6e2267e6b5c141e77c550e173029ad7d02429060cde71310a167c05297a726",
+        "initial.json": "5039afb0365945aa2c087d7ddae71b02b5ceec0ef58e766828d66350fe880be6",
+        "parallel-phases.json": "302f8d95476b3e17cc150b0068af8214881bc13c327c8756a446c1b55309a112",
+        "patch-parallel-audit.json": "a42eea1b23ab007cbc43c1d9ba174afc4e3f868832f054cac18415965bee308b",
+        "plans.json": "712a89c88fae270de8f10e41fab0e11261cfe1bef1ad0156ebca1012e72568bd",
+        "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+        "producer-source.json": "67ade7651b38c43176dc9007d4772339277a8df582b78e89d386acfccc538d5a",
+        "recording.json": "2ea57024eb909b045e5ddd8501491fdce2cc549fc9cfef0161f42c488aa577d8",
+        "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+        "summary.json": "2073506e734d4340294eb62011d710aeb870aeee5eafcf6ab1a9d1363c96d71b",
+        "trace.jsonl": "941b58388efead3967716d2fc44cb29b593998e87442214ccb1460841c818ff7"
+      },
+      "producer_source": {
+        "options": {
+          "algorithm_only": false,
+          "intra_patch": true,
+          "intra_services": true,
+          "layout": "enola",
+          "max_decisions": 512,
+          "output": "artifacts/patch-parallel-2026-10-04/full12-enola-attempt1",
+          "pair_search": true,
+          "patches": 12,
+          "proposal": "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json",
+          "skip_replay": false,
+          "source": "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04",
+          "wall_budget": 3600.0
+        },
+        "schema": "native-prefix-producer-source/1",
+        "sha256": {
+          "examples/run_parallel_shor15_prefix.py": "6076f8486b39fb09fdce9a00b56439fce2d0384cca4ec670e7eeb5d3b6b3d754",
+          "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
+          "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "79ae4023fb039978ba243891c8e9e0ca14096a9dfe54b1e8dabb7d6e2fe1bc2f",
+          "src/neutral_atom_strategies/scheduling/parallel_patch.py": "4e55de2d93d795c0efa412af415444d8ca6dba93002e39c102e1182439767b62",
+          "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806"
+        }
+      },
+      "complete_physical_shor": false,
+      "magic_factory_or_fault_tolerance": false
+    }
+  },
+  "same_platform_single_patch_comparisons": {
+    "single-intra-attempt3": {
+      "same_initial_source_and_circuit_bytes": true,
+      "physical_time_reduction_percent": 6.466708138127353
+    },
+    "single-all-intra-attempt1": {
+      "same_initial_source_and_circuit_bytes": true,
+      "physical_time_reduction_percent": 52.16994630794034
+    }
+  },
+  "enola_is_different_initial_layout": true,
+  "enola_proposal": {
+    "raw_sha256": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
+    "input_sha256": "5e2230100c4e8afd78b64d438631e779bdee338946a85c962d5dcdce9a4011ed",
+    "placement_sha256": "49a2c2d531af2bad5e77d8d368c6809dd8386ffe19c3fe166c7e23882b44337c",
+    "official_commit": "2944dbf4e163e8d2eeeec607add0d9139edce689",
+    "official_placer_sha256": "d256c84490bd72d525515f24acb081d7b21bcd5f7bbc31302a3bbf79a16997cf",
+    "author_placement_only": true,
+    "author_complete_scheduler_codegen_used": false
+  },
+  "physical_contract": {
+    "home_minimum_um": 10,
+    "nonpartner_at_cz_minimum_um": 10,
+    "finite_cz_distance_um": 6,
+    "candidate_slm_grid_um": 5,
+    "transport_continuous_clearance_um": 1,
+    "all_active_cartesian_intersections_checked": true,
+    "full_source_canonical_css_protocol_unchanged": true,
+    "algorithm_aod_shape_full12_rows_columns": [
+      12,
+      9
+    ],
+    "algorithm_aod_capacity_full12": 108
+  },
+  "pytest": {
+    "distinct_passed": 174,
+    "final_group_wall_seconds": 28.99,
+    "scope": "14 selected production/proposal/audit/visualization and physical boundary test modules; not full repository suite"
+  },
+  "architecture": {
+    "modules": 265,
+    "violations": 0
+  },
+  "limits": [
+    "No full physical Shor, magic-state production/inventory/T channel, noise/decoder/FT claim",
+    "10 um applies at home and during CZ to nonpartners; continuous transport uses existing 1 um hard clearance",
+    "Declared model times are not calibrated laboratory times",
+    "Future cross-patch center-to-center CZ requires interaction staging or spectator transport; fixed four-neighbor homes and only one moved endpoint cannot meet 10 um nonpartner spacing with finite CZ 6 um",
+    "Immutable producer-source is retained per run; later rejection guards, comments and observer repairs do not alter recordings"
+  ],
+  "browser": {
+    "schema": "patch-parallel-browser-acceptance/1",
+    "url": "http://127.0.0.1:8774/",
+    "recording_sha256": "2ea57024eb909b045e5ddd8501491fdce2cc549fc9cfef0161f42c488aa577d8",
+    "bookmarks": [
+      {
+        "bookmark": "初始码块放置",
+        "caption": "算法 AOD · AOD 关灯定位 · 运动显式计时 · 同时执行：空 AOD 定位到同角色载体",
+        "clock": "0.00",
+        "status": "idle",
+        "title": "空 AOD 定位到同角色载体"
+      },
+      {
+        "bookmark": "MZ 批量复位 × 77",
+        "caption": "MZ 原位复位到 |0⟩ · 100.00 μs（本次仿真假设）",
+        "clock": "983.94",
+        "status": "执行中 77 门",
+        "title": "RESET × 77 [shot0.encode.phase0.reset0, shot0.encode.phase0.reset2, shot0.encode.phase0.reset4, shot0.encode.phase0.reset6, …] RESET(Q000, Q002, Q004, Q006, …) · 13 码块并行"
+      },
+      {
+        "bookmark": "码块共同 H × 72",
+        "caption": "Raman 单比特 · Q003 SLM / Q007 SLM / Q001 SLM / Q013 SLM / Q014 SLM / Q016 SLM / Q020 SLM / Q024 SLM / Q018 SLM / Q030 SLM / Q031 SLM / Q033 SLM / Q037 SLM / Q041 SLM / Q035 SLM / Q047 SLM / Q048 SLM / Q050 SLM / Q054 SLM / Q058 SLM / Q052 SLM / Q064 SLM / Q065 SLM / Q067 SLM / Q071 SLM / Q075 SLM / Q069 SLM / Q081 SLM / Q082 SLM / Q084 SLM / Q088 SLM / Q092 SLM / Q086 SLM / Q098 SLM / Q099 SLM / Q101 SLM / Q105 SLM / Q109 SLM / Q103 SLM / Q115 SLM / Q116 SLM / Q118 SLM / Q122 SLM / Q126 SLM / Q120 SLM / Q132 SLM / Q133 SLM / Q135 SLM / Q139 SLM / Q143 SLM / Q137 SLM / Q149 SLM / Q150 SLM / Q152 SLM / Q156 SLM / Q160 SLM / Q154 SLM / Q166 SLM / Q167 SLM / Q169 SLM / Q173 SLM / Q177 SLM / Q171 SLM / Q183 SLM / Q184 SLM / Q186 SLM / Q190 SLM / Q194 SLM / Q188 SLM / Q200 SLM / Q201 SLM / Q203 SLM · 邻距 ≥5 μm · 1.00 μs · 同型批次 72/72 实际打光",
+        "clock": "25881.84",
+        "status": "执行中 72 门",
+        "title": "H × 72 [shot0.encode.phase0.check.phase0.r1.layer1.target_h.0, shot0.encode.phase0.check.phase0.r1.layer1.target_h.1, shot0.encode.phase0.check.phase0.r1.layer1.target_h.2, shot0.encode.phase0.check.phase0.r1.layer1.target_h.3, …] H(Q003, Q007, Q001, Q013, …) · 12 码块并行"
+      },
+      {
+        "bookmark": "并行 CZ 配对 × 36",
+        "caption": "真实脉冲 0.30 μs · 红色连线表示作用对",
+        "clock": "26087.40",
+        "status": "执行中 36 门",
+        "title": "CZ × 36 [shot0.encode.phase0.check.phase0.r1.layer1.cz.3, shot0.encode.phase1.check.phase1.r1.layer1.cz.3, shot0.encode.phase2.check.phase2.r1.layer1.cz.3, shot0.encode.phase3.check.phase3.r1.layer1.cz.3, …] CZ(Q004, Q013, Q021, Q030, …) · 12 码块并行"
+      },
+      {
+        "bookmark": "MZ 综合征读出 × 48",
+        "caption": "MZ 投影测量 · 500.00 μs（本次仿真假设）· 结果在操作结束提交",
+        "clock": "29671.52",
+        "status": "执行中 48 门",
+        "title": "MEASURE × 48 [shot0.encode.phase0.check.phase0.r1.X0, shot0.encode.phase0.check.phase0.r1.X1, shot0.encode.phase0.check.phase0.r1.X2, shot0.encode.phase0.check.phase0.r1.X3, …] MEASURE(Q009, Q010, Q011, Q012, …) · 12 码块并行"
+      },
+      {
+        "bookmark": "两台 AOD 同时运输",
+        "caption": "算法 AOD · 刚性平移 · 所有已捕获原子同步移动 · 仅允许离开自身源 trap · 同时执行：同角色阵列沿明确安全通道运输",
+        "clock": "121.21",
+        "status": "idle",
+        "title": "同角色阵列沿明确安全通道运输"
+      },
+      {
+        "bookmark": "稳定子第 1 层 · 2 个实际脉冲",
+        "caption": "真实脉冲 0.30 μs · 红色连线表示作用对",
+        "clock": "26087.40",
+        "status": "执行中 36 门",
+        "title": "CZ × 36 [shot0.encode.phase0.check.phase0.r1.layer1.cz.3, shot0.encode.phase1.check.phase1.r1.layer1.cz.3, shot0.encode.phase2.check.phase2.r1.layer1.cz.3, shot0.encode.phase3.check.phase3.r1.layer1.cz.3, …] CZ(Q004, Q013, Q021, Q030, …) · 12 码块并行"
+      },
+      {
+        "bookmark": "稳定子第 2 层 · 2 个实际脉冲",
+        "caption": "真实脉冲 0.30 μs · 红色连线表示作用对",
+        "clock": "26714.13",
+        "status": "执行中 36 门",
+        "title": "CZ × 36 [shot0.encode.phase0.check.phase0.r1.layer2.cz.0, shot0.encode.phase1.check.phase1.r1.layer2.cz.0, shot0.encode.phase2.check.phase2.r1.layer2.cz.0, shot0.encode.phase3.check.phase3.r1.layer2.cz.0, …] CZ(Q009, Q004, Q026, Q021, …) · 12 码块并行"
+      },
+      {
+        "bookmark": "稳定子第 3 层 · 2 个实际脉冲",
+        "caption": "真实脉冲 0.30 μs · 红色连线表示作用对",
+        "clock": "27352.95",
+        "status": "执行中 36 门",
+        "title": "CZ × 36 [shot0.encode.phase0.check.phase0.r1.layer3.cz.0, shot0.encode.phase1.check.phase1.r1.layer3.cz.0, shot0.encode.phase2.check.phase2.r1.layer3.cz.0, shot0.encode.phase3.check.phase3.r1.layer3.cz.0, …] CZ(Q009, Q000, Q026, Q017, …) · 12 码块并行"
+      },
+      {
+        "bookmark": "稳定子第 4 层 · 2 个实际脉冲",
+        "caption": "真实脉冲 0.30 μs · 红色连线表示作用对",
+        "clock": "28007.96",
+        "status": "执行中 36 门",
+        "title": "CZ × 36 [shot0.encode.phase0.check.phase0.r1.layer4.cz.0, shot0.encode.phase1.check.phase1.r1.layer4.cz.0, shot0.encode.phase2.check.phase2.r1.layer4.cz.0, shot0.encode.phase3.check.phase3.r1.layer4.cz.0, …] CZ(Q009, Q001, Q026, Q018, …) · 12 码块并行"
+      },
+      {
+        "bookmark": "实际提交终态",
+        "caption": "所有时间与物理指标来自原始事件",
+        "clock": "33409.20",
+        "status": "idle",
+        "title": "记录结束 · 已显示全部已提交状态"
+      }
+    ],
+    "responsive": [
+      {
+        "canvasHeight": 420,
+        "canvasWidth": 353.3333435058594,
+        "clock": "26087.40",
+        "detailsOpen": false,
+        "scrollWidth": 375,
+        "status": "执行中 36 门",
+        "summaryOpen": true,
+        "width": 375
+      },
+      {
+        "canvasHeight": 420,
+        "canvasWidth": 283.3333435058594,
+        "clock": "26087.40",
+        "detailsOpen": false,
+        "scrollWidth": 305,
+        "status": "执行中 36 门",
+        "summaryOpen": true,
+        "width": 305
+      }
+    ],
+    "viewport_reset": true,
+    "screenshot": "artifacts/patch-parallel-2026-10-04/full12-enola-layer1.png",
+    "passed": true,
+    "evidence_raw_sha256": "9958da69d6e0ff71f1527942ed1a88a67304ae1b9085a80c36668716c4f31615",
+    "screenshot_raw_sha256": "8cfcbd102a3e9dda21491c8b33365154e44af065961d8214140c4f9cfc222567",
+    "console_errors": 0
+  },
+  "node_viewer_checks": {
+    "viewer_fit_resize.cjs": {
+      "passed": true,
+      "scope": "Actual final full12 Enola animation.html",
+      "test_source_raw_sha256": "13b7dc002cf03b6ec652c7ff92d053525450e1c01f5ad5105a501eff58d90f08"
+    },
+    "viewer_qec_scale.cjs": {
+      "passed": true,
+      "scope": "Actual final full12 Enola animation.html",
+      "test_source_raw_sha256": "dee926dea389dc61a35d351c44a1cdedbe29cf298bad63b43e022658be7f5bbd"
+    }
+  },
+  "legacy_default_compatibility": {
+    "schema": "legacy-parallel-default-compatibility/1",
+    "base_commit": "f36c772135e6806e8cc4ac15b15f796db5477117",
+    "scope": "Read-only physical-plan generation comparison; not complete-prefix execution or replay",
+    "fixture_policy": "CZ fixtures retain original native IDs/operands; dependencies stripped only in isolated one-CZ-per-patch fixtures. RESET fixtures use the unchanged real prefix frontier.",
+    "comparisons": [
+      {
+        "patches": 1,
+        "operation": "default_CZ",
+        "plan_byte_equal": true,
+        "plan_canonical_json_sha256": "899d7d9f16cac15bd2e89ea1fb5e8675e3cd4f79577b6e573482a92d5abe48ad",
+        "previous_probe_sha256_preserved": true,
+        "original_snapshot_byte_equal": true
+      },
+      {
+        "patches": 2,
+        "operation": "default_CZ",
+        "plan_byte_equal": true,
+        "plan_canonical_json_sha256": "6501e6120249f92b4f32d9f0582ede5d20864d649ff6455230c7f36005c440d1",
+        "previous_probe_sha256_preserved": true,
+        "original_snapshot_byte_equal": true
+      },
+      {
+        "patches": 12,
+        "operation": "default_CZ",
+        "plan_byte_equal": true,
+        "plan_canonical_json_sha256": "1ec4030cbe9381b1338e31a0dfa94fa76c6cf1fbb3d91b786e2c85022aeaf37f",
+        "previous_probe_sha256_preserved": true,
+        "original_snapshot_byte_equal": true
+      },
+      {
+        "patches": 2,
+        "operation": "default_MZ",
+        "plan_byte_equal": true,
+        "plan_canonical_json_sha256": "905a41c6ba28e3981cc5143f5ba9b949c707fca613b74f6ad138f0b2d3bcbba0",
+        "previous_probe_sha256_preserved": true,
+        "original_snapshot_byte_equal": true
+      },
+      {
+        "patches": 2,
+        "operation": "default_dual_prologue",
+        "plan_byte_equal": true,
+        "plan_canonical_json_sha256": "dd0a3d9b9a754fc2926d604473019881648eed24bdf41ba2d28db2adca06cc35",
+        "previous_probe_sha256_preserved": true,
+        "original_snapshot_byte_equal": true
+      }
+    ],
+    "protocol_sources": {
+      "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": {
+        "utf8_lf_equal_frozen_base": true,
+        "sha256_utf8_lf": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
+        "current_raw_sha256": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3"
+      },
+      "src/neutral_atom_experiments/qec_pbc/canonical.py": {
+        "utf8_lf_equal_frozen_base": true,
+        "sha256_utf8_lf": "e01c5251ff67bdb992a1414e070075e769577c9049ba03e8a7c0acf9549dab01",
+        "current_raw_sha256": "e01c5251ff67bdb992a1414e070075e769577c9049ba03e8a7c0acf9549dab01"
+      },
+      "src/neutral_atom_experiments/qec_pbc/encoded_resource_reference.py": {
+        "utf8_lf_equal_frozen_base": true,
+        "sha256_utf8_lf": "c903a1753b2d7963beb7e720f3aa2bbcbb984df3cd83ec32cd332d2c4e05acce",
+        "current_raw_sha256": "c903a1753b2d7963beb7e720f3aa2bbcbb984df3cd83ec32cd332d2c4e05acce"
+      }
+    },
+    "checks": {
+      "five_plans_byte_equal": true,
+      "five_previous_plan_sha256_preserved": true,
+      "original_snapshots_byte_equal": true,
+      "three_protocol_sources_utf8_lf_equal": true,
+      "legacy_cz_offset_um": [
+        -3,
+        -3
+      ],
+      "legacy_gate_corridor_delta_um": [
+        -2,
+        -2
+      ],
+      "legacy_mz_translation_um": -300,
+      "executor_called": false,
+      "pytest_rerun": false,
+      "tracked_files_written": false
+    },
+    "previous_probe_diagnostic": {
+      "scope": "Historical first inline probe, before this archived reproduction script",
+      "exception": "UnicodeDecodeError",
+      "message": "'gbk' codec can't decode byte 0xba in position 3099: illegal multibyte sequence",
+      "trigger": "subprocess.check_output(text=True) decoding the old strategy Chinese source with the Windows default codec",
+      "resolution": "Explicit subprocess encoding=utf-8; corrected inline probe passed",
+      "source_modifications": false,
+      "test_failure": false
+    },
+    "provenance": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+      "script_sha256": "fc4546178ce3704ad2c6b59495d7879b2e5527fbbec28f009125c9860a2ebe6f",
+      "old_strategy_sha256_utf8_lf": "fe0d4259b12ff7b39b0aac0f0e918ea898f7f7720c920b1ff96ba899305be868",
+      "current_strategy_raw_sha256": "2b43d45507b0d5fa07f1118ed15896b1b2913e9f3e946bc8f3c5a0062a6afc0e",
+      "source_packet_manifest_sha256": "171a7bf91d7e6117aed287f2a720b12a776b5f5a0acfdf3ddbdc3a447fa3a7ff"
+    },
+    "created_utc": "2026-10-04T06:14:18.037012+00:00",
+    "probe_wall_seconds": 4.776872600021306
+  },
+  "original_checkout_preservation": {
+    "baseline_head": "9e28b2e2da178420b449bb24cfff58e10e2b99f3",
+    "current_head": "9e28b2e2da178420b449bb24cfff58e10e2b99f3",
+    "baseline_dirty_files": 214,
+    "unchanged_count": 209,
+    "changed": [
+      {
+        "path": "agent.md",
+        "before": "72394bb8e797255456f7926f0fbf3ce7befe30eea7c82ae9d25e0e8532aacc28",
+        "current": "74755fe9b3e5ef48bde618c96e9caa48881a2e3a9a6bc1e423c6ce8fc0e4340f",
+        "baseline_status": " M"
+      },
+      {
+        "path": "instruction/architecture.md",
+        "before": "f92126bbd8f3e169352b089ba5d918f869550044e4c7a40060d37993a04842ab",
+        "current": "fa6a429047a14b6370dc475f93b1b70895fbebd0ebca743f9be688ed057c08ef",
+        "baseline_status": " M"
+      },
+      {
+        "path": "instruction/handoff.md",
+        "before": "10c91b37c4b22a2b9f185135ee23336536bfcbec6f7d6c09885d923c8e05781b",
+        "current": "926445f569f11bb8972b5d7a891d318eadb2b644a6405fc6cb12e0a31a807c10",
+        "baseline_status": " M"
+      },
+      {
+        "path": "instruction/logs/2026-10-04-factory-full-reference-resume.md",
+        "before": "09587d659b1e2f65674677b53b8c2bf34f328ccca3194ee7e8280c20e1f4600e",
+        "current": "00eed26f1c094e656aca3f8fbe2cda239059bf891d5395815405874bf5281f88",
+        "baseline_status": "??"
+      },
+      {
+        "path": "instruction/qec_factory_pipeline.md",
+        "before": "b07e90dde5fba5ca3d474e9d56456fa9bac1001ee8967d2ea022ceb934559485",
+        "current": "308a8710df419b026f125398b6113a89686e01da168e7afc50dbd4f63cabd77a",
+        "baseline_status": "??"
+      }
+    ],
+    "all_baseline_dirty_bytes_and_head_unchanged": false,
+    "this_task_wrote_original_files": false,
+    "scope_note": "Concurrent original-workspace policy/reference handoff changes are preserved; this task works only in attached managed checkout. The all-bytes-unchanged predicate is false when other work updates files."
+  },
+  "future_center_pairing_bound": {
+    "schema": "enola-fixed-center-pairing-bound/1",
+    "scope": "geometric necessary condition only; four fixed adjacent ancillas, fixed center anchor, and one external moving partner",
+    "physical_execution_attempt": false,
+    "whole_layout_or_general_physical_infeasibility_claimed": false,
+    "inputs": {
+      "proposal_path": "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json",
+      "proposal_raw_sha256": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
+      "placement_mapping_sha256": "49a2c2d531af2bad5e77d8d368c6809dd8386ffe19c3fe166c7e23882b44337c",
+      "initial_sha256": "5039afb0365945aa2c087d7ddae71b02b5ceec0ef58e766828d66350fe880be6"
+    },
+    "coordinates_um": {
+      "anchor_role": "d4",
+      "anchor": [
+        20.0,
+        20.0
+      ],
+      "fixed_nonpartner_ancillas": {
+        "X0": [
+          30.0,
+          20.0
+        ],
+        "X1": [
+          10.0,
+          20.0
+        ],
+        "Z0": [
+          20.0,
+          30.0
+        ],
+        "Z1": [
+          20.0,
+          10.0
+        ]
+      }
+    },
+    "model": {
+      "finite_cz_distance_um": 6,
+      "minimum_nonpartner_distance_um": 10,
+      "minimum_atom_clearance_um": 1.0
+    },
+    "assumptions": [
+      "The center data anchor stays at its frozen home.",
+      "All four neighboring ancilla carriers remain alive at their frozen homes.",
+      "The external carrier is paired only with the center anchor in the matching CZ pulse.",
+      "Every nonpartner carrier must stay at least 10 um away at that pulse.",
+      "Only the external endpoint moves; no staging, spectator relocation, code motion or local illumination change is included."
+    ],
+    "algebra": {
+      "relative_partner_coordinate": [
+        "x",
+        "y"
+      ],
+      "r_squared": "x^2 + y^2",
+      "four_ancilla_distance_squared": [
+        "100+r^2-20*x",
+        "100+r^2+20*x",
+        "100+r^2-20*y",
+        "100+r^2+20*y"
+      ],
+      "necessary_inequalities": [
+        "r^2 >= 20*abs(x)",
+        "r^2 >= 20*abs(y)"
+      ],
+      "consequence": "r^2=x^2+y^2 <= 2*(r^2/20)^2, hence r=0 or r^2>=200",
+      "positive_distance_lower_bound_um": 14.142135623730951,
+      "finite_cz_upper_bound_um": 6,
+      "zero_distance_excluded_by": "distinct atom collision/clearance"
+    },
+    "conclusion": "No direct one-endpoint placement within finite 6 um of this fixed center satisfies all four 10 um nonpartner constraints.",
+    "why_current_prefix_passes": [
+      "For a syndrome coupling the corresponding neighboring ancilla itself moves, vacating its direction.",
+      "The authored CSS encoder can choose the center data as the moving endpoint and use an eligible boundary data as its anchor."
+    ],
+    "future_options_require_actual_validation": [
+      "Move the center to an explicit staging holder and preserve its identity.",
+      "Explicitly relocate the required spectator ancilla carriers before the pulse and restore them afterward.",
+      "Use another declared physical placement or motion protocol with full capture, trajectory, support and global pulse validation."
+    ],
+    "boundary": "This proves the restricted fixed-center direct-pairing limit, not infeasibility of transversal CNOT or all physical protocols. Future center-center inter-patch couplings require a new explicit validated staging/transport plan.",
+    "evidence_raw_sha256": "960055ba8549bf7320e10dc1abbd3c3c9ae201e5d15dee063b919a348c57fffb"
+  },
+  "current_release_source_raw_sha256": {
+    "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "79ae4023fb039978ba243891c8e9e0ca14096a9dfe54b1e8dabb7d6e2fe1bc2f",
+    "src/neutral_atom_strategies/scheduling/parallel_patch.py": "2b43d45507b0d5fa07f1118ed15896b1b2913e9f3e946bc8f3c5a0062a6afc0e",
+    "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806",
+    "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04",
+    "examples/run_parallel_shor15_prefix.py": "6076f8486b39fb09fdce9a00b56439fce2d0384cca4ec670e7eeb5d3b6b3d754",
+    "examples/serve_native_parallel.py": "e7e176be9da806a3ecc167cedd18c394b9f344af047f6befc18b7598096ef335"
+  },
+  "current_shared_policy": {
+    "path": "instruction/qec_factory_pipeline.md",
+    "version": 2,
+    "raw_sha256": "308a8710df419b026f125398b6113a89686e01da168e7afc50dbd4f63cabd77a",
+    "next_main_scope": "Complete reusable factory scheduling / same-token single injection / on-demand processor integration S1-S3",
+    "runtime_quantum_state_backend_required": false,
+    "new_factory_completion_claimed_by_this_stage": false
+  },
+  "rag": {
+    "chunks": 67,
+    "sources": 56,
+    "local_paths": 160,
+    "retrieval_passed": 67,
+    "retrieval_total": 67,
+    "portable_passed": 11,
+    "source_check_passed": true,
+    "retrieval_passed_all": true,
+    "portable_checks": {
+      "all_sources_LF": true,
+      "all_sources_CRLF": true,
+      "all_sources_CR": true,
+      "normalized_equal_raw_distinct": true,
+      "legacy_raw_accepted": true,
+      "legacy_raw_line_change_detected": true,
+      "text_edit_still_stale": true,
+      "unknown_normalization_rejected": true,
+      "invalid_utf8_rejected": true,
+      "path_escape_rejected": true,
+      "historical_raw_retained": true
+    }
+  }
+}

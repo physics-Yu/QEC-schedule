@@ -6,6 +6,8 @@ and Executor. No native gate is removed and no movement is a rendered hint.
 """
 from collections import defaultdict
 from dataclasses import replace
+from itertools import combinations
+from math import hypot
 from time import perf_counter
 
 from neutral_atom_env.domain.errors import ValidationError
@@ -65,11 +67,17 @@ def _empty_reposition(p, target, aod_id='AOD_0'):
         p.add(K.AOD_MOVE, '空 AOD 定位到同角色载体', target=target, aod_id=aod_id)
 
 
-def _outbound(p, source, target, bindings, *, aligned, aod_id='AOD_0'):
+def _outbound(p, source, target, bindings, *, aligned, aod_id='AOD_0', pair_offset=None):
     """Explicit 5 um corridors around the 10 um occupied lattice subset."""
-    delta = -5 if aligned else -2  # (-3,-3) CZ target clears to anchor+(-5,-5).
+    offset = pair_offset or p.state.hardware.interaction_offset
+    # Gate approaches terminate at a caller-declared finite pairing offset.
+    # MZ service has no stationary partner; retain its old clearance path.
+    delta_x, delta_y = ((-5, -5) if aligned else
+        (-5-offset.x_um, -5-offset.y_um) if p.intent.gate_effects and
+        any(p.state.dag.nodes[g].gate.gate_type == 'CZ' for g in p.intent.gate_effects)
+        else (-2, -2))
     safe_source = Position2D(source.x_um - 5, source.y_um - 5)
-    safe_target = Position2D(target.x_um + delta, target.y_um + delta)
+    safe_target = Position2D(target.x_um + delta_x, target.y_um + delta_y)
     candidates = (safe_source, Position2D(safe_source.x_um, safe_target.y_um), safe_target, target)
     points = [source]
     for point in candidates:
@@ -91,16 +99,19 @@ def _return(p, points, bindings, aod_id='AOD_0'):
     p.add(K.AOD_OFFLOAD, '卸载回原 SLM 格点', bindings=bindings, aod_id=aod_id)
 
 
-def compile_cz_group(state, gates, *, decision=0):
+def compile_cz_group(state, gates, *, decision=0, mobile_operands=None, pair_offset=None):
     """Compile any authored pair with a finite isolated spatial pairing."""
     if not gates or any(g.gate_type != 'CZ' for g in gates):
         raise ValueError('A nonempty CZ group is required')
-    mobiles = tuple(g.qubit_ids[1] for g in gates)
+    mobiles = tuple(mobile_operands[g.id] if mobile_operands else g.qubit_ids[1] for g in gates)
     origin, bindings = _bindings(state, mobiles)
-    offset = state.hardware.interaction_offset
+    offset = pair_offset or state.hardware.interaction_offset
     shifts = set()
-    for gate in gates:
-        anchor, mobile = map(lambda q: _point(state, q), gate.qubit_ids)
+    for gate, moving in zip(gates, mobiles):
+        if moving not in gate.qubit_ids:
+            raise ValueError('Moving operand must belong to its authored CZ')
+        anchor = _point(state, next(q for q in gate.qubit_ids if q != moving))
+        mobile = _point(state, moving)
         shifts.add((anchor.x_um + offset.x_um - mobile.x_um,
                     anchor.y_um + offset.y_um - mobile.y_um))
     if len(shifts) != 1:
@@ -109,7 +120,8 @@ def compile_cz_group(state, gates, *, decision=0):
     p = _builder(state, gates, decision)
     _empty_reposition(p, origin)
     p.add(K.AOD_LOAD, '装载各码块的对应 CZ 载体', bindings=bindings)
-    points = _outbound(p, origin, Position2D(origin.x_um + dx, origin.y_um + dy), bindings, aligned=False)
+    points = _outbound(p, origin, Position2D(origin.x_um + dx, origin.y_um + dy), bindings,
+                       aligned=False, pair_offset=offset)
     p.add(K.ENTANGLING_PULSE, '真实全局 CZ 脉冲；全部作用对必须匹配', gate_ids=tuple(g.id for g in gates))
     _return(p, points, bindings)
     return p.finish('parallel-patch-finite-pair-v1')
@@ -146,7 +158,7 @@ def compile_readout_group(state, gates, *, decision=0, translation_um=-300., aod
     return p.finish('parallel-patch-mz-return-v1'), tuple(resets)
 
 
-def compile_dual_reset_prologue(state, algorithm_gates, magic_gates):
+def compile_dual_reset_prologue(state, algorithm_gates, magic_gates, *, translation_um=-300.):
     """Two real concurrent transport lanes, one shared native RESET pulse.
 
     Separate RESET operations would contend for the global readout resource.
@@ -157,7 +169,8 @@ def compile_dual_reset_prologue(state, algorithm_gates, magic_gates):
     from neutral_atom_env.program.scheduled import build_scheduled_program
     lanes = []
     for aod_id, gates in (('AOD_0', algorithm_gates), ('AOD_MAGIC', magic_gates)):
-        plan, resets = compile_readout_group(state, gates, decision=0, aod_id=aod_id)
+        plan, resets = compile_readout_group(state, gates, decision=0, aod_id=aod_id,
+                                             translation_um=translation_um)
         assert not resets
         pulse = next(i for i, op in enumerate(plan.operations) if op.operation_type == K.RESET)
         lanes.append((plan.operations[:pulse], plan.operations[pulse], plan.operations[pulse + 1:]))
@@ -186,8 +199,86 @@ def compile_dual_reset_prologue(state, algorithm_gates, magic_gates):
     return build_scheduled_program(state, intent, operations, intervals, planner_id='parallel-patch-dual-mz-v1')
 
 
+def _select_cz_group(state, ready, atom_roles, *, nonpair_spacing_um=10., pair_search=False):
+    """Choose a closed, equal-shift matching without changing protocol edges.
+
+    Enumerate subsets of at most six local-role classes, copied over patches.
+    Prefer X/Z ancillas as mobile operands; pair_search may move the data instead.
+    Capturing extra intersections or bringing any non-pair below the declared
+    design spacing rejects a proposal before ordinary physical compilation.
+    """
+    shifts = defaultdict(lambda: defaultdict(list))
+    for g in ready:
+        ancillary = [q for q in g.qubit_ids if atom_roles[q]['kind'] == 'syndrome_ancilla']
+        preferred = ancillary[0] if len(ancillary) == 1 else g.qubit_ids[1]
+        mobiles = (preferred, next(q for q in g.qubit_ids if q != preferred)) if pair_search else (preferred,)
+        offsets = tuple(Position2D(x, y) for x, y in ((-3, 0), (3, 0), (0, -3), (0, 3),
+            (-3, -3), (-3, 3), (3, -3), (3, 3))) if pair_search else (state.hardware.interaction_offset,)
+        for mobile in mobiles:
+            anchor = next(q for q in g.qubit_ids if q != mobile)
+            a, m = _point(state, anchor), _point(state, mobile)
+            for o in offsets:
+                shift = (a.x_um+o.x_um-m.x_um, a.y_um+o.y_um-m.y_um, o.x_um, o.y_um)
+                signature = tuple(atom_roles[q]['role'].split('.')[-1] for q in g.qubit_ids)
+                shifts[shift][signature].append((g, mobile))
+    best = None
+    positions = {q: _point(state, q) for q in state.atoms}
+    for shift, classes in shifts.items():
+        values = list(classes.values())
+        if len(values) > 6:
+            raise ValidationError('PATCH_LAYER_SCOPE', 'Only canonical layers of up to six role classes are supported')
+        for count in range(len(values), 0, -1):
+            for subset in combinations(values, count):
+                records = tuple(item for group in subset for item in group)
+                gates = tuple(g for g, _ in records)
+                if best and len(gates) <= len(best[0]):
+                    continue
+                moving = {g.id: q for g, q in records}
+                mobiles = set(moving.values())
+                try:
+                    origin, bindings = _bindings(state, mobiles)
+                except ValidationError:
+                    continue
+                xs = {positions[q].x_um for q in mobiles}
+                ys = {positions[q].y_um for q in mobiles}
+                if {q for q, p in positions.items() if p.x_um in xs and p.y_um in ys} != mobiles:
+                    continue
+                intended = {frozenset(g.qubit_ids) for g in gates}
+                if len({q for g in gates for q in g.qubit_ids}) != 2*len(gates):
+                    continue
+                endpoints = {q: Position2D(p.x_um+shift[0], p.y_um+shift[1]) if q in mobiles else p
+                             for q, p in positions.items()}
+                valid = True
+                items = list(endpoints.items())
+                for i, (a, p) in enumerate(items):
+                    for b, q in items[i+1:]:
+                        if frozenset((a, b)) in intended:
+                            continue
+                        if hypot(p.x_um-q.x_um, p.y_um-q.y_um) < nonpair_spacing_um-1e-7:
+                            valid = False
+                            break
+                    if not valid:
+                        break
+                if valid:
+                    best = (gates, moving, Position2D(shift[2], shift[3]))
+    if best is None:
+        raise ValidationError('PATCH_CAPTURE_OR_SPACING', 'No closed finite-CZ matching satisfies the 10 um non-pair design spacing')
+    return best
+
+
+def select_intrapatch_cz_group(state, ready, atom_roles, *, nonpair_spacing_um=10.):
+    gates, moving, _ = _select_cz_group(state, ready, atom_roles, nonpair_spacing_um=nonpair_spacing_um)
+    return gates, moving
+
+
+def select_geometric_cz_group(state, ready, atom_roles):
+    """Search both moving operands and eight explicit finite 3 um offsets."""
+    return _select_cz_group(state, ready, atom_roles, pair_search=True)
+
+
 def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
-                       max_decisions=512, wall_budget_s=1800.):
+                       max_decisions=512, wall_budget_s=1800., intra_patch=False,
+                       mz_translation_um=-300., intra_services=False, pair_search=False):
     """Run the caller's supported DAG; return structured failure evidence."""
     env = as_environment(env)
     started = perf_counter()
@@ -203,11 +294,15 @@ def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
             magic = tuple(g for g in ready if g.gate_type == 'RESET' and atom_roles[g.qubit_ids[0]]['aod_id'] == 'AOD_MAGIC')
             algorithm = tuple(g for g in ready if g.gate_type == 'RESET' and atom_roles[g.qubit_ids[0]]['aod_id'] == 'AOD_0'
                 and atom_roles[g.qubit_ids[0]]['role'].split('.')[-1] == 'd0')
+            if intra_services:
+                from .patch_service_groups import select_readout_group
+                algorithm = select_readout_group(env.state, ready, atom_roles)
             if not magic or not algorithm:
                 raise ValidationError('PARALLEL_PATCH_DUAL_PREFIX', 'Both actual source RESET arrays are required at the initial dual-lane boundary')
             tick = perf_counter()
             phase = 'dual_reset_prologue'
-            plan = compile_dual_reset_prologue(env.state, algorithm, magic)
+            plan = compile_dual_reset_prologue(env.state, algorithm, magic,
+                                               translation_um=mz_translation_um)
             entry = {'decision': 0, 'kind': 'RESET', 'gate_ids': [g.id for g in (*algorithm, *magic)],
                 'batch_size': len(algorithm) + len(magic), 'start_us': env.state.time_us,
                 'duration_us': plan.estimated_duration_us, 'compile_wall_seconds': perf_counter() - tick,
@@ -245,10 +340,28 @@ def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
                     buckets[signature].append(gate)
                 gates = tuple(next(iter(buckets.values())))
                 if phase == 'CZ':
-                    plan = compile_cz_group(state, gates, decision=len(log))
-                    extra = {}
+                    mobile_operands = None
+                    pair_offset = None
+                    if pair_search:
+                        gates, mobile_operands, pair_offset = select_geometric_cz_group(state, cz, atom_roles)
+                    elif intra_patch:
+                        gates, mobile_operands = select_intrapatch_cz_group(state, cz, atom_roles)
+                    plan = compile_cz_group(state, gates, decision=len(log), mobile_operands=mobile_operands,
+                                            pair_offset=pair_offset)
+                    per_patch = defaultdict(int)
+                    for g in gates:
+                        per_patch[atom_roles[g.qubit_ids[0]]['patch']] += 1
+                    extra = {'pairs_per_patch': dict(per_patch), 'intra_patch_enabled': intra_patch,
+                        'pair_search_enabled': pair_search,
+                        'moving_operands': mobile_operands,
+                        'pair_offset_um': [pair_offset.x_um, pair_offset.y_um] if pair_offset else
+                                          [state.hardware.interaction_offset.x_um, state.hardware.interaction_offset.y_um]}
                 else:
-                    plan, resets = compile_readout_group(state, gates, decision=len(log))
+                    if intra_services:
+                        from .patch_service_groups import select_readout_group
+                        gates = select_readout_group(state, candidates, atom_roles)
+                    plan, resets = compile_readout_group(state, gates, decision=len(log),
+                                                        translation_um=mz_translation_um)
                     extra = {'included_reset_gate_ids': [g.id for g in resets]}
             entry = {'decision': len(log), 'kind': phase, 'gate_ids': [g.id for g in gates],
                 'batch_size': len(gates), 'start_us': state.time_us,

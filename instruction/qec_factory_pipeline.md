@@ -1,14 +1,39 @@
 # QEC 工厂供应与逐周期质量协议
 
-版本：1。生效日期：2026-10-04。依据：用户要求以 Factoring15 为参照，固化标准化 QEC、MSC、MSD、magic factory、完整 T 消费与逐周期质量流程。
+版本：2。生效日期：2026-10-04。依据：用户要求以 Factoring15 为参照，并最新明确 magic factory 与 processor injection 的当前任务是调度模拟，不要求实现量子态演化。
 
 **本文件是该方向的共享实施协议。涉及 QEC/PBC、magic-state 生产或消费、编码库存、逐周期噪声或 Shor 集成的 agent，必须在设计、实现和验收前阅读并遵守。** 本协议规定目标、接口语义和验收要求；它不表示这些功能已经实现。当前实现状态与运行证据以 [handoff](handoff.md) 和对应阶段报告为准。
 
 最新用户指令优先。本协议覆盖旧文档中与之冲突的实施顺序，尤其是“先完整 Shor native generator，再接工厂”；旧测试与运行证据保留其原日期和适用范围。物理硬约束、Executor 唯一提交、包边界与日志规则继续遵守 [agent.md](../agent.md)、[architecture](architecture.md) 和 [workflow](workflow.md)。
 
+## 当前任务目标：纯调度模拟
+
+**交付可复用的完整 magic factory 调度模块，能够接入完整 processor，在算法需要时供应资源并完成 injection 调度。** 单 T 用例是首个验收案例，最终模块必须通过统一资源接口接入 processor；不能以局部原子前缀或独立图示作为完整交付。
+
+```text
+processor 的 T/injection 请求
+  → 库存查询/预约 → 无库存时排队并触发工厂生产
+  → 全部15输入/检查 → 接受或拒收清理/补产/预算耗尽
+  → 同token/载体/epoch的存储、运输和交付
+  → injection 门/测量 → 经典反馈/frame → 消费一次并释放
+```
+
+当前任务必须实现并核验：
+
+1. 完整冻结协议的 native 门、测量/reset、原子角色、依赖、保护边界及生命周期；完整15-to-1保留全部15输入与成本。
+2. 通过现有物理约束完成 placement/routing/scheduling，并由 Executor 提交操作与事件；时间、资源占用、旁观者及终态可独立重放。
+3. 明确的测量/分支报告源、seed或轨迹、版本及经典反馈时延模型；报告在对应测量模拟完成后才对控制器可用。缺报告不能当0，不直接改 measurement_results 或 live DAG。
+4. 接受/拒收、cleanup、补产与最大预算；可用时间、排队等待、共享库存、预约/交付、唯一消费者及epoch重用。
+5. processor通过统一接口表达资源类型/消费位置/依赖和需求时间；injection使用工厂交付的同一资源token与载体，按协议排程联合测量、读出、反馈/frame和释放。库存不足允许等待，不承诺即时供给。
+6. 项目既有 Executor→VisualRecorder→共用viewer 展示完整实际调度事件，同时提供成功、拒收补产、等待、过早/重复消费及恢复的机器证据。
+
+**不要求运行时追踪态向量、密度矩阵、稳定子叠加或精确非 Clifford/Born 投影。** 资源在调度层由类型/相位标签、code/distance、token、载体、epoch、frame/sector、holder、时间及provenance表示；state handle是可选的独立参考字段。预设轨迹或声明统计模型可供应报告，须标注来源和适用范围。小规模量子协议参考检查可保留，属于独立、可选验证；不阻止调度模块实现和交付。
+
+“实际/真实执行”在当前任务中指经过物理校验并由 Executor 提交的**调度模拟操作与事件**，不表示真实设备量子实验或运行时量子态计算。若现有测量/reset实现绑定量子态，应解决调度模式报告源的接口解耦；不得将精确态后端强加为前置条件。此前 F1/F2 设计中的强制态/Born后端门槛已由本节覆盖，历史参考成果保持其原证据范围。噪声、fidelity与完整通道计算属于独立后续研究，未知质量为null。
+
 ## 项目目标与标准流程
 
-目标是在 QEC 保护下实现资源生产、接受、维护、交付和 T 消费，再基于同一实际时间线评估逻辑可靠性、成本与 Shor 成功率。算法、工厂、缓存和辅助 patch 必须共享物理资源与全局时间。
+目标是在 QEC 协议约束下完成资源生产、接受、维护、交付和 T/injection 调度，算法、工厂、缓存和辅助 patch 共享物理资源与全局时间。逻辑可靠性、fidelity与算法成功率可在独立质量模型中研究，不是当前调度交付的完成门槛。
 
 ```text
 逻辑电路 → signed adaptive PBC + magic 需求
@@ -21,9 +46,9 @@ placement / routing / scheduling → 合法计划 → Executor
                          ↓
 实际 gate/move/idle/readout/reset 时间线
                          ↓
-噪声 → syndrome/loss reports → decoder → frame/接受/库存
+声明的报告轨迹/统计模型 → reports → decoder/frame/接受/库存
                          ↓
-资源交付质量、完整 T 通道、算法成功率与时间
+资源供需、等待、产能、injection完成与实际调度时间
 ```
 
 先固定可独立验证的 canonical 协议，再比较 placement、routing 和调度策略。启发式优化不得改变码、检查顺序、纠错边界、测量符号或资源合同；协议变体必须显式版本化，重新验证语义和噪声适用性。
@@ -65,7 +90,7 @@ MSC 必须另外选定与 surface-code/现有 native 门集相容的协议，展
 
 ## 资源身份与库存合同
 
-消费者必须使用工厂实际接受并交付的同一份资源态及其载体。禁止在 handoff 或 consumer 内重建理想态，禁止用改名替代运输、相位转换或真实编码转换。T 与 T† 所需资源必须显式匹配；A− 不能直接改名 A+。
+消费者必须使用工厂实际调度生产、接受并交付的同一资源token及其载体，不能在handoff或consumer中凭空创建可用资源。调度层无需存储量子振幅；禁止用改名替代运输、相位转换或编码转换的实际排程。T与T†所需资源标签必须匹配；A−不能直接改名A+，须完成协议规定的转换操作。
 
 当前 PBC 消费协议的最小生命周期如下。库存中的 reserve/handoff 顺序由控制器声明；其他已验证消费协议可显式声明不同读出/传态顺序，但交付完成、唯一所有权和消费门禁必须满足。
 
@@ -82,7 +107,7 @@ raw_created → allocated_to_attempt → checking
 
 | 记录 | 必需字段 |
 | --- | --- |
-| 身份与载态 | token ID、资源类型/相位、code/distance、carrier atom IDs、epoch、frame/sector、实际 state handle 或载态演化来源 |
+| 身份与资源 | token ID、资源类型/相位标签、code/distance、carrier atom IDs、epoch、frame/sector、角色与操作provenance；量子state handle仅为可选参考字段 |
 | 来源与接受 | factory/attempt ID、raw parent IDs、协议版本、实际 check/report IDs、decoder 输出、接受决定及其证据来源 |
 | 可用与交付 | accepted/available/handed-off 时间、位置/holder、唯一所有者、库存/运输区间、consumer ID |
 | 质量 | 接受与交付质量的对象、条件样本集合、模型/版本、相关性标签、方法、shots/置信区间；未知为 null |
@@ -99,6 +124,8 @@ QEC round、factory attempt、logical operation 和 physical pulse 是不同单�
 拒收按实际执行前缀计成本；补产和等待期间，算法数据及库存继续演化并在协议允许的边界进行 QEC。清理、补原子、reset、运输、终态恢复仅在实际执行或有明确模型时计入；未实现项不能默认为零。最大尝试次数和 exhausted 行为必须声明。
 
 ## 噪声与质量统计
+
+本节是独立后续质量研究的合同，不是当前纯调度任务的必需实现或验收门槛。未使用质量模型时相关结果为null；声明的调度分支概率不能冒充fidelity或量子通道结果。
 
 按实际时间、位置、操作和可观测历史建立物理噪声，再经过测量、decoder 和 frame 得到逻辑结果。保留 controller 可知报告与仿真真值的边界：不能让 decoder 知道未被检测的 loss 或实际错误。
 
@@ -123,7 +150,7 @@ QEC round、factory attempt、logical operation 和 physical pulse 是不同单�
 - 15-to-1 的 35p³ 只作为特定独立输入错误与理想操作模型下的校验；文献 erasure 结果和物理门 fidelity proxy 不能直接当本平台 logical fidelity。
 - Monte Carlo/实验采样报告 seed、shots、失败次数和置信区间；零观测失败报告上界，不能宣称零错误。解析、精确枚举或密度矩阵结果报告方法与数值精度，采样字段为 not_applicable。区分工厂拒收、物理 abort、decoder failure、算法无有效因子、补产 exhausted 和编译/软件拒绝。
 
-采用多尺度模拟：小系统非 Clifford 态/通道参考验证 Born 分支和相位；Clifford QEC、运输及读出标定形成适用范围明确的逻辑核；完整运行按实际事件调用这些核。Stim/Clifford surrogate 必须注明替代假设并由真实非 Clifford 参考校验，不能当作原生 T 仿真。校准核至少绑定码/距离/朝向、协议顺序、timeline 类、noise/decoder 版本和相关性范围；超出范围必须重标定或明确拒绝。
+可选质量研究可采用多尺度模拟：小系统非Clifford态/通道参考验证Born分支和相位；Clifford QEC、运输及读出标定形成明确适用范围的逻辑核；再沿实际调度事件调用。质量研究中的surrogate须注明假设与独立参考资格，不能把调度统计模型当作量子态计算。校准核至少绑定码/距离/朝向、协议顺序、timeline类、noise/decoder版本和相关性范围；超出范围须重标定或拒绝。该研究路线不要求成为调度runtime的量子态后端。
 
 ## 模块与证据边界
 
@@ -138,11 +165,11 @@ Pauli/Clifford frame 是经典控制的一部分。延迟纠正必须按 frame �
 | 理想参考 | 独立态/通道 oracle、真实 Born 分支、相位与所有正常分支校正 |
 | Native 电路 | 实际门/测量/reset、完整依赖、provenance、载体与分支合同 |
 | 合法物理计划 | 平台、placement、routing、全部作用对/spectators、资源/连续轨迹校验 |
-| Executor 闭环 | 实际 committed reports 决定控制、非 Clifford 表示与投影、RNG/checkpoint、独立初态重放 |
+| Executor 调度闭环 | 声明报告源在读出完成事件中产生committed reports并决定控制、完整门/运输/反馈时序、RNG/控制器checkpoint、独立初态重放；无需非Clifford态表示与投影 |
 | 带噪质量 | 具体噪声/decoder、条件集合、标定适用域、shots/区间与相关性 |
 | 完整算法 | 上述组件联合运行、真实资源供应、失败 shot、有效因子与时间统计 |
 
-tracked ENV 尚缺非 Clifford 表示/Born 接口时，原生 T 可排程不代表 T 资源与反馈已在 ENV 执行。reference 报告不得填入物理键；关闭量子跟踪不得绕过 measurement/reset 合同。保持原 AOD 行列/矩形、支撑、移动碰撞、空阱 sweep、实际 CZ 对、光照和测量区域硬约束；失败证据保留，不放宽约束换通过。
+原生T可排程不代表完整工厂/反馈已调度完成；需全部操作、资源和分支证据。纯调度模式允许不跟踪量子态，但测量/reset仍须经过合法操作、占用和计时，由Executor在完成事件提交声明报告源的结果，不能直接拷贝reference位到live物理键。保持原AOD行列/矩形、支撑、移动碰撞、空阱sweep、实际CZ对、光照和测量区域硬约束；失败证据保留，不放宽约束换通过。
 
 ## 实施顺序与验收门槛
 
@@ -150,15 +177,16 @@ tracked ENV 尚缺非 Clifford 表示/Born 接口时，原生 T 可排程不代�
 
 | 阶段 | 交付与验收 |
 | --- | --- |
-| F1 标准协议与单 T 参考闭环 | 固定 d=3 QEC/15-to-1 模板；native raw 制备合同与理想 Born 参考执行检查→接受/拒收→库存→交付→同一资源消费→frame。独立一般复振幅与纠缠参考核验完整 T 通道、资源类型和分支；此阶段不称 Executor 已完成 |
-| F2 Executor 实际反馈 | 解决受限非 Clifford 状态/Born/合法续接前置条件；读取同一运行的 committed 报告，验证 accept/reject/cleanup、库存、唯一消费、原初态独立重放 |
-| F3 逐周期带噪供给 | gate/idle/move/readout/QEC 标定；加入补产、缓存老化和数据等待；输出接受率、交付/T 质量、产能、耗材、abort/exhausted 与区间 |
-| F4 MSC backend | 固定 surface-code 适用协议和实际门分解，独立检查并接同一库存/消费合同；比较 MSC 直接供给与 MSC→MSD 的质量和成本 |
-| F5 连续 T 与完整 Shor | 联合工厂、库存、辅助和算法调度；多次资源唯一消费、峰值/时长、失败 shot、因子与成功所需时间 |
+| S1 完整工厂调度模块 | 固定d=3完整15-to-1模板；全部输入/检查、报告源、接受/拒收、cleanup、补产/预算、库存及交付；合法原子调度与完整时间线 |
+| S2 工厂到单injection调度闭环 | 同一运行committed报告驱动分支；同token/carrier/epoch供给与一次消费、反馈/frame、释放、原初态重放和控制器恢复；不要求量子态后端 |
+| S3 完整processor按需接入 | 统一请求/供应接口、多个T需求与共享库存、排队等待/供需竞争、资源唯一消费、算法/工厂/QEC共同排程及可视化 |
+| 后续：噪声与质量 | 独立gate/idle/move/readout/QEC标定、缓存老化与逻辑质量模型；输出声明适用范围的质量和统计，不阻塞S1–S3 |
+| 后续：MSC backend | 固定surface-code适用协议和门分解，接入同一库存/消费接口；比较后端成本及可选质量 |
+| 后续：完整Shor工作负载 | 使用processor接入能力联合调度完整算法需求；调度指标与可选量子参考/算法成功率证据分别报告 |
 
-F3 的基础噪声标定和 F4 的文献/协议设计可与 F1/F2 并行；其集成交付依赖前置证据，不能提前声明完成。任何阶段必须保留失败尝试、版本/config/circuit/trace 来源和独立反例。
+上述S1–S3是当前任务完成条件。后续质量/MSC研究可独立进行；旧F1参考结果可保留辅助协议检查，旧F2的强制非Clifford/Born后端门槛不适用于本任务。任何阶段保留失败尝试、版本/config/circuit/trace来源与独立反例。
 
-验收至少覆盖拒收不入账、当前供应协议拒收前不耦合算法数据、重复消费/过早消费拒绝、等待影响交付质量、所有正常注入分支校正、实际 cleanup 与原子重用。MSD 加入协议适用的低权输入错误检查与已知接受错误反例；不得仅以理想通过、图形完整或最终输出 3/5 宣称完整容错。
+当前调度验收至少覆盖拒收不入账、接受/交付前不耦合算法、重复/过早消费拒绝、等待与资源冲突成本、声明轨迹中的所有正常注入分支/反馈、cleanup与原子重用、预算耗尽、缺报告、原初态重放和恢复。独立MSD量子参考可检验低权错误与接受错误反例；量子质量或完整容错声明需另有对应证据。
 
 本协议固化不改变实现状态。任务结束按 workflow 更新本轮日志和 handoff，只将有本轮对应证据的条目改为完成。
 

@@ -1,5 +1,15 @@
 # 当前交接状态
 
+2026-10-04 最新共享目标已同步原工作区的用户固化协议v2：后续是可复用完整工厂调度→单injection→完整processor（S1–S3），不强制运行时量子态/Born后端；下方旧F1/F2主线陈述保留历史范围并由[当前权威目标](qec_factory_pipeline.md#当前任务目标纯调度模拟)覆盖。本轮只验收布局与Clifford前缀，没有新增工厂/injection完成声明。
+
+## 2026-10-04 单码块并行、Enola placement 与12块物理验收
+
+新增显式interleaved/enola布局及READY码内CZ/MZ服务合批，canonical四层/H/hook/CSS原门和物理核不变。同初态标准single从84.684→40.504ms（服务合批减52.1699%）；作者固定初始SA另生成10μm homes提案、经本项目路由复制到12块。新full12真实3006门/413投影/221原子/2AOD、161plans，52CZ共816对/max36，每块四层各2pulse，终态33409.1969726μs；原初态完整replay、独立signed Stim/几何/9401依赖与patch audit通过。标准full12 CZ-only另实测54CZ/max72/79207.8551294μs，布局/服务/search共同变化，不写纯Enola speedup。
+
+实际8774共用空间页11功能书签、同步缩放/XZ/主统计/390与320px/console0errors通过，旧8773页保留；174不同pytest、265modules0违规、5旧默认plans逐字兼容。见[复现与边界](../docs/qec_patch_parallel_layout.md)、[六run摘要](../references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json)、[本轮日志](logs/2026-10-04-patch-parallel-layout.md)。只复用作者初始placer，不用其完整codegen。驻留/非partner-CZ≥10μm，伙伴3/4.243、finite6，运输保持原连续1μm。
+
+未来跨块中心配对存在固定四旁观位+单移动端几何障碍，需interaction staging/辅助位搬移；当前已验收prefix不受影响。范围仍首资源T前Clifford，完整工厂/injection调度、noise/decoder/FT及完整physical Shor未由本轮实现；后续按共享v2的S1–S3。所有实现留attached managed checkout，本任务未写原目录；末次观察原214基线文件209字节相同、5由并行任务更新，原HEAD9e28b2e保持，未覆盖这些变化。RAG K66/K67、L42–L44与draft PR#3阶段发布记录于日志回执，不merge。
+
 ## 2026-10-04 QEC 回放同步缩放与统计层级
 
 已按用户要求固化[呈现合同](../docs/qec_viewer_presentation.md)：原子/trap半径比1.15，SLM/AOD、线宽、选择与门/交接动效按同一投影缩放；算法48X/48Z辅助角色持久标识，资源八位明确未编码模板。全宽画布后主统计/类别时间/五设备lane默认展开，逐项和653资源明细默认折叠。实际8773重新展示同一3006门/221原子/12patch前缀，物理录制与原审计SHA保持；七书签、X/Z/resource角色、按钮缩放及390/320px真实浏览器通过。31不同本轮pytest、full12 Node缩放/fit、独立653时间并集及263模块0违规通过。详见[日志](logs/2026-10-04-qec-viewer-scale-hierarchy.md)、[小摘要](../references/qec_pbc_validation/qec_viewer_presentation_2026_10_04.json)。RAG新增K65/L41。此轮只改观察器，未新增物理/工厂/完整Shor验收；factory-first F1主线保持。原目录并行工厂设计demo交接更新保留，其余35dirty与HEAD相同；全部实现留attached managed worktree，沿用draft PR#3，不merge。

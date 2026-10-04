@@ -374,6 +374,51 @@
       "expected_any": [
         "K65"
       ]
+    },
+    {
+      "query": "surface code 3x3 d3 码内码间合批 10um home 5um SLM finite CZ6um 3x3 AOD",
+      "expected_any": [
+        "K66"
+      ]
+    },
+    {
+      "query": "相同初态 same initial 52.17 percent 6.47 percent 84684 79207 40504 MZ RESET MEASURE service batching",
+      "expected_any": [
+        "K66"
+      ]
+    },
+    {
+      "query": "canonical 四层6对实际pulse 10次8次 Cartesian capture closure X0 X1额外捕获Z0 Z1",
+      "expected_any": [
+        "K66",
+        "K67"
+      ]
+    },
+    {
+      "query": "Enola official place_qubit initial SA 5x5 seed0 24pair frozen raw input mapping hash 33.409 ms",
+      "expected_any": [
+        "K67"
+      ]
+    },
+    {
+      "query": "Enola edge coloring commutation group QEC H CZ H measurement hook dependency 可以跨层重排吗",
+      "expected_any": [
+        "K67"
+      ]
+    },
+    {
+      "query": "Enola SA新增12patch full12 3006 physical prefix 是否已经完成magic factory noise FT full physical Shor",
+      "expected_any": [
+        "K66",
+        "K67"
+      ]
+    },
+    {
+      "query": "当前 magic factory processor injection 纯调度 S1 S2 S3 不要求量子态演化 runtime Born backend",
+      "expected_any": [
+        "K55",
+        "K57"
+      ]
     }
   ]
 }

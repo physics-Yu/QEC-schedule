@@ -101,6 +101,18 @@ M2 应区分 episode 起点到最后逻辑完成、包含尾部归还的总 wall
 
 每项关闭时，在这里保留 ID 并改为 FIXED + 日志链接；不要删除历史问题，使下一位 agent 无法判断为什么接口改变。
 
+## 2026-10-04 QEC 码内布局与并行
+
+| ID | 状态与问题 | 修复与证据 |
+| --- | --- | --- |
+| PATCH-GROUP-001 | FIXED（声明前缀）：单角色桶与单cell/patch限制串行化已READY码内操作 | 几何平移分组与真实MZ服务合批，保留全部门/phase/hook依赖；同初态single对照及完整初态replay，[日志](logs/2026-10-04-patch-parallel-layout.md) |
+| PATCH-CAPTURE-001 | FIXED：六对逻辑并行不保证AOD源行×列闭包合法 | 检查全部交点及附带捕获，候选拆组；canonical/closure反例与实际batch审计，同一日志 |
+| PATCH-SPACING-001 | FIXED：10μm homes与旧(-3,-3)固定偏移会使非伙伴距离小于10μm，SA密集CSS单向移动会被挡 | 标准(-3,0)及显式双载体/八有限落点搜索，CZ仍6μm；全局exact pair、非配对≥10μm、连续路径由Executor/replay验证，同一日志 |
+| PATCH-PROVENANCE-001 | FIXED：只核验坐标hash会接受被篡改的作者/协议身份 | 核对固定commit/placer、canonical role/layer/template/input hash与17坐标/site一致性；8篡改回归，同一日志 |
+| PATCH-AUDIT-FRAME-001 | FIXED：同时间同轴LOAD前后frame不能凭时间取首帧 | 按trace committed state_version匹配全载荷集合；独立审计反例测试，同一日志 |
+| VIEW-LAYER-COUNTER-001 | FIXED：新层脉冲列表覆盖原门Counter，会使已验收新布局report生成失败 | 分离layer_counts与原门计数；legacy/interleaved/enola生成和11实际书签回归，layout SHA guard前置，同一日志 |
+| PATCH-CENTER-PAIR-001 | OPEN（未来跨码块门）：固定四个10μm旁观辅助位且只移动单端时，中心原子没有合法finite6μm配对位置 | 非零安全距离必要条件r≥√200≈14.142μm；当前CSS切换移动端和canonical提取已通过，但后续中心跨块配对需交互暂存位置或旁观辅助位搬移并完整Executor/replay验收。[布局边界](../docs/qec_patch_parallel_layout.md)；不是所有物理路由无解的证明 |
+
 ## 2026-10-04 QEC 观察器呈现修正
 
 | ID | 状态与问题 | 修复与证据 |
