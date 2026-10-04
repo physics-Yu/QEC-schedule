@@ -1,0 +1,188 @@
+{
+  "schema": "native-kernel-stage-acceptance/1",
+  "reviewed_at": "2026-10-04",
+  "qualification": "independent-kernel-d3-two-rounds",
+  "run_directory": "artifacts/native-kernel-2026-10-04/d3-two-rounds-attempt2",
+  "runtime_environment": {
+    "python": "3.12.14",
+    "mqt.qmap": "3.5.0",
+    "mqt.bench": "2.1.0",
+    "mqt.core": "3.3.3",
+    "qiskit": "2.2.3"
+  },
+  "run": {
+    "schema": "native-kernel-memory/1",
+    "runtime_status": "completed",
+    "offline_physical_status": "PASS",
+    "profile": "native-kernel-d3-paired5-sz10/v1",
+    "engine": "mqt.qmap.native.C++",
+    "runtime": "neutral_atom_kernel",
+    "legacy_env_execution_calls": 0,
+    "legacy_candidate_search_calls": 0,
+    "atoms": 17,
+    "rounds": 2,
+    "gates": 218,
+    "cz_pairs": 48,
+    "cz_pulses": 8,
+    "max_parallel_cz": 6,
+    "operations": 1123,
+    "journal_events": 2261,
+    "reports": 25,
+    "physical_time_us": 82554.39152192444,
+    "recording_equivalent": true,
+    "inflight_recovery": {
+      "passed": true,
+      "cut_us": 23948.625923672167,
+      "report_not_ready": true,
+      "measurement_id": "A.r1.X0__g000",
+      "report_completion_us": 24198.62592367217
+    },
+    "timings_seconds": {
+      "native": 0.38750350003829226,
+      "lowering": 0.015835800033528358,
+      "axes": 0.06457380013307557,
+      "advance_with_recovery_probe": 0.4013068999629468,
+      "advance_recording_on": 0.2609113000216894,
+      "advance_recording_off": 0.1541465999907814,
+      "offline_audit": 0.11921179998898879,
+      "visualization_export": 0.36818659998243675
+    },
+    "factory_integrated": false,
+    "full_shor": false,
+    "fidelity": null,
+    "wall_seconds_before_export": 1.7704696000437252
+  },
+  "native_calls": [
+    {
+      "block": "unitary-1",
+      "native_call_seconds": 0.004588300012983382,
+      "import_seconds": 0.36945970001397654,
+      "frontend_seconds": 0.003269399981945753,
+      "request_sha256": "4cef80067049a04dc0187b525fd9aa151689b2023296ce1267afc7fbc8cf51c3",
+      "naviz_sha256": "e0feb14de72d39395b633e5558cc6a9516d52b989e940fa82eeee9dd1d4185d9"
+    },
+    {
+      "block": "unitary-2",
+      "native_call_seconds": 0.005133299971930683,
+      "import_seconds": 5.00003807246685e-07,
+      "frontend_seconds": 0.0012107000220566988,
+      "request_sha256": "b840e3ed14a14eca3321548bdceca2331386f56af27ffc2292db02ab29ef39fb",
+      "naviz_sha256": "e0feb14de72d39395b633e5558cc6a9516d52b989e940fa82eeee9dd1d4185d9"
+    }
+  ],
+  "native_call_seconds_total": 0.009721599984914064,
+  "independent_review": {
+    "status": "PASS",
+    "checks": {
+      "manifest": {
+        "sources": 66,
+        "artifacts": 14
+      },
+      "canonical_source": {
+        "gates": 218,
+        "atoms": 17,
+        "unitary_segments": 2,
+        "rounds": 2
+      },
+      "physical_review": {
+        "status": "PASS",
+        "operations": 1123,
+        "geometry_contract": "experimental_native_full_rf_ordered_axes/1"
+      },
+      "reports": {
+        "count": 25,
+        "cursor": 25,
+        "completion_only": true
+      },
+      "exact_replay": {
+        "blocks": 7,
+        "native_segments": 2,
+        "midcut_checkpoint": true,
+        "final_checkpoint": true,
+        "journal": 2261,
+        "physical_time_us": 82554.39152192444,
+        "alignment_operations": 196,
+        "alignment_time_us": 16027.920070117245
+      }
+    },
+    "native_compilation_calls": 0,
+    "scope": "Canonical scheduling source, native provenance, independent geometry and exact kernel replay; no quantum quality or factory qualification"
+  },
+  "pytest": {
+    "passed": 123,
+    "skipped": 0,
+    "seconds": 5.92
+  },
+  "architecture": {
+    "modules": 277,
+    "violations": 0
+  },
+  "node_checks": [
+    "viewer_native_kernel.cjs PASS",
+    "viewer_fit_resize.cjs PASS"
+  ],
+  "browser": {
+    "url": "http://127.0.0.1:8780/replay.html",
+    "widths": [
+      1280,
+      390
+    ],
+    "horizontal_overflow": false,
+    "primary_statistics_open": true,
+    "individual_statistics_open": false,
+    "report_boundary_verified": true,
+    "parallel_cz_pairs_visible": 6,
+    "console_errors": 0,
+    "wide_screenshot": "artifacts/native-kernel-2026-10-04/browser-qa/parallel-cz-wide-attempt2.png",
+    "narrow_screenshot": "artifacts/native-kernel-2026-10-04/browser-qa/parallel-cz-narrow.png"
+  },
+  "adversarial_checks": {
+    "empty_manifest": "MANIFEST_NONEMPTY",
+    "changed_source_gate_with_updated_artifact_hash": "SOURCE_GATE_CONTRACT",
+    "checkpoint_payload_corruption": "CHECKPOINT_INTEGRITY",
+    "rehashed_report_corruption": "CHECKPOINT_REPORT",
+    "native_request_corruption": "reconstructed manifest/digest rejection"
+  },
+  "producer_artifact_sha256": {
+    "blocks.json": "ecc11eb94cac8005025c832f1ca429ccf8f0d8a31146a20a6dab6b8038973bbb",
+    "checkpoint.json": "4b130eaf937ae250c4a49a1435da2122113501bd9041122f4f7235641b8e527e",
+    "inflight-checkpoint.json": "eac1212a831e11a8763a774ae2ed21e2bddb76f7e6d986dda6aad5b03610c89f",
+    "initial.json": "fe8ce0054753c64a17cb48edaa0067f1d747cad82b5c93a9fa58571b70387b40",
+    "journal.json": "e8f65a25fd8db896d78674a09aa334936c5b53e761098301f9e70e2a50dd5853",
+    "offline-audit.json": "183bbdd78dea2ace2354d2d5b717c82a106b67fa542f2ab8382e8f0318cfad23",
+    "operations.json": "b78c61708e710ba7beb089aaa53cf2edbd65898b666007a0b7071882c57cebeb",
+    "recording.json": "f42056008185ec453f1a93e8d45613696d70e321bb89c4ff7a80bc5cf1753d8e",
+    "replay.html": "0566e5afef495dab945bd3ac1afa17dd45c5307d25c6e2bf7692b28865d79374",
+    "summary.json": "a7fff43f59dc5c8794a16830b34d2c19173a4a921749c60d2a4f42b044908636",
+    "unitary-1.native.json": "d5af14be740638ed0d586183c0cc89100c9d15fff098a800a6231ea10dc9b708",
+    "unitary-1.naviz": "6bc8517b5359e34aab3b251ec6adcbd5c1173e600619a5f0fb1dd7bc4847e94c",
+    "unitary-2.native.json": "0e3400706f56dc5938f67f76c67cde60287be3f5808f19b4a756fa8eedf3ef13",
+    "unitary-2.naviz": "6bc8517b5359e34aab3b251ec6adcbd5c1173e600619a5f0fb1dd7bc4847e94c"
+  },
+  "source_sha256_text_lf": {
+    "examples/run_native_kernel_memory.py": "61da65c5786ee1d3d5dfe73f8c28aa84163718cd68ea2f87830c914931fc92cf",
+    "src/neutral_atom_app/native_kernel_view.py": "7b23f62611bfd8ebe411c8f594a4210821480aa5d2d02e976f2027c2af69e79c",
+    "src/neutral_atom_experiments/qec_pbc/native_kernel_memory.py": "8f4d874c4d744f0bcf54276f49a0d4ab40172efbaff38baa9fc1acb63a225a02",
+    "src/neutral_atom_kernel/__init__.py": "d077d4ca6f17b3b8c47bdbe3668477254c0d92c669759672c700c9d2fd8a1bf9",
+    "src/neutral_atom_kernel/audit.py": "d3adc3902df132b8c16a49f4b5e636bec88a802dfb00a83bfb43c8aefd121363",
+    "src/neutral_atom_kernel/model.py": "755ba9f3fca749b08cf69a21b450044ededc10c700b9e5813dab956c39443e68",
+    "src/neutral_atom_kernel/runtime.py": "c5d8124c89e37ed1faf2e1c3a541da367c9a57da9b1ec6307e1755cc25ddf802",
+    "src/neutral_atom_strategies/native_kernel/__init__.py": "fa2bcc0cb9b9538206515b5bd2f559041a0e32aad09daa54c70465ef4be1e5ac",
+    "src/neutral_atom_strategies/native_kernel/axes.py": "56258a8baf3d2fd5750d6a2d973ab588c58f4cd618ef055d63630000d216f293",
+    "src/neutral_atom_strategies/native_kernel/compiler.py": "da203c21fefb955c8d515aa55f69bd6e74982bf59fb9a3503f610ae6a9b27d69",
+    "src/neutral_atom_strategies/native_kernel/lowering.py": "adadd298f5f8d667a0a2ec947efe248bf31ff2bf24bde7874ff7ff3e213188c9",
+    "tools/audit_native_kernel_memory.py": "030e6ceccfc1a46282eff2b32f7dea34c5e5c1376dff00313fc9db1a2cfaa474",
+    "src/neutral_atom_env/visualization/viewer.js": "e5d90aead573d5c2473fa96a9e751793bd80bf7431e8e44f74da2536b6ecd2e8",
+    "tests/viewer_native_kernel.cjs": "4ca8616ff7892467d26f86f0b288d3f65877feb8abfe0ad82ff833f4f60907f3"
+  },
+  "limits": [
+    "One native AOD and experimental ordered-RF/selective-transfer profile; not historical dual-AOD geometry.",
+    "Declared scheduling reports, no quantum projection/fidelity claim.",
+    "No same-input legacy wall-speed ratio was measured.",
+    "Factory/injection/processor/native multi-AOD and complete physical Shor remain separate integration milestones."
+  ],
+  "reproduce": [
+    "python examples/run_native_kernel_memory.py --output artifacts/native-kernel-2026-10-04/d3-two-rounds-attempt2 --rounds 2 --wall-budget 120",
+    "python tools/audit_native_kernel_memory.py artifacts/native-kernel-2026-10-04/d3-two-rounds-attempt2"
+  ]
+}

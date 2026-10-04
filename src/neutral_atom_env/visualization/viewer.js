@@ -7,6 +7,8 @@ function upperBound(items,value,key){let lo=0,hi=items.length;while(lo<hi){const
 function decodeFrames(data){
  if(data.format!=='neutral-atom-view/2')throw new Error('Unsupported visualization format');
  const checkpoints=new Map(),cache=new Map(),working=new Map();
+ const reports=[];let committedReports={};
+ if(data.scheduling_report_source)data.frames.forEach(f=>{if(f.measurement_results)committedReports={...f.measurement_results};if(Object.keys(f.measurement_updates||{}).length)committedReports={...committedReports,...f.measurement_updates};reports.push(committedReports)});
  const masks=[];let enabled=null;data.frames.forEach(f=>{if(f.slm_enabled!==null)enabled=f.slm_enabled;if(!enabled)throw new Error("Missing initial SLM mask");masks.push(enabled)});
  data.frames.forEach((frame,i)=>{for(const a of frame.atom_updates)working.set(a.id,a);if(i%64===0)checkpoints.set(i,new Map(working))});
  function sceneAt(i){
@@ -15,7 +17,7 @@ function decodeFrames(data){
    for(let j=start+1;j<=i;j++)for(const a of data.frames[j].atom_updates)atoms.set(a.id,a);
    const scene={...data.scene,traps:data.scene.traps.map(t=>({...t,enabled:masks[i][t.id]})),atoms:[...atoms.values()]};cache.set(i,scene);if(cache.size>4)cache.delete(cache.keys().next().value);return scene;
  }
- return data.frames.map((f,i)=>({...f,get scene(){return sceneAt(i)}}));
+ return data.frames.map((f,i)=>({...f,...(data.scheduling_report_source?{measurement_results:reports[i]}:{}),get scene(){return sceneAt(i)}}));
 }
 function summaryMarkup(summary,operations){
  if(!summary)return '';
@@ -49,7 +51,7 @@ if(!recording?.frames?.length)throw new Error('Visualization requires at least o
 mounted.get(container)?.destroy();
 
 const data=recording, frames=decodeFrames(data), theme=data.theme;
-const hasMeasurements=data.frames.some(frame=>frame.quantum_tracking===true);
+const hasMeasurements=Boolean(data.scheduling_report_source)||data.frames.some(frame=>frame.quantum_tracking===true);
 const root=container.shadowRoot||container.attachShadow({mode:'open'});
 root.innerHTML=SHELL;
 if(options.compact)root.querySelector('.shell').classList.add('compact');
@@ -315,7 +317,7 @@ if(data.summary){const s=data.summary,x=150+700*clamp((ui.time-s.window_start_us
 $('clock').textContent=ui.time.toFixed(2);$('version').textContent='STATE v'+String(f.version).padStart(2,'0');$('gate').textContent=effects.length?effects.map(effectLabel).join(' · '):f.gate_label;$('status').textContent=effects.length?'执行中 '+effects.reduce((n,o)=>n+(o.gate_ids?.length||1),0)+' 门':statuses[f.gate_status]||f.gate_status;$('frontier').textContent='READY '+f.ready_count+': '+(f.ready_frontier.join(', ')||'—')+(f.ready_count>20?' …':'');$('gate-states').textContent=Object.entries(f.gate_counts).map(([status,count])=>(statuses[status]||status)+' '+count).join(' · ');$('event').textContent=op?(labels[op.label]||op.label):'周期完成';$('readout').textContent=ui.time.toFixed(2)+' / '+data.duration.toFixed(2)+' μs';$('slider').value=ui.mode==='keyframe'?displayAt(ui.time):ui.time;$('play').textContent=ui.playing?'暂停':'播放';$('previous').disabled=ui.time<=(data.start_time||0);$('next').disabled=ui.time>=data.duration;if(op&&op.index>=0&&Math.floor(op.index/STAGE_PAGE)!==stagePage)renderStages(Math.floor(op.index/STAGE_PAGE));for(const o of visibleOperations)$('stage-'+o.index).setAttribute('aria-current',String(operationsAt(ui.time).some(active=>active.index===o.index)));
 const progress=op?clamp((ui.time-op.start)/(op.end-op.start),0,1):1;
 $('operation-title').textContent=op?(transfer?(['aod_load','aod_recapture'].includes(op.kind)?'SLM → AOD · 原位抓取':'AOD → SLM · 原位释放'):['entangling_pulse','raman_rotation','measurement','reset'].includes(op.kind)?effects.map(effectLabel).join(' · '):(labels[op.label]||op.label)):'记录结束 · 已显示全部已提交状态';
-$('operation-caption').textContent=transfer?transfer.ids.join(' / ')+' · 目标支撑已建立 · 交接预览；承载与源支撑在操作结束时提交':op?.applied===false?'条件不满足 · '+(op.end-op.start).toFixed(2)+' μs 控制时隙 · 未施加激光':op?.kind==='measurement'?'MZ 投影测量 · '+(op.end-op.start).toFixed(2)+' μs（本次仿真假设）· 结果在操作结束提交':op?.kind==='reset'?'MZ 原位复位到 |0⟩ · '+(op.end-op.start).toFixed(2)+' μs（本次仿真假设）':op?.kind==='raman_rotation'?ramanCaption(op,effects):op?.kind==='trap_switch'?'光阱开关 · 完成时提交启用状态':op?.kind==='idle'?'无设备操作 · 原子位置保持不变':op?.kind==='entangling_pulse'?'真实脉冲 '+(op.end-op.start).toFixed(2)+' μs · 红色连线表示作用对':op?(atoms.some(a=>a.holder.holder_type==='mobile'&&aodId(a.holder.holder_id)===aodId(op))?(['row_column','row_column_orthogonal'].includes(data.backend)?'行列联动 · 同步三次轨迹 · 保持行列顺序':'刚性平移 · 所有已捕获原子同步移动'):(arrays[aodId(op)].aod.enabled_rows.some(Boolean)&&arrays[aodId(op)].aod.enabled_columns.some(Boolean)?'开启的空 AOD 移动 · 全轨迹安全已验证':'AOD 关灯定位 · 运动显式计时')):'所有时间与物理指标来自原始事件';
+$('operation-caption').textContent=transfer?transfer.ids.join(' / ')+' · 目标支撑已建立 · 交接预览；承载与源支撑在操作结束时提交':op?.applied===false?'条件不满足 · '+(op.end-op.start).toFixed(2)+' μs 控制时隙 · 未施加激光':op?.kind==='measurement'?(data.scheduling_report_source?'MZ 调度读出 · ':'MZ 投影测量 · ')+(op.end-op.start).toFixed(2)+' μs（本次仿真假设）· 结果在操作结束提交':op?.kind==='reset'?(data.scheduling_report_source?'MZ RESET 调度 · ':'MZ 原位复位到 |0⟩ · ')+(op.end-op.start).toFixed(2)+' μs（本次仿真假设）':op?.kind==='raman_rotation'?ramanCaption(op,effects):op?.kind==='trap_switch'?'光阱开关 · 完成时提交启用状态':op?.kind==='idle'?'无设备操作 · 原子位置保持不变':op?.kind==='entangling_pulse'?'真实脉冲 '+(op.end-op.start).toFixed(2)+' μs · 红色连线表示作用对':op?(atoms.some(a=>a.holder.holder_type==='mobile'&&aodId(a.holder.holder_id)===aodId(op))?(data.backend==='native_kernel_row_column'?'有序行列联动 · 原生端点间线性轨迹 · 保持行列顺序':['row_column','row_column_orthogonal'].includes(data.backend)?'行列联动 · 同步三次轨迹 · 保持行列顺序':'刚性平移 · 所有已捕获原子同步移动'):(arrays[aodId(op)].aod.enabled_rows.some(Boolean)&&arrays[aodId(op)].aod.enabled_columns.some(Boolean)?'开启的空 AOD 移动 · 全轨迹安全已验证':'AOD 关灯定位 · 运动显式计时')):'所有时间与物理指标来自原始事件';
 if(op&&(op.kind.startsWith('aod_')||op.kind==='trap_switch')&&Object.keys(arrays).length>1)$('operation-caption').textContent=aodLabel(aodId(op))+' · '+$('operation-caption').textContent;
 if(op?.transfer_phase)$('operation-caption').textContent+=(op.transfer_phase==='depart'?' · 仅允许离开自身源 trap':' · 仅允许接近自身卸载 trap');
 if(options.modelCaption){$('operation-caption').textContent=op?.description||options.modelCaption;$('version').textContent='模板阶段 '+f.version;$('status').textContent=options.modelCaption;}
@@ -415,8 +417,8 @@ function tick(now){
     }
     last=now;raf=requestAnimationFrame(tick);
 }
-$('backend-caption').textContent=Object.keys(frameAods(frames[0])).length>1?'独立 AOD '+Object.keys(frameAods(frames[0])).length+' 台 · 真实设备状态 / 完整作用对检查 · 同一物理时钟':hasMeasurements?'QEC · 物理运输 / MZ 测量复位 / 测量条件控制 · 同一物理时钟':parallel?'门操作 / AOD 重叠 · 同一物理时钟':data.operations.some(op=>op.task_id)?'独立任务 · 准备 / 门效果 / 清理 · 当前串行执行':data.operations.some(op=>op.kind==='raman_rotation')?'CZ / RAMAN · 单 trap 串行调度 · 1Q 静止 SLM / AOD 原位执行':data.operations.length===0?'初始布局 / 无物理操作 · trap 与 holder 来自输入':['row_column','row_column_orthogonal'].includes(data.backend)?'ROW / COLUMN AOD · 行列伸缩与平移 · 返回并卸载':data.operations.some(op=>op.planner_id?.startsWith('single-trap-return'))?'SINGLE TRAP · a → EZ SLM · b → CZ · b / a 依次返回 SZ':data.operations.some(op=>op.kind==='aod_park')?'RIGID AOD · SZ 同运 → EZ 局部交接 → CZ → 恢复构型并同返':'RIGID AOD · 刚性平移 · 静态伙伴配对 · 返回并卸载';
-$('motion-note').textContent=['row_column','row_column_orthogonal'].includes(data.backend)?'按行列坐标与三次轨迹采样；采用配置的峰值速度/加速度/段内 jerk 限制，未模拟光场、加热与损失。':'轨迹按移动事件线性插值，未模拟加速度与加热。';
+$('backend-caption').textContent=data.scheduling_report_source?'QMAP 原生编译 · 轻量调度内核 · 声明测量报告 · 离线物理审核 '+(data.offline_audit_status||'未审核'):Object.keys(frameAods(frames[0])).length>1?'独立 AOD '+Object.keys(frameAods(frames[0])).length+' 台 · 真实设备状态 / 完整作用对检查 · 同一物理时钟':hasMeasurements?'QEC · 物理运输 / MZ 测量复位 / 测量条件控制 · 同一物理时钟':parallel?'门操作 / AOD 重叠 · 同一物理时钟':data.operations.some(op=>op.task_id)?'独立任务 · 准备 / 门效果 / 清理 · 当前串行执行':data.operations.some(op=>op.kind==='raman_rotation')?'CZ / RAMAN · 单 trap 串行调度 · 1Q 静止 SLM / AOD 原位执行':data.operations.length===0?'初始布局 / 无物理操作 · trap 与 holder 来自输入':['row_column','row_column_orthogonal'].includes(data.backend)?'ROW / COLUMN AOD · 行列伸缩与平移 · 返回并卸载':data.operations.some(op=>op.planner_id?.startsWith('single-trap-return'))?'SINGLE TRAP · a → EZ SLM · b → CZ · b / a 依次返回 SZ':data.operations.some(op=>op.kind==='aod_park')?'RIGID AOD · SZ 同运 → EZ 局部交接 → CZ → 恢复构型并同返':'RIGID AOD · 刚性平移 · 静态伙伴配对 · 返回并卸载';
+$('motion-note').textContent=data.backend==='native_kernel_row_column'?'按原生端点线性显示完整 RF 行列轨迹；关闭备用轴也保留并计时，几何资格见独立离线审核。':['row_column','row_column_orthogonal'].includes(data.backend)?'按行列坐标与三次轨迹采样；采用配置的峰值速度/加速度/段内 jerk 限制，未模拟光场、加热与损失。':'轨迹按移动事件线性插值，未模拟加速度与加热。';
 const observer=new ResizeObserver(resize);observer.observe($('viewport'));resize();raf=requestAnimationFrame(tick);
 if(options.modelCaption){$('backend-caption').textContent=options.modelCaption;$('motion-note').textContent=options.modelCaption;}
 if(options.atomColors)root.querySelector('.legend').innerHTML='<span><i class="symbol ring" style="border-color:#8190a3"></i>SLM 格点 · 空位虚线</span><span><i class="symbol ring"></i>AOD 交点</span><span><i class="swatch" style="background:#db4b50"></i>移动目标（全程红色）</span><span><i class="swatch" style="background:#3879c7"></i>固定原子（蓝色）</span><span>圆形：SLM 承载 · 菱形：AOD 承载</span>';

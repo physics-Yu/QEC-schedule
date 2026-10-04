@@ -1,5 +1,7 @@
 # 工程框架与模块边界
 
+2026-10-04 最新用户授权：[原生轻量内核迁移](native_kernel_migration.md)。新 `neutral_atom_kernel` 是独立、唯一提交的紧凑运行器，不导入旧 ENV/策略/协议/UI；策略层原生编译和 service 直接输出操作流，controller 管库存/反馈。旧 ENV 全状态/计划/验证只在显式兼容或离线审核构建，不是新生产必经层。以下旧接口保留其历史适用范围；完整迁移及工厂尚未验收。
+
 2026-10-04 当前增量：用户授权独立右侧 magic AOD 与统一 compute / MZ 平台。[双 AOD 合同](../docs/multi_aod_contract.md)使用同一个全局 state、placement、DAG、quantum/RNG 和 Executor；限定非交叉工作域，单 scheduled plan 内可有多设备 lane。单台保留 schema19，多台使用 schema20；旧单台能力与一般跨设备交叉路由须区分。[本轮日志](logs/2026-10-04-native-prefix-parallel-physical.md)记录 bounded Shor Clifford 前缀的实际编译验收；完整 magic factory、T 和完整物理 Shor 仍按工厂协议推进。
 
 2026-10-04：涉及 QEC/PBC、MSC/MSD、magic factory、库存、T 消费、逐周期质量或 Shor 集成，必须先遵守 [共享流程协议](qec_factory_pipeline.md)。上层按固定码/协议、真实资源生产与接受、库存/交付、消费和实际时间线质量评估组织；实施顺序为 factory-to-one-T → 实际 Executor 反馈 → 逐周期带噪供给 → MSC backend → 连续 T/完整 Shor。沿用 experiments/strategies/app/env 边界和唯一 Executor，不把协议固化当作运行时能力已实现。下方有日期条目为历史实现快照，当前证据以 [handoff](handoff.md) 为准。

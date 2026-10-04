@@ -1,5 +1,7 @@
 # Agent 工作准则与工程导航
 
+2026-10-04 最新用户授权进一步改为**迁移生产内核并去除探索期架构**，按 [原生轻量内核迁移](instruction/native_kernel_migration.md) 执行。QMAP C++ 决定酉块排布/分组/路由，新独立 `neutral_atom_kernel` 推进紧凑状态/时间/报告；测量/reset 为显式服务操作。旧 ProgramBuilder、SimulationState、候选搜索和全 trace 重审退出新生产路径，只作独立离线/兼容参考。旧 ENV trusted 不是最终迁移成果。可采用版本化原生配对 EZ / Enola 类架构，有限 CZ/身份/依赖/旁观者/报告完成与唯一消费保持。完整工厂、双 AOD 原生调度和完整 Shor 尚未验收；本轮状态见 handoff，用户已授权该方向，不再重复请求迁移批准。
+
 2026-10-04 测量位置修复：[设备感知 rigid 自动 MZ 选点](docs/qec_rigid_readout_placement.md)接回并行码块编译入口。standard默认nearest_mz，完整载体/MZ与全轴域约束后生成最近候选并按完整合法服务比较；显式fixed_translation/legacy保留历史端点。必须记录候选/实际选择，不能用固定-400μm或图像移动替代选点。
 
 2026-10-04 用户固化 routing：码块编译默认先验证直达，受阻时求既有 2.5 μm 偏移半格通道中的最短合法距离；统一设备感知入口及单块→多块→工厂实施顺序见 [标准路由](docs/qec_routing_standard.md)。不得沿用写死的 5/10 μm 折线冒充寻路；历史路线仅用于明确标注的对照。捕获、完整活动交点、备用轴、旁观原子和物理阈值继续完整校验。

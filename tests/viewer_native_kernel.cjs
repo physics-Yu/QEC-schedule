@@ -1,0 +1,26 @@
+// Inspect an actual committed kernel recording; browser QA is separate.
+const fs=require('node:fs'),assert=require('node:assert/strict');
+const h=require('./viewer_harness.cjs')(fs.readFileSync(process.argv[2],'utf8'));
+const before=h.get('JSON.stringify(data)');
+assert.equal(h.get('data.offline_audit_status'),'PASS');
+assert.match(h.el('backend-caption').textContent,/轻量调度内核/);
+const roles=JSON.parse(h.get('JSON.stringify(data.scene.atom_roles)'));
+assert.equal(Object.values(roles).filter(r=>r.stabilizer_basis==='X').length,4);
+assert.equal(Object.values(roles).filter(r=>r.stabilizer_basis==='Z').length,4);
+const pulse=h.get('data.operations.find(o=>o.kind==="entangling_pulse")');
+assert.equal(pulse.gate_ids.length,6);h.get(`seek(${(pulse.start+pulse.end)/2})`);
+h.el('fit-atoms').onclick();
+const g=JSON.parse(h.get('JSON.stringify(markerGeometry())'));
+assert(Math.abs(g.atom/g.trap-1.15)<1e-10);
+h.el('zoomout').onclick();
+assert(h.get('markerGeometry().atom')<g.atom);
+const read=h.get('data.operations.find(o=>o.kind==="measurement")');
+h.get(`seek(${read.end-1e-5})`);
+assert(!h.el('measurement-readout').textContent.includes(read.gate_id+'='));
+h.get(`seek(${read.end})`);
+assert(h.el('measurement-readout').textContent.includes(read.gate_id+'=0'));
+h.get('seek(data.duration)');
+assert.equal(h.get('Object.keys(current.f.measurement_results).length'),25);
+h.get('seek(0)');assert.equal(h.get('Object.keys(current.f.measurement_results).length'),0);
+assert.equal(h.get('JSON.stringify(data)'),before);
+console.log('PASS native committed reports, reverse seek, six-pair CZ, X/Z roles, proportional zoom and immutable recording');

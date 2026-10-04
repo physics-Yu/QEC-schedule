@@ -1,5 +1,11 @@
 # 当前交接状态
 
+## 2026-10-04 独立原生内核首阶段通过
+
+用户授权迁移内核，已交付独立 `neutral_atom_kernel`：QMAP C++ → mandatory源请求/完整依赖 → 统一指令流 → 紧凑executor → 增量日志/反馈。日常推进移除旧ProgramBuilder、SimulationState、候选搜索和全trace审核，旧ENV仅兼容/历史。实际17原子d3两轮218门、1123操作、25完成报告；48对CZ/8脉冲/max6并行、82.554ms模型时间。独立全RF/Cartesian/有限作用对几何PASS、7block持续位置、196次真实alignment操作及inflight/finalcheckpoint/2261journal重放exact。录制off/on同流推进0.154/0.261s，strict离线0.119s；native两调用9.72ms、首次导入另计。123pytest与277modules零违规；两Node缩放/报告倒放/fit，真实1280/390px、报告完成边界及零console error通过；新回放本机8780。
+
+Source/接口已冻结并用白名单/raw SHA交给协作工厂任务接143原子薄controller；小写W4.d/x/z角色兼容，core SHA保持。主checkout并行dirty未覆盖，旧六长跑未恢复。完整工厂/injection/processor与native双AOD、量子质量及physical Shor待独立资格；首个native profile是单AOD有序全RF/selective-transfer，不能当历史双AOD资格。见[迁移合同](native_kernel_migration.md)、[小摘要](../references/qec_pbc_validation/native_kernel_2026_10_04.json)、[复现](../docs/native_kernel_migration.md)、[日志](logs/2026-10-04-native-kernel-migration.md)。
+
 ## 2026-10-04 并行码块自动MZ选点恢复
 
 用户确认的自动选点接回parallel_patch，standard默认nearest_mz；实际载体求nearest clamp/邻域，16尝试/3合法完整服务按真实μs/距离选择，完整全world/轴spares/两设备/运输归还保持。single/full12同各自固定端点baseline的六输入字节及原门/effect批次相同，30055.938183→22195.938183/27955.938183μs，减少26.1512%/6.9870%；各161plans、7选点覆盖50/413投影。完整原初态replay及三层独立审计PASS，185不同pytest/267modules0违规。

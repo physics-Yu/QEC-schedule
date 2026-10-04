@@ -71,6 +71,7 @@ def test_static_package_direction_and_no_external_executor_bypass():
         ('neutral_atom_env', ('neutral_atom_strategies', 'neutral_atom_app', 'neutral_atom_experiments')),
         ('neutral_atom_strategies', ('neutral_atom_app', 'neutral_atom_experiments')),
         ('neutral_atom_experiments', ('neutral_atom_app',)),
+        ('neutral_atom_kernel', ('neutral_atom_env', 'neutral_atom_strategies', 'neutral_atom_app', 'neutral_atom_experiments')),
     ):
         for path in (ROOT/'src'/package).rglob('*.py'):
             for node in ast.walk(ast.parse(path.read_text(encoding='utf-8'))):

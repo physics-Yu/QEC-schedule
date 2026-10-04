@@ -7,12 +7,14 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKAGES = ('neutral_atom_env', 'neutral_atom_strategies', 'neutral_atom_experiments', 'neutral_atom_app')
+PACKAGES = ('neutral_atom_env', 'neutral_atom_strategies', 'neutral_atom_experiments', 'neutral_atom_app',
+            'neutral_atom_kernel')
 FORBIDDEN = {
-    'neutral_atom_env': PACKAGES[1:],
+    'neutral_atom_env': PACKAGES[1:4],
     'neutral_atom_strategies': ('neutral_atom_experiments', 'neutral_atom_app'),
     'neutral_atom_experiments': ('neutral_atom_app',),
     'neutral_atom_app': (),
+    'neutral_atom_kernel': PACKAGES[:4],
 }
 
 

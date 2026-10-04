@@ -1,5 +1,7 @@
 # 当前版本说明（2026-09-22）
 
+2026-10-04 用户最新授权的QEC生产迁移方向为[独立原生轻量内核](native_kernel_migration.md)：完整两轮d3小例及增量回放已验收，旧ENV适配退出新日常路径。下方Studio/旧默认记录其兼容入口；完整factory/processor入口正在协作任务接入，不能把小例称为全工厂或完整物理Shor。
+
 本文依据当前源码、[工作台配置](../configs/studio/workbench.json)和各专题保存证据整理。2026-09-15 的非 RL 发布是历史快照；本版同时收录后续 placement、Parking、外部编译器、Interaction IR 与隔离 RL 研究代码。收录代码不代表实验策略已成为默认策略，也不代表此前每项实验都在本轮重新运行。
 
 最新发布检查以 [handoff](../instruction/handoff.md) 及其发布日志为准；程序职责与演进见 [框架总览](general_framework_summary.md)。`QEC-scheduler-next` 是仓库外的另一项目，此处只保存迁移记录，不包含其实现或验收成果。

@@ -455,6 +455,24 @@
       "expected_any": [
         "K69"
       ]
+    },
+    {
+      "query": "内核迁移 QMAP 原生 kernel 不再ProgramBuilder SimulationState 薄架构",
+      "expected_any": [
+        "K70"
+      ]
+    },
+    {
+      "query": "new backend mandatory request_manifest checkpoint_digest 原源报告完整性",
+      "expected_any": [
+        "K70"
+      ]
+    },
+    {
+      "query": "d3 1123ops recording off0.154 on0.261 native冷启动 不等于物理时间",
+      "expected_any": [
+        "K70"
+      ]
     }
   ]
 }
