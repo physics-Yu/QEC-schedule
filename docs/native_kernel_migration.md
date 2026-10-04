@@ -1,48 +1,54 @@
 # QMAP 原生编译与轻量运行内核
 
-2026-10-04：独立内核首阶段完成；完整工厂接入和完整物理 Shor另行验收。
+2026-10-04 当前资格为 `d3-global-ez-attempt5`、平台 `native-kernel-d3-global-ez-paired5-sz10/v2`。全 x EZ、显式事件起止、共同三次运动及独立审核已通过；完整工厂、injection/processor 和完整 physical Shor 继续分别验收。
 
-新主路径是 `冻结协议/controller → QMAP C++ → Operation流 → KernelExecutor → 增量journal/反馈`。QMAP负责酉块的排布、分组和路由；Python轻量运行器负责持续位置、holder、时钟、完成集合和声明报告。日常推进不调用旧 NativeProgramAdapter、ProgramBuilder、SimulationState、候选搜索或全trace审核，也没有静默旧策略fallback。
+路径是 `冻结协议/controller → QMAP C++ → Operation流 → KernelExecutor → 增量journal/反馈`。QMAP负责酉块排布/分组/路由；Python紧凑内核维护真实位置、holder、时钟、依赖完成与声明报告。推进不调用旧NativeProgramAdapter、ProgramBuilder、SimulationState、候选搜索或全trace重审，无静默旧策略fallback。
 
-实测两轮218门、1123操作、25报告完成，48对CZ组成8个脉冲、每脉冲最多6对；独立几何与原初态逐block重放PASS。相同操作流录制关闭/开启推进分别0.154/0.261秒，离线审核0.119秒；两次C++调用合计0.00972秒，首次库加载0.36秒左右。物理模型总时间82.554毫秒，不能与Python墙钟时间混用。123项测试及277模块架构检查通过。
+## 当前资格与历史
 
-## 接口与职责
+实际17原子、两轮canonical Z memory有218源门、1123操作、25完成报告；48对CZ组成8个脉冲、max6同步，模型终态 **82,554.39152192436 μs**。独立核对66source/14artifact、原源GateSpec与2native段、7blocks、196alignment操作/16,027.92007011722 μs、inflight/finalcheckpoint和2261journal精确重放，全RF/Cartesian/有限作用对/MZ审核PASS。t=0为声明初态，外部制备成本未知。
+
+recording off/on同流推进 **0.226291/0.377402 s**，strict离线 **0.148458 s**；两次C++ compile合计 **0.008824 s**、cold import **0.365402 s**单列。native入口整体0.382874 s，lowering0.017355/fullRF0.137625/export0.372532 s。这些墙钟与μs模型时间不混算，未测同输入legacy加速比。最终171pytest/5.95 s、277modules/0violations通过。
+
+[可移植摘要](../references/qec_pbc_validation/global_ez_kernel_2026_10_04.json)与[追加日志](../instruction/logs/2026-10-04-global-ez-scheduled-kernel.md)保存实际来源、失败和边界。旧v1/123tests/attempt2保持当时局部EZ/串行组件快照，不作为当前平台资格。首能力[ff9ab421](https://github.com/physics-Yu/QEC-schedule/commit/ff9ab421a6450eff5610aabe11aabf6f304f3000)已独立fetch核对parent/tree/32blobs，[历史回执](../references/qec_pbc_validation/native_kernel_publication_2026_10_04.json)保留；当前v2发布由root另验。
+
+## API、并发与原生批次
 
 | 层 | 入口 | 职责 |
 | --- | --- | --- |
-| 原生编译 | `strategies.native_kernel.compile_native` | 调用真实QMAP C++，保留原门ID、完整依赖、版本化请求与NAViz |
-| 指令转换 | `lower_native` / `finalize_operations` | 对齐原源门、原生端点及作用对，显式补空设备/备用RF轴定位与计时 |
-| 执行 | `neutral_atom_kernel.KernelExecutor` | bind_block、run、observe、activate_fragment、wait_until、checkpoint/restore |
-| 离线审核 | `neutral_atom_kernel.audit.audit_operations` | 固定初态和指令流的连续几何、全Cartesian活动交点、作用对及时长 |
-| 观察器 | `app.native_kernel_view.export_native_kernel_view` | 只读提交增量，导出共用回放；不构造旧环境状态 |
+| 原生 | `compile_native` | lazy加载QMAP3.5/core/Qiskit，缓存bindings/architecture，每request实际compile |
+| 转换 | `lower_native` / `finalize_operations` / `schedule_operations` | 原源ID/参数/完整依赖对齐；原生端点不改；补空AOD/fullRF后绑定起止 |
+| 执行 | `KernelExecutor` | bind/run/observe/evaluate/fragment/report/checkpoint/restore |
+| 审核 | `audit_operations` / `tools/audit_native_kernel_memory.py` | 独立连续几何、完整源与精确block/journal重放；不调用native求解 |
+| 观察 | `export_native_kernel_view` | 只读增量、当前轨迹、完成报告与共用viewer |
 
-Block绑定当前版本与滚动摘要。错误身份、未就绪依赖、过期提交、重复效果、错误carrier和提前报告继续拒绝。MEASURE结束时才提交声明位；RESET保留历史报告及原子身份。Checkpoint独立摘要绑定全部内容；恢复还重现声明报告、核对测量完成绑定、时间、源游标与有记录部分，不在热事件路径重扫历史。完整性checksum不是外部真实性签名。
+Operation携带block-relative `start_us/end_us`、operation-ID `depends_on`、附加`resources`与`motion_profile`；`bind_block(..., execution_mode='scheduled')`执行明确并发。核心atom/AOD/光资源强制派生，不能省略。独立同型SLM1Q与无关运输、MZ读出与另一原子LOAD/MOVE重叠、多个inflight冷恢复由专项测试验证。Controller继续拥有token/carrier/epoch/frame/库存，只通过Observation和fragment续接。报告仅MEASURE完成提交，RESET保留历史报告和身份。
 
-Controller继续拥有库存、token、carrier、epoch、frame、接受拒收和processor请求。它只读Observation并激活后续fragment。旧ENV仍留在历史工作台/兼容入口；新内核不导入它，离线导出只复用原共用viewer。完整工厂入口迁移由协作工厂任务接入，不将内核资格例宣称为工厂资格。
+NAViz `@+` 在上一instruction END后开始，`[]`目标共享start/end，不能拆为逐原子串行。[官方格式](https://raw.githubusercontent.com/munich-quantum-toolkit/naviz/main/docs/file_format.md)、[固定3.5 codegen](https://raw.githubusercontent.com/munich-quantum-toolkit/qmap/v3.5.0/src/na/zoned/code_generator/CodeGenerator.cpp)。本例每native段180instructions：56单目标u、24LOAD/72MOVE/24STORE/4CZ，19LOAD/57MOVE/19STORE为[]同步batch，maxMOVE9atoms，没有multi-target1Q。原生END链不等于一般并发；不伪改独立@+u同时，也不虚构native多AOD。
 
-## 首个资格例
+先finalize完整CONFIGURE/fullRF时长，再`schedule_operations(operations, start_us=0.0)`；helper显式end精确复用于下一start。blocks保存原relative payload，flatten分别加epoch到start/end，不能从absolute减回源payload。attempt3一ULP加法关联导致假依赖未完成已修复；duration仅允许IEEE-754表示误差，zero duration端点相同，不给物理或依赖加宽容。
 
-标准rotated d=3、9 data + 8 X/Z syndrome辅助原子，完整两轮Z memory，包括初始RESET、四层CSS/H边界、读出RESET、跨段实际衔接和终端data读出。原始canonical源门和依赖保留，不把该17原子demo的局部服务模式当作任意factory协议；工厂显式全测量barrier必须保持。
+mandatory原请求schema/version/compilerSHA、manifest、NAVizSHA、原源GateSpec/mapping/architecture/barriers/routing/config与schedule/illumination/motion合同独立重建。缺manifest、只改SHA、重算摘要后的伪源、非法同批依赖拒绝。跨wire依赖sidecar保留，不把1Q-only barrier当native强CZ层边界。校验和是复现完整性，不是外部真实性签名。
 
-平台 `native-kernel-d3-paired5-sz10/v1` 为单native AOD_0，有序8×16 RF轴与显式selective transfer。SZ节距10μm；EZ配对SLM距离5μm、列节距20μm/行10μm；SLM候选格点5μm。有限CZ为6μm，非伙伴至少10μm，Raman寻址至少5μm，运输连续间距1μm。10μm用于非作用伙伴；实际CZ伙伴必须进入有限作用距离。
+## 全 x EZ、trap与共同运动
 
-时间采用项目声明模型：装卸15μs、CZ0.36μs、1Q1μs、搬运 `200*sqrt(max_full_RF_axis_displacement/110)` μs，M500μs、RESET100μs。关闭轴也保留实际位置并计时。MZ在y130–180，逐原子选最近合法5μm点，显式2.5μm偏移服务通道。参数是实验profile，不是普适硬件测量。
+[全带合同](qec_global_ez_contract.md)为权威：world x −20…200 μm、EZ y50…80 μm，profile/QMAP/lowerer/reviewer/viewer一致。CZ核对带内所有存活原子及全部有限距离对，任何holder、算法/工厂/缓存或named box都不豁免旁观者。原生rectangle保留provenance，有效照明全带由profile独立核对。
 
-QMAP当前公开接口没有live初始placement；两段之间必须执行实际buffer permutation并支付运输成本。它目前不分配多AOD；IR设备ID不等于原生双AOD已实现。报告源为`canonical-scheduling-zero/v1`，仅验调度报告语义，quantum_projection=False、fidelity=null。
+SLM sites另按显式inventory/site regions声明，5μm格点不自动填充world/compute，隔离带不能从宽照明推trap。原生SZ10μm，paired EZ x=0/5+20k、y60/70，伙伴5μm；单AOD_0为有序8×16全RF/selective-transfer。完整活动Cartesian空交点及关闭spare轴保留位置与计时。
 
-## 复现和证据
+项目实验时间：LOAD/STORE15μs、CZ0.36μs、1Q1μs、MOVE/CONFIGURE `200*sqrt(max_full_RF_axis_displacement/110)` μs、M500μs、RESET100μs。row_column所有轴/载体共同进度`3u²−2u³`；explicit rigid线性保留。当前pose、纯evaluate、恢复、独立轨迹审核和viewer一致。finiteCZ6/nonpartner10/Raman5/运输1μm保持。MZ y130…180，最近合法site与2.5μm偏移运输/服务显式计时。
 
-在装有QMAP3.5.0/Bench2.1.0的Python环境中运行：
+QMAP公开接口不接live初始mapping，段间真实buffer permutation计时，不按门启动进程；原生输出不分配多AOD或一般并发时间线。报告源canonical-scheduling-zero/v1，fidelity=null，无量子质量资格。
+
+## 复现、回放与阶段边界
+
+编译需QMAP3.5.0、mqt.core3.3.3、Qiskit2.2.3；新compiler不依赖Bench/author evaluator/legacy adapter。写新目录复现，保留attempt5：
 
 ```powershell
-python examples/run_native_kernel_memory.py --output artifacts/native-kernel-2026-10-04/d3-two-rounds-attempt2 --rounds 2 --wall-budget 120
-python tools/audit_native_kernel_memory.py artifacts/native-kernel-2026-10-04/d3-two-rounds-attempt2
+python examples/run_native_kernel_memory.py --output artifacts/native-kernel-2026-10-04/d3-global-ez-reproduce --rounds 2 --wall-budget 120
+python tools/audit_native_kernel_memory.py artifacts/native-kernel-2026-10-04/d3-global-ez-reproduce --output artifacts/native-kernel-2026-10-04/d3-global-ez-reproduce-independent-review.json
 ```
 
-输出initial原协议、两份native请求/NAViz、operations、blocks、journal、inflight/final checkpoints、严格离线audit、共享replay.html、增量recording.json及完整源码/产物SHA manifest。严格审核失败会使CLI非零退出。回放X/Z角色、同比缩放、主要时间统计、逐项默认折叠保持，报告随时间只在读出完成后出现，倒放不泄漏未来位。
+输出原源/初态、native请求/NAViz、relative blocks/absolute operations、journal、inflight/final checkpoint、独立audit、共用replay/recording与SHA manifest。review写run同级保持manifest封闭。当前8780绑定attempt5，真实default视窗及请求390×844窄屏全EZ/caption可见，console0；两Node按replay.html通过报告/倒放/六pairs/XZ/zoom/immutable和320/390/desktop fit。旧attempt2的1280检查不计本轮。
 
-实测、测试和浏览器回执见 `references/qec_pbc_validation/native_kernel_2026_10_04.json`；详细日志见 `instruction/logs/2026-10-04-native-kernel-migration.md`。原attempt0保留为审核发现修复前证据，不覆盖。
-
-## 当前边界
-
-已交付独立执行内核、版本化native请求、显式MZ服务、持续状态/恢复、增量观察及固定profile离线资格。完整143原子factory、持续库存/injection/processor默认入口、native双AOD、完整physical Shor和含噪容错质量仍按S1–S3单独验收。新内核执行快不等于更短的物理模型时间；录制和严格审核单独计时。
+attempt3实际失败；attempt4 memory/独审真实PASS，保留最终batch-report identity修复前范围，不能代替attempt5。source-freeze-v4取代v3并已交协作工厂。完整143工厂、库存/同token injection/processor、native双AOD、含噪FT和完整physicalShor均未由本例资格化；下一步按共享S1–S3原完整依赖接薄controller，先有界warm-native、持续holder/fullRF/MZ与报告续接证明。

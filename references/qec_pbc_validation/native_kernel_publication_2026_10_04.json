@@ -1,0 +1,179 @@
+{
+  "schema": "native-kernel-publication/1",
+  "repository": "physics-Yu/QEC-schedule",
+  "branch": "codex/d3-shor15-stages",
+  "capability_commit": "ff9ab421a6450eff5610aabe11aabf6f304f3000",
+  "parent": "a8c99fc5dfb1eca3f91273de5b93a1a446403c4e",
+  "tree": "94c7bab8defe31b3c100f29d4676228fb26f0e2d",
+  "changed_files": 32,
+  "verified_git_fetch": true,
+  "all_changed_blobs_match_tested_stage": true,
+  "pull_request": "https://github.com/physics-Yu/QEC-schedule/pull/3",
+  "draft": true,
+  "merged": false,
+  "pushurl_unchanged": "DISABLED",
+  "validation": "references/qec_pbc_validation/native_kernel_2026_10_04.json",
+  "files": [
+    {
+      "path": "agent.md",
+      "bytes": 18249,
+      "blob": "5b9105876dbaf137e7af4aa8874c471e355c1353"
+    },
+    {
+      "path": "docs/current_version.md",
+      "bytes": 14474,
+      "blob": "12973d01620f80fff50edbbe8b6a5b11f0c63d29"
+    },
+    {
+      "path": "docs/native_kernel_migration.md",
+      "bytes": 5289,
+      "blob": "7c251495f6cfc66e6ecc702213484c9f50c5f773"
+    },
+    {
+      "path": "examples/run_native_kernel_memory.py",
+      "bytes": 3021,
+      "blob": "05a232ba6dfbd4fdaf7f58d373f616de2396e7c5"
+    },
+    {
+      "path": "instruction/architecture.md",
+      "bytes": 11507,
+      "blob": "cc2cdd57cb578dbabf2b8544c8cfee1acc2b7735"
+    },
+    {
+      "path": "instruction/handoff.md",
+      "bytes": 22424,
+      "blob": "33d2cf95493e166b84f24666a6a731e90ddb3cc1"
+    },
+    {
+      "path": "instruction/logs/2026-10-04-native-kernel-migration.md",
+      "bytes": 4016,
+      "blob": "6dd5e7c4ecfc271c17e0073e3206205384bd49b2"
+    },
+    {
+      "path": "instruction/native_kernel_migration.md",
+      "bytes": 3276,
+      "blob": "fc8d6d0c3dbca205945545bd5c0efdae0ec7aa4e"
+    },
+    {
+      "path": "references/qec_pbc_rag/knowledge.jsonl",
+      "bytes": 180858,
+      "blob": "f7676e200479bcafaa9df88fbd7b31c45dd73bbd"
+    },
+    {
+      "path": "references/qec_pbc_rag/query_cases.json",
+      "bytes": 12771,
+      "blob": "b544eca61bb1028942237aac395f6360a61b131d"
+    },
+    {
+      "path": "references/qec_pbc_rag/sources.json",
+      "bytes": 105890,
+      "blob": "77cb153454c7a8b484a9129095c7e0fe4151e3b1"
+    },
+    {
+      "path": "references/qec_pbc_validation/native_kernel_2026_10_04.json",
+      "bytes": 8328,
+      "blob": "0908129cf6fe03c1d052e5c32e9a478815b63be2"
+    },
+    {
+      "path": "src/neutral_atom_app/native_kernel_view.py",
+      "bytes": 24060,
+      "blob": "7cca0f6ef83bef219ec59f9441da27098aee5d50"
+    },
+    {
+      "path": "src/neutral_atom_env/visualization/viewer.js",
+      "bytes": 59422,
+      "blob": "f8653ef7bcc463f351e5ca29dbc46f980afca599"
+    },
+    {
+      "path": "src/neutral_atom_experiments/qec_pbc/native_kernel_memory.py",
+      "bytes": 16675,
+      "blob": "4c2dde661258e6e87adec5cbf60ce176bf49b708"
+    },
+    {
+      "path": "src/neutral_atom_kernel/__init__.py",
+      "bytes": 336,
+      "blob": "d5c40f84f709c7f6dcfe3f882ca09b24e7578cf2"
+    },
+    {
+      "path": "src/neutral_atom_kernel/audit.py",
+      "bytes": 30625,
+      "blob": "761a0442c2245f6c1d8435c7c83f7b68a3e1e3df"
+    },
+    {
+      "path": "src/neutral_atom_kernel/model.py",
+      "bytes": 5631,
+      "blob": "fbeead1accad485b1be83de4a0d7af355a12ad37"
+    },
+    {
+      "path": "src/neutral_atom_kernel/runtime.py",
+      "bytes": 46295,
+      "blob": "85b0652d54fe7a421bc93003e99c665dbccdb35e"
+    },
+    {
+      "path": "src/neutral_atom_strategies/native_kernel/__init__.py",
+      "bytes": 347,
+      "blob": "47afeaecff5548a5b3515a0a191bf1d6b43dfc46"
+    },
+    {
+      "path": "src/neutral_atom_strategies/native_kernel/axes.py",
+      "bytes": 161,
+      "blob": "8f5520d6d7976c482e474813b081be340b94d1a1"
+    },
+    {
+      "path": "src/neutral_atom_strategies/native_kernel/compiler.py",
+      "bytes": 12361,
+      "blob": "f11f836a41f3b98c895c48457a21dfdae05a5588"
+    },
+    {
+      "path": "src/neutral_atom_strategies/native_kernel/lowering.py",
+      "bytes": 31271,
+      "blob": "d832af7265223fe7fe1078fc0afcf94c0a3a8021"
+    },
+    {
+      "path": "tests/test_environment_boundary.py",
+      "bytes": 7172,
+      "blob": "c87951ead3bf1b85b42cc282847477e97756feb0"
+    },
+    {
+      "path": "tests/test_native_kernel_audit.py",
+      "bytes": 14285,
+      "blob": "0fb32843c9703c2275b08ca952194e8b6e68aca3"
+    },
+    {
+      "path": "tests/test_native_kernel_boundary.py",
+      "bytes": 1464,
+      "blob": "a708d59072492ed2d92fff381f86ae32b34711e5"
+    },
+    {
+      "path": "tests/test_native_kernel_lowering.py",
+      "bytes": 14220,
+      "blob": "e62083d2c2f94e1fc6694fccf55b2539af7d6c08"
+    },
+    {
+      "path": "tests/test_native_kernel_runtime.py",
+      "bytes": 13446,
+      "blob": "607c84dd09148a1c41eea3cfacff7ee5bfa981da"
+    },
+    {
+      "path": "tests/test_native_kernel_view.py",
+      "bytes": 7847,
+      "blob": "7d33e46791acd5eafb7815ce186907be92f0d8e5"
+    },
+    {
+      "path": "tests/viewer_native_kernel.cjs",
+      "bytes": 1659,
+      "blob": "e68b51771ef573f37c685b9d731935fee91fcb00"
+    },
+    {
+      "path": "tools/audit_native_kernel_memory.py",
+      "bytes": 20822,
+      "blob": "8484b34704922e108b0c37acdcb8938756b70ca5"
+    },
+    {
+      "path": "tools/check_architecture.py",
+      "bytes": 3263,
+      "blob": "9c57355455cf87fccef5cb6a06f7e08ff3721707"
+    }
+  ],
+  "scope": "independent kernel first-stage qualification; full factory, native multi-AOD and physical Shor remain separate"
+}

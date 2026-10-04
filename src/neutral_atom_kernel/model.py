@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from math import isfinite
+from math import isfinite, ulp
 from types import MappingProxyType
 from typing import Any, Mapping
 
@@ -78,6 +78,11 @@ class Operation:
     report_ids: tuple[str, ...] = ()
     aod_id: str = "AOD_0"
     metadata: Mapping[str, Any] = field(default_factory=dict)
+    start_us: float | None = None
+    depends_on: tuple[str, ...] = ()
+    resources: tuple[str, ...] = ()
+    motion_profile: str = "row_column"
+    end_us: float | None = None
 
     def __post_init__(self) -> None:
         _id(self.id)
@@ -104,6 +109,25 @@ class Operation:
             raise ValueError("duplicate position atom id")
         object.__setattr__(self, "positions", tuple(points))
         object.__setattr__(self, "metadata", freeze(self.metadata))
+        if self.start_us is not None:
+            start = float(self.start_us)
+            if not isfinite(start) or start < 0:
+                raise ValueError("start_us must be a finite nonnegative block offset")
+            object.__setattr__(self, "start_us", start)
+        object.__setattr__(self, "depends_on", _ids(self.depends_on, "operation dependency id"))
+        object.__setattr__(self, "resources", _ids(self.resources, "resource id"))
+        if self.id in self.depends_on:
+            raise ValueError("an operation cannot depend on itself")
+        if self.motion_profile not in ("row_column", "rigid"):
+            raise ValueError("motion_profile must be row_column or rigid")
+        if self.end_us is not None:
+            end = float(self.end_us)
+            if self.start_us is None or not isfinite(end) or end < self.start_us:
+                raise ValueError("end_us requires a finite end at or after explicit start_us")
+            tolerance = 4*(ulp(self.start_us)+ulp(end)+ulp(duration))
+            if (duration == 0 and end != self.start_us) or abs((end-self.start_us)-duration) > tolerance:
+                raise ValueError("explicit end-start must equal duration within floating-point representation")
+            object.__setattr__(self, "end_us", end)
 
 
 @dataclass(frozen=True, slots=True)
@@ -113,6 +137,7 @@ class Block:
     expected_version: int
     starting_state_hash: str
     native_provenance: Mapping[str, Any] = field(default_factory=dict)
+    execution_mode: str = "serial"
 
     def __post_init__(self) -> None:
         _id(self.id)
@@ -126,6 +151,10 @@ class Block:
         _id(self.starting_state_hash, "starting state hash")
         object.__setattr__(self, "operations", operations)
         object.__setattr__(self, "native_provenance", freeze(self.native_provenance))
+        if self.execution_mode not in ("serial", "scheduled"):
+            raise ValueError("execution_mode must be serial or scheduled")
+        if self.execution_mode == "scheduled" and any(operation.start_us is None for operation in operations):
+            raise ValueError("scheduled operations require explicit start_us")
 
 
 @dataclass(frozen=True, slots=True)
@@ -143,5 +172,17 @@ class Observation:
     fragment_remaining: Mapping[str, int]
     completed_fragment_ids: tuple[str, ...]
     report_source_cursor: int | None
+    aod_axes: Mapping[str, Mapping[str, tuple[float, ...]]]
+    inflight_operations: tuple[str, ...] = ()
+    completed_operation_ids: tuple[str, ...] = ()
+    resource_owners: Mapping[str, str] = field(default_factory=dict)
+    committed_positions: Mapping[str, tuple[float, float]] = field(default_factory=dict)
+
+
+@dataclass(frozen=True, slots=True)
+class TrajectoryEvaluation:
+    time_us: float
+    committed_version: int
+    positions: Mapping[str, tuple[float, float]]
     aod_axes: Mapping[str, Mapping[str, tuple[float, ...]]]
 

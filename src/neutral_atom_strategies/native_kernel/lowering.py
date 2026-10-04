@@ -31,6 +31,8 @@ class NativeInstruction:
     parameters: tuple[float, ...] = ()
     zones: tuple[str, ...] = ()
     line: int = 0
+    grouped: bool = False
+    time_reference: str = 'previous-end'
 
 
 @dataclass(frozen=True)
@@ -50,7 +52,13 @@ def _numbers(values, line):
 
 
 def parse_naviz(code):
-    """Read only pinned compiler syntax; unknown/nonunitary input is an error."""
+    """Read pinned ``@+`` syntax and retain synchronized target batches.
+
+    NAViz ``@+`` starts after the preceding instruction ends. Bracketed targets
+    share one start and end; splitting them into serial atom operations would
+    alter that schedule. QMAP 3.5 does not emit general concurrent timestamps.
+    Unknown syntax and nonunitary commands are errors rather than omissions.
+    """
     initial, out = {}, []
     lines = iter(enumerate(code.splitlines(), 1))
     for number, raw in lines:
@@ -76,7 +84,8 @@ def parse_naviz(code):
             parameters.append(value)
         parameters = _numbers(parameters, number)
         entries = [rest]
-        if rest == '[':
+        grouped = rest == '['
+        if grouped:
             entries = []
             for _, item in lines:
                 item = item.strip()
@@ -96,15 +105,16 @@ def parse_naviz(code):
                 moves.append((m[3], _numbers((m[1], m[2]), number)))
             if len({q for q, _ in moves}) != len(moves):
                 raise ValueError(f'NAViz line {number}: duplicate move atom')
-            out.append(NativeInstruction(kind, moves=tuple(moves), line=number))
+            out.append(NativeInstruction(kind, moves=tuple(moves), line=number, grouped=grouped))
         elif kind == 'cz':
             if len(set(entries)) != len(entries) or any(re.fullmatch(r'zone_cz\d+', z) is None for z in entries):
                 raise ValueError(f'NAViz line {number}: invalid CZ zones')
-            out.append(NativeInstruction(kind, zones=tuple(entries), line=number))
+            out.append(NativeInstruction(kind, zones=tuple(entries), line=number, grouped=grouped))
         else:
             if len(set(entries)) != len(entries) or any(q not in initial for q in entries):
                 raise ValueError(f'NAViz line {number}: unknown or duplicate atom')
-            out.append(NativeInstruction(kind, atoms=tuple(entries), parameters=parameters, line=number))
+            out.append(NativeInstruction(kind, atoms=tuple(entries), parameters=parameters,
+                                         line=number, grouped=grouped))
     if not initial:
         raise ValueError('NAViz has no initial atoms')
     return initial, tuple(out)
@@ -122,13 +132,15 @@ def _expected_rotation(kind):
 
 def _validate_native_identity(result, gates):
     """Rebuild the complete request; hashes alone are not a source contract."""
-    from .compiler import (ARCHITECTURE_SOURCE, ENGINE, OUTPUT_SCHEMA, PINNED_QMAP_VERSION,
+    from .compiler import (ARCHITECTURE_SOURCE, ENGINE, ILLUMINATION_CONTRACT,
+        MOTION_CONTRACT, NATIVE_SCHEDULE_CONTRACT, OUTPUT_SCHEMA, PINNED_QMAP_VERSION,
         TIMING_PROFILE, _contracts, _frontiers, _request_manifest, _source_sha256)
     required = ('schema', 'status', 'engine', 'block_id', 'versions', 'request_manifest',
         'request_sha256', 'compiler_source_sha256', 'architecture', 'architecture_source',
         'architecture_sha256', 'gate_contract', 'gate_contract_sha256', 'atom_mapping',
         'initial_positions', 'completed_dependencies', 'barrier_before', 'dependency_mode',
-        'routing', 'reuse_level', 'timing_profile', 'code', 'naviz_sha256')
+        'routing', 'reuse_level', 'timing_profile', 'code', 'naviz_sha256',
+        'native_schedule_contract', 'illumination_contract', 'motion_contract')
     missing = tuple(key for key in required if key not in result)
     if missing:
         raise ValueError(f'Native identity requires all provenance fields; missing {missing}')
@@ -152,6 +164,10 @@ def _validate_native_identity(result, gates):
         raise ValueError('Native compiler source digest differs from the current implementation')
     if result['architecture_source'] != ARCHITECTURE_SOURCE or result['timing_profile'] != TIMING_PROFILE:
         raise ValueError('Native platform/timing provenance differs from this contract')
+    if (result['native_schedule_contract'] != NATIVE_SCHEDULE_CONTRACT
+            or result['illumination_contract'] != ILLUMINATION_CONTRACT
+            or result['motion_contract'] != MOTION_CONTRACT):
+        raise ValueError('Native schedule/illumination/motion provenance differs from this contract')
     code = result['code']
     if not isinstance(code, str) or not code or sha256(code.encode()).hexdigest() != result['naviz_sha256']:
         raise ValueError('Native NAViz digest mismatch')
@@ -200,6 +216,37 @@ def _validate_native_identity(result, gates):
     return rebuilt_contracts
 
 
+def _illumination_zones(architecture):
+    """Bind native zone y intervals to the whole declared physical world x.
+
+    The original native rectangles remain provenance. They cannot exempt a
+    spectator elsewhere in an illuminated y band from a global CZ pulse.
+    """
+    def rectangle(value, label):
+        try:
+            if len(value) != 2 or any(len(point) != 2 for point in value):
+                raise ValueError
+            lo, hi = (tuple(float(v) for v in point) for point in value)
+            if not all(isfinite(v) for v in lo + hi) or any(a >= b for a, b in zip(lo, hi)):
+                raise ValueError
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f'{label}: finite ordered world/zone rectangle is required') from exc
+        return lo, hi
+    world = rectangle(architecture.get('arch_range'), 'arch_range')
+    ranges = architecture.get('rydberg_range')
+    if not isinstance(ranges, (tuple, list)) or not ranges:
+        raise ValueError('rydberg_range: at least one illuminated y band is required')
+    native, effective = {}, {}
+    for i, bounds in enumerate(ranges):
+        zone = f'zone_cz{i}'
+        lo, hi = rectangle(bounds, zone)
+        if lo[1] < world[0][1] or hi[1] > world[1][1]:
+            raise ValueError(f'{zone}: illuminated y band lies outside the physical world')
+        native[zone] = (lo, hi)
+        effective[zone] = ((world[0][0], lo[1]), (world[1][0], hi[1]))
+    return world, native, effective
+
+
 def lower_native(result, gates=None, *, initial_positions=None,
                  completed_dependencies=None, aod_id='AOD_0',
                  interaction_distance_um=6., nonpartner_minimum_um=10.):
@@ -240,8 +287,7 @@ def lower_native(result, gates=None, *, initial_positions=None,
     for row in contracts:
         if set(row['depends_on']) - by_id.keys() - completed:
             raise ValueError(f"{row['id']}: external report/gate dependency is not committed")
-    zones = {f'zone_cz{i}': (tuple(bounds[0]), tuple(bounds[1]))
-             for i, bounds in enumerate(architecture['rydberg_range'])}
+    world_bounds, native_zones, zones = _illumination_zones(architecture)
     loaded, operations, bound = set(), [], []
 
     def finish_gate_batch(ids, line):
@@ -263,7 +309,10 @@ def lower_native(result, gates=None, *, initial_positions=None,
     for index, native in enumerate(instructions):
         atoms = tuple(names[q] for q in native.atoms)
         moves = tuple((names[q], point) for q, point in native.moves)
-        metadata = {'source_line': native.line, 'native_kind': native.kind}
+        metadata = {'source_line': native.line, 'native_kind': native.kind,
+            'native_time_reference': native.time_reference,
+            'native_grouped_targets': native.grouped,
+            'native_instruction_index': index}
         gids, duration, kind = (), 0., native.kind.upper()
         affected = atoms if native.kind != 'move' else tuple(q for q, _ in moves)
         if native.kind == 'cz':
@@ -325,6 +374,8 @@ def lower_native(result, gates=None, *, initial_positions=None,
             atoms = tuple(dict.fromkeys(q for pair in pairs for q in pair))
             kind, duration = 'CZ', .36
             metadata.update(zone_ids=native.zones, zone_bounds={z: zones[z] for z in native.zones},
+                native_zone_bounds={z: native_zones[z] for z in native.zones},
+                world_bounds=world_bounds, illumination_scope='global-world-x-y-band/v1',
                 cz_pairs=tuple(pairs), gate_kind='CZ', interaction_distance_um=interaction_distance_um,
                 nonpartner_minimum_um=nonpartner_minimum_um,
                 depends_on=tuple((gid, tuple(by_id[gid]['depends_on'])) for gid in gids))
@@ -343,11 +394,15 @@ def lower_native(result, gates=None, *, initial_positions=None,
         raise ValueError(f'Native source gates were not executed exactly once: {sorted(missing)}')
     provenance = {key: result[key] for key in ('schema', 'engine', 'versions', 'block_id',
         'request_sha256', 'architecture_sha256', 'gate_contract_sha256', 'naviz_sha256',
-        'dependency_mode', 'timing_profile', 'architecture_source', 'reuse_level') if key in result}
+        'dependency_mode', 'timing_profile', 'architecture_source', 'reuse_level',
+        'native_schedule_contract', 'illumination_contract', 'motion_contract') if key in result}
     if 'compiler_source_sha256' in result:
         provenance['compiler_source_sha256'] = result['compiler_source_sha256']
     provenance.update(physical_validation='lowering-CZ-pairs-only; offline-audit-pending',
         aod_id=aod_id, movement_timing='200*sqrt(max_axis_displacement_um/110) us',
+        native_timestamp_semantics='@+ begins after preceding instruction end; [] targets share start/end',
+        native_general_concurrent_schedule=False, native_independent_multi_aod_schedule=False,
+        native_synchronized_multi_target_batches=True,
         native_instruction_count=len(instructions), operation_count=len(operations))
     return LoweredProgram(MappingProxyType(starting), MappingProxyType(dict(positions)),
         tuple(operations), tuple(bound), MappingProxyType(provenance))
@@ -459,9 +514,14 @@ def finalize_operations(operations, initial_positions, *, initial_axes,
     every input operation ID and endpoint, inserting CONFIGURE before empty
     LOADs as required. Repeated calls use the committed observation's axes.
     Disabled spare axes are recorded explicitly and obey the same bounds and
-    minimum spacing. No active-only timing or zero-cost device reset is used.
+    minimum spacing. MOVE/CONFIGURE use a shared cubic row_column progress
+    ``3s**2 - 2s**3`` over their full RF duration. Finalize before scheduling:
+    inserting support operations or changing RF timing invalidates prior starts.
+    No active-only timing or zero-cost device reset is used.
     """
     operations = tuple(operations)
+    if any(op.start_us is not None for op in operations):
+        raise ValueError('Finalize full RF timing before binding operation starts')
     positions = dict(initial_positions)
     holders = {q: 'slm' for q in positions}
     holders.update(initial_holders or {})
@@ -502,6 +562,8 @@ def finalize_operations(operations, initial_positions, *, initial_axes,
         carried = loaded.setdefault(device, set())
         metadata = thaw(op.metadata)
         if op.kind == 'CONFIGURE':
+            if op.motion_profile != 'row_column':
+                raise ValueError('Native full RF CONFIGURE requires row_column cubic motion')
             if carried:
                 raise ValueError('Explicit CONFIGURE occurs while AOD is loaded')
             values = metadata['target_axes']
@@ -509,6 +571,8 @@ def finalize_operations(operations, initial_positions, *, initial_axes,
             if device not in axes or len(target[0]) != len(axes[device][0]) or len(target[1]) != len(axes[device][1]):
                 raise ValueError('Explicit CONFIGURE changes declared RF axis capacity')
             metadata['source_axes'] = axis_payload(axes[device])
+            metadata.update(rf_axis_scope='full-capacity-with-explicit-disabled-spares',
+                active_rows=(), active_columns=(), motion_progress='3s**2-2s**3')
             out.append(replace(op, duration_us=duration(axes[device], target), metadata=metadata))
             axes[device] = target
             continue
@@ -521,6 +585,8 @@ def finalize_operations(operations, initial_positions, *, initial_axes,
                     duration_us=duration(axes[device], target), aod_id=device,
                     metadata={'source_axes': axis_payload(axes[device]), 'target_axes': axis_payload(target),
                         'source_line': metadata.get('source_line'), 'before_operation': op.id,
+                        'rf_axis_scope': 'full-capacity-with-explicit-disabled-spares',
+                        'active_rows': (), 'active_columns': (), 'motion_progress': '3s**2-2s**3',
                         'reason': 'Explicit empty RF positioning before unchanged native/service LOAD'}))
                 axes[device] = target
             elif carried and target != axes[device]:
@@ -536,17 +602,21 @@ def finalize_operations(operations, initial_positions, *, initial_axes,
                         'active_rows': tuple(sorted({positions[q][1] for q in carried})),
                         'active_columns': tuple(sorted({positions[q][0] for q in carried})),
                         'rf_axis_scope': 'full-capacity-with-explicit-disabled-spares',
+                        'motion_progress': '3s**2-2s**3',
                         'reason': 'Position unused RF lines for native partial LOAD; carried atoms stay fixed'}))
                 axes[device] = target
             carried.update(op.atoms)
             holders.update({q: device for q in op.atoms})
             metadata.update(source_axes=axis_payload(axes[device]), target_axes=axis_payload(axes[device]))
         elif op.kind == 'MOVE':
+            if op.motion_profile != 'row_column':
+                raise ValueError('Native full RF MOVE requires row_column cubic motion')
             positions.update(op.positions)
             target = target_axes(index, carried)
             metadata.update(source_axes=axis_payload(axes[device]), target_axes=axis_payload(target))
             op = replace(op, duration_us=duration(axes[device], target))
             axes[device] = target
+            metadata['motion_progress'] = '3s**2-2s**3'
         elif op.kind == 'STORE':
             carried.difference_update(op.atoms)
             holders.update({q: 'slm' for q in op.atoms})
@@ -556,4 +626,43 @@ def finalize_operations(operations, initial_positions, *, initial_axes,
             metadata['active_rows'] = tuple(sorted({positions[q][1] for q in carried}))
             metadata['active_columns'] = tuple(sorted({positions[q][0] for q in carried}))
         out.append(replace(op, metadata=metadata))
+    return tuple(out)
+
+
+def schedule_operations(operations, *, start_us=0.):
+    """Bind the pinned NAViz/service sequence to an explicit end-to-start chain.
+
+    Apply after ``finalize_operations`` so every CONFIGURE and full RF movement
+    duration participates in the schedule. A bracketed native target batch is
+    already a single Operation and remains simultaneous; consecutive ``@+``
+    instructions remain ordered even on disjoint atoms. This helper does not
+    invent native concurrency or independently assign AODs. The returned tuple
+    is suitable for ``bind_block(..., execution_mode='scheduled')``. Each
+    explicit ``end_us`` is reused verbatim as the next ``start_us`` so adding
+    a nonzero block epoch cannot reorder a shared completion/start boundary.
+    """
+    operations = tuple(operations)
+    if not isfinite(start_us) or start_us < 0:
+        raise ValueError('Schedule start_us must be finite and nonnegative')
+    if any(op.start_us is not None for op in operations):
+        raise ValueError('Operation starts are already bound; refusing to reschedule')
+    identities = {op.id for op in operations}
+    if len(identities) != len(operations):
+        raise ValueError('Operation schedule requires unique identities')
+    finished, out, previous = set(), [], None
+    cursor = float(start_us)
+    for op in operations:
+        if set(op.depends_on) - finished:
+            raise ValueError(f'{op.id}: operation dependency is outside the earlier schedule prefix')
+        dependencies = tuple(dict.fromkeys((*op.depends_on, *((previous,) if previous else ()))))
+        metadata = thaw(op.metadata)
+        metadata['schedule_binding'] = 'explicit-end-to-start-chain/v1'
+        end = cursor + op.duration_us
+        if not isfinite(end):
+            raise ValueError('Operation schedule has a nonfinite end time')
+        out.append(replace(op, start_us=cursor, end_us=end,
+                           depends_on=dependencies, metadata=metadata))
+        cursor = end
+        finished.add(op.id)
+        previous = op.id
     return tuple(out)

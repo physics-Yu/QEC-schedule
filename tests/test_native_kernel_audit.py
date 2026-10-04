@@ -136,7 +136,9 @@ def test_zone_metadata_is_reviewed_not_gate_target_subset():
                    metadata={"pairs": (("a", "b"),), "zone_ids": ("left",),
                              "zone_bounds": {"left": ((-5, -5), (10, 5)), "right": ((15, -5), (30, 5))}})
     profile = dict(PROFILE, cz_zones_um={"left": ((-5, -5), (10, 5)), "right": ((15, -5), (30, 5))})
-    assert audit_operations(initial, (op,), profile)["passed"]
+    assert code(audit_operations(initial, (op,), profile)) == "CZ_ZONE_BINDING"
+    full = replace(op, metadata=dict(op.metadata, zone_bounds={"left": ((-100, -5), (200, 5))}))
+    assert code(audit_operations(initial, (full,), profile)) == "CZ_ACTUAL_PAIRS"
     assert code(audit_operations(initial, (op,), PROFILE)) == "CZ_ZONE_BINDING"
 
 
@@ -171,6 +173,8 @@ def test_duplicate_missing_or_wrong_identity_effects_are_rejected():
     assert code(audit_operations(initial, (), PROFILE, gates=(gate,))) == "MISSING_GATE_EFFECT"
     assert code(audit_operations(initial, (replace(op, atoms=("b",)),), PROFILE, gates=(gate,))) == "GATE_ATOM_MAPPING"
     assert code(audit_operations(initial, (replace(op, atoms=("a", "b")),), PROFILE, gates=(gate,))) == "GATE_ATOM_MAPPING"
+    duplicate_target = (gate, GateSpec("other", "H", ("a",)))
+    assert code(audit_operations(initial, (replace(op, gate_ids=("h", "other")),), PROFILE, gates=duplicate_target)) == "GATE_ATOM_MAPPING"
 
 
 def test_transfer_cannot_teleport_and_native_second_aod_is_not_qualified():
@@ -215,7 +219,7 @@ def test_explicit_empty_configuration_is_timed_and_full_coordinates_retained():
     report = audit_operations({"a": (0, 0)}, (op,), FULL_PROFILE, initial_axes=AXES)
     assert report["passed"], report
     assert report["final_reviewed_state"]["axes"] == {"columns": [10.0, 30.0], "rows": [10.0, 30.0]}
-    assert report["geometry_contract"]["name"] == "experimental_native_full_rf_ordered_axes/1"
+    assert report["geometry_contract"]["name"] == "experimental_native_full_rf_ordered_axes/2"
     assert "disabled RF axes" in report["geometry_contract"]["dormant_axes"]
 
 
@@ -264,3 +268,116 @@ def test_active_mask_cannot_hide_loaded_support_or_enable_undeclared_line():
 def test_full_rf_stream_requires_declared_initial_rf_coordinates():
     op = Operation("load", "LOAD", ("a",), 15, metadata=full_meta(AXES, AXES, (0,), (0,)))
     assert code(audit_operations({"a": (0, 0)}, (op,), FULL_PROFILE)) == "INITIAL_AXES_REQUIRED"
+
+
+def scheduled(initial, operations, profile=PROFILE, **kwargs):
+    return audit_operations(initial, operations, profile, execution_mode="scheduled", **kwargs)
+
+
+def test_global_ez_band_cannot_hide_remote_x_spectator_pair():
+    initial = {"a": (0, 0), "b": (5, 0), "remote-c": (150, 0), "remote-d": (155, 0)}
+    op = Operation("cz", "CZ", ("a", "b"), .36, gate_ids=("cz",),
+                   metadata={"pairs": (("a", "b"),), "zone_bounds": {"ez": ((-100, -10), (200, 90))},
+                             "zone_ids": ("ez",), "illumination_scope": "global-world-x-y-band/v1"})
+    assert code(audit_operations(initial, (op,), PROFILE)) == "CZ_ACTUAL_PAIRS"
+    outside = {**initial, "remote-c": (150, 100), "remote-d": (155, 100)}
+    assert audit_operations(outside, (op,), PROFILE)["passed"]
+
+
+def test_global_ez_band_checks_remote_spectator_nonpartners():
+    initial = {"a": (0, 0), "b": (5, 0), "remote-c": (150, 0), "remote-d": (155, 5)}
+    op = Operation("cz", "CZ", ("a", "b"), .36, gate_ids=("cz",), metadata={"pairs": (("a", "b"),)})
+    assert code(audit_operations(initial, (op,), PROFILE)) == "CZ_NONPARTNER_CLEARANCE"
+
+
+def test_independent_same_kind_slm_pulses_overlap_and_time_is_makespan():
+    gates = (GateSpec("ha", "H", ("a",)), GateSpec("hb", "H", ("b",)))
+    ops = tuple(Operation(g.id, "GATE", g.atoms, 1, gate_ids=(g.id,), start_us=0,
+                          metadata={"gate_kind": "H"}) for g in gates)
+    report = scheduled({"a": (0, 0), "b": (20, 0)}, ops, gates=gates)
+    assert report["passed"], report
+    assert report["final_reviewed_state"]["time_us"] == 1
+    assert report["checked_operations"] == 2
+
+
+def test_completion_precedes_equal_time_start_and_dependencies_are_real():
+    gates = (GateSpec("h", "H", ("a",)), GateSpec("x", "X", ("a",), ("h",)))
+    ops = (Operation("h", "GATE", ("a",), 1, gate_ids=("h",), start_us=0, metadata={"gate_kind": "H"}),
+           Operation("x", "GATE", ("a",), 1, gate_ids=("x",), start_us=1, depends_on=("h",), metadata={"gate_kind": "X"}))
+    assert scheduled({"a": (0, 0)}, ops, gates=gates)["passed"]
+    assert code(scheduled({"a": (0, 0)}, (ops[0], replace(ops[1], start_us=.5)), gates=gates)) == "OPERATION_DEPENDENCY"
+
+
+def test_scheduled_stream_cannot_omit_explicit_start():
+    assert code(scheduled({"a": (0, 0)}, (Operation("wait", "WAIT", duration_us=1),))) == "OPERATION_START"
+
+
+def test_extra_resource_cannot_remove_core_atom_or_device_exclusions():
+    ops = (Operation("load-a", "LOAD", ("a",), 15, start_us=0, resources=("extra-a",)),
+           Operation("load-b", "LOAD", ("b",), 15, start_us=0, resources=("extra-b",)))
+    assert code(scheduled({"a": (0, 0), "b": (20, 0)}, ops)) == "RESOURCE_OVERLAP"
+    gate = Operation("h", "GATE", ("a",), 1, gate_ids=("h",), start_us=0, metadata={"gate_kind": "H"})
+    assert code(scheduled({"a": (0, 0)}, (gate, replace(gate, id="other", gate_ids=("other",))))) == "RESOURCE_OVERLAP"
+
+
+def test_different_light_modes_are_excluded_even_on_distinct_atoms():
+    ops = (Operation("h", "GATE", ("a",), 1, gate_ids=("h",), start_us=0, metadata={"gate_kind": "H"}),
+           Operation("x", "GATE", ("b",), 1, gate_ids=("x",), start_us=.5, metadata={"gate_kind": "X"}))
+    assert code(scheduled({"a": (0, 0), "b": (20, 0)}, ops)) == "LIGHT_TYPE_OVERLAP"
+
+
+def test_cubic_motion_is_checked_over_raman_overlap_not_linear_or_endpoints():
+    duration = 200 * sqrt(20 / 110)
+    load = Operation("load", "LOAD", ("a",), 15, start_us=0)
+    movement = replace(move("move", {"a": (20, 0)}, 20), start_us=15, depends_on=("load",))
+    # At u=.1 cubic x≈.56, whereas linear x=2. The latter would falsely fail.
+    pulse = Operation("h", "GATE", ("b",), 1, gate_ids=("h",), start_us=15 + .1 * duration,
+                      metadata={"gate_kind": "H"})
+    profile = dict(PROFILE, raman_separation_um=6)
+    report = scheduled({"a": (0, 0), "b": (5, 5)}, (load, movement, pulse), profile)
+    assert report["passed"], report
+    close_pulse = replace(pulse, start_us=15 + .17 * duration)
+    assert code(scheduled({"a": (0, 0), "b": (5, 5)}, (load, movement, close_pulse), profile)) == "RAMAN_INTERVAL_SEPARATION"
+    assert code(scheduled({"a": (0, 0), "b": (5, 5)}, (load, replace(movement, motion_profile="rigid"), pulse), profile)) == "RAMAN_SEPARATION"
+    # The committed MOVE source can be near a target while its actual pulse-time pose is safe.
+    far_pulse = replace(pulse, start_us=15 + .5 * duration)
+    assert scheduled({"a": (0, 0), "b": (0, 5)}, (load, movement, far_pulse), profile)["passed"]
+
+
+def test_moving_atom_cannot_enter_global_ez_during_static_cz_pulse():
+    initial = {"moving": (150, -20), "a": (0, 0), "b": (5, 0)}
+    load = Operation("load", "LOAD", ("moving",), 15, start_us=0)
+    movement = replace(move("move", {"moving": (150, 20)}, 40), start_us=15, depends_on=("load",))
+    pulse = Operation("cz", "CZ", ("a", "b"), .36, gate_ids=("cz",),
+                      start_us=15 + .325 * movement.duration_us, metadata={"pairs": (("a", "b"),)})
+    # At pulse submission the committed endpoint is outside the band; cubic path enters it.
+    assert code(scheduled(initial, (load, movement, pulse))) == "CZ_MOVING_ILLUMINATION"
+
+
+def test_readout_reports_commit_at_completion_after_safe_overlap():
+    initial = {"a": (100, 100), "b": (0, 0)}
+    gates = (GateSpec("m", "MEASURE", ("a",)), GateSpec("h", "H", ("b",)))
+    ops = (Operation("read", "MEASURE", ("a",), 500, gate_ids=("m",), report_ids=("result",), start_us=0),
+           Operation("h", "GATE", ("b",), 1, gate_ids=("h",), start_us=200, metadata={"gate_kind": "H"}))
+    report = scheduled(initial, ops, gates=gates)
+    assert report["passed"], report
+    assert report["final_reviewed_state"]["measurement_completion_times_us"] == {"result": 500}
+    assert report["final_reviewed_state"]["report_source_cursor"] == 1
+
+
+def test_zero_duration_boundary_preserves_parent_first_causality():
+    ops = (Operation("first", "WAIT", start_us=0), Operation("next", "WAIT", duration_us=1, start_us=0, depends_on=("first",)))
+    assert scheduled({"a": (0, 0)}, ops)["passed"]
+    assert code(scheduled({"a": (0, 0)}, ops[::-1])) == "OPERATION_DEPENDENCY"
+
+
+def test_explicit_slm_inventory_and_regions_override_implicit_world_lattice():
+    profile = dict(PROFILE, declared_slm_sites_um=((0, 0), (20, 0)), slm_site_regions_um=((-10, -10, 30, 10),))
+    assert code(audit_operations({"a": (10, 0)}, (), profile)) == "UNDECLARED_SLM_SITE"
+    ops = (Operation("load", "LOAD", ("a",), 15), move("move", {"a": (10, 0)}, 10), Operation("store", "STORE", ("a",), 15))
+    assert code(audit_operations({"a": (0, 0)}, ops, profile)) == "UNDECLARED_SLM_SITE"
+    assert code(audit_operations({"a": (20, 0)}, (), dict(PROFILE, slm_site_regions_um=((-5, -5, 5, 5),)))) == "UNDECLARED_SLM_SITE"
+    # AOD corridors may use off-lattice coordinates, but cannot STORE there.
+    corridor = (Operation("load", "LOAD", ("a",), 15), move("move", {"a": (2.5, 2.5)}, 2.5))
+    assert audit_operations({"a": (0, 0)}, corridor, profile)["passed"]
+    assert code(audit_operations({"a": (0, 0)}, (*corridor, Operation("store", "STORE", ("a",), 15)), profile)) == "INVALID_SLM_SITE"

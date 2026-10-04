@@ -21,6 +21,9 @@ PINNED_QMAP_VERSION = '3.5.0'
 ENGINE = 'mqt.qmap.native.C++'
 TIMING_PROFILE = 'project-enola-sqrt-maxaxis-us/v1'
 ARCHITECTURE_SOURCE = 'explicit-request-experimental-platform'
+NATIVE_SCHEDULE_CONTRACT = 'qmap-3.5-naviz-after-end-synchronized-targets/v1'
+ILLUMINATION_CONTRACT = 'global-world-x-y-band/v1'
+MOTION_CONTRACT = 'row-column-common-cubic-progress/v1'
 
 
 def _canonical(value):
@@ -58,7 +61,8 @@ def _request_manifest(*, block_id, atom_ids, contracts, architecture, external,
         routing=routing, reuse_level=float(reuse_level),
         native_configuration=_native_configuration(routing, reuse_level),
         engine=ENGINE, versions=dict(versions), compiler_source_sha256=compiler_source_sha256,
-        timing_profile=TIMING_PROFILE)
+        timing_profile=TIMING_PROFILE, native_schedule_contract=NATIVE_SCHEDULE_CONTRACT,
+        illumination_contract=ILLUMINATION_CONTRACT, motion_contract=MOTION_CONTRACT)
 
 
 def paired_architecture(atom_count, *, rows=8, columns=16):
@@ -220,5 +224,9 @@ def compile_native(gates, *, atom_ids, architecture, block_id='native-unitary',
         import_seconds=import_seconds, frontend_seconds=frontend_seconds,
         native_call_seconds=native_seconds, compile_wall_seconds=perf_counter() - started,
         capabilities=dict(external_initial_mapping=False, continuous_placement_input=False,
-            nonunitary=False, global_barriers=True, native_aod_assignment=False),
-        timing_profile=TIMING_PROFILE, physical_validation='pending')
+            nonunitary=False, global_barriers=True, native_aod_assignment=False,
+            general_concurrent_schedule=False, independent_multi_aod_schedule=False,
+            synchronized_multi_target_batches=True),
+        timing_profile=TIMING_PROFILE, native_schedule_contract=NATIVE_SCHEDULE_CONTRACT,
+        illumination_contract=ILLUMINATION_CONTRACT, motion_contract=MOTION_CONTRACT,
+        physical_validation='pending')

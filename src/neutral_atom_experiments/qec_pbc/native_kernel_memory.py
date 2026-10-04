@@ -20,7 +20,7 @@ from .canonical import canonical_memory_program
 def profile():
     """Explicit experimental geometry, distinct from the historical rigid one."""
     architecture = {
-        'name': 'native-kernel-d3-paired5-sz10/v1',
+        'name': 'native-kernel-d3-global-ez-paired5-sz10/v2',
         'operation_duration': {'rydberg_gate': .36, 'single_qubit_gate': 1, 'atom_transfer': 15},
         'operation_fidelity': {'rydberg_gate': .995, 'single_qubit_gate': .9997, 'atom_transfer': .999},
         'qubit_spec': {'T': 1.5e6},
@@ -33,13 +33,17 @@ def profile():
             'offset': [0, 60], 'dimension': [145, 10]}],
         'aods': [{'id': 0, 'site_separation': 2, 'r': 8, 'c': 16}],
         'arch_range': [[-20, -30], [200, 200]],
-        'rydberg_range': [[[-10, 50], [155, 80]]],
+        'rydberg_range': [[[-20, 50], [200, 80]]],
     }
     return {
         'id': architecture['name'], 'architecture': architecture,
         'bounds_um': (-20, -30, 200, 200), 'slm_grid_um': 5,
         'slm_origin_um': (0, 0), 'measurement_zone_um': (0, 130, 180, 180),
-        'cz_zone_um': (-10, 50, 155, 80), 'cz_zones_um': {'zone_cz0': (-10, 50, 155, 80)},
+        'compute_zone_um': (-20, -10, 200, 110),
+        'cz_zone_um': (-20, 50, 200, 80), 'cz_zones_um': {'zone_cz0': (-20, 50, 200, 80)},
+        'cz_illumination': 'global_x_band', 'cz_band_y_um': (50, 80),
+        'slm_site_regions_um': ((0, 0, 160, 0), (-20, 50, 200, 80),
+                                (0, 100, 180, 100), (0, 130, 180, 180)),
         'aod_rows': 8, 'aod_columns': 16, 'aod_axis_spacing_um': 2,
         'cz_radius_um': 6, 'cz_nonpartner_um': 10, 'raman_separation_um': 5,
         'transport_clearance_um': 1,
@@ -139,7 +143,9 @@ def service(measure_or_reset, positions, key, resets=()):
 def serialize_operation(op):
     return {'id': op.id, 'kind': op.kind, 'atoms': list(op.atoms), 'duration_us': op.duration_us,
             'positions': [[q, list(p)] for q, p in op.positions], 'gate_ids': list(op.gate_ids),
-            'report_ids': list(op.report_ids), 'aod_id': op.aod_id, 'metadata': thaw(op.metadata)}
+            'report_ids': list(op.report_ids), 'aod_id': op.aod_id, 'metadata': thaw(op.metadata),
+            'start_us': op.start_us, 'end_us': op.end_us, 'depends_on': list(op.depends_on),
+            'resources': list(op.resources), 'motion_profile': op.motion_profile}
 
 
 def _semantic(observation):
@@ -154,6 +160,7 @@ def _semantic(observation):
 
 def run(output, *, rounds=2, wall_budget=120):
     from neutral_atom_strategies.native_kernel.axes import finalize_operations
+    from neutral_atom_strategies.native_kernel import schedule_operations
     from neutral_atom_kernel.audit import audit_operations
 
     started = perf_counter()
@@ -175,20 +182,23 @@ def run(output, *, rounds=2, wall_budget=120):
             raise TimeoutError('Native kernel demonstration exceeded its declared wall budget')
         before = executor.observe()
         t = perf_counter()
-        finalized = finalize_operations(operations, before.positions,
+        finalized = schedule_operations(finalize_operations(operations, before.positions,
             initial_axes=before.aod_axes, initial_holders=before.holders,
-            bounds=config['bounds_um'], minimum_axis_spacing_um=2)
+            bounds=config['bounds_um'], minimum_axis_spacing_um=2))
         timings['axes'] += perf_counter()-t
-        ops_all.extend(finalized)
-        block = executor.bind_block(key, finalized, native_provenance=provenance)
+        ops_all.extend(replace(op, start_us=before.time_us+op.start_us,
+                               end_us=before.time_us+op.end_us) for op in finalized)
+        block = executor.bind_block(key, finalized, native_provenance=provenance, execution_mode='scheduled')
         blocks.append({'id': key, 'expected_version': block.expected_version,
+                       'start_us': before.time_us, 'execution_mode': block.execution_mode,
                        'starting_state_hash': block.starting_state_hash,
-                       'native_provenance': thaw(block.native_provenance)})
+                       'native_provenance': thaw(block.native_provenance),
+                       'operations': [serialize_operation(op) for op in finalized]})
         t = perf_counter()
         if resume_proof is None and any(op.kind == 'MEASURE' for op in finalized):
             index = next(i for i, op in enumerate(finalized) if op.kind == 'MEASURE')
             measurement = finalized[index]
-            cut = before.time_us + sum(op.duration_us for op in finalized[:index]) + measurement.duration_us/2
+            cut = before.time_us + measurement.start_us + measurement.duration_us/2
             executor.run(block, until_us=cut)
             mid = executor.observe()
             if any(r in mid.measurement_results for r in measurement.report_ids):
@@ -255,21 +265,21 @@ def run(output, *, rounds=2, wall_budget=120):
     t = perf_counter()
     recorded = KernelExecutor(initial, specs, initial_aod_axes=config['initial_axes'],
                               report_source=source, recording=True)
-    recorded.run(recorded.bind_block('recording-on-equivalence', ops_all))
+    recorded.run(recorded.bind_block('recording-on-equivalence', ops_all, execution_mode='scheduled'))
     timings['advance_recording_on'] = perf_counter()-t
     if _semantic(final) != _semantic(recorded.observe()):
         raise AssertionError('Clean recording-on run differs from recovered execution')
     t = perf_counter()
     quiet = KernelExecutor(initial, specs, initial_aod_axes=config['initial_axes'],
                            report_source=source, recording=False)
-    quiet.run(quiet.bind_block('recording-off-equivalence', ops_all))
+    quiet.run(quiet.bind_block('recording-off-equivalence', ops_all, execution_mode='scheduled'))
     timings['advance_recording_off'] = perf_counter()-t
     equivalent = _semantic(final) == _semantic(quiet.observe())
     if not equivalent:
         raise AssertionError('Recording changes kernel results')
     t = perf_counter()
     audit = audit_operations(initial, ops_all, config, gates=specs,
-                             initial_axes=config['initial_axes']['AOD_0'])
+                             initial_axes=config['initial_axes']['AOD_0'], execution_mode='scheduled')
     timings['offline_audit'] = perf_counter()-t
     (directory/'offline-audit.json').write_text(json.dumps(audit, indent=2), encoding='utf-8')
     (directory/'initial.json').write_text(json.dumps({'profile': config, 'positions': initial,

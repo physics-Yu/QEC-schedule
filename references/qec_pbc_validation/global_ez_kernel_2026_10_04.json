@@ -1,0 +1,302 @@
+{
+  "schema": "global-ez-native-kernel-qualification/1",
+  "reviewed_at": "2026-10-04",
+  "qualification": "bounded-global-x-d3-two-rounds-scheduled-kernel",
+  "run_directory": "artifacts/native-kernel-2026-10-04/d3-global-ez-attempt5",
+  "runtime_environment": {
+    "mqt.qmap": "3.5.0",
+    "mqt.core": "3.3.3",
+    "qiskit": "2.2.3"
+  },
+  "run": {
+    "schema": "native-kernel-memory/1",
+    "runtime_status": "completed",
+    "offline_physical_status": "PASS",
+    "profile": "native-kernel-d3-global-ez-paired5-sz10/v2",
+    "engine": "mqt.qmap.native.C++",
+    "runtime": "neutral_atom_kernel",
+    "legacy_env_execution_calls": 0,
+    "legacy_candidate_search_calls": 0,
+    "atoms": 17,
+    "rounds": 2,
+    "gates": 218,
+    "cz_pairs": 48,
+    "cz_pulses": 8,
+    "max_parallel_cz": 6,
+    "operations": 1123,
+    "journal_events": 2261,
+    "reports": 25,
+    "physical_time_us": 82554.39152192436,
+    "recording_equivalent": true,
+    "inflight_recovery": {
+      "passed": true,
+      "cut_us": 23948.6259236722,
+      "report_not_ready": true,
+      "measurement_id": "A.r1.X0__g000",
+      "report_completion_us": 24198.6259236722
+    },
+    "timings_seconds": {
+      "native": 0.3828737000003457,
+      "lowering": 0.017354699957650155,
+      "axes": 0.1376253999187611,
+      "advance_with_recovery_probe": 0.5614591000485234,
+      "advance_recording_on": 0.37740249995840713,
+      "advance_recording_off": 0.22629080002661794,
+      "offline_audit": 0.14845799998147413,
+      "visualization_export": 0.37253220001002774
+    },
+    "factory_integrated": false,
+    "full_shor": false,
+    "fidelity": null,
+    "wall_seconds_before_export": 2.5014068000018597,
+    "visualization": {
+      "recording": "C:\\Users\\yuyqp\\.codex\\worktrees\\d3-shor15-stage\\QEC-schedule 2\\artifacts\\native-kernel-2026-10-04\\d3-global-ez-attempt5\\recording.json",
+      "replay": "C:\\Users\\yuyqp\\.codex\\worktrees\\d3-shor15-stage\\QEC-schedule 2\\artifacts\\native-kernel-2026-10-04\\d3-global-ez-attempt5\\replay.html",
+      "frames": 2262,
+      "operations": 1123,
+      "reports": 25
+    }
+  },
+  "independent_review": {
+    "schema": "native-kernel-memory-independent-review/1",
+    "directory": "C:\\Users\\yuyqp\\.codex\\worktrees\\d3-shor15-stage\\QEC-schedule 2\\artifacts\\native-kernel-2026-10-04\\d3-global-ez-attempt5",
+    "status": "PASS",
+    "checks": {
+      "manifest": {
+        "sources": 66,
+        "artifacts": 14
+      },
+      "canonical_source": {
+        "gates": 218,
+        "atoms": 17,
+        "unitary_segments": 2,
+        "rounds": 2
+      },
+      "physical_review": {
+        "status": "PASS",
+        "operations": 1123,
+        "geometry_contract": "experimental_native_full_rf_ordered_axes/2"
+      },
+      "reports": {
+        "count": 25,
+        "cursor": 25,
+        "completion_only": true
+      },
+      "midcut_inflight_count": 1,
+      "exact_replay": {
+        "blocks": 7,
+        "native_segments": 2,
+        "midcut_checkpoint": true,
+        "final_checkpoint": true,
+        "journal": 2261,
+        "physical_time_us": 82554.39152192436,
+        "alignment_operations": 196,
+        "alignment_time_us": 16027.92007011722
+      }
+    },
+    "failures": [],
+    "native_compilation_calls": 0,
+    "legacy_environment_execution_calls": 0,
+    "scope": "Canonical scheduling source, native provenance, independent geometry and exact kernel replay; no quantum quality or factory qualification"
+  },
+  "pytest": {
+    "passed": 171,
+    "skipped": 0,
+    "seconds": 5.95,
+    "source": "root final combined run"
+  },
+  "architecture": {
+    "modules": 277,
+    "violations": 0
+  },
+  "native_calls": [
+    {
+      "block_id": "unitary-1",
+      "native_call_seconds": 0.004392499977257103,
+      "import_seconds": 0.3654017000226304,
+      "frontend_seconds": 0.0036421000258997083,
+      "request_sha256": "4ede77f4e7b82452420d466152cc5055de78e3f23cdec28dca9664390975302a",
+      "naviz_sha256": "e0feb14de72d39395b633e5558cc6a9516d52b989e940fa82eeee9dd1d4185d9",
+      "compiler_source_sha256": "d72871b3a3261261da6b8e2d60b8b2554d6f6da7ef960d2b5af9c967afff466f",
+      "native_schedule_contract": "qmap-3.5-naviz-after-end-synchronized-targets/v1",
+      "illumination_contract": "global-world-x-y-band/v1",
+      "motion_contract": "row-column-common-cubic-progress/v1",
+      "capabilities": {
+        "external_initial_mapping": false,
+        "continuous_placement_input": false,
+        "nonunitary": false,
+        "global_barriers": true,
+        "native_aod_assignment": false,
+        "general_concurrent_schedule": false,
+        "independent_multi_aod_schedule": false,
+        "synchronized_multi_target_batches": true
+      }
+    },
+    {
+      "block_id": "unitary-2",
+      "native_call_seconds": 0.0044315000413917005,
+      "import_seconds": 3.00002284348011e-07,
+      "frontend_seconds": 0.0010284999734722078,
+      "request_sha256": "a77dfed31fe915739ea7a9ebcf9b62209482ca05caa556602da56255a90037cc",
+      "naviz_sha256": "e0feb14de72d39395b633e5558cc6a9516d52b989e940fa82eeee9dd1d4185d9",
+      "compiler_source_sha256": "d72871b3a3261261da6b8e2d60b8b2554d6f6da7ef960d2b5af9c967afff466f",
+      "native_schedule_contract": "qmap-3.5-naviz-after-end-synchronized-targets/v1",
+      "illumination_contract": "global-world-x-y-band/v1",
+      "motion_contract": "row-column-common-cubic-progress/v1",
+      "capabilities": {
+        "external_initial_mapping": false,
+        "continuous_placement_input": false,
+        "nonunitary": false,
+        "global_barriers": true,
+        "native_aod_assignment": false,
+        "general_concurrent_schedule": false,
+        "independent_multi_aod_schedule": false,
+        "synchronized_multi_target_batches": true
+      }
+    }
+  ],
+  "native_call_seconds_total": 0.008824000018648803,
+  "source_freeze": {
+    "path": "artifacts/native-kernel-2026-10-04/source-freeze-v4.json",
+    "sha256": "f717e8e61a841664307b0bae1cc4c3b4b2cadccab6b1d436c5879c842d4299ca",
+    "schema": "native-kernel-source-freeze/4",
+    "supersedes": "source-freeze-v3.json"
+  },
+  "producer_artifact_sha256": {
+    "blocks.json": "d592b6f6101c6ff81fd3f304f71240552be03e61a20d144e3012c5d59d22157b",
+    "checkpoint.json": "c2452e444f3dfe68c5dcff771cf251a3e7e8aa0cc069ea0495d1a6f8c3960001",
+    "inflight-checkpoint.json": "63486b584185e770e8ce7530cc62fad65ec64b0ec47ae00d03b98aa44acdfc14",
+    "initial.json": "76521d851f6d54cd21d113985cd14d8ed0ed377b90bc2aeb3bf074232cd1b667",
+    "journal.json": "e2cef83b94007948bbacf6628d101e01f9730bb811617bf1f70e606b3445665f",
+    "offline-audit.json": "196cfb5b9f1fe2f7068239593fdcaf799bb5bea7374cfa2a73175b8046fb7435",
+    "operations.json": "cff4cecf3df7ec2b6704c5e29c7063322bca4e0cd0faec79f34da72c11171542",
+    "recording.json": "8803dd58414d742287f650968f81f7bcdede5301b8a7cc73320af098fc539a3b",
+    "replay.html": "394ea7934b3fdbfdeee16340baf8009effe175db1cf09c8b374f792f9a5c727b",
+    "summary.json": "0fb2170508a7f589a166d0434c9a1bbe7a5ca1e3e93fe33ca0ad1eb5ec272212",
+    "unitary-1.native.json": "759469153657a3860be46c9c4013176b9812ce59939e2a4c1fbdf1ff2bb5cb41",
+    "unitary-1.naviz": "6bc8517b5359e34aab3b251ec6adcbd5c1173e600619a5f0fb1dd7bc4847e94c",
+    "unitary-2.native.json": "81e003d73940e707abb7ca2913d8b2ccb7526ca2c4a0d0ce7a84f37a96b37802",
+    "unitary-2.naviz": "6bc8517b5359e34aab3b251ec6adcbd5c1173e600619a5f0fb1dd7bc4847e94c"
+  },
+  "producer_manifest_sha256": "dce2e2dbb1d318b5a61322bd03f55b47d79afb3552af18a6a36e6a9e93d2e768",
+  "independent_review_sha256": "2d5c8431c5dc14555b10391570ad0d7ebb658b079ff84a238afbcfa940832996",
+  "source_sha256_text_lf": {
+    "src/neutral_atom_kernel/__init__.py": "d077d4ca6f17b3b8c47bdbe3668477254c0d92c669759672c700c9d2fd8a1bf9",
+    "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
+    "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
+    "src/neutral_atom_kernel/audit.py": "a75ee4ea8ef0345fc8750b767b20f475d61dc588c7f52af04bcc6d6dc17772e3",
+    "src/neutral_atom_strategies/native_kernel/__init__.py": "ab7514c410e1a8aa93d6769953653d3d36ffce5296944b84a71f2325d38f1feb",
+    "src/neutral_atom_strategies/native_kernel/compiler.py": "d72871b3a3261261da6b8e2d60b8b2554d6f6da7ef960d2b5af9c967afff466f",
+    "src/neutral_atom_strategies/native_kernel/lowering.py": "b42758fee23cd170617cf2c911baee93fbff131a36df1a1d1110d0171fdaa58c",
+    "src/neutral_atom_strategies/native_kernel/axes.py": "336af335be5759e93196e1bb2192cd7e07fa85bcf58d7172258cb001c7974709",
+    "src/neutral_atom_app/native_kernel_view.py": "fc2499961bfd6ff3448f69aa9bde0bc2dd45c4f969fd5c5775cf52b621fcafe6",
+    "src/neutral_atom_experiments/qec_pbc/native_kernel_memory.py": "c7af940e6f3082f6c34621bead1dc34abb661531fa07e9d1604828b781540bfc",
+    "examples/run_native_kernel_memory.py": "61da65c5786ee1d3d5dfe73f8c28aa84163718cd68ea2f87830c914931fc92cf",
+    "tools/audit_native_kernel_memory.py": "3191c9c7836c46b89c3b043726c749b43d81ec1fe818437f6a573482e3dddfa5",
+    "src/neutral_atom_env/visualization/viewer.js": "b31b4557771d613eaf410eabf35a776da5dd4f5f490dc1702563967e63cb0a81",
+    "tests/test_native_kernel_runtime.py": "2c563dccfafeb8b205de6a959fa98c8ad91e5a8e3511839a2be0b73a646aff78",
+    "tests/test_native_kernel_lowering.py": "c601df1ebbbf5870bd202518ac07efb9e25c8fae79c600e12321eecb6624bb7b",
+    "tests/test_native_kernel_audit.py": "5a615ed5b972bf38fdaf5345aa73424b0549c4b75a634cd91e73031ed51f01f7",
+    "tests/test_native_kernel_evidence_audit.py": "af0640d7f31131196f692ed767e336bbf921c0009583679a3da0a63d1506ddaa",
+    "tests/test_native_kernel_boundary.py": "168c823c2da1ae92a675fc56684c30a43abdcfa6d7ffd8a49386f8324b3cd19d",
+    "tests/test_native_kernel_view.py": "b27740278d6df0d81d985987ce2f21579afd795550f67a2d4b48a7714480fcfb",
+    "tests/viewer_native_kernel.cjs": "4ca8616ff7892467d26f86f0b288d3f65877feb8abfe0ad82ff833f4f60907f3",
+    "instruction/physics.md": "500c79ce97872e2176a067eb335b15a8fb2e5ee74cf8cdb1d4b4c4503ab32490",
+    "instruction/motion_execution.md": "f3bd0d81e51364c46c67fe0362127394749183650619edb2b320072b593a5a3e"
+  },
+  "source_sha256_raw": {
+    "src/neutral_atom_kernel/__init__.py": "d077d4ca6f17b3b8c47bdbe3668477254c0d92c669759672c700c9d2fd8a1bf9",
+    "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
+    "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
+    "src/neutral_atom_kernel/audit.py": "a75ee4ea8ef0345fc8750b767b20f475d61dc588c7f52af04bcc6d6dc17772e3",
+    "src/neutral_atom_strategies/native_kernel/__init__.py": "ab7514c410e1a8aa93d6769953653d3d36ffce5296944b84a71f2325d38f1feb",
+    "src/neutral_atom_strategies/native_kernel/compiler.py": "d72871b3a3261261da6b8e2d60b8b2554d6f6da7ef960d2b5af9c967afff466f",
+    "src/neutral_atom_strategies/native_kernel/lowering.py": "b42758fee23cd170617cf2c911baee93fbff131a36df1a1d1110d0171fdaa58c",
+    "src/neutral_atom_strategies/native_kernel/axes.py": "336af335be5759e93196e1bb2192cd7e07fa85bcf58d7172258cb001c7974709",
+    "src/neutral_atom_app/native_kernel_view.py": "fc2499961bfd6ff3448f69aa9bde0bc2dd45c4f969fd5c5775cf52b621fcafe6",
+    "src/neutral_atom_experiments/qec_pbc/native_kernel_memory.py": "c7af940e6f3082f6c34621bead1dc34abb661531fa07e9d1604828b781540bfc",
+    "examples/run_native_kernel_memory.py": "61da65c5786ee1d3d5dfe73f8c28aa84163718cd68ea2f87830c914931fc92cf",
+    "tools/audit_native_kernel_memory.py": "3191c9c7836c46b89c3b043726c749b43d81ec1fe818437f6a573482e3dddfa5",
+    "src/neutral_atom_env/visualization/viewer.js": "d94c591e6c2260c695299dec7d7e05732524127d6d186104645e65b90343d92c",
+    "tests/test_native_kernel_runtime.py": "2c563dccfafeb8b205de6a959fa98c8ad91e5a8e3511839a2be0b73a646aff78",
+    "tests/test_native_kernel_lowering.py": "c601df1ebbbf5870bd202518ac07efb9e25c8fae79c600e12321eecb6624bb7b",
+    "tests/test_native_kernel_audit.py": "5a615ed5b972bf38fdaf5345aa73424b0549c4b75a634cd91e73031ed51f01f7",
+    "tests/test_native_kernel_evidence_audit.py": "af0640d7f31131196f692ed767e336bbf921c0009583679a3da0a63d1506ddaa",
+    "tests/test_native_kernel_boundary.py": "168c823c2da1ae92a675fc56684c30a43abdcfa6d7ffd8a49386f8324b3cd19d",
+    "tests/test_native_kernel_view.py": "4c6d8ad500166cea0cca9d8b1ea26efb3588f242b83540022764e94ed1270c8f",
+    "tests/viewer_native_kernel.cjs": "4ca8616ff7892467d26f86f0b288d3f65877feb8abfe0ad82ff833f4f60907f3",
+    "instruction/physics.md": "321fb2f9871212284df9200c7efd38de548e864b3605a989f4140942ec3c22fa",
+    "instruction/motion_execution.md": "ff51cb7b5c4524206a8765e0145d92db041f7a959c67b5a966f2617e1da10b96"
+  },
+  "source_sha256_normalization": "text_lf normalizes only CRLF/CR to LF; frozen compiler/manifest raw SHA remain exact",
+  "node_checks": [
+    "viewer_native_kernel.cjs PASS on attempt5/replay.html",
+    "viewer_fit_resize.cjs PASS at 320/390/desktop"
+  ],
+  "browser": {
+    "url": "http://127.0.0.1:8780/replay.html",
+    "first_cz_us_approx": 14846.1,
+    "global_x_band_caption_visible": true,
+    "narrow_ez_mz_compute_visible": true,
+    "console_errors": 0,
+    "wide_screenshot": "artifacts/native-kernel-2026-10-04/browser-qa/global-ez-cz-attempt5-wide.png",
+    "narrow_screenshot": "artifacts/native-kernel-2026-10-04/browser-qa/global-ez-cz-attempt5-390.png",
+    "receipt_source": "root actual browser QA",
+    "viewport_requests": {
+      "wide": "default",
+      "narrow": [
+        390,
+        844
+      ]
+    },
+    "actual_image_dimensions": [
+      [
+        1016,
+        1226
+      ],
+      [
+        375,
+        812
+      ]
+    ],
+    "actual_image_format": "jpeg",
+    "viewport_override_reset": true,
+    "receipt_path": "artifacts/native-kernel-2026-10-04/browser-qa/global-ez-attempt5-receipt.json",
+    "receipt_sha256": "3ca08d890d15deebfebe28795c4d2ae752517b1ed31e9b303afda7f6b4aafb3e",
+    "images": [
+      {
+        "file": "global-ez-cz-attempt5-wide.png",
+        "width": 1016,
+        "height": 1226,
+        "sha256": "19a1acc7b3c87f9b6f0edb45733e7cf5e6198ce64986eb1bad832458cad601b6",
+        "format": "jpeg"
+      },
+      {
+        "file": "global-ez-cz-attempt5-390.png",
+        "width": 375,
+        "height": 812,
+        "sha256": "b7efd7658b0b7548dbbbb7bb81c6f6ac45abb7828d9e2e992569e4ad34c48198",
+        "format": "jpeg"
+      }
+    ]
+  },
+  "historical": {
+    "v1_validation": "references/qec_pbc_validation/native_kernel_2026_10_04.json",
+    "published_v1_commit": "ff9ab421a6450eff5610aabe11aabf6f304f3000",
+    "v1_publication_receipt": "references/qec_pbc_validation/native_kernel_publication_2026_10_04.json",
+    "attempt3": "actual floating-associativity dependency failure; partial artifacts retained",
+    "attempt4": "actual memory and independent-review PASS before final batch-report identity fix; historical scope",
+    "attempt5": "final source-freeze-v4 qualification"
+  },
+  "limits": [
+    "Native @+ END chain is serial; [] batches preserved. Runtime explicit overlap tests do not establish native general concurrency.",
+    "Single native AOD; no native multi-AOD assignment or live initial mapping.",
+    "Declared t=0 preparation cost unknown; later alignment/full RF transports included.",
+    "Declared scheduling reports; fidelity null, no noise/FT or quantum quality qualification.",
+    "Factory/injection/processor and complete physical Shor remain separate; no same-input legacy wall-speed ratio."
+  ],
+  "reproduce": [
+    "python examples/run_native_kernel_memory.py --output artifacts/native-kernel-2026-10-04/d3-global-ez-reproduce --rounds 2 --wall-budget 120",
+    "python tools/audit_native_kernel_memory.py artifacts/native-kernel-2026-10-04/d3-global-ez-reproduce --output artifacts/native-kernel-2026-10-04/d3-global-ez-reproduce-independent-review.json"
+  ]
+}

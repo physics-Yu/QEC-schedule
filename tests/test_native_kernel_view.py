@@ -121,6 +121,7 @@ def test_canvas_javascript_loads_payload_and_interpolates_recorded_axes(tmp_path
         f"const harness=require({json.dumps(str(harness))});const v=harness(fs.readFileSync({json.dumps(result['replay'])},'utf8'));"+\
         "v.get('seek(9.5)');const p=JSON.parse(v.get('JSON.stringify(current.atoms.find(a=>a.id===\"Q0\").position)'));"+\
         "assert.equal(p.x_um,0);assert.equal(p.y_um,65);"+\
+        "v.get('seek(8.75)');assert.equal(v.get('current.atoms.find(a=>a.id===\"Q0\").position.y_um'),20.3125);"+\
         "v.get('seek(data.duration)');assert.equal(v.get('current.atoms.find(a=>a.id===\"Q0\").position.y_um'),130);"+\
         "assert.equal(v.get('data.frames.some(f=>f.quantum_tracking)'),false);assert.equal(v.get('stabilizerBasis(\"Q1\")'),'X');"+\
         "assert.match(v.el('measurement-readout').textContent,/r.m=1/);"+\
@@ -128,3 +129,50 @@ def test_canvas_javascript_loads_payload_and_interpolates_recorded_axes(tmp_path
         "v.get('seek(0)');assert.equal(v.get('current.atoms.find(a=>a.id===\"Q0\").position.y_um'),0);console.log('PASS shared Canvas delta replay');"
     done = subprocess.run([node, "-e", script], text=True, capture_output=True, check=False)
     assert done.returncode == 0, done.stdout+done.stderr
+
+
+def test_global_ez_band_and_candidate_sites_have_independent_geometry():
+    saved = evidence()
+    saved['profile'].update(cz_illumination='global_x_band',
+        cz_zone_um=(-20, 50, 50, 80), compute_zone_um=(-20, -10, 50, 110),
+        slm_site_regions_um=((0, 0, 10, 0), (0, 130, 50, 160)))
+    scene = build_native_kernel_payload(saved)['scene']
+    ez = next(zone for zone in scene['zones'] if zone['zone_type'] == 'entanglement')
+    assert ez['bounds']['lower']['x_um'] == scene['bounds']['lower']['x_um']
+    assert ez['bounds']['upper']['x_um'] == scene['bounds']['upper']['x_um']
+    assert next(zone for zone in scene['zones'] if zone['id'] == 'COMPUTE')['bounds'] != scene['bounds']
+    sites = {(point['x_um'], point['y_um']) for point in scene['candidates']}
+    assert (0, 130) in sites and (0, 0) in sites
+    assert (0, 70) not in sites and (0, 115) not in sites
+    assert '全 x' in scene['zone_labels'][ez['id']]
+    saved['profile']['cz_zone_um'] = (-10, 50, 40, 80)
+    with pytest.raises(ValueError, match='must span'):
+        build_native_kernel_payload(saved)
+
+
+def test_scheduled_export_keeps_remaining_inflight_operation_after_peer_completes():
+    initial = {'Q0': (0, 130), 'Q1': (10, 0)}
+    gates = (GateSpec('h', 'H', ('Q1',)), GateSpec('m', 'MEASURE', ('Q0',)),
+             GateSpec('r', 'RESET', ('Q0',), ('m',)))
+    source = DeclaredReportSource(source_id='parallel-view', bits=(1,))
+    ops = (Operation('h.op', 'GATE', ('Q1',), 1, gate_ids=('h',), start_us=0),
+           Operation('m.op', 'MEASURE', ('Q0',), 4, gate_ids=('m',), report_ids=('m.report',), start_us=0),
+           Operation('r.op', 'RESET', ('Q0',), 2, gate_ids=('r',), start_us=4, depends_on=('m.op',)))
+    executor = KernelExecutor(initial, gates, report_source=source)
+    final = executor.run(executor.bind_block('parallel-view', ops, execution_mode='scheduled'))
+    saved = {'initial': initial, 'gates': gates, 'operations': ops, 'journal': thaw(executor.journal),
+             'profile': {'bounds_um': (-20, -30, 50, 160)}, 'report_source': source.checkpoint(),
+             'final': {key: thaw(getattr(final, key)) for key in ('time_us', 'positions', 'holders',
+                 'completed_gate_ids', 'measurement_results', 'measurement_completion_times_us', 'aod_axes')}}
+    payload = build_native_kernel_payload(saved)
+    both = next(frame for frame in payload['frames'] if len(frame['active_operations']) == 2)
+    assert set(both['active_gate_ids']) == {'h', 'm'}
+    h_done = next(frame for frame in payload['frames'] if frame['completed_gate_ids_delta'] == ['h'])
+    assert h_done['active_operations'] == ['m.op'] and h_done['active_gate_ids'] == ['m']
+    assert not h_done['measurement_updates']
+    by_id = {op['id']: op for op in payload['operations']}
+    assert by_id['h.op']['measurement_results'] == {}
+    assert by_id['m.op']['measurement_results'] == {'m.report': 1}
+    assert payload['measurement_completion_times_us'] == {'m.report': 4}
+    assert payload['summary']['overlapping'] is True
+    assert payload['summary']['wall_time_us'] == 6

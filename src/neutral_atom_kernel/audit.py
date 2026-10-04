@@ -11,8 +11,9 @@ The smaller loaded-coordinate contract is separately labelled in review reports.
 from __future__ import annotations
 
 from collections.abc import Mapping
+from copy import copy
 from itertools import combinations, product
-from math import hypot, isclose, isfinite, sqrt
+from math import hypot, isclose, isfinite, sqrt, ulp
 
 
 _DEFAULTS = {
@@ -90,6 +91,15 @@ def _distance(a, b):
     return hypot(a[0] - b[0], a[1] - b[1])
 
 
+def _progress(time_us, start, end, motion_profile):
+    u = min(1.0, max(0.0, (time_us - start) / (end - start))) if end > start else 1.0
+    return 3 * u * u - 2 * u * u * u if motion_profile == "row_column" else u
+
+
+def _interpolate(start, end, progress):
+    return tuple(a + progress * (b - a) for a, b in zip(start, end))
+
+
 def _plain(value):
     if isinstance(value, Mapping):
         return {str(k): _plain(v) for k, v in value.items()}
@@ -144,6 +154,12 @@ class _Reviewer:
         pitch, origin = self.profile["slm_grid_um"], self.profile["slm_origin_um"]
         _require(all(isclose((point[i] - origin[i]) / pitch, round((point[i] - origin[i]) / pitch), abs_tol=1e-8) for i in (0, 1)),
                  "INVALID_SLM_SITE", f"{label} is not on the declared SLM lattice")
+        if "declared_slm_sites_um" in self.profile:
+            sites = tuple(_point(value) for value in self.profile["declared_slm_sites_um"])
+            _require(any(_distance(point, site) <= 1e-8 for site in sites), "UNDECLARED_SLM_SITE", f"{label} has no declared SLM trap at this lattice point")
+        if "slm_site_regions_um" in self.profile:
+            regions = tuple(_rectangle(value) for value in self.profile["slm_site_regions_um"])
+            _require(any(_inside(point, region) for region in regions), "UNDECLARED_SLM_SITE", f"{label} lies outside all declared SLM trap regions")
 
     def atom_clearance(self, points):
         clearance = self.profile["transport_clearance_um"]
@@ -224,11 +240,14 @@ class _Reviewer:
                 _require(len(_field(gate, "atoms")) == (2 if kind == "CZ" else 1),
                          "GATE_ATOM_MAPPING", f"Original gate {gid} has invalid physical arity")
             if kind in {"GATE", "MEASURE", "RESET"}:
-                _require({q for gid in ids for q in _field(self.gates[gid], "atoms")} == set(atoms),
+                _require(len(ids) == len(atoms) and {q for gid in ids for q in _field(self.gates[gid], "atoms")} == set(atoms),
                          "GATE_ATOM_MAPPING", "Physical effect targets must exactly match original gate atoms")
         return ids
 
-    def cz(self, op, atoms, metadata):
+    def illumination(self, metadata):
+        """Resolve authoritative y bands; native local x rectangles cannot hide atoms."""
+        _require("cz_zones_um" in self.profile or "cz_zone_um" in self.profile,
+                 "PROFILE_REQUIRED", "CZ requires authoritative profile EZ y bands; operation metadata alone cannot declare illumination")
         zones = metadata.get("zone_bounds")
         authoritative = self.profile.get("cz_zones_um")
         if authoritative is not None:
@@ -236,13 +255,13 @@ class _Reviewer:
             zone_ids = metadata.get("zone_ids", tuple(authoritative))
             _require(all(k in authoritative for k in zone_ids), "CZ_ZONE", "CZ references an undeclared profile illumination zone")
             if zones is not None:
-                _require(isinstance(zones, Mapping) and all(k in zones and _rectangle(zones[k]) == _rectangle(authoritative[k]) for k in zone_ids),
+                _require(isinstance(zones, Mapping) and all(k in zones and _rectangle(zones[k])[1::2] == _rectangle(authoritative[k])[1::2] for k in zone_ids),
                          "CZ_ZONE_BINDING", "Operation illumination bounds differ from the authoritative profile")
             zones = tuple(authoritative[k] for k in zone_ids)
         elif "cz_zone_um" in self.profile:
             if zones is not None:
                 supplied_zones = tuple(zones[k] for k in metadata.get("zone_ids", tuple(zones))) if isinstance(zones, Mapping) else tuple(zones)
-                _require(len(supplied_zones) == 1 and _rectangle(supplied_zones[0]) == _rectangle(self.profile["cz_zone_um"]),
+                _require(len(supplied_zones) == 1 and _rectangle(supplied_zones[0])[1::2] == _rectangle(self.profile["cz_zone_um"])[1::2],
                          "CZ_ZONE_BINDING", "Operation illumination bounds differ from the authoritative profile")
             zones = (self.profile["cz_zone_um"],)
         elif zones is None:
@@ -254,8 +273,21 @@ class _Reviewer:
             zones = tuple(zones[k] for k in zone_ids)
         else:
             zones = tuple(zones)
-        rectangles = tuple(_rectangle(z) for z in zones)
+        rectangles = tuple((self.bounds[0], r[1], self.bounds[2], r[3]) for r in map(_rectangle, zones))
         _require(bool(rectangles), "CZ_ZONE", "CZ must declare at least one illuminated zone")
+        supplied = metadata.get("zone_bounds")
+        if supplied is not None:
+            supplied = tuple(supplied[k] for k in metadata.get("zone_ids", tuple(supplied))) if isinstance(supplied, Mapping) else tuple(supplied)
+            _require(all(_rectangle(z)[0::2] == self.bounds[0::2] for z in supplied),
+                     "CZ_ZONE_BINDING", "Operation CZ bounds must explicitly span the entire platform x range")
+        if "illumination_scope" in metadata:
+            _require(metadata["illumination_scope"] == "global-world-x-y-band/v1", "CZ_ILLUMINATION_SCOPE", "CZ illumination must cover the entire platform x range in each selected y band")
+        if "world_bounds" in metadata:
+            _require(_rectangle(metadata["world_bounds"]) == self.bounds, "CZ_ZONE_BINDING", "CZ world bounds differ from the authoritative platform")
+        return rectangles
+
+    def cz(self, op, atoms, metadata):
+        rectangles = self.illumination(metadata)
         illuminated = tuple(q for q, point in self.points.items() if any(_inside(point, rectangle) for rectangle in rectangles))
         _require(set(atoms) <= set(illuminated), "CZ_ZONE", "Requested CZ atom is outside its illuminated zones")
         pairs = metadata.get("cz_pairs", metadata.get("pairs"))
@@ -301,8 +333,17 @@ class _Reviewer:
             _require(not atoms and not supplied and all(holder != "AOD_0" for holder in self.holders.values()),
                      "CONFIGURE_LOADED_DEVICE", "Only an empty, disabled AOD can CONFIGURE its full RF coordinates")
             delta = max(abs(a - b) for key in ("columns", "rows") for a, b in zip(self.full_axes[key], next_axes[key]))
+            motion_profile = _field(op, "motion_profile", "row_column")
+            _require(motion_profile in {"row_column", "rigid"}, "MOTION_PROFILE", "CONFIGURE requires common cubic or explicit rigid linear motion")
+            if motion_profile == "rigid":
+                for key in ("columns", "rows"):
+                    deltas = [b-a for a, b in zip(self.full_axes[key], next_axes[key])]
+                    _require(all(isclose(value, deltas[0], rel_tol=0, abs_tol=1e-8) for value in deltas),
+                             "RIGID_DEFORMATION", "Explicit rigid CONFIGURE cannot deform RF axes")
             self.timing(duration, self.profile["move_scale_us"] * sqrt(delta / self.profile["move_reference_um"]))
         elif kind == "MOVE":
+            motion_profile = _field(op, "motion_profile", "row_column")
+            _require(motion_profile in {"row_column", "rigid"}, "MOTION_PROFILE", "Transport requires row_column cubic or explicit rigid linear motion")
             _require(set(supplied) == set(atoms) and all(self.holders[q] == "AOD_0" for q in atoms), "MOVE_HOLDER", "MOVE must target exactly its declared already-loaded atoms")
             new_points.update(supplied)
             old_loaded, xs, ys = self.axes(self.points, self.holders)
@@ -339,6 +380,12 @@ class _Reviewer:
                          "ATOM_SWEEP_COLLISION", f"Continuous atom trajectories {a}/{b} violate clearance")
             max_axis = (max(abs(a - b) for key in ("columns", "rows") for a, b in zip(self.full_axes[key], next_axes[key]))
                         if self.full_axes is not None else max((abs(new_points[q][d] - self.points[q][d]) for q in old_loaded for d in (0, 1)), default=0.0))
+            if motion_profile == "rigid":
+                for dim, key in enumerate(("columns", "rows")):
+                    deltas = ([b - a for a, b in zip(self.full_axes[key], next_axes[key])] if self.full_axes is not None
+                              else [new_points[q][dim] - self.points[q][dim] for q in old_loaded])
+                    _require(all(isclose(value, deltas[0], rel_tol=0, abs_tol=1e-8) for value in deltas),
+                             "RIGID_DEFORMATION", "Explicit rigid motion must translate every full RF axis equally")
             self.timing(duration, self.profile["move_scale_us"] * sqrt(max_axis / self.profile["move_reference_um"]))
         elif kind in {"LOAD", "STORE"}:
             _require(self.full_axes is None or next_axes == self.full_axes, "TRANSFER_AXIS_MOTION", "LOAD/STORE cannot implicitly move RF coordinates")
@@ -396,7 +443,155 @@ class _Reviewer:
         self.time_us += duration
 
 
-def audit_operations(initial_positions, operations, profile, *, initial_holders=None, gates=(), initial_axes=None):
+def _interval_resources(reviewer, op):
+    """Derive hardware locks independently; caller extras cannot remove them."""
+    kind, atoms = _field(op, "kind").upper(), tuple(_field(op, "atoms", ()))
+    resources = {f"ATOM:{q}" for q in atoms}
+    if kind in {"CONFIGURE", "LOAD", "MOVE", "STORE"} or any(reviewer.holders.get(q) == "AOD_0" for q in atoms):
+        resources.add("AOD_0")
+    if kind == "GATE":
+        resources.update(f"RAMAN:{q}" for q in atoms)
+    elif kind == "CZ":
+        resources.add("ENTANGLING_LASER_0")
+        bands = reviewer.illumination(_field(op, "metadata", {}))
+        illuminated = tuple(q for q, point in reviewer.points.items() if any(_inside(point, band) for band in bands))
+        resources.update(f"ATOM:{q}" for q in illuminated)
+        if any(reviewer.holders[q] == "AOD_0" for q in illuminated):
+            resources.add("AOD_0")
+    elif kind in {"MEASURE", "RESET"}:
+        resources.add("READOUT_0" if kind == "MEASURE" else "RESET_0")
+    extras = tuple(_field(op, "resources", ()))
+    _require(all(isinstance(resource, str) and resource for resource in extras) and len(extras) == len(set(extras)),
+             "RESOURCE_IDENTITY", "Additional resources require unique nonempty names")
+    return resources | set(extras)
+
+
+def _light_kind(reviewer, op):
+    kind = _field(op, "kind").upper()
+    if kind == "CZ":
+        return "CZ"
+    if kind == "GATE":
+        metadata = _field(op, "metadata", {})
+        return metadata.get("gate_kind") or _field(reviewer.gates.get(_field(op, "gate_ids", (None,))[0]), "kind")
+    return None
+
+
+def _overlap_geometry(reviewer, first, second):
+    """Check the actual shared time interval, with common cubic progress per MOVE."""
+    light_a, light_b = _light_kind(reviewer, first["op"]), _light_kind(reviewer, second["op"])
+    _require(not light_a or not light_b or light_a == light_b, "LIGHT_TYPE_OVERLAP", "Different gate light types overlap in time")
+    for motion, pulse in ((first, second), (second, first)):
+        if _field(motion["op"], "kind").upper() != "MOVE":
+            continue
+        kind = _field(pulse["op"], "kind").upper()
+        lo, hi = max(motion["start"], pulse["start"]), min(motion["end"], pulse["end"])
+        progress = tuple(_progress(t, motion["start"], motion["end"], _field(motion["op"], "motion_profile", "row_column")) for t in (lo, hi))
+        for q, p0 in motion["source_points"].items():
+            p1 = motion["target_points"][q]
+            if _distance(p0, p1) <= 1e-8:
+                continue
+            a, b = (_interpolate(p0, p1, value) for value in progress)
+            if kind == "GATE":
+                for target in _field(pulse["op"], "atoms", ()):
+                    _require(_segment_distance(pulse["source_points"][target], a, b) >= reviewer.profile["raman_separation_um"] - 1e-8,
+                             "RAMAN_INTERVAL_SEPARATION", f"Moving atom {q} approaches addressed atom {target} during the Raman pulse")
+            elif kind == "CZ":
+                bands = reviewer.illumination(_field(pulse["op"], "metadata", {}))
+                _require(not any(max(a[1], b[1]) >= band[1] - 1e-8 and min(a[1], b[1]) <= band[3] + 1e-8 for band in bands),
+                         "CZ_MOVING_ILLUMINATION", f"Moving atom {q} enters the global EZ y band during a CZ pulse")
+
+
+def _review_events(reviewer, operations, execution_mode):
+    _require(execution_mode in {"serial", "scheduled"}, "EXECUTION_MODE", "Review execution_mode must be serial or scheduled")
+    events, clock, known = [], 0.0, set()
+    for index, op in enumerate(operations):
+        oid = _field(op, "id")
+        reviewer.current_op = op
+        _require(oid and oid not in known, "OPERATION_IDENTITY", "Operation IDs must be globally unique")
+        known.add(oid)
+        start = _field(op, "start_us") if execution_mode == "scheduled" else clock
+        _require(isinstance(start, (int, float)) and not isinstance(start, bool) and isfinite(start) and start >= 0,
+                 "OPERATION_START", "Scheduled operations require explicit finite nonnegative start_us")
+        duration = float(_field(op, "duration_us", 0))
+        _require(isfinite(duration) and duration >= 0, "DURATION_MISMATCH", "Operation duration must be finite and nonnegative")
+        declared_end = _field(op, "end_us") if execution_mode == "scheduled" else None
+        end = start + duration if declared_end is None else declared_end
+        _require(isinstance(end, (int, float)) and not isinstance(end, bool) and isfinite(end) and end >= start
+                 and ((end == start) if duration == 0 else abs((end - start) - duration) <= 4 * (ulp(start) + ulp(end) + ulp(duration))),
+                 "OPERATION_END", "Explicit completion must match the hardware duration (only floating-point arithmetic tolerance applies)")
+        events.append((start, 1, index, op, end))
+        if end > start:
+            events.append((end, 0, index, op, end))
+        clock = end
+    running, completed_ops, reserved_effects, reserved_reports = {}, set(), set(), set()
+    reviewer.checked_operations = 0
+    reviewer.report_times, reviewer.report_cursor = {}, 0
+
+    def complete(oid, end):
+        entry = running.pop(oid)
+        projection = entry["projection"]
+        kind = _field(entry["op"], "kind").upper()
+        if kind == "MOVE":
+            reviewer.points.update({q: point for q, point in projection.points.items() if point != entry["source_points"][q]})
+        if kind in {"LOAD", "STORE"}:
+            reviewer.holders.update({q: holder for q, holder in projection.holders.items() if holder != entry["source_holders"][q]})
+        if kind in {"MOVE", "CONFIGURE"} and projection.full_axes != entry["source_axes"]:
+            reviewer.full_axes = projection.full_axes
+        reviewer.completed.update(_field(entry["op"], "gate_ids", ()))
+        reviewer.operation_ids.add(oid); completed_ops.add(oid)
+        reviewer.time_us = end
+        reviewer.checked_operations += 1
+        if _field(entry["op"], "kind").upper() == "MEASURE":
+            ids = _field(entry["op"], "report_ids", ()) or _field(entry["op"], "gate_ids", ())
+            reviewer.report_times.update({rid: end for rid in ids}); reviewer.report_cursor += len(ids)
+
+    for time_us, phase, index, op, end in sorted(events, key=lambda event: event[:3]):
+        reviewer.current_op = op
+        oid = _field(op, "id")
+        if phase == 0:
+            complete(oid, time_us)
+            continue
+        dependencies = tuple(_field(op, "depends_on", ()))
+        _require(len(dependencies) == len(set(dependencies)) and set(dependencies) <= completed_ops,
+                 "OPERATION_DEPENDENCY", "Operation predecessors must finish before its start")
+        ids = tuple(_field(op, "gate_ids", ()))
+        _require(not reserved_effects.intersection(ids), "DUPLICATE_GATE_EFFECT", "A source gate effect is already started or completed")
+        _require(set(_field(op, "metadata", {}).get("requires_report_ids", ())) <= reviewer.report_times.keys(),
+                 "REPORT_NOT_READY", "Operation reads a report before its measurement completes")
+        snapshot = copy(reviewer)
+        snapshot.points = dict(reviewer.points)
+        for context in running.values():
+            if _field(context["op"], "kind").upper() not in {"MOVE", "CONFIGURE"}:
+                continue
+            progress = _progress(time_us, context["start"], context["end"], _field(context["op"], "motion_profile", "row_column"))
+            snapshot.points.update({q: _interpolate(point, context["target_points"][q], progress) for q, point in context["source_points"].items()})
+            if context["source_axes"] is not None:
+                snapshot.full_axes = {key: tuple(a + progress * (b - a) for a, b in zip(context["source_axes"][key], context["projection"].full_axes[key])) for key in ("rows", "columns")}
+        resources = _interval_resources(snapshot, op)
+        entry = {"op": op, "start": time_us, "end": end, "resources": resources,
+                 "source_points": dict(snapshot.points), "source_holders": dict(reviewer.holders), "source_axes": snapshot.full_axes}
+        for other in running.values():
+            _require(not resources.intersection(other["resources"]), "RESOURCE_OVERLAP", f"Operations {oid}/{_field(other['op'], 'id')} overlap core/declared resources {sorted(resources.intersection(other['resources']))}")
+        projection = copy(snapshot)
+        projection.points, projection.holders = dict(snapshot.points), dict(reviewer.holders)
+        projection.completed, projection.operation_ids = set(reviewer.completed), set(reviewer.operation_ids)
+        projection.apply(op)
+        entry.update(projection=projection, target_points=projection.points)
+        for other in running.values():
+            _overlap_geometry(reviewer, entry, other)
+        if _field(op, "kind").upper() == "MEASURE":
+            report_ids = tuple(_field(op, "report_ids", ())) or ids
+            _require(len(report_ids) == len(ids) == len(_field(op, "atoms", ())) and len(report_ids) == len(set(report_ids)) and not reserved_reports.intersection(report_ids),
+                     "REPORT_IDENTITY", "Readout must bind one unique completion report to each original gate/atom")
+            reserved_reports.update(report_ids)
+        reserved_effects.update(ids)
+        running[oid] = entry
+        if end == time_us:
+            complete(oid, end)
+    reviewer.current_op = None
+
+
+def audit_operations(initial_positions, operations, profile, *, initial_holders=None, gates=(), initial_axes=None, execution_mode="serial"):
     """Return PASS/FAIL with the first independent physical failure retained.
 
     ``operations`` accepts immutable Operation values or equivalent mappings.
@@ -404,51 +599,58 @@ def audit_operations(initial_positions, operations, profile, *, initial_holders=
     when supplied, omitted effects are also rejected at final completion.
     ``initial_axes`` accepts columns/rows vectors (or a device-keyed AOD_0 map).
     Only the declared AOD_0 native profile is qualified by this reviewer.
+    Scheduled ``start_us`` values are relative to the supplied initial state at
+    time zero (flattened multi-block evidence must first add each block offset).
     No later operation is reviewed after a failure using a guessed successor.
     """
     operations, gates = tuple(operations), tuple(gates)
     effective = dict(_DEFAULTS, **profile)
     result = {
-        "schema": "native-kernel-strict-review/1", "status": "FAIL", "passed": False,
+        "schema": "native-kernel-strict-review/2", "status": "FAIL", "passed": False,
         "execution_mode": "offline_strict", "profile": _plain(effective),
         "geometry_contract": {
-            "name": "experimental_native_loaded_coordinate_ordered_axes/1",
+            "name": "experimental_native_loaded_coordinate_ordered_axes/2",
             "active_axes": "unique loaded x coordinates by unique loaded y coordinates, including every empty Cartesian intersection",
-            "movement": "ordered axes with shared-coordinate consistency; straight simultaneous interpolation at equal normalized progress",
+            "movement": "row_column common cubic progress 3u^2-2u^3 for every active and disabled RF axis; explicit rigid uses linear translation; monotone shared progress makes bounds/order/spacing and whole-path clearance analytically reducible to endpoint axes and line segments",
+            "illumination": "global-world-x-y-band/v1: all atoms in each authoritative EZ y band, over the entire platform x range, including every spectator and holder",
+            "intervals": "half-open operation intervals; completions precede starts at equal time; independently derived atom/AOD/light/readout/reset locks and actual overlap geometry",
             "selective_store": "support transfers at completion; close only axes unused by remaining loaded atoms; check all remaining Cartesian intersections",
             "dormant_axes": "No physical coordinates are assigned to disabled lines; no hidden empty-device positioning cost is claimed",
             "scope": "one native AOD_0; no multi-AOD native scheduling qualification, quantum dynamics or optical waveform simulation",
         },
-        "operation_count": len(operations), "checked_operations": 0, "failures": [],
+        "operation_count": len(operations), "checked_operations": 0, "execution_mode_requested": execution_mode, "failures": [],
     }
     reviewer, current = None, None
     try:
         reviewer = _Reviewer(initial_positions, initial_holders, effective, gates, initial_axes)
         if reviewer.full_axes is not None:
             result["geometry_contract"].update(
-                name="experimental_native_full_rf_ordered_axes/1",
+                name="experimental_native_full_rf_ordered_axes/2",
                 active_axes="explicit full RF rows/columns; active coordinates follow all loaded atoms; check complete active Cartesian product",
                 dormant_axes="disabled RF axes retain explicit coordinates; all full-capacity coordinates, bounds, spacing and MOVE/CONFIGURE travel time are reviewed",
                 selective_store="STORE preserves all RF coordinates; support transfers at completion and only unused RF lines deactivate")
-        for current in operations:
-            reviewer.apply(current)
-            result["checked_operations"] += 1
+        _review_events(reviewer, operations, execution_mode)
+        result["checked_operations"] = reviewer.checked_operations
         current = None
         if reviewer.gates:
             missing = set(reviewer.gates) - reviewer.completed
             _require(not missing, "MISSING_GATE_EFFECT", f"Original gates were not executed: {sorted(missing)}")
         result.update(status="PASS", passed=True)
     except _Violation as error:
+        current = getattr(reviewer, "current_op", current)
         result["failures"].append({"op_id": _field(current, "id") if current is not None else None,
             "source_line": _field(current, "metadata", {}).get("source_line") if current is not None else None,
             "code": error.code, "reason": error.reason})
     except (KeyError, TypeError, ValueError, AttributeError) as error:
+        current = getattr(reviewer, "current_op", current)
         result["failures"].append({"op_id": _field(current, "id") if current is not None else None,
             "source_line": _field(current, "metadata", {}).get("source_line") if current is not None else None,
             "code": "MALFORMED_REVIEW_INPUT", "reason": str(error)})
     if reviewer is not None:
+        result["checked_operations"] = getattr(reviewer, "checked_operations", 0)
         result["final_reviewed_state"] = {"time_us": reviewer.time_us, "positions": _plain(reviewer.points),
-            "holders": dict(reviewer.holders), "completed_gate_ids": sorted(reviewer.completed)}
+            "holders": dict(reviewer.holders), "completed_gate_ids": sorted(reviewer.completed),
+            "measurement_completion_times_us": getattr(reviewer, "report_times", {}), "report_source_cursor": getattr(reviewer, "report_cursor", 0)}
         if reviewer.full_axes is not None:
             result["final_reviewed_state"]["axes"] = _plain(reviewer.full_axes)
     return result

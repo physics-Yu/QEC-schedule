@@ -8,12 +8,13 @@ Reports come from an explicitly declared classical source, not a quantum model.
 from __future__ import annotations
 
 import hashlib
+import heapq
 import json
 from math import isfinite
 from types import MappingProxyType
 from typing import Any, Callable, Iterable, Mapping, Sequence
 
-from .model import Block, GateSpec, Observation, Operation, freeze, gate_kind, thaw
+from .model import Block, GateSpec, Observation, Operation, TrajectoryEvaluation, freeze, gate_kind, thaw
 
 
 class KernelError(ValueError):
@@ -111,7 +112,7 @@ class DeclaredReportSource:
 
 
 class KernelExecutor:
-    CHECKPOINT_VERSION = 1
+    CHECKPOINT_VERSION = 2
     _GATE_KINDS = frozenset(("H", "X", "Y", "Z", "T", "CZ", "MEASURE", "RESET"))
     _OP_KINDS = frozenset(("CONFIGURE", "LOAD", "MOVE", "STORE", "GATE", "CZ", "MEASURE", "RESET", "WAIT"))
 
@@ -161,6 +162,15 @@ class KernelExecutor:
         self._active_block: Block | None = None
         self._operation_cursor = 0
         self._running: tuple[float, float] | None = None
+        self._serial_context: dict[str, Any] | None = None
+        self._block_start_us = 0.0
+        self._block_completed: list[str] = []
+        self._block_completed_set: set[str] = set()
+        self._inflight: dict[str, dict[str, Any]] = {}
+        self._scheduled_events: list[tuple[float, int, int, str, str]] = []
+        self._scheduled_resources: dict[str, tuple[str, ...]] = {}
+        self._operation_by_id: dict[str, Operation] = {}
+        self._operation_ordinals: dict[str, int] = {}
         self._submitted_block_ids: set[str] = set()
         self._recording = bool(recording)
         self._journal_sink = journal_sink
@@ -200,31 +210,83 @@ class KernelExecutor:
 
     def observe(self) -> Observation:
         if self._observation_cache is None:
+            evaluated = self.evaluate()
+            inflight = tuple(self._inflight) if self._inflight else ((self._active_block.operations[self._operation_cursor].id,) if self._running else ())
+            owners = {resource: id for id, context in self._inflight.items() for resource in context["resources"]}
+            if self._serial_context is not None:
+                owners.update({resource: self._serial_context["operation_id"] for resource in self._serial_context["resources"]})
             self._observation_cache = Observation(
                 self._time_us, self._version,
                 MappingProxyType(dict(self._measurement_results)), tuple(self._completed_order),
                 tuple(self._fragments),
                 self._active_block is None and all(count == 0 for count in self._fragment_remaining.values()),
-                int(self._running is not None),
+                len(self._scheduled_events) if self._active_block and self._active_block.execution_mode == "scheduled" else int(self._running is not None),
                 MappingProxyType({atom: self._locations[index][0] for index, atom in enumerate(self._atom_ids)}),
-                MappingProxyType({atom: self._locations[index][1:] for index, atom in enumerate(self._atom_ids)}),
+                evaluated.positions,
                 MappingProxyType(dict(self._measurement_times)),
                 MappingProxyType(dict(self._fragment_remaining)),
                 tuple(fragment for fragment, count in self._fragment_remaining.items() if count == 0),
                 self._report_source.cursor if self._report_source else None,
-                MappingProxyType({device: MappingProxyType(dict(zip(("rows", "columns", "active_rows", "active_columns"), axes)))
-                                  for device, axes in self._device_axes.items()}),
+                evaluated.aod_axes,
+                inflight, tuple(self._block_completed), MappingProxyType(owners),
+                MappingProxyType({atom: self._locations[index][1:] for index, atom in enumerate(self._atom_ids)}),
             )
         return self._observation_cache
 
-    def bind_block(self, id: str, operations: Iterable[Operation], *, native_provenance: Mapping[str, Any] | None = None) -> Block:
-        return Block(id, tuple(operations), self._version, self._state_digest, native_provenance or {})
+    def bind_block(self, id: str, operations: Iterable[Operation], *, native_provenance: Mapping[str, Any] | None = None,
+                   execution_mode: str = "serial") -> Block:
+        return Block(id, tuple(operations), self._version, self._state_digest, native_provenance or {}, execution_mode)
+
+    @staticmethod
+    def _motion_fraction(profile: str, progress: float) -> float:
+        progress = max(0., min(1., progress))
+        return progress*progress*(3.-2.*progress) if profile == "row_column" else progress
+
+    def evaluate(self, time_us: float | None = None) -> TrajectoryEvaluation:
+        """Pure coordinates at the current/future active-event interval.
+
+        Locations remain committed endpoints internally. This derives the same
+        common trajectory used by observers, without installing interpolated
+        positions into state or consuming future start/completion events.
+        """
+        time = self._time_us if time_us is None else float(time_us)
+        if not isfinite(time) or time < self._time_us:
+            raise KernelError("TRAJECTORY_TIME", "evaluate cannot reconstruct past committed state")
+        next_event = self._scheduled_events[0][0] if self._scheduled_events else self._running[1] if self._running else None
+        if next_event is not None and time > next_event:
+            raise KernelError("TRAJECTORY_TIME", "advance events before evaluating beyond the next boundary")
+        positions = {atom: self._locations[index][1:] for index, atom in enumerate(self._atom_ids)}
+        axes = dict(self._device_axes)
+        contexts = list(self._inflight.values())
+        if self._serial_context is not None:
+            contexts.append(self._serial_context)
+        for context in contexts:
+            operation = context["operation"]
+            if operation.kind not in ("MOVE", "CONFIGURE"):
+                continue
+            start, end = context["start_us"], context["end_us"]
+            fraction = self._motion_fraction(operation.motion_profile, (time-start)/(end-start) if end > start else 1.)
+            source = context["source_axes"]
+            target = context["target_axes"]
+            rows = tuple(a+fraction*(b-a) for a, b in zip(source[0], target[0]))
+            columns = tuple(a+fraction*(b-a) for a, b in zip(source[1], target[1]))
+            active_rows = tuple(rows[index] for index, value in enumerate(source[0]) if value in source[2])
+            active_columns = tuple(columns[index] for index, value in enumerate(source[1]) if value in source[3])
+            axes[operation.aod_id] = (rows, columns, active_rows, active_columns)
+            for atom, point in context["source_positions"]:
+                column = source[1].index(point[0])
+                row = source[0].index(point[1])
+                positions[atom] = (columns[column], rows[row])
+        frozen_axes = MappingProxyType({device: MappingProxyType(dict(zip(("rows", "columns", "active_rows", "active_columns"), value)))
+                                      for device, value in axes.items()})
+        return TrajectoryEvaluation(time, self._version, MappingProxyType(positions), frozen_axes)
 
     def activate_fragment(self, id: str, gates: Iterable[GateSpec], *, requires_report_ids: Iterable[str] = ()) -> Observation:
         self._check_writer_entry()
         gates, reports = tuple(gates), tuple(requires_report_ids)
         self._declare_fragment(id, gates, reports)
-        self._commit("FRAGMENT_ACTIVATED", fragment_id=id, gates=tuple(self._gate_payload(gate) for gate in gates), requires_report_ids=reports)
+        self._commit("FRAGMENT_ACTIVATED", fragment_id=id, gates=tuple(self._gate_payload(gate) for gate in gates),
+                     gate_ids=tuple(gate.id for gate in gates), activated_gate_ids=tuple(gate.id for gate in gates), requires_report_ids=reports)
         return self.observe()
 
     def _declare_fragment(self, id: str, gates: tuple[GateSpec, ...], reports: tuple[str, ...]) -> None:
@@ -319,12 +381,174 @@ class KernelExecutor:
                 if any(report in reports_seen or report in self._measurement_results for report in reports):
                     self._error(operation, "DUPLICATE_REPORT", "block repeats an already committed or repeated report")
                 reports_seen.update(reports)
-        if block.operations:
+        schedule_resources = self._prepare_schedule(block) if block.execution_mode == "scheduled" else {}
+        if block.operations and block.execution_mode == "serial":
             self._validate_operation(block.operations[0])
         self._active_block, self._operation_cursor = block, 0
+        self._block_start_us = self._time_us
+        self._block_completed = []
+        self._block_completed_set = set()
+        self._operation_by_id = {operation.id: operation for operation in block.operations}
+        self._operation_ordinals = {operation.id: index for index, operation in enumerate(block.operations)}
+        self._scheduled_resources = schedule_resources
+        self._scheduled_events = [(self._time_us+operation.start_us, 1, index, operation.id, "start")
+                                  for index, operation in enumerate(block.operations)] if block.execution_mode == "scheduled" else []
+        heapq.heapify(self._scheduled_events)
         self._submitted_block_ids.add(block.id)
         self._commit("BLOCK_STARTED", block_id=block.id, native_provenance=block.native_provenance,
+                     execution_mode=block.execution_mode, block_start_us=self._block_start_us,
                      operations_hash=_digest([self._operation_payload(operation) for operation in block.operations]))
+
+    def _resources_for(self, operation: Operation, locations: Mapping[str, tuple[str, float, float]] | None = None) -> tuple[str, ...]:
+        if locations is None:
+            locations = {atom: self._locations[index] for atom, index in self._atom_index.items()}
+        kind = self._operation_kind(operation)
+        resources = set(operation.resources)
+        resources.update("ATOM:"+atom for atom in operation.atoms)
+        if kind in ("CONFIGURE", "LOAD", "MOVE", "STORE"):
+            resources.add(operation.aod_id)
+            resources.update("ATOM:"+atom for atom, location in locations.items() if location[0] == operation.aod_id)
+        elif kind in ("GATE", "CZ", "MEASURE", "RESET"):
+            resources.update(locations[atom][0] for atom in operation.atoms if locations[atom][0] != "slm")
+            if kind == "GATE":
+                resources.update("RAMAN:"+atom for atom in operation.atoms)
+            elif kind == "CZ":
+                resources.add("ENTANGLING_LASER_0")
+            elif kind == "MEASURE":
+                resources.add("READOUT_0")
+            elif kind == "RESET":
+                resources.add("RESET_0")
+        return tuple(sorted(resources))
+
+    def _unitary_kind(self, operation: Operation) -> str | None:
+        return self._gate_specs[operation.gate_ids[0]].kind if self._operation_kind(operation) in ("GATE", "CZ") else None
+
+    @staticmethod
+    def _relative_end(operation: Operation) -> float:
+        return operation.end_us if operation.end_us is not None else operation.start_us+operation.duration_us
+
+    def _prepare_schedule(self, block: Block) -> dict[str, tuple[str, ...]]:
+        """Check explicit temporal/identity resources once at block submission.
+
+        This is not a geometry audit. The independent reviewer owns continuous
+        clearance and global illumination checks over these same intervals.
+        """
+        operations = {operation.id: operation for operation in block.operations}
+        ends = {id: self._relative_end(operation) for id, operation in operations.items()}
+        if any(not isfinite(end+self._time_us) for end in ends.values()):
+            raise KernelError("TIME_OVERFLOW", "scheduled completion time is not finite")
+        gate_operation = {gate: operation for operation in block.operations for gate in operation.gate_ids}
+        report_operation = {report: operation for operation in block.operations if operation.kind == "MEASURE" for report in self._reports_for(operation)}
+        for operation in block.operations:
+            for dependency in operation.depends_on:
+                if dependency not in operations or ends[dependency] > operation.start_us:
+                    self._error(operation, "DEPENDENCY_NOT_READY", "scheduled operation dependency is absent or unfinished at its start")
+            for gate in operation.gate_ids:
+                for dependency in self._gate_specs[gate].depends_on:
+                    if dependency not in self._completed:
+                        parent = gate_operation.get(dependency)
+                        if parent is None or ends[parent.id] > operation.start_us:
+                            self._error(operation, "DEPENDENCY_NOT_READY", "scheduled gate dependency is unfinished at its start")
+            for report in operation.metadata.get("requires_report_ids", ()):
+                if report not in self._measurement_results:
+                    parent = report_operation.get(report)
+                    if parent is None or ends[parent.id] > operation.start_us:
+                        self._error(operation, "REPORT_NOT_READY", "scheduled operation requires an unavailable report")
+        # Predicted carriers are tiny and mutate only at operation completions.
+        locations = {atom: self._locations[index] for atom, index in self._atom_index.items()}
+        events = [(operation.start_us, 1, index, operation.id, "start") for index, operation in enumerate(block.operations)]
+        heapq.heapify(events)
+        owners, active_kinds, active_resources, completed = {}, {}, {}, set()
+        result = {}
+        while events:
+            time, phase, ordinal, id, event = heapq.heappop(events)
+            operation = operations[id]
+            kind = self._operation_kind(operation)
+            if event == "complete":
+                for resource in active_resources.pop(id):
+                    owners.pop(resource)
+                active_kinds.pop(id, None)
+                if kind in ("LOAD", "STORE", "MOVE"):
+                    targets = dict(operation.positions)
+                    for atom in operation.atoms:
+                        before = locations[atom]
+                        locations[atom] = (operation.aod_id, *before[1:]) if kind == "LOAD" else ("slm", *before[1:]) if kind == "STORE" else (before[0], *targets[atom])
+                completed.add(id)
+                continue
+            if any(dependency not in completed for dependency in operation.depends_on):
+                self._error(operation, "DEPENDENCY_NOT_READY", "same-time zero-duration dependencies require parent-first declaration")
+            if any(dependency not in self._completed and gate_operation[dependency].id not in completed
+                   for gate in operation.gate_ids for dependency in self._gate_specs[gate].depends_on):
+                self._error(operation, "DEPENDENCY_NOT_READY", "scheduled gate dependency has not completed before its start")
+            if any(report not in self._measurement_results and report_operation[report].id not in completed
+                   for report in operation.metadata.get("requires_report_ids", ())):
+                self._error(operation, "REPORT_NOT_READY", "scheduled report producer has not completed before its start")
+            if kind in ("LOAD", "MOVE", "STORE"):
+                carrier = "slm" if kind == "LOAD" else operation.aod_id
+                if any(locations[atom][0] != carrier for atom in operation.atoms):
+                    self._error(operation, "CARRIER_STATE", "scheduled transport has incompatible carrier state at start")
+            if kind == "CONFIGURE" and any(location[0] == operation.aod_id for location in locations.values()):
+                self._error(operation, "CARRIER_STATE", "scheduled CONFIGURE requires an empty AOD")
+            resources = self._resources_for(operation, locations)
+            conflicts = tuple(resource for resource in resources if resource in owners)
+            if conflicts:
+                self._error(operation, "RESOURCE_CONFLICT", "scheduled intervals overlap required resources: "+", ".join(conflicts))
+            unitary = self._unitary_kind(operation)
+            if unitary is not None and any(kind != unitary for kind in active_kinds.values()):
+                self._error(operation, "LASER_KIND_CONFLICT", "different unitary gate kinds cannot overlap")
+            if unitary is not None:
+                active_kinds[id] = unitary
+            for resource in resources:
+                owners[resource] = id
+            active_resources[id] = resources
+            result[id] = resources
+            heapq.heappush(events, (ends[id], 0, ordinal, id, "complete"))
+        return result
+
+    def _operation_context(self, operation: Operation, start: float, end: float, resources: tuple[str, ...]) -> dict[str, Any]:
+        source_axes = self._device_axes.get(operation.aod_id, ((), (), (), ()))
+        target_axes = source_axes
+        source_positions = ()
+        if operation.kind in ("MOVE", "CONFIGURE"):
+            if "target_axes" in operation.metadata:
+                target_axes = (*self._parse_axes(operation.metadata["target_axes"]), source_axes[2], source_axes[3])
+            elif operation.kind == "MOVE":
+                targets = dict(operation.positions)
+                loaded = {atom: targets.get(atom, self._locations[index][1:]) for atom, index in self._atom_index.items()
+                          if self._locations[index][0] == operation.aod_id}
+                target_axes = (tuple(sorted({point[1] for point in loaded.values()})), tuple(sorted({point[0] for point in loaded.values()})), source_axes[2], source_axes[3])
+            if len(source_axes[0]) != len(target_axes[0]) or len(source_axes[1]) != len(target_axes[1]):
+                if operation.kind == "CONFIGURE" and not source_axes[0] and not source_axes[1]:
+                    source_axes = (target_axes[0], target_axes[1], (), ())
+                else:
+                    self._error(operation, "AXIS_DIMENSIONS", "motion must preserve explicit full RF dimensions")
+            if operation.kind == "MOVE":
+                source_positions = tuple((atom, self._locations[index][1:]) for atom, index in self._atom_index.items()
+                                         if self._locations[index][0] == operation.aod_id)
+                targets = dict(operation.positions)
+                for atom, point in source_positions:
+                    try:
+                        row, column = source_axes[0].index(point[1]), source_axes[1].index(point[0])
+                    except ValueError:
+                        self._error(operation, "AXIS_STATE", "loaded atoms are not supported by committed full RF axes")
+                    if (target_axes[1][column], target_axes[0][row]) != targets.get(atom, point):
+                        self._error(operation, "POSITION_IDENTITY", "AOD RF target implies an undeclared or inconsistent atom move")
+            if operation.motion_profile == "rigid":
+                if any(len({round(b-a, 10) for a, b in zip(source, target)}) > 1 for source, target in zip(source_axes[:2], target_axes[:2])):
+                    self._error(operation, "RIGID_DEFORMATION", "rigid motion cannot deform relative RF axes")
+        return {"operation_id": operation.id, "operation": operation, "start_us": start, "end_us": end,
+                "resources": resources, "motion_profile": operation.motion_profile,
+                "source_axes": source_axes, "target_axes": target_axes, "source_positions": source_positions}
+
+    def _start_record(self, operation: Operation, context: Mapping[str, Any]) -> None:
+        self._commit("OPERATION_STARTED", block_id=self._active_block.id, operation_id=operation.id,
+                     kind=operation.kind, atoms=operation.atoms, start_us=context["start_us"], end_us=context["end_us"],
+                     aod_id=operation.aod_id, positions=operation.positions, gate_ids=operation.gate_ids, metadata=operation.metadata,
+                     resources=context["resources"], depends_on=operation.depends_on, motion_profile=operation.motion_profile,
+                     trajectory_profile="cubic" if operation.motion_profile == "row_column" else "linear",
+                     source_axes=dict(zip(("rows", "columns", "active_rows", "active_columns"), context["source_axes"])),
+                     target_axes=dict(zip(("rows", "columns"), context["target_axes"][:2])),
+                     start_positions=context["source_positions"])
 
     def _check_operation_shape(self, operation: Operation) -> None:
         kind = self._operation_kind(operation)
@@ -415,22 +639,28 @@ class KernelExecutor:
         raise KernelError(code, message, operation_id=operation.id)
 
     def _drive(self, limit: float | None) -> None:
+        if self._active_block is not None and self._active_block.execution_mode == "scheduled":
+            self._drive_scheduled(limit)
+            return
         while self._active_block is not None:
             block = self._active_block
             if self._operation_cursor == len(block.operations):
                 self._active_block, self._running = None, None
+                self._serial_context = None
                 self._commit("BLOCK_COMPLETED", block_id=block.id)
                 continue
             operation = block.operations[self._operation_cursor]
             if self._running is None:
+                if any(dependency not in self._block_completed_set for dependency in operation.depends_on):
+                    self._error(operation, "DEPENDENCY_NOT_READY", "serial operation dependency is unfinished")
                 self._validate_operation(operation)
                 end_us = self._time_us + operation.duration_us
                 if not isfinite(end_us):
                     self._error(operation, "TIME_OVERFLOW", "operation completion time is not finite")
+                context = self._operation_context(operation, self._time_us, end_us, self._resources_for(operation))
                 self._running = (self._time_us, end_us)
-                self._commit("OPERATION_STARTED", block_id=block.id, operation_id=operation.id,
-                             kind=operation.kind, atoms=operation.atoms, start_us=self._running[0], end_us=self._running[1],
-                             aod_id=operation.aod_id, positions=operation.positions, gate_ids=operation.gate_ids, metadata=operation.metadata)
+                self._serial_context = context
+                self._start_record(operation, context)
             if limit is not None and self._running[1] > limit:
                 break
             self._complete_operation(operation)
@@ -438,9 +668,49 @@ class KernelExecutor:
             self._time_us = limit
             self._commit("WAIT_COMPLETED", end_us=limit)
 
-    def _complete_operation(self, operation: Operation) -> None:
+    def _drive_scheduled(self, limit: float | None) -> None:
+        while self._active_block is not None:
+            block = self._active_block
+            if not self._scheduled_events:
+                if self._inflight or len(self._block_completed) != len(block.operations):
+                    raise KernelError("SCHEDULE_STATE", "scheduled queue does not cover unfinished operations")
+                self._active_block = None
+                self._commit("BLOCK_COMPLETED", block_id=block.id)
+                break
+            time, phase, ordinal, id, event = self._scheduled_events[0]
+            if limit is not None and time > limit:
+                break
+            operation = self._operation_by_id[id]
+            if event == "complete":
+                self._complete_operation(operation, self._inflight[id])
+                continue
+            if any(dependency not in self._block_completed_set for dependency in operation.depends_on):
+                self._error(operation, "DEPENDENCY_NOT_READY", "operation dependencies have not committed at scheduled start")
+            self._validate_operation(operation)
+            resources = self._resources_for(operation)
+            if resources != self._scheduled_resources[id]:
+                self._error(operation, "RESOURCE_STATE", "current carrier resources differ from the submitted schedule")
+            occupied = {resource for context in self._inflight.values() for resource in context["resources"]}
+            if occupied.intersection(resources):
+                self._error(operation, "RESOURCE_CONFLICT", "required resources are currently occupied")
+            unitary = self._unitary_kind(operation)
+            if unitary is not None and any(self._unitary_kind(context["operation"]) not in (None, unitary) for context in self._inflight.values()):
+                self._error(operation, "LASER_KIND_CONFLICT", "active unitary gate kind conflicts with scheduled start")
+            context = self._operation_context(operation, time, self._block_start_us+self._relative_end(operation), resources)
+            # All validation precedes queue/state mutation.
+            heapq.heappop(self._scheduled_events)
+            self._time_us = time
+            self._inflight[id] = context
+            heapq.heappush(self._scheduled_events, (context["end_us"], 0, ordinal, id, "complete"))
+            self._start_record(operation, context)
+        if limit is not None and limit > self._time_us:
+            self._time_us = limit
+            self._commit("WAIT_COMPLETED", end_us=limit)
+
+    def _complete_operation(self, operation: Operation, context: Mapping[str, Any] | None = None) -> None:
         self._validate_operation(operation)
-        start, end = self._running
+        scheduled = context is not None
+        start, end = (context["start_us"], context["end_us"]) if scheduled else self._running
         if not isfinite(end):
             self._error(operation, "TIME_OVERFLOW", "operation completion time is not finite")
         kind = self._operation_kind(operation)
@@ -466,6 +736,9 @@ class KernelExecutor:
             if after != before:
                 changed.append((atom, before, after))
         # No full-state/history copy is made here: only affected entries change.
+        if scheduled:
+            heapq.heappop(self._scheduled_events)
+            self._inflight.pop(operation.id)
         self._time_us = end
         for atom, _, after in changed:
             self._locations[self._atom_index[atom]] = after
@@ -498,11 +771,17 @@ class KernelExecutor:
             self._report_source._cursor += len(reports)
         block_id = self._active_block.id
         self._operation_cursor += 1
-        self._running = None
+        self._block_completed.append(operation.id)
+        self._block_completed_set.add(operation.id)
+        if not scheduled:
+            self._running = None
+            self._serial_context = None
         self._commit("OPERATION_COMPLETED", block_id=block_id, operation_id=operation.id, kind=operation.kind,
                      start_us=start, end_us=end, changed_atoms=tuple(changed), gate_ids=operation.gate_ids,
                      reports=tuple(zip(reports, bits)), report_source_cursor_before=cursor_before,
-                     report_source_cursor_after=self._report_source.cursor if reports else None, axes_delta=axes_delta)
+                     report_source_cursor_after=self._report_source.cursor if reports else None, axes_delta=axes_delta,
+                     resources=context["resources"] if scheduled else self._resources_for(operation),
+                     motion_profile=operation.motion_profile, trajectory_profile="cubic" if operation.motion_profile == "row_column" else "linear")
 
     @staticmethod
     def _parse_axes(axes: Mapping[str, Sequence[float]]) -> tuple[tuple[float, ...], tuple[float, ...]]:
@@ -556,13 +835,38 @@ class KernelExecutor:
         return {"id": operation.id, "kind": operation.kind, "atoms": list(operation.atoms),
                 "duration_us": operation.duration_us, "positions": thaw(operation.positions),
                 "gate_ids": list(operation.gate_ids), "report_ids": list(operation.report_ids),
-                "aod_id": operation.aod_id, "metadata": thaw(operation.metadata)}
+                "aod_id": operation.aod_id, "metadata": thaw(operation.metadata), "start_us": operation.start_us,
+                "depends_on": list(operation.depends_on), "resources": list(operation.resources), "motion_profile": operation.motion_profile,
+                "end_us": operation.end_us}
 
     @classmethod
     def _block_payload(cls, block: Block) -> dict[str, Any]:
         return {"id": block.id, "operations": [cls._operation_payload(operation) for operation in block.operations],
                 "expected_version": block.expected_version, "starting_state_hash": block.starting_state_hash,
-                "native_provenance": thaw(block.native_provenance)}
+                "native_provenance": thaw(block.native_provenance), "execution_mode": block.execution_mode}
+
+    @staticmethod
+    def _context_payload(context: Mapping[str, Any]) -> dict[str, Any]:
+        return {key: thaw(value) for key, value in context.items() if key != "operation"}
+
+    def _restore_context(self, operation: Operation, start: float, end: float, resources: tuple[str, ...],
+                         saved: Mapping[str, Any] | None) -> dict[str, Any]:
+        computed = self._operation_context(operation, start, end, resources)
+        if saved is not None:
+            if operation.aod_id not in resources:
+                # A static SLM pulse/readout does not own the default AOD.
+                # Its recorded start axes are historical observer metadata;
+                # an independent legal LOAD/MOVE can since have changed them.
+                # Preserve those exact values, rather than binding them to an
+                # unrelated current carrier. The snapshot digest protects them.
+                for key in ("source_axes", "target_axes"):
+                    value = saved[key]
+                    if len(value) != 4 or any(not isfinite(coordinate) for axis in value for coordinate in axis):
+                        raise KernelError("CHECKPOINT_EVENT", "invalid historical start-axis metadata")
+                    computed[key] = tuple(tuple(axis) for axis in value)
+            if self._context_payload(computed) != saved:
+                raise KernelError("CHECKPOINT_EVENT", "trajectory/resource start bindings disagree with state")
+        return computed
 
     def checkpoint(self, *, include_journal: bool = False) -> dict[str, Any]:
         payload = {
@@ -581,6 +885,11 @@ class KernelExecutor:
             "report_source": self._report_source.checkpoint() if self._report_source else None,
             "active_block": self._block_payload(self._active_block) if self._active_block else None,
             "operation_cursor": self._operation_cursor, "running": list(self._running) if self._running else None,
+            "block_start_us": self._block_start_us, "block_completed_operation_ids": list(self._block_completed),
+            "serial_context": self._context_payload(self._serial_context) if self._serial_context else None,
+            "inflight": [self._context_payload(context) for context in self._inflight.values()],
+            "scheduled_events": thaw(tuple(sorted(self._scheduled_events))),
+            "scheduled_resources": {id: list(resources) for id, resources in self._scheduled_resources.items()},
             "submitted_block_ids": sorted(self._submitted_block_ids), "recording": self._recording,
             "aod_axes": {device: dict(zip(("rows", "columns", "active_rows", "active_columns"), map(list, axes)))
                          for device, axes in self._device_axes.items()},
@@ -601,7 +910,7 @@ class KernelExecutor:
                 journal_sink: Callable[[Mapping[str, Any]], Any] | None = None) -> KernelExecutor:
         if isinstance(payload, str):
             payload = json.loads(payload)
-        if payload.get("schema") != "neutral_atom_kernel" or payload.get("version") != cls.CHECKPOINT_VERSION:
+        if payload.get("schema") != "neutral_atom_kernel" or payload.get("version") not in (1, cls.CHECKPOINT_VERSION):
             raise KernelError("CHECKPOINT_VERSION", "unsupported kernel checkpoint")
         saved_digest = payload.get("checkpoint_digest")
         if not isinstance(saved_digest, str) or saved_digest != _digest({key: value for key, value in payload.items() if key != "checkpoint_digest"}):
@@ -695,30 +1004,99 @@ class KernelExecutor:
         if not isinstance(result._state_digest, str) or len(result._state_digest) != 64:
             raise KernelError("CHECKPOINT_HASH", "invalid checkpoint state hash")
         result._submitted_block_ids = set(payload["submitted_block_ids"])
+        result._block_start_us = float(payload.get("block_start_us", result._time_us))
+        if not isfinite(result._block_start_us) or not 0 <= result._block_start_us <= result._time_us:
+            raise KernelError("CHECKPOINT_EVENT", "invalid block epoch")
+        result._block_completed = list(payload.get("block_completed_operation_ids", ()))
+        result._block_completed_set = set(result._block_completed)
+        if len(result._block_completed_set) != len(result._block_completed):
+            raise KernelError("CHECKPOINT_EVENT", "checkpoint repeats completed operations")
+        result._scheduled_resources = {id: tuple(resources) for id, resources in payload.get("scheduled_resources", {}).items()}
         result._operation_cursor = payload["operation_cursor"]
         if isinstance(result._operation_cursor, bool) or not isinstance(result._operation_cursor, int) or result._operation_cursor < 0:
             raise KernelError("CHECKPOINT_EVENT", "invalid operation cursor")
         active = payload["active_block"]
         if active is not None:
             result._active_block = Block(**{**active, "operations": tuple(Operation(**operation) for operation in active["operations"])})
+            result._operation_by_id = {operation.id: operation for operation in result._active_block.operations}
+            result._operation_ordinals = {operation.id: index for index, operation in enumerate(result._active_block.operations)}
             for operation in result._active_block.operations:
                 result._check_operation_shape(operation)
-            if not isinstance(result._operation_cursor, int) or not 0 <= result._operation_cursor < len(result._active_block.operations):
+            if not isinstance(result._operation_cursor, int) or not 0 <= result._operation_cursor <= len(result._active_block.operations):
                 raise KernelError("CHECKPOINT_EVENT", "invalid pending operation cursor")
+            if result._block_completed_set-set(result._operation_by_id):
+                raise KernelError("CHECKPOINT_EVENT", "unknown completed block operations")
             running = payload["running"]
-            if running is not None:
+            if result._active_block.execution_mode == "scheduled":
+                if running is not None or payload.get("serial_context") is not None:
+                    raise KernelError("CHECKPOINT_EVENT", "scheduled block has a serial running operation")
+                result._restore_schedule(payload)
+            elif running is not None:
+                if result._operation_cursor == len(result._active_block.operations):
+                    raise KernelError("CHECKPOINT_EVENT", "completed serial block has an inflight event")
                 start, end = map(float, running)
                 operation = result._active_block.operations[result._operation_cursor]
                 if not 0 <= start <= result._time_us <= end or end != start + operation.duration_us or not isfinite(end):
                     raise KernelError("CHECKPOINT_EVENT", "invalid pending operation interval")
                 result._validate_operation(operation)
                 result._running = (start, end)
+                computed = result._restore_context(operation, start, end, result._resources_for(operation), payload.get("serial_context"))
+                result._serial_context = computed
+            if result._active_block.execution_mode == "serial":
+                expected = [operation.id for operation in result._active_block.operations[:result._operation_cursor]]
+                if payload.get("version") == 1 and "block_completed_operation_ids" not in payload:
+                    result._block_completed, result._block_completed_set = expected, set(expected)
+                elif result._block_completed != expected:
+                    raise KernelError("CHECKPOINT_EVENT", "serial completed operation prefix disagrees with cursor")
         elif payload["running"] is not None:
             raise KernelError("CHECKPOINT_EVENT", "pending event has no active block")
+        elif payload.get("inflight") or payload.get("scheduled_events") or payload.get("serial_context"):
+            raise KernelError("CHECKPOINT_EVENT", "checkpoint inflight operations have no active block")
         if result._recording:
             result._journal = [freeze(record) for record in payload.get("journal", ())]
         cls._verify_checkpoint_journal(payload.get("journal", ()), result)
         return result
+
+    def _restore_schedule(self, payload: Mapping[str, Any]) -> None:
+        block = self._active_block
+        if self._operation_cursor != len(self._block_completed):
+            raise KernelError("CHECKPOINT_EVENT", "scheduled completed operation count disagrees with cursor")
+        if set(self._scheduled_resources) != set(self._operation_by_id):
+            raise KernelError("CHECKPOINT_EVENT", "scheduled resource ledger does not cover all operations")
+        owners, kinds = {}, set()
+        for saved in payload.get("inflight", ()):
+            id = saved["operation_id"]
+            if id not in self._operation_by_id or id in self._inflight or id in self._block_completed_set:
+                raise KernelError("CHECKPOINT_EVENT", "invalid or repeated inflight operation")
+            operation = self._operation_by_id[id]
+            start = self._block_start_us+operation.start_us
+            end = self._block_start_us+self._relative_end(operation)
+            if not start <= self._time_us <= end:
+                raise KernelError("CHECKPOINT_EVENT", "inflight interval does not contain current time")
+            self._validate_operation(operation)
+            resources = self._resources_for(operation)
+            if resources != self._scheduled_resources[id] or any(resource in owners for resource in resources):
+                raise KernelError("CHECKPOINT_EVENT", "inflight resources are inconsistent or overlap")
+            context = self._restore_context(operation, start, end, resources, saved)
+            owners.update({resource: id for resource in resources})
+            unitary = self._unitary_kind(operation)
+            if unitary is not None:
+                kinds.add(unitary)
+            self._inflight[id] = context
+        if len(kinds) > 1:
+            raise KernelError("CHECKPOINT_EVENT", "inflight unitary gate kinds conflict")
+        expected = []
+        for id, operation in self._operation_by_id.items():
+            ordinal = self._operation_ordinals[id]
+            if id in self._inflight:
+                expected.append((self._inflight[id]["end_us"], 0, ordinal, id, "complete"))
+            elif id not in self._block_completed_set:
+                expected.append((self._block_start_us+operation.start_us, 1, ordinal, id, "start"))
+        events = [tuple(event) for event in payload.get("scheduled_events", ())]
+        if sorted(events) != sorted(expected) or any(event[0] < self._time_us for event in events):
+            raise KernelError("CHECKPOINT_EVENT", "scheduled event suffix differs from inflight/unfinished operations")
+        self._scheduled_events = events
+        heapq.heapify(self._scheduled_events)
 
     @staticmethod
     def _verify_checkpoint_journal(journal: Sequence[Mapping[str, Any]], result: KernelExecutor) -> None:

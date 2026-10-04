@@ -8,8 +8,10 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter, defaultdict
+from dataclasses import replace
 from hashlib import sha256
 import json
+from math import isclose, ulp
 from pathlib import Path
 import re
 import sys
@@ -22,7 +24,8 @@ from neutral_atom_kernel import DeclaredReportSource, GateSpec, KernelExecutor, 
 from neutral_atom_kernel.audit import audit_operations
 from neutral_atom_kernel.model import thaw
 from neutral_atom_experiments.qec_pbc.canonical import canonical_memory_program
-from neutral_atom_strategies.native_kernel.axes import finalize_operations
+from neutral_atom_experiments.qec_pbc.native_kernel_memory import profile as declared_memory_profile
+from neutral_atom_strategies.native_kernel.axes import finalize_operations, schedule_operations
 from neutral_atom_strategies.native_kernel.lowering import lower_native
 
 
@@ -61,10 +64,122 @@ def canonical(value):
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False, allow_nan=False)
 
 
+def duration_matches(start, end, duration):
+    return end == start if duration == 0 else abs((end-start)-duration) <= 4 * (ulp(start)+ulp(end)+ulp(duration))
+
+
 def operation_payload(op):
     return {"id": op.id, "kind": op.kind, "atoms": list(op.atoms), "duration_us": op.duration_us,
             "positions": [[q, list(point)] for q, point in op.positions], "gate_ids": list(op.gate_ids),
-            "report_ids": list(op.report_ids), "aod_id": op.aod_id, "metadata": thaw(op.metadata)}
+            "report_ids": list(op.report_ids), "aod_id": op.aod_id, "metadata": thaw(op.metadata),
+            "start_us": op.start_us, "depends_on": list(op.depends_on),
+            "resources": list(op.resources), "motion_profile": op.motion_profile,
+            "end_us": getattr(op, "end_us", None)}
+
+
+def check_journal(operations, journal, final_saved, *, gates=()):
+    """Independently bind operation intervals and completion-only reports."""
+    by_op = {op.id: op for op in operations}
+    gate_specs = {gate.id: gate for gate in gates} if gates else {value["id"]: GateSpec(**value) for value in final_saved.get("gates", ())}
+    starts, groups, active, started, completed = {}, defaultdict(set), {}, {}, set()
+    reports, report_times, report_bindings = {}, {}, {}
+    cursor, previous_time = 0, 0.0
+    for index, entry in enumerate(journal):
+        time = entry["time_us"]
+        require(entry["version"] == index + 1 and time >= previous_time, "JOURNAL_ORDER", "Journal versions/time are not a complete monotonic prefix")
+        previous_time = time
+        event = entry["event"]
+        if event == "BLOCK_STARTED":
+            require(entry["block_id"] not in starts, "BLOCK_IDENTITY", "A block starts more than once")
+            starts[entry["block_id"]] = entry
+        elif event == "OPERATION_STARTED":
+            oid = entry["operation_id"]
+            require(oid in by_op and oid not in started, "JOURNAL_OPERATION", "Operation start is unknown or duplicated")
+            op = by_op[oid]
+            expected_end = getattr(op, "end_us", None)
+            expected_end = time + op.duration_us if expected_end is None else expected_end
+            require(not any(end <= time for end in active.values()), "JOURNAL_BOUNDARY", "A completion must commit before another operation starts at the same boundary")
+            require(set(op.depends_on) <= completed, "JOURNAL_DEPENDENCY", "Journal starts an operation before its predecessors complete")
+            require(op.start_us is None or isclose(op.start_us, time, rel_tol=0, abs_tol=1e-7), "JOURNAL_INTERVAL", "Saved absolute operation start differs from its journal start")
+            require(isclose(entry.get("start_us", time), time, rel_tol=0, abs_tol=1e-7)
+                    and isclose(entry.get("end_us", expected_end), expected_end, rel_tol=0, abs_tol=1e-7)
+                    and duration_matches(time, expected_end, op.duration_us),
+                    "JOURNAL_INTERVAL", "Journal interval differs from the saved duration")
+            started[oid] = time; active[oid] = expected_end
+            require(entry["block_id"] in starts, "BLOCK_IDENTITY", "Operation starts outside a declared block")
+            groups[entry["block_id"]].add(oid)
+        elif event == "OPERATION_COMPLETED":
+            oid = entry["operation_id"]
+            require(oid in active and oid not in completed, "JOURNAL_OPERATION", "Operation completion is unknown or duplicated")
+            require(isclose(active.pop(oid), time, rel_tol=0, abs_tol=1e-7), "JOURNAL_INTERVAL", "Operation completes outside its actual duration")
+            completed.add(oid)
+            values = dict(entry.get("reports", ()))
+            op = by_op[oid]
+            if op.kind == "MEASURE":
+                ids = op.report_ids or op.gate_ids
+                require(len(ids) == len(op.gate_ids) == len(op.atoms) and set(values) == set(ids) and not reports.keys() & values.keys(),
+                        "REPORT_COMPLETION", "Measurement reports are missing, extra or duplicated")
+                require(entry["report_source_cursor_before"] == cursor and entry["report_source_cursor_after"] == cursor + len(ids),
+                        "REPORT_CURSOR", "Report source cursor does not advance exactly at each readout completion")
+                gates_by_atom = {gate_specs[gid].atoms[0]: gid for gid in op.gate_ids}
+                require(set(gates_by_atom) == set(op.atoms), "REPORT_COMPLETION", "Readout gate identities do not uniquely cover its target atoms")
+                for rid, atom in zip(ids, op.atoms):
+                    gid = gates_by_atom[atom]
+                    reports[rid], report_times[rid] = values[rid], time
+                    report_bindings[rid] = {"gate_id": gid, "atom": atom, "operation_id": oid}
+                cursor += len(ids)
+            else:
+                require(not values, "REPORT_COMPLETION", "A report commits outside measurement completion")
+        require(event == "OPERATION_COMPLETED" or not entry.get("reports"), "REPORT_COMPLETION", "A report is visible before measurement completion")
+    require(not active and set(started) == completed == set(by_op), "JOURNAL_OPERATION", "Journal must start and complete every saved operation exactly once")
+    require(reports == final_saved["measurement_results"] and report_times == final_saved["measurement_completion_times_us"]
+            and report_bindings == final_saved["report_bindings"] and cursor == final_saved["report_source"]["cursor"],
+            "REPORT_FINAL_STATE", "Reports, completion times, bindings or source cursor differ from final checkpoint")
+    return starts, groups, reports, report_times, cursor
+
+
+def check_midcut(cut, measurement_id, operations):
+    """Require a real unfinished readout, allowing any number of other in-flight ops."""
+    require(measurement_id not in cut["measurement_results"], "MIDCUT_REPORT", "Recovery cut already contains its unfinished report")
+    by_op = {op.id: op for op in operations}
+    inflight = cut.get("inflight")
+    if cut.get("serial_context") is not None:
+        contexts = [cut["serial_context"]]
+    elif inflight is None:
+        # Historical serial evidence used one running interval and operation cursor.
+        op = cut["active_block"]["operations"][cut["operation_cursor"]]
+        contexts = [{"operation_id": op["id"], "start_us": cut["running"][0], "end_us": cut["running"][1]}] if cut.get("running") else []
+    else:
+        contexts = list(inflight.values()) if isinstance(inflight, dict) else list(inflight)
+    require(bool(contexts), "MIDCUT_INFLIGHT", "Recovery checkpoint has no in-flight operations")
+    readouts = []
+    for context in contexts:
+        oid = context["operation_id"]
+        require(oid in by_op and context["start_us"] <= cut["time_us"] < context["end_us"], "MIDCUT_INFLIGHT", "Checkpoint in-flight interval does not contain the actual cut")
+        op = by_op[oid]
+        require(duration_matches(context["start_us"], context["end_us"], op.duration_us),
+                "MIDCUT_INFLIGHT", "Checkpoint in-flight duration differs from the saved operation")
+        if op.kind == "MEASURE" and measurement_id in (op.report_ids or op.gate_ids):
+            readouts.append(context)
+    require(len(readouts) == 1 and readouts[0]["start_us"] < cut["time_us"] < readouts[0]["end_us"],
+            "MIDCUT_REPORT", "Recovery cut is not strictly inside its declared unfinished readout")
+    return len(contexts)
+
+
+def block_inputs(saved_block, global_operations, journal_start):
+    """Recover the saved exact local inputs, never subtract a floating epoch."""
+    mode = saved_block.get("execution_mode", "serial")
+    offset = saved_block.get("start_us", journal_start["time_us"])
+    if mode == "scheduled":
+        require(bool(saved_block.get("operations")), "BLOCK_INPUT_BINDING", "Scheduled evidence must save original block-relative operation inputs")
+        local = tuple(Operation(**value) for value in saved_block["operations"])
+        global_copies = tuple(replace(op, start_us=offset+op.start_us,
+                                     end_us=None if op.end_us is None else offset+op.end_us) for op in local)
+        require([operation_payload(op) for op in global_copies] == [operation_payload(op) for op in global_operations],
+                "BLOCK_INPUT_BINDING", "Global operation stream differs from exact epoch-offset copies of original block inputs")
+        return local
+    require(mode == "serial", "BLOCK_INPUT_BINDING", "Saved block execution mode is unsupported")
+    return tuple(global_operations)
 
 
 def source_protocol(rounds):
@@ -132,6 +247,8 @@ def audit_directory(directory, *, root=ROOT):
         manifest = load("manifest.json")
         checks["manifest"] = _check_manifest(directory, manifest, root)
         initial, summary = load("initial.json"), load("summary.json")
+        require(initial["profile"] == json.loads(canonical(declared_memory_profile())),
+                "SOURCE_PHYSICAL_PROFILE", "Saved physical profile differs from the source-bound memory scenario declaration")
         protocol, bindings, gates, segments = source_protocol(summary["rounds"])
         expected_gates = [{"id": g.id, "kind": g.kind, "atoms": list(g.atoms), "depends_on": list(g.depends_on)} for g in gates]
         require(initial["gates"] == expected_gates, "SOURCE_GATE_CONTRACT", "Saved GateSpecs differ from independent canonical role/wire/dependency mapping")
@@ -151,7 +268,8 @@ def audit_directory(directory, *, root=ROOT):
         require(set(effects) == {g.id for g in gates} and all(n == 1 for n in effects.values()),
                 "SOURCE_EFFECT_COVERAGE", "Each canonical source gate must execute exactly once, without extra effects")
         geometry = audit_operations(initial["positions"], operations, initial["profile"], gates=gates,
-                                    initial_axes=initial["profile"]["initial_axes"])
+                                    initial_axes=initial["profile"]["initial_axes"],
+                                    execution_mode="scheduled" if any(op.start_us is not None for op in operations) else "serial")
         require(geometry["passed"], "PHYSICAL_REVIEW", f"Independent geometry review failed: {geometry['failures']}")
         saved_geometry = load("offline-audit.json")
         require(saved_geometry == geometry, "PHYSICAL_REVIEW_BINDING", "Saved physical review differs from independent replay of the saved operation stream")
@@ -163,44 +281,9 @@ def audit_directory(directory, *, root=ROOT):
                 "JOURNAL_NONEMPTY", "Saved blocks and committed journal must be nonempty")
         KernelExecutor.restore(final_saved)
         KernelExecutor.restore(cut_saved)
-        starts, groups, completed, reports, report_times, report_bindings = {}, defaultdict(list), [], {}, {}, {}
-        cursor, previous_time = 0, 0.0
-        for index, entry in enumerate(journal):
-            require(entry["version"] == index + 1 and entry["time_us"] >= previous_time, "JOURNAL_ORDER", "Journal versions/time are not a complete monotonic prefix")
-            previous_time = entry["time_us"]
-            event = entry["event"]
-            if event == "BLOCK_STARTED":
-                require(entry["block_id"] not in starts, "BLOCK_IDENTITY", "A block starts more than once")
-                starts[entry["block_id"]] = entry
-            elif event == "OPERATION_STARTED":
-                oid = entry["operation_id"]
-                require(oid in by_op, "JOURNAL_OPERATION", "Journal names an unknown operation")
-                groups[entry["block_id"]].append(by_op[oid])
-            elif event == "OPERATION_COMPLETED":
-                oid = entry["operation_id"]
-                require(oid in by_op and oid not in completed, "JOURNAL_OPERATION", "Operation completion is unknown or duplicated")
-                completed.append(oid)
-                values = dict(entry.get("reports", ()))
-                if by_op[oid].kind == "MEASURE":
-                    op = by_op[oid]
-                    ids = op.report_ids or op.gate_ids
-                    require(set(values) == set(ids) and not reports.keys() & values.keys(), "REPORT_COMPLETION", "Measurement reports are missing, extra or duplicated")
-                    require(entry["report_source_cursor_before"] == cursor and entry["report_source_cursor_after"] == cursor + len(ids),
-                            "REPORT_CURSOR", "Report source cursor does not advance exactly at each readout completion")
-                    for rid, gid, atom in zip(ids, op.gate_ids, op.atoms):
-                        reports[rid], report_times[rid] = values[rid], entry["time_us"]
-                        report_bindings[rid] = {"gate_id": gid, "atom": atom, "operation_id": oid}
-                    cursor += len(ids)
-                else:
-                    require(not values, "REPORT_COMPLETION", "A report commits outside measurement completion")
-            else:
-                require(not entry.get("reports"), "REPORT_COMPLETION", "A report is visible before measurement completion")
-        require(completed == [o.id for o in operations], "JOURNAL_OPERATION", "Journal completion sequence differs from the saved operation stream")
+        starts, groups, reports, report_times, cursor = check_journal(operations, journal, final_saved, gates=gates)
         expected_reports = sum(g.kind == "MEASURE" for g in gates)
-        require(len(reports) == expected_reports and reports == final_saved["measurement_results"]
-                and report_times == final_saved["measurement_completion_times_us"]
-                and report_bindings == final_saved["report_bindings"] and cursor == final_saved["report_source"]["cursor"],
-                "REPORT_FINAL_STATE", "Reports, completion times, bindings or source cursor differ from final checkpoint")
+        require(len(reports) == expected_reports, "REPORT_FINAL_STATE", "Report count differs from the canonical source protocol")
         require([b["id"] for b in blocks] == list(starts), "BLOCK_IDENTITY", "Saved block order differs from journal block starts")
         checks["reports"] = {"count": len(reports), "cursor": cursor, "completion_only": True}
 
@@ -210,9 +293,14 @@ def audit_directory(directory, *, root=ROOT):
         alignment_operations, alignment_time = 0, 0.0
         for saved_block in blocks:
             bid = saved_block["id"]
-            block_operations = tuple(groups[bid])
+            mode = saved_block.get("execution_mode", "serial")
+            offset = saved_block.get("start_us", starts[bid]["time_us"])
+            global_operations = tuple(op for op in operations if op.id in groups[bid])
+            block_operations = block_inputs(saved_block, global_operations, starts[bid])
             require(bool(block_operations), "BLOCK_OPERATIONS", f"Saved block {bid} has no operation trace")
             before = executor.observe()
+            require(offset == before.time_us == starts[bid]["time_us"] and starts[bid].get("execution_mode", "serial") == mode,
+                    "LIVE_STATE_BINDING", f"Block {bid} time/mode differs from its independently replayed live start")
             if re.fullmatch(r"unitary-\d+", bid):
                 number = int(bid.split("-")[1]); authoritative = segments[number - 1]
                 native = load(bid + ".native.json")
@@ -229,13 +317,15 @@ def audit_directory(directory, *, root=ROOT):
                 require(thaw(lowered.provenance) == saved_block["native_provenance"], "NATIVE_PROVENANCE", "Saved native block provenance differs from validated original source")
                 expected_ops = finalize_operations(lowered.operations, before.positions, initial_axes=before.aod_axes,
                                                    initial_holders=before.holders, bounds=initial["profile"]["bounds_um"], minimum_axis_spacing_um=2)
+                if mode == "scheduled":
+                    expected_ops = schedule_operations(expected_ops)
                 require([operation_payload(o) for o in expected_ops] == [operation_payload(o) for o in block_operations],
                         "NATIVE_LOWERING_BINDING", "Saved native physical operations differ from deterministic source lowering/full-axis finalization")
                 native_count += 1
             elif bid.endswith(".align"):
                 alignment_operations += len(block_operations)
-                alignment_time += sum(o.duration_us for o in block_operations)
-            block = executor.bind_block(bid, block_operations, native_provenance=saved_block["native_provenance"])
+                alignment_time += max((o.start_us or 0) + o.duration_us for o in block_operations) if mode == "scheduled" else sum(o.duration_us for o in block_operations)
+            block = executor.bind_block(bid, block_operations, native_provenance=saved_block["native_provenance"], execution_mode=mode)
             require(block.expected_version == saved_block["expected_version"] and block.starting_state_hash == saved_block["starting_state_hash"],
                     "LIVE_STATE_BINDING", f"Block {bid} does not bind the independently replayed live state")
             require(starts[bid]["native_provenance"] == saved_block["native_provenance"], "BLOCK_PROVENANCE", "Journal block provenance differs from saved block")
@@ -247,9 +337,9 @@ def audit_directory(directory, *, root=ROOT):
                 require(executor.checkpoint(include_journal=True) == cut_saved, "MIDCUT_REPLAY", "Saved in-flight checkpoint is not reproduced exactly")
                 probe = summary["inflight_recovery"]
                 require(probe["passed"] and probe["report_not_ready"] and probe["cut_us"] == cut_saved["time_us"]
-                        and probe["measurement_id"] not in cut_saved["measurement_results"]
-                        and cut_saved["running"][0] < cut_saved["time_us"] < cut_saved["running"][1],
+                        and probe["measurement_id"] not in cut_saved["measurement_results"],
                         "MIDCUT_REPORT", "Recovery probe is not genuinely inside an unfinished readout")
+                checks["midcut_inflight_count"] = check_midcut(cut_saved, probe["measurement_id"], block_operations)
                 executor = KernelExecutor.restore(executor.checkpoint(include_journal=True)); executor.run(); cut_match = True
             else:
                 executor.run(block)

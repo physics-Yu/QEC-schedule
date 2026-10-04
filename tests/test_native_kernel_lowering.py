@@ -1,23 +1,27 @@
 """Source identity, dependency, geometry and timing checks at native lowering."""
 from hashlib import sha256
 from copy import deepcopy
+from dataclasses import replace
 import json
 from math import sqrt
 
 import pytest
 
-from neutral_atom_kernel import GateSpec, Operation
-from neutral_atom_strategies.native_kernel.compiler import (ARCHITECTURE_SOURCE, ENGINE, OUTPUT_SCHEMA,
+from neutral_atom_kernel import GateSpec, KernelExecutor, Operation
+from neutral_atom_strategies.native_kernel.compiler import (ARCHITECTURE_SOURCE, ENGINE,
+    ILLUMINATION_CONTRACT, MOTION_CONTRACT, NATIVE_SCHEDULE_CONTRACT, OUTPUT_SCHEMA,
     PINNED_QMAP_VERSION, TIMING_PROFILE, _contracts, _frontiers, _request_manifest, _source_sha256)
-from neutral_atom_strategies.native_kernel import finalize_operations, lower_native, parse_naviz
+from neutral_atom_strategies.native_kernel import (finalize_operations, lower_native,
+    parse_naviz, schedule_operations)
 
 
 def _canonical(value):
     return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False)
 
 
-def result(code, gates, *, atom_ids=('Q000', 'Q001'), completed=()):
-    architecture = {'rydberg_range': [[[-20, 50], [200, 100]]]}
+def result(code, gates, *, atom_ids=('Q000', 'Q001'), completed=(), architecture=None):
+    architecture = deepcopy(architecture or {'arch_range': [[-20, -30], [200, 200]],
+        'rydberg_range': [[[-20, 50], [200, 100]]]})
     contract = _contracts(gates, atom_ids)
     mapping = {f'atom{i}': q for i, q in enumerate(atom_ids)}
     initial, _ = parse_naviz(code)
@@ -38,7 +42,9 @@ def result(code, gates, *, atom_ids=('Q000', 'Q001'), completed=()):
         completed_dependencies=list(completed), versions=versions,
         request_manifest=manifest, request_sha256=sha256(_canonical(manifest).encode()).hexdigest(),
         compiler_source_sha256=source_sha, dependency_mode='explicit-global-frontiers',
-        barrier_before=[], routing='strict', reuse_level=0., timing_profile=TIMING_PROFILE)
+        barrier_before=[], routing='strict', reuse_level=0., timing_profile=TIMING_PROFILE,
+        native_schedule_contract=NATIVE_SCHEDULE_CONTRACT,
+        illumination_contract=ILLUMINATION_CONTRACT, motion_contract=MOTION_CONTRACT)
 
 
 GATES = (GateSpec('source.h0', 'H', ('Q000',)), GateSpec('source.h1', 'H', ('Q001',)),
@@ -229,7 +235,8 @@ def test_request_hash_cannot_be_replaced_by_an_arbitrary_valid_sha256():
 
 
 @pytest.mark.parametrize('field', ['schema', 'versions', 'request_sha256',
-    'compiler_source_sha256', 'request_manifest', 'architecture_source', 'barrier_before', 'routing'])
+    'compiler_source_sha256', 'request_manifest', 'architecture_source', 'barrier_before', 'routing',
+    'native_schedule_contract', 'illumination_contract', 'motion_contract'])
 def test_required_provenance_fields_cannot_be_deleted(field):
     native = result(PROGRAM, GATES)
     del native[field]
@@ -301,3 +308,199 @@ def test_initial_position_metadata_must_match_raw_native_declarations():
     native['initial_positions']['Q000'] = (1., 0.)
     with pytest.raises(ValueError, match='raw atom declarations'):
         lower_native(native)
+
+
+def test_native_bracketed_one_qubit_targets_remain_one_simultaneous_pulse():
+    gates = GATES[:2]
+    code = '''atom (0, 0) atom0
+atom (10, 0) atom1
+@+ u 1.57080 0 3.14159 [
+atom0
+atom1
+]
+'''
+    lowered = lower_native(result(code, gates), gates)
+    operations = schedule_operations(lowered.operations)
+    assert len(operations) == 1
+    pulse = operations[0]
+    assert pulse.atoms == ('Q000', 'Q001')
+    assert pulse.gate_ids == ('source.h0', 'source.h1')
+    assert pulse.start_us == 0.
+    assert pulse.end_us == 1.
+    assert pulse.duration_us == 1.
+    assert pulse.depends_on == ()
+    assert pulse.metadata['native_grouped_targets'] is True
+    assert lowered.native_instructions[0]['source_line'] == 3
+    executor = KernelExecutor(lowered.initial_positions, gates)
+    observed = executor.run(executor.bind_block('native-batch', operations,
+        native_provenance=lowered.provenance, execution_mode='scheduled'))
+    assert observed.time_us == 1.
+    assert set(observed.completed_gate_ids) == {g.id for g in gates}
+
+
+def test_distinct_native_after_end_instructions_are_not_invented_as_parallel():
+    code = 'atom (0, 0) atom0\natom (10, 0) atom1\n'
+    code += '@+ u 1.57080 0 3.14159 atom0\n@+ u 1.57080 0 3.14159 atom1\n'
+    lowered = lower_native(result(code, GATES[:2]), GATES[:2])
+    first, second = schedule_operations(lowered.operations)
+    assert (first.start_us, second.start_us) == (0., 1.)
+    assert (first.end_us, second.end_us) == (1., 2.)
+    assert second.depends_on == (first.id,)
+    assert second.start_us + second.duration_us == 2.
+    assert lowered.provenance['native_general_concurrent_schedule'] is False
+    assert lowered.provenance['native_independent_multi_aod_schedule'] is False
+    assert lowered.provenance['native_synchronized_multi_target_batches'] is True
+    executor = KernelExecutor(lowered.initial_positions, GATES[:2])
+    observed = executor.run(executor.bind_block('native-after-end', (first, second),
+        native_provenance=lowered.provenance, execution_mode='scheduled'))
+    assert observed.time_us == 2.
+    with pytest.raises(ValueError, match='unsupported syntax'):
+        parse_naviz(code.replace('@+ u', '@= u'))
+
+
+def test_native_transport_groups_stay_whole_after_full_rf_schedule_binding():
+    lowered = lower_native(result(PROGRAM, GATES), GATES)
+    finalized = finalize_operations(lowered.operations, lowered.initial_positions,
+        initial_axes={'AOD_0': {'columns': (-20., -10.), 'rows': (-30., -20.)}},
+        bounds=(-20., -30., 200., 200.))
+    scheduled = schedule_operations(finalized)
+    cursor = 0.
+    for index, op in enumerate(scheduled):
+        assert op.start_us == pytest.approx(cursor)
+        assert op.end_us == cursor + op.duration_us
+        assert op.depends_on == (() if index == 0 else (scheduled[index - 1].id,))
+        cursor += op.duration_us
+    load = next(op for op in scheduled if op.kind == 'LOAD')
+    move = next(op for op in scheduled if op.kind == 'MOVE')
+    store = next(op for op in scheduled if op.kind == 'STORE')
+    assert load.atoms == move.atoms == store.atoms == ('Q000', 'Q001')
+    assert load.duration_us == store.duration_us == 15.
+    assert load.metadata['native_grouped_targets'] is True
+    assert move.motion_profile == 'row_column'
+    assert move.metadata['motion_progress'] == '3s**2-2s**3'
+    assert len(move.metadata['target_axes']['rows']) == 2
+    assert move.start_us == pytest.approx(load.start_us + 15.)
+    config = next(op for op in scheduled if op.kind == 'CONFIGURE')
+    assert config.id in load.depends_on
+    assert config.motion_profile == 'row_column'
+    assert config.metadata['motion_progress'] == '3s**2-2s**3'
+    with pytest.raises(ValueError, match='before binding'):
+        finalize_operations(scheduled, lowered.initial_positions,
+            initial_axes={'AOD_0': {'columns': (-20., -10.), 'rows': (-30., -20.)}},
+            bounds=(-20., -30., 200., 200.))
+
+
+@pytest.mark.parametrize('epoch', (0., 100.1))
+def test_native_full_rf_schedule_reaches_event_kernel_with_common_cubic_motion(epoch):
+    lowered = lower_native(result(PROGRAM, GATES), GATES)
+    axes = {'AOD_0': {'columns': (-20., -10.), 'rows': (-30., -20.)}}
+    operations = schedule_operations(finalize_operations(lowered.operations,
+        lowered.initial_positions, initial_axes=axes, bounds=(-20., -30., 200., 200.)))
+    movement = next(op for op in operations if op.kind == 'MOVE')
+    executor = KernelExecutor(lowered.initial_positions, GATES, initial_aod_axes=axes)
+    executor.wait_until(epoch)
+    time = epoch + movement.start_us + .25 * movement.duration_us
+    halfway = executor.run(executor.bind_block('native-cubic', operations,
+        native_provenance=lowered.provenance, execution_mode='scheduled'), until_us=time)
+    fraction = 3 * .25 ** 2 - 2 * .25 ** 3
+    assert halfway.positions['Q000'] == pytest.approx((0., 60. * fraction))
+    assert halfway.positions['Q001'] == pytest.approx((10. - 5. * fraction, 60. * fraction))
+    assert halfway.committed_positions['Q000'] == (0., 0.)
+    assert halfway.committed_positions['Q001'] == (10., 0.)
+    first, second = executor.evaluate(), executor.evaluate()
+    assert first == second
+    assert executor.observe().version == halfway.version
+    finished = executor.run()
+    assert finished.time_us == epoch + operations[-1].end_us
+    assert dict(finished.positions) == dict(lowered.final_positions)
+    assert set(finished.completed_gate_ids) == {g.id for g in GATES}
+    flat = tuple(replace(op, start_us=epoch + op.start_us, end_us=epoch + op.end_us)
+                 for op in operations)
+    replay = KernelExecutor(lowered.initial_positions, GATES, initial_aod_axes=axes)
+    replay_finished = replay.run(replay.bind_block('native-flat-replay', flat,
+        native_provenance=lowered.provenance, execution_mode='scheduled'))
+    assert replay_finished.time_us == finished.time_us
+    assert replay_finished.positions == finished.positions
+    assert replay_finished.completed_gate_ids == finished.completed_gate_ids
+
+
+def test_end_chain_binding_preserves_dependencies_and_rejects_rebinding_or_forward_edges():
+    ops = (Operation('a', 'WAIT', duration_us=3.), Operation('b', 'WAIT', duration_us=2.),
+           Operation('c', 'WAIT', duration_us=1., depends_on=('a',), resources=('extra',)))
+    bound = schedule_operations(ops, start_us=10.)
+    assert [op.start_us for op in bound] == [10., 13., 15.]
+    assert [op.end_us for op in bound] == [13., 15., 16.]
+    assert bound[-1].depends_on == ('a', 'b')
+    assert bound[-1].resources == ('extra',)
+    with pytest.raises(ValueError, match='already bound'):
+        schedule_operations(bound)
+    with pytest.raises(ValueError, match='earlier schedule prefix'):
+        schedule_operations((Operation('a', 'WAIT', depends_on=('missing',)),))
+    with pytest.raises(ValueError, match='unique identities'):
+        schedule_operations((ops[0], ops[0]))
+
+
+def test_nonzero_epoch_end_chain_retains_original_relative_payload_and_replays_flat_endpoints():
+    epoch = 100.1
+    operations = schedule_operations(tuple(Operation(f'wait.{i}', 'WAIT', duration_us=d)
+        for i, d in enumerate((.3, .2, .36, 1., 0., 200 * sqrt(60 / 110)))))
+    assert operations[0].end_us == .3
+    assert epoch + operations[0].end_us - epoch != operations[0].end_us
+    assert all(left.end_us == right.start_us for left, right in zip(operations, operations[1:]))
+    executor = KernelExecutor({'Q000': (0., 0.)})
+    executor.wait_until(epoch)
+    executor.run(executor.bind_block('fractional', operations, execution_mode='scheduled'),
+        until_us=epoch + .1)
+    payload = executor.checkpoint()['active_block']['operations']
+    assert [op['start_us'] for op in payload] == [op.start_us for op in operations]
+    assert [op['end_us'] for op in payload] == [op.end_us for op in operations]
+    block_event = next(row for row in executor.journal if row['event'] == 'BLOCK_STARTED')
+    assert block_event['operations_hash'] == sha256(_canonical(payload).encode()).hexdigest()
+    restored = KernelExecutor.restore(executor.checkpoint_json(include_journal=True))
+    assert restored.checkpoint()['active_block']['operations'] == payload
+    completed, restored_completed = executor.run(), restored.run()
+    assert restored_completed == completed
+    flat = tuple(replace(op, start_us=epoch + op.start_us, end_us=epoch + op.end_us)
+                 for op in operations)
+    assert all(left.end_us == right.start_us for left, right in zip(flat, flat[1:]))
+    replay = KernelExecutor({'Q000': (0., 0.)})
+    replay_completed = replay.run(replay.bind_block('fractional-flat', flat, execution_mode='scheduled'))
+    assert replay_completed.time_us == completed.time_us == epoch + operations[-1].end_us
+    assert replay_completed.completed_operation_ids == completed.completed_operation_ids
+
+
+def test_global_y_band_includes_spectators_outside_the_native_local_rectangle():
+    architecture = {'arch_range': [[-20, -30], [200, 200]],
+        'rydberg_range': [[[-10, 50], [10, 100]]]}
+    native = result(PROGRAM, GATES, architecture=architecture)
+    with pytest.raises(ValueError, match='unintended CZ pair'):
+        lower_native(native, GATES, initial_positions={'Q000': (0., 0.), 'Q001': (10., 0.),
+            'spectator.a': (150., 60.), 'spectator.b': (155., 60.)})
+    lowered = lower_native(native, GATES, initial_positions={
+        'Q000': (0., 0.), 'Q001': (10., 0.), 'spectator': (150., 60.)})
+    pulse = next(op for op in lowered.operations if op.kind == 'CZ')
+    assert pulse.metadata['zone_bounds']['zone_cz0'] == ((-20., 50.), (200., 100.))
+    assert pulse.metadata['native_zone_bounds']['zone_cz0'] == ((-10., 50.), (10., 100.))
+    assert pulse.metadata['world_bounds'] == ((-20., -30.), (200., 200.))
+    assert pulse.metadata['illumination_scope'] == ILLUMINATION_CONTRACT
+    assert ('spectator', (150., 60.)) in pulse.metadata['bound_positions_before']
+
+
+@pytest.mark.parametrize('architecture', [
+    {'rydberg_range': [[[-20, 50], [200, 100]]]},
+    {'arch_range': [[-20, -30], [200, 200]], 'rydberg_range': []},
+    {'arch_range': [[-20, -30], [200, 200]], 'rydberg_range': [[[-20, 50], [200, 220]]]},
+])
+def test_global_illumination_requires_declared_world_and_in_bounds_y_bands(architecture):
+    with pytest.raises(ValueError, match='arch_range|rydberg_range|outside the physical world'):
+        lower_native(result(PROGRAM, GATES, architecture=architecture), GATES)
+
+
+@pytest.mark.parametrize('field', ['native_schedule_contract', 'illumination_contract', 'motion_contract'])
+def test_new_execution_contract_cannot_be_forged_with_a_rehashed_manifest(field):
+    native = result(PROGRAM, GATES)
+    native[field] = 'forged'
+    native['request_manifest'][field] = 'forged'
+    native['request_sha256'] = sha256(_canonical(native['request_manifest']).encode()).hexdigest()
+    with pytest.raises(ValueError, match='schedule/illumination/motion provenance'):
+        lower_native(native, GATES)

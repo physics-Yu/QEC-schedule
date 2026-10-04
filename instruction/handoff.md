@@ -1,6 +1,15 @@
 # 当前交接状态
 
-## 2026-10-04 独立原生内核首阶段通过
+## 2026-10-04 全 x EZ 与事件内核当前资格
+
+最终d3-global-ez-attempt5、v2 world x −20…200/EZ y50…80 μm，全部holder/旁观者有限CZ pairs及单独trap域审核。17atoms/2rounds/218gates/1123ops/25reports，48CZ对/8pulse/max6，82,554.39152192436μs；66source/14artifact、7blocks/196alignment、inflight/final checkpoint及2261journal独立几何/精确重放PASS。显式relative start/end/依赖/资源与scheduled事件、共同cubic当前pose、多inflight coldrestore通过；原生END链仍串行，[]同步batch保留，一般重叠由runtime专项验证。
+
+最终171pytest/5.95s、277modules0违规，两Node及8780 default视窗/请求390×844窄屏全xcaption/报告/console0通过。recording off/on0.226/0.377s、strict offline0.148s、两C++call8.824ms、coldimport另计；未测同输入legacyratio。attempt3一ULP假依赖失败保留并已修复；attempt4真实PASS但在最终batch-report身份修复前，当前资格只用attempt5/source-freeze-v4，v3 superseded。旧v1能力[ff9ab421](https://github.com/physics-Yu/QEC-schedule/commit/ff9ab421a6450eff5610aabe11aabf6f304f3000)已独立fetch核对parent/tree/32blobs，[历史回执](../references/qec_pbc_validation/native_kernel_publication_2026_10_04.json)保持；本轮v2发布由root另验。
+
+freeze-v4已交协作工厂薄controller；完整factory/injection/processor、native多AOD、fidelity/FT/physicalShor继续S1–S3独立验收，先W4完整依赖/唯一token-carrier与有界warmnative/fullRF/MZ续接。仅managedcheckout更新，原并行目录不覆盖。见[全带合同](../docs/qec_global_ez_contract.md)、[API/复现](../docs/native_kernel_migration.md)、[小摘要](../references/qec_pbc_validation/global_ez_kernel_2026_10_04.json)、[日志](logs/2026-10-04-global-ez-scheduled-kernel.md)。
+
+
+## 2026-10-04 独立原生内核首阶段通过（历史 v1 快照）
 
 用户授权迁移内核，已交付独立 `neutral_atom_kernel`：QMAP C++ → mandatory源请求/完整依赖 → 统一指令流 → 紧凑executor → 增量日志/反馈。日常推进移除旧ProgramBuilder、SimulationState、候选搜索和全trace审核，旧ENV仅兼容/历史。实际17原子d3两轮218门、1123操作、25完成报告；48对CZ/8脉冲/max6并行、82.554ms模型时间。独立全RF/Cartesian/有限作用对几何PASS、7block持续位置、196次真实alignment操作及inflight/finalcheckpoint/2261journal重放exact。录制off/on同流推进0.154/0.261s，strict离线0.119s；native两调用9.72ms、首次导入另计。123pytest与277modules零违规；两Node缩放/报告倒放/fit，真实1280/390px、报告完成边界及零console error通过；新回放本机8780。
 

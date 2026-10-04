@@ -26,3 +26,9 @@
 完整factory/injection/processor、native多AOD及physicalShor/噪声容错仍未由本轮验收。core/API/source-freeze-v2白名单12files已交工厂协作任务，旧source-freeze-v1只差offline converter小写role处理；不覆盖原并行checkout。下一步由其原W4协议全M→R barrier、143身份、二维buffer/fullRF接新core，先warm native小块与连续MZ资格，再S1–S3，旧六长跑保持停止。
 
 RAG新增K70/L47；schema/source核对70chunks/59sources，76/76检索通过。既有L40/L41/L45的当前viewer LF摘要更新，历史raw producer指纹保持。GitHub阶段发布与独立fetch精确核对后追加回执；不merge。
+
+## 首阶段发布回执与后续修正
+
+首阶段能力已发布为 `ff9ab421a6450eff5610aabe11aabf6f304f3000`，parent `a8c99fc5dfb1eca3f91273de5b93a1a446403c4e`、tree `94c7bab8defe31b3c100f29d4676228fb26f0e2d`，独立 fetch 核对全部32个变更 blob 与完整 tree 精确一致。[发布回执](../../references/qec_pbc_validation/native_kernel_publication_2026_10_04.json)保留原证明；PR#3 仍 draft/open/unmerged，pushurl=DISABLED 保持。
+
+本页时长、测试和 profile 只对应首阶段 v1。用户随后指出全 x EZ 与运动/并发合同缺口，已另行修正并实际重验；新资格与失败档案见[追加日志](2026-10-04-global-ez-scheduled-kernel.md)，不得把旧局部照明框或串行 cursor 当作当前平台合同。

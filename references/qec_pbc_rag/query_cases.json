@@ -473,6 +473,36 @@
       "expected_any": [
         "K70"
       ]
+    },
+    {
+      "query": "EZ横贯全x global_x_band world y带 spectator namedbox trap隔离site",
+      "expected_any": [
+        "K71"
+      ]
+    },
+    {
+      "query": "scheduled内核并行独立1Q MZ测量LOADMOVE 多inflight coldrestore cubic row_column",
+      "expected_any": [
+        "K71"
+      ]
+    },
+    {
+      "query": "NAViz @+ END []批次是否native general concurrency multiAOD",
+      "expected_any": [
+        "K71"
+      ]
+    },
+    {
+      "query": "nonzero epoch start_us end_us 一ULP relative payload operations hash attempt3 attempt5",
+      "expected_any": [
+        "K71"
+      ]
+    },
+    {
+      "query": "最新171tests freezev4 attempt4历史PASS 工厂 physicalShor未资格",
+      "expected_any": [
+        "K71"
+      ]
     }
   ]
 }

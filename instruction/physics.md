@@ -1,5 +1,7 @@
 # 物理过程与调度抽象契约
 
+2026-10-04 最新用户明确：[全 x EZ 照明合同](../docs/qec_global_ez_contract.md)。EZ 是 y 带，x 覆盖整个声明世界（含右侧资源区域）；不能按请求 pair 或配对 SLM 外框缩小照明。全带所有存活原子参与实际作用对校验。compute／候选 trap／照明权限分开，隔离带不自动成为 SLM site。QMAP rydberg_range、lowerer、独立审核与 viewer 必须同源一致；新内核迁移保留既有并发与 row_column 共同三次轨迹，不能用单 cursor／线性动画替代。
+
 2026-09-12 测量扩展：用户已授权两块/四块逻辑GHZ的稳定子读出与纠错。启用量子跟踪的计划支持 MZ 内稳定 SLM/静止 AOD 上的真实 MEASURE 与 RESET，500/100 μs 为显式模拟假设，非设备普适常量。读出保留原子并投影，复位到 |0>；测量位控制后续 X/Z。条件为假的固定 1 μs 控制时隙不发光，不计 Raman 忙时。运输、碰撞、全 EZ CZ 对及实际 Raman ≥5 μm 等约束保持。时域扩展显式支持三噪声轮中的至多一个数据Pauli或报告翻转事件，并执行一次完美闭合轮；报告翻转不会改变真实量子投影。不是全电路噪声容错证明。schema19，详见[量子读出合同](../docs/quantum_readout_core.md)。
 
 2026-09-12修订优先于下方历史描述：AOD矩形是两组有序坐标的Cartesian积，不要求等间距；rigid可保持非均匀offset整体平移。四邻格保护按用户授权变为默认开启、可显式关闭的`ez_neighbor_guard_enabled`。一个真实CZ pulse现可同时作用于多个不共享qubit的READY门，整个EZ actual_pairs必须等于整批intended_pairs；见[批量合同](../docs/batch_cz_contract.md)。schema18。此处只扩展批量作用集合，不放宽支撑、碰撞、移动和单比特光条件。

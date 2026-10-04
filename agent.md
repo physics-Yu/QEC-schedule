@@ -1,5 +1,7 @@
 # Agent 工作准则与工程导航
 
+2026-10-04 当前轻量内核资格为**全 x EZ + scheduled events + 共同三次运动**，见[全带合同](docs/qec_global_ez_contract.md)、[迁移/API](docs/native_kernel_migration.md)、[日志](instruction/logs/2026-10-04-global-ez-scheduled-kernel.md)。CZ按world全x固定y带核对所有存活原子及有限作用对，trap域另声明；Operation保留canonical relative start/end、完整依赖/资源，row_column共同cubic在观测/恢复/offline/viewer一致。真实attempt5两轮d3与独立重放PASS，171pytest/277modules0违规；原生@+ END链/[]批次忠实保留，不宣称native一般并发或多AOD。旧v1是有限历史快照，freeze-v4取代v3；完整factory/injection/processor与physicalShor按S1–S3另验。
+
 2026-10-04 最新用户授权进一步改为**迁移生产内核并去除探索期架构**，按 [原生轻量内核迁移](instruction/native_kernel_migration.md) 执行。QMAP C++ 决定酉块排布/分组/路由，新独立 `neutral_atom_kernel` 推进紧凑状态/时间/报告；测量/reset 为显式服务操作。旧 ProgramBuilder、SimulationState、候选搜索和全 trace 重审退出新生产路径，只作独立离线/兼容参考。旧 ENV trusted 不是最终迁移成果。可采用版本化原生配对 EZ / Enola 类架构，有限 CZ/身份/依赖/旁观者/报告完成与唯一消费保持。完整工厂、双 AOD 原生调度和完整 Shor 尚未验收；本轮状态见 handoff，用户已授权该方向，不再重复请求迁移批准。
 
 2026-10-04 测量位置修复：[设备感知 rigid 自动 MZ 选点](docs/qec_rigid_readout_placement.md)接回并行码块编译入口。standard默认nearest_mz，完整载体/MZ与全轴域约束后生成最近候选并按完整合法服务比较；显式fixed_translation/legacy保留历史端点。必须记录候选/实际选择，不能用固定-400μm或图像移动替代选点。

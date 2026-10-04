@@ -118,17 +118,39 @@ def build_native_kernel_payload(evidence):
     xs = [origin[0]+i*pitch for i in range(ceil((rect["lower"]["x_um"]-origin[0])/pitch), floor((rect["upper"]["x_um"]-origin[0])/pitch)+1)]
     ys = [origin[1]+i*pitch for i in range(ceil((rect["lower"]["y_um"]-origin[1])/pitch), floor((rect["upper"]["y_um"]-origin[1])/pitch)+1)]
     role_metadata, patches = _roles(evidence.get("role_to_atom", {}), initial)
-    zones = [{"id": "SZ", "zone_type": "storage", "bounds": rect}]
-    labels = {"SZ": "SZ · declared 5 μm SLM candidate domain"}
+    zones, labels = [], {}
+    if profile.get("compute_zone_um") is not None:
+        zones.append({"id": "COMPUTE", "zone_type": "storage", "bounds": _bounds(profile["compute_zone_um"])})
+        labels["COMPUTE"] = "COMPUTE · 联合计算 / 暂存区"
+    elif profile.get("storage_zone_um") is not None:
+        zones.append({"id": "SZ", "zone_type": "storage", "bounds": _bounds(profile["storage_zone_um"])})
+        labels["SZ"] = "SZ · 声明储位范围"
+    for zone, bounds in profile.get("storage_zones_um", {}).items():
+        zones.append({"id": zone, "zone_type": "storage", "bounds": _bounds(bounds)})
+        labels[zone] = zone+" · 声明储位范围"
     for zone, bounds in profile.get("cz_zones_um", {"EZ": profile.get("cz_zone_um")}).items():
         if bounds is not None:
-            zones.append({"id": zone, "zone_type": "entanglement", "bounds": _bounds(bounds)})
-            labels[zone] = "EZ · native finite CZ illumination"
+            band = _bounds(bounds)
+            if profile.get("cz_illumination") == "global_x_band":
+                if (band["lower"]["x_um"], band["upper"]["x_um"]) != (rect["lower"]["x_um"], rect["upper"]["x_um"]):
+                    raise ValueError("Global EZ illumination must span the declared world x range")
+            zones.append({"id": zone, "zone_type": "entanglement", "bounds": band})
+            labels[zone] = "EZ · 全 x 照明带 / 全带作用对校验" if profile.get("cz_illumination") == "global_x_band" else "EZ · 历史声明照明范围"
     if "measurement_zone_um" in profile:
         zones.append({"id": "MZ", "zone_type": "measurement", "bounds": _bounds(profile["measurement_zone_um"])})
         labels["MZ"] = "MZ · scheduling readout / reset"
+    site_regions = [_bounds(region) for region in profile.get("slm_site_regions_um", ())]
+    sites = {(x, y) for x in xs for y in ys if any(
+        region["lower"]["x_um"] <= x <= region["upper"]["x_um"] and
+        region["lower"]["y_um"] <= y <= region["upper"]["y_um"] for region in site_regions)}
+    sites.update(tuple(point) for point in profile.get("slm_sites_um", ()))
+    sites.update(tuple(point) for point in profile.get("declared_slm_sites_um", ()))
+    if not sites:
+        sites.update(trap_points)
+    if not set(trap_points).issubset(sites):
+        raise ValueError("Committed SLM support is outside the declared candidate sites")
     scene = {"bounds": rect, "spacing_um": pitch, "grid_x": xs, "grid_y": ys,
-             "candidates": [_position((x, y)) for x in xs for y in ys],
+             "candidates": [_position(point) for point in sorted(sites)],
              "traps": [{"id": id, "position": _position(point), "enabled": False} for point, id in trap_ids.items()],
              "zones": zones, "zone_labels": labels, "atom_roles": role_metadata, "patches": patches,
              "aod_labels": {device: device+" · native row / column" for device in device_axes},
@@ -136,7 +158,9 @@ def build_native_kernel_payload(evidence):
              "aod_minimum_spacing_um": profile.get("aod_axis_spacing_um", 2.),
              "raman_minimum_separation_um": profile.get("raman_separation_um", 5.),
              "display_grid_step_um": pitch, "show_candidate_sites": True,
-             "profile_id": profile.get("id", profile.get("profile_id")), "grid_site_scope": "candidate geometry; enabled support comes from committed holders"}
+             "profile_id": profile.get("id", profile.get("profile_id")),
+             "cz_illumination": profile.get("cz_illumination"),
+             "grid_site_scope": "declared SLM site domains only; illumination bounds do not create traps; enabled support comes from committed holders"}
 
     source = evidence.get("report_source", {})
     model_labels = sorted({record.get("native_provenance", {}).get("report_model") for record in journal
@@ -156,11 +180,17 @@ def build_native_kernel_payload(evidence):
         pending[id] = len(parents)
         for parent in parents:
             successors.setdefault(parent, []).append(id)
-    ready = {id for id, count in pending.items() if count == 0}
+    future_gates = {id for record in journal if record['event'] == 'FRAGMENT_ACTIVATED'
+                    for id in record.get('activated_gate_ids', record.get('gate_ids', ()))}
+    registered = set(evidence.get('initial_gate_ids', set(gates)-future_gates))
+    if registered-set(gates):
+        raise ValueError('Initial declaration names an unknown gate')
+    ready = {id for id, count in pending.items() if count == 0 and id in registered}
     frames, visual_operations = [], []
     masks_before = None
     completed_count, last_effect_us, total_atom_distance, total_aod_distance = 0, None, 0., 0.
-    current_block, current_operation, movement = None, None, None
+    current_block, running = None, {}
+    visual_by_id = {}
 
     def holder(atom):
         carrier, x, y = locations[atom]
@@ -171,6 +201,8 @@ def build_native_kernel_payload(evidence):
 
     def frame(time, version, label, requested=(), report_updates=None, effect_ids=()):
         nonlocal masks_before
+        active = tuple(gate for value in running.values() for gate in value["gate_ids"])
+        movements = {value["movement"]["aod_id"]: value["movement"] for value in running.values() if value["movement"] is not None}
         atom_updates = []
         for atom, location in locations.items():
             value = {"id": atom, "holder": holder(atom), "position": _position(location[1:]), "activity": activities[atom], "measured": measured[atom]}
@@ -189,19 +221,18 @@ def build_native_kernel_payload(evidence):
             arrays[device] = {"aod_id": device, "rows": len(axes["rows"]), "columns": len(axes["columns"]),
                               "enabled_rows": [y in axes["active_rows"] for y in axes["rows"]],
                               "enabled_columns": [x in axes["active_columns"] for x in axes["columns"]],
-                              "is_moving": movement is not None and movement["aod_id"] == device}
+                              "is_moving": device in movements}
         primary = next(iter(arrays))
-        movements = {movement["aod_id"]: movement} if movement else {}
         value = {"time": time, "version": version, "atom_updates": atom_updates, "plan_id": current_block,
                  "aod": arrays[primary], "axes": axes_by_aod[primary], "movement": movements.get(primary),
                  "primary_aod_id": primary, "aods": arrays, "axes_by_aod": axes_by_aod, "movements": movements,
                  "slm_enabled": mask_update, "transfer": None, "transfers": {},
                  "gate_status": "running" if active else "completed" if completed_count == len(gates) else "ready",
-                 "active_gate_ids": list(active), "active_operations": [current_operation] if current_operation else [],
+                 "active_gate_ids": list(active), "active_operations": list(running),
                  "gate_label": label, "label": label, "requested": list(requested),
                  "ready_frontier": sorted(ready-set(active))[:20], "ready_count": len(ready-set(active)),
                  "gate_counts": {"completed": completed_count, "running": len(active), "ready": len(ready-set(active)),
-                                 "blocked": len(gates)-completed_count-len(ready)},
+                                 "blocked": len(registered)-completed_count-len(ready)},
                  "gate_statuses": {}, "quantum_tracking": False,
                  "measurement_updates": dict(report_updates or {}), "completed_gate_ids_delta": list(effect_ids)}
         if not frames:
@@ -220,13 +251,15 @@ def build_native_kernel_payload(evidence):
         label = event
         if event == "OPERATION_STARTED":
             id = record["operation_id"]
+            if id in running or id in completed_operations:
+                raise ValueError("Operation must start exactly once")
             operation = operations[id]
             kind, atoms = _field(operation, "kind"), tuple(_field(operation, "atoms", ()))
             metadata = _field(operation, "metadata", {})
             active = tuple(_field(operation, "gate_ids", ()))
             if any(id not in gates for id in active):
                 raise ValueError("Operation names an unknown gate effect")
-            requested, current_operation = atoms, id
+            requested = atoms
             visual_kind = {"CONFIGURE": "aod_move", "MOVE": "aod_move", "LOAD": "aod_load", "STORE": "aod_offload",
                            "GATE": "raman_rotation", "CZ": "entangling_pulse", "MEASURE": "measurement", "RESET": "reset", "WAIT": "idle"}.get(kind, "raman_rotation")
             carrier = _field(operation, "aod_id", "AOD_0")
@@ -241,8 +274,11 @@ def build_native_kernel_payload(evidence):
             if kind in ("CONFIGURE", "MOVE") and _field(operation, "duration_us") > 0:
                 if len(source_axes["x_um"]) != len(target_axes["x_um"]) or len(source_axes["y_um"]) != len(target_axes["y_um"]):
                     raise ValueError("Recorded device moves must preserve explicit full RF dimensions")
-                movement = {"aod_id": carrier, "start": record["start_us"], "duration": _field(operation, "duration_us"),
-                            "target_axes": target_axes, "profile": "linear"}
+                movement = {"aod_id": carrier, "start": record["start_us"], "duration": record['end_us']-record['start_us'],
+                            "target_axes": target_axes,
+                            "profile": "linear" if _field(operation, "motion_profile", "row_column") == "rigid" else "cubic"}
+                if any(value["movement"] is not None and value["movement"]["aod_id"] == carrier for value in running.values()):
+                    raise ValueError("Two recorded movements overlap on the same AOD")
             else:
                 movement = None
             category = {"CONFIGURE": "empty", "MOVE": "transport", "LOAD": "load", "STORE": "offload",
@@ -251,6 +287,9 @@ def build_native_kernel_payload(evidence):
                          ["ENTANGLING_LASER_0"] if kind == "CZ" else ["READOUT_0"] if kind == "MEASURE" else
                          ["RESET_0"] if kind == "RESET" else ["RAMAN:"+atom for atom in atoms] if visual_kind == "raman_rotation" else [])
             resources += ["ATOM:"+atom for atom in atoms]
+            resources = list(record.get("resources", dict.fromkeys((*resources, *_field(operation, "resources", ())))))
+            if kind in ("GATE", "CZ", "MEASURE", "RESET"):
+                resources = list(dict.fromkeys((*resources, *(locations[atom][0] for atom in atoms if locations[atom][0] != "slm"))))
             gate_type = _field(gates[active[0]], "kind") if active else None
             label = metadata.get("label", kind+" · "+id)
             visual = {"index": len(visual_operations), "id": id, "label": label, "kind": visual_kind, "aod_id": carrier,
@@ -264,6 +303,11 @@ def build_native_kernel_payload(evidence):
                       "resources": resources, "category": category, "mode": "translation" if visual_kind == "aod_move" else None,
                       "moving_count": len(moving), "moving_atom_ids": moving, "measurement_results": {},
                       "planner_id": "native-kernel-delta-export", "source_line": metadata.get("source_line")}
+            visual['source_gate_ids'] = list(_plain(metadata.get('source_gate_ids', active)))
+            visual['protocol_stage'] = _plain(metadata.get('protocol_stage', metadata.get('phase_id')))
+            visual['transport_batch'] = _plain(metadata.get('transport_batch', metadata.get('transport_batch_id')))
+            visual['provenance'] = {key: _plain(metadata[key]) for key in ('origin', 'protocol_id', 'protocol_stage',
+                'phase_id', 'round_id', 'cycle_id', 'transport_batch', 'transport_batch_id', 'token_id') if key in metadata}
             if visual_kind == "aod_move":
                 visual.update(source_axes=source_axes, target_axes=target_axes,
                               enabled_rows=list(arr for arr in frames[-1]["aods"][carrier]["enabled_rows"]),
@@ -274,11 +318,13 @@ def build_native_kernel_payload(evidence):
                     total_aod_distance += hypot(dx, dy)
                 visual["mode"] = "axis_deformation" if any(len({round(b-a, 10) for a, b in zip(source_axes[key], target_axes[key])}) > 1 for key in ("x_um", "y_um")) else "translation"
             visual_operations.append(visual)
+            visual_by_id[id] = visual
+            running[id] = {"gate_ids": active, "movement": movement}
             for atom in atoms:
                 activities[atom] = "moving" if atom in moving else "gating" if kind in ("GATE", "CZ", "H", "X", "Y", "Z", "T") else "measuring" if kind == "MEASURE" else "resetting" if kind == "RESET" else "idle"
         elif event == "OPERATION_COMPLETED":
             id = record["operation_id"]
-            if id != current_operation or id in completed_operations:
+            if id not in running or id in completed_operations:
                 raise ValueError("Completion does not match its unique started operation")
             operation = operations[id]
             for atom, before, after in record.get("changed_atoms", ()):
@@ -302,7 +348,7 @@ def build_native_kernel_payload(evidence):
                 completed_count += 1
                 for successor in successors.get(gate, ()):
                     pending[successor] -= 1
-                    if pending[successor] == 0:
+                    if pending[successor] == 0 and successor in registered:
                         ready.add(successor)
             if effects:
                 last_effect_us = time
@@ -312,7 +358,7 @@ def build_native_kernel_payload(evidence):
                 reports[report] = bit
                 report_times[report] = time
                 report_updates[report] = bit
-            visual_operations[-1]["measurement_results"] = dict(report_updates)
+            visual_by_id[id]["measurement_results"] = dict(report_updates)
             for atom in _field(operation, "atoms", ()):
                 activities[atom] = "idle"
                 if _field(operation, "kind") == "MEASURE":
@@ -322,12 +368,18 @@ def build_native_kernel_payload(evidence):
             requested = tuple(_field(operation, "atoms", ()))
             label = _field(operation, "kind")+" completed · "+id
             completed_operations.add(id)
-            current_operation, movement, active = None, None, ()
+            del running[id]
         elif event == "BLOCK_COMPLETED":
             current_block = None
+        elif event == 'FRAGMENT_ACTIVATED':
+            additions = set(record.get('activated_gate_ids', record.get('gate_ids', ())))
+            if not additions or additions-set(gates) or additions & registered:
+                raise ValueError('Fragment journal has invalid or duplicate gate declarations')
+            registered.update(additions)
+            ready.update(id for id in additions if pending[id] == 0)
         frame(time, version, label, requested, report_updates, effects)
 
-    if current_operation is not None or completed_operations != set(operations):
+    if running or completed_operations != set(operations):
         raise ValueError("Exporter requires a completely committed operation stream")
     expected_positions = {atom: tuple(point) for atom, point in _field(final, "positions").items()}
     expected_holders = dict(_field(final, "holders"))
@@ -346,7 +398,7 @@ def build_native_kernel_payload(evidence):
                "fidelity": None,
                "aod_distance_definition": "sum hypot(max RF column travel, max RF row travel) over explicit moves; includes disabled axes"}
     # The shared summarizer derives idle time from gaps in device intervals.
-    summary = summarize_intervals([op for op in visual_operations if op["category"] != "idle"], start, end, metrics)
+    summary = summarize_intervals([op for op in visual_operations if op["category"] != "idle"], start, end, metrics, allow_overlap=True)
     return {"format": "neutral-atom-view/2", "scene": scene, "frames": frames,
             "theme": asdict(VisualTheme.load()), "backend": "native_kernel_row_column",
             "duration": end, "start_time": start, "operations": visual_operations,
@@ -356,7 +408,8 @@ def build_native_kernel_payload(evidence):
             "gate_label": "Declared scheduling run", "scheduling_report_source": source_provenance,
             "offline_audit_status": evidence.get("summary", {}).get("offline_physical_status", "未审核"),
             "measurement_completion_times_us": report_times, "completed_gate_ids": sorted(completed),
-            "evidence_scope": "native scheduling operations and committed classical reports; offline geometry review is separate"}
+            "evidence_scope": "native scheduling operations and committed classical reports; offline geometry review is separate",
+            "motion_profiles": sorted({_field(op, "motion_profile", "row_column") for op in operations.values() if _field(op, "kind") in ("MOVE", "CONFIGURE")})}
 
 
 def export_native_kernel_view(evidence, output):

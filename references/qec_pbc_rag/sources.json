@@ -1169,7 +1169,7 @@
       "sha256_normalization": "text_lf",
       "sha256": {
         "src/neutral_atom_env/visualization/recording.py": "c8c842762453fd97b121e9fa63bed09ee67de7e4a83485402d974f386c00043c",
-        "src/neutral_atom_env/visualization/viewer.js": "e5d90aead573d5c2473fa96a9e751793bd80bf7431e8e44f74da2536b6ecd2e8",
+        "src/neutral_atom_env/visualization/viewer.js": "b31b4557771d613eaf410eabf35a776da5dd4f5f490dc1702563967e63cb0a81",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
         "examples/serve_native_parallel.py": "e7e176be9da806a3ecc167cedd18c394b9f344af047f6befc18b7598096ef335",
         "tests/test_multi_aod_visualization.py": "6e8150916b612e08e853f8c922f9ddc39d2a738a72c48631c799d5436c2b8804",
@@ -1194,17 +1194,20 @@
         "examples/serve_native_parallel.py": "5fc1dfd161a0487e70f17a6a709244311c3a6827e9e5343f9273d1e1d14dd898",
         "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146"
       },
-      "current_source_note": "Current source after device-aware automatic MZ restoration; historical normalized/raw hashes and fixed endpoint run claims retained.",
+      "current_source_note": "Current normalized sources after global-x EZ / scheduled start-end / cubic motion qualification; old raw_sha256 and historical claim/result payloads remain unchanged.",
       "historical_before_routing_standard_sha256": {
         "src/neutral_atom_env/visualization/viewer.js": "995fc9ed672fd9a9bb5d758d4faa1a26edb51afeb4fd225c3bcff2849e1d1691",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04"
       },
       "current_raw_sha256": {
-        "src/neutral_atom_env/visualization/viewer.js": "eddd458617e4802249a815cc8360fa11e33d3a70b49f1dbaed89d8ce0f939da2",
+        "src/neutral_atom_env/visualization/viewer.js": "d94c591e6c2260c695299dec7d7e05732524127d6d186104645e65b90343d92c",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01"
       },
       "historical_before_auto_mz_sha256": {
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac"
+      },
+      "historical_before_global_ez_scheduled_kernel_sha256": {
+        "src/neutral_atom_env/visualization/viewer.js": "e5d90aead573d5c2473fa96a9e751793bd80bf7431e8e44f74da2536b6ecd2e8"
       }
     },
     {
@@ -1228,7 +1231,7 @@
       "sha256": {
         "docs/qec_viewer_presentation.md": "a74b98a10dee1ce0b79771b3299b3ab93e51e1ae18f5bcb890c491c7fa031749",
         "instruction/visualization.md": "85a8f1b5aadcef9e1092843a5de536672de5340c6b495ed6503f58de09e053c8",
-        "src/neutral_atom_env/visualization/viewer.js": "e5d90aead573d5c2473fa96a9e751793bd80bf7431e8e44f74da2536b6ecd2e8",
+        "src/neutral_atom_env/visualization/viewer.js": "b31b4557771d613eaf410eabf35a776da5dd4f5f490dc1702563967e63cb0a81",
         "src/neutral_atom_env/visualization/viewer-shell.html": "1307769aaf756e4d4a6a40fa9b50e7956dc7eb8c63b6aa045a2941d4fe0b9f19",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
         "tests/viewer_qec_scale.cjs": "2bddb0449c3482cb127915bff188a2cc8ce0db12eef47a9c07edbba36d9d33e5",
@@ -1250,19 +1253,22 @@
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "132418f42686b2013c8686e52a4505c7d9afb135abb36bba4edca361f93b3f11",
         "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146"
       },
-      "current_source_note": "Current source after device-aware automatic MZ restoration; historical normalized/raw hashes and fixed endpoint run claims retained.",
+      "current_source_note": "Current normalized sources after global-x EZ / scheduled start-end / cubic motion qualification; old raw_sha256 and historical claim/result payloads remain unchanged.",
       "historical_before_routing_standard_sha256": {
         "src/neutral_atom_env/visualization/viewer.js": "995fc9ed672fd9a9bb5d758d4faa1a26edb51afeb4fd225c3bcff2849e1d1691",
         "src/neutral_atom_env/visualization/viewer-shell.html": "4cc971635687c19eb7b3abde78d8d3127591a3d7d0cfa364d435c7767da5f795",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04"
       },
       "current_raw_sha256": {
-        "src/neutral_atom_env/visualization/viewer.js": "eddd458617e4802249a815cc8360fa11e33d3a70b49f1dbaed89d8ce0f939da2",
+        "src/neutral_atom_env/visualization/viewer.js": "d94c591e6c2260c695299dec7d7e05732524127d6d186104645e65b90343d92c",
         "src/neutral_atom_env/visualization/viewer-shell.html": "3a28e9396bf16f90ed5ca46ccdf619f7c4bb87d1e5c2b3f8c8699fee8f5cc66c",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01"
       },
       "historical_before_auto_mz_sha256": {
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac"
+      },
+      "historical_before_global_ez_scheduled_kernel_sha256": {
+        "src/neutral_atom_env/visualization/viewer.js": "e5d90aead573d5c2473fa96a9e751793bd80bf7431e8e44f74da2536b6ecd2e8"
       }
     },
     {
@@ -1422,7 +1428,7 @@
         "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
         "tests/test_validated_rigid_routes.py": "174cf72d2e79e9abe45a57e3c969bb1f674c66e9367b724d67541ec030cd3fa6",
         "tests/test_astar_routes.py": "0c7ba8771d5663e9c7e81cb53d6d94f3002fd78a9fc70b6f66f7f419bf82ee39",
-        "src/neutral_atom_env/visualization/viewer.js": "e5d90aead573d5c2473fa96a9e751793bd80bf7431e8e44f74da2536b6ecd2e8",
+        "src/neutral_atom_env/visualization/viewer.js": "b31b4557771d613eaf410eabf35a776da5dd4f5f490dc1702563967e63cb0a81",
         "src/neutral_atom_env/visualization/viewer-shell.html": "1307769aaf756e4d4a6a40fa9b50e7956dc7eb8c63b6aa045a2941d4fe0b9f19",
         "instruction/motion_planning.md": "717704f262f777960f8ff4587438725de24972a5216e71377f32486ab7163470",
         "instruction/compiler_contract.md": "530ab801f5781368aa6d8d64844c3f0d855f777d8e2057d1ddb31fcfd189aef3",
@@ -1456,15 +1462,19 @@
         "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
         "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
-        "instruction/compiler_contract.md": "bc3d4f46c5c58c484313a25a838d8a624b2480e60941ab9a03cebb42d33f6a1b"
+        "instruction/compiler_contract.md": "bc3d4f46c5c58c484313a25a838d8a624b2480e60941ab9a03cebb42d33f6a1b",
+        "src/neutral_atom_env/visualization/viewer.js": "d94c591e6c2260c695299dec7d7e05732524127d6d186104645e65b90343d92c"
       },
-      "current_source_note": "Current source after device-aware automatic MZ restoration; historical normalized/raw hashes and fixed endpoint run claims retained.",
+      "current_source_note": "Current normalized sources after global-x EZ / scheduled start-end / cubic motion qualification; old raw_sha256 and historical claim/result payloads remain unchanged.",
       "historical_before_auto_mz_sha256": {
         "src/neutral_atom_strategies/scheduling/parallel_patch.py": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac",
         "examples/run_parallel_shor15_prefix.py": "3efa96a41376a6cfa45db6516234bbf978d8f4f178fc36c9377c83ee3c39e351",
         "instruction/compiler_contract.md": "c66d8f118dbf62a267ba2d8c492c35636a82a62a12851af9986f63ded95f1943",
         "docs/qec_routing_standard.md": "9d6a150a18d998b3e9b984f8cf7521ba4509fa8afc27e47133855344c6c76949"
+      },
+      "historical_before_global_ez_scheduled_kernel_sha256": {
+        "src/neutral_atom_env/visualization/viewer.js": "e5d90aead573d5c2473fa96a9e751793bd80bf7431e8e44f74da2536b6ecd2e8"
       }
     },
     {
@@ -1550,24 +1560,24 @@
       ],
       "sha256_normalization": "text_lf",
       "sha256": {
-        "docs/native_kernel_migration.md": "22c419cfe43d464fe89928e65bdfbf86a74a030f864d3965c894168dc38f2ff6",
-        "instruction/native_kernel_migration.md": "e2a5ac2806a0e77cecbd649dd68838db2017e7f8dc20472415179ce9e7a0c178",
+        "docs/native_kernel_migration.md": "7edb8170b5423faa23e096d912df78bd86589169d58776c3fe7b37d2f3670e14",
+        "instruction/native_kernel_migration.md": "750abbc623421ab0a619f081bebbc40a1c967afec2baea27dac1caea9c0aa10c",
         "references/qec_pbc_validation/native_kernel_2026_10_04.json": "07a34d679f7aa9a3dbd0a28a0f217829521876aeb4da4e586d7007aa51fc9f12",
-        "src/neutral_atom_kernel/model.py": "755ba9f3fca749b08cf69a21b450044ededc10c700b9e5813dab956c39443e68",
-        "src/neutral_atom_kernel/runtime.py": "c5d8124c89e37ed1faf2e1c3a541da367c9a57da9b1ec6307e1755cc25ddf802",
-        "src/neutral_atom_kernel/audit.py": "d3adc3902df132b8c16a49f4b5e636bec88a802dfb00a83bfb43c8aefd121363",
-        "src/neutral_atom_strategies/native_kernel/compiler.py": "da203c21fefb955c8d515aa55f69bd6e74982bf59fb9a3503f610ae6a9b27d69",
-        "src/neutral_atom_strategies/native_kernel/lowering.py": "adadd298f5f8d667a0a2ec947efe248bf31ff2bf24bde7874ff7ff3e213188c9",
-        "src/neutral_atom_strategies/native_kernel/axes.py": "56258a8baf3d2fd5750d6a2d973ab588c58f4cd618ef055d63630000d216f293",
-        "src/neutral_atom_app/native_kernel_view.py": "7b23f62611bfd8ebe411c8f594a4210821480aa5d2d02e976f2027c2af69e79c",
-        "src/neutral_atom_experiments/qec_pbc/native_kernel_memory.py": "8f4d874c4d744f0bcf54276f49a0d4ab40172efbaff38baa9fc1acb63a225a02",
+        "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
+        "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
+        "src/neutral_atom_kernel/audit.py": "a75ee4ea8ef0345fc8750b767b20f475d61dc588c7f52af04bcc6d6dc17772e3",
+        "src/neutral_atom_strategies/native_kernel/compiler.py": "d72871b3a3261261da6b8e2d60b8b2554d6f6da7ef960d2b5af9c967afff466f",
+        "src/neutral_atom_strategies/native_kernel/lowering.py": "b42758fee23cd170617cf2c911baee93fbff131a36df1a1d1110d0171fdaa58c",
+        "src/neutral_atom_strategies/native_kernel/axes.py": "336af335be5759e93196e1bb2192cd7e07fa85bcf58d7172258cb001c7974709",
+        "src/neutral_atom_app/native_kernel_view.py": "fc2499961bfd6ff3448f69aa9bde0bc2dd45c4f969fd5c5775cf52b621fcafe6",
+        "src/neutral_atom_experiments/qec_pbc/native_kernel_memory.py": "c7af940e6f3082f6c34621bead1dc34abb661531fa07e9d1604828b781540bfc",
         "examples/run_native_kernel_memory.py": "61da65c5786ee1d3d5dfe73f8c28aa84163718cd68ea2f87830c914931fc92cf",
-        "tools/audit_native_kernel_memory.py": "030e6ceccfc1a46282eff2b32f7dea34c5e5c1376dff00313fc9db1a2cfaa474",
-        "tests/test_native_kernel_runtime.py": "52aaf20a188ea6238e76a6b4b2a3f3afdd6cbb46e1b735b56fc731e1960a9e6d",
-        "tests/test_native_kernel_lowering.py": "b0bb86dc167e5dd177b47220a44ca4b64a0ca7dc6f0d716f9d677781e9e4aa16",
-        "tests/test_native_kernel_audit.py": "7c93e390a4981742fea5412307a9fbf8fd134b1c96e363da88e563108eadd6cc",
+        "tools/audit_native_kernel_memory.py": "3191c9c7836c46b89c3b043726c749b43d81ec1fe818437f6a573482e3dddfa5",
+        "tests/test_native_kernel_runtime.py": "2c563dccfafeb8b205de6a959fa98c8ad91e5a8e3511839a2be0b73a646aff78",
+        "tests/test_native_kernel_lowering.py": "c601df1ebbbf5870bd202518ac07efb9e25c8fae79c600e12321eecb6624bb7b",
+        "tests/test_native_kernel_audit.py": "5a615ed5b972bf38fdaf5345aa73424b0549c4b75a634cd91e73031ed51f01f7",
         "tests/test_native_kernel_boundary.py": "168c823c2da1ae92a675fc56684c30a43abdcfa6d7ffd8a49386f8324b3cd19d",
-        "tests/test_native_kernel_view.py": "76f072240384cb94c8a55dd5e02563a5c520c91420e71b8c4c362d18b6394274",
+        "tests/test_native_kernel_view.py": "b27740278d6df0d81d985987ce2f21579afd795550f67a2d4b48a7714480fcfb",
         "tests/viewer_native_kernel.cjs": "4ca8616ff7892467d26f86f0b288d3f65877feb8abfe0ad82ff833f4f60907f3"
       },
       "raw_sha256": {
@@ -1591,7 +1601,135 @@
         "tests/test_native_kernel_view.py": "228930d570f106ea5ad403f4488266895d6bbfdc85047d4904ad1d1dde8a6e55",
         "tests/viewer_native_kernel.cjs": "4ca8616ff7892467d26f86f0b288d3f65877feb8abfe0ad82ff833f4f60907f3"
       },
-      "verified_scope": "Independent kernel and native source binding, canonical d3 scheduling and actual replay; factory/fullphysical Shor remain separate."
+      "verified_scope": "Independent kernel and native source binding, canonical d3 scheduling and actual replay; factory/fullphysical Shor remain separate.",
+      "historical_before_global_ez_scheduled_kernel_sha256": {
+        "docs/native_kernel_migration.md": "22c419cfe43d464fe89928e65bdfbf86a74a030f864d3965c894168dc38f2ff6",
+        "instruction/native_kernel_migration.md": "e2a5ac2806a0e77cecbd649dd68838db2017e7f8dc20472415179ce9e7a0c178",
+        "src/neutral_atom_kernel/model.py": "755ba9f3fca749b08cf69a21b450044ededc10c700b9e5813dab956c39443e68",
+        "src/neutral_atom_kernel/runtime.py": "c5d8124c89e37ed1faf2e1c3a541da367c9a57da9b1ec6307e1755cc25ddf802",
+        "src/neutral_atom_kernel/audit.py": "d3adc3902df132b8c16a49f4b5e636bec88a802dfb00a83bfb43c8aefd121363",
+        "src/neutral_atom_strategies/native_kernel/compiler.py": "da203c21fefb955c8d515aa55f69bd6e74982bf59fb9a3503f610ae6a9b27d69",
+        "src/neutral_atom_strategies/native_kernel/lowering.py": "adadd298f5f8d667a0a2ec947efe248bf31ff2bf24bde7874ff7ff3e213188c9",
+        "src/neutral_atom_strategies/native_kernel/axes.py": "56258a8baf3d2fd5750d6a2d973ab588c58f4cd618ef055d63630000d216f293",
+        "src/neutral_atom_app/native_kernel_view.py": "7b23f62611bfd8ebe411c8f594a4210821480aa5d2d02e976f2027c2af69e79c",
+        "src/neutral_atom_experiments/qec_pbc/native_kernel_memory.py": "8f4d874c4d744f0bcf54276f49a0d4ab40172efbaff38baa9fc1acb63a225a02",
+        "tools/audit_native_kernel_memory.py": "030e6ceccfc1a46282eff2b32f7dea34c5e5c1376dff00313fc9db1a2cfaa474",
+        "tests/test_native_kernel_runtime.py": "52aaf20a188ea6238e76a6b4b2a3f3afdd6cbb46e1b735b56fc731e1960a9e6d",
+        "tests/test_native_kernel_lowering.py": "b0bb86dc167e5dd177b47220a44ca4b64a0ca7dc6f0d716f9d677781e9e4aa16",
+        "tests/test_native_kernel_audit.py": "7c93e390a4981742fea5412307a9fbf8fd134b1c96e363da88e563108eadd6cc",
+        "tests/test_native_kernel_view.py": "76f072240384cb94c8a55dd5e02563a5c520c91420e71b8c4c362d18b6394274"
+      },
+      "current_raw_sha256": {
+        "docs/native_kernel_migration.md": "7edb8170b5423faa23e096d912df78bd86589169d58776c3fe7b37d2f3670e14",
+        "instruction/native_kernel_migration.md": "796d642fd4b7a6277b4b747e576e06619ec39cfe37280176f74f6b85478448e8",
+        "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
+        "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
+        "src/neutral_atom_kernel/audit.py": "a75ee4ea8ef0345fc8750b767b20f475d61dc588c7f52af04bcc6d6dc17772e3",
+        "src/neutral_atom_strategies/native_kernel/compiler.py": "d72871b3a3261261da6b8e2d60b8b2554d6f6da7ef960d2b5af9c967afff466f",
+        "src/neutral_atom_strategies/native_kernel/lowering.py": "b42758fee23cd170617cf2c911baee93fbff131a36df1a1d1110d0171fdaa58c",
+        "src/neutral_atom_strategies/native_kernel/axes.py": "336af335be5759e93196e1bb2192cd7e07fa85bcf58d7172258cb001c7974709",
+        "src/neutral_atom_app/native_kernel_view.py": "fc2499961bfd6ff3448f69aa9bde0bc2dd45c4f969fd5c5775cf52b621fcafe6",
+        "src/neutral_atom_experiments/qec_pbc/native_kernel_memory.py": "c7af940e6f3082f6c34621bead1dc34abb661531fa07e9d1604828b781540bfc",
+        "tools/audit_native_kernel_memory.py": "3191c9c7836c46b89c3b043726c749b43d81ec1fe818437f6a573482e3dddfa5",
+        "tests/test_native_kernel_runtime.py": "2c563dccfafeb8b205de6a959fa98c8ad91e5a8e3511839a2be0b73a646aff78",
+        "tests/test_native_kernel_lowering.py": "c601df1ebbbf5870bd202518ac07efb9e25c8fae79c600e12321eecb6624bb7b",
+        "tests/test_native_kernel_audit.py": "5a615ed5b972bf38fdaf5345aa73424b0549c4b75a634cd91e73031ed51f01f7",
+        "tests/test_native_kernel_view.py": "4c6d8ad500166cea0cca9d8b1ea26efb3588f242b83540022764e94ed1270c8f"
+      },
+      "current_source_note": "Current normalized sources after global-x EZ / scheduled start-end / cubic motion qualification; old raw_sha256 and historical claim/result payloads remain unchanged."
+    },
+    {
+      "id": "L48",
+      "kind": "repository_snapshot",
+      "title": "全 x EZ、显式起止事件内核、共同三次轨迹与最终 d3 独立资格",
+      "version": "2026-10-04 global-EZ kernel/2; source-freeze-v4; QMAP3.5.0; attempt5",
+      "reviewed_at": "2026-10-04",
+      "paths": [
+        "docs/native_kernel_migration.md",
+        "docs/qec_global_ez_contract.md",
+        "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md",
+        "references/qec_pbc_validation/global_ez_kernel_2026_10_04.json",
+        "instruction/physics.md",
+        "instruction/motion_execution.md",
+        "src/neutral_atom_kernel/__init__.py",
+        "src/neutral_atom_kernel/model.py",
+        "src/neutral_atom_kernel/runtime.py",
+        "src/neutral_atom_kernel/audit.py",
+        "src/neutral_atom_strategies/native_kernel/__init__.py",
+        "src/neutral_atom_strategies/native_kernel/compiler.py",
+        "src/neutral_atom_strategies/native_kernel/lowering.py",
+        "src/neutral_atom_strategies/native_kernel/axes.py",
+        "src/neutral_atom_app/native_kernel_view.py",
+        "src/neutral_atom_experiments/qec_pbc/native_kernel_memory.py",
+        "examples/run_native_kernel_memory.py",
+        "tools/audit_native_kernel_memory.py",
+        "src/neutral_atom_env/visualization/viewer.js",
+        "tests/test_native_kernel_runtime.py",
+        "tests/test_native_kernel_lowering.py",
+        "tests/test_native_kernel_audit.py",
+        "tests/test_native_kernel_evidence_audit.py",
+        "tests/test_native_kernel_boundary.py",
+        "tests/test_native_kernel_view.py",
+        "tests/viewer_native_kernel.cjs"
+      ],
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "docs/native_kernel_migration.md": "7edb8170b5423faa23e096d912df78bd86589169d58776c3fe7b37d2f3670e14",
+        "docs/qec_global_ez_contract.md": "e8054c4bca5f4982b81a17c517b702c75d1ae1138bca0bbe12126171ee9dd2f3",
+        "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md": "67f869b3b4647dcb869dd3311f5785fd5494fd7c9c7c773a32834626a0a747bf",
+        "references/qec_pbc_validation/global_ez_kernel_2026_10_04.json": "4351209ba2cf56ad9b6176c16d381e05d14cd8c2998fb80b90cbdd92347a7351",
+        "instruction/physics.md": "500c79ce97872e2176a067eb335b15a8fb2e5ee74cf8cdb1d4b4c4503ab32490",
+        "instruction/motion_execution.md": "f3bd0d81e51364c46c67fe0362127394749183650619edb2b320072b593a5a3e",
+        "src/neutral_atom_kernel/__init__.py": "d077d4ca6f17b3b8c47bdbe3668477254c0d92c669759672c700c9d2fd8a1bf9",
+        "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
+        "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
+        "src/neutral_atom_kernel/audit.py": "a75ee4ea8ef0345fc8750b767b20f475d61dc588c7f52af04bcc6d6dc17772e3",
+        "src/neutral_atom_strategies/native_kernel/__init__.py": "ab7514c410e1a8aa93d6769953653d3d36ffce5296944b84a71f2325d38f1feb",
+        "src/neutral_atom_strategies/native_kernel/compiler.py": "d72871b3a3261261da6b8e2d60b8b2554d6f6da7ef960d2b5af9c967afff466f",
+        "src/neutral_atom_strategies/native_kernel/lowering.py": "b42758fee23cd170617cf2c911baee93fbff131a36df1a1d1110d0171fdaa58c",
+        "src/neutral_atom_strategies/native_kernel/axes.py": "336af335be5759e93196e1bb2192cd7e07fa85bcf58d7172258cb001c7974709",
+        "src/neutral_atom_app/native_kernel_view.py": "fc2499961bfd6ff3448f69aa9bde0bc2dd45c4f969fd5c5775cf52b621fcafe6",
+        "src/neutral_atom_experiments/qec_pbc/native_kernel_memory.py": "c7af940e6f3082f6c34621bead1dc34abb661531fa07e9d1604828b781540bfc",
+        "examples/run_native_kernel_memory.py": "61da65c5786ee1d3d5dfe73f8c28aa84163718cd68ea2f87830c914931fc92cf",
+        "tools/audit_native_kernel_memory.py": "3191c9c7836c46b89c3b043726c749b43d81ec1fe818437f6a573482e3dddfa5",
+        "src/neutral_atom_env/visualization/viewer.js": "b31b4557771d613eaf410eabf35a776da5dd4f5f490dc1702563967e63cb0a81",
+        "tests/test_native_kernel_runtime.py": "2c563dccfafeb8b205de6a959fa98c8ad91e5a8e3511839a2be0b73a646aff78",
+        "tests/test_native_kernel_lowering.py": "c601df1ebbbf5870bd202518ac07efb9e25c8fae79c600e12321eecb6624bb7b",
+        "tests/test_native_kernel_audit.py": "5a615ed5b972bf38fdaf5345aa73424b0549c4b75a634cd91e73031ed51f01f7",
+        "tests/test_native_kernel_evidence_audit.py": "af0640d7f31131196f692ed767e336bbf921c0009583679a3da0a63d1506ddaa",
+        "tests/test_native_kernel_boundary.py": "168c823c2da1ae92a675fc56684c30a43abdcfa6d7ffd8a49386f8324b3cd19d",
+        "tests/test_native_kernel_view.py": "b27740278d6df0d81d985987ce2f21579afd795550f67a2d4b48a7714480fcfb",
+        "tests/viewer_native_kernel.cjs": "4ca8616ff7892467d26f86f0b288d3f65877feb8abfe0ad82ff833f4f60907f3"
+      },
+      "raw_sha256": {
+        "docs/native_kernel_migration.md": "7edb8170b5423faa23e096d912df78bd86589169d58776c3fe7b37d2f3670e14",
+        "docs/qec_global_ez_contract.md": "e8054c4bca5f4982b81a17c517b702c75d1ae1138bca0bbe12126171ee9dd2f3",
+        "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md": "67f869b3b4647dcb869dd3311f5785fd5494fd7c9c7c773a32834626a0a747bf",
+        "references/qec_pbc_validation/global_ez_kernel_2026_10_04.json": "4351209ba2cf56ad9b6176c16d381e05d14cd8c2998fb80b90cbdd92347a7351",
+        "instruction/physics.md": "321fb2f9871212284df9200c7efd38de548e864b3605a989f4140942ec3c22fa",
+        "instruction/motion_execution.md": "ff51cb7b5c4524206a8765e0145d92db041f7a959c67b5a966f2617e1da10b96",
+        "src/neutral_atom_kernel/__init__.py": "d077d4ca6f17b3b8c47bdbe3668477254c0d92c669759672c700c9d2fd8a1bf9",
+        "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
+        "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
+        "src/neutral_atom_kernel/audit.py": "a75ee4ea8ef0345fc8750b767b20f475d61dc588c7f52af04bcc6d6dc17772e3",
+        "src/neutral_atom_strategies/native_kernel/__init__.py": "ab7514c410e1a8aa93d6769953653d3d36ffce5296944b84a71f2325d38f1feb",
+        "src/neutral_atom_strategies/native_kernel/compiler.py": "d72871b3a3261261da6b8e2d60b8b2554d6f6da7ef960d2b5af9c967afff466f",
+        "src/neutral_atom_strategies/native_kernel/lowering.py": "b42758fee23cd170617cf2c911baee93fbff131a36df1a1d1110d0171fdaa58c",
+        "src/neutral_atom_strategies/native_kernel/axes.py": "336af335be5759e93196e1bb2192cd7e07fa85bcf58d7172258cb001c7974709",
+        "src/neutral_atom_app/native_kernel_view.py": "fc2499961bfd6ff3448f69aa9bde0bc2dd45c4f969fd5c5775cf52b621fcafe6",
+        "src/neutral_atom_experiments/qec_pbc/native_kernel_memory.py": "c7af940e6f3082f6c34621bead1dc34abb661531fa07e9d1604828b781540bfc",
+        "examples/run_native_kernel_memory.py": "61da65c5786ee1d3d5dfe73f8c28aa84163718cd68ea2f87830c914931fc92cf",
+        "tools/audit_native_kernel_memory.py": "3191c9c7836c46b89c3b043726c749b43d81ec1fe818437f6a573482e3dddfa5",
+        "src/neutral_atom_env/visualization/viewer.js": "d94c591e6c2260c695299dec7d7e05732524127d6d186104645e65b90343d92c",
+        "tests/test_native_kernel_runtime.py": "2c563dccfafeb8b205de6a959fa98c8ad91e5a8e3511839a2be0b73a646aff78",
+        "tests/test_native_kernel_lowering.py": "c601df1ebbbf5870bd202518ac07efb9e25c8fae79c600e12321eecb6624bb7b",
+        "tests/test_native_kernel_audit.py": "5a615ed5b972bf38fdaf5345aa73424b0549c4b75a634cd91e73031ed51f01f7",
+        "tests/test_native_kernel_evidence_audit.py": "af0640d7f31131196f692ed767e336bbf921c0009583679a3da0a63d1506ddaa",
+        "tests/test_native_kernel_boundary.py": "168c823c2da1ae92a675fc56684c30a43abdcfa6d7ffd8a49386f8324b3cd19d",
+        "tests/test_native_kernel_view.py": "4c6d8ad500166cea0cca9d8b1ea26efb3588f242b83540022764e94ed1270c8f",
+        "tests/viewer_native_kernel.cjs": "4ca8616ff7892467d26f86f0b288d3f65877feb8abfe0ad82ff833f4f60907f3"
+      },
+      "verified_scope": "Bounded canonical 17-atom two-round scheduling, mandatory native provenance, full-x spectator geometry, exact relative source and runtime replay; explicit concurrency separately tested. Factory/full physical Shor unqualified."
     }
   ]
 }
