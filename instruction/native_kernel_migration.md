@@ -2,6 +2,8 @@
 
 生效日期：2026-10-04。状态：独立内核首阶段已验收；工厂接入与完整 Shor 尚未验收。
 
+后续 MZ 服务遵守用户确认的[批量 RESET / 终端 MEASURE 标准](../docs/qec_enola_mz_design.md#批量-reset-与终端测量用户确认的默认方法)：同阶段跨码块联合运输及单批服务优先，分别声明运输/共同服务容量，多趟卸载汇集不强制多次测量；保留原源屏障与独立 effect/report IDs。完整 PBC 终端测量按其 cat/轴/反馈依赖合批，不能替换为全 data Z 读出。此规则是待接入目标，不热换当前 freeze-v4。
+
 2026-10-04 后续用户分区目标为[Enola + MZ 同区兼容设计](../docs/qec_enola_mz_design.md)：COMPUTE=EZ=SZ，轻量内核继续唯一执行，Enola与MZ服务在策略层组合。现QMAP/freeze-v4资格保留；新目标的5μm硬件lowering、显式空活动轴语义、纯syndrome fragment和全带并发资源尚待实现，不表示默认backend已切换。
 
 后续用户修正：必须遵守[全 x EZ 照明合同](../docs/qec_global_ez_contract.md)。首阶段 v1 是串行组件资格；其局部照明范围和线性 row_column 回放不符合当前交付标准。补充显式时序／依赖／资源的事件式并发、连续当前坐标与共同三次轨迹，保留 native 真实 batch；新资格独立记录，不把旧结果改称已符合。

@@ -1,0 +1,23 @@
+{
+  "schema": "batch-mz-standard-design-check/1",
+  "status": "PASS",
+  "baseline": "7a4eb36a70b31596149a61630cbbb4dfdde24b79",
+  "rag": {
+    "ok": true,
+    "chunks": 72,
+    "sources": 62,
+    "errors": []
+  },
+  "recall_passed": 87,
+  "recall_total": 87,
+  "frozen_sources_unchanged": 66,
+  "historical_recording_replay_unchanged": true,
+  "catalog_flows": 10,
+  "new_native_runs": 0,
+  "physical_qualified": false,
+  "initial_design_check_failures": [
+    "catalog edit temporarily replaced capacity-waves item",
+    "Windows text_lf fingerprint normalization required"
+  ],
+  "design_failures_repaired": true
+}

@@ -1,5 +1,9 @@
 # 当前交接状态
 
+## 2026-10-04 批量 RESET 与终端 MEASURE 标准
+
+用户确认 RESET/最后 MEASURE 应大规模并行联合运到 MZ。已在[唯一协议入口](../docs/qec_enola_mz_design.md#批量-reset-与终端测量用户确认的默认方法)及 E01/E04/E05 目录固化：同阶段跨 patch 合批，区分运输与服务容量，多趟汇集可保持一次服务，分别记录拆分原因。保留实际捕获/运输成本、全 M→R 屏障、测量轴与逐原子报告。PBC cat 终端只合并源依赖允许部分；普通 syndrome 仍只读辅助。此轮是标准与现有实现差异审查，无新编译/物理 PASS；new Enola＋MZ 接入仍 OPEN，冻结源码与旧回放不变。证据及下一项见[本轮日志](logs/2026-10-04-batch-mz-reset-terminal-standard.md)。
+
 ## 2026-10-04 协议与 demo 口径修正
 
 用户指出协议/展示混乱。[现行协议入口](../docs/qec_enola_mz_design.md#当前协议入口与生效关系)归并同区、全 x、5/10/6 μm、routing、MZ、纯 syndrome 与独立 magic AOD；迁移路径和导航同步区分目标与已实现。8780 是分离 SZ/EZ 的 QMAP Z memory，16 辅助＋9 data 终端报告；新 Enola＋MZ 纯两轮 demo 仍 OPEN。另查出旧 rigid `nearest_mz` 实为候选内时间优先，新目标为距离优先，不能沿用旧名称声称符合。未改 frozen 源码/物理阈值或运行编译/工厂，原并行工作区不写。下一项只验 E02/E03/E05/E10 单 patch 往返与恢复；证据见[修正日志](logs/2026-10-04-protocol-demo-reconciliation.md)。

@@ -55,7 +55,7 @@
         "epoch"
       ],
       "required_steps": [
-        "explicit MZ reset when requested",
+        "cross-patch dependency-compatible preparation RESET batch; joint legal MZ transport",
         "source preparation",
         "return and store"
       ],
@@ -106,7 +106,7 @@
       ],
       "required_steps": [
         "2Q layers and source 1Q",
-        "8 ancillary readout/reset visits per round",
+        "batch 8 ancillary readouts and requested resets per patch per round in the same MZ visit; preserve all M-to-R barriers; capacity waves only when needed",
         "repeat round"
       ],
       "postconditions": [
@@ -133,7 +133,7 @@
       ],
       "required_steps": [
         "H before M for X basis",
-        "MZ service",
+        "batch same-phase terminal targets across patches; joint legal MZ transport and one MEASURE service if capacity permits",
         "commit reports"
       ],
       "postconditions": [
@@ -142,7 +142,9 @@
       ],
       "negative_cases": [
         "basis label without actual H",
-        "terminal readout in ordinary round"
+        "terminal readout in ordinary round",
+        "replace PBC terminal pullback with all-data Z readout",
+        "merge unresolved measurement-axis or report dependencies"
       ]
     },
     {
@@ -152,16 +154,18 @@
       "physical_qualified": false,
       "inputs": [
         "actual full RF and masks",
-        "declared slot and transport capacity K",
-        "K+1 requests",
+        "separate admitted K_transport and K_mz_service capacities",
+        "K_transport+1 with sufficient MZ slots; K_mz_service+1",
         "return condition"
       ],
       "required_steps": [
         "distance-first nearest legal candidate search; whole-service time breaks equal-distance ties; declare metric and bounded search domain",
-        "LOAD route STORE",
-        "M and requested RESET",
-        "LOAD return STORE",
-        "capacity waves",
+        "gather same-phase source-compatible RESET or MEASURE targets across patches",
+        "actual LOAD route STORE for each joint legal transport wave; preserve all costs and transport_split_reason",
+        "all service-batch targets stably arrived at distinct reserved MZ slots before common pulse",
+        "one batch M and requested RESET when MZ capacity permits, even after multiple transport waves",
+        "requested terminal postcondition or actual LOAD return STORE; rebind full current RF",
+        "capacity waves for transport; service_split_reason only for actual service-capacity, geometry, dependency or resource limits",
         "rebind actual current RF/masks before each LOAD; timed CONFIGURE if needed"
       ],
       "postconditions": [
@@ -169,12 +173,21 @@
         "all full RF and masks legal",
         "required return holders and layout",
         "whole service cost and selection recorded",
-        "distance objective and bounded-nearest scope recorded separately from service time"
+        "distance objective and bounded-nearest scope recorded separately from service time",
+        "one transport wave when all targets fit the admitted carrier; one service batch when all targets fit MZ, including multi-transport accumulation",
+        "transport-wave and service-batch target IDs, source IDs, reports, separate split reasons and full actual costs retained",
+        "batched service duration independent of target count; no multiplied measurement or reset pulse cost"
       ],
       "negative_cases": [
         "slot collision",
         "atom count mistaken for RF capacity",
-        "nearest endpoint with unsafe whole visit"
+        "nearest endpoint with unsafe whole visit",
+        "per-patch artificial service split despite admitted joint batch",
+        "dropped cross-target all-measure-to-reset barrier",
+        "unready target or measurement axis",
+        "instant collection without actual LOAD and RF configuration",
+        "transport capacity wrongly treated as common MZ pulse capacity",
+        "measure each transport wave despite enough MZ capacity for all batch targets"
       ]
     },
     {
@@ -315,5 +328,33 @@
         "report committed before M completion"
       ]
     }
-  ]
+  ],
+  "batch_service_policy": {
+    "status": "user_confirmed_design_implementation_pending",
+    "default": "cross_patch_same_phase_dependency_compatible_batch",
+    "transport": "joint_legal_carrier_per_wave_actual_capture_costs_retained",
+    "service": "one_parallel_RESET_or_MEASURE_after_all_batch_targets_stably_arrived",
+    "single_wave_when_all_targets_fit": true,
+    "split_reasons": [
+      "rf_capacity",
+      "mz_slots",
+      "geometry",
+      "source_dependency",
+      "resource_conflict"
+    ],
+    "source_measurement_axis_and_all_measure_to_reset_barriers_preserved": true,
+    "same_batch_service_duration_not_multiplied_by_target_count": true,
+    "report_commit": "individual_source_report_once_at_measurement_completion",
+    "terminal_condition": "explicit_source_postcondition_no_implicit_roundtrip",
+    "pbc_terminal": "preserve_cat_prepare_verify_couple_readout_and_shared_pool_dependencies",
+    "physical_qualified": false,
+    "capacity_fields": [
+      "K_transport",
+      "K_mz_service"
+    ],
+    "multiple_transport_waves_may_share_one_service_batch": true,
+    "single_service_when_all_targets_fit_mz": true,
+    "transport_split_reason_field": "transport_split_reason",
+    "service_split_reason_field": "service_split_reason"
+  }
 }

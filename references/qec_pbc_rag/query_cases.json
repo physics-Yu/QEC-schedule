@@ -521,6 +521,24 @@
       "expected_any": [
         "K72"
       ]
+    },
+    {
+      "query": "RESET和最后measurement一起移到MZ大规模并行，跨码块批量作为标准方法",
+      "expected_any": [
+        "K72"
+      ]
+    },
+    {
+      "query": "同批MEASURE RESET时长不能乘原子数，容量不足分波保留全M到R屏障",
+      "expected_any": [
+        "K72"
+      ]
+    },
+    {
+      "query": "AOD运输容量不够时分几趟运入MZ汇集，仍一次共同测量，运输波次不等于服务批次",
+      "expected_any": [
+        "K72"
+      ]
     }
   ]
 }

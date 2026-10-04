@@ -1,5 +1,7 @@
 # Agent 工作准则与工程导航
 
+2026-10-04 用户确认 [批量 RESET 与终端测量标准](docs/qec_enola_mz_design.md#批量-reset-与终端测量用户确认的默认方法)：跨码块汇集同阶段依赖允许的目标，在 MZ 一次并行服务。分别声明运输和服务容量；AOD 分波运送、卸载汇集不强制分波测量。保持测量轴、全 M→R 屏障、逐原子报告和实际成本，普通 syndrome 不测 live data。此为新 Enola＋MZ 的默认编译目标，尚未接入或重新验收，frozen 源和旧回放保持。
+
 2026-10-04 协议与 demo 口径收敛：QEC 分区/编译/MZ 的唯一当前目标入口是[Enola＋MZ 协议](docs/qec_enola_mz_design.md#当前协议入口与生效关系)，资源生命周期继续按共享工厂协议 v2。8780 仅为旧 QMAP 分区 Z memory 回放，含末端 data 测量；新同区纯 syndrome demo 尚未实现。最近 MZ 按距离优先，旧 rigid 时间优先选点保留其历史范围。不得将示意图或旧 profile 当作新 backend 资格，见[本轮口径修正](instruction/logs/2026-10-04-protocol-demo-reconciliation.md)。
 
 2026-10-04 最新分区设计目标为 **Enola + MZ，COMPUTE=EZ=SZ**，见[兼容设计与标准流程](docs/qec_enola_mz_design.md)。Enola 规划无测量2Q片段，MZ/1Q服务与源依赖经版本化适配交给轻量内核；全x照明、完整RF/masks、旁观者与实际往返保持。十项流程目录均为待验收设计，首项是纯syndrome单patch连续两轮；不得循环带data终端读出的memory helper。当前QMAP attempt5仍是分离SZ/EZ的小例资格，不把本次设计称为已切换backend或完整工厂实现。

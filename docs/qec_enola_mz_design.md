@@ -17,6 +17,7 @@
 | MZ 选点 | 空间距离为第一比较项，完整服务时间用于等距择优；候选须通过整个载体、运输与返程的合法性检查。有界候选只称“候选内最近”。 |
 | 普通 syndrome | 每 patch 9 data＋4 X 辅助＋4 Z 辅助；固定四层 coupling。每轮只测量/复位 8 个辅助，再实际返回 compute；data 终端读出单列。 |
 | 并行 | 同操作且依赖允许的门可合批；每次 CZ 检查全带所有原子与实际作用对，完整 AOD 行列和旁观者均参与。 |
+| 批量 RESET / 终端 MEASURE | 默认跨码块汇集同一依赖允许阶段的目标，在 MZ 汇集后一次并行服务；运输分波与服务分批分别记录，不能因 AOD 一趟装不下就逐波测量。普通 syndrome 仍只服务辅助原子。 |
 | 资源设备 | 独立 AOD_MAGIC 位于右侧；属于多设备目标，不能以当前单 AOD 小例声称已实现。 |
 | 展示 | 新 demo 必须使用本 profile 的已提交 operation stream。旧回放、协议步骤示意和新 backend 实现分别标明架构/版本/资格范围。 |
 
@@ -71,13 +72,49 @@ MZ 服务输入实际位置/holder、完整 RF 坐标及 enable masks、源 gate
 
 一次普通 syndrome visit 为：`RF 配置 → LOAD → route → STORE 到 MZ SLM → MEASURE → RESET（源协议要求时）→ 返程 RF 重新绑定/必要配置 → LOAD → return route → STORE 到准入 compute 位置`。每次 LOAD 前核对当时真实 RF/masks；若读出期间 AOD 被其他计算使用，返程从新起态实际配置并计时，不能沿用去程轴或覆盖轴坐标。MZ 停留保留 atom/slot 预约，是否释放 AOD 由明确调度策略决定。测量报告只在 MEASURE 完成时提交；RESET 不删除历史报告。测量和复位尽量共用一次 visit，批次超过容量时分波并预约 MZ slots，不用原子总数替代 RF 容量。
 
+### 批量 RESET 与终端测量：用户确认的默认方法
+
+2026-10-04 用户确认：RESET 和最后 MEASURE 应利用大规模并行和联合运输，作为标准方法。此规则适用于新的 Enola＋MZ 服务编译，状态为**已固化的编译目标，接入与物理验收待完成**；已有 8777 回放保留原操作流。
+
+默认先从完整源 DAG 汇集同一协议阶段、同一操作且依赖允许的目标，跨 patch 分配 MZ slots 和联合运输。MZ 可合法同时容纳全部目标时，使用一个服务批次；一趟载体容量不足可分波运入、稳定卸载并汇集，最后仍只做一次共同 RESET/MEASURE。不按 qubit 或 patch 人为拆开服务。典型流程为：
+
+```text
+阶段依赖 / 实际测量轴准备完成
+  → 跨码块目标汇集与完整 RF / MZ 预约
+  → 批量捕获、标准 routing、单趟或分波运输并稳定存入 MZ
+  → 同批全部目标到位屏障
+  → 同一批 RESET 或同一批 MEASURE
+  → 完成提交逐原子 source effect / report
+  → 协议要求的 RESET、返程或明确终态
+```
+
+联合运输表示每波使用完整合法载体一起运输；目标散布而需要多个捕获动作时，保留所有实际 LOAD/配置成本，不能将其画成一次瞬移。可合批不等于强制所有 patch 等待一个新增全局屏障：保留源屏障和报告依赖，等待与独立计算按实际资源调度。
+
+| 服务阶段 | 标准批量处理 |
+| --- | --- |
+| 初始化 / 生命周期 RESET | 同一准备边界的全部就绪目标优先合批，完成后才开始相应编码或新 epoch。未请求复位的 live data 不加入。 |
+| syndrome MEASURE → RESET | 本轮已完成 coupling 和测量轴准备的辅助原子跨码块合批；在同一次 MZ 停留完成源要求的 M→R，再返回 compute。保留全部 M→R 屏障，不跨 round 合并。 |
+| data 终端 MEASURE | 已结束计算且测量轴已确定的独立 data 目标优先合批；X 等读出所需实际旋转先完成。每 patch 的逻辑奇偶按该协议支持计算，保留每个物理报告。 |
+| PBC / cat / 资源终端读出 | 仅合并完整源依赖允许的同阶段原生 MEASURE/RESET。终端拉回测量包含 cat 制备、两遍核验、耦合与可能的报告依赖，不能把全部逻辑输出替换成一次 data Z 测量。 |
+| 测量后 cleanup | 源要求 RESET 时在同一次 visit 内批量执行，等待对应全部读出完成；终态按显式合同留 MZ、释放/停车或返程，不增加无要求的往返。 |
+
+容量分两层声明：`K_transport` 由完整 RF 行列、活动 Cartesian 交点、捕获闭包和整个路径决定；`K_mz_service` 由稳定 MZ slots、支撑、同次服务的声明光照能力与几何决定。超过运输容量只增加真实运送波次；超过 MZ 共同服务容量或依赖/资源不兼容时才拆服务批次。分别记录 `transport_split_reason` 与 `service_split_reason`，不能把设备原子数上限当可运容量，也不能把运输波次当服务脉冲数。目标是尽量少的合法波次与服务批次，不声称未经证明的全局最优。最近 MZ 和直达/2.5 μm 协议保持。
+
+每个批次保留 `phase_id`、各 `source_gate_id`、target/role、report ID、实际 transport wave/服务批次/操作起止与完整运输成本。同一批 N 个 RESET/MEASURE 的服务时长是一次已声明的 RESET/MEASURE 时长，不乘 N 或运输波次数；实际服务拆批、等待、捕获和运输按时间线计入。所有报告在各自所属 MEASURE 完成后由唯一 Executor 提交一次，批量不改变报告位、frame、token 或 epoch。
+
+E01/E04/E05 后续验收必须覆盖：全批容量足够时单趟单服务；`K_transport+1` 但 MZ 容量足够时多趟汇集、一次服务；`K_mz_service+1` 时有原因服务分批；跨 patch 源效果和报告恰一次、全 M→R 屏障、未就绪/测量轴依赖拒绝、实际完整 RF/旁观几何、批次进行中的冷恢复，以及同一操作流的 viewer 批量标注。本轮只固化规则，无新增编译、性能或物理 PASS。
+
+现有路径的差异：8777 旧 full12 记录初始 RESET 为 77＋48＋48＋48；syndrome 读出为 48＋48，每批随后在同次停留 RESET。该平台算法 AOD 12×9＝108 交点、资源 AOD 4×6＝24 交点，且受固定轴嵌入和实际捕获闭包限制，不能单凭目标原子数直接合成一趟。轻量内核已能执行带独立 gate/report IDs 的多目标 MEASURE/RESET；当前 `native_kernel_memory` 示例服务仍逐目标运输和服务，新合批应接在策略侧 MZ 服务层。
+
+完整 Shor 原生参考 writer 则给每门附加上一门依赖。八个终端拉回 observable 由最终 frame 决定且两两对易，不是逐终端 bit 改轴；当前共用 cat/verifier 池限制了 gadget 复用。需在生成端保留真实阶段依赖并独立重新审核后，才能把单 gadget 的读出组织为 H_all→M_all→RESET_all；同一个 verifier 的重复核验仍顺序执行。现存原生文件的依赖不能在调度器中直接忽略。
+
 | ID | 可组合流程 | 必需后置条件与验收点 |
 | --- | --- | --- |
-| E01 | patch 制备/复位，经 MZ 返回 compute | 源制备门实际执行；controller 只在资源生命周期的实际 reset/reprep 完成后推进 epoch，普通 syndrome reset 不改变 accepted token 的 epoch；无隐式初始化。 |
+| E01 | patch 制备/复位，经 MZ 返回 compute | 同准备阶段跨 patch 批量 RESET；源制备门实际执行；controller 只在资源生命周期的实际 reset/reprep 完成后推进 epoch，普通 syndrome reset 不改变 accepted token 的 epoch；无隐式初始化。 |
 | E02 | compute 内 2Q 层与同操作合批 | 完整源 occurrence 恰一次；所有 parked 原子纳入全带作用对，7 μm 非伙伴等反例拒绝。 |
 | E03 | 普通 d3 syndrome round 连续两轮 | 每轮 8 个 syndrome 报告及协议要求的 8 次 reset；两轮共 16/16，9 data 无终端读出或重新制备。 |
-| E04 | X/Z data 终端读出 | 独立终端阶段、9 个报告；X 读出包含实际 H→M，不能只改 basis 标签。 |
-| E05 | MZ 批量服务、容量分波与返程 | 声明容量 K，至少覆盖 K+1 请求；slot 不重占，完整 RF/masks 合法，返程终态一致。 |
+| E04 | X/Z data 终端读出 | 独立终端阶段、每 patch 9 个报告，跨 patch 同阶段目标优先合批；X 读出包含实际 H→M，不能只改 basis 标签或替代 PBC 拉回测量。 |
+| E05 | MZ 批量服务、运输分波与返程 | 分别声明运输/共同服务容量，覆盖运输 K+1 多趟汇集但单服务，以及 MZ K+1 服务拆批；分别记录原因，slot 不重占，完整 RF/masks 合法，返回或终态与源合同一致。 |
 | E06 | 两个 patch 的交错 QEC | 保留各 patch 依赖和全局 CZ 资源；MZ 独立操作的重叠需要整段审核，不能靠 target-only 锁认定安全。 |
 | E07 | 四 patch/143 原子背景扩展 | 包含非参与库存与 magic 设备、空活动交点/备用轴；实际运输容量与 source 完整性分别验证。 |
 | E08 | 工厂接受及拒收补产 | 首次最多两次尝试：一次拒收清理后一次接受；全部输入成本、committed reports、实际 cleanup/reset 与新 epoch；失败态不入库。 |
