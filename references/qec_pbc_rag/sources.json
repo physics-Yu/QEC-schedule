@@ -1676,7 +1676,7 @@
       "sha256": {
         "docs/native_kernel_migration.md": "7edb8170b5423faa23e096d912df78bd86589169d58776c3fe7b37d2f3670e14",
         "docs/qec_global_ez_contract.md": "e8054c4bca5f4982b81a17c517b702c75d1ae1138bca0bbe12126171ee9dd2f3",
-        "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md": "67f869b3b4647dcb869dd3311f5785fd5494fd7c9c7c773a32834626a0a747bf",
+        "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md": "b435c5d3f9e6d6ff6a28d599f0e6d742fb2213f86e39bda9066f30553f95e5b0",
         "references/qec_pbc_validation/global_ez_kernel_2026_10_04.json": "4351209ba2cf56ad9b6176c16d381e05d14cd8c2998fb80b90cbdd92347a7351",
         "instruction/physics.md": "500c79ce97872e2176a067eb335b15a8fb2e5ee74cf8cdb1d4b4c4503ab32490",
         "instruction/motion_execution.md": "f3bd0d81e51364c46c67fe0362127394749183650619edb2b320072b593a5a3e",
@@ -1729,7 +1729,13 @@
         "tests/test_native_kernel_view.py": "4c6d8ad500166cea0cca9d8b1ea26efb3588f242b83540022764e94ed1270c8f",
         "tests/viewer_native_kernel.cjs": "4ca8616ff7892467d26f86f0b288d3f65877feb8abfe0ad82ff833f4f60907f3"
       },
-      "verified_scope": "Bounded canonical 17-atom two-round scheduling, mandatory native provenance, full-x spectator geometry, exact relative source and runtime replay; explicit concurrency separately tested. Factory/full physical Shor unqualified."
+      "verified_scope": "Bounded canonical 17-atom two-round scheduling, mandatory native provenance, full-x spectator geometry, exact relative source and runtime replay; explicit concurrency separately tested. Factory/full physical Shor unqualified.",
+      "historical_before_publication_receipt_sha256": {
+        "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md": "67f869b3b4647dcb869dd3311f5785fd5494fd7c9c7c773a32834626a0a747bf"
+      },
+      "current_raw_sha256": {
+        "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md": "b435c5d3f9e6d6ff6a28d599f0e6d742fb2213f86e39bda9066f30553f95e5b0"
+      }
     }
   ]
 }

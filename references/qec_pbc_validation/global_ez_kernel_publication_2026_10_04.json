@@ -1,0 +1,168 @@
+{
+  "schema": "global-ez-kernel-publication/1",
+  "repository": "physics-Yu/QEC-schedule",
+  "branch": "codex/d3-shor15-stages",
+  "capability_commit": "a947f0bf338f40bd7583e762ecc95c9ce264fb62",
+  "parent": "ff9ab421a6450eff5610aabe11aabf6f304f3000",
+  "tree": "e2b290a71eb69f1d8057977d9a8bc2a5446fcdae",
+  "changed_files": 30,
+  "verified_git_fetch": true,
+  "all_changed_blobs_match_tested_stage": true,
+  "pull_request": "https://github.com/physics-Yu/QEC-schedule/pull/3",
+  "draft": true,
+  "merged": false,
+  "pushurl_unchanged": "DISABLED",
+  "validation": "references/qec_pbc_validation/global_ez_kernel_2026_10_04.json",
+  "files": [
+    {
+      "path": "agent.md",
+      "blob": "0294550ea520c8483d871afb343c1bf1a1285f5a",
+      "bytes": 18999
+    },
+    {
+      "path": "docs/native_kernel_migration.md",
+      "blob": "68792f38edb709486e1831813a21859646c5e32b",
+      "bytes": 7544
+    },
+    {
+      "path": "docs/qec_global_ez_contract.md",
+      "blob": "1c59c1e307e9630443af55faf949adf7509b0802",
+      "bytes": 3151
+    },
+    {
+      "path": "docs/qec_pbc_rag.md",
+      "blob": "bf9c2b93b5b6c72d640a35c1fb9c6d7444546ae2",
+      "bytes": 57807
+    },
+    {
+      "path": "instruction/handoff.md",
+      "blob": "09fc309417aecfca42365d90ef1722c5b92b576b",
+      "bytes": 24269
+    },
+    {
+      "path": "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md",
+      "blob": "55f83f2a7ac0100af60f5f3fe21f93e38863fc9c",
+      "bytes": 5752
+    },
+    {
+      "path": "instruction/logs/2026-10-04-native-kernel-migration.md",
+      "blob": "b2d3e8be43d989e3bb2062a40ff1ed6ee0e57077",
+      "bytes": 4781
+    },
+    {
+      "path": "instruction/native_kernel_migration.md",
+      "blob": "8a98cd0e7c1bfd34b93ce845858e68c11dda88d3",
+      "bytes": 3672
+    },
+    {
+      "path": "instruction/physics.md",
+      "blob": "ee3a193053825a7861f763f9b068288cffd1aa6d",
+      "bytes": 14777
+    },
+    {
+      "path": "references/qec_pbc_rag/knowledge.jsonl",
+      "blob": "55a07e8c17ac8d04c4a7e8b9058f5406c6ea7844",
+      "bytes": 185202
+    },
+    {
+      "path": "references/qec_pbc_rag/query_cases.json",
+      "blob": "e087543363e936f9aa5550d946e65219145c9af7",
+      "bytes": 13540
+    },
+    {
+      "path": "references/qec_pbc_rag/sources.json",
+      "blob": "9bfb32ad9e47ef00c02c955f754d493b557e8da7",
+      "bytes": 118844
+    },
+    {
+      "path": "references/qec_pbc_validation/global_ez_kernel_2026_10_04.json",
+      "blob": "4a6acb175019a46e19306db7a57ba10c6529b2eb",
+      "bytes": 15873
+    },
+    {
+      "path": "references/qec_pbc_validation/native_kernel_publication_2026_10_04.json",
+      "blob": "bcfec918b3ffc3359ce5228d1274ff7a82e2599d",
+      "bytes": 5467
+    },
+    {
+      "path": "src/neutral_atom_app/native_kernel_view.py",
+      "blob": "be42931adbeeb7d4535bce00f2e7cefc7f05acf5",
+      "bytes": 28219
+    },
+    {
+      "path": "src/neutral_atom_env/visualization/viewer.js",
+      "blob": "54243116ccd271408ca61db0bc86f0965da324f2",
+      "bytes": 60106
+    },
+    {
+      "path": "src/neutral_atom_experiments/qec_pbc/native_kernel_memory.py",
+      "blob": "03fdab030d723e14d45bcc6fb2b89cdcf855afda",
+      "bytes": 17598
+    },
+    {
+      "path": "src/neutral_atom_kernel/audit.py",
+      "blob": "ac0800e263088a99c678f7ce074a6900b20e5922",
+      "bytes": 44899
+    },
+    {
+      "path": "src/neutral_atom_kernel/model.py",
+      "blob": "86ab0c143fc1f2609c6e1e73157080735ffaa638",
+      "bytes": 7939
+    },
+    {
+      "path": "src/neutral_atom_kernel/runtime.py",
+      "blob": "69c8212a857156b16d5d173d794743e04080ac0e",
+      "bytes": 73362
+    },
+    {
+      "path": "src/neutral_atom_strategies/native_kernel/__init__.py",
+      "blob": "1757f576cc36f23a82436e187c25a19c6b8c1f63",
+      "bytes": 402
+    },
+    {
+      "path": "src/neutral_atom_strategies/native_kernel/axes.py",
+      "blob": "25aba4afeeb452324b48b92232ebb2740f916304",
+      "bytes": 204
+    },
+    {
+      "path": "src/neutral_atom_strategies/native_kernel/compiler.py",
+      "blob": "604f2be598a4d8d868f5696c42b0dd3504127661",
+      "bytes": 12965
+    },
+    {
+      "path": "src/neutral_atom_strategies/native_kernel/lowering.py",
+      "blob": "c9b6d9ff2d294f70fddc4e053c9cc122382fee41",
+      "bytes": 37490
+    },
+    {
+      "path": "tests/test_native_kernel_audit.py",
+      "blob": "36c7f0c041d734d20ed1d7e4fced275e578eb868",
+      "bytes": 21869
+    },
+    {
+      "path": "tests/test_native_kernel_evidence_audit.py",
+      "blob": "e99f62d868f44270836c1f81395bc44a30ad8978",
+      "bytes": 5511
+    },
+    {
+      "path": "tests/test_native_kernel_lowering.py",
+      "blob": "54f4fc3933970ee0bc3fbb85e6eacd8e3c2a5190",
+      "bytes": 25661
+    },
+    {
+      "path": "tests/test_native_kernel_runtime.py",
+      "blob": "1772fe06438e76a57d620edbe0b3651c95095f99",
+      "bytes": 24893
+    },
+    {
+      "path": "tests/test_native_kernel_view.py",
+      "blob": "8ebee1eb7d2c0cfd0f947f981051e7c212296e52",
+      "bytes": 11045
+    },
+    {
+      "path": "tools/audit_native_kernel_memory.py",
+      "blob": "9f8f54af334fae8c1c1b1af81b5c254aff28fadd",
+      "bytes": 27559
+    }
+  ]
+}

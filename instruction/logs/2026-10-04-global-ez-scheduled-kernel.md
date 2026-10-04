@@ -39,4 +39,8 @@ RAG新增K71/L48，旧sources只刷新当前LF指纹并保存旧normalized/raw�
 
 ## 边界与下一步
 
-仅canonical-scheduling-zero/v1报告、fidelity=null；完整143工厂、唯一库存/injection/processor、native双AOD、noise/FT和完整physicalShor未资格化。协作工厂按W4全M→R和完整源依赖/唯一carrier-token-epoch接freeze-v4，先有界warmnative/实际placement/fullRF/MZ与报告续接，再S1–S3。复现写新目录，见[命令](../../docs/native_kernel_migration.md#复现回放与阶段边界)。本收尾不native重跑、不stage/commit/publish。
+仅canonical-scheduling-zero/v1报告、fidelity=null；完整143工厂、唯一库存/injection/processor、native双AOD、noise/FT和完整physicalShor未资格化。协作工厂按W4全M→R和完整源依赖/唯一carrier-token-epoch接freeze-v4，先有界warmnative/实际placement/fullRF/MZ与报告续接，再S1–S3。复现写新目录，见[命令](../../docs/native_kernel_migration.md#复现回放与阶段边界)。文档/RAG子任务未改冻结源码或native重跑，发布由root完成。
+
+## GitHub 发布核对
+
+能力提交[a947f0bf338f40bd7583e762ecc95c9ce264fb62](https://github.com/physics-Yu/QEC-schedule/commit/a947f0bf338f40bd7583e762ecc95c9ce264fb62)，parent为ff9ab421a6450eff5610aabe11aabf6f304f3000，tree为e2b290a71eb69f1d8057977d9a8bc2a5446fcdae。通过connector仅更新codex/d3-shor15-stages；独立git fetch核对全部30个变更blob、parent与完整tree精确一致，然后conditional update-ref同步managed HEAD，未checkout/reset或改原目录。详见[回执](../../references/qec_pbc_validation/global_ez_kernel_publication_2026_10_04.json)。PR#3保持draft/open/unmerged，pushurl=DISABLED保持；大体积运行产物及截图留本机。
