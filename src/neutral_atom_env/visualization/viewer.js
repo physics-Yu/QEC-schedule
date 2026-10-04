@@ -37,7 +37,7 @@ function summaryMarkup(summary,operations){
    const label=`${op?.gate_id||''} ${r.label} · ${format(interval.start)}–${format(interval.end)} μs · ${(interval.end-interval.start).toFixed(3)} μs${op?' · '+op.label:''}`;
    return `<g><rect class="schedule-segment" data-start="${interval.start}" data-end="${interval.end}" data-category="${interval.category}" x="${x}" y="${88+i*40}" width="${Math.max(actualWidth,2)}" height="20" fill="${r.color}" stroke="white" stroke-width=".5" role="button" tabindex="0" aria-label="${esc(label)}"><title>${esc(label)}</title></rect>${interval.category==='pulse'&&op?`<text x="${x}" y="${85+i*40}" text-anchor="middle" fill="${r.color}" font-size="10">${esc(op.gate_id)}</text>`:''}</g>`;
  }).join('');
- const resourceRows=[['AOD_0','AOD 运输 / 交接'],['RAMAN_0','Raman（旧记录）'],...Object.keys(summary.resource_busy_us||{}).filter(id=>id.startsWith('RAMAN:')).sort().map(id=>[id,'Raman '+id.slice(6)]),['ENTANGLING_LASER_0','CZ 激光'],...Object.keys(summary.resource_busy_us||{}).filter(id=>!id.startsWith('RAMAN:')&&!['RAMAN_0','AOD_0','ENTANGLING_LASER_0'].includes(id)).sort().map(id=>[id,id.startsWith('MEASUREMENT')?'测量 '+id:id.startsWith('RESET')?'复位 '+id:id.startsWith('CONTROL')?'条件控制 '+id:id])].filter(([id])=>id in (summary.resource_busy_us||{}));
+ const resourceRows=[...Object.keys(summary.resource_busy_us||{}).filter(id=>id.startsWith('AOD_')).sort().map(id=>[id,id+' 运输 / 交接']),['RAMAN_0','Raman（旧记录）'],...Object.keys(summary.resource_busy_us||{}).filter(id=>id.startsWith('RAMAN:')).sort().map(id=>[id,'Raman '+id.slice(6)]),['ENTANGLING_LASER_0','CZ 激光'],...Object.keys(summary.resource_busy_us||{}).filter(id=>!id.startsWith('AOD_')&&!id.startsWith('RAMAN:')&&!['RAMAN_0','ENTANGLING_LASER_0'].includes(id)).sort().map(id=>[id,id.startsWith('MEASUREMENT')?'测量 '+id:id.startsWith('RESET')?'复位 '+id:id.startsWith('CONTROL')?'条件控制 '+id:id])].filter(([id])=>id in (summary.resource_busy_us||{}));
  const resourceMarkup=resourceRows.length?`<div style="overflow-x:auto"><svg id="resource-schedule" viewBox="0 0 1100 ${60+40*resourceRows.length}" style="width:100%;min-width:780px;font:13px system-ui;fill:#25334b" aria-label="实际资源占用区间"><text x="4" y="22" font-weight="600">资源时间 / μs</text>${resourceRows.map(([id,label],i)=>`<text x="4" y="${55+i*40}">${label}</text><text x="1085" y="${55+i*40}" text-anchor="end">${format(summary.resource_busy_us[id])} μs · ${(100*summary.resource_busy_us[id]/span).toFixed(2)}%</text>${operations.filter(o=>o.resources?.includes(id)).map(o=>`<rect class="schedule-segment" data-start="${o.start}" data-end="${o.end}" data-category="${o.category}" x="${X(o.start)}" y="${40+i*40}" width="${Math.max(2,X(o.end)-X(o.start))}" height="20" fill="${id.startsWith('RAMAN')?'#9a65bc':id==='ENTANGLING_LASER_0'?'#d95360':'#5364bc'}" role="button" tabindex="0"><title>${esc(id+' · '+(o.gate_id||o.task_id||'')+' '+o.label)} · ${format(o.start)}–${format(o.end)} μs</title></rect>`).join('')}`).join('')}</svg></div>`:'';
  return `${resourceMarkup}<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px;margin:18px 0">${cards}</div><div style="overflow-x:auto"><svg id="schedule" viewBox="0 0 1100 ${chartHeight}" style="display:block;width:100%;min-width:780px;font:13px system-ui;fill:#25334b" role="group" aria-label="操作时序表，横轴为真实仿真时间"><text x="4" y="26" font-weight="600">操作类别</text><text x="150" y="26" font-weight="600">操作时序 / μs →</text><text x="1085" y="26" text-anchor="end" font-weight="600">累计时间 · 占比</text>${rows}${ticks}${bars}<line id="schedule-playhead" x1="150" x2="150" y1="72" y2="${chartBottom}" stroke="#25334b" stroke-width="1.3" stroke-dasharray="4 3" pointer-events="none"/></svg></div><p id="schedule-current" class="muted"></p><p class="muted">横轴始终为真实仿真时间；同类操作按发生时间分段排列。点击色块跳转，悬停查看起止时间；短脉冲最小显示为 2 px 标记，真实时长不变。虚线与运动回放同步，右列保留累计占用。${summary.overlapping?'并行类别可以重叠，占比之和可超过 100%；各资源按区间并集计时。':''}</p>`;
 }
@@ -57,6 +57,7 @@ const displayGridStep=Number.isFinite(gridStep)&&gridStep>0?gridStep:null;
 const showCandidateSites=options.showCandidateSites??data.scene.show_candidate_sites??true;
 const TRAP_RADIUS=7;
 const view={zoom:1,panX:0,panY:0}, ui={time:data.start_time||0,mode:'keyframe',playing:false,selected:null,hover:null};
+let fittedView=null;
 let width=0,height=0,last=null,displayTime=null,hits=[],drag=null,current=null,disposed=false,raf=null;
 let atomPage=0,stagePage=-1,atomQuery="",visibleAtoms=[],visibleOperations=[];
 const ATOM_PAGE=32,STAGE_PAGE=12;
@@ -69,10 +70,20 @@ const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 const smooth=u=>u*u*(3-2*u);
 const offsets=values=>values.map(v=>v-values[0]);
 const axisText=values=>'['+values.map(v=>Number(v.toFixed(2))).join(', ')+']';
+const aodId=value=>value?.aod_id||'AOD_0';
+const frameAods=f=>f.aods||{[f.primary_aod_id||aodId(f.aod)]:f.aod};
+const frameAxes=(f,id)=>f.axes_by_aod?.[id]||f.axes;
+const frameMovement=(f,id)=>f.movements?.[id]||(id===(f.primary_aod_id||aodId(f.aod))?f.movement:null);
+const aodLabel=id=>data.scene.aod_labels?.[id]||id;
+const shortList=values=>values.length>4?values.slice(0,4).join(', ')+', …':values.join(', ');
+function effectDescription(o,qubits){
+ const patches=new Set(qubits.map(q=>data.scene.atom_roles?.[q]?.patch).filter(p=>p!=null));
+ return `${o.gate_ids?.length>1?(o.gate_type||o.kind)+' × '+o.gate_ids.length+' ['+shortList(o.gate_ids)+']':o.gate_id||''} ${o.gate_type||o.kind}(${shortList(qubits)})`+(patches.size>1?' · '+patches.size+' 码块并行':'');
+}
 // Older recordings already carry axes in movement frames. Keep them replayable.
 const axisMoves=data.operations.filter(o=>o.kind==='aod_move').map(o=>{
  const f=frames[Math.max(0,upperBound(frames,o.start+1e-8,'time')-1)];
- const source=o.source_axes||f.axes,target=o.target_axes||f.movement?.target_axes;
+ const source=o.source_axes||frameAxes(f,aodId(o)),target=o.target_axes||frameMovement(f,aodId(o))?.target_axes;
  const reshape=target&&['x_um','y_um'].some(k=>offsets(source[k]).some((v,i)=>Math.abs(v-offsets(target[k])[i])>1e-7));
  return {...o,source_axes:source,target_axes:target,reshape};
 });
@@ -110,7 +121,7 @@ if(parallel){
 let activeCacheTime=null,activeCache=[];
 // Recorded event times and start + duration can differ by a few float ULPs.
 // Use the same display tolerance as the timeline; never edit source timings.
-const activeAt=(op,time)=>op.start<=time&&time<op.end-timeTolerance(op.end,time);
+function activeAt(op,time){return op.start<=time&&time<op.end-timeTolerance(op.end,time)}
 function operationsAt(time){if(time!==activeCacheTime){activeCacheTime=time;activeCache=data.operations.filter(o=>activeAt(o,time))}return activeCache}
 function operationAt(time){if(parallel){const active=segments.filter(o=>activeAt(o,time));return active.find(o=>['raman_rotation','entangling_pulse','measurement','reset'].includes(o.kind))||active[0]||null}const i=upperBound(segments,time,'start')-1;const op=segments[i];return op&&activeAt(op,time)?op:null}
 function displayAt(time){
@@ -134,19 +145,34 @@ function transferAt(time){
     const progress=clamp((time-op.start)/(op.end-op.start),0,1);
     return {op,progress,mobileMix:['aod_load','aod_recapture'].includes(op.kind)?smooth(progress):1-smooth(progress),ids:op.captured};
 }
+function transfersAt(time){
+ return operationsAt(time).filter(op=>['aod_load','aod_offload','aod_park','aod_recapture'].includes(op.kind)).map(op=>{
+  const progress=clamp((time-op.start)/(op.end-op.start),0,1);
+  return {op,progress,mobileMix:['aod_load','aod_recapture'].includes(op.kind)?smooth(progress):1-smooth(progress),ids:op.captured};
+ });
+}
 function sample(time){
     const f=frames[Math.max(0,upperBound(frames,time+1e-8,'time')-1)];
-    let columns=[...f.axes.x_um],rows=[...f.axes.y_um];
-    if(f.movement){
-        let u=clamp((time-f.movement.start)/f.movement.duration,0,1);
-        if(f.movement.profile==='cubic')u=smooth(u);
-        columns=columns.map((x,i)=>x+u*(f.movement.target_axes.x_um[i]-x));
-        rows=rows.map((y,i)=>y+u*(f.movement.target_axes.y_um[i]-y));
+    const arrays={};
+    for(const [id,aod] of Object.entries(frameAods(f))){
+        const axes=frameAxes(f,id),movement=frameMovement(f,id);
+        let columns=[...axes.x_um],rows=[...axes.y_um];
+        if(movement){
+            let u=clamp((time-movement.start)/movement.duration,0,1);
+            if(movement.profile==='cubic')u=smooth(u);
+            columns=columns.map((x,i)=>x+u*(movement.target_axes.x_um[i]-x));
+            rows=rows.map((y,i)=>y+u*(movement.target_axes.y_um[i]-y));
+        }
+        arrays[id]={aod,columns,rows,pose:{x_um:columns[0],y_um:rows[0]},movement};
     }
-    const pose={x_um:columns[0],y_um:rows[0]};
-    const atoms=f.scene.atoms.map(a=>({...a,position:a.holder.holder_type==='mobile'?{
-        x_um:columns[a.holder.holder_id.column],y_um:rows[a.holder.holder_id.row]}:a.position}));
-    return {f,pose,columns,rows,atoms};
+    const primary=arrays[f.primary_aod_id||aodId(f.aod)];
+    const atoms=f.scene.atoms.map(a=>{
+        if(a.holder.holder_type!=='mobile')return {...a};
+        const device=arrays[aodId(a.holder.holder_id)];
+        if(!device)throw new Error('Missing recorded AOD for '+a.id);
+        return {...a,position:{x_um:device.columns[a.holder.holder_id.column],y_um:device.rows[a.holder.holder_id.row]}};
+    });
+    return {f,...primary,arrays,atoms};
 }
 function projection(){const b=frames[0].scene.bounds,base=Math.min((width-110)/(b.upper.x_um-b.lower.x_um),(height-100)/(b.upper.y_um-b.lower.y_um)),scale=base*view.zoom;return {scale,X:x=>width/2+view.panX+(x-(b.lower.x_um+b.upper.x_um)/2)*scale,Y:y=>height/2+view.panY-(y-(b.lower.y_um+b.upper.y_um)/2)*scale}}
 function circle(x,y,r,fill,stroke,lw=1){ctx.beginPath();ctx.arc(x,y,r,0,2*Math.PI);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.stroke()}}
@@ -195,11 +221,13 @@ function gateEffect(pair,op,X,Y){
     for(const p of pair){ctx.beginPath();ctx.arc(X(p.x_um),Y(p.y_um),12,-Math.PI/2,-Math.PI/2+2*Math.PI*u);ctx.stroke()}
     ctx.restore();
 }
-function draw(){if(!width||!height)return;current=sample(ui.time);const {f,pose,columns,rows,atoms}=current,{X,Y,scale}=projection(),scene=f.scene,b=scene.bounds;
+function draw(){if(!width||!height)return;current=sample(ui.time);const {f,pose,columns,rows,atoms,arrays}=current,{X,Y,scale}=projection(),scene=f.scene,b=scene.bounds;
 ctx.clearRect(0,0,width,height);ctx.font='10px system-ui';ctx.textAlign='left';ctx.textBaseline='alphabetic';
 if($('zones').checked)scene.zones.forEach((z,i)=>{const zi={storage:0,entanglement:1,measurement:2}[z.zone_type]??i;ctx.fillStyle=theme.zone_colors[zi%theme.zone_colors.length];ctx.fillRect(X(z.bounds.lower.x_um),Y(z.bounds.upper.y_um),(z.bounds.upper.x_um-z.bounds.lower.x_um)*scale,(z.bounds.upper.y_um-z.bounds.lower.y_um)*scale)});
 if($('grid').checked){const sampled=v=>!displayGridStep||Math.abs(v/displayGridStep-Math.round(v/displayGridStep))<1e-8;const gridX=scene.grid_x.filter(sampled),gridY=scene.grid_y.filter(sampled);for(const x of gridX)line(X(x),Y(b.upper.y_um),X(x),Y(b.lower.y_um),theme.grid_color,.6);for(const y of gridY)line(X(b.lower.x_um),Y(y),X(b.upper.x_um),Y(y),theme.grid_color,.6);const configuredSlm=new Set(scene.traps.map(t=>t.position.x_um+','+t.position.y_um));if(showCandidateSites)for(const p of scene.candidates)if(!configuredSlm.has(p.x_um+','+p.y_um))circle(X(p.x_um),Y(p.y_um),1.4,theme.muted_color);ctx.fillStyle=theme.muted_color;ctx.textAlign='center';let lastX=-Infinity;for(const x of gridX){if(X(x)-lastX>=32){ctx.fillText(x,X(x),Y(b.lower.y_um)+18);lastX=X(x)}}ctx.textAlign='right';let lastY=Infinity;for(const y of gridY){if(lastY-Y(y)>=18){ctx.fillText(y,X(b.lower.x_um)-10,Y(y)+3);lastY=Y(y)}}}
-ctx.textAlign='left';if($('zones').checked)scene.zones.forEach((z,i)=>{const label={storage:'STORAGE',entanglement:'ENTANGLEMENT',measurement:'MEASUREMENT'}[z.zone_type]||z.id;const text=String(i+1).padStart(2,'0')+'  '+label;const x=X(z.bounds.lower.x_um)+9,y=Y(z.bounds.upper.y_um)+17;ctx.fillStyle='rgba(250,251,253,.92)';ctx.fillRect(x-4,y-11,126,16);ctx.fillStyle=theme.muted_color;ctx.fillText(text,x,y)});
+ctx.textAlign='left';if($('zones').checked){scene.zones.forEach((z,i)=>{const label=scene.zone_labels?.[z.id]||({storage:'STORAGE',entanglement:'ENTANGLEMENT',measurement:'MEASUREMENT'}[z.zone_type]||z.id);const text=String(i+1).padStart(2,'0')+'  '+label;const x=X(z.bounds.lower.x_um)+9,y=Y(z.bounds.upper.y_um)+17;ctx.fillStyle='rgba(250,251,253,.92)';ctx.fillRect(x-4,y-11,Math.max(126,ctx.measureText(text).width+8),16);ctx.fillStyle=theme.muted_color;ctx.fillText(text,x,y)});
+ for(const patch of scene.patches||[]){const p=patch.bounds;if(!p)continue;ctx.setLineDash([4,4]);ctx.strokeStyle='#5364bc66';ctx.lineWidth=1;ctx.strokeRect(X(p.lower.x_um),Y(p.upper.y_um),(p.upper.x_um-p.lower.x_um)*scale,(p.upper.y_um-p.lower.y_um)*scale);ctx.setLineDash([]);ctx.fillStyle=theme.muted_color;ctx.fillText(patch.label||patch.id,X(p.lower.x_um)+4,Y(p.upper.y_um)+12);}
+}
 const routePlan=(data.plans||[]).find(p=>p.id===f.plan_id)||(data.plans||[])[0];
 const routeAtom=ui.selected||(routePlan?.requested.find(q=>routePlan.paths[q]));
 const route=routePlan?.paths[routeAtom]||[];
@@ -216,11 +244,14 @@ if($('slm').checked){
   else if($('slm-off').checked)circle(x,y,1.6,'#bac4d1');
  }
 }
-if($('aod').checked){for(let row=0;row<f.aod.rows;row++)for(let column=0;column<f.aod.columns;column++){if(!f.aod.enabled_rows[row]||!f.aod.enabled_columns[column])continue;const x=X(columns[column]),y=Y(rows[row]);circle(x,y,TRAP_RADIUS,null,theme.moving_color,1.4)}}
+if($('aod').checked){for(const [id,device] of Object.entries(arrays)){const aod=device.aod;for(let row=0;row<aod.rows;row++)for(let column=0;column<aod.columns;column++){if(!aod.enabled_rows[row]||!aod.enabled_columns[column])continue;circle(X(device.columns[column]),Y(device.rows[row]),TRAP_RADIUS,null,theme.moving_color,1.4)}
+ if(Object.keys(arrays).length>1){ctx.fillStyle=theme.muted_color;ctx.fillText(aodLabel(id),X(device.columns[0])+10,Y(device.rows[0])-12);}
+}}
 const op=operationAt(ui.time),transfer=$('effects').checked?transferAt(ui.time):null;
+const transfers=$('effects').checked?transfersAt(ui.time):[];
 const effects=operationsAt(ui.time).filter(o=>['raman_rotation','entangling_pulse','measurement','reset'].includes(o.kind));
 const effectQubits=o=>o.qubit_ids?.length?o.qubit_ids:f.requested;
-const effectLabel=o=>`${o.gate_ids?.length>1?(o.gate_type||o.kind)+' × '+o.gate_ids.length+' ['+o.gate_ids.join(', ')+']':o.gate_id||''} ${o.gate_type||o.kind}(${effectQubits(o).join(', ')})`;
+const effectLabel=o=>effectDescription(o,effectQubits(o));
 for(const effect of effects){
  if(effect.applied===false)continue;
  const points=(effect.kind==='raman_rotation'?appliedQubits(effect):effectQubits(effect)).map(q=>atoms.find(a=>a.id===q)?.position);
@@ -237,30 +268,31 @@ for(const effect of effects){
   }
  }
 }
-hits=[];for(const a of atoms){if(!a.position)continue;const x=X(a.position.x_um),y=Y(a.position.y_um),mobile=a.holder.holder_type==='mobile',color=atomColor(a);hits.push({id:a.id,x,y});if(ui.selected===a.id)circle(x,y,16,null,'#5364bc80',1.3);else if(ui.hover===a.id)circle(x,y,16,null,'#5364bc40',1);const handingOver=transfer?.ids.includes(a.id);if(handingOver)transferEffect(x,y,transfer);atomMarker(x,y,handingOver?transfer.mobileMix:(mobile?1:0),color);if($('labels').value==='all'||($('labels').value==='focus'&&(ui.selected===a.id||ui.hover===a.id))){ctx.font='600 10px system-ui';const w=ctx.measureText(a.id).width;ctx.fillStyle='#fafbfdf0';ctx.fillRect(x-w/2-3,y+17,w+6,14);ctx.fillStyle=theme.text_color;ctx.textAlign='center';ctx.fillText(a.id,x,y+28);ctx.textAlign='left';ctx.font='10px system-ui'}}
+hits=[];for(const a of atoms){if(!a.position)continue;const x=X(a.position.x_um),y=Y(a.position.y_um),mobile=a.holder.holder_type==='mobile',color=atomColor(a);hits.push({id:a.id,x,y});if(ui.selected===a.id)circle(x,y,16,null,'#5364bc80',1.3);else if(ui.hover===a.id)circle(x,y,16,null,'#5364bc40',1);const handingOver=transfers.find(t=>t.ids.includes(a.id));if(handingOver)transferEffect(x,y,handingOver);atomMarker(x,y,handingOver?handingOver.mobileMix:(mobile?1:0),color);if($('labels').value==='all'||($('labels').value==='focus'&&(ui.selected===a.id||ui.hover===a.id))){ctx.font='600 10px system-ui';const w=ctx.measureText(a.id).width;ctx.fillStyle='#fafbfdf0';ctx.fillRect(x-w/2-3,y+17,w+6,14);ctx.fillStyle=theme.text_color;ctx.textAlign='center';ctx.fillText(a.id,x,y+28);ctx.textAlign='left';ctx.font='10px system-ui'}}
 ctx.fillStyle=theme.muted_color;ctx.font='10px system-ui';ctx.textAlign='center';ctx.fillText('x / μm',X((b.lower.x_um+b.upper.x_um)/2),Y(b.lower.y_um)+36);ctx.save();ctx.translate(X(b.lower.x_um)-36,Y((b.lower.y_um+b.upper.y_um)/2));ctx.rotate(-Math.PI/2);ctx.fillText('y / μm',0,0);ctx.restore();ctx.textAlign='left';updatePanel()}
-function updatePanel(){const {f,atoms}=current,op=operationAt(ui.time),transfer=transferAt(ui.time);
+function updatePanel(){const {f,atoms,arrays}=current,op=operationAt(ui.time),transfer=transferAt(ui.time),transfers=transfersAt(ui.time);
 const effects=operationsAt(ui.time).filter(o=>['raman_rotation','entangling_pulse','measurement','reset'].includes(o.kind));
 const effectQubits=o=>o.qubit_ids?.length?o.qubit_ids:f.requested;
-const effectLabel=o=>`${o.gate_ids?.length>1?(o.gate_type||o.kind)+' × '+o.gate_ids.length+' ['+o.gate_ids.join(', ')+']':o.gate_id||''} ${o.gate_type||o.kind}(${effectQubits(o).join(', ')})`;
+const effectLabel=o=>effectDescription(o,effectQubits(o));
 const measurements=f.measurement_results||{};$('measurement-readout').hidden=!hasMeasurements;$('measurement-readout').textContent='已提交测量（随回放时间更新）：'+(Object.entries(measurements).map(([id,bit])=>id+'='+bit).join(' · ')||'尚无读出');
 const projectionAudit=data.operations.filter(o=>o.end<=ui.time&&o.measurement_true_results).flatMap(o=>Object.entries(o.measurement_true_results).filter(([id])=>Object.hasOwn(measurements,id)).map(([id,bit])=>id+': 投影 '+bit+' → 报告 '+measurements[id]+(o.readout_flips?.[id]?'（报告翻转）':'')));
 if(projectionAudit.length)$('measurement-readout').textContent+='\n仿真审计（不供译码）：'+projectionAudit.join(' · ');
 const flags=['zones','grid','slm','aod','planned-path','trails','effects','clearance'];
 $('display-summary').textContent=flags.filter(id=>$(id).checked).length+' / '+flags.length+' 图层开启';
 $('slm-empty').disabled=!$('slm').checked;$('slm-off').disabled=!$('slm').checked;
-const gaps=[...current.columns.slice(1).map((x,i)=>x-current.columns[i]),...current.rows.slice(1).map((y,i)=>y-current.rows[i])];
+const gaps=Object.values(arrays).flatMap(device=>[...device.columns.slice(1).map((x,i)=>x-device.columns[i]),...device.rows.slice(1).map((y,i)=>y-device.rows[i])]);
 const minGap=gaps.length?Math.min(...gaps):null,limit=data.scene.aod_minimum_spacing_um??1.01;
-$('spacing-readout').textContent='AOD 活动 / 容量：'+(f.aod.enabled_rows.filter(Boolean).length*f.aod.enabled_columns.filter(Boolean).length)+' / '+(f.aod.rows*f.aod.columns)+'；当前最小中心距：'+(minGap==null?'单 trap，无邻居':minGap.toFixed(3)+' μm')+'；硬约束 > '+limit+' μm（包括空 trap）。SLM 中心排斥边界半径：'+data.scene.slm_clearance_um+' μm。';
+$('spacing-readout').textContent=Object.entries(arrays).map(([id,device])=>aodLabel(id)+' 活动 / 容量：'+(device.aod.enabled_rows.filter(Boolean).length*device.aod.enabled_columns.filter(Boolean).length)+' / '+(device.aod.rows*device.aod.columns)).join('；')+'；各阵列内最小中心距：'+(minGap==null?'单 trap，无邻居':minGap.toFixed(3)+' μm')+'；硬约束 > '+limit+' μm（包括空 trap）。SLM 中心排斥边界半径：'+data.scene.slm_clearance_um+' μm。';
 const axisMove=axisMoves.find(o=>activeAt(o,ui.time));
 const on=mask=>mask.flatMap((v,i)=>v?[i]:[]).join(', ')||'无';
-$('axis-live-summary').textContent=(['row_column','row_column_orthogonal'].includes(data.backend)?'可变行列 AOD':'固定间距 AOD')+' · '+(axisMove?(axisMove.reshape?'正在改变相对间距':'正在整体平移'):'静止')+' · 承载 '+atoms.filter(a=>a.holder.holder_type==='mobile').length+' 原子';
-$('axis-live-coordinates').textContent='当前绝对坐标 / μm：x '+axisText(current.columns)+'；y '+axisText(current.rows)+'\n当前相对首轴 / μm：Δx '+axisText(offsets(current.columns))+'；Δy '+axisText(offsets(current.rows))+'\n活动列（从 0 编号）：'+on(f.aod.enabled_columns)+'；活动行：'+on(f.aod.enabled_rows)+(axisMove?.target_axes?'\n本段目标 / μm：x '+axisText(axisMove.target_axes.x_um)+'；y '+axisText(axisMove.target_axes.y_um):'');
+$('axis-live-summary').textContent=Object.entries(arrays).map(([id,device])=>{const move=axisMoves.find(o=>aodId(o)===id&&activeAt(o,ui.time));return aodLabel(id)+' · '+(move?(move.reshape?'正在改变相对间距':'正在整体平移'):'静止')+' · 承载 '+atoms.filter(a=>a.holder.holder_type==='mobile'&&aodId(a.holder.holder_id)===id).length+' 原子';}).join(' / ');
+$('axis-live-coordinates').textContent=Object.entries(arrays).map(([id,device])=>{const move=axisMoves.find(o=>aodId(o)===id&&activeAt(o,ui.time));return aodLabel(id)+'\n当前绝对坐标 / μm：x '+axisText(device.columns)+'；y '+axisText(device.rows)+'\n当前相对首轴 / μm：Δx '+axisText(offsets(device.columns))+'；Δy '+axisText(offsets(device.rows))+'\n活动列（从 0 编号）：'+on(device.aod.enabled_columns)+'；活动行：'+on(device.aod.enabled_rows)+(move?.target_axes?'\n本段目标 / μm：x '+axisText(move.target_axes.x_um)+'；y '+axisText(move.target_axes.y_um):'');}).join('\n\n');
 if(data.summary){const s=data.summary,x=150+700*clamp((ui.time-s.window_start_us)/(s.wall_time_us||1),0,1);$('schedule-playhead').setAttribute('x1',x);$('schedule-playhead').setAttribute('x2',x);$('schedule-current').textContent=`当前 ${ui.time.toFixed(2)} μs`+(op?` · ${op.gate_id||''} ${labels[op.label]||op.label} · ${op.start.toFixed(2)}–${op.end.toFixed(2)} μs`:' · 记录结束')}
 $('clock').textContent=ui.time.toFixed(2);$('version').textContent='STATE v'+String(f.version).padStart(2,'0');$('gate').textContent=effects.length?effects.map(effectLabel).join(' · '):f.gate_label;$('status').textContent=effects.length?'执行中 '+effects.reduce((n,o)=>n+(o.gate_ids?.length||1),0)+' 门':statuses[f.gate_status]||f.gate_status;$('frontier').textContent='READY '+f.ready_count+': '+(f.ready_frontier.join(', ')||'—')+(f.ready_count>20?' …':'');$('gate-states').textContent=Object.entries(f.gate_counts).map(([status,count])=>(statuses[status]||status)+' '+count).join(' · ');$('event').textContent=op?(labels[op.label]||op.label):'周期完成';$('readout').textContent=ui.time.toFixed(2)+' / '+data.duration.toFixed(2)+' μs';$('slider').value=ui.mode==='keyframe'?displayAt(ui.time):ui.time;$('play').textContent=ui.playing?'暂停':'播放';$('previous').disabled=ui.time<=(data.start_time||0);$('next').disabled=ui.time>=data.duration;if(op&&op.index>=0&&Math.floor(op.index/STAGE_PAGE)!==stagePage)renderStages(Math.floor(op.index/STAGE_PAGE));for(const o of visibleOperations)$('stage-'+o.index).setAttribute('aria-current',String(operationsAt(ui.time).some(active=>active.index===o.index)));
 const progress=op?clamp((ui.time-op.start)/(op.end-op.start),0,1):1;
 $('operation-title').textContent=op?(transfer?(['aod_load','aod_recapture'].includes(op.kind)?'SLM → AOD · 原位抓取':'AOD → SLM · 原位释放'):['entangling_pulse','raman_rotation','measurement','reset'].includes(op.kind)?effects.map(effectLabel).join(' · '):(labels[op.label]||op.label)):'记录结束 · 已显示全部已提交状态';
-$('operation-caption').textContent=transfer?transfer.ids.join(' / ')+' · 目标支撑已建立 · 交接预览；承载与源支撑在操作结束时提交':op?.applied===false?'条件不满足 · '+(op.end-op.start).toFixed(2)+' μs 控制时隙 · 未施加激光':op?.kind==='measurement'?'MZ 投影测量 · '+(op.end-op.start).toFixed(2)+' μs（本次仿真假设）· 结果在操作结束提交':op?.kind==='reset'?'MZ 原位复位到 |0⟩ · '+(op.end-op.start).toFixed(2)+' μs（本次仿真假设）':op?.kind==='raman_rotation'?ramanCaption(op,effects):op?.kind==='trap_switch'?'光阱开关 · 完成时提交启用状态':op?.kind==='idle'?'无设备操作 · 原子位置保持不变':op?.kind==='entangling_pulse'?'真实脉冲 '+(op.end-op.start).toFixed(2)+' μs · 红色连线表示作用对':op?(atoms.some(a=>a.holder.holder_type==='mobile')?(['row_column','row_column_orthogonal'].includes(data.backend)?'行列联动 · 同步三次轨迹 · 保持行列顺序':'刚性平移 · 所有已捕获原子同步移动'):(f.aod.enabled_rows.some(Boolean)&&f.aod.enabled_columns.some(Boolean)?'开启的空 AOD 移动 · 全轨迹安全已验证':'AOD 关灯定位 · 运动显式计时')):'所有时间与物理指标来自原始事件';
+$('operation-caption').textContent=transfer?transfer.ids.join(' / ')+' · 目标支撑已建立 · 交接预览；承载与源支撑在操作结束时提交':op?.applied===false?'条件不满足 · '+(op.end-op.start).toFixed(2)+' μs 控制时隙 · 未施加激光':op?.kind==='measurement'?'MZ 投影测量 · '+(op.end-op.start).toFixed(2)+' μs（本次仿真假设）· 结果在操作结束提交':op?.kind==='reset'?'MZ 原位复位到 |0⟩ · '+(op.end-op.start).toFixed(2)+' μs（本次仿真假设）':op?.kind==='raman_rotation'?ramanCaption(op,effects):op?.kind==='trap_switch'?'光阱开关 · 完成时提交启用状态':op?.kind==='idle'?'无设备操作 · 原子位置保持不变':op?.kind==='entangling_pulse'?'真实脉冲 '+(op.end-op.start).toFixed(2)+' μs · 红色连线表示作用对':op?(atoms.some(a=>a.holder.holder_type==='mobile'&&aodId(a.holder.holder_id)===aodId(op))?(['row_column','row_column_orthogonal'].includes(data.backend)?'行列联动 · 同步三次轨迹 · 保持行列顺序':'刚性平移 · 所有已捕获原子同步移动'):(arrays[aodId(op)].aod.enabled_rows.some(Boolean)&&arrays[aodId(op)].aod.enabled_columns.some(Boolean)?'开启的空 AOD 移动 · 全轨迹安全已验证':'AOD 关灯定位 · 运动显式计时')):'所有时间与物理指标来自原始事件';
+if(op&&(op.kind.startsWith('aod_')||op.kind==='trap_switch')&&Object.keys(arrays).length>1)$('operation-caption').textContent=aodLabel(aodId(op))+' · '+$('operation-caption').textContent;
 if(op?.transfer_phase)$('operation-caption').textContent+=(op.transfer_phase==='depart'?' · 仅允许离开自身源 trap':' · 仅允许接近自身卸载 trap');
 if(options.modelCaption){$('operation-caption').textContent=op?.description||options.modelCaption;$('version').textContent='模板阶段 '+f.version;$('status').textContent=options.modelCaption;}
 if(parallel&&operationsAt(ui.time).length>1)$('operation-caption').textContent+=' · 同时执行：'+operationsAt(ui.time).filter(o=>o.index!==op?.index).map(o=>o.gate_id?effectLabel(o):(labels[o.label]||o.label)).join('、');
@@ -273,11 +305,11 @@ $('play').disabled=!data.operations.length;$('slider').disabled=!data.operations
 if(root.activeElement!==$('seek-time'))$('seek-time').value=String(Number(ui.time.toFixed(6)));
 if(!data.operations.length){$('event').textContent='无执行操作';$('operation-title').textContent='静态布局 · 无运输或门操作';$('operation-caption').textContent='此处显示当前记录的原子与光阱位置。';}
 $('mode-note').textContent=ui.mode==='keyframe'?(parallel?'关键帧演示：并行操作共享同一时间映射；短门展示 1.8 s（1×），运输同步推进。':'关键帧演示：装载 1.8 s · 卸载 1.6 s · 短门 1.8 s（1×）；阶段内按原轨迹推进。展示时长不计入物理指标。'):'真实时间比例：1× = 25 μs 仿真 / 1 s 屏幕时间，所有操作统一缩放；0.3 μs 门约显示 12 ms。';
-for(const a of atoms.filter(a=>visibleAtoms.includes(a.id))){const row=$('atom-'+a.id);row.setAttribute('aria-pressed',String(ui.selected===a.id));row.querySelector('.symbol').style.background=atomColor(a);row.querySelector('.symbol').className='symbol '+(a.holder.holder_type==='mobile'?'diamond':'circle');row.querySelector('.atom-state').textContent=(a.holder.holder_type==='mobile'?'AOD':'SLM')+' · '+(names[a.activity]||a.activity)}
-const a=atoms.find(a=>a.id===ui.selected);if(a){const h=a.holder,holder=h.holder_type==='mobile'?`AOD · row ${h.holder_id.row}, col ${h.holder_id.column}`:`SLM · ${h.holder_id}`;const batchPair=effects.flatMap(o=>o.intended_pairs||[]).find(pair=>pair.includes(a.id))||data.operations.filter(o=>o.start>=ui.time&&o.applied!==false).flatMap(o=>o.intended_pairs||[]).find(pair=>pair.includes(a.id));const partner=batchPair?batchPair.filter(id=>id!==a.id).join(', '):f.requested.length===2&&f.requested.includes(a.id)?f.requested.filter(id=>id!==a.id).join(', '):'无明确配对';const active=transfer?.ids.includes(a.id)?(['aod_load','aod_recapture'].includes(op.kind)?'装载中（目标支撑已建立）':'卸载中（目标支撑已建立）'):a.activity==='gating'||a.activity==='measuring'||a.activity==='resetting'?(effects.filter(o=>effectQubits(o).includes(a.id)).map(effectLabel).join(' · ')||f.gate_label):a.holder.holder_type==='mobile'&&op?(labels[op.label]||op.label):'空闲';$('details').innerHTML='<dl>'+[['原子',a.id],...(data.scene.atom_roles?.[a.id]?[['角色',data.scene.atom_roles[a.id].role+' · patch '+data.scene.atom_roles[a.id].patch]]:[]),['坐标',a.position?`${a.position.x_um.toFixed(2)}, ${a.position.y_um.toFixed(2)} μm`:'—'],['承载',holder],['当前操作',active],['目标伙伴',partner]].map(([k,v])=>`<dt>${escapeHTML(k)}</dt><dd>${escapeHTML(v)}</dd>`).join('')+'</dl>'}else $('details').textContent='点击画布或列表中的原子，查看位置、承载 trap 和当前操作。'}
+for(const a of atoms.filter(a=>visibleAtoms.includes(a.id))){const row=$('atom-'+a.id);row.setAttribute('aria-pressed',String(ui.selected===a.id));row.querySelector('.symbol').style.background=atomColor(a);row.querySelector('.symbol').className='symbol '+(a.holder.holder_type==='mobile'?'diamond':'circle');row.querySelector('.atom-state').textContent=(a.holder.holder_type==='mobile'?aodLabel(aodId(a.holder.holder_id)):'SLM')+' · '+(names[a.activity]||a.activity)}
+const a=atoms.find(a=>a.id===ui.selected);if(a){const h=a.holder,holder=h.holder_type==='mobile'?`${aodLabel(aodId(h.holder_id))} · row ${h.holder_id.row}, col ${h.holder_id.column}`:`SLM · ${h.holder_id}`;const batchPair=effects.flatMap(o=>o.intended_pairs||[]).find(pair=>pair.includes(a.id))||data.operations.filter(o=>o.start>=ui.time&&o.applied!==false).flatMap(o=>o.intended_pairs||[]).find(pair=>pair.includes(a.id));const partner=batchPair?batchPair.filter(id=>id!==a.id).join(', '):f.requested.length===2&&f.requested.includes(a.id)?f.requested.filter(id=>id!==a.id).join(', '):'无明确配对';const handover=transfers.find(t=>t.ids.includes(a.id));const active=handover?(['aod_load','aod_recapture'].includes(handover.op.kind)?'装载中（目标支撑已建立）':'卸载中（目标支撑已建立）'):a.activity==='gating'||a.activity==='measuring'||a.activity==='resetting'?(effects.filter(o=>effectQubits(o).includes(a.id)).map(effectLabel).join(' · ')||f.gate_label):a.holder.holder_type==='mobile'&&op?(labels[op.label]||op.label):'空闲';$('details').innerHTML='<dl>'+[['原子',a.id],...(data.scene.atom_roles?.[a.id]?[['角色',data.scene.atom_roles[a.id].role+' · patch '+data.scene.atom_roles[a.id].patch]]:[]),['坐标',a.position?`${a.position.x_um.toFixed(2)}, ${a.position.y_um.toFixed(2)} μm`:'—'],['承载',holder],['当前操作',active],['目标伙伴',partner]].map(([k,v])=>`<dt>${escapeHTML(k)}</dt><dd>${escapeHTML(v)}</dd>`).join('')+'</dl>'}else $('details').textContent='点击画布或列表中的原子，查看位置、承载 trap 和当前操作。'}
 function seek(time){if(!Number.isFinite(time))throw new Error('Simulation time must be finite');ui.playing=false;last=null;displayTime=null;ui.time=Math.max(data.start_time||0,Math.min(data.duration,time));draw()}
-function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;const dpr=window.devicePixelRatio||1;canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);draw()}
-function zoom(factor,x=width/2,y=height/2){const next=Math.max(.65,Math.min(8,view.zoom*factor)),ratio=next/view.zoom;view.panX=x-width/2-(x-width/2-view.panX)*ratio;view.panY=y-height/2-(y-height/2-view.panY)*ratio;view.zoom=next;draw()}
+function resize(){const rect=canvas.getBoundingClientRect();width=rect.width;height=rect.height;const dpr=window.devicePixelRatio||1;canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);if(fittedView==='atoms')fitAtoms();draw()}
+function zoom(factor,x=width/2,y=height/2){fittedView=null;const next=Math.max(.65,Math.min(8,view.zoom*factor)),ratio=next/view.zoom;view.panX=x-width/2-(x-width/2-view.panX)*ratio;view.panY=y-height/2-(y-height/2-view.panY)*ratio;view.zoom=next;draw()}
 function point(e){const r=canvas.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top}}
 function hit(p){let id=null,best=15;for(const h of hits){const d=Math.hypot(h.x-p.x,h.y-p.y);if(d<best){id=h.id;best=d}}return id}
 function configureTimeline(){
@@ -288,22 +320,23 @@ function configureTimeline(){
 }
 $('mode').onchange=()=>{ui.mode=$('mode').value;ui.playing=false;last=null;displayTime=null;configureTimeline();draw()};
 $('slider').oninput=()=>{const t=Number($('slider').value);seek(ui.mode==='keyframe'?simulationAt(t):t)};$('play').onclick=()=>{if(ui.time>=data.duration)ui.time=data.start_time||0;ui.playing=!ui.playing;last=null;displayTime=null;draw()};$('reset').onclick=()=>seek(data.start_time||0);$('pulse').disabled=!data.operations.some(o=>['raman_rotation','entangling_pulse','measurement','reset'].includes(o.kind));$('pulse').onclick=()=>{const pulses=data.operations.filter(o=>['raman_rotation','entangling_pulse','measurement','reset'].includes(o.kind)),pulse=pulses.find(o=>o.start>ui.time+1e-8)||pulses[0];if(pulse)seek((pulse.start+pulse.end)/2)};$('previous').onclick=()=>seek([...frames].reverse().find(f=>f.time<ui.time-1e-8)?.time??0);$('next').onclick=()=>seek(frames.find(f=>f.time>ui.time+1e-8)?.time??data.duration);for(const id of ['labels','grid','slm','slm-empty','slm-off','aod','trails','effects','planned-path','clearance','zones'])$(id).onchange=draw;
-$('fit').onclick=()=>{Object.assign(view,{zoom:1,panX:0,panY:0});draw()};$('zoomin').onclick=()=>zoom(1.3);$('zoomout').onclick=()=>zoom(1/1.3);
+$('fit').onclick=()=>{fittedView=null;Object.assign(view,{zoom:1,panX:0,panY:0});draw()};$('zoomin').onclick=()=>zoom(1.3);$('zoomout').onclick=()=>zoom(1/1.3);
 $('end').onclick=()=>seek(data.duration);
 $('seek-time').min=String(data.start_time||0);$('seek-time').max=String(data.duration);
 $('seek-time-button').onclick=()=>{const raw=$('seek-time').value.trim(),time=Number(raw);if(!raw||!Number.isFinite(time)||time<(data.start_time||0)||time>data.duration){$('seek-error').textContent='请输入 '+(data.start_time||0)+'–'+data.duration+' μs';return;}$('seek-error').textContent='';seek(time);};
 $('seek-time').onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();$('seek-time-button').onclick();}};
-$('fit-atoms').onclick=()=>{
- const atoms=sample(ui.time).atoms;if(!atoms.length)return;
+function fitAtoms(){
+ const atoms=sample(ui.time).atoms.filter(a=>a.position&&Number.isFinite(a.position.x_um)&&Number.isFinite(a.position.y_um));if(!atoms.length)return;
  const xs=atoms.map(a=>a.position.x_um),ys=atoms.map(a=>a.position.y_um),cx=(Math.min(...xs)+Math.max(...xs))/2,cy=(Math.min(...ys)+Math.max(...ys))/2;
  const b=frames[0].scene.bounds,base=Math.min((width-110)/(b.upper.x_um-b.lower.x_um),(height-100)/(b.upper.y_um-b.lower.y_um));
  const scale=Math.min((width-100)/Math.max(20,Math.max(...xs)-Math.min(...xs)+20),(height-100)/Math.max(20,Math.max(...ys)-Math.min(...ys)+20));
- view.zoom=clamp(scale/base,.65,8);view.panX=-(cx-(b.lower.x_um+b.upper.x_um)/2)*base*view.zoom;view.panY=(cy-(b.lower.y_um+b.upper.y_um)/2)*base*view.zoom;draw();
-};
+ view.zoom=clamp(scale/base,.65,8);view.panX=-(cx-(b.lower.x_um+b.upper.x_um)/2)*base*view.zoom;view.panY=(cy-(b.lower.y_um+b.upper.y_um)/2)*base*view.zoom;
+}
+$('fit-atoms').onclick=()=>{fittedView='atoms';resize()};
 canvas.addEventListener('keydown',e=>{if(e.key===' '){e.preventDefault();if(!$('play').disabled)$('play').onclick();}else if(e.key==='ArrowLeft'){e.preventDefault();$('previous').onclick();}else if(e.key==='ArrowRight'){e.preventDefault();$('next').onclick();}});
 canvas.addEventListener('wheel',e=>{if(!e.ctrlKey&&!e.metaKey)return;e.preventDefault();const p=point(e);zoom(Math.exp(-e.deltaY*.001),p.x,p.y)},{passive:false});
 canvas.addEventListener('pointerdown',e=>{if(e.button!==0)return;const p=point(e);drag={...p,startX:p.x,startY:p.y,moved:false};canvas.setPointerCapture(e.pointerId);canvas.classList.add('dragging')});
-canvas.addEventListener('pointermove',e=>{const p=point(e);if(drag){const moved=Math.hypot(p.x-drag.startX,p.y-drag.startY)>4;if(drag.moved||moved){view.panX+=p.x-drag.x;view.panY+=p.y-drag.y;drag.moved=true;ui.hover=null}drag.x=p.x;drag.y=p.y;draw()}else{const id=hit(p);if(id!==ui.hover){ui.hover=id;draw()}}});
+canvas.addEventListener('pointermove',e=>{const p=point(e);if(drag){const moved=Math.hypot(p.x-drag.startX,p.y-drag.startY)>4;if(drag.moved||moved){fittedView=null;view.panX+=p.x-drag.x;view.panY+=p.y-drag.y;drag.moved=true;ui.hover=null}drag.x=p.x;drag.y=p.y;draw()}else{const id=hit(p);if(id!==ui.hover){ui.hover=id;draw()}}});
 canvas.addEventListener('pointerup',e=>{if(!drag)return;if(!drag.moved)ui.selected=hit(point(e));drag=null;canvas.classList.remove('dragging');canvas.releasePointerCapture(e.pointerId);draw()});canvas.addEventListener('pointercancel',()=>{drag=null;canvas.classList.remove('dragging')});canvas.addEventListener('pointerleave',()=>{ui.hover=null;draw()});
 function renderAtoms(){
  const all=frames[0].scene.atoms.filter(a=>a.id.toLowerCase().includes(atomQuery));
@@ -317,7 +350,7 @@ function renderAtoms(){
 function renderStages(page){
  stagePage=Math.max(0,Math.min(page,Math.ceil(data.operations.length/STAGE_PAGE)-1));
  visibleOperations=data.operations.slice(stagePage*STAGE_PAGE,(stagePage+1)*STAGE_PAGE);
- $('stages').innerHTML=visibleOperations.map(o=>`<button id="stage-${o.index}" class="stage" data-kind="${o.kind}" aria-current="false"><strong>${o.index+1} · ${escapeHTML(o.gate_id||o.task_id||'运输任务')} · ${escapeHTML(labels[o.label]||o.label)}</strong><span>${o.start.toFixed(1)}–${o.end.toFixed(1)} μs</span><em></em></button>`).join('');
+ $('stages').innerHTML=visibleOperations.map(o=>`<button id="stage-${o.index}" class="stage" data-kind="${o.kind}" aria-current="false"><strong>${o.index+1} · ${escapeHTML(o.gate_ids?.length>1?(o.gate_type||o.kind)+' × '+o.gate_ids.length:o.gate_id||o.task_id||'运输任务')} · ${escapeHTML(labels[o.label]||o.label)}</strong><span>${o.start.toFixed(1)}–${o.end.toFixed(1)} μs</span><em></em></button>`).join('');
  for(const op of visibleOperations)$('stage-'+op.index).onclick=()=>seek(op.start);
  $('stages-page').textContent=`${data.operations.length} 操作 · ${stagePage+1}/${Math.max(1,Math.ceil(data.operations.length/STAGE_PAGE))}`;
  $('stages-prev').disabled=stagePage===0;$('stages-next').disabled=(stagePage+1)*STAGE_PAGE>=data.operations.length;
@@ -338,7 +371,7 @@ $('summary').innerHTML=summaryMarkup(data.summary,data.operations);
 if(data.summary){
  const activate=e=>{const value=e.target.getAttribute?.('data-start');if(value!=null){seek(Number(value));return true}return false};
  $('schedule').onclick=activate;
- if(Object.keys(data.summary.resource_busy_us||{}).some(id=>id==='AOD_0'||id==='ENTANGLING_LASER_0'||id.startsWith('RAMAN'))){$('resource-schedule').onclick=activate;$('resource-schedule').onkeydown=e=>{if((e.key==='Enter'||e.key===' ')&&activate(e))e.preventDefault()};}
+ if(Object.keys(data.summary.resource_busy_us||{}).some(id=>id.startsWith('AOD_')||id==='ENTANGLING_LASER_0'||id.startsWith('RAMAN'))){$('resource-schedule').onclick=activate;$('resource-schedule').onkeydown=e=>{if((e.key==='Enter'||e.key===' ')&&activate(e))e.preventDefault()};}
  $('schedule').onkeydown=e=>{if((e.key==='Enter'||e.key===' ')&&activate(e))e.preventDefault()};
 }
 // Hidden tabs pause; a resumed tab must not jump over the short gate.
@@ -357,7 +390,7 @@ function tick(now){
     }
     last=now;raf=requestAnimationFrame(tick);
 }
-$('backend-caption').textContent=hasMeasurements?'QEC · 物理运输 / MZ 测量复位 / 测量条件控制 · 同一物理时钟':parallel?'门操作 / AOD 重叠 · 同一物理时钟':data.operations.some(op=>op.task_id)?'独立任务 · 准备 / 门效果 / 清理 · 当前串行执行':data.operations.some(op=>op.kind==='raman_rotation')?'CZ / RAMAN · 单 trap 串行调度 · 1Q 静止 SLM / AOD 原位执行':data.operations.length===0?'初始布局 / 无物理操作 · trap 与 holder 来自输入':['row_column','row_column_orthogonal'].includes(data.backend)?'ROW / COLUMN AOD · 行列伸缩与平移 · 返回并卸载':data.operations.some(op=>op.planner_id?.startsWith('single-trap-return'))?'SINGLE TRAP · a → EZ SLM · b → CZ · b / a 依次返回 SZ':data.operations.some(op=>op.kind==='aod_park')?'RIGID AOD · SZ 同运 → EZ 局部交接 → CZ → 恢复构型并同返':'RIGID AOD · 刚性平移 · 静态伙伴配对 · 返回并卸载';
+$('backend-caption').textContent=Object.keys(frameAods(frames[0])).length>1?'独立 AOD '+Object.keys(frameAods(frames[0])).length+' 台 · 真实设备状态 / 完整作用对检查 · 同一物理时钟':hasMeasurements?'QEC · 物理运输 / MZ 测量复位 / 测量条件控制 · 同一物理时钟':parallel?'门操作 / AOD 重叠 · 同一物理时钟':data.operations.some(op=>op.task_id)?'独立任务 · 准备 / 门效果 / 清理 · 当前串行执行':data.operations.some(op=>op.kind==='raman_rotation')?'CZ / RAMAN · 单 trap 串行调度 · 1Q 静止 SLM / AOD 原位执行':data.operations.length===0?'初始布局 / 无物理操作 · trap 与 holder 来自输入':['row_column','row_column_orthogonal'].includes(data.backend)?'ROW / COLUMN AOD · 行列伸缩与平移 · 返回并卸载':data.operations.some(op=>op.planner_id?.startsWith('single-trap-return'))?'SINGLE TRAP · a → EZ SLM · b → CZ · b / a 依次返回 SZ':data.operations.some(op=>op.kind==='aod_park')?'RIGID AOD · SZ 同运 → EZ 局部交接 → CZ → 恢复构型并同返':'RIGID AOD · 刚性平移 · 静态伙伴配对 · 返回并卸载';
 $('motion-note').textContent=['row_column','row_column_orthogonal'].includes(data.backend)?'按行列坐标与三次轨迹采样；采用配置的峰值速度/加速度/段内 jerk 限制，未模拟光场、加热与损失。':'轨迹按移动事件线性插值，未模拟加速度与加热。';
 const observer=new ResizeObserver(resize);observer.observe($('viewport'));resize();raf=requestAnimationFrame(tick);
 if(options.modelCaption){$('backend-caption').textContent=options.modelCaption;$('motion-note').textContent=options.modelCaption;}
@@ -367,8 +400,8 @@ const api={setTime:seek,selectAtom(id){ui.selected=id;draw()},
  play(){ui.playing=true;last=null;displayTime=null},pause(){ui.playing=false;last=null;draw()},
  getStatus(){return {time_us:ui.time,selected_atom:ui.selected,playing:ui.playing,visible_atom_rows:visibleAtoms.length,visible_operation_rows:visibleOperations.length}},
  destroy(){disposed=true;cancelAnimationFrame(raf);observer.disconnect();document.removeEventListener('visibilitychange',visibility);root.innerHTML='';mounted.delete(container)},
- debug:{data,frames,ui,view,seek,sample,displayAt,simulationAt,operationAt,operationsAt,transferAt,tick,renderStages,draw,projection,
-        get presentationEnd(){return presentationEnd},get current(){return current},get hits(){return hits}}};
+ debug:{data,frames,ui,view,seek,sample,displayAt,simulationAt,operationAt,operationsAt,transferAt,tick,renderStages,draw,projection,resize,
+        transfersAt,get presentationEnd(){return presentationEnd},get current(){return current},get hits(){return hits}}};
 mounted.set(container,api);return api;
 
 }

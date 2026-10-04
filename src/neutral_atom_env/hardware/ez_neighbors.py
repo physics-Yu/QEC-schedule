@@ -58,7 +58,9 @@ def validate_ez_neighbors(state, *, aod=None, holders=None):
     guards = tuple(reservations(state, holders=holders))
     if not guards:
         return
-    aod = state.aod if aod is None else aod
+    devices = dict(state.aods)
+    if aod is not None:
+        devices[aod.aod_id] = aod
     tolerance = state.hardware.alignment_tolerance_um
     positions = {}
     for atom, holder in holders.items():
@@ -67,7 +69,7 @@ def validate_ez_neighbors(state, *, aod=None, holders=None):
         if holder.holder_type == HolderType.STATIC:
             positions[atom] = state.world.traps[holder.holder_id].position
         elif holder.holder_type == HolderType.MOBILE:
-            positions[atom] = aod.position(holder.holder_id)
+            positions[atom] = devices[holder.holder_id.aod_id].position(holder.holder_id)
     # Exact x-range broad phase replaces the previous guards x all atoms x four
     # points scan. Candidate distances retain the original Euclidean tolerance.
     ordered=sorted((position.x_um,index,atom,position) for index,(atom,position) in enumerate(positions.items()))

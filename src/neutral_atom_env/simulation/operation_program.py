@@ -23,6 +23,7 @@ from neutral_atom_env.simulation.event_queue import EventQueue
 from neutral_atom_env.replay.trace import _event_data
 from neutral_atom_env.simulation.quantum_effects import complete_effects, condition_applies
 from neutral_atom_env.hardware.readout import validate_readout
+from neutral_atom_env.hardware.multi_aod import backend_for,device,with_aod,occupancy,needs_device_origin
 
 
 # Memoize independently reconstructed expectations, never live validation results.
@@ -69,10 +70,14 @@ def origin(plan,state):
     require(plan.initial_atoms is not None and plan.initial_rng_state is not None,'Missing quantum/atom/RNG program origin')
     from neutral_atom_env.quantum.stabilizer import StabilizerState
     quantum=StabilizerState.from_dict(json.loads(plan.initial_quantum_state)) if plan.initial_quantum_state is not None else None
+    devices=dict(plan.initial_aods) if plan.initial_aods else dict(state.aods)
+    if needs_device_origin(state):
+        require(set(devices)==set(state.aods),'Missing complete multi-device program origin')
+    primary=devices['AOD_0']
     return replace(state,placement=PlacementState(dict(plan.initial_placement)),
-        aod=replace(state.aod.configured(plan.initial_aod_configuration),is_moving=False,
+        aod=replace(primary if plan.initial_aods else primary.configured(plan.initial_aod_configuration),is_moving=False,
                     enabled_rows=plan.initial_traps.rows,enabled_columns=plan.initial_traps.columns),
-        slm_enabled=dict(plan.initial_traps.slm),transfer=None,dag=origin_dag(plan,state),
+        aods=devices,slm_enabled=dict(plan.initial_traps.slm),transfer=None,transfers={},dag=origin_dag(plan,state),
         time_us=plan.initial_time_us,physical_metrics=plan.initial_metrics,
         active_plan=PlanRuntime(plan,plan.initial_time_us),reservations=(),event_queue=EventQueue(),
         atoms=dict(plan.initial_atoms),quantum_state=quantum,measurement_results=dict(plan.initial_measurement_results),rng_state=plan.initial_rng_state)
@@ -109,12 +114,14 @@ def transition(state,event):
     index=next((i for i,o in enumerate(plan.operations) if o.id==event.operation_id),None)
     require(index is not None,'Unknown program operation')
     op=plan.operations[index];interval=plan.operation_intervals[index]
-    kind=op.operation_type;backend=get_backend(state.hardware);target=motion_target(op)
+    kind=op.operation_type;backend=backend_for(state,op.aod_id);target=motion_target(op)
+    selected=device(state,op.aod_id)
     effect_ids=op.effect_gate_ids
     running=dict(rt.running_operations);completed=set(rt.completed_operation_ids)
     extra={'task_id':plan.intent.task_id,'task_phase':op.task_phase or plan.intent.phase,'operation_ref':f'{plan.intent.task_id}/{op.id}',
            'effect_gate_id':op.gate_id,'gate_id':op.gate_id,'operation_type':kind.value,'label':op.label,
            'duration_us':op.duration_us,'transfer_bindings':op.transfer_bindings,'resources':interval.resources}
+    if len(state.aods)>1: extra['aod_id']=op.aod_id
     if op.gate_ids:extra.update(gate_ids=op.gate_ids,effect_gate_ids=op.gate_ids)
     if event.event_type==E.OPERATION_STARTED:
         require(event.time_us==plan.initial_time_us+interval.start_us and op.id not in running and op.id not in completed,'Invalid program start')
@@ -122,7 +129,7 @@ def transition(state,event):
         require(not set(interval.resources)&{r.resource_id for r in state.reservations},'Resource interval conflict')
         resources,atoms,sites=demands(state,op)
         require((resources,atoms)==(interval.resources,interval.atom_ids),'Live resource demand mismatch')
-        duration=operation_duration(state,kind,target)
+        duration=operation_duration(state,kind,target,op.aod_id)
         require(isclose(duration,op.duration_us,rel_tol=0,abs_tol=1e-9),'Program hardware timing mismatch')
         work=state
         if kind==K.AOD_MOVE:
@@ -130,16 +137,16 @@ def transition(state,event):
             for active,active_interval in zip(plan.operations,plan.operation_intervals):
                 if active.id in running and active.operation_type==K.RAMAN_ROTATION:
                     overlap_end=min(event.time_us+op.duration_us,plan.initial_time_us+active_interval.end_us)
-                    validate_rotation_batch_sweep(state,active.effect_gate_ids,target,0.,(overlap_end-event.time_us)/op.duration_us)
-            work=replace(state,aod=replace(state.aod,is_moving=True))
-            extra.update(source_configuration=state.aod.configuration(),target_configuration=backend.target_aod(state.aod,target).configuration(),
-                         motion_profile=backend.motion_profile,moving_atom_ids=tuple(sorted(state.placement.mobile_occupancy.values())))
+                    validate_rotation_batch_sweep(state,active.effect_gate_ids,target,0.,(overlap_end-event.time_us)/op.duration_us,aod_id=op.aod_id)
+            work=with_aod(state,op.aod_id,replace(selected,is_moving=True))
+            extra.update(source_configuration=selected.configuration(),target_configuration=backend.target_aod(selected,target).configuration(),
+                         motion_profile=backend.motion_profile,moving_atom_ids=tuple(sorted(occupancy(state,op.aod_id).values())))
         elif kind in TRANSFERS:
             work=begin_transfer(backend,state,op.transfer_bindings,kind)
-            extra.update(transfer=work.transfer,supports_before=trap_state(state),supports_overlap=trap_state(work))
+            extra.update(transfer=work.transfers.get(op.aod_id),supports_before=trap_state(state,op.aod_id),supports_overlap=trap_state(work,op.aod_id))
         elif kind==K.TRAP_SWITCH:
-            switch_traps(state,op.switch_state)
-            extra.update(supports_before=trap_state(state),supports_target=op.switch_state)
+            switch_traps(state,op.switch_state,op.aod_id)
+            extra.update(supports_before=trap_state(state,op.aod_id),supports_target=op.switch_state)
         else:
             require(kind in EFFECTS and bool(effect_ids) and set(effect_ids)<=plan.intent.gate_ids,'Unauthorized program effect')
             gate_type=state.dag.nodes[effect_ids[0]].gate.gate_type
@@ -155,7 +162,7 @@ def transition(state,event):
                     if active.id in running and active.operation_type==K.AOD_MOVE:
                         begin=running[active.id];overlap_end=min(event.time_us+op.duration_us,begin+active.duration_us)
                         validate_rotation_batch_sweep(state,effect_ids,motion_target(active),
-                            (event.time_us-begin)/active.duration_us,(overlap_end-begin)/active.duration_us)
+                            (event.time_us-begin)/active.duration_us,(overlap_end-begin)/active.duration_us,aod_id=active.aod_id)
             elif kind in {K.MEASUREMENT,K.RESET}:validate_readout(state,effect_ids,kind)
             else:extra.update(actual_pairs=backend.validate_pulse_batch(state,effect_ids))
             dag=state.dag
@@ -173,11 +180,11 @@ def transition(state,event):
                 captured_atom_count_total=metrics.captured_atom_count_total+(len(op.transfer_bindings) if loading else 0),
                 incidental_atom_transport_total=metrics.incidental_atom_transport_total+(sum(b.atom_id in plan.incidental_atom_ids for b in op.transfer_bindings) if loading else 0))
         elif kind==K.AOD_MOVE:
-            d=backend.move_distance(state.aod,target);atom_d=backend.atom_distance(state,target)
+            d=backend.move_distance(selected,target);atom_d=backend.atom_distance(state,target)
             work=backend.move(state,target,transfer=op.transfer_phase,bindings=op.transfer_bindings)
             metrics=replace(metrics,total_aod_distance_um=metrics.total_aod_distance_um+d,total_atom_distance_um=metrics.total_atom_distance_um+atom_d)
             extra.update(distance_um=d)
-        elif kind==K.TRAP_SWITCH:work=switch_traps(state,op.switch_state)
+        elif kind==K.TRAP_SWITCH:work=switch_traps(state,op.switch_state,op.aod_id)
         else:
             require(all(state.dag.nodes[g].status==G.RUNNING for g in effect_ids),'Effect already completed or not started')
             if kind==K.RAMAN_ROTATION:
@@ -211,6 +218,11 @@ def transition(state,event):
         # Preserve the baseline AOD service metric: Raman (singular or batch)
         # is excluded even when its interval reserves AOD_0 against motion.
         if kind!=K.RAMAN_ROTATION:metrics=replace(metrics,aod_busy_time_us=metrics.aod_busy_time_us+op.duration_us)
+        if len(state.aods)>1:
+            busy=dict(metrics.aod_busy_by_device)
+            for key in set(interval.resources)&set(state.aods):
+                busy[key]=busy.get(key,0.)+op.duration_us
+            metrics=replace(metrics,aod_busy_by_device=tuple(sorted(busy.items())))
         work=replace(work,physical_metrics=metrics)
         del running[op.id];completed.add(op.id)
     reservations=tuple(ResourceReservation(r,plan.id) for i in plan.operation_intervals if i.operation_id in running for r in i.resources)
@@ -262,9 +274,9 @@ def audit(plan,state,*,metadata=True):
             if op.operation_type in {K.AOD_LOAD,K.AOD_RECAPTURE}:
                 for b in op.transfer_bindings:first_loads.setdefault(b.atom_id,b)
             if op.operation_type==K.AOD_MOVE:
-                travel+=get_backend(work.hardware).move_distance(work.aod,motion_target(op))
+                travel+=backend_for(work,op.aod_id).move_distance(device(work,op.aod_id),motion_target(op))
                 # Exemptions need adjacent same-lane transfers, not arbitrary labels.
-                lane=[o for o in plan.operations if o.operation_type!=K.RAMAN_ROTATION];k=lane.index(op)
+                lane=[o for o in plan.operations if o.operation_type!=K.RAMAN_ROTATION and o.aod_id==op.aod_id];k=lane.index(op)
                 if op.transfer_phase:
                     neighbor=lane[k-1] if op.transfer_phase=='depart' and k else lane[k+1] if op.transfer_phase=='approach' and k+1<len(lane) else None
                     kinds={K.AOD_LOAD,K.AOD_RECAPTURE} if op.transfer_phase=='depart' else {K.AOD_OFFLOAD,K.AOD_PARK}
@@ -279,7 +291,7 @@ def audit(plan,state,*,metadata=True):
 def validate_program(plan,state,restoring=False):
     from neutral_atom_env.program.binding import fingerprint
     if not restoring:
-        require(not(state.active_plan or state.event_queue or state.reservations or state.transfer),'Program needs an idle submit boundary')
+        require(not(state.active_plan or state.event_queue or state.reservations or state.transfers),'Program needs an idle submit boundary')
         for record in state.trace.records:
             event=_event_data(record)
             if event['event_type']=='plan_started':
@@ -294,6 +306,7 @@ def validate_program(plan,state,restoring=False):
                 'Program quantum/atom/RNG origin mismatch')
         require(plan.initial_placement==tuple(sorted(state.placement.atom_to_holder.items())) and plan.initial_traps==trap_state(state)
                 and plan.initial_aod_configuration==state.aod.configuration() and plan.initial_dag==canonical_json(state.dag.nodes),'Program origin mismatch')
+        require(plan.initial_aods==tuple(sorted(state.aods.items())) if needs_device_origin(state) else not plan.initial_aods,'Program multi-device origin mismatch')
     final,intervals,bindings,travel=audit(plan,state)
     require(plan.bindings==bindings,'Program capture metadata mismatch')
     affected=frozenset(q for i in intervals for q in i.atom_ids)
@@ -301,6 +314,7 @@ def validate_program(plan,state,restoring=False):
     require(plan.requested_atom_ids==requested and plan.incidental_atom_ids==affected-requested,'Program atom metadata mismatch')
     require(plan.resources==tuple(sorted({r for i in intervals for r in i.resources})),'Program resources mismatch')
     require(plan.predicted_placement==tuple(sorted(final.placement.atom_to_holder.items())) and plan.predicted_traps==trap_state(final),'Program terminal prediction mismatch')
+    require(plan.predicted_aods==tuple(sorted(final.aods.items())) if needs_device_origin(state) else not plan.predicted_aods,'Program multi-device terminal prediction mismatch')
     require(isclose(plan.estimated_distance_um,travel,abs_tol=1e-8) and isclose(plan.estimated_duration_us,max(i.end_us for i in intervals),abs_tol=1e-8),'Program cost mismatch')
     require(plan.intent.max_duration_us is None or plan.estimated_duration_us<=plan.intent.max_duration_us,'Program budget exhausted')
 
@@ -351,7 +365,7 @@ def validate_program_runtime(state,plan):
         work=replace(work,rng_state=rng.getstate())
         if suffix:work=replace(work,time_us=suffix[-1]['time_us'])
     else:require(len(suffix)==len(actual),'Nonphysical event during active program')
-    for name in ('placement','aod','slm_enabled','transfer','active_plan','reservations','physical_metrics','time_us',
+    for name in ('placement','aod','aods','slm_enabled','transfer','transfers','active_plan','reservations','physical_metrics','time_us',
                  'atoms','quantum_state','measurement_results','rng_state'):
         require(getattr(state,name)==getattr(work,name),'Program runtime mismatch: '+name)
     for record in state.trace.records[start+1:start+1+len(actual)]:

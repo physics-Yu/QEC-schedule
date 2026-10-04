@@ -44,5 +44,41 @@ def scheduled_program(base,state,rotations=()):
                  bindings=bindings,resources=tuple(sorted({r for i in intervals for r in i.resources})),
                  estimated_duration_us=max(i.end_us for i in intervals),estimated_distance_um=travel,
                  predicted_placement=tuple(sorted(final.placement.atom_to_holder.items())),predicted_traps=trap_state(final))
+    from neutral_atom_env.hardware.multi_aod import needs_device_origin
+    if needs_device_origin(state):
+        plan=replace(plan,initial_aods=tuple(sorted(state.aods.items())),predicted_aods=tuple(sorted(final.aods.items())))
+    exact_validate(plan,state)
+    return plan
+
+
+def build_scheduled_program(state,intent,operations,intervals,*,planner_id='external-scheduled'):
+    """Audit caller-selected concurrent operations on the complete global state.
+
+    intervals supply relative start/end times. Resources and affected atoms are
+    derived independently from actual holders at each operation start.
+    """
+    from neutral_atom_env.domain.operations import CompiledPlan
+    from neutral_atom_env.program.binding import fingerprint
+    from neutral_atom_env.simulation.operation_program import audit
+    from neutral_atom_env.hardware.dynamic_traps import trap_state
+    from neutral_atom_env.hardware.multi_aod import needs_device_origin
+    operations=tuple(operations);intervals=tuple(intervals)
+    intent=replace(intent,phase='program',effect_gate_id=None,gate_effects=intent.gate_ids)
+    digest=fingerprint(state)
+    requested=intent.atom_ids|frozenset(q for g in intent.gate_ids for q in state.dag.nodes[g].gate.qubit_ids)
+    plan=CompiledPlan('program_'+sha256((intent.task_id+digest).encode()).hexdigest()[:20],state.version,digest,
+        intent,(),requested,frozenset(),operations,(),max(i.end_us for i in intervals),0.,
+        tuple(sorted(state.placement.atom_to_holder.items())),state.aod.configuration(),planner_id,
+        tuple(sorted(state.placement.atom_to_holder.items())),trap_state(state),trap_state(state),intervals,
+        canonical_json(state.dag.nodes),'scheduled',state.time_us,state.physical_metrics,
+        tuple(sorted(state.atoms.items())),canonical_json(state.quantum_state.to_dict()) if state.quantum_state is not None else None,
+        tuple(sorted(state.measurement_results.items())),state.rng_state,
+        tuple(sorted(state.aods.items())) if needs_device_origin(state) else (),())
+    final,derived,bindings,travel=audit(plan,state,metadata=False)
+    affected=frozenset(q for i in derived for q in i.atom_ids)
+    plan=replace(plan,operation_intervals=derived,bindings=bindings,resources=tuple(sorted({r for i in derived for r in i.resources})),
+        incidental_atom_ids=affected-requested,estimated_distance_um=travel,
+        predicted_placement=tuple(sorted(final.placement.atom_to_holder.items())),predicted_traps=trap_state(final),
+        predicted_aods=tuple(sorted(final.aods.items())) if needs_device_origin(state) else ())
     exact_validate(plan,state)
     return plan

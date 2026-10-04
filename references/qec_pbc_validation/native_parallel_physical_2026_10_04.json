@@ -1,0 +1,288 @@
+{
+  "schema": "native-parallel-physical-stage-acceptance/1",
+  "date": "2026-10-04",
+  "scope": "Complete bounded initial RESET/CSS/canonical-round physical slice of twelve d3 algorithm patches plus the same-source right-side resource RESET/H prefix, stopping before T",
+  "baseline_commit": "fd7abf38c2a3bde007950283588057d4530b1730",
+  "user_decisions": {
+    "logical_nearest_neighbor_required": false,
+    "finite_cz_um": 6,
+    "all_compute_pairs_must_match_intended": true,
+    "slm_candidate_grid_um": 5,
+    "occupied_subset_spacing_um": 10,
+    "unified_compute_with_actual_mz": true,
+    "right_side_independent_magic_aod": true,
+    "patch_home_holders_separate": true
+  },
+  "physical_run": {
+    "aod_count": 2,
+    "audit": {
+      "all_output_code_logical_zero_and_aux_checks_plus_one": true,
+      "all_saved_report_ids_preserved": true,
+      "dag_complete": true,
+      "effects_exactly_once": true,
+      "event_queue_empty": true,
+      "independent_plan_replay_equal": true,
+      "same_source_resource_carriers_before_first_t": true
+    },
+    "complete_physical_shor_executed": false,
+    "declared_research_model": {
+      "actual_mz_readout_reset": true,
+      "compute_separate_storage_zone": false,
+      "finite_cz_distance_um": 6,
+      "global_actual_pairs_equal_intended": true,
+      "occupied_subset_pitch_um": 10,
+      "slm_grid_um": 5
+    },
+    "error": null,
+    "factory_or_noise_claimed": false,
+    "magic_state_preparation_executed": false,
+    "maximum_actual_cz_batch_size": 12,
+    "maximum_batch_size": 72,
+    "metrics": {
+      "aod_busy_by_device": {
+        "AOD_0": 69824.7258550172,
+        "AOD_MAGIC": 7974.14011537019
+      },
+      "aod_busy_time_us": 71278.4659703874,
+      "aod_device_count": 2,
+      "aod_load_count": 94,
+      "aod_offload_count": 94,
+      "aod_utilization": 0.5562805383639247,
+      "captured_atom_count_total": 1133,
+      "circuit_makespan_us": 69207.92686514359,
+      "committed_events": 2758,
+      "completed_gate_count": 3006,
+      "completed_plan_count": 196,
+      "cycle_makespan_us": 2059.5979797464533,
+      "episode_start_us": 0.0,
+      "episode_wall_time_us": 69927.72585501682,
+      "incidental_atom_transport_total": 0,
+      "laser_busy_time_us": 20.400000000000027,
+      "laser_utilization": 0.00029172977886190575,
+      "last_cycle_duration_us": 2059.5979797464533,
+      "last_pulse_elapsed_us": 69207.92686514359,
+      "last_pulse_time_us": 69207.92686514359,
+      "logical_completion_elapsed_us": 69207.92686514359,
+      "measurement_busy_time_us": 4000.0,
+      "raman_busy_time_us": 103.0,
+      "raman_utilization": 0.0014729493736655027,
+      "reset_busy_time_us": 2500.0,
+      "simulation_time_us": 69927.72585501682,
+      "throughput_gates_per_us": 0.042987240944063115,
+      "total_aod_distance_um": 22979.032985193513,
+      "total_atom_distance_um": 259432.25552636295
+    },
+    "native_gate_count": 3006,
+    "native_gate_counts": {
+      "CZ": 816,
+      "H": 1777,
+      "MEASURE": 96,
+      "RESET": 317
+    },
+    "native_projection_count": 413,
+    "patch_count": 12,
+    "physical_atom_count": 221,
+    "physical_prefix_executed": true,
+    "plans": 196,
+    "resource_clifford_prefix_included": true,
+    "schema": "parallel-shor15-prefix-physical-run/1",
+    "scope": "Saved all-zero RESET/CSS and first canonical round on selected algorithm patches; optional actual first resource RESET/H prefix stops immediately before its T",
+    "simulation_time_us": 69927.72585501682,
+    "source_manifest_sha256": "16d12bb97b28d49c07b8a28d7a94ea81cf58d1c6fe7e3ee21f2a68fb350adac7",
+    "source_native_prefix_sha256": "f56b91f177cc745f05c407597207905078604261bd9f770b17daa905a8d1adb3",
+    "status": "completed",
+    "wall_seconds": 1351.654208699998
+  },
+  "independent_arithmetic_stim_audit": {
+    "schema": "native-prefix-independent-physical-audit/1",
+    "passed": true,
+    "source_native_gate_count": 3006,
+    "physical_gate_count": 3006,
+    "algorithm_native_gate_count": 2988,
+    "resource_native_gate_count": 18,
+    "algorithm_qubits": 204,
+    "original_state_constraints": 204,
+    "original_projections": 413,
+    "committed_effects_once": 3006,
+    "committed_projection_checks": 413,
+    "dependency_interval_checks": 9401,
+    "committed_effect_interval_checks": 3006,
+    "cz_pulses_global_pair_checks": 68,
+    "cz_native_effects": 816,
+    "actual_mz_projection_geometry_checks": 413,
+    "raman_native_separation_checks": 1777,
+    "max_cz_batch": 12,
+    "move_devices": [
+      "AOD_0",
+      "AOD_MAGIC"
+    ],
+    "cross_device_move_overlaps": 9,
+    "stim_version": "1.15.0",
+    "cross_device_loaded_move_overlaps": 8,
+    "physical_time_us": 69927.72585501682,
+    "full_shor_physical": false,
+    "magic_factory_validated": false,
+    "fault_tolerance_validated": false,
+    "artifact_sha256": {
+      "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+      "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+      "initial.json": "dc831e96a141b92847ba40df2697e8482bcf67c624a35945b648df6b1cc37e23",
+      "checkpoint-final.json": "44289cbe8c14c46b6ce3d4c8ca1d672aa835bc2af61071b5677898debec7546a",
+      "recording.json": "5e9cdce1b69e29eed8de73e18547ab05be42376d099b4c94cb51ae427e1a6d36",
+      "trace.jsonl": "de66d4f8039f022825ab73935da671d9cdd1e3876b7b8c01daeef743661b6065"
+    }
+  },
+  "actual_pulse_counts": {
+    "RESET": 25,
+    "H": 103,
+    "CZ": 68,
+    "MEASURE": 8
+  },
+  "maximum_gate_batch": {
+    "RESET": 29,
+    "H": 72,
+    "CZ": 12,
+    "MEASURE": 12
+  },
+  "browser": {
+    "passed": true,
+    "url": "http://127.0.0.1:8773/",
+    "source_native_gates": 3006,
+    "physical_atoms": 221,
+    "devices": 2,
+    "checks": [
+      "实际12算法码块与右侧17资源carrier放置图，顶部四行均可见；未把resource前T输入称作已编码magic state。",
+      "七项书签：初始放置、29RESET、72H、12对CZ、12MEASURE、双带载运输、3006门提交终态均实际浏览器通过。",
+      "同一时钟运输中算法12/资源17个载体分别移动；展开两设备实际绝对/相对坐标与活动行列可核对。",
+      "终态69927.73us、已完成3006与96项committed syndrome bit0实际可见。",
+      "合批表真实显示CZ816/68、H1777/103、MEASURE96/8、RESET317/25。",
+      "390px实际document client375=scroll375，console无error。",
+      "修复聚焦后viewport/fullPage尺寸变化导致裁切；实际最终截图完整显示12码块及右侧资源。"
+    ],
+    "screenshots": [
+      "artifacts/qec-parallel-prefix-2026-10-04/browser/full12-cz.png"
+    ],
+    "retained_failed_screenshot": "artifacts/qec-parallel-prefix-2026-10-04/browser/full12-cz-before-fit-review.png"
+  },
+  "tests": {
+    "new_distinct_passed": 54,
+    "new_files": [
+      "test_multi_aod.py",
+      "test_multi_aod_visualization.py",
+      "test_qec_parallel_prefix.py",
+      "test_native_prefix_packet.py",
+      "test_native_parallel_independent_audit.py",
+      "test_native_parallel_report.py"
+    ],
+    "new_seconds": 9.97,
+    "old_distinct_passed": 180,
+    "old_files": [
+      "test_environment_boundary.py",
+      "test_quantum_readout.py",
+      "test_readout_flip.py",
+      "test_aod_raman.py",
+      "test_raman_windows.py",
+      "test_raman.py",
+      "test_batch_raman.py",
+      "test_batch_cz.py",
+      "test_row_column_aod.py",
+      "test_snapshot_encoding.py",
+      "test_snapshot_digest_memo.py",
+      "test_runtime_prefix_cache.py",
+      "test_visualization.py",
+      "test_raman_batch_visualization.py"
+    ],
+    "old_seconds": 16.48,
+    "old_skipped": 3,
+    "skip_reason": "Absent historical snapshot/readout artifact inputs; not validation passes",
+    "total_distinct_passed": 234,
+    "historical_215_913_and_peer_overlapping_runs_excluded": true
+  },
+  "architecture": {
+    "modules": 263,
+    "env": 59,
+    "strategies": 85,
+    "experiments": 101,
+    "app": 18,
+    "violations": []
+  },
+  "legacy_single_aod_compatibility": {
+    "baseline_commit": "fd7abf38c2a3bde007950283588057d4530b1730",
+    "actual_operations": 7,
+    "committed_events": 16,
+    "full_snapshots": 17,
+    "terminal_us": 883.4621125123532,
+    "byte_equal_plan_trace_all_snapshots": true,
+    "sha256": {
+      "plan.json": "2ba331b4dd9eea02dcc77c353ef18b11c107f385423e497580ae2490e8e4467e",
+      "snapshots.jsonl": "8695b8488c5244c3450167242a86095fc945c4c750c6816629a119b97907d9f5",
+      "trace.jsonl": "2ee2939cd3f29d6fc052ae9669378bb3a1d051aa70f3a227dda1a47e2b2f8a02"
+    }
+  },
+  "local_artifact_directory": "artifacts/qec-parallel-prefix-2026-10-04/full12-dual-sparse-slm-attempt1",
+  "source_packet": "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04",
+  "source_packet_is_complete_mother_stream": false,
+  "rebuild_commands": [
+    "python examples/run_parallel_shor15_prefix.py --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 --output artifacts/my-parallel-prefix --patches 12 --wall-budget 1800",
+    "python tools/audit_native_parallel_physical.py artifacts/my-parallel-prefix --output artifacts/my-parallel-prefix/independent-audit.json",
+    "python examples/serve_native_parallel.py --run-dir artifacts/my-parallel-prefix --port 8773"
+  ],
+  "failed_or_interrupted_archives": [
+    "single-patch-attempt1 (registered supports in zone gap; zero committed gates)",
+    "single-patch-attempt2 (origin registry binding; zero committed gates)",
+    "full12-dual-attempt1 (Platform.aods positional tuple TypeError; empty output directory, only console, zero plans/gates)",
+    "full12-dual-attempt2 (manually stopped after26plans318gates; no final replay/checkpoint)",
+    "four-dual-sparse-slm-preview (redundant preview stopped after70plans294gates; no replay acceptance)"
+  ],
+  "limitations": [
+    "Bounded Clifford prefix only; complete 11243634-gate physical Shor not executed.",
+    "Right-side 17RESET/H leaves unencoded physical + with sixteen zero carriers; no magic state or factory inventory.",
+    "Tracked non-Clifford T, Born feedback, distillation, noise/decoder and FT supply remain separate milestones.",
+    "Only fixed separated envelopes; general cross-envelope routing or direct AOD-to-AOD handoff rejected.",
+    "Native-to-pulse batch ratio is not a measured full-Shor or same-platform serial-baseline speedup.",
+    "Continuous trajectory safety belongs to Executor and complete replay; independent tool audits static pulses and quantum equivalence.",
+    "Hardware timing values are declared research model, not calibrated laboratory data."
+  ],
+  "source_sha256_normalization": "text_lf",
+  "source_sha256": {
+    "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
+    "src/neutral_atom_strategies/scheduling/parallel_patch.py": "fe0d4259b12ff7b39b0aac0f0e918ea898f7f7720c920b1ff96ba899305be868",
+    "src/neutral_atom_env/hardware/multi_aod.py": "3728bc327fe026943121d323ea5376e137abc8128dcdc28ffa2711e3fdb62286",
+    "src/neutral_atom_env/simulation/operation_program.py": "834a1054f652706fed7ed8c8d6a144d8b18263f1ad68901f7ce9456f2f5a6400",
+    "src/neutral_atom_env/replay/checkpoint.py": "86a2ec10384c3585bbd98347f688c5b332245d69c65a9b99b695bc186ad07ad4",
+    "src/neutral_atom_env/visualization/recording.py": "c8c842762453fd97b121e9fa63bed09ee67de7e4a83485402d974f386c00043c",
+    "src/neutral_atom_env/visualization/viewer.js": "07494a1a9373ef006c8b615853b068e1cf7dd4823e4525ac6a455875f6a70222",
+    "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "2620f8b5aab9e6c33a6f9b5ed715e52515fdb6eedf9e7aecfe65415a7ebdb72b",
+    "tools/audit_native_parallel_physical.py": "0e1f908be88d93c47a911e63426b4dba07a49908bc2eeeef2c18108c7c592fb5"
+  },
+  "rag_parallel_content": "实际Executor完成十二个d3码块初始化CSS与首canonical syndrome的2988算法native，加同源Q204..220资源17RESET/H，共3006门、413投影、221原子、2台AOD、196plans。原生1777H/816CZ/96MEASURE/317RESET分别合为{'RESET': 25, 'H': 103, 'CZ': 68, 'MEASURE': 8}实际脉冲，最大H72、CZ12对、M12、RESET29。全局有限6umCZ actual_pairs==intended；5um候选格点用10um稀疏占据，每码块home独立；统一COMPUTE并真实进入MZ。双设备去回运输实际重叠，原始初态196plan完整重放canonical snapshot相同。模型总时间69927.725855us，不声称全Shor12倍加速。资源止于首T之前，不是已准备魔态。",
+  "rag_parallel_validation": [
+    "独立Stim对204算法态约束与413 source/committed投影逐项一致；3006 native身份/效果/trace时间各一次，9401依赖时序通过。",
+    "68全局CZ脉冲共816对、413实际MZ位置、1777H分离逐项通过；全部221carrier位置有限完整。",
+    "54新+180旧=234不同pytest通过；3历史缺artifact跳过另计。263模块架构0违规；原态完整replay true。"
+  ],
+  "rag_visual_content": "新版页使用同一次真实VisualRecorder和原始世界几何，显示十二算法块及右侧独立资源AOD、SLM holders、同一模型us时钟、逐设备轴和资源时间线。书签可跳到初始放置、29RESET、72H、12对CZ、12MZ读出、两台带载同时运输以及真实已提交终态。当前recording必须与独立audit SHA相同且原初态replay为true才允许生成报告；表格区分3006原生门和实际脉冲数，完整11M原生observer仍为reference索引页。",
+  "rag_visual_validation": [
+    "实际12算法码块与右侧17资源carrier放置图，顶部四行均可见；未把resource前T输入称作已编码magic state。",
+    "七项书签：初始放置、29RESET、72H、12对CZ、12MEASURE、双带载运输、3006门提交终态均实际浏览器通过。",
+    "同一时钟运输中算法12/资源17个载体分别移动；展开两设备实际绝对/相对坐标与活动行列可核对。",
+    "终态69927.73us、已完成3006与96项committed syndrome bit0实际可见。",
+    "合批表真实显示CZ816/68、H1777/103、MEASURE96/8、RESET317/25。",
+    "390px实际document client375=scroll375，console无error。",
+    "修复聚焦后viewport/fullPage尺寸变化导致裁切；实际最终截图完整显示12码块及右侧资源。"
+  ],
+  "rag_validation": {
+    "chunks": 64,
+    "sources": 52,
+    "local_paths": 140,
+    "retrieval_passed": 58,
+    "retrieval_total": 58,
+    "portable_checks_passed": 11
+  },
+  "original_workspace_preservation": {
+    "head": "9e28b2e2da178420b449bb24cfff58e10e2b99f3",
+    "tracked_dirty_files": 36,
+    "all_bytes_unchanged": true,
+    "new_implementation_in_managed_worktree_only": true
+  }
+}

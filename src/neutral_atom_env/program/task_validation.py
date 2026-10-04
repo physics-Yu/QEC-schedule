@@ -23,7 +23,8 @@ def validate_target(target, state):
     require(target.aod_configuration is None or state.aod.configuration() == target.aod_configuration,
             'Task terminal AOD configuration not satisfied')
     require(target.traps is None or trap_state(state) == target.traps, 'Task terminal supports not satisfied')
-    require(state.transfer is None and not state.aod.is_moving, 'Task terminal state must be stable')
+    require(all(key in state.aods and state.aods[key].configuration()==axes for key,axes in target.aod_targets), 'Task terminal AOD targets differ')
+    require(not state.transfers and not any(a.is_moving for a in state.aods.values()), 'Task terminal state must be stable')
 
 
 def validate_task_origin(plan, state, restoring):
@@ -67,7 +68,8 @@ def operation_demand(state, op, gate_id):
     resources = set()
     if kind in {K.MEASUREMENT,K.RESET}:
         atoms.update(q for gid in op.effect_gate_ids for q in state.dag.nodes[gid].gate.qubit_ids)
-        resources.update(('AOD_0','READOUT_0' if kind==K.MEASUREMENT else 'RESET_0'))
+        resources.update(('READOUT_0' if kind==K.MEASUREMENT else 'RESET_0',))
+        resources.update(state.aods if len(state.aods)>1 else ('AOD_0',))
     elif kind == K.RAMAN_ROTATION:
         from neutral_atom_env.simulation.quantum_effects import condition_applies
         for gid in op.effect_gate_ids or (gate_id,):
@@ -77,14 +79,21 @@ def operation_demand(state, op, gate_id):
             resources.update(('RAMAN:' if applied else 'CONTROL:')+q for q in targets)
             if applied and any(state.placement.atom_to_holder[q].holder_type==HolderType.MOBILE for q in targets):
                 # One batch holds transport once for all its lit mobile targets.
-                resources.add('AOD_0')
+                resources.update(state.placement.atom_to_holder[q].holder_id.aod_id for q in targets if state.placement.atom_to_holder[q].holder_type==HolderType.MOBILE)
     else:
-        resources.add('AOD_0')
-        atoms.update(state.placement.mobile_occupancy.values())
+        resources.add(op.aod_id)
+        atoms.update(q for c,q in state.placement.mobile_occupancy.items() if c.aod_id==op.aod_id)
         if kind == K.ENTANGLING_PULSE:
             resources.update(('ENTANGLING_LASER_0', state.hardware.interaction_slot_id))
+            if len(state.aods)>1:
+                resources.update(state.aods)
+                atoms.update(state.placement.mobile_occupancy.values())
             atoms.update(q for gid in (op.effect_gate_ids or (gate_id,)) for q in state.dag.nodes[gid].gate.qubit_ids)
         if kind == K.TRAP_SWITCH:
+            # A switch carries a complete global SLM mask. Until a scoped
+            # switch-delta contract is implemented, lock every device so a
+            # foreign transfer cannot change a support between start/commit.
+            if len(state.aods)>1: resources.update(state.aods)
             sites.update(k for k, v in op.switch_state.slm if state.slm_enabled[k] != v)
             atoms.update(state.placement.static_occupancy[k] for k in sites if k in state.placement.static_occupancy)
     sites.update(state.placement.atom_to_holder[q].holder_id for q in atoms

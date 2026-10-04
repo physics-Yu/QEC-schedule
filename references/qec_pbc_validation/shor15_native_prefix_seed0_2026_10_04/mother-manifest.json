@@ -1,0 +1,74 @@
+{
+  "schema": "encoded-native-run-manifest/1",
+  "complete": true,
+  "artifacts": {
+    "certificates.json": {
+      "sha256": "2701606a812d0e18eadc206891eaef53399b38eb01bb80e7e287ca3cf4a4b114",
+      "bytes": 12240123
+    },
+    "complete_clifford_t.json": {
+      "sha256": "167760114c2b67767394c90bafecba50756af92e6718301de7ba0989942596b4",
+      "bytes": 765350
+    },
+    "frames.jsonl": {
+      "sha256": "e8934e63abe4d557fb1241c25f505ceb480131680973301efb6d233c6e156305",
+      "bytes": 17683150
+    },
+    "functions.jsonl": {
+      "sha256": "50ffe43174541c800d504a8d0407e157c6563ffd59ede539ca81571573db18c3",
+      "bytes": 94873986
+    },
+    "input.json": {
+      "sha256": "01df10da6edc8b3ecb667b26d2f11f9ba3a491965daa6a8e25dbaa943d2aa3d1",
+      "bytes": 13709043
+    },
+    "native_gates.jsonl": {
+      "sha256": "a4b582dc8f6769b6f20c081cba84cf19281eba78012a7918e0d3cb290275ddcf",
+      "bytes": 3977756096
+    },
+    "native_projections.jsonl": {
+      "sha256": "7693922b7144f703fb8dd5180e4adf7a97e1c73c54f5c5819ebd4b4a0eb50f0c",
+      "bytes": 660265206
+    },
+    "roles.json": {
+      "sha256": "101c48e1bbeef2fb294c08b2f4542e68fe7a395e80c23d96a1b8bb86bfba3ffd",
+      "bytes": 34019
+    },
+    "shor15_circuit.json": {
+      "sha256": "758303044c2e9ecb829247d772666a3f685b8221bb13a9dbcb7fe9e61e784b69",
+      "bytes": 13175
+    },
+    "shot0_semantic_state.json": {
+      "sha256": "c8aadc6ed576cdb23c1dba25a988bb22f2e8622696753a0b36e587a8e9ab0ef1",
+      "bytes": 235007
+    },
+    "shot0_unrealized_state.json": {
+      "sha256": "33bd34ed85d67dbfdb11a38c3942e29158d418de820b28e269e1aca84c9d2d4b",
+      "bytes": 2647465
+    },
+    "shot1_semantic_state.json": {
+      "sha256": "104a1971516f3dadcf7900eb25135966d64a9d1b4bbc6fb87121df767c23a7aa",
+      "bytes": 235033
+    },
+    "shot1_unrealized_state.json": {
+      "sha256": "5318e61e1314669a8be750dfccfbfe54eb9ce37871846df07a2113d1d8708f01",
+      "bytes": 2647978
+    },
+    "shots.json": {
+      "sha256": "a55f1d570ebc48bf0a6ded7aabb616288795bbefcfda197a5e85b574570b270c",
+      "bytes": 29705
+    },
+    "summary.json": {
+      "sha256": "4dbae279cc1a1583a5219c97769dbf84ce97380d4e69b0cd06ac10b8b4447698",
+      "bytes": 32521
+    },
+    "terminal.json": {
+      "sha256": "73d5ef18e85469df86751213b1a32a1314e0e592b8122c9644d9d1f3684a96b5",
+      "bytes": 27419
+    }
+  },
+  "physical_executed": false,
+  "environment_committed_reports": false,
+  "fault_tolerant": false,
+  "scope": "ideal encoded selected native branch and factorized Born instrument"
+}

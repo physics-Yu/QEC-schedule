@@ -19,15 +19,15 @@ def validate_readout(state,gate_ids,kind):
     qubits=tuple(g.qubit_ids[0] for g in gates)
     if len(set(qubits))!=len(qubits):raise ValidationError('OVERLAPPING_READOUT','Parallel readout/reset targets must be distinct')
     if state.quantum_state is None:raise ValidationError('QUANTUM_STATE_REQUIRED','Readout/reset requires ideal quantum state tracking')
-    if state.transfer is not None or state.aod.is_moving:
+    if state.transfers or any(a.is_moving for a in state.aods.values()):
         raise ValidationError('READOUT_UNSTABLE','Readout/reset requires stationary atoms and completed handoffs')
     for q in qubits:
         h=state.placement.atom_to_holder[q]
         enabled=(state.slm_enabled[h.holder_id] if h.holder_type==HolderType.STATIC else
-                 state.aod.is_enabled(h.holder_id) if h.holder_type==HolderType.MOBILE else False)
+                 state.aods[h.holder_id.aod_id].is_enabled(h.holder_id) if h.holder_type==HolderType.MOBILE else False)
         if not state.atoms[q].alive or not enabled:
             raise ValidationError('READOUT_TARGET_UNAVAILABLE','Readout/reset target must be alive and supported',atom_ids=(q,))
-        position=state.placement.position(q,state.world,state.aod)
+        position=state.placement.position(q,state.world,state.aods)
         if not any(z.zone_type==ZoneType.MEASUREMENT and z.bounds.contains(position) for z in state.world.zones):
             raise ValidationError('READOUT_ZONE_UNAVAILABLE','Readout/reset target must be in the measurement zone',atom_ids=(q,))
     return gates

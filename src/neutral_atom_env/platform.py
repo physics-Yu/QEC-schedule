@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from collections.abc import Mapping
 import json
 from pathlib import Path
 from neutral_atom_env.circuit import PhysicalCircuit, DynamicGateDAG
@@ -16,6 +17,7 @@ class Platform:
     world: WorldState
     hardware: HardwareConfig
     aod: AODRuntimeState
+    aods: Mapping | None = None
 
     @classmethod
     def load(cls, path):
@@ -38,14 +40,15 @@ class Platform:
         for name in ('interaction_offset', 'mobile_pair_center'):
             if name in hw:
                 hw[name] = Position2D(**hw[name])
-        aod = dict(data['aod'])
-        if 'pose' in aod:
-            aod['pose'] = Position2D(**aod['pose'])
-        return cls(world, HardwareConfig(**hw), AODRuntimeState(**aod))
+        from neutral_atom_env.replay.operation_codec import aod_from_dict
+        if 'aods' in data:
+            devices={key:aod_from_dict(value) for key,value in data['aods'].items()}
+            return cls(world,HardwareConfig(**hw),devices['AOD_0'],devices)
+        return cls(world, HardwareConfig(**hw), aod_from_dict(data['aod']))
 
 
 def initialize(circuit, platform, placement, *, seed=0):
     """placement maps physical qubit IDs to enabled SLM traps, independent of circuit."""
     atoms = {q: Atom(q) for q in placement}
     holders = PlacementState({q: HolderRef(HolderType.STATIC, trap) for q, trap in placement.items()})
-    return SimulationState(platform.world, holders, atoms, platform.aod, DynamicGateDAG(circuit), seed=seed, hardware=platform.hardware)
+    return SimulationState(platform.world, holders, atoms, platform.aod, DynamicGateDAG(circuit), seed=seed, hardware=platform.hardware,aods=platform.aods)

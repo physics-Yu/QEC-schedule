@@ -1,8 +1,22 @@
 from neutral_atom_env.domain.operations import CompiledPlan, ExecuteGateBatchIntent, EndDisposition, CaptureBinding, Operation, OperationType, HardwareConfig, PlanRuntime, TrapState, TransferRuntime, TaskIntent, TaskTarget, OperationInterval, PhysicalMetrics
-from neutral_atom_env.domain.models import Position2D, MobileCellIndex, HolderRef, HolderType, SimulationEvent, EventType, Atom
+from neutral_atom_env.domain.models import Position2D, Rectangle, MobileCellIndex, HolderRef, HolderType, SimulationEvent, EventType, Atom
 
 
 from neutral_atom_env.domain.aod import AODConfiguration
+
+
+def aod_from_dict(value):
+    from neutral_atom_env.world import AODRuntimeState
+    data=dict(value);data['pose']=Position2D(**data['pose'])
+    if data.get('envelope') is not None:
+        bound=data['envelope'];data['envelope']=Rectangle(Position2D(**bound['lower']),Position2D(**bound['upper']))
+    return AODRuntimeState(**data)
+
+
+def metrics_from_dict(value):
+    data=dict(value)
+    if 'aod_busy_by_device' in data: data['aod_busy_by_device']=tuple(tuple(v) for v in data['aod_busy_by_device'])
+    return PhysicalMetrics(**data)
 
 
 def holder(value):
@@ -27,7 +41,7 @@ def plan_from_dict(value):
         target=data['target']
         intent=TaskIntent(**(data|{'target':TaskTarget(tuple((q,holder(h)) for q,h in target['holders']),
             AODConfiguration(**target['aod_configuration']) if target['aod_configuration'] else None,
-            traps_from_dict(target['traps']))}))
+            traps_from_dict(target['traps']),tuple((key,AODConfiguration(**axes)) for key,axes in target.get('aod_targets',())))}))
     else:
         intent=ExecuteGateBatchIntent(frozenset(data['gate_ids']),EndDisposition(data['end_disposition']))
     bindings=tuple(CaptureBinding(b['atom_id'],MobileCellIndex(**b['cell']),b['static_trap_id']) for b in value['bindings'])
@@ -35,7 +49,7 @@ def plan_from_dict(value):
         Position2D(**o['target_pose']) if o['target_pose'] else None,
         AODConfiguration(**o['target_configuration']) if o['target_configuration'] else None,o['transfer_phase'],
         tuple(CaptureBinding(b['atom_id'],MobileCellIndex(**b['cell']),b['static_trap_id']) for b in o['transfer_bindings']),
-        traps_from_dict(o['switch_state']),o['gate_id'],tuple(o['depends_on']),o['task_phase'],tuple(o.get('gate_ids',()))) for o in value['operations'])
+        traps_from_dict(o['switch_state']),o['gate_id'],tuple(o['depends_on']),o['task_phase'],tuple(o.get('gate_ids',())),o.get('aod_id','AOD_0')) for o in value['operations'])
     return CompiledPlan(value['id'],value['state_version'],value['state_fingerprint'],intent,bindings,
         frozenset(value['requested_atom_ids']),frozenset(value['incidental_atom_ids']),operations,tuple(value['resources']),
         value['estimated_duration_us'],value['estimated_distance_um'],
@@ -44,10 +58,12 @@ def plan_from_dict(value):
         tuple((key,holder(h)) for key,h in value['initial_placement']) if value['initial_placement'] is not None else None,
         traps_from_dict(value['initial_traps']),traps_from_dict(value['predicted_traps']),
         tuple(OperationInterval(**i) for i in value['operation_intervals']),value['initial_dag'],value['execution_mode'],
-        value['initial_time_us'],PhysicalMetrics(**value['initial_metrics']) if value['initial_metrics'] is not None else None,
+        value['initial_time_us'],metrics_from_dict(value['initial_metrics']) if value['initial_metrics'] is not None else None,
         tuple((q,Atom(**a)) for q,a in value['initial_atoms']) if value.get('initial_atoms') is not None else None,
         value.get('initial_quantum_state'),tuple(tuple(p) for p in value.get('initial_measurement_results',())),
-        tuple_tree(value.get('initial_rng_state')))
+        tuple_tree(value.get('initial_rng_state')),
+        tuple((key,aod_from_dict(a)) for key,a in value.get('initial_aods',())),
+        tuple((key,aod_from_dict(a)) for key,a in value.get('predicted_aods',())))
 
 
 def event_from_dict(value):

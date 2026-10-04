@@ -1,5 +1,7 @@
 # 可视化自动生成规范
 
+2026-10-04 双 AOD 的真实观察扩展：VisualRecorder 在同一个 committed frame 保存 `aods` / `axes_by_aod` / `movements` / 各设备 transfer，并保留 primary 单台字段。共用 viewer 按 holder 的 aod_id 插值和显示设备资源 lane，scene_metadata 只增加码块 / 区域 / 设备名称，不能覆盖几何。`native_parallel_report.py`包裹同一共用 viewer，提供 MZ、跨码块同类脉冲和双运输书签；必须来自实际 completed run 与 independent audit。旧完整 native 索引视图继续保持 reference-only 边界。
+
 2026-10-04新增[完整编码Shor原生操作视图](../docs/qec_encoded_native_visuals.md)：`encoded_native_visuals.py`／`encoded_native_viewer.html`从同一manifest绑定的native JSONL、真实理想参考投影、功能span、frame与资源epoch读取。它是有界12门／64投影的原生门索引观察器，明确physical_executed=false，不具有placement／μs／运输记录，不调用物理共用viewer制造动画。8类功能及实际子阶段、32门/秒连续播放、报告分页、frame下一保存轴、失败cleanup与终端阶寻找已实际浏览器验收；390px溢出已源码修复。未来有真实Executor timeline时仍按下方统一管线接VisualRecorder。本轮证据见[日志](logs/2026-10-04-full-encoded-shor15-native.md)。
 
 2026-09-22：[RL初始placement离散对照](../docs/rl_initial_placement.md)新增只读inline检查器 `neutral_atom_app/visualization/placement_rl_inline.html` / `.js`，从冻结实验显示启发式/greedy初态、完整CZ、同模型时间回放、验证曲线和最终对手概率；导出 `tools/export_placement_rl_visualization.py`。四组训练配置、十条线路、五场景共400见证去重150份，29,530事件/5,440CZ精确保留；178,780次Node状态检查含44,959次反向定位通过，213模块架构通过。源点/终点连线只表示运输意图，事件结束提交坐标和承载，无连续路径插值/物理验收；生产UI与Env不变。真实浏览器筛选、CZ同步、训练展示、320/360px窄屏和自动播放到12CZ/AOD空终态均通过，见[本轮日志](logs/2026-09-22-rl-placement-visual.md)。

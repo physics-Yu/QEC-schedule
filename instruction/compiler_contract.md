@@ -1,5 +1,7 @@
 # Physical circuit 到原子操作：已确认的目标契约
 
+2026-10-04 bounded encoded-native adapter：`experiments/qec_pbc/parallel_prefix.py`只接纳完整 Shor 保存包的首 24 个初始化 / canonical functions。来源 hash、原门 ID / 类型 / 目标 / 报告保留；恢复模板门序与 canonical 阶段门禁后允许不同码块同操作合批。`strategies/scheduling/parallel_patch.py`选择 placement / 路线 / 批次，仍经 ENV 完整审核与 Executor 提交。不能将丢弃导出 serial 边的方法直接用于 adaptive injection / factory / frame / consume / retry 协议。
+
 2026-10-01 新增上游实验合同：[QEC/PBC → PhysicalCircuit](../docs/qec_pbc_architecture.md)。研究底座仍从 PhysicalCircuit 开始；新的 `neutral_atom_experiments.qec_pbc` 在底座之前生成带测量与解码 sidecar 的原生电路，不把码、PBC 化简或 decoder 放入 environment。支持固定 d=3 memory 与 X/Z Pauli measurement 的理想语义；Y 测量和要求容错的 backend 明确拒绝，硬件时间仍须实际调度/Executor 执行。该扩展不意味着通用逻辑容错编译或 M5/M6 完成。
 
 2026-09-22：[交互意图合同](../docs/interaction_ir.md)新增坐标无关 MoveToInteraction 和显式 ApplyInteraction；只有后者对应门效果。resolver 选择具体交互构型并绑定状态，lowerer 编译共享轴 AOD 操作。准备/脉冲语义拆分，普通 zoned 服务仍原子提交完整计划；不把 movement 当做动画插值，也不删除下层物理坐标。当前覆盖 CZ / EZ / 稳定 SLM 起态。

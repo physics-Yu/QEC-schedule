@@ -329,6 +329,39 @@
       "expected_any": [
         "K55"
       ]
+    },
+    {
+      "query": "3006 native 2988 algorithm 12patch physical prefix compiler 同码块并行 MZ finite CZ",
+      "expected_any": [
+        "K62"
+      ]
+    },
+    {
+      "query": "5um SLM candidate lattice sparse occupied10um global CZ spectator extra pairs logical nearest neighbor",
+      "expected_any": [
+        "K62",
+        "K63"
+      ]
+    },
+    {
+      "query": "右侧独立magic AOD_MAGIC 两台真实MOVE LOAD OFFLOAD schema20 同cell0,0",
+      "expected_any": [
+        "K63"
+      ]
+    },
+    {
+      "query": "实际空间并行可视化 MZ读出 两台AOD运输 共同CZ书签 us Executor VisualRecorder",
+      "expected_any": [
+        "K64"
+      ]
+    },
+    {
+      "query": "物理前缀是否已经完成magic factory T和完整Shor",
+      "expected_any": [
+        "K62",
+        "K63",
+        "K64"
+      ]
     }
   ]
 }

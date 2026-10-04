@@ -1,5 +1,15 @@
 # 模型审计与待处理问题
 
+2026-10-04 双 AOD / 编码前缀验收（用户授权新平台，旧默认物理参数保留）：
+
+| ID | 状态 | 范围与证据 |
+| --- | --- | --- |
+| MAOD-001 | FIXED | 双设备 scheduled plan 的 origin/terminal registry、独立 holder、并发交接和全局 SLM mask 绑定已补齐；schema20 拒绝损坏恢复。单台 schema19 真实 7 操作的 plan/trace/snapshot 与旧 HEAD 逐字节相同；[合同](../docs/multi_aod_contract.md)与[日志](logs/2026-10-04-native-prefix-parallel-physical.md) |
+| MAOD-002 | FIXED | 自身刚性运动中另一已捕获原子的旧位置不能被当成静态旁观原子；改用自身相对轨迹，foreign 原子与活动空阱仍全段检查。移动穿越旧坐标的反例通过；同上合同与日志 |
+| PREFIX-001 | FIXED | 独立验收现在要求原生源 ID 精确一一对应，拒绝会相互抵消的新增 H/H；报告要求原初态重放为 true，且当前 recording SHA 等于独立审计的 artifact SHA。反例见 `test_native_parallel_independent_audit.py` / `test_native_parallel_report.py`；[日志](logs/2026-10-04-native-prefix-parallel-physical.md) |
+| VIEW-FIT-001 | FIXED | 聚焦后画布 resize / fullPage 改变 projection base 而保留旧 pixel pan，顶部码块裁切。fit 按 CSS 尺寸同步计算，resize 保持聚焦，手工缩放/拖动退出；真实 full12 420→650 / 390 / 320 回归及最终浏览器截图通过，recording 不变。`tests/viewer_fit_resize.cjs`；[日志](logs/2026-10-04-native-prefix-parallel-physical.md) |
+| MULTI-AOD-SCOPE | 当前能力限制 | 仅固定分离 envelopes；重叠工作域、一般跨设备交付拒绝。普通策略不自动获得双设备路由；完整 magic 工厂、T/Born 和完整物理 Shor 仍属后续主线 |
+
 2026-09-22 发布审查（物理模型不变）：
 
 | ID | 状态 | 范围与证据 |

@@ -1,5 +1,12 @@
 # 当前交接状态
 
+## 2026-10-04 同码块并行前缀与真实双 AOD
+
+用户授权统一COMPUTE+MZ、5μm候选格点稀疏放置、取消逻辑最近邻但保持有限6μm全局CZ，并在右侧使用实际独立资源AOD。首24算法functions加同源首T前资源17RESET/H共3006native、413投影、221原子、12d3码块+17资源、196plans已全部真实Executor执行及原初态完整replay；68CZ脉冲含816对/max12，H max72、RESET max29、M max12，终态69927.725855μs。独立Stim/全局几何/trace时序全部通过，234不同本轮pytest通过、3历史artifact缺失skip另计、263modules0违规；单台旧HEAD真实7ops全plan/trace/snapshot bytes兼容。真实共用空间页本机8773，七功能书签、实际双带载运输与390px通过；旧8772仍为native reference index。
+
+边界：固定分离envelopes、Clifford切片；资源停于首T前未编码+，无magic工厂/库存、tracked T/Born、noise/FT或完整physical Shor。本次原worktree核心已有其他dirty，全部新stage留attached managed checkout，原HEAD9e28b2e与36dirty bytes保持。详情与失败档案见[日志](logs/2026-10-04-native-prefix-parallel-physical.md)、[复现](../docs/qec_native_parallel_prefix.md)、[小摘要](../references/qec_pbc_validation/native_parallel_physical_2026_10_04.json)；沿用draft PR#3且不merge。RAG新增K62–K64/L38–L40；下一主线仍按factory-first协议做F1同资源供给→单T闭环，再接真实tracked反馈与完整算法。
+
+
 ## 2026-10-04 QEC 工厂供应与逐周期质量协议固化
 
 用户要求已固化为 [必读共享协议](qec_factory_pipeline.md)，agent 导航/任务路由、architecture 和 research 均已接入。主线为固定 d=3 码/协议 → MSD 工厂到单个 T 的同一资源闭环 → Executor 实际反馈 → 周期带噪供给 → MSC backend → 连续 T/完整 Shor；MSC/MSD 均纳入能力，但不强制串联。唯一载体/epoch/库存、committed 报告、frame、噪声去重及接受/交付/T/算法质量分层必须遵守。旧 Shor-first 下一步已被覆盖，历史运行证据保留。本轮仅规范与导航固化，工厂/MSC/带噪能力保持待实现；验证与下一项可执行任务见 [日志](logs/2026-10-04-qec-factory-pipeline-protocol.md)。

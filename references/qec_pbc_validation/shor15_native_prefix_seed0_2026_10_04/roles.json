@@ -1,0 +1,1787 @@
+{
+  "schema": "encoded-native-roles/1",
+  "roles": [
+    {
+      "role": "phase0.d0",
+      "kind": "data",
+      "patch": "phase0",
+      "id": "Q000"
+    },
+    {
+      "role": "phase0.d1",
+      "kind": "data",
+      "patch": "phase0",
+      "id": "Q001"
+    },
+    {
+      "role": "phase0.d2",
+      "kind": "data",
+      "patch": "phase0",
+      "id": "Q002"
+    },
+    {
+      "role": "phase0.d3",
+      "kind": "data",
+      "patch": "phase0",
+      "id": "Q003"
+    },
+    {
+      "role": "phase0.d4",
+      "kind": "data",
+      "patch": "phase0",
+      "id": "Q004"
+    },
+    {
+      "role": "phase0.d5",
+      "kind": "data",
+      "patch": "phase0",
+      "id": "Q005"
+    },
+    {
+      "role": "phase0.d6",
+      "kind": "data",
+      "patch": "phase0",
+      "id": "Q006"
+    },
+    {
+      "role": "phase0.d7",
+      "kind": "data",
+      "patch": "phase0",
+      "id": "Q007"
+    },
+    {
+      "role": "phase0.d8",
+      "kind": "data",
+      "patch": "phase0",
+      "id": "Q008"
+    },
+    {
+      "role": "phase0.X0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase0",
+      "id": "Q009"
+    },
+    {
+      "role": "phase0.X1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase0",
+      "id": "Q010"
+    },
+    {
+      "role": "phase0.X2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase0",
+      "id": "Q011"
+    },
+    {
+      "role": "phase0.X3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase0",
+      "id": "Q012"
+    },
+    {
+      "role": "phase0.Z0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase0",
+      "id": "Q013"
+    },
+    {
+      "role": "phase0.Z1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase0",
+      "id": "Q014"
+    },
+    {
+      "role": "phase0.Z2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase0",
+      "id": "Q015"
+    },
+    {
+      "role": "phase0.Z3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase0",
+      "id": "Q016"
+    },
+    {
+      "role": "phase1.d0",
+      "kind": "data",
+      "patch": "phase1",
+      "id": "Q017"
+    },
+    {
+      "role": "phase1.d1",
+      "kind": "data",
+      "patch": "phase1",
+      "id": "Q018"
+    },
+    {
+      "role": "phase1.d2",
+      "kind": "data",
+      "patch": "phase1",
+      "id": "Q019"
+    },
+    {
+      "role": "phase1.d3",
+      "kind": "data",
+      "patch": "phase1",
+      "id": "Q020"
+    },
+    {
+      "role": "phase1.d4",
+      "kind": "data",
+      "patch": "phase1",
+      "id": "Q021"
+    },
+    {
+      "role": "phase1.d5",
+      "kind": "data",
+      "patch": "phase1",
+      "id": "Q022"
+    },
+    {
+      "role": "phase1.d6",
+      "kind": "data",
+      "patch": "phase1",
+      "id": "Q023"
+    },
+    {
+      "role": "phase1.d7",
+      "kind": "data",
+      "patch": "phase1",
+      "id": "Q024"
+    },
+    {
+      "role": "phase1.d8",
+      "kind": "data",
+      "patch": "phase1",
+      "id": "Q025"
+    },
+    {
+      "role": "phase1.X0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase1",
+      "id": "Q026"
+    },
+    {
+      "role": "phase1.X1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase1",
+      "id": "Q027"
+    },
+    {
+      "role": "phase1.X2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase1",
+      "id": "Q028"
+    },
+    {
+      "role": "phase1.X3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase1",
+      "id": "Q029"
+    },
+    {
+      "role": "phase1.Z0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase1",
+      "id": "Q030"
+    },
+    {
+      "role": "phase1.Z1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase1",
+      "id": "Q031"
+    },
+    {
+      "role": "phase1.Z2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase1",
+      "id": "Q032"
+    },
+    {
+      "role": "phase1.Z3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase1",
+      "id": "Q033"
+    },
+    {
+      "role": "phase2.d0",
+      "kind": "data",
+      "patch": "phase2",
+      "id": "Q034"
+    },
+    {
+      "role": "phase2.d1",
+      "kind": "data",
+      "patch": "phase2",
+      "id": "Q035"
+    },
+    {
+      "role": "phase2.d2",
+      "kind": "data",
+      "patch": "phase2",
+      "id": "Q036"
+    },
+    {
+      "role": "phase2.d3",
+      "kind": "data",
+      "patch": "phase2",
+      "id": "Q037"
+    },
+    {
+      "role": "phase2.d4",
+      "kind": "data",
+      "patch": "phase2",
+      "id": "Q038"
+    },
+    {
+      "role": "phase2.d5",
+      "kind": "data",
+      "patch": "phase2",
+      "id": "Q039"
+    },
+    {
+      "role": "phase2.d6",
+      "kind": "data",
+      "patch": "phase2",
+      "id": "Q040"
+    },
+    {
+      "role": "phase2.d7",
+      "kind": "data",
+      "patch": "phase2",
+      "id": "Q041"
+    },
+    {
+      "role": "phase2.d8",
+      "kind": "data",
+      "patch": "phase2",
+      "id": "Q042"
+    },
+    {
+      "role": "phase2.X0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase2",
+      "id": "Q043"
+    },
+    {
+      "role": "phase2.X1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase2",
+      "id": "Q044"
+    },
+    {
+      "role": "phase2.X2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase2",
+      "id": "Q045"
+    },
+    {
+      "role": "phase2.X3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase2",
+      "id": "Q046"
+    },
+    {
+      "role": "phase2.Z0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase2",
+      "id": "Q047"
+    },
+    {
+      "role": "phase2.Z1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase2",
+      "id": "Q048"
+    },
+    {
+      "role": "phase2.Z2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase2",
+      "id": "Q049"
+    },
+    {
+      "role": "phase2.Z3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase2",
+      "id": "Q050"
+    },
+    {
+      "role": "phase3.d0",
+      "kind": "data",
+      "patch": "phase3",
+      "id": "Q051"
+    },
+    {
+      "role": "phase3.d1",
+      "kind": "data",
+      "patch": "phase3",
+      "id": "Q052"
+    },
+    {
+      "role": "phase3.d2",
+      "kind": "data",
+      "patch": "phase3",
+      "id": "Q053"
+    },
+    {
+      "role": "phase3.d3",
+      "kind": "data",
+      "patch": "phase3",
+      "id": "Q054"
+    },
+    {
+      "role": "phase3.d4",
+      "kind": "data",
+      "patch": "phase3",
+      "id": "Q055"
+    },
+    {
+      "role": "phase3.d5",
+      "kind": "data",
+      "patch": "phase3",
+      "id": "Q056"
+    },
+    {
+      "role": "phase3.d6",
+      "kind": "data",
+      "patch": "phase3",
+      "id": "Q057"
+    },
+    {
+      "role": "phase3.d7",
+      "kind": "data",
+      "patch": "phase3",
+      "id": "Q058"
+    },
+    {
+      "role": "phase3.d8",
+      "kind": "data",
+      "patch": "phase3",
+      "id": "Q059"
+    },
+    {
+      "role": "phase3.X0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase3",
+      "id": "Q060"
+    },
+    {
+      "role": "phase3.X1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase3",
+      "id": "Q061"
+    },
+    {
+      "role": "phase3.X2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase3",
+      "id": "Q062"
+    },
+    {
+      "role": "phase3.X3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase3",
+      "id": "Q063"
+    },
+    {
+      "role": "phase3.Z0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase3",
+      "id": "Q064"
+    },
+    {
+      "role": "phase3.Z1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase3",
+      "id": "Q065"
+    },
+    {
+      "role": "phase3.Z2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase3",
+      "id": "Q066"
+    },
+    {
+      "role": "phase3.Z3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase3",
+      "id": "Q067"
+    },
+    {
+      "role": "phase4.d0",
+      "kind": "data",
+      "patch": "phase4",
+      "id": "Q068"
+    },
+    {
+      "role": "phase4.d1",
+      "kind": "data",
+      "patch": "phase4",
+      "id": "Q069"
+    },
+    {
+      "role": "phase4.d2",
+      "kind": "data",
+      "patch": "phase4",
+      "id": "Q070"
+    },
+    {
+      "role": "phase4.d3",
+      "kind": "data",
+      "patch": "phase4",
+      "id": "Q071"
+    },
+    {
+      "role": "phase4.d4",
+      "kind": "data",
+      "patch": "phase4",
+      "id": "Q072"
+    },
+    {
+      "role": "phase4.d5",
+      "kind": "data",
+      "patch": "phase4",
+      "id": "Q073"
+    },
+    {
+      "role": "phase4.d6",
+      "kind": "data",
+      "patch": "phase4",
+      "id": "Q074"
+    },
+    {
+      "role": "phase4.d7",
+      "kind": "data",
+      "patch": "phase4",
+      "id": "Q075"
+    },
+    {
+      "role": "phase4.d8",
+      "kind": "data",
+      "patch": "phase4",
+      "id": "Q076"
+    },
+    {
+      "role": "phase4.X0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase4",
+      "id": "Q077"
+    },
+    {
+      "role": "phase4.X1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase4",
+      "id": "Q078"
+    },
+    {
+      "role": "phase4.X2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase4",
+      "id": "Q079"
+    },
+    {
+      "role": "phase4.X3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase4",
+      "id": "Q080"
+    },
+    {
+      "role": "phase4.Z0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase4",
+      "id": "Q081"
+    },
+    {
+      "role": "phase4.Z1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase4",
+      "id": "Q082"
+    },
+    {
+      "role": "phase4.Z2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase4",
+      "id": "Q083"
+    },
+    {
+      "role": "phase4.Z3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase4",
+      "id": "Q084"
+    },
+    {
+      "role": "phase5.d0",
+      "kind": "data",
+      "patch": "phase5",
+      "id": "Q085"
+    },
+    {
+      "role": "phase5.d1",
+      "kind": "data",
+      "patch": "phase5",
+      "id": "Q086"
+    },
+    {
+      "role": "phase5.d2",
+      "kind": "data",
+      "patch": "phase5",
+      "id": "Q087"
+    },
+    {
+      "role": "phase5.d3",
+      "kind": "data",
+      "patch": "phase5",
+      "id": "Q088"
+    },
+    {
+      "role": "phase5.d4",
+      "kind": "data",
+      "patch": "phase5",
+      "id": "Q089"
+    },
+    {
+      "role": "phase5.d5",
+      "kind": "data",
+      "patch": "phase5",
+      "id": "Q090"
+    },
+    {
+      "role": "phase5.d6",
+      "kind": "data",
+      "patch": "phase5",
+      "id": "Q091"
+    },
+    {
+      "role": "phase5.d7",
+      "kind": "data",
+      "patch": "phase5",
+      "id": "Q092"
+    },
+    {
+      "role": "phase5.d8",
+      "kind": "data",
+      "patch": "phase5",
+      "id": "Q093"
+    },
+    {
+      "role": "phase5.X0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase5",
+      "id": "Q094"
+    },
+    {
+      "role": "phase5.X1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase5",
+      "id": "Q095"
+    },
+    {
+      "role": "phase5.X2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase5",
+      "id": "Q096"
+    },
+    {
+      "role": "phase5.X3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase5",
+      "id": "Q097"
+    },
+    {
+      "role": "phase5.Z0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase5",
+      "id": "Q098"
+    },
+    {
+      "role": "phase5.Z1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase5",
+      "id": "Q099"
+    },
+    {
+      "role": "phase5.Z2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase5",
+      "id": "Q100"
+    },
+    {
+      "role": "phase5.Z3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase5",
+      "id": "Q101"
+    },
+    {
+      "role": "phase6.d0",
+      "kind": "data",
+      "patch": "phase6",
+      "id": "Q102"
+    },
+    {
+      "role": "phase6.d1",
+      "kind": "data",
+      "patch": "phase6",
+      "id": "Q103"
+    },
+    {
+      "role": "phase6.d2",
+      "kind": "data",
+      "patch": "phase6",
+      "id": "Q104"
+    },
+    {
+      "role": "phase6.d3",
+      "kind": "data",
+      "patch": "phase6",
+      "id": "Q105"
+    },
+    {
+      "role": "phase6.d4",
+      "kind": "data",
+      "patch": "phase6",
+      "id": "Q106"
+    },
+    {
+      "role": "phase6.d5",
+      "kind": "data",
+      "patch": "phase6",
+      "id": "Q107"
+    },
+    {
+      "role": "phase6.d6",
+      "kind": "data",
+      "patch": "phase6",
+      "id": "Q108"
+    },
+    {
+      "role": "phase6.d7",
+      "kind": "data",
+      "patch": "phase6",
+      "id": "Q109"
+    },
+    {
+      "role": "phase6.d8",
+      "kind": "data",
+      "patch": "phase6",
+      "id": "Q110"
+    },
+    {
+      "role": "phase6.X0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase6",
+      "id": "Q111"
+    },
+    {
+      "role": "phase6.X1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase6",
+      "id": "Q112"
+    },
+    {
+      "role": "phase6.X2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase6",
+      "id": "Q113"
+    },
+    {
+      "role": "phase6.X3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase6",
+      "id": "Q114"
+    },
+    {
+      "role": "phase6.Z0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase6",
+      "id": "Q115"
+    },
+    {
+      "role": "phase6.Z1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase6",
+      "id": "Q116"
+    },
+    {
+      "role": "phase6.Z2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase6",
+      "id": "Q117"
+    },
+    {
+      "role": "phase6.Z3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase6",
+      "id": "Q118"
+    },
+    {
+      "role": "phase7.d0",
+      "kind": "data",
+      "patch": "phase7",
+      "id": "Q119"
+    },
+    {
+      "role": "phase7.d1",
+      "kind": "data",
+      "patch": "phase7",
+      "id": "Q120"
+    },
+    {
+      "role": "phase7.d2",
+      "kind": "data",
+      "patch": "phase7",
+      "id": "Q121"
+    },
+    {
+      "role": "phase7.d3",
+      "kind": "data",
+      "patch": "phase7",
+      "id": "Q122"
+    },
+    {
+      "role": "phase7.d4",
+      "kind": "data",
+      "patch": "phase7",
+      "id": "Q123"
+    },
+    {
+      "role": "phase7.d5",
+      "kind": "data",
+      "patch": "phase7",
+      "id": "Q124"
+    },
+    {
+      "role": "phase7.d6",
+      "kind": "data",
+      "patch": "phase7",
+      "id": "Q125"
+    },
+    {
+      "role": "phase7.d7",
+      "kind": "data",
+      "patch": "phase7",
+      "id": "Q126"
+    },
+    {
+      "role": "phase7.d8",
+      "kind": "data",
+      "patch": "phase7",
+      "id": "Q127"
+    },
+    {
+      "role": "phase7.X0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase7",
+      "id": "Q128"
+    },
+    {
+      "role": "phase7.X1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase7",
+      "id": "Q129"
+    },
+    {
+      "role": "phase7.X2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase7",
+      "id": "Q130"
+    },
+    {
+      "role": "phase7.X3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase7",
+      "id": "Q131"
+    },
+    {
+      "role": "phase7.Z0",
+      "kind": "syndrome_ancilla",
+      "patch": "phase7",
+      "id": "Q132"
+    },
+    {
+      "role": "phase7.Z1",
+      "kind": "syndrome_ancilla",
+      "patch": "phase7",
+      "id": "Q133"
+    },
+    {
+      "role": "phase7.Z2",
+      "kind": "syndrome_ancilla",
+      "patch": "phase7",
+      "id": "Q134"
+    },
+    {
+      "role": "phase7.Z3",
+      "kind": "syndrome_ancilla",
+      "patch": "phase7",
+      "id": "Q135"
+    },
+    {
+      "role": "work0.d0",
+      "kind": "data",
+      "patch": "work0",
+      "id": "Q136"
+    },
+    {
+      "role": "work0.d1",
+      "kind": "data",
+      "patch": "work0",
+      "id": "Q137"
+    },
+    {
+      "role": "work0.d2",
+      "kind": "data",
+      "patch": "work0",
+      "id": "Q138"
+    },
+    {
+      "role": "work0.d3",
+      "kind": "data",
+      "patch": "work0",
+      "id": "Q139"
+    },
+    {
+      "role": "work0.d4",
+      "kind": "data",
+      "patch": "work0",
+      "id": "Q140"
+    },
+    {
+      "role": "work0.d5",
+      "kind": "data",
+      "patch": "work0",
+      "id": "Q141"
+    },
+    {
+      "role": "work0.d6",
+      "kind": "data",
+      "patch": "work0",
+      "id": "Q142"
+    },
+    {
+      "role": "work0.d7",
+      "kind": "data",
+      "patch": "work0",
+      "id": "Q143"
+    },
+    {
+      "role": "work0.d8",
+      "kind": "data",
+      "patch": "work0",
+      "id": "Q144"
+    },
+    {
+      "role": "work0.X0",
+      "kind": "syndrome_ancilla",
+      "patch": "work0",
+      "id": "Q145"
+    },
+    {
+      "role": "work0.X1",
+      "kind": "syndrome_ancilla",
+      "patch": "work0",
+      "id": "Q146"
+    },
+    {
+      "role": "work0.X2",
+      "kind": "syndrome_ancilla",
+      "patch": "work0",
+      "id": "Q147"
+    },
+    {
+      "role": "work0.X3",
+      "kind": "syndrome_ancilla",
+      "patch": "work0",
+      "id": "Q148"
+    },
+    {
+      "role": "work0.Z0",
+      "kind": "syndrome_ancilla",
+      "patch": "work0",
+      "id": "Q149"
+    },
+    {
+      "role": "work0.Z1",
+      "kind": "syndrome_ancilla",
+      "patch": "work0",
+      "id": "Q150"
+    },
+    {
+      "role": "work0.Z2",
+      "kind": "syndrome_ancilla",
+      "patch": "work0",
+      "id": "Q151"
+    },
+    {
+      "role": "work0.Z3",
+      "kind": "syndrome_ancilla",
+      "patch": "work0",
+      "id": "Q152"
+    },
+    {
+      "role": "work1.d0",
+      "kind": "data",
+      "patch": "work1",
+      "id": "Q153"
+    },
+    {
+      "role": "work1.d1",
+      "kind": "data",
+      "patch": "work1",
+      "id": "Q154"
+    },
+    {
+      "role": "work1.d2",
+      "kind": "data",
+      "patch": "work1",
+      "id": "Q155"
+    },
+    {
+      "role": "work1.d3",
+      "kind": "data",
+      "patch": "work1",
+      "id": "Q156"
+    },
+    {
+      "role": "work1.d4",
+      "kind": "data",
+      "patch": "work1",
+      "id": "Q157"
+    },
+    {
+      "role": "work1.d5",
+      "kind": "data",
+      "patch": "work1",
+      "id": "Q158"
+    },
+    {
+      "role": "work1.d6",
+      "kind": "data",
+      "patch": "work1",
+      "id": "Q159"
+    },
+    {
+      "role": "work1.d7",
+      "kind": "data",
+      "patch": "work1",
+      "id": "Q160"
+    },
+    {
+      "role": "work1.d8",
+      "kind": "data",
+      "patch": "work1",
+      "id": "Q161"
+    },
+    {
+      "role": "work1.X0",
+      "kind": "syndrome_ancilla",
+      "patch": "work1",
+      "id": "Q162"
+    },
+    {
+      "role": "work1.X1",
+      "kind": "syndrome_ancilla",
+      "patch": "work1",
+      "id": "Q163"
+    },
+    {
+      "role": "work1.X2",
+      "kind": "syndrome_ancilla",
+      "patch": "work1",
+      "id": "Q164"
+    },
+    {
+      "role": "work1.X3",
+      "kind": "syndrome_ancilla",
+      "patch": "work1",
+      "id": "Q165"
+    },
+    {
+      "role": "work1.Z0",
+      "kind": "syndrome_ancilla",
+      "patch": "work1",
+      "id": "Q166"
+    },
+    {
+      "role": "work1.Z1",
+      "kind": "syndrome_ancilla",
+      "patch": "work1",
+      "id": "Q167"
+    },
+    {
+      "role": "work1.Z2",
+      "kind": "syndrome_ancilla",
+      "patch": "work1",
+      "id": "Q168"
+    },
+    {
+      "role": "work1.Z3",
+      "kind": "syndrome_ancilla",
+      "patch": "work1",
+      "id": "Q169"
+    },
+    {
+      "role": "work2.d0",
+      "kind": "data",
+      "patch": "work2",
+      "id": "Q170"
+    },
+    {
+      "role": "work2.d1",
+      "kind": "data",
+      "patch": "work2",
+      "id": "Q171"
+    },
+    {
+      "role": "work2.d2",
+      "kind": "data",
+      "patch": "work2",
+      "id": "Q172"
+    },
+    {
+      "role": "work2.d3",
+      "kind": "data",
+      "patch": "work2",
+      "id": "Q173"
+    },
+    {
+      "role": "work2.d4",
+      "kind": "data",
+      "patch": "work2",
+      "id": "Q174"
+    },
+    {
+      "role": "work2.d5",
+      "kind": "data",
+      "patch": "work2",
+      "id": "Q175"
+    },
+    {
+      "role": "work2.d6",
+      "kind": "data",
+      "patch": "work2",
+      "id": "Q176"
+    },
+    {
+      "role": "work2.d7",
+      "kind": "data",
+      "patch": "work2",
+      "id": "Q177"
+    },
+    {
+      "role": "work2.d8",
+      "kind": "data",
+      "patch": "work2",
+      "id": "Q178"
+    },
+    {
+      "role": "work2.X0",
+      "kind": "syndrome_ancilla",
+      "patch": "work2",
+      "id": "Q179"
+    },
+    {
+      "role": "work2.X1",
+      "kind": "syndrome_ancilla",
+      "patch": "work2",
+      "id": "Q180"
+    },
+    {
+      "role": "work2.X2",
+      "kind": "syndrome_ancilla",
+      "patch": "work2",
+      "id": "Q181"
+    },
+    {
+      "role": "work2.X3",
+      "kind": "syndrome_ancilla",
+      "patch": "work2",
+      "id": "Q182"
+    },
+    {
+      "role": "work2.Z0",
+      "kind": "syndrome_ancilla",
+      "patch": "work2",
+      "id": "Q183"
+    },
+    {
+      "role": "work2.Z1",
+      "kind": "syndrome_ancilla",
+      "patch": "work2",
+      "id": "Q184"
+    },
+    {
+      "role": "work2.Z2",
+      "kind": "syndrome_ancilla",
+      "patch": "work2",
+      "id": "Q185"
+    },
+    {
+      "role": "work2.Z3",
+      "kind": "syndrome_ancilla",
+      "patch": "work2",
+      "id": "Q186"
+    },
+    {
+      "role": "work3.d0",
+      "kind": "data",
+      "patch": "work3",
+      "id": "Q187"
+    },
+    {
+      "role": "work3.d1",
+      "kind": "data",
+      "patch": "work3",
+      "id": "Q188"
+    },
+    {
+      "role": "work3.d2",
+      "kind": "data",
+      "patch": "work3",
+      "id": "Q189"
+    },
+    {
+      "role": "work3.d3",
+      "kind": "data",
+      "patch": "work3",
+      "id": "Q190"
+    },
+    {
+      "role": "work3.d4",
+      "kind": "data",
+      "patch": "work3",
+      "id": "Q191"
+    },
+    {
+      "role": "work3.d5",
+      "kind": "data",
+      "patch": "work3",
+      "id": "Q192"
+    },
+    {
+      "role": "work3.d6",
+      "kind": "data",
+      "patch": "work3",
+      "id": "Q193"
+    },
+    {
+      "role": "work3.d7",
+      "kind": "data",
+      "patch": "work3",
+      "id": "Q194"
+    },
+    {
+      "role": "work3.d8",
+      "kind": "data",
+      "patch": "work3",
+      "id": "Q195"
+    },
+    {
+      "role": "work3.X0",
+      "kind": "syndrome_ancilla",
+      "patch": "work3",
+      "id": "Q196"
+    },
+    {
+      "role": "work3.X1",
+      "kind": "syndrome_ancilla",
+      "patch": "work3",
+      "id": "Q197"
+    },
+    {
+      "role": "work3.X2",
+      "kind": "syndrome_ancilla",
+      "patch": "work3",
+      "id": "Q198"
+    },
+    {
+      "role": "work3.X3",
+      "kind": "syndrome_ancilla",
+      "patch": "work3",
+      "id": "Q199"
+    },
+    {
+      "role": "work3.Z0",
+      "kind": "syndrome_ancilla",
+      "patch": "work3",
+      "id": "Q200"
+    },
+    {
+      "role": "work3.Z1",
+      "kind": "syndrome_ancilla",
+      "patch": "work3",
+      "id": "Q201"
+    },
+    {
+      "role": "work3.Z2",
+      "kind": "syndrome_ancilla",
+      "patch": "work3",
+      "id": "Q202"
+    },
+    {
+      "role": "work3.Z3",
+      "kind": "syndrome_ancilla",
+      "patch": "work3",
+      "id": "Q203"
+    },
+    {
+      "role": "resource.d0",
+      "kind": "data",
+      "patch": "resource",
+      "id": "Q204"
+    },
+    {
+      "role": "resource.d1",
+      "kind": "data",
+      "patch": "resource",
+      "id": "Q205"
+    },
+    {
+      "role": "resource.d2",
+      "kind": "data",
+      "patch": "resource",
+      "id": "Q206"
+    },
+    {
+      "role": "resource.d3",
+      "kind": "data",
+      "patch": "resource",
+      "id": "Q207"
+    },
+    {
+      "role": "resource.d4",
+      "kind": "data",
+      "patch": "resource",
+      "id": "Q208"
+    },
+    {
+      "role": "resource.d5",
+      "kind": "data",
+      "patch": "resource",
+      "id": "Q209"
+    },
+    {
+      "role": "resource.d6",
+      "kind": "data",
+      "patch": "resource",
+      "id": "Q210"
+    },
+    {
+      "role": "resource.d7",
+      "kind": "data",
+      "patch": "resource",
+      "id": "Q211"
+    },
+    {
+      "role": "resource.d8",
+      "kind": "data",
+      "patch": "resource",
+      "id": "Q212"
+    },
+    {
+      "role": "resource.X0",
+      "kind": "syndrome_ancilla",
+      "patch": "resource",
+      "id": "Q213"
+    },
+    {
+      "role": "resource.X1",
+      "kind": "syndrome_ancilla",
+      "patch": "resource",
+      "id": "Q214"
+    },
+    {
+      "role": "resource.X2",
+      "kind": "syndrome_ancilla",
+      "patch": "resource",
+      "id": "Q215"
+    },
+    {
+      "role": "resource.X3",
+      "kind": "syndrome_ancilla",
+      "patch": "resource",
+      "id": "Q216"
+    },
+    {
+      "role": "resource.Z0",
+      "kind": "syndrome_ancilla",
+      "patch": "resource",
+      "id": "Q217"
+    },
+    {
+      "role": "resource.Z1",
+      "kind": "syndrome_ancilla",
+      "patch": "resource",
+      "id": "Q218"
+    },
+    {
+      "role": "resource.Z2",
+      "kind": "syndrome_ancilla",
+      "patch": "resource",
+      "id": "Q219"
+    },
+    {
+      "role": "resource.Z3",
+      "kind": "syndrome_ancilla",
+      "patch": "resource",
+      "id": "Q220"
+    },
+    {
+      "role": "cat.0",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q221"
+    },
+    {
+      "role": "cat.1",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q222"
+    },
+    {
+      "role": "cat.2",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q223"
+    },
+    {
+      "role": "cat.3",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q224"
+    },
+    {
+      "role": "cat.4",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q225"
+    },
+    {
+      "role": "cat.5",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q226"
+    },
+    {
+      "role": "cat.6",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q227"
+    },
+    {
+      "role": "cat.7",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q228"
+    },
+    {
+      "role": "cat.8",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q229"
+    },
+    {
+      "role": "cat.9",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q230"
+    },
+    {
+      "role": "cat.10",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q231"
+    },
+    {
+      "role": "cat.11",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q232"
+    },
+    {
+      "role": "cat.12",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q233"
+    },
+    {
+      "role": "cat.13",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q234"
+    },
+    {
+      "role": "cat.14",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q235"
+    },
+    {
+      "role": "cat.15",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q236"
+    },
+    {
+      "role": "cat.16",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q237"
+    },
+    {
+      "role": "cat.17",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q238"
+    },
+    {
+      "role": "cat.18",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q239"
+    },
+    {
+      "role": "cat.19",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q240"
+    },
+    {
+      "role": "cat.20",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q241"
+    },
+    {
+      "role": "cat.21",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q242"
+    },
+    {
+      "role": "cat.22",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q243"
+    },
+    {
+      "role": "cat.23",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q244"
+    },
+    {
+      "role": "cat.24",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q245"
+    },
+    {
+      "role": "cat.25",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q246"
+    },
+    {
+      "role": "cat.26",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q247"
+    },
+    {
+      "role": "cat.27",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q248"
+    },
+    {
+      "role": "cat.28",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q249"
+    },
+    {
+      "role": "cat.29",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q250"
+    },
+    {
+      "role": "cat.30",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q251"
+    },
+    {
+      "role": "cat.31",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q252"
+    },
+    {
+      "role": "cat.32",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q253"
+    },
+    {
+      "role": "cat.33",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q254"
+    },
+    {
+      "role": "cat.34",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q255"
+    },
+    {
+      "role": "cat.35",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q256"
+    },
+    {
+      "role": "cat.36",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q257"
+    },
+    {
+      "role": "cat.37",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q258"
+    },
+    {
+      "role": "cat.38",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q259"
+    },
+    {
+      "role": "cat.39",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q260"
+    },
+    {
+      "role": "cat.40",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q261"
+    },
+    {
+      "role": "cat.41",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q262"
+    },
+    {
+      "role": "cat.42",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q263"
+    },
+    {
+      "role": "cat.43",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q264"
+    },
+    {
+      "role": "cat.44",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q265"
+    },
+    {
+      "role": "cat.45",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q266"
+    },
+    {
+      "role": "cat.46",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q267"
+    },
+    {
+      "role": "cat.47",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q268"
+    },
+    {
+      "role": "cat.48",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q269"
+    },
+    {
+      "role": "cat.49",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q270"
+    },
+    {
+      "role": "cat.50",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q271"
+    },
+    {
+      "role": "cat.51",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q272"
+    },
+    {
+      "role": "cat.52",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q273"
+    },
+    {
+      "role": "cat.53",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q274"
+    },
+    {
+      "role": "cat.54",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q275"
+    },
+    {
+      "role": "cat.55",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q276"
+    },
+    {
+      "role": "cat.56",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q277"
+    },
+    {
+      "role": "cat.57",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q278"
+    },
+    {
+      "role": "cat.58",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q279"
+    },
+    {
+      "role": "cat.59",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q280"
+    },
+    {
+      "role": "cat.60",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q281"
+    },
+    {
+      "role": "cat.61",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q282"
+    },
+    {
+      "role": "cat.62",
+      "kind": "cat_ancilla",
+      "patch": null,
+      "id": "Q283"
+    },
+    {
+      "role": "cat.verifier",
+      "kind": "verification_ancilla",
+      "patch": null,
+      "id": "Q284"
+    }
+  ],
+  "algorithm_patches": [
+    "phase0",
+    "phase1",
+    "phase2",
+    "phase3",
+    "phase4",
+    "phase5",
+    "phase6",
+    "phase7",
+    "work0",
+    "work1",
+    "work2",
+    "work3"
+  ],
+  "resource_patch": "resource",
+  "cat_pool_size": 63,
+  "code_checks": {
+    "X": [
+      [
+        0,
+        1,
+        3,
+        4
+      ],
+      [
+        4,
+        5,
+        7,
+        8
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        6,
+        7
+      ]
+    ],
+    "Z": [
+      [
+        1,
+        2,
+        4,
+        5
+      ],
+      [
+        3,
+        4,
+        6,
+        7
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        5,
+        8
+      ]
+    ]
+  },
+  "logical_X": [
+    0,
+    3,
+    6
+  ],
+  "logical_Z": [
+    0,
+    1,
+    2
+  ]
+}

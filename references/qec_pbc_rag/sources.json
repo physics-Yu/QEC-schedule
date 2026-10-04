@@ -289,16 +289,16 @@
       "id": "L08",
       "kind": "repository_snapshot",
       "title": "门条件及QEC状态跟踪",
-      "version": "working-tree snapshot 2026-10-03",
+      "version": "working-tree snapshot 2026-10-03; compatible single-AOD and bounded dual-AOD update 2026-10-04",
       "paths": [
         "src/neutral_atom_env/domain/models.py",
         "src/neutral_atom_env/quantum/stabilizer.py",
         "src/neutral_atom_experiments/qec_pbc/verification.py"
       ],
       "verified_scope": "当前文件与符号；非新物理运行",
-      "retrieved_at": "2026-10-03",
+      "retrieved_at": "2026-10-04",
       "sha256": {
-        "src/neutral_atom_env/domain/models.py": "6a0ed2481070268070b9ddd0eb07b5171ae3526788416b0c975c8a04a1296fb3",
+        "src/neutral_atom_env/domain/models.py": "9c97a1c8f7f044d82ae92350586230bd94e61d2de061b9b64adb11ede8691818",
         "src/neutral_atom_env/quantum/stabilizer.py": "4d4b9eb0da9cb10dfdcc53f972e4b072a2fead88e56ea219a867a2e525109e9d",
         "src/neutral_atom_experiments/qec_pbc/verification.py": "f690e8276cdb3f8f3cc719ba71cbd31a4ea1ebd57efd313da059accf50813141"
       },
@@ -487,7 +487,7 @@
       "id": "L17",
       "kind": "repository_snapshot",
       "title": "三patch物理runner、strict续跑、完整历史decode cache与边界planner",
-      "version": "completed ZZ; reviewed shared audit and XX verification-only recovery pending 2026-10-04; current stage-document links appended 2026-10-04 (historical physics snapshot retained)",
+      "version": "completed ZZ; reviewed shared audit and XX verification-only recovery pending 2026-10-04; current stage-document links appended 2026-10-04 (historical physics snapshot retained); compatible single-AOD and bounded dual-AOD update 2026-10-04",
       "paths": [
         "src/neutral_atom_experiments/qec_pbc/encoded_physical.py",
         "examples/run_encoded_parity.py",
@@ -516,7 +516,7 @@
         "tests/test_patch_array_boundary_embedding.py": "cb3dd5088a8341b3706119a300e9b05dfa66f76da5530aa4c412d91d4c7f0d6d",
         "tests/test_qec_encoded_physical_resume.py": "c4ac584c8333abe950c30fc1950bdcf24a8eff782e2ec25da7008f0440546e56",
         "src/neutral_atom_env/replay/trace.py": "17d377b4524eb559c565b1b7300b885782bf7bc05669f8f7bb01fdf59e392b13",
-        "src/neutral_atom_env/simulation/runtime_validation.py": "6b2ab1608d79b842bf750fd577a3376d7beb6210d5a2394d56f00654c13789cd",
+        "src/neutral_atom_env/simulation/runtime_validation.py": "01ee0193fe2b876d460c97ef1278381fb27960daa8049d3908e5eaea5173726b",
         "tests/test_trace_history_cache.py": "f28a30b355570fcd2632bb89578be271d81848cb013a886ad2b55d78311e95d6",
         "docs/qec_shor15_stage.md": "0defaeef7dfe3c50802a92ddd29a7aca5ddf642e4e7857af1be9c8bed7876ac7",
         "tests/test_trace_event_cache.py": "b3f23180531b8e254b27e94a809cc247344b01f00eb6ef710bcb42fcc788f5fd"
@@ -1027,6 +1027,144 @@
         "examples/serve_encoded_shor15.py": "cebd580694f1d03e2490295886fec7c0dcae19c5252f3c45674025802c6726b5",
         "tools/audit_encoded_shor15_run.py": "dab9b6a80d72c18116eb44bcda78c9189857c20dd5ee1c8321bae0c7ce251f6e",
         "docs/qec_encoded_native_visuals.md": "045331a795aa65b565ae3b3c8614c1eea7bb76f7fa920537892d7c8ac3d1df15"
+      }
+    },
+    {
+      "id": "L38",
+      "kind": "repository_snapshot",
+      "title": "真实编码前缀并行编译、固定5um候选格点与可移植源packet",
+      "version": "bounded committed physical-prefix stage 2026-10-04",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py",
+        "tests/test_qec_parallel_prefix.py",
+        "tests/test_native_prefix_packet.py",
+        "examples/run_parallel_shor15_prefix.py",
+        "examples/export_shor15_prefix_packet.py",
+        "tools/audit_native_parallel_physical.py",
+        "tests/test_native_parallel_independent_audit.py",
+        "docs/qec_native_parallel_prefix.md",
+        "references/qec_pbc_validation/native_parallel_physical_2026_10_04.json",
+        "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04/manifest.json"
+      ],
+      "verified_scope": "Complete bounded initial RESET/CSS/canonical-round physical slice of twelve d3 algorithm patches plus the same-source right-side resource RESET/H prefix, stopping before T",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "fe0d4259b12ff7b39b0aac0f0e918ea898f7f7720c920b1ff96ba899305be868",
+        "tests/test_qec_parallel_prefix.py": "b2792c1e88971c5a41040fbad870110dff488ef31fc2b90d8b47866b3c665fd4",
+        "tests/test_native_prefix_packet.py": "4e8c67c6d40efe9926b935ea4042821bf660d539aa2b466f881cf5ab15c92d34",
+        "examples/run_parallel_shor15_prefix.py": "c015c55c6924ffaef7d4ed3e22c0dd218329a53ed45626f2375262aa504c2115",
+        "examples/export_shor15_prefix_packet.py": "7515ed8cde95ecc37ea3b2f5c5373d35e7ce0f05dfd88e9b8f614f3d4480af3d",
+        "tools/audit_native_parallel_physical.py": "0e1f908be88d93c47a911e63426b4dba07a49908bc2eeeef2c18108c7c592fb5",
+        "tests/test_native_parallel_independent_audit.py": "ed6804e8b555134234632c615ebfe7d4532d5c00e73c672a0a498d5b2896d439",
+        "docs/qec_native_parallel_prefix.md": "33d874bf701774703dcb7655cc095286a765fed39d64ca2689ab9f41d6ead8c1",
+        "references/qec_pbc_validation/native_parallel_physical_2026_10_04.json": "2814541505d1c6981949ec936f9c9495766be57a9085504888543aca494cce1b",
+        "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04/manifest.json": "2dff760f13291005c3bde7166ee216d4b5c9c42b8e2a10fc02864547b2c785a8"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "fe0d4259b12ff7b39b0aac0f0e918ea898f7f7720c920b1ff96ba899305be868",
+        "tests/test_qec_parallel_prefix.py": "b2792c1e88971c5a41040fbad870110dff488ef31fc2b90d8b47866b3c665fd4",
+        "tests/test_native_prefix_packet.py": "4e8c67c6d40efe9926b935ea4042821bf660d539aa2b466f881cf5ab15c92d34",
+        "examples/run_parallel_shor15_prefix.py": "c015c55c6924ffaef7d4ed3e22c0dd218329a53ed45626f2375262aa504c2115",
+        "examples/export_shor15_prefix_packet.py": "7515ed8cde95ecc37ea3b2f5c5373d35e7ce0f05dfd88e9b8f614f3d4480af3d",
+        "tools/audit_native_parallel_physical.py": "0e1f908be88d93c47a911e63426b4dba07a49908bc2eeeef2c18108c7c592fb5",
+        "tests/test_native_parallel_independent_audit.py": "ed6804e8b555134234632c615ebfe7d4532d5c00e73c672a0a498d5b2896d439",
+        "docs/qec_native_parallel_prefix.md": "aa16091f73477341f5a8a46cca9fad7e2543e915132af919df7a027a81028c4c",
+        "references/qec_pbc_validation/native_parallel_physical_2026_10_04.json": "3a4512195593b7bd8a798e7552d7e77d91cb9f10f1638b91f7eee38b912a7391",
+        "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04/manifest.json": "171a7bf91d7e6117aed287f2a720b12a776b5f5a0acfdf3ddbdc3a447fa3a7ff"
+      }
+    },
+    {
+      "id": "L39",
+      "kind": "repository_snapshot",
+      "title": "双AOD独立身份、全局物理判据、schema20和真实并行交接",
+      "version": "bounded committed physical-prefix stage 2026-10-04",
+      "paths": [
+        "src/neutral_atom_env/hardware/multi_aod.py",
+        "src/neutral_atom_env/domain/models.py",
+        "src/neutral_atom_env/domain/operations.py",
+        "src/neutral_atom_env/simulation/state.py",
+        "src/neutral_atom_env/simulation/operation_program.py",
+        "src/neutral_atom_env/environment.py",
+        "src/neutral_atom_env/program/scheduled.py",
+        "src/neutral_atom_env/program/task_validation.py",
+        "src/neutral_atom_env/replay/checkpoint.py",
+        "tests/test_multi_aod.py",
+        "docs/multi_aod_contract.md"
+      ],
+      "verified_scope": "Complete bounded initial RESET/CSS/canonical-round physical slice of twelve d3 algorithm patches plus the same-source right-side resource RESET/H prefix, stopping before T",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_env/hardware/multi_aod.py": "3728bc327fe026943121d323ea5376e137abc8128dcdc28ffa2711e3fdb62286",
+        "src/neutral_atom_env/domain/models.py": "9c97a1c8f7f044d82ae92350586230bd94e61d2de061b9b64adb11ede8691818",
+        "src/neutral_atom_env/domain/operations.py": "f9ee37585a8237806a20eb576aa056040914b96cd1871ddc33770d4dca2f2762",
+        "src/neutral_atom_env/simulation/state.py": "cbaf559b597d7815d1b50373ab6df22263042fddb4bc7f292b580f7d5926db45",
+        "src/neutral_atom_env/simulation/operation_program.py": "834a1054f652706fed7ed8c8d6a144d8b18263f1ad68901f7ce9456f2f5a6400",
+        "src/neutral_atom_env/environment.py": "9bb440d6aa8602dc564ab541e2841e1e3126c821fabdbe1511fd2d4c263b0dad",
+        "src/neutral_atom_env/program/scheduled.py": "85c62c8fc7277bea07d424f20658b2ea70e22f54747f0393fc611907fdc81c71",
+        "src/neutral_atom_env/program/task_validation.py": "20fda331ea3f31251132843109a18cb5d76f7d67d0a7e3854189d9467e9ff157",
+        "src/neutral_atom_env/replay/checkpoint.py": "86a2ec10384c3585bbd98347f688c5b332245d69c65a9b99b695bc186ad07ad4",
+        "tests/test_multi_aod.py": "77502c1300fb90aad52c28af8e4bd286aedddcc1f0c940bfc0fe4c53232ca37c",
+        "docs/multi_aod_contract.md": "87db266265d1d9067afd3b7886a172aca22aa7d40da3cd95648a8068b8a0dfd0"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_env/hardware/multi_aod.py": "3728bc327fe026943121d323ea5376e137abc8128dcdc28ffa2711e3fdb62286",
+        "src/neutral_atom_env/domain/models.py": "2f33f7b0fdbe529e113a0244da06fe8d58216749371d2c305d2d90521f31465c",
+        "src/neutral_atom_env/domain/operations.py": "cb6f689f0d23e030c5cfa7b1752a292f080995d5e6590d074e587ec3bcbff331",
+        "src/neutral_atom_env/simulation/state.py": "7ca64d115776002bd2a18ba35a151c2c47c333a25802dabb319877c493ac7c8a",
+        "src/neutral_atom_env/simulation/operation_program.py": "8d28b8ee4f44679abca83ad5d330128f017e945ae16533f6700c46fd9d82561b",
+        "src/neutral_atom_env/environment.py": "c980f4d71534f069f354765e4299da01386d4fac44cbf24865f81422b5d3ed90",
+        "src/neutral_atom_env/program/scheduled.py": "d482a4e0d1ed37b93b6ce3b8230b9be984648754b38631c7dc87eee0eef3f673",
+        "src/neutral_atom_env/program/task_validation.py": "36774d071aba9063375508b6c657dbee5e80df2e176ac79221bf0b148cf081b7",
+        "src/neutral_atom_env/replay/checkpoint.py": "ae918e0696ecbc249bf534522d9ef58ac2726c1ae2b310f794ae641dea52f840",
+        "tests/test_multi_aod.py": "77502c1300fb90aad52c28af8e4bd286aedddcc1f0c940bfc0fe4c53232ca37c",
+        "docs/multi_aod_contract.md": "87db266265d1d9067afd3b7886a172aca22aa7d40da3cd95648a8068b8a0dfd0"
+      }
+    },
+    {
+      "id": "L40",
+      "kind": "repository_snapshot",
+      "title": "真实物理空间回放、码块并行书签与双设备资源时间线",
+      "version": "bounded committed physical-prefix stage 2026-10-04",
+      "paths": [
+        "src/neutral_atom_env/visualization/recording.py",
+        "src/neutral_atom_env/visualization/viewer.js",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py",
+        "examples/serve_native_parallel.py",
+        "tests/test_multi_aod_visualization.py",
+        "tests/test_native_parallel_report.py",
+        "tests/viewer_fit_resize.cjs",
+        "tests/multi_aod_viewer.cjs",
+        "docs/multi_aod_visualization.md"
+      ],
+      "verified_scope": "Complete bounded initial RESET/CSS/canonical-round physical slice of twelve d3 algorithm patches plus the same-source right-side resource RESET/H prefix, stopping before T",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_env/visualization/recording.py": "c8c842762453fd97b121e9fa63bed09ee67de7e4a83485402d974f386c00043c",
+        "src/neutral_atom_env/visualization/viewer.js": "07494a1a9373ef006c8b615853b068e1cf7dd4823e4525ac6a455875f6a70222",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "2620f8b5aab9e6c33a6f9b5ed715e52515fdb6eedf9e7aecfe65415a7ebdb72b",
+        "examples/serve_native_parallel.py": "5fc1dfd161a0487e70f17a6a709244311c3a6827e9e5343f9273d1e1d14dd898",
+        "tests/test_multi_aod_visualization.py": "6e8150916b612e08e853f8c922f9ddc39d2a738a72c48631c799d5436c2b8804",
+        "tests/test_native_parallel_report.py": "2c3d063689b337f1d5093c75b256ddc06086f50ac2ba3da1d70aa7795dbb945d",
+        "tests/viewer_fit_resize.cjs": "13b7dc002cf03b6ec652c7ff92d053525450e1c01f5ad5105a501eff58d90f08",
+        "tests/multi_aod_viewer.cjs": "b81dc7f14add3c6a8e3e60a2c45c7b4e08e7195ab2258a00883f04d727075fbc",
+        "docs/multi_aod_visualization.md": "e699cfd93a2279a830677cc771a47eda51d4b4ae686b812c152ec7c5da7de432"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_env/visualization/recording.py": "908aa3886d9e53f25053dadcc66f54de1669b654edd48895d32714f85fd7c8bd",
+        "src/neutral_atom_env/visualization/viewer.js": "45029f552b1743a538e57e56832d42d32210d028b2e9c1d3eacffbb129b52fe8",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "2620f8b5aab9e6c33a6f9b5ed715e52515fdb6eedf9e7aecfe65415a7ebdb72b",
+        "examples/serve_native_parallel.py": "5fc1dfd161a0487e70f17a6a709244311c3a6827e9e5343f9273d1e1d14dd898",
+        "tests/test_multi_aod_visualization.py": "6e8150916b612e08e853f8c922f9ddc39d2a738a72c48631c799d5436c2b8804",
+        "tests/test_native_parallel_report.py": "2c3d063689b337f1d5093c75b256ddc06086f50ac2ba3da1d70aa7795dbb945d",
+        "tests/viewer_fit_resize.cjs": "13b7dc002cf03b6ec652c7ff92d053525450e1c01f5ad5105a501eff58d90f08",
+        "tests/multi_aod_viewer.cjs": "b81dc7f14add3c6a8e3e60a2c45c7b4e08e7195ab2258a00883f04d727075fbc",
+        "docs/multi_aod_visualization.md": "e699cfd93a2279a830677cc771a47eda51d4b4ae686b812c152ec7c5da7de432"
       }
     }
   ]

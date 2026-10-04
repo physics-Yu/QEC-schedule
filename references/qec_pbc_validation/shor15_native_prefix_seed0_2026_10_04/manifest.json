@@ -1,0 +1,33 @@
+{
+  "schema": "encoded-native-prefix-packet/1",
+  "complete_packet": true,
+  "whole_native_stream_included": false,
+  "physical_execution_claimed": false,
+  "source_manifest_sha256": "16d12bb97b28d49c07b8a28d7a94ea81cf58d1c6fe7e3ee21f2a68fb350adac7",
+  "reviewed_scope": "First 24 algorithm functions and complete first resource-preparation source span; execution stops before its first T",
+  "source_function_count": 25,
+  "source_native_gate_count": 3245,
+  "source_projection_count": 429,
+  "files": {
+    "mother-manifest.json": {
+      "bytes": 2610,
+      "sha256": "16d12bb97b28d49c07b8a28d7a94ea81cf58d1c6fe7e3ee21f2a68fb350adac7"
+    },
+    "roles.json": {
+      "bytes": 34019,
+      "sha256": "101c48e1bbeef2fb294c08b2f4542e68fe7a395e80c23d96a1b8bb86bfba3ffd"
+    },
+    "functions.jsonl": {
+      "bytes": 18019,
+      "sha256": "8fa895993b1baefa9fdbe2a2ce95894b6c59f26b01f62d952805db942ab4ef6e"
+    },
+    "native_gates.jsonl": {
+      "bytes": 988091,
+      "sha256": "870c3fd0eeecfe983f5dea7a8ba035e52ff2c38f52e21680d5008c0dc0eb61fe"
+    },
+    "native_projections.jsonl": {
+      "bytes": 96410,
+      "sha256": "2ef88a7a890f0c2ff9699019ef56104e3071738a5292c7753e1518cb7ca0808c"
+    }
+  }
+}

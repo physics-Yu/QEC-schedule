@@ -26,6 +26,12 @@ class Observation:
     aod_configuration: object
     enabled_rows: tuple
     enabled_columns: tuple
+    aods: tuple = ()
+
+    @property
+    def configurations_by_aod(self):
+        values={key:aod.configuration() for key,aod in self.aods} if self.aods else {'AOD_0':self.aod_configuration}
+        return MappingProxyType(values)
 
 
 class NeutralAtomEnv:
@@ -62,14 +68,15 @@ class NeutralAtomEnv:
         state = self.state
         return Observation(
             state.version, state.time_us,
-            MappingProxyType({q: state.placement.position(q, state.world, state.aod)
+            MappingProxyType({q: state.placement.position(q, state.world, state.aods)
                               for q in state.atoms}),
             MappingProxyType(dict(state.placement.atom_to_holder)),
             tuple(state.dag.ready_gates()), state.dag.completed,
             len(state.event_queue.entries),
             MappingProxyType(dict(state.measurement_results)),
             MappingProxyType(dict(state.slm_enabled)), state.aod.configuration(),
-            tuple(state.aod.enabled_rows), tuple(state.aod.enabled_columns))
+            tuple(state.aod.enabled_rows), tuple(state.aod.enabled_columns),
+            tuple(sorted(state.aods.items())) if len(state.aods)>1 else ())
 
     def validate(self, plan):
         from .program.binding import exact_validate

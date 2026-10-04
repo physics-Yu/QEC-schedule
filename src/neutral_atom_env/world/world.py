@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from functools import cached_property
 from types import MappingProxyType
 from math import isfinite
@@ -19,8 +19,12 @@ class AODRuntimeState:
     row_offsets_um: tuple[float, ...] | None = None
     enabled_rows: tuple[bool, ...] | None = None
     enabled_columns: tuple[bool, ...] | None = None
+    aod_id: str = field(default='AOD_0', metadata={'omit_if_default': True})
+    envelope: Rectangle | None = field(default=None, metadata={'omit_if_default': True})
 
     def __post_init__(self):
+        if not isinstance(self.aod_id, str) or not self.aod_id:
+            raise ValidationError('INVALID_AOD_ID', 'AOD needs a stable nonempty identity')
         if type(self.rows) is not int or type(self.columns) is not int or self.rows < 1 or self.columns < 1 or not isfinite(self.spacing_um) or self.spacing_um <= 0:
             raise ValidationError('INVALID_AOD', 'Invalid AOD geometry')
         for name, count in (('column_offsets_um', self.columns), ('row_offsets_um', self.rows)):
@@ -44,7 +48,7 @@ class AODRuntimeState:
 
     @property
     def active_cells(self):
-        return tuple(MobileCellIndex(r, c) for r in range(self.rows) for c in range(self.columns)
+        return tuple(MobileCellIndex(r, c, self.aod_id) for r in range(self.rows) for c in range(self.columns)
                      if self.enabled_rows[r] and self.enabled_columns[c])
 
     @cached_property
@@ -71,7 +75,7 @@ class AODRuntimeState:
             row_offsets_um=None if ys==tuple(i*self.spacing_um for i in range(self.rows)) else ys)
 
     def position(self, cell):
-        if not isinstance(cell, MobileCellIndex) or cell.row >= self.rows or cell.column >= self.columns:
+        if not isinstance(cell, MobileCellIndex) or cell.aod_id != self.aod_id or cell.row >= self.rows or cell.column >= self.columns:
             raise ValidationError('UNKNOWN_MOBILE_CELL', 'Unknown AOD cell', holder_id=cell)
         return self.configuration().position(cell)
 
@@ -136,6 +140,10 @@ class PlacementState:
         if h.holder_type == HolderType.STATIC:
             return world.traps[h.holder_id].position
         if h.holder_type == HolderType.MOBILE:
+            if isinstance(aod, Mapping):
+                if h.holder_id.aod_id not in aod:
+                    raise ValidationError('UNKNOWN_AOD', 'Holder references an unknown AOD')
+                aod = aod[h.holder_id.aod_id]
             return aod.position(h.holder_id)
         return None
 

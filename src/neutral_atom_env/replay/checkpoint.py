@@ -7,7 +7,7 @@ from neutral_atom_env.circuit import PhysicalCircuit, DynamicGateDAG
 from neutral_atom_env.simulation.event_queue import EventQueue
 from neutral_atom_env.replay.trace import Trace
 from neutral_atom_env.replay.serializer import canonical_json
-from neutral_atom_env.replay.operation_codec import event_from_dict, hardware_from_dict, runtime_from_dict, transfer_from_dict
+from neutral_atom_env.replay.operation_codec import event_from_dict, hardware_from_dict, runtime_from_dict, transfer_from_dict, metrics_from_dict
 from neutral_atom_env.domain.operations import ResourceReservation, PhysicalMetrics
 
 
@@ -21,8 +21,8 @@ def restore(snapshot):
         return Rectangle(Position2D(**value['lower']), Position2D(**value['upper']))
     try:
         data = json.loads(snapshot)
-        if data['schema_version'] != 19:
-            raise ValueError('Only checkpoint schema 19 (quantum measurement/reset and conditional effects) is supported; regenerate older checkpoints')
+        if data['schema_version'] not in {19,20}:
+            raise ValueError('Only checkpoint schema 19 (single AOD) or 20 (independent AODs) is supported')
         w = data['world']
         world = WorldState(rect(w['bounds']), {key: StaticTrap(t['id'], GridCoord(**t['grid']),
             Position2D(**t['position']), t['enabled']) for key,t in w['traps'].items()},
@@ -33,7 +33,15 @@ def restore(snapshot):
             for key,h in data['placement']['atom_to_holder'].items()})
         circuit = PhysicalCircuit(tuple(PhysicalGate(**g) for g in data['circuit']['gates']))
         dag = DynamicGateDAG.restored(circuit, data['dag'])
-        aod = AODRuntimeState(**(data['aod'] | {'pose': Position2D(**data['aod']['pose'])}))
+        from neutral_atom_env.replay.operation_codec import aod_from_dict
+        if data['schema_version']==20:
+            aods={key:aod_from_dict(value) for key,value in data['aods'].items()}
+            if len(aods)<2 or 'AOD_0' not in aods:
+                raise ValueError('Schema20 requires a complete multi-device registry with AOD_0')
+            transfers={key:transfer_from_dict(t) for key,t in data['transfers'].items()}
+            aod=aods['AOD_0'];transfer=transfers.get('AOD_0')
+        else:
+            aod=aod_from_dict(data['aod']);aods=None;transfers=None;transfer=transfer_from_dict(data['transfer'])
         pending = data['event_queue']
         queue = EventQueue(tuple((t,seq,event_from_dict(e))
                                 for t,seq,e in pending['pending']),pending['next_sequence'])
@@ -59,8 +67,8 @@ def restore(snapshot):
             committed_events=data['metrics']['committed_events'],rng_state=_tuple_tree(data['rng_state']),
             hardware=hardware_from_dict(data['hardware']),active_plan=runtime_from_dict(data['active_plan']),
             reservations=tuple(ResourceReservation(**r) for r in data['reservations']),
-            physical_metrics=PhysicalMetrics(**data['physical_metrics']),slm_enabled=data['slm_enabled'],transfer=transfer_from_dict(data['transfer']),
-            quantum_state=quantum,measurement_results=data['measurement_results'])
+            physical_metrics=metrics_from_dict(data['physical_metrics']),slm_enabled=data['slm_enabled'],transfer=transfer,
+            quantum_state=quantum,measurement_results=data['measurement_results'],aods=aods,transfers=transfers)
         from neutral_atom_env.simulation.runtime_validation import validate_runtime
         from neutral_atom_env.simulation.quantum_effects import validate_readout_trace
         validate_readout_trace(state)

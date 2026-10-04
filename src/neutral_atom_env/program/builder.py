@@ -53,10 +53,11 @@ def apply_operation(state, op, gate_id):
         validate_readout(state,op.effect_gate_ids,op.operation_type)
         work,_=complete_effects(state,op)
         return predict_effect_completion(work,op.effect_gate_ids)
-    backend = get_backend(state.hardware)
+    from neutral_atom_env.hardware.multi_aod import backend_for
+    backend = backend_for(state,op.aod_id)
     if op.operation_type == K.TRAP_SWITCH:
         from neutral_atom_env.hardware.dynamic_traps import switch_traps
-        return switch_traps(state, op.switch_state)
+        return switch_traps(state, op.switch_state, op.aod_id)
     if op.operation_type == K.AOD_MOVE:
         return backend.move(state, motion_target(op), transfer=op.transfer_phase, bindings=op.transfer_bindings)
     if op.operation_type == K.AOD_LOAD:
@@ -76,9 +77,10 @@ def apply_operation(state, op, gate_id):
     return predict_cz_batch_completion(state, gate_ids)
 
 
-def operation_duration(state, kind, target=None):
+def operation_duration(state, kind, target=None, aod_id='AOD_0'):
     if kind == K.AOD_MOVE:
-        return get_backend(state.hardware).move_duration(state.aod, target, state.hardware)
+        from neutral_atom_env.hardware.multi_aod import backend_for,device
+        return backend_for(state,aod_id).move_duration(device(state,aod_id), target, state.hardware)
     return {K.MEASUREMENT:state.hardware.measurement_duration_us,K.RESET:state.hardware.reset_duration_us,
             K.RAMAN_ROTATION: state.hardware.raman_duration_us, K.TRAP_SWITCH: state.hardware.switch_duration_us, K.AOD_LOAD: state.hardware.load_duration_us, K.AOD_RECAPTURE: state.hardware.load_duration_us,
             K.AOD_OFFLOAD: state.hardware.offload_duration_us, K.AOD_PARK: state.hardware.offload_duration_us,
@@ -155,12 +157,12 @@ class ProgramBuilder:
         self.origin = state
         self.state = state
         self.intent = (replace(intent,phase='program',effect_gate_id=None,gate_effects=intent.gate_ids)
-                       if state.quantum_state is not None and isinstance(intent,TaskIntent) and intent.phase!='program' else intent)
+                       if (state.quantum_state is not None or len(state.aods)>1) and isinstance(intent,TaskIntent) and intent.phase!='program' else intent)
         self.operations = []
         self.bindings = {}
         self.distance = 0.
 
-    def add(self, kind, label, *, target=None, bindings=(), phase=None, switch_state=None, configuration=None, gate_id=None, gate_ids=()):
+    def add(self, kind, label, *, target=None, bindings=(), phase=None, switch_state=None, configuration=None, gate_id=None, gate_ids=(), aod_id='AOD_0'):
         task = isinstance(self.intent, TaskIntent)
         gate_ids=tuple(gate_ids)
         gate_id = gate_id or (next(iter(self.intent.gate_ids)) if len(self.intent.gate_ids)==1 and not gate_ids else None)
@@ -168,13 +170,14 @@ class ProgramBuilder:
             require(bool(gate_ids) or gate_id is not None, 'Gateless task cannot contain a pulse')
             require(set(gate_ids or (gate_id,))<=self.intent.gate_ids,'Unauthorized program effect')
         op = Operation(f'op{len(self.operations):02d}', kind, label,
-                       operation_duration(self.state, kind, configuration or target), target_pose=target,
+                       operation_duration(self.state, kind, configuration or target,aod_id), target_pose=target,
                        target_configuration=configuration, transfer_phase=phase, transfer_bindings=tuple(bindings), switch_state=switch_state,
                        gate_id=gate_id if task and kind in {K.ENTANGLING_PULSE, K.RAMAN_ROTATION,K.MEASUREMENT,K.RESET} else None,
-                       depends_on=(self.operations[-1].id,) if task and self.operations else (),gate_ids=gate_ids)
+                       depends_on=(self.operations[-1].id,) if task and self.operations else (),gate_ids=gate_ids,aod_id=aod_id)
         next_state = apply_operation(self.state, op, gate_id)
         if kind == K.AOD_MOVE:
-            self.distance += get_backend(self.state.hardware).move_distance(self.state.aod, configuration or target)
+            from neutral_atom_env.hardware.multi_aod import backend_for,device
+            self.distance += backend_for(self.state,aod_id).move_distance(device(self.state,aod_id), configuration or target)
         if kind in (K.AOD_LOAD, K.AOD_RECAPTURE):
             for b in bindings:
                 self.bindings.setdefault(b.atom_id, b)
@@ -197,6 +200,9 @@ class ProgramBuilder:
                             tuple(sorted(self.state.placement.atom_to_holder.items())), state.aod.configuration(),
                             strategy_id, tuple(sorted(state.placement.atom_to_holder.items())),
                             trap_state(state), trap_state(self.state))
+        from neutral_atom_env.hardware.multi_aod import needs_device_origin
+        if needs_device_origin(state):
+            plan=replace(plan,initial_aods=tuple(sorted(state.aods.items())),predicted_aods=tuple(sorted(self.state.aods.items())))
         if isinstance(self.intent, TaskIntent):
             from hashlib import sha256
             plan = replace(plan, id='plan_' + sha256((self.intent.task_id + digest).encode()).hexdigest()[:20],
@@ -221,6 +227,8 @@ class ProgramBuilder:
                     estimated_duration_us=max(i.end_us for i in intervals),
                     incidental_atom_ids=affected-requested,resources=tuple(sorted({r for i in intervals for r in i.resources})),
                     predicted_placement=tuple(sorted(final.placement.atom_to_holder.items())),predicted_traps=trap_state(final))
+                if needs_device_origin(state):
+                    plan=replace(plan,predicted_aods=tuple(sorted(final.aods.items())))
                 exact_validate(plan,state)
                 return plan
             intervals = task_intervals(plan, state)

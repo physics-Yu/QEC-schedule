@@ -14,7 +14,7 @@ from neutral_atom_env.statistics import AtomStatistics
 
 
 class VisualRecorder:
-    def __init__(self,state,theme=None):
+    def __init__(self,state,theme=None,*,scene_metadata=None):
         self.theme=theme or VisualTheme.load()
         self.backend=state.hardware.backend
         world=state.world;s=world.grid_spacing_um
@@ -26,6 +26,11 @@ class VisualRecorder:
         self.scene=primitive({'bounds':world.bounds,'spacing_um':s,'grid_x':xs,'grid_y':ys,'slm_clearance_um':state.hardware.slm_clearance_um,'aod_minimum_spacing_um':minimum_trap_spacing(state.hardware),'raman_minimum_separation_um':state.hardware.raman_minimum_separation_um,
             'candidates':[Position2D(x,y) for x in xs for y in ys if world.is_candidate_site(Position2D(x,y))],
             'zones':world.zones,'traps':tuple(t for _,t in sorted(world.traps.items()))})
+        if scene_metadata:
+            allowed={'atom_roles','patches','zone_labels','aod_labels'}
+            if set(scene_metadata)-allowed:
+                raise ValueError('Unsupported observer metadata')
+            self.scene.update(primitive(scene_metadata))
         self.frames=[];self.operations=[];self.plans={};self._atoms={};self._operation_keys=set();self._last_plan=None
         self._initial_time=state.time_us;self._version=None;self.metrics={}
         self._slm=None
@@ -57,12 +62,19 @@ class VisualRecorder:
             if runtime.plan.id not in self.plans:
                 from neutral_atom_env.hardware import get_backend
                 from neutral_atom_env.domain.aod import motion_target
-                plan=runtime.plan;axes=state.aod.configured(plan.initial_aod_configuration)
+                plan=runtime.plan
+                registry=dict(getattr(state,'aods',{'AOD_0':state.aod}))
+                axes_by_aod=dict(getattr(plan,'initial_aods',()) or registry.items())
+                primary_id=getattr(state.aod,'aod_id','AOD_0')
+                if not getattr(plan,'initial_aods',()):
+                    axes_by_aod[primary_id]=state.aod.configured(plan.initial_aod_configuration)
                 loaded={q:h.holder_id for q,h in (plan.initial_placement or ()) if h.holder_type.value=='mobile'}
-                paths={q:[axes.position(cell)] for q,cell in loaded.items()}
+                paths={q:[axes_by_aod[getattr(cell,'aod_id','AOD_0')].position(cell)] for q,cell in loaded.items()}
                 for b in plan.bindings:paths.setdefault(b.atom_id,[])
                 for op in plan.operations:
                     if op.operation_type.value=='entangling_pulse':break
+                    aod_id=getattr(op,'aod_id','AOD_0')
+                    axes=axes_by_aod[aod_id]
                     if op.operation_type.value=='aod_load':
                         loaded.update({b.atom_id:b.cell for b in (op.transfer_bindings or plan.bindings)})
                         for b in (op.transfer_bindings or plan.bindings):paths[b.atom_id].append(axes.position(b.cell))
@@ -72,8 +84,11 @@ class VisualRecorder:
                         loaded.update({b.atom_id:b.cell for b in op.transfer_bindings})
                     elif op.operation_type.value=='aod_move':
                         axes=get_backend(state.hardware).target_aod(axes,motion_target(op))
+                        axes_by_aod[aod_id]=axes
                         if loaded:
-                            for q,cell in loaded.items():paths.setdefault(q,[]).append(axes.position(cell))
+                            for q,cell in loaded.items():
+                                if getattr(cell,'aod_id','AOD_0')==aod_id:
+                                    paths.setdefault(q,[]).append(axes.position(cell))
                 self.plans[plan.id]=primitive({'id':plan.id,'planner_id':plan.planner_id,'paths':paths,
                     'gate_ids':sorted(plan.intent.gate_ids),
                     'requested':sorted(plan.requested_atom_ids),'gate_id':next(iter(sorted(plan.intent.gate_ids)),None) if len(plan.intent.gate_ids)==1 else None,
@@ -87,32 +102,43 @@ class VisualRecorder:
         gate=state.dag.nodes[gate_id] if gate_id else None
         activity={q:('controlling' if not condition_applies(state,node.gate) else 'measuring' if node.gate.gate_type in {'MEASURE','MZ'} else 'resetting' if node.gate.gate_type=='RESET' else 'gating')
                   for node in state.dag.nodes.values() if node.status.value=='running' for q in node.gate.qubit_ids}
-        aod=primitive(state.aod)
-        source_axes=state.aod.configuration()
-        end_axes=target_axes(aod,primitive(runtime.plan.operations[runtime.operation_index])) if state.aod.is_moving and runtime else None
-        updates=[]
-        for key,atom in sorted(state.atoms.items()):
-            holder=state.placement.atom_to_holder[key]
-            actually_moving=holder.holder_type.value=='mobile' and state.aod.is_moving
-            if actually_moving and end_axes:
-                cell=holder.holder_id
-                actually_moving=(abs(source_axes.x_um[cell.column]-end_axes.x_um[cell.column])>=1e-12
-                                 or abs(source_axes.y_um[cell.row]-end_axes.y_um[cell.row])>=1e-12)
-            value=primitive({'id':key,'holder':holder,'position':state.placement.position(key,state.world,state.aod),
-                'activity':activity.get(key,'lost' if holder.holder_type.value=='lost' else
-                       'moving' if actually_moving else 'idle'),
-                'measured':atom.measured})
-            if self._atoms.get(key)!=value:updates.append(value);self._atoms[key]=value
-        aod=primitive(state.aod);movement=None
+        registry=dict(getattr(state,'aods',{'AOD_0':state.aod}))
+        primary_id=getattr(state.aod,'aod_id','AOD_0')
+        aods={key:primitive(value) for key,value in sorted(registry.items())}
         running = ([(o,t) for key,t in runtime.running_operations for o in runtime.plan.operations if o.id==key]
                    if runtime and runtime.plan.execution_mode=='scheduled' else
                    [(runtime.plan.operations[runtime.operation_index],runtime.operation_started_us)]
                    if runtime and runtime.operation_started_us is not None else [])
+        movements={}
+        for op,started in running:
+            if op.operation_type.value=='aod_move':
+                aod_id=getattr(op,'aod_id','AOD_0');value=primitive(op)
+                movements[aod_id]={'aod_id':aod_id,'start':started,'duration':op.duration_us,'target':value['target_pose'],
+                    'target_axes':primitive(target_axes(aods[aod_id],value)),
+                    'profile':'cubic' if self.backend in {'row_column','row_column_orthogonal'} else 'linear'}
+        updates=[]
+        for key,atom in sorted(state.atoms.items()):
+            holder=state.placement.atom_to_holder[key]
+            mobile=holder.holder_type.value=='mobile'
+            device_id=getattr(holder.holder_id,'aod_id','AOD_0') if mobile else None
+            device=registry[device_id] if mobile else None
+            actually_moving=mobile and device.is_moving
+            if actually_moving and device_id in movements:
+                source_axes=device.configuration();end_axes=movements[device_id]['target_axes']
+                cell=holder.holder_id
+                actually_moving=(abs(source_axes.x_um[cell.column]-end_axes['x_um'][cell.column])>=1e-12
+                                 or abs(source_axes.y_um[cell.row]-end_axes['y_um'][cell.row])>=1e-12)
+            position=device.position(holder.holder_id) if mobile else state.placement.position(key,state.world,state.aod)
+            value=primitive({'id':key,'holder':holder,'position':position,
+                'activity':activity.get(key,'lost' if holder.holder_type.value=='lost' else
+                       'moving' if actually_moving else 'idle'),
+                'measured':atom.measured})
+            if self._atoms.get(key)!=value:updates.append(value);self._atoms[key]=value
+        aod=aods[primary_id];movement=movements.get(primary_id)
         for op,started in running:
             value=primitive(op);kind=op.operation_type.value
-            if kind=='aod_move':
-                movement={'start':started,'duration':op.duration_us,'target':value['target_pose'],
-                    'target_axes':primitive(target_axes(aod,value)),'profile':'cubic' if self.backend in {'row_column','row_column_orthogonal'} else 'linear'}
+            aod_id=getattr(op,'aod_id','AOD_0');device=registry[aod_id];device_value=aods[aod_id]
+            moving_ids=tuple(q for cell,q in state.placement.mobile_occupancy.items() if getattr(cell,'aod_id','AOD_0')==aod_id)
             key=(runtime.plan.id,op.id)
             if key not in self._operation_keys:
                 self._operation_keys.add(key)
@@ -121,15 +147,16 @@ class VisualRecorder:
                 effect=state.dag.nodes.get(effect_id or next(iter(effect_ids),None))
                 applied_by_gate={g:condition_applies(state,state.dag.nodes[g].gate) for g in effect_ids}
                 applied=any(applied_by_gate.values()) if effect_ids else True
-                record={'operation_type':kind,'moving_atom_ids':tuple(state.placement.mobile_occupancy.values()),
+                record={'operation_type':kind,'moving_atom_ids':moving_ids,
                         'applied':applied,
-                        'source_configuration':primitive(state.aod.configuration()),
-                        'target_configuration':primitive(target_axes(aod,value)) if kind=='aod_move' else None}
+                        'source_configuration':primitive(device.configuration()),
+                        'target_configuration':primitive(target_axes(device_value,value)) if kind=='aod_move' else None}
                 op_index=runtime.plan.operations.index(op)
                 pulse_seen=any(o.operation_type.value=='entangling_pulse' for o in runtime.plan.operations[:op_index])
                 phase=op.task_phase or (active.intent.phase if isinstance(active.intent,TaskIntent) else None)
                 interval=next((i for i in active.operation_intervals if i.operation_id==op.id),None)
                 self.operations.append({'index':len(self.operations),'label':op.label,'kind':kind,
+                    'aod_id':aod_id,
                     'start':started,'end':started+op.duration_us,
                     'plan_id':runtime.plan.id,'gate_id':effect_id,'captured':sorted(b.atom_id for b in op.transfer_bindings) if op.transfer_bindings else sorted(active.captured_atom_ids),
                     'gate_ids':list(effect_ids),'batch_size':len(effect_ids),'applied':applied,'measurement_results':{},
@@ -144,7 +171,7 @@ class VisualRecorder:
                     'task_phase':phase,'effect_gate_id':op.gate_id,'depends_on':list(op.depends_on),
                     'resources':list(interval.resources) if interval else list(active.resources),
                     'category':operation_category(record,pulse_seen or phase=='cleanup'),'mode':movement_mode(record),
-                    'moving_count':len(state.placement.mobile_occupancy) if kind=='aod_move' else 0})
+                    'moving_count':len(moving_ids) if kind=='aod_move' else 0})
                 if kind=='aod_move':
                     # Read-only evidence of the executed configuration, not a
                     # second planner or renderer-invented deformation.
@@ -152,8 +179,8 @@ class VisualRecorder:
                         'source_axes':record['source_configuration'],
                         'target_axes':record['target_configuration'],
                         'moving_atom_ids':list(record['moving_atom_ids']),
-                        'enabled_rows':list(state.aod.enabled_rows),
-                        'enabled_columns':list(state.aod.enabled_columns)})
+                        'enabled_rows':list(device.enabled_rows),
+                        'enabled_columns':list(device.enabled_columns)})
                 if kind=='raman_rotation' and len(effect_ids)>1:
                     self.operations[-1].update({
                         'applied_by_gate':applied_by_gate,
@@ -177,6 +204,9 @@ class VisualRecorder:
         self._slm=slm
         self.frames.append({'time':state.time_us,'version':state.version,'atom_updates':updates,'plan_id':active.id if active else None,
             'aod':aod,'axes':primitive(axes_from_dict(aod)),'movement':movement,
+            'primary_aod_id':primary_id,'aods':aods,
+            'axes_by_aod':{key:primitive(axes_from_dict(value)) for key,value in aods.items()},'movements':movements,
+            'transfers':primitive(getattr(state,'transfers',{})),
             'slm_enabled':slm_update,'transfer':primitive(state.transfer),
             'gate_status':'running' if running_gate_ids else gate.status.value if gate else 'idle',
             'active_gate_ids':running_gate_ids,

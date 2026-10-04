@@ -35,8 +35,25 @@ class SimulationState:
     transfer: TransferRuntime | None = None
     quantum_state: object | None = None
     measurement_results: Mapping[str,int] = field(default_factory=dict)
+    aods: Mapping[str, AODRuntimeState] | None = None
+    transfers: Mapping[str, TransferRuntime] | None = None
 
     def __post_init__(self):
+        if self.aod.aod_id != 'AOD_0':
+            raise ValidationError('INVALID_PRIMARY_AOD', 'Compatibility primary must be AOD_0')
+        devices = dict(self.aods or {})
+        devices['AOD_0'] = self.aod
+        if any(not isinstance(v, AODRuntimeState) or key != v.aod_id for key,v in devices.items()):
+            raise ValidationError('INVALID_AOD_REGISTRY', 'Device registry keys must match runtime identities')
+        object.__setattr__(self, 'aods', MappingProxyType(devices))
+        transfers = dict(self.transfers or {})
+        if self.transfer is None:
+            transfers.pop('AOD_0', None)
+        else:
+            transfers['AOD_0'] = self.transfer
+        if any(key not in devices for key in transfers):
+            raise ValidationError('UNKNOWN_AOD', 'Handoff references an unknown AOD')
+        object.__setattr__(self, 'transfers', MappingProxyType(transfers))
         object.__setattr__(self, "atoms", MappingProxyType(dict(self.atoms)))
         object.__setattr__(self,'measurement_results',MappingProxyType(dict(self.measurement_results)))
         if self.quantum_state is not None:
@@ -63,11 +80,15 @@ class SimulationState:
             raise ValidationError('ATOM_ID_MISMATCH', 'Atom identity mismatch')
         if any(q not in self.atoms for n in self.dag.nodes.values() for q in n.gate.qubit_ids):
             raise ValidationError('UNKNOWN_QUBIT', 'Circuit references unknown physical qubit')
-        self.placement.validate(self.atoms, self.world, self.aod)
+        self.placement.validate(self.atoms, self.world, self.aods)
         from neutral_atom_env.hardware.dynamic_traps import validate_support
         validate_support(self)
         from neutral_atom_env.hardware.trap_spacing import validate_trap_spacing
-        validate_trap_spacing(self.aod,self.hardware)
+        for device in self.aods.values():
+            validate_trap_spacing(device,self.hardware)
+        if len(self.aods) > 1:
+            from neutral_atom_env.hardware.multi_aod import validate_envelopes
+            validate_envelopes(self)
         from neutral_atom_env.hardware.ez_neighbors import validate_ez_neighbors
         validate_ez_neighbors(self)
 
@@ -76,7 +97,7 @@ class SimulationState:
         wall=self.time_us-start if start is not None else 0.0
         logical=max(0.0,self.physical_metrics.circuit_makespan_us-start) if start is not None else 0.0
         count=sum(n.status.value == "completed" for n in self.dag.nodes.values())
-        return {"episode_wall_time_us": wall,
+        result = {"episode_wall_time_us": wall,
                 "logical_completion_elapsed_us": logical if self.dag.completed else None,
                 "last_pulse_time_us": self.physical_metrics.circuit_makespan_us,
                 "last_pulse_elapsed_us": logical,
@@ -87,6 +108,13 @@ class SimulationState:
                 "throughput_gates_per_us": count/wall if wall else 0.0,
                 **asdict(self.physical_metrics), "simulation_time_us": self.time_us, "committed_events": self.committed_events,
                 "completed_gate_count": sum(n.status.value == "completed" for n in self.dag.nodes.values())}
+        if len(self.aods)>1:
+            busy=dict(self.physical_metrics.aod_busy_by_device)
+            result.update(aod_device_count=len(self.aods),aod_busy_by_device=busy,
+                aod_utilization=sum(busy.values())/(len(self.aods)*wall) if wall else 0.)
+        else:
+            result.pop('aod_busy_by_device',None)
+        return result
 
     def snapshot(self):
         """Versioned checkpoint with complete continuation state, including trace and RNG."""
@@ -95,7 +123,7 @@ class SimulationState:
 
     def snapshot_data(self):
         """Fresh complete payload, shared by exact encoding and streaming hash."""
-        return {"schema_version": 19, "version": self.version, "time_us": self.time_us,
+        result = {"schema_version": 19, "version": self.version, "time_us": self.time_us,
             "world": self.world, "placement": self.placement, "atoms": self.atoms,
             "aod": self.aod, "dag": self.dag.nodes, "event_queue": self.event_queue.snapshot(),
             "circuit": self.dag.circuit, "seed": self.seed,
@@ -104,6 +132,11 @@ class SimulationState:
             "physical_metrics": self.physical_metrics, "slm_enabled": self.slm_enabled, "transfer": self.transfer,
             "quantum_state":self.quantum_state.to_dict() if self.quantum_state is not None else None,
             "measurement_results":self.measurement_results}
+        if len(self.aods) > 1:
+            result.update(schema_version=20, aods=self.aods, transfers=self.transfers)
+            del result['aod']
+            del result['transfer']
+        return result
 
     @classmethod
     def restore(cls, snapshot: str) -> 'SimulationState':

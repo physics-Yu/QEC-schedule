@@ -81,10 +81,13 @@ class HolderType(str, Enum):
 class MobileCellIndex:
     row: int
     column: int
+    aod_id: str = field(default='AOD_0', metadata={'omit_if_default': True})
 
     def __post_init__(self):
         if self.row < 0 or self.column < 0:
             raise ValueError("Negative mobile cell")
+        if not isinstance(self.aod_id, str) or not self.aod_id:
+            raise ValueError('Mobile cell requires a stable AOD identity')
 
 
 @dataclass(frozen=True)

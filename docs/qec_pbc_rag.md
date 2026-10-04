@@ -2,7 +2,7 @@
 
 研究与工作树核对日期：**2026-10-04**（历史来源保留各自日期）。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
 
-主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，61 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、37 组本地来源与110个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)，53项固定召回用例。
+主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，64 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、40 组本地来源与140个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)，58项固定召回用例。
 
 最新批准阶段：完整12wire编码原生Shor理想分支已经实际生成，seed7和最终seed0得到3和5，完整失败重试成本及逐功能native操作observer可核对。当前能力与限制见§25–28及K55–K61。历史§18–24和K50–K54保留各次producer、事故、单patch能力与Factoring15只读提案快照；新增内容不回写旧失败。完整encoded **physical Executor** Shor与factory-first工厂主线仍未完成。
 
@@ -388,3 +388,13 @@ K51/L32与[XX最终小摘要](../references/qec_pbc_validation/encoded_xx_physic
 原工作区并行政策任务的K55–K57／L34保留原内容与ID：当前顺序为F1标准QEC／15-to-1原生供应与同一资源单T参考闭环，F2 committed Executor反馈，F3逐周期带噪供给，F4 MSC后端，F5连续T／完整Shor。MSC／MSD、资源身份库存与接受条件质量分别见政策块。共享协议为[instruction/qec_factory_pipeline.md](../instruction/qec_factory_pipeline.md)，只读政策固化不表示这些阶段已实现。
 
 本批独立生成器、宽cat、observer和失败重试使用K58–K61／L35–L37，避免覆盖上述已占用ID。旧K54保留原建议正文并采用政策任务的supersession前缀、限制、状态与当前来源，不能按旧Shor-first安排下一任务；K52–K54另链接当前参考成果。完整算法参考与资源供应主线分别验收。
+
+## 30. 巨大线路的真实并行物理切片与右侧独立 AOD
+
+K62–K64 / L38–L40记录本轮实际3006门/413投影/221原子的12patch初始化及首次canonical syndrome切片，右侧同源17资源carrier仅17RESET/H、止于首T。统一COMPUTE+MZ、固定5μm候选格点稀疏占据、独立码块home与右侧实际AOD；取消逻辑最近邻仍移动至有限6μm并核对全部compute旁观作用对。196真实plans/完整原初态replay通过；68CZ脉冲含816对/max12，H max72、M max12、RESET max29，模型终态69927.725855μs含归还。脉冲合批比不等于完整Shor或同平台串行总加速比。
+
+独立工具不导入项目compiler/quantum，核对原生ID/type/trace边界、依赖时间、204算法态与413 source/committed投影，以及每个静止pulse的完整有限坐标/MZ/5μmRaman/全局CZ pair。连续轨迹依赖Executor和完整replay。共用空间页8773显示实际两AOD、12+17带载运输、七个功能入口及真实终态；旧8772参考页继续显示native index。recording SHA与audit一致且原初态replay true才允许report，不能靠completed标签或伪造observer批次验收。
+
+本轮54新+180旧=234不同pytest通过、3历史artifact缺失skip另计、263模块0违规；浏览器各书签、终态、合批表、390px与console通过。旧HEAD/新版本独立实际单AOD7ops/16events/17snapshots的plan/trace/snapshot逐字节同。1.14MB原始审核packet可从fresh checkout复现，不含完整母流后缀；源码/小摘要进Git，大型物理档案留本地。失败与主动中断目录保持，未计为PASS。
+
+见[编译复现](qec_native_parallel_prefix.md)、[双AOD合同](multi_aod_contract.md)、[小摘要](../references/qec_pbc_validation/native_parallel_physical_2026_10_04.json)、[阶段日志](../instruction/logs/2026-10-04-native-prefix-parallel-physical.md)。当前64chunks/52sources/58检索，旧source仅刷新兼容更新后的normalized SHA，历史raw和旧claim正文保留。完整magic工厂、tracked T/Born、噪声/decoder/FT及完整physical Shor仍未实现；factory-first F1主线不变。

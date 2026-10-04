@@ -88,6 +88,7 @@ def replay_operations(intent,state,bindings,operations):
 
 def validate_plan(plan,state,*,restoring=False):
     require(plan.execution_mode in {'serial','scheduled'},'Unknown execution mode')
+    require(len(state.aods)==1 or plan.execution_mode=='scheduled','Multiple AODs require a complete scheduled program')
     require(state.quantum_state is None or plan.execution_mode=='scheduled','Quantum tracking requires a scheduled program')
     if plan.execution_mode=='scheduled':
         from neutral_atom_env.simulation.operation_program import validate_program

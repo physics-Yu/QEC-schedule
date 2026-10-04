@@ -15,18 +15,27 @@ LOADS = {K.AOD_LOAD, K.AOD_RECAPTURE}
 TRANSFERS = LOADS | {K.AOD_OFFLOAD, K.AOD_PARK}
 
 
-def trap_state(state):
+def trap_state(state, aod_id='AOD_0'):
+    if len(state.aods)>1:
+        from neutral_atom_env.hardware.multi_aod import supports
+        return supports(state,aod_id)
     return TrapState(state.aod.enabled_rows, state.aod.enabled_columns, tuple(sorted(state.slm_enabled.items())))
 
 
-def with_traps(state, traps, **changes):
+def with_traps(state, traps, *, aod_id='AOD_0', **changes):
     if not isinstance(traps, TrapState):
         raise ValidationError('INVALID_TRAP_STATE', 'Explicit trap state required')
+    if len(state.aods)>1:
+        from neutral_atom_env.hardware.multi_aod import with_supports
+        return with_supports(state,aod_id,traps,**changes)
     return replace(state, aod=replace(state.aod, enabled_rows=traps.rows, enabled_columns=traps.columns),
                    slm_enabled=dict(traps.slm), **changes)
 
 
 def validate_support(state):
+    if len(state.aods)>1:
+        from neutral_atom_env.hardware.multi_aod import validate_support as validate_multi_support
+        return validate_multi_support(state)
     for q, h in state.placement.atom_to_holder.items():
         enabled = state.slm_enabled.get(h.holder_id, False) if h.holder_type == H.STATIC else (
             state.aod.is_enabled(h.holder_id) if h.holder_type == H.MOBILE else True)
@@ -52,6 +61,9 @@ def validate_active_sweep(state, end, *, allowed=(), cells=None):
     No transport exemption is accepted here. `allowed` is private to the aligned,
     zero-length target-support establishment used by begin_transfer.
     """
+    if len(state.aods)>1:
+        from neutral_atom_env.hardware.multi_aod import backend_for
+        return backend_for(state,end.aod_id).validate_active_sweep(state,end,allowed=allowed,cells=cells)
     exemptions = {(b.cell, b.atom_id) for b in allowed}
     for cell in state.aod.active_cells if cells is None else cells:
         start, finish = state.aod.position(cell), end.position(cell)
@@ -65,7 +77,10 @@ def validate_active_sweep(state, end, *, allowed=(), cells=None):
                 raise ValidationError('ACTIVE_TRAP_SWEEP', 'Active AOD trap sweeps a static atom', atom_ids=(q,), holder_id=cell, position=closest)
 
 
-def switch_traps(state, target):
+def switch_traps(state, target, aod_id='AOD_0'):
+    if len(state.aods)>1:
+        from neutral_atom_env.hardware.multi_aod import backend_for
+        return backend_for(state,aod_id).switch_traps(state,target)
     if state.aod.is_moving or state.transfer is not None:
         raise ValidationError('TRAP_SWITCH_BUSY', 'Switch requires stationary geometry outside a handoff')
     result = with_traps(state, target)  # Checks every holder before any commit.
@@ -84,6 +99,9 @@ def switch_traps(state, target):
 
 def begin_transfer(backend, state, bindings, kind):
     bindings = tuple(bindings)
+    if len(state.aods)>1:
+        from neutral_atom_env.hardware.multi_aod import backend_for
+        return backend_for(state,getattr(backend,'aod_id',bindings[0].cell.aod_id if bindings else 'AOD_0')).begin_transfer(state,bindings,kind)
     if kind not in TRANSFERS or state.transfer is not None or state.aod.is_moving:
         raise ValidationError('TRANSFER_BUSY', 'Transfer requires an idle, stationary handoff channel')
     if (not bindings or any(len({getattr(b, key) for b in bindings}) != len(bindings)
@@ -150,6 +168,9 @@ def begin_transfer(backend, state, bindings, kind):
 
 
 def finish_transfer(backend, state, bindings, kind):
+    if len(state.aods)>1:
+        from neutral_atom_env.hardware.multi_aod import backend_for
+        return backend_for(state,getattr(backend,'aod_id',bindings[0].cell.aod_id if bindings else 'AOD_0')).finish_transfer(state,bindings,kind)
     transfer = state.transfer
     if transfer is None or transfer.bindings != tuple(bindings) or transfer.kind != kind:
         raise ValidationError('TRANSFER_STATE_MISMATCH', 'Completion requires the matching established target support')

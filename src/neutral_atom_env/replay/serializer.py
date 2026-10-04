@@ -27,7 +27,8 @@ def primitive(value):
         # Opt-in only: preserve the historical serialization of every existing
         # field while absent readout_flip=False keeps schema19 bytes unchanged.
         return {f.name: primitive(getattr(value, f.name)) for f in fields(value)
-                if not (f.metadata.get('omit_if_false') and getattr(value, f.name) is False)}
+                if not (f.metadata.get('omit_if_false') and getattr(value, f.name) is False)
+                and not (f.metadata.get('omit_if_default') and getattr(value, f.name) == f.default)}
     if isinstance(value, Mapping):
         return {str(k): primitive(v) for k, v in sorted(value.items(), key=lambda kv: str(kv[0]))}
     if isinstance(value, (set, frozenset)):

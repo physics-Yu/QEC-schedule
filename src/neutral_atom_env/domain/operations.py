@@ -1,5 +1,5 @@
 """Immutable physical operations and plans; no simulator dependencies."""
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 from math import isfinite
 from neutral_atom_env.domain.models import Position2D, MobileCellIndex, HolderRef, Atom
@@ -130,11 +130,15 @@ class TaskTarget:
     holders: tuple[tuple[str, HolderRef], ...] = ()
     aod_configuration: AODConfiguration | None = None
     traps: TrapState | None = None
+    aod_targets: tuple = field(default=(), metadata={'omit_if_default': True})
 
     def __post_init__(self):
         object.__setattr__(self, 'holders', tuple(sorted(tuple(p) for p in self.holders)))
         if len(dict(self.holders)) != len(self.holders):
             raise ValueError('Duplicate target atom')
+        object.__setattr__(self, 'aod_targets', tuple(tuple(p) for p in self.aod_targets))
+        if len(dict(self.aod_targets)) != len(self.aod_targets):
+            raise ValueError('Duplicate AOD target')
 
 
 @dataclass(frozen=True)
@@ -197,8 +201,11 @@ class Operation:
     depends_on: tuple[str, ...] = ()
     task_phase: str | None = None
     gate_ids: tuple[str, ...] = ()
+    aod_id: str = field(default='AOD_0', metadata={'omit_if_default': True})
 
     def __post_init__(self):
+        if not isinstance(self.aod_id, str) or not self.aod_id:
+            raise ValueError('Operation needs a stable AOD identity')
         object.__setattr__(self,'transfer_bindings',tuple(self.transfer_bindings))
         object.__setattr__(self,'depends_on',tuple(self.depends_on))
         object.__setattr__(self,'gate_ids',tuple(self.gate_ids))
@@ -254,6 +261,8 @@ class CompiledPlan:
     initial_quantum_state: str | None = None
     initial_measurement_results: tuple[tuple[str,int], ...] = ()
     initial_rng_state: tuple | None = None
+    initial_aods: tuple = field(default=(), metadata={'omit_if_default': True})
+    predicted_aods: tuple = field(default=(), metadata={'omit_if_default': True})
 
     @property
     def captured_atom_ids(self):
@@ -297,3 +306,4 @@ class PhysicalMetrics:
     laser_busy_time_us: float = 0.0
     measurement_busy_time_us: float = 0.0
     reset_busy_time_us: float = 0.0
+    aod_busy_by_device: tuple = field(default=(), metadata={'omit_if_default': True})

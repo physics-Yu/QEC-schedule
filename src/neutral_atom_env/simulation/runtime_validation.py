@@ -40,9 +40,10 @@ def validate_runtime(state):
             require(all(e.event_type in {EventType.WAIT_COMPLETED,EventType.RNG_DRAW} for e in pending),'Unexpected nonphysical event after program')
         return
     if runtime is None:
-        require(state.transfer is None, 'Handoff without an active operation')
+        require(not state.transfers, 'Handoff without an active operation')
         from neutral_atom_env.hardware.dynamic_traps import validate_active_sweep
-        validate_active_sweep(state,state.aod)
+        for aod in state.aods.values():
+            validate_active_sweep(state,aod)
         require(not state.reservations, 'Reservations without active plan')
         require(not physical or physical[-1]['event_type']=='plan_completed', 'Unfinished physical trace without runtime')
         if physical:
