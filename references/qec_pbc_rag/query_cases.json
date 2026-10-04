@@ -539,6 +539,24 @@
       "expected_any": [
         "K72"
       ]
+    },
+    {
+      "query": "rigid ENV prefix compatibility集合服务bounded qualified，Full Enola MZ kernel是否仍OPEN",
+      "expected_any": [
+        "K72"
+      ]
+    },
+    {
+      "query": "221原子初始化RESET，108加24等于132运输容量，多波卸载MZ SLM后一次服务",
+      "expected_any": [
+        "K72"
+      ]
+    },
+    {
+      "query": "full12 3006 gates 413 projections 317 RESET 96 MEASURE，报告只有96",
+      "expected_any": [
+        "K72"
+      ]
     }
   ]
 }

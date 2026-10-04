@@ -369,7 +369,8 @@ def select_geometric_cz_group(state, ready, atom_roles):
 def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
                        max_decisions=512, wall_budget_s=1800., intra_patch=False,
                        mz_translation_um=-300., intra_services=False, pair_search=False,
-                       routing_policy=STANDARD_ROUTING, readout_placement=None):
+                       routing_policy=STANDARD_ROUTING, readout_placement=None,
+                       collective_mz=False):
     """Run the caller's supported DAG; return structured failure evidence."""
     env = as_environment(env)
     started = perf_counter()
@@ -384,7 +385,27 @@ def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
             raise ValidationError('PARALLEL_PATCH_QUANTUM', 'Enable tracked Clifford state before physical execution')
         if env.state.hardware.backend != 'rigid':
             raise ValidationError('PARALLEL_PATCH_BACKEND', 'This bounded translation compiler requires rigid axes')
-        if 'AOD_MAGIC' in env.state.aods:
+        if collective_mz:
+            from .collective_mz import compile_collective_mz
+            gates = tuple(g for g in env.state.dag.ready_gates() if g.gate_type == 'RESET')
+            if {q for g in gates for q in g.qubit_ids} != set(env.state.atoms):
+                raise ValidationError('COLLECTIVE_MZ_INITIAL', 'All initial atom RESET targets must be ready together')
+            tick = perf_counter()
+            phase = 'collective_initial_reset'
+            plan, resets, evidence = compile_collective_mz(env.state, gates, atom_roles,
+                decision=0, routing_policy=routing_policy)
+            entry = {'decision': 0, 'kind': 'RESET', 'gate_ids': [g.id for g in gates],
+                'batch_size': len(gates), 'start_us': env.state.time_us,
+                'duration_us': plan.estimated_duration_us, 'compile_wall_seconds': perf_counter()-tick,
+                'plan_id': plan.id, 'routing_policy': routing_policy,
+                'collective_mz_evidence': evidence, 'included_reset_gate_ids': [g.id for g in resets]}
+            env.submit(plan)
+            if on_plan:
+                on_plan(plan, entry)
+            env.run(on_event=on_event)
+            entry['end_us'] = env.state.time_us
+            log.append(entry)
+        elif 'AOD_MAGIC' in env.state.aods:
             ready = env.state.dag.ready_gates()
             magic = tuple(g for g in ready if g.gate_type == 'RESET' and atom_roles[g.qubit_ids[0]]['aod_id'] == 'AOD_MAGIC')
             algorithm = tuple(g for g in ready if g.gate_type == 'RESET' and atom_roles[g.qubit_ids[0]]['aod_id'] == 'AOD_0'
@@ -455,6 +476,13 @@ def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
                         'moving_operands': mobile_operands,
                         'pair_offset_um': [pair_offset.x_um, pair_offset.y_um] if pair_offset else
                                           [state.hardware.interaction_offset.x_um, state.hardware.interaction_offset.y_um]}
+                elif collective_mz and phase in {'MEASURE', 'RESET'}:
+                    from .collective_mz import compile_collective_mz
+                    gates = tuple(candidates)
+                    plan, resets, evidence = compile_collective_mz(state, gates, atom_roles,
+                        decision=len(log), routing_policy=routing_policy)
+                    extra = {'included_reset_gate_ids': [g.id for g in resets],
+                        'collective_mz_evidence': evidence}
                 else:
                     if intra_services:
                         from .patch_service_groups import select_readout_group

@@ -1,6 +1,6 @@
 # 并行码块的自动 MZ 测量选点
 
-范围提示：下文是旧 rigid/ENV 实现及其历史资格。实际选点排序是候选内完整服务时间优先，不能据 `nearest_mz` 名称声称几何最近。当前[Enola＋MZ 目标](qec_enola_mz_design.md#当前协议入口与生效关系)要求距离优先、等距比较时间、稳定 MZ SLM 支撑；该新适配尚待实现，下述旧结果不替代它。
+范围提示：下文是旧 rigid/ENV 的 `carrier_visits` 实现及其历史资格。实际选点排序是候选内完整服务时间优先，不能据 `nearest_mz` 名称声称几何最近。当前[Enola＋MZ 目标](qec_enola_mz_design.md#当前协议入口与生效关系)要求距离优先、等距比较时间、稳定 MZ SLM 支撑。新的 rigid 前缀[集合服务兼容接入](qec_patch_parallel_layout.md#稳定-slm-集合服务当前兼容接入)已落盘：在每设备完整 home footprint 的合法竖向平移族中按距离选 MZ SLM，保存 full12 初始化/CSS 与首 syndrome 前缀已通过原初态重放与三项独审，见[实际验收摘要](../references/qec_pbc_validation/collective_mz_2026_10_04.json)。该资格为 bounded rigid ENV compatibility collective prefix。它不调用本页的时间优先 picker，也不是 Full Enola＋MZ kernel；下述旧结果不替代新资格。
 
 2026-10-04 用户确认：编译器自动选择 MZ 内最近合法的测量位置。原有有序 QEC 的 `ReadoutPlacementPolicy` 保持；此前 `parallel_patch` 绕过该策略，给 rigid 阵列写死 `translation_um`，是本次修复的入口问题。
 
@@ -26,7 +26,7 @@
 
 ## 默认入口与对照复现
 
-`compile_readout_group`、`compile_dual_reset_prologue`、`run_parallel_patch` 增加 `readout_placement`。标准 routing 默认 `nearest_mz`；显式 `fixed_translation` 保留旧测量端点。历史 `legacy_5um` 路由未指定该参数时仍使用旧固定端点，便于精确复现历史计划。
+在 `--mz-service carrier_visits` 模式中，`compile_readout_group`、`compile_dual_reset_prologue`、`run_parallel_patch` 使用 `readout_placement`。标准 routing 默认 `nearest_mz`；显式 `fixed_translation` 保留旧测量端点。历史 `legacy_5um` 路由未指定该参数时仍使用旧固定端点，便于精确复现历史计划。当前非 legacy 布局＋`--intra-services`＋standard routing 默认 `collective`，因此复现本页历史自动选点必须显式选 `carrier_visits`，不能用新集合服务结果混入下表。
 
 ```powershell
 python examples/run_parallel_shor15_prefix.py `
@@ -34,7 +34,7 @@ python examples/run_parallel_shor15_prefix.py `
   --output artifacts/my-auto-mz-single --patches 1 --layout enola `
   --proposal references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json `
   --intra-patch --intra-services --pair-search `
-  --routing-policy standard --readout-placement nearest_mz
+  --routing-policy standard --readout-placement nearest_mz --mz-service carrier_visits
 ```
 
 完整 12 块用 `--patches 12` 和独立新输出目录。完整 Executor 和原初态重放默认开启；编译机器 wall seconds 与模型 μs 分列。

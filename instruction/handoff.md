@@ -1,5 +1,12 @@
 # 当前交接状态
 
+## 2026-10-04 全体 MZ 汇集重编译
+
+
+用户确认的初始化/末端ancilla统一服务已接入 rigid ENV 前缀兼容入口并真实重新编译。新profile声明221个关闭MZ SLM（含home共442），5μm格点/10μm停车；每设备完整home最近合法竖直平移分别(0,-320)/(0,-70)μm，EZ全world x。算法/资源AOD容量108/24；初始化60/48/48/48/17分5趟汇集→单RESET221，首轮syndrome48/48分2趟→单MEASURE96→单RESET96，两次服务都实际归还。全部3006原门/413投影/96报告、156plans、34.21438814875767ms，原初态完整plan replay与原源/Stim/全几何、patch、集合服务三独立审计PASS。新几何不作同profile加速比较，两AOD运输当前顺序执行；连续碰撞资格来自Executor和完整重放，不能仅凭端点audit宣称。
+
+新真实回放[8778](http://127.0.0.1:8778/#physical-viewer)读取同次recording，旧8777/8780及frozen轻量核保持。完成阶段及发布状态见[本轮日志](logs/2026-10-04-collective-mz-prefix-recompile.md)、[小型验收](../references/qec_pbc_validation/collective_mz_2026_10_04.json)。这是Enola SA初始placement＋当前rigid ENV兼容前缀；完整Enola+MZ轻量内核、单patch连续两轮E03、工厂/injection与完整physical Shor仍OPEN，继续共享S1–S3主线。
+
 ## 2026-10-04 批量 RESET 与终端 MEASURE 标准
 
 用户确认 RESET/最后 MEASURE 应大规模并行联合运到 MZ。已在[唯一协议入口](../docs/qec_enola_mz_design.md#批量-reset-与终端测量用户确认的默认方法)及 E01/E04/E05 目录固化：同阶段跨 patch 合批，区分运输与服务容量，多趟汇集可保持一次服务，分别记录拆分原因。保留实际捕获/运输成本、全 M→R 屏障、测量轴与逐原子报告。PBC cat 终端只合并源依赖允许部分；普通 syndrome 仍只读辅助。此轮是标准与现有实现差异审查，无新编译/物理 PASS；new Enola＋MZ 接入仍 OPEN，冻结源码与旧回放不变。证据及下一项见[本轮日志](logs/2026-10-04-batch-mz-reset-terminal-standard.md)。

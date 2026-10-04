@@ -151,7 +151,10 @@
       "raw_sha256": {
         "docs/qec_pbc_implementation_audit.md": "adb5bf2ef3fe5b68ca39f535e8e9cf8b9d81770f0578b85126683756dd7c1b30"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "docs/qec_pbc_implementation_audit.md": "adb5bf2ef3fe5b68ca39f535e8e9cf8b9d81770f0578b85126683756dd7c1b30"
+      }
     },
     {
       "id": "L02",
@@ -172,7 +175,11 @@
         "docs/qec_logical_pauli.md": "133abab1ad5a3811414e122b6169dbd6135f9e9af409370f82ff6503f7602227",
         "src/neutral_atom_experiments/qec_pbc/logical_pauli.py": "b0e343777a23296ab95f2aebf4b2460cddf3b84c471b22332f29b4b84b1a384f"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "docs/qec_logical_pauli.md": "133abab1ad5a3811414e122b6169dbd6135f9e9af409370f82ff6503f7602227",
+        "src/neutral_atom_experiments/qec_pbc/logical_pauli.py": "b0e343777a23296ab95f2aebf4b2460cddf3b84c471b22332f29b4b84b1a384f"
+      }
     },
     {
       "id": "L03",
@@ -193,7 +200,11 @@
         "docs/qec_magic_injection.md": "4a6ecde4d85fa1b16f0d540b29d783454c22e4253d20096338f9830d250ef6da",
         "src/neutral_atom_experiments/qec_pbc/magic_injection.py": "0b6f6a6c8d528d7d55881349dc49fb6afcfd72a49b2d82c9616040d8826c53c3"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "docs/qec_magic_injection.md": "4a6ecde4d85fa1b16f0d540b29d783454c22e4253d20096338f9830d250ef6da",
+        "src/neutral_atom_experiments/qec_pbc/magic_injection.py": "0b6f6a6c8d528d7d55881349dc49fb6afcfd72a49b2d82c9616040d8826c53c3"
+      }
     },
     {
       "id": "L04",
@@ -217,7 +228,12 @@
         "src/neutral_atom_experiments/qec_pbc/canonical.py": "e01c5251ff67bdb992a1414e070075e769577c9049ba03e8a7c0acf9549dab01",
         "src/neutral_atom_experiments/qec_pbc/baseline.py": "af014b925b0b8d855fac6cb5e1fdf912d944b0b849098dabd8af8ee6b0550861"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "docs/qec_stage_a_baseline.md": "35935a8d1f5a746e1c6c61114150ddac5be1c51583c6f8f2821116d1a344c6f8",
+        "src/neutral_atom_experiments/qec_pbc/canonical.py": "e01c5251ff67bdb992a1414e070075e769577c9049ba03e8a7c0acf9549dab01",
+        "src/neutral_atom_experiments/qec_pbc/baseline.py": "af014b925b0b8d855fac6cb5e1fdf912d944b0b849098dabd8af8ee6b0550861"
+      }
     },
     {
       "id": "L05",
@@ -238,7 +254,11 @@
         "src/neutral_atom_experiments/qec_pbc/ir.py": "be73640d7f27c5dd288a69c4f3fcbe202ea83ddec9b58a497532134bb74df30d",
         "src/neutral_atom_experiments/qec_pbc/lowering.py": "e0933de5cbf5287d1c422b6d40243805e4caeb82947004e12adaea48df00e1c9"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/ir.py": "be73640d7f27c5dd288a69c4f3fcbe202ea83ddec9b58a497532134bb74df30d",
+        "src/neutral_atom_experiments/qec_pbc/lowering.py": "e0933de5cbf5287d1c422b6d40243805e4caeb82947004e12adaea48df00e1c9"
+      }
     },
     {
       "id": "L06",
@@ -259,7 +279,11 @@
         "src/neutral_atom_experiments/surface_ghz.py": "a94f7aabfb3f2390b50317784d43b834aa94f4f1a0d167c90d0d8de38ff09101",
         "src/neutral_atom_experiments/qec_pbc/surface.py": "2a968480e0ecaffadd6d8e1b6492681124aac6c15b108db02344167c39777e1d"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/surface_ghz.py": "a94f7aabfb3f2390b50317784d43b834aa94f4f1a0d167c90d0d8de38ff09101",
+        "src/neutral_atom_experiments/qec_pbc/surface.py": "2a968480e0ecaffadd6d8e1b6492681124aac6c15b108db02344167c39777e1d"
+      }
     },
     {
       "id": "L07",
@@ -283,7 +307,12 @@
         "src/neutral_atom_experiments/qec_pbc/neutral_atom.py": "39f1f5ddf99d2ac4be195428263a587b85fcaaa4675a075dfa75206b164e0471",
         "docs/qec_backend_contract.md": "40eac8be2dd3de3006417d1f9b929cce1303b223fc916a9493f9180ac0ddc856"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/backend_contract.py": "1ba1dd6defdb6e08ff94a0c0b0ec0a1a9aa8f17ad8820f274dd98671b903a37f",
+        "src/neutral_atom_experiments/qec_pbc/neutral_atom.py": "39f1f5ddf99d2ac4be195428263a587b85fcaaa4675a075dfa75206b164e0471",
+        "docs/qec_backend_contract.md": "40eac8be2dd3de3006417d1f9b929cce1303b223fc916a9493f9180ac0ddc856"
+      }
     },
     {
       "id": "L08",
@@ -307,7 +336,12 @@
         "src/neutral_atom_env/quantum/stabilizer.py": "f168304f116416fa55cf489ffade9892a8e7d4aa0ef0ec6b51ed99ba3e3437d7",
         "src/neutral_atom_experiments/qec_pbc/verification.py": "f690e8276cdb3f8f3cc719ba71cbd31a4ea1ebd57efd313da059accf50813141"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "src/neutral_atom_env/domain/models.py": "2f33f7b0fdbe529e113a0244da06fe8d58216749371d2c305d2d90521f31465c",
+        "src/neutral_atom_env/quantum/stabilizer.py": "f168304f116416fa55cf489ffade9892a8e7d4aa0ef0ec6b51ed99ba3e3437d7",
+        "src/neutral_atom_experiments/qec_pbc/verification.py": "f690e8276cdb3f8f3cc719ba71cbd31a4ea1ebd57efd313da059accf50813141"
+      }
     },
     {
       "id": "L09",
@@ -325,7 +359,10 @@
       "raw_sha256": {
         "tests/test_qec_missing_physical_lowering.py": "761b3152477fc31d62e73416d0492d4a3dbacb3c3c3a53942cbf14eb326c763a"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "tests/test_qec_missing_physical_lowering.py": "761b3152477fc31d62e73416d0492d4a3dbacb3c3c3a53942cbf14eb326c763a"
+      }
     },
     {
       "id": "L10",
@@ -346,7 +383,11 @@
         "tests/test_qec_pbc_instrument.py": "641870e94e068790dc897b11d73e9aeedf204e0d21361ee5a29a44d5843e9d20",
         "tests/test_qec_magic_injection.py": "e79832e3faaae02951a6637d091132b497ff015744552097ed37684f4b3047cc"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "tests/test_qec_pbc_instrument.py": "641870e94e068790dc897b11d73e9aeedf204e0d21361ee5a29a44d5843e9d20",
+        "tests/test_qec_magic_injection.py": "e79832e3faaae02951a6637d091132b497ff015744552097ed37684f4b3047cc"
+      }
     },
     {
       "id": "L11",
@@ -367,7 +408,11 @@
         "src/neutral_atom_experiments/qec_pbc/canonical_audit.py": "80115e29cad00faabd224baa13c7657395c44c66aacf108b9ece977331d1c712",
         "tests/test_qec_canonical_audit.py": "09f3dd166ab21025959b0ca87541b02fe3839ea47e3e8a873b1436e4e61898bc"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/canonical_audit.py": "80115e29cad00faabd224baa13c7657395c44c66aacf108b9ece977331d1c712",
+        "tests/test_qec_canonical_audit.py": "09f3dd166ab21025959b0ca87541b02fe3839ea47e3e8a873b1436e4e61898bc"
+      }
     },
     {
       "id": "L12",
@@ -391,7 +436,12 @@
         "src/neutral_atom_experiments/qec_pbc/noise.py": "1fcf4b617a74ed52670430f3ed6ca8d48566137208bbe6018979f1d15929e8f3",
         "src/neutral_atom_experiments/qec_pbc/stim_bridge.py": "14a70c97b7d2ec5211f5724e4720f46febb9d0bf3ce6cb985cf66193a8660788"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "docs/qec_noise_bridge.md": "b98ea4fd1b0e600f9645206008b5b71a2d6d2d340f227abf45bd418b90de8aeb",
+        "src/neutral_atom_experiments/qec_pbc/noise.py": "1fcf4b617a74ed52670430f3ed6ca8d48566137208bbe6018979f1d15929e8f3",
+        "src/neutral_atom_experiments/qec_pbc/stim_bridge.py": "14a70c97b7d2ec5211f5724e4720f46febb9d0bf3ce6cb985cf66193a8660788"
+      }
     },
     {
       "id": "L13",
@@ -409,7 +459,10 @@
       "raw_sha256": {
         "docs/environment_strategy_boundary.md": "42d95311ee6ed1028ca3f4f0e01426afe512bc47d25da4e873930b68afd25a2a"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "docs/environment_strategy_boundary.md": "42d95311ee6ed1028ca3f4f0e01426afe512bc47d25da4e873930b68afd25a2a"
+      }
     },
     {
       "id": "L14",
@@ -430,7 +483,11 @@
         "docs/qec_logical_gadgets.md": "dde3022c02ce21d78ba7a7d26df3b3818c87012df486322b640c1814697ddd4d",
         "src/neutral_atom_experiments/qec_pbc/logical_gadgets.py": "40680be5d1a1903d1c8de43898fd9aaafe357e31fb66524a94d5089c053b6a2c"
       },
-      "sha256_normalization": "text_lf"
+      "sha256_normalization": "text_lf",
+      "current_raw_sha256": {
+        "docs/qec_logical_gadgets.md": "dde3022c02ce21d78ba7a7d26df3b3818c87012df486322b640c1814697ddd4d",
+        "src/neutral_atom_experiments/qec_pbc/logical_gadgets.py": "40680be5d1a1903d1c8de43898fd9aaafe357e31fb66524a94d5089c053b6a2c"
+      }
     },
     {
       "id": "L15",
@@ -457,6 +514,12 @@
         "src/neutral_atom_experiments/qec_pbc/shor15.py": "998cda894ea6f7de12874809da84c77292a7ecb52ae12c2b728438567fc5efa9",
         "examples/run_shor15.py": "d7114602fccb6a7e83529ce96cd4d0946d14b4522bfb302ea880c0777c78405d",
         "tests/test_qec_shor15.py": "edfede12dc8d257795f099ef91949152009d21a26141e4df4394ddff393dfb30"
+      },
+      "current_raw_sha256": {
+        "docs/qec_shor15.md": "f71bb238831c0beefb84f3e0cd97f44b6f9b31b372316764f7a57592561175dd",
+        "src/neutral_atom_experiments/qec_pbc/shor15.py": "998cda894ea6f7de12874809da84c77292a7ecb52ae12c2b728438567fc5efa9",
+        "examples/run_shor15.py": "d7114602fccb6a7e83529ce96cd4d0946d14b4522bfb302ea880c0777c78405d",
+        "tests/test_qec_shor15.py": "edfede12dc8d257795f099ef91949152009d21a26141e4df4394ddff393dfb30"
       }
     },
     {
@@ -478,6 +541,11 @@
         "docs/qec_encoded_ppm.md": "9a21dde36fc12b790b52dfb9620aec1916e5a83c0d4a2d899f76d7ffc64426ed"
       },
       "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_ppm.py": "cad3d643a16b3d83ff09cdf52abd45ce1025b5b973e7d617b729be154606fa20",
+        "tests/test_qec_encoded_ppm.py": "437f46ccf6270b799491cfccb85094e02b49f0a8c9d421ef70107106b4834c75",
+        "docs/qec_encoded_ppm.md": "9a21dde36fc12b790b52dfb9620aec1916e5a83c0d4a2d899f76d7ffc64426ed"
+      },
+      "current_raw_sha256": {
         "src/neutral_atom_experiments/qec_pbc/encoded_ppm.py": "cad3d643a16b3d83ff09cdf52abd45ce1025b5b973e7d617b729be154606fa20",
         "tests/test_qec_encoded_ppm.py": "437f46ccf6270b799491cfccb85094e02b49f0a8c9d421ef70107106b4834c75",
         "docs/qec_encoded_ppm.md": "9a21dde36fc12b790b52dfb9620aec1916e5a83c0d4a2d899f76d7ffc64426ed"
@@ -538,6 +606,21 @@
       },
       "historical_document_normalized_sha256": {
         "docs/qec_shor15_stage.md": "4150c91bf7a74e14c24d5a107a48e6ae682ae83e6c16954eac175b46629abc9a"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_physical.py": "eb580abf3ce475fb3c2cb18448fb3deac64528271e5c121188ef1dc2f4cea288",
+        "examples/run_encoded_parity.py": "8de44cfc4ac9d48b16f8e83002a8438fe90e3fe11bf2b741c52e04621ab5eb1c",
+        "tests/test_qec_encoded_physical.py": "1242cabbeeb5fd3bc54c3b6ee8aac0426ecfdd1e2f6646759c63aea796cc2181",
+        "tests/test_qec_encoded_physical_failure.py": "ea46fed07c73bf6dafb48286083749459d45e6796412a6b25c0c0ba279991835",
+        "src/neutral_atom_strategies/motion/patch_array.py": "afd3a68ffc62aba61b57bd20c0a9be1a1eca60040bebb16a26202b1651348a59",
+        "src/neutral_atom_strategies/scheduling/patch_greedy.py": "63223e3b2b2f043b6560ade35c5823f0ac2c3535c62c295f7aab4601e21eeea3",
+        "tests/test_patch_array_boundary_embedding.py": "cb3dd5088a8341b3706119a300e9b05dfa66f76da5530aa4c412d91d4c7f0d6d",
+        "tests/test_qec_encoded_physical_resume.py": "c4ac584c8333abe950c30fc1950bdcf24a8eff782e2ec25da7008f0440546e56",
+        "src/neutral_atom_env/replay/trace.py": "a3c9840158f00a3689bac09efc87ecfd04e94a1304c01b573e2991bbfd4b86db",
+        "src/neutral_atom_env/simulation/runtime_validation.py": "ce243bb60992f0c19c9a07aa7d362efd4747316efb4433724ebebef844f5cecc",
+        "tests/test_trace_history_cache.py": "f28a30b355570fcd2632bb89578be271d81848cb013a886ad2b55d78311e95d6",
+        "docs/qec_shor15_stage.md": "0defaeef7dfe3c50802a92ddd29a7aca5ddf642e4e7857af1be9c8bed7876ac7",
+        "tests/test_trace_event_cache.py": "28b9664a896d628d575b7b5ce28f084fb479a949ce796f5c05ab821e159f2360"
       }
     },
     {
@@ -562,6 +645,11 @@
         "src/neutral_atom_experiments/qec_pbc/adaptive_pbc.py": "a3295e8a88e5bdaa58cf9bce1121d43c64e2a6b133c379fad95efb5e494c3319",
         "tests/test_qec_adaptive_pbc.py": "15f2583e52d65987eb5de3b85a848792ca3527d1c4960d8e7165825708345244",
         "docs/qec_adaptive_pbc.md": "72cd0402a5fcc64d3d940ed620075b5293f6693f1d69050efe5fbc1a1849fbd6"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/adaptive_pbc.py": "a3295e8a88e5bdaa58cf9bce1121d43c64e2a6b133c379fad95efb5e494c3319",
+        "tests/test_qec_adaptive_pbc.py": "15f2583e52d65987eb5de3b85a848792ca3527d1c4960d8e7165825708345244",
+        "docs/qec_adaptive_pbc.md": "490bac7494a7f4526a3e7bc829fd4c203624134902379cd61bcb8101f26d9eff"
       }
     },
     {
@@ -598,6 +686,15 @@
         "examples/run_shor15_stage.py": "0a7731c35260625eefe4243bb708fe94a6447d5473cdcf3706f49053305f1065",
         "src/neutral_atom_experiments/qec_pbc/shor15_pbc_run.py": "bf2c20200b98d47b2ef07aedde71decefa90cf50122a36724c274fad46ecce41",
         "tests/test_qec_shor15_pbc_run.py": "c60d6cfd53aa88d3d9596f9c0aca8b383451f656ffea49db9ce521b9b2e55456"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/qft_synthesis.py": "e4b7483be8dfb35cd456ac04f874f92503422139838fe54f4fefd4ae9709b33a",
+        "tests/test_qec_qft_synthesis.py": "f3e6da5bc28f7b6d4a8160fad3e3191cb64188ba392022b6ed98a9794989899e",
+        "docs/qec_qft_synthesis.md": "c88b1a732acec612f9c6098979919da9026ecc508afa469f3b269cb027e469a0",
+        "requirements-qft-synthesis.txt": "0efc62e8de8ad343bc08ec70cf81ccac8a0e01218352d6fae70e2ab07146e507",
+        "examples/run_shor15_stage.py": "48136bb8b54f8fba31f87d1ab61f0210a0be6cee23637a3abe6768cf21a00f8b",
+        "src/neutral_atom_experiments/qec_pbc/shor15_pbc_run.py": "bf2c20200b98d47b2ef07aedde71decefa90cf50122a36724c274fad46ecce41",
+        "tests/test_qec_shor15_pbc_run.py": "c60d6cfd53aa88d3d9596f9c0aca8b383451f656ffea49db9ce521b9b2e55456"
       }
     },
     {
@@ -622,6 +719,11 @@
         "src/neutral_atom_experiments/qec_pbc/encoded_composition.py": "c104ddf75469604ca20fac2811fcc170d329f6d40ae1b79185eed57b075c6214",
         "tests/test_qec_encoded_composition.py": "56f72e1810ca9955f04d6f6cd3a5c49d96a2b4d233a3d50a1d0dba2b899b1d03",
         "docs/qec_encoded_composition.md": "bb3ab8a37fcdd5109a8033de10f415794a9d48ef64cfd903c39dfb4adc43c16b"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_composition.py": "c104ddf75469604ca20fac2811fcc170d329f6d40ae1b79185eed57b075c6214",
+        "tests/test_qec_encoded_composition.py": "56f72e1810ca9955f04d6f6cd3a5c49d96a2b4d233a3d50a1d0dba2b899b1d03",
+        "docs/qec_encoded_composition.md": "bb3ab8a37fcdd5109a8033de10f415794a9d48ef64cfd903c39dfb4adc43c16b"
       }
     },
     {
@@ -643,6 +745,10 @@
       "raw_sha256": {
         "tools/audit_shor15_encoding_requirements.py": "459d652208249c99d4c4ce42f0bfc768ba6118203aa216ff00b0d0b88a38635d",
         "docs/qec_shor15_encoding_requirements.md": "0ad823f246add6c92c8b3a47183009f696f1adeac7e2bd124e1fba23b7387ada"
+      },
+      "current_raw_sha256": {
+        "tools/audit_shor15_encoding_requirements.py": "d8e0501b54ea8b7b738ab0adf3516cb4102d8eab202dfc0cd69d4686709953da",
+        "docs/qec_shor15_encoding_requirements.md": "a9020725639c11ef620fc9c3b48846b1866d669f4a6f896fcb46781ff5a6b2e2"
       }
     },
     {
@@ -664,6 +770,10 @@
       "raw_sha256": {
         "docs/qec_mixed_pauli_backend_design.md": "7cb0be18563e8c684e6fa58e2f9fc713bc135a75b80be8eeda1acd8b0474fa36",
         "tools/audit_mixed_pauli_design.py": "c4ce0d7460c83d9f3831b64ec63ae984526f5792daa4595cca24e7945043dfc6"
+      },
+      "current_raw_sha256": {
+        "docs/qec_mixed_pauli_backend_design.md": "7cb0be18563e8c684e6fa58e2f9fc713bc135a75b80be8eeda1acd8b0474fa36",
+        "tools/audit_mixed_pauli_design.py": "c4ce0d7460c83d9f3831b64ec63ae984526f5792daa4595cca24e7945043dfc6"
       }
     },
     {
@@ -683,6 +793,10 @@
         "tests/test_snapshot_digest_memo.py": "51f1f766e7ff594e333bfe0a1078e945782913d143028abc022dbe1afd158d2e"
       },
       "raw_sha256": {
+        "src/neutral_atom_env/replay/snapshot_encoding.py": "93c9a1a44e950517abc191c4fec14f3e5f4604d8bd7d0ba763ab0859a5d32995",
+        "tests/test_snapshot_digest_memo.py": "51f1f766e7ff594e333bfe0a1078e945782913d143028abc022dbe1afd158d2e"
+      },
+      "current_raw_sha256": {
         "src/neutral_atom_env/replay/snapshot_encoding.py": "93c9a1a44e950517abc191c4fec14f3e5f4604d8bd7d0ba763ab0859a5d32995",
         "tests/test_snapshot_digest_memo.py": "51f1f766e7ff594e333bfe0a1078e945782913d143028abc022dbe1afd158d2e"
       }
@@ -712,6 +826,12 @@
         "tests/test_qec_conditional_clifford_frame.py": "cc7948692d0b35d22ee1b8ab0c4fc4c4e3df97d40d116d28ac394e17bde40369",
         "docs/qec_conditional_clifford_frame.md": "f2e2c92d88d4870164e8bab2fafab3f3f5ef3a5136c3e1ce23aeda2b30441c9f",
         "tools/audit_conditional_clifford_frame.py": "7e198b813615d0b86f48db31040a05fe121aee21057a543f3895ae55df6abd82"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/conditional_clifford_frame.py": "a4b1d5aab2543c18d39bc070847fa5c01fd5a5c02dc36758b60626ab470d3b2d",
+        "tests/test_qec_conditional_clifford_frame.py": "cc7948692d0b35d22ee1b8ab0c4fc4c4e3df97d40d116d28ac394e17bde40369",
+        "docs/qec_conditional_clifford_frame.md": "f2e2c92d88d4870164e8bab2fafab3f3f5ef3a5136c3e1ce23aeda2b30441c9f",
+        "tools/audit_conditional_clifford_frame.py": "7e198b813615d0b86f48db31040a05fe121aee21057a543f3895ae55df6abd82"
       }
     },
     {
@@ -733,6 +853,11 @@
         "docs/qec_mixed_xz_cat.md": "137229132f3832e3f7770f37702a4b1a2030733ab98c5c158c866f04803c240d"
       },
       "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/mixed_xz_cat.py": "36541be29f8f3e23d1449d7264baad8d983eb383f085d6dde27874bdb92e5e5b",
+        "tests/test_qec_mixed_xz_cat.py": "26d0701c3eb9ca18ddb40f54c87c683e7cdc1739fbae38d33f56dd621a95d83e",
+        "docs/qec_mixed_xz_cat.md": "137229132f3832e3f7770f37702a4b1a2030733ab98c5c158c866f04803c240d"
+      },
+      "current_raw_sha256": {
         "src/neutral_atom_experiments/qec_pbc/mixed_xz_cat.py": "36541be29f8f3e23d1449d7264baad8d983eb383f085d6dde27874bdb92e5e5b",
         "tests/test_qec_mixed_xz_cat.py": "26d0701c3eb9ca18ddb40f54c87c683e7cdc1739fbae38d33f56dd621a95d83e",
         "docs/qec_mixed_xz_cat.md": "137229132f3832e3f7770f37702a4b1a2030733ab98c5c158c866f04803c240d"
@@ -760,6 +885,11 @@
         "src/neutral_atom_experiments/qec_pbc/encoded_resource_reference.py": "c903a1753b2d7963beb7e720f3aa2bbcbb984df3cd83ec32cd332d2c4e05acce",
         "tests/test_qec_encoded_resource_reference.py": "139d71da5a4a8b47d2dd0b27430e197e43d40d86751a410de6b3312e351cffac",
         "docs/qec_encoded_resource_reference.md": "653bfc48eec6c0c57dc7f3be5e8cafa757216ed754b14e0fe072ecc83a8bd1b3"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_resource_reference.py": "c903a1753b2d7963beb7e720f3aa2bbcbb984df3cd83ec32cd332d2c4e05acce",
+        "tests/test_qec_encoded_resource_reference.py": "139d71da5a4a8b47d2dd0b27430e197e43d40d86751a410de6b3312e351cffac",
+        "docs/qec_encoded_resource_reference.md": "653bfc48eec6c0c57dc7f3be5e8cafa757216ed754b14e0fe072ecc83a8bd1b3"
       }
     },
     {
@@ -779,6 +909,10 @@
         "references/qec_pbc_validation/encoded_xx_physical_export_interruption.json": "487d95cbef0fb0a28af1d67cc36c5815cd56ab5814ad074a53672d3d38408a80"
       },
       "raw_sha256": {
+        "references/qec_pbc_validation/encoded_zz_physical_r3.json": "17825e6b9811b6b17cb3a1e0dd2dbc03cd91ee8773844316db2efebc92d71f83",
+        "references/qec_pbc_validation/encoded_xx_physical_export_interruption.json": "f7eb89967542e8bf1cf16a1a599556343d9a2264800707a885c15b8e2233e571"
+      },
+      "current_raw_sha256": {
         "references/qec_pbc_validation/encoded_zz_physical_r3.json": "17825e6b9811b6b17cb3a1e0dd2dbc03cd91ee8773844316db2efebc92d71f83",
         "references/qec_pbc_validation/encoded_xx_physical_export_interruption.json": "f7eb89967542e8bf1cf16a1a599556343d9a2264800707a885c15b8e2233e571"
       }
@@ -803,6 +937,11 @@
       },
       "raw_sha256": {
         "src/neutral_atom_experiments/qec_pbc/mixed_pauli_cat.py": "dbbe77fff21e83dc0b38bcd9f41e6cded3f1c8453283b9479d7e7e735d320551",
+        "tests/test_qec_mixed_pauli_cat.py": "075b2118df33f5239b6a4ca78bb489cdc21cfea7ea74a328ef7b93e23b2f8afa",
+        "docs/qec_mixed_pauli_cat.md": "befffcdb842a2823e806679cc0a8a564235acbeee3e26caab241f8ccfa364038"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/mixed_pauli_cat.py": "e495a0f58e9a2033ee96089e8136cade739967586579d1f73725abc76165daf9",
         "tests/test_qec_mixed_pauli_cat.py": "075b2118df33f5239b6a4ca78bb489cdc21cfea7ea74a328ef7b93e23b2f8afa",
         "docs/qec_mixed_pauli_cat.md": "befffcdb842a2823e806679cc0a8a564235acbeee3e26caab241f8ccfa364038"
       }
@@ -835,6 +974,13 @@
         "tests/test_qec_encoded_export_recovery.py": "a3c621e7becc59f54ab41df69fb5cb4db1fe32f1fbfed37caca0f9ee224d5f30",
         "docs/qec_encoded_export_recovery.md": "2c1d0a68528cbc1dd8ff2afed872cee700f9c2461f6f8df41c47d1a81ceb248a",
         "tests/test_qec_recovery_prefix_cache.py": "94cfe3f176e50e12b4acba3161bd0c2d2d90762435ccf95d5322f1676c34ac72"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_export_recovery.py": "076f7e0e7c5693696842d75976e5ce7db72e513b7f561cad5870d9559d16b885",
+        "src/neutral_atom_experiments/qec_pbc/encoded_physical.py": "eb580abf3ce475fb3c2cb18448fb3deac64528271e5c121188ef1dc2f4cea288",
+        "tests/test_qec_encoded_export_recovery.py": "a3c621e7becc59f54ab41df69fb5cb4db1fe32f1fbfed37caca0f9ee224d5f30",
+        "docs/qec_encoded_export_recovery.md": "8e14f5089999a3a190e2ec85bcbef461e769f4a5d758d9b849c40c7f6b072647",
+        "tests/test_qec_recovery_prefix_cache.py": "94cfe3f176e50e12b4acba3161bd0c2d2d90762435ccf95d5322f1676c34ac72"
       }
     },
     {
@@ -852,6 +998,9 @@
         "references/qec_pbc_validation/encoded_xx_recovery_export_interruption.json": "15395c1bf8d4ecfed6aa7faad2177fee296426d325b34295af2e1ae7a683449d"
       },
       "raw_sha256": {
+        "references/qec_pbc_validation/encoded_xx_recovery_export_interruption.json": "15395c1bf8d4ecfed6aa7faad2177fee296426d325b34295af2e1ae7a683449d"
+      },
+      "current_raw_sha256": {
         "references/qec_pbc_validation/encoded_xx_recovery_export_interruption.json": "15395c1bf8d4ecfed6aa7faad2177fee296426d325b34295af2e1ae7a683449d"
       }
     },
@@ -877,6 +1026,11 @@
         "src/neutral_atom_experiments/qec_pbc/encoded_injection_reference.py": "321f3639cecf10ec206d55a089a635374d5cbe3a6ed97422cfa1b3f6797cfb5b",
         "tests/test_qec_encoded_injection_reference.py": "ea130c5618fe734cd2b81cbb13efe54ff218199f9ea9b8a585b9d8559a959141",
         "docs/qec_encoded_injection_reference.md": "0ce31498df339e4cd64b48012846c84ebd8123a4e697a2da0600224dcf059b31"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_injection_reference.py": "321f3639cecf10ec206d55a089a635374d5cbe3a6ed97422cfa1b3f6797cfb5b",
+        "tests/test_qec_encoded_injection_reference.py": "ea130c5618fe734cd2b81cbb13efe54ff218199f9ea9b8a585b9d8559a959141",
+        "docs/qec_encoded_injection_reference.md": "0ce31498df339e4cd64b48012846c84ebd8123a4e697a2da0600224dcf059b31"
       }
     },
     {
@@ -896,6 +1050,10 @@
         "references/qec_pbc_validation/encoded_parity_physical_r3.json": "5f4621f25b06a592a4931ea3727cac424f9fca575f633b3aa4a2a93bd4b02389"
       },
       "raw_sha256": {
+        "references/qec_pbc_validation/encoded_xx_physical_r3.json": "9ccacc8ee98bd115e32557520d3b4ea0382c195a9231c3323278d5405ab72197",
+        "references/qec_pbc_validation/encoded_parity_physical_r3.json": "5f4621f25b06a592a4931ea3727cac424f9fca575f633b3aa4a2a93bd4b02389"
+      },
+      "current_raw_sha256": {
         "references/qec_pbc_validation/encoded_xx_physical_r3.json": "9ccacc8ee98bd115e32557520d3b4ea0382c195a9231c3323278d5405ab72197",
         "references/qec_pbc_validation/encoded_parity_physical_r3.json": "5f4621f25b06a592a4931ea3727cac424f9fca575f633b3aa4a2a93bd4b02389"
       }
@@ -922,6 +1080,10 @@
       },
       "historical_document_normalized_sha256": {
         "docs/qec_factoring15_integration_review.md": "e441f6d1e16bdfeb2b45cecba797c43576e80293f4b88cc8c15de61984f8cd49"
+      },
+      "current_raw_sha256": {
+        "docs/qec_factoring15_integration_review.md": "3c0fdbe60d118c19a21170e7fc9052a16c5f6fdc416c5cd4dc4563710541ab0f",
+        "references/qec_pbc_validation/factoring15_review_2026_10_04.json": "6b4806a829fce81b2aff5d37ac74bb9ad5d572bee955c0b9427813c07fe0333d"
       }
     },
     {
@@ -944,6 +1106,9 @@
       "current_source_note": "Explicit latest user policy v2 supersedes mandatory quantum-state/Born backend gates for current S1-S3 scheduling; historical policy claims/raw hashes retained and chunks carry the override.",
       "historical_before_patch_parallel_normalized_sha256": {
         "instruction/qec_factory_pipeline.md": "b07e90dde5fba5ca3d474e9d56456fa9bac1001ee8967d2ea022ceb934559485"
+      },
+      "current_raw_sha256": {
+        "instruction/qec_factory_pipeline.md": "308a8710df419b026f125398b6113a89686e01da168e7afc50dbd4f63cabd77a"
       }
     },
     {
@@ -974,6 +1139,13 @@
         "docs/qec_encoded_shor_native.md": "d0da88180ca652a18937d050cb9a8493e829167c06cbd55600203bf5bdbdccc6",
         "examples/run_encoded_shor15.py": "43788c9ab0a9f9a7c7b63b556b2eebd1245b1ec95c20cf8f9966224d1c37d03f",
         "references/qec_pbc_validation/full_encoded_shor15_native_2026_10_04.json": "f2e464671b98905ad72215aa4c836f57d811ac33e2dc3163e9ba463a9a27c80c"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_shor_native.py": "e04e47657236fe189a48853994a18d2ad6fd62af302abf96eaf61f2d17fcfa34",
+        "tests/test_qec_encoded_shor_native.py": "b03ad5b5a9b606d2e2009214d31316b05f5d4253b4940f71902808fe208b2c4f",
+        "docs/qec_encoded_shor_native.md": "d0da88180ca652a18937d050cb9a8493e829167c06cbd55600203bf5bdbdccc6",
+        "examples/run_encoded_shor15.py": "43788c9ab0a9f9a7c7b63b556b2eebd1245b1ec95c20cf8f9966224d1c37d03f",
+        "references/qec_pbc_validation/full_encoded_shor15_native_2026_10_04.json": "f2e464671b98905ad72215aa4c836f57d811ac33e2dc3163e9ba463a9a27c80c"
       }
     },
     {
@@ -995,6 +1167,11 @@
         "docs/qec_wide_cat_reference.md": "0805d12d4d787af948a5f24aa6cb1ae10a10f6473d58afeb2ea684adf3e9a6cc"
       },
       "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/wide_cat_reference.py": "d506d0fece411bd666ae6df97976ef8d2e45bebde943af5c361d10b465fb4286",
+        "tests/test_qec_wide_cat_reference.py": "247a249d797b121f561e339610d2dd7d804385e5dac7331265af6519aa286fdf",
+        "docs/qec_wide_cat_reference.md": "0805d12d4d787af948a5f24aa6cb1ae10a10f6473d58afeb2ea684adf3e9a6cc"
+      },
+      "current_raw_sha256": {
         "src/neutral_atom_experiments/qec_pbc/wide_cat_reference.py": "d506d0fece411bd666ae6df97976ef8d2e45bebde943af5c361d10b465fb4286",
         "tests/test_qec_wide_cat_reference.py": "247a249d797b121f561e339610d2dd7d804385e5dac7331265af6519aa286fdf",
         "docs/qec_wide_cat_reference.md": "0805d12d4d787af948a5f24aa6cb1ae10a10f6473d58afeb2ea684adf3e9a6cc"
@@ -1031,6 +1208,14 @@
         "examples/serve_encoded_shor15.py": "cebd580694f1d03e2490295886fec7c0dcae19c5252f3c45674025802c6726b5",
         "tools/audit_encoded_shor15_run.py": "dab9b6a80d72c18116eb44bcda78c9189857c20dd5ee1c8321bae0c7ce251f6e",
         "docs/qec_encoded_native_visuals.md": "045331a795aa65b565ae3b3c8614c1eea7bb76f7fa920537892d7c8ac3d1df15"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_native_visuals.py": "a707b63d0d0e4fb39978d8554817eba0b628b3f7eb5f6d1e031e6cfc893cbf93",
+        "src/neutral_atom_experiments/qec_pbc/encoded_native_viewer.html": "98bc9e61c2f91d1793ea8fd688f79ec3e2de8661f04efeb235385dcca55066e9",
+        "tests/test_qec_encoded_native_visuals.py": "b42f666548c5adee44ffac386ca40ed785a6a968426421c8a29ef4a9e63a7fef",
+        "examples/serve_encoded_shor15.py": "cebd580694f1d03e2490295886fec7c0dcae19c5252f3c45674025802c6726b5",
+        "tools/audit_encoded_shor15_run.py": "dab9b6a80d72c18116eb44bcda78c9189857c20dd5ee1c8321bae0c7ce251f6e",
+        "docs/qec_encoded_native_visuals.md": "045331a795aa65b565ae3b3c8614c1eea7bb76f7fa920537892d7c8ac3d1df15"
       }
     },
     {
@@ -1056,10 +1241,10 @@
       "sha256_normalization": "text_lf",
       "sha256": {
         "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
-        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "e4d63356477fcec6c0f2d7b2de69024a47861cc378dbc899c870cbb3a88906f4",
         "tests/test_qec_parallel_prefix.py": "b2792c1e88971c5a41040fbad870110dff488ef31fc2b90d8b47866b3c665fd4",
         "tests/test_native_prefix_packet.py": "4e8c67c6d40efe9926b935ea4042821bf660d539aa2b466f881cf5ab15c92d34",
-        "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
+        "examples/run_parallel_shor15_prefix.py": "63cebb62e888cf81b2d72f21da6a2175d8c844b9dd8fc4dc54b02deee36fea10",
         "examples/export_shor15_prefix_packet.py": "7515ed8cde95ecc37ea3b2f5c5373d35e7ce0f05dfd88e9b8f614f3d4480af3d",
         "tools/audit_native_parallel_physical.py": "0e1f908be88d93c47a911e63426b4dba07a49908bc2eeeef2c18108c7c592fb5",
         "tests/test_native_parallel_independent_audit.py": "ed6804e8b555134234632c615ebfe7d4532d5c00e73c672a0a498d5b2896d439",
@@ -1084,20 +1269,32 @@
         "src/neutral_atom_strategies/scheduling/parallel_patch.py": "fe0d4259b12ff7b39b0aac0f0e918ea898f7f7720c920b1ff96ba899305be868",
         "examples/run_parallel_shor15_prefix.py": "c015c55c6924ffaef7d4ed3e22c0dd218329a53ed45626f2375262aa504c2115"
       },
-      "current_source_note": "Current source after device-aware automatic MZ restoration; historical normalized/raw hashes and fixed endpoint run claims retained.",
+      "current_source_note": "Current source after bounded rigid ENV collective-prefix qualification and final docs/browser QA. Historical raw/historical fingerprint fields and earlier run qualifications retained; Full Enola+MZ lightweight kernel/factory/Shor remain OPEN.",
       "historical_before_routing_standard_sha256": {
         "src/neutral_atom_strategies/scheduling/parallel_patch.py": "2b43d45507b0d5fa07f1118ed15896b1b2913e9f3e946bc8f3c5a0062a6afc0e",
         "examples/run_parallel_shor15_prefix.py": "6076f8486b39fb09fdce9a00b56439fce2d0384cca4ec670e7eeb5d3b6b3d754",
         "docs/qec_native_parallel_prefix.md": "33d874bf701774703dcb7655cc095286a765fed39d64ca2689ab9f41d6ead8c1"
       },
       "current_raw_sha256": {
-        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
-        "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
-        "docs/qec_native_parallel_prefix.md": "6110d4e8a322dd42df9217cee0399cc5261cff53f6aef06703d27c5691eeaec5"
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "e4d63356477fcec6c0f2d7b2de69024a47861cc378dbc899c870cbb3a88906f4",
+        "examples/run_parallel_shor15_prefix.py": "63cebb62e888cf81b2d72f21da6a2175d8c844b9dd8fc4dc54b02deee36fea10",
+        "docs/qec_native_parallel_prefix.md": "6110d4e8a322dd42df9217cee0399cc5261cff53f6aef06703d27c5691eeaec5",
+        "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
+        "tests/test_qec_parallel_prefix.py": "b2792c1e88971c5a41040fbad870110dff488ef31fc2b90d8b47866b3c665fd4",
+        "tests/test_native_prefix_packet.py": "4e8c67c6d40efe9926b935ea4042821bf660d539aa2b466f881cf5ab15c92d34",
+        "examples/export_shor15_prefix_packet.py": "7515ed8cde95ecc37ea3b2f5c5373d35e7ce0f05dfd88e9b8f614f3d4480af3d",
+        "tools/audit_native_parallel_physical.py": "0e1f908be88d93c47a911e63426b4dba07a49908bc2eeeef2c18108c7c592fb5",
+        "tests/test_native_parallel_independent_audit.py": "ed6804e8b555134234632c615ebfe7d4532d5c00e73c672a0a498d5b2896d439",
+        "references/qec_pbc_validation/native_parallel_physical_2026_10_04.json": "3a4512195593b7bd8a798e7552d7e77d91cb9f10f1638b91f7eee38b912a7391",
+        "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04/manifest.json": "171a7bf91d7e6117aed287f2a720b12a776b5f5a0acfdf3ddbdc3a447fa3a7ff"
       },
       "historical_before_auto_mz_sha256": {
         "src/neutral_atom_strategies/scheduling/parallel_patch.py": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
         "examples/run_parallel_shor15_prefix.py": "3efa96a41376a6cfa45db6516234bbf978d8f4f178fc36c9377c83ee3c39e351"
+      },
+      "historical_before_collective_mz_current_sha256": {
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
+        "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55"
       }
     },
     {
@@ -1146,6 +1343,19 @@
         "src/neutral_atom_env/replay/checkpoint.py": "ae918e0696ecbc249bf534522d9ef58ac2726c1ae2b310f794ae641dea52f840",
         "tests/test_multi_aod.py": "77502c1300fb90aad52c28af8e4bd286aedddcc1f0c940bfc0fe4c53232ca37c",
         "docs/multi_aod_contract.md": "87db266265d1d9067afd3b7886a172aca22aa7d40da3cd95648a8068b8a0dfd0"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_env/hardware/multi_aod.py": "3728bc327fe026943121d323ea5376e137abc8128dcdc28ffa2711e3fdb62286",
+        "src/neutral_atom_env/domain/models.py": "2f33f7b0fdbe529e113a0244da06fe8d58216749371d2c305d2d90521f31465c",
+        "src/neutral_atom_env/domain/operations.py": "cb6f689f0d23e030c5cfa7b1752a292f080995d5e6590d074e587ec3bcbff331",
+        "src/neutral_atom_env/simulation/state.py": "7ca64d115776002bd2a18ba35a151c2c47c333a25802dabb319877c493ac7c8a",
+        "src/neutral_atom_env/simulation/operation_program.py": "8d28b8ee4f44679abca83ad5d330128f017e945ae16533f6700c46fd9d82561b",
+        "src/neutral_atom_env/environment.py": "c980f4d71534f069f354765e4299da01386d4fac44cbf24865f81422b5d3ed90",
+        "src/neutral_atom_env/program/scheduled.py": "d482a4e0d1ed37b93b6ce3b8230b9be984648754b38631c7dc87eee0eef3f673",
+        "src/neutral_atom_env/program/task_validation.py": "36774d071aba9063375508b6c657dbee5e80df2e176ac79221bf0b148cf081b7",
+        "src/neutral_atom_env/replay/checkpoint.py": "ae918e0696ecbc249bf534522d9ef58ac2726c1ae2b310f794ae641dea52f840",
+        "tests/test_multi_aod.py": "77502c1300fb90aad52c28af8e4bd286aedddcc1f0c940bfc0fe4c53232ca37c",
+        "docs/multi_aod_contract.md": "87db266265d1d9067afd3b7886a172aca22aa7d40da3cd95648a8068b8a0dfd0"
       }
     },
     {
@@ -1170,10 +1380,10 @@
       "sha256": {
         "src/neutral_atom_env/visualization/recording.py": "c8c842762453fd97b121e9fa63bed09ee67de7e4a83485402d974f386c00043c",
         "src/neutral_atom_env/visualization/viewer.js": "b31b4557771d613eaf410eabf35a776da5dd4f5f490dc1702563967e63cb0a81",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
-        "examples/serve_native_parallel.py": "e7e176be9da806a3ecc167cedd18c394b9f344af047f6befc18b7598096ef335",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f8e387b303fbcc6b85524c7bd46b229f6d46450626b8c723647a889dfb064b88",
+        "examples/serve_native_parallel.py": "5b00bc6ace95d1c909ba397b75dce52597f2064b90249725ed1adab53fa7f988",
         "tests/test_multi_aod_visualization.py": "6e8150916b612e08e853f8c922f9ddc39d2a738a72c48631c799d5436c2b8804",
-        "tests/test_native_parallel_report.py": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3",
+        "tests/test_native_parallel_report.py": "489ee71d90548eda474dae077d85fa6cbf66151273ded5fa56003a8805089811",
         "tests/viewer_fit_resize.cjs": "13b7dc002cf03b6ec652c7ff92d053525450e1c01f5ad5105a501eff58d90f08",
         "tests/multi_aod_viewer.cjs": "b81dc7f14add3c6a8e3e60a2c45c7b4e08e7195ab2258a00883f04d727075fbc",
         "docs/multi_aod_visualization.md": "b9390a107da6bef8bc2844264eecc130a90f29d39cad6946a3e5c88c7a87e05c"
@@ -1194,20 +1404,32 @@
         "examples/serve_native_parallel.py": "5fc1dfd161a0487e70f17a6a709244311c3a6827e9e5343f9273d1e1d14dd898",
         "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146"
       },
-      "current_source_note": "Current normalized sources after global-x EZ / scheduled start-end / cubic motion qualification; old raw_sha256 and historical claim/result payloads remain unchanged.",
+      "current_source_note": "Current source after bounded rigid ENV collective-prefix qualification and final docs/browser QA. Historical raw/historical fingerprint fields and earlier run qualifications retained; Full Enola+MZ lightweight kernel/factory/Shor remain OPEN.",
       "historical_before_routing_standard_sha256": {
         "src/neutral_atom_env/visualization/viewer.js": "995fc9ed672fd9a9bb5d758d4faa1a26edb51afeb4fd225c3bcff2849e1d1691",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04"
       },
       "current_raw_sha256": {
         "src/neutral_atom_env/visualization/viewer.js": "d94c591e6c2260c695299dec7d7e05732524127d6d186104645e65b90343d92c",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01"
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f8e387b303fbcc6b85524c7bd46b229f6d46450626b8c723647a889dfb064b88",
+        "src/neutral_atom_env/visualization/recording.py": "908aa3886d9e53f25053dadcc66f54de1669b654edd48895d32714f85fd7c8bd",
+        "examples/serve_native_parallel.py": "5b00bc6ace95d1c909ba397b75dce52597f2064b90249725ed1adab53fa7f988",
+        "tests/test_multi_aod_visualization.py": "6e8150916b612e08e853f8c922f9ddc39d2a738a72c48631c799d5436c2b8804",
+        "tests/test_native_parallel_report.py": "489ee71d90548eda474dae077d85fa6cbf66151273ded5fa56003a8805089811",
+        "tests/viewer_fit_resize.cjs": "13b7dc002cf03b6ec652c7ff92d053525450e1c01f5ad5105a501eff58d90f08",
+        "tests/multi_aod_viewer.cjs": "b81dc7f14add3c6a8e3e60a2c45c7b4e08e7195ab2258a00883f04d727075fbc",
+        "docs/multi_aod_visualization.md": "b9390a107da6bef8bc2844264eecc130a90f29d39cad6946a3e5c88c7a87e05c"
       },
       "historical_before_auto_mz_sha256": {
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac"
       },
       "historical_before_global_ez_scheduled_kernel_sha256": {
         "src/neutral_atom_env/visualization/viewer.js": "e5d90aead573d5c2473fa96a9e751793bd80bf7431e8e44f74da2536b6ecd2e8"
+      },
+      "historical_before_collective_mz_current_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
+        "examples/serve_native_parallel.py": "e7e176be9da806a3ecc167cedd18c394b9f344af047f6befc18b7598096ef335",
+        "tests/test_native_parallel_report.py": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3"
       }
     },
     {
@@ -1230,12 +1452,12 @@
       "sha256_normalization": "text_lf",
       "sha256": {
         "docs/qec_viewer_presentation.md": "a74b98a10dee1ce0b79771b3299b3ab93e51e1ae18f5bcb890c491c7fa031749",
-        "instruction/visualization.md": "85a8f1b5aadcef9e1092843a5de536672de5340c6b495ed6503f58de09e053c8",
+        "instruction/visualization.md": "c9fc12bae402e50aa92b710d64b57acb641dbd76e61ffb2eba43ccc9d5a4f294",
         "src/neutral_atom_env/visualization/viewer.js": "b31b4557771d613eaf410eabf35a776da5dd4f5f490dc1702563967e63cb0a81",
         "src/neutral_atom_env/visualization/viewer-shell.html": "1307769aaf756e4d4a6a40fa9b50e7956dc7eb8c63b6aa045a2941d4fe0b9f19",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f8e387b303fbcc6b85524c7bd46b229f6d46450626b8c723647a889dfb064b88",
         "tests/viewer_qec_scale.cjs": "2bddb0449c3482cb127915bff188a2cc8ce0db12eef47a9c07edbba36d9d33e5",
-        "tests/test_native_parallel_report.py": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3",
+        "tests/test_native_parallel_report.py": "489ee71d90548eda474dae077d85fa6cbf66151273ded5fa56003a8805089811",
         "references/qec_pbc_validation/qec_viewer_presentation_2026_10_04.json": "ffa9a395c3d1f567c482d79af8fa3b5d9d7e1660f7ea19244926f25db64f333c"
       },
       "raw_sha256": {
@@ -1253,7 +1475,7 @@
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "132418f42686b2013c8686e52a4505c7d9afb135abb36bba4edca361f93b3f11",
         "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146"
       },
-      "current_source_note": "Current normalized sources after global-x EZ / scheduled start-end / cubic motion qualification; old raw_sha256 and historical claim/result payloads remain unchanged.",
+      "current_source_note": "Current source after bounded rigid ENV collective-prefix qualification and final docs/browser QA. Historical raw/historical fingerprint fields and earlier run qualifications retained; Full Enola+MZ lightweight kernel/factory/Shor remain OPEN.",
       "historical_before_routing_standard_sha256": {
         "src/neutral_atom_env/visualization/viewer.js": "995fc9ed672fd9a9bb5d758d4faa1a26edb51afeb4fd225c3bcff2849e1d1691",
         "src/neutral_atom_env/visualization/viewer-shell.html": "4cc971635687c19eb7b3abde78d8d3127591a3d7d0cfa364d435c7767da5f795",
@@ -1262,13 +1484,23 @@
       "current_raw_sha256": {
         "src/neutral_atom_env/visualization/viewer.js": "d94c591e6c2260c695299dec7d7e05732524127d6d186104645e65b90343d92c",
         "src/neutral_atom_env/visualization/viewer-shell.html": "3a28e9396bf16f90ed5ca46ccdf619f7c4bb87d1e5c2b3f8c8699fee8f5cc66c",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01"
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f8e387b303fbcc6b85524c7bd46b229f6d46450626b8c723647a889dfb064b88",
+        "docs/qec_viewer_presentation.md": "a74b98a10dee1ce0b79771b3299b3ab93e51e1ae18f5bcb890c491c7fa031749",
+        "instruction/visualization.md": "b8d29eb54555d446109b2249bec370ef80ccc79ef10ecdd740fed8df965e0b11",
+        "tests/viewer_qec_scale.cjs": "dee926dea389dc61a35d351c44a1cdedbe29cf298bad63b43e022658be7f5bbd",
+        "tests/test_native_parallel_report.py": "489ee71d90548eda474dae077d85fa6cbf66151273ded5fa56003a8805089811",
+        "references/qec_pbc_validation/qec_viewer_presentation_2026_10_04.json": "43e49ad55428b461d5fb550be05dc020535893ec469f52a3d86f022794d40cf4"
       },
       "historical_before_auto_mz_sha256": {
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac"
       },
       "historical_before_global_ez_scheduled_kernel_sha256": {
         "src/neutral_atom_env/visualization/viewer.js": "e5d90aead573d5c2473fa96a9e751793bd80bf7431e8e44f74da2536b6ecd2e8"
+      },
+      "historical_before_collective_mz_current_sha256": {
+        "instruction/visualization.md": "85a8f1b5aadcef9e1092843a5de536672de5340c6b495ed6503f58de09e053c8",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
+        "tests/test_native_parallel_report.py": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3"
       }
     },
     {
@@ -1303,12 +1535,12 @@
       "retrieved_at": "2026-10-04",
       "sha256_normalization": "text_lf",
       "sha256": {
-        "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "79ae4023fb039978ba243891c8e9e0ca14096a9dfe54b1e8dabb7d6e2fe1bc2f",
-        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
+        "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "0b4c8a7051010dda65d67fd281c2c7758965299f68066b2ddd1c9dcd0a7c9864",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "e4d63356477fcec6c0f2d7b2de69024a47861cc378dbc899c870cbb3a88906f4",
         "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
-        "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
-        "examples/serve_native_parallel.py": "e7e176be9da806a3ecc167cedd18c394b9f344af047f6befc18b7598096ef335",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f8e387b303fbcc6b85524c7bd46b229f6d46450626b8c723647a889dfb064b88",
+        "examples/run_parallel_shor15_prefix.py": "63cebb62e888cf81b2d72f21da6a2175d8c844b9dd8fc4dc54b02deee36fea10",
+        "examples/serve_native_parallel.py": "5b00bc6ace95d1c909ba397b75dce52597f2064b90249725ed1adab53fa7f988",
         "tools/propose_enola_patch_layout.py": "2ece8100d659affb49ddcf6fc1ddcd76e5f6c43b215a9b1b493a71934c28bbc1",
         "tools/audit_enola_patch_proposal.py": "f220c22576f47200ab0169815ae2c975a1a9a6833cb74e015315421af64896c6",
         "tools/audit_patch_parallel_layout.py": "d3810f0b8d8dbc816f255232627dd2415e51035abba1539b5ebc657c7bee42e3",
@@ -1317,11 +1549,11 @@
         "tests/test_enola_patch_endpoint_audit.py": "40d01628842a170516f1d67f027d844d56cf1b2a7c7bb505ebfa5b5b97ca9899",
         "tests/test_patch_parallel_audit.py": "43426be91c2fe1159b6581ddb4c4b17783d87991b70adbc2c8312eac67df7731",
         "tests/test_patch_service_groups.py": "c109ca8e681e9b83afdef3271ded000ee9c8ce788301f359f381981a519f7189",
-        "tests/test_native_parallel_report.py": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3",
-        "instruction/compiler_contract.md": "530ab801f5781368aa6d8d64844c3f0d855f777d8e2057d1ddb31fcfd189aef3",
+        "tests/test_native_parallel_report.py": "489ee71d90548eda474dae077d85fa6cbf66151273ded5fa56003a8805089811",
+        "instruction/compiler_contract.md": "506c72f0feb333ea845c78b276080f1f77c3493d4c58ba2b3d15e7374845f0d2",
         "instruction/aod_backends.md": "3cd97b0c94481643ba56da41b93469f847dbf2b76779ab417b54ee001b5e5ca9",
-        "instruction/visualization.md": "85a8f1b5aadcef9e1092843a5de536672de5340c6b495ed6503f58de09e053c8",
-        "docs/qec_patch_parallel_layout.md": "96b6dcc783acfa7beea90402f000e56f4a2cb662aebbd5d69ca3202a594de261",
+        "instruction/visualization.md": "c9fc12bae402e50aa92b710d64b57acb641dbd76e61ffb2eba43ccc9d5a4f294",
+        "docs/qec_patch_parallel_layout.md": "fa383fbc22ae6a9560f41e4f6345b548545ee048cf09a51dd549ce8883fea3d0",
         "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json": "7d80808959f235952461b25ee81f8236b6b8c4966293b40f765bfba0be5cedf1",
         "references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json": "dd15ca36de8eca15a5b4f8895437b2cfd9781161237f686f5adab50cba754fa4"
       },
@@ -1360,18 +1592,45 @@
         "docs/qec_patch_parallel_layout.md": "9518211b9d0d6ac3c6809a4cb28cc15a4880bd36fa3512b4c4db21853eef0dda"
       },
       "current_raw_sha256": {
-        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
-        "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
-        "instruction/compiler_contract.md": "bc3d4f46c5c58c484313a25a838d8a624b2480e60941ab9a03cebb42d33f6a1b",
-        "docs/qec_patch_parallel_layout.md": "96b6dcc783acfa7beea90402f000e56f4a2cb662aebbd5d69ca3202a594de261"
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "e4d63356477fcec6c0f2d7b2de69024a47861cc378dbc899c870cbb3a88906f4",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f8e387b303fbcc6b85524c7bd46b229f6d46450626b8c723647a889dfb064b88",
+        "examples/run_parallel_shor15_prefix.py": "63cebb62e888cf81b2d72f21da6a2175d8c844b9dd8fc4dc54b02deee36fea10",
+        "instruction/compiler_contract.md": "ece0b5aaa6d6709e5480d72aa64bb9d981bb2c0ccde6d10b8bd459852eac31ce",
+        "docs/qec_patch_parallel_layout.md": "ae11605c316d09c81ec0b15a4477fcb02a8aef60e9874035ecd0c8bf62e9bb44",
+        "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "0b4c8a7051010dda65d67fd281c2c7758965299f68066b2ddd1c9dcd0a7c9864",
+        "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806",
+        "examples/serve_native_parallel.py": "5b00bc6ace95d1c909ba397b75dce52597f2064b90249725ed1adab53fa7f988",
+        "tools/propose_enola_patch_layout.py": "2ece8100d659affb49ddcf6fc1ddcd76e5f6c43b215a9b1b493a71934c28bbc1",
+        "tools/audit_enola_patch_proposal.py": "f220c22576f47200ab0169815ae2c975a1a9a6833cb74e015315421af64896c6",
+        "tools/audit_patch_parallel_layout.py": "d3810f0b8d8dbc816f255232627dd2415e51035abba1539b5ebc657c7bee42e3",
+        "tests/test_qec_patch_layout.py": "7e25b7a28a03b0f45ae669428fcbc7c7ede0951ba9a82f24b337b1a5da2d0398",
+        "tests/test_enola_patch_layout.py": "6f88b5e9c0034e7b8eeebd6505286f1baacdc9c716a962af1ba0c5c962ba8d4d",
+        "tests/test_enola_patch_endpoint_audit.py": "40d01628842a170516f1d67f027d844d56cf1b2a7c7bb505ebfa5b5b97ca9899",
+        "tests/test_patch_parallel_audit.py": "43426be91c2fe1159b6581ddb4c4b17783d87991b70adbc2c8312eac67df7731",
+        "tests/test_patch_service_groups.py": "c109ca8e681e9b83afdef3271ded000ee9c8ce788301f359f381981a519f7189",
+        "tests/test_native_parallel_report.py": "489ee71d90548eda474dae077d85fa6cbf66151273ded5fa56003a8805089811",
+        "instruction/aod_backends.md": "aab8581cdc6e59dc2c606affc5efbc32de9d544d858b1f8f3665e937567645ee",
+        "instruction/visualization.md": "b8d29eb54555d446109b2249bec370ef80ccc79ef10ecdd740fed8df965e0b11",
+        "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
+        "references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json": "ba4ad2aa34c5a7862999c14dc3f22b02806c6ac628b98874d3870818b20db0cf"
       },
-      "current_source_note": "Current source after device-aware automatic MZ restoration; historical normalized/raw hashes and fixed endpoint run claims retained.",
+      "current_source_note": "Current source after bounded rigid ENV collective-prefix qualification and final docs/browser QA. Historical raw/historical fingerprint fields and earlier run qualifications retained; Full Enola+MZ lightweight kernel/factory/Shor remain OPEN.",
       "historical_before_auto_mz_sha256": {
         "src/neutral_atom_strategies/scheduling/parallel_patch.py": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac",
         "examples/run_parallel_shor15_prefix.py": "3efa96a41376a6cfa45db6516234bbf978d8f4f178fc36c9377c83ee3c39e351",
         "instruction/compiler_contract.md": "c66d8f118dbf62a267ba2d8c492c35636a82a62a12851af9986f63ded95f1943"
+      },
+      "historical_before_collective_mz_current_sha256": {
+        "docs/qec_patch_parallel_layout.md": "96b6dcc783acfa7beea90402f000e56f4a2cb662aebbd5d69ca3202a594de261",
+        "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "79ae4023fb039978ba243891c8e9e0ca14096a9dfe54b1e8dabb7d6e2fe1bc2f",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
+        "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
+        "examples/serve_native_parallel.py": "e7e176be9da806a3ecc167cedd18c394b9f344af047f6befc18b7598096ef335",
+        "tests/test_native_parallel_report.py": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3",
+        "instruction/compiler_contract.md": "530ab801f5781368aa6d8d64844c3f0d855f777d8e2057d1ddb31fcfd189aef3",
+        "instruction/visualization.md": "85a8f1b5aadcef9e1092843a5de536672de5340c6b495ed6503f58de09e053c8"
       }
     },
     {
@@ -1423,17 +1682,17 @@
         "src/neutral_atom_strategies/motion/validated_rigid.py": "bb9b3262fd3cfcc9988342df3b45b33e20d5a88c5d65030b48c8388ee05732a3",
         "src/neutral_atom_strategies/motion/astar.py": "78ddc80a34bdbe03af26765ce9ee9e4f16955712e12b14aa2059545e1f9f2c2c",
         "src/neutral_atom_strategies/motion/planners.py": "e577442e601b4b8e54ad58cf60356c952523ce5c0f92ad30d61cd47987cb8fd3",
-        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
-        "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "e4d63356477fcec6c0f2d7b2de69024a47861cc378dbc899c870cbb3a88906f4",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f8e387b303fbcc6b85524c7bd46b229f6d46450626b8c723647a889dfb064b88",
+        "examples/run_parallel_shor15_prefix.py": "63cebb62e888cf81b2d72f21da6a2175d8c844b9dd8fc4dc54b02deee36fea10",
         "tests/test_validated_rigid_routes.py": "174cf72d2e79e9abe45a57e3c969bb1f674c66e9367b724d67541ec030cd3fa6",
         "tests/test_astar_routes.py": "0c7ba8771d5663e9c7e81cb53d6d94f3002fd78a9fc70b6f66f7f419bf82ee39",
         "src/neutral_atom_env/visualization/viewer.js": "b31b4557771d613eaf410eabf35a776da5dd4f5f490dc1702563967e63cb0a81",
         "src/neutral_atom_env/visualization/viewer-shell.html": "1307769aaf756e4d4a6a40fa9b50e7956dc7eb8c63b6aa045a2941d4fe0b9f19",
         "instruction/motion_planning.md": "717704f262f777960f8ff4587438725de24972a5216e71377f32486ab7163470",
-        "instruction/compiler_contract.md": "530ab801f5781368aa6d8d64844c3f0d855f777d8e2057d1ddb31fcfd189aef3",
+        "instruction/compiler_contract.md": "506c72f0feb333ea845c78b276080f1f77c3493d4c58ba2b3d15e7374845f0d2",
         "docs/qec_routing_standard.md": "5ae23cfff3969cfeae2de16c1eb90c665fc8bd630356c3777e7571f11501ff64",
-        "docs/qec_patch_parallel_layout.md": "96b6dcc783acfa7beea90402f000e56f4a2cb662aebbd5d69ca3202a594de261",
+        "docs/qec_patch_parallel_layout.md": "fa383fbc22ae6a9560f41e4f6345b548545ee048cf09a51dd549ce8883fea3d0",
         "references/qec_pbc_validation/routing_standard_2026_10_04.json": "96ce7d43179d7e64318fdd1274a950d1f4d172c37b70021fe76aaa3dd9dbccbe"
       },
       "raw_sha256": {
@@ -1459,13 +1718,22 @@
       },
       "current_raw_sha256": {
         "docs/qec_routing_standard.md": "be0b2c1191975c7e9aad91c21426f089d8905a0b25ccfce859f1b45900b32c13",
-        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
-        "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
-        "instruction/compiler_contract.md": "bc3d4f46c5c58c484313a25a838d8a624b2480e60941ab9a03cebb42d33f6a1b",
-        "src/neutral_atom_env/visualization/viewer.js": "d94c591e6c2260c695299dec7d7e05732524127d6d186104645e65b90343d92c"
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "e4d63356477fcec6c0f2d7b2de69024a47861cc378dbc899c870cbb3a88906f4",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f8e387b303fbcc6b85524c7bd46b229f6d46450626b8c723647a889dfb064b88",
+        "examples/run_parallel_shor15_prefix.py": "63cebb62e888cf81b2d72f21da6a2175d8c844b9dd8fc4dc54b02deee36fea10",
+        "instruction/compiler_contract.md": "ece0b5aaa6d6709e5480d72aa64bb9d981bb2c0ccde6d10b8bd459852eac31ce",
+        "src/neutral_atom_env/visualization/viewer.js": "d94c591e6c2260c695299dec7d7e05732524127d6d186104645e65b90343d92c",
+        "docs/qec_patch_parallel_layout.md": "ae11605c316d09c81ec0b15a4477fcb02a8aef60e9874035ecd0c8bf62e9bb44",
+        "src/neutral_atom_strategies/motion/validated_rigid.py": "bb9b3262fd3cfcc9988342df3b45b33e20d5a88c5d65030b48c8388ee05732a3",
+        "src/neutral_atom_strategies/motion/astar.py": "81af36805971b394d20e555ca7e1938b49178c1fd995d304ffd592d43cd3436d",
+        "src/neutral_atom_strategies/motion/planners.py": "2809ae1e31db130c73882d8c859b02dc31bc504bd9f6db18341c6f51851f30db",
+        "tests/test_validated_rigid_routes.py": "174cf72d2e79e9abe45a57e3c969bb1f674c66e9367b724d67541ec030cd3fa6",
+        "tests/test_astar_routes.py": "02dad3d0dedeb2637a371f125e9c84bd81425084bf6ca2662e41fb44fbae21b8",
+        "src/neutral_atom_env/visualization/viewer-shell.html": "3a28e9396bf16f90ed5ca46ccdf619f7c4bb87d1e5c2b3f8c8699fee8f5cc66c",
+        "instruction/motion_planning.md": "d267965e87655a8c5c41225d1fb43ee3fc1b66a8848d99646a8ac7b6048eb638",
+        "references/qec_pbc_validation/routing_standard_2026_10_04.json": "73de3b64d9db0dbb98cd61207ae0fa193218a2625af99a2d1b1a89c9a465f781"
       },
-      "current_source_note": "Protocol/demo scope reconciliation only; source code, old raw hashes and historical run claims retained.",
+      "current_source_note": "Current source after bounded rigid ENV collective-prefix qualification and final docs/browser QA. Historical raw/historical fingerprint fields and earlier run qualifications retained; Full Enola+MZ lightweight kernel/factory/Shor remain OPEN.",
       "historical_before_auto_mz_sha256": {
         "src/neutral_atom_strategies/scheduling/parallel_patch.py": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac",
@@ -1478,6 +1746,13 @@
       },
       "historical_before_protocol_demo_reconciliation_sha256": {
         "docs/qec_routing_standard.md": "0cce1f23f3d22dfe3f0e929846950cb873ef426124f2863ac17faf8e08bfd6a7"
+      },
+      "historical_before_collective_mz_current_sha256": {
+        "docs/qec_patch_parallel_layout.md": "96b6dcc783acfa7beea90402f000e56f4a2cb662aebbd5d69ca3202a594de261",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
+        "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
+        "instruction/compiler_contract.md": "530ab801f5781368aa6d8d64844c3f0d855f777d8e2057d1ddb31fcfd189aef3"
       }
     },
     {
@@ -1503,13 +1778,13 @@
       ],
       "sha256_normalization": "text_lf",
       "sha256": {
-        "docs/qec_rigid_readout_placement.md": "07ff2ced396c3728a652cf88e03a097ec2d16b4164daef74eb4774d6cb9d7a42",
+        "docs/qec_rigid_readout_placement.md": "175bb3dcf06ed8a09abf555c2caf4dfd8caf87bfa4b153559132d04599721d89",
         "docs/readout_placement_policy.md": "5ca040fee51190ade54fb1226c00a7fdca5c27f8aaebf4065d59e7678777024b",
         "src/neutral_atom_strategies/scheduling/rigid_readout_placement.py": "3176758914f35e05f1260ca305ada494c95ff2a679b380b5a4f236a073c1aa23",
-        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "e4d63356477fcec6c0f2d7b2de69024a47861cc378dbc899c870cbb3a88906f4",
         "src/neutral_atom_strategies/scheduling/readout_placement.py": "268fb62c167bc482042b09298f9758165a5078596f741a017c99ded7a219b9bb",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
-        "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f8e387b303fbcc6b85524c7bd46b229f6d46450626b8c723647a889dfb064b88",
+        "examples/run_parallel_shor15_prefix.py": "63cebb62e888cf81b2d72f21da6a2175d8c844b9dd8fc4dc54b02deee36fea10",
         "tools/audit_rigid_readout_placement.py": "fa35633c2e54bfd3265a2eb6468e3c712862e8d97691ad9ba747213bb14efc09",
         "tests/test_rigid_readout_placement.py": "653e42d89004fda2a3405989c1957e1dd88677d4ff917c921c7d56f089bc6cb4",
         "tests/test_parallel_readout_placement.py": "613dc901d7aacff35a9007ed1b4ba8238e0d144d75a57ffdec8d4ba0483dd194",
@@ -1537,9 +1812,27 @@
         "docs/qec_rigid_readout_placement.md": "d103b07aeaca60f5f96d23d1c31c88c80c3813638ca3dd977fb8946682679492"
       },
       "current_raw_sha256": {
-        "docs/qec_rigid_readout_placement.md": "88f6f19a45296a995998fad0c77ca9f337bf7ea78edcf330973ac959415b56f3"
+        "docs/qec_rigid_readout_placement.md": "b273b043eeae8a8022e68787c75590459976dd46f210326528c0ca60ce5a4359",
+        "docs/readout_placement_policy.md": "a0967208b52dfc53f6ee4a3cb79852172c4b2663312565d393e7b8cdd86faef2",
+        "src/neutral_atom_strategies/scheduling/rigid_readout_placement.py": "3176758914f35e05f1260ca305ada494c95ff2a679b380b5a4f236a073c1aa23",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "e4d63356477fcec6c0f2d7b2de69024a47861cc378dbc899c870cbb3a88906f4",
+        "src/neutral_atom_strategies/scheduling/readout_placement.py": "d8f7edb96a2475f9cb53eb0da7a45a2c8dbc0c0bd0274520ac61436b66164425",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f8e387b303fbcc6b85524c7bd46b229f6d46450626b8c723647a889dfb064b88",
+        "examples/run_parallel_shor15_prefix.py": "63cebb62e888cf81b2d72f21da6a2175d8c844b9dd8fc4dc54b02deee36fea10",
+        "tools/audit_rigid_readout_placement.py": "fa35633c2e54bfd3265a2eb6468e3c712862e8d97691ad9ba747213bb14efc09",
+        "tests/test_rigid_readout_placement.py": "653e42d89004fda2a3405989c1957e1dd88677d4ff917c921c7d56f089bc6cb4",
+        "tests/test_parallel_readout_placement.py": "613dc901d7aacff35a9007ed1b4ba8238e0d144d75a57ffdec8d4ba0483dd194",
+        "tests/test_rigid_readout_audit.py": "0aaf3e1e03fee07a894dfe1fa38d3e81deedf61d6d782387c0711c8562462126",
+        "tests/test_native_readout_report.py": "9d2840739be756a6c73172c2a9e952f8dc10033b0c43972eb5fc033fc955446f",
+        "references/qec_pbc_validation/auto_mz_placement_2026_10_04.json": "e2f40b5dffa7e78ed2130ac69157aa3dd0df4a9601f190ff443586b1cda9af6f"
       },
-      "current_source_note": "Protocol/demo scope reconciliation only; source code, old raw hashes and historical run claims retained."
+      "current_source_note": "Current source after bounded rigid ENV collective-prefix qualification and final docs/browser QA. Historical raw/historical fingerprint fields and earlier run qualifications retained; Full Enola+MZ lightweight kernel/factory/Shor remain OPEN.",
+      "historical_before_collective_mz_current_sha256": {
+        "docs/qec_rigid_readout_placement.md": "07ff2ced396c3728a652cf88e03a097ec2d16b4164daef74eb4774d6cb9d7a42",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
+        "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55"
+      }
     },
     {
       "id": "L47",
@@ -1644,7 +1937,11 @@
         "tests/test_native_kernel_runtime.py": "2c563dccfafeb8b205de6a959fa98c8ad91e5a8e3511839a2be0b73a646aff78",
         "tests/test_native_kernel_lowering.py": "c601df1ebbbf5870bd202518ac07efb9e25c8fae79c600e12321eecb6624bb7b",
         "tests/test_native_kernel_audit.py": "5a615ed5b972bf38fdaf5345aa73424b0549c4b75a634cd91e73031ed51f01f7",
-        "tests/test_native_kernel_view.py": "4c6d8ad500166cea0cca9d8b1ea26efb3588f242b83540022764e94ed1270c8f"
+        "tests/test_native_kernel_view.py": "4c6d8ad500166cea0cca9d8b1ea26efb3588f242b83540022764e94ed1270c8f",
+        "references/qec_pbc_validation/native_kernel_2026_10_04.json": "4c0abdcb0dbb61f938ea73ce3d78c090b8ce0c7bbdd21d5ea4e5cf2c0d7f06ef",
+        "examples/run_native_kernel_memory.py": "61da65c5786ee1d3d5dfe73f8c28aa84163718cd68ea2f87830c914931fc92cf",
+        "tests/test_native_kernel_boundary.py": "168c823c2da1ae92a675fc56684c30a43abdcfa6d7ffd8a49386f8324b3cd19d",
+        "tests/viewer_native_kernel.cjs": "4ca8616ff7892467d26f86f0b288d3f65877feb8abfe0ad82ff833f4f60907f3"
       },
       "current_source_note": "User-confirmed batched RESET/terminal MEASURE design only; frozen code and historical run qualifications unchanged.",
       "historical_before_enola_mz_design_sha256": {
@@ -1756,7 +2053,30 @@
       "current_raw_sha256": {
         "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md": "b435c5d3f9e6d6ff6a28d599f0e6d742fb2213f86e39bda9066f30553f95e5b0",
         "docs/native_kernel_migration.md": "ffd6cb236cc6e1e22001f8c126bdb97d74c9bba2504afe2a31649f0e76f1cbb8",
-        "docs/qec_global_ez_contract.md": "4e334c534d9b0b90375ef789c1364808ec81624d08e0d6913052d584e5eddaad"
+        "docs/qec_global_ez_contract.md": "4e334c534d9b0b90375ef789c1364808ec81624d08e0d6913052d584e5eddaad",
+        "references/qec_pbc_validation/global_ez_kernel_2026_10_04.json": "4351209ba2cf56ad9b6176c16d381e05d14cd8c2998fb80b90cbdd92347a7351",
+        "instruction/physics.md": "321fb2f9871212284df9200c7efd38de548e864b3605a989f4140942ec3c22fa",
+        "instruction/motion_execution.md": "ff51cb7b5c4524206a8765e0145d92db041f7a959c67b5a966f2617e1da10b96",
+        "src/neutral_atom_kernel/__init__.py": "d077d4ca6f17b3b8c47bdbe3668477254c0d92c669759672c700c9d2fd8a1bf9",
+        "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
+        "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
+        "src/neutral_atom_kernel/audit.py": "a75ee4ea8ef0345fc8750b767b20f475d61dc588c7f52af04bcc6d6dc17772e3",
+        "src/neutral_atom_strategies/native_kernel/__init__.py": "ab7514c410e1a8aa93d6769953653d3d36ffce5296944b84a71f2325d38f1feb",
+        "src/neutral_atom_strategies/native_kernel/compiler.py": "d72871b3a3261261da6b8e2d60b8b2554d6f6da7ef960d2b5af9c967afff466f",
+        "src/neutral_atom_strategies/native_kernel/lowering.py": "b42758fee23cd170617cf2c911baee93fbff131a36df1a1d1110d0171fdaa58c",
+        "src/neutral_atom_strategies/native_kernel/axes.py": "336af335be5759e93196e1bb2192cd7e07fa85bcf58d7172258cb001c7974709",
+        "src/neutral_atom_app/native_kernel_view.py": "fc2499961bfd6ff3448f69aa9bde0bc2dd45c4f969fd5c5775cf52b621fcafe6",
+        "src/neutral_atom_experiments/qec_pbc/native_kernel_memory.py": "c7af940e6f3082f6c34621bead1dc34abb661531fa07e9d1604828b781540bfc",
+        "examples/run_native_kernel_memory.py": "61da65c5786ee1d3d5dfe73f8c28aa84163718cd68ea2f87830c914931fc92cf",
+        "tools/audit_native_kernel_memory.py": "3191c9c7836c46b89c3b043726c749b43d81ec1fe818437f6a573482e3dddfa5",
+        "src/neutral_atom_env/visualization/viewer.js": "d94c591e6c2260c695299dec7d7e05732524127d6d186104645e65b90343d92c",
+        "tests/test_native_kernel_runtime.py": "2c563dccfafeb8b205de6a959fa98c8ad91e5a8e3511839a2be0b73a646aff78",
+        "tests/test_native_kernel_lowering.py": "c601df1ebbbf5870bd202518ac07efb9e25c8fae79c600e12321eecb6624bb7b",
+        "tests/test_native_kernel_audit.py": "5a615ed5b972bf38fdaf5345aa73424b0549c4b75a634cd91e73031ed51f01f7",
+        "tests/test_native_kernel_evidence_audit.py": "af0640d7f31131196f692ed767e336bbf921c0009583679a3da0a63d1506ddaa",
+        "tests/test_native_kernel_boundary.py": "168c823c2da1ae92a675fc56684c30a43abdcfa6d7ffd8a49386f8324b3cd19d",
+        "tests/test_native_kernel_view.py": "4c6d8ad500166cea0cca9d8b1ea26efb3588f242b83540022764e94ed1270c8f",
+        "tests/viewer_native_kernel.cjs": "4ca8616ff7892467d26f86f0b288d3f65877feb8abfe0ad82ff833f4f60907f3"
       },
       "historical_before_protocol_demo_reconciliation_sha256": {
         "docs/native_kernel_migration.md": "7edb8170b5423faa23e096d912df78bd86589169d58776c3fe7b37d2f3670e14",
@@ -1775,7 +2095,7 @@
       ],
       "sha256_normalization": "text_lf",
       "sha256": {
-        "docs/qec_enola_mz_design.md": "223ae17ecbc25e7572eb3151ecfd14355d14cb54bee76ee6e91ef7e1e486c885",
+        "docs/qec_enola_mz_design.md": "9473c5b65db5cbc63001e7d7bb92547003b3fe11f5ba6b3ac5af0104912c54d8",
         "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "637038bdbc8891608c1c91338ebf762941e1e4bda03290e89bf42e7a27689d9c"
       },
       "verified_scope": "Design review only: 10 acceptance workflows, source semantics, RF masks, full-band resources and MZ service boundaries; no implemented backend claim.",
@@ -1784,17 +2104,20 @@
         "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "e345a6da5b320aae99d0d1ee85b9f0dd5e7c101301cedddc95febea2229bc4b2"
       },
       "current_raw_sha256": {
-        "docs/qec_enola_mz_design.md": "223ae17ecbc25e7572eb3151ecfd14355d14cb54bee76ee6e91ef7e1e486c885",
+        "docs/qec_enola_mz_design.md": "2d1964f41e13bb40135f3b7518e8bdbe9d650d6827cfb4fc0e1f35e83266f8d0",
         "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "edccb66b874147f36a04c82197af4a2d965546219489ff76cc8d8384bb1fc163"
       },
       "historical_before_protocol_demo_reconciliation_sha256": {
         "docs/qec_enola_mz_design.md": "b1eb8de31652abd495577c0a21e7b27db3880c71a4657810147a8ea85cb834bd",
         "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "93b589f438f864d6d3c7ca265563e97d23f0658924635509b31d903022d7e9bc"
       },
-      "current_source_note": "User-confirmed batched RESET/terminal MEASURE design only; frozen code and historical run qualifications unchanged.",
+      "current_source_note": "Bounded rigid ENV collective prefix qualification recorded from real full12 execution/replay and 3 audits; Full Enola+MZ lightweight kernel remains OPEN. Historical raw/hash/run evidence retained.",
       "historical_before_batch_mz_standard_sha256": {
         "docs/qec_enola_mz_design.md": "c551854c09a3a688cb399d2f5d57bad8156da7a174d81899c571ba5b52423880",
         "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "ab91327eb997867f69d5153e4035fc6409c441081aa917628bb2f860074e7590"
+      },
+      "historical_before_collective_mz_current_sha256": {
+        "docs/qec_enola_mz_design.md": "223ae17ecbc25e7572eb3151ecfd14355d14cb54bee76ee6e91ef7e1e486c885"
       }
     },
     {
@@ -1806,6 +2129,62 @@
       "retrieved_at": "2026-10-04",
       "verified_scope": "Read-only source audit of enola.py, router.py, codegen.py and placer.py: pair-only input, fixed geometry, activation masks, Init, incomplete geometric checks and single-AOD executable output. No new compiler run.",
       "license": "BSD-3-Clause"
+    },
+    {
+      "id": "L51",
+      "kind": "repository_snapshot",
+      "title": "Bounded rigid ENV prefix collective MZ SLM service qualified; Full Enola+MZ kernel OPEN",
+      "version": "collective-mz-platform/1 + collective-mz-service/1 + collective-mz-slm-rigid-prefix-v1 2026-10-04",
+      "paths": [
+        "docs/qec_enola_mz_design.md",
+        "docs/qec_patch_parallel_layout.md",
+        "docs/qec_rigid_readout_placement.md",
+        "src/neutral_atom_experiments/qec_pbc/patch_layout.py",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py",
+        "src/neutral_atom_strategies/scheduling/collective_mz.py",
+        "examples/run_parallel_shor15_prefix.py",
+        "tests/test_collective_mz_service.py",
+        "tests/test_collective_mz_platform.py",
+        "tools/audit_collective_mz.py",
+        "tests/test_collective_mz_acceptance.py",
+        "references/qec_pbc_validation/collective_mz_2026_10_04.json"
+      ],
+      "verified_scope": "Saved full12 initialization/CSS and first canonical syndrome round, resource RESET/H stopping before first T: real execution, original-initial replay and native/core, patch, collective-specific independent audits all PASS. Actual 221 RESET + 96 MEASURE/RESET on stable MZ SLM after real collection waves. Full Enola+MZ lightweight kernel/E03/factory/full physical Shor remain OPEN; no general transport concurrency or global-nearest claim.",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "docs/qec_enola_mz_design.md": "9473c5b65db5cbc63001e7d7bb92547003b3fe11f5ba6b3ac5af0104912c54d8",
+        "docs/qec_patch_parallel_layout.md": "fa383fbc22ae6a9560f41e4f6345b548545ee048cf09a51dd549ce8883fea3d0",
+        "docs/qec_rigid_readout_placement.md": "175bb3dcf06ed8a09abf555c2caf4dfd8caf87bfa4b153559132d04599721d89",
+        "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "0b4c8a7051010dda65d67fd281c2c7758965299f68066b2ddd1c9dcd0a7c9864",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "e4d63356477fcec6c0f2d7b2de69024a47861cc378dbc899c870cbb3a88906f4",
+        "src/neutral_atom_strategies/scheduling/collective_mz.py": "829d50a9d56187280637d3bf663c3e975d7cc712e945688c1f3308eaa0ffcc92",
+        "examples/run_parallel_shor15_prefix.py": "63cebb62e888cf81b2d72f21da6a2175d8c844b9dd8fc4dc54b02deee36fea10",
+        "tests/test_collective_mz_service.py": "12689344cc37cc07e10a3a94a22ebbebd02fcfd1581663b0ab07af1deef4767e",
+        "tests/test_collective_mz_platform.py": "1f8d3b4ed44d4ae7fbe622496652a6a88efd7f084841360a36ba2efb67a0001e",
+        "tools/audit_collective_mz.py": "7f5470d1edf5e4fb958cda0b4cb950aba69ae7cea9c566424844265a53e63eb2",
+        "tests/test_collective_mz_acceptance.py": "956c77f605c9e40aa76047a88d9e6cc9167aa0fe5335597847a6a0e723eacced",
+        "references/qec_pbc_validation/collective_mz_2026_10_04.json": "e376729b5f6febe585bf69198dad75829f7d58b9cb6b568d3eb34e213decd4ac"
+      },
+      "current_raw_sha256": {
+        "docs/qec_enola_mz_design.md": "2d1964f41e13bb40135f3b7518e8bdbe9d650d6827cfb4fc0e1f35e83266f8d0",
+        "docs/qec_patch_parallel_layout.md": "ae11605c316d09c81ec0b15a4477fcb02a8aef60e9874035ecd0c8bf62e9bb44",
+        "docs/qec_rigid_readout_placement.md": "b273b043eeae8a8022e68787c75590459976dd46f210326528c0ca60ce5a4359",
+        "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "0b4c8a7051010dda65d67fd281c2c7758965299f68066b2ddd1c9dcd0a7c9864",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "e4d63356477fcec6c0f2d7b2de69024a47861cc378dbc899c870cbb3a88906f4",
+        "src/neutral_atom_strategies/scheduling/collective_mz.py": "829d50a9d56187280637d3bf663c3e975d7cc712e945688c1f3308eaa0ffcc92",
+        "examples/run_parallel_shor15_prefix.py": "63cebb62e888cf81b2d72f21da6a2175d8c844b9dd8fc4dc54b02deee36fea10",
+        "tests/test_collective_mz_service.py": "12689344cc37cc07e10a3a94a22ebbebd02fcfd1581663b0ab07af1deef4767e",
+        "tests/test_collective_mz_platform.py": "1f8d3b4ed44d4ae7fbe622496652a6a88efd7f084841360a36ba2efb67a0001e",
+        "tools/audit_collective_mz.py": "7f5470d1edf5e4fb958cda0b4cb950aba69ae7cea9c566424844265a53e63eb2",
+        "tests/test_collective_mz_acceptance.py": "956c77f605c9e40aa76047a88d9e6cc9167aa0fe5335597847a6a0e723eacced",
+        "references/qec_pbc_validation/collective_mz_2026_10_04.json": "6b82be0bdd7d75ac15d43a03816ee19f900114ff4fd20ea3587ce63d7e154c0e"
+      },
+      "current_source_note": "Current source after bounded rigid ENV collective-prefix qualification and final docs/browser QA. Historical raw/historical fingerprint fields and earlier run qualifications retained; Full Enola+MZ lightweight kernel/factory/Shor remain OPEN.",
+      "historical_before_collective_mz_current_sha256": {
+        "docs/qec_patch_parallel_layout.md": "5985ada0eae95d6c9cd6338044814755a384dc434d669755689b4bf44ee32986",
+        "references/qec_pbc_validation/collective_mz_2026_10_04.json": "b87f8317af9cfeb081f784912b6ec2f3942d35febc18d0097c0ffae466f85f0c"
+      }
     }
   ]
 }

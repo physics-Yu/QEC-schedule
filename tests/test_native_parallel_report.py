@@ -29,6 +29,24 @@ def test_recording_replacement_cannot_reuse_stale_independent_acceptance(tmp_pat
         render_report(tmp_path)
 
 
+@pytest.mark.parametrize('passed,recording_hash,decision_hash', [
+    (False, True, True), (True, False, True), (True, True, False)])
+def test_collective_label_requires_its_own_committed_service_acceptance(
+        tmp_path, passed, recording_hash, decision_hash):
+    report_inputs(tmp_path)
+    summary = json.loads((tmp_path/'summary.json').read_text())
+    summary['mz_service'] = 'collective'
+    (tmp_path/'summary.json').write_text(json.dumps(summary))
+    (tmp_path/'decisions.json').write_bytes(b'[]')
+    (tmp_path/'collective-mz-audit.json').write_text(json.dumps({
+        'passed': passed, 'artifact_sha256': {
+            'recording.json': hashlib.sha256((tmp_path/'recording.json').read_bytes()).hexdigest()
+                if recording_hash else '0'*64,
+            'decisions.json': hashlib.sha256(b'[]').hexdigest() if decision_hash else '0'*64}}))
+    with pytest.raises(ValueError, match='Collective MZ requires'):
+        render_report(tmp_path)
+
+
 @pytest.mark.parametrize('passed,hash_matches', ((False, True), (True, False)))
 def test_interleaved_label_requires_matching_independent_layout_acceptance(tmp_path, passed, hash_matches):
     report_inputs(tmp_path)

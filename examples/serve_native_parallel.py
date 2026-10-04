@@ -24,6 +24,7 @@ def main():
                '/summary.json': ('summary.json', 'application/json; charset=utf-8'),
                '/patch-parallel-audit.json': ('patch-parallel-audit.json', 'application/json; charset=utf-8'),
                '/independent-audit.json': ('independent-audit.json', 'application/json; charset=utf-8')}
+    allowed['/collective-mz-audit.json'] = ('collective-mz-audit.json', 'application/json; charset=utf-8')
 
     class Handler(BaseHTTPRequestHandler):
         def log_message(self, _format, *args):

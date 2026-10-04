@@ -33,6 +33,8 @@ def main():
                         help='Validated direct routes or shortest 2.5 um half-grid paths; legacy is for historical comparison')
     parser.add_argument('--readout-placement', choices=('nearest_mz', 'fixed_translation'),
                         help='Automatic nearest legal MZ candidates (standard default), or historical fixed endpoint comparison')
+    parser.add_argument('--mz-service', choices=('collective', 'carrier_visits'),
+                        help='Gather on real MZ SLM before a common pulse; carrier_visits reproduces historical per-wave service')
     parser.add_argument('--wall-budget', type=float, default=1800.)
     parser.add_argument('--max-decisions', type=int, default=512)
     parser.add_argument('--skip-replay', action='store_true', help='Preserve the run but leave replay explicitly unverified')
@@ -40,12 +42,23 @@ def main():
     routing_policy = STANDARD_ROUTING if args.routing_policy == 'standard' else LEGACY_ROUTING
     readout_placement = args.readout_placement or (
         'nearest_mz' if args.routing_policy == 'standard' else 'fixed_translation')
+    mz_service = args.mz_service or ('collective' if args.layout != 'legacy' and
+        args.intra_services and args.routing_policy == 'standard' else 'carrier_visits')
+    collective_mz = mz_service == 'collective'
+    if collective_mz and (args.layout == 'legacy' or args.routing_policy != 'standard'):
+        parser.error('Collective MZ requires the declared interleaved/Enola platform and standard routing')
     output = Path(args.output)
     output.mkdir(parents=True, exist_ok=False)
     prefix = load_native_parallel_prefix(args.source, patch_count=args.patches, include_magic=not args.algorithm_only)
     if (args.intra_patch or args.intra_services or args.pair_search) and args.layout == 'legacy':
         parser.error('Intra-patch batching requires the explicitly declared interleaved platform')
-    if args.layout == 'enola':
+    if args.layout == 'enola' and (not args.proposal or not args.pair_search):
+        parser.error('--layout enola requires --proposal and --pair-search')
+    if collective_mz:
+        from neutral_atom_experiments.qec_pbc.patch_layout import create_collective_environment
+        env, platform, placement, metadata = create_collective_environment(prefix,
+            layout=args.layout, proposal=args.proposal)
+    elif args.layout == 'enola':
         if not args.proposal or not args.pair_search:
             parser.error('--layout enola requires --proposal and --pair-search')
         from neutral_atom_experiments.qec_pbc.patch_layout import create_enola_environment
@@ -57,7 +70,7 @@ def main():
         env, platform, placement, metadata = create_parallel_prefix_environment(prefix)
     initial = env.snapshot()
     recorder = VisualRecorder(env.state, scene_metadata={k: v for k, v in metadata.items()
-                                                        if k != 'layout_contract'})
+                                                        if k not in {'layout_contract', 'collective_mz_contract'}})
     plans, progress = [], []
     def save(name, value):
         (output / name).write_text(canonical_json(value), encoding='utf-8')
@@ -80,6 +93,8 @@ def main():
         producer_files.append('src/neutral_atom_experiments/qec_pbc/patch_layout.py')
     if args.intra_services:
         producer_files.append('src/neutral_atom_strategies/scheduling/patch_service_groups.py')
+    if collective_mz:
+        producer_files.append('src/neutral_atom_strategies/scheduling/collective_mz.py')
     save('producer-source.json', {'schema': 'native-prefix-producer-source/1',
         'sha256': {name: hashlib.sha256((root/name).read_bytes()).hexdigest() for name in producer_files},
         'options': vars(args)})
@@ -102,6 +117,7 @@ def main():
             pair_search=args.pair_search,
             routing_policy=routing_policy,
             readout_placement=readout_placement,
+            collective_mz=collective_mz,
             mz_translation_um=-400. if args.layout != 'legacy' else -300.)
         if result.status != 'completed':
             error = {'type': 'CompilationStalled', 'diagnostics': result.diagnostics}
@@ -152,7 +168,7 @@ def main():
     layout_contract = dict(metadata['layout_contract']) if metadata.get('layout_contract') else None
     if layout_contract is not None and readout_placement == 'nearest_mz':
         layout_contract['fixed_translation_comparison_um'] = layout_contract.pop('mz_translation_um', None)
-        layout_contract['readout_placement'] = readout_placement
+        layout_contract['readout_placement'] = 'collective_slm' if collective_mz else readout_placement
     summary = {'schema': 'parallel-shor15-prefix-physical-run/1',
         'status': 'failed' if error else 'completed', 'error': error,
         'source_manifest_sha256': prefix.source['source_manifest_sha256'],
@@ -173,8 +189,10 @@ def main():
         'resource_clifford_prefix_included': prefix.source.get('resource_clifford_prefix_included', False),
         'placement_layout': args.layout, 'intra_patch_enabled': args.intra_patch,
         'routing_policy': routing_policy,
-        'readout_placement': readout_placement,
-        'readout_placement_contract': {'automatic': readout_placement == 'nearest_mz',
+        'mz_service': mz_service,
+        'collective_mz_contract': metadata.get('collective_mz_contract'),
+        'readout_placement': 'collective_slm' if collective_mz else readout_placement,
+        'readout_placement_contract': (metadata['collective_mz_contract'] if collective_mz else {'automatic': readout_placement == 'nearest_mz',
             'candidate_budget': 16 if readout_placement == 'nearest_mz' else None,
             'legal_service_shortlist': 3 if readout_placement == 'nearest_mz' else None,
             'selection': ('actual complete service duration, then AOD distance'
@@ -182,7 +200,7 @@ def main():
             'scope': ('nearest feasible rigid-origin clamp and bounded 2.5/5 um neighbors; '
                 'full route/readout/return validation; no continuous global optimum'
                 if readout_placement == 'nearest_mz' else 'comparison only'),
-            'pulse_and_clearance_parameters_changed': False},
+            'pulse_and_clearance_parameters_changed': False}),
         'routing_contract': {'direct_candidate': args.routing_policy == 'standard',
             'corridor_offset_um': 2.5 if args.routing_policy == 'standard' else 5.,
             'corridor_pitch_um': 5. if args.routing_policy == 'standard' else None,

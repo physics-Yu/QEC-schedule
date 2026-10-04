@@ -1,5 +1,7 @@
 # Physical circuit 到原子操作：已确认的目标契约
 
+2026-10-04 当前 rigid ENV 前缀兼容入口新增 `collective_mz`：非legacy、`intra_services` 与standard routing组合默认汇集服务，CLI可显式 `--mz-service collective|carrier_visits`。新profile在初态声明关闭的真实MZ SLM，按每设备完整home竖直5μm平移族距离优先选最近合法目标；分波合法LOAD/route/OFFLOAD后，全体稳定到位才共同RESET或MEASURE→原RESET，完成报告与全M→R屏障保持，归还重新规划。运输容量108/24与服务容量221分别声明，不能以运输波次拆分服务脉冲。真实3006门、RESET221→MEASURE96→RESET96与完整原初态重放/三独立审计已通过，见[验收](../references/qec_pbc_validation/collective_mz_2026_10_04.json)。只有Executor提交，阈值及源门身份不变；全Enola+MZ轻量内核与工厂资格仍待另验。
+
 2026-10-04 自动MZ选点恢复：标准 `parallel_patch` 使用设备感知 `RigidReadoutPlacementPolicy`，按实际载体偏移/全轴域生成最近候选，至多16次尝试、3个合法完整服务按真实成本选择；完整LOAD/标准routing/读出与reset/归还仍经既有物理校验。`readout_placement=fixed_translation`保留路由隔离对照，legacy默认固定。全world外国载体与备用轴保持，不凭空添加MZ SLM；决策与共用viewer可追溯。见[具体合同](../docs/qec_rigid_readout_placement.md)，实际验收以追加报告为准。
 
 2026-10-04 routing 修正：`parallel_patch` 默认 `shortest-direct-or-halfgrid-v1`，复用策略层 `motion/validated_rigid.py`。完整 backend 校验直达后才采用；受阻时求 `x/y=2.5+5k μm` 半格图内最短距离，真实装卸边界与脉冲后归还分别校验。routing 只接收固定 holder/masks/设备/目标，不替上层选择交互位、不改捕获或物理阈值。`legacy-5um-v1` 仅复现旧记录；该最新路由默认覆盖下方“旧默认保持”中有关固定路径的描述，合批开关与原协议仍保持。范围、接口与后续工厂实施见 [标准路由](../docs/qec_routing_standard.md)。

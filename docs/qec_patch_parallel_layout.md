@@ -1,5 +1,7 @@
 # d=3 码块布局、码内并行与 Enola 初始放置
 
+2026-10-04 集合服务更新：非 legacy 布局＋`--intra-services`＋standard routing 现默认选择稳定 MZ SLM 集合服务。它是已有 rigid ENV 前缀的兼容接入，保存 full12 的初始化/CSS 与第一轮 syndrome 已通过完整执行、原初态重放和三项独审，资格为 **bounded rigid ENV compatibility collective prefix qualified**；不是完整 Enola＋MZ 轻量内核。下方已发布结果和旧回放保留原服务模式；standard routing 的旧自动选点复现须显式加 `--mz-service carrier_visits`。唯一目标合同仍见[Enola＋MZ](qec_enola_mz_design.md)。
+
 2026-10-04 路由更新：本入口现默认使用 `--routing-policy standard`，先校验直线，阻挡时按既有2.5 μm半格通道求图内最短距离；脉冲/读出后的归还按实际预测状态重新规划。设备域、全部活动Cartesian交点、关闭备用轴和全world旁观原子均保留检查。详见[QEC刚性AOD标准路由及实施顺序](qec_routing_standard.md)，其中提供新标准单块/12块命令。本文下方已发布的时间、plans与MOVE统计是固定5 μm历史路线的验收结果，复现命令已显式加 `--routing-policy legacy_5um`；它们不作为新标准的结果，也不因默认值变化被重新解释。
 
 本阶段已把 d=3 码块的同层 CZ、初始化 RESET 和综合征读出编译为真实合批操作，并完成单块及 12 块的原初态完整重放。标准布局的单块在相同初态、相同线路上，实际模型终态时间从 **84,684.130701 μs** 降到 **40,504.465183 μs**。冻结的 Enola 初始放置加本项目物理适配，单块与 12 块均得到 **33,409.196973 μs**；这组改变了初始布局，应作为另一种布局与编译组合比较。12 块已完成 3,006 门、413 次投影和两层独立物理审计。
@@ -98,6 +100,35 @@ Enola 保留相同线路字节，但初态 hash 为 `2e238fd478942bfb687f2c8db50
 
 ## 复现与审计
 
+### 稳定 SLM 集合服务：当前兼容接入
+
+新增 `create_collective_environment` 与 `compile_collective_mz`，只改 MZ 服务组织，保留原 CSS/canonical/CZ 编译、源 gate IDs 和完整依赖。平台在运行前声明真实关闭的 MZ SLM；每台设备完整 home footprint 按最近合法 5 μm 竖向平移生成目的地。该有界选点不等于任意二维格点全局最近；全 world x CZ 照明与有限 trap inventory 分开保存。没有通过移动图形、重写 home 初态或创建理想 reset 状态代替物理操作。
+
+在 full12 保存源上，目标为初始化 221 个原子分波运入、稳定卸载后一个 RESET，第一轮末 96 个 syndrome 原子汇集后一个 MEASURE 和一个后继 RESET，再实际返回 home。108＋24 是两设备的交点上限，不能一趟运 221；MZ 服务容量为声明的 221 个独立 slots。运输还受真实捕获闭包和路径限制，波数由实际计划决定。本版集合运输使用顺序波次，不将两个 AOD 的存在称为已经实现运输并发。
+
+```powershell
+python examples/run_parallel_shor15_prefix.py `
+  --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 `
+  --output artifacts/my-full12-collective-mz --patches 12 --layout enola `
+  --proposal references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json `
+  --intra-patch --intra-services --pair-search `
+  --routing-policy standard --mz-service collective --wall-budget 1800
+```
+
+这是待验收新输出的入口，不能以命令存在声称运行 PASS。`collective` 要求 interleaved/Enola 与 standard routing；未声明合法 MZ slots、原源目标不 READY、捕获或完整路径失败均拒绝。初始化要求全部实际原子对应的源 RESET 同时 READY；之后仅合并同阶段 READY 的同类型目标，后继 RESET 保留全部 MEASURE 屏障，不跨 round 合并。
+
+运行保存 `collective-mz-platform/1` 和 `collective-mz-service/1`：逐原子源 IDs、报告 IDs、原 holder、目标 SLM、collection/return waves、真实起止、共同 pulse 与完整成本。`producer-source.json` 新增 `collective_mz.py`，并保持 CLI、平台构造及调度模块的 provenance。验收必须另核对 3,006 个原门、413 次源投影＝317 RESET＋96 MEASURE、96 个完成报告、每个 effect 恰一次、稳定 MZ SLM 支撑、完整依赖/连续几何和原初态 replay。初态新增禁用 MZ SLM 与 full-x 光带，旧 hash 不适用。`--skip-replay` 不构成资格证据。
+
+集合服务另用 `tools/audit_collective_mz.py` 核对实际 slots、运输波次、源服务批次、逐报告完成与 recording/trace 一致性；full12 指定 `--expected-initial-reset-size 221 --expected-measurement-size 96`。它不能替代 core/patch 源协议审计或 Executor 的完整连续几何与原初态重放。
+
+实际 `artifacts/collective-mz-2026-10-04/full12-attempt2` 已完成 156 plans、**34,214.388149 μs** 和原初态完整 replay；wall **1,269.543875 s** 包含编译、执行及 replay，不是轻量 kernel 单独运行时间。记录初始 collection/return 各五波 **60＋48＋48＋48＋17**，一个 RESET221；首 syndrome 的 collection/return 各两波 **48＋48**，一个 MEASURE96 和一个 RESET96。MEASURE 总占用 500 μs、RESET 总占用 200 μs；全部 221 原 holder 恢复、96 个完成报告保留。native/core、patch 与集合服务三项独审均通过；集合专项核对全批稳定 SLM 到位、完成报告、M→R 屏障和原 holder 返程。资格限于保存 full12 的初始化/CSS 和第一轮 syndrome，右侧资源停于首 T 前。实际 recording SHA256 为 `117e7a921423bc285cfcac01396020018df11104c2e9ab27c134de75e2050181`；完整原源/生产模块/产物指纹见[小型验收摘要](../references/qec_pbc_validation/collective_mz_2026_10_04.json)。浏览器 QA 另验，不称完整 backend 或性能加速。
+
+Full Enola＋MZ kernel、作者完整 mask IR、纯两轮持续 QEC、factory/injection 和完整 physical Shor 仍 OPEN。下面的历史复现和成绩保留历史模式。
+
+最终当前 focused suite 为 67 PASS，与已通过的 128 regression cases 去重后为 195 distinct；278 个 Python modules 架构检查零违规。实际 [8778 集合服务回放](http://127.0.0.1:8778/#physical-viewer)的六书签、RESET221／MEASURE96／RESET96、3006 门终态、同比缩放、details 和 390／320 px 已通过真实浏览器 QA，console 零错误。MEASURE 完成时刻前后各 0.001 μs 的实际帧分别无报告和 96 个报告；截图、测试 XML 与精确 SHA 保存在上述小型验收摘要。物理资格仍只覆盖这份 compatibility prefix，不据此扩大 backend 范围。
+
+### 历史服务复现与原证据
+
 在仓库根目录使用已安装本项目测试依赖、可导入 `src` 的 Python 环境。Windows PowerShell 可先设置 `$env:PYTHONPATH='src'`；NumPy、Stim 等依赖按项目既有环境配置。每次 `--output` 使用不存在的新目录，不覆盖历史成功或失败证据。
 
 从已提交的小型保存源 packet 运行单码块四组：
@@ -106,23 +137,23 @@ Enola 保留相同线路字节，但初态 hash 为 `2e238fd478942bfb687f2c8db50
 python examples/run_parallel_shor15_prefix.py `
   --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 `
   --output artifacts/my-patch-baseline --patches 1 --layout interleaved `
-  --routing-policy legacy_5um
+  --routing-policy legacy_5um --mz-service carrier_visits
 
 python examples/run_parallel_shor15_prefix.py `
   --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 `
   --output artifacts/my-patch-cz --patches 1 --layout interleaved --intra-patch `
-  --routing-policy legacy_5um
+  --routing-policy legacy_5um --mz-service carrier_visits
 
 python examples/run_parallel_shor15_prefix.py `
   --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 `
   --output artifacts/my-patch-all --patches 1 --layout interleaved `
-  --intra-patch --intra-services --routing-policy legacy_5um
+  --intra-patch --intra-services --routing-policy legacy_5um --mz-service carrier_visits
 
 python examples/run_parallel_shor15_prefix.py `
   --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 `
   --output artifacts/my-patch-enola --patches 1 --layout enola `
   --proposal references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json `
-  --intra-patch --intra-services --pair-search --routing-policy legacy_5um
+  --intra-patch --intra-services --pair-search --routing-policy legacy_5um --mz-service carrier_visits
 ```
 
 上述历史复现显式选择 `legacy_5um`；新标准示例见[路由规范](qec_routing_standard.md#使用与复现)。默认运行包含实际右侧资源前缀，并进行完整 replay。`--algorithm-only` 改变输入及成本范围，不能与本表直接混比；`--skip-replay` 留下明确未验收项，不能用作通过证据。
@@ -196,7 +227,7 @@ python examples/run_parallel_shor15_prefix.py `
   --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 `
   --output artifacts/my-full12-enola --patches 12 --layout enola `
   --proposal references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json `
-  --intra-patch --intra-services --pair-search --routing-policy legacy_5um `
+  --intra-patch --intra-services --pair-search --routing-policy legacy_5um --mz-service carrier_visits `
   --wall-budget 1800
 ```
 

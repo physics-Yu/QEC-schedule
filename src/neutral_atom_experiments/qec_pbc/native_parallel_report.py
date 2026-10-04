@@ -127,6 +127,15 @@ def render_report(directory):
                 layout_audit.get('artifact_sha256', {}).get('recording.json') !=
                 hashlib.sha256(recording_bytes).hexdigest()):
             raise ValueError('Interleaved layout requires its recording-bound independent patch audit')
+    collective = summary.get('mz_service') == 'collective'
+    if collective:
+        collective_audit = json.loads((directory/'collective-mz-audit.json').read_text(encoding='utf-8'))
+        if (collective_audit.get('passed') is not True or
+                collective_audit.get('artifact_sha256', {}).get('recording.json') !=
+                hashlib.sha256(recording_bytes).hexdigest() or
+                collective_audit.get('artifact_sha256', {}).get('decisions.json') !=
+                hashlib.sha256((directory/'decisions.json').read_bytes()).hexdigest()):
+            raise ValueError('Collective MZ requires recording-bound and decision-bound independent acceptance')
     operations = recording['operations']
     effects = [o for o in operations if o.get('gate_ids') or o.get('gate_id')]
     counts = Counter()
@@ -143,6 +152,40 @@ def render_report(directory):
             bookmarks.append({'label': label + ' × ' + str(len(op.get('gate_ids') or [op['gate_id']])),
                               'time': (op['start']+op['end'])/2})
     moves = [o for o in operations if o['kind'] == 'aod_move' and o.get('moving_count', 0) > 0]
+    collective_note = collective_details = ''
+    if collective:
+        services = [o for o in effects if o['kind'] in {'reset', 'measurement'}]
+        decisions = json.loads((directory/'decisions.json').read_text(encoding='utf-8'))
+        batches = [d for d in decisions if d.get('collective_mz_evidence')]
+        sizes = [len(o.get('gate_ids') or [o['gate_id']]) for o in services]
+        collective_note = ('<p id="collective-mz-result"><strong>集合 MZ 服务：'
+            + ' → '.join(('MEASURE' if o['kind']=='measurement' else 'RESET')+' × '+str(n)
+                         for o, n in zip(services, sizes))
+            + '。</strong>分趟装载、真实运动并卸载到 MZ 的 SLM；全部目标到齐后统一作用，再分趟归还。'
+              '当前是既有 rigid ENV 前缀的兼容实现；Enola SA 提供初始 placement。</p>')
+        rows = []
+        for d in batches:
+            e = d['collective_mz_evidence']
+            rows.append('<tr><td>'+html.escape(d['kind'])+'</td><td>'+str(e['service_cohort_size'])+
+                '</td><td>'+str(len(e['collection_waves']))+'</td><td>'+str(len(e['return_waves']))+
+                '</td><td>'+f"{d['duration_us']:,.3f}"+'</td></tr>')
+        collective_details = ('<details id="collective-mz-details"><summary>集合服务与运输波次（按需查看）</summary>'
+            '<p>每个目标使用预声明的真实 MZ SLM 位点。运输波次受 Cartesian 捕获闭包和设备容量约束；'
+            '服务容量由稳定停放位点决定。测量结束才提交报告，随后全部辅助原子统一 RESET。</p>'
+            '<table><thead><tr><th>操作</th><th>目标原子</th><th>汇集波次</th><th>归还波次</th>'
+            '<th>完整服务 / μs</th></tr></thead><tbody>'+''.join(rows)+'</tbody></table>'
+            '<p><a href="collective-mz-audit.json">集合服务独立审计</a></p></details>')
+        for service, label in ((services[0], '初始化汇集运输'),
+                               (next(o for o in services if o['kind']=='measurement'), '综合征辅助原子汇集运输')):
+            preceding = [m for m in moves if m['end'] <= service['start'] and
+                         m['start'] >= max((o['end'] for o in effects if o['end'] <= service['start']), default=0)]
+            if preceding:
+                m = max(preceding, key=lambda m: (m['end']-m['start'], m.get('moving_count', 0)))
+                bookmarks.append({'label': label, 'time': (m['start']+m['end'])/2})
+        if len(services) > 1 and services[-1]['kind'] == 'reset':
+            o = services[-1]
+            bookmarks.append({'label': '综合征辅助原子统一 RESET × '+str(sizes[-1]),
+                              'time': (o['start']+o['end'])/2})
     routing_note = ''
     if summary.get('routing_policy') == 'shortest-direct-or-halfgrid-v1':
         routing_note = ('<p id="routing-result">运输路径：优先验证直达；受阻时搜索 '
@@ -196,12 +239,13 @@ def render_report(directory):
 <p>这次编译选取完整线路的初始化与首次综合征提取。相同操作跨码块合批；每次装载、运动、CZ、读出和归还都进入同一物理时间线。</p>
 __LAYER_NOTE__
 __ROUTING_NOTE__
+__COLLECTIVE_NOTE__
 <details id="experiment-metrics"><summary>实验规模与合批指标（按需查看）</summary>
 <div class="metrics"><div class="metric"><small>源线路原生门</small><strong>__SOURCE_COUNT__</strong></div><div class="metric"><small>d=3 算法码块</small><strong>__PATCH_COUNT__</strong></div><div class="metric"><small>实际物理原子</small><strong>__ATOM_COUNT__</strong></div><div class="metric"><small>独立 AOD</small><strong>__DEVICES__</strong></div><div class="metric"><small>最大 CZ 同批</small><strong>__MAX_CZ__</strong></div><div class="metric"><small>模型总耗时 / μs（含归还）</small><strong>__TIME__</strong></div></div>
 <p><small>主要指标与真实时间占用见回放的统计区。此处规模与合批计数不作为完整物理 Shor 或整体加速比的证据。</small></p></details>
 <p><small>平台：统一 COMPUTE + MZ；5 μm SLM 候选格点、稀疏占据；有限 CZ 半径并检查全部额外作用对。右侧资源的 Clifford 准备用于验证独立 AOD，完整魔态生产、T 消费和完整物理 Shor 尚未验收。</small></p>
 <div class="bookmarks" id="bookmarks"></div><p id="error"></p></header>
-<div id="physical-viewer"></div><section class="report">__READOUT_DETAILS__<details id="report-evidence"><summary>查看合批效果与验证证据</summary>
+<div id="physical-viewer"></div><section class="report">__COLLECTIVE_DETAILS____READOUT_DETAILS__<details id="report-evidence"><summary>查看合批效果与验证证据</summary>
 <p>下表比较原生门数量与实际提交的同类脉冲批次数。脉冲合批比例不代表整体物理加速比；运输、复位和读出仍计入总耗时。</p>
 <table><thead><tr><th>门类型</th><th>原生门数</th><th>实际脉冲批次</th></tr></thead><tbody>__COMPARISON__</tbody></table>
 <p>独立 Stim 核对原始报告、重排后的算法状态和实际提交终态；独立几何计算逐个 CZ 脉冲核对全局作用对。计划恢复和原初态重放结果见运行摘要。</p>
@@ -223,6 +267,8 @@ for(const row of bookmarks){const button=document.createElement('button');button
                     '__COMPARISON__': comparison, '__BOOKMARKS__': encoded_bookmarks}
     replacements['__LAYER_NOTE__'] = layer_note
     replacements['__ROUTING_NOTE__'] = routing_note
+    replacements['__COLLECTIVE_NOTE__'] = collective_note
+    replacements['__COLLECTIVE_DETAILS__'] = collective_details
     replacements['__READOUT_DETAILS__'] = readout_details
     replacements['__READOUT_STYLE__'] = ('.readout-table-wrap{overflow-x:auto;max-width:100%;margin-top:12px}'
         '.readout-table{max-width:none;min-width:780px}.readout-note{font-size:13px}'

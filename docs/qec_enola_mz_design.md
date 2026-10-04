@@ -1,8 +1,8 @@
 # Enola + MZ：同区计算架构与可组合流程
 
-日期：2026-10-04。状态：**设计目标，尚未实现或物理资格化**。依据是用户此次确认的 EZ/SZ 重合、独立 MZ，以及此前的全 x 照明、5 μm SLM 格点、有限 CZ、右侧独立 magic AOD 和轻量内核要求。[流程清单](../references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json)用于后续逐项验收。
+日期：2026-10-04。状态：**Full Enola＋MZ 轻量内核目标 OPEN；rigid ENV 集合服务已通过限定前缀资格**。依据是用户此次确认的 EZ/SZ 重合、独立 MZ，以及此前的全 x 照明、5 μm SLM 格点、有限 CZ、右侧独立 magic AOD 和轻量内核要求。[流程清单](../references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json)仍用于新内核逐项验收，不以兼容前缀结果填满 E01–E10。
 
-当前已验收的 QMAP d3 attempt5 使用分离的 SZ 与 EZ；它的两轮结果不能作为本设计的验收结果。现有 Enola patch 工具只调用作者的初始 SA placement；完整作者编译器另在 scaling benchmark 中使用，尚未接入本设计的 MZ 闭环。
+当前已验收的 QMAP d3 attempt5 使用分离的 SZ 与 EZ；它的两轮结果不能作为本设计的验收结果。现有 Enola patch 工具仍只调用作者的初始 SA placement；本次增加的是该布局在现有 rigid ENV 中的稳定 SLM 集合服务。完整作者编译器另在 scaling benchmark 中使用，尚未接入本设计的轻量内核 MZ 闭环。
 
 ## 当前协议入口与生效关系
 
@@ -74,7 +74,7 @@ MZ 服务输入实际位置/holder、完整 RF 坐标及 enable masks、源 gate
 
 ### 批量 RESET 与终端测量：用户确认的默认方法
 
-2026-10-04 用户确认：RESET 和最后 MEASURE 应利用大规模并行和联合运输，作为标准方法。此规则适用于新的 Enola＋MZ 服务编译，状态为**已固化的编译目标，接入与物理验收待完成**；已有 8777 回放保留原操作流。
+2026-10-04 用户确认：RESET 和最后 MEASURE 应利用大规模并行和联合运输，作为标准方法。此规则适用于新的 Enola＋MZ 服务编译。**现有 rigid ENV 集合服务已通过保存 full12 前缀的完整执行、原初态重放与三项独立审核；Full Enola＋MZ kernel 仍 OPEN**。已有 8777 回放保留原操作流，不改称新批量协议结果。
 
 默认先从完整源 DAG 汇集同一协议阶段、同一操作且依赖允许的目标，跨 patch 分配 MZ slots 和联合运输。MZ 可合法同时容纳全部目标时，使用一个服务批次；一趟载体容量不足可分波运入、稳定卸载并汇集，最后仍只做一次共同 RESET/MEASURE。不按 qubit 或 patch 人为拆开服务。典型流程为：
 
@@ -102,7 +102,21 @@ MZ 服务输入实际位置/holder、完整 RF 坐标及 enable masks、源 gate
 
 每个批次保留 `phase_id`、各 `source_gate_id`、target/role、report ID、实际 transport wave/服务批次/操作起止与完整运输成本。同一批 N 个 RESET/MEASURE 的服务时长是一次已声明的 RESET/MEASURE 时长，不乘 N 或运输波次数；实际服务拆批、等待、捕获和运输按时间线计入。所有报告在各自所属 MEASURE 完成后由唯一 Executor 提交一次，批量不改变报告位、frame、token 或 epoch。
 
-E01/E04/E05 后续验收必须覆盖：全批容量足够时单趟单服务；`K_transport+1` 但 MZ 容量足够时多趟汇集、一次服务；`K_mz_service+1` 时有原因服务分批；跨 patch 源效果和报告恰一次、全 M→R 屏障、未就绪/测量轴依赖拒绝、实际完整 RF/旁观几何、批次进行中的冷恢复，以及同一操作流的 viewer 批量标注。本轮只固化规则，无新增编译、性能或物理 PASS。
+E01/E04/E05 后续验收必须覆盖：全批容量足够时单趟单服务；`K_transport+1` 但 MZ 容量足够时多趟汇集、一次服务；`K_mz_service+1` 时有原因服务分批；跨 patch 源效果和报告恰一次、全 M→R 屏障、未就绪/测量轴依赖拒绝、实际完整 RF/旁观几何、批次进行中的冷恢复，以及同一操作流的 viewer 批量标注。下述兼容前缀已完成实际执行、原初态重放与三项独立审核；资格限于保存 full12 初始化/CSS 与第一轮 syndrome，不构成这些新内核流程的完整物理资格。
+
+### 已接入的 rigid 前缀集合服务与当前验收边界
+
+`create_collective_environment` 声明 `collective-mz-platform/1`：保持实际 home 初态、原门、设备 footprint 和物理阈值；为每个设备的完整 home footprint 选择 5 μm 格点上的最近合法**纯竖向平移**，声明独立、初始关闭的 MZ SLM 支撑。该距离优先只在这个有限 footprint 候选族成立，不是任意 MZ 格点的全局最近 packing。EZ 的 x 范围同时扩为 world 全 x，trap inventory 与照明域仍分别声明；平台变化须在新 run 保存，不能沿用旧初态 hash。
+
+`compile_collective_mz` 输出 `collective-mz-slm-rigid-prefix-v1`，仍使用旧 `ProgramBuilder → NeutralAtomEnv → Executor`。策略只在私有预测状态生成计划，不提交 live state；运输每波实际定位、LOAD、标准 route、OFFLOAD，在全部目标到稳定 MZ SLM 后执行一次共同源服务，源要求的后继 RESET 等整个 MEASURE 完成后再执行，最后分波实际返回原 holder。每波捕获检查完整活动 Cartesian 交点，保留空阱、备用轴、旁观者、两设备域、连续运输及完整原初态 replay。当前波次按有界 local-role 束选择并在物理拒绝后尝试下一候选，失败明确终止；不证明最少运输波次或全线路最短时间。
+
+本轮 full12 验收目标保留 **3,006 个源门、413 次投影、221 原子、12 patch 和两 AOD**：初始化 204 算法＋17 资源原子汇集后一次 RESET；第一轮 syndrome 的 96 个辅助原子汇集后一次 MEASURE，再一次 RESET。413 是 317 次 RESET＋96 次 MEASURE 的源投影总数，报告仍只有 96 个，data 不参加本轮末 syndrome 读出。算法设备 12×9＝108、资源设备 4×6＝24 是运输交点上限；221 超过其合计 132，须多波实际停放，不能称一趟装载 221。平台声明 221 个独立 MZ SLM slots；共同服务容量与运输闭包容量分开，脉冲是否一次必须由提交 trace 核对。两台设备分波使用不等于本版已经实现双 AOD 运输并发。
+
+当前 CLI 对非 legacy 布局、`--intra-services`、standard routing 的组合默认 `--mz-service collective`；显式 `carrier_visits` 复现旧分波服务。新 run 的 `producer-source.json` 须绑定 CLI、`patch_layout.py`、`parallel_patch.py` 和 `collective_mz.py` 的实际字节与选项；`decisions.json` 保存 collection/return waves、SLM slots、源 effect/report IDs、脉冲起止和实际成本。详见[编译入口](qec_patch_parallel_layout.md#稳定-slm-集合服务当前兼容接入)。物理资格与同流 viewer 的浏览器呈现验收分别记录；不能用物理审核通过替代浏览器 QA。
+
+实际 `artifacts/collective-mz-2026-10-04/full12-attempt2` 已完成 156 plans，终态 **34,214.388149 μs**，编译、执行及原初态重放合计 wall **1,269.543875 s**，七项 producer checks 全 true。提交记录中的初始 collect/return 各为 **60＋48＋48＋48＋17**，全部 MZ 到位后 RESET221 一次；syndrome collect/return 各为 **48＋48**，到位后 MEASURE96 一次、RESET96 一次。完整回归 home 后保留 96 个报告。source/Stim/时序、patch 与集合服务三项独立审计均已通过，核对 3,006 个 effect、413 投影、9,401 依赖区间和 52 CZ 脉冲／最大 36 对。集合专项核对全部目标在稳定 MZ SLM 后脉冲、MEASURE 完成提交报告、完整 M→R 屏障和实际原 holder 返程。资格限定为 **bounded rigid ENV compatibility collective prefix qualified**；[小型验收摘要](../references/qec_pbc_validation/collective_mz_2026_10_04.json)绑定原源、生产模块、三项审核和全部实际产物 SHA。viewer 浏览器 QA 另列，不据此宣称 Full backend 完成。这一新平台包含实际 MZ SLM 和全 x 光带，不能将它与旧 8777 结果称为同初态纯加速对照。
+
+此兼容实现不调用作者完整 Enola scheduler/codegen，不迁移 frozen kernel，不证明作者空活动轴语义、新内核双 AOD、并发冷恢复、持续两轮 E03 或 factory/injection。新轻量内核的显式 masks、纯 syndrome fragment、slot/token/epoch 和完整照明资源合同继续 OPEN。
 
 现有路径的差异：8777 旧 full12 记录初始 RESET 为 77＋48＋48＋48；syndrome 读出为 48＋48，每批随后在同次停留 RESET。该平台算法 AOD 12×9＝108 交点、资源 AOD 4×6＝24 交点，且受固定轴嵌入和实际捕获闭包限制，不能单凭目标原子数直接合成一趟。轻量内核已能执行带独立 gate/report IDs 的多目标 MEASURE/RESET；当前 `native_kernel_memory` 示例服务仍逐目标运输和服务，新合批应接在策略侧 MZ 服务层。
 
@@ -131,4 +145,4 @@ E03 必须提供纯 round fragment。现有 `canonical_memory_program` 的末尾
 
 每一阶段交付原源/作者版本、profile、实际计划、独立几何审核、报告和身份生命周期、精确恢复、同一 operation stream 的可视化。阶段失败保留证据，不放宽阈值。可视化展示 compute/MZ 往返、X/Z roles、完整活动轴/空交点、CZ 全带作用集合、slot/排队/报告完成和主要时间指标。
 
-性能比较固定同一协议、硬件、起态和终态，分别记录 cold/warm 编译、placement/template cache、lowering、运行、录制和离线审核；另列实际 μs。Enola 的 Python/SA 开销需要实测，不能从架构匹配直接推断它比 QMAP C++ 快。量子质量沿[共享协议](../instruction/qec_factory_pipeline.md)保持独立，调度报告来源须声明，未知 fidelity 为 null。本轮仅完成兼容设计与流程目录，未获得新的运行时间、物理 PASS 或完整工厂/Shor 资格。
+性能比较固定同一协议、硬件、起态和终态，分别记录 cold/warm 编译、placement/template cache、lowering、运行、录制和离线审核；另列实际 μs。Enola 的 Python/SA 开销需要实测，不能从架构匹配直接推断它比 QMAP C++ 快。量子质量沿[共享协议](../instruction/qec_factory_pipeline.md)保持独立，调度报告来源须声明，未知 fidelity 为 null。本轮增加了上述 rigid 前缀兼容服务，保存 full12 前缀已通过三项独审与原初态重放；没有新的 Full Enola＋MZ kernel、持续 QEC、完整工厂或 Shor 资格声明。

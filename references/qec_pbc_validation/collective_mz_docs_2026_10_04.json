@@ -1,0 +1,143 @@
+{
+  "schema": "collective-mz-canonical-docs-check/1",
+  "date": "2026-10-04",
+  "status": "completed_bounded_rigid_prefix_qualified",
+  "compatibility_backend": "rigid_env_prefix_compatibility",
+  "full_enola_mz_kernel": "OPEN",
+  "qualification": "Saved full12 initialization/CSS and first syndrome round: actual execution/original-initial replay + all 3 independent audits PASS. Full Enola+MZ kernel/E03/factory/full physical Shor remain OPEN.",
+  "checks": {
+    "--check": {
+      "exit_code": 0,
+      "ok": true,
+      "chunks": 72,
+      "sources": 63,
+      "errors": []
+    },
+    "--self-test": {
+      "exit_code": 0,
+      "ok": true,
+      "passed": 90,
+      "total": 90,
+      "top_k": 5
+    }
+  },
+  "historical_fingerprint_fields_preserved": 77,
+  "current_source_fingerprint_status": "all repository current fingerprints refreshed and checked; original raw/historical fields preserved",
+  "owned_files_sha256": {
+    "docs/qec_enola_mz_design.md": "2d1964f41e13bb40135f3b7518e8bdbe9d650d6827cfb4fc0e1f35e83266f8d0",
+    "docs/qec_patch_parallel_layout.md": "ae11605c316d09c81ec0b15a4477fcb02a8aef60e9874035ecd0c8bf62e9bb44",
+    "docs/qec_rigid_readout_placement.md": "b273b043eeae8a8022e68787c75590459976dd46f210326528c0ca60ce5a4359",
+    "references/qec_pbc_rag/knowledge.jsonl": "1b591503dffc56bcd2aa9c159fe1551dcd8dcd629d1d3e757124d6b32e462e66",
+    "references/qec_pbc_rag/sources.json": "48de3338539f699c940094ac73832b6abdf664e4dfc8dd0ec1dcbbac49fa40f1",
+    "references/qec_pbc_rag/query_cases.json": "6c78bbd7a688c8267232945976037a7f704d5a083a8502615053fafc75bffe47"
+  },
+  "code_changes_owned": false,
+  "native_compilation_run_by_docs_owner": false,
+  "frozen_kernel_edited": false,
+  "observed_run": {
+    "directory": "artifacts/collective-mz-2026-10-04/full12-attempt2",
+    "plans": 156,
+    "physical_time_us": 34214.38814875767,
+    "wall_seconds_including_compile_execute_replay": 1269.5438745999709,
+    "producer_sha_checks_passed": 10,
+    "native_audit_artifact_sha_checks_passed": 6,
+    "patch_audit_artifact_sha_checks_passed": 4,
+    "original_holders_restored": true,
+    "reports": 96,
+    "initial_collection_and_return_wave_sizes": [
+      60,
+      48,
+      48,
+      48,
+      17
+    ],
+    "syndrome_collection_and_return_wave_sizes": [
+      48,
+      48
+    ],
+    "service_pulse_sizes": [
+      221,
+      96,
+      96
+    ],
+    "native_core_independent_audit_passed": true,
+    "patch_independent_audit_passed": true,
+    "collective_specific_audit": "PASS",
+    "all_3_independent_audits_passed": true,
+    "qualification_reference": "references/qec_pbc_validation/collective_mz_2026_10_04.json",
+    "qualification_reference_artifact_sha_checks_passed": 17,
+    "qualification_reference_independent_source_sha_checks_passed": 4
+  },
+  "rag_counts": {
+    "chunks": 72,
+    "sources": 63,
+    "repository_snapshot_sources": 48,
+    "path_bindings_including_duplicate_source_bindings": 258,
+    "unique_repository_paths": 213,
+    "retrieval_cases": 90
+  },
+  "final_validation": {
+    "focused_tests_passed": 67,
+    "focused_test_failures_or_errors": 0,
+    "focused_xml_seconds": 44.401,
+    "total_distinct_tests": 195,
+    "test_count_scope": "128 regression cases passed in earlier focused runs plus 67 final current collective/report cases; collect-only deduplication verifies 195 distinct cases",
+    "architecture_modules": 278,
+    "architecture_violations": 0,
+    "browser_qa": "passed",
+    "browser_report_completion": {
+      "before_us": 31765.780381,
+      "after_us": 31765.782381,
+      "before_has_report": false,
+      "after_report_count": 96
+    }
+  },
+  "reference_sha256": "6b82be0bdd7d75ac15d43a03816ee19f900114ff4fd20ea3587ce63d7e154c0e",
+  "reference_consistency": {
+    "producer_current_source_checks": {
+      "examples/run_parallel_shor15_prefix.py": true,
+      "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": true,
+      "src/neutral_atom_experiments/qec_pbc/patch_layout.py": true,
+      "src/neutral_atom_strategies/motion/astar.py": true,
+      "src/neutral_atom_strategies/motion/planners.py": true,
+      "src/neutral_atom_strategies/motion/validated_rigid.py": true,
+      "src/neutral_atom_strategies/scheduling/collective_mz.py": true,
+      "src/neutral_atom_strategies/scheduling/parallel_patch.py": true,
+      "src/neutral_atom_strategies/scheduling/patch_service_groups.py": true,
+      "src/neutral_atom_strategies/scheduling/rigid_readout_placement.py": true
+    },
+    "independent_current_source_checks": {
+      "tools/audit_native_parallel_physical.py": true,
+      "tools/audit_patch_parallel_layout.py": true,
+      "tools/audit_collective_mz.py": true,
+      "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": true
+    },
+    "artifact_checks": {
+      "checkpoint-final.json": true,
+      "collective-mz-audit.json": true,
+      "decisions.json": true,
+      "independent-audit.json": true,
+      "initial-placement.json": true,
+      "initial.json": true,
+      "parallel-phases.json": true,
+      "patch-parallel-audit.json": true,
+      "plans.json": true,
+      "platform.json": true,
+      "prefix-circuit.json": true,
+      "producer-source.json": true,
+      "progress.json": true,
+      "recording.json": true,
+      "source-prefix.json": true,
+      "summary.json": true,
+      "trace.jsonl": true
+    },
+    "screenshot_checks": {
+      "initial-collection.png": true,
+      "syndrome-measurement96.png": true,
+      "narrow390-collection.png": true,
+      "syndrome-collection-motion.png": true
+    },
+    "focused_xml_sha256_matches": true,
+    "all_passed": true
+  }
+}

@@ -1,5 +1,7 @@
 # 可视化自动生成规范
 
+2026-10-04 MZ集合服务：新8778回放必须同时绑定已通过的原源/Stim/全几何、patch与`collective-mz-audit.json`；集合审计的recording和decisions SHA须与当前产物精确相同。RESET221、MEASURE96与RESET96以及集合/归还波次来自真实提交operation/evidence，不按AOD容量虚构服务批次；运输书签跳到该实际带载路径的最长段。共用VisualRecorder/viewer、同步缩放、X/Z标识、主要指标默认展开与逐项折叠保持。当前是首T前初始化及首轮syndrome物理前缀，完整Enola轻量核/工厂/fullphysicalShor不因演示而完成，见[验收](../references/qec_pbc_validation/collective_mz_2026_10_04.json)。
+
 2026-10-04 码内布局结果：共用 `native_parallel_report.py` 对 `interleaved/enola` 还要求该次 `patch-parallel-audit.json` 通过且绑定录制 SHA。四个稳定子层书签从实际提交 `.check.*.layerN.cz.*` pulse生成，标明该层真实脉冲数，不把四个协议层画成四个物理批次。Enola proposal 是初态来源，动画坐标仍来自同一 Executor/VisualRecorder；主统计、尺寸同步与X/Z字形合同沿用，不向场景填入计划外移动。
 
 2026-10-04 用户修订：[QEC 回放呈现合同](../docs/qec_viewer_presentation.md)。共用画布的原子比 SLM/AOD trap 略大，所有空间标记、线宽、门/交接动效按同一投影比例随按钮缩放和响应式画布变化；不再采用固定 CSS px 半径。X/Z 辅助角色由 canonical metadata 持久标识，保留操作填充色，资源未编码模板角色须明确区分。主要统计和真实时间占用优先展开，逐项逻辑/原子/操作及大量资源明细默认折叠。显示改动不能改录制几何、物理指标或验收边界。

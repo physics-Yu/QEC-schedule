@@ -169,3 +169,62 @@ def create_enola_environment(prefix, proposal, *, seed=0):
     state = replace(state, quantum_state=StabilizerState.zero(tuple(sorted(state.atoms))),
         aods={'AOD_0': platform.aod, **{a.aod_id: a for a in platform.additional_aods}})
     return NeutralAtomEnv(state), platform, placement, metadata
+
+
+def create_collective_environment(prefix, *, layout='enola', proposal=None, seed=0):
+    """Declare real disabled MZ supports before any collection operation.
+
+    Preserve all home positions, source gates, device footprints and physical
+    thresholds. For each device, translate its complete home footprint to the
+    nearest grid-aligned vertical placement within the existing MZ rectangle.
+    This bounded candidate family preserves rigid captures for actual return;
+    it is not a claim of globally optimal arbitrary-site packing.
+    """
+    if layout == 'enola':
+        _, platform, placement, metadata = create_enola_environment(prefix, proposal, seed=seed)
+    elif layout == 'interleaved':
+        _, platform, placement, metadata = create_interleaved_environment(prefix, seed=seed)
+    else:
+        raise ValueError('Collective MZ requires the declared interleaved or Enola home layout')
+    mz = next(z for z in platform.world.zones if z.zone_type == ZoneType.MEASUREMENT)
+    from math import floor
+    traps = dict(platform.world.traps)
+    translations, slots = {}, {}
+    for aod_id in ('AOD_0', 'AOD_MAGIC'):
+        atoms = tuple(q for q in placement if metadata['atom_roles'][q]['aod_id'] == aod_id)
+        if not atoms:
+            continue
+        homes = tuple(traps[placement[q]].position for q in atoms)
+        # All current homes lie above MZ; the greatest legal grid-aligned
+        # translation is closest in this explicitly bounded footprint family.
+        dy = 5. * floor((mz.bounds.upper.y_um - max(p.y_um for p in homes)) / 5.)
+        translations[aod_id] = [0., dy]
+        for q in atoms:
+            home = traps[placement[q]]
+            point = Position2D(home.position.x_um, home.position.y_um + dy)
+            if not mz.bounds.contains(point):
+                raise ValueError('Complete home footprint does not fit declared MZ')
+            key = 'mz.' + home.id
+            traps[key] = StaticTrap(key, GridCoord(int(point.x_um / 5), int(point.y_um / 5)), point, False)
+            slots[q] = key
+    # The declared global interaction band spans the full world x range.
+    # Trap inventory remains a separate, finite set of actual supports.
+    zones = tuple(replace(z, bounds=_rect(platform.world.bounds.lower.x_um,
+        z.bounds.lower.y_um, platform.world.bounds.upper.x_um,
+        z.bounds.upper.y_um)) if z.zone_type == ZoneType.ENTANGLEMENT else z
+        for z in platform.world.zones)
+    platform = replace(platform, world=replace(platform.world, traps=traps, zones=zones))
+    contract = {'schema': 'collective-mz-platform/1', 'mz_support': 'declared_stable_slm',
+        'target_traps': slots, 'translations_um': translations, 'slm_slots': len(slots),
+        'selection': 'distance-first within device complete-home vertical translations on 5um grid',
+        'transport_capacity': {a.aod_id: a.rows * a.columns
+            for a in (platform.aod, *platform.additional_aods)},
+        'service_capacity': len(slots), 'transport_waves_are_not_service_batches': True,
+        'illumination_x_equals_world_x': True, 'physical_thresholds_changed': False,
+        'backend': 'rigid_env_prefix_compatibility', 'full_enola_kernel_claimed': False}
+    metadata = {**metadata, 'collective_mz_contract': contract,
+        'layout_contract': {**metadata['layout_contract'], 'mz_service': 'collective_slm_v1'}}
+    state = initialize(prefix.circuit, platform, placement, seed=seed)
+    state = replace(state, quantum_state=StabilizerState.zero(tuple(sorted(state.atoms))),
+        aods={'AOD_0': platform.aod, **{a.aod_id: a for a in platform.additional_aods}})
+    return NeutralAtomEnv(state), platform, placement, metadata

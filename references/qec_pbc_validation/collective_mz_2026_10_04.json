@@ -1,0 +1,653 @@
+{
+  "schema": "collective-mz-prefix-qualification/1",
+  "date": "2026-10-04",
+  "status": "completed",
+  "backend": "rigid_env_prefix_compatibility",
+  "full_enola_mz_kernel": "OPEN",
+  "scope": "full12 saved Shor15 initial RESET/CSS and first syndrome round; right-side resource RESET/H stops before first T",
+  "run_directory": "artifacts/collective-mz-2026-10-04/full12-attempt2",
+  "source_manifest_sha256": "16d12bb97b28d49c07b8a28d7a94ea81cf58d1c6fe7e3ee21f2a68fb350adac7",
+  "source_native_prefix_sha256": "f56b91f177cc745f05c407597207905078604261bd9f770b17daa905a8d1adb3",
+  "native_gate_count": 3006,
+  "native_gate_counts": {
+    "CZ": 816,
+    "H": 1777,
+    "MEASURE": 96,
+    "RESET": 317
+  },
+  "native_projection_count": 413,
+  "report_count": 96,
+  "physical_atoms": 221,
+  "patches": 12,
+  "plans": 156,
+  "model_time_us": 34214.38814875767,
+  "compile_and_execute_wall_seconds": 742.0347219000105,
+  "wall_through_original_state_replay_seconds": 1269.5438745999709,
+  "wall_timing_scope": "shared host; includes recording and independent original-initial plan replay; excludes final export and standalone audits; not a compiler-kernel speed comparison",
+  "producer_acceptance": {
+    "all_output_code_logical_zero_and_aux_checks_plus_one": true,
+    "all_saved_report_ids_preserved": true,
+    "dag_complete": true,
+    "effects_exactly_once": true,
+    "event_queue_empty": true,
+    "independent_plan_replay_equal": true,
+    "same_source_resource_carriers_before_first_t": true
+  },
+  "platform_contract": {
+    "backend": "rigid_env_prefix_compatibility",
+    "full_enola_kernel_claimed": false,
+    "illumination_x_equals_world_x": true,
+    "mz_support": "declared_stable_slm",
+    "physical_thresholds_changed": false,
+    "schema": "collective-mz-platform/1",
+    "selection": "distance-first within device complete-home vertical translations on 5um grid",
+    "service_capacity": 221,
+    "slm_slots": 221,
+    "translations_um": {
+      "AOD_0": [
+        0.0,
+        -320.0
+      ],
+      "AOD_MAGIC": [
+        0.0,
+        -70.0
+      ]
+    },
+    "transport_capacity": {
+      "AOD_0": 108,
+      "AOD_MAGIC": 24
+    },
+    "transport_waves_are_not_service_batches": true
+  },
+  "service_pulses": [
+    {
+      "kind": "reset",
+      "gate_count": 221,
+      "start_us": 5718.890192784996,
+      "end_us": 5818.890192784996
+    },
+    {
+      "kind": "measurement",
+      "gate_count": 96,
+      "start_us": 31265.781380739376,
+      "end_us": 31765.781380739376
+    },
+    {
+      "kind": "reset",
+      "gate_count": 96,
+      "start_us": 31765.781380739376,
+      "end_us": 31865.781380739376
+    }
+  ],
+  "collective_batches": [
+    {
+      "kind": "RESET",
+      "target_count": 221,
+      "collection_wave_sizes": [
+        60,
+        48,
+        48,
+        48,
+        17
+      ],
+      "return_wave_sizes": [
+        60,
+        48,
+        48,
+        48,
+        17
+      ],
+      "full_service_duration_us": 11489.535186326662,
+      "plan_id": "plan_d0dee79bc65a767d9769"
+    },
+    {
+      "kind": "MEASURE",
+      "target_count": 96,
+      "collection_wave_sizes": [
+        48,
+        48
+      ],
+      "return_wave_sizes": [
+        48,
+        48
+      ],
+      "full_service_duration_us": 5337.194000034524,
+      "plan_id": "plan_ad8aad98d779fb677167"
+    }
+  ],
+  "max_cz_pairs": 36,
+  "cz_pulses": 52,
+  "syndrome_cz_pulses": 8,
+  "cross_device_transport_overlaps": 0,
+  "independent_audits": {
+    "independent-audit.json": {
+      "schema": "native-prefix-independent-physical-audit/1",
+      "passed": true,
+      "source_native_gate_count": 3006,
+      "physical_gate_count": 3006,
+      "algorithm_native_gate_count": 2988,
+      "resource_native_gate_count": 18,
+      "algorithm_qubits": 204,
+      "original_state_constraints": 204,
+      "original_projections": 413,
+      "committed_effects_once": 3006,
+      "committed_projection_checks": 413,
+      "dependency_interval_checks": 9401,
+      "committed_effect_interval_checks": 3006,
+      "cz_pulses_global_pair_checks": 52,
+      "cz_native_effects": 816,
+      "actual_mz_projection_geometry_checks": 413,
+      "raman_native_separation_checks": 1777,
+      "max_cz_batch": 36,
+      "move_devices": [
+        "AOD_0",
+        "AOD_MAGIC"
+      ],
+      "cross_device_move_overlaps": 0,
+      "stim_version": "1.15.0",
+      "cross_device_loaded_move_overlaps": 0,
+      "physical_time_us": 34214.38814875767,
+      "full_shor_physical": false,
+      "magic_factory_validated": false,
+      "fault_tolerance_validated": false,
+      "artifact_sha256": {
+        "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+        "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+        "initial.json": "23e50d4cbdb46cc84a563fb8dc53da8d7667eda16cb21bfaa2273de23ce09f15",
+        "checkpoint-final.json": "9aad8498a8bc5936b7a945638c77ef1dc7a15e170db41aee86dd9bab8a095f19",
+        "recording.json": "117e7a921423bc285cfcac01396020018df11104c2e9ab27c134de75e2050181",
+        "trace.jsonl": "5e33810ca07143f14c53ef54321eff4d9a8a88da8a7703ce2649ebcac8e7976a"
+      }
+    },
+    "patch-parallel-audit.json": {
+      "schema": "patch-parallel-layout-independent-audit/1",
+      "passed": true,
+      "scope": "unchanged deterministic native prefix; declared placement and legal intra-patch CZ batches",
+      "prefix_independent_audit": {
+        "schema": "native-prefix-independent-physical-audit/1",
+        "passed": true,
+        "source_native_gate_count": 3006,
+        "physical_gate_count": 3006,
+        "algorithm_native_gate_count": 2988,
+        "resource_native_gate_count": 18,
+        "algorithm_qubits": 204,
+        "original_state_constraints": 204,
+        "original_projections": 413,
+        "committed_effects_once": 3006,
+        "committed_projection_checks": 413,
+        "dependency_interval_checks": 9401,
+        "committed_effect_interval_checks": 3006,
+        "cz_pulses_global_pair_checks": 52,
+        "cz_native_effects": 816,
+        "actual_mz_projection_geometry_checks": 413,
+        "raman_native_separation_checks": 1777,
+        "max_cz_batch": 36,
+        "move_devices": [
+          "AOD_0",
+          "AOD_MAGIC"
+        ],
+        "cross_device_move_overlaps": 0,
+        "stim_version": "1.15.0",
+        "cross_device_loaded_move_overlaps": 0,
+        "physical_time_us": 34214.38814875767,
+        "full_shor_physical": false,
+        "magic_factory_validated": false,
+        "fault_tolerance_validated": false,
+        "artifact_sha256": {
+          "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+          "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+          "initial.json": "23e50d4cbdb46cc84a563fb8dc53da8d7667eda16cb21bfaa2273de23ce09f15",
+          "checkpoint-final.json": "9aad8498a8bc5936b7a945638c77ef1dc7a15e170db41aee86dd9bab8a095f19",
+          "recording.json": "117e7a921423bc285cfcac01396020018df11104c2e9ab27c134de75e2050181",
+          "trace.jsonl": "5e33810ca07143f14c53ef54321eff4d9a8a88da8a7703ce2649ebcac8e7976a"
+        }
+      },
+      "protocol": {
+        "canonical_phases_checked": 192,
+        "canonical_dependency_edges_checked": 5856,
+        "css_native_gates_checked": 1632
+      },
+      "batches": {
+        "mode": "enola",
+        "css_cz_pulses": 44,
+        "canonical_round_cz_pulses": 8,
+        "total_cz_pulses": 52,
+        "cz_native_effects": 816,
+        "per_patch": {
+          "phase0": {
+            "maximum_pairs_in_one_canonical_pulse": 3,
+            "round_pulses": 8,
+            "pairs_per_pulse_histogram": {
+              "3": 8
+            },
+            "pulses_per_layer": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            }
+          },
+          "phase1": {
+            "maximum_pairs_in_one_canonical_pulse": 3,
+            "round_pulses": 8,
+            "pairs_per_pulse_histogram": {
+              "3": 8
+            },
+            "pulses_per_layer": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            }
+          },
+          "phase2": {
+            "maximum_pairs_in_one_canonical_pulse": 3,
+            "round_pulses": 8,
+            "pairs_per_pulse_histogram": {
+              "3": 8
+            },
+            "pulses_per_layer": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            }
+          },
+          "phase3": {
+            "maximum_pairs_in_one_canonical_pulse": 3,
+            "round_pulses": 8,
+            "pairs_per_pulse_histogram": {
+              "3": 8
+            },
+            "pulses_per_layer": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            }
+          },
+          "phase4": {
+            "maximum_pairs_in_one_canonical_pulse": 3,
+            "round_pulses": 8,
+            "pairs_per_pulse_histogram": {
+              "3": 8
+            },
+            "pulses_per_layer": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            }
+          },
+          "phase5": {
+            "maximum_pairs_in_one_canonical_pulse": 3,
+            "round_pulses": 8,
+            "pairs_per_pulse_histogram": {
+              "3": 8
+            },
+            "pulses_per_layer": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            }
+          },
+          "phase6": {
+            "maximum_pairs_in_one_canonical_pulse": 3,
+            "round_pulses": 8,
+            "pairs_per_pulse_histogram": {
+              "3": 8
+            },
+            "pulses_per_layer": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            }
+          },
+          "phase7": {
+            "maximum_pairs_in_one_canonical_pulse": 3,
+            "round_pulses": 8,
+            "pairs_per_pulse_histogram": {
+              "3": 8
+            },
+            "pulses_per_layer": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            }
+          },
+          "work0": {
+            "maximum_pairs_in_one_canonical_pulse": 3,
+            "round_pulses": 8,
+            "pairs_per_pulse_histogram": {
+              "3": 8
+            },
+            "pulses_per_layer": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            }
+          },
+          "work1": {
+            "maximum_pairs_in_one_canonical_pulse": 3,
+            "round_pulses": 8,
+            "pairs_per_pulse_histogram": {
+              "3": 8
+            },
+            "pulses_per_layer": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            }
+          },
+          "work2": {
+            "maximum_pairs_in_one_canonical_pulse": 3,
+            "round_pulses": 8,
+            "pairs_per_pulse_histogram": {
+              "3": 8
+            },
+            "pulses_per_layer": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            }
+          },
+          "work3": {
+            "maximum_pairs_in_one_canonical_pulse": 3,
+            "round_pulses": 8,
+            "pairs_per_pulse_histogram": {
+              "3": 8
+            },
+            "pulses_per_layer": {
+              "1": 2,
+              "2": 2,
+              "3": 2,
+              "4": 2
+            }
+          }
+        }
+      },
+      "home_layout": {
+        "canonical_coordinate_scale_um": null,
+        "minimum_occupied_home_distance_um": 10.0,
+        "slm_candidate_grid_um": 5,
+        "occupied_carriers_checked": 221,
+        "algorithm_aod_capacity": 108,
+        "finite_cz_distance_um": 6,
+        "cz_pair_offset_um": "searched finite offsets",
+        "enola_proposal": {
+          "proposal_raw_sha256": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
+          "placement_mapping_sha256": "49a2c2d531af2bad5e77d8d368c6809dd8386ffe19c3fe166c7e23882b44337c",
+          "official_placer_commit": "2944dbf4e163e8d2eeeec607add0d9139edce689",
+          "official_placer_sha256": "d256c84490bd72d525515f24acb081d7b21bcd5f7bbc31302a3bbf79a16997cf",
+          "physical_evidence_scope": "frozen placement authenticated; physical run audited separately"
+        }
+      },
+      "move_evidence": {
+        "committed_moves_checked": 350,
+        "carrier_endpoint_checks": 12248,
+        "deforming_axis_move_count": 0,
+        "backend": "rigid",
+        "axis_order_and_spacing_certified_for_shared_monotone_progress": true,
+        "continuous_atom_slm_sweep_validation": "Executor plus complete original-initial-state plan replay"
+      },
+      "nonpair_cz_spacing": {
+        "minimum_required_nonpair_spacing_um": 10.0,
+        "minimum_actual_nonpair_spacing_um": 10.0,
+        "nonpair_distance_checks": 1263304,
+        "scope": "all alive atoms including resource carriers at every actual CZ pulse"
+      },
+      "artifact_sha256": {
+        "initial.json": "23e50d4cbdb46cc84a563fb8dc53da8d7667eda16cb21bfaa2273de23ce09f15",
+        "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+        "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+        "recording.json": "117e7a921423bc285cfcac01396020018df11104c2e9ab27c134de75e2050181"
+      },
+      "physical_time_us": 34214.38814875767,
+      "complete_physical_shor": false,
+      "magic_factory_or_fault_tolerance_claimed": false
+    },
+    "collective-mz-audit.json": {
+      "schema": "independent-collective-mz-audit/1",
+      "passed": true,
+      "native_gate_count": 3006,
+      "native_counts": {
+        "RESET": 317,
+        "H": 1777,
+        "CZ": 816,
+        "MEASURE": 96
+      },
+      "original_native_source_span_checked": true,
+      "native_effects_once": 3006,
+      "original_projection_count": 413,
+      "service_count": 2,
+      "services": [
+        {
+          "kind": "RESET",
+          "cohort_size": 221,
+          "plan_id": "plan_d0dee79bc65a767d9769",
+          "collection_wave_sizes": [
+            60,
+            48,
+            48,
+            48,
+            17
+          ],
+          "return_wave_sizes": [
+            60,
+            48,
+            48,
+            48,
+            17
+          ],
+          "native_pulse_sizes": [
+            221
+          ],
+          "all_holders_mz_before_pulse": true,
+          "reports_at_measurement_end": true,
+          "all_measure_before_reset": true,
+          "actual_return_to_original_holders": true
+        },
+        {
+          "kind": "MEASURE",
+          "cohort_size": 96,
+          "plan_id": "plan_ad8aad98d779fb677167",
+          "collection_wave_sizes": [
+            48,
+            48
+          ],
+          "return_wave_sizes": [
+            48,
+            48
+          ],
+          "native_pulse_sizes": [
+            96,
+            96
+          ],
+          "all_holders_mz_before_pulse": true,
+          "reports_at_measurement_end": true,
+          "all_measure_before_reset": true,
+          "actual_return_to_original_holders": true
+        }
+      ],
+      "continuous_collision_validation_scope": "separate Executor and complete original-initial replay",
+      "full_enola_kernel_claimed": false,
+      "full_physical_shor": false,
+      "fault_tolerance_claimed": false,
+      "artifact_sha256": {
+        "initial.json": "23e50d4cbdb46cc84a563fb8dc53da8d7667eda16cb21bfaa2273de23ce09f15",
+        "checkpoint-final.json": "9aad8498a8bc5936b7a945638c77ef1dc7a15e170db41aee86dd9bab8a095f19",
+        "plans.json": "92410ff8f37009ad6e4b5be825ffa90544e95da1ae582fa99a85a15f70a0afb2",
+        "trace.jsonl": "5e33810ca07143f14c53ef54321eff4d9a8a88da8a7703ce2649ebcac8e7976a",
+        "recording.json": "117e7a921423bc285cfcac01396020018df11104c2e9ab27c134de75e2050181",
+        "decisions.json": "55b6825a9dd315903602fd0b24bd563c04c5901743bd1f85fccde9697c132feb",
+        "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+        "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194"
+      }
+    }
+  },
+  "producer_source": {
+    "options": {
+      "algorithm_only": false,
+      "intra_patch": true,
+      "intra_services": true,
+      "layout": "enola",
+      "max_decisions": 512,
+      "mz_service": "collective",
+      "output": "artifacts/collective-mz-2026-10-04/full12-attempt2",
+      "pair_search": true,
+      "patches": 12,
+      "proposal": "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json",
+      "readout_placement": null,
+      "routing_policy": "standard",
+      "skip_replay": false,
+      "source": "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04",
+      "wall_budget": 1800.0
+    },
+    "schema": "native-prefix-producer-source/1",
+    "sha256": {
+      "examples/run_parallel_shor15_prefix.py": "63cebb62e888cf81b2d72f21da6a2175d8c844b9dd8fc4dc54b02deee36fea10",
+      "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
+      "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "0b4c8a7051010dda65d67fd281c2c7758965299f68066b2ddd1c9dcd0a7c9864",
+      "src/neutral_atom_strategies/motion/astar.py": "81af36805971b394d20e555ca7e1938b49178c1fd995d304ffd592d43cd3436d",
+      "src/neutral_atom_strategies/motion/planners.py": "2809ae1e31db130c73882d8c859b02dc31bc504bd9f6db18341c6f51851f30db",
+      "src/neutral_atom_strategies/motion/validated_rigid.py": "bb9b3262fd3cfcc9988342df3b45b33e20d5a88c5d65030b48c8388ee05732a3",
+      "src/neutral_atom_strategies/scheduling/collective_mz.py": "829d50a9d56187280637d3bf663c3e975d7cc712e945688c1f3308eaa0ffcc92",
+      "src/neutral_atom_strategies/scheduling/parallel_patch.py": "e4d63356477fcec6c0f2d7b2de69024a47861cc378dbc899c870cbb3a88906f4",
+      "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806",
+      "src/neutral_atom_strategies/scheduling/rigid_readout_placement.py": "3176758914f35e05f1260ca305ada494c95ff2a679b380b5a4f236a073c1aa23"
+    }
+  },
+  "independent_source_sha256": {
+    "tools/audit_native_parallel_physical.py": "0e1f908be88d93c47a911e63426b4dba07a49908bc2eeeef2c18108c7c592fb5",
+    "tools/audit_patch_parallel_layout.py": "d3810f0b8d8dbc816f255232627dd2415e51035abba1539b5ebc657c7bee42e3",
+    "tools/audit_collective_mz.py": "7f5470d1edf5e4fb958cda0b4cb950aba69ae7cea9c566424844265a53e63eb2",
+    "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f8e387b303fbcc6b85524c7bd46b229f6d46450626b8c723647a889dfb064b88"
+  },
+  "artifact_sha256": {
+    "checkpoint-final.json": "9aad8498a8bc5936b7a945638c77ef1dc7a15e170db41aee86dd9bab8a095f19",
+    "collective-mz-audit.json": "5ba924fa87edd82180323de9c011a02fec94c190e5615336ffe784d0e357f428",
+    "decisions.json": "55b6825a9dd315903602fd0b24bd563c04c5901743bd1f85fccde9697c132feb",
+    "independent-audit.json": "72e71603a9c3954c34739ac24375d506ba7f04b864fd634f5f659c2f14f1d4d8",
+    "initial-placement.json": "2d6e2267e6b5c141e77c550e173029ad7d02429060cde71310a167c05297a726",
+    "initial.json": "23e50d4cbdb46cc84a563fb8dc53da8d7667eda16cb21bfaa2273de23ce09f15",
+    "parallel-phases.json": "302f8d95476b3e17cc150b0068af8214881bc13c327c8756a446c1b55309a112",
+    "patch-parallel-audit.json": "988c050a3326df52e3f0d169d321c1e21fe9a399407f75a3eedfa690f0f9fd3b",
+    "plans.json": "92410ff8f37009ad6e4b5be825ffa90544e95da1ae582fa99a85a15f70a0afb2",
+    "platform.json": "ce4498b545ebda0c23b2dc3d1ad5bb3d66c886bdfc04d97a23da3b782c38f1c9",
+    "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+    "producer-source.json": "1b005adf49a2b855639f6789666c77a216e16d8ac89f1ac1b457ea6d61ba895e",
+    "progress.json": "5e489ace126917fb989a830b1a9b5ee82bdb85458c83a5162a1ed33f0c3ca160",
+    "recording.json": "117e7a921423bc285cfcac01396020018df11104c2e9ab27c134de75e2050181",
+    "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+    "summary.json": "60b8058be6e989be6bd54b0ad4d776e9c7dcd3e50071a250d02940078cf752a4",
+    "trace.jsonl": "5e33810ca07143f14c53ef54321eff4d9a8a88da8a7703ce2649ebcac8e7976a"
+  },
+  "tests": {
+    "regression_distinct": 128,
+    "new_focused_xml": "artifacts/collective-mz-2026-10-04/focused-tests.xml",
+    "focused_passed": 67,
+    "focused_seconds": 44.401,
+    "total_distinct": 195,
+    "count_scope": "128 regression cases passed in earlier focused runs plus 67 final current collective/report cases; collect-only deduplication verifies 195 distinct cases",
+    "focused_xml_sha256": "bf642ea7059f13d6a6328a93c5cb0305869f094d48efa9b146104f50128c195a"
+  },
+  "comparison": "new declared MZ supports and full-world x illumination; no byte-identical profile speedup claimed",
+  "frozen_kernel_modified": false,
+  "complete_physical_shor": false,
+  "factory_or_injection_executed": false,
+  "fault_tolerance_claimed": false,
+  "viewer": {
+    "url": "http://127.0.0.1:8778/#physical-viewer",
+    "browser_qa": "passed",
+    "evidence": {
+      "schema": "collective-mz-browser-qa/1",
+      "url": "http://127.0.0.1:8778/#physical-viewer",
+      "passed": true,
+      "bookmarks": [
+        "initial collection",
+        "RESET221",
+        "syndrome collection",
+        "MEASURE96",
+        "RESET96",
+        "actual final"
+      ],
+      "measurement_completion": {
+        "before_us": 31765.780381,
+        "after_us": 31765.782381,
+        "before_has_report": false,
+        "after_report_count": 96
+      },
+      "responsive": [
+        {
+          "width": 390,
+          "documentWidth": 375,
+          "canvasWidth": 353.3333435058594
+        },
+        {
+          "width": 320,
+          "documentWidth": 305,
+          "canvasWidth": 283.3333435058594
+        }
+      ],
+      "details": [
+        {
+          "label": "画布显示 6 / 8 图层开启",
+          "open": false
+        },
+        {
+          "label": "实际行列坐标与编译过程",
+          "open": false
+        },
+        {
+          "label": "主要指标与时间占用",
+          "open": true
+        },
+        {
+          "label": "逐资源时间占用（874 项，按需展开）",
+          "open": false
+        },
+        {
+          "label": "逐项状态与原子详情（按需展开）",
+          "open": false
+        },
+        {
+          "label": "逻辑前沿与测量详情",
+          "open": false
+        },
+        {
+          "label": "原子角色与承载详情",
+          "open": false
+        },
+        {
+          "label": "操作详情（按需查看）",
+          "open": false
+        }
+      ],
+      "proportional_zoom_buttons_checked": true,
+      "console_errors": [],
+      "screenshots": [
+        "initial-collection.png",
+        "syndrome-measurement96.png",
+        "narrow390-collection.png",
+        "syndrome-collection-motion.png"
+      ]
+    },
+    "screenshot_sha256": {
+      "initial-collection.png": "da058b5cf69456665bf631827271f55b56e88b554ff5190dca67d6b74d00377b",
+      "syndrome-measurement96.png": "46acc579fd324df4e933e8513c8439c1be27706787b420adb50154a263257b9b",
+      "narrow390-collection.png": "27321925e5d53bb79fe52256e2cace1cf0e931eb0cd1b1cbcc0dbd2a2cda0382",
+      "syndrome-collection-motion.png": "0e178cf225db5bc95503eb9546a27518213b57b4671df2c3c36e897da491f072"
+    }
+  },
+  "architecture": {
+    "passed": true,
+    "python_modules": 278,
+    "violations": []
+  }
+}
