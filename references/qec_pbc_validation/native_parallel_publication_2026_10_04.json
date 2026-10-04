@@ -14,5 +14,16 @@
   "merged": false,
   "source_packet_raw_blob_sha": "07cf72a3a3b1261e9c466973fd1882978962791d",
   "original_head": "9e28b2e2da178420b449bb24cfff58e10e2b99f3",
-  "original_tracked_dirty_bytes_preserved": 36
+  "original_tracked_dirty_bytes_preserved_at_prior_checkpoint": 36,
+  "concurrent_original_handoff_update": {
+    "detected_at_utc": "2026-10-04T05:14:48.162499+00:00",
+    "changed_file": "instruction/handoff.md",
+    "new_entry": "2026-10-04 单次工厂到单 T 设计交付",
+    "sha256_before": "b8c9657f7810f49b55ab2792e377d3346b7bb35b76bd437cd565d13f7ae821f2",
+    "sha256_after": "18df69394076bdf6e6c8fcecc514ff27174ede5e8e445b3aa5dc472452dc6cdd",
+    "other_35_dirty_files_exact_bytes_unchanged": true,
+    "original_head_unchanged": true,
+    "this_task_wrote_no_original_tracked_files": true,
+    "concurrent_update_preserved": true
+  }
 }

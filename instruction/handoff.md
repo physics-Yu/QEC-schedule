@@ -73,3 +73,5 @@ QEC/PBC已上传到`physics-Yu/QEC-schedule` main，主提交[`3b0cde1`](https:/
 - [初态搜索](../docs/compiler_initial_placement.md) · [统一编译流程](../docs/unified_compilation_workflow.md) · [Parking](../docs/parking_compatibility.md)
 - [ZAC 复用](../docs/zac_reuse.md) · [ZAC SA](../docs/zac_initial_placement.md) · [RL 初态](../docs/rl_initial_placement.md)
 - [QEC 有序对照](../docs/qec_ordered_smt_comparison.md) · [历史发布](logs/2026-09-15-stable-release.md)
+
+收尾更正：原目录另一任务在发布期间追加了单工厂到单T设计交接；早先36dirty全字节相同是当时捕获值，最后重验其余35文件与HEAD仍相同。该handoff并行更新完整保留，本任务没有回写任何原目录tracked文件。当前实现仍全部在managed worktree；工厂设计说明不新增F1/F2运行PASS。

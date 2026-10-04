@@ -68,3 +68,5 @@
 ## 发布回执
 
 能力提交[2b6a763](https://github.com/physics-Yu/QEC-schedule/commit/2b6a76391f33b20bc2ca76fa20a4a71bbbacc6c8)已发布；独立Git fetch核对parent/tree、全部60个blob与staged bytes精确相同。工作树已匹配新commit并干净。PR#3已更新最终描述，仍draft/open/unmerged；pushurl=DISABLED保持，使用connector Git-data。最终RAG64/52/140、58/58检索和11/11换行可移植通过，3旧artifact skip不记PASS。详见[可移植发布回执](../../references/qec_pbc_validation/native_parallel_publication_2026_10_04.json)。
+
+收尾更正：原目录另一任务在发布期间追加了单工厂到单T设计交接；早先36dirty全字节相同是当时捕获值，最后重验其余35文件与HEAD仍相同。该handoff并行更新完整保留，本任务没有回写任何原目录tracked文件。当前实现仍全部在managed worktree；工厂设计说明不新增F1/F2运行PASS。
