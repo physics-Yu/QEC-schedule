@@ -1,5 +1,7 @@
 # 可视化自动生成规范
 
+2026-10-05 真实8782双设备模块回放由新app报告adapter从同次journal生成，共用payload builder/viewer不改；明确纯运输且不带QMAP/compiler/测量report默认caption。四书签来自实际时间，resource451.385μs完成时data仍在return MOVE；设备lane保留原operation/device身份。共同缩放、X/Z角色、主统计展开/明细折叠保持，右侧resource.r00–r16明确未编码运输载体。不能用transport-only回放声称完整syndrome/工厂已接入。
+
 2026-10-04 MZ集合服务：新8778回放必须同时绑定已通过的原源/Stim/全几何、patch与`collective-mz-audit.json`；集合审计的recording和decisions SHA须与当前产物精确相同。RESET221、MEASURE96与RESET96以及集合/归还波次来自真实提交operation/evidence，不按AOD容量虚构服务批次；运输书签跳到该实际带载路径的最长段。共用VisualRecorder/viewer、同步缩放、X/Z标识、主要指标默认展开与逐项折叠保持。当前是首T前初始化及首轮syndrome物理前缀，完整Enola轻量核/工厂/fullphysicalShor不因演示而完成，见[验收](../references/qec_pbc_validation/collective_mz_2026_10_04.json)。
 
 2026-10-04 码内布局结果：共用 `native_parallel_report.py` 对 `interleaved/enola` 还要求该次 `patch-parallel-audit.json` 通过且绑定录制 SHA。四个稳定子层书签从实际提交 `.check.*.layerN.cz.*` pulse生成，标明该层真实脉冲数，不把四个协议层画成四个物理批次。Enola proposal 是初态来源，动画坐标仍来自同一 Executor/VisualRecorder；主统计、尺寸同步与X/Z字形合同沿用，不向场景填入计划外移动。

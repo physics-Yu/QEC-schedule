@@ -1,5 +1,7 @@
 # Enola + MZ：同区计算架构与可组合流程
 
+2026-10-05 增量：[模块化双 AOD 运输](modular_aod_transport.md)已具有限定组件资格。data与resource分别生成END链，在同一全局时钟执行；资源可独立返回，data继续移动，只为真实资源/源依赖冲突等待。两个分离域的34原子纯运输已实际验收，full Enola＋MZ、syndrome与工厂服务仍OPEN。这轮不改变RESET服务区权限：旧8778全汇集/卸载是那次策略的选择，不是AOD运输能力要求的全局屏障。下表的集合服务是历史确认策略，不能据此给所有移动模块增加等待；RESET原位服务区域的后续选择仍须单独明确。
+
 日期：2026-10-04。状态：**Full Enola＋MZ 轻量内核目标 OPEN；rigid ENV 集合服务已通过限定前缀资格**。依据是用户此次确认的 EZ/SZ 重合、独立 MZ，以及此前的全 x 照明、5 μm SLM 格点、有限 CZ、右侧独立 magic AOD 和轻量内核要求。[流程清单](../references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json)仍用于新内核逐项验收，不以兼容前缀结果填满 E01–E10。
 
 当前已验收的 QMAP d3 attempt5 使用分离的 SZ 与 EZ；它的两轮结果不能作为本设计的验收结果。现有 Enola patch 工具仍只调用作者的初始 SA placement；本次增加的是该布局在现有 rigid ENV 中的稳定 SLM 集合服务。完整作者编译器另在 scaling benchmark 中使用，尚未接入本设计的轻量内核 MZ 闭环。

@@ -1,5 +1,13 @@
 # 当前交接状态
 
+## 2026-10-05 独立双 AOD 运输模块
+
+新策略 `AODTransportModule.compile → coordinate_aod_modules → bind_block(required geometry_guard)` 绑定完整初态/RF/profile和精确审核inputSHA；同设备END链、真实ATOM/AOD/显式共享资源占用分别协调，取消隐式跨设备归还等待。唯一scheduled KernelExecutor执行。真实34原子/左右各17、两台5×5完整RF（各8空活动交点）、68有限5μm SLM位；14ops/31journal，并发541.260859854213μs vs同profile串行992.6458955524499μs，减少45.472916%。resource451.385035698237μs已回home/SLM时data仍return MOVE，提前89.875824μs；双带载MOVE重叠190.692518μs。
+
+独立Fraction/Bernstein连续证书42时间分区/51612配对（23562atom、28050Cartesian-spectator）、最小保守10μm；运输硬阈值仍1μm。并行/串行actual journal和原初态完整checkpoint重放PASS，两处在途coldrestore journal exact，recording开关语义一致。166不同pytest（85冻结回归＋81新/边界）、281模块0违规；真实8782书签、设备lane、缩放/窄屏和console检查见[验收](../references/qec_pbc_validation/modular_aod_2026_10_05.json)。attempt1物理PASS但浏览器发现QMAP默认caption误标，source观察器adapter修复后正式attempt2重新生成并绑定manifest；旧attempt不覆盖。
+
+入口[模块合同/复现](../docs/modular_aod_transport.md)、[日志](logs/2026-10-05-modular-aod-transport.md)。当前只资格化分离包络/载荷union RF的纯运输，非通用跨域路由或动态Block追加；不改变RESET区域权限，不执行syndrome/factory/native编译/fullShor，原8778保持历史录制。下一项在共享S1–S3中把这些运输请求接入服务/资源controller，并分别审核全x CZ/报告/唯一token依赖；不得用本运输PASS替代服务资格。
+
 ## 2026-10-04 全体 MZ 汇集重编译
 
 

@@ -1,5 +1,7 @@
 # 原生编译与轻量运行内核迁移
 
+2026-10-05 [双 AOD 模块化运输](../docs/modular_aod_transport.md)补齐上层独立END链与资源协调，接已有frozen scheduled kernel，无core修改。实际resource归还/data在途、共同三次连续全RF审核、原初态重放、双checkpoint恢复及recording开关通过。此独立资格仅运输，不扩大freeze-v4单AOD含门reviewer范围，不执行native双设备分配、MZ/RESET或完整syndrome/factory。
+
 生效日期：2026-10-04。状态：独立内核首阶段已验收；工厂接入与完整 Shor 尚未验收。
 
 后续 MZ 服务遵守用户确认的[批量 RESET / 终端 MEASURE 标准](../docs/qec_enola_mz_design.md#批量-reset-与终端测量用户确认的默认方法)：同阶段跨码块联合运输及单批服务优先，分别声明运输/共同服务容量，多趟卸载汇集不强制多次测量；保留原源屏障与独立 effect/report IDs。完整 PBC 终端测量按其 cat/轴/反馈依赖合批，不能替换为全 data Z 读出。此规则是待接入目标，不热换当前 freeze-v4。

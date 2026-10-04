@@ -557,6 +557,24 @@
       "expected_any": [
         "K72"
       ]
+    },
+    {
+      "query": "双 AOD 模块化 resource 独立归还 data 同时移动 协调器",
+      "expected_any": [
+        "K73"
+      ]
+    },
+    {
+      "query": "为什么两台 AOD 不需要等另一台归还 END 设备资源",
+      "expected_any": [
+        "K73"
+      ]
+    },
+    {
+      "query": "模块化运输共同三次轨迹完整 Cartesian 空 RF 审核",
+      "expected_any": [
+        "K73"
+      ]
     }
   ]
 }

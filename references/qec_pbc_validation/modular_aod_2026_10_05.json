@@ -1,0 +1,279 @@
+{
+  "schema": "modular-aod-transport-qualification/1",
+  "date": "2026-10-05",
+  "status": "completed",
+  "scope": "Bounded independent two-AOD pure transport modules; no quantum gate, RESET, measurement, native compiler, factory or full-Shor execution.",
+  "base_commit": "52d36a69c3cb73814f2bff942b83542d68b592c9",
+  "local_run": "artifacts/modular-aod-2026-10-05/attempt2",
+  "profile": "modular-aod-enola-home-34/v1",
+  "actual_run": {
+    "schema": "modular-aod-transport-demo/1",
+    "runtime_status": "completed",
+    "offline_physical_status": "PASS",
+    "profile": "modular-aod-enola-home-34/v1",
+    "runtime": "neutral_atom_kernel",
+    "atoms": 34,
+    "aods": 2,
+    "operations": 14,
+    "journal_events": 31,
+    "gates": 0,
+    "reports": 0,
+    "physical_time_us": 541.260859854213,
+    "device_completion_us": {
+      "AOD_0": 541.260859854213,
+      "AOD_MAGIC": 451.38503569823695
+    },
+    "resource_early_return_us": 89.87582415597603,
+    "actual_execution_verified": true,
+    "loaded_move_overlap_us": 190.69251784911847,
+    "resource_complete_data_still_moving": true,
+    "checkpoint_two_moves_inflight": {
+      "cut_us": 110.34625892455924,
+      "operations": [
+        "data.move-out",
+        "resource.move-out"
+      ],
+      "exact_final_and_journal_equal": true
+    },
+    "checkpoint_after_resource_completed": {
+      "cut_us": 451.38503569823695,
+      "data_move_inflight": "data.move-return",
+      "exact_final_and_journal_equal": true
+    },
+    "recording_off_on_semantic_equal": true,
+    "same_profile_serial_control": {
+      "physical_time_us": 992.6458955524499,
+      "same_physical_primitives": true,
+      "same_final_state_except_time": true,
+      "actual_execution_verified": true,
+      "offline_physical_status": "PASS",
+      "time_reduction_percent": 45.47291614468641,
+      "saved_operations": "serial-operations.json",
+      "saved_journal": "serial-journal.json",
+      "saved_audit": "serial-offline-audit.json"
+    },
+    "initial_preparation_cost_known": false,
+    "native_compilation_invoked": false,
+    "legacy_env_execution_calls": 0,
+    "syndrome_executed": false,
+    "factory_executed": false,
+    "full_shor_executed": false,
+    "fidelity": null,
+    "wall_seconds_before_export": 3.7642912000301294
+  },
+  "independent_physical_review": {
+    "status": "PASS",
+    "input_sha256": "bfcd94c7c293f481b9cd57b1494af4955490ebb87aded1e568e7242263f253f3",
+    "actual_execution_verified": true,
+    "actual_execution": {
+      "actual_start_end_events_bound": true,
+      "journal_chain_and_checkpoint_digest": true,
+      "actual_final_positions_holders_rf": true,
+      "full_original_state_kernel_replay": true,
+      "journal_events": 31,
+      "completed_operations": 14
+    },
+    "continuous_geometry": {
+      "timeline_partitions": 42,
+      "pair_partition_checks": 51612,
+      "certificate_nodes": 51612,
+      "atom_pair_checks": 23562,
+      "cartesian_spectator_checks": 28050,
+      "minimum_certified_lower_bound_um": 10.0
+    },
+    "artifact_sha256": {
+      "initial.json": "42eaca649e9c0e860199e212dd6084875dfbbb306be2494f7df6165ae75e7f3c",
+      "profile.json": "b4bd990503d08c8d322b76c00a5f80157061e1fe846a6f11d32dbf1772c009db",
+      "operations.json": "c7b375f2a1c2a5c7a2a4eb4e48eac2ac7745fbf5502cad60762e4c8126697e5d",
+      "journal.json": "bfeb202fa1392dd64caf71886218222467f47eb76666b3a9e644861c988ca0d9",
+      "checkpoint-final.json": "08a4b129f8e6a71db834454d0abb81e12a3718103240b4ba7e5fbaf5a37d1be8"
+    },
+    "auditor_sha256": "107a66755b70022952b7b64f87b49320be002da89ee781af894d065dc2c9f242"
+  },
+  "serial_actual_review": {
+    "status": "PASS",
+    "input_sha256": "9cc70189d753f37ec0d8b6255d18b5810a42f09f776fd659f72fe8f20bf5b7e2",
+    "actual_execution_verified": true,
+    "actual_execution": {
+      "actual_start_end_events_bound": true,
+      "journal_chain_and_checkpoint_digest": true,
+      "actual_final_positions_holders_rf": true,
+      "full_original_state_kernel_replay": true,
+      "journal_events": 30,
+      "completed_operations": 14
+    },
+    "continuous_geometry": {
+      "timeline_partitions": 43,
+      "pair_partition_checks": 37723,
+      "certificate_nodes": 37723,
+      "atom_pair_checks": 24123,
+      "cartesian_spectator_checks": 13600,
+      "minimum_certified_lower_bound_um": 10.0
+    }
+  },
+  "source_sha256": {
+    "examples/run_modular_aod_demo.py": "fe9c9eb4a7e21a43a86ff07e2a60ea5f5cde5d79287a1a2973e4fe712e8b10b9",
+    "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
+    "src/neutral_atom_app/modular_aod_report.py": "2d139d5726aee89230a038c128246f1719baeb89050b12c827e5fff4d3d5169b",
+    "src/neutral_atom_app/native_kernel_view.py": "fc2499961bfd6ff3448f69aa9bde0bc2dd45c4f969fd5c5775cf52b621fcafe6",
+    "src/neutral_atom_env/visualization/summary.py": "a380429474d2434c4b5dbfcf6db963bceb255d3fa0ce7208b1a416ecbd8b6fc2",
+    "src/neutral_atom_env/visualization/theme.py": "93eda1f65e52eafd773b6fd7f1022c3a9f5ef7d31135bb92037692fc0b8cf1f5",
+    "src/neutral_atom_env/visualization/viewer-shell.html": "3a28e9396bf16f90ed5ca46ccdf619f7c4bb87d1e5c2b3f8c8699fee8f5cc66c",
+    "src/neutral_atom_env/visualization/viewer.js": "d94c591e6c2260c695299dec7d7e05732524127d6d186104645e65b90343d92c",
+    "src/neutral_atom_env/visualization/viewer.py": "51fbaa14afd2c3d7e354619a1c504c3f2fba4196797c528f28859ba5cb1f91b1",
+    "src/neutral_atom_experiments/qec_pbc/modular_aod_demo.py": "f179c27194d91a2b1fa98600c6b8122c70772fb0ec608ae9832142c4c0d7e8e9",
+    "src/neutral_atom_kernel/__init__.py": "d077d4ca6f17b3b8c47bdbe3668477254c0d92c669759672c700c9d2fd8a1bf9",
+    "src/neutral_atom_kernel/audit.py": "a75ee4ea8ef0345fc8750b767b20f475d61dc588c7f52af04bcc6d6dc17772e3",
+    "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
+    "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
+    "src/neutral_atom_strategies/native_kernel/__init__.py": "ab7514c410e1a8aa93d6769953653d3d36ffce5296944b84a71f2325d38f1feb",
+    "src/neutral_atom_strategies/native_kernel/axes.py": "336af335be5759e93196e1bb2192cd7e07fa85bcf58d7172258cb001c7974709",
+    "src/neutral_atom_strategies/native_kernel/compiler.py": "d72871b3a3261261da6b8e2d60b8b2554d6f6da7ef960d2b5af9c967afff466f",
+    "src/neutral_atom_strategies/native_kernel/lowering.py": "b42758fee23cd170617cf2c911baee93fbff131a36df1a1d1110d0171fdaa58c",
+    "src/neutral_atom_strategies/scheduling/aod_modules.py": "b06e758bcca0fd39239f8c7335ef68a6e990cfe99f07cab8176e46471dada48c",
+    "tools/audit_modular_aod.py": "107a66755b70022952b7b64f87b49320be002da89ee781af894d065dc2c9f242"
+  },
+  "run_artifact_sha256": {
+    "atom-viewer.js": "f84316d09f4360696da59310585a5416f04f2b476bfdb8213d5af2e452534b87",
+    "audit-cli-output.txt": "94d36974b5ae988194ef4d257b1892df3b8c8e46d9b27f1713bdae40e2c473c7",
+    "browser-qa/narrow320.jpg": "f099149d2c865449d50f2f9e76cae3dd679bdde2f82a43a61bf1d07d57df47df",
+    "browser-qa/narrow390.jpg": "777b609ad17475f40fe6d202d8fcde43aa671866631605b6c41d59e6e863a7a9",
+    "browser-qa/overview.jpg": "4d58e8a8cf76c7d320108e037537b3de3d73877a958b12338abc842347d57d20",
+    "browser-qa/resource-return.jpg": "7b82ac276e80a915879eb16e880c9eca3d915b9778f1030b5a3f5a889650b005",
+    "browser-qa/verification.json": "77b746f3a72470b4c42aeaca0351cb69c57930d41fd84fdc06a4ef4f702c5992",
+    "browser-qa/zoom-out.jpg": "75d1e69b79a7a5b9205e0ff9ef868e0ab2d75a2eea3ba7126ce70ac86c814cc0",
+    "checkpoint-final.json": "08a4b129f8e6a71db834454d0abb81e12a3718103240b4ba7e5fbaf5a37d1be8",
+    "checkpoint-midflight.json": "08ab4281ae730ac139d0351e75bc185fe05ec8033633f47350477dbbab0913ad",
+    "checkpoint-resource-finished.json": "305d8cbe38249502de2672049aa7d92fd050f8f0b041ad8b6672bf125a2600bc",
+    "independent-artifact-audit.json": "493f484c7cd7d7905c79398fd8ed284bde50fa4b82881649366922c498baa965",
+    "index.html": "ec3ff89a16adb56b29207900e6b58fe746a009a8e9589b768ae8f8c8afde7d87",
+    "initial.json": "42eaca649e9c0e860199e212dd6084875dfbbb306be2494f7df6165ae75e7f3c",
+    "journal.json": "bfeb202fa1392dd64caf71886218222467f47eb76666b3a9e644861c988ca0d9",
+    "manifest.json": "b2f9a6601d2144ee05e236098be2b4efea3f1b4ba12573d8ed7fecbfa7f81e4a",
+    "offline-audit.json": "c818cd64fd6154a3aedfaeab9d0c82f8ade2692e3504a7b033ebed931c0a5545",
+    "operations.json": "c7b375f2a1c2a5c7a2a4eb4e48eac2ac7745fbf5502cad60762e4c8126697e5d",
+    "pre-execution-audit.json": "732e12adf6f499878c57964052497a161e4705631c91d4d3fae9d562a71635a4",
+    "profile.json": "b4bd990503d08c8d322b76c00a5f80157061e1fe846a6f11d32dbf1772c009db",
+    "recording.json": "1d562d6e474398c96b020d625a15426278c79ab2b6a0ca9c3f02b24560842083",
+    "replay.html": "aef1c5676787b66dc52e645d819ac36328e55efb342ff5a28fa4e5a82893b1f9",
+    "resource-finished-data-inflight.json": "3347b90ad1bd5f9782a57abf6eadcc211be2601a7943217c7ad7b40a4c92885f",
+    "serial-checkpoint-final.json": "b3c067309bc6a2f2c3627004e2842bf6b49f54bb33fed746f7cb99a52d7d9de6",
+    "serial-journal.json": "6d39d011be05894d9ae9a7e301b079932df9649c889521898c293c831d397e3f",
+    "serial-offline-audit.json": "4e69783c432745eddfe0d27299d6a872d9733bca6384ff0ebaa7bac81ef34d50",
+    "serial-operations.json": "0989b552c8176373c0480b3d7d54a995d762b29fdd414d6b2ea6f5b24ab8dc06",
+    "serial-pre-execution-audit.json": "690b11cb116c03fd20afe873cb6b9133ef07ec7592d46ff9b78638d5b39390c2",
+    "summary.json": "19e999a6f1aebc21b7b76c69c1c2ac858455eeee00a5326e9ee6551c21857e60"
+  },
+  "validation": {
+    "distinct_pytest_passed": 166,
+    "junit": {
+      "regression-tests.xml": {
+        "tests": 85,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "new-and-boundary-final-tests.xml": {
+        "tests": 81,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "python_modules": 281,
+    "architecture_violations": 0,
+    "browser": {
+      "passed": true,
+      "url": "http://127.0.0.1:8782/#physical-viewer",
+      "tabId": "17",
+      "actualRun": "attempt2",
+      "fourBookmarksVerified": true,
+      "dualLoadedMoveObserved": true,
+      "resourceReturnedDataStillMovingObserved": true,
+      "proportionalZoomObserved": true,
+      "mainStatisticsExpandedDetailsCollapsed": true,
+      "responsive": [
+        {
+          "canvasWidth": 353.3333435058594,
+          "caption": "独立 AOD 2 台 · 真实设备状态 / 完整作用对检查 · 同一物理时钟",
+          "details": [
+            {
+              "open": false,
+              "title": "画布显示 6 / 8 图层开启"
+            },
+            {
+              "open": false,
+              "title": "实际行列坐标与编译过程"
+            },
+            {
+              "open": true,
+              "title": "主要指标与时间占用"
+            },
+            {
+              "open": false,
+              "title": "逐资源时间占用（36 项，按需展开）"
+            },
+            {
+              "open": false,
+              "title": "逐项状态与原子详情（按需展开）"
+            },
+            {
+              "open": false,
+              "title": "逻辑前沿与测量详情"
+            },
+            {
+              "open": false,
+              "title": "原子角色与承载详情"
+            },
+            {
+              "open": false,
+              "title": "操作详情（按需查看）"
+            }
+          ],
+          "documentWidth": 375,
+          "error": "",
+          "width": 390
+        },
+        {
+          "canvasWidth": 283.3333435058594,
+          "caption": "独立 AOD 2 台 · 真实设备状态 / 完整作用对检查 · 同一物理时钟",
+          "documentWidth": 305,
+          "error": "",
+          "width": 320
+        }
+      ],
+      "natural32xPlaybackFinal": {
+        "bothDevicesEmpty": true,
+        "caption": "独立 AOD 2 台 · 真实设备状态 / 完整作用对检查 · 同一物理时钟",
+        "playButton": "播放",
+        "time": "541.26086"
+      },
+      "consoleErrors": [],
+      "temporaryViewportReset": true,
+      "scope": "Actual journal viewer; pure transport only; no QMAP/native compiler/report claims.",
+      "knownCategoryTooltipLimitation": "Shared category interval lookup may pick first same-start operation label; device lanes and actual journal identities are correct."
+    }
+  },
+  "limits": [
+    "One precompiled scheduled Block; no dynamic midflight Block admission.",
+    "Separated device envelopes only; intersecting envelopes are rejected, no general crossing route solver.",
+    "Only occupied row/column union full Cartesian RF; no separately persistent empty active axes.",
+    "Transport clearance threshold remains 1um; this actual example has certified minimum 10um.",
+    "Predeclared t=0 SLM homes; external initialization cost unknown. Dwell is WAIT, no magic production.",
+    "Existing shared category tooltip may use the first same-start label; device lanes and journal preserve exact identities."
+  ],
+  "prior_attempts": [
+    {
+      "path": "artifacts/modular-aod-2026-10-05/attempt1",
+      "physics": "PASS",
+      "superseded_reason": "Browser exposed shared default caption falsely naming QMAP compilation/report source; observer metadata adapter corrected in source."
+    }
+  ],
+  "preservation": {
+    "frozen_kernel_and_shared_view_sources_verified": true,
+    "original_checkout_written": false,
+    "legacy_8778_recompiled": false,
+    "native_compile_invoked": false,
+    "large_artifacts_published": false
+  }
+}

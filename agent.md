@@ -1,5 +1,7 @@
 # Agent 工作准则与工程导航
 
+2026-10-05 用户要求的[双 AOD 模块化运输](docs/modular_aod_transport.md)已完成限定资格：独立data/resource END链由策略协调，唯一轻量KernelExecutor推进；resource归还时data仍MOVE，不加全局归还屏障。真实34原子/14操作/31journal，并发541.260860μs vs同profile串行992.645896μs，减少45.4729%；resource451.385036μs独立完成，双带载MOVE重叠190.692518μs。全RF/Cartesian连续证书与实际原初态journal/checkpoint重放PASS，166不同pytest/281modules0违规；[小验收](references/qec_pbc_validation/modular_aod_2026_10_05.json)、[日志](instruction/logs/2026-10-05-modular-aod-transport.md)，实际共用回放8782。本资格仅运输，不含RESET/M/CZ、syndrome、工厂/native双AOD分配或完整Shor；仅分离域及载荷union RF，运行中动态Block追加OPEN。旧8778与冻结core来源保持原范围。
+
 2026-10-04 用户确认的[批量 RESET 与终端测量标准](docs/qec_enola_mz_design.md#批量-reset-与终端测量用户确认的默认方法)已接入当前 rigid ENV 物理前缀兼容入口，并重新编译验收：221 原子以 60/48/48/48/17 五趟卸载汇集后一次 RESET221；96 个 syndrome ancilla 以 48/48 两趟汇集后一次 MEASURE96→一次 RESET96，全体实际返回原 holder。真实声明 MZ SLM 服务容量221与两 AOD 运输容量108/24分开，测量轴、全 M→R 屏障、报告完成和原源身份保持。3006门/156plans/34.214388ms，完整原初态重放与三独立审计通过；[小型验收](references/qec_pbc_validation/collective_mz_2026_10_04.json)、[日志](instruction/logs/2026-10-04-collective-mz-prefix-recompile.md)，新真实回放8778。完整 Enola＋MZ 轻量内核、连续纯syndrome E03与工厂/fullphysicalShor仍 OPEN，frozen 源和旧回放保持。
 
 2026-10-04 协议与 demo 口径收敛：QEC 分区/编译/MZ 的唯一当前目标入口是[Enola＋MZ 协议](docs/qec_enola_mz_design.md#当前协议入口与生效关系)，资源生命周期继续按共享工厂协议 v2。8780 仅为旧 QMAP 分区 Z memory 回放，含末端 data 测量；8778 是已验收的同区首轮纯syndrome/初始化前缀兼容实现，完整新内核连续两轮尚未实现。最近 MZ 按距离优先，本次在每设备完整home竖直5μm平移族中选最近合法声明SLM；旧 rigid 时间优先选点保留其历史范围。不得将示意图或旧 profile 当作新 backend 资格，见[本轮口径修正](instruction/logs/2026-10-04-protocol-demo-reconciliation.md)。

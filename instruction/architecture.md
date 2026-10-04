@@ -1,5 +1,7 @@
 # 工程框架与模块边界
 
+2026-10-05 新[模块化运输组件](../docs/modular_aod_transport.md)已限定验收：strategies/scheduling只生成各设备不可变END链及资源协调；experiments/qec_pbc组装34原子实际运输/串行对照与证据；app/modular_aod_report适配观察器元数据并使用冻结共用payload builder/viewer；tools独立连续全RF审核。kernel仍唯一写状态。组件只覆盖分离域纯运输，不把旧ENV默认、工厂controller或完整Enola新backend宣称已迁移。
+
 2026-10-04 当前 QEC 目标的唯一入口是[Enola＋MZ 同区协议](../docs/qec_enola_mz_design.md)。编译器/分区目标与历史 QMAP、rigid、双 AOD ENV 的实现证据分开；freeze-v4 保持原资格。新方案未实现，不能把下方历史接口拼成已切换 backend 的声明。
 
 2026-10-04 最新用户授权：[原生轻量内核迁移](native_kernel_migration.md)。新 `neutral_atom_kernel` 是独立、唯一提交的紧凑运行器，不导入旧 ENV/策略/协议/UI；策略层原生编译和 service 直接输出操作流，controller 管库存/反馈。旧 ENV 全状态/计划/验证只在显式兼容或离线审核构建，不是新生产必经层。以下旧接口保留其历史适用范围；完整迁移及工厂尚未验收。

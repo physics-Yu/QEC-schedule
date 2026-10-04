@@ -1452,7 +1452,7 @@
       "sha256_normalization": "text_lf",
       "sha256": {
         "docs/qec_viewer_presentation.md": "a74b98a10dee1ce0b79771b3299b3ab93e51e1ae18f5bcb890c491c7fa031749",
-        "instruction/visualization.md": "c9fc12bae402e50aa92b710d64b57acb641dbd76e61ffb2eba43ccc9d5a4f294",
+        "instruction/visualization.md": "5dd5aac5e55ae10e396f5a2d7307d0c0120e3df87acdf3ef8317b3ca33bbf6ab",
         "src/neutral_atom_env/visualization/viewer.js": "b31b4557771d613eaf410eabf35a776da5dd4f5f490dc1702563967e63cb0a81",
         "src/neutral_atom_env/visualization/viewer-shell.html": "1307769aaf756e4d4a6a40fa9b50e7956dc7eb8c63b6aa045a2941d4fe0b9f19",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f8e387b303fbcc6b85524c7bd46b229f6d46450626b8c723647a889dfb064b88",
@@ -1486,7 +1486,7 @@
         "src/neutral_atom_env/visualization/viewer-shell.html": "3a28e9396bf16f90ed5ca46ccdf619f7c4bb87d1e5c2b3f8c8699fee8f5cc66c",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f8e387b303fbcc6b85524c7bd46b229f6d46450626b8c723647a889dfb064b88",
         "docs/qec_viewer_presentation.md": "a74b98a10dee1ce0b79771b3299b3ab93e51e1ae18f5bcb890c491c7fa031749",
-        "instruction/visualization.md": "b8d29eb54555d446109b2249bec370ef80ccc79ef10ecdd740fed8df965e0b11",
+        "instruction/visualization.md": "14e045dff991fd05972121f2ec9ae95fd6a8cf617b31cce6b827de9863d8f5bc",
         "tests/viewer_qec_scale.cjs": "dee926dea389dc61a35d351c44a1cdedbe29cf298bad63b43e022658be7f5bbd",
         "tests/test_native_parallel_report.py": "489ee71d90548eda474dae077d85fa6cbf66151273ded5fa56003a8805089811",
         "references/qec_pbc_validation/qec_viewer_presentation_2026_10_04.json": "43e49ad55428b461d5fb550be05dc020535893ec469f52a3d86f022794d40cf4"
@@ -1552,7 +1552,7 @@
         "tests/test_native_parallel_report.py": "489ee71d90548eda474dae077d85fa6cbf66151273ded5fa56003a8805089811",
         "instruction/compiler_contract.md": "506c72f0feb333ea845c78b276080f1f77c3493d4c58ba2b3d15e7374845f0d2",
         "instruction/aod_backends.md": "3cd97b0c94481643ba56da41b93469f847dbf2b76779ab417b54ee001b5e5ca9",
-        "instruction/visualization.md": "c9fc12bae402e50aa92b710d64b57acb641dbd76e61ffb2eba43ccc9d5a4f294",
+        "instruction/visualization.md": "5dd5aac5e55ae10e396f5a2d7307d0c0120e3df87acdf3ef8317b3ca33bbf6ab",
         "docs/qec_patch_parallel_layout.md": "fa383fbc22ae6a9560f41e4f6345b548545ee048cf09a51dd549ce8883fea3d0",
         "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json": "7d80808959f235952461b25ee81f8236b6b8c4966293b40f765bfba0be5cedf1",
         "references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json": "dd15ca36de8eca15a5b4f8895437b2cfd9781161237f686f5adab50cba754fa4"
@@ -1610,7 +1610,7 @@
         "tests/test_patch_service_groups.py": "c109ca8e681e9b83afdef3271ded000ee9c8ce788301f359f381981a519f7189",
         "tests/test_native_parallel_report.py": "489ee71d90548eda474dae077d85fa6cbf66151273ded5fa56003a8805089811",
         "instruction/aod_backends.md": "aab8581cdc6e59dc2c606affc5efbc32de9d544d858b1f8f3665e937567645ee",
-        "instruction/visualization.md": "b8d29eb54555d446109b2249bec370ef80ccc79ef10ecdd740fed8df965e0b11",
+        "instruction/visualization.md": "14e045dff991fd05972121f2ec9ae95fd6a8cf617b31cce6b827de9863d8f5bc",
         "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
         "references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json": "ba4ad2aa34c5a7862999c14dc3f22b02806c6ac628b98874d3870818b20db0cf"
       },
@@ -1864,7 +1864,7 @@
       "sha256_normalization": "text_lf",
       "sha256": {
         "docs/native_kernel_migration.md": "ffd6cb236cc6e1e22001f8c126bdb97d74c9bba2504afe2a31649f0e76f1cbb8",
-        "instruction/native_kernel_migration.md": "a2f96014176064d266a190f957b2643da330097efa467f85d85b8c8a802b247c",
+        "instruction/native_kernel_migration.md": "1a6e9a15b94f2e6706076da0bbc8cc2df9e5a4440075f92b2b2110d4b22040cf",
         "references/qec_pbc_validation/native_kernel_2026_10_04.json": "07a34d679f7aa9a3dbd0a28a0f217829521876aeb4da4e586d7007aa51fc9f12",
         "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
         "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
@@ -1924,7 +1924,7 @@
       },
       "current_raw_sha256": {
         "docs/native_kernel_migration.md": "ffd6cb236cc6e1e22001f8c126bdb97d74c9bba2504afe2a31649f0e76f1cbb8",
-        "instruction/native_kernel_migration.md": "2f91ce1631270b614d804a21b941a7388057033ff4a7acd6fd35e425d1eb9ca3",
+        "instruction/native_kernel_migration.md": "2c49ded36fcf7337d468c41f67aa6b824a43b27e36a049133ad92435c0ec586f",
         "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
         "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
         "src/neutral_atom_kernel/audit.py": "a75ee4ea8ef0345fc8750b767b20f475d61dc588c7f52af04bcc6d6dc17772e3",
@@ -2095,7 +2095,7 @@
       ],
       "sha256_normalization": "text_lf",
       "sha256": {
-        "docs/qec_enola_mz_design.md": "9473c5b65db5cbc63001e7d7bb92547003b3fe11f5ba6b3ac5af0104912c54d8",
+        "docs/qec_enola_mz_design.md": "73cd842ce4fe0571e2841a4a09e8701cceec31add87b7b92635b2ead56922ced",
         "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "637038bdbc8891608c1c91338ebf762941e1e4bda03290e89bf42e7a27689d9c"
       },
       "verified_scope": "Design review only: 10 acceptance workflows, source semantics, RF masks, full-band resources and MZ service boundaries; no implemented backend claim.",
@@ -2104,7 +2104,7 @@
         "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "e345a6da5b320aae99d0d1ee85b9f0dd5e7c101301cedddc95febea2229bc4b2"
       },
       "current_raw_sha256": {
-        "docs/qec_enola_mz_design.md": "2d1964f41e13bb40135f3b7518e8bdbe9d650d6827cfb4fc0e1f35e83266f8d0",
+        "docs/qec_enola_mz_design.md": "5f53ecf44ceff13d66f0fa323bd20851e2d4aaeaa30a0d222160303c1f5c2899",
         "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "edccb66b874147f36a04c82197af4a2d965546219489ff76cc8d8384bb1fc163"
       },
       "historical_before_protocol_demo_reconciliation_sha256": {
@@ -2153,7 +2153,7 @@
       "retrieved_at": "2026-10-04",
       "sha256_normalization": "text_lf",
       "sha256": {
-        "docs/qec_enola_mz_design.md": "9473c5b65db5cbc63001e7d7bb92547003b3fe11f5ba6b3ac5af0104912c54d8",
+        "docs/qec_enola_mz_design.md": "73cd842ce4fe0571e2841a4a09e8701cceec31add87b7b92635b2ead56922ced",
         "docs/qec_patch_parallel_layout.md": "fa383fbc22ae6a9560f41e4f6345b548545ee048cf09a51dd549ce8883fea3d0",
         "docs/qec_rigid_readout_placement.md": "175bb3dcf06ed8a09abf555c2caf4dfd8caf87bfa4b153559132d04599721d89",
         "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "0b4c8a7051010dda65d67fd281c2c7758965299f68066b2ddd1c9dcd0a7c9864",
@@ -2167,7 +2167,7 @@
         "references/qec_pbc_validation/collective_mz_2026_10_04.json": "e376729b5f6febe585bf69198dad75829f7d58b9cb6b568d3eb34e213decd4ac"
       },
       "current_raw_sha256": {
-        "docs/qec_enola_mz_design.md": "2d1964f41e13bb40135f3b7518e8bdbe9d650d6827cfb4fc0e1f35e83266f8d0",
+        "docs/qec_enola_mz_design.md": "5f53ecf44ceff13d66f0fa323bd20851e2d4aaeaa30a0d222160303c1f5c2899",
         "docs/qec_patch_parallel_layout.md": "ae11605c316d09c81ec0b15a4477fcb02a8aef60e9874035ecd0c8bf62e9bb44",
         "docs/qec_rigid_readout_placement.md": "b273b043eeae8a8022e68787c75590459976dd46f210326528c0ca60ce5a4359",
         "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "0b4c8a7051010dda65d67fd281c2c7758965299f68066b2ddd1c9dcd0a7c9864",
@@ -2184,6 +2184,54 @@
       "historical_before_collective_mz_current_sha256": {
         "docs/qec_patch_parallel_layout.md": "5985ada0eae95d6c9cd6338044814755a384dc434d669755689b4bf44ee32986",
         "references/qec_pbc_validation/collective_mz_2026_10_04.json": "b87f8317af9cfeb081f784912b6ec2f3942d35febc18d0097c0ffae466f85f0c"
+      }
+    },
+    {
+      "id": "L52",
+      "kind": "repository_snapshot",
+      "title": "独立双AOD模块化运输与真实并发归还",
+      "version": "modular-aod-transport/1 2026-10-05",
+      "paths": [
+        "docs/modular_aod_transport.md",
+        "instruction/logs/2026-10-05-modular-aod-transport.md",
+        "src/neutral_atom_strategies/scheduling/aod_modules.py",
+        "src/neutral_atom_app/modular_aod_report.py",
+        "src/neutral_atom_experiments/qec_pbc/modular_aod_demo.py",
+        "examples/run_modular_aod_demo.py",
+        "tools/audit_modular_aod.py",
+        "tests/test_aod_modules.py",
+        "tests/test_modular_aod_audit.py",
+        "tests/test_modular_aod_demo.py",
+        "references/qec_pbc_validation/modular_aod_2026_10_05.json"
+      ],
+      "retrieved_at": "2026-10-05",
+      "sha256_normalization": "text_lf",
+      "verified_scope": "Transport-only independent AOD modules and resource coordinator, one scheduled KernelExecutor, same-profile serial comparison, exact cold recovery and independent full RF/Cartesian continuous review. Resource returns while data remains moving. No RESET/readout/CZ/native compiler/factory/fullShor qualification.",
+      "sha256": {
+        "docs/modular_aod_transport.md": "64e4b7a468d65573ce111f5f1c8e91640a557a5299984a9de279bb6449a93385",
+        "instruction/logs/2026-10-05-modular-aod-transport.md": "f5be00c3d683a1c238778ee5428ac61f35999b94619fe283bda23245d04d64fc",
+        "src/neutral_atom_strategies/scheduling/aod_modules.py": "b06e758bcca0fd39239f8c7335ef68a6e990cfe99f07cab8176e46471dada48c",
+        "src/neutral_atom_app/modular_aod_report.py": "4c36d11e93262687912f641a1171266db1556b15ac9e8964f3581a77807fca28",
+        "src/neutral_atom_experiments/qec_pbc/modular_aod_demo.py": "21990bd95d3b22264ccc293ac5c02dcf5f7f58ef382b22f256747855f6a40647",
+        "examples/run_modular_aod_demo.py": "fe9c9eb4a7e21a43a86ff07e2a60ea5f5cde5d79287a1a2973e4fe712e8b10b9",
+        "tools/audit_modular_aod.py": "107a66755b70022952b7b64f87b49320be002da89ee781af894d065dc2c9f242",
+        "tests/test_aod_modules.py": "962c0e5e499511337835970e26d4666bfe994ef1fd03ea106f6603ec0ac4162d",
+        "tests/test_modular_aod_audit.py": "f26a3a241937d8fe7dda622f2f5b6964015f7ece31841ee4c3c78d51ba14cfde",
+        "tests/test_modular_aod_demo.py": "d4fdbefff3abd433fe1f8af5a78d4d78567e30e7d91f9bf81f8abda03029da32",
+        "references/qec_pbc_validation/modular_aod_2026_10_05.json": "dca0aa738cd9f81cde0b90abaad668e2a2f339aaf0b46674c0e96dccff2eef7c"
+      },
+      "current_raw_sha256": {
+        "docs/modular_aod_transport.md": "64e4b7a468d65573ce111f5f1c8e91640a557a5299984a9de279bb6449a93385",
+        "instruction/logs/2026-10-05-modular-aod-transport.md": "f5be00c3d683a1c238778ee5428ac61f35999b94619fe283bda23245d04d64fc",
+        "src/neutral_atom_strategies/scheduling/aod_modules.py": "b06e758bcca0fd39239f8c7335ef68a6e990cfe99f07cab8176e46471dada48c",
+        "src/neutral_atom_app/modular_aod_report.py": "2d139d5726aee89230a038c128246f1719baeb89050b12c827e5fff4d3d5169b",
+        "src/neutral_atom_experiments/qec_pbc/modular_aod_demo.py": "f179c27194d91a2b1fa98600c6b8122c70772fb0ec608ae9832142c4c0d7e8e9",
+        "examples/run_modular_aod_demo.py": "fe9c9eb4a7e21a43a86ff07e2a60ea5f5cde5d79287a1a2973e4fe712e8b10b9",
+        "tools/audit_modular_aod.py": "107a66755b70022952b7b64f87b49320be002da89ee781af894d065dc2c9f242",
+        "tests/test_aod_modules.py": "962c0e5e499511337835970e26d4666bfe994ef1fd03ea106f6603ec0ac4162d",
+        "tests/test_modular_aod_audit.py": "f26a3a241937d8fe7dda622f2f5b6964015f7ece31841ee4c3c78d51ba14cfde",
+        "tests/test_modular_aod_demo.py": "d4fdbefff3abd433fe1f8af5a78d4d78567e30e7d91f9bf81f8abda03029da32",
+        "references/qec_pbc_validation/modular_aod_2026_10_05.json": "4396817e4411967347c88ccb6ff9ad5eda9c1a50b4b4056832d6683f47507684"
       }
     }
   ]
