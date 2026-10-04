@@ -29,3 +29,7 @@
 新 Enola＋MZ 单 patch 纯两轮操作流及共用 viewer 尚未实现。落实显式活动轴语义/版本化 lowering，nearest-MZ 距离优先往返与纯 round；E02/E03/E05/E10 验收必须得到 16 辅助报告/16 辅助 reset、零 data 终端测量、独立作用对与精确恢复，再扩展两 patch。
 
 未修改 freeze-v4 源码、viewer、旧 recording/replay 或任何物理阈值。8780 服务只读取既有离线回放，不运行编译。用户在浏览器当前状态为暂停 t=0；保持该状态，没有继续播放误导性的旧 demo。
+
+## 阶段发布
+
+文档修正提交 [c2db084](https://github.com/physics-Yu/QEC-schedule/commit/c2db0846f6cc6345fecb49915dfcc408c910dc37) 已发布到原 `codex/d3-shor15-stages`。独立 Git fetch 验证 parent `c27aeab`、完整 tree `a91c1cd1fcf34eac7c6cfcbee4f70e46bde5448f` 与全部 15 个修改 blob 和暂存字节精确一致；本地分支只在上述验证后 fast-forward 元数据，无文件覆盖。见[发布回执](../../references/qec_pbc_validation/protocol_demo_publication_2026_10_04.json)。保留 PR#3 draft/open/unmerged，pushurl=DISABLED；没有新 native 运行或新 backend 资格。独立源码复核确认旧 policy sort key 实为 `(actual_us, actual_distance, proxy_distance, x, y, zone_id)`。
