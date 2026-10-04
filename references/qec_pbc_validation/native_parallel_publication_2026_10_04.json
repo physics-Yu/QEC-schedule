@@ -1,0 +1,18 @@
+{
+  "schema": "native-parallel-physical-publication-receipt/1",
+  "commit": "2b6a76391f33b20bc2ca76fa20a4a71bbbacc6c8",
+  "parent": "fd7abf38c2a3bde007950283588057d4530b1730",
+  "tree": "7143c9340b36f6d38ea6e91dceec6857c5449ffe",
+  "files": 60,
+  "independent_fetch_verified": true,
+  "all_blobs_exact_bytes_equal": true,
+  "staged_tree_equal": true,
+  "clean_managed_worktree": true,
+  "original_workspace_changed": false,
+  "pr_url": "https://github.com/physics-Yu/QEC-schedule/pull/3",
+  "pr_draft": true,
+  "merged": false,
+  "source_packet_raw_blob_sha": "07cf72a3a3b1261e9c466973fd1882978962791d",
+  "original_head": "9e28b2e2da178420b449bb24cfff58e10e2b99f3",
+  "original_tracked_dirty_bytes_preserved": 36
+}

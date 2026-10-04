@@ -64,3 +64,7 @@
 这是已完成的 bounded ideal Clifford physical 编译/可视化阶段。首T前资源为一个未编码物理+及16零载体，没有magic库存或工厂输出；未实现完整physical Shor、tracked T/Born、噪声/decoder/FT，未承诺一般cross-envelope路由。下一主线保持factory-first F1：真实15-to-1生产、accept/reject/cleanup/replenish、同载态唯一库存与单T完整channel参考闭环，再接tracked Executor、逐周期噪声、MSC与完整算法。
 
 实施仅在attached managed worktree `C:/Users/yuyqp/.codex/worktrees/d3-shor15-stage/QEC-schedule 2`；原工作区HEAD仍9e28b2e、36个tracked dirty字节不变。本轮涉及这些原有dirty核心文件，因此交付于该隔离checkout，不全文件回写原目录。阶段发布沿用draft PR#3，无merge；独立fetch/tree/blob发布回执待追加。
+
+## 发布回执
+
+能力提交[2b6a763](https://github.com/physics-Yu/QEC-schedule/commit/2b6a76391f33b20bc2ca76fa20a4a71bbbacc6c8)已发布；独立Git fetch核对parent/tree、全部60个blob与staged bytes精确相同。工作树已匹配新commit并干净。PR#3已更新最终描述，仍draft/open/unmerged；pushurl=DISABLED保持，使用connector Git-data。最终RAG64/52/140、58/58检索和11/11换行可移植通过，3旧artifact skip不记PASS。详见[可移植发布回执](../../references/qec_pbc_validation/native_parallel_publication_2026_10_04.json)。

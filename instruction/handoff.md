@@ -7,6 +7,8 @@
 边界：固定分离envelopes、Clifford切片；资源停于首T前未编码+，无magic工厂/库存、tracked T/Born、noise/FT或完整physical Shor。本次原worktree核心已有其他dirty，全部新stage留attached managed checkout，原HEAD9e28b2e与36dirty bytes保持。详情与失败档案见[日志](logs/2026-10-04-native-prefix-parallel-physical.md)、[复现](../docs/qec_native_parallel_prefix.md)、[小摘要](../references/qec_pbc_validation/native_parallel_physical_2026_10_04.json)；沿用draft PR#3且不merge。RAG新增K62–K64/L38–L40；下一主线仍按factory-first协议做F1同资源供给→单T闭环，再接真实tracked反馈与完整算法。
 
 
+能力[2b6a763](https://github.com/physics-Yu/QEC-schedule/commit/2b6a76391f33b20bc2ca76fa20a4a71bbbacc6c8)已发布，独立fetch核对60blob与tree精确相同；PR#3仍draft/open/unmerged，[发布回执](../references/qec_pbc_validation/native_parallel_publication_2026_10_04.json)。RAG64/52/140、58检索与11portable均通过。
+
 ## 2026-10-04 QEC 工厂供应与逐周期质量协议固化
 
 用户要求已固化为 [必读共享协议](qec_factory_pipeline.md)，agent 导航/任务路由、architecture 和 research 均已接入。主线为固定 d=3 码/协议 → MSD 工厂到单个 T 的同一资源闭环 → Executor 实际反馈 → 周期带噪供给 → MSC backend → 连续 T/完整 Shor；MSC/MSD 均纳入能力，但不强制串联。唯一载体/epoch/库存、committed 报告、frame、噪声去重及接受/交付/T/算法质量分层必须遵守。旧 Shor-first 下一步已被覆盖，历史运行证据保留。本轮仅规范与导航固化，工厂/MSC/带噪能力保持待实现；验证与下一项可执行任务见 [日志](logs/2026-10-04-qec-factory-pipeline-protocol.md)。
