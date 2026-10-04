@@ -1,5 +1,9 @@
 # 当前交接状态
 
+## 2026-10-04 协议与 demo 口径修正
+
+用户指出协议/展示混乱。[现行协议入口](../docs/qec_enola_mz_design.md#当前协议入口与生效关系)归并同区、全 x、5/10/6 μm、routing、MZ、纯 syndrome 与独立 magic AOD；迁移路径和导航同步区分目标与已实现。8780 是分离 SZ/EZ 的 QMAP Z memory，16 辅助＋9 data 终端报告；新 Enola＋MZ 纯两轮 demo 仍 OPEN。另查出旧 rigid `nearest_mz` 实为候选内时间优先，新目标为距离优先，不能沿用旧名称声称符合。未改 frozen 源码/物理阈值或运行编译/工厂，原并行工作区不写。下一项只验 E02/E03/E05/E10 单 patch 往返与恢复；证据见[修正日志](logs/2026-10-04-protocol-demo-reconciliation.md)。
+
 ## 2026-10-04 Enola + MZ 同区兼容设计
 
 用户目标为COMPUTE=EZ=SZ、独立带外MZ。已整理[兼容设计](../docs/qec_enola_mz_design.md)和E01–E10[流程目录](../references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json)：作者2Q规划、5μm硬件适配、MZ/1Q服务、轻量唯一Executor与controller。OPEN：作者空活动轴与当前载荷推导mask不等价、固定19×15/paired4几何需版本化适配、full-band CZ资源须覆盖旁观移动、原memory helper含data末测不能直接循环；返程从当时RF重新绑定。最短路径范围区分rigid图与row/column伸缩。单patch普通两轮/MZ分波/恢复→两patch→四patch/143背景→factory同token单T；本轮只固化设计，未运行native、未切换默认或修改freeze-v4。检查与发布见[日志](logs/2026-10-04-enola-mz-design.md)，RAG新增K72/L49/L50。

@@ -157,7 +157,7 @@
         "return condition"
       ],
       "required_steps": [
-        "nearest legal candidate search",
+        "distance-first nearest legal candidate search; whole-service time breaks equal-distance ties; declare metric and bounded search domain",
         "LOAD route STORE",
         "M and requested RESET",
         "LOAD return STORE",
@@ -168,7 +168,8 @@
         "slots uniquely reserved",
         "all full RF and masks legal",
         "required return holders and layout",
-        "whole service cost and selection recorded"
+        "whole service cost and selection recorded",
+        "distance objective and bounded-nearest scope recorded separately from service time"
       ],
       "negative_cases": [
         "slot collision",

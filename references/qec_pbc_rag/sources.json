@@ -1432,7 +1432,7 @@
         "src/neutral_atom_env/visualization/viewer-shell.html": "1307769aaf756e4d4a6a40fa9b50e7956dc7eb8c63b6aa045a2941d4fe0b9f19",
         "instruction/motion_planning.md": "717704f262f777960f8ff4587438725de24972a5216e71377f32486ab7163470",
         "instruction/compiler_contract.md": "530ab801f5781368aa6d8d64844c3f0d855f777d8e2057d1ddb31fcfd189aef3",
-        "docs/qec_routing_standard.md": "0cce1f23f3d22dfe3f0e929846950cb873ef426124f2863ac17faf8e08bfd6a7",
+        "docs/qec_routing_standard.md": "5ae23cfff3969cfeae2de16c1eb90c665fc8bd630356c3777e7571f11501ff64",
         "docs/qec_patch_parallel_layout.md": "96b6dcc783acfa7beea90402f000e56f4a2cb662aebbd5d69ca3202a594de261",
         "references/qec_pbc_validation/routing_standard_2026_10_04.json": "96ce7d43179d7e64318fdd1274a950d1f4d172c37b70021fe76aaa3dd9dbccbe"
       },
@@ -1458,14 +1458,14 @@
         "docs/qec_routing_standard.md": "da44f5c8bdbb7d28bbb8b5f72df0404415453fb234c2bfc1d70f6867e3330de7"
       },
       "current_raw_sha256": {
-        "docs/qec_routing_standard.md": "755160453ec9a0ccf8cffaf667ac199c98ef7d0a7f62c0fbad1ecb6faed2ee06",
+        "docs/qec_routing_standard.md": "be0b2c1191975c7e9aad91c21426f089d8905a0b25ccfce859f1b45900b32c13",
         "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
         "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
         "instruction/compiler_contract.md": "bc3d4f46c5c58c484313a25a838d8a624b2480e60941ab9a03cebb42d33f6a1b",
         "src/neutral_atom_env/visualization/viewer.js": "d94c591e6c2260c695299dec7d7e05732524127d6d186104645e65b90343d92c"
       },
-      "current_source_note": "Current normalized sources after global-x EZ / scheduled start-end / cubic motion qualification; old raw_sha256 and historical claim/result payloads remain unchanged.",
+      "current_source_note": "Protocol/demo scope reconciliation only; source code, old raw hashes and historical run claims retained.",
       "historical_before_auto_mz_sha256": {
         "src/neutral_atom_strategies/scheduling/parallel_patch.py": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac",
@@ -1475,6 +1475,9 @@
       },
       "historical_before_global_ez_scheduled_kernel_sha256": {
         "src/neutral_atom_env/visualization/viewer.js": "e5d90aead573d5c2473fa96a9e751793bd80bf7431e8e44f74da2536b6ecd2e8"
+      },
+      "historical_before_protocol_demo_reconciliation_sha256": {
+        "docs/qec_routing_standard.md": "0cce1f23f3d22dfe3f0e929846950cb873ef426124f2863ac17faf8e08bfd6a7"
       }
     },
     {
@@ -1500,7 +1503,7 @@
       ],
       "sha256_normalization": "text_lf",
       "sha256": {
-        "docs/qec_rigid_readout_placement.md": "d103b07aeaca60f5f96d23d1c31c88c80c3813638ca3dd977fb8946682679492",
+        "docs/qec_rigid_readout_placement.md": "07ff2ced396c3728a652cf88e03a097ec2d16b4164daef74eb4774d6cb9d7a42",
         "docs/readout_placement_policy.md": "5ca040fee51190ade54fb1226c00a7fdca5c27f8aaebf4065d59e7678777024b",
         "src/neutral_atom_strategies/scheduling/rigid_readout_placement.py": "3176758914f35e05f1260ca305ada494c95ff2a679b380b5a4f236a073c1aa23",
         "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
@@ -1529,7 +1532,14 @@
         "tests/test_native_readout_report.py": "9d2840739be756a6c73172c2a9e952f8dc10033b0c43972eb5fc033fc955446f",
         "references/qec_pbc_validation/auto_mz_placement_2026_10_04.json": "e2f40b5dffa7e78ed2130ac69157aa3dd0df4a9601f190ff443586b1cda9af6f"
       },
-      "verified_scope": "nearest feasible rigid geometry plus bounded actual legal service ranking; all original projections and complete replay"
+      "verified_scope": "nearest feasible rigid geometry plus bounded actual legal service ranking; all original projections and complete replay",
+      "historical_before_protocol_demo_reconciliation_sha256": {
+        "docs/qec_rigid_readout_placement.md": "d103b07aeaca60f5f96d23d1c31c88c80c3813638ca3dd977fb8946682679492"
+      },
+      "current_raw_sha256": {
+        "docs/qec_rigid_readout_placement.md": "88f6f19a45296a995998fad0c77ca9f337bf7ea78edcf330973ac959415b56f3"
+      },
+      "current_source_note": "Protocol/demo scope reconciliation only; source code, old raw hashes and historical run claims retained."
     },
     {
       "id": "L47",
@@ -1560,8 +1570,8 @@
       ],
       "sha256_normalization": "text_lf",
       "sha256": {
-        "docs/native_kernel_migration.md": "7edb8170b5423faa23e096d912df78bd86589169d58776c3fe7b37d2f3670e14",
-        "instruction/native_kernel_migration.md": "0c27b025d04ff73de571e7579d9b227941ffe87f0dfc91c87798219e0cff74cc",
+        "docs/native_kernel_migration.md": "ffd6cb236cc6e1e22001f8c126bdb97d74c9bba2504afe2a31649f0e76f1cbb8",
+        "instruction/native_kernel_migration.md": "e045bc24f6726ae79a2097301e0a221dee85f6e2b7778d97397ce5345560ef59",
         "references/qec_pbc_validation/native_kernel_2026_10_04.json": "07a34d679f7aa9a3dbd0a28a0f217829521876aeb4da4e586d7007aa51fc9f12",
         "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
         "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
@@ -1620,8 +1630,8 @@
         "tests/test_native_kernel_view.py": "76f072240384cb94c8a55dd5e02563a5c520c91420e71b8c4c362d18b6394274"
       },
       "current_raw_sha256": {
-        "docs/native_kernel_migration.md": "7edb8170b5423faa23e096d912df78bd86589169d58776c3fe7b37d2f3670e14",
-        "instruction/native_kernel_migration.md": "71ebe558f8a473e14a9a458501dd8569ef7189a94cd92deebc9902c5dd65e808",
+        "docs/native_kernel_migration.md": "ffd6cb236cc6e1e22001f8c126bdb97d74c9bba2504afe2a31649f0e76f1cbb8",
+        "instruction/native_kernel_migration.md": "a00aa4f052cb312694d59c3369c6c7c919d10533430876c08c0e5914f4ff6462",
         "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
         "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
         "src/neutral_atom_kernel/audit.py": "a75ee4ea8ef0345fc8750b767b20f475d61dc588c7f52af04bcc6d6dc17772e3",
@@ -1636,9 +1646,13 @@
         "tests/test_native_kernel_audit.py": "5a615ed5b972bf38fdaf5345aa73424b0549c4b75a634cd91e73031ed51f01f7",
         "tests/test_native_kernel_view.py": "4c6d8ad500166cea0cca9d8b1ea26efb3588f242b83540022764e94ed1270c8f"
       },
-      "current_source_note": "Current normalized sources after global-x EZ / scheduled start-end / cubic motion qualification; old raw_sha256 and historical claim/result payloads remain unchanged.",
+      "current_source_note": "Protocol/demo scope reconciliation only; source code, old raw hashes and historical run claims retained.",
       "historical_before_enola_mz_design_sha256": {
         "instruction/native_kernel_migration.md": "750abbc623421ab0a619f081bebbc40a1c967afec2baea27dac1caea9c0aa10c"
+      },
+      "historical_before_protocol_demo_reconciliation_sha256": {
+        "docs/native_kernel_migration.md": "7edb8170b5423faa23e096d912df78bd86589169d58776c3fe7b37d2f3670e14",
+        "instruction/native_kernel_migration.md": "0c27b025d04ff73de571e7579d9b227941ffe87f0dfc91c87798219e0cff74cc"
       }
     },
     {
@@ -1677,8 +1691,8 @@
       ],
       "sha256_normalization": "text_lf",
       "sha256": {
-        "docs/native_kernel_migration.md": "7edb8170b5423faa23e096d912df78bd86589169d58776c3fe7b37d2f3670e14",
-        "docs/qec_global_ez_contract.md": "e8054c4bca5f4982b81a17c517b702c75d1ae1138bca0bbe12126171ee9dd2f3",
+        "docs/native_kernel_migration.md": "ffd6cb236cc6e1e22001f8c126bdb97d74c9bba2504afe2a31649f0e76f1cbb8",
+        "docs/qec_global_ez_contract.md": "4e334c534d9b0b90375ef789c1364808ec81624d08e0d6913052d584e5eddaad",
         "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md": "b435c5d3f9e6d6ff6a28d599f0e6d742fb2213f86e39bda9066f30553f95e5b0",
         "references/qec_pbc_validation/global_ez_kernel_2026_10_04.json": "4351209ba2cf56ad9b6176c16d381e05d14cd8c2998fb80b90cbdd92347a7351",
         "instruction/physics.md": "500c79ce97872e2176a067eb335b15a8fb2e5ee74cf8cdb1d4b4c4503ab32490",
@@ -1737,8 +1751,15 @@
         "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md": "67f869b3b4647dcb869dd3311f5785fd5494fd7c9c7c773a32834626a0a747bf"
       },
       "current_raw_sha256": {
-        "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md": "b435c5d3f9e6d6ff6a28d599f0e6d742fb2213f86e39bda9066f30553f95e5b0"
-      }
+        "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md": "b435c5d3f9e6d6ff6a28d599f0e6d742fb2213f86e39bda9066f30553f95e5b0",
+        "docs/native_kernel_migration.md": "ffd6cb236cc6e1e22001f8c126bdb97d74c9bba2504afe2a31649f0e76f1cbb8",
+        "docs/qec_global_ez_contract.md": "4e334c534d9b0b90375ef789c1364808ec81624d08e0d6913052d584e5eddaad"
+      },
+      "historical_before_protocol_demo_reconciliation_sha256": {
+        "docs/native_kernel_migration.md": "7edb8170b5423faa23e096d912df78bd86589169d58776c3fe7b37d2f3670e14",
+        "docs/qec_global_ez_contract.md": "e8054c4bca5f4982b81a17c517b702c75d1ae1138bca0bbe12126171ee9dd2f3"
+      },
+      "current_source_note": "Protocol/demo scope reconciliation only; source code, old raw hashes and historical run claims retained."
     },
     {
       "id": "L49",
@@ -1751,8 +1772,8 @@
       ],
       "sha256_normalization": "text_lf",
       "sha256": {
-        "docs/qec_enola_mz_design.md": "b1eb8de31652abd495577c0a21e7b27db3880c71a4657810147a8ea85cb834bd",
-        "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "93b589f438f864d6d3c7ca265563e97d23f0658924635509b31d903022d7e9bc"
+        "docs/qec_enola_mz_design.md": "c551854c09a3a688cb399d2f5d57bad8156da7a174d81899c571ba5b52423880",
+        "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "ab91327eb997867f69d5153e4035fc6409c441081aa917628bb2f860074e7590"
       },
       "verified_scope": "Design review only: 10 acceptance workflows, source semantics, RF masks, full-band resources and MZ service boundaries; no implemented backend claim.",
       "historical_before_enola_mz_design_sha256": {
@@ -1760,9 +1781,14 @@
         "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "e345a6da5b320aae99d0d1ee85b9f0dd5e7c101301cedddc95febea2229bc4b2"
       },
       "current_raw_sha256": {
+        "docs/qec_enola_mz_design.md": "c551854c09a3a688cb399d2f5d57bad8156da7a174d81899c571ba5b52423880",
+        "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "06b0a7149f93bf35d4d8460300d822c1a5c97ca031a649b30f432a3920c29317"
+      },
+      "historical_before_protocol_demo_reconciliation_sha256": {
         "docs/qec_enola_mz_design.md": "b1eb8de31652abd495577c0a21e7b27db3880c71a4657810147a8ea85cb834bd",
-        "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "24658d4e44eb688f3f6e88ad120362c8c8c751dc42569ad9bb2140fd2bf2fbb2"
-      }
+        "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "93b589f438f864d6d3c7ca265563e97d23f0658924635509b31d903022d7e9bc"
+      },
+      "current_source_note": "Protocol/demo scope reconciliation only; source code, old raw hashes and historical run claims retained."
     },
     {
       "id": "L50",

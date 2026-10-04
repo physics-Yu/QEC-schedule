@@ -4,6 +4,28 @@
 
 当前已验收的 QMAP d3 attempt5 使用分离的 SZ 与 EZ；它的两轮结果不能作为本设计的验收结果。现有 Enola patch 工具只调用作者的初始 SA placement；完整作者编译器另在 scaling benchmark 中使用，尚未接入本设计的 MZ 闭环。
 
+## 当前协议入口与生效关系
+
+本页是当前 QEC 分区、编译和 MZ 流程的唯一目标入口；[共享工厂协议 v2](../instruction/qec_factory_pipeline.md)继续规定资源生命周期与 S1–S3 的上层目标。下表归并已有用户要求，不改变码、门序或物理阈值。历史平台只承担原版本的实现证据，不能覆盖这里的现行目标。
+
+| 项目 | 当前目标 |
+| --- | --- |
+| 分区 | COMPUTE＝EZ＝SZ；EZ 横贯 world 全 x，MZ 在照明 y 带之外。 |
+| 布局与距离 | 各码块独立停车；SLM 候选间距 5 μm，普通占据/非伙伴间距至少 10 μm。CZ 伙伴实际进入有限 6 μm 范围；10 μm 不是做 CZ 时伙伴的间距。 |
+| 编译与执行 | Enola 提出依赖允许的 2Q placement/routing；MZ/1Q 服务接入同一操作流；轻量 KernelExecutor 唯一提交。 |
+| routing | 先验证直达，受阻后使用 2.5 μm 半格通道。距离最短性只在声明的合法候选图内成立，不能把 rigid 图结论套给 row/column。 |
+| MZ 选点 | 空间距离为第一比较项，完整服务时间用于等距择优；候选须通过整个载体、运输与返程的合法性检查。有界候选只称“候选内最近”。 |
+| 普通 syndrome | 每 patch 9 data＋4 X 辅助＋4 Z 辅助；固定四层 coupling。每轮只测量/复位 8 个辅助，再实际返回 compute；data 终端读出单列。 |
+| 并行 | 同操作且依赖允许的门可合批；每次 CZ 检查全带所有原子与实际作用对，完整 AOD 行列和旁观者均参与。 |
+| 资源设备 | 独立 AOD_MAGIC 位于右侧；属于多设备目标，不能以当前单 AOD 小例声称已实现。 |
+| 展示 | 新 demo 必须使用本 profile 的已提交 operation stream。旧回放、协议步骤示意和新 backend 实现分别标明架构/版本/资格范围。 |
+
+当前可运行的 8780 回放是 `native-kernel-d3-global-ez-paired5-sz10/v2` 的 QMAP 分区 **Z memory**：两轮辅助读出 16 个报告，随后 data 终端读出 9 个报告，共 25 个。它包含制备与终端阶段，不能作为纯 round 循环，也不是本页的新 Enola＋MZ demo。步骤图仅解释协议，不能提供物理编译资格。
+
+旧 [rigid 自动选点](qec_rigid_readout_placement.md)生成最近几何候选后，以完整服务时间为优先项选取，属于有界服务成本策略；这与本表的距离优先目标有差异。保留其历史结果，新的 MZ 适配必须显式落实此处目标，不能仅沿用 `nearest_mz` 名称。
+
+本轮修正生效关系和展示口径；新 Enola＋MZ backend、纯两轮操作流和相应物理回放仍为 OPEN。下一项验收只覆盖 E02/E03/E05/E10 的单 patch：16 个辅助报告、16 次辅助 reset、无 data 终端测量，完整往返、作用对与断点恢复一致。
+
 ## 1. 分区与职责
 
 采用 `COMPUTE = EZ = SZ`：同一片区域容纳 data、syndrome、资源和库存，EZ 照明横贯声明 world 的整个 x 范围；MZ 位于该照明带之外。具体 world、compute y 带、MZ 和合法 trap 域在新 profile 中一起声明，不能沿用小例范围或只改图形。
@@ -45,7 +67,7 @@ flowchart LR
 
 MZ 服务输入实际位置/holder、完整 RF 坐标及 enable masks、源 gate/report IDs、起态摘要、slot 预约、token/epoch 和要求的终态。输出不可变操作流、选择证据和后置条件；服务生成器不修改实时状态。
 
-选点从 MZ 内最近合法 SLM 格点开始，检查整个载体、静态支撑、设备 envelope、完整 RF 和返程；记录候选、排除原因、所选位置、运输距离及完整服务时间。复用[最近 MZ 选点](qec_rigid_readout_placement.md)的原则，新内核首阶段在 MZ 使用稳定 SLM，不继承旧静止 AOD 读出实现。复用[标准路由](qec_routing_standard.md)的直达优先和 2.5 μm 偏移通道原则；其中 fixed-offset rigid 图上的最短性不能直接推广到 Enola 的 row/column 伸缩。新 router 必须声明其候选族或搜索图、最短性范围，并按完整 RF 各段实际时间评分；首个合法候选不能标为全局最短。
+选点从 MZ 内最近合法 SLM 格点开始，检查整个载体、静态支撑、设备 envelope、完整 RF 和返程；记录距离度量、候选、排除原因、所选位置、运输距离及完整服务时间。空间距离优先，等距时比较完整服务时间；有界候选范围须显示，不能宣称全域最近。复用[旧选点实现](qec_rigid_readout_placement.md)的合法性检查，但不沿用它的时间优先排序。新内核首阶段在 MZ 使用稳定 SLM，不继承旧静止 AOD 读出实现。复用[标准路由](qec_routing_standard.md)的直达优先和 2.5 μm 偏移通道原则；其中 fixed-offset rigid 图上的最短性不能直接推广到 Enola 的 row/column 伸缩。新 router 必须声明其候选族或搜索图、最短性范围，距离优先并单列完整 RF 各段实际时间；首个合法候选不能标为全局最短。
 
 一次普通 syndrome visit 为：`RF 配置 → LOAD → route → STORE 到 MZ SLM → MEASURE → RESET（源协议要求时）→ 返程 RF 重新绑定/必要配置 → LOAD → return route → STORE 到准入 compute 位置`。每次 LOAD 前核对当时真实 RF/masks；若读出期间 AOD 被其他计算使用，返程从新起态实际配置并计时，不能沿用去程轴或覆盖轴坐标。MZ 停留保留 atom/slot 预约，是否释放 AOD 由明确调度策略决定。测量报告只在 MEASURE 完成时提交；RESET 不删除历史报告。测量和复位尽量共用一次 visit，批次超过容量时分波并预约 MZ slots，不用原子总数替代 RF 容量。
 

@@ -1,5 +1,7 @@
 # 并行码块的自动 MZ 测量选点
 
+范围提示：下文是旧 rigid/ENV 实现及其历史资格。实际选点排序是候选内完整服务时间优先，不能据 `nearest_mz` 名称声称几何最近。当前[Enola＋MZ 目标](qec_enola_mz_design.md#当前协议入口与生效关系)要求距离优先、等距比较时间、稳定 MZ SLM 支撑；该新适配尚待实现，下述旧结果不替代它。
+
 2026-10-04 用户确认：编译器自动选择 MZ 内最近合法的测量位置。原有有序 QEC 的 `ReadoutPlacementPolicy` 保持；此前 `parallel_patch` 绕过该策略，给 rigid 阵列写死 `translation_um`，是本次修复的入口问题。
 
 ## 选点与寻路的职责

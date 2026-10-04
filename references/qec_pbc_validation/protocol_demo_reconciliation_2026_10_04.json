@@ -1,0 +1,45 @@
+{
+  "schema": "protocol-demo-reconciliation/1",
+  "baseline": "c27aeabda63c30959ce8a8583c7b61f6758ff9f6",
+  "status": "PASS",
+  "source_registry_refreshes": [
+    [
+      "L45",
+      "docs/qec_routing_standard.md"
+    ],
+    [
+      "L46",
+      "docs/qec_rigid_readout_placement.md"
+    ],
+    [
+      "L47",
+      "docs/native_kernel_migration.md"
+    ],
+    [
+      "L47",
+      "instruction/native_kernel_migration.md"
+    ],
+    [
+      "L48",
+      "docs/native_kernel_migration.md"
+    ],
+    [
+      "L48",
+      "docs/qec_global_ez_contract.md"
+    ],
+    [
+      "L49",
+      "docs/qec_enola_mz_design.md"
+    ],
+    [
+      "L49",
+      "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json"
+    ]
+  ],
+  "frozen_source_count": 66,
+  "old_recording_replay_unchanged": true,
+  "new_native_runs": 0,
+  "new_physical_qualification": false,
+  "new_backend_status": "OPEN",
+  "flows_physical_qualified": false
+}

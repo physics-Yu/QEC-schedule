@@ -8,18 +8,21 @@
 
 用户进一步授权的主目标是迁移内核、获得快速运行能力并去除探索时期的臃肿架构。仅给旧 Executor 增加 trusted 分支或把 QMAP 输出送回旧 ProgramBuilder，不满足这次目标。可采用原生编译器的 EZ 配对布局或 Enola 类指令加显式 measurement 服务；新平台必须版本化，保留原子身份、有限 CZ、旁观者、安全间距及报告完成语义。
 
-## 新主路径
+## 当前目标路径
 
 ```text
 冻结协议 / processor 请求 / 工厂库存与反馈
-  → 有完整依赖与测量边界的原生酉块
-  → QMAP C++ 排布 / 分层 / 路由
+  → 完整源依赖与测量边界
+  → Enola 2Q 规划 + 显式 MZ / 1Q 服务（目标，待实现）
+  → 版本化 5 μm 硬件适配 / 完整 RF 与照明审核
   → LOAD / MOVE / STORE / GATE / CZ / MEASURE / RESET / WAIT 操作流
   → neutral_atom_kernel 唯一提交的紧凑位置、holder、时间、完成索引与报告
   → 增量日志 / 可选观察器 / controller 下一段
 ```
 
-新 kernel 不导入旧 ENV、策略、实验、QMAP 或 UI。QMAP 位于策略层；协议、inventory、token、carrier、epoch、frame 和接受拒收归控制器。新 kernel 只执行已编译操作，不搜索路线，不预测整份状态，不逐 event 重建 DAG、不复制完整历史、不生成旧 SimulationState。
+上图是用户已确认的 Enola＋MZ 同区目标，尚未运行资格化。当前已资格化的 freeze-v4 路径仍为 `QMAP C++ → 显式 MZ 服务 → KernelExecutor`，平台分离 SZ/EZ；保留作为组件/历史基线，不是新目标的默认实现。具体生效关系以[当前协议入口](../docs/qec_enola_mz_design.md)为准。
+
+新 kernel 不导入旧 ENV、策略、实验、QMAP、Enola 或 UI。原生编译器位于策略层；协议、inventory、token、carrier、epoch、frame 和接受拒收归控制器。新 kernel 只执行已编译操作，不搜索路线，不预测整份状态，不逐 event 重建 DAG、不复制完整历史、不生成旧 SimulationState。
 
 门和操作保留源 ID。每个 block 绑定起态版本、摘要与原生 provenance。错身份、过期提交、未就绪依赖、重复效果和提前报告仍拒绝。MEASURE 结束才采样并提交声明报告；RESET 不删除历史报告，也不更换载体。checkpoint 保留全局时间、位置和 holder、游标、已完成效果及当前 fragment。
 
@@ -30,7 +33,7 @@
 
 旧 ENV / ProgramBuilder / SimulationState / 全 trace 审核仅保留作显式兼容或离线对照，不是新生产默认，也不做静默 fallback。旧六个 factory 长跑继续停止。旧物理结果和 Git 历史保持可追溯，不通过删除已有证据进行清理。
 
-## 本阶段
+## 已验收 QMAP 阶段的原范围
 
 1. 先交付独立轻量 executor、版本化 IR、恢复与声明报告完成门禁。
 2. 用实际 QMAP C++ 编译完整 canonical d=3 综合征轮，显式运输到 MZ 读出和 RESET，再续接下一轮。

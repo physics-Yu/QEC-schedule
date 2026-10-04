@@ -1,5 +1,7 @@
 # QMAP 原生编译与轻量运行内核
 
+本文记录 QMAP/freeze-v4 的已验收组件与复现 API。当前用户目标已改为[Enola＋MZ 同区协议](qec_enola_mz_design.md)，新 backend 未实现；下述分离 SZ/EZ 的 memory 回放不能当作该目标的 demo，也不能直接循环为纯 syndrome。
+
 2026-10-04 当前资格为 `d3-global-ez-attempt5`、平台 `native-kernel-d3-global-ez-paired5-sz10/v2`。全 x EZ、显式事件起止、共同三次运动及独立审核已通过；完整工厂、injection/processor 和完整 physical Shor 继续分别验收。
 
 路径是 `冻结协议/controller → QMAP C++ → Operation流 → KernelExecutor → 增量journal/反馈`。QMAP负责酉块排布/分组/路由；Python紧凑内核维护真实位置、holder、时钟、依赖完成与声明报告。推进不调用旧NativeProgramAdapter、ProgramBuilder、SimulationState、候选搜索或全trace重审，无静默旧策略fallback。

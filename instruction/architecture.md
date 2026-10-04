@@ -1,5 +1,7 @@
 # 工程框架与模块边界
 
+2026-10-04 当前 QEC 目标的唯一入口是[Enola＋MZ 同区协议](../docs/qec_enola_mz_design.md)。编译器/分区目标与历史 QMAP、rigid、双 AOD ENV 的实现证据分开；freeze-v4 保持原资格。新方案未实现，不能把下方历史接口拼成已切换 backend 的声明。
+
 2026-10-04 最新用户授权：[原生轻量内核迁移](native_kernel_migration.md)。新 `neutral_atom_kernel` 是独立、唯一提交的紧凑运行器，不导入旧 ENV/策略/协议/UI；策略层原生编译和 service 直接输出操作流，controller 管库存/反馈。旧 ENV 全状态/计划/验证只在显式兼容或离线审核构建，不是新生产必经层。以下旧接口保留其历史适用范围；完整迁移及工厂尚未验收。
 
 2026-10-04 当前增量：用户授权独立右侧 magic AOD 与统一 compute / MZ 平台。[双 AOD 合同](../docs/multi_aod_contract.md)使用同一个全局 state、placement、DAG、quantum/RNG 和 Executor；限定非交叉工作域，单 scheduled plan 内可有多设备 lane。单台保留 schema19，多台使用 schema20；旧单台能力与一般跨设备交叉路由须区分。[本轮日志](logs/2026-10-04-native-prefix-parallel-physical.md)记录 bounded Shor Clifford 前缀的实际编译验收；完整 magic factory、T 和完整物理 Shor 仍按工厂协议推进。

@@ -1,5 +1,7 @@
 # QEC 刚性 AOD 标准路由
 
+范围提示：本页的实现与最短性结论属于旧 fixed-offset rigid 平台。当前[Enola＋MZ 同区目标](qec_enola_mz_design.md#当前协议入口与生效关系)复用直达优先/2.5 μm 半格原则；有序 row/column、完整 RF/masks、轻量 kernel 和 MZ SLM 往返须单独实现与审核，不能直接继承本页 ProgramBuilder 或 rigid 最短性证明。
+
 2026-10-04 用户要求：原子移动优先采用最短合法路径；遇到障碍时沿既有 2.5 μm 偏移协议运输。该规则已接入码块并行编译器，策略标识为 `shortest-direct-or-halfgrid-v1`，CLI 使用 `--routing-policy standard`，也是该入口的默认值。实际执行与独立审计结果由对应运行报告给出；本文规定算法和后续实施路径，不以历史 5 μm 路线的成功证明新路线已经通过。
 
 ## 路由标准与最短性的范围

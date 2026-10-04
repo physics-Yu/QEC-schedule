@@ -1,5 +1,7 @@
 # Agent 工作准则与工程导航
 
+2026-10-04 协议与 demo 口径收敛：QEC 分区/编译/MZ 的唯一当前目标入口是[Enola＋MZ 协议](docs/qec_enola_mz_design.md#当前协议入口与生效关系)，资源生命周期继续按共享工厂协议 v2。8780 仅为旧 QMAP 分区 Z memory 回放，含末端 data 测量；新同区纯 syndrome demo 尚未实现。最近 MZ 按距离优先，旧 rigid 时间优先选点保留其历史范围。不得将示意图或旧 profile 当作新 backend 资格，见[本轮口径修正](instruction/logs/2026-10-04-protocol-demo-reconciliation.md)。
+
 2026-10-04 最新分区设计目标为 **Enola + MZ，COMPUTE=EZ=SZ**，见[兼容设计与标准流程](docs/qec_enola_mz_design.md)。Enola 规划无测量2Q片段，MZ/1Q服务与源依赖经版本化适配交给轻量内核；全x照明、完整RF/masks、旁观者与实际往返保持。十项流程目录均为待验收设计，首项是纯syndrome单patch连续两轮；不得循环带data终端读出的memory helper。当前QMAP attempt5仍是分离SZ/EZ的小例资格，不把本次设计称为已切换backend或完整工厂实现。
 
 2026-10-04 当前轻量内核资格为**全 x EZ + scheduled events + 共同三次运动**，见[全带合同](docs/qec_global_ez_contract.md)、[迁移/API](docs/native_kernel_migration.md)、[日志](instruction/logs/2026-10-04-global-ez-scheduled-kernel.md)。CZ按world全x固定y带核对所有存活原子及有限作用对，trap域另声明；Operation保留canonical relative start/end、完整依赖/资源，row_column共同cubic在观测/恢复/offline/viewer一致。真实attempt5两轮d3与独立重放PASS，171pytest/277modules0违规；原生@+ END链/[]批次忠实保留，不宣称native一般并发或多AOD。旧v1是有限历史快照，freeze-v4取代v3；完整factory/injection/processor与physicalShor按S1–S3另验。
