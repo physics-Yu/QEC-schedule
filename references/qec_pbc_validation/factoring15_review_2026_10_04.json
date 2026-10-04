@@ -1,0 +1,362 @@
+{
+  "schema": "qec-factoring15-review/1",
+  "reviewed_date_local": "2026-10-04",
+  "captured_at_utc": "2026-10-04T03:02:41.171166+00:00",
+  "review_scope": "read-only cross-project audit; existing G1 regression reruns; design and RAG records only",
+  "qec_base_commit": "7301daf1638970b33347b94a55691f5a24c429bc",
+  "factoring15_git_head_at_entry": "580a7e1",
+  "factoring15_live_milestone": "G1.1 in_progress",
+  "source_observation_scope": "Hashes below are sequential observations of live working-tree files, not an atomic snapshot or test-start source capture. G1.1 was concurrently modified by another task.",
+  "observed_live_files": {
+    "AGENTS.md": {
+      "raw_sha256": "e972d4960606df3518ff3208a839be90a7b872099808624f3ef56d8f559879ea",
+      "bytes": 4742
+    },
+    "docs/architecture/g1-contract.md": {
+      "raw_sha256": "3f0cc89112c96d1f4e6e0c877613cfb9d3b34ef8164b9f6b2de90bb954fdeea5",
+      "bytes": 7206
+    },
+    "docs/management/g1-acceptance.md": {
+      "raw_sha256": "840040e8dab793bc0a715de7881725ada303f9f735c20f70a2d37f6e52cd8399",
+      "bytes": 4427
+    },
+    "docs/management/state.json": {
+      "raw_sha256": "3b264c61758421dc6651bd6b65f56a52a269e3fa65b124f09fda558ce87be601",
+      "bytes": 2320
+    },
+    "docs/management/g11-upgrade.md": {
+      "raw_sha256": "bc34121e05415623f770c6fa607686e8bc8acad5f611ac963013d7dfb6c6d858",
+      "bytes": 1982
+    },
+    "src/factoring15/quantum.py": {
+      "raw_sha256": "b2fadab3b34caffc2abc1df8a7ff6ad41a33c98611d2309c6ac5433dd9c5c5e3",
+      "bytes": 47503
+    },
+    "src/factoring15/runtime.py": {
+      "raw_sha256": "8f7d1256e4cab3b146b31bff8a0def3f38122f1a7a451284bcace497cdcaa000",
+      "bytes": 20038
+    },
+    "src/factoring15/platform.py": {
+      "raw_sha256": "3c2370d7c98541963af93ac66c9f514aa44038a8c571cd738d3c9b68b59529b6",
+      "bytes": 43385
+    },
+    "src/factoring15/demo.py": {
+      "raw_sha256": "ada7ad9e17a527c6d2a7e0ad4e294b9f58fb0a66eca9d23d8be51d7c99e67178",
+      "bytes": 18620
+    },
+    "tests/test_quantum.py": {
+      "raw_sha256": "d832acc41311fec4e6063a9c03ef190fe4c3cb632977fdfd42b0b1714810983b",
+      "bytes": 18327
+    },
+    "tests/test_runtime.py": {
+      "raw_sha256": "98e18eef444fd858cfd1cf5871f88bd1bf9b9c21de0a6b794b2c05f14bc7ceee",
+      "bytes": 8013
+    },
+    "tests/test_platform.py": {
+      "raw_sha256": "17f77d18968b951ead4de993313c240a7ec94127564a841033d43cb050b002bb",
+      "bytes": 15411
+    },
+    "tests/test_artifacts.py": {
+      "raw_sha256": "fc97647e53d15d46f695bc7874dce359fe64e29645d1d60ac11b90a63ece8950",
+      "bytes": 17312
+    }
+  },
+  "frozen_g1_runs": [
+    {
+      "run_id": "g1-ideal-final-03",
+      "manifest_sha256": "b46f9e5361af7c207ca7115bf53da6d49a1dd5900e0efab576783987bdd292eb",
+      "status": "pass",
+      "attempts": 1,
+      "evidence_mode": "physical_plan_with_ideal_logical_reference",
+      "physical_measurement_source": "not_simulated",
+      "platform_status": "pass_reduced_model",
+      "event_count_from_budget": 29997,
+      "cz_count": 3267,
+      "duration_us": 881261.8829340478,
+      "allocated_atoms": 136,
+      "output_token_count": 1,
+      "paper_proxy": {
+        "metric_type": "paper_model_physical_schedule_proxy",
+        "status": "invalid_model_domain",
+        "value": null,
+        "parameters": {
+          "f_CZ": 0.995,
+          "f_GR": 1.0,
+          "f_exc": 0.9975,
+          "f_trans": 0.999,
+          "T2_us": 1500000.0
+        },
+        "uncovered_terms": [
+          "single-qubit local pulses including raw RZ preparation",
+          "raw-state encoding",
+          "measurement",
+          "RESET",
+          "feedforward",
+          "logical syndrome failure",
+          "distillation output quality"
+        ],
+        "maximum_idle_ratio": 0.5874888819560321,
+        "source": "arXiv:2609.03583v1 Eq.3; global irradiation, declared reduced routing model",
+        "not_P_logical_or_P_factor": true
+      },
+      "frozen_source_hashes": {
+        "__init__.py": "6d7d792e013b2a05b0aeed54dc41a550cc0a99fcaeba5decd0457b6ce482d3e4",
+        "__main__.py": "04fc4364024c1bb830557ad32986b388c7615b616bcb7ecd000ad5cc40073783",
+        "demo.py": "ada7ad9e17a527c6d2a7e0ad4e294b9f58fb0a66eca9d23d8be51d7c99e67178",
+        "platform.py": "3c2370d7c98541963af93ac66c9f514aa44038a8c571cd738d3c9b68b59529b6",
+        "quantum.py": "61edf19347c55aad9baea387dd8384e87213f40ae355a90a20045887bb937e44",
+        "runtime.py": "3a14c20ddfca93f3294ababc38666af8c50b6e3b19fee459a3952750b40f081d"
+      },
+      "artifact_sha256_checks": [
+        {
+          "path": "inputs.json",
+          "expected_sha256": "d72357265ef1a50827585b296b98779a85ba2b43f69ee35c1bde61ae2a1e16bd",
+          "observed_sha256": "d72357265ef1a50827585b296b98779a85ba2b43f69ee35c1bde61ae2a1e16bd"
+        },
+        {
+          "path": "reference.json",
+          "expected_sha256": "fcc19f9c0f892f7a4bf0f1ff6b00a047bd1c960415f8ad41102b7a6684085e3f",
+          "observed_sha256": "fcc19f9c0f892f7a4bf0f1ff6b00a047bd1c960415f8ad41102b7a6684085e3f"
+        },
+        {
+          "path": "plan.json",
+          "expected_sha256": "a9966c25b53c99989ec86458c25da00c6284651190d24dd78aafa61fb8c31208",
+          "observed_sha256": "a9966c25b53c99989ec86458c25da00c6284651190d24dd78aafa61fb8c31208"
+        },
+        {
+          "path": "inventory.json",
+          "expected_sha256": "7990c0e4facd200cc283e29b3155cbae1b839f6f26c11f2503b78751404f3c68",
+          "observed_sha256": "7990c0e4facd200cc283e29b3155cbae1b839f6f26c11f2503b78751404f3c68"
+        },
+        {
+          "path": "budget.json",
+          "expected_sha256": "6e2fb5829cc045f64dc550c774f38d0d99dfdc8db06b5f52da70aa307c8fc578",
+          "observed_sha256": "6e2fb5829cc045f64dc550c774f38d0d99dfdc8db06b5f52da70aa307c8fc578"
+        },
+        {
+          "path": "validation.json",
+          "expected_sha256": "01897cc878012f9b492f02e33911649c4a29eeb52fa6e997c150bdd106796b01",
+          "observed_sha256": "01897cc878012f9b492f02e33911649c4a29eeb52fa6e997c150bdd106796b01"
+        },
+        {
+          "path": "trace.jsonl",
+          "expected_sha256": "a8830aa03ac4c8ba77caf8f84bc23803e59662bfe198ddac38374fd24f7d6dad",
+          "observed_sha256": "a8830aa03ac4c8ba77caf8f84bc23803e59662bfe198ddac38374fd24f7d6dad"
+        }
+      ]
+    },
+    {
+      "run_id": "g1-retry-final-03",
+      "manifest_sha256": "f212e2f47e71b828e682d04cb5f2bd41b5d1701b8859dc411e4da204f1bdc50b",
+      "status": "pass",
+      "attempts": 2,
+      "evidence_mode": "physical_plan_with_ideal_logical_reference",
+      "physical_measurement_source": "not_simulated",
+      "platform_status": "pass_reduced_model",
+      "event_count_from_budget": 53871,
+      "cz_count": 5841,
+      "duration_us": 1600038.700384201,
+      "allocated_atoms": 136,
+      "output_token_count": 1,
+      "paper_proxy": {
+        "metric_type": "paper_model_physical_schedule_proxy",
+        "status": "invalid_model_domain",
+        "value": null,
+        "parameters": {
+          "f_CZ": 0.995,
+          "f_GR": 1.0,
+          "f_exc": 0.9975,
+          "f_trans": 0.999,
+          "T2_us": 1500000.0
+        },
+        "uncovered_terms": [
+          "single-qubit local pulses including raw RZ preparation",
+          "raw-state encoding",
+          "measurement",
+          "RESET",
+          "feedforward",
+          "logical syndrome failure",
+          "distillation output quality"
+        ],
+        "maximum_idle_ratio": 1.0666703335894674,
+        "source": "arXiv:2609.03583v1 Eq.3; global irradiation, declared reduced routing model",
+        "not_P_logical_or_P_factor": true
+      },
+      "frozen_source_hashes": {
+        "__init__.py": "6d7d792e013b2a05b0aeed54dc41a550cc0a99fcaeba5decd0457b6ce482d3e4",
+        "__main__.py": "04fc4364024c1bb830557ad32986b388c7615b616bcb7ecd000ad5cc40073783",
+        "demo.py": "ada7ad9e17a527c6d2a7e0ad4e294b9f58fb0a66eca9d23d8be51d7c99e67178",
+        "platform.py": "3c2370d7c98541963af93ac66c9f514aa44038a8c571cd738d3c9b68b59529b6",
+        "quantum.py": "61edf19347c55aad9baea387dd8384e87213f40ae355a90a20045887bb937e44",
+        "runtime.py": "3a14c20ddfca93f3294ababc38666af8c50b6e3b19fee459a3952750b40f081d"
+      },
+      "artifact_sha256_checks": [
+        {
+          "path": "inputs.json",
+          "expected_sha256": "b0148eaf8928e1574d4503d3f1ca6cd0d9d8fc40acc1ebc711d1274f1a83601a",
+          "observed_sha256": "b0148eaf8928e1574d4503d3f1ca6cd0d9d8fc40acc1ebc711d1274f1a83601a"
+        },
+        {
+          "path": "reference.json",
+          "expected_sha256": "7360e58cb32fe3a0ac5c47f6d3209ef566824d73ec59f7082361bcaea5431fa3",
+          "observed_sha256": "7360e58cb32fe3a0ac5c47f6d3209ef566824d73ec59f7082361bcaea5431fa3"
+        },
+        {
+          "path": "plan.json",
+          "expected_sha256": "4cbac52531f4cba031d4fd2e614f744f743fd8bf2a8c0990026383c3644ba653",
+          "observed_sha256": "4cbac52531f4cba031d4fd2e614f744f743fd8bf2a8c0990026383c3644ba653"
+        },
+        {
+          "path": "inventory.json",
+          "expected_sha256": "09e1f32ea94f45670dfcb8ed747dbb243a24b6f44275e58cd344bc4ec793374f",
+          "observed_sha256": "09e1f32ea94f45670dfcb8ed747dbb243a24b6f44275e58cd344bc4ec793374f"
+        },
+        {
+          "path": "budget.json",
+          "expected_sha256": "690548dfa663ec51d0e04187976bf03d7c3de9e5f93a1d570677dd527d3326a4",
+          "observed_sha256": "690548dfa663ec51d0e04187976bf03d7c3de9e5f93a1d570677dd527d3326a4"
+        },
+        {
+          "path": "validation.json",
+          "expected_sha256": "4e8170ce94c9d3dc2bb13eb7975b0be8c7198bc9a1e2e0fb0ec271cba74e313e",
+          "observed_sha256": "4e8170ce94c9d3dc2bb13eb7975b0be8c7198bc9a1e2e0fb0ec271cba74e313e"
+        },
+        {
+          "path": "trace.jsonl",
+          "expected_sha256": "0be228c06d62f0341c952364a5677b183412d496d635ef960aa673b12955b754",
+          "observed_sha256": "0be228c06d62f0341c952364a5677b183412d496d635ef960aa673b12955b754"
+        }
+      ]
+    },
+    {
+      "run_id": "g1-exhausted-final-03",
+      "manifest_sha256": "a328a585b13b43df4420be0c399e2aa931eeec112cb529fc47c474d9d19e26bc",
+      "status": "retry_exhausted",
+      "attempts": 2,
+      "evidence_mode": "physical_plan_with_ideal_logical_reference",
+      "physical_measurement_source": "not_simulated",
+      "platform_status": "pass_reduced_model",
+      "event_count_from_budget": 52364,
+      "cz_count": 5652,
+      "duration_us": 1563586.74362455,
+      "allocated_atoms": 136,
+      "output_token_count": 0,
+      "paper_proxy": {
+        "metric_type": "paper_model_physical_schedule_proxy",
+        "status": "invalid_model_domain",
+        "value": null,
+        "parameters": {
+          "f_CZ": 0.995,
+          "f_GR": 1.0,
+          "f_exc": 0.9975,
+          "f_trans": 0.999,
+          "T2_us": 1500000.0
+        },
+        "uncovered_terms": [
+          "single-qubit local pulses including raw RZ preparation",
+          "raw-state encoding",
+          "measurement",
+          "RESET",
+          "feedforward",
+          "logical syndrome failure",
+          "distillation output quality"
+        ],
+        "maximum_idle_ratio": 1.0423844957497,
+        "source": "arXiv:2609.03583v1 Eq.3; global irradiation, declared reduced routing model",
+        "not_P_logical_or_P_factor": true
+      },
+      "frozen_source_hashes": {
+        "__init__.py": "6d7d792e013b2a05b0aeed54dc41a550cc0a99fcaeba5decd0457b6ce482d3e4",
+        "__main__.py": "04fc4364024c1bb830557ad32986b388c7615b616bcb7ecd000ad5cc40073783",
+        "demo.py": "ada7ad9e17a527c6d2a7e0ad4e294b9f58fb0a66eca9d23d8be51d7c99e67178",
+        "platform.py": "3c2370d7c98541963af93ac66c9f514aa44038a8c571cd738d3c9b68b59529b6",
+        "quantum.py": "61edf19347c55aad9baea387dd8384e87213f40ae355a90a20045887bb937e44",
+        "runtime.py": "3a14c20ddfca93f3294ababc38666af8c50b6e3b19fee459a3952750b40f081d"
+      },
+      "artifact_sha256_checks": [
+        {
+          "path": "inputs.json",
+          "expected_sha256": "9560da408987a07f66c695068ab37c3e837b3b2228b5fccd45beee6bb12d8154",
+          "observed_sha256": "9560da408987a07f66c695068ab37c3e837b3b2228b5fccd45beee6bb12d8154"
+        },
+        {
+          "path": "reference.json",
+          "expected_sha256": "5ce9c026c0ee2780b208dc4221f5361e4baf8a1ad1992baa3d0ae61141dac2dd",
+          "observed_sha256": "5ce9c026c0ee2780b208dc4221f5361e4baf8a1ad1992baa3d0ae61141dac2dd"
+        },
+        {
+          "path": "plan.json",
+          "expected_sha256": "276834afaa6865bfe9ba3e0860c5c7876290d9ddb2c83b9a89277900157ff686",
+          "observed_sha256": "276834afaa6865bfe9ba3e0860c5c7876290d9ddb2c83b9a89277900157ff686"
+        },
+        {
+          "path": "inventory.json",
+          "expected_sha256": "19bc1b8df17c40d23e10ae470539ce00f016f1df6a9670605e8630ce22001a5a",
+          "observed_sha256": "19bc1b8df17c40d23e10ae470539ce00f016f1df6a9670605e8630ce22001a5a"
+        },
+        {
+          "path": "budget.json",
+          "expected_sha256": "159a44f815b49d81e7ec4db6a0b1be5be23b45fa3a3f3b549d6421cc05488bf6",
+          "observed_sha256": "159a44f815b49d81e7ec4db6a0b1be5be23b45fa3a3f3b549d6421cc05488bf6"
+        },
+        {
+          "path": "validation.json",
+          "expected_sha256": "306ecf82a8c17c67e79d50fe7f649f742c0d6d31e28b511fe641a1176e7a0bb5",
+          "observed_sha256": "306ecf82a8c17c67e79d50fe7f649f742c0d6d31e28b511fe641a1176e7a0bb5"
+        },
+        {
+          "path": "trace.jsonl",
+          "expected_sha256": "4832eb16f8b0447838b7e64e87a0a55041d42b30ecb24ca4590c4e7a1d2d773a",
+          "observed_sha256": "4832eb16f8b0447838b7e64e87a0a55041d42b30ecb24ca4590c4e7a1d2d773a"
+        }
+      ]
+    }
+  ],
+  "this_turn_existing_g1_tests": {
+    "distinct_tests": 58,
+    "failed": 0,
+    "errors": 0,
+    "suites": [
+      {
+        "pattern": "test_quantum.py",
+        "count": 15,
+        "elapsed_s": 0.41
+      },
+      {
+        "pattern": "test_runtime.py",
+        "count": 17,
+        "elapsed_s": 0.231
+      },
+      {
+        "pattern": "test_platform.py",
+        "count": 18,
+        "elapsed_s": 7.572
+      },
+      {
+        "pattern": "test_artifacts.py",
+        "count": 8,
+        "elapsed_s": 1.511
+      }
+    ],
+    "command_template": ".venv/Scripts/python.exe -B -m unittest discover -s tests -p PATTERN -v",
+    "scope": "existing G1 regression interfaces; not G1.1 acceptance; not added to QEC 913 historical tests"
+  },
+  "transient_peer_g11_check": {
+    "scope": "in-progress observation, not final defect or milestone verdict",
+    "checks": 2,
+    "ideal_output_equivalence": "passed",
+    "joint_readout_interface": "KeyError raw_to_rm_labels in five subcases",
+    "quantum_raw_sha256_at_check": "d7bb01986381aac83a475d2256f1c392191fc6b1a6dbc16014204084e4fc93f4",
+    "test_raw_sha256_at_check": "cee239148e39519e341f99a6826111426da7cb59e8485630e7ec43648cbdda19",
+    "later_sources_changed": true,
+    "not_retested_by_this_task": true
+  },
+  "native_t_physical_scheduling_available": true,
+  "tracked_t_and_actual_measurement_available": false,
+  "full_12_wire_encoded_consumer_available": false,
+  "complete_encoded_physical_shor": false,
+  "new_qec_physical_run": false,
+  "new_browser_acceptance": false,
+  "new_ft_claim": false,
+  "source_project_modified_by_this_task": false
+}

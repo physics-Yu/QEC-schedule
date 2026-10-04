@@ -221,6 +221,24 @@
       "expected_any": [
         "K51"
       ]
+    },
+    {
+      "query": "Factoring15项目值得学习什么？",
+      "expected_any": [
+        "K52"
+      ]
+    },
+    {
+      "query": "现在能实现完整编码Shor了吗？",
+      "expected_any": [
+        "K53"
+      ]
+    },
+    {
+      "query": "下一步怎样把完整功能接起来？",
+      "expected_any": [
+        "K54"
+      ]
     }
   ]
 }

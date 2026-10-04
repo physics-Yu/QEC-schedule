@@ -1,5 +1,9 @@
 # 当前交接状态
 
+## 2026-10-04 Factoring15对照与完整编码Shor集成路线
+
+本轮只读审查Factoring15工厂/库存/原生计划与当前QEC代码，旧G1四套58不同测试复验通过、三冻结包21artifact SHA匹配；不加入历史QEC913计数。普通原生T物理排程已支持，缺口是tracked非Clifford态＋真实投影反馈；单patch消费/16cat全raw/6logical exhaustive限制仍需扩展。Factoring15可复用15-to-1、拒收补产、载体和唯一库存，但其物理报告仍null，G1.1正在其他任务修改，未以旧证据宣称新通过。RAG新增K52–K54；下一交付为12wire编码native generator＋4096逻辑态/qualified kernels，再做预声明Clifford committed cat接受/abort小闭环，之后接真实T/工厂和完整平台。无生产代码/物理参数改动。见[对照](../docs/qec_factoring15_integration_review.md)、[日志](logs/2026-10-04-factoring15-integration-review.md)。
+
 ## 2026-10-03 d=3 Shor15自主推进与阶段提交
 
 截至10-04，十一能力checkpoint已提交至 `344d09d` / [PR #3](https://github.com/physics-Yu/QEC-schedule/pull/3)，本轮阶段成果已验收发布并独立fetch逐字核对。完整N15理想PBC/frame真实恢复3/5；编码资源制备→联合测量→9data X读出→frame/消费参考链已验，双资源3641native/51declared/666投影/L2约1.77e-15。clean36new＋35oldY联合71通过，总913=912clean＋1original，256modules0违规；RAG51/44/36检索及11portable通过。

@@ -896,6 +896,27 @@
         "references/qec_pbc_validation/encoded_xx_physical_r3.json": "9ccacc8ee98bd115e32557520d3b4ea0382c195a9231c3323278d5405ab72197",
         "references/qec_pbc_validation/encoded_parity_physical_r3.json": "5f4621f25b06a592a4931ea3727cac424f9fca575f633b3aa4a2a93bd4b02389"
       }
+    },
+    {
+      "id": "L33",
+      "kind": "repository_snapshot",
+      "title": "Factoring15只读对照、冻结G1工厂证据与完整编码Shor接口审计",
+      "version": "review snapshot 2026-10-04; QEC baseline 7301daf; Factoring15 live G1.1 changing",
+      "paths": [
+        "docs/qec_factoring15_integration_review.md",
+        "references/qec_pbc_validation/factoring15_review_2026_10_04.json"
+      ],
+      "verified_scope": "cross-project read-only source audit, 58 existing G1 regressions and 21 frozen artifact fingerprints; no new QEC physics",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "docs/qec_factoring15_integration_review.md": "e441f6d1e16bdfeb2b45cecba797c43576e80293f4b88cc8c15de61984f8cd49",
+        "references/qec_pbc_validation/factoring15_review_2026_10_04.json": "608c32386b076da35770e6156c69df17bd3df83cb292d13ad2d1eac7cf29846d"
+      },
+      "raw_sha256": {
+        "docs/qec_factoring15_integration_review.md": "e441f6d1e16bdfeb2b45cecba797c43576e80293f4b88cc8c15de61984f8cd49",
+        "references/qec_pbc_validation/factoring15_review_2026_10_04.json": "6b4806a829fce81b2aff5d37ac74bb9ad5d572bee955c0b9427813c07fe0333d"
+      }
     }
   ]
 }
