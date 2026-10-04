@@ -77,3 +77,9 @@ GitHub沿用已授权draft [PR #3](https://github.com/physics-Yu/QEC-schedule/pu
 完整编码参考完成，`physical_executed=false`、`environment_committed_reports=false`、`magic_factory=false`、`fault_tolerant=false`，真实placement／peak／物理耗时／噪声质量为未知。本版只用裸T／7T和cat CY的TT，不称protected T。tracked ENV仍拒T，不能将reference reports写进物理键或关闭tracking绕过M／RESET。
 
 按最新共享协议，下一项为F1：固定d=3及有来源15-to-1 native模板，完整参考生产与accept／reject／cleanup／补产；实际同一载态资源进入唯一库存并交付单T consumer，任意复幅／纠缠与所有正常分支独立核验完整T channel、符号与epoch，不重建理想魔态。之后F2 committed Executor闭环，F3逐周期噪声，F4 MSC backend，F5连续T和完整physical Shor。本独立完整算法参考可作为后续消费需求和对照。
+
+## 发布回执
+
+能力checkpoint已发布为[`dc2723d`](https://github.com/physics-Yu/QEC-schedule/commit/dc2723dfe4fc2d3ae5570f3341ad5537be65afcb)，parent`d7ef205`、tree`844683041d2882df9b4cb286dcfa1fb4cdb3ed2d`。Git-data远端tree与本地write-tree相等，fast-forward后独立`git fetch origin codex/d3-shor15-stages`，核对FETCH_HEAD、parent、tree、全部29个blob原字节及staged diff完全相同，再以旧HEAD条件更新clean本地ref；worktree干净。原workspace HEAD9e28b2e保持，33个其他tracked dirty指纹保持，pushurl=DISABLED未改。PR#3保持open／draft／unmerged；本回执文件是后续文档收尾提交，不重写能力checkpoint。
+
+git staged whitespace检查发现observer Python第244空行尾空格，仅删除空白并同步其source／公开摘要指纹；无行为改动，不重复215项已通过测试。最终两工作区RAG freshness零错误。公开[发布回执](../../references/qec_pbc_validation/full_encoded_shor15_publication_2026_10_04.json)保存不可自引用的能力commit与完整核对结果。

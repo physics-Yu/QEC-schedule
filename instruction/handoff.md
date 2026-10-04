@@ -8,7 +8,7 @@
 
 完整N15/a2、12wire d3编码native／理想reference验收完成：最终seed0 phase128失败→12patch实际读出RESET→phase64验证order4与3/5，两shot11,243,634门／2,402,810投影／7000资源；完整独立流、phase敏感复幅及真实终端Born审计通过。215不同本轮测试（65新＋150旧）及259modules架构零违规，8功能浏览器／32门每秒播放／报告分页／frame下一轴／390px通过；真实操作页本机8772。详见[生成器](../docs/qec_encoded_shor_native.md)、[逐操作视图](../docs/qec_encoded_native_visuals.md)、[可移植摘要](../references/qec_pbc_validation/full_encoded_shor15_native_2026_10_04.json)、[日志](logs/2026-10-04-full-encoded-shor15-native.md)。
 
-这是285声明身份池／qualified kernels的完整编码独立参考，非全原子dense、完整physical Executor或FT。未实现工厂、tracked非Clifford/Born、物理峰值／μs及噪声质量。下一主线按用户最新工厂优先协议先做15-to-1生产→接受／拒收／cleanup／补产→同一载态唯一库存／交付→单T完整channel参考闭环，再接committed Executor、逐周期噪声、MSC和完整physical Shor。历史913／58不加入本轮215；原HEAD／其他dirty保留，本成果沿用draft PR#3，不merge。
+这是285声明身份池／qualified kernels的完整编码独立参考，非全原子dense、完整physical Executor或FT。未实现工厂、tracked非Clifford/Born、物理峰值／μs及噪声质量。下一主线按用户最新工厂优先协议先做15-to-1生产→接受／拒收／cleanup／补产→同一载态唯一库存／交付→单T完整channel参考闭环，再接committed Executor、逐周期噪声、MSC和完整physical Shor。历史913／58不加入本轮215；原HEAD／其他dirty保留。能力checkpoint已发布为[`dc2723d`](https://github.com/physics-Yu/QEC-schedule/commit/dc2723dfe4fc2d3ae5570f3341ad5537be65afcb)，独立fetch核对29blob及tree相同，沿用draft PR#3，不merge；[发布回执](../references/qec_pbc_validation/full_encoded_shor15_publication_2026_10_04.json)。RAG最终61chunks／49sources／110paths／53检索与11portable均通过。
 
 ## 2026-10-04 Factoring15对照与完整编码Shor集成路线
 
