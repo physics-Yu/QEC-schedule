@@ -74,3 +74,5 @@ python -B -m http.server 8782 --bind 127.0.0.1 --directory artifacts/modular-aod
 报告层位于 `neutral_atom_app/modular_aod_report.py`，使用未修改的共用payload builder/viewer，仅修正本例compiler/report来源与设备名称这些展示元数据。attempt1物理通过，但默认caption误称QMAP；源码修复后实际重跑attempt2，保留旧attempt。共用总类别时间线在同start重叠操作的tooltip可能选择首个operation标签；各设备lane、实际时刻、载体和journal身份正确，查看独立归还以设备lane为准。本例WAIT是声明的运输停留，完整归还时间包含它；设备运输busy统计不计WAIT。
 
 下一接口是服务/资源controller提出运输模块：保留entry/exit物理状态、完整RF、源依赖、原报告与同token载体，再与服务操作组合审核。MZ/RESET与全x CZ必须验证真实共享作用资源和旁观者，不能直接沿用此纯运输PASS。资源提前归还已经有组件和运行证据，工厂连续生产或processor热接入尚未由本次实现。
+
+工厂接缝已另作[静态接口审阅](factory_transport_interface.md)：当前module是完整起态绑定实例，计划时刻为Block相对时间；默认终态该设备无承载，STORE不自动保证home或初始RF。controller拥有运输request和typed completion，原gate/raw报告、token/epoch及MZ/CZ服务资格各自保持。resource独立归还不会解除active Block提交限制，动态补产与新adapter仍为待实现项；此次审阅没有新工厂运行。

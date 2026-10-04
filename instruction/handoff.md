@@ -1,5 +1,9 @@
 # 当前交接状态
 
+## 2026-10-05 工厂与运输模块接口审阅
+
+只读审阅 `processor-physical-fragment-contract/1` 后固化[最小对接合同](../docs/factory_transport_interface.md)；状态DESIGN_ONLY，无新adapter或factory/native运行。现resource独立END归还与data在途已实现，但active Block中的新生产提交仍BLOCK_BUSY；公共Factory context同样先drain。提案以immutable template、controller-owned request和actual typed completion绑定全world/RF、relative/global时钟、原gate/raw报告、token/epoch及exit/恢复。MZ/CZ并行与dynamic admission另验，34/143/221 profile不混用。见[小回执](../references/qec_pbc_validation/factory_transport_interface_review_2026_10_05.json)与[日志](logs/2026-10-05-factory-transport-interface-review.md)。下一项先接唯一writer内idle稳定边界运输请求。
+
 ## 2026-10-05 独立双 AOD 运输模块
 
 新策略 `AODTransportModule.compile → coordinate_aod_modules → bind_block(required geometry_guard)` 绑定完整初态/RF/profile和精确审核inputSHA；同设备END链、真实ATOM/AOD/显式共享资源占用分别协调，取消隐式跨设备归还等待。唯一scheduled KernelExecutor执行。真实34原子/左右各17、两台5×5完整RF（各8空活动交点）、68有限5μm SLM位；14ops/31journal，并发541.260859854213μs vs同profile串行992.6458955524499μs，减少45.472916%。resource451.385035698237μs已回home/SLM时data仍return MOVE，提前89.875824μs；双带载MOVE重叠190.692518μs。

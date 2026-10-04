@@ -2208,7 +2208,7 @@
       "sha256_normalization": "text_lf",
       "verified_scope": "Transport-only independent AOD modules and resource coordinator, one scheduled KernelExecutor, same-profile serial comparison, exact cold recovery and independent full RF/Cartesian continuous review. Resource returns while data remains moving. No RESET/readout/CZ/native compiler/factory/fullShor qualification.",
       "sha256": {
-        "docs/modular_aod_transport.md": "64e4b7a468d65573ce111f5f1c8e91640a557a5299984a9de279bb6449a93385",
+        "docs/modular_aod_transport.md": "168b9a181c77f4932c18b7559395247743eeb1b5ca9e3ef10367d84aa26a44d3",
         "instruction/logs/2026-10-05-modular-aod-transport.md": "f5be00c3d683a1c238778ee5428ac61f35999b94619fe283bda23245d04d64fc",
         "src/neutral_atom_strategies/scheduling/aod_modules.py": "b06e758bcca0fd39239f8c7335ef68a6e990cfe99f07cab8176e46471dada48c",
         "src/neutral_atom_app/modular_aod_report.py": "4c36d11e93262687912f641a1171266db1556b15ac9e8964f3581a77807fca28",
@@ -2221,7 +2221,7 @@
         "references/qec_pbc_validation/modular_aod_2026_10_05.json": "dca0aa738cd9f81cde0b90abaad668e2a2f339aaf0b46674c0e96dccff2eef7c"
       },
       "current_raw_sha256": {
-        "docs/modular_aod_transport.md": "64e4b7a468d65573ce111f5f1c8e91640a557a5299984a9de279bb6449a93385",
+        "docs/modular_aod_transport.md": "d7d68651e55a1c209222c8e8249a9f44fac5de1fed1187d72937098d556dc9c8",
         "instruction/logs/2026-10-05-modular-aod-transport.md": "f5be00c3d683a1c238778ee5428ac61f35999b94619fe283bda23245d04d64fc",
         "src/neutral_atom_strategies/scheduling/aod_modules.py": "b06e758bcca0fd39239f8c7335ef68a6e990cfe99f07cab8176e46471dada48c",
         "src/neutral_atom_app/modular_aod_report.py": "2d139d5726aee89230a038c128246f1719baeb89050b12c827e5fff4d3d5169b",
@@ -2232,6 +2232,30 @@
         "tests/test_modular_aod_audit.py": "f26a3a241937d8fe7dda622f2f5b6964015f7ece31841ee4c3c78d51ba14cfde",
         "tests/test_modular_aod_demo.py": "d4fdbefff3abd433fe1f8af5a78d4d78567e30e7d91f9bf81f8abda03029da32",
         "references/qec_pbc_validation/modular_aod_2026_10_05.json": "4396817e4411967347c88ccb6ff9ad5eda9c1a50b4b4056832d6683f47507684"
+      }
+    },
+    {
+      "id": "L53",
+      "kind": "repository_snapshot",
+      "title": "工厂与独立双AOD运输接口静态审阅",
+      "version": "factory-transport-interface-review/1 2026-10-05",
+      "retrieved_at": "2026-10-05",
+      "paths": [
+        "docs/factory_transport_interface.md",
+        "instruction/logs/2026-10-05-factory-transport-interface-review.md",
+        "references/qec_pbc_validation/factory_transport_interface_review_2026_10_05.json"
+      ],
+      "sha256_normalization": "text_lf",
+      "verified_scope": "Design-only source review. No factory context adapter, MZ/CZ overlap or dynamic admission implemented or qualified.",
+      "current_raw_sha256": {
+        "docs/factory_transport_interface.md": "9b682fc1bf93e599f605b4cd2b6c8941d5db95b95fdb4fa8aa834453db35528b",
+        "instruction/logs/2026-10-05-factory-transport-interface-review.md": "8f8020ed6005dd19a2600dbb15c8b94a7a7c455437f8ff2fd91040b9c4d07b1e",
+        "references/qec_pbc_validation/factory_transport_interface_review_2026_10_05.json": "b73ecaad951c89ce16acef236978704ec2abb6a5be56b8e79b6593f5c1851cc9"
+      },
+      "sha256": {
+        "docs/factory_transport_interface.md": "9b682fc1bf93e599f605b4cd2b6c8941d5db95b95fdb4fa8aa834453db35528b",
+        "instruction/logs/2026-10-05-factory-transport-interface-review.md": "8f8020ed6005dd19a2600dbb15c8b94a7a7c455437f8ff2fd91040b9c4d07b1e",
+        "references/qec_pbc_validation/factory_transport_interface_review_2026_10_05.json": "3869af2100f56872817e5366e37a3813a511ff5f60132e663b3aa927d1533166"
       }
     }
   ]

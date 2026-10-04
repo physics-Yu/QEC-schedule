@@ -1,0 +1,15 @@
+# 工厂与双 AOD 运输接口只读审阅
+
+状态：DESIGN_REVIEW_COMPLETE；未实现新adapter、未新增执行资格。日期2026-10-05，managed基线 `51c7073fe67ea602be8b3da1a824c87ef3f3afaa`。
+
+工厂协作方给出 `processor-physical-fragment-contract/1` 设计，请求对已交付模块接缝做只读审阅。其保存design SHA `341f1dd94c2e0a674cf073ad8a162f68b9a7dc733facc8820a98ca4a04c9c36f`已核对。读取原工作区design、FactoryProcessorContext.execute_processor与committed_kernel_inputs相关源码，以及managed模块/Kernel提交与factory协议。未写原工作区，不发送跨thread消息，不启动native/Executor/factory/大重放；原协作方报告的长跑进度不由本审阅重新资格化。
+
+成果[最小接口合同](../../docs/factory_transport_interface.md)提出三种设计对象：immutable template、controller-owned bound request、actual typed transport completion。记录wholeworld entry、carrier/holder/full RF/mask、origin/global-clock转换、未知时间pending、原gate/raw/alias与token/epoch门禁、slot lease、精确review receipt+kernel version/hash、exit postcondition、缓存与恢复单writer。
+
+发现并固化：device计划END为Block相对时间，不能直接当global完成；起点改变要重算相对schedule。模块依赖限定本schedule，不接受外部报告/gate；默认module终态要求本device无承载，STORE须落在声明SLM，不保证原home/初始RF。resource提前归还/data继续MOVE已实现，但在途module绑定先MODULE_ORIGIN拒绝；直接提交有效绑定的新Block才BLOCK_BUSY，过期绑定先STALE_BLOCK；Factory公共execute_processor同样要求drain。shared WAIT不实现光服务，x分离不证明退出全x EZ；当前纯transport不能授予MZ/CZ/factory资格。新34、旧143和221 profile独立，不能替换实际W4 accepted carrier或省略完整15成本。
+
+小型静态回执 `references/qec_pbc_validation/factory_transport_interface_review_2026_10_05.json` 保存reviewed source指纹和scope。文档只新增接口建议，代码/冻结source与先前166测试资格保持；本轮不新增/重跑物理pytest，适用校验为文档链接/JSON、RAG指纹与召回及源前后SHA/工作区保护。发布沿用用户已授权stage GitHub主线，draft PR#3保持；独立回执另存 `references/qec_pbc_validation/factory_transport_interface_publication_2026_10_05.json`。
+
+下一可执行项：首先实现context唯一writer内的稳定边界transport request/receipt适配和实际accepted载体完整返回小例；新服务并行与dynamic admission须独立实现和验收，不启动旧freeze-v4热换。
+
+实际静态检查通过：87文档链接，RAG74chunks/65sources及96/96召回；既有73chunks、93queries和64source记录的全部历史字段保持。三份已读原设计/源码与四份managed源码/资格回执raw SHA前后相同，tracked代码未改。独立审阅确认MODULE_ORIGIN、STALE_BLOCK、BLOCK_BUSY各拒绝路径及origin变更必须重算相对schedule；本轮new physical/runtime/pytest均0。

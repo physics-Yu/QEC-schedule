@@ -1,0 +1,71 @@
+{
+  "schema": "factory-transport-interface-review/1",
+  "date": "2026-10-05",
+  "status": "reviewed_design_only",
+  "base_commit": "51c7073fe67ea602be8b3da1a824c87ef3f3afaa",
+  "reviewed_contract": "processor-physical-fragment-contract/1",
+  "original_source_raw_sha256": {
+    "artifacts/factory-kernel-port/rag-collective-interface-readonly-attempt0/design.md": "341f1dd94c2e0a674cf073ad8a162f68b9a7dc733facc8820a98ca4a04c9c36f",
+    "src/neutral_atom_experiments/qec_pbc/factory_kernel_module.py": "93274490551d5d03d1dc83005860aa00f55b53774d903317f379d1bcaf97524d",
+    "src/neutral_atom_experiments/qec_pbc/processor_resources/kernel.py": "01f64c3c604f1a20ac62c24aa09c34f76cb4135aa2f345d4318344d98999e937"
+  },
+  "managed_source_raw_sha256": {
+    "src/neutral_atom_strategies/scheduling/aod_modules.py": "b06e758bcca0fd39239f8c7335ef68a6e990cfe99f07cab8176e46471dada48c",
+    "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
+    "references/qec_pbc_validation/modular_aod_2026_10_05.json": "4396817e4411967347c88ccb6ff9ad5eda9c1a50b4b4056832d6683f47507684",
+    "references/qec_pbc_validation/modular_aod_publication_2026_10_05.json": "554112fde4163dc906847abeb2a261d81bd4bc7f46d9b3bd581960d477dbfdc0"
+  },
+  "design_document": "docs/factory_transport_interface.md",
+  "read_only_original_checkout": true,
+  "new_adapter_implemented": false,
+  "new_native_runs": 0,
+  "new_factory_runs": 0,
+  "new_executor_runs": 0,
+  "new_physical_replays": 0,
+  "new_pytest_cases": 0,
+  "outbound_thread_messages": 0,
+  "existing_transport_qualification": "references/qec_pbc_validation/modular_aod_2026_10_05.json",
+  "proposed_objects": [
+    "aod-transport-template/1",
+    "aod-transport-request/1",
+    "aod-transport-completion/1"
+  ],
+  "confirmed_boundaries": [
+    "Independent resource transport completion does not allow submitting a new Block while another Block is active.",
+    "Module schedules use Block-relative times; external raw reports and source gates are controller entry gates.",
+    "Current AODTransportModule is a complete-entry-bound instance, not a role-generic template cache.",
+    "Default module terminal state requires no carriers on that device; STORE needs declared SLM, not original home or initial RF.",
+    "Whole-world holders, full RF/spares, occupied-union Cartesian masks and exact input review must bind the request.",
+    "Transport keeps carrier/token epoch; completion does not produce magic, reports or inventory acceptance.",
+    "MZ/CZ service overlap, factory context adapter and dynamic midflight admission remain unimplemented here."
+  ],
+  "validation_scope": "Static source/design review and repository documentation/RAG checks only; previous transport qualification remains separate.",
+  "peer_reported_factory_run_status_requalified": false,
+  "static_validation": {
+    "status": "static_review_pass",
+    "doc_links_checked": 87,
+    "reviewed_original_sources": 3,
+    "protected_managed_sources": 4,
+    "unchanged_existing_source_records": 64,
+    "historical_source_fields_preserved": true,
+    "existing_chunks_preserved": 73,
+    "existing_queries_preserved": 93,
+    "rag": {
+      "--check": {
+        "ok": true,
+        "chunks": 74,
+        "sources": 65,
+        "errors": []
+      },
+      "--self-test": {
+        "ok": true,
+        "passed": 96,
+        "total": 96,
+        "top_k": 5
+      }
+    },
+    "runtime_runs": 0,
+    "new_physical_qualification": false
+  },
+  "design_raw_sha256": "9b682fc1bf93e599f605b4cd2b6c8941d5db95b95fdb4fa8aa834453db35528b"
+}

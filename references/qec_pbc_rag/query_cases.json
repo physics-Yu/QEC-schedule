@@ -575,6 +575,24 @@
       "expected_any": [
         "K73"
       ]
+    },
+    {
+      "query": "factory resource 归还 data 继续运输 dynamic Block BLOCK_BUSY",
+      "expected_any": [
+        "K74"
+      ]
+    },
+    {
+      "query": "工厂运输模板缓存 不能复制 report token epoch immutable request completion",
+      "expected_any": [
+        "K74"
+      ]
+    },
+    {
+      "query": "MZ CZ 双AOD光服务并行 transport资格 缺口",
+      "expected_any": [
+        "K74"
+      ]
     }
   ]
 }
