@@ -2,9 +2,9 @@
 
 研究与工作树核对日期：**2026-10-04**（历史来源保留各自日期）。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
 
-主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，51 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、32 组本地来源与93个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)。
+主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，61 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、37 组本地来源与110个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)，53项固定召回用例。
 
-最新第十一阶段：bounded encoded consumer reference 已验；独立三轮XX/ZZ physical与fullinitial重放均通过。历史§18–22保留当时producer/pending/事故快照，当前完成与限制以§23–24及K50/K51为准；完整encoded physical Shor仍未完成。
+最新批准阶段：完整12wire编码原生Shor理想分支已经实际生成，seed7和最终seed0得到3和5，完整失败重试成本及逐功能native操作observer可核对。当前能力与限制见§25–28及K55–K61。历史§18–24和K50–K54保留各次producer、事故、单patch能力与Factoring15只读提案快照；新增内容不回写旧失败。完整encoded **physical Executor** Shor与factory-first工厂主线仍未完成。
 
 ## 1. 最终要连起来的链路
 
@@ -340,3 +340,51 @@ K51/L32与[XX最终小摘要](../references/qec_pbc_validation/encoded_xx_physic
 独立stream十原corefiles全部bytes/SHA与firstcrashed相同，recording116919753bytes/animation116986439bytes另有SHA。ZZ历史456plans/19212events/logic267201.2/terminal268091.2μs/fullinitialtrue保留。原Timeout1596prefix和两次0xc0000005失败不回写，第二次321savedprogress不是exactcrash位置，底层机制仍unknown。152capturedsources只有reviewed316519→EB580例外；3原未捕获source为null、completeprovenancefalse、缺decisions/candidatesunknown保持。
 
 两basis属于独立理想retained XX/ZZ instrument；没有证明全Shor mixed/Y或magic的完整physical链。layout预排成本unknown/排除，transport/idle/loss/fidelity/noisyretainedFT与真实浏览器视觉验收未声明。smallsummary入Git，GB原档不入Git；当前consumer仅§23reference，完整encoded physical Shor仍是后续目标。
+
+## 25. 2026-10-04：完整12逻辑patch编码原生Shor分支
+
+用户批准的完整生成器已落实，[K58/L35](../references/qec_pbc_rag/knowledge.jsonl)与[生成器说明](qec_encoded_shor_native.md)记录真实seed7成功：**5,951,556个native门、1,269,619项M／RESET投影、49,540项功能、3,500份资源消费**。终端phase64，经实际raw测量来源和经典后处理得到阶4、因子3和5。12算法patch共204原子；17原子资源patch、63cat槽与1verifier使声明池为285身份，这不是物理峰值。
+
+输入逐源核验完整72门、28CP、84Rz及整体复相位，防止同步篡改CT／PBC仅靠二者相等获准。实际native encoder、17q资源producer和18q canonical Choi先通过独立边界资格，之后展开每次完整原生模板并明确复用精确kernel。cat实际raw Born、资源全部9data H／M／RESET、完整24-generator Clifford frame及最终拉回测量轴均保留，没有安装理想预置魔态替代制备，也没有删除基于已知周期的逆QFT门。
+
+独立全流审计不导入项目量子／compiler模块，seed7最终v2在43.899秒核对全部ID、投影、raw parity、epoch、frame与源复幅，全部终端条件Born最大误差1.0318e−12；对CT误差约2.403e−12，对完整exact Shor误差约3.56877e−5。初版41.69秒为先前同一run审计，不能额外累计。另peer完成12wire＋reference、63cat、3资源完整复数误差2.4641e−15，以及4096个modexp基向量和256列Fourier对照。
+
+本轮新pytest为**65不同项＝10 generator＋29 widecat＋26 visual**；6个真实缓存副本的同步篡改拒绝和独立数学／流审计另计，不重复累计历史913。seed8独立run也实际phase64成功，6,704,145门／1,445,781投影／54,438功能，但未重复fullstream audit。完整失败重试另见§28。所有投影属于明确理想reference，`environment_committed_reports=false`、`physical_executed=false`；没有运输、微秒、蒸馏、噪声容错或保真度证据。K52–K54只读提案原文保留并链接新能力。
+
+本轮总计**215不同pytest＝65新项＋150相关旧项**。首次缺少既有stim依赖导致1失败／35跳过，接入现成只读依赖后1项通过、最终100项（65新＋35旧）在11.91秒通过；14项QFT重复确认不增加计数。这些工程失败与修复保持记录，没有放宽数学或物理合同。
+
+完整generator是已批准独立理想参考成果。按2026-10-04新增factory-first协议，后续主线为**工厂生产 → 同一载态资源库存／交接 → 单T消费闭环**，先核对carrier、phase、provenance、唯一消费及拒收／清理／补产，再连接完整算法；不能把完整参考线路生成说成工厂主线完成。
+
+## 26. 63cat完整仪器：符号覆盖全部raw与条件Born
+
+[K59/L36](../references/qec_pbc_rag/knowledge.jsonl)与[宽cat说明](qec_wide_cat_reference.md)使用完整native门／DAG／sidecar资格，再收缩实际局部H／CZ／TT矩阵。GHZ的两个等幅臂通过实际CX归纳；每一轮实际三比特verifier电路给出相邻ZZ的完整两个Kraus；每个完整受控Y包含不可省略的cat相位。最终得到全部raw字符串的算符：
+
+`K_b = 2^(-(L+1)/2) [I + (-1)^m P_signed]`。
+
+`m`是所有cat实际X报告的XOR加physical representative sign。完备性与外部纠缠保持由算符等式保证，不把`2^63`符号覆盖写成`2^63`次数值重放。前L−1位各1/2，最后一位由实际前缀XOR和当前signed expectation决定；每个真实M／RESET都保存具体ID、位、条件概率，零概率／虚假强制ID被拒绝。
+
+实际136门CSS encoder核对X／Y／Z复矩阵；所有256 signed sectors按明确`E_s V`且`E_s`与逻辑X／Z对易的约定证明。独立固定CSS orbit与每半边512候选mask再次核对全部sector，不复用GF(2)求解器。29项新测试还包含全部小raw、随机外部纠缠、完整复相位、63cat以及8类native／sidecar篡改。旧16cat全raw审计guard保持，生产abort／retry与FT没有由此补齐。
+
+## 27. 每一项功能都能查看同一次运行的具体操作
+
+[K60/L37](../references/qec_pbc_rag/knowledge.jsonl)的observer读取同一manifest绑定的functions、native gates、projections、frames和roles。它显示12个3×3算法patch、资源patch和cat身份，按实际功能选择encoder、canonical bank、资源制备、cat联合测量、9data资源读出／RESET、frame更新、终端读出及重试cleanup。
+
+播放按**实际native gate index**推进；每一步的门类型／目标、报告位／条件概率、raw parity来源、前后24个signed generators以及资源epoch／生命周期均来自对应字节范围和hash。图中没有编造原子运输和微秒；observer是参考原生操作检查器，不是Executor物理时间线。全源SHA和function bytehash绑定流，local证书hash绑定role模板，二者用途不同。
+
+固定run只读HTTP支持有界分页与来源篡改拒绝，不允许请求任意文件路径。26项新observer／API测试与seed7全流独立审计通过，新增下一测量轴随frame筛选同步。最终真实GUI通过8类功能、CSS／canonical、17RESET/H/T或7T/CSSproducer、cat五substage、终端读出、实际失败shot cleanup、24frame／ledger及nextaxis筛选／列表／详情同步。112项cat M／RESET记录分页回读、27门资源9H／9M／9RESET按32gate/s连续播放至末RESET均通过。390px viewport实际client375＝scroll375、最终console无错误；首版长SHA导致427px overflow，源码wrap修复并保留失败／最终截图。它只验native gateindex与reference数据，不是物理动画。完整大流保留本地，Git只保存可重复源码、RAG及小指纹摘要。
+
+## 28. 实际失败后清理与完整新shot重试
+
+[K61](../references/qec_pbc_rag/knowledge.jsonl)记录最终固定源seed0实际complete运行：shot0 phase128得到`order_not_recovered`，保留失败，再将12算法patch的全部9data分别MEASURE及RESET，合计216个门／216个真实参考投影。清理后下一shot重新编码算法输入，独立新epoch消费3,500资源，phase64得到阶4及3和5。
+
+两完整shot合计**11,243,634门／2,402,810投影／94,352功能／7,000资源**，gate种类为1,427,512 RESET、6,100,226 H、2,719,630 CZ、975,298 MEASURE和20,968 T。失败及cleanup成本均保留，不从最终数中扣除；生成器wall222.731秒不代表硬件完成时间。两个shot的CT复幅误差约2.37338e−12／2.404e−12。
+
+最终完整retry独立全流审计真实通过，耗时80.9236秒：全部11,243,634 native ID、2,402,810 M／RESET、94,352 spans、raw m／r、每shot cleanup成本及每个producer／canonical native template signature均核对。独立标准矩阵对CT复幅误差2.37339e−12／2.40402e−12、对exact source约3.56877e−5；终端条件Born误差1.01663e−12／1.03087e−12。实际GUI已查看失败shot cleanup、资源释放与终端结果；实际生成、独立流审计与浏览器验收分别报告。
+
+最终小证据见[完整编码Shor验收摘要](../references/qec_pbc_validation/full_encoded_shor15_native_2026_10_04.json)：记录两套完整独立流审计、215本轮不同测试、259模块0违规、6缓存拒例、实际GUI范围和所有相应源hash。来源L17只刷新阶段说明新增当前链接后的normalized SHA，原raw与旧normalized历史保留；L33仅采用并行政策任务的factory-first supersession文档增量，保留历史raw及旧normalized；其他旧source指纹未改。
+
+## 29. 用户确认的factory-first共享协议与ID合并
+
+原工作区并行政策任务的K55–K57／L34保留原内容与ID：当前顺序为F1标准QEC／15-to-1原生供应与同一资源单T参考闭环，F2 committed Executor反馈，F3逐周期带噪供给，F4 MSC后端，F5连续T／完整Shor。MSC／MSD、资源身份库存与接受条件质量分别见政策块。共享协议为[instruction/qec_factory_pipeline.md](../instruction/qec_factory_pipeline.md)，只读政策固化不表示这些阶段已实现。
+
+本批独立生成器、宽cat、observer和失败重试使用K58–K61／L35–L37，避免覆盖上述已占用ID。旧K54保留原建议正文并采用政策任务的supersession前缀、限制、状态与当前来源，不能按旧Shor-first安排下一任务；K52–K54另链接当前参考成果。完整算法参考与资源供应主线分别验收。

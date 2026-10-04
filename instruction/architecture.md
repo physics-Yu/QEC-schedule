@@ -1,5 +1,7 @@
 # 工程框架与模块边界
 
+2026-10-04：涉及 QEC/PBC、MSC/MSD、magic factory、库存、T 消费、逐周期质量或 Shor 集成，必须先遵守 [共享流程协议](qec_factory_pipeline.md)。上层按固定码/协议、真实资源生产与接受、库存/交付、消费和实际时间线质量评估组织；实施顺序为 factory-to-one-T → 实际 Executor 反馈 → 逐周期带噪供给 → MSC backend → 连续 T/完整 Shor。沿用 experiments/strategies/app/env 边界和唯一 Executor，不把协议固化当作运行时能力已实现。下方有日期条目为历史实现快照，当前证据以 [handoff](handoff.md) 为准。
+
 2026-10-01 上游增量：[QEC/PBC 架构](../docs/qec_pbc_architecture.md)。`experiments/qec_pbc` 实现 role-based Pauli measurement IR、固定 rotated d=3 memory / logical PPM 与 X/Z parity → `PhysicalCircuit` 编译，保留 syndrome/结果符号/detector/observable/provenance。标准算法 PBC 化简、magic state、通用时域 decoder 与容错 Logical PPM 尚未实现；裸 ancilla 明确仅理想 instrument，要求 FT 会拒绝。现有 environment 与策略依赖方向不变；本轮验收见 [日志](logs/2026-10-01-qec-pbc-architecture.md)。
 
 2026-09-22：[constraint 与 placement 审计](../docs/constraint_placement_audit.md)记录当前检查链、初态/动态落点/运行态的不同职责，以及尚未实施的显式预约、分层检查和拒绝原因重构。新交互 IR 不等于约束系统已经统一。

@@ -1,5 +1,7 @@
 # Agent 工作准则与工程导航
 
+2026-10-04 用户确认的 QEC/PBC 主线已固化为 [QEC 工厂供应与逐周期质量协议](instruction/qec_factory_pipeline.md)。**涉及 QEC/PBC、MSC/MSD、magic factory、编码库存、T 消费、fidelity 或 Shor 集成，必须先读并遵守该协议，再按下表选读相关模块。** 以标准码/协议组件和真实资源供应为核心，先工厂到单个 T 的闭环，再逐周期带噪供给、MSC backend、连续 T 与完整 Shor；旧 Shor-first 下一步由此覆盖。文档固化不表示工厂、含噪容错或完整物理 Shor 已实现。
+
 2026-09-21 后续用户要求直接复用作者实现：当前自定义默认更新为 `qmap_native`（QMAP 3.5.0 原生 C++），见 [原生接入与验收](docs/qmap_native.md)。五组原普通电路、原 AOD 容量的物理/重放通过，但使用显式成对 SLM 平台，不能称原几何上的加速；带测量/反馈 QEC 保持旧协议策略。原生求解与本地物理适配计时分开，后者仍慢。`zoned_ids` 保留实验对照；不要再将它称为作者实现。物理判据不放宽，partial PARK 仅在显式 selective-transfer 能力下开放。
 
 2026-09-22 整理导航：[当前版本](docs/current_version.md)、[框架总览](docs/general_framework_summary.md)、[交互 IR](docs/interaction_ir.md)、[约束与 placement 审计](docs/constraint_placement_audit.md)。IR 已接本地 zoned；统一 constraint 重构尚未实施。最新交接保持简短，早期逐轮记录按日志索引读取。
@@ -14,7 +16,7 @@
 
 2026-09-12 最新扩展：两个/四个 surface logical qubit 的测量制备、GHZ、稳定子重复读出及声明单事件恢复。四步1–4及4A/4B/4C均按声明合同通过；四块1868槽完整物理执行、独立重放与真实可编辑UI验收通过。状态以 [handoff](instruction/handoff.md) 为准；[两块时域验收](docs/qec_temporal_acceptance.md)、[四块协议](docs/surface_qec_temporal_four_protocol.md)、[读出核心](docs/quantum_readout_core.md)、[工作台](docs/qec_workbench.md)。checkpoint schema19；QEC模式显式保存Clifford量子态，measurement_results保存报告位，真实投影与报告翻转在提交trace中分别记录。普通模式仍不跟踪量子态。不是完整M5/M6或全电路噪声容错证明。
 
-本项目构建中性原子处理器的调度环境：逻辑依赖、持续 placement、硬件约束、事件时间与策略分离。研究边界是给定 PhysicalCircuit 到带时间/依赖的原子操作调度，不涉及最底层光场/波包/波形或保真度。M0–M2 有受限基准，M3 已在声明的单 trap 平台族实现，M4 已在声明的单 AOD / 单 trap 有限线路族完成四策略与比较验收；不能据此宣称通用QEC或完整RL；受限QEC扩展以上方当前验收为准。
+本项目的物理底座构建中性原子处理器调度环境：逻辑依赖、持续 placement、硬件约束、事件时间与策略分离，其边界为给定 PhysicalCircuit 到带时间/依赖的原子操作调度，不模拟最底层光场/波包/波形。QEC/PBC 上层的当前目标另按工厂供应与逐周期质量协议推进；完整保真度不是底座已有能力，必须通过显式模型、decoder 和分层证据建立。M0–M2 有受限基准，M3 已在声明的单 trap 平台族实现，M4 已在声明的单 AOD / 单 trap 有限线路族完成四策略与比较验收；不能据此宣称通用QEC或完整RL；受限QEC扩展以上方当前验收为准。
 
 ## 开始一个任务
 
@@ -65,6 +67,7 @@
 
 | 任务 | 先读 | 必要时再读 |
 | --- | --- | --- |
+| QEC/PBC、MSC/MSD、工厂/库存/T、fidelity、Shor 集成 | [工厂供应与逐周期质量协议](instruction/qec_factory_pipeline.md)、[architecture](instruction/architecture.md) | 按协议选择具体阶段/源码；研究时读 [research](instruction/research.md) |
 | 架构、依赖、接口 | [architecture](instruction/architecture.md)、[compiler_contract](instruction/compiler_contract.md) | [state_circuit](instruction/state_circuit.md) |
 | 原子、trap、zone、DAG | [state_circuit](instruction/state_circuit.md) | [physics](instruction/physics.md) |
 | AOD、装卸、门、物理问题 | [physics](instruction/physics.md)、[motion_execution](instruction/motion_execution.md) | [model_audit](instruction/model_audit.md)、[research](instruction/research.md) |

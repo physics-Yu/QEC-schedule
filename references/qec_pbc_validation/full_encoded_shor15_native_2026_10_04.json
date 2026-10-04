@@ -1,0 +1,2129 @@
+{
+  "schema": "full-encoded-shor15-native-acceptance/1",
+  "date": "2026-10-04",
+  "status": "completed_in_declared_reference_scope",
+  "algorithm": {
+    "N": 15,
+    "a": 2,
+    "logical_wires": 12,
+    "phase_bits": 8,
+    "work_bits": 4,
+    "source_unitary_gates": 72,
+    "all_inverse_qft_cp": 28,
+    "ct_gates": 8993,
+    "resources_per_shot": 3500,
+    "distance": 3,
+    "data_per_patch": 9,
+    "syndrome_per_patch": 8,
+    "algorithm_atoms": 204,
+    "declared_reusable_role_pool": 285,
+    "hardware_peak_atoms": null,
+    "syndrome_rounds": 1,
+    "order_or_factors_supplied": false
+  },
+  "scope": {
+    "selected_native_branch_generation_complete": true,
+    "ideal_factorized_native_instrument_qualified": true,
+    "all_native_measure_reset_records_bound": true,
+    "environment_committed_reports": false,
+    "physical_executed": false,
+    "global_285_atom_dense_simulation": false,
+    "magic_factory": false,
+    "fault_tolerant": false,
+    "motion_schedule": false,
+    "physical_time_microseconds": null,
+    "noise_or_fidelity_result": null,
+    "producer_execution": "actual 17q native template qualified once per sign; zero-boundary kernel reused with complete native transcripts each epoch",
+    "canonical_execution": "actual 18q code-space Choi qualification; native template-signature checked",
+    "wide_cat_execution": "actual local native matrix and GHZ induction proof through 63 factors; sequential conditional raw Born reports",
+    "resource_readout": "actual nine-H CSS bras, nine sequential native measurements and nine resets",
+    "next_mainline": "factory production, accept/reject/cleanup/replenishment, same-carrier unique inventory/handoff and single-T channel; then committed Executor, cycle noise, MSC and full physical Shor"
+  },
+  "runs": [
+    {
+      "directory": "artifacts/qec-shor15-2026-10-04/encoded-full12-native-seed0-fixed",
+      "seed": 0,
+      "max_attempts": 4,
+      "source_version_scope": "final source after alias and cleanup-cost fixes",
+      "summary": {
+        "schema": "encoded-native-shor-run/1",
+        "success": true,
+        "order": 4,
+        "factors": [
+          3,
+          5
+        ],
+        "logical_width": 12,
+        "algorithm_patch_atoms": 204,
+        "declared_atom_count": 285,
+        "native_gate_count": 11243634,
+        "native_gate_counts": {
+          "RESET": 1427512,
+          "H": 6100226,
+          "CZ": 2719630,
+          "MEASURE": 975298,
+          "T": 20968
+        },
+        "native_projection_count": 2402810,
+        "function_count": 94352,
+        "syndrome_rounds": 1,
+        "wall_seconds": 222.73142960004043,
+        "encoded_native_branch_complete": true,
+        "source_global_phases_retained": true,
+        "selected_branch_generation": true,
+        "qualified_native_kernel_execution": true,
+        "global_physical_dense_state": false,
+        "environment_committed_reports": false,
+        "physical_executed": false,
+        "fault_tolerant": false,
+        "magic_factory": false,
+        "motion_schedule": false,
+        "physical_time_microseconds": null,
+        "resource_consumptions": 7000
+      },
+      "attempts": [
+        {
+          "shot_index": 0,
+          "phase_outcome": 128,
+          "classical_postprocessing": {
+            "outcome": 128,
+            "phase_bits_little_endian": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1
+            ],
+            "convergents": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ]
+            ],
+            "candidates": [
+              {
+                "numerator": 0,
+                "denominator": 1,
+                "modular_residue": 2
+              },
+              {
+                "numerator": 1,
+                "denominator": 2,
+                "modular_residue": 4
+              }
+            ],
+            "order": null,
+            "factors": null,
+            "success": false,
+            "reason": "order_not_recovered"
+          },
+          "resource_consumptions": 3500,
+          "native_gate_count": 5359442,
+          "native_projection_count": 1144064,
+          "complete_ct_instrument_l2_error": 2.3733807821255396e-12,
+          "branch_global_phase_eighth_turns": 2,
+          "final_frame_sha256": "661de93a7e92258ccbc7f0d472bb401f78ff7e5bd47833ed3cb07687895b740a",
+          "all_resources_consumed_and_released": true,
+          "cleanup_native_gate_count": 216,
+          "cleanup_projection_count": 216,
+          "algorithm_reset_released_before_next_shot": true
+        },
+        {
+          "shot_index": 1,
+          "phase_outcome": 64,
+          "classical_postprocessing": {
+            "outcome": 64,
+            "phase_bits_little_endian": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            "convergents": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                4
+              ]
+            ],
+            "candidates": [
+              {
+                "numerator": 0,
+                "denominator": 1,
+                "modular_residue": 2
+              },
+              {
+                "numerator": 1,
+                "denominator": 4,
+                "modular_residue": 1
+              }
+            ],
+            "order": 4,
+            "factors": [
+              3,
+              5
+            ],
+            "success": true,
+            "reason": "factored",
+            "half_power_mod_N": 4
+          },
+          "resource_consumptions": 3500,
+          "native_gate_count": 5884192,
+          "native_projection_count": 1258746,
+          "complete_ct_instrument_l2_error": 2.4040087443335843e-12,
+          "branch_global_phase_eighth_turns": 8,
+          "final_frame_sha256": "f8e328bae0853a886ed4c84d3a37a94fca88b359767b15826b57618033a489dd",
+          "all_resources_consumed_and_released": true
+        }
+      ],
+      "phase_readouts": [
+        [
+          {
+            "wire": "phase0",
+            "bit": 0,
+            "conditional_probability": 0.9999999999774568,
+            "raw_native_report_count": 11,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase3",
+                  "Y"
+                ],
+                [
+                  "phase5",
+                  "Z"
+                ],
+                [
+                  "phase7",
+                  "X"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase1",
+            "bit": 0,
+            "conditional_probability": 0.999999999960673,
+            "raw_native_report_count": 9,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase3",
+                  "X"
+                ],
+                [
+                  "phase6",
+                  "X"
+                ],
+                [
+                  "phase7",
+                  "Z"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase2",
+            "bit": 0,
+            "conditional_probability": 0.9999999999557831,
+            "raw_native_report_count": 14,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase3",
+                  "Z"
+                ],
+                [
+                  "phase5",
+                  "Z"
+                ],
+                [
+                  "phase6",
+                  "Y"
+                ],
+                [
+                  "phase7",
+                  "Z"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase3",
+            "bit": 0,
+            "conditional_probability": 0.9999999999765735,
+            "raw_native_report_count": 18,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase2",
+                  "Y"
+                ],
+                [
+                  "phase3",
+                  "X"
+                ],
+                [
+                  "phase4",
+                  "Y"
+                ],
+                [
+                  "phase5",
+                  "Y"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase4",
+            "bit": 0,
+            "conditional_probability": 0.999999999971455,
+            "raw_native_report_count": 21,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase3",
+                  "Y"
+                ],
+                [
+                  "phase4",
+                  "X"
+                ],
+                [
+                  "phase5",
+                  "Y"
+                ],
+                [
+                  "phase6",
+                  "Y"
+                ],
+                [
+                  "phase7",
+                  "Z"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase5",
+            "bit": 0,
+            "conditional_probability": 0.9999999999532663,
+            "raw_native_report_count": 19,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase2",
+                  "X"
+                ],
+                [
+                  "phase3",
+                  "Z"
+                ],
+                [
+                  "phase4",
+                  "Y"
+                ],
+                [
+                  "phase6",
+                  "Y"
+                ],
+                [
+                  "phase7",
+                  "Z"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase6",
+            "bit": 0,
+            "conditional_probability": 0.5000000000000004,
+            "raw_native_report_count": 24,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase1",
+                  "X"
+                ],
+                [
+                  "phase3",
+                  "Y"
+                ],
+                [
+                  "phase4",
+                  "X"
+                ],
+                [
+                  "phase5",
+                  "Y"
+                ],
+                [
+                  "phase6",
+                  "Y"
+                ],
+                [
+                  "phase7",
+                  "Z"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase7",
+            "bit": 1,
+            "conditional_probability": 0.4999999999999998,
+            "raw_native_report_count": 23,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase0",
+                  "Z"
+                ],
+                [
+                  "phase3",
+                  "Z"
+                ],
+                [
+                  "phase5",
+                  "Z"
+                ],
+                [
+                  "phase6",
+                  "X"
+                ],
+                [
+                  "phase7",
+                  "Y"
+                ],
+                [
+                  "work1",
+                  "Z"
+                ],
+                [
+                  "work2",
+                  "Z"
+                ]
+              ]
+            }
+          }
+        ],
+        [
+          {
+            "wire": "phase0",
+            "bit": 0,
+            "conditional_probability": 0.9999999999774258,
+            "raw_native_report_count": 11,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase4",
+                  "X"
+                ],
+                [
+                  "phase6",
+                  "X"
+                ],
+                [
+                  "phase7",
+                  "Y"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase1",
+            "bit": 0,
+            "conditional_probability": 0.9999999999606575,
+            "raw_native_report_count": 11,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase3",
+                  "Y"
+                ],
+                [
+                  "phase6",
+                  "Z"
+                ],
+                [
+                  "phase7",
+                  "Z"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase2",
+            "bit": 0,
+            "conditional_probability": 0.9999999999557752,
+            "raw_native_report_count": 12,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase1",
+                  "X"
+                ],
+                [
+                  "phase5",
+                  "X"
+                ],
+                [
+                  "phase6",
+                  "Z"
+                ],
+                [
+                  "phase7",
+                  "Z"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase3",
+            "bit": 0,
+            "conditional_probability": 0.9999999999765699,
+            "raw_native_report_count": 19,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase2",
+                  "Y"
+                ],
+                [
+                  "phase3",
+                  "Y"
+                ],
+                [
+                  "phase4",
+                  "Z"
+                ],
+                [
+                  "phase5",
+                  "X"
+                ],
+                [
+                  "phase6",
+                  "Z"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase4",
+            "bit": 0,
+            "conditional_probability": 0.999999999971453,
+            "raw_native_report_count": 12,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase3",
+                  "Z"
+                ],
+                [
+                  "phase4",
+                  "X"
+                ],
+                [
+                  "phase5",
+                  "Z"
+                ],
+                [
+                  "phase6",
+                  "X"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase5",
+            "bit": 0,
+            "conditional_probability": 0.9999999999532656,
+            "raw_native_report_count": 20,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase1",
+                  "X"
+                ],
+                [
+                  "phase2",
+                  "Z"
+                ],
+                [
+                  "phase3",
+                  "Z"
+                ],
+                [
+                  "phase4",
+                  "Z"
+                ],
+                [
+                  "phase5",
+                  "Z"
+                ],
+                [
+                  "phase6",
+                  "Y"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase6",
+            "bit": 1,
+            "conditional_probability": 0.5000000000000007,
+            "raw_native_report_count": 31,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase0",
+                  "X"
+                ],
+                [
+                  "phase1",
+                  "Z"
+                ],
+                [
+                  "phase2",
+                  "X"
+                ],
+                [
+                  "phase3",
+                  "Y"
+                ],
+                [
+                  "phase5",
+                  "Y"
+                ],
+                [
+                  "work0",
+                  "X"
+                ],
+                [
+                  "work1",
+                  "Z"
+                ],
+                [
+                  "work2",
+                  "Z"
+                ],
+                [
+                  "work3",
+                  "X"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase7",
+            "bit": 0,
+            "conditional_probability": 0.5000000000000004,
+            "raw_native_report_count": 31,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase1",
+                  "Y"
+                ],
+                [
+                  "phase2",
+                  "Z"
+                ],
+                [
+                  "phase4",
+                  "Z"
+                ],
+                [
+                  "phase5",
+                  "Y"
+                ],
+                [
+                  "phase7",
+                  "Z"
+                ],
+                [
+                  "work0",
+                  "X"
+                ],
+                [
+                  "work1",
+                  "Z"
+                ],
+                [
+                  "work2",
+                  "Z"
+                ],
+                [
+                  "work3",
+                  "X"
+                ]
+              ]
+            }
+          }
+        ]
+      ],
+      "manifest": {
+        "sha256": "16d12bb97b28d49c07b8a28d7a94ea81cf58d1c6fe7e3ee21f2a68fb350adac7",
+        "bytes": 2610
+      },
+      "artifacts": {
+        "certificates.json": {
+          "sha256": "2701606a812d0e18eadc206891eaef53399b38eb01bb80e7e287ca3cf4a4b114",
+          "bytes": 12240123
+        },
+        "complete_clifford_t.json": {
+          "sha256": "167760114c2b67767394c90bafecba50756af92e6718301de7ba0989942596b4",
+          "bytes": 765350
+        },
+        "frames.jsonl": {
+          "sha256": "e8934e63abe4d557fb1241c25f505ceb480131680973301efb6d233c6e156305",
+          "bytes": 17683150
+        },
+        "functions.jsonl": {
+          "sha256": "50ffe43174541c800d504a8d0407e157c6563ffd59ede539ca81571573db18c3",
+          "bytes": 94873986
+        },
+        "input.json": {
+          "sha256": "01df10da6edc8b3ecb667b26d2f11f9ba3a491965daa6a8e25dbaa943d2aa3d1",
+          "bytes": 13709043
+        },
+        "native_gates.jsonl": {
+          "sha256": "a4b582dc8f6769b6f20c081cba84cf19281eba78012a7918e0d3cb290275ddcf",
+          "bytes": 3977756096
+        },
+        "native_projections.jsonl": {
+          "sha256": "7693922b7144f703fb8dd5180e4adf7a97e1c73c54f5c5819ebd4b4a0eb50f0c",
+          "bytes": 660265206
+        },
+        "roles.json": {
+          "sha256": "101c48e1bbeef2fb294c08b2f4542e68fe7a395e80c23d96a1b8bb86bfba3ffd",
+          "bytes": 34019
+        },
+        "shor15_circuit.json": {
+          "sha256": "758303044c2e9ecb829247d772666a3f685b8221bb13a9dbcb7fe9e61e784b69",
+          "bytes": 13175
+        },
+        "shot0_semantic_state.json": {
+          "sha256": "c8aadc6ed576cdb23c1dba25a988bb22f2e8622696753a0b36e587a8e9ab0ef1",
+          "bytes": 235007
+        },
+        "shot0_unrealized_state.json": {
+          "sha256": "33bd34ed85d67dbfdb11a38c3942e29158d418de820b28e269e1aca84c9d2d4b",
+          "bytes": 2647465
+        },
+        "shot1_semantic_state.json": {
+          "sha256": "104a1971516f3dadcf7900eb25135966d64a9d1b4bbc6fb87121df767c23a7aa",
+          "bytes": 235033
+        },
+        "shot1_unrealized_state.json": {
+          "sha256": "5318e61e1314669a8be750dfccfbfe54eb9ce37871846df07a2113d1d8708f01",
+          "bytes": 2647978
+        },
+        "shots.json": {
+          "sha256": "a55f1d570ebc48bf0a6ded7aabb616288795bbefcfda197a5e85b574570b270c",
+          "bytes": 29705
+        },
+        "summary.json": {
+          "sha256": "4dbae279cc1a1583a5219c97769dbf84ce97380d4e69b0cd06ac10b8b4447698",
+          "bytes": 32521
+        },
+        "terminal.json": {
+          "sha256": "73d5ef18e85469df86751213b1a32a1314e0e592b8122c9644d9d1f3684a96b5",
+          "bytes": 27419
+        }
+      },
+      "independent_full_stream_audited": true,
+      "independent_audit": {
+        "passed": true,
+        "scope": "independent full JSONL/native IDs, raw feedback/lifecycle and complex CT/source matrices",
+        "native_counts": {
+          "projections": 2402810,
+          "gates": 11243634,
+          "functions": 94352
+        },
+        "gate_types": {
+          "RESET": 1427512,
+          "H": 6100226,
+          "CZ": 2719630,
+          "MEASURE": 975298,
+          "T": 20968
+        },
+        "shot_count": 2,
+        "resources_per_shot": 3500,
+        "complete_ct_l2_errors": [
+          2.3733868059925592e-12,
+          2.4040231553734685e-12
+        ],
+        "exact_source_l2_errors": [
+          3.5687712798639726e-05,
+          3.5687712794312566e-05
+        ],
+        "terminal_born_probability_errors": [
+          1.0166312236492558e-12,
+          1.0308698339400735e-12
+        ],
+        "manifest_sha256": "16d12bb97b28d49c07b8a28d7a94ea81cf58d1c6fe7e3ee21f2a68fb350adac7",
+        "physical_executed": false,
+        "wall_seconds": 80.92364819999784
+      },
+      "independent_audit_file": {
+        "sha256": "c0dec979db640fc5fe88f18b6c0f61a79d8190be188bad0659d14c56806c92d9",
+        "bytes": 861
+      }
+    },
+    {
+      "directory": "artifacts/qec-shor15-2026-10-04/encoded-full12-native-attempt2",
+      "seed": 7,
+      "max_attempts": 4,
+      "source_version_scope": "earlier imported source before alias and failed-cleanup cost fixes; no failed shot in this run",
+      "summary": {
+        "schema": "encoded-native-shor-run/1",
+        "success": true,
+        "order": 4,
+        "factors": [
+          3,
+          5
+        ],
+        "logical_width": 12,
+        "algorithm_patch_atoms": 204,
+        "declared_atom_count": 285,
+        "native_gate_count": 5951556,
+        "native_gate_counts": {
+          "RESET": 752930,
+          "H": 3234769,
+          "CZ": 1436870,
+          "MEASURE": 516689,
+          "T": 10298
+        },
+        "native_projection_count": 1269619,
+        "function_count": 49540,
+        "syndrome_rounds": 1,
+        "wall_seconds": 120.71623630000977,
+        "encoded_native_branch_complete": true,
+        "source_global_phases_retained": true,
+        "selected_branch_generation": true,
+        "qualified_native_kernel_execution": true,
+        "global_physical_dense_state": false,
+        "environment_committed_reports": false,
+        "physical_executed": false,
+        "fault_tolerant": false,
+        "magic_factory": false,
+        "motion_schedule": false,
+        "physical_time_microseconds": null,
+        "resource_consumptions": 3500
+      },
+      "attempts": [
+        {
+          "shot_index": 0,
+          "phase_outcome": 64,
+          "classical_postprocessing": {
+            "outcome": 64,
+            "phase_bits_little_endian": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            "convergents": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                4
+              ]
+            ],
+            "candidates": [
+              {
+                "numerator": 0,
+                "denominator": 1,
+                "modular_residue": 2
+              },
+              {
+                "numerator": 1,
+                "denominator": 4,
+                "modular_residue": 1
+              }
+            ],
+            "order": 4,
+            "factors": [
+              3,
+              5
+            ],
+            "success": true,
+            "reason": "factored",
+            "half_power_mod_N": 4
+          },
+          "resource_consumptions": 3500,
+          "native_gate_count": 5951556,
+          "native_projection_count": 1269619,
+          "complete_ct_instrument_l2_error": 2.4031511799130104e-12,
+          "branch_global_phase_eighth_turns": 8,
+          "final_frame_sha256": "7f1030d89aa66d0519ada1b5ced2f611adb3f68c28d5e1d63b06214f9aafb25d",
+          "all_resources_consumed_and_released": true
+        }
+      ],
+      "phase_readouts": [
+        [
+          {
+            "wire": "phase0",
+            "bit": 0,
+            "conditional_probability": 0.9999999999774256,
+            "raw_native_report_count": 8,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase2",
+                  "Y"
+                ],
+                [
+                  "phase7",
+                  "Z"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase1",
+            "bit": 0,
+            "conditional_probability": 0.9999999999606574,
+            "raw_native_report_count": 9,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase3",
+                  "X"
+                ],
+                [
+                  "phase5",
+                  "X"
+                ],
+                [
+                  "phase6",
+                  "X"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase2",
+            "bit": 0,
+            "conditional_probability": 0.9999999999557752,
+            "raw_native_report_count": 29,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase0",
+                  "X"
+                ],
+                [
+                  "phase1",
+                  "Z"
+                ],
+                [
+                  "phase2",
+                  "X"
+                ],
+                [
+                  "phase4",
+                  "X"
+                ],
+                [
+                  "phase5",
+                  "Z"
+                ],
+                [
+                  "phase6",
+                  "Z"
+                ],
+                [
+                  "phase7",
+                  "Y"
+                ],
+                [
+                  "work1",
+                  "X"
+                ],
+                [
+                  "work3",
+                  "X"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase3",
+            "bit": 0,
+            "conditional_probability": 0.99999999997657,
+            "raw_native_report_count": 12,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase4",
+                  "Z"
+                ],
+                [
+                  "phase5",
+                  "X"
+                ],
+                [
+                  "phase6",
+                  "X"
+                ],
+                [
+                  "phase7",
+                  "Z"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase4",
+            "bit": 0,
+            "conditional_probability": 0.9999999999714526,
+            "raw_native_report_count": 3,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase3",
+                  "X"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase5",
+            "bit": 0,
+            "conditional_probability": 0.9999999999532654,
+            "raw_native_report_count": 14,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase2",
+                  "X"
+                ],
+                [
+                  "phase3",
+                  "X"
+                ],
+                [
+                  "phase4",
+                  "X"
+                ],
+                [
+                  "phase7",
+                  "Y"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase6",
+            "bit": 1,
+            "conditional_probability": 0.49999999999999944,
+            "raw_native_report_count": 30,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase0",
+                  "X"
+                ],
+                [
+                  "phase1",
+                  "Y"
+                ],
+                [
+                  "phase2",
+                  "Y"
+                ],
+                [
+                  "phase5",
+                  "Z"
+                ],
+                [
+                  "phase6",
+                  "Y"
+                ],
+                [
+                  "phase7",
+                  "Z"
+                ],
+                [
+                  "work1",
+                  "X"
+                ],
+                [
+                  "work3",
+                  "X"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase7",
+            "bit": 0,
+            "conditional_probability": 0.5000000000000002,
+            "raw_native_report_count": 38,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase0",
+                  "Z"
+                ],
+                [
+                  "phase1",
+                  "Z"
+                ],
+                [
+                  "phase2",
+                  "X"
+                ],
+                [
+                  "phase3",
+                  "X"
+                ],
+                [
+                  "phase4",
+                  "Y"
+                ],
+                [
+                  "phase5",
+                  "Z"
+                ],
+                [
+                  "phase6",
+                  "Z"
+                ],
+                [
+                  "phase7",
+                  "X"
+                ],
+                [
+                  "work0",
+                  "X"
+                ],
+                [
+                  "work1",
+                  "X"
+                ],
+                [
+                  "work2",
+                  "Z"
+                ],
+                [
+                  "work3",
+                  "Z"
+                ]
+              ]
+            }
+          }
+        ]
+      ],
+      "manifest": {
+        "sha256": "12ad73209bd03ad04bb6bbf2cf5ede85144721f80e4f6aa95704445a9332aa4d",
+        "bytes": 2301
+      },
+      "artifacts": {
+        "certificates.json": {
+          "sha256": "5adf08edd869508ec3a603fb78547dcfe3192bc9549e2eb287ae9559d8ae5112",
+          "bytes": 6131962
+        },
+        "complete_clifford_t.json": {
+          "sha256": "167760114c2b67767394c90bafecba50756af92e6718301de7ba0989942596b4",
+          "bytes": 765350
+        },
+        "frames.jsonl": {
+          "sha256": "e868671f78ce85d2337c208b40938e0d100721b2337c3de025d5cc73b325fe4e",
+          "bytes": 9105851
+        },
+        "functions.jsonl": {
+          "sha256": "15c4e153da38c54cbda60080c24214fb49734fb180666db7a04dd86613f40332",
+          "bytes": 49547015
+        },
+        "input.json": {
+          "sha256": "f37834e443f16db5bbc4a1becb880afbb065f4267e93e78882e86cf7f2751ea1",
+          "bytes": 13709043
+        },
+        "native_gates.jsonl": {
+          "sha256": "0289371e4e4e1fe9fb7c528ff41fcd48f6e4370ad76457adcf6df103a12e22ea",
+          "bytes": 2104914800
+        },
+        "native_projections.jsonl": {
+          "sha256": "96f228f885c7e31aa4d5c291fbd9ee3fd2f0108ad2620f2a0c59b867289b653f",
+          "bytes": 348533496
+        },
+        "roles.json": {
+          "sha256": "101c48e1bbeef2fb294c08b2f4542e68fe7a395e80c23d96a1b8bb86bfba3ffd",
+          "bytes": 34019
+        },
+        "shor15_circuit.json": {
+          "sha256": "758303044c2e9ecb829247d772666a3f685b8221bb13a9dbcb7fe9e61e784b69",
+          "bytes": 13175
+        },
+        "shot0_semantic_state.json": {
+          "sha256": "e3963e3d3955099819c0a16e0a4b0a79ed29a305d860db0c2023eaca78a6cc39",
+          "bytes": 235144
+        },
+        "shot0_unrealized_state.json": {
+          "sha256": "8e2b544c991c549478b52c7f5c7cdb7db3ed75e8a55dfa27afaae8e1bbb93d48",
+          "bytes": 2650516
+        },
+        "shots.json": {
+          "sha256": "611d4f60433e686e7fc39807a30c21920c83ba76cb49dc2c84a5469131c5e464",
+          "bytes": 15042
+        },
+        "summary.json": {
+          "sha256": "e7ceff8446ccc0d1434842842ecd78d11a600a08b5bda512174120413531b246",
+          "bytes": 16956
+        },
+        "terminal.json": {
+          "sha256": "96e07f695dff7ed4b1cc630d48198328bf525bdbb7d318b742a0f15fb099284f",
+          "bytes": 14035
+        }
+      },
+      "independent_full_stream_audited": true,
+      "independent_audit": {
+        "passed": true,
+        "scope": "independent full JSONL/native IDs, raw feedback/lifecycle and complex CT/source matrices",
+        "native_counts": {
+          "projections": 1269619,
+          "gates": 5951556,
+          "functions": 49540
+        },
+        "gate_types": {
+          "RESET": 752930,
+          "H": 3234769,
+          "CZ": 1436870,
+          "MEASURE": 516689,
+          "T": 10298
+        },
+        "shot_count": 1,
+        "resources_per_shot": 3500,
+        "complete_ct_l2_errors": [
+          2.4031655921778013e-12
+        ],
+        "exact_source_l2_errors": [
+          3.568771279156693e-05
+        ],
+        "terminal_born_probability_errors": [
+          1.0317857679353892e-12
+        ],
+        "manifest_sha256": "12ad73209bd03ad04bb6bbf2cf5ede85144721f80e4f6aa95704445a9332aa4d",
+        "physical_executed": false,
+        "wall_seconds": 43.89985380001599
+      },
+      "independent_audit_file": {
+        "sha256": "8df6538255a14c36b452e9463827bfd89bf9b9cb7979726581598076180df6f5",
+        "bytes": 771
+      }
+    },
+    {
+      "directory": "artifacts/qec-shor15-2026-10-04/encoded-full12-native-seed8",
+      "seed": 8,
+      "max_attempts": 4,
+      "source_version_scope": "earlier imported source before alias and failed-cleanup cost fixes; generation-only cross-seed run",
+      "summary": {
+        "schema": "encoded-native-shor-run/1",
+        "success": true,
+        "order": 4,
+        "factors": [
+          3,
+          5
+        ],
+        "logical_width": 12,
+        "algorithm_patch_atoms": 204,
+        "declared_atom_count": 285,
+        "native_gate_count": 6704145,
+        "native_gate_counts": {
+          "RESET": 857310,
+          "H": 3623165,
+          "CZ": 1621379,
+          "MEASURE": 588471,
+          "T": 13820
+        },
+        "native_projection_count": 1445781,
+        "function_count": 54438,
+        "syndrome_rounds": 1,
+        "wall_seconds": 140.57471529999748,
+        "encoded_native_branch_complete": true,
+        "source_global_phases_retained": true,
+        "selected_branch_generation": true,
+        "qualified_native_kernel_execution": true,
+        "global_physical_dense_state": false,
+        "environment_committed_reports": false,
+        "physical_executed": false,
+        "fault_tolerant": false,
+        "magic_factory": false,
+        "motion_schedule": false,
+        "physical_time_microseconds": null,
+        "resource_consumptions": 3500
+      },
+      "attempts": [
+        {
+          "shot_index": 0,
+          "phase_outcome": 64,
+          "classical_postprocessing": {
+            "outcome": 64,
+            "phase_bits_little_endian": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            "convergents": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                4
+              ]
+            ],
+            "candidates": [
+              {
+                "numerator": 0,
+                "denominator": 1,
+                "modular_residue": 2
+              },
+              {
+                "numerator": 1,
+                "denominator": 4,
+                "modular_residue": 1
+              }
+            ],
+            "order": 4,
+            "factors": [
+              3,
+              5
+            ],
+            "success": true,
+            "reason": "factored",
+            "half_power_mod_N": 4
+          },
+          "resource_consumptions": 3500,
+          "native_gate_count": 6704145,
+          "native_projection_count": 1445781,
+          "complete_ct_instrument_l2_error": 2.40768654887343e-12,
+          "branch_global_phase_eighth_turns": 10,
+          "final_frame_sha256": "c3d661c78730fd4c5cf157080ec03c6f276dbcbecfa3713d75d652ccf3bb507a",
+          "all_resources_consumed_and_released": true
+        }
+      ],
+      "phase_readouts": [
+        [
+          {
+            "wire": "phase0",
+            "bit": 0,
+            "conditional_probability": 0.9999999999774216,
+            "raw_native_report_count": 20,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase2",
+                  "Z"
+                ],
+                [
+                  "phase3",
+                  "Z"
+                ],
+                [
+                  "phase4",
+                  "Z"
+                ],
+                [
+                  "phase5",
+                  "Z"
+                ],
+                [
+                  "phase6",
+                  "X"
+                ],
+                [
+                  "phase7",
+                  "Y"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase1",
+            "bit": 0,
+            "conditional_probability": 0.999999999960655,
+            "raw_native_report_count": 11,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase2",
+                  "Y"
+                ],
+                [
+                  "phase5",
+                  "Z"
+                ],
+                [
+                  "phase6",
+                  "Z"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase2",
+            "bit": 0,
+            "conditional_probability": 0.9999999999557742,
+            "raw_native_report_count": 21,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase2",
+                  "Y"
+                ],
+                [
+                  "phase4",
+                  "X"
+                ],
+                [
+                  "phase5",
+                  "X"
+                ],
+                [
+                  "phase6",
+                  "Y"
+                ],
+                [
+                  "phase7",
+                  "Y"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase3",
+            "bit": 0,
+            "conditional_probability": 0.9999999999765694,
+            "raw_native_report_count": 24,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase1",
+                  "X"
+                ],
+                [
+                  "phase2",
+                  "Z"
+                ],
+                [
+                  "phase3",
+                  "Z"
+                ],
+                [
+                  "phase4",
+                  "Y"
+                ],
+                [
+                  "phase6",
+                  "Y"
+                ],
+                [
+                  "phase7",
+                  "Y"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase4",
+            "bit": 0,
+            "conditional_probability": 0.9999999999714523,
+            "raw_native_report_count": 19,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase3",
+                  "Z"
+                ],
+                [
+                  "phase4",
+                  "X"
+                ],
+                [
+                  "phase5",
+                  "Y"
+                ],
+                [
+                  "phase6",
+                  "X"
+                ],
+                [
+                  "phase7",
+                  "Y"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase5",
+            "bit": 0,
+            "conditional_probability": 0.9999999999532654,
+            "raw_native_report_count": 14,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase2",
+                  "Y"
+                ],
+                [
+                  "phase4",
+                  "X"
+                ],
+                [
+                  "phase6",
+                  "Z"
+                ],
+                [
+                  "phase7",
+                  "Z"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase6",
+            "bit": 1,
+            "conditional_probability": 0.5000000000000004,
+            "raw_native_report_count": 23,
+            "signed_label": {
+              "sign": -1,
+              "factors": [
+                [
+                  "phase1",
+                  "X"
+                ],
+                [
+                  "phase2",
+                  "Z"
+                ],
+                [
+                  "phase3",
+                  "Z"
+                ],
+                [
+                  "phase4",
+                  "Z"
+                ],
+                [
+                  "phase5",
+                  "Z"
+                ],
+                [
+                  "phase6",
+                  "X"
+                ],
+                [
+                  "phase7",
+                  "Y"
+                ]
+              ]
+            }
+          },
+          {
+            "wire": "phase7",
+            "bit": 0,
+            "conditional_probability": 0.49999999999999883,
+            "raw_native_report_count": 22,
+            "signed_label": {
+              "sign": 1,
+              "factors": [
+                [
+                  "phase0",
+                  "Y"
+                ],
+                [
+                  "phase1",
+                  "X"
+                ],
+                [
+                  "phase3",
+                  "Z"
+                ],
+                [
+                  "work1",
+                  "X"
+                ],
+                [
+                  "work2",
+                  "Y"
+                ],
+                [
+                  "work3",
+                  "Z"
+                ]
+              ]
+            }
+          }
+        ]
+      ],
+      "manifest": {
+        "sha256": "c76686c830a79364ffaf0c18bd5ae798e352627182484816d1a3f7f04c4c54ce",
+        "bytes": 2301
+      },
+      "artifacts": {
+        "certificates.json": {
+          "sha256": "e5d2b14858d993835b0016f3f83ab09a86765caf6d24199091bdfeac10079f9a",
+          "bytes": 6135996
+        },
+        "complete_clifford_t.json": {
+          "sha256": "167760114c2b67767394c90bafecba50756af92e6718301de7ba0989942596b4",
+          "bytes": 765350
+        },
+        "frames.jsonl": {
+          "sha256": "99cce429df63fb05bdcf7ec5b13c743153ccb40ae0d34f58cfe27a728e5e0fc6",
+          "bytes": 9172968
+        },
+        "functions.jsonl": {
+          "sha256": "e13aa0a09ee2d151c3f3948b6d0d7b5176e743f68a899f0b12a5e7b39ed74bb4",
+          "bytes": 54548446
+        },
+        "input.json": {
+          "sha256": "2c9f67306f7070340f6db48f65a806aada2e9d7a0631e699b9b275a5d07d4c9c",
+          "bytes": 13709043
+        },
+        "native_gates.jsonl": {
+          "sha256": "55f68bdb63088fe5b21996f98bef0670b9f0168aec5ef801133e4ebe44631f49",
+          "bytes": 2372026711
+        },
+        "native_projections.jsonl": {
+          "sha256": "e21ae769dd75456edc86f5c3846f55c2151d3d6afa71f02ed82db684ae4a00ba",
+          "bytes": 397861630
+        },
+        "roles.json": {
+          "sha256": "101c48e1bbeef2fb294c08b2f4542e68fe7a395e80c23d96a1b8bb86bfba3ffd",
+          "bytes": 34019
+        },
+        "shor15_circuit.json": {
+          "sha256": "758303044c2e9ecb829247d772666a3f685b8221bb13a9dbcb7fe9e61e784b69",
+          "bytes": 13175
+        },
+        "shot0_semantic_state.json": {
+          "sha256": "08c0445efe7482b46730389a15049bed7e0fa17fdc9ea3497d351423a0c28702",
+          "bytes": 234975
+        },
+        "shot0_unrealized_state.json": {
+          "sha256": "5039d6b11b4ce51c8f18bb3163c37ab2ef925f3ac8652382837078297fc384ff",
+          "bytes": 2650302
+        },
+        "shots.json": {
+          "sha256": "4095cbd14abb469630ca04f11a8539225c4246cf945c901e5eafd6f837b39dda",
+          "bytes": 15597
+        },
+        "summary.json": {
+          "sha256": "1c7fff2bf7291e99d1ff2edeea5fa29e4a82c8541872dcea548cdd0d0ca631be",
+          "bytes": 17525
+        },
+        "terminal.json": {
+          "sha256": "ae947a1c3a5ca48616e6d873d62aa8d7ed6281a242a3ea1ca00bc9806e3f4021",
+          "bytes": 14591
+        }
+      },
+      "independent_full_stream_audited": false
+    }
+  ],
+  "independent_peer": {
+    "twelve_logical_wires": 12,
+    "external_reference_qubits": 1,
+    "arbitrary_complex_input": true,
+    "largest_cat": 63,
+    "phase_sensitive_l2": 2.4641115608875173e-15,
+    "terminal_max_conditional_born_error": 2.220446049250313e-16,
+    "all_raw_parity_mappings_equal": true,
+    "resource_epochs": 3,
+    "native_gates": 9612,
+    "projection_records": 1893,
+    "full_3500_injection_run_repeated": false,
+    "physical_executed": false,
+    "independent_source_audit": {
+      "source_gate_count": 72,
+      "phase_bits": 8,
+      "source_logical_width": 12,
+      "all_28_cp": true,
+      "cp_smallest_abs_angle": 0.02454369260617026,
+      "inverse_qft_full256_operator_spectral_error": 1.3910677135124985e-13,
+      "modexp_all4096_basis_cases": true,
+      "modexp_failed_cases": [],
+      "initial_diagnostic_probe_error": "peer used nonexistent modular_exponentiation stage; zero gates selected, corrected to actual modexp stage",
+      "modexp_native_source_gates": 15
+    },
+    "readonly_review_status": "no remaining blocking issue in reviewed code; resource alias repro resolved before writes by owner"
+  },
+  "cache_negative_acceptance": {
+    "passed": true,
+    "correct_original_source_passed": true,
+    "cases": [
+      {
+        "case": "synchronized_noncp_gate",
+        "passed": true,
+        "expected_rejection": "arithmetic/initialization block",
+        "actual_rejection": "Cached arithmetic/initialization block differs from full source decomposition"
+      },
+      {
+        "case": "synchronized_cp_rz_axis",
+        "passed": true,
+        "expected_rejection": "wrong Rz axes/angles/source",
+        "actual_rejection": "Cached CP decomposition has the wrong Rz axes/angles/source"
+      },
+      {
+        "case": "synchronized_cp_cx",
+        "passed": true,
+        "expected_rejection": "omitted its actual two CX gates",
+        "actual_rejection": "Cached CP decomposition omitted its actual two CX gates"
+      },
+      {
+        "case": "external_phase",
+        "passed": true,
+        "expected_rejection": "external global phase differs",
+        "actual_rejection": "Cached complete external global phase differs from source decomposition"
+      },
+      {
+        "case": "loosened_budget",
+        "passed": true,
+        "expected_rejection": "synthesis budgets differ",
+        "actual_rejection": "Cached synthesis budgets differ from the complete 28CP synthesis contract"
+      },
+      {
+        "case": "pbc_wrapper_phase",
+        "passed": true,
+        "expected_rejection": "external phase or vector-order wrapper",
+        "actual_rejection": "Cached PBC external phase or vector-order wrapper differs from complete CT source"
+      }
+    ],
+    "count_as_pytest_tests": false
+  },
+  "tests": {
+    "different_nodeids": 215,
+    "new": 65,
+    "existing_regressions": 150,
+    "counts_by_file": {
+      "tests/test_environment_boundary.py": 12,
+      "tests/test_qec_conditional_clifford_frame.py": 27,
+      "tests/test_qec_encoded_injection_reference.py": 36,
+      "tests/test_qec_encoded_native_visuals.py": 26,
+      "tests/test_qec_encoded_resource_reference.py": 23,
+      "tests/test_qec_encoded_shor_native.py": 10,
+      "tests/test_qec_mixed_pauli_cat.py": 35,
+      "tests/test_qec_qft_synthesis.py": 14,
+      "tests/test_qec_shor15_pbc_run.py": 3,
+      "tests/test_qec_wide_cat_reference.py": 29
+    },
+    "nodeids": [
+      "tests/test_qec_encoded_shor_native.py::test_entangled_noncommuting_branch_matches_full_complex_ct[0]",
+      "tests/test_qec_encoded_shor_native.py::test_entangled_noncommuting_branch_matches_full_complex_ct[1]",
+      "tests/test_qec_encoded_shor_native.py::test_entangled_noncommuting_branch_matches_full_complex_ct[7]",
+      "tests/test_qec_encoded_shor_native.py::test_function_byte_ranges_hash_actual_native_transcript",
+      "tests/test_qec_encoded_shor_native.py::test_adaptive_deserialize_validates_entire_operation_contract",
+      "tests/test_qec_encoded_shor_native.py::test_adaptive_json_roundtrip_keeps_validated_complete_schema",
+      "tests/test_qec_encoded_shor_native.py::test_resource_raw_bras_complete_and_fixed_support",
+      "tests/test_qec_encoded_shor_native.py::test_existing_output_is_preserved",
+      "tests/test_qec_encoded_shor_native.py::test_retry_cleanup_costs_cover_every_actual_native_record",
+      "tests/test_qec_encoded_shor_native.py::test_algorithm_patch_cannot_alias_reserved_resource_roles",
+      "tests/test_qec_wide_cat_reference.py::test_all_small_actual_native_raw_channels_keep_external_reference[X--1]",
+      "tests/test_qec_wide_cat_reference.py::test_all_small_actual_native_raw_channels_keep_external_reference[X-1]",
+      "tests/test_qec_wide_cat_reference.py::test_all_small_actual_native_raw_channels_keep_external_reference[Y--1]",
+      "tests/test_qec_wide_cat_reference.py::test_all_small_actual_native_raw_channels_keep_external_reference[Y-1]",
+      "tests/test_qec_wide_cat_reference.py::test_all_small_actual_native_raw_channels_keep_external_reference[Z--1]",
+      "tests/test_qec_wide_cat_reference.py::test_all_small_actual_native_raw_channels_keep_external_reference[Z-1]",
+      "tests/test_qec_wide_cat_reference.py::test_sixty_three_native_factors_operator_certificate_no_enumeration",
+      "tests/test_qec_wide_cat_reference.py::test_complete_prefix_born_rules_and_fixed_parity[-1]",
+      "tests/test_qec_wide_cat_reference.py::test_complete_prefix_born_rules_and_fixed_parity[-0.25]",
+      "tests/test_qec_wide_cat_reference.py::test_complete_prefix_born_rules_and_fixed_parity[0]",
+      "tests/test_qec_wide_cat_reference.py::test_complete_prefix_born_rules_and_fixed_parity[0.77]",
+      "tests/test_qec_wide_cat_reference.py::test_complete_prefix_born_rules_and_fixed_parity[1]",
+      "tests/test_qec_wide_cat_reference.py::test_complete_native_tampering_rejected_before_sampling[remove_h]",
+      "tests/test_qec_wide_cat_reference.py::test_complete_native_tampering_rejected_before_sampling[reverse_cy]",
+      "tests/test_qec_wide_cat_reference.py::test_complete_native_tampering_rejected_before_sampling[phase_t]",
+      "tests/test_qec_wide_cat_reference.py::test_complete_native_tampering_rejected_before_sampling[dependency]",
+      "tests/test_qec_wide_cat_reference.py::test_complete_native_tampering_rejected_before_sampling[readout_flip]",
+      "tests/test_qec_wide_cat_reference.py::test_complete_native_tampering_rejected_before_sampling[missing_reset]",
+      "tests/test_qec_wide_cat_reference.py::test_complete_native_tampering_rejected_before_sampling[sidecar]",
+      "tests/test_qec_wide_cat_reference.py::test_complete_native_tampering_rejected_before_sampling[verifier]",
+      "tests/test_qec_wide_cat_reference.py::test_force_audit_only_actual_ids_and_deterministic_verifier_zero",
+      "tests/test_qec_wide_cat_reference.py::test_invalid_expectation_rejected[nan]",
+      "tests/test_qec_wide_cat_reference.py::test_invalid_expectation_rejected[inf]",
+      "tests/test_qec_wide_cat_reference.py::test_invalid_expectation_rejected[1.01]",
+      "tests/test_qec_wide_cat_reference.py::test_invalid_expectation_rejected[-1.01]",
+      "tests/test_qec_wide_cat_reference.py::test_invalid_expectation_rejected[True]",
+      "tests/test_qec_wide_cat_reference.py::test_signed_sector_proof_cached_result_cannot_be_mutated",
+      "tests/test_qec_wide_cat_reference.py::test_all_signed_sectors_independent_css_orbit_and_complex_logical_axes",
+      "tests/test_qec_wide_cat_reference.py::test_caps_fresh_resource_alias_and_identity_rejected",
+      "tests/test_qec_encoded_native_visuals.py::test_exact_paged_native_and_projection_identity_probability_and_frames",
+      "tests/test_qec_encoded_native_visuals.py::test_any_unbound_byte_mutation_is_rejected[native_gates.jsonl]",
+      "tests/test_qec_encoded_native_visuals.py::test_any_unbound_byte_mutation_is_rejected[native_projections.jsonl]",
+      "tests/test_qec_encoded_native_visuals.py::test_any_unbound_byte_mutation_is_rejected[functions.jsonl]",
+      "tests/test_qec_encoded_native_visuals.py::test_any_unbound_byte_mutation_is_rejected[frames.jsonl]",
+      "tests/test_qec_encoded_native_visuals.py::test_any_unbound_byte_mutation_is_rejected[roles.json]",
+      "tests/test_qec_encoded_native_visuals.py::test_any_unbound_byte_mutation_is_rejected[certificates.json]",
+      "tests/test_qec_encoded_native_visuals.py::test_any_unbound_byte_mutation_is_rejected[summary.json]",
+      "tests/test_qec_encoded_native_visuals.py::test_rebound_global_manifest_cannot_hide_wrong_local_binding[fields0-count/hash]",
+      "tests/test_qec_encoded_native_visuals.py::test_rebound_global_manifest_cannot_hide_wrong_local_binding[fields1-count/hash]",
+      "tests/test_qec_encoded_native_visuals.py::test_rebound_global_manifest_cannot_hide_wrong_local_binding[fields2-JSON]",
+      "tests/test_qec_encoded_native_visuals.py::test_rebound_global_manifest_cannot_hide_wrong_local_binding[fields3-align]",
+      "tests/test_qec_encoded_native_visuals.py::test_rebound_global_manifest_cannot_hide_wrong_local_binding[fields4-index/identity]",
+      "tests/test_qec_encoded_native_visuals.py::test_rebound_global_manifest_cannot_hide_wrong_local_binding[fields5-count/hash]",
+      "tests/test_qec_encoded_native_visuals.py::test_rebound_global_manifest_cannot_hide_wrong_local_binding[fields6-missing bound kernel]",
+      "tests/test_qec_encoded_native_visuals.py::test_rebound_global_manifest_cannot_hide_wrong_local_binding[fields7-missing bound frame]",
+      "tests/test_qec_encoded_native_visuals.py::test_mutation_after_initial_verification_never_reuses_cached_pass",
+      "tests/test_qec_encoded_native_visuals.py::test_rebound_report_cannot_alias_an_unemitted_native_gate",
+      "tests/test_qec_encoded_native_visuals.py::test_cat_stage_controls_bind_exact_id_prefix_and_indices",
+      "tests/test_qec_encoded_native_visuals.py::test_function_query_bounds[argument0]",
+      "tests/test_qec_encoded_native_visuals.py::test_function_query_bounds[argument1]",
+      "tests/test_qec_encoded_native_visuals.py::test_function_query_bounds[argument2]",
+      "tests/test_qec_encoded_native_visuals.py::test_function_query_bounds[argument3]",
+      "tests/test_qec_encoded_native_visuals.py::test_incomplete_or_physical_claim_and_path_escape_are_rejected",
+      "tests/test_qec_encoded_native_visuals.py::test_renderer_has_no_source_data_injection_and_requires_local_api",
+      "tests/test_qec_encoded_native_visuals.py::test_next_saved_axis_navigation_synchronizes_filters_and_selected_function",
+      "tests/test_qec_encoded_injection_reference.py::test_all_four_native_encoded_branches_preserve_complex_reference_and_raw512[X--1--1]",
+      "tests/test_qec_encoded_injection_reference.py::test_all_four_native_encoded_branches_preserve_complex_reference_and_raw512[X--1-1]",
+      "tests/test_qec_encoded_injection_reference.py::test_all_four_native_encoded_branches_preserve_complex_reference_and_raw512[X-1--1]",
+      "tests/test_qec_encoded_injection_reference.py::test_all_four_native_encoded_branches_preserve_complex_reference_and_raw512[X-1-1]",
+      "tests/test_qec_encoded_injection_reference.py::test_all_four_native_encoded_branches_preserve_complex_reference_and_raw512[Y--1--1]",
+      "tests/test_qec_encoded_injection_reference.py::test_all_four_native_encoded_branches_preserve_complex_reference_and_raw512[Y--1-1]",
+      "tests/test_qec_encoded_injection_reference.py::test_all_four_native_encoded_branches_preserve_complex_reference_and_raw512[Y-1--1]",
+      "tests/test_qec_encoded_injection_reference.py::test_all_four_native_encoded_branches_preserve_complex_reference_and_raw512[Y-1-1]",
+      "tests/test_qec_encoded_injection_reference.py::test_all_four_native_encoded_branches_preserve_complex_reference_and_raw512[Z--1--1]",
+      "tests/test_qec_encoded_injection_reference.py::test_all_four_native_encoded_branches_preserve_complex_reference_and_raw512[Z--1-1]",
+      "tests/test_qec_encoded_injection_reference.py::test_all_four_native_encoded_branches_preserve_complex_reference_and_raw512[Z-1--1]",
+      "tests/test_qec_encoded_injection_reference.py::test_all_four_native_encoded_branches_preserve_complex_reference_and_raw512[Z-1-1]",
+      "tests/test_qec_encoded_injection_reference.py::test_noncommuting_two_resources_all16branches_signed_input_and_true_reprepare",
+      "tests/test_qec_encoded_injection_reference.py::test_every_actual_native_projection_singleT_or_7T_prefix_and_physicalcircuit_export",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[unknown_raw]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[missing_raw]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[bool_raw]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[xor9]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[wrong_sign]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[wrong_resource]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[wrong_semantic]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[premature]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[nan_probability]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[impossible_probability]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[bit_bool]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[stale_hash]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[readout_h_z]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[missing_reset]",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_rejects_missing_unknown_parity_alias_order_and_dirty_native_before_frame_update[dirty_incoming]",
+      "tests/test_qec_encoded_injection_reference.py::test_genuine_receipt_commits_once_and_rejects_reuse_or_unqualified_joint",
+      "tests/test_qec_encoded_injection_reference.py::test_reused_patch_requires_all9measured_and_all17released",
+      "tests/test_qec_encoded_injection_reference.py::test_unsupported_quality_input_references_and_bad_native_bindings_are_explicit",
+      "tests/test_qec_encoded_injection_reference.py::test_genuine_born_sampling_three_rounds_fresh_resources_and_choi_input",
+      "tests/test_qec_encoded_injection_reference.py::test_portable_matrix_audit_rejects_a_different_input_and_keeps_branch_phase",
+      "tests/test_qec_encoded_injection_reference.py::test_no_external_reference_one_nativeT_and_unreset_logical_input",
+      "tests/test_qec_encoded_injection_reference.py::test_receipt_probability_tolerance_boundary_both_fields_is_atomic",
+      "tests/test_qec_encoded_resource_reference.py::test_gf2_columns_and_native_cnot_network_all_512_computational_inputs",
+      "tests/test_qec_encoded_resource_reference.py::test_native_zero_one_isometry_equals_independent_css_projector_oracle",
+      "tests/test_qec_encoded_resource_reference.py::test_arbitrary_complex_input_entangled_with_reference_keeps_exact_logical_isometry[2]",
+      "tests/test_qec_encoded_resource_reference.py::test_arbitrary_complex_input_entangled_with_reference_keeps_exact_logical_isometry[19]",
+      "tests/test_qec_encoded_resource_reference.py::test_arbitrary_complex_input_entangled_with_reference_keeps_exact_logical_isometry[744]",
+      "tests/test_qec_encoded_resource_reference.py::test_native_t_resources_actual_preparation_and_optional_real_syndrome[False-1]",
+      "tests/test_qec_encoded_resource_reference.py::test_native_t_resources_actual_preparation_and_optional_real_syndrome[False--1]",
+      "tests/test_qec_encoded_resource_reference.py::test_native_t_resources_actual_preparation_and_optional_real_syndrome[True-1]",
+      "tests/test_qec_encoded_resource_reference.py::test_native_t_resources_actual_preparation_and_optional_real_syndrome[True--1]",
+      "tests/test_qec_encoded_resource_reference.py::test_reset_gates_really_project_and_reset_every_atom_from_nonzero_native_input",
+      "tests/test_qec_encoded_resource_reference.py::test_native_menu_cost_ids_role_mapping_and_dependency_frontier",
+      "tests/test_qec_encoded_resource_reference.py::test_static_code_distance_three_and_nontrivial_logical_witness",
+      "tests/test_qec_encoded_resource_reference.py::test_tracked_env_still_rejects_native_t_and_no_new_representation_is_installed",
+      "tests/test_qec_encoded_resource_reference.py::test_invalid_resource_and_encoder_inputs_are_rejected[boolean_sign]",
+      "tests/test_qec_encoded_resource_reference.py::test_invalid_resource_and_encoder_inputs_are_rejected[zero_sign]",
+      "tests/test_qec_encoded_resource_reference.py::test_invalid_resource_and_encoder_inputs_are_rejected[syndrome_flag]",
+      "tests/test_qec_encoded_resource_reference.py::test_invalid_resource_and_encoder_inputs_are_rejected[missing_role]",
+      "tests/test_qec_encoded_resource_reference.py::test_invalid_resource_and_encoder_inputs_are_rejected[alias]",
+      "tests/test_qec_encoded_resource_reference.py::test_invalid_resource_and_encoder_inputs_are_rejected[namespace]",
+      "tests/test_qec_encoded_resource_reference.py::test_invalid_resource_and_encoder_inputs_are_rejected[data_count]",
+      "tests/test_qec_encoded_resource_reference.py::test_reference_never_silently_treats_reset_measurement_or_condition_as_unitary",
+      "tests/test_qec_encoded_resource_reference.py::test_invalid_gf2_masks_cannot_enter_nonterminating_rank_reduction[-1]",
+      "tests/test_qec_encoded_resource_reference.py::test_invalid_gf2_masks_cannot_enter_nonterminating_rank_reduction[True]",
+      "tests/test_qec_mixed_pauli_cat.py::test_native_cy_order_global_phase_and_two_t_matrix_independently",
+      "tests/test_qec_mixed_pauli_cat.py::test_signed_y_all_32_raw_encoded_choi_branches[1]",
+      "tests/test_qec_mixed_pauli_cat.py::test_signed_y_all_32_raw_encoded_choi_branches[-1]",
+      "tests/test_qec_mixed_pauli_cat.py::test_xyz_all_raw_factorization_and_actual_three_reference_choi_probes[1]",
+      "tests/test_qec_mixed_pauli_cat.py::test_xyz_all_raw_factorization_and_actual_three_reference_choi_probes[-1]",
+      "tests/test_qec_mixed_pauli_cat.py::test_noncommuting_yx_then_yz_reuses_nine_resources_for_all_branches[branches0]",
+      "tests/test_qec_mixed_pauli_cat.py::test_noncommuting_yx_then_yz_reuses_nine_resources_for_all_branches[branches1]",
+      "tests/test_qec_mixed_pauli_cat.py::test_noncommuting_yx_then_yz_reuses_nine_resources_for_all_branches[branches2]",
+      "tests/test_qec_mixed_pauli_cat.py::test_noncommuting_yx_then_yz_reuses_nine_resources_for_all_branches[branches3]",
+      "tests/test_qec_mixed_pauli_cat.py::test_complete_prefix_raw_history_outputs_and_coupling_boundary_are_preserved",
+      "tests/test_qec_mixed_pauli_cat.py::test_two_y_factors_keep_both_cat_phases_and_all_1024_raw_branches[1]",
+      "tests/test_qec_mixed_pauli_cat.py::test_two_y_factors_keep_both_cat_phases_and_all_1024_raw_branches[-1]",
+      "tests/test_qec_mixed_pauli_cat.py::test_reference_atoms_cannot_alias_resources_or_encoding_auxiliaries[cat]",
+      "tests/test_qec_mixed_pauli_cat.py::test_reference_atoms_cannot_alias_resources_or_encoding_auxiliaries[syndrome]",
+      "tests/test_qec_mixed_pauli_cat.py::test_tracked_env_single_t_remains_rejected_and_report_bits_cannot_be_invented",
+      "tests/test_qec_mixed_pauli_cat.py::test_exact_tt_adapter_rejects_nonqualifying_fragments[single]",
+      "tests/test_qec_mixed_pauli_cat.py::test_exact_tt_adapter_rejects_nonqualifying_fragments[separated]",
+      "tests/test_qec_mixed_pauli_cat.py::test_exact_tt_adapter_rejects_nonqualifying_fragments[wrong_atom]",
+      "tests/test_qec_mixed_pauli_cat.py::test_exact_tt_adapter_rejects_nonqualifying_fragments[bypass_successor]",
+      "tests/test_qec_mixed_pauli_cat.py::test_exact_tt_adapter_rejects_nonqualifying_fragments[wire_bypass]",
+      "tests/test_qec_mixed_pauli_cat.py::test_exact_tt_adapter_rejects_nonqualifying_fragments[native_s]",
+      "tests/test_qec_mixed_pauli_cat.py::test_exact_tt_adapter_rejects_nonqualifying_fragments[tdg]",
+      "tests/test_qec_mixed_pauli_cat.py::test_qualifying_tt_adapter_preserves_native_ids_and_allows_only_completed_pair_successors",
+      "tests/test_qec_mixed_pauli_cat.py::test_real_cat_fault_is_rejected_before_coupling",
+      "tests/test_qec_mixed_pauli_cat.py::test_wrong_signed_history_is_rejected_by_actual_prefix_replay",
+      "tests/test_qec_mixed_pauli_cat.py::test_resource_epoch_rejects_incomplete_or_unreleased_reuse[partial]",
+      "tests/test_qec_mixed_pauli_cat.py::test_resource_epoch_rejects_incomplete_or_unreleased_reuse[dirty]",
+      "tests/test_qec_mixed_pauli_cat.py::test_resource_epoch_rejects_incomplete_or_unreleased_reuse[implicit]",
+      "tests/test_qec_mixed_pauli_cat.py::test_invalid_input_contracts_fail_closed[fake_history]",
+      "tests/test_qec_mixed_pauli_cat.py::test_invalid_input_contracts_fail_closed[pending]",
+      "tests/test_qec_mixed_pauli_cat.py::test_invalid_input_contracts_fail_closed[alias]",
+      "tests/test_qec_mixed_pauli_cat.py::test_invalid_input_contracts_fail_closed[consumed_data]",
+      "tests/test_qec_mixed_pauli_cat.py::test_invalid_input_contracts_fail_closed[orientation]",
+      "tests/test_qec_mixed_pauli_cat.py::test_thirteen_patch_joint_structure_has_sixty_three_cat_atoms_without_alias_or_false_audit",
+      "tests/test_qec_mixed_pauli_cat.py::test_all_raw_proof_rejects_actual_readout_release_extra_coupling_and_sidecar_mutations",
+      "tests/test_qec_conditional_clifford_frame.py::test_all_signed_generator_pullbacks_against_independent_correction_matrix[1-p0]",
+      "tests/test_qec_conditional_clifford_frame.py::test_all_signed_generator_pullbacks_against_independent_correction_matrix[1-p1]",
+      "tests/test_qec_conditional_clifford_frame.py::test_all_signed_generator_pullbacks_against_independent_correction_matrix[1-p2]",
+      "tests/test_qec_conditional_clifford_frame.py::test_all_signed_generator_pullbacks_against_independent_correction_matrix[1-p3]",
+      "tests/test_qec_conditional_clifford_frame.py::test_all_signed_generator_pullbacks_against_independent_correction_matrix[1-p4]",
+      "tests/test_qec_conditional_clifford_frame.py::test_all_signed_generator_pullbacks_against_independent_correction_matrix[1-p5]",
+      "tests/test_qec_conditional_clifford_frame.py::test_all_signed_generator_pullbacks_against_independent_correction_matrix[-1-p0]",
+      "tests/test_qec_conditional_clifford_frame.py::test_all_signed_generator_pullbacks_against_independent_correction_matrix[-1-p1]",
+      "tests/test_qec_conditional_clifford_frame.py::test_all_signed_generator_pullbacks_against_independent_correction_matrix[-1-p2]",
+      "tests/test_qec_conditional_clifford_frame.py::test_all_signed_generator_pullbacks_against_independent_correction_matrix[-1-p3]",
+      "tests/test_qec_conditional_clifford_frame.py::test_all_signed_generator_pullbacks_against_independent_correction_matrix[-1-p4]",
+      "tests/test_qec_conditional_clifford_frame.py::test_all_signed_generator_pullbacks_against_independent_correction_matrix[-1-p5]",
+      "tests/test_qec_conditional_clifford_frame.py::test_three_noncommuting_injections_all_64_branches_on_entangled_reference",
+      "tests/test_qec_conditional_clifford_frame.py::test_all_24_images_keep_independent_binary_symplectic_form",
+      "tests/test_qec_conditional_clifford_frame.py::test_terminal_labels_and_retained_quantum_projection_include_residual_frame_and_phase",
+      "tests/test_qec_conditional_clifford_frame.py::test_unknown_bits_are_rejected_before_controller_or_frame_mutation[None]",
+      "tests/test_qec_conditional_clifford_frame.py::test_unknown_bits_are_rejected_before_controller_or_frame_mutation[True]",
+      "tests/test_qec_conditional_clifford_frame.py::test_unknown_bits_are_rejected_before_controller_or_frame_mutation[-1]",
+      "tests/test_qec_conditional_clifford_frame.py::test_unknown_bits_are_rejected_before_controller_or_frame_mutation[2]",
+      "tests/test_qec_conditional_clifford_frame.py::test_unknown_bits_are_rejected_before_controller_or_frame_mutation[1]",
+      "tests/test_qec_conditional_clifford_frame.py::test_dependency_order_unknown_ids_repeat_results_and_consumed_resources_fail_closed",
+      "tests/test_qec_conditional_clifford_frame.py::test_invalid_full_generator_table_and_ideal_executor_contracts_rejected",
+      "tests/test_qec_conditional_clifford_frame.py::test_public_constructor_rejects_valid_symplectic_tableau_without_matching_exact_ledger",
+      "tests/test_qec_conditional_clifford_frame.py::test_controller_report_copies_cannot_mutate_committed_projection_history",
+      "tests/test_qec_conditional_clifford_frame.py::test_zero_resource_program_preserves_quantum_input_and_residual_and_global_phase",
+      "tests/test_qec_conditional_clifford_frame.py::test_actual_terminal_shor_projectors_feed_failure_and_successful_order_gcd",
+      "tests/test_qec_conditional_clifford_frame.py::test_split_eight_terminal_projections_keep_full_history_ids_dependencies_and_state",
+      "tests/test_qec_qft_synthesis.py::test_rz_approximation_keeps_phase_and_operator_budget[-0.7853981633974483]",
+      "tests/test_qec_qft_synthesis.py::test_rz_approximation_keeps_phase_and_operator_budget[0.7853981633974483]",
+      "tests/test_qec_qft_synthesis.py::test_rz_approximation_keeps_phase_and_operator_budget[0.19634954084936207]",
+      "tests/test_qec_qft_synthesis.py::test_rz_approximation_keeps_phase_and_operator_budget[-0.02454369260617026]",
+      "tests/test_qec_qft_synthesis.py::test_cp_rz_identity_phase_on_every_basis",
+      "tests/test_qec_qft_synthesis.py::test_full_qft_operator_general_entangled_input_and_source_provenance",
+      "tests/test_qec_qft_synthesis.py::test_complete_circuit_can_reach_existing_pauli_frontend",
+      "tests/test_qec_qft_synthesis.py::test_shor_distribution_after_full_qft_synthesis",
+      "tests/test_qec_qft_synthesis.py::test_complete_shor_resource_measurements_zero_and_entangled_probe",
+      "tests/test_qec_qft_synthesis.py::test_bad_error_budgets_are_rejected[0]",
+      "tests/test_qec_qft_synthesis.py::test_bad_error_budgets_are_rejected[-1]",
+      "tests/test_qec_qft_synthesis.py::test_bad_error_budgets_are_rejected[1]",
+      "tests/test_qec_qft_synthesis.py::test_bad_error_budgets_are_rejected[nan]",
+      "tests/test_qec_qft_synthesis.py::test_bad_error_budgets_are_rejected[1e-12]",
+      "tests/test_qec_shor15_pbc_run.py::test_measured_pbc_output_drives_failure_retry_and_verified_factorization",
+      "tests/test_qec_shor15_pbc_run.py::test_seeded_sampling_uses_pbc_distribution_and_keeps_exhaustion",
+      "tests/test_qec_shor15_pbc_run.py::test_invalid_readout_replay_is_rejected_before_consuming_resources",
+      "tests/test_environment_boundary.py::test_environment_imports_and_executes_when_external_packages_are_blocked",
+      "tests/test_environment_boundary.py::test_static_package_direction_and_no_external_executor_bypass",
+      "tests/test_environment_boundary.py::test_observation_is_frozen_and_reports_only_committed_state",
+      "tests/test_environment_boundary.py::test_invalid_or_stale_program_does_not_change_episode",
+      "tests/test_environment_boundary.py::test_fork_and_mid_program_checkpoint_continue_without_changing_parent",
+      "tests/test_environment_boundary.py::test_user_defined_controller_uses_the_same_environment_and_observers",
+      "tests/test_environment_boundary.py::test_existing_strategies_are_replaceable_through_environment[greedy]",
+      "tests/test_environment_boundary.py::test_existing_strategies_are_replaceable_through_environment[critical_path]",
+      "tests/test_environment_boundary.py::test_existing_strategies_are_replaceable_through_environment[lookahead]",
+      "tests/test_environment_boundary.py::test_existing_strategies_are_replaceable_through_environment[basic]",
+      "tests/test_environment_boundary.py::test_existing_strategies_are_replaceable_through_environment[resident]",
+      "tests/test_environment_boundary.py::test_existing_strategies_are_replaceable_through_environment[returning]"
+    ],
+    "historical_913_added_to_current_count": false,
+    "readonly_factoring15_58_added": false,
+    "initial_regression": "114 passed, 1 failed, one 35-test mixed-Y module skipped because isolated stim path was absent",
+    "corrected_existing_regression": "the failed native audit passed after including existing isolated stim==1.15.0, with no source or assertion change",
+    "final_100": "65 new + 35 formerly skipped mixed-Y tests: 100 passed in 11.91s",
+    "optional_qft": "14 passed in 25.75s; already included in the 150 old tests, not counted twice",
+    "runtime": {
+      "python": "bundled Python 3.12",
+      "numpy": "2.5.3",
+      "pytest": "8.4.2",
+      "stim": "1.15.0",
+      "pygridsynth": "1.2.0",
+      "mpmath": "1.3.0",
+      "pytest_requested_by_requirements": "9.1.1",
+      "existing_isolated_dependencies_reused": true
+    }
+  },
+  "architecture": {
+    "passed": true,
+    "modules": {
+      "env": 58,
+      "strategies": 84,
+      "experiments": 99,
+      "app": 18
+    },
+    "total_modules": 259,
+    "violations": []
+  },
+  "gui": {
+    "actual_browser_tested": true,
+    "run": "artifacts/qec-shor15-2026-10-04/encoded-full12-native-seed0-fixed",
+    "function_kinds": [
+      "data_encode",
+      "canonical_check",
+      "resource_prepare",
+      "cat_joint",
+      "resource_readout_reset",
+      "frame_update",
+      "terminal_readout",
+      "algorithm_cleanup_reset"
+    ],
+    "accepted_controls": [
+      "shot/kind/injection filters",
+      "actual native stage jumps",
+      "first/previous/next/last gate",
+      "12-gate paging",
+      "slider Home/ArrowRight",
+      "native table selection",
+      "112 cat reports paged 1-64 and 65-112 then back",
+      "all 27 resource gates played at 32 gates per second through the final RESET",
+      "24 signed frame images and ledger",
+      "next saved axis synchronizes filters/list/detail",
+      "actual failed-shot cleanup",
+      "phase128 failure and phase64 order4/gcd3,5"
+    ],
+    "narrow_viewport_pixels": 390,
+    "narrow_client_width": 375,
+    "narrow_scroll_width": 375,
+    "initial_narrow_overflow_retained_and_fixed_in_template": true,
+    "final_console_errors": [],
+    "physical_animation_tested": false,
+    "screenshots": {
+      "overview.jpg": {
+        "sha256": "1f7d4075538d2ca061cb143e2d22ff2bfb1def56ce333e58c95a8fed67ede8cd",
+        "bytes": 52122
+      },
+      "narrow-390.jpg": {
+        "sha256": "10d854cd767c5b256ac67ecca2b035e04035bb7a86cff78f9ec22ed55f361960",
+        "bytes": 36038
+      },
+      "narrow-390-fixed.jpg": {
+        "sha256": "42fccba8d6e8b2015836538e1946b98a391902fb42ef9314954e7b5869cd3d76",
+        "bytes": 40429
+      }
+    },
+    "screenshot_files_git_ignored": true,
+    "local_url": "http://127.0.0.1:8772/"
+  },
+  "engineering_failures_and_fixes": [
+    "Initial CLI rejected three known phase/bit-order wrapper fields in historical cache; verified metadata before stripping, unknown fields still reject, failed console retained.",
+    "Reserved algorithm wire resource would alias resource roles; rejected before creating output and regression added.",
+    "Failed-shot counts previously omitted real cleanup gates; final seed0 includes all 216 cleanup gates/projections and per-shot costs equal full native stream.",
+    "Next-axis UI previously changed right detail only; fixed to synchronize filters and left selection with actual bound function.",
+    "Long manifest SHA caused 390px overflow; source wrap fixed and failed/final screenshots retained.",
+    "Peer diagnostic initially selected nonexistent modular_exponentiation stage; corrected probe to actual modexp stage, no product fix."
+  ],
+  "final_source_raw_sha256": {
+    "src/neutral_atom_experiments/qec_pbc/encoded_shor_native.py": {
+      "sha256": "e04e47657236fe189a48853994a18d2ad6fd62af302abf96eaf61f2d17fcfa34",
+      "bytes": 44628
+    },
+    "src/neutral_atom_experiments/qec_pbc/wide_cat_reference.py": {
+      "sha256": "d506d0fece411bd666ae6df97976ef8d2e45bebde943af5c361d10b465fb4286",
+      "bytes": 21487
+    },
+    "src/neutral_atom_experiments/qec_pbc/encoded_native_visuals.py": {
+      "sha256": "a707b63d0d0e4fb39978d8554817eba0b628b3f7eb5f6d1e031e6cfc893cbf93",
+      "bytes": 16703
+    },
+    "src/neutral_atom_experiments/qec_pbc/encoded_native_viewer.html": {
+      "sha256": "98bc9e61c2f91d1793ea8fd688f79ec3e2de8661f04efeb235385dcca55066e9",
+      "bytes": 35673
+    },
+    "examples/run_encoded_shor15.py": {
+      "sha256": "43788c9ab0a9f9a7c7b63b556b2eebd1245b1ec95c20cf8f9966224d1c37d03f",
+      "bytes": 1304
+    },
+    "examples/serve_encoded_shor15.py": {
+      "sha256": "cebd580694f1d03e2490295886fec7c0dcae19c5252f3c45674025802c6726b5",
+      "bytes": 4950
+    },
+    "tools/audit_encoded_shor15_run.py": {
+      "sha256": "dab9b6a80d72c18116eb44bcda78c9189857c20dd5ee1c8321bae0c7ce251f6e",
+      "bytes": 18400
+    },
+    "tests/test_qec_encoded_shor_native.py": {
+      "sha256": "b03ad5b5a9b606d2e2009214d31316b05f5d4253b4940f71902808fe208b2c4f",
+      "bytes": 7435
+    },
+    "tests/test_qec_wide_cat_reference.py": {
+      "sha256": "247a249d797b121f561e339610d2dd7d804385e5dac7331265af6519aa286fdf",
+      "bytes": 13569
+    },
+    "tests/test_qec_encoded_native_visuals.py": {
+      "sha256": "b42f666548c5adee44ffac386ca40ed785a6a968426421c8a29ef4a9e63a7fef",
+      "bytes": 12294
+    },
+    "pyproject.toml": {
+      "sha256": "a032193104c607fa67488aa236192cc578822e48a00857ea34548110543aa230",
+      "bytes": 909
+    }
+  },
+  "publication": {
+    "parent": "d7ef205df06d3773cbb158205d6942f4e3f2cf3e",
+    "branch": "codex/d3-shor15-stages",
+    "pull_request": "https://github.com/physics-Yu/QEC-schedule/pull/3",
+    "draft": true,
+    "merged": false,
+    "large_raw_artifacts_git_ignored": true,
+    "commit_receipt": "recorded in publication log after independent fetch; no self-referential commit hash here"
+  }
+}

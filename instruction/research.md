@@ -1,5 +1,7 @@
 # 文献证据与工程取舍
 
+2026-10-04：QEC/PBC、MSC/MSD、工厂和逐周期 fidelity 研究先读 [共享流程协议](qec_factory_pipeline.md)。MSC/MSD 是可选择的生产后端，协议、噪声假设、native 实现与证据分开；既有理想编码资源/注入参考不能替代工厂或 tracked 非 Clifford ENV 闭环。固定来源版本和适用域，按 factory-first 主线验收。下方旧 RAG 摘要是其标注日期的快照，不以历史“桥未实现”否定后来已验的理想链；最新能力以 [handoff](handoff.md) 为准。
+
 2026-09-13编译架构专题补充：[外部实现调研](../docs/external_compiler_research.md)，包含ZAC、MQT routing-aware/IDS、Atomique、Enola、Weaver、Bloqade与NEAT的适用边界及三组固定版本源码核查。以下2026-09-10历史条目保留原日期；不要把旧“尚未实现”描述覆盖到最新handoff。
 
 用途：核对物理假设或扩展 backend 时读取。检索/核对日期：2026-09-10。只采用研究作者论文及用户提供的一手硬件资料；这是一份面向当前架构的定向核查，不声称穷尽最新实验或给出平台性能排名。

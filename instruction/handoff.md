@@ -1,6 +1,18 @@
 # 当前交接状态
 
+## 2026-10-04 QEC 工厂供应与逐周期质量协议固化
+
+用户要求已固化为 [必读共享协议](qec_factory_pipeline.md)，agent 导航/任务路由、architecture 和 research 均已接入。主线为固定 d=3 码/协议 → MSD 工厂到单个 T 的同一资源闭环 → Executor 实际反馈 → 周期带噪供给 → MSC backend → 连续 T/完整 Shor；MSC/MSD 均纳入能力，但不强制串联。唯一载体/epoch/库存、committed 报告、frame、噪声去重及接受/交付/T/算法质量分层必须遵守。旧 Shor-first 下一步已被覆盖，历史运行证据保留。本轮仅规范与导航固化，工厂/MSC/带噪能力保持待实现；验证与下一项可执行任务见 [日志](logs/2026-10-04-qec-factory-pipeline-protocol.md)。
+
+## 2026-10-04 完整编码Shor原生生成与逐功能视图
+
+完整N15/a2、12wire d3编码native／理想reference验收完成：最终seed0 phase128失败→12patch实际读出RESET→phase64验证order4与3/5，两shot11,243,634门／2,402,810投影／7000资源；完整独立流、phase敏感复幅及真实终端Born审计通过。215不同本轮测试（65新＋150旧）及259modules架构零违规，8功能浏览器／32门每秒播放／报告分页／frame下一轴／390px通过；真实操作页本机8772。详见[生成器](../docs/qec_encoded_shor_native.md)、[逐操作视图](../docs/qec_encoded_native_visuals.md)、[可移植摘要](../references/qec_pbc_validation/full_encoded_shor15_native_2026_10_04.json)、[日志](logs/2026-10-04-full-encoded-shor15-native.md)。
+
+这是285声明身份池／qualified kernels的完整编码独立参考，非全原子dense、完整physical Executor或FT。未实现工厂、tracked非Clifford/Born、物理峰值／μs及噪声质量。下一主线按用户最新工厂优先协议先做15-to-1生产→接受／拒收／cleanup／补产→同一载态唯一库存／交付→单T完整channel参考闭环，再接committed Executor、逐周期噪声、MSC和完整physical Shor。历史913／58不加入本轮215；原HEAD／其他dirty保留，本成果沿用draft PR#3，不merge。
+
 ## 2026-10-04 Factoring15对照与完整编码Shor集成路线
+
+本节下一步属于此前审查方案，已由上方factory-first协议覆盖；以下实现与测试陈述保留原快照范围。
 
 本轮只读审查Factoring15工厂/库存/原生计划与当前QEC代码，旧G1四套58不同测试复验通过、三冻结包21artifact SHA匹配；不加入历史QEC913计数。普通原生T物理排程已支持，缺口是tracked非Clifford态＋真实投影反馈；单patch消费/16cat全raw/6logical exhaustive限制仍需扩展。Factoring15可复用15-to-1、拒收补产、载体和唯一库存，但其物理报告仍null，G1.1正在其他任务修改，未以旧证据宣称新通过。RAG新增K52–K54；下一交付为12wire编码native generator＋4096逻辑态/qualified kernels，再做预声明Clifford committed cat接受/abort小闭环，之后接真实T/工厂和完整平台。无生产代码/物理参数改动。见[对照](../docs/qec_factoring15_integration_review.md)、[日志](logs/2026-10-04-factoring15-integration-review.md)。
 

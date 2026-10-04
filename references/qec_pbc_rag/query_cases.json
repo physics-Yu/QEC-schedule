@@ -231,13 +231,103 @@
     {
       "query": "现在能实现完整编码Shor了吗？",
       "expected_any": [
-        "K53"
+        "K53",
+        "K58"
       ]
     },
     {
       "query": "下一步怎样把完整功能接起来？",
       "expected_any": [
-        "K54"
+        "K55"
+      ]
+    },
+    {
+      "query": "完整12逻辑patch编码原生线路生成器现在做到什么 5951556 1269619 phase64 factors3 5",
+      "expected_any": [
+        "K58"
+      ]
+    },
+    {
+      "query": "完整编码native分支同完整physical Executor ENV committed microseconds是否相同",
+      "expected_any": [
+        "K58",
+        "K60"
+      ]
+    },
+    {
+      "query": "63cat 2^63 raw GHZ induction CY TT complexphase all256 signed sectors rank10",
+      "expected_any": [
+        "K59"
+      ]
+    },
+    {
+      "query": "每个实际cat raw bit conditional Born probabilities first L-1 uniform final parity RESET preceding report",
+      "expected_any": [
+        "K59"
+      ]
+    },
+    {
+      "query": "每一个功能具体操作可视化 data_encode canonical_check resource_prepare cat_joint frame_update terminal_readout",
+      "expected_any": [
+        "K60"
+      ]
+    },
+    {
+      "query": "同一次运行 native gateindex observer 原子3x3 raw bit probabilities signed frame24 resource epoch",
+      "expected_any": [
+        "K60"
+      ]
+    },
+    {
+      "query": "independent stream auditor native ID projection raw parity resource epoch source complete complex CT exactShor",
+      "expected_any": [
+        "K58",
+        "K60"
+      ]
+    },
+    {
+      "query": "完整编码Shor seed0 phase128 order_not_recovered failure freshshot phase64 success 216 cleanup native reset",
+      "expected_any": [
+        "K61"
+      ]
+    },
+    {
+      "query": "失败shot成本11243634 native 2402810 projection 94352 functions 7000 resources no discard",
+      "expected_any": [
+        "K61"
+      ]
+    },
+    {
+      "query": "真实终端条件Born独立全流audit source signed phase retry readout cleanup",
+      "expected_any": [
+        "K58",
+        "K60",
+        "K61"
+      ]
+    },
+    {
+      "query": "factory-first 工厂主线 同一载态carrier资源库存交接 单T消费闭环 完整generator独立参考",
+      "expected_any": [
+        "K58",
+        "K52"
+      ]
+    },
+    {
+      "query": "MSC MSD magic-state cultivation 和 distillation 的库存合同",
+      "expected_any": [
+        "K56"
+      ]
+    },
+    {
+      "query": "逐周期 cycle fidelity 接受资源质量与完整 T channel",
+      "expected_any": [
+        "K57"
+      ]
+    },
+    {
+      "query": "factory-first agent 必读共享协议和实施顺序",
+      "expected_any": [
+        "K55"
       ]
     }
   ]

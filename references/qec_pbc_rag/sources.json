@@ -487,7 +487,7 @@
       "id": "L17",
       "kind": "repository_snapshot",
       "title": "三patch物理runner、strict续跑、完整历史decode cache与边界planner",
-      "version": "completed ZZ; reviewed shared audit and XX verification-only recovery pending 2026-10-04",
+      "version": "completed ZZ; reviewed shared audit and XX verification-only recovery pending 2026-10-04; current stage-document links appended 2026-10-04 (historical physics snapshot retained)",
       "paths": [
         "src/neutral_atom_experiments/qec_pbc/encoded_physical.py",
         "examples/run_encoded_parity.py",
@@ -503,7 +503,7 @@
         "docs/qec_shor15_stage.md",
         "tests/test_trace_event_cache.py"
       ],
-      "verified_scope": "ZZ完整Executor/originalinitial replay通过；reviewed shared audit提取保持原predicate，clean43恢复新项+13旧项共56PASS；XX checkpoint1860且verification-only fullinitial recovery仍待最终验收",
+      "verified_scope": "ZZ完整Executor/originalinitial replay通过；reviewed shared audit提取保持原predicate，clean43恢复新项+13旧项共56PASS；XX checkpoint1860且verification-only fullinitial recovery仍待最终验收；仅stage说明增加当前完整encoded native参考链接并刷新该path的normalized SHA，原raw SHA历史保留，不改上述历史physical判断/事故",
       "retrieved_at": "2026-10-04",
       "sha256_normalization": "text_lf",
       "sha256": {
@@ -518,7 +518,7 @@
         "src/neutral_atom_env/replay/trace.py": "17d377b4524eb559c565b1b7300b885782bf7bc05669f8f7bb01fdf59e392b13",
         "src/neutral_atom_env/simulation/runtime_validation.py": "6b2ab1608d79b842bf750fd577a3376d7beb6210d5a2394d56f00654c13789cd",
         "tests/test_trace_history_cache.py": "f28a30b355570fcd2632bb89578be271d81848cb013a886ad2b55d78311e95d6",
-        "docs/qec_shor15_stage.md": "4150c91bf7a74e14c24d5a107a48e6ae682ae83e6c16954eac175b46629abc9a",
+        "docs/qec_shor15_stage.md": "0defaeef7dfe3c50802a92ddd29a7aca5ddf642e4e7857af1be9c8bed7876ac7",
         "tests/test_trace_event_cache.py": "b3f23180531b8e254b27e94a809cc247344b01f00eb6ef710bcb42fcc788f5fd"
       },
       "raw_sha256": {
@@ -535,6 +535,9 @@
         "tests/test_trace_history_cache.py": "1f1f9c0b8aec0e0b00a5734af1029a406d1f67d8cd21f836473dc0c2cd670925",
         "docs/qec_shor15_stage.md": "9e6740c9a361c3ce10d2d555aa49cd5693bdc919485850f303f40b13e77a4bb7",
         "tests/test_trace_event_cache.py": "28b9664a896d628d575b7b5ce28f084fb479a949ce796f5c05ab821e159f2360"
+      },
+      "historical_document_normalized_sha256": {
+        "docs/qec_shor15_stage.md": "4150c91bf7a74e14c24d5a107a48e6ae682ae83e6c16954eac175b46629abc9a"
       }
     },
     {
@@ -901,21 +904,129 @@
       "id": "L33",
       "kind": "repository_snapshot",
       "title": "Factoring15只读对照、冻结G1工厂证据与完整编码Shor接口审计",
-      "version": "review snapshot 2026-10-04; QEC baseline 7301daf; Factoring15 live G1.1 changing",
+      "version": "review snapshot 2026-10-04; QEC baseline 7301daf; roadmap superseded by factory-first protocol v1 on 2026-10-04",
       "paths": [
         "docs/qec_factoring15_integration_review.md",
         "references/qec_pbc_validation/factoring15_review_2026_10_04.json"
       ],
-      "verified_scope": "cross-project read-only source audit, 58 existing G1 regressions and 21 frozen artifact fingerprints; no new QEC physics",
+      "verified_scope": "cross-project read-only audit, 58 existing G1 regressions and 21 frozen artifact fingerprints retained; old roadmap superseded by user-confirmed protocol; no new QEC physics",
       "retrieved_at": "2026-10-04",
       "sha256_normalization": "text_lf",
       "sha256": {
-        "docs/qec_factoring15_integration_review.md": "e441f6d1e16bdfeb2b45cecba797c43576e80293f4b88cc8c15de61984f8cd49",
+        "docs/qec_factoring15_integration_review.md": "3c0fdbe60d118c19a21170e7fc9052a16c5f6fdc416c5cd4dc4563710541ab0f",
         "references/qec_pbc_validation/factoring15_review_2026_10_04.json": "608c32386b076da35770e6156c69df17bd3df83cb292d13ad2d1eac7cf29846d"
       },
       "raw_sha256": {
         "docs/qec_factoring15_integration_review.md": "e441f6d1e16bdfeb2b45cecba797c43576e80293f4b88cc8c15de61984f8cd49",
         "references/qec_pbc_validation/factoring15_review_2026_10_04.json": "6b4806a829fce81b2aff5d37ac74bb9ad5d572bee955c0b9427813c07fe0333d"
+      },
+      "historical_document_normalized_sha256": {
+        "docs/qec_factoring15_integration_review.md": "e441f6d1e16bdfeb2b45cecba797c43576e80293f4b88cc8c15de61984f8cd49"
+      }
+    },
+    {
+      "id": "L34",
+      "kind": "repository_snapshot",
+      "title": "用户确认的 QEC/MSC/MSD 工厂供应与逐周期质量共享协议",
+      "version": "policy v1 effective 2026-10-04; not an implementation completion claim",
+      "paths": [
+        "instruction/qec_factory_pipeline.md"
+      ],
+      "verified_scope": "current user-confirmed factory-first workflow, interface and evidence requirements; documentary policy only",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "instruction/qec_factory_pipeline.md": "b07e90dde5fba5ca3d474e9d56456fa9bac1001ee8967d2ea022ceb934559485"
+      },
+      "raw_sha256": {
+        "instruction/qec_factory_pipeline.md": "b07e90dde5fba5ca3d474e9d56456fa9bac1001ee8967d2ea022ceb934559485"
+      }
+    },
+    {
+      "id": "L35",
+      "kind": "repository_snapshot",
+      "title": "完整12wire encoded native分支生成器与源语义再核验",
+      "version": "final independently verified approved complete encoded native reference 2026-10-04",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/encoded_shor_native.py",
+        "tests/test_qec_encoded_shor_native.py",
+        "docs/qec_encoded_shor_native.md",
+        "examples/run_encoded_shor15.py",
+        "references/qec_pbc_validation/full_encoded_shor15_native_2026_10_04.json"
+      ],
+      "verified_scope": "最终complete reference：seed0两完整shots/11243634native/2402810projection/94352functions/7000resources/phase128failure→216cleanup→phase64r4factors3,5；全流独立80.9236s；215distinct本轮tests/259modules0违规；六同步CT/PBC缓存篡改拒绝；factory-first主线未完成",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_shor_native.py": "e04e47657236fe189a48853994a18d2ad6fd62af302abf96eaf61f2d17fcfa34",
+        "tests/test_qec_encoded_shor_native.py": "b03ad5b5a9b606d2e2009214d31316b05f5d4253b4940f71902808fe208b2c4f",
+        "docs/qec_encoded_shor_native.md": "d0da88180ca652a18937d050cb9a8493e829167c06cbd55600203bf5bdbdccc6",
+        "examples/run_encoded_shor15.py": "43788c9ab0a9f9a7c7b63b556b2eebd1245b1ec95c20cf8f9966224d1c37d03f",
+        "references/qec_pbc_validation/full_encoded_shor15_native_2026_10_04.json": "8a8f7f24a1464774113134f437e481c1678daa1e2ba92edd2f6c5a07997b443c"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_shor_native.py": "e04e47657236fe189a48853994a18d2ad6fd62af302abf96eaf61f2d17fcfa34",
+        "tests/test_qec_encoded_shor_native.py": "b03ad5b5a9b606d2e2009214d31316b05f5d4253b4940f71902808fe208b2c4f",
+        "docs/qec_encoded_shor_native.md": "d0da88180ca652a18937d050cb9a8493e829167c06cbd55600203bf5bdbdccc6",
+        "examples/run_encoded_shor15.py": "43788c9ab0a9f9a7c7b63b556b2eebd1245b1ec95c20cf8f9966224d1c37d03f",
+        "references/qec_pbc_validation/full_encoded_shor15_native_2026_10_04.json": "f2e464671b98905ad72215aa4c836f57d811ac33e2dc3163e9ba463a9a27c80c"
+      }
+    },
+    {
+      "id": "L36",
+      "kind": "repository_snapshot",
+      "title": "63cat完整原生仪器证明、顺序raw Born与全部signed sectors",
+      "version": "final independently verified approved complete encoded native reference 2026-10-04",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/wide_cat_reference.py",
+        "tests/test_qec_wide_cat_reference.py",
+        "docs/qec_wide_cat_reference.md"
+      ],
+      "verified_scope": "29 meaningful tests：独立小全raw完整复幅/外部纠缠、全部256signed sectors独立orbit，63cat完整算符证明和每真实M/RESET条件Born；无ENV/FT",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/wide_cat_reference.py": "d506d0fece411bd666ae6df97976ef8d2e45bebde943af5c361d10b465fb4286",
+        "tests/test_qec_wide_cat_reference.py": "247a249d797b121f561e339610d2dd7d804385e5dac7331265af6519aa286fdf",
+        "docs/qec_wide_cat_reference.md": "0805d12d4d787af948a5f24aa6cb1ae10a10f6473d58afeb2ea684adf3e9a6cc"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/wide_cat_reference.py": "d506d0fece411bd666ae6df97976ef8d2e45bebde943af5c361d10b465fb4286",
+        "tests/test_qec_wide_cat_reference.py": "247a249d797b121f561e339610d2dd7d804385e5dac7331265af6519aa286fdf",
+        "docs/qec_wide_cat_reference.md": "0805d12d4d787af948a5f24aa6cb1ae10a10f6473d58afeb2ea684adf3e9a6cc"
+      }
+    },
+    {
+      "id": "L37",
+      "kind": "repository_snapshot",
+      "title": "同一次encoded native运行的逐功能可视化与独立流审计",
+      "version": "final independently verified approved complete encoded native reference 2026-10-04",
+      "paths": [
+        "src/neutral_atom_experiments/qec_pbc/encoded_native_visuals.py",
+        "src/neutral_atom_experiments/qec_pbc/encoded_native_viewer.html",
+        "tests/test_qec_encoded_native_visuals.py",
+        "examples/serve_encoded_shor15.py",
+        "tools/audit_encoded_shor15_run.py",
+        "docs/qec_encoded_native_visuals.md"
+      ],
+      "verified_scope": "26 observer/API binding tests；实际GUI8functionkind、cat五substage、112 M/RESET分页、27resource gate连续播放、frame24/nextaxis、真实cleanup/terminal及390px client/scroll375=375通过；seed7和seed0独立完整流审计；只有native gateindex，无motion/us",
+      "retrieved_at": "2026-10-04",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_native_visuals.py": "a707b63d0d0e4fb39978d8554817eba0b628b3f7eb5f6d1e031e6cfc893cbf93",
+        "src/neutral_atom_experiments/qec_pbc/encoded_native_viewer.html": "9d12279106cfd146b3f3a7e1b488e04c1617bb7eabe5c0bcc7d02b0a535cb322",
+        "tests/test_qec_encoded_native_visuals.py": "b42f666548c5adee44ffac386ca40ed785a6a968426421c8a29ef4a9e63a7fef",
+        "examples/serve_encoded_shor15.py": "cebd580694f1d03e2490295886fec7c0dcae19c5252f3c45674025802c6726b5",
+        "tools/audit_encoded_shor15_run.py": "dab9b6a80d72c18116eb44bcda78c9189857c20dd5ee1c8321bae0c7ce251f6e",
+        "docs/qec_encoded_native_visuals.md": "045331a795aa65b565ae3b3c8614c1eea7bb76f7fa920537892d7c8ac3d1df15"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_experiments/qec_pbc/encoded_native_visuals.py": "a707b63d0d0e4fb39978d8554817eba0b628b3f7eb5f6d1e031e6cfc893cbf93",
+        "src/neutral_atom_experiments/qec_pbc/encoded_native_viewer.html": "98bc9e61c2f91d1793ea8fd688f79ec3e2de8661f04efeb235385dcca55066e9",
+        "tests/test_qec_encoded_native_visuals.py": "b42f666548c5adee44ffac386ca40ed785a6a968426421c8a29ef4a9e63a7fef",
+        "examples/serve_encoded_shor15.py": "cebd580694f1d03e2490295886fec7c0dcae19c5252f3c45674025802c6726b5",
+        "tools/audit_encoded_shor15_run.py": "dab9b6a80d72c18116eb44bcda78c9189857c20dd5ee1c8321bae0c7ce251f6e",
+        "docs/qec_encoded_native_visuals.md": "045331a795aa65b565ae3b3c8614c1eea7bb76f7fa920537892d7c8ac3d1df15"
       }
     }
   ]

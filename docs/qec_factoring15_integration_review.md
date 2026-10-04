@@ -1,5 +1,7 @@
 # Factoring 15 对照：完整编码 Shor 的可实现范围与复用路线
 
+2026-10-04 用户后续要求已固化为 [QEC 工厂供应与逐周期质量协议](../instruction/qec_factory_pipeline.md)。本文保留源码与历史验收快照；其 Shor-first 实施顺序由新协议的 factory-first 主线覆盖，不能作为当前任务优先级。
+
 2026-10-04；本轮为跨项目只读审查与设计记录，不是新的物理执行验收。QEC 基线为 `7301daf`，Factoring 15 的 Git HEAD 为 `580a7e1`，其 G1.1 正由另一任务继续修改。观察来源、旧运行包指纹及本轮测试范围见[证据摘要](../references/qec_pbc_validation/factoring15_review_2026_10_04.json)。
 
 **已有算法和协议足以开始完成理想编码的端到端原生线路原型。当前代码尚不能直接执行完整编码物理 Shor。** 应将完整线路生成、带物理约束的排程、执行器真实量子投影与反馈、含噪容错分别验收；无需先等待完整容错证明才集成理想原型。
@@ -46,6 +48,8 @@ Factoring 的 `src/factoring15/quantum.py` 中 `protocol_spec()` 先调用 `run_
 - G1.1的RM16候选四层各8对CNOT，用16 work＋15 magic slots＋1 consumer共32patch/544原子换并行。这是实施中的候选；不能由旧136原子串行包证明新平台或等资源加速。合并Shor后另需算法patch、cat和库存预算，数字不可直接相加后当已验证峰值。
 
 ## 5. 下一批可验收成果
+
+本节 A→B→C 是本次历史审查的建议顺序。当前应按 [共享协议的实施顺序与验收门槛](../instruction/qec_factory_pipeline.md) 先完成工厂→库存→同一资源的单 T 消费闭环；第3节“五工作块优先”亦属当时候选，具体标准模板须显式选择，不能混用五工作块与 RM16 资源计数。以下原方案保留供追溯。
 
 **A：完整12wire编码原生线路与分解语义参考。** 保留现有完整Shor/PBC及4096维逻辑态；使用独立验证的编码等距映射、小型17q实际资源producer和native kernels。扩展单patch接口，使用有证明的GHZ/parity表示与顺序raw Born采样替代宽cat的全字符串枚举。输出每个真实native gate/measurement ID、signed sectors、resource epoch、frame ledger、终端读出及因子后处理。独立检查任意输入/小型纠缠probe与source circuit、全部资源一次消费和未参与patch状态保持。这里不构造204+原子的全局dense态，也不宣称ENV已执行。
 
