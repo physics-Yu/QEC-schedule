@@ -1,0 +1,65 @@
+{
+  "schema": "qec-enola-mz-design-publication/1",
+  "reviewed_at": "2026-10-04",
+  "capability_kind": "engineering_design_only",
+  "commit": "1d936ceb6e9a921b1088e0650ea0e2d1af90c177",
+  "parent": "1f996a7d121d88effa2873b70c081ae0dadd19ab",
+  "tree": "ae4b943999bcb6c9cf2501ee52aa02a1f122cd66",
+  "changed_files": [
+    {
+      "path": "agent.md",
+      "blob": "6ae8b57ed0eb260df43bd00256961b64752d6a2f"
+    },
+    {
+      "path": "docs/qec_enola_mz_design.md",
+      "blob": "6ebe33b21c8ae62d8cdea25400e78abc93c87d7e"
+    },
+    {
+      "path": "docs/qec_pbc_rag.md",
+      "blob": "73e816668b035dbb4f055c3a849bc7806b05b583"
+    },
+    {
+      "path": "instruction/handoff.md",
+      "blob": "ecab969beb6f2caa4eea04f16c403263f8663b28"
+    },
+    {
+      "path": "instruction/logs/2026-10-04-enola-mz-design.md",
+      "blob": "1857f2a23caf25e6164e5b445298ec3a92988e57"
+    },
+    {
+      "path": "instruction/native_kernel_migration.md",
+      "blob": "7040f5b0b8d2522297ba6ad2f2966c361755c0f1"
+    },
+    {
+      "path": "references/qec_pbc_rag/knowledge.jsonl",
+      "blob": "9bfe3e7d19744dbdd47bf53f51b6d6f442b77596"
+    },
+    {
+      "path": "references/qec_pbc_rag/query_cases.json",
+      "blob": "d8421e377619bb07984701100a83fba98dc1750e"
+    },
+    {
+      "path": "references/qec_pbc_rag/sources.json",
+      "blob": "5f5e96ae4cae65f0a8bea5e470ccfe9cf5367940"
+    },
+    {
+      "path": "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json",
+      "blob": "3dfc6a2ed6416e8c88506ac03d195c98b43e483e"
+    }
+  ],
+  "independent_fetch": true,
+  "parent_tree_all_changed_blobs_match": true,
+  "rag_check": {
+    "chunks": 72,
+    "sources": 62,
+    "unique_paths": 207,
+    "ok": true
+  },
+  "rag_recall": {
+    "passed": 84,
+    "total": 84
+  },
+  "new_native_runs": 0,
+  "physical_qualified": false,
+  "pull_request": "https://github.com/physics-Yu/QEC-schedule/pull/3"
+}

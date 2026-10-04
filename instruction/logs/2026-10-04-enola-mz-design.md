@@ -30,3 +30,7 @@ L47被修改的migration导航保留原SHA记录，新现状按text_lf刷新；�
 ## 下一步
 
 实现单patch纯syndrome两轮、5μm版本化lowering、显式mask或逐步等价证明、nearest-MZ完整往返/分波和精确恢复；通过后才扩展多patch与factory-to-one-T。保持声明调度报告与fidelity=null，完整physicalShor待独立验收。
+
+## GitHub 阶段发布
+
+设计提交[1d936ce](https://github.com/physics-Yu/QEC-schedule/commit/1d936ceb6e9a921b1088e0650ea0e2d1af90c177)已发布到现有 `codex/d3-shor15-stages`；独立fetch确认parent `1f996a7`、完整tree `ae4b943999bcb6c9cf2501ee52aa02a1f122cd66`和全部10个changed blobs与本地index相同。没有执行checkout/reset、改pushurl或写原目录。PR#3仍draft/open/unmerged；[回执](../../references/qec_pbc_validation/enola_mz_design_publication_2026_10_04.json)明确本阶段只有设计、new_native_runs=0、physical_qualified=false。
