@@ -1,5 +1,13 @@
 # 当前交接状态
 
+## 2026-10-04 最短合法直达与2.5 μm标准 routing
+
+追加用户任务仍OPEN：自动选择MZ内最近合法测量位置。既有policy未删，但parallel_patch目前绕过选点采用固定translation；下列已通过比较保留同测量端点以隔离路由。正在恢复设备感知rigid候选/完整服务选择及决策显示，通过后追加独立新运行证据。
+
+码块编译默认standard：直达先完整验证，受阻用既有2.5 μm偏移半格图内最短距离；脉冲后归还重新规划。设备身份、全world旁观者、活动Cartesian空trap与关闭spare轴envelope完整检查，物理阈值不变。同初态单块/12块均161plans，33409.196973→30055.938183μs（减10.0369%）、MOVE479→338；完整原初态replay与两层独立审计通过，原门/合批顺序相同。128不同pytest、266modules零违规，legacy五计划逐字复现。
+
+实际8776共用空间页新增半格运输书签、共12功能入口；“计划路径”消除MZ全程误称去程。缩放/XZ/统计折叠保持，浏览器与源码/输入SHA证据见[小型验收](../references/qec_pbc_validation/routing_standard_2026_10_04.json)、[规范及实施顺序](../docs/qec_routing_standard.md)、[日志](logs/2026-10-04-routing-standard.md)。图内distance最优不等于连续/非线性时间/整线路最优；后续工厂S1–S3复用路由API，现Clifford runner不是工厂运行时。GitHub发布核对后追加回执。
+
 2026-10-04 最新共享目标已同步原工作区的用户固化协议v2：后续是可复用完整工厂调度→单injection→完整processor（S1–S3），不强制运行时量子态/Born后端；下方旧F1/F2主线陈述保留历史范围并由[当前权威目标](qec_factory_pipeline.md#当前任务目标纯调度模拟)覆盖。本轮只验收布局与Clifford前缀，没有新增工厂/injection完成声明。
 
 ## 2026-10-04 单码块并行、Enola placement 与12块物理验收

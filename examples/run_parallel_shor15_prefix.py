@@ -17,6 +17,7 @@ def main():
     from neutral_atom_experiments.qec_pbc.parallel_prefix import (
         create_parallel_prefix_environment, load_native_parallel_prefix)
     from neutral_atom_strategies.scheduling.parallel_patch import run_parallel_patch
+    from neutral_atom_strategies.motion.validated_rigid import STANDARD_ROUTING, LEGACY_ROUTING
 
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', required=True)
@@ -28,10 +29,13 @@ def main():
     parser.add_argument('--pair-search', action='store_true', help='Search CZ moving operand and finite isolated endpoints')
     parser.add_argument('--intra-patch', action='store_true', help='Use closed same-shift matchings within canonical layers')
     parser.add_argument('--intra-services', action='store_true', help='Also batch closed data/ancilla MZ visits inside patches')
+    parser.add_argument('--routing-policy', choices=('standard', 'legacy_5um'), default='standard',
+                        help='Validated direct routes or shortest 2.5 um half-grid paths; legacy is for historical comparison')
     parser.add_argument('--wall-budget', type=float, default=1800.)
     parser.add_argument('--max-decisions', type=int, default=512)
     parser.add_argument('--skip-replay', action='store_true', help='Preserve the run but leave replay explicitly unverified')
     args = parser.parse_args()
+    routing_policy = STANDARD_ROUTING if args.routing_policy == 'standard' else LEGACY_ROUTING
     output = Path(args.output)
     output.mkdir(parents=True, exist_ok=False)
     prefix = load_native_parallel_prefix(args.source, patch_count=args.patches, include_magic=not args.algorithm_only)
@@ -63,7 +67,10 @@ def main():
     root = Path(__file__).resolve().parents[1]
     producer_files = [Path(__file__).relative_to(root).as_posix(),
         'src/neutral_atom_experiments/qec_pbc/parallel_prefix.py',
-        'src/neutral_atom_strategies/scheduling/parallel_patch.py']
+        'src/neutral_atom_strategies/scheduling/parallel_patch.py',
+        'src/neutral_atom_strategies/motion/validated_rigid.py',
+        'src/neutral_atom_strategies/motion/astar.py',
+        'src/neutral_atom_strategies/motion/planners.py']
     if args.layout != 'legacy':
         producer_files.append('src/neutral_atom_experiments/qec_pbc/patch_layout.py')
     if args.intra_services:
@@ -88,6 +95,7 @@ def main():
             on_plan=accepted, max_decisions=args.max_decisions, wall_budget_s=args.wall_budget,
             intra_patch=args.intra_patch, intra_services=args.intra_services,
             pair_search=args.pair_search,
+            routing_policy=routing_policy,
             mz_translation_um=-400. if args.layout != 'legacy' else -300.)
         if result.status != 'completed':
             error = {'type': 'CompilationStalled', 'diagnostics': result.diagnostics}
@@ -154,6 +162,15 @@ def main():
         'magic_state_preparation_executed': False, 'factory_or_noise_claimed': False,
         'resource_clifford_prefix_included': prefix.source.get('resource_clifford_prefix_included', False),
         'placement_layout': args.layout, 'intra_patch_enabled': args.intra_patch,
+        'routing_policy': routing_policy,
+        'routing_contract': {'direct_candidate': args.routing_policy == 'standard',
+            'corridor_offset_um': 2.5 if args.routing_policy == 'standard' else 5.,
+            'corridor_pitch_um': 5. if args.routing_policy == 'standard' else None,
+            'objective': 'distance' if args.routing_policy == 'standard' else 'fixed historical route',
+            'optimality_scope': ('validated straight segment, otherwise bounded half-grid graph'
+                if args.routing_policy == 'standard' else 'no optimality claim'),
+            'pulse_and_clearance_parameters_changed': False,
+            'whole_cartesian_and_spare_axes_checked': True},
         'intra_services_enabled': args.intra_services,
         'pair_search_enabled': args.pair_search,
         'layout_contract': metadata.get('layout_contract'),

@@ -2,7 +2,7 @@
 
 研究与工作树核对日期：**2026-10-04**（历史来源保留各自日期）。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
 
-主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，64 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，12 个固定版本一手外部来源、40 组本地来源与140个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)，58项固定召回用例。
+主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，68 个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，14 个固定版本外部来源、43 组本地来源与168个文件 SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)，70项固定召回用例。
 
 最新批准阶段：完整12wire编码原生Shor理想分支已经实际生成，seed7和最终seed0得到3和5，完整失败重试成本及逐功能native操作observer可核对。当前能力与限制见§25–28及K55–K61。历史§18–24和K50–K54保留各次producer、事故、单patch能力与Factoring15只读提案快照；新增内容不回写旧失败。完整encoded **physical Executor** Shor与factory-first工厂主线仍未完成。
 
@@ -414,3 +414,9 @@ K66/K67与L42–L44新增[布局复现](qec_patch_parallel_layout.md)、[冻结�
 最终8774页11实际功能书签、双AOD带载运输、四真实层、同步atom/trap/AOD/XZ、主统计展开/细项折叠、390/320px和console0错误通过；两Node viewer检查不计入174不同pytest，265modules0架构违规。旧默认5plans逐字兼容。本任务未写原工作区，末次基线209文件bytes相同、5个政策/交接文件由并行任务更新，HEAD保持且变化未覆盖。大型物理档案留本地，小摘要固定原始artifact SHA与各run实际provenance；新增记录功能前的历史standard runs明确未保存producer-source，不倒填当前代码hash。
 
 未来中心跨块配对需interaction staging或旁观辅助位搬移：固定四10μm邻位且仅移动单端，非零安全距离至少√200≈14.142μm，与finite6μm冲突；这是局部路由限制，不是所有物理方案无解，也不影响已完成prefix。最新用户共享协议v2已同步：后续为完整工厂纯调度S1、同token单injection S2、processor按需接入S3，runtime不强制量子态/Born；旧K54–K57保留历史正文并前置supersession，独立质量研究另验。本轮没有新增工厂/injection或完整physical Shor完成声明。当前67chunks/56sources/160本地路径、67检索用例；旧claim正文、历史raw/旧normalized指纹保留，本轮source刷新仅对应明确的兼容变更。可移植换行与拒绝反例另做11检查，详见[本轮日志](../instruction/logs/2026-10-04-patch-parallel-layout.md)。
+
+## 33. 标准routing：直达与2.5 μm半格最短路
+
+用户要求已固化为[标准路由及实施顺序](qec_routing_standard.md)：先验证直达，受阻时求既有2.5 μm偏移半格通道图内最短距离。该策略保持完整Cartesian/空trap/spares/envelope和全部旁观原子检查，脉冲后归还重新规划；2.5 μm不是CZ半径或碰撞阈值。
+
+同初态单块与12块均完整执行并重放，33409.196973→30055.938183 μs，减少约10.04%，原门/投影/合批顺序不变；128专项测试与两层独立审计通过。证据见[小型验收记录](../references/qec_pbc_validation/routing_standard_2026_10_04.json)与K68/L45。旧33.409 ms记录保留并标为legacy_5um，不倒填新路由身份。图内distance最短不表示连续绕障或非线性Enola时间最优；完整工厂和physical Shor仍不由该前缀证明。

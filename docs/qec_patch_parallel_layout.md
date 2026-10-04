@@ -1,5 +1,7 @@
 # d=3 码块布局、码内并行与 Enola 初始放置
 
+2026-10-04 路由更新：本入口现默认使用 `--routing-policy standard`，先校验直线，阻挡时按既有2.5 μm半格通道求图内最短距离；脉冲/读出后的归还按实际预测状态重新规划。设备域、全部活动Cartesian交点、关闭备用轴和全world旁观原子均保留检查。详见[QEC刚性AOD标准路由及实施顺序](qec_routing_standard.md)，其中提供新标准单块/12块命令。本文下方已发布的时间、plans与MOVE统计是固定5 μm历史路线的验收结果，复现命令已显式加 `--routing-policy legacy_5um`；它们不作为新标准的结果，也不因默认值变化被重新解释。
+
 本阶段已把 d=3 码块的同层 CZ、初始化 RESET 和综合征读出编译为真实合批操作，并完成单块及 12 块的原初态完整重放。标准布局的单块在相同初态、相同线路上，实际模型终态时间从 **84,684.130701 μs** 降到 **40,504.465183 μs**。冻结的 Enola 初始放置加本项目物理适配，单块与 12 块均得到 **33,409.196973 μs**；这组改变了初始布局，应作为另一种布局与编译组合比较。12 块已完成 3,006 门、413 次投影和两层独立物理审计。
 
 这是保存的 Shor15 线路中“编码初始化与第一轮标准综合征提取”的物理前缀。本文不表示完整物理 Shor、magic factory、带噪质量或容错验收已经完成。后续主线继续遵守[工厂供应与逐周期质量协议](../instruction/qec_factory_pipeline.md)。
@@ -103,25 +105,27 @@ Enola 保留相同线路字节，但初态 hash 为 `2e238fd478942bfb687f2c8db50
 ```powershell
 python examples/run_parallel_shor15_prefix.py `
   --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 `
-  --output artifacts/my-patch-baseline --patches 1 --layout interleaved
+  --output artifacts/my-patch-baseline --patches 1 --layout interleaved `
+  --routing-policy legacy_5um
 
 python examples/run_parallel_shor15_prefix.py `
   --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 `
-  --output artifacts/my-patch-cz --patches 1 --layout interleaved --intra-patch
+  --output artifacts/my-patch-cz --patches 1 --layout interleaved --intra-patch `
+  --routing-policy legacy_5um
 
 python examples/run_parallel_shor15_prefix.py `
   --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 `
   --output artifacts/my-patch-all --patches 1 --layout interleaved `
-  --intra-patch --intra-services
+  --intra-patch --intra-services --routing-policy legacy_5um
 
 python examples/run_parallel_shor15_prefix.py `
   --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 `
   --output artifacts/my-patch-enola --patches 1 --layout enola `
   --proposal references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json `
-  --intra-patch --intra-services --pair-search
+  --intra-patch --intra-services --pair-search --routing-policy legacy_5um
 ```
 
-默认运行包含实际右侧资源前缀，并进行完整 replay。`--algorithm-only` 改变输入及成本范围，不能与本表直接混比；`--skip-replay` 留下明确未验收项，不能用作通过证据。
+上述历史复现显式选择 `legacy_5um`；新标准示例见[路由规范](qec_routing_standard.md#使用与复现)。默认运行包含实际右侧资源前缀，并进行完整 replay。`--algorithm-only` 改变输入及成本范围，不能与本表直接混比；`--skip-replay` 留下明确未验收项，不能用作通过证据。
 
 独立审计后再打开共用空间回放：
 
@@ -192,7 +196,8 @@ python examples/run_parallel_shor15_prefix.py `
   --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 `
   --output artifacts/my-full12-enola --patches 12 --layout enola `
   --proposal references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json `
-  --intra-patch --intra-services --pair-search --wall-budget 1800
+  --intra-patch --intra-services --pair-search --routing-policy legacy_5um `
+  --wall-budget 1800
 ```
 
 完成后按前文命令分别运行 core 和 `--mode enola` 布局审计，再生成共用报告。单块成功、108-cell 容量声明及此前 legacy 布局的 12 块结果，都不能替代本轮新几何的实际执行与原初态重放。

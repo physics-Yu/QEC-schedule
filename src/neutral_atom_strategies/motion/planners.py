@@ -18,6 +18,8 @@ class RouteRequest:
     depart: tuple = ()
     approach: tuple = ()
     edge_validator: object = None
+    # Optional graph-search domain; physical checks retain the complete world.
+    routing_bounds: object = None
 
 
 class MotionPlanner(Protocol):

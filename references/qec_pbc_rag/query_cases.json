@@ -419,6 +419,24 @@
         "K55",
         "K57"
       ]
+    },
+    {
+      "query": "routing 最短路径 寻路 2.5um 偏移 半格 AStar 直达优先",
+      "expected_any": [
+        "K68"
+      ]
+    },
+    {
+      "query": "关闭的备用轴 单台AOD envelope 直达 routing Cartesian 活动空trap 外国旁观原子",
+      "expected_any": [
+        "K68"
+      ]
+    },
+    {
+      "query": "同初态 routing 33409 30055 10percent 最短距离 非线性Enola时间 是否最优",
+      "expected_any": [
+        "K68"
+      ]
     }
   ]
 }

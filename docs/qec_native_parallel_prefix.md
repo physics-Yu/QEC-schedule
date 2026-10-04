@@ -55,8 +55,12 @@ multi-GB native suffix:
 python examples/run_parallel_shor15_prefix.py `
   --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 `
   --output artifacts/my-parallel-prefix `
-  --patches 12 --wall-budget 1800
+  --patches 12 --wall-budget 1800 --routing-policy legacy_5um
 ```
+
+This historical time table uses the fixed 5 μm route. The explicit
+`legacy_5um` flag reproduces it; the current default is the validated direct /
+2.5 μm half-grid [standard route](qec_routing_standard.md).
 
 `--patches 1`, `2` and `4` select smaller algorithm inputs; `--algorithm-only`
 preserves the one-device comparison. The output directory must be fresh.

@@ -1,0 +1,752 @@
+{
+  "schema": "qec-rigid-routing-standard-acceptance/1",
+  "reviewed_at": "2026-10-04",
+  "policy": "shortest-direct-or-halfgrid-v1",
+  "rule": "Validate direct first; otherwise shortest legal bounded x/y=2.5+5k corridor path; keep real transfer boundaries and replan return",
+  "physical_invariants": {
+    "finite_cz_um": 6,
+    "cz_nonpartner_min_um": 10,
+    "transport_clearance_um": 1,
+    "raman_separation_um": 5,
+    "full_active_cartesian": true,
+    "disabled_spare_axes_bounds": true,
+    "global_foreign_spectators": true,
+    "executor_only_live_writer": true
+  },
+  "runs": [
+    {
+      "patch_count": 1,
+      "local_run_directory": "artifacts/routing-standard-2026-10-04/single-enola-attempt2",
+      "historical_baseline_directory": "artifacts/patch-parallel-2026-10-04/single-enola-attempt1",
+      "same_input_bytes": {
+        "initial.json": true,
+        "source-prefix.json": true,
+        "prefix-circuit.json": true,
+        "parallel-phases.json": true
+      },
+      "same_effect_batch_order_and_native_ids": true,
+      "native_gates": 267,
+      "native_projections": 50,
+      "atoms": 34,
+      "plans": 161,
+      "aods": 2,
+      "before_physical_us": 33409.19697259952,
+      "after_physical_us": 30055.93818301007,
+      "time_reduction_percent": 10.036933220333376,
+      "before_aod_distance_um": 10872.168543984848,
+      "after_aod_distance_um": 9175.740159316892,
+      "before_moves": 479,
+      "after_moves": 338,
+      "producer_audit": {
+        "all_output_code_logical_zero_and_aux_checks_plus_one": true,
+        "all_saved_report_ids_preserved": true,
+        "dag_complete": true,
+        "effects_exactly_once": true,
+        "event_queue_empty": true,
+        "independent_plan_replay_equal": true,
+        "same_source_resource_carriers_before_first_t": true
+      },
+      "independent_audit": {
+        "schema": "native-prefix-independent-physical-audit/1",
+        "passed": true,
+        "source_native_gate_count": 267,
+        "physical_gate_count": 267,
+        "algorithm_native_gate_count": 249,
+        "resource_native_gate_count": 18,
+        "algorithm_qubits": 17,
+        "original_state_constraints": 17,
+        "original_projections": 50,
+        "committed_effects_once": 267,
+        "committed_projection_checks": 50,
+        "dependency_interval_checks": 799,
+        "committed_effect_interval_checks": 267,
+        "cz_pulses_global_pair_checks": 52,
+        "cz_native_effects": 68,
+        "actual_mz_projection_geometry_checks": 50,
+        "raman_native_separation_checks": 149,
+        "max_cz_batch": 3,
+        "move_devices": [
+          "AOD_0",
+          "AOD_MAGIC"
+        ],
+        "cross_device_move_overlaps": 7,
+        "stim_version": "1.15.0",
+        "cross_device_loaded_move_overlaps": 6,
+        "physical_time_us": 30055.93818301007,
+        "full_shor_physical": false,
+        "magic_factory_validated": false,
+        "fault_tolerance_validated": false,
+        "artifact_sha256": {
+          "source-prefix.json": "f270fa115e66e71309b25b64b1680c47f87c571df848a2df84c5cae090a076fa",
+          "prefix-circuit.json": "98aa857a1abf155c28413b2eec8af99487f768e0c6f9a41b2af010b4d6541b16",
+          "initial.json": "2e238fd478942bfb687f2c8db505f48078c1d443e65c6fcd4cc837f51ecb99f6",
+          "checkpoint-final.json": "d4b305eb520d0b578b47ec74c810db3c5f5795a35e578b8e1e7d5d696235c98b",
+          "recording.json": "e1aab9abf42e55c07117f882f5b867f4f617abb5c488eff7c579499d42c1d358",
+          "trace.jsonl": "1e21aa9c0358baec5e4eab0c900448f0b1fbd2770abcfe52bb1a0368aa3bd540"
+        }
+      },
+      "patch_audit": {
+        "schema": "patch-parallel-layout-independent-audit/1",
+        "passed": true,
+        "scope": "unchanged deterministic native prefix; declared placement and legal intra-patch CZ batches",
+        "prefix_independent_audit": {
+          "schema": "native-prefix-independent-physical-audit/1",
+          "passed": true,
+          "source_native_gate_count": 267,
+          "physical_gate_count": 267,
+          "algorithm_native_gate_count": 249,
+          "resource_native_gate_count": 18,
+          "algorithm_qubits": 17,
+          "original_state_constraints": 17,
+          "original_projections": 50,
+          "committed_effects_once": 267,
+          "committed_projection_checks": 50,
+          "dependency_interval_checks": 799,
+          "committed_effect_interval_checks": 267,
+          "cz_pulses_global_pair_checks": 52,
+          "cz_native_effects": 68,
+          "actual_mz_projection_geometry_checks": 50,
+          "raman_native_separation_checks": 149,
+          "max_cz_batch": 3,
+          "move_devices": [
+            "AOD_0",
+            "AOD_MAGIC"
+          ],
+          "cross_device_move_overlaps": 7,
+          "stim_version": "1.15.0",
+          "cross_device_loaded_move_overlaps": 6,
+          "physical_time_us": 30055.93818301007,
+          "full_shor_physical": false,
+          "magic_factory_validated": false,
+          "fault_tolerance_validated": false,
+          "artifact_sha256": {
+            "source-prefix.json": "f270fa115e66e71309b25b64b1680c47f87c571df848a2df84c5cae090a076fa",
+            "prefix-circuit.json": "98aa857a1abf155c28413b2eec8af99487f768e0c6f9a41b2af010b4d6541b16",
+            "initial.json": "2e238fd478942bfb687f2c8db505f48078c1d443e65c6fcd4cc837f51ecb99f6",
+            "checkpoint-final.json": "d4b305eb520d0b578b47ec74c810db3c5f5795a35e578b8e1e7d5d696235c98b",
+            "recording.json": "e1aab9abf42e55c07117f882f5b867f4f617abb5c488eff7c579499d42c1d358",
+            "trace.jsonl": "1e21aa9c0358baec5e4eab0c900448f0b1fbd2770abcfe52bb1a0368aa3bd540"
+          }
+        },
+        "protocol": {
+          "canonical_phases_checked": 16,
+          "canonical_dependency_edges_checked": 488,
+          "css_native_gates_checked": 136
+        },
+        "batches": {
+          "mode": "enola",
+          "css_cz_pulses": 44,
+          "canonical_round_cz_pulses": 8,
+          "total_cz_pulses": 52,
+          "cz_native_effects": 68,
+          "per_patch": {
+            "phase0": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            }
+          }
+        },
+        "home_layout": {
+          "canonical_coordinate_scale_um": null,
+          "minimum_occupied_home_distance_um": 10.0,
+          "slm_candidate_grid_um": 5,
+          "occupied_carriers_checked": 34,
+          "algorithm_aod_capacity": 9,
+          "finite_cz_distance_um": 6,
+          "cz_pair_offset_um": "searched finite offsets",
+          "enola_proposal": {
+            "proposal_raw_sha256": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
+            "placement_mapping_sha256": "49a2c2d531af2bad5e77d8d368c6809dd8386ffe19c3fe166c7e23882b44337c",
+            "official_placer_commit": "2944dbf4e163e8d2eeeec607add0d9139edce689",
+            "official_placer_sha256": "d256c84490bd72d525515f24acb081d7b21bcd5f7bbc31302a3bbf79a16997cf",
+            "physical_evidence_scope": "frozen placement authenticated; physical run audited separately"
+          }
+        },
+        "move_evidence": {
+          "committed_moves_checked": 338,
+          "carrier_endpoint_checks": 1066,
+          "deforming_axis_move_count": 0,
+          "backend": "rigid",
+          "axis_order_and_spacing_certified_for_shared_monotone_progress": true,
+          "continuous_atom_slm_sweep_validation": "Executor plus complete original-initial-state plan replay"
+        },
+        "nonpair_cz_spacing": {
+          "minimum_required_nonpair_spacing_um": 10.0,
+          "minimum_actual_nonpair_spacing_um": 10.0,
+          "nonpair_distance_checks": 29104,
+          "scope": "all alive atoms including resource carriers at every actual CZ pulse"
+        },
+        "artifact_sha256": {
+          "initial.json": "2e238fd478942bfb687f2c8db505f48078c1d443e65c6fcd4cc837f51ecb99f6",
+          "source-prefix.json": "f270fa115e66e71309b25b64b1680c47f87c571df848a2df84c5cae090a076fa",
+          "prefix-circuit.json": "98aa857a1abf155c28413b2eec8af99487f768e0c6f9a41b2af010b4d6541b16",
+          "recording.json": "e1aab9abf42e55c07117f882f5b867f4f617abb5c488eff7c579499d42c1d358"
+        },
+        "physical_time_us": 30055.93818301007,
+        "complete_physical_shor": false,
+        "magic_factory_or_fault_tolerance_claimed": false
+      },
+      "producer_source": {
+        "options": {
+          "algorithm_only": false,
+          "intra_patch": true,
+          "intra_services": true,
+          "layout": "enola",
+          "max_decisions": 512,
+          "output": "artifacts/routing-standard-2026-10-04/single-enola-attempt2",
+          "pair_search": true,
+          "patches": 1,
+          "proposal": "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json",
+          "routing_policy": "standard",
+          "skip_replay": false,
+          "source": "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04",
+          "wall_budget": 1800.0
+        },
+        "schema": "native-prefix-producer-source/1",
+        "sha256": {
+          "examples/run_parallel_shor15_prefix.py": "0b6aaf0cbed076f8dc40ad58d10c722ce8dc5ab389ced015b69e7bd941830c21",
+          "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
+          "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "79ae4023fb039978ba243891c8e9e0ca14096a9dfe54b1e8dabb7d6e2fe1bc2f",
+          "src/neutral_atom_strategies/motion/astar.py": "81af36805971b394d20e555ca7e1938b49178c1fd995d304ffd592d43cd3436d",
+          "src/neutral_atom_strategies/motion/planners.py": "2809ae1e31db130c73882d8c859b02dc31bc504bd9f6db18341c6f51851f30db",
+          "src/neutral_atom_strategies/motion/validated_rigid.py": "bb9b3262fd3cfcc9988342df3b45b33e20d5a88c5d65030b48c8388ee05732a3",
+          "src/neutral_atom_strategies/scheduling/parallel_patch.py": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
+          "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806"
+        }
+      },
+      "current_producer_source_differences": {
+        "examples/run_parallel_shor15_prefix.py": {
+          "producer": "0b6aaf0cbed076f8dc40ad58d10c722ce8dc5ab389ced015b69e7bd941830c21",
+          "current": "3efa96a41376a6cfa45db6516234bbf978d8f4f178fc36c9377c83ee3c39e351"
+        }
+      },
+      "source_difference_note": "CLI legacy-only metadata was corrected after both runs started; standard values and physical behavior are unchanged. Final router bytes match this run.",
+      "artifact_sha256": {
+        "initial.json": "2e238fd478942bfb687f2c8db505f48078c1d443e65c6fcd4cc837f51ecb99f6",
+        "source-prefix.json": "f270fa115e66e71309b25b64b1680c47f87c571df848a2df84c5cae090a076fa",
+        "prefix-circuit.json": "98aa857a1abf155c28413b2eec8af99487f768e0c6f9a41b2af010b4d6541b16",
+        "plans.json": "64d8b5a88f105793006ca369d7d31901f4f8d7de0d885687a5394342d8028c3f",
+        "trace.jsonl": "1e21aa9c0358baec5e4eab0c900448f0b1fbd2770abcfe52bb1a0368aa3bd540",
+        "recording.json": "e1aab9abf42e55c07117f882f5b867f4f617abb5c488eff7c579499d42c1d358",
+        "checkpoint-final.json": "d4b305eb520d0b578b47ec74c810db3c5f5795a35e578b8e1e7d5d696235c98b",
+        "producer-source.json": "d5cd83db2e8cd5bdf5305152525e5a5739ab8045fcced71905c84cfb2c4dd772",
+        "independent-audit.json": "7887cb4185654e58456751cf7f4660d0ff93f3c1e714acf4d44c03e1ce8c3064",
+        "patch-parallel-audit.json": "83adea766b382df83aff7a2514b870a5bd8c7774d7a817c33b98c1325778b10a"
+      }
+    },
+    {
+      "patch_count": 12,
+      "local_run_directory": "artifacts/routing-standard-2026-10-04/full12-enola-attempt1",
+      "historical_baseline_directory": "artifacts/patch-parallel-2026-10-04/full12-enola-attempt1",
+      "same_input_bytes": {
+        "initial.json": true,
+        "source-prefix.json": true,
+        "prefix-circuit.json": true,
+        "parallel-phases.json": true
+      },
+      "same_effect_batch_order_and_native_ids": true,
+      "native_gates": 3006,
+      "native_projections": 413,
+      "atoms": 221,
+      "plans": 161,
+      "aods": 2,
+      "before_physical_us": 33409.19697259952,
+      "after_physical_us": 30055.93818301007,
+      "time_reduction_percent": 10.036933220333376,
+      "before_aod_distance_um": 10872.168543984848,
+      "after_aod_distance_um": 9175.740159316892,
+      "before_moves": 479,
+      "after_moves": 338,
+      "producer_audit": {
+        "all_output_code_logical_zero_and_aux_checks_plus_one": true,
+        "all_saved_report_ids_preserved": true,
+        "dag_complete": true,
+        "effects_exactly_once": true,
+        "event_queue_empty": true,
+        "independent_plan_replay_equal": true,
+        "same_source_resource_carriers_before_first_t": true
+      },
+      "independent_audit": {
+        "schema": "native-prefix-independent-physical-audit/1",
+        "passed": true,
+        "source_native_gate_count": 3006,
+        "physical_gate_count": 3006,
+        "algorithm_native_gate_count": 2988,
+        "resource_native_gate_count": 18,
+        "algorithm_qubits": 204,
+        "original_state_constraints": 204,
+        "original_projections": 413,
+        "committed_effects_once": 3006,
+        "committed_projection_checks": 413,
+        "dependency_interval_checks": 9401,
+        "committed_effect_interval_checks": 3006,
+        "cz_pulses_global_pair_checks": 52,
+        "cz_native_effects": 816,
+        "actual_mz_projection_geometry_checks": 413,
+        "raman_native_separation_checks": 1777,
+        "max_cz_batch": 36,
+        "move_devices": [
+          "AOD_0",
+          "AOD_MAGIC"
+        ],
+        "cross_device_move_overlaps": 7,
+        "stim_version": "1.15.0",
+        "cross_device_loaded_move_overlaps": 6,
+        "physical_time_us": 30055.93818301007,
+        "full_shor_physical": false,
+        "magic_factory_validated": false,
+        "fault_tolerance_validated": false,
+        "artifact_sha256": {
+          "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+          "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+          "initial.json": "5039afb0365945aa2c087d7ddae71b02b5ceec0ef58e766828d66350fe880be6",
+          "checkpoint-final.json": "d0038881489d23e562c7206f370dd014d64a28927363060c54ac680cf450b475",
+          "recording.json": "01713f96195dafee33491198f107b52bedada5214977c345670320218acaec8a",
+          "trace.jsonl": "f8ebf996eb85fa32d22b8b48d888371d8fac2877ab0d48200235289e5984dbf5"
+        }
+      },
+      "patch_audit": {
+        "schema": "patch-parallel-layout-independent-audit/1",
+        "passed": true,
+        "scope": "unchanged deterministic native prefix; declared placement and legal intra-patch CZ batches",
+        "prefix_independent_audit": {
+          "schema": "native-prefix-independent-physical-audit/1",
+          "passed": true,
+          "source_native_gate_count": 3006,
+          "physical_gate_count": 3006,
+          "algorithm_native_gate_count": 2988,
+          "resource_native_gate_count": 18,
+          "algorithm_qubits": 204,
+          "original_state_constraints": 204,
+          "original_projections": 413,
+          "committed_effects_once": 3006,
+          "committed_projection_checks": 413,
+          "dependency_interval_checks": 9401,
+          "committed_effect_interval_checks": 3006,
+          "cz_pulses_global_pair_checks": 52,
+          "cz_native_effects": 816,
+          "actual_mz_projection_geometry_checks": 413,
+          "raman_native_separation_checks": 1777,
+          "max_cz_batch": 36,
+          "move_devices": [
+            "AOD_0",
+            "AOD_MAGIC"
+          ],
+          "cross_device_move_overlaps": 7,
+          "stim_version": "1.15.0",
+          "cross_device_loaded_move_overlaps": 6,
+          "physical_time_us": 30055.93818301007,
+          "full_shor_physical": false,
+          "magic_factory_validated": false,
+          "fault_tolerance_validated": false,
+          "artifact_sha256": {
+            "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+            "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+            "initial.json": "5039afb0365945aa2c087d7ddae71b02b5ceec0ef58e766828d66350fe880be6",
+            "checkpoint-final.json": "d0038881489d23e562c7206f370dd014d64a28927363060c54ac680cf450b475",
+            "recording.json": "01713f96195dafee33491198f107b52bedada5214977c345670320218acaec8a",
+            "trace.jsonl": "f8ebf996eb85fa32d22b8b48d888371d8fac2877ab0d48200235289e5984dbf5"
+          }
+        },
+        "protocol": {
+          "canonical_phases_checked": 192,
+          "canonical_dependency_edges_checked": 5856,
+          "css_native_gates_checked": 1632
+        },
+        "batches": {
+          "mode": "enola",
+          "css_cz_pulses": 44,
+          "canonical_round_cz_pulses": 8,
+          "total_cz_pulses": 52,
+          "cz_native_effects": 816,
+          "per_patch": {
+            "phase0": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase1": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase2": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase3": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase4": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase5": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase6": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase7": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "work0": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "work1": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "work2": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "work3": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            }
+          }
+        },
+        "home_layout": {
+          "canonical_coordinate_scale_um": null,
+          "minimum_occupied_home_distance_um": 10.0,
+          "slm_candidate_grid_um": 5,
+          "occupied_carriers_checked": 221,
+          "algorithm_aod_capacity": 108,
+          "finite_cz_distance_um": 6,
+          "cz_pair_offset_um": "searched finite offsets",
+          "enola_proposal": {
+            "proposal_raw_sha256": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
+            "placement_mapping_sha256": "49a2c2d531af2bad5e77d8d368c6809dd8386ffe19c3fe166c7e23882b44337c",
+            "official_placer_commit": "2944dbf4e163e8d2eeeec607add0d9139edce689",
+            "official_placer_sha256": "d256c84490bd72d525515f24acb081d7b21bcd5f7bbc31302a3bbf79a16997cf",
+            "physical_evidence_scope": "frozen placement authenticated; physical run audited separately"
+          }
+        },
+        "move_evidence": {
+          "committed_moves_checked": 338,
+          "carrier_endpoint_checks": 12044,
+          "deforming_axis_move_count": 0,
+          "backend": "rigid",
+          "axis_order_and_spacing_certified_for_shared_monotone_progress": true,
+          "continuous_atom_slm_sweep_validation": "Executor plus complete original-initial-state plan replay"
+        },
+        "nonpair_cz_spacing": {
+          "minimum_required_nonpair_spacing_um": 10.0,
+          "minimum_actual_nonpair_spacing_um": 10.0,
+          "nonpair_distance_checks": 1263304,
+          "scope": "all alive atoms including resource carriers at every actual CZ pulse"
+        },
+        "artifact_sha256": {
+          "initial.json": "5039afb0365945aa2c087d7ddae71b02b5ceec0ef58e766828d66350fe880be6",
+          "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+          "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+          "recording.json": "01713f96195dafee33491198f107b52bedada5214977c345670320218acaec8a"
+        },
+        "physical_time_us": 30055.93818301007,
+        "complete_physical_shor": false,
+        "magic_factory_or_fault_tolerance_claimed": false
+      },
+      "producer_source": {
+        "options": {
+          "algorithm_only": false,
+          "intra_patch": true,
+          "intra_services": true,
+          "layout": "enola",
+          "max_decisions": 512,
+          "output": "artifacts/routing-standard-2026-10-04/full12-enola-attempt1",
+          "pair_search": true,
+          "patches": 12,
+          "proposal": "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json",
+          "routing_policy": "standard",
+          "skip_replay": false,
+          "source": "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04",
+          "wall_budget": 1800.0
+        },
+        "schema": "native-prefix-producer-source/1",
+        "sha256": {
+          "examples/run_parallel_shor15_prefix.py": "0b6aaf0cbed076f8dc40ad58d10c722ce8dc5ab389ced015b69e7bd941830c21",
+          "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
+          "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "79ae4023fb039978ba243891c8e9e0ca14096a9dfe54b1e8dabb7d6e2fe1bc2f",
+          "src/neutral_atom_strategies/motion/astar.py": "81af36805971b394d20e555ca7e1938b49178c1fd995d304ffd592d43cd3436d",
+          "src/neutral_atom_strategies/motion/planners.py": "2809ae1e31db130c73882d8c859b02dc31bc504bd9f6db18341c6f51851f30db",
+          "src/neutral_atom_strategies/motion/validated_rigid.py": "e480b4b55a1c9d42cdac51d1cf824bfdb6daa22dd4c9c86b7ff238ab5464b818",
+          "src/neutral_atom_strategies/scheduling/parallel_patch.py": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
+          "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806"
+        }
+      },
+      "current_producer_source_differences": {
+        "examples/run_parallel_shor15_prefix.py": {
+          "producer": "0b6aaf0cbed076f8dc40ad58d10c722ce8dc5ab389ced015b69e7bd941830c21",
+          "current": "3efa96a41376a6cfa45db6516234bbf978d8f4f178fc36c9377c83ee3c39e351"
+        },
+        "src/neutral_atom_strategies/motion/validated_rigid.py": {
+          "producer": "e480b4b55a1c9d42cdac51d1cf824bfdb6daa22dd4c9c86b7ff238ab5464b818",
+          "current": "bb9b3262fd3cfcc9988342df3b45b33e20d5a88c5d65030b48c8388ee05732a3"
+        }
+      },
+      "source_difference_note": "CLI legacy-only metadata was corrected after both runs started; standard values and physical behavior are unchanged. Single-device envelope guard was added after this two-device run started; its len(aods)==1 branch is inactive here. Final single-patch attempt2 uses the final router bytes.",
+      "artifact_sha256": {
+        "initial.json": "5039afb0365945aa2c087d7ddae71b02b5ceec0ef58e766828d66350fe880be6",
+        "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+        "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+        "plans.json": "4754feaa9929fa74a603624c7b0224ffebfd3e9e3ce071d095911a570c2bcabc",
+        "trace.jsonl": "f8ebf996eb85fa32d22b8b48d888371d8fac2877ab0d48200235289e5984dbf5",
+        "recording.json": "01713f96195dafee33491198f107b52bedada5214977c345670320218acaec8a",
+        "checkpoint-final.json": "d0038881489d23e562c7206f370dd014d64a28927363060c54ac680cf450b475",
+        "producer-source.json": "615c4fd5c9927216867057d9e62fd829b949a28a37781be3320e41a019734dd5",
+        "independent-audit.json": "e232a5cf0c963fb485c338416b345475ec915bd83fe60d4051e0f3fe9fd2e9e3",
+        "patch-parallel-audit.json": "67d9a1be4949943feaa916df66b71d1cc2dbb02df2f2d5a59af750a392eaadee"
+      }
+    }
+  ],
+  "validation": {
+    "targeted_pytest": 128,
+    "new_route_tests": 16,
+    "prior_astar_tests_included": 11,
+    "architecture_modules": 266,
+    "architecture_violations": 0,
+    "legacy_five_plans_byte_equal": true,
+    "browser": {
+      "passed": true,
+      "url": "http://127.0.0.1:8776/",
+      "recording_sha256": "01713f96195dafee33491198f107b52bedada5214977c345670320218acaec8a",
+      "bookmarks": [
+        {
+          "clock": "0.00",
+          "details_open": false,
+          "label": "初始码块放置",
+          "summary_open": true,
+          "time_us": 0
+        },
+        {
+          "clock": "974.14",
+          "details_open": false,
+          "label": "MZ 批量复位 × 77",
+          "summary_open": true,
+          "time_us": 974.142136
+        },
+        {
+          "clock": "23006.76",
+          "details_open": false,
+          "label": "码块共同 H × 72",
+          "summary_open": true,
+          "time_us": 23006.764013
+        },
+        {
+          "clock": "23203.41",
+          "details_open": false,
+          "label": "并行 CZ 配对 × 36",
+          "summary_open": true,
+          "time_us": 23203.414013
+        },
+        {
+          "clock": "26347.65",
+          "details_open": false,
+          "label": "MZ 综合征读出 × 48",
+          "summary_open": true,
+          "time_us": 26347.653912
+        },
+        {
+          "clock": "116.64",
+          "details_open": false,
+          "label": "2.5 μm 半格绕障运输",
+          "summary_open": true,
+          "time_us": 116.642136
+        },
+        {
+          "clock": "116.64",
+          "details_open": false,
+          "label": "两台 AOD 同时运输",
+          "summary_open": true,
+          "time_us": 116.642136
+        },
+        {
+          "clock": "23203.41",
+          "details_open": false,
+          "label": "稳定子第 1 层 · 2 个实际脉冲",
+          "summary_open": true,
+          "time_us": 23203.414013
+        },
+        {
+          "clock": "23734.30",
+          "details_open": false,
+          "label": "稳定子第 2 层 · 2 个实际脉冲",
+          "summary_open": true,
+          "time_us": 23734.298284
+        },
+        {
+          "clock": "24271.47",
+          "details_open": false,
+          "label": "稳定子第 3 层 · 2 个实际脉冲",
+          "summary_open": true,
+          "time_us": 24271.466827
+        },
+        {
+          "clock": "24786.64",
+          "details_open": false,
+          "label": "稳定子第 4 层 · 2 个实际脉冲",
+          "summary_open": true,
+          "time_us": 24786.635369
+        },
+        {
+          "clock": "30055.94",
+          "details_open": false,
+          "label": "实际提交终态",
+          "summary_open": true,
+          "time_us": 30055.938183
+        }
+      ],
+      "bookmark_count": 12,
+      "caption": "parallel-patch-dual-reset/0 · planner: parallel-patch-dual-mz-v1 · Q000 计划路径 8 段 · 序号为途经点 · SLM 边界半径 1 μm",
+      "narrow": [
+        {
+          "width": 390,
+          "client": 375,
+          "scroll": 375,
+          "canvas": 353.3333435058594
+        },
+        {
+          "width": 320,
+          "canvas": 283.3333435058594,
+          "client": 305,
+          "scroll": 305
+        }
+      ],
+      "viewport_reset": true,
+      "primary_summary_final_open": true,
+      "details_collapsed": true,
+      "console_errors": 0,
+      "proportional_geometry_node_check_passed": true,
+      "fit_resize_node_check_passed": true,
+      "screenshot": "artifacts/routing-standard-2026-10-04/full12-halfgrid.png",
+      "new_user_followup": "Automatic MZ target selection is requested next; these accepted runs retain the earlier fixed translation to isolate routing."
+    }
+  },
+  "limits": [
+    "Direct Euclidean lower bound or finite half-grid distance optimum; not global continuous detour or circuit optimum.",
+    "This checkout uses constant-speed rigid timing. Nonlinear Enola timing requires actual backend accumulation; distance optimum does not imply time optimum.",
+    "No factory, injection, noise/FT or complete physical Shor completion is added by these Clifford-prefix runs.",
+    "Prior accepted runs and raw/source fingerprints are preserved; legacy_5um is explicit for reproduction."
+  ]
+}

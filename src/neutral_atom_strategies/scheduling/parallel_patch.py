@@ -1,6 +1,6 @@
 """Actual bounded compilation of equal-role work on disjoint sparse patches.
 
-The strategy uses a rigid Cartesian AOD and explicit half-spacing corridors.
+The strategy uses a rigid Cartesian AOD and validated shortest routes.
 Each candidate passes ordinary ProgramBuilder, global pulse-pair validation
 and Executor. No native gate is removed and no movement is a rendered hint.
 """
@@ -19,6 +19,8 @@ from neutral_atom_env.hardware.multi_aod import device, supports
 from neutral_atom_env.program.builder import ProgramBuilder
 from neutral_atom_env.program.task_validation import validate_target
 from neutral_atom_strategies.scheduling.m4 import M4Result
+from neutral_atom_strategies.motion.validated_rigid import (
+    append_rigid_route, STANDARD_ROUTING, LEGACY_ROUTING)
 
 
 def _point(state, atom):
@@ -57,18 +59,27 @@ def _bindings(state, atoms, aod_id='AOD_0'):
     return origin, tuple(bindings)
 
 
-def _empty_reposition(p, target, aod_id='AOD_0'):
+def _empty_reposition(p, target, aod_id='AOD_0', *, routing_policy=STANDARD_ROUTING):
     aod = device(p.state, aod_id)
     if aod.active_cells:
         masks = replace(supports(p.state, aod_id), rows=(False,) * aod.rows,
             columns=(False,) * aod.columns)
         p.add(K.TRAP_SWITCH, '关闭空 AOD 后定位', switch_state=masks, aod_id=aod_id)
     if device(p.state, aod_id).pose != target:
-        p.add(K.AOD_MOVE, '空 AOD 定位到同角色载体', target=target, aod_id=aod_id)
+        if routing_policy == STANDARD_ROUTING:
+            append_rigid_route(p, target, aod_id=aod_id, label='空 AOD 最短合法定位')
+        else:
+            p.add(K.AOD_MOVE, '空 AOD 定位到同角色载体', target=target, aod_id=aod_id)
 
 
-def _outbound(p, source, target, bindings, *, aligned, aod_id='AOD_0', pair_offset=None):
-    """Explicit 5 um corridors around the 10 um occupied lattice subset."""
+def _outbound(p, source, target, bindings, *, aligned, aod_id='AOD_0', pair_offset=None,
+              routing_policy=STANDARD_ROUTING):
+    """Use the shared routing policy; keep old 5 um plans reproducible."""
+    if routing_policy == STANDARD_ROUTING:
+        return append_rigid_route(p, target, aod_id=aod_id, depart=bindings,
+            approach=bindings if aligned else (), label='直达或 2.5 μm 半格最短合法运输').points
+    if routing_policy != LEGACY_ROUTING:
+        raise ValueError('Unknown rigid routing policy')
     offset = pair_offset or p.state.hardware.interaction_offset
     # Gate approaches terminate at a caller-declared finite pairing offset.
     # MZ service has no stationary partner; retain its old clearance path.
@@ -91,15 +102,20 @@ def _outbound(p, source, target, bindings, *, aligned, aod_id='AOD_0', pair_offs
     return tuple(points)
 
 
-def _return(p, points, bindings, aod_id='AOD_0'):
-    for point in reversed(points[:-1]):
-        last = point == points[0]
-        p.add(K.AOD_MOVE, '同角色阵列返回各自原码块', target=point,
-            bindings=bindings if last else (), phase='approach' if last else None, aod_id=aod_id)
+def _return(p, points, bindings, aod_id='AOD_0', *, routing_policy=STANDARD_ROUTING):
+    if routing_policy == STANDARD_ROUTING:
+        append_rigid_route(p, points[0], aod_id=aod_id, approach=bindings,
+                           label='脉冲后按实际状态重新求最短合法归还路径')
+    else:
+        for point in reversed(points[:-1]):
+            last = point == points[0]
+            p.add(K.AOD_MOVE, '同角色阵列返回各自原码块', target=point,
+                bindings=bindings if last else (), phase='approach' if last else None, aod_id=aod_id)
     p.add(K.AOD_OFFLOAD, '卸载回原 SLM 格点', bindings=bindings, aod_id=aod_id)
 
 
-def compile_cz_group(state, gates, *, decision=0, mobile_operands=None, pair_offset=None):
+def compile_cz_group(state, gates, *, decision=0, mobile_operands=None, pair_offset=None,
+                     routing_policy=STANDARD_ROUTING):
     """Compile any authored pair with a finite isolated spatial pairing."""
     if not gates or any(g.gate_type != 'CZ' for g in gates):
         raise ValueError('A nonempty CZ group is required')
@@ -118,16 +134,17 @@ def compile_cz_group(state, gates, *, decision=0, mobile_operands=None, pair_off
         raise ValidationError('PARALLEL_PATCH_SHIFT', 'All group pairs must share one real rigid shift')
     dx, dy = shifts.pop()
     p = _builder(state, gates, decision)
-    _empty_reposition(p, origin)
+    _empty_reposition(p, origin, routing_policy=routing_policy)
     p.add(K.AOD_LOAD, '装载各码块的对应 CZ 载体', bindings=bindings)
     points = _outbound(p, origin, Position2D(origin.x_um + dx, origin.y_um + dy), bindings,
-                       aligned=False, pair_offset=offset)
+                       aligned=False, pair_offset=offset, routing_policy=routing_policy)
     p.add(K.ENTANGLING_PULSE, '真实全局 CZ 脉冲；全部作用对必须匹配', gate_ids=tuple(g.id for g in gates))
-    _return(p, points, bindings)
+    _return(p, points, bindings, routing_policy=routing_policy)
     return p.finish('parallel-patch-finite-pair-v1')
 
 
-def compile_readout_group(state, gates, *, decision=0, translation_um=-300., aod_id='AOD_0'):
+def compile_readout_group(state, gates, *, decision=0, translation_um=-300., aod_id='AOD_0',
+                          routing_policy=STANDARD_ROUTING):
     """Move actual carriers to MZ; read/reset there; return their holders."""
     if not gates or any(g.gate_type != gates[0].gate_type for g in gates) or gates[0].gate_type not in {'MEASURE', 'RESET'}:
         raise ValueError('A same-type MEASURE/RESET group is required')
@@ -144,21 +161,23 @@ def compile_readout_group(state, gates, *, decision=0, translation_um=-300., aod
     atoms = tuple(g.qubit_ids[0] for g in gates)
     origin, bindings = _bindings(state, atoms, aod_id)
     p = _builder(state, (*gates, *resets), decision)
-    _empty_reposition(p, origin, aod_id)
+    _empty_reposition(p, origin, aod_id, routing_policy=routing_policy)
     p.add(K.AOD_LOAD, '装载各码块的对应测量载体', bindings=bindings, aod_id=aod_id)
     target = Position2D(origin.x_um, origin.y_um + translation_um)
     # This MZ visit holds the carriers in stationary AOD; it does not offload
     # them into an invented measurement holder or skip native RESETs.
-    points = _outbound(p, origin, target, bindings, aligned=False, aod_id=aod_id)
+    points = _outbound(p, origin, target, bindings, aligned=False, aod_id=aod_id,
+                       routing_policy=routing_policy)
     p.add(K.MEASUREMENT if gates[0].gate_type == 'MEASURE' else K.RESET,
         '在实际 MZ 内执行原生读出/复位', gate_ids=tuple(g.id for g in gates), aod_id=aod_id)
     if resets:
         p.add(K.RESET, '同次 MZ 访问实际复位读出的辅助载体', gate_ids=tuple(g.id for g in resets), aod_id=aod_id)
-    _return(p, points, bindings, aod_id)
+    _return(p, points, bindings, aod_id, routing_policy=routing_policy)
     return p.finish('parallel-patch-mz-return-v1'), tuple(resets)
 
 
-def compile_dual_reset_prologue(state, algorithm_gates, magic_gates, *, translation_um=-300.):
+def compile_dual_reset_prologue(state, algorithm_gates, magic_gates, *, translation_um=-300.,
+                                routing_policy=STANDARD_ROUTING):
     """Two real concurrent transport lanes, one shared native RESET pulse.
 
     Separate RESET operations would contend for the global readout resource.
@@ -170,7 +189,7 @@ def compile_dual_reset_prologue(state, algorithm_gates, magic_gates, *, translat
     lanes = []
     for aod_id, gates in (('AOD_0', algorithm_gates), ('AOD_MAGIC', magic_gates)):
         plan, resets = compile_readout_group(state, gates, decision=0, aod_id=aod_id,
-                                             translation_um=translation_um)
+                                             translation_um=translation_um, routing_policy=routing_policy)
         assert not resets
         pulse = next(i for i, op in enumerate(plan.operations) if op.operation_type == K.RESET)
         lanes.append((plan.operations[:pulse], plan.operations[pulse], plan.operations[pulse + 1:]))
@@ -278,13 +297,16 @@ def select_geometric_cz_group(state, ready, atom_roles):
 
 def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
                        max_decisions=512, wall_budget_s=1800., intra_patch=False,
-                       mz_translation_um=-300., intra_services=False, pair_search=False):
+                       mz_translation_um=-300., intra_services=False, pair_search=False,
+                       routing_policy=STANDARD_ROUTING):
     """Run the caller's supported DAG; return structured failure evidence."""
     env = as_environment(env)
     started = perf_counter()
     log = []
     phase = 'initialization'
     try:
+        if routing_policy not in {STANDARD_ROUTING, LEGACY_ROUTING}:
+            raise ValueError('Unknown rigid routing policy')
         if env.state.quantum_state is None:
             raise ValidationError('PARALLEL_PATCH_QUANTUM', 'Enable tracked Clifford state before physical execution')
         if env.state.hardware.backend != 'rigid':
@@ -302,11 +324,12 @@ def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
             tick = perf_counter()
             phase = 'dual_reset_prologue'
             plan = compile_dual_reset_prologue(env.state, algorithm, magic,
-                                               translation_um=mz_translation_um)
+                                               translation_um=mz_translation_um, routing_policy=routing_policy)
             entry = {'decision': 0, 'kind': 'RESET', 'gate_ids': [g.id for g in (*algorithm, *magic)],
                 'batch_size': len(algorithm) + len(magic), 'start_us': env.state.time_us,
                 'duration_us': plan.estimated_duration_us, 'compile_wall_seconds': perf_counter() - tick,
-                'plan_id': plan.id, 'actual_concurrent_aods': ['AOD_0', 'AOD_MAGIC']}
+                'plan_id': plan.id, 'actual_concurrent_aods': ['AOD_0', 'AOD_MAGIC'],
+                'routing_policy': routing_policy}
             env.submit(plan)
             if on_plan:
                 on_plan(plan, entry)
@@ -347,7 +370,7 @@ def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
                     elif intra_patch:
                         gates, mobile_operands = select_intrapatch_cz_group(state, cz, atom_roles)
                     plan = compile_cz_group(state, gates, decision=len(log), mobile_operands=mobile_operands,
-                                            pair_offset=pair_offset)
+                                            pair_offset=pair_offset, routing_policy=routing_policy)
                     per_patch = defaultdict(int)
                     for g in gates:
                         per_patch[atom_roles[g.qubit_ids[0]]['patch']] += 1
@@ -361,12 +384,12 @@ def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
                         from .patch_service_groups import select_readout_group
                         gates = select_readout_group(state, candidates, atom_roles)
                     plan, resets = compile_readout_group(state, gates, decision=len(log),
-                                                        translation_um=mz_translation_um)
+                                                        translation_um=mz_translation_um, routing_policy=routing_policy)
                     extra = {'included_reset_gate_ids': [g.id for g in resets]}
             entry = {'decision': len(log), 'kind': phase, 'gate_ids': [g.id for g in gates],
                 'batch_size': len(gates), 'start_us': state.time_us,
                 'duration_us': plan.estimated_duration_us, 'compile_wall_seconds': perf_counter() - tick,
-                'plan_id': plan.id, **extra}
+                'plan_id': plan.id, 'routing_policy': routing_policy, **extra}
             env.submit(plan)
             if on_plan:
                 on_plan(plan, entry)

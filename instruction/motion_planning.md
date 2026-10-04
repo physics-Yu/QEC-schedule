@@ -1,5 +1,7 @@
 # 可替换的路径规划与物理验证
 
+2026-10-04 用户固化 QEC rigid 标准路由：[实施规范](../docs/qec_routing_standard.md)。`motion/validated_rigid.py` 的 `shortest-direct-or-halfgrid-v1` 先经原 backend 完整校验直线；合法时达到 Euclidean 距离下界，否则复用 `AStarHalfGridPlanner` 在 `x/y=2.5+5k μm`、端点短正交接入≤2.5 μm的有限图内求最短距离。`optimality_scope` 区分直达与图内最短，不宣称连续绕障全局最优或非线性计时最优。`RouteRequest.routing_bounds` 限定已声明的设备 envelope 搜索域，全 world 障碍保留；各 `aod_id` 通过 `with_aod` 独立推演，每条边校验所有 Cartesian 活动空/载trap和关闭备用轴范围。码块编译去程、空载定位及脉冲/读出后的归还共用该接口，归还根据当前预测状态重新规划。CLI `--routing-policy standard` 为本入口默认，`legacy_5um` 仅复现下方历史固定5 μm路线。捕获、装卸豁免、finite CZ、连续clearance与Executor唯一提交规则保持；单块→复制多块→工厂跨块暂存/交付的实施顺序见新规范。以下旧模块和结果保留原日期与适用范围，不作为新路由通过证据。
+
 2026-09-15测量策略接入：`ReadoutPlacementPolicy`负责AOD/SLM支撑、落点候选和低成本评分，`OrderedTransfer.move_loaded`只接收已选构型规划实际路线；少量合法服务反馈真实成本。不是movement自己决定测量落点。当前有序QEC通过`readout_service(..., placement_policy=...)`注入，原物理读出/支撑规则不变；[接口与验收](../docs/readout_placement_policy.md)。
 
 2026-09-15最新：`motion/axis_hold_routes.py` 增加直接X→Y/Y→X、逐行列提前到位并保持的通用候选；贪心、SMT和群组运输共用 `motion_router=axis_hold`，与硬件backend独立。旧 `legacy_corridor` 显式保留作复现。按真实运动时间选择，经占据网格筛选及完整连续物理校验；没有按原子编号/仿真时间特判，没有完备高维最短路保证。原Q000/783μs绕路来自候选遗漏，同后端修复验证与完整QEC结果见[报告](../docs/axis_hold_strategy_fix.md)。

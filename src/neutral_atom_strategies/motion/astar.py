@@ -42,7 +42,7 @@ class AStarHalfGridPlanner:
         a,b=request.start,request.target
         if a.translated(b.x_um[0]-a.x_um[0],b.y_um[0]-a.y_um[0])!=b:
             raise ValidationError('UNSUPPORTED_DEFORMATION','Rigid graph routing preserves every row and column offset')
-        bounds=request.world.bounds
+        bounds=request.routing_bounds or request.world.bounds
         left,bottom=bounds.lower.x_um,bounds.lower.y_um
         right=bounds.upper.x_um-(a.x_um[-1]-a.x_um[0])
         top=bounds.upper.y_um-(a.y_um[-1]-a.y_um[0])

@@ -1056,14 +1056,14 @@
       "sha256_normalization": "text_lf",
       "sha256": {
         "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
-        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "2b43d45507b0d5fa07f1118ed15896b1b2913e9f3e946bc8f3c5a0062a6afc0e",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
         "tests/test_qec_parallel_prefix.py": "b2792c1e88971c5a41040fbad870110dff488ef31fc2b90d8b47866b3c665fd4",
         "tests/test_native_prefix_packet.py": "4e8c67c6d40efe9926b935ea4042821bf660d539aa2b466f881cf5ab15c92d34",
-        "examples/run_parallel_shor15_prefix.py": "6076f8486b39fb09fdce9a00b56439fce2d0384cca4ec670e7eeb5d3b6b3d754",
+        "examples/run_parallel_shor15_prefix.py": "3efa96a41376a6cfa45db6516234bbf978d8f4f178fc36c9377c83ee3c39e351",
         "examples/export_shor15_prefix_packet.py": "7515ed8cde95ecc37ea3b2f5c5373d35e7ce0f05dfd88e9b8f614f3d4480af3d",
         "tools/audit_native_parallel_physical.py": "0e1f908be88d93c47a911e63426b4dba07a49908bc2eeeef2c18108c7c592fb5",
         "tests/test_native_parallel_independent_audit.py": "ed6804e8b555134234632c615ebfe7d4532d5c00e73c672a0a498d5b2896d439",
-        "docs/qec_native_parallel_prefix.md": "33d874bf701774703dcb7655cc095286a765fed39d64ca2689ab9f41d6ead8c1",
+        "docs/qec_native_parallel_prefix.md": "26d27dbfdd888a6e7c64a8df8f9fb3111596cbafc52a06b094727998dcce2918",
         "references/qec_pbc_validation/native_parallel_physical_2026_10_04.json": "2814541505d1c6981949ec936f9c9495766be57a9085504888543aca494cce1b",
         "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04/manifest.json": "2dff760f13291005c3bde7166ee216d4b5c9c42b8e2a10fc02864547b2c785a8"
       },
@@ -1084,7 +1084,17 @@
         "src/neutral_atom_strategies/scheduling/parallel_patch.py": "fe0d4259b12ff7b39b0aac0f0e918ea898f7f7720c920b1ff96ba899305be868",
         "examples/run_parallel_shor15_prefix.py": "c015c55c6924ffaef7d4ed3e22c0dd218329a53ed45626f2375262aa504c2115"
       },
-      "current_source_note": "Compatible current source after explicit patch parallel layout/observer updates; historical raw bytes and prior claims retained."
+      "current_source_note": "Current source after explicit standard-routing update; previous normalized/raw fingerprints and historical claims retained. Old fixed-path results use explicit legacy_5um.",
+      "historical_before_routing_standard_sha256": {
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "2b43d45507b0d5fa07f1118ed15896b1b2913e9f3e946bc8f3c5a0062a6afc0e",
+        "examples/run_parallel_shor15_prefix.py": "6076f8486b39fb09fdce9a00b56439fce2d0384cca4ec670e7eeb5d3b6b3d754",
+        "docs/qec_native_parallel_prefix.md": "33d874bf701774703dcb7655cc095286a765fed39d64ca2689ab9f41d6ead8c1"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
+        "examples/run_parallel_shor15_prefix.py": "3efa96a41376a6cfa45db6516234bbf978d8f4f178fc36c9377c83ee3c39e351",
+        "docs/qec_native_parallel_prefix.md": "6110d4e8a322dd42df9217cee0399cc5261cff53f6aef06703d27c5691eeaec5"
+      }
     },
     {
       "id": "L39",
@@ -1155,8 +1165,8 @@
       "sha256_normalization": "text_lf",
       "sha256": {
         "src/neutral_atom_env/visualization/recording.py": "c8c842762453fd97b121e9fa63bed09ee67de7e4a83485402d974f386c00043c",
-        "src/neutral_atom_env/visualization/viewer.js": "995fc9ed672fd9a9bb5d758d4faa1a26edb51afeb4fd225c3bcff2849e1d1691",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04",
+        "src/neutral_atom_env/visualization/viewer.js": "811cc4554f4a39df626ebdf7f118009977d9d752e15d729fd9933e3d589f63f9",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac",
         "examples/serve_native_parallel.py": "e7e176be9da806a3ecc167cedd18c394b9f344af047f6befc18b7598096ef335",
         "tests/test_multi_aod_visualization.py": "6e8150916b612e08e853f8c922f9ddc39d2a738a72c48631c799d5436c2b8804",
         "tests/test_native_parallel_report.py": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3",
@@ -1180,7 +1190,15 @@
         "examples/serve_native_parallel.py": "5fc1dfd161a0487e70f17a6a709244311c3a6827e9e5343f9273d1e1d14dd898",
         "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146"
       },
-      "current_source_note": "Compatible current source after explicit patch parallel layout/observer updates; historical raw bytes and prior claims retained."
+      "current_source_note": "Current source after explicit standard-routing update; previous normalized/raw fingerprints and historical claims retained. Old fixed-path results use explicit legacy_5um.",
+      "historical_before_routing_standard_sha256": {
+        "src/neutral_atom_env/visualization/viewer.js": "995fc9ed672fd9a9bb5d758d4faa1a26edb51afeb4fd225c3bcff2849e1d1691",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_env/visualization/viewer.js": "eddd458617e4802249a815cc8360fa11e33d3a70b49f1dbaed89d8ce0f939da2",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac"
+      }
     },
     {
       "id": "L41",
@@ -1203,9 +1221,9 @@
       "sha256": {
         "docs/qec_viewer_presentation.md": "a74b98a10dee1ce0b79771b3299b3ab93e51e1ae18f5bcb890c491c7fa031749",
         "instruction/visualization.md": "85a8f1b5aadcef9e1092843a5de536672de5340c6b495ed6503f58de09e053c8",
-        "src/neutral_atom_env/visualization/viewer.js": "995fc9ed672fd9a9bb5d758d4faa1a26edb51afeb4fd225c3bcff2849e1d1691",
-        "src/neutral_atom_env/visualization/viewer-shell.html": "4cc971635687c19eb7b3abde78d8d3127591a3d7d0cfa364d435c7767da5f795",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04",
+        "src/neutral_atom_env/visualization/viewer.js": "811cc4554f4a39df626ebdf7f118009977d9d752e15d729fd9933e3d589f63f9",
+        "src/neutral_atom_env/visualization/viewer-shell.html": "1307769aaf756e4d4a6a40fa9b50e7956dc7eb8c63b6aa045a2941d4fe0b9f19",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac",
         "tests/viewer_qec_scale.cjs": "2bddb0449c3482cb127915bff188a2cc8ce0db12eef47a9c07edbba36d9d33e5",
         "tests/test_native_parallel_report.py": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3",
         "references/qec_pbc_validation/qec_viewer_presentation_2026_10_04.json": "ffa9a395c3d1f567c482d79af8fa3b5d9d7e1660f7ea19244926f25db64f333c"
@@ -1225,7 +1243,17 @@
         "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "132418f42686b2013c8686e52a4505c7d9afb135abb36bba4edca361f93b3f11",
         "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146"
       },
-      "current_source_note": "Compatible current source after explicit patch parallel layout/observer updates; historical raw bytes and prior claims retained."
+      "current_source_note": "Current source after explicit standard-routing update; previous normalized/raw fingerprints and historical claims retained. Old fixed-path results use explicit legacy_5um.",
+      "historical_before_routing_standard_sha256": {
+        "src/neutral_atom_env/visualization/viewer.js": "995fc9ed672fd9a9bb5d758d4faa1a26edb51afeb4fd225c3bcff2849e1d1691",
+        "src/neutral_atom_env/visualization/viewer-shell.html": "4cc971635687c19eb7b3abde78d8d3127591a3d7d0cfa364d435c7767da5f795",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_env/visualization/viewer.js": "eddd458617e4802249a815cc8360fa11e33d3a70b49f1dbaed89d8ce0f939da2",
+        "src/neutral_atom_env/visualization/viewer-shell.html": "3a28e9396bf16f90ed5ca46ccdf619f7c4bb87d1e5c2b3f8c8699fee8f5cc66c",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac"
+      }
     },
     {
       "id": "L42",
@@ -1260,10 +1288,10 @@
       "sha256_normalization": "text_lf",
       "sha256": {
         "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "79ae4023fb039978ba243891c8e9e0ca14096a9dfe54b1e8dabb7d6e2fe1bc2f",
-        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "2b43d45507b0d5fa07f1118ed15896b1b2913e9f3e946bc8f3c5a0062a6afc0e",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
         "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04",
-        "examples/run_parallel_shor15_prefix.py": "6076f8486b39fb09fdce9a00b56439fce2d0384cca4ec670e7eeb5d3b6b3d754",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac",
+        "examples/run_parallel_shor15_prefix.py": "3efa96a41376a6cfa45db6516234bbf978d8f4f178fc36c9377c83ee3c39e351",
         "examples/serve_native_parallel.py": "e7e176be9da806a3ecc167cedd18c394b9f344af047f6befc18b7598096ef335",
         "tools/propose_enola_patch_layout.py": "2ece8100d659affb49ddcf6fc1ddcd76e5f6c43b215a9b1b493a71934c28bbc1",
         "tools/audit_enola_patch_proposal.py": "f220c22576f47200ab0169815ae2c975a1a9a6833cb74e015315421af64896c6",
@@ -1274,10 +1302,10 @@
         "tests/test_patch_parallel_audit.py": "43426be91c2fe1159b6581ddb4c4b17783d87991b70adbc2c8312eac67df7731",
         "tests/test_patch_service_groups.py": "c109ca8e681e9b83afdef3271ded000ee9c8ce788301f359f381981a519f7189",
         "tests/test_native_parallel_report.py": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3",
-        "instruction/compiler_contract.md": "d78b057159b6479355f6d0785877910f1e8128ec2ac4639dc1b222f5df67f393",
+        "instruction/compiler_contract.md": "c66d8f118dbf62a267ba2d8c492c35636a82a62a12851af9986f63ded95f1943",
         "instruction/aod_backends.md": "3cd97b0c94481643ba56da41b93469f847dbf2b76779ab417b54ee001b5e5ca9",
         "instruction/visualization.md": "85a8f1b5aadcef9e1092843a5de536672de5340c6b495ed6503f58de09e053c8",
-        "docs/qec_patch_parallel_layout.md": "9518211b9d0d6ac3c6809a4cb28cc15a4880bd36fa3512b4c4db21853eef0dda",
+        "docs/qec_patch_parallel_layout.md": "96b6dcc783acfa7beea90402f000e56f4a2cb662aebbd5d69ca3202a594de261",
         "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json": "7d80808959f235952461b25ee81f8236b6b8c4966293b40f765bfba0be5cedf1",
         "references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json": "dd15ca36de8eca15a5b4f8895437b2cfd9781161237f686f5adab50cba754fa4"
       },
@@ -1307,7 +1335,22 @@
       "historical_before_patch_parallel_normalized_sha256": {
         "docs/qec_patch_parallel_layout.md": "f288df122bebdc22ffb467b0812c86c0847bd19cfe396c8ae928c3035c5340a3",
         "references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json": "9f6adc98eb3eb5663eb5172ff6e082f06f2d9674def90fd60fce6dbc8ecf0d5d"
-      }
+      },
+      "historical_before_routing_standard_sha256": {
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "2b43d45507b0d5fa07f1118ed15896b1b2913e9f3e946bc8f3c5a0062a6afc0e",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04",
+        "examples/run_parallel_shor15_prefix.py": "6076f8486b39fb09fdce9a00b56439fce2d0384cca4ec670e7eeb5d3b6b3d754",
+        "instruction/compiler_contract.md": "d78b057159b6479355f6d0785877910f1e8128ec2ac4639dc1b222f5df67f393",
+        "docs/qec_patch_parallel_layout.md": "9518211b9d0d6ac3c6809a4cb28cc15a4880bd36fa3512b4c4db21853eef0dda"
+      },
+      "current_raw_sha256": {
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac",
+        "examples/run_parallel_shor15_prefix.py": "3efa96a41376a6cfa45db6516234bbf978d8f4f178fc36c9377c83ee3c39e351",
+        "instruction/compiler_contract.md": "be1e88ef6798e786d736ada67ec495176b60a57d9599a1c4038d9cb72acbe990",
+        "docs/qec_patch_parallel_layout.md": "96b6dcc783acfa7beea90402f000e56f4a2cb662aebbd5d69ca3202a594de261"
+      },
+      "current_source_note": "Current source after explicit standard-routing update; previous normalized/raw fingerprints and historical claims retained. Old fixed-path results use explicit legacy_5um."
     },
     {
       "id": "L43",
@@ -1329,6 +1372,73 @@
       "url": "https://arxiv.org/html/2405.15095v2",
       "retrieved_at": "2026-10-04",
       "used_scope": "Scheduling/placement/routing distinction and commuting/dependency scope, not a QEC reorder proof"
+    },
+    {
+      "id": "L45",
+      "kind": "repository_snapshot",
+      "title": "设备感知最短合法直达与2.5μm半格标准routing，完整单块/12块同初态对照",
+      "version": "validated rigid routing standard 2026-10-04",
+      "retrieved_at": "2026-10-04",
+      "paths": [
+        "src/neutral_atom_strategies/motion/validated_rigid.py",
+        "src/neutral_atom_strategies/motion/astar.py",
+        "src/neutral_atom_strategies/motion/planners.py",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py",
+        "examples/run_parallel_shor15_prefix.py",
+        "tests/test_validated_rigid_routes.py",
+        "tests/test_astar_routes.py",
+        "src/neutral_atom_env/visualization/viewer.js",
+        "src/neutral_atom_env/visualization/viewer-shell.html",
+        "instruction/motion_planning.md",
+        "instruction/compiler_contract.md",
+        "docs/qec_routing_standard.md",
+        "docs/qec_patch_parallel_layout.md",
+        "references/qec_pbc_validation/routing_standard_2026_10_04.json"
+      ],
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "src/neutral_atom_strategies/motion/validated_rigid.py": "bb9b3262fd3cfcc9988342df3b45b33e20d5a88c5d65030b48c8388ee05732a3",
+        "src/neutral_atom_strategies/motion/astar.py": "78ddc80a34bdbe03af26765ce9ee9e4f16955712e12b14aa2059545e1f9f2c2c",
+        "src/neutral_atom_strategies/motion/planners.py": "e577442e601b4b8e54ad58cf60356c952523ce5c0f92ad30d61cd47987cb8fd3",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac",
+        "examples/run_parallel_shor15_prefix.py": "3efa96a41376a6cfa45db6516234bbf978d8f4f178fc36c9377c83ee3c39e351",
+        "tests/test_validated_rigid_routes.py": "174cf72d2e79e9abe45a57e3c969bb1f674c66e9367b724d67541ec030cd3fa6",
+        "tests/test_astar_routes.py": "0c7ba8771d5663e9c7e81cb53d6d94f3002fd78a9fc70b6f66f7f419bf82ee39",
+        "src/neutral_atom_env/visualization/viewer.js": "811cc4554f4a39df626ebdf7f118009977d9d752e15d729fd9933e3d589f63f9",
+        "src/neutral_atom_env/visualization/viewer-shell.html": "1307769aaf756e4d4a6a40fa9b50e7956dc7eb8c63b6aa045a2941d4fe0b9f19",
+        "instruction/motion_planning.md": "717704f262f777960f8ff4587438725de24972a5216e71377f32486ab7163470",
+        "instruction/compiler_contract.md": "c66d8f118dbf62a267ba2d8c492c35636a82a62a12851af9986f63ded95f1943",
+        "docs/qec_routing_standard.md": "9d6a150a18d998b3e9b984f8cf7521ba4509fa8afc27e47133855344c6c76949",
+        "docs/qec_patch_parallel_layout.md": "96b6dcc783acfa7beea90402f000e56f4a2cb662aebbd5d69ca3202a594de261",
+        "references/qec_pbc_validation/routing_standard_2026_10_04.json": "96ce7d43179d7e64318fdd1274a950d1f4d172c37b70021fe76aaa3dd9dbccbe"
+      },
+      "raw_sha256": {
+        "src/neutral_atom_strategies/motion/validated_rigid.py": "bb9b3262fd3cfcc9988342df3b45b33e20d5a88c5d65030b48c8388ee05732a3",
+        "src/neutral_atom_strategies/motion/astar.py": "81af36805971b394d20e555ca7e1938b49178c1fd995d304ffd592d43cd3436d",
+        "src/neutral_atom_strategies/motion/planners.py": "2809ae1e31db130c73882d8c859b02dc31bc504bd9f6db18341c6f51851f30db",
+        "src/neutral_atom_strategies/scheduling/parallel_patch.py": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac",
+        "examples/run_parallel_shor15_prefix.py": "3efa96a41376a6cfa45db6516234bbf978d8f4f178fc36c9377c83ee3c39e351",
+        "tests/test_validated_rigid_routes.py": "174cf72d2e79e9abe45a57e3c969bb1f674c66e9367b724d67541ec030cd3fa6",
+        "tests/test_astar_routes.py": "02dad3d0dedeb2637a371f125e9c84bd81425084bf6ca2662e41fb44fbae21b8",
+        "src/neutral_atom_env/visualization/viewer.js": "eddd458617e4802249a815cc8360fa11e33d3a70b49f1dbaed89d8ce0f939da2",
+        "src/neutral_atom_env/visualization/viewer-shell.html": "3a28e9396bf16f90ed5ca46ccdf619f7c4bb87d1e5c2b3f8c8699fee8f5cc66c",
+        "instruction/motion_planning.md": "d267965e87655a8c5c41225d1fb43ee3fc1b66a8848d99646a8ac7b6048eb638",
+        "instruction/compiler_contract.md": "be1e88ef6798e786d736ada67ec495176b60a57d9599a1c4038d9cb72acbe990",
+        "docs/qec_routing_standard.md": "d16b4199c131a3854e5d33c17dd72f61082eddb1188f683e44105e96ad092e39",
+        "docs/qec_patch_parallel_layout.md": "96b6dcc783acfa7beea90402f000e56f4a2cb662aebbd5d69ca3202a594de261",
+        "references/qec_pbc_validation/routing_standard_2026_10_04.json": "73de3b64d9db0dbb98cd61207ae0fa193218a2625af99a2d1b1a89c9a465f781"
+      },
+      "verified_scope": "Fixed rigid masks/holders, Euclidean direct or bounded half-grid distance optimum; complete unchanged Clifford-prefix replay and independent audits",
+      "historical_before_routing_standard_sha256": {
+        "docs/qec_routing_standard.md": "da44f5c8bdbb7d28bbb8b5f72df0404415453fb234c2bfc1d70f6867e3330de7"
+      },
+      "current_raw_sha256": {
+        "docs/qec_routing_standard.md": "d16b4199c131a3854e5d33c17dd72f61082eddb1188f683e44105e96ad092e39"
+      },
+      "current_source_note": "Current source after explicit standard-routing update; previous normalized/raw fingerprints and historical claims retained. Old fixed-path results use explicit legacy_5um."
     }
   ]
 }

@@ -46,6 +46,18 @@ def render_report(directory):
             bookmarks.append({'label': label + ' × ' + str(len(op.get('gate_ids') or [op['gate_id']])),
                               'time': (op['start']+op['end'])/2})
     moves = [o for o in operations if o['kind'] == 'aod_move' and o.get('moving_count', 0) > 0]
+    routing_note = ''
+    if summary.get('routing_policy') == 'shortest-direct-or-halfgrid-v1':
+        routing_note = ('<p id="routing-result">运输路径：优先验证直达；受阻时搜索 '
+                        '2.5 μm 偏移、5 μm 间隔的半格通道。去程和归还分别按实际状态规划。</p>')
+        def half_grid(value):
+            return abs((value-2.5)/5-round((value-2.5)/5)) < 1e-8
+        example = next((op for op in moves if any(
+            half_grid(op.get('target_axes', {}).get(axis, [0])[0])
+            for axis in ('x_um', 'y_um'))), None)
+        if example:
+            bookmarks.append({'label': '2.5 μm 半格绕障运输',
+                              'time': (example['start']+example['end'])/2})
     overlap = next(((a, b) for i, a in enumerate(moves) for b in moves[i+1:]
                     if a.get('aod_id', 'AOD_0') != b.get('aod_id', 'AOD_0') and
                     min(a['end'], b['end'])-max(a['start'], b['start']) > 1e-8), None)
@@ -84,6 +96,7 @@ def render_report(directory):
 <header><small>编码 Shor15 / d=3 / 实际 Executor 记录</small><h1>按码块编译，查看真正的并行操作</h1>
 <p>这次编译选取完整线路的初始化与首次综合征提取。相同操作跨码块合批；每次装载、运动、CZ、读出和归还都进入同一物理时间线。</p>
 __LAYER_NOTE__
+__ROUTING_NOTE__
 <details id="experiment-metrics"><summary>实验规模与合批指标（按需查看）</summary>
 <div class="metrics"><div class="metric"><small>源线路原生门</small><strong>__SOURCE_COUNT__</strong></div><div class="metric"><small>d=3 算法码块</small><strong>__PATCH_COUNT__</strong></div><div class="metric"><small>实际物理原子</small><strong>__ATOM_COUNT__</strong></div><div class="metric"><small>独立 AOD</small><strong>__DEVICES__</strong></div><div class="metric"><small>最大 CZ 同批</small><strong>__MAX_CZ__</strong></div><div class="metric"><small>模型总耗时 / μs（含归还）</small><strong>__TIME__</strong></div></div>
 <p><small>主要指标与真实时间占用见回放的统计区。此处规模与合批计数不作为完整物理 Shor 或整体加速比的证据。</small></p></details>
@@ -109,6 +122,7 @@ for(const row of bookmarks){const button=document.createElement('button');button
                     '__TIME__': f"{audit['physical_time_us']:,.3f}",
                     '__COMPARISON__': comparison, '__BOOKMARKS__': encoded_bookmarks}
     replacements['__LAYER_NOTE__'] = layer_note
+    replacements['__ROUTING_NOTE__'] = routing_note
     replacements['__LAYOUT_EVIDENCE__'] = (' · <a href="patch-parallel-audit.json">布局与码内批次审计</a>'
         if summary.get('placement_layout') in ('interleaved', 'enola') else '')
     for marker, value in replacements.items():

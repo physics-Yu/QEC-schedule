@@ -1,5 +1,7 @@
 # Agent 工作准则与工程导航
 
+2026-10-04 用户固化 routing：码块编译默认先验证直达，受阻时求既有 2.5 μm 偏移半格通道中的最短合法距离；统一设备感知入口及单块→多块→工厂实施顺序见 [标准路由](docs/qec_routing_standard.md)。不得沿用写死的 5/10 μm 折线冒充寻路；历史路线仅用于明确标注的对照。捕获、完整活动交点、备用轴、旁观原子和物理阈值继续完整校验。
+
 2026-10-04 最新用户范围修正：[共享协议v2的当前任务目标](instruction/qec_factory_pipeline.md#当前任务目标纯调度模拟)为完整magic factory调度模块→同token单injection闭环→完整processor按需接入（S1–S3）。运行时不要求量子态振幅或非Clifford/Born后端；报告源须声明并在合法读出完成后由Executor提交。量子参考/质量研究独立可选，覆盖下方旧F1/F2中强制态后端的前置门槛；物理约束与包边界保持。
 
 2026-10-04 单码块布局与并行编译入口见 [d=3 码内合批与 Enola 适配](docs/qec_patch_parallel_layout.md)。显式 `interleaved/enola` 初态与 `intra_patch/intra_services/pair_search` 保持 canonical/hook/CSS 源协议和有限 CZ；Enola 仅官方初始 SA proposer，实际运输走本项目 Executor 与完整初态重放。此入口服务下方 factory-first 主线，不把 Clifford 前缀推广为完整物理 Shor 或魔态工厂。
