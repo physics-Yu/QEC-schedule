@@ -1,5 +1,9 @@
 # 当前交接状态
 
+## 2026-10-04 Enola + MZ 同区兼容设计
+
+用户目标为COMPUTE=EZ=SZ、独立带外MZ。已整理[兼容设计](../docs/qec_enola_mz_design.md)和E01–E10[流程目录](../references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json)：作者2Q规划、5μm硬件适配、MZ/1Q服务、轻量唯一Executor与controller。OPEN：作者空活动轴与当前载荷推导mask不等价、固定19×15/paired4几何需版本化适配、full-band CZ资源须覆盖旁观移动、原memory helper含data末测不能直接循环；返程从当时RF重新绑定。最短路径范围区分rigid图与row/column伸缩。单patch普通两轮/MZ分波/恢复→两patch→四patch/143背景→factory同token单T；本轮只固化设计，未运行native、未切换默认或修改freeze-v4。检查与发布见[日志](logs/2026-10-04-enola-mz-design.md)，RAG新增K72/L49/L50。
+
 ## 2026-10-04 全 x EZ 与事件内核当前资格
 
 最终d3-global-ez-attempt5、v2 world x −20…200/EZ y50…80 μm，全部holder/旁观者有限CZ pairs及单独trap域审核。17atoms/2rounds/218gates/1123ops/25reports，48CZ对/8pulse/max6，82,554.39152192436μs；66source/14artifact、7blocks/196alignment、inflight/final checkpoint及2261journal独立几何/精确重放PASS。显式relative start/end/依赖/资源与scheduled事件、共同cubic当前pose、多inflight coldrestore通过；原生END链仍串行，[]同步batch保留，一般重叠由runtime专项验证。

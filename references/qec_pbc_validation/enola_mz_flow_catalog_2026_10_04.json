@@ -1,0 +1,318 @@
+{
+  "schema": "qec-enola-mz-flow-catalog/1",
+  "reviewed_at": "2026-10-04",
+  "status": "engineering_design_not_implemented",
+  "physical_qualified": false,
+  "author_commit": "2944dbf4e163e8d2eeeec607add0d9139edce689",
+  "qualified_baseline_commit": "1f996a7d121d88effa2873b70c081ae0dadd19ab",
+  "profile_status": "new_merged_compute_profile_required_exact_bounds_not_selected",
+  "zones": {
+    "compute_equals_ez_equals_sz": true,
+    "ez_x_equals_world_x": true,
+    "mz_outside_cz_band": true,
+    "trap_inventory_separate": true
+  },
+  "project_parameters_um": {
+    "slm_grid": 5,
+    "occupied_parking_min": 10,
+    "cz_radius": 6,
+    "nonpartner_min": 10,
+    "transport_min": 1,
+    "raman_min": 5,
+    "rf_axis_gap_min": 2
+  },
+  "axis_masks_status": "must_prove_per_step_equivalence_or_version_explicit_masks_IR_before_claiming_faithful_execution",
+  "report_policy": "declared_scheduling_source_commit_only_at_measurement_completion",
+  "fidelity": null,
+  "new_native_runs": 0,
+  "phases": [
+    [
+      "E02",
+      "E03",
+      "E05",
+      "E10"
+    ],
+    [
+      "E06"
+    ],
+    [
+      "E07"
+    ],
+    [
+      "E08",
+      "E09"
+    ]
+  ],
+  "flows": [
+    {
+      "id": "E01",
+      "name": "patch_prepare_reset",
+      "status": "design_acceptance_pending",
+      "physical_qualified": false,
+      "inputs": [
+        "source preparation fragment",
+        "actual holders",
+        "epoch"
+      ],
+      "required_steps": [
+        "explicit MZ reset when requested",
+        "source preparation",
+        "return and store"
+      ],
+      "postconditions": [
+        "prepared patch at admitted compute layout",
+        "controller advances epoch only on actual lifecycle reset/reprepare completion",
+        "ordinary syndrome reset preserves accepted token epoch"
+      ],
+      "negative_cases": [
+        "no implicit initialization"
+      ]
+    },
+    {
+      "id": "E02",
+      "name": "compute_two_qubit_layer",
+      "status": "design_acceptance_pending",
+      "physical_qualified": false,
+      "inputs": [
+        "closed source DAG slice",
+        "all live atoms",
+        "admitted layout"
+      ],
+      "required_steps": [
+        "author 2Q plan",
+        "versioned hardware lowering",
+        "full-band pulse"
+      ],
+      "postconditions": [
+        "each source occurrence once",
+        "actual pair-set equals intended pair-set"
+      ],
+      "negative_cases": [
+        "7um nonpartner",
+        "parked storage spectator",
+        "empty active trap sweep",
+        "cross-wire barrier violation"
+      ]
+    },
+    {
+      "id": "E03",
+      "name": "two_continuous_syndrome_rounds",
+      "status": "design_acceptance_pending",
+      "physical_qualified": false,
+      "inputs": [
+        "17-role d3 patch",
+        "pure syndrome round fragment",
+        "report source"
+      ],
+      "required_steps": [
+        "2Q layers and source 1Q",
+        "8 ancillary readout/reset visits per round",
+        "repeat round"
+      ],
+      "postconditions": [
+        "16 syndrome reports",
+        "16 source resets",
+        "no terminal data measurement",
+        "data carrier identity unchanged"
+      ],
+      "negative_cases": [
+        "repeated full memory helper with terminal data readout",
+        "dropped repeated coupling",
+        "early report"
+      ]
+    },
+    {
+      "id": "E04",
+      "name": "terminal_data_readout_x_z",
+      "status": "design_acceptance_pending",
+      "physical_qualified": false,
+      "inputs": [
+        "9 data carriers",
+        "explicit terminal fragment",
+        "basis"
+      ],
+      "required_steps": [
+        "H before M for X basis",
+        "MZ service",
+        "commit reports"
+      ],
+      "postconditions": [
+        "9 terminal data reports",
+        "terminal phase recorded"
+      ],
+      "negative_cases": [
+        "basis label without actual H",
+        "terminal readout in ordinary round"
+      ]
+    },
+    {
+      "id": "E05",
+      "name": "mz_capacity_waves_and_return",
+      "status": "design_acceptance_pending",
+      "physical_qualified": false,
+      "inputs": [
+        "actual full RF and masks",
+        "declared slot and transport capacity K",
+        "K+1 requests",
+        "return condition"
+      ],
+      "required_steps": [
+        "nearest legal candidate search",
+        "LOAD route STORE",
+        "M and requested RESET",
+        "LOAD return STORE",
+        "capacity waves",
+        "rebind actual current RF/masks before each LOAD; timed CONFIGURE if needed"
+      ],
+      "postconditions": [
+        "slots uniquely reserved",
+        "all full RF and masks legal",
+        "required return holders and layout",
+        "whole service cost and selection recorded"
+      ],
+      "negative_cases": [
+        "slot collision",
+        "atom count mistaken for RF capacity",
+        "nearest endpoint with unsafe whole visit"
+      ]
+    },
+    {
+      "id": "E06",
+      "name": "two_patch_interleaved_qec",
+      "status": "design_acceptance_pending",
+      "physical_qualified": false,
+      "inputs": [
+        "2 source patches",
+        "global illumination resources",
+        "MZ reservations",
+        "profile-declared measurement/reset and compute pulse compatibility"
+      ],
+      "required_steps": [
+        "merge only dependency-compatible operations",
+        "schedule compute and MZ services",
+        "audit full overlap intervals"
+      ],
+      "postconditions": [
+        "per-patch order and reports retained",
+        "full-band global resource safety",
+        "all illuminated atom holders and positions fixed throughout CZ; containing AOD locked; no incoming transport"
+      ],
+      "negative_cases": [
+        "target-only lock with moving spectator",
+        "MZ return crossing active CZ band"
+      ]
+    },
+    {
+      "id": "E07",
+      "name": "four_patch_and_143_background",
+      "status": "design_acceptance_pending",
+      "physical_qualified": false,
+      "inputs": [
+        "4 patches or declared 143-atom scenario",
+        "all nonparticipating inventory",
+        "all device RF and masks",
+        "qualified dual-device independent reviewer before magic device admission"
+      ],
+      "required_steps": [
+        "bounded source-complete fragments",
+        "capacity-aware services",
+        "cross-device and spectator audit"
+      ],
+      "postconditions": [
+        "no hidden movement of background atoms",
+        "separate loaded and active Cartesian capacity evidence"
+      ],
+      "negative_cases": [
+        "foreign carrier omitted",
+        "empty spare axis collision",
+        "false native multi-AOD claim"
+      ]
+    },
+    {
+      "id": "E08",
+      "name": "factory_accept_reject_reproduce",
+      "status": "design_acceptance_pending",
+      "physical_qualified": false,
+      "inputs": [
+        "frozen full factory protocol",
+        "all input provenance",
+        "declared reports and attempt budget",
+        "first acceptance fixture: max 2 attempts, forced reject then accept"
+      ],
+      "required_steps": [
+        "complete attempt",
+        "committed acceptance checks",
+        "accepted inventory or real reject cleanup/reset",
+        "new epoch reproduction"
+      ],
+      "postconditions": [
+        "same accepted token and carrier",
+        "rejected resources excluded",
+        "all input and cleanup cost recorded"
+      ],
+      "negative_cases": [
+        "missing input cost",
+        "reject enters inventory",
+        "reset without new epoch provenance"
+      ]
+    },
+    {
+      "id": "E09",
+      "name": "same_token_handoff_injection",
+      "status": "design_acceptance_pending",
+      "physical_qualified": false,
+      "inputs": [
+        "accepted token carrier epoch",
+        "consumer request",
+        "both declared feedback trajectories",
+        "same legitimate pre-branch checkpoint for separate feedback replays"
+      ],
+      "required_steps": [
+        "reserve",
+        "actual transport and handoff",
+        "joint measurement and source readout",
+        "feedback frame",
+        "consume once and release"
+      ],
+      "postconditions": [
+        "delivered carrier equals factory carrier",
+        "actual required reports ready",
+        "single consumer",
+        "resource terminal readout, actual reset/release; consume once per replay"
+      ],
+      "negative_cases": [
+        "early consume",
+        "wrong epoch",
+        "double consume",
+        "new resource invented at handoff"
+      ]
+    },
+    {
+      "id": "E10",
+      "name": "checkpoint_and_concurrent_cold_restore",
+      "status": "design_acceptance_pending",
+      "physical_qualified": false,
+      "inputs": [
+        "core and controller checkpoint",
+        "masks",
+        "report cursor",
+        "phase",
+        "at least 2 legitimate in-flight operations"
+      ],
+      "required_steps": [
+        "cut inside LOAD MOVE STORE MEASURE RESET",
+        "noninteger epoch restore",
+        "continue same operation stream"
+      ],
+      "postconditions": [
+        "exact final state reports and journal",
+        "inventory and phase match"
+      ],
+      "negative_cases": [
+        "tampered masks",
+        "lost controller inventory",
+        "report committed before M completion"
+      ]
+    }
+  ]
+}

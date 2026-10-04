@@ -1561,7 +1561,7 @@
       "sha256_normalization": "text_lf",
       "sha256": {
         "docs/native_kernel_migration.md": "7edb8170b5423faa23e096d912df78bd86589169d58776c3fe7b37d2f3670e14",
-        "instruction/native_kernel_migration.md": "750abbc623421ab0a619f081bebbc40a1c967afec2baea27dac1caea9c0aa10c",
+        "instruction/native_kernel_migration.md": "0c27b025d04ff73de571e7579d9b227941ffe87f0dfc91c87798219e0cff74cc",
         "references/qec_pbc_validation/native_kernel_2026_10_04.json": "07a34d679f7aa9a3dbd0a28a0f217829521876aeb4da4e586d7007aa51fc9f12",
         "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
         "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
@@ -1621,7 +1621,7 @@
       },
       "current_raw_sha256": {
         "docs/native_kernel_migration.md": "7edb8170b5423faa23e096d912df78bd86589169d58776c3fe7b37d2f3670e14",
-        "instruction/native_kernel_migration.md": "796d642fd4b7a6277b4b747e576e06619ec39cfe37280176f74f6b85478448e8",
+        "instruction/native_kernel_migration.md": "71ebe558f8a473e14a9a458501dd8569ef7189a94cd92deebc9902c5dd65e808",
         "src/neutral_atom_kernel/model.py": "4ece518b44de9d8fbfc0b949853798e55532026ac71995cc5e1d3f9ceca009ac",
         "src/neutral_atom_kernel/runtime.py": "f2cd8a68c621e1198d1aeb3d21d4fa574448330e1da916b5a84dc05bddaf80e4",
         "src/neutral_atom_kernel/audit.py": "a75ee4ea8ef0345fc8750b767b20f475d61dc588c7f52af04bcc6d6dc17772e3",
@@ -1636,7 +1636,10 @@
         "tests/test_native_kernel_audit.py": "5a615ed5b972bf38fdaf5345aa73424b0549c4b75a634cd91e73031ed51f01f7",
         "tests/test_native_kernel_view.py": "4c6d8ad500166cea0cca9d8b1ea26efb3588f242b83540022764e94ed1270c8f"
       },
-      "current_source_note": "Current normalized sources after global-x EZ / scheduled start-end / cubic motion qualification; old raw_sha256 and historical claim/result payloads remain unchanged."
+      "current_source_note": "Current normalized sources after global-x EZ / scheduled start-end / cubic motion qualification; old raw_sha256 and historical claim/result payloads remain unchanged.",
+      "historical_before_enola_mz_design_sha256": {
+        "instruction/native_kernel_migration.md": "750abbc623421ab0a619f081bebbc40a1c967afec2baea27dac1caea9c0aa10c"
+      }
     },
     {
       "id": "L48",
@@ -1736,6 +1739,40 @@
       "current_raw_sha256": {
         "instruction/logs/2026-10-04-global-ez-scheduled-kernel.md": "b435c5d3f9e6d6ff6a28d599f0e6d742fb2213f86e39bda9066f30553f95e5b0"
       }
+    },
+    {
+      "id": "L49",
+      "kind": "repository_snapshot",
+      "title": "Enola+MZ merged compute compatibility design and composable flow catalog",
+      "version": "engineering design 2026-10-04; no native execution or physical qualification",
+      "paths": [
+        "docs/qec_enola_mz_design.md",
+        "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json"
+      ],
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "docs/qec_enola_mz_design.md": "b1eb8de31652abd495577c0a21e7b27db3880c71a4657810147a8ea85cb834bd",
+        "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "93b589f438f864d6d3c7ca265563e97d23f0658924635509b31d903022d7e9bc"
+      },
+      "verified_scope": "Design review only: 10 acceptance workflows, source semantics, RF masks, full-band resources and MZ service boundaries; no implemented backend claim.",
+      "historical_before_enola_mz_design_sha256": {
+        "docs/qec_enola_mz_design.md": "eff7f48d9ddfe8a7cb553c40b5fe5bdd16281f1d25919ffd9f9141a5d38e42f2",
+        "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "e345a6da5b320aae99d0d1ee85b9f0dd5e7c101301cedddc95febea2229bc4b2"
+      },
+      "current_raw_sha256": {
+        "docs/qec_enola_mz_design.md": "b1eb8de31652abd495577c0a21e7b27db3880c71a4657810147a8ea85cb834bd",
+        "references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json": "24658d4e44eb688f3f6e88ad120362c8c8c751dc42569ad9bb2140fd2bf2fbb2"
+      }
+    },
+    {
+      "id": "L50",
+      "kind": "software",
+      "title": "Enola full compiler pinned author source",
+      "version": "commit 2944dbf4e163e8d2eeeec607add0d9139edce689",
+      "url": "https://github.com/UCLA-VAST/Enola/tree/2944dbf4e163e8d2eeeec607add0d9139edce689",
+      "retrieved_at": "2026-10-04",
+      "verified_scope": "Read-only source audit of enola.py, router.py, codegen.py and placer.py: pair-only input, fixed geometry, activation masks, Init, incomplete geometric checks and single-AOD executable output. No new compiler run.",
+      "license": "BSD-3-Clause"
     }
   ]
 }

@@ -2,6 +2,8 @@
 
 生效日期：2026-10-04。状态：独立内核首阶段已验收；工厂接入与完整 Shor 尚未验收。
 
+2026-10-04 后续用户分区目标为[Enola + MZ 同区兼容设计](../docs/qec_enola_mz_design.md)：COMPUTE=EZ=SZ，轻量内核继续唯一执行，Enola与MZ服务在策略层组合。现QMAP/freeze-v4资格保留；新目标的5μm硬件lowering、显式空活动轴语义、纯syndrome fragment和全带并发资源尚待实现，不表示默认backend已切换。
+
 后续用户修正：必须遵守[全 x EZ 照明合同](../docs/qec_global_ez_contract.md)。首阶段 v1 是串行组件资格；其局部照明范围和线性 row_column 回放不符合当前交付标准。补充显式时序／依赖／资源的事件式并发、连续当前坐标与共同三次轨迹，保留 native 真实 batch；新资格独立记录，不把旧结果改称已符合。
 
 用户进一步授权的主目标是迁移内核、获得快速运行能力并去除探索时期的臃肿架构。仅给旧 Executor 增加 trusted 分支或把 QMAP 输出送回旧 ProgramBuilder，不满足这次目标。可采用原生编译器的 EZ 配对布局或 Enola 类指令加显式 measurement 服务；新平台必须版本化，保留原子身份、有限 CZ、旁观者、安全间距及报告完成语义。

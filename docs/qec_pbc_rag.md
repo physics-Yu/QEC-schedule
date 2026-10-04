@@ -2,7 +2,7 @@
 
 研究与工作树核对日期：**2026-10-04**（历史来源保留各自日期）。本知识库服务于本项目的中性原子后端：最终输出完整原生电路、测量反馈、原子操作时序和 Executor 证据。它不是只收集 surface code 的介绍，也不把已有 PPR 图视为完整 PBC 物理实现。
 
-主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，71个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，14个固定版本外部来源、46组本地来源与205个文件SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)，81项固定召回用例。
+主语料：[knowledge.jsonl](../references/qec_pbc_rag/knowledge.jsonl)，72个自足知识块。来源：[sources.json](../references/qec_pbc_rag/sources.json)，15个固定版本外部来源、47组本地来源与207个文件SHA256。检索示例：[query_cases.json](../references/qec_pbc_rag/query_cases.json)，84项固定召回用例。
 
 最新批准阶段：完整12wire编码原生Shor理想分支已经实际生成，seed7和最终seed0得到3和5，完整失败重试成本及逐功能native操作observer可核对。当前能力与限制见§25–28及K55–K61。历史§18–24和K50–K54保留各次producer、事故、单patch能力与Factoring15只读提案快照；新增内容不回写旧失败。完整encoded **physical Executor** Shor与factory-first工厂主线仍未完成。
 
@@ -430,3 +430,9 @@ K66/K67与L42–L44新增[布局复现](qec_patch_parallel_layout.md)、[冻结�
 ## 35. 当前全 x EZ 与事件内核资格
 
 K70/L47保留首轻量内核v1历史，K71/L48记录最终全x v2/attempt5：全部存活旁观作用对和显式trap域、canonical relative start/end、scheduled资源/依赖、共同cubic/fullRF、多个inflight冷恢复和batch-report身份。真实17atoms两轮218gates/1123ops/25reports与独立66source/14artifact/7blocks/2261journal审核PASS，171最终pytest、277modules0违规；default视窗/请求390×844窄屏全带caption与console0、两Node回放另验。原生@+ END链仍串行，[]batch同步保留；runtime overlap不代表native一般并发或多AOD。attempt3真实浮点失败保留、attempt4真实PASS为最终身份修复前快照、当前freeze-v4取代v3。旧raw/hash/claim与ff9ab421历史发布回执保持，不用旧结果推工厂/完整physicalShor资格。见[迁移/API/复现](native_kernel_migration.md)、[全带合同](qec_global_ez_contract.md)、[新摘要](../references/qec_pbc_validation/global_ez_kernel_2026_10_04.json)、[追加日志](../instruction/logs/2026-10-04-global-ez-scheduled-kernel.md)。
+
+## 36. Enola + MZ 的同区目标与标准流程
+
+K72/L49/L50记录用户最新的COMPUTE=EZ=SZ设计，见[兼容方案](qec_enola_mz_design.md)与[十项待验收流程](../references/qec_pbc_validation/enola_mz_flow_catalog_2026_10_04.json)。作者共用SLM/AOD交互区域匹配目标，完整compiler仍需5μm几何、空活动轴mask、源DAG/1Q/报告边界和MZ往返适配；当前QMAP小例资格与旧Enola初始SA结果保持原范围。本轮仅设计审查，无新native或physical PASS。
+
+持续QEC每轮只读8syndrome，data终端读出独立；全局CZ覆盖停车与库存原子，target-only资源锁不足。MZ返程从当时真实RF/masks重新绑定，直达和2.5μm路径族按声明搜索范围与完整RF时间比较。先单patch普通两轮与MZ/恢复，再两patch、四patch/143背景，接factory同token单T。性能须同源同平台实测，fidelity未知为null。

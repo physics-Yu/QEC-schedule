@@ -503,6 +503,24 @@
       "expected_any": [
         "K71"
       ]
+    },
+    {
+      "query": "Enola MZ SZ EZ重合 同区 标准流程 十项验收",
+      "expected_any": [
+        "K72"
+      ]
+    },
+    {
+      "query": "Enola作者 fixed19x15 paired4 5um lowering RF enable masks empty active axis",
+      "expected_any": [
+        "K72"
+      ]
+    },
+    {
+      "query": "pure syndrome round 两轮16报告16RESET terminal data readout 持续QEC",
+      "expected_any": [
+        "K72"
+      ]
     }
   ]
 }
