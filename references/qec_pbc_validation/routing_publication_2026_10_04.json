@@ -1,0 +1,151 @@
+{
+  "schema": "qec-routing-standard-publication/1",
+  "verified_at": "2026-10-04T07:36:22.355736+00:00",
+  "repository": "physics-Yu/QEC-schedule",
+  "branch": "codex/d3-shor15-stages",
+  "capability_commit": "011d361edf09764e1db7a379c403df4fed36654f",
+  "capability_parent": "8dfe02e7c687239b6dccc53a9693237edadf3239",
+  "capability_tree": "f94a8ac9ce0e94f6b2d3f741b6b0a962e69f55f4",
+  "files_verified": 22,
+  "files": [
+    {
+      "path": "agent.md",
+      "blob_sha": "e663b2062e6b5b26a7c2852ff6fcf07984745a6e",
+      "index_sha256": "89c56517ea4835bdee9c74d999b743c6a492cafe3f30ea5d3071a7a3331580e2",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "docs/qec_routing_standard.md",
+      "blob_sha": "0a317a4de46778c513072804bbb30473df5a8ba6",
+      "index_sha256": "9d6a150a18d998b3e9b984f8cf7521ba4509fa8afc27e47133855344c6c76949",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "docs/qec_patch_parallel_layout.md",
+      "blob_sha": "dce471e5f015db7a0c09445adfea4a2d1f0a82f8",
+      "index_sha256": "96b6dcc783acfa7beea90402f000e56f4a2cb662aebbd5d69ca3202a594de261",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "docs/qec_native_parallel_prefix.md",
+      "blob_sha": "79d17e1fa1bb03dacf1dbda8f7aca0eee344643f",
+      "index_sha256": "26d27dbfdd888a6e7c64a8df8f9fb3111596cbafc52a06b094727998dcce2918",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "docs/qec_pbc_rag.md",
+      "blob_sha": "0613195eb0cb36fc26bdbe58a3eca4df8022a798",
+      "index_sha256": "b9a079a5e96c842a2ef96259847f35bc027420a6cf77f04a8476e0011e8a06dc",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "examples/run_parallel_shor15_prefix.py",
+      "blob_sha": "7a2862206b8d05dcead96378a11fe5f2fd935c36",
+      "index_sha256": "3efa96a41376a6cfa45db6516234bbf978d8f4f178fc36c9377c83ee3c39e351",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "instruction/compiler_contract.md",
+      "blob_sha": "9c29c623f674ebe3dd47aebc26052082a28cfded",
+      "index_sha256": "c66d8f118dbf62a267ba2d8c492c35636a82a62a12851af9986f63ded95f1943",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "instruction/motion_planning.md",
+      "blob_sha": "d3ac75b0c7c90799e346775ac2e52e18cd59055d",
+      "index_sha256": "717704f262f777960f8ff4587438725de24972a5216e71377f32486ab7163470",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "instruction/handoff.md",
+      "blob_sha": "00b563400955eba93ce0f68ffeb89c924f44e119",
+      "index_sha256": "fba0631887ede2e46faee209a1f56972d5cdcb264ee8b76c7e4aa76b816edf5d",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "instruction/logs/2026-10-04-routing-standard.md",
+      "blob_sha": "9496a5dfea8a7dc3fb95972e42d374919806df51",
+      "index_sha256": "b39afb801245c2e6d1f66f5cb4c61ffd41425b1421b2f1d35a40246b456019b0",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py",
+      "blob_sha": "f56bb81fa1ca46228f2025ef7cad0f5d651a6561",
+      "index_sha256": "a3c27345192081691ed26077ed7ed2456437f995812085b00b89c5835fa7edac",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "src/neutral_atom_env/visualization/viewer.js",
+      "blob_sha": "a7484e47d8e89ca883c892ab771715e4cda55a54",
+      "index_sha256": "811cc4554f4a39df626ebdf7f118009977d9d752e15d729fd9933e3d589f63f9",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "src/neutral_atom_env/visualization/viewer-shell.html",
+      "blob_sha": "11a43792ce0bb347975364281b4fb37c31abfbe5",
+      "index_sha256": "1307769aaf756e4d4a6a40fa9b50e7956dc7eb8c63b6aa045a2941d4fe0b9f19",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "src/neutral_atom_strategies/motion/astar.py",
+      "blob_sha": "50a74d6c658a29e012c718ac632de0850e49cbfa",
+      "index_sha256": "78ddc80a34bdbe03af26765ce9ee9e4f16955712e12b14aa2059545e1f9f2c2c",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "src/neutral_atom_strategies/motion/planners.py",
+      "blob_sha": "655ec48d5ad5014af7c37723f4fc6259603ac60e",
+      "index_sha256": "e577442e601b4b8e54ad58cf60356c952523ce5c0f92ad30d61cd47987cb8fd3",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "src/neutral_atom_strategies/motion/validated_rigid.py",
+      "blob_sha": "48f5ba3e04b596abeff6f19f9d81c5d1d1a6ae58",
+      "index_sha256": "bb9b3262fd3cfcc9988342df3b45b33e20d5a88c5d65030b48c8388ee05732a3",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "src/neutral_atom_strategies/scheduling/parallel_patch.py",
+      "blob_sha": "67df453622251606b44da28749bb9becafc6fbb1",
+      "index_sha256": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "tests/test_validated_rigid_routes.py",
+      "blob_sha": "318a6d4cd0b78dadc8656f57c14cea5b7e699aaf",
+      "index_sha256": "174cf72d2e79e9abe45a57e3c969bb1f674c66e9367b724d67541ec030cd3fa6",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "references/qec_pbc_validation/routing_standard_2026_10_04.json",
+      "blob_sha": "e877ea3c1d934732f057fc7186a10eca23642a4b",
+      "index_sha256": "96ce7d43179d7e64318fdd1274a950d1f4d172c37b70021fe76aaa3dd9dbccbe",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "references/qec_pbc_rag/knowledge.jsonl",
+      "blob_sha": "609505b41e2730e5b0d1c5cf9e68bf5b24383827",
+      "index_sha256": "bfc0bf83e68f4de050138428f48951ec90a0b7391f7cff75fdfa49d6396a730c",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "references/qec_pbc_rag/sources.json",
+      "blob_sha": "94fdb9b3b01d1824ca439ae3f4bb7dff038162b1",
+      "index_sha256": "505c60c03ada6e30bb81fbfee4c663e48b3ad77a2ff9eac1c88f4dd97e24afa9",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "references/qec_pbc_rag/query_cases.json",
+      "blob_sha": "8fac9c1a9dc839ab0783d1ef861765f3b873ce59",
+      "index_sha256": "c3b92771d8cd728c1d61ccfbb5ece47f7fdf17828f3d69509d3625dc541c9745",
+      "fetched_blob_equals_staged_bytes": true
+    }
+  ],
+  "verification": "Independent Git fetch; parent, complete tree, all changed blob IDs and staged raw bytes equal",
+  "all_capability_blobs_exact": true,
+  "pushurl_disabled": true,
+  "pull_request": "https://github.com/physics-Yu/QEC-schedule/pull/3",
+  "kept_draft_and_unmerged": true,
+  "this_task_wrote_original_files": false,
+  "scope": "Device-aware standard router; unchanged single/12-patch Clifford prefix and full initial replay; no factory/injection/full physical Shor claim"
+}

@@ -56,3 +56,5 @@
 ## 阶段发布
 
 能力、规范和小型证据待本轮GitHub Git data发布；核对parent/tree/每blob与staged bytes后在追加回执登记。沿用draft PR#3，不merge，pushurl=DISABLED保持。大型trace/checkpoint与截图留本地。
+
+能力提交[011d361](https://github.com/physics-Yu/QEC-schedule/commit/011d361edf09764e1db7a379c403df4fed36654f)已发布到draft [PR#3](https://github.com/physics-Yu/QEC-schedule/pull/3)。独立Git fetch核对parent、完整tree与22个blob/staged bytes精确一致，工作树HEAD在核对后安全前移；不merge，不git push，pushurl=DISABLED保持。[发布回执](../../references/qec_pbc_validation/routing_publication_2026_10_04.json)与本段另作追加，不改原录制。
