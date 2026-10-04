@@ -4,6 +4,8 @@
 
 ## 2026-10-04 单码块并行、Enola placement 与12块物理验收
 
+能力[c272356](https://github.com/physics-Yu/QEC-schedule/commit/c272356ff913a561dc6e28708ca691b0483ce5ef)已发布到draft [PR#3](https://github.com/physics-Yu/QEC-schedule/pull/3)，独立fetch核对parent、完整tree与31blob/staged bytes精确一致，pushurl=DISABLED保持、不merge。[发布回执](../references/qec_pbc_validation/patch_parallel_publication_2026_10_04.json)与本轮日志另作追加；RAG最终67/56/160、67检索与11portable全部通过。
+
 新增显式interleaved/enola布局及READY码内CZ/MZ服务合批，canonical四层/H/hook/CSS原门和物理核不变。同初态标准single从84.684→40.504ms（服务合批减52.1699%）；作者固定初始SA另生成10μm homes提案、经本项目路由复制到12块。新full12真实3006门/413投影/221原子/2AOD、161plans，52CZ共816对/max36，每块四层各2pulse，终态33409.1969726μs；原初态完整replay、独立signed Stim/几何/9401依赖与patch audit通过。标准full12 CZ-only另实测54CZ/max72/79207.8551294μs，布局/服务/search共同变化，不写纯Enola speedup。
 
 实际8774共用空间页11功能书签、同步缩放/XZ/主统计/390与320px/console0errors通过，旧8773页保留；174不同pytest、265modules0违规、5旧默认plans逐字兼容。见[复现与边界](../docs/qec_patch_parallel_layout.md)、[六run摘要](../references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json)、[本轮日志](logs/2026-10-04-patch-parallel-layout.md)。只复用作者初始placer，不用其完整codegen。驻留/非partner-CZ≥10μm，伙伴3/4.243、finite6，运输保持原连续1μm。

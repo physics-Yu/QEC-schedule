@@ -1,6 +1,6 @@
 # 2026-10-04 · Canonical patch parallel layout
 
-- 状态：VALIDATED，阶段发布处理中
+- 状态：COMPLETED，能力已验收发布，回执单独追加
 - 用户目标：单 d=3 patch 码内并行，10 μm 驻留/非作用间距，评估 Enola 单块优化并复制多块，接入真实 physical pipeline 与共用可视化。
 - 基线：f36c772，既有3006门12patch真实前缀68 CZ pulses（每pulse最多12pairs），6 μm有限全局CZ判据。
 - 范围：保留canonical phase/hook/native身份，研究合法placement与批次；不改变物理核，不宣称工厂/带噪FT/完整physical Shor。
@@ -60,3 +60,9 @@
 固定Enola中心d4=(20,20)的四邻ancilla=(10,20)/(30,20)/(20,10)/(20,30)，仅移动单端且旁观位不动：r²≥20|x|、r²≥20|y|推出非零r≥√200≈14.142μm，超过finite CZ6μm；r=0违反1μm clearance。ignored `enola-center-pairing-bound.json` SHA960055ba8549bf7320e10dc1abbd3c3c9ae201e5d15dee063b919a348c57fffb固定proposal与initial。当前prefix的CSS另一端移动和vacated方向提取已执行通过；未来中心跨块CZ须交互暂存位置或旁观ancilla搬移，再实际验收。此必要条件仅限制固定旁观单端直接方案，不是所有物理方案无解。
 
 六run小摘要、冻结proposal与RAG固化纳入本轮发布；大型plans/trace/checkpoint留本地独立attempt。原工作区并行任务的最新用户共享协议v2已只读核对并同步到managed目录，原始SHA308a8710df419b026f125398b6113a89686e01da168e7afc50dbd4f63cabd77a；当前后续是完整工厂调度模块/同token单injection/processor按需接入S1–S3，不要求runtime量子态/Born后端。旧F1/F2量子参考与质量研究保留独立历史范围，RAG政策块加明确supersession；本轮不修改物理核或报告后端。未编码右侧载体不是工厂/库存，本轮没有完整工厂/injection或physical Shor验收。后续受限row_column候选可能进一步合批，但没有本轮production compiler或完整物理执行，不计完成。阶段GitHub回执另在发布后补充，不merge。
+
+## GitHub阶段发布
+
+能力提交[c272356](https://github.com/physics-Yu/QEC-schedule/commit/c272356ff913a561dc6e28708ca691b0483ce5ef)已沿用draft [PR#3](https://github.com/physics-Yu/QEC-schedule/pull/3)发布，不merge；GitHub Git data生成tree与本地index完全相同（b6505a8bc3a886a580c2b592fed80abdf6f83f37）。随后独立Git fetch核对parent=f36c772、完整tree、31个blob ID及staged raw bytes逐字匹配；本地HEAD安全前移到该提交。origin pushurl=DISABLED保持，无git push。
+
+PR标题/正文按最终实现重写，确认draft/open/unmerged，附着到当前任务。[可移植发布回执](../../references/qec_pbc_validation/patch_parallel_publication_2026_10_04.json)固定能力commit/tree、31项原始blob证明及原目录并行变化观察；此回执与handoff单独追加，不回写已发布能力/录制。完整本轮要求已完成；后续能力与模型边界保持上节状态。

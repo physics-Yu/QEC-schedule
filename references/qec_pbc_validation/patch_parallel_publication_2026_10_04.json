@@ -1,0 +1,244 @@
+{
+  "schema": "qec-patch-parallel-publication/1",
+  "verified_at": "2026-10-04T06:40:10.920034+00:00",
+  "repository": "physics-Yu/QEC-schedule",
+  "branch": "codex/d3-shor15-stages",
+  "capability_commit": "c272356ff913a561dc6e28708ca691b0483ce5ef",
+  "capability_parent": "f36c772135e6806e8cc4ac15b15f796db5477117",
+  "capability_tree": "b6505a8bc3a886a580c2b592fed80abdf6f83f37",
+  "files_verified": 31,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "blob_sha": "fd6388197c81aaa3fc9a5c17fec81cf28d0faca6",
+      "index_sha256": "d452118c43d92991dffce1ec78d63eca7ee8ef711c81ad518b650ef645918039",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "agent.md",
+      "blob_sha": "8e4eb055c1f122c1ef734a92a558088b59a09355",
+      "index_sha256": "bb19beb2cd9cf39d6ec6f4456e8af0ce236fd712a40e72b81ab7da48f3522063",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "examples/run_parallel_shor15_prefix.py",
+      "blob_sha": "fc4fdf1850cc17ca4fe693638edefab3af34da33",
+      "index_sha256": "6076f8486b39fb09fdce9a00b56439fce2d0384cca4ec670e7eeb5d3b6b3d754",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "examples/serve_native_parallel.py",
+      "blob_sha": "a24adf47979e4727f1b8f2f63293b6158d68a0f9",
+      "index_sha256": "e7e176be9da806a3ecc167cedd18c394b9f344af047f6befc18b7598096ef335",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py",
+      "blob_sha": "88dc3c12737b23bb74855d127e476ce23fe2f66f",
+      "index_sha256": "f69ba7d0918bb222ce36c5a3d47e2fc8e832fc17d96b7ff5bf529ae38624ce04",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "src/neutral_atom_experiments/qec_pbc/patch_layout.py",
+      "blob_sha": "d55af582447d82c18529ab962414b8db3f09bb09",
+      "index_sha256": "79ae4023fb039978ba243891c8e9e0ca14096a9dfe54b1e8dabb7d6e2fe1bc2f",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "src/neutral_atom_strategies/scheduling/parallel_patch.py",
+      "blob_sha": "a54e6e8785d2348467e251fdcce6dfbdecbdba95",
+      "index_sha256": "2b43d45507b0d5fa07f1118ed15896b1b2913e9f3e946bc8f3c5a0062a6afc0e",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "src/neutral_atom_strategies/scheduling/patch_service_groups.py",
+      "blob_sha": "c7b54e98c95bd2925faed2e2607fae221d227950",
+      "index_sha256": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "tests/test_native_parallel_report.py",
+      "blob_sha": "d01ce3a5653cb34eec9742dde453a73ba45c3e25",
+      "index_sha256": "f6043d742d530b470b748f5323dc53083ec501715bb3cce7b11160ad018debf3",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "tests/test_qec_patch_layout.py",
+      "blob_sha": "49a8ca38ea8e31b67791dfdf228ec0ee2448e9de",
+      "index_sha256": "7e25b7a28a03b0f45ae669428fcbc7c7ede0951ba9a82f24b337b1a5da2d0398",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "tests/test_patch_service_groups.py",
+      "blob_sha": "513e47e38f690b71fb930ff77eb098fc3d9731b7",
+      "index_sha256": "c109ca8e681e9b83afdef3271ded000ee9c8ce788301f359f381981a519f7189",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "tests/test_enola_patch_layout.py",
+      "blob_sha": "cd37909c5120405a6c6e3e69baeb14ccf6c5aa28",
+      "index_sha256": "6f88b5e9c0034e7b8eeebd6505286f1baacdc9c716a962af1ba0c5c962ba8d4d",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "tests/test_enola_patch_endpoint_audit.py",
+      "blob_sha": "cc9ab95d33e3f47b716c16775129b0ff268e85da",
+      "index_sha256": "40d01628842a170516f1d67f027d844d56cf1b2a7c7bb505ebfa5b5b97ca9899",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "tests/test_patch_parallel_audit.py",
+      "blob_sha": "91443f041b0695608f95f28e400859ae8db1f2a3",
+      "index_sha256": "43426be91c2fe1159b6581ddb4c4b17783d87991b70adbc2c8312eac67df7731",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "tools/propose_enola_patch_layout.py",
+      "blob_sha": "1012b37810643d766782bc1a91fcd05af35d34c8",
+      "index_sha256": "2ece8100d659affb49ddcf6fc1ddcd76e5f6c43b215a9b1b493a71934c28bbc1",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "tools/audit_enola_patch_proposal.py",
+      "blob_sha": "9a689e6228548fe78395292085b5b3dd42c5f7dd",
+      "index_sha256": "f220c22576f47200ab0169815ae2c975a1a9a6833cb74e015315421af64896c6",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "tools/audit_patch_parallel_layout.py",
+      "blob_sha": "a7351ef54570d55738f99aab116dc33ce484a1fa",
+      "index_sha256": "d3810f0b8d8dbc816f255232627dd2415e51035abba1539b5ebc657c7bee42e3",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "instruction/logs/2026-10-04-patch-parallel-layout.md",
+      "blob_sha": "e58761547cbaf31201f44261522a7dc4172456d9",
+      "index_sha256": "35279ce3535660b06cd823f48f58cfee216ef4aebb78141bc23e25c742d8e3e1",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "instruction/handoff.md",
+      "blob_sha": "ace95e48e1a7747d2edc88095e932a22ac295e84",
+      "index_sha256": "6ce5bbfe126d7f3d7e79d8b41c195220dd0247f2b538ec735408a7b3e75f11b4",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "instruction/compiler_contract.md",
+      "blob_sha": "eace49f222380df9d8840a052279474d5ad007b4",
+      "index_sha256": "d78b057159b6479355f6d0785877910f1e8128ec2ac4639dc1b222f5df67f393",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "instruction/aod_backends.md",
+      "blob_sha": "0de8cca9ea3dacff82bb976ce273ea495e419af4",
+      "index_sha256": "3cd97b0c94481643ba56da41b93469f847dbf2b76779ab417b54ee001b5e5ca9",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "instruction/visualization.md",
+      "blob_sha": "27d31b32f7f00df41b206d9f7055c153767325d8",
+      "index_sha256": "85a8f1b5aadcef9e1092843a5de536672de5340c6b495ed6503f58de09e053c8",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "instruction/model_audit.md",
+      "blob_sha": "599cc43fb47180a2e467c4b8d4505e802e46647d",
+      "index_sha256": "82146b6b81efa7f3a64f5e78cb4a7d5c9858efe88012119dab3f79afd927c55d",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "instruction/qec_factory_pipeline.md",
+      "blob_sha": "568a2e0b5190a8b6fc6ff2c8ee3c0cafebb49fcf",
+      "index_sha256": "308a8710df419b026f125398b6113a89686e01da168e7afc50dbd4f63cabd77a",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "docs/qec_patch_parallel_layout.md",
+      "blob_sha": "25d39aa48d78e4890fc4d9449c30214e6a855492",
+      "index_sha256": "9518211b9d0d6ac3c6809a4cb28cc15a4880bd36fa3512b4c4db21853eef0dda",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "docs/qec_pbc_rag.md",
+      "blob_sha": "b4a4e588db2db4a74b03cb52162befe120b70cd1",
+      "index_sha256": "22f4f156cc2455e2d08f7488e57c1c5f4b4e249ba82c3924fae1c5897ee49f30",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json",
+      "blob_sha": "16e632868f3a1f6db600935be7b109a88627cde1",
+      "index_sha256": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "references/qec_pbc_validation/patch_parallel_layout_2026_10_04.json",
+      "blob_sha": "12690038766583998618cb91196b048a235bea68",
+      "index_sha256": "dd15ca36de8eca15a5b4f8895437b2cfd9781161237f686f5adab50cba754fa4",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "references/qec_pbc_rag/knowledge.jsonl",
+      "blob_sha": "ba936c35b44ed6b1296487e43eca5d2fd17682ac",
+      "index_sha256": "0f5e1d415887ecc06555e8bb2f098ad178ded7cbb0584fe4031aff15ae679055",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "references/qec_pbc_rag/sources.json",
+      "blob_sha": "f6fc2670fe99f5d4fa5fbec410c1c420843b093b",
+      "index_sha256": "b7fac42b562c1e0c9bc4073784ee6ee8a83841a9ae28a7c8ba0a61cc4bd21f4b",
+      "fetched_blob_equals_staged_bytes": true
+    },
+    {
+      "path": "references/qec_pbc_rag/query_cases.json",
+      "blob_sha": "307e2eb979a442c116a16bd6f082c723aa0a1b6d",
+      "index_sha256": "273093b3f79de91382771a60aae4d3ba0a286fcba4ed9f43c291f069edbc8e79",
+      "fetched_blob_equals_staged_bytes": true
+    }
+  ],
+  "verification": "Independent Git fetch; parent, complete tree, all 31 blob IDs and staged raw bytes equal",
+  "all_capability_blobs_exact": true,
+  "pushurl_disabled": true,
+  "pull_request": "https://github.com/physics-Yu/QEC-schedule/pull/3",
+  "kept_draft_and_unmerged": true,
+  "this_task_wrote_original_files": false,
+  "original_checkout_observation": {
+    "baseline_head": "9e28b2e2da178420b449bb24cfff58e10e2b99f3",
+    "current_head": "9e28b2e2da178420b449bb24cfff58e10e2b99f3",
+    "baseline_dirty_files": 214,
+    "unchanged_count": 209,
+    "changed": [
+      {
+        "path": "agent.md",
+        "before": "72394bb8e797255456f7926f0fbf3ce7befe30eea7c82ae9d25e0e8532aacc28",
+        "current": "74755fe9b3e5ef48bde618c96e9caa48881a2e3a9a6bc1e423c6ce8fc0e4340f",
+        "baseline_status": " M"
+      },
+      {
+        "path": "instruction/architecture.md",
+        "before": "f92126bbd8f3e169352b089ba5d918f869550044e4c7a40060d37993a04842ab",
+        "current": "fa6a429047a14b6370dc475f93b1b70895fbebd0ebca743f9be688ed057c08ef",
+        "baseline_status": " M"
+      },
+      {
+        "path": "instruction/handoff.md",
+        "before": "10c91b37c4b22a2b9f185135ee23336536bfcbec6f7d6c09885d923c8e05781b",
+        "current": "926445f569f11bb8972b5d7a891d318eadb2b644a6405fc6cb12e0a31a807c10",
+        "baseline_status": " M"
+      },
+      {
+        "path": "instruction/logs/2026-10-04-factory-full-reference-resume.md",
+        "before": "09587d659b1e2f65674677b53b8c2bf34f328ccca3194ee7e8280c20e1f4600e",
+        "current": "00eed26f1c094e656aca3f8fbe2cda239059bf891d5395815405874bf5281f88",
+        "baseline_status": "??"
+      },
+      {
+        "path": "instruction/qec_factory_pipeline.md",
+        "before": "b07e90dde5fba5ca3d474e9d56456fa9bac1001ee8967d2ea022ceb934559485",
+        "current": "308a8710df419b026f125398b6113a89686e01da168e7afc50dbd4f63cabd77a",
+        "baseline_status": "??"
+      }
+    ],
+    "all_baseline_dirty_bytes_and_head_unchanged": false
+  },
+  "scope": "Verified bounded 3006-native Clifford physical prefix with frozen Enola initial placement; no new factory/injection/full physical Shor claim"
+}
