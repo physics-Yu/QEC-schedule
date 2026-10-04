@@ -1,5 +1,7 @@
 # Physical circuit 到原子操作：已确认的目标契约
 
+2026-10-04 自动MZ选点恢复：标准 `parallel_patch` 使用设备感知 `RigidReadoutPlacementPolicy`，按实际载体偏移/全轴域生成最近候选，至多16次尝试、3个合法完整服务按真实成本选择；完整LOAD/标准routing/读出与reset/归还仍经既有物理校验。`readout_placement=fixed_translation`保留路由隔离对照，legacy默认固定。全world外国载体与备用轴保持，不凭空添加MZ SLM；决策与共用viewer可追溯。见[具体合同](../docs/qec_rigid_readout_placement.md)，实际验收以追加报告为准。
+
 2026-10-04 routing 修正：`parallel_patch` 默认 `shortest-direct-or-halfgrid-v1`，复用策略层 `motion/validated_rigid.py`。完整 backend 校验直达后才采用；受阻时求 `x/y=2.5+5k μm` 半格图内最短距离，真实装卸边界与脉冲后归还分别校验。routing 只接收固定 holder/masks/设备/目标，不替上层选择交互位、不改捕获或物理阈值。`legacy-5um-v1` 仅复现旧记录；该最新路由默认覆盖下方“旧默认保持”中有关固定路径的描述，合批开关与原协议仍保持。范围、接口与后续工厂实施见 [标准路由](../docs/qec_routing_standard.md)。
 
 2026-10-04 码内优化：`parallel_patch.run_parallel_patch` 新增显式 `intra_patch`、`intra_services` 和 `pair_search`，旧默认保持。只合并当前 READY 且几何兼容的同类操作，不重排 canonical 四层、H 边界、hook 次序或 CSS encoder 依赖链。MZ MEASURE 与该批原门的后继 RESET 可同次运输服务，不能据预期 syndrome 位跳过投影。有限 CZ 候选可移动原门任一端，保持原 ID/targets，检查全局真实作用对与非配对 ≥10 μm；有限候选无解不代表物理无解。Enola 仅复用官方 SA 初态 proposer，实际计划仍经 backend/Executor/完整初态 replay；相同初态对照与不同布局比较分开报告。详见 [布局与复现](../docs/qec_patch_parallel_layout.md)，本轮只是声明 Clifford 前缀，factory-first 主线不变。

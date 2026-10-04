@@ -1,5 +1,7 @@
 # Agent 工作准则与工程导航
 
+2026-10-04 测量位置修复：[设备感知 rigid 自动 MZ 选点](docs/qec_rigid_readout_placement.md)接回并行码块编译入口。standard默认nearest_mz，完整载体/MZ与全轴域约束后生成最近候选并按完整合法服务比较；显式fixed_translation/legacy保留历史端点。必须记录候选/实际选择，不能用固定-400μm或图像移动替代选点。
+
 2026-10-04 用户固化 routing：码块编译默认先验证直达，受阻时求既有 2.5 μm 偏移半格通道中的最短合法距离；统一设备感知入口及单块→多块→工厂实施顺序见 [标准路由](docs/qec_routing_standard.md)。不得沿用写死的 5/10 μm 折线冒充寻路；历史路线仅用于明确标注的对照。捕获、完整活动交点、备用轴、旁观原子和物理阈值继续完整校验。
 
 2026-10-04 最新用户范围修正：[共享协议v2的当前任务目标](instruction/qec_factory_pipeline.md#当前任务目标纯调度模拟)为完整magic factory调度模块→同token单injection闭环→完整processor按需接入（S1–S3）。运行时不要求量子态振幅或非Clifford/Born后端；报告源须声明并在合法读出完成后由Executor提交。量子参考/质量研究独立可选，覆盖下方旧F1/F2中强制态后端的前置门槛；物理约束与包边界保持。

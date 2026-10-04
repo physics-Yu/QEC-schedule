@@ -437,6 +437,24 @@
       "expected_any": [
         "K68"
       ]
+    },
+    {
+      "query": "测量位置选点 自动选择 MZ内最近合法位置 rigid readout placement fixed translation",
+      "expected_any": [
+        "K69"
+      ]
+    },
+    {
+      "query": "关闭备用轴 foreign loaded AOD_MAGIC envelope 最近MZ源原点 全部载体进入测量区",
+      "expected_any": [
+        "K69"
+      ]
+    },
+    {
+      "query": "几何最近clamp 横向2.5um偏移 候选16合法3 完整服务actual cost 不是全局最优",
+      "expected_any": [
+        "K69"
+      ]
     }
   ]
 }

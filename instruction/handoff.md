@@ -1,8 +1,14 @@
 # 当前交接状态
 
+## 2026-10-04 并行码块自动MZ选点恢复
+
+用户确认的自动选点接回parallel_patch，standard默认nearest_mz；实际载体求nearest clamp/邻域，16尝试/3合法完整服务按真实μs/距离选择，完整全world/轴spares/两设备/运输归还保持。single/full12同各自固定端点baseline的六输入字节及原门/effect批次相同，30055.938183→22195.938183/27955.938183μs，减少26.1512%/6.9870%；各161plans、7选点覆盖50/413投影。完整原初态replay及三层独立审计PASS，185不同pytest/267modules0违规。
+
+fixed_translation与legacy保留旧计划四组合canonical字节一致；8777共用页新增默认折叠的所选原点/候选/载体表，7定位按钮只跳实际pulse，12书签与390/320px/统计缩放保持。见[合同](../docs/qec_rigid_readout_placement.md)、[小型验收](../references/qec_pbc_validation/auto_mz_placement_2026_10_04.json)、[日志](logs/2026-10-04-auto-mz-placement.md)。此轮仍首T前Clifford，未新增factory/injection/FT/fullphysical Shor完成；后续共享S1–S3复用policy/router。GitHub精确发布后追加回执。
+
 ## 2026-10-04 最短合法直达与2.5 μm标准 routing
 
-追加用户任务仍OPEN：自动选择MZ内最近合法测量位置。既有policy未删，但parallel_patch目前绕过选点采用固定translation；下列已通过比较保留同测量端点以隔离路由。正在恢复设备感知rigid候选/完整服务选择及决策显示，通过后追加独立新运行证据。
+后续自动MZ绕过问题已FIXED，修复及独立新运行证据见上方选点阶段；本节30.055938ms保持固定测量端点以隔离routing。
 
 码块编译默认standard：直达先完整验证，受阻用既有2.5 μm偏移半格图内最短距离；脉冲后归还重新规划。设备身份、全world旁观者、活动Cartesian空trap与关闭spare轴envelope完整检查，物理阈值不变。同初态单块/12块均161plans，33409.196973→30055.938183μs（减10.0369%）、MOVE479→338；完整原初态replay与两层独立审计通过，原门/合批顺序相同。128不同pytest、266modules零违规，legacy五计划逐字复现。
 

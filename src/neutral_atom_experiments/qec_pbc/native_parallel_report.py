@@ -8,6 +8,103 @@ import json
 from pathlib import Path
 
 
+def _readout_placement_details(directory, effects, audit):
+    """Display compiler decisions, keeping lane cost apart from committed time."""
+    path = directory/'decisions.json'
+    if not path.exists():
+        return ''
+    raw = path.read_bytes()
+    decisions = json.loads(raw)
+    rows = [(decision, selection) for decision in decisions
+            for selection in decision.get('readout_placement_decisions', [])]
+    if not rows:
+        return ''
+    expected = audit.get('artifact_sha256', {}).get('decisions.json')
+    if expected is not None and hashlib.sha256(raw).hexdigest() != expected:
+        raise ValueError('The MZ decisions differ from the independently audited artifact')
+
+    def text(value):
+        return html.escape(str(value), quote=True)
+
+    def number(value):
+        return '—' if value is None else text(f'{value:,.3f}')
+
+    def point(value):
+        return '—' if value is None else '('+', '.join(number(v) for v in value)+')'
+
+    table, candidates = [], []
+    for index, (decision, selection) in enumerate(rows):
+        selected = selection.get('selected')
+        if (selection.get('schema') != 'rigid-readout-placement-decision/1' or
+                not selected or selected.get('status') != 'accepted' or
+                selected not in selection.get('candidates', [])):
+            raise ValueError('The MZ display requires a selected validated candidate')
+        kind = selection['kind']
+        gate_ids = set(selection['gate_ids'])
+        pulse = next((op for op in effects if op.get('gate_type') == kind and gate_ids <=
+                      set(op.get('gate_ids') or [op.get('gate_id')])), None)
+        if not gate_ids or pulse is None:
+            raise ValueError('The MZ decision has no corresponding committed pulse')
+        time = (pulse['start']+pulse['end'])/2
+        locator = (f'<button type="button" class="readout-locate" disabled '
+                   f'data-readout-time="{text(time)}">定位实际 {text(kind)}</button>')
+        committed_us = (decision['end_us']-decision['start_us']
+                        if 'end_us' in decision and 'start_us' in decision else None)
+        entries = selection['candidates']
+        accepted = sum(entry.get('status') == 'accepted' for entry in entries)
+        policy = selection.get('policy', decision.get('readout_placement', '—'))
+        table.append('<tr>'+''.join('<td>'+value+'</td>' for value in (
+            text(decision.get('decision', index)), text(kind)+' × '+str(len(gate_ids)),
+            text(selection['aod_id']), text(policy), point(selection.get('source_origin_um')),
+            point(selected.get('target_pose_um')), text(selected.get('zone_id', '—')),
+            f'{text(selection.get("generated", "—"))} / {len(entries)} / {accepted}',
+            number(selected.get('actual_us')), number(committed_us), locator))+'</tr>')
+        candidate_rows = []
+        for entry in entries:
+            status = ('已选' if entry == selected else
+                      {'accepted': '合法备选', 'rejected': '拒绝', 'timeout': '超时'}.get(
+                          entry.get('status'), entry.get('status', '—')))
+            diagnostic = ' · '.join(str(entry[key]) for key in ('code', 'message') if key in entry)
+            candidate_rows.append('<tr>'+''.join('<td>'+value+'</td>' for value in (
+                text(status), point(entry.get('target_pose_um')), number(entry.get('proxy_distance_um')),
+                number(entry.get('estimated_us')),
+                number(entry.get('actual_us')), number(entry.get('actual_distance_um')),
+                text(diagnostic or '—')))+'</tr>')
+        positions = ''.join('<tr><td>'+text(atom)+'</td><td>'+number(x)+'</td><td>'+number(y)+
+                            '</td></tr>' for atom, (x, y) in selected.get('positions', []))
+        rejected = ', '.join(f'{key}: {value}' for key, value in
+                             selection.get('generation_rejections', {}).items()) or '无'
+        candidates.append(
+            f'<details class="readout-candidates" id="readout-selection-{index}"><summary>'
+            f'决策 {text(decision.get("decision", index))} · {text(selection["aod_id"])} · '
+            f'{text(kind)}：候选与载体坐标</summary>'
+            f'<p class="readout-note">候选预算 {text(selection.get("candidate_budget", "—"))}；'
+            f'合法服务短名单 {text(selection.get("top_k", "—"))}；生成阶段拒绝：{text(rejected)}。'
+            f'选择范围：{text(selection.get("selection_scope", "—"))}。'
+            f'同次包含的 RESET：{text(", ".join(selection.get("included_reset_gate_ids", [])) or "无")}。</p>'
+            '<div class="readout-table-wrap"><table class="readout-table"><thead><tr>'
+            '<th>候选状态</th><th>AOD 原点 / μm</th><th>几何去程距离 / μm</th><th>代理估算 / μs</th>'
+            '<th>合法完整服务 / μs</th><th>AOD 路程 / μm</th><th>拒绝原因</th>'
+            '</tr></thead><tbody>'+''.join(candidate_rows)+'</tbody></table></div>'
+            '<details class="readout-carriers"><summary>所选落点的载体位置 / μm</summary>'
+            '<div class="readout-table-wrap"><table><thead><tr><th>原子</th><th>x / μm</th>'
+            '<th>y / μm</th></tr></thead><tbody>'+positions+'</tbody></table></div></details></details>')
+    return ('<details id="readout-placement"><summary>MZ 落点选择与服务成本（按需查看）</summary>'
+            '<p>下表来自这次编译的设备选择日志。自动模式先生成最近的 rigid 原点投影及有限邻近候选，'
+            '再验证完整去程、读出／复位和归还，以合法服务时长、AOD 路程选择；固定模式是历史端点对照。'
+            '几何最近的候选可能绕路更慢，因此所选原点可以带横向偏移。'
+            '有限候选与合法服务短名单不证明连续空间或整个线路的全局最优。</p>'
+            '<p class="readout-note">AOD 原点不是每个原子的坐标，载体位置可在下方展开。'
+            '“合法完整服务”是候选校验后的单设备计划成本；“提交计划”来自实际提交起止区间。'
+            '双 AOD 同次决策共享提交区间，两个单设备成本与重复区间均不能相加作总耗时。'
+            '定位按钮只跳到录制中对应的真实脉冲。</p>'
+            '<div class="readout-table-wrap"><table class="readout-table"><thead><tr>'
+            '<th>决策</th><th>操作</th><th>AOD</th><th>模式</th><th>源原点 / μm</th>'
+            '<th>所选原点 / μm</th><th>MZ</th><th>生成 / 检查 / 合法</th>'
+            '<th>合法完整服务 / μs</th><th>提交计划 / μs</th><th>实际回放</th>'
+            '</tr></thead><tbody>'+''.join(table)+'</tbody></table></div>'+''.join(candidates)+'</details>')
+
+
 def render_report(directory):
     from neutral_atom_env.visualization.viewer import write_bundle
 
@@ -88,10 +185,12 @@ def render_report(directory):
                       f'{pair_note}，有限作用半径仍为 6 μm。四个协议层的顺序和 H 边界保持。</p>')
     comparison = ''.join('<tr><td>'+html.escape(kind)+'</td><td>'+str(counts[kind])+
                          '</td><td>'+str(pulse_counts[kind])+'</td></tr>' for kind in sorted(counts))
+    readout_details = _readout_placement_details(directory, effects, audit)
     write_bundle(directory)
     encoded_bookmarks = json.dumps(bookmarks, ensure_ascii=False).replace('<', r'\u003c')
     page = '''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1"><title>Shor15 · 并行物理前缀</title>
+<style>__READOUT_STYLE__</style>
 <style>body{margin:0;background:#f4f6fa;color:#20304c;font:15px system-ui,sans-serif}header,section.report{max-width:1240px;margin:auto;padding:20px 24px}h1{font-size:26px;margin:4px 0 12px}p{line-height:1.6}small{color:#53627b}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:12px;margin-top:12px}.metric{padding:14px;background:white;border:1px solid #dfe5ef;border-radius:12px;min-width:0}.metric strong{font-size:24px;display:block;margin-top:5px;overflow-wrap:anywhere}button{padding:9px 12px;border:1px solid #b8c7dc;border-radius:8px;background:white;color:#20304c;cursor:pointer}button:hover{background:#eaf1ff}.bookmarks{display:flex;gap:8px;flex-wrap:wrap}table{border-collapse:collapse;width:100%;max-width:650px;background:white}th,td{padding:8px 12px;text-align:left;border-bottom:1px solid #dfe5ef}details{margin-top:14px}summary{cursor:pointer;font-weight:600}#error{color:#b42318;white-space:pre-wrap;overflow-wrap:anywhere}@media(max-width:500px){header,section.report{padding:15px}h1{font-size:22px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.metric strong{font-size:21px}button{font-size:13px}}</style></head><body>
 <header><small>编码 Shor15 / d=3 / 实际 Executor 记录</small><h1>按码块编译，查看真正的并行操作</h1>
 <p>这次编译选取完整线路的初始化与首次综合征提取。相同操作跨码块合批；每次装载、运动、CZ、读出和归还都进入同一物理时间线。</p>
@@ -102,7 +201,7 @@ __ROUTING_NOTE__
 <p><small>主要指标与真实时间占用见回放的统计区。此处规模与合批计数不作为完整物理 Shor 或整体加速比的证据。</small></p></details>
 <p><small>平台：统一 COMPUTE + MZ；5 μm SLM 候选格点、稀疏占据；有限 CZ 半径并检查全部额外作用对。右侧资源的 Clifford 准备用于验证独立 AOD，完整魔态生产、T 消费和完整物理 Shor 尚未验收。</small></p>
 <div class="bookmarks" id="bookmarks"></div><p id="error"></p></header>
-<div id="physical-viewer"></div><section class="report"><details id="report-evidence"><summary>查看合批效果与验证证据</summary>
+<div id="physical-viewer"></div><section class="report">__READOUT_DETAILS__<details id="report-evidence"><summary>查看合批效果与验证证据</summary>
 <p>下表比较原生门数量与实际提交的同类脉冲批次数。脉冲合批比例不代表整体物理加速比；运输、复位和读出仍计入总耗时。</p>
 <table><thead><tr><th>门类型</th><th>原生门数</th><th>实际脉冲批次</th></tr></thead><tbody>__COMPARISON__</tbody></table>
 <p>独立 Stim 核对原始报告、重排后的算法状态和实际提交终态；独立几何计算逐个 CZ 脉冲核对全局作用对。计划恢复和原初态重放结果见运行摘要。</p>
@@ -111,6 +210,7 @@ __ROUTING_NOTE__
 const bookmarks=__BOOKMARKS__;let viewer;
 fetch('recording.json').then(r=>{if(!r.ok)throw new Error('记录加载失败');return r.json()}).then(data=>{
 viewer=window.NeutralAtomViewer.mount(document.getElementById('physical-viewer'),data);window.physicalPrefixViewer=viewer;
+__READOUT_BINDINGS__
 for(const row of bookmarks){const button=document.createElement('button');button.textContent=row.label;button.onclick=()=>{viewer.setTime(row.time);document.getElementById('physical-viewer').scrollIntoView({block:'start',behavior:'smooth'})};document.getElementById('bookmarks').append(button)}
 }).catch(error=>document.getElementById('error').textContent=error.message);
 </script></body></html>'''
@@ -123,6 +223,13 @@ for(const row of bookmarks){const button=document.createElement('button');button
                     '__COMPARISON__': comparison, '__BOOKMARKS__': encoded_bookmarks}
     replacements['__LAYER_NOTE__'] = layer_note
     replacements['__ROUTING_NOTE__'] = routing_note
+    replacements['__READOUT_DETAILS__'] = readout_details
+    replacements['__READOUT_STYLE__'] = ('.readout-table-wrap{overflow-x:auto;max-width:100%;margin-top:12px}'
+        '.readout-table{max-width:none;min-width:780px}.readout-note{font-size:13px}'
+        '#readout-placement td{overflow-wrap:anywhere}' if readout_details else '')
+    replacements['__READOUT_BINDINGS__'] = ('''for(const button of document.querySelectorAll('.readout-locate')){
+button.disabled=false;button.onclick=()=>{viewer.setTime(Number(button.dataset.readoutTime));document.getElementById('physical-viewer').scrollIntoView({block:'start',behavior:'smooth'})};
+}''' if readout_details else '')
     replacements['__LAYOUT_EVIDENCE__'] = (' · <a href="patch-parallel-audit.json">布局与码内批次审计</a>'
         if summary.get('placement_layout') in ('interleaved', 'enola') else '')
     for marker, value in replacements.items():

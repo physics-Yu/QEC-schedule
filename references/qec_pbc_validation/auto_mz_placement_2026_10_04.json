@@ -1,0 +1,1309 @@
+{
+  "schema": "qec-rigid-auto-mz-acceptance/1",
+  "reviewed_at": "2026-10-04",
+  "rule": "device-aware nearest feasible origin clamp plus bounded 2.5/5 um neighborhood; choose actual legal full-service cost",
+  "candidate_budget": 16,
+  "legal_service_shortlist": 3,
+  "runs": [
+    {
+      "patch_count": 1,
+      "run_directory": "artifacts/auto-mz-2026-10-04/single-enola-attempt1",
+      "fixed_endpoint_routing_baseline": "artifacts/routing-standard-2026-10-04/single-enola-attempt2",
+      "same_input_bytes": {
+        "initial.json": true,
+        "initial-placement.json": true,
+        "source-prefix.json": true,
+        "prefix-circuit.json": true,
+        "parallel-phases.json": true,
+        "platform.json": true
+      },
+      "same_effect_batch_order_and_native_ids": true,
+      "same_decision_gate_batches": true,
+      "native_gates": 267,
+      "native_projections": 50,
+      "atoms": 34,
+      "aods": 2,
+      "plans": 161,
+      "before_physical_us": 30055.93818301007,
+      "after_physical_us": 22195.93818301007,
+      "time_reduction_percent": 26.151238241643306,
+      "logical_completion_us": 21950.93818301007,
+      "compiler_execution_replay_wall_seconds": 86.20021280000219,
+      "before_moves": 338,
+      "after_moves": 314,
+      "before_aod_distance_um": 9175.740159316892,
+      "after_aod_distance_um": 4585.74015931689,
+      "producer_audit": {
+        "all_output_code_logical_zero_and_aux_checks_plus_one": true,
+        "all_saved_report_ids_preserved": true,
+        "dag_complete": true,
+        "effects_exactly_once": true,
+        "event_queue_empty": true,
+        "independent_plan_replay_equal": true,
+        "same_source_resource_carriers_before_first_t": true
+      },
+      "independent_audit": {
+        "schema": "native-prefix-independent-physical-audit/1",
+        "passed": true,
+        "source_native_gate_count": 267,
+        "physical_gate_count": 267,
+        "algorithm_native_gate_count": 249,
+        "resource_native_gate_count": 18,
+        "algorithm_qubits": 17,
+        "original_state_constraints": 17,
+        "original_projections": 50,
+        "committed_effects_once": 267,
+        "committed_projection_checks": 50,
+        "dependency_interval_checks": 799,
+        "committed_effect_interval_checks": 267,
+        "cz_pulses_global_pair_checks": 52,
+        "cz_native_effects": 68,
+        "actual_mz_projection_geometry_checks": 50,
+        "raman_native_separation_checks": 149,
+        "max_cz_batch": 3,
+        "move_devices": [
+          "AOD_0",
+          "AOD_MAGIC"
+        ],
+        "cross_device_move_overlaps": 4,
+        "stim_version": "1.15.0",
+        "cross_device_loaded_move_overlaps": 3,
+        "physical_time_us": 22195.93818301007,
+        "full_shor_physical": false,
+        "magic_factory_validated": false,
+        "fault_tolerance_validated": false,
+        "artifact_sha256": {
+          "source-prefix.json": "f270fa115e66e71309b25b64b1680c47f87c571df848a2df84c5cae090a076fa",
+          "prefix-circuit.json": "98aa857a1abf155c28413b2eec8af99487f768e0c6f9a41b2af010b4d6541b16",
+          "initial.json": "2e238fd478942bfb687f2c8db505f48078c1d443e65c6fcd4cc837f51ecb99f6",
+          "checkpoint-final.json": "0a0a378561d2e8829fe3eadab6e17bf09ea2c2534cd3aa9baf89fbfe7bdcf36b",
+          "recording.json": "8a9b5343daa3a7990479c10e2522f5ab0666466edf50088cb03af51c274f3e7a",
+          "trace.jsonl": "69783c842c496666b947bc6a6e6de3489de3c24906d0a6e4ddf7faa538be3405"
+        }
+      },
+      "patch_audit": {
+        "schema": "patch-parallel-layout-independent-audit/1",
+        "passed": true,
+        "scope": "unchanged deterministic native prefix; declared placement and legal intra-patch CZ batches",
+        "prefix_independent_audit": {
+          "schema": "native-prefix-independent-physical-audit/1",
+          "passed": true,
+          "source_native_gate_count": 267,
+          "physical_gate_count": 267,
+          "algorithm_native_gate_count": 249,
+          "resource_native_gate_count": 18,
+          "algorithm_qubits": 17,
+          "original_state_constraints": 17,
+          "original_projections": 50,
+          "committed_effects_once": 267,
+          "committed_projection_checks": 50,
+          "dependency_interval_checks": 799,
+          "committed_effect_interval_checks": 267,
+          "cz_pulses_global_pair_checks": 52,
+          "cz_native_effects": 68,
+          "actual_mz_projection_geometry_checks": 50,
+          "raman_native_separation_checks": 149,
+          "max_cz_batch": 3,
+          "move_devices": [
+            "AOD_0",
+            "AOD_MAGIC"
+          ],
+          "cross_device_move_overlaps": 4,
+          "stim_version": "1.15.0",
+          "cross_device_loaded_move_overlaps": 3,
+          "physical_time_us": 22195.93818301007,
+          "full_shor_physical": false,
+          "magic_factory_validated": false,
+          "fault_tolerance_validated": false,
+          "artifact_sha256": {
+            "source-prefix.json": "f270fa115e66e71309b25b64b1680c47f87c571df848a2df84c5cae090a076fa",
+            "prefix-circuit.json": "98aa857a1abf155c28413b2eec8af99487f768e0c6f9a41b2af010b4d6541b16",
+            "initial.json": "2e238fd478942bfb687f2c8db505f48078c1d443e65c6fcd4cc837f51ecb99f6",
+            "checkpoint-final.json": "0a0a378561d2e8829fe3eadab6e17bf09ea2c2534cd3aa9baf89fbfe7bdcf36b",
+            "recording.json": "8a9b5343daa3a7990479c10e2522f5ab0666466edf50088cb03af51c274f3e7a",
+            "trace.jsonl": "69783c842c496666b947bc6a6e6de3489de3c24906d0a6e4ddf7faa538be3405"
+          }
+        },
+        "protocol": {
+          "canonical_phases_checked": 16,
+          "canonical_dependency_edges_checked": 488,
+          "css_native_gates_checked": 136
+        },
+        "batches": {
+          "mode": "enola",
+          "css_cz_pulses": 44,
+          "canonical_round_cz_pulses": 8,
+          "total_cz_pulses": 52,
+          "cz_native_effects": 68,
+          "per_patch": {
+            "phase0": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            }
+          }
+        },
+        "home_layout": {
+          "canonical_coordinate_scale_um": null,
+          "minimum_occupied_home_distance_um": 10.0,
+          "slm_candidate_grid_um": 5,
+          "occupied_carriers_checked": 34,
+          "algorithm_aod_capacity": 9,
+          "finite_cz_distance_um": 6,
+          "cz_pair_offset_um": "searched finite offsets",
+          "enola_proposal": {
+            "proposal_raw_sha256": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
+            "placement_mapping_sha256": "49a2c2d531af2bad5e77d8d368c6809dd8386ffe19c3fe166c7e23882b44337c",
+            "official_placer_commit": "2944dbf4e163e8d2eeeec607add0d9139edce689",
+            "official_placer_sha256": "d256c84490bd72d525515f24acb081d7b21bcd5f7bbc31302a3bbf79a16997cf",
+            "physical_evidence_scope": "frozen placement authenticated; physical run audited separately"
+          }
+        },
+        "move_evidence": {
+          "committed_moves_checked": 314,
+          "carrier_endpoint_checks": 866,
+          "deforming_axis_move_count": 0,
+          "backend": "rigid",
+          "axis_order_and_spacing_certified_for_shared_monotone_progress": true,
+          "continuous_atom_slm_sweep_validation": "Executor plus complete original-initial-state plan replay"
+        },
+        "nonpair_cz_spacing": {
+          "minimum_required_nonpair_spacing_um": 10.0,
+          "minimum_actual_nonpair_spacing_um": 10.0,
+          "nonpair_distance_checks": 29104,
+          "scope": "all alive atoms including resource carriers at every actual CZ pulse"
+        },
+        "artifact_sha256": {
+          "initial.json": "2e238fd478942bfb687f2c8db505f48078c1d443e65c6fcd4cc837f51ecb99f6",
+          "source-prefix.json": "f270fa115e66e71309b25b64b1680c47f87c571df848a2df84c5cae090a076fa",
+          "prefix-circuit.json": "98aa857a1abf155c28413b2eec8af99487f768e0c6f9a41b2af010b4d6541b16",
+          "recording.json": "8a9b5343daa3a7990479c10e2522f5ab0666466edf50088cb03af51c274f3e7a"
+        },
+        "physical_time_us": 22195.93818301007,
+        "complete_physical_shor": false,
+        "magic_factory_or_fault_tolerance_claimed": false
+      },
+      "readout_placement_audit": {
+        "schema": "independent-rigid-readout-placement-audit/1",
+        "passed": true,
+        "selections": [
+          {
+            "decision": 0,
+            "aod_id": "AOD_0",
+            "carrier_count": 5,
+            "source_origin_um": [
+              0,
+              0
+            ],
+            "nearest_geometric_pose_um": [
+              0,
+              -80
+            ],
+            "selected_pose_um": [
+              -2.5,
+              -80
+            ],
+            "geometric_nearest_distance_um": 80.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 644.142135623731,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "sum of lane operation durations plus shared effect; joint waits separate",
+            "pulse_count_checked": 1
+          },
+          {
+            "decision": 0,
+            "aod_id": "AOD_MAGIC",
+            "carrier_count": 17,
+            "source_origin_um": [
+              170,
+              0
+            ],
+            "nearest_geometric_pose_um": [
+              170,
+              -70
+            ],
+            "selected_pose_um": [
+              170.0,
+              -70
+            ],
+            "geometric_nearest_distance_um": 70.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 594.142135623731,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "sum of lane operation durations plus shared effect; joint waits separate",
+            "pulse_count_checked": 1
+          },
+          {
+            "decision": 2,
+            "aod_id": "AOD_0",
+            "carrier_count": 4,
+            "source_origin_um": [
+              10,
+              10
+            ],
+            "nearest_geometric_pose_um": [
+              10,
+              -60
+            ],
+            "selected_pose_um": [
+              7.5,
+              -60
+            ],
+            "geometric_nearest_distance_um": 70.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 618.2842712474619,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "complete service",
+            "pulse_count_checked": 1
+          },
+          {
+            "decision": 3,
+            "aod_id": "AOD_0",
+            "carrier_count": 4,
+            "source_origin_um": [
+              10,
+              0
+            ],
+            "nearest_geometric_pose_um": [
+              10,
+              -80
+            ],
+            "selected_pose_um": [
+              7.5,
+              -80
+            ],
+            "geometric_nearest_distance_um": 80.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 650.0,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "complete service",
+            "pulse_count_checked": 1
+          },
+          {
+            "decision": 4,
+            "aod_id": "AOD_0",
+            "carrier_count": 4,
+            "source_origin_um": [
+              0,
+              10
+            ],
+            "nearest_geometric_pose_um": [
+              0,
+              -60
+            ],
+            "selected_pose_um": [
+              -2.5,
+              -60
+            ],
+            "geometric_nearest_distance_um": 70.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 618.2842712474619,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "complete service",
+            "pulse_count_checked": 1
+          },
+          {
+            "decision": 159,
+            "aod_id": "AOD_0",
+            "carrier_count": 4,
+            "source_origin_um": [
+              10,
+              0
+            ],
+            "nearest_geometric_pose_um": [
+              10,
+              -80
+            ],
+            "selected_pose_um": [
+              7.5,
+              -80
+            ],
+            "geometric_nearest_distance_um": 80.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 1158.284271247462,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "complete service",
+            "pulse_count_checked": 2
+          },
+          {
+            "decision": 160,
+            "aod_id": "AOD_0",
+            "carrier_count": 4,
+            "source_origin_um": [
+              0,
+              10
+            ],
+            "nearest_geometric_pose_um": [
+              0,
+              -60
+            ],
+            "selected_pose_um": [
+              -2.5,
+              -60
+            ],
+            "geometric_nearest_distance_um": 70.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 1118.284271247462,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "complete service",
+            "pulse_count_checked": 2
+          }
+        ],
+        "selection_count": 7,
+        "original_projection_count": 50,
+        "independent_original_geometry": true,
+        "accepted_actual_cost_minimum": true,
+        "committed_pose_positions_match_selection": true,
+        "continuous_collision_proof": "separate Executor validation and complete original-initial replay",
+        "continuous_global_optimum_claimed": false,
+        "artifact_sha256": {
+          "initial.json": "2e238fd478942bfb687f2c8db505f48078c1d443e65c6fcd4cc837f51ecb99f6",
+          "recording.json": "8a9b5343daa3a7990479c10e2522f5ab0666466edf50088cb03af51c274f3e7a",
+          "decisions.json": "b412e405f5eac45ef57c93da264e7477372157493f420892c7a84ac6d6fbe086",
+          "summary.json": "0f172f68c047e9977c65a6af045dd5c1fb2ea20381857e4fb04afc90d5d138b8"
+        }
+      },
+      "routing_contract": {
+        "corridor_offset_um": 2.5,
+        "corridor_pitch_um": 5.0,
+        "direct_candidate": true,
+        "objective": "distance",
+        "optimality_scope": "validated straight segment, otherwise bounded half-grid graph",
+        "pulse_and_clearance_parameters_changed": false,
+        "whole_cartesian_and_spare_axes_checked": true
+      },
+      "readout_placement_contract": {
+        "automatic": true,
+        "candidate_budget": 16,
+        "legal_service_shortlist": 3,
+        "pulse_and_clearance_parameters_changed": false,
+        "scope": "nearest feasible rigid-origin clamp and bounded 2.5/5 um neighbors; full route/readout/return validation; no continuous global optimum",
+        "selection": "actual complete service duration, then AOD distance"
+      },
+      "actual_producer_source": {
+        "options": {
+          "algorithm_only": false,
+          "intra_patch": true,
+          "intra_services": true,
+          "layout": "enola",
+          "max_decisions": 512,
+          "output": "artifacts/auto-mz-2026-10-04/single-enola-attempt1",
+          "pair_search": true,
+          "patches": 1,
+          "proposal": "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json",
+          "readout_placement": "nearest_mz",
+          "routing_policy": "standard",
+          "skip_replay": false,
+          "source": "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04",
+          "wall_budget": 2400.0
+        },
+        "schema": "native-prefix-producer-source/1",
+        "sha256": {
+          "examples/run_parallel_shor15_prefix.py": "ba72034c702f423b486c1cd3efe0ecafd8dab421cbb75f15baeb2d234b3f19e0",
+          "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
+          "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "79ae4023fb039978ba243891c8e9e0ca14096a9dfe54b1e8dabb7d6e2fe1bc2f",
+          "src/neutral_atom_strategies/motion/astar.py": "81af36805971b394d20e555ca7e1938b49178c1fd995d304ffd592d43cd3436d",
+          "src/neutral_atom_strategies/motion/planners.py": "2809ae1e31db130c73882d8c859b02dc31bc504bd9f6db18341c6f51851f30db",
+          "src/neutral_atom_strategies/motion/validated_rigid.py": "bb9b3262fd3cfcc9988342df3b45b33e20d5a88c5d65030b48c8388ee05732a3",
+          "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
+          "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806",
+          "src/neutral_atom_strategies/scheduling/rigid_readout_placement.py": "3176758914f35e05f1260ca305ada494c95ff2a679b380b5a4f236a073c1aa23"
+        }
+      },
+      "current_source_differences": {
+        "examples/run_parallel_shor15_prefix.py": {
+          "actual_run_raw_sha256": "ba72034c702f423b486c1cd3efe0ecafd8dab421cbb75f15baeb2d234b3f19e0",
+          "current_raw_sha256": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55"
+        }
+      },
+      "source_difference_scope": "single CLI display-only historical translation rename; actual run bytes preserved",
+      "artifact_sha256": {
+        "initial.json": "2e238fd478942bfb687f2c8db505f48078c1d443e65c6fcd4cc837f51ecb99f6",
+        "source-prefix.json": "f270fa115e66e71309b25b64b1680c47f87c571df848a2df84c5cae090a076fa",
+        "prefix-circuit.json": "98aa857a1abf155c28413b2eec8af99487f768e0c6f9a41b2af010b4d6541b16",
+        "recording.json": "8a9b5343daa3a7990479c10e2522f5ab0666466edf50088cb03af51c274f3e7a",
+        "trace.jsonl": "69783c842c496666b947bc6a6e6de3489de3c24906d0a6e4ddf7faa538be3405",
+        "checkpoint-final.json": "0a0a378561d2e8829fe3eadab6e17bf09ea2c2534cd3aa9baf89fbfe7bdcf36b",
+        "decisions.json": "b412e405f5eac45ef57c93da264e7477372157493f420892c7a84ac6d6fbe086",
+        "summary.json": "0f172f68c047e9977c65a6af045dd5c1fb2ea20381857e4fb04afc90d5d138b8",
+        "producer-source.json": "8b64deb9fa24a27d02355a6700e17058e372ce25e008ef0766d3969f9840d3cf",
+        "independent-audit.json": "2ad52008bbd39647c815f09fd7ab5b3e1b402405b17f30a47245ee1dc04c187f",
+        "patch-parallel-audit.json": "cce7a655a5e119e28d7cc032dcf6f472be112d10724ee798077acda7760cb1c3",
+        "readout-placement-audit.json": "18ca4a1acb5f15479991d871757976405ad6a046831994d0382b6d7c3ba2ae4d"
+      }
+    },
+    {
+      "patch_count": 12,
+      "run_directory": "artifacts/auto-mz-2026-10-04/full12-enola-attempt1",
+      "fixed_endpoint_routing_baseline": "artifacts/routing-standard-2026-10-04/full12-enola-attempt1",
+      "same_input_bytes": {
+        "initial.json": true,
+        "initial-placement.json": true,
+        "source-prefix.json": true,
+        "prefix-circuit.json": true,
+        "parallel-phases.json": true,
+        "platform.json": true
+      },
+      "same_effect_batch_order_and_native_ids": true,
+      "same_decision_gate_batches": true,
+      "native_gates": 3006,
+      "native_projections": 413,
+      "atoms": 221,
+      "aods": 2,
+      "plans": 161,
+      "before_physical_us": 30055.93818301007,
+      "after_physical_us": 27955.938183010065,
+      "time_reduction_percent": 6.986972049294026,
+      "logical_completion_us": 27230.938183010065,
+      "compiler_execution_replay_wall_seconds": 1445.8953732000082,
+      "before_moves": 338,
+      "after_moves": 314,
+      "before_aod_distance_um": 9175.740159316892,
+      "after_aod_distance_um": 7465.740159316893,
+      "producer_audit": {
+        "all_output_code_logical_zero_and_aux_checks_plus_one": true,
+        "all_saved_report_ids_preserved": true,
+        "dag_complete": true,
+        "effects_exactly_once": true,
+        "event_queue_empty": true,
+        "independent_plan_replay_equal": true,
+        "same_source_resource_carriers_before_first_t": true
+      },
+      "independent_audit": {
+        "schema": "native-prefix-independent-physical-audit/1",
+        "passed": true,
+        "source_native_gate_count": 3006,
+        "physical_gate_count": 3006,
+        "algorithm_native_gate_count": 2988,
+        "resource_native_gate_count": 18,
+        "algorithm_qubits": 204,
+        "original_state_constraints": 204,
+        "original_projections": 413,
+        "committed_effects_once": 3006,
+        "committed_projection_checks": 413,
+        "dependency_interval_checks": 9401,
+        "committed_effect_interval_checks": 3006,
+        "cz_pulses_global_pair_checks": 52,
+        "cz_native_effects": 816,
+        "actual_mz_projection_geometry_checks": 413,
+        "raman_native_separation_checks": 1777,
+        "max_cz_batch": 36,
+        "move_devices": [
+          "AOD_0",
+          "AOD_MAGIC"
+        ],
+        "cross_device_move_overlaps": 4,
+        "stim_version": "1.15.0",
+        "cross_device_loaded_move_overlaps": 3,
+        "physical_time_us": 27955.938183010065,
+        "full_shor_physical": false,
+        "magic_factory_validated": false,
+        "fault_tolerance_validated": false,
+        "artifact_sha256": {
+          "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+          "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+          "initial.json": "5039afb0365945aa2c087d7ddae71b02b5ceec0ef58e766828d66350fe880be6",
+          "checkpoint-final.json": "2145d8b17182b5bc02b6e20b9b988ffc54cc6e982ca871541814fa6871fa7f65",
+          "recording.json": "487925ecb73baae83ee78657d79cbc6c5bf889b3ef6078d2cc13dc84b8c70547",
+          "trace.jsonl": "68a46639493e2ab5b2a073c03bd22706f8e89c270c4607cfe8c9750405d09723"
+        }
+      },
+      "patch_audit": {
+        "schema": "patch-parallel-layout-independent-audit/1",
+        "passed": true,
+        "scope": "unchanged deterministic native prefix; declared placement and legal intra-patch CZ batches",
+        "prefix_independent_audit": {
+          "schema": "native-prefix-independent-physical-audit/1",
+          "passed": true,
+          "source_native_gate_count": 3006,
+          "physical_gate_count": 3006,
+          "algorithm_native_gate_count": 2988,
+          "resource_native_gate_count": 18,
+          "algorithm_qubits": 204,
+          "original_state_constraints": 204,
+          "original_projections": 413,
+          "committed_effects_once": 3006,
+          "committed_projection_checks": 413,
+          "dependency_interval_checks": 9401,
+          "committed_effect_interval_checks": 3006,
+          "cz_pulses_global_pair_checks": 52,
+          "cz_native_effects": 816,
+          "actual_mz_projection_geometry_checks": 413,
+          "raman_native_separation_checks": 1777,
+          "max_cz_batch": 36,
+          "move_devices": [
+            "AOD_0",
+            "AOD_MAGIC"
+          ],
+          "cross_device_move_overlaps": 4,
+          "stim_version": "1.15.0",
+          "cross_device_loaded_move_overlaps": 3,
+          "physical_time_us": 27955.938183010065,
+          "full_shor_physical": false,
+          "magic_factory_validated": false,
+          "fault_tolerance_validated": false,
+          "artifact_sha256": {
+            "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+            "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+            "initial.json": "5039afb0365945aa2c087d7ddae71b02b5ceec0ef58e766828d66350fe880be6",
+            "checkpoint-final.json": "2145d8b17182b5bc02b6e20b9b988ffc54cc6e982ca871541814fa6871fa7f65",
+            "recording.json": "487925ecb73baae83ee78657d79cbc6c5bf889b3ef6078d2cc13dc84b8c70547",
+            "trace.jsonl": "68a46639493e2ab5b2a073c03bd22706f8e89c270c4607cfe8c9750405d09723"
+          }
+        },
+        "protocol": {
+          "canonical_phases_checked": 192,
+          "canonical_dependency_edges_checked": 5856,
+          "css_native_gates_checked": 1632
+        },
+        "batches": {
+          "mode": "enola",
+          "css_cz_pulses": 44,
+          "canonical_round_cz_pulses": 8,
+          "total_cz_pulses": 52,
+          "cz_native_effects": 816,
+          "per_patch": {
+            "phase0": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase1": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase2": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase3": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase4": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase5": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase6": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "phase7": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "work0": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "work1": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "work2": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            },
+            "work3": {
+              "maximum_pairs_in_one_canonical_pulse": 3,
+              "round_pulses": 8,
+              "pairs_per_pulse_histogram": {
+                "3": 8
+              },
+              "pulses_per_layer": {
+                "1": 2,
+                "2": 2,
+                "3": 2,
+                "4": 2
+              }
+            }
+          }
+        },
+        "home_layout": {
+          "canonical_coordinate_scale_um": null,
+          "minimum_occupied_home_distance_um": 10.0,
+          "slm_candidate_grid_um": 5,
+          "occupied_carriers_checked": 221,
+          "algorithm_aod_capacity": 108,
+          "finite_cz_distance_um": 6,
+          "cz_pair_offset_um": "searched finite offsets",
+          "enola_proposal": {
+            "proposal_raw_sha256": "b04b39ba29e6345c26404d289b6d3b441e1f3a92d9fb7ab249cd1b9b2d1b68ae",
+            "placement_mapping_sha256": "49a2c2d531af2bad5e77d8d368c6809dd8386ffe19c3fe166c7e23882b44337c",
+            "official_placer_commit": "2944dbf4e163e8d2eeeec607add0d9139edce689",
+            "official_placer_sha256": "d256c84490bd72d525515f24acb081d7b21bcd5f7bbc31302a3bbf79a16997cf",
+            "physical_evidence_scope": "frozen placement authenticated; physical run audited separately"
+          }
+        },
+        "move_evidence": {
+          "committed_moves_checked": 314,
+          "carrier_endpoint_checks": 9644,
+          "deforming_axis_move_count": 0,
+          "backend": "rigid",
+          "axis_order_and_spacing_certified_for_shared_monotone_progress": true,
+          "continuous_atom_slm_sweep_validation": "Executor plus complete original-initial-state plan replay"
+        },
+        "nonpair_cz_spacing": {
+          "minimum_required_nonpair_spacing_um": 10.0,
+          "minimum_actual_nonpair_spacing_um": 10.0,
+          "nonpair_distance_checks": 1263304,
+          "scope": "all alive atoms including resource carriers at every actual CZ pulse"
+        },
+        "artifact_sha256": {
+          "initial.json": "5039afb0365945aa2c087d7ddae71b02b5ceec0ef58e766828d66350fe880be6",
+          "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+          "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+          "recording.json": "487925ecb73baae83ee78657d79cbc6c5bf889b3ef6078d2cc13dc84b8c70547"
+        },
+        "physical_time_us": 27955.938183010065,
+        "complete_physical_shor": false,
+        "magic_factory_or_fault_tolerance_claimed": false
+      },
+      "readout_placement_audit": {
+        "schema": "independent-rigid-readout-placement-audit/1",
+        "passed": true,
+        "selections": [
+          {
+            "decision": 0,
+            "aod_id": "AOD_0",
+            "carrier_count": 60,
+            "source_origin_um": [
+              0,
+              0
+            ],
+            "nearest_geometric_pose_um": [
+              0,
+              -320
+            ],
+            "selected_pose_um": [
+              -2.5,
+              -320
+            ],
+            "geometric_nearest_distance_um": 320.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 1604.142135623731,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "sum of lane operation durations plus shared effect; joint waits separate",
+            "pulse_count_checked": 1
+          },
+          {
+            "decision": 0,
+            "aod_id": "AOD_MAGIC",
+            "carrier_count": 17,
+            "source_origin_um": [
+              330,
+              0
+            ],
+            "nearest_geometric_pose_um": [
+              330,
+              -70
+            ],
+            "selected_pose_um": [
+              330.0,
+              -70
+            ],
+            "geometric_nearest_distance_um": 70.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 594.142135623731,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "sum of lane operation durations plus shared effect; joint waits separate",
+            "pulse_count_checked": 1
+          },
+          {
+            "decision": 2,
+            "aod_id": "AOD_0",
+            "carrier_count": 48,
+            "source_origin_um": [
+              10,
+              10
+            ],
+            "nearest_geometric_pose_um": [
+              10,
+              -300
+            ],
+            "selected_pose_um": [
+              7.5,
+              -300
+            ],
+            "geometric_nearest_distance_um": 310.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 1578.284271247462,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "complete service",
+            "pulse_count_checked": 1
+          },
+          {
+            "decision": 3,
+            "aod_id": "AOD_0",
+            "carrier_count": 48,
+            "source_origin_um": [
+              10,
+              0
+            ],
+            "nearest_geometric_pose_um": [
+              10,
+              -320
+            ],
+            "selected_pose_um": [
+              7.5,
+              -320
+            ],
+            "geometric_nearest_distance_um": 320.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 1610.0,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "complete service",
+            "pulse_count_checked": 1
+          },
+          {
+            "decision": 4,
+            "aod_id": "AOD_0",
+            "carrier_count": 48,
+            "source_origin_um": [
+              0,
+              10
+            ],
+            "nearest_geometric_pose_um": [
+              0,
+              -300
+            ],
+            "selected_pose_um": [
+              -2.5,
+              -300
+            ],
+            "geometric_nearest_distance_um": 310.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 1578.284271247462,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "complete service",
+            "pulse_count_checked": 1
+          },
+          {
+            "decision": 159,
+            "aod_id": "AOD_0",
+            "carrier_count": 48,
+            "source_origin_um": [
+              10,
+              0
+            ],
+            "nearest_geometric_pose_um": [
+              10,
+              -320
+            ],
+            "selected_pose_um": [
+              7.5,
+              -320
+            ],
+            "geometric_nearest_distance_um": 320.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 2118.284271247462,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "complete service",
+            "pulse_count_checked": 2
+          },
+          {
+            "decision": 160,
+            "aod_id": "AOD_0",
+            "carrier_count": 48,
+            "source_origin_um": [
+              0,
+              10
+            ],
+            "nearest_geometric_pose_um": [
+              0,
+              -300
+            ],
+            "selected_pose_um": [
+              -2.5,
+              -300
+            ],
+            "geometric_nearest_distance_um": 310.0,
+            "tried": 3,
+            "accepted": 3,
+            "selected_actual_service_us": 2078.284271247462,
+            "cost_verified_from_recording": true,
+            "shared_service_cost_scope": "complete service",
+            "pulse_count_checked": 2
+          }
+        ],
+        "selection_count": 7,
+        "original_projection_count": 413,
+        "independent_original_geometry": true,
+        "accepted_actual_cost_minimum": true,
+        "committed_pose_positions_match_selection": true,
+        "continuous_collision_proof": "separate Executor validation and complete original-initial replay",
+        "continuous_global_optimum_claimed": false,
+        "artifact_sha256": {
+          "initial.json": "5039afb0365945aa2c087d7ddae71b02b5ceec0ef58e766828d66350fe880be6",
+          "recording.json": "487925ecb73baae83ee78657d79cbc6c5bf889b3ef6078d2cc13dc84b8c70547",
+          "decisions.json": "ace35a96321594436d7d1b20349e7fb8b70a342416c9fa205ebeef7e9bde2f89",
+          "summary.json": "5c5143c58c1518ad5b8b44c9a753768270ce6564fce5b83486261b61a2096a11"
+        }
+      },
+      "routing_contract": {
+        "corridor_offset_um": 2.5,
+        "corridor_pitch_um": 5.0,
+        "direct_candidate": true,
+        "objective": "distance",
+        "optimality_scope": "validated straight segment, otherwise bounded half-grid graph",
+        "pulse_and_clearance_parameters_changed": false,
+        "whole_cartesian_and_spare_axes_checked": true
+      },
+      "readout_placement_contract": {
+        "automatic": true,
+        "candidate_budget": 16,
+        "legal_service_shortlist": 3,
+        "pulse_and_clearance_parameters_changed": false,
+        "scope": "nearest feasible rigid-origin clamp and bounded 2.5/5 um neighbors; full route/readout/return validation; no continuous global optimum",
+        "selection": "actual complete service duration, then AOD distance"
+      },
+      "actual_producer_source": {
+        "options": {
+          "algorithm_only": false,
+          "intra_patch": true,
+          "intra_services": true,
+          "layout": "enola",
+          "max_decisions": 512,
+          "output": "artifacts/auto-mz-2026-10-04/full12-enola-attempt1",
+          "pair_search": true,
+          "patches": 12,
+          "proposal": "references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json",
+          "readout_placement": "nearest_mz",
+          "routing_policy": "standard",
+          "skip_replay": false,
+          "source": "references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04",
+          "wall_budget": 2400.0
+        },
+        "schema": "native-prefix-producer-source/1",
+        "sha256": {
+          "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
+          "src/neutral_atom_experiments/qec_pbc/parallel_prefix.py": "dbfd23c97eac0703ad2bb522cad52c72502f6cece9a7482ec81504f7049201d3",
+          "src/neutral_atom_experiments/qec_pbc/patch_layout.py": "79ae4023fb039978ba243891c8e9e0ca14096a9dfe54b1e8dabb7d6e2fe1bc2f",
+          "src/neutral_atom_strategies/motion/astar.py": "81af36805971b394d20e555ca7e1938b49178c1fd995d304ffd592d43cd3436d",
+          "src/neutral_atom_strategies/motion/planners.py": "2809ae1e31db130c73882d8c859b02dc31bc504bd9f6db18341c6f51851f30db",
+          "src/neutral_atom_strategies/motion/validated_rigid.py": "bb9b3262fd3cfcc9988342df3b45b33e20d5a88c5d65030b48c8388ee05732a3",
+          "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
+          "src/neutral_atom_strategies/scheduling/patch_service_groups.py": "c02239bb2c865b75b6c31146528ed94350b057e27a4d6588ad1ceff2f3467806",
+          "src/neutral_atom_strategies/scheduling/rigid_readout_placement.py": "3176758914f35e05f1260ca305ada494c95ff2a679b380b5a4f236a073c1aa23"
+        }
+      },
+      "current_source_differences": {},
+      "source_difference_scope": "none",
+      "artifact_sha256": {
+        "initial.json": "5039afb0365945aa2c087d7ddae71b02b5ceec0ef58e766828d66350fe880be6",
+        "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece",
+        "prefix-circuit.json": "15a0d26124b9d344e6805b171f187f87e91740e388cc2489dac04edd5e525194",
+        "recording.json": "487925ecb73baae83ee78657d79cbc6c5bf889b3ef6078d2cc13dc84b8c70547",
+        "trace.jsonl": "68a46639493e2ab5b2a073c03bd22706f8e89c270c4607cfe8c9750405d09723",
+        "checkpoint-final.json": "2145d8b17182b5bc02b6e20b9b988ffc54cc6e982ca871541814fa6871fa7f65",
+        "decisions.json": "ace35a96321594436d7d1b20349e7fb8b70a342416c9fa205ebeef7e9bde2f89",
+        "summary.json": "5c5143c58c1518ad5b8b44c9a753768270ce6564fce5b83486261b61a2096a11",
+        "producer-source.json": "861d8a2fe4ddc2483e4dae534c96e35c85eccec4dd7a6477acf40a7d2f6cdf91",
+        "independent-audit.json": "22e5e0700caad30fa3a338f1528cf2301711891cf560c35b5c5aa643d20bf85f",
+        "patch-parallel-audit.json": "09ce53fd97325170aed380f0d9e3394bf0762117f31180e12a771286476b9ee2",
+        "readout-placement-audit.json": "e2b1bd9ecfca7d238ffdf7be33c658edead0207d0e5af4a20065ea25ca760a5e"
+      }
+    }
+  ],
+  "current_source_raw_sha256": {
+    "examples/run_parallel_shor15_prefix.py": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55",
+    "src/neutral_atom_strategies/scheduling/parallel_patch.py": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
+    "src/neutral_atom_strategies/scheduling/rigid_readout_placement.py": "3176758914f35e05f1260ca305ada494c95ff2a679b380b5a4f236a073c1aa23",
+    "src/neutral_atom_strategies/motion/validated_rigid.py": "bb9b3262fd3cfcc9988342df3b45b33e20d5a88c5d65030b48c8388ee05732a3",
+    "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01",
+    "tools/audit_rigid_readout_placement.py": "fa35633c2e54bfd3265a2eb6468e3c712862e8d97691ad9ba747213bb14efc09"
+  },
+  "fixed_compatibility": {
+    "all_four_canonical_bytes_equal": true,
+    "cases": [
+      {
+        "bytes_equal": true,
+        "compiler": "compile_readout_group",
+        "current_bytes": 14672,
+        "current_canonical_sha256": "be9b26166f955cca30bdf490eb5731200aa7eadebab09636efba2c5711845dc4",
+        "device_logs": 1,
+        "input_state_unchanged": true,
+        "old_bytes": 14672,
+        "old_canonical_sha256": "be9b26166f955cca30bdf490eb5731200aa7eadebab09636efba2c5711845dc4",
+        "readout_placement": "fixed_translation",
+        "routing_policy": "shortest-direct-or-halfgrid-v1",
+        "serialized_value": "(CompiledPlan, included_resets)",
+        "translation_um": -100
+      },
+      {
+        "bytes_equal": true,
+        "compiler": "compile_readout_group",
+        "current_bytes": 17487,
+        "current_canonical_sha256": "3b34f0113eeba29ef989472e8d541ec8a1915484011ec16bde6b99d5d342f70f",
+        "device_logs": 1,
+        "input_state_unchanged": true,
+        "old_bytes": 17487,
+        "old_canonical_sha256": "3b34f0113eeba29ef989472e8d541ec8a1915484011ec16bde6b99d5d342f70f",
+        "readout_placement": "fixed_translation",
+        "routing_policy": "legacy-5um-v1",
+        "serialized_value": "(CompiledPlan, included_resets)",
+        "translation_um": -100
+      },
+      {
+        "bytes_equal": true,
+        "compiler": "compile_dual_reset_prologue",
+        "current_bytes": 18572,
+        "current_canonical_sha256": "50e6b6269320b65777e83a3143844bdf8eede22a52c582d0fa580d21ab07f1f2",
+        "device_logs": 2,
+        "input_state_unchanged": true,
+        "old_bytes": 18572,
+        "old_canonical_sha256": "50e6b6269320b65777e83a3143844bdf8eede22a52c582d0fa580d21ab07f1f2",
+        "readout_placement": "fixed_translation",
+        "routing_policy": "shortest-direct-or-halfgrid-v1",
+        "serialized_value": "CompiledPlan",
+        "translation_um": -100
+      },
+      {
+        "bytes_equal": true,
+        "compiler": "compile_dual_reset_prologue",
+        "current_bytes": 24369,
+        "current_canonical_sha256": "4bf702f6d65cb7198419c9f5225c5459e3399c2df830b572d03fde10a7e1209b",
+        "device_logs": 2,
+        "input_state_unchanged": true,
+        "old_bytes": 24369,
+        "old_canonical_sha256": "4bf702f6d65cb7198419c9f5225c5459e3399c2df830b572d03fde10a7e1209b",
+        "readout_placement": "fixed_translation",
+        "routing_policy": "legacy-5um-v1",
+        "serialized_value": "CompiledPlan",
+        "translation_um": -100
+      }
+    ],
+    "current_git_head_at_proof": "9a111846a1540df46e65ad63c927d263a316d690",
+    "fixture": {
+      "file_sha256": "653e42d89004fda2a3405989c1957e1dd88677d4ff917c921c7d56f089bc6cb4",
+      "function": "service_state",
+      "loaded_scope": "original imports (except pytest) plus original service_state function",
+      "path": "tests/test_rigid_readout_placement.py"
+    },
+    "old_head": "9a111846a1540df46e65ad63c927d263a316d690",
+    "schema": "rigid-mz-fixed-plan-compatibility/1",
+    "scope": "Four bounded authored fixtures; not an exhaustive compatibility proof for every circuit",
+    "serializer": "neutral_atom_env.replay.serializer.canonical_json (UTF-8)",
+    "source_sha256": {
+      "src/neutral_atom_strategies/scheduling/parallel_patch.py": {
+        "current_worktree_sha256": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9",
+        "old_git_blob_exists": true,
+        "old_git_blob_sha256": "61ea0c0b9b91af8541f259fac24ac6633b18d2ef07c6afd195789c8f37db0abc"
+      },
+      "src/neutral_atom_strategies/scheduling/rigid_readout_placement.py": {
+        "current_worktree_sha256": "3176758914f35e05f1260ca305ada494c95ff2a679b380b5a4f236a073c1aa23",
+        "old_git_blob_exists": false,
+        "old_git_blob_sha256": null
+      }
+    },
+    "status": "passed"
+  },
+  "tests": {
+    "passed": true,
+    "distinct_pytest_passed": 185,
+    "skipped": 0,
+    "junit_attributes": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "185",
+      "time": "36.130",
+      "timestamp": "2026-10-04T15:50:31.647693+08:00",
+      "hostname": "yubowl"
+    },
+    "new_policy_tests": 14,
+    "new_integration_tests": 9,
+    "new_report_tests": 11,
+    "new_independent_audit_tests": 15,
+    "architecture_modules": 267,
+    "architecture_violations": 0,
+    "independent_fixed_mode_byte_checks": 4
+  },
+  "browser": {
+    "schema": "qec-auto-mz-browser-acceptance/1",
+    "passed": true,
+    "url": "http://127.0.0.1:8777/",
+    "recording_sha256": "487925ecb73baae83ee78657d79cbc6c5bf889b3ef6078d2cc13dc84b8c70547",
+    "scope": "actual completed 12-patch nearest_mz recording; no simulated UI interactions",
+    "header_bookmarks": [
+      {
+        "name": "初始码块放置",
+        "primary": true,
+        "seek": "0"
+      },
+      {
+        "name": "MZ 批量复位 × 77",
+        "primary": true,
+        "seek": "809.142136"
+      },
+      {
+        "name": "码块共同 H × 72",
+        "primary": true,
+        "seek": "21606.764013"
+      },
+      {
+        "name": "并行 CZ 配对 × 36",
+        "primary": true,
+        "seek": "21803.414013"
+      },
+      {
+        "name": "MZ 综合征读出 × 48",
+        "primary": true,
+        "seek": "24782.653912"
+      },
+      {
+        "name": "2.5 μm 半格绕障运输",
+        "primary": true,
+        "seek": "116.642136"
+      },
+      {
+        "name": "两台 AOD 同时运输",
+        "primary": true,
+        "seek": "116.642136"
+      },
+      {
+        "name": "稳定子第 1 层 · 2 个实际脉冲",
+        "primary": true,
+        "seek": "21803.414013"
+      },
+      {
+        "name": "稳定子第 2 层 · 2 个实际脉冲",
+        "primary": true,
+        "seek": "22334.298284"
+      },
+      {
+        "name": "稳定子第 3 层 · 2 个实际脉冲",
+        "primary": true,
+        "seek": "22871.466827"
+      },
+      {
+        "name": "稳定子第 4 层 · 2 个实际脉冲",
+        "primary": true,
+        "seek": "23386.635369"
+      },
+      {
+        "name": "实际提交终态",
+        "primary": true,
+        "seek": "27955.938183"
+      }
+    ],
+    "actual_pulse_locate": [
+      {
+        "index": 0,
+        "expected": 809.142135623731,
+        "observed": 809.142136
+      },
+      {
+        "index": 1,
+        "expected": 809.142135623731,
+        "observed": 809.142136
+      },
+      {
+        "index": 2,
+        "expected": 2408.4264068711927,
+        "observed": 2408.426407
+      },
+      {
+        "index": 3,
+        "expected": 3998.4264068711927,
+        "observed": 3998.426407
+      },
+      {
+        "index": 4,
+        "expected": 5596.710678118655,
+        "observed": 5596.710678
+      },
+      {
+        "index": 5,
+        "expected": 24782.6539117626,
+        "observed": 24782.653912
+      },
+      {
+        "index": 6,
+        "expected": 26880.938183010065,
+        "observed": 26880.938183
+      }
+    ],
+    "viewport_390": {
+      "canvas": 353.3333435058594,
+      "client": 375,
+      "scroll": 375
+    },
+    "viewport_320": {
+      "canvas": 283.3333435058594,
+      "client": 305,
+      "scroll": 305
+    },
+    "final_dom": {
+      "nested": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "primary": true,
+      "root": true,
+      "scroll": 1016,
+      "seek": "24782.653912",
+      "width": 1016
+    },
+    "console_errors": [],
+    "default_placement_details_collapsed": true,
+    "zoom_out_and_in_clicked": true,
+    "fit_at_measurement_clicked": true,
+    "selected_candidate_cost_viewed": true,
+    "qec_scale_node_test_passed": true,
+    "fit_resize_node_test_passed": true,
+    "screenshot": "artifacts/auto-mz-2026-10-04/full12-auto-mz.png",
+    "single_receipt": "artifacts/auto-mz-2026-10-04/single-browser-acceptance.json"
+  },
+  "physical_invariants": {
+    "finite_cz_um": 6,
+    "cz_nonpartner_min_um": 10,
+    "transport_clearance_um": 1,
+    "raman_separation_um": 5,
+    "full_active_cartesian": true,
+    "disabled_spare_axes_bounds": true,
+    "foreign_spectators_retained": true,
+    "executor_only_live_writer": true
+  },
+  "limitations": [
+    "bounded service comparison, no continuous/global optimum",
+    "each selected lane cost is its recorded operation durations plus the shared effect; two lane costs are not added; joint waits separate",
+    "Clifford prefix only; not new factory, injection, FT or complete physical Shor completion"
+  ]
+}

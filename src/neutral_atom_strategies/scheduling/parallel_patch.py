@@ -11,20 +11,21 @@ from math import hypot
 from time import perf_counter
 
 from neutral_atom_env.domain.errors import ValidationError
-from neutral_atom_env.domain.models import HolderType, MobileCellIndex, Position2D, GateStatus
+from neutral_atom_env.domain.models import HolderType, MobileCellIndex, Position2D, GateStatus, ZoneType
 from neutral_atom_env.domain.operations import CaptureBinding, OperationType as K, TaskIntent, TaskTarget
 from neutral_atom_env.environment import as_environment
 from neutral_atom_env.hardware.dynamic_traps import trap_state
-from neutral_atom_env.hardware.multi_aod import device, supports
+from neutral_atom_env.hardware.multi_aod import device, occupancy, supports
 from neutral_atom_env.program.builder import ProgramBuilder
 from neutral_atom_env.program.task_validation import validate_target
 from neutral_atom_strategies.scheduling.m4 import M4Result
+from neutral_atom_strategies.scheduling.rigid_readout_placement import RigidReadoutPlacementPolicy
 from neutral_atom_strategies.motion.validated_rigid import (
     append_rigid_route, STANDARD_ROUTING, LEGACY_ROUTING)
 
 
 def _point(state, atom):
-    return state.placement.position(atom, state.world, state.aod)
+    return state.placement.position(atom, state.world, state.aods)
 
 
 def _builder(state, gates, decision):
@@ -35,8 +36,8 @@ def _builder(state, gates, decision):
 
 
 def _bindings(state, atoms, aod_id='AOD_0'):
-    if state.placement.mobile_occupancy:
-        raise ValidationError('PARALLEL_PATCH_LOADED', 'Begin equal-role service with an empty algorithm AOD')
+    if occupancy(state, aod_id):
+        raise ValidationError('PARALLEL_PATCH_LOADED', 'Begin equal-role service with the selected AOD empty')
     sites = {}
     for atom in atoms:
         holder = state.placement.atom_to_holder[atom]
@@ -143,9 +144,65 @@ def compile_cz_group(state, gates, *, decision=0, mobile_operands=None, pair_off
     return p.finish('parallel-patch-finite-pair-v1')
 
 
+def _readout_mode(readout_placement, routing_policy):
+    if routing_policy not in {STANDARD_ROUTING, LEGACY_ROUTING}:
+        raise ValueError('Unknown rigid routing policy')
+    mode = (('nearest_mz' if routing_policy == STANDARD_ROUTING else 'fixed_translation')
+            if readout_placement is None else readout_placement)
+    if mode not in {'nearest_mz', 'fixed_translation'}:
+        raise ValueError('Readout placement must be nearest_mz or fixed_translation')
+    return mode
+
+
+def _realize_readout(state, gates, resets, origin, bindings, target, *, decision, aod_id,
+                     routing_policy):
+    """Realize one target from a fresh private builder, including restoration."""
+    p = _builder(state, (*gates, *resets), decision)
+    _empty_reposition(p, origin, aod_id, routing_policy=routing_policy)
+    p.add(K.AOD_LOAD, '装载各码块的对应测量载体', bindings=bindings, aod_id=aod_id)
+    # This MZ visit holds the carriers in stationary AOD; it does not offload
+    # them into an invented measurement holder or skip native RESETs.
+    points = _outbound(p, origin, target, bindings, aligned=False, aod_id=aod_id,
+                       routing_policy=routing_policy)
+    p.add(K.MEASUREMENT if gates[0].gate_type == 'MEASURE' else K.RESET,
+        '在实际 MZ 内执行原生读出/复位', gate_ids=tuple(g.id for g in gates), aod_id=aod_id)
+    if resets:
+        p.add(K.RESET, '同次 MZ 访问实际复位读出的辅助载体', gate_ids=tuple(g.id for g in resets), aod_id=aod_id)
+    _return(p, points, bindings, aod_id, routing_policy=routing_policy)
+    return p.finish('parallel-patch-mz-return-v1')
+
+
+def _fixed_readout_log(state, plan, origin, target, bindings, aod_id):
+    aod = device(state, aod_id)
+    axes = aod.configuration()
+    positions = tuple(sorted((b.atom_id, (target.x_um + axes.x_um[b.cell.column] - aod.pose.x_um,
+                                         target.y_um + axes.y_um[b.cell.row] - aod.pose.y_um))
+                             for b in bindings))
+    zones = [z.id for z in state.world.zones if z.zone_type == ZoneType.MEASUREMENT and
+             all(z.bounds.contains(Position2D(*p)) for _, p in positions)]
+    selected = {'status': 'accepted', 'support': 'aod', 'positions': positions,
+        'aod_id': aod_id, 'zone_id': zones[0] if zones else None,
+        'target_pose_um': [target.x_um, target.y_um],
+        'proxy_distance_um': hypot(target.x_um-origin.x_um, target.y_um-origin.y_um),
+        'actual_us': plan.estimated_duration_us, 'actual_distance_um': plan.estimated_distance_um}
+    return {'schema': 'rigid-readout-placement-decision/1', 'aod_id': aod_id,
+        'atom_ids': [b.atom_id for b in bindings], 'source_origin_um': [origin.x_um, origin.y_um],
+        'support': 'aod', 'generated': 1, 'generation_rejections': {},
+        'candidate_budget': 1, 'top_k': 1, 'candidates': [selected], 'selected': selected,
+        'accepted': 1, 'optimality_claim': False,
+        'selection_scope': 'fixed historical translation with complete service validation'}
+
+
 def compile_readout_group(state, gates, *, decision=0, translation_um=-300., aod_id='AOD_0',
-                          routing_policy=STANDARD_ROUTING):
-    """Move actual carriers to MZ; read/reset there; return their holders."""
+                          routing_policy=STANDARD_ROUTING, readout_placement=None,
+                          readout_placement_log=None):
+    """Choose legal MZ support; read/reset there; return the original holders.
+
+    Standard routing defaults to bounded nearest-MZ placement. Explicit
+    ``fixed_translation`` and the legacy default preserve historical plans.
+    ``readout_placement_log`` is an optional list receiving decision evidence;
+    it does not change the returned ``(plan, included_resets)`` contract.
+    """
     if not gates or any(g.gate_type != gates[0].gate_type for g in gates) or gates[0].gate_type not in {'MEASURE', 'RESET'}:
         raise ValueError('A same-type MEASURE/RESET group is required')
     resets = []
@@ -160,24 +217,37 @@ def compile_readout_group(state, gates, *, decision=0, translation_um=-300., aod
                     resets.append(candidate)
     atoms = tuple(g.qubit_ids[0] for g in gates)
     origin, bindings = _bindings(state, atoms, aod_id)
-    p = _builder(state, (*gates, *resets), decision)
-    _empty_reposition(p, origin, aod_id, routing_policy=routing_policy)
-    p.add(K.AOD_LOAD, '装载各码块的对应测量载体', bindings=bindings, aod_id=aod_id)
-    target = Position2D(origin.x_um, origin.y_um + translation_um)
-    # This MZ visit holds the carriers in stationary AOD; it does not offload
-    # them into an invented measurement holder or skip native RESETs.
-    points = _outbound(p, origin, target, bindings, aligned=False, aod_id=aod_id,
-                       routing_policy=routing_policy)
-    p.add(K.MEASUREMENT if gates[0].gate_type == 'MEASURE' else K.RESET,
-        '在实际 MZ 内执行原生读出/复位', gate_ids=tuple(g.id for g in gates), aod_id=aod_id)
-    if resets:
-        p.add(K.RESET, '同次 MZ 访问实际复位读出的辅助载体', gate_ids=tuple(g.id for g in resets), aod_id=aod_id)
-    _return(p, points, bindings, aod_id, routing_policy=routing_policy)
-    return p.finish('parallel-patch-mz-return-v1'), tuple(resets)
+    mode = _readout_mode(readout_placement, routing_policy)
+    def realize(target):
+        return _realize_readout(state, gates, resets, origin, bindings, target,
+            decision=decision, aod_id=aod_id, routing_policy=routing_policy)
+    if mode == 'fixed_translation':
+        target = Position2D(origin.x_um, origin.y_um + translation_um)
+        plan = realize(target)
+        entries = [_fixed_readout_log(state, plan, origin, target, bindings, aod_id)] if readout_placement_log is not None else []
+    else:
+        policy = RigidReadoutPlacementPolicy(candidate_budget=16, top_k=3)
+        try:
+            plan = policy.choose(state, atoms, realize, aod_id=aod_id, origin=origin).plan
+        finally:
+            if readout_placement_log is not None:
+                for entry in policy.log:
+                    entry.update(policy=mode, decision=decision, kind=gates[0].gate_type,
+                        gate_ids=[g.id for g in gates], included_reset_gate_ids=[g.id for g in resets],
+                        status='selected' if entry['selected'] is not None else 'failed')
+                readout_placement_log.extend(policy.log)
+        entries = []
+    for entry in entries:
+        entry.update(policy=mode, decision=decision, kind=gates[0].gate_type,
+            gate_ids=[g.id for g in gates], included_reset_gate_ids=[g.id for g in resets], status='selected')
+    if readout_placement_log is not None:
+        readout_placement_log.extend(entries)
+    return plan, tuple(resets)
 
 
 def compile_dual_reset_prologue(state, algorithm_gates, magic_gates, *, translation_um=-300.,
-                                routing_policy=STANDARD_ROUTING):
+                                routing_policy=STANDARD_ROUTING, readout_placement=None,
+                                readout_placement_log=None):
     """Two real concurrent transport lanes, one shared native RESET pulse.
 
     Separate RESET operations would contend for the global readout resource.
@@ -189,7 +259,8 @@ def compile_dual_reset_prologue(state, algorithm_gates, magic_gates, *, translat
     lanes = []
     for aod_id, gates in (('AOD_0', algorithm_gates), ('AOD_MAGIC', magic_gates)):
         plan, resets = compile_readout_group(state, gates, decision=0, aod_id=aod_id,
-                                             translation_um=translation_um, routing_policy=routing_policy)
+            translation_um=translation_um, routing_policy=routing_policy,
+            readout_placement=readout_placement, readout_placement_log=readout_placement_log)
         assert not resets
         pulse = next(i for i, op in enumerate(plan.operations) if op.operation_type == K.RESET)
         lanes.append((plan.operations[:pulse], plan.operations[pulse], plan.operations[pulse + 1:]))
@@ -298,15 +369,17 @@ def select_geometric_cz_group(state, ready, atom_roles):
 def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
                        max_decisions=512, wall_budget_s=1800., intra_patch=False,
                        mz_translation_um=-300., intra_services=False, pair_search=False,
-                       routing_policy=STANDARD_ROUTING):
+                       routing_policy=STANDARD_ROUTING, readout_placement=None):
     """Run the caller's supported DAG; return structured failure evidence."""
     env = as_environment(env)
     started = perf_counter()
     log = []
+    placement_log = []
     phase = 'initialization'
     try:
         if routing_policy not in {STANDARD_ROUTING, LEGACY_ROUTING}:
             raise ValueError('Unknown rigid routing policy')
+        readout_placement = _readout_mode(readout_placement, routing_policy)
         if env.state.quantum_state is None:
             raise ValidationError('PARALLEL_PATCH_QUANTUM', 'Enable tracked Clifford state before physical execution')
         if env.state.hardware.backend != 'rigid':
@@ -324,12 +397,14 @@ def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
             tick = perf_counter()
             phase = 'dual_reset_prologue'
             plan = compile_dual_reset_prologue(env.state, algorithm, magic,
-                                               translation_um=mz_translation_um, routing_policy=routing_policy)
+                translation_um=mz_translation_um, routing_policy=routing_policy,
+                readout_placement=readout_placement, readout_placement_log=placement_log)
             entry = {'decision': 0, 'kind': 'RESET', 'gate_ids': [g.id for g in (*algorithm, *magic)],
                 'batch_size': len(algorithm) + len(magic), 'start_us': env.state.time_us,
                 'duration_us': plan.estimated_duration_us, 'compile_wall_seconds': perf_counter() - tick,
                 'plan_id': plan.id, 'actual_concurrent_aods': ['AOD_0', 'AOD_MAGIC'],
-                'routing_policy': routing_policy}
+                'routing_policy': routing_policy, 'readout_placement': readout_placement,
+                'readout_placement_decisions': placement_log}
             env.submit(plan)
             if on_plan:
                 on_plan(plan, entry)
@@ -340,6 +415,7 @@ def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
             if len(log) >= max_decisions or perf_counter() - started > wall_budget_s:
                 raise ValidationError('PARALLEL_PATCH_BUDGET', 'Bounded compile/execute budget exhausted')
             state = env.state
+            placement_log = []
             ready = state.dag.ready_gates()
             if not ready:
                 raise ValidationError('PARALLEL_PATCH_EMPTY', 'Unfinished DAG has no ready supported operation')
@@ -384,8 +460,10 @@ def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
                         from .patch_service_groups import select_readout_group
                         gates = select_readout_group(state, candidates, atom_roles)
                     plan, resets = compile_readout_group(state, gates, decision=len(log),
-                                                        translation_um=mz_translation_um, routing_policy=routing_policy)
-                    extra = {'included_reset_gate_ids': [g.id for g in resets]}
+                        translation_um=mz_translation_um, routing_policy=routing_policy,
+                        readout_placement=readout_placement, readout_placement_log=placement_log)
+                    extra = {'included_reset_gate_ids': [g.id for g in resets],
+                        'readout_placement': readout_placement, 'readout_placement_decisions': placement_log}
             entry = {'decision': len(log), 'kind': phase, 'gate_ids': [g.id for g in gates],
                 'batch_size': len(gates), 'start_us': state.time_us,
                 'duration_us': plan.estimated_duration_us, 'compile_wall_seconds': perf_counter() - tick,
@@ -404,4 +482,6 @@ def run_parallel_patch(env, *, atom_roles, on_event=None, on_plan=None,
             'message': violation.message if violation else str(error), 'wall_seconds': perf_counter() - started,
             'unfinished_gate_ids': [g.id for g in env.state.dag.circuit.gates
                 if env.state.dag.nodes[g.id].status != GateStatus.COMPLETED]}
+        if placement_log:
+            diagnostic['readout_placement_decisions'] = placement_log
         return M4Result('stalled', (diagnostic,), (), len(log), tuple(log))

@@ -60,7 +60,8 @@ python examples/run_parallel_shor15_prefix.py `
   --source references/qec_pbc_validation/shor15_native_prefix_seed0_2026_10_04 `
   --output artifacts/my-patch-routing-standard --patches 1 --layout enola `
   --proposal references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json `
-  --intra-patch --intra-services --pair-search --routing-policy standard
+  --intra-patch --intra-services --pair-search --routing-policy standard `
+  --readout-placement fixed_translation
 ```
 
 多块示例使用相同保存源和冻结提案，独立输出：
@@ -71,7 +72,7 @@ python examples/run_parallel_shor15_prefix.py `
   --output artifacts/my-full12-routing-standard --patches 12 --layout enola `
   --proposal references/qec_pbc_validation/enola_patch_proposal_2026_10_04.json `
   --intra-patch --intra-services --pair-search --routing-policy standard `
-  --wall-budget 1800
+  --readout-placement fixed_translation --wall-budget 1800
 ```
 
 默认不加 `--routing-policy` 也选择 `standard`。复现此前发布的固定 5 μm 路线与时间表时必须显式使用 `--routing-policy legacy_5um`，其内部标识为 `legacy-5um-v1`。该选项保留历史路线作为对照，不能把旧数据标成新标准结果。
@@ -82,7 +83,7 @@ python examples/run_parallel_shor15_prefix.py `
 
 ## 2026-10-04 同初态实际验收
 
-本表沿用固定MZ测量端点以隔离routing改动。用户随后确认要恢复MZ最近合法选点；该后续恢复单独验收，不能将本表写成已完成选点的结果。
+本表沿用固定MZ测量端点以隔离routing改动，命令明确使用 `--readout-placement fixed_translation`。后续标准入口默认的自动MZ选点见[设备感知选点说明](qec_rigid_readout_placement.md)，该恢复单独验收，不能将本表写成已完成选点的结果。
 
 新旧各组的 initial/source/circuit/phases 原始字节、效果合批顺序与原生 ID 均相同，只替换路由。全部原门、有限 CZ 与依赖保持。
 
