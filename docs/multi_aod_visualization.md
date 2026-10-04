@@ -1,5 +1,7 @@
 # 多 AOD 的真实执行观察
 
+2026-10-04 呈现修订沿用[QEC 回放合同](qec_viewer_presentation.md)：原子、SLM/AOD trap 和动效按空间投影同比缩放；canonical X/Z 辅助角色在运输中保持标识；主要统计/时间占用优先展开，逐项和大量资源明细默认折叠。既有录制原字节不变，重建共用 bundle 与报告即可。
+
 共用 `VisualRecorder` / `viewer.js` 观察同一个 Executor 状态中的所有 AOD。录制没有独立的魔态动画状态：每个移动原子的坐标由已提交 holder 的 `MobileCellIndex.aod_id` 选择相应设备，设备的真实轴配置及已开始 MOVE 决定连续采样。不同设备同为 `(row=0, column=0)` 的交点保持不同身份。
 
 `neutral-atom-view/2` 的每帧增加 `aods`、`axes_by_aod`、`movements`、`transfers` 与 `primary_aod_id`。原 `aod`、`axes`、`movement`、`transfer` 字段继续表示主设备，以便历史单 AOD 录制回放。各 MOVE 的 `aod_id`、`moving_atom_ids`、`moving_count`、源/目标轴与资源只记录该设备；同时操作仍共享一个物理时钟。批次保留完整 `gate_ids` / `intended_pairs`，画布显示每一个实际作用对，界面以批次大小和码块数量说明并行。

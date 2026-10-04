@@ -16,11 +16,11 @@ const off=get('current.f.scene.traps.filter(t=>!t.enabled).length');
 const occupiedOn=get('current.f.scene.traps.filter(t=>t.enabled&&current.atoms.some(a=>a.holder.holder_type==="static"&&a.holder.holder_id===t.id)).length');
 assert(on>occupiedOn&&off>0);
 function redraw(){arcs.length=0;get('draw()');assert.equal(get('hits.length'),atomCount);assert.equal(get('JSON.stringify(current.atoms)'),before);}
-function rings(){return arcs.filter(a=>a[2]===7).length;}
-function dots(){return arcs.filter(a=>a[2]===1.6).length;}
+function rings(){return arcs.filter(a=>Math.abs(a[2]-get('markerGeometry().trap'))<1e-9).length;}
+function dots(){return arcs.filter(a=>Math.abs(a[2]-.4*get('projection().scale'))<1e-9).length;}
 redraw();assert.equal(rings(),on+activeAod);assert.equal(dots(),off);
 const offPosition=JSON.parse(get('JSON.stringify((()=>{const t=current.f.scene.traps.find(t=>t.id==="empty_off"),p=projection();return [p.X(t.position.x_um),p.Y(t.position.y_um)]})())'));
-assert(arcs.some(a=>a[2]===1.6&&a[0]===offPosition[0]&&a[1]===offPosition[1]),'Closed marker remains at actual SLM coordinates');
+assert(arcs.some(a=>Math.abs(a[2]-.4*get('projection().scale'))<1e-9&&a[0]===offPosition[0]&&a[1]===offPosition[1]),'Closed marker remains at actual SLM coordinates');
 el('slm-off').checked=false;el('slm-off').onchange();redraw();assert.equal(dots(),0);assert.equal(rings(),on+activeAod);
 el('slm-empty').checked=false;el('slm-empty').onchange();redraw();assert.equal(rings(),occupiedOn+activeAod);
 el('slm-off').checked=true;el('slm-off').onchange();redraw();assert.equal(dots(),0,'Empty filter also applies to closed SLM');
@@ -28,7 +28,7 @@ el('slm-empty').checked=true;el('slm-empty').onchange();redraw();assert.equal(do
 el('slm').checked=false;el('slm').onchange();redraw();assert.equal(rings(),activeAod);assert.equal(dots(),0);
 assert(el('slm-empty').disabled&&el('slm-off').disabled);
 el('grid').checked=true;el('grid').onchange();redraw();
-assert(!arcs.some(a=>a[2]===1.4&&a[0]===offPosition[0]&&a[1]===offPosition[1]),'Grid must not redraw a hidden configured SLM as a candidate dot');
+assert(!arcs.some(a=>Math.abs(a[2]-.35*get('projection().scale'))<1e-9&&a[0]===offPosition[0]&&a[1]===offPosition[1]),'Grid must not redraw a hidden configured SLM as a candidate dot');
 el('grid').checked=false;el('grid').onchange();
 el('aod').checked=false;el('aod').onchange();redraw();assert.equal(rings(),0);
 assert.equal(get('current.atoms.filter(a=>a.holder.holder_type==="mobile").length'),mobile);

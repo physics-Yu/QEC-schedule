@@ -1146,14 +1146,14 @@
       "sha256_normalization": "text_lf",
       "sha256": {
         "src/neutral_atom_env/visualization/recording.py": "c8c842762453fd97b121e9fa63bed09ee67de7e4a83485402d974f386c00043c",
-        "src/neutral_atom_env/visualization/viewer.js": "07494a1a9373ef006c8b615853b068e1cf7dd4823e4525ac6a455875f6a70222",
-        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "2620f8b5aab9e6c33a6f9b5ed715e52515fdb6eedf9e7aecfe65415a7ebdb72b",
+        "src/neutral_atom_env/visualization/viewer.js": "995fc9ed672fd9a9bb5d758d4faa1a26edb51afeb4fd225c3bcff2849e1d1691",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "132418f42686b2013c8686e52a4505c7d9afb135abb36bba4edca361f93b3f11",
         "examples/serve_native_parallel.py": "5fc1dfd161a0487e70f17a6a709244311c3a6827e9e5343f9273d1e1d14dd898",
         "tests/test_multi_aod_visualization.py": "6e8150916b612e08e853f8c922f9ddc39d2a738a72c48631c799d5436c2b8804",
-        "tests/test_native_parallel_report.py": "2c3d063689b337f1d5093c75b256ddc06086f50ac2ba3da1d70aa7795dbb945d",
+        "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146",
         "tests/viewer_fit_resize.cjs": "13b7dc002cf03b6ec652c7ff92d053525450e1c01f5ad5105a501eff58d90f08",
         "tests/multi_aod_viewer.cjs": "b81dc7f14add3c6a8e3e60a2c45c7b4e08e7195ab2258a00883f04d727075fbc",
-        "docs/multi_aod_visualization.md": "e699cfd93a2279a830677cc771a47eda51d4b4ae686b812c152ec7c5da7de432"
+        "docs/multi_aod_visualization.md": "b9390a107da6bef8bc2844264eecc130a90f29d39cad6946a3e5c88c7a87e05c"
       },
       "raw_sha256": {
         "src/neutral_atom_env/visualization/recording.py": "908aa3886d9e53f25053dadcc66f54de1669b654edd48895d32714f85fd7c8bd",
@@ -1165,6 +1165,45 @@
         "tests/viewer_fit_resize.cjs": "13b7dc002cf03b6ec652c7ff92d053525450e1c01f5ad5105a501eff58d90f08",
         "tests/multi_aod_viewer.cjs": "b81dc7f14add3c6a8e3e60a2c45c7b4e08e7195ab2258a00883f04d727075fbc",
         "docs/multi_aod_visualization.md": "e699cfd93a2279a830677cc771a47eda51d4b4ae686b812c152ec7c5da7de432"
+      }
+    },
+    {
+      "id": "L41",
+      "kind": "repository_snapshot",
+      "title": "QEC共用回放同步尺寸、X/Z角色及主要时间统计呈现",
+      "version": "presentation refinement of unchanged audited physical prefix 2026-10-04",
+      "paths": [
+        "docs/qec_viewer_presentation.md",
+        "instruction/visualization.md",
+        "src/neutral_atom_env/visualization/viewer.js",
+        "src/neutral_atom_env/visualization/viewer-shell.html",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py",
+        "tests/viewer_qec_scale.cjs",
+        "tests/test_native_parallel_report.py",
+        "references/qec_pbc_validation/qec_viewer_presentation_2026_10_04.json"
+      ],
+      "retrieved_at": "2026-10-04",
+      "verified_scope": "Observer-only scaling and information hierarchy, same original recording and physical run; no new physical/factory/FT execution",
+      "sha256_normalization": "text_lf",
+      "sha256": {
+        "docs/qec_viewer_presentation.md": "a74b98a10dee1ce0b79771b3299b3ab93e51e1ae18f5bcb890c491c7fa031749",
+        "instruction/visualization.md": "6f807284bc1ec77cccd37ced084d9abdac5d314468c5c42109211bd4c5c3f483",
+        "src/neutral_atom_env/visualization/viewer.js": "995fc9ed672fd9a9bb5d758d4faa1a26edb51afeb4fd225c3bcff2849e1d1691",
+        "src/neutral_atom_env/visualization/viewer-shell.html": "4cc971635687c19eb7b3abde78d8d3127591a3d7d0cfa364d435c7767da5f795",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "132418f42686b2013c8686e52a4505c7d9afb135abb36bba4edca361f93b3f11",
+        "tests/viewer_qec_scale.cjs": "2bddb0449c3482cb127915bff188a2cc8ce0db12eef47a9c07edbba36d9d33e5",
+        "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146",
+        "references/qec_pbc_validation/qec_viewer_presentation_2026_10_04.json": "ffa9a395c3d1f567c482d79af8fa3b5d9d7e1660f7ea19244926f25db64f333c"
+      },
+      "raw_sha256": {
+        "docs/qec_viewer_presentation.md": "a74b98a10dee1ce0b79771b3299b3ab93e51e1ae18f5bcb890c491c7fa031749",
+        "instruction/visualization.md": "7ef4557855fe3af63d8876125864f22abe909f74173c93752ecb8e5be43cf792",
+        "src/neutral_atom_env/visualization/viewer.js": "0fccdc6ecc7041f0ca224718db9ba425946b66e668d01aeb70a18ee9b9a19c46",
+        "src/neutral_atom_env/visualization/viewer-shell.html": "930753c2bf5ca0172594eb7ebb6dbb8afbf9ff9bde7cee49f462b41388990e01",
+        "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py": "132418f42686b2013c8686e52a4505c7d9afb135abb36bba4edca361f93b3f11",
+        "tests/viewer_qec_scale.cjs": "dee926dea389dc61a35d351c44a1cdedbe29cf298bad63b43e022658be7f5bbd",
+        "tests/test_native_parallel_report.py": "eeb8ecc0dd260fdf88c2bffdba7d00c1c23ac89fca45ac6f2dc59267d9362146",
+        "references/qec_pbc_validation/qec_viewer_presentation_2026_10_04.json": "43e49ad55428b461d5fb550be05dc020535893ec469f52a3d86f022794d40cf4"
       }
     }
   ]

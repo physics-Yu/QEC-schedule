@@ -397,4 +397,10 @@ K62–K64 / L38–L40记录本轮实际3006门/413投影/221原子的12patch初�
 
 本轮54新+180旧=234不同pytest通过、3历史artifact缺失skip另计、263模块0违规；浏览器各书签、终态、合批表、390px与console通过。旧HEAD/新版本独立实际单AOD7ops/16events/17snapshots的plan/trace/snapshot逐字节同。1.14MB原始审核packet可从fresh checkout复现，不含完整母流后缀；源码/小摘要进Git，大型物理档案留本地。失败与主动中断目录保持，未计为PASS。
 
-见[编译复现](qec_native_parallel_prefix.md)、[双AOD合同](multi_aod_contract.md)、[小摘要](../references/qec_pbc_validation/native_parallel_physical_2026_10_04.json)、[阶段日志](../instruction/logs/2026-10-04-native-prefix-parallel-physical.md)。当前64chunks/52sources/58检索，旧source仅刷新兼容更新后的normalized SHA，历史raw和旧claim正文保留。完整magic工厂、tracked T/Born、噪声/decoder/FT及完整physical Shor仍未实现；factory-first F1主线不变。
+见[编译复现](qec_native_parallel_prefix.md)、[双AOD合同](multi_aod_contract.md)、[小摘要](../references/qec_pbc_validation/native_parallel_physical_2026_10_04.json)、[阶段日志](../instruction/logs/2026-10-04-native-prefix-parallel-physical.md)。此阶段快照64chunks/52sources/58检索，旧source仅刷新兼容更新后的normalized SHA，历史raw和旧claim正文保留。完整magic工厂、tracked T/Born、噪声/decoder/FT及完整physical Shor仍未实现；factory-first F1主线不变。
+
+## 31. QEC 画布同步缩放、稳定子角色与主要时间统计
+
+K65/L41固化[呈现方案](qec_viewer_presentation.md)。原子半径为SLM/AOD trap的1.15倍，标记/线宽/选择/门与交接动效按同一投影随按钮及响应式画布缩放。X/Z内部几何字形从canonical role绑定产生，保留活动填色；12算法块48X/48Z，资源4X/4Z只是首T前未编码模板辅助位。全宽画布后默认展开主统计、类别时间与五设备占用，逐项实验/状态/原子/操作以及653资源明细默认折叠；选择原子自动打开对应父层。
+
+同一3006门recording与summary/source/audit字节保持，只重建观察器产物。31当轮不同pytest、真实full12缩放/fit检查和独立653资源区间并集通过；七真实书签、X/Z/resource详情、按钮缩放、390/320px与console0错误实际浏览器验收。当前65chunks/53sources/145本地路径、60检索用例；旧raw历史保持，新L41保存当前准确字节。见[摘要](../references/qec_pbc_validation/qec_viewer_presentation_2026_10_04.json)、[日志](../instruction/logs/2026-10-04-qec-viewer-scale-hierarchy.md)。这是观察器修订，不增加物理执行或工厂、tracked T/Born、noise/FT、完整physical Shor能力。

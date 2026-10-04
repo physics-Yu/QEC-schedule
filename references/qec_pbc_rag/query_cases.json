@@ -362,6 +362,18 @@
         "K63",
         "K64"
       ]
+    },
+    {
+      "query": "QEC原子 SLM trap AOD zoom resize 同步缩放 X Z稳定子glyph",
+      "expected_any": [
+        "K65"
+      ]
+    },
+    {
+      "query": "主要指标 时间占用优先展开 逐原子逐trap资源默认折叠 区间并集",
+      "expected_any": [
+        "K65"
+      ]
     }
   ]
 }

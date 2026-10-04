@@ -1,5 +1,7 @@
 # 可视化自动生成规范
 
+2026-10-04 用户修订：[QEC 回放呈现合同](../docs/qec_viewer_presentation.md)。共用画布的原子比 SLM/AOD trap 略大，所有空间标记、线宽、门/交接动效按同一投影比例随按钮缩放和响应式画布变化；不再采用固定 CSS px 半径。X/Z 辅助角色由 canonical metadata 持久标识，保留操作填充色，资源未编码模板角色须明确区分。主要统计和真实时间占用优先展开，逐项逻辑/原子/操作及大量资源明细默认折叠。显示改动不能改录制几何、物理指标或验收边界。
+
 2026-10-04 双 AOD 的真实观察扩展：VisualRecorder 在同一个 committed frame 保存 `aods` / `axes_by_aod` / `movements` / 各设备 transfer，并保留 primary 单台字段。共用 viewer 按 holder 的 aod_id 插值和显示设备资源 lane，scene_metadata 只增加码块 / 区域 / 设备名称，不能覆盖几何。`native_parallel_report.py`包裹同一共用 viewer，提供 MZ、跨码块同类脉冲和双运输书签；必须来自实际 completed run 与 independent audit。旧完整 native 索引视图继续保持 reference-only 边界。
 
 2026-10-04新增[完整编码Shor原生操作视图](../docs/qec_encoded_native_visuals.md)：`encoded_native_visuals.py`／`encoded_native_viewer.html`从同一manifest绑定的native JSONL、真实理想参考投影、功能span、frame与资源epoch读取。它是有界12门／64投影的原生门索引观察器，明确physical_executed=false，不具有placement／μs／运输记录，不调用物理共用viewer制造动画。8类功能及实际子阶段、32门/秒连续播放、报告分页、frame下一保存轴、失败cleanup与终端阶寻找已实际浏览器验收；390px溢出已源码修复。未来有真实Executor timeline时仍按下方统一管线接VisualRecorder。本轮证据见[日志](logs/2026-10-04-full-encoded-shor15-native.md)。
@@ -77,10 +79,11 @@ Executor 提交事件 -> VisualRecorder.observe(state) -> 静态场景 + 差量�
 | --- | --- |
 | 区域 | 自上而下 storage、entanglement、measurement；使用淡色底和名称 |
 | 网格 | 辅助线与世界坐标一致；允许区域中的交点标示 SLM 候选点；隔离带不伪装成可用 trap 区 |
-| 已配置 SLM trap | 开启为灰蓝细环，关闭为1.6px淡灰小点；不再画密集红叉。空/关闭SLM可分别隐藏；候选网格不在已配置SLM坐标重复叠点 |
+| 已配置 SLM trap | 开启为灰蓝细环，关闭为同比缩放的淡灰小点；不再画密集红叉。空/关闭SLM可分别隐藏；候选网格不在已配置SLM坐标重复叠点 |
 | AOD trap | 每个离散 trap 用橙色圆环，包含空 trap；与 SLM trap 同尺寸、同线宽，不额外添加扩大外观的常驻光晕；不使用阵列外接方框 |
-| SLM 中的原子 | 实心圆点 |
-| AOD 中的原子 | 实心菱形，位于对应橙色 trap 圆环中心 |
+| SLM 中的原子 | 实心圆点，外接半径仅比 trap 略大，随空间投影同比缩放 |
+| AOD 中的原子 | 相同外接半径的实心菱形，位于对应橙色 trap 圆环中心，随空间投影同比缩放 |
+| X/Z 辅助角色 | 原子内持久 X/Z 几何符号，来源为 canonical 角色绑定；不替代活动填充色，不表示测量值 |
 | 空闲原子 | 靛蓝填充，默认 `#5364bc` |
 | 移动原子 | 橙色填充，默认 `#e89438` |
 | 门或测量期间的原子 | 红色填充，默认 `#d95360` |
@@ -89,13 +92,13 @@ Executor 提交事件 -> VisualRecorder.observe(state) -> 静态场景 + 差量�
 
 **trap 颜色表示承载类型，原子填充色表示操作状态，两者互不替代。** 因此静止的 AOD trap 仍为橙色，而其中空闲原子为靛蓝；执行门时显示橙色圆环和红色菱形。
 
-圆点、菱形和圆环的显示尺寸用于辨识，不代表原子尺寸、光腰、最小间距或作用半径。不得读取像素尺寸参与物理验证。回放开启的两种 trap 共用 `TRAP_RADIUS`（当前 7 CSS px），关闭SLM使用1.6px提示点，静态图共用 `VisualTheme.trap_size`。SLM/AOD 对齐时圆环可以重合，通过独立图层开关查看；不能为了分开标记而移动真实坐标。
+圆点、菱形和圆环的显示尺寸用于辨识，不代表原子尺寸、光腰、最小间距或作用半径。不得读取像素尺寸参与物理验证。交互回放两种 trap 共用观察器尺度，半径、关闭提示点与线宽乘同一空间投影比例；原子半径略大于 trap，禁止固定像素半径或最小尺寸钳制。静态图仍由 `VisualTheme.trap_size` 控制离线排版。SLM/AOD 对齐时圆环可以重合，通过独立图层开关查看；不能为了分开标记而移动真实坐标。
 
 静态关键帧与回放采用同一套语义。主题默认值位于 [`configs/visual/default.json`](../configs/visual/default.json)，页面排版与部分装饰色位于模板 CSS；当前并非所有 UI 颜色都由主题 JSON 控制。
 
 装载/卸载期间允许原位的**交接预览**：抓取时四段橙色弧线向中心收拢，释放时向外淡出，原子标记在圆点与菱形之间平滑过渡。这个中间形状不是新的 holder 类型；侧栏始终显示已提交的 SLM/AOD holder，操作栏明确标注“交接预览；承载在操作结束时提交”。动画只作用于计划的 `captured_atom_ids`（包括附带原子），不把全部 requested 原子或矩形范围内任意点当成已抓取原子。
 
-门期间增加淡红连线强调和目标周围的进度弧线；只在真实 `running` 区间显示，原子保持真实坐标。弧线和连线表达操作进度与作用关系，不表示额外 trap、光束路径、Rydberg 布居或保真度。上述临时动效不改变 7 px trap 圆环尺寸，可由“操作动效”独立关闭；关闭后标记直接按已提交 holder 显示。SLM/AOD 图层开关只控制各自 trap，动效开关单独控制这些操作示意。
+门期间增加淡红连线强调和目标周围的进度弧线；只在真实 `running` 区间显示，原子保持真实坐标。弧线和连线表达操作进度与作用关系，不表示额外 trap、光束路径、Rydberg 布居或保真度。动效半径和线宽也随空间投影同比缩放，不改变基础 trap 比例，可由“操作动效”独立关闭；关闭后标记直接按已提交 holder 显示。SLM/AOD 图层开关只控制各自 trap，动效开关单独控制这些操作示意。
 
 ## 4. 交互约定
 
@@ -178,7 +181,7 @@ M0 的已有证据重绘仍使用 `python -m neutral_atom_experiments.testing.ac
 
 所有开关收进默认折叠的“画布显示”，按“布局与陷阱”“编号与轨迹”“动效与安全边界”三组展示，并显示开启数量。可独立隐藏区域、网格、SLM/AOD 标记、路线、轨迹、操作动效和 SLM 边界。编号仍有三档。隐藏图层不修改 backend 约束。
 
-SLM 灰蓝实线环为固定像素位置标记，SLM 中心排斥边界为按 μm 绘制的同心虚线；默认关闭，在开关旁解释其安全距离语义，不当作第二个 trap 或真实光斑。面板实时显示所有 AOD trap 的最小中心距（含空 trap）及严格 >1.01 μm 的硬约束，和 SLM 排斥半径分开描述。`scene.aod_minimum_spacing_um` 记录有效阈值。
+SLM 灰蓝实线环为按同一投影比例缩放的位置标记，SLM 中心排斥边界按物理 μm 绘制为同心虚线；默认关闭，在开关旁解释其安全距离语义，不当作第二个 trap 或真实光斑。显示标记尺度不等于这项物理边界。面板实时显示所有 AOD trap 的最小中心距（含空 trap）及严格 >1.01 μm 的硬约束，和 SLM 排斥半径分开描述。`scene.aod_minimum_spacing_um` 记录有效阈值。
 
 ## M3 动态开关与操作级 schedule（已实现）
 

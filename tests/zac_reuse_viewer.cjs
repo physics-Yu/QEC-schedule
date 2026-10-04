@@ -15,7 +15,7 @@ for(const root of roots){
  const recording=JSON.parse(original),result=JSON.parse(fs.readFileSync(`${root}/result.json`,'utf8'));
  assert.equal(el('labels').value,'focus');
  assert(recording.scene.candidates.length>1000); // still retained in source data
- assert(!h.arcs.some(a=>a[2]===1.4)); // unconfigured candidates only hidden by display option
+ assert(!h.arcs.some(a=>Math.abs(a[2]-.35*get('projection().scale'))<1e-9)); // unconfigured candidates only hidden by display option
  for(const op of recording.operations.filter(o=>o.kind==='entangling_pulse')){
   get(`seek(${(op.start+op.end)/2})`);
   assert.equal(get('current.atoms.filter(a=>a.activity==="gating").length'),op.gate_ids.length*2);

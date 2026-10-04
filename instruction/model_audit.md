@@ -101,6 +101,14 @@ M2 应区分 episode 起点到最后逻辑完成、包含尾部归还的总 wall
 
 每项关闭时，在这里保留 ID 并改为 FIXED + 日志链接；不要删除历史问题，使下一位 agent 无法判断为什么接口改变。
 
+## 2026-10-04 QEC 观察器呈现修正
+
+| ID | 状态与问题 | 修复与证据 |
+| --- | --- | --- |
+| VIEW-SCALE-002 | FIXED：固定像素原子/trap与缩放后的空间不一致，角色和统计层级不符合用户约定 | 共用viewer/shell投影尺寸与canonical X/Z字形、默认折叠层级；full12独立Node、31pytest、实际390/320px和按钮截图；[日志](logs/2026-10-04-qec-viewer-scale-hierarchy.md) |
+| VIEW-DETAIL-002 | FIXED：新的折叠父层可能使选中原子详情仍不可见 | canvas/list/API选择同时展开父层与inspector，新scale检查及实际Q009/Q013/Q213详情；同一日志 |
+| VIEW-BATCH-NULL-001 | FIXED：默认展开时间图暴露batch gate_id=null文字 | summaryMarkup仅有效且可读的单ID显示文字，短/批量色块保留真实区间和悬停；full12无null断言与真实浏览器；同一日志 |
+
 ## 2026-09-10 新契约缺口（M3-A 实现后更新）
 
 以下按 [目标契约](compiler_contract.md) 与 [物理规则](physics.md) 审核。既有 FIXED 仅对应原问题，不能扩展成新能力已经完成。

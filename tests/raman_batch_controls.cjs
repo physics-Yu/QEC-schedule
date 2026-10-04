@@ -7,7 +7,7 @@ const before=get('JSON.stringify(data)');
 for(const id of ['slm','aod','grid','planned-path','clearance','zones'])el(id).checked=false;
 arcs.length=0;get(`seek(${(op.start+op.end)/2})`);
 const actual=op.applied_gate_ids.flatMap(id=>op.gate_qubits[id]);
-const illumination=arcs.filter(a=>a[2]===13);
+const illumination=arcs.filter(a=>Math.abs(a[2]-3.2*get('projection().scale'))<1e-9);
 assert.equal(illumination.length,actual.length,'One actual target arc, none for false conditions');
 for(const q of actual){
  const xy=JSON.parse(get(`JSON.stringify((()=>{const p=current.atoms.find(a=>a.id===${JSON.stringify(q)}).position,proj=projection();return [proj.X(p.x_um),proj.Y(p.y_um)]})())`));
@@ -23,6 +23,6 @@ assert.equal(get('JSON.stringify(data)'),before,'Viewer must never mutate physic
 // Old single-target recordings omit the new metadata; preserve their light display.
 get(`var oldPayload=JSON.parse(JSON.stringify(data));var oldOp=oldPayload.operations.find(o=>o.kind==='raman_rotation');oldOp.gate_ids=['x0'];oldOp.gate_id='x0';oldOp.qubit_ids=['q0'];oldOp.applied=true;delete oldOp.applied_gate_ids;delete oldOp.applied_by_gate;delete oldOp.gate_qubits;var oldRoot=newContainer();var legacy=window.NeutralAtomViewer.mount(oldRoot,oldPayload);`);
 arcs.length=0;get(`legacy.setTime(${(op.start+op.end)/2})`);
-assert.equal(arcs.filter(a=>a[2]===13).length,1);
+assert.equal(arcs.filter(a=>Math.abs(a[2]-3.2*get('projection().scale'))<1e-9).length,1);
 get('legacy.destroy()');
 console.log('PASS native batch actual target arcs, false controls, legacy fallback, immutable data');

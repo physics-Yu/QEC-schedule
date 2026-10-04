@@ -1,0 +1,194 @@
+{
+  "schema": "qec-viewer-presentation-acceptance/1",
+  "date": "2026-10-04",
+  "scope": "Observer-only refinement of the unchanged accepted 3006-gate physical prefix",
+  "base_commit": "9cfa6ad9f3bdbaf6ebb5b2ac4063393e490019d6",
+  "presentation": {
+    "trap_display_radius": 2,
+    "atom_display_radius": 2.3,
+    "atom_trap_ratio": 1.15,
+    "marker_geometry_uses_projection_scale": true,
+    "full_width_canvas": true,
+    "canonical_role_counts": {
+      "algorithm_X": 48,
+      "algorithm_Z": 48,
+      "resource_X": 4,
+      "resource_Z": 4
+    },
+    "role_glyphs_independent_of_activity_color": true,
+    "resource_roles_explicitly_unencoded": true,
+    "primary_summary_default_open": true,
+    "individual_and_resource_details_default_closed": true,
+    "visible_device_lanes": 5,
+    "resource_detail_rows": 653,
+    "batch_null_labels_hidden_without_changing_times": true
+  },
+  "same_physical_run": {
+    "native_gates": 3006,
+    "atoms": 221,
+    "algorithm_d3_patches": 12,
+    "aods": 2,
+    "total_time_us": 69927.72585501682,
+    "logical_completion_us": 69207.92686514359,
+    "new_physical_execution": false,
+    "sha256_preserved": {
+      "recording.json": "5e9cdce1b69e29eed8de73e18547ab05be42376d099b4c94cb51ae427e1a6d36",
+      "summary.json": "b84088b1eb4f5527ffe8657fe8b6efcec2adea9f3e746c62cdde08f6143684bb",
+      "independent-audit.json": "9cca45280354c9efad3999d6d4114d9b19a88753b76aab4c5815ef53424d9419",
+      "source-prefix.json": "17c7aded1e912c4730d47cd124a10eb8943a181dbedda5ff0284236739a11ece"
+    }
+  },
+  "validation": {
+    "distinct_current_pytest_passes": 31,
+    "pytest_command": "python -m pytest tests/test_visualization.py tests/test_replay_interaction.py tests/test_multi_aod_visualization.py tests/test_raman_batch_visualization.py tests/test_native_parallel_report.py tests/test_environment_boundary.py tests/test_slm_display.py -q",
+    "full12_geometry_and_qec_role_node_check": true,
+    "full12_fit_resize_node_check": true,
+    "independent_all_resources_interval_union_check": 653,
+    "resource_union_mismatches": 0,
+    "browser_bookmarks": [
+      {
+        "devices": "算法 AOD · 正在整体平移 · 承载 0 原子 / 魔态资源独立 AOD（仅首 T 前 Clifford 前缀） · 正在整体平移 · 承载 0 原子",
+        "error": "",
+        "label": "初始码块放置",
+        "operation": "空 AOD 定位到同角色载体",
+        "time": "演示 0.00 / 1619.05 s · 仿真 0.00 μs"
+      },
+      {
+        "devices": "算法 AOD · 静止 · 承载 12 原子 / 魔态资源独立 AOD（仅首 T 前 Clifford 前缀） · 静止 · 承载 17 原子",
+        "error": "",
+        "label": "MZ 批量复位 × 29",
+        "operation": "RESET × 29 [shot0.encode.phase0.reset0, shot0.encode.phase1.reset0, shot0.encode.phase2.reset0, shot0.encode.phase3.reset0, …] RESET(Q000, Q017, Q034, Q051, …) · 13 码块并行",
+        "time": "演示 8.50 / 1619.05 s · 仿真 783.94 μs"
+      },
+      {
+        "devices": "算法 AOD · 静止 · 承载 0 原子 / 魔态资源独立 AOD（仅首 T 前 Clifford 前缀） · 静止 · 承载 0 原子",
+        "error": "",
+        "label": "码块共同 H × 72",
+        "operation": "H × 72 [shot0.encode.phase0.check.phase0.r1.layer1.target_h.0, shot0.encode.phase0.check.phase0.r1.layer1.target_h.1, shot0.encode.phase0.check.phase0.r1.layer1.target_h.2, shot0.encode.phase0.check.phase0.r1.layer1.target_h.3, …] H(Q003, Q007, Q001, Q013, …) · 12 码块并行",
+        "time": "演示 1064.37 / 1619.05 s · 仿真 42374.57 μs"
+      },
+      {
+        "devices": "算法 AOD · 静止 · 承载 12 原子 / 魔态资源独立 AOD（仅首 T 前 Clifford 前缀） · 静止 · 承载 0 原子",
+        "error": "",
+        "label": "并行 CZ 配对 × 12",
+        "operation": "CZ × 12 [shot0.encode.phase0.encode.cx0.cz, shot0.encode.phase1.encode.cx0.cz, shot0.encode.phase2.encode.cx0.cz, shot0.encode.phase3.encode.cx0.cz, …] CZ(Q008, Q006, Q025, Q023, …) · 12 码块并行",
+        "time": "演示 302.28 / 1619.05 s · 仿真 27000.05 μs"
+      },
+      {
+        "devices": "算法 AOD · 静止 · 承载 12 原子 / 魔态资源独立 AOD（仅首 T 前 Clifford 前缀） · 静止 · 承载 0 原子",
+        "error": "",
+        "label": "MZ 综合征读出 × 12",
+        "operation": "MEASURE × 12 [shot0.encode.phase0.check.phase0.r1.X0, shot0.encode.phase1.check.phase1.r1.X0, shot0.encode.phase2.check.phase2.r1.X0, shot0.encode.phase3.check.phase3.r1.X0, …] MEASURE(Q009, Q026, Q043, Q060, …) · 12 码块并行",
+        "time": "演示 1482.15 / 1619.05 s · 仿真 54397.50 μs"
+      },
+      {
+        "devices": "算法 AOD · 正在整体平移 · 承载 12 原子 / 魔态资源独立 AOD（仅首 T 前 Clifford 前缀） · 正在整体平移 · 承载 17 原子",
+        "error": "",
+        "label": "两台 AOD 同时运输",
+        "operation": "同角色阵列沿明确安全通道运输",
+        "time": "演示 3.40 / 1619.05 s · 仿真 121.21 μs"
+      },
+      {
+        "devices": "算法 AOD · 静止 · 承载 0 原子 / 魔态资源独立 AOD（仅首 T 前 Clifford 前缀） · 静止 · 承载 0 原子",
+        "error": "",
+        "label": "实际提交终态",
+        "operation": "记录结束 · 已显示全部已提交状态",
+        "time": "演示 1619.05 / 1619.05 s · 仿真 69927.73 μs"
+      }
+    ],
+    "browser_responsive": [
+      {
+        "canvas": {
+          "bottom": 1554.166748046875,
+          "height": 420,
+          "left": 10.666666984558104,
+          "right": 364.0000104904175,
+          "top": 1134.166748046875,
+          "width": 353.3333435058594,
+          "x": 10.666666984558104,
+          "y": 1134.166748046875
+        },
+        "clientWidth": 375,
+        "detailsOpen": false,
+        "error": "",
+        "primaryOpen": true,
+        "scrollWidth": 375,
+        "viewport": {
+          "height": 844,
+          "width": 390
+        }
+      },
+      {
+        "canvas": {
+          "bottom": 1773.5,
+          "height": 420,
+          "left": 10.666666984558104,
+          "right": 294.0000104904175,
+          "top": 1353.5,
+          "width": 283.3333435058594,
+          "x": 10.666666984558104,
+          "y": 1353.5
+        },
+        "clientWidth": 305,
+        "detailsOpen": false,
+        "error": "",
+        "primaryOpen": true,
+        "scrollWidth": 305,
+        "viewport": {
+          "height": 740,
+          "width": 320
+        }
+      }
+    ],
+    "browser_console": [],
+    "browser_presentation_accepted": true,
+    "architecture_modules": 263,
+    "architecture_violations": 0
+  },
+  "rag": {
+    "chunks": 65,
+    "sources": 53,
+    "retrieval_cases": 60,
+    "local_paths": 145
+  },
+  "visual_evidence_sha256": {
+    "final-cz-and-statistics.png": "56e67ff77b8bf9eda1db2ebdd5318abbe959bde9aac340c5e8fec20501bd3efd",
+    "narrow-320.png": "f00df1f9faddf8eef11024880e292f6190079f4d0b05cf1b54f212c4507980ed",
+    "narrow-390.png": "0870a5b963b3c35b9399eeedd56c60af82cdde16f338e7fdf4dc14fa86a23564",
+    "wide-initial-final.png": "89408b001ff0910d62a1cf23ef627bf09b5c8f1a003c45b40e717fdb6a061553",
+    "wide-initial.png": "74ae6e18ba3a07174508165ad19d4b46b78b0307963a474591aa2161b5464571",
+    "wide-layout-home.png": "c40826f774d80a08ff563857148606f8e7f33dd23d80f745003a80d7f09a09a0",
+    "wide-zoomin.png": "605a5cf9be973a73d885073cc184ba3cc0ca24ab19c1456c7a2436529428f7df",
+    "wide-zoomout.png": "ff8f4a62944af67fccd5339e7487249e3f7e96749af24ec370d4d7ae923383c9"
+  },
+  "original_workspace": {
+    "tracked_files_written_by_this_task": 0,
+    "dirty_files_preserved": 35,
+    "concurrent_handoff_update": {
+      "path": "instruction/handoff.md",
+      "before": "18df69394076bdf6e6c8fcecc514ff27174ede5e8e445b3aa5dc472452dc6cdd",
+      "after": "0d476a33b9c078180d66719a97ce5ccf8a4c6187c595c1368cdc98531769c3e3",
+      "entry": "2026-10-04 工厂到单 T 交互设计演示",
+      "preserved": true,
+      "this_task_did_not_write_original": true
+    },
+    "head_preserved": "9e28b2e2da178420b449bb24cfff58e10e2b99f3"
+  },
+  "rebuild": [
+    "python -c \"import json,pathlib; from neutral_atom_env.visualization.viewer import write_html; p=pathlib.Path(RUN_DIR); write_html(json.loads((p/'recording.json').read_text(encoding='utf-8')),p/'animation.html')\"",
+    "python examples/serve_native_parallel.py --run-dir RUN_DIR --port 8773",
+    "node tests/viewer_qec_scale.cjs RUN_DIR/animation.html"
+  ],
+  "limitations": [
+    "No new physical execution/replay, magic production, tracked T/Born, noise/decoder or full physical Shor validation.",
+    "Glyph display units are not optical waist, clearance or CZ radius.",
+    "X/Z labels express canonical auxiliary roles, not live measurement values; resource roles remain unencoded.",
+    "Current tests do not sum historical 234 or parallel-peer overlapping tests."
+  ],
+  "retained_attempts": [
+    "Initial3oldfixedpixelassertionfailures corrected to approved projection contract, then focused regressions pass.",
+    "A dedicated2MOVE multi_aod_viewer fixture checker was erroneously invoked on full12 (791MOVE): wrong fixture, not a runtime failure; proper4multi_aodpytest pass.",
+    "Readonly browser evaluator cannot expose page globals/compareDocumentPosition; DOM observations used instead.",
+    "Initial fullPage captures retained sticky player at scrolled position; final screenshot taken with page heading visible."
+  ]
+}

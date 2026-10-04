@@ -52,11 +52,11 @@ assert.equal(get("current.atoms.find(a=>a.id==='Q000').position.x_um"),3);assert
 assert(el('details').innerHTML.includes('AOD'));assert(texts.includes('2.00 μm'));
 const physicalBefore=get('JSON.stringify(current.atoms)');
 const slmCount=get('current.f.scene.traps.length');
-arcs.length=0;el('aod').checked=true;el('aod').onchange();assert.equal(arcs.filter(a=>a[2]===7).length,6+slmCount);
-arcs.length=0;el('aod').checked=false;el('aod').onchange();assert.equal(arcs.filter(a=>a[2]===7).length,slmCount);
-arcs.length=0;el('slm').checked=false;el('slm').onchange();assert.equal(arcs.filter(a=>a[2]===7).length,0);
-arcs.length=0;el('aod').checked=true;el('aod').onchange();assert.equal(arcs.filter(a=>a[2]===7).length,6);
-arcs.length=0;el('slm').checked=true;el('slm').onchange();assert.equal(arcs.filter(a=>a[2]===7).length,6+slmCount);
+arcs.length=0;el('aod').checked=true;el('aod').onchange();assert.equal(arcs.filter(a=>Math.abs(a[2]-get('markerGeometry().trap'))<1e-9).length,6+slmCount);
+arcs.length=0;el('aod').checked=false;el('aod').onchange();assert.equal(arcs.filter(a=>Math.abs(a[2]-get('markerGeometry().trap'))<1e-9).length,slmCount);
+arcs.length=0;el('slm').checked=false;el('slm').onchange();assert.equal(arcs.filter(a=>Math.abs(a[2]-get('markerGeometry().trap'))<1e-9).length,0);
+arcs.length=0;el('aod').checked=true;el('aod').onchange();assert.equal(arcs.filter(a=>Math.abs(a[2]-get('markerGeometry().trap'))<1e-9).length,6);
+arcs.length=0;el('slm').checked=true;el('slm').onchange();assert.equal(arcs.filter(a=>Math.abs(a[2]-get('markerGeometry().trap'))<1e-9).length,6+slmCount);
 assert.equal(get('JSON.stringify(current.atoms)'),physicalBefore);
 assert.equal(el('atom-Q000').querySelector('.symbol').className,'symbol diamond');
 el('trails').checked=true;el('trails').onchange();el('grid').checked=false;el('grid').onchange();

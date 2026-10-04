@@ -1,5 +1,9 @@
 # 当前交接状态
 
+## 2026-10-04 QEC 回放同步缩放与统计层级
+
+已按用户要求固化[呈现合同](../docs/qec_viewer_presentation.md)：原子/trap半径比1.15，SLM/AOD、线宽、选择与门/交接动效按同一投影缩放；算法48X/48Z辅助角色持久标识，资源八位明确未编码模板。全宽画布后主统计/类别时间/五设备lane默认展开，逐项和653资源明细默认折叠。实际8773重新展示同一3006门/221原子/12patch前缀，物理录制与原审计SHA保持；七书签、X/Z/resource角色、按钮缩放及390/320px真实浏览器通过。31不同本轮pytest、full12 Node缩放/fit、独立653时间并集及263模块0违规通过。详见[日志](logs/2026-10-04-qec-viewer-scale-hierarchy.md)、[小摘要](../references/qec_pbc_validation/qec_viewer_presentation_2026_10_04.json)。RAG新增K65/L41。此轮只改观察器，未新增物理/工厂/完整Shor验收；factory-first F1主线保持。原目录并行工厂设计demo交接更新保留，其余35dirty与HEAD相同；全部实现留attached managed worktree，沿用draft PR#3，不merge。
+
 ## 2026-10-04 同码块并行前缀与真实双 AOD
 
 用户授权统一COMPUTE+MZ、5μm候选格点稀疏放置、取消逻辑最近邻但保持有限6μm全局CZ，并在右侧使用实际独立资源AOD。首24算法functions加同源首T前资源17RESET/H共3006native、413投影、221原子、12d3码块+17资源、196plans已全部真实Executor执行及原初态完整replay；68CZ脉冲含816对/max12，H max72、RESET max29、M max12，终态69927.725855μs。独立Stim/全局几何/trace时序全部通过，234不同本轮pytest通过、3历史artifact缺失skip另计、263modules0违规；单台旧HEAD真实7ops全plan/trace/snapshot bytes兼容。真实共用空间页本机8773，七功能书签、实际双带载运输与390px通过；旧8772仍为native reference index。

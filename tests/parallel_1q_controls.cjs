@@ -9,7 +9,7 @@ for(const q of ['Q000','Q001','Q002','Q003']){
  assert(h.el('summary').innerHTML.includes('Raman '+q));
 }
 assert.equal(h.get('operationsAt(.5).length'),4);
-assert(h.arcs.filter(a=>a[2]===13).length>=4,'Four independent Raman pulse rings');
+assert(h.arcs.filter(a=>Math.abs(a[2]-3.2*h.get('projection().scale'))<1e-9).length>=4,'Four independent Raman pulse rings');
 h.get('seek(data.duration)');assert.equal(h.get('current.f.gate_counts.completed'),4);
 assert.equal(h.get('JSON.stringify(data)'),before);
 console.log('PASS four simultaneous 1Q effects, pulse rings, labels, per-qubit resource rows and terminal');

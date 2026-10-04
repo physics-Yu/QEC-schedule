@@ -14,7 +14,7 @@ for(const scenario of ['pair_compression','incidental','mobile_static']){
         // Empty traps follow the axes too; equal-size rings occupy the new intersections.
         arcs.length=0;get('draw()');
         const expected=JSON.parse(get('JSON.stringify([projection().X(2.734375),projection().Y(-20)])'));
-        assert(arcs.some(a=>a[2]===7&&Math.abs(a[0]-expected[0])<1e-7&&Math.abs(a[1]-expected[1])<1e-7));
+        assert(arcs.some(a=>Math.abs(a[2]-get('markerGeometry().trap'))<1e-9&&Math.abs(a[0]-expected[0])<1e-7&&Math.abs(a[1]-expected[1])<1e-7));
         nodes.get('mode').value='physical';nodes.get('mode').onchange();near(get('ui.time'),t);
         nodes.get('mode').value='keyframe';nodes.get('mode').onchange();near(get('simulationAt(displayAt(ui.time))'),t);
     }

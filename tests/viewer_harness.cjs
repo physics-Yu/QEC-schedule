@@ -22,5 +22,5 @@ module.exports=function createHarness(html){
  class Container{attachShadow(){return this.shadowRoot=new Root();}}
  const container=new Container();const sandbox={document:{hidden:false,listeners:new Set(),addEventListener(k,f){this[k]=f;this.listeners.add(f);},removeEventListener(k,f){this.listeners.delete(f);},getElementById(id){assert.equal(id,'atom-viewer');return container;}},window:{devicePixelRatio:2},ResizeObserver:class{observe(){} disconnect(){}},requestAnimationFrame(){return 1},cancelAnimationFrame(){},console,newContainer:()=>new Container()};
  vm.createContext(sandbox);vm.runInContext(html.match(/<script>([\s\S]*)<\/script>/)[1],sandbox);
- return {sandbox,texts,arcs,colors,nodes:container.shadowRoot.nodes,get:code=>vm.runInContext(`with(viewer.debug){${code}}`,sandbox),el:id=>container.shadowRoot.getElementById(id)};
+ return {sandbox,texts,arcs,colors,context:ctx,nodes:container.shadowRoot.nodes,get:code=>vm.runInContext(`with(viewer.debug){${code}}`,sandbox),el:id=>container.shadowRoot.getElementById(id)};
 };

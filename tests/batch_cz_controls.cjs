@@ -6,7 +6,7 @@ assert.equal(get('operationsAt(ui.time).length'),1);
 assert.equal(get('current.atoms.filter(a=>a.activity==="gating").length'),36);
 assert.equal(el('status').textContent,'执行中 18 门');
 assert(el('gate').textContent.includes('CZ × 18'));
-assert.equal(arcs.filter(a=>a[2]===12&&a[3]===-Math.PI/2).length,36,'Both atoms of each physical pair need simultaneous pulse arcs');
+assert.equal(arcs.filter(a=>Math.abs(a[2]-3.2*get('projection().scale'))<1e-9&&a[3]===-Math.PI/2).length,36,'Both atoms of each physical pair need simultaneous pulse arcs');
 get('ui.selected="Q000";seek(.15)');
 assert(el('details').innerHTML.includes('<dt>目标伙伴</dt><dd>Q001</dd>'));
 for(const mode of ['keyframe','proportional'])for(const time of [0,.075,.15,.299,.3]){
