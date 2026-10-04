@@ -4,7 +4,7 @@
 
 用户确认的自动选点接回parallel_patch，standard默认nearest_mz；实际载体求nearest clamp/邻域，16尝试/3合法完整服务按真实μs/距离选择，完整全world/轴spares/两设备/运输归还保持。single/full12同各自固定端点baseline的六输入字节及原门/effect批次相同，30055.938183→22195.938183/27955.938183μs，减少26.1512%/6.9870%；各161plans、7选点覆盖50/413投影。完整原初态replay及三层独立审计PASS，185不同pytest/267modules0违规。
 
-fixed_translation与legacy保留旧计划四组合canonical字节一致；8777共用页新增默认折叠的所选原点/候选/载体表，7定位按钮只跳实际pulse，12书签与390/320px/统计缩放保持。见[合同](../docs/qec_rigid_readout_placement.md)、[小型验收](../references/qec_pbc_validation/auto_mz_placement_2026_10_04.json)、[日志](logs/2026-10-04-auto-mz-placement.md)。此轮仍首T前Clifford，未新增factory/injection/FT/fullphysical Shor完成；后续共享S1–S3复用policy/router。GitHub精确发布后追加回执。
+fixed_translation与legacy保留旧计划四组合canonical字节一致；8777共用页新增默认折叠的所选原点/候选/载体表，7定位按钮只跳实际pulse，12书签与390/320px/统计缩放保持。见[合同](../docs/qec_rigid_readout_placement.md)、[小型验收](../references/qec_pbc_validation/auto_mz_placement_2026_10_04.json)、[日志](logs/2026-10-04-auto-mz-placement.md)。此轮仍首T前Clifford，未新增factory/injection/FT/fullphysical Shor完成；后续共享S1–S3复用policy/router。能力[e8e7abe](https://github.com/physics-Yu/QEC-schedule/commit/e8e7abe49f40dd5009b91ccce7d55aad1ed6448a)与[发布回执](../references/qec_pbc_validation/auto_mz_publication_2026_10_04.json)已独立fetch核对parent/tree/20blob精确一致；沿用draft PR#3不merge，pushurl=DISABLED保持。
 
 ## 2026-10-04 最短合法直达与2.5 μm标准 routing
 

@@ -1,0 +1,119 @@
+{
+  "schema": "qec-auto-mz-publication-proof/1",
+  "passed": true,
+  "reviewed_at": "2026-10-04",
+  "repository": "physics-Yu/QEC-schedule",
+  "branch": "codex/d3-shor15-stages",
+  "commit": "e8e7abe49f40dd5009b91ccce7d55aad1ed6448a",
+  "parent": "9a111846a1540df46e65ad63c927d263a316d690",
+  "tree": "73b10ce09ed322af2d40167a311b3b8e90fc2481",
+  "files": [
+    {
+      "path": "agent.md",
+      "blob_sha": "94f8bcf96ccc26eb033699c993ea230fa06c853b",
+      "index_sha256": "52abbb03dc2327699b7cdc382beae47bfec493d1ea6662902c6064aad84e144a"
+    },
+    {
+      "path": "docs/qec_rigid_readout_placement.md",
+      "blob_sha": "6e051c7c4df4f89f7b69abb089628dc293de391a",
+      "index_sha256": "d103b07aeaca60f5f96d23d1c31c88c80c3813638ca3dd977fb8946682679492"
+    },
+    {
+      "path": "docs/qec_routing_standard.md",
+      "blob_sha": "dfc9faa02204ff658d50ba35bde9fa65e06833b0",
+      "index_sha256": "0cce1f23f3d22dfe3f0e929846950cb873ef426124f2863ac17faf8e08bfd6a7"
+    },
+    {
+      "path": "docs/qec_pbc_rag.md",
+      "blob_sha": "3d25548fbe2c8a7e936e7fd7709080a2bc6d9204",
+      "index_sha256": "25d841952976fc52fdfc7b6840109e7b01850161dee4e28c3a098b5c93b9c175"
+    },
+    {
+      "path": "examples/run_parallel_shor15_prefix.py",
+      "blob_sha": "b1865bbe7d68a7606f3e7b23a6f23acb061a0f28",
+      "index_sha256": "2548343aa91122549d043d83c109daee14fdf6ff1038fdc003f6e28337321b55"
+    },
+    {
+      "path": "instruction/compiler_contract.md",
+      "blob_sha": "3c4d27a3d0393a9fb145e784621974dde428f505",
+      "index_sha256": "530ab801f5781368aa6d8d64844c3f0d855f777d8e2057d1ddb31fcfd189aef3"
+    },
+    {
+      "path": "instruction/handoff.md",
+      "blob_sha": "461ac788dd4ef48a5eb8109b997c9714e0e1574e",
+      "index_sha256": "782bb71cf0a31a69c7447a97c88eb528be28ac7d14a56ccb41d0eb598caa1c85"
+    },
+    {
+      "path": "instruction/logs/2026-10-04-auto-mz-placement.md",
+      "blob_sha": "d7e81d94d31628d192483efb6a57af2185837b6a",
+      "index_sha256": "8c677ee3f8ab9cca3769f211c7db52426aeef84ee639ed58e566a823a1059940"
+    },
+    {
+      "path": "src/neutral_atom_strategies/scheduling/rigid_readout_placement.py",
+      "blob_sha": "dc70a34ba76f293f35a36f5a1e6d85244faf56e2",
+      "index_sha256": "3176758914f35e05f1260ca305ada494c95ff2a679b380b5a4f236a073c1aa23"
+    },
+    {
+      "path": "src/neutral_atom_strategies/scheduling/parallel_patch.py",
+      "blob_sha": "344bc64186a00068bc7509657aede5dcae0e4f10",
+      "index_sha256": "00bf729e3002cf6499025038aebb4c55908500569fb91b960ca09a64ae397be9"
+    },
+    {
+      "path": "src/neutral_atom_experiments/qec_pbc/native_parallel_report.py",
+      "blob_sha": "a453dfbc16aba56ac09840012a39ef5ba4b88332",
+      "index_sha256": "8897802fc6c0925ee62ac7c11819910b72708bc40e494925beb66544db754a01"
+    },
+    {
+      "path": "tests/test_rigid_readout_placement.py",
+      "blob_sha": "f8c1c7433d6d06dc61b61f2939f8c8c26663d42d",
+      "index_sha256": "653e42d89004fda2a3405989c1957e1dd88677d4ff917c921c7d56f089bc6cb4"
+    },
+    {
+      "path": "tests/test_parallel_readout_placement.py",
+      "blob_sha": "45c61a5385671bd678b7ed997c4f66683e341c36",
+      "index_sha256": "613dc901d7aacff35a9007ed1b4ba8238e0d144d75a57ffdec8d4ba0483dd194"
+    },
+    {
+      "path": "tests/test_native_readout_report.py",
+      "blob_sha": "586cf42eab22f7f3bb0d7e4ebddbf03d4600b26a",
+      "index_sha256": "9d2840739be756a6c73172c2a9e952f8dc10033b0c43972eb5fc033fc955446f"
+    },
+    {
+      "path": "tests/test_rigid_readout_audit.py",
+      "blob_sha": "b0477f9cdcc62dd2adade7a8213ec65718893a8e",
+      "index_sha256": "0aaf3e1e03fee07a894dfe1fa38d3e81deedf61d6d782387c0711c8562462126"
+    },
+    {
+      "path": "tools/audit_rigid_readout_placement.py",
+      "blob_sha": "95444479eb03a014954850ebdb171d2633e700f8",
+      "index_sha256": "fa35633c2e54bfd3265a2eb6468e3c712862e8d97691ad9ba747213bb14efc09"
+    },
+    {
+      "path": "references/qec_pbc_validation/auto_mz_placement_2026_10_04.json",
+      "blob_sha": "8e2cb651f28f4b451861deef8f91be5c4f0907b4",
+      "index_sha256": "65143cbdaca0d817194797c39c8c6bb6dc46294285093f4aefa60f1b5fef47f0"
+    },
+    {
+      "path": "references/qec_pbc_rag/knowledge.jsonl",
+      "blob_sha": "cdbf7bb7520d8f75146859acc054aa26e591a7c8",
+      "index_sha256": "119560887e62c900787fe8713864d5cf69b8ce610a9133c5831566328addf08a"
+    },
+    {
+      "path": "references/qec_pbc_rag/sources.json",
+      "blob_sha": "7b940fd1a8201b10683d5852616cb8da6fe4a2b2",
+      "index_sha256": "711f053224724ed974b292854bea6293f013dcbbd5f011adfdc7342d4a19c1a2"
+    },
+    {
+      "path": "references/qec_pbc_rag/query_cases.json",
+      "blob_sha": "853891301122948a4e133ecc23886573cbd0443a",
+      "index_sha256": "b26e688a29d5a8571bbe371cee66c672040def7d5a3b1c8a170b0017a88e8bc0"
+    }
+  ],
+  "independent_fetch": true,
+  "staged_bytes_match": true,
+  "worktree_clean_before_receipt": true,
+  "pushurl_disabled": true,
+  "pr_url": "https://github.com/physics-Yu/QEC-schedule/pull/3",
+  "pr_merge_requested": false,
+  "scope": "device-aware bounded automatic MZ placement; single/full12 original-initial replay and three independent audits"
+}

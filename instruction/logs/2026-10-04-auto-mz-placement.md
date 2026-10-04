@@ -37,3 +37,5 @@
 自动MZ绕过问题由rigid_readout_placement/parallel_patch/CLI修复并由完整multi-run、portable反例及实际浏览器证明，状态FIXED。未放宽物理阈值；S1–S3、noise/FT及完整physical Shor不由本轮新增完成声明。GitHub精确发布及独立fetch核对后追加回执。
 
 RAG最终69chunks/58sources/178本地paths，schema/source指纹检查、73/73检索及11/11换行与路径可移植检查全部通过；新K69/L46保留旧routing固定端点历史与实际生产hash。最终full12截图保存于ignored `artifacts/auto-mz-2026-10-04/full12-auto-mz.png`，浏览器receipt绑定该run的实际recording SHA。最终receipt保存时第一次DOM探针误在外层读取shadow中的主统计，改用已验证shadow节点后成功；仅影响只读证据保存，不修改页面或物理运行。
+
+能力[e8e7abe](https://github.com/physics-Yu/QEC-schedule/commit/e8e7abe49f40dd5009b91ccce7d55aad1ed6448a)已发布到draft [PR#3](https://github.com/physics-Yu/QEC-schedule/pull/3)，独立Git fetch核对parent/tree与20blob/staged bytes精确一致。核对后安全前移managed HEAD，pushurl=DISABLED保持，不merge。正式[发布回执](../../references/qec_pbc_validation/auto_mz_publication_2026_10_04.json)另提交；原initial/trace/recording和旧producer源码hash不被覆盖。
