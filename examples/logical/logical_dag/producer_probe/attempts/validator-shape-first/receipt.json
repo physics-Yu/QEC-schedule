@@ -1,0 +1,369 @@
+{
+  "schema_version": "R2DAGProducerProbe/0.1.0",
+  "artifact_id": "T204-actual-producer-probe",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T204",
+    "kb_revision": "kb-0006",
+    "fixture": false
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "logical_dag_sha256": "183a8c2ac3826b05494fc21880adc8f54f8d95900d1402cc5d62eb93ed91e51f",
+  "host": "yubowl",
+  "python_executable": "C:\\Users\\yuyqp\\Documents\\ChatGPT\\中性原子平台仿真\\scripts\\.venv\\Scripts\\python.exe",
+  "elapsed_seconds": 3.2946340000489727,
+  "specifications": [
+    {
+      "operation": "CLASSICAL_POSTPROCESS",
+      "params": {
+        "function": "postprocess_phase",
+        "N": 15,
+        "a": 2,
+        "bits_msb_first": [
+          "phase[0]",
+          "phase[1]",
+          "phase[2]",
+          "phase[3]",
+          "phase[4]",
+          "phase[5]",
+          "phase[6]",
+          "phase[7]"
+        ],
+        "failure_policy": "return_explicit_classical_failure"
+      },
+      "node_count": 1,
+      "spec_hash": "4bdcea9755f62405126ee9b5017637f3932ea39b8778a9f1b0e28209311b29e1",
+      "implementation_kind": "classical_protocol",
+      "producer_qualification": {
+        "source": "implemented",
+        "independent": "pending",
+        "physical_compilation": "pending",
+        "fault_tolerance": "not_claimed",
+        "quantum_state_simulated": false
+      },
+      "field_match": true
+    },
+    {
+      "operation": "CX",
+      "params": {},
+      "node_count": 40,
+      "spec_hash": "51f0c8b9e23d287f35b04446e239bfcaa035d10f8749bd6ff1273929cbccbf31",
+      "implementation_kind": "static_physical_dag",
+      "producer_qualification": {
+        "source": "implemented",
+        "independent": "pending",
+        "physical_compilation": "pending",
+        "fault_tolerance": "not_claimed",
+        "quantum_state_simulated": false
+      },
+      "field_match": true
+    },
+    {
+      "operation": "H",
+      "params": {},
+      "node_count": 809,
+      "spec_hash": "7bfa82c13fe3a73d0c109dec55d6b4da7038792e50ae56995488047792e0ad4c",
+      "implementation_kind": "static_physical_dag",
+      "producer_qualification": {
+        "source": "implemented",
+        "independent": "pending",
+        "physical_compilation": "pending",
+        "fault_tolerance": "not_claimed",
+        "quantum_state_simulated": false
+      },
+      "field_match": true
+    },
+    {
+      "operation": "MEASURE",
+      "params": {
+        "basis": "Z"
+      },
+      "node_count": 8,
+      "spec_hash": "0148519527c7f5ba704636419a57ea879fd1e4ddcae83a43dcd93388d42a83e6",
+      "implementation_kind": "static_physical_dag",
+      "producer_qualification": {
+        "source": "implemented",
+        "independent": "pending",
+        "physical_compilation": "pending",
+        "fault_tolerance": "not_claimed",
+        "quantum_state_simulated": false
+      },
+      "field_match": true
+    },
+    {
+      "operation": "RESET",
+      "params": {
+        "basis": "Z",
+        "value": 0
+      },
+      "node_count": 8,
+      "spec_hash": "96ca27b9f381b1c73bba15cd7ca7bf2db1e7e796e92f903600191a54398a8dbb",
+      "implementation_kind": "static_physical_dag",
+      "producer_qualification": {
+        "source": "implemented",
+        "independent": "pending",
+        "physical_compilation": "pending",
+        "fault_tolerance": "not_claimed",
+        "quantum_state_simulated": false
+      },
+      "field_match": true
+    },
+    {
+      "operation": "S",
+      "params": {},
+      "node_count": 367,
+      "spec_hash": "bf3e0678e410d5e571831e8f9a73a5f9e20875a4fe92e7a7c3f8979a3267dc95",
+      "implementation_kind": "static_physical_dag",
+      "producer_qualification": {
+        "source": "implemented",
+        "independent": "pending",
+        "physical_compilation": "pending",
+        "fault_tolerance": "not_claimed",
+        "quantum_state_simulated": false
+      },
+      "field_match": true
+    },
+    {
+      "operation": "SDG",
+      "params": {},
+      "node_count": 7,
+      "spec_hash": "6f6d9f10425503828c23ee8ab0a0779a409638bd0dc1fd8f0d86947de4a8fac4",
+      "implementation_kind": "static_physical_dag",
+      "producer_qualification": {
+        "source": "implemented",
+        "independent": "pending",
+        "physical_compilation": "pending",
+        "fault_tolerance": "not_claimed",
+        "quantum_state_simulated": false
+      },
+      "field_match": true
+    },
+    {
+      "operation": "SE",
+      "params": {},
+      "node_count": 37,
+      "spec_hash": "61ca2b44fc3326a2da87b5f10fc3c900bc82d6eb213f50cadc5ecd3c07f7f27f",
+      "implementation_kind": "static_physical_dag",
+      "producer_qualification": {
+        "source": "implemented",
+        "independent": "pending",
+        "physical_compilation": "pending",
+        "fault_tolerance": "not_claimed",
+        "quantum_state_simulated": false
+      },
+      "field_match": true
+    },
+    {
+      "operation": "T",
+      "params": {},
+      "node_count": 796,
+      "spec_hash": "df4b6fb14a4348186cd24379b9f2e4dc03fe778455f20971b059d755618247f2",
+      "implementation_kind": "adaptive_factory_protocol",
+      "producer_qualification": {
+        "source": "implemented",
+        "independent": "pending",
+        "physical_compilation": "pending",
+        "fault_tolerance": "not_claimed",
+        "quantum_state_simulated": false
+      },
+      "field_match": true
+    },
+    {
+      "operation": "TDG",
+      "params": {},
+      "node_count": 21,
+      "spec_hash": "13849957a8aa4c964fc844031d1016e873c805a41ca48fccf2667680245ba83d",
+      "implementation_kind": "adaptive_factory_protocol",
+      "producer_qualification": {
+        "source": "implemented",
+        "independent": "pending",
+        "physical_compilation": "pending",
+        "fault_tolerance": "not_claimed",
+        "quantum_state_simulated": false
+      },
+      "field_match": true
+    },
+    {
+      "operation": "X",
+      "params": {},
+      "node_count": 8,
+      "spec_hash": "f11f1b2a3215e4025d6718433f62ec4e0ca4dda047149ca0ad0cda1777a28845",
+      "implementation_kind": "static_physical_dag",
+      "producer_qualification": {
+        "source": "implemented",
+        "independent": "pending",
+        "physical_compilation": "pending",
+        "fault_tolerance": "not_claimed",
+        "quantum_state_simulated": false
+      },
+      "field_match": true
+    }
+  ],
+  "resource_counts": {
+    "algorithm_patches": 5,
+    "factory_patches": 7,
+    "factory_atoms": 120,
+    "nonpatch_atoms": 1,
+    "data_aod_atoms": 85,
+    "magic_aod_atoms": 120
+  },
+  "failures": [
+    {
+      "logical_node_id": "maintenance/entry/P0",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/entry/P1",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/entry/P2",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/entry/P3",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "example/couple0",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 9,
+        "edges": 0,
+        "groups": 0,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "example/couple1",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 63,
+        "edges": 66,
+        "groups": 0,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "example/couple2",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 9,
+        "edges": 0,
+        "groups": 0,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "example/couple3",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 9,
+        "edges": 0,
+        "groups": 0,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/after-coupling/P0",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/after-coupling/P1",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/after-coupling/P2",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/after-coupling/P3",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    }
+  ],
+  "interface_probe_passed": false,
+  "small_binding_probe_performed": true,
+  "server_placement_read_performed": true,
+  "full_bundle_built": false,
+  "full_bundle_coverage": null,
+  "new_placement_or_routing_executed": false,
+  "runtime_executed": false,
+  "full_Shor_completed": false,
+  "files_sha256": {
+    "operation_specs.json": "3303e6ae7884081f12874630a5b2f9c8c6c1b0947cef99ed6c097d006b0aa900",
+    "requirements_resolved.json": "1bb961e07d170c03564126b6a5d1492585db5230291f473411f45379e09fba06",
+    "resource_requirements.json": "ece8ec3e9128cc2704196d2bcf6c132b93f4ddb508cf85dfeab2bfe4c663a680",
+    "server_placement_read_probe.json": "d503d6e86a740b4e884b3f48a70ae5bf266b2bcb9154e913632cd4e2ea00ac46",
+    "small_physical_binding_probe.json": "7f30d0547a3b710ecdfd0dc6c89b0bb717a9b7dd650f057be13a45292252a33a"
+  },
+  "unverified": [
+    "whole_205_carrier_world_placement_and_binding",
+    "adaptive_factory_T_consumption",
+    "all_eight_round_physical_fake_run",
+    "R6_independent_checks",
+    "user_visual_acceptance"
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "task_id": "T402",
+  "schema_version": "R4CostSummary/0.1.0",
+  "complete_profiles": [
+    {
+      "case": "rounds-1-plain",
+      "path": "examples/atom/profiles/T402/rounds-1-plain.json",
+      "sha256": "d14844ac49c14ff72cd3632ab5fb1bdfa16a962fe9b9865457da2251ebd77b4f",
+      "job_status": "completed",
+      "physical_ops": 388,
+      "actions": 1744,
+      "makespan_us": 259013.0,
+      "structure": {
+        "template_count": 5,
+        "stored_template_ops": 218,
+        "body_nodes": 9,
+        "template_invocations": 9,
+        "structured_json_bytes": 65380
+      },
+      "phases_wall_seconds": {
+        "structure_construction": 0.004717100062407553,
+        "standalone_stream_and_hash": 0.005244700005277991,
+        "compile_including_its_own_expansion": 0.11988999997265637,
+        "stream_json_hash_and_buffered_file_output": 0.07771099999081343
+      },
+      "compiler_stages": {
+        "initial_placement": 0.00034609995782375336,
+        "physical_expansion": 0.004255400155670941,
+        "lowering_and_scheduling": 0.040711801033467054,
+        "gate_layout_search": 0.011042600846849382,
+        "routing": 0.024137098575010896,
+        "compiler_geometry_checks": 0.038128798827528954
+      },
+      "worker_peak_rss_bytes": 32436224,
+      "sampled_process_tree_peak_bytes": 41447424,
+      "python_traced_peak_bytes": null,
+      "output_bytes": 1513346,
+      "operation_stream_sha256": "fbbecd122b0d4033723bba04cc8a7e5fc0418cdd27748df45abc61d3a9b1152f",
+      "input_hashes": {
+        "physical_program": "0ce826136de951b1f5832b6bb9dbe287b6584f795e85e1efc577e01952efdc55",
+        "device": "1c436306473c9938e7febf7abceb1ebceb28a52c7c5fc6d3e5aa02bf338ccf5f"
+      }
+    },
+    {
+      "case": "rounds-1-traced",
+      "path": "examples/atom/profiles/T402/rounds-1-traced.json",
+      "sha256": "5cea52bc329e4cb7dfcf994cd6c8f55eec7e3d5554ae7957cfe3bf5bfd7bcaaf",
+      "job_status": "completed",
+      "physical_ops": 388,
+      "actions": 1744,
+      "makespan_us": 259013.0,
+      "structure": {
+        "template_count": 5,
+        "stored_template_ops": 218,
+        "body_nodes": 9,
+        "template_invocations": 9,
+        "structured_json_bytes": 65380
+      },
+      "phases_wall_seconds": {
+        "structure_construction": 0.02349659998435527,
+        "standalone_stream_and_hash": 0.0298217999516055,
+        "compile_including_its_own_expansion": 0.7350822000298649,
+        "stream_json_hash_and_buffered_file_output": 0.9040402000537142
+      },
+      "compiler_stages": {
+        "initial_placement": 0.0014336000895127654,
+        "physical_expansion": 0.021224399330094457,
+        "lowering_and_scheduling": 0.20767240063287318,
+        "gate_layout_search": 0.05135049938689917,
+        "routing": 0.168252099188976,
+        "compiler_geometry_checks": 0.27706930122803897
+      },
+      "worker_peak_rss_bytes": 38748160,
+      "sampled_process_tree_peak_bytes": 51273728,
+      "python_traced_peak_bytes": 4542828,
+      "output_bytes": 1513338,
+      "operation_stream_sha256": "fbbecd122b0d4033723bba04cc8a7e5fc0418cdd27748df45abc61d3a9b1152f",
+      "input_hashes": {
+        "physical_program": "0ce826136de951b1f5832b6bb9dbe287b6584f795e85e1efc577e01952efdc55",
+        "device": "1c436306473c9938e7febf7abceb1ebceb28a52c7c5fc6d3e5aa02bf338ccf5f"
+      }
+    },
+    {
+      "case": "rounds-2-plain",
+      "path": "examples/atom/profiles/T402/rounds-2-plain.json",
+      "sha256": "645d57f16cda75e4ac1d61f93d24c87ae80d064fd3d826f46b106821a30999ce",
+      "job_status": "completed",
+      "physical_ops": 580,
+      "actions": 2724,
+      "makespan_us": 393923.0,
+      "structure": {
+        "template_count": 5,
+        "stored_template_ops": 218,
+        "body_nodes": 9,
+        "template_invocations": 13,
+        "structured_json_bytes": 65380
+      },
+      "phases_wall_seconds": {
+        "structure_construction": 0.00440330000128597,
+        "standalone_stream_and_hash": 0.00712800002656877,
+        "compile_including_its_own_expansion": 0.18827379995491356,
+        "stream_json_hash_and_buffered_file_output": 0.12187080003786832
+      },
+      "compiler_stages": {
+        "initial_placement": 0.0003187000984326005,
+        "physical_expansion": 0.006136699812486768,
+        "lowering_and_scheduling": 0.06436849641613662,
+        "gate_layout_search": 0.01809869974385947,
+        "routing": 0.03840189939364791,
+        "compiler_geometry_checks": 0.05951690429355949
+      },
+      "worker_peak_rss_bytes": 35196928,
+      "sampled_process_tree_peak_bytes": 47734784,
+      "python_traced_peak_bytes": null,
+      "output_bytes": 2364719,
+      "operation_stream_sha256": "60c6b2fee05018b4c2934b8d7f669f94365eda1eac77cb1ccec84082a64b3774",
+      "input_hashes": {
+        "physical_program": "8edfa0db835c8a037d2b4d7e5801d24c372798c54b12e78e1399f90a13e957a0",
+        "device": "1c436306473c9938e7febf7abceb1ebceb28a52c7c5fc6d3e5aa02bf338ccf5f"
+      }
+    },
+    {
+      "case": "rounds-2-traced",
+      "path": "examples/atom/profiles/T402/rounds-2-traced.json",
+      "sha256": "e5fc6d8c32295acc9a3f3e1da1b4e415a2240f74e0bc91b4b3f9aa8f8c2c59a5",
+      "job_status": "completed",
+      "physical_ops": 580,
+      "actions": 2724,
+      "makespan_us": 393923.0,
+      "structure": {
+        "template_count": 5,
+        "stored_template_ops": 218,
+        "body_nodes": 9,
+        "template_invocations": 13,
+        "structured_json_bytes": 65380
+      },
+      "phases_wall_seconds": {
+        "structure_construction": 0.02379279991146177,
+        "standalone_stream_and_hash": 0.04193399997893721,
+        "compile_including_its_own_expansion": 1.1400668999413028,
+        "stream_json_hash_and_buffered_file_output": 1.3985624000197276
+      },
+      "compiler_stages": {
+        "initial_placement": 0.0015048000495880842,
+        "physical_expansion": 0.029672500677406788,
+        "lowering_and_scheduling": 0.3234240955207497,
+        "gate_layout_search": 0.08153880131430924,
+        "routing": 0.26355770183727145,
+        "compiler_geometry_checks": 0.4316836000652984
+      },
+      "worker_peak_rss_bytes": 44752896,
+      "sampled_process_tree_peak_bytes": 57290752,
+      "python_traced_peak_bytes": 6770484,
+      "output_bytes": 2364716,
+      "operation_stream_sha256": "60c6b2fee05018b4c2934b8d7f669f94365eda1eac77cb1ccec84082a64b3774",
+      "input_hashes": {
+        "physical_program": "8edfa0db835c8a037d2b4d7e5801d24c372798c54b12e78e1399f90a13e957a0",
+        "device": "1c436306473c9938e7febf7abceb1ebceb28a52c7c5fc6d3e5aa02bf338ccf5f"
+      }
+    },
+    {
+      "case": "rounds-5-plain",
+      "path": "examples/atom/profiles/T402/rounds-5-plain.json",
+      "sha256": "e83a1a9dfc8609b0ff920cd35ae58ec3d19e08be9de44c24a33d4d0958ddc970",
+      "job_status": "completed",
+      "physical_ops": 1156,
+      "actions": 5664,
+      "makespan_us": 798653.0,
+      "structure": {
+        "template_count": 5,
+        "stored_template_ops": 218,
+        "body_nodes": 9,
+        "template_invocations": 25,
+        "structured_json_bytes": 65380
+      },
+      "phases_wall_seconds": {
+        "structure_construction": 0.0044874000595882535,
+        "standalone_stream_and_hash": 0.014191000023856759,
+        "compile_including_its_own_expansion": 0.40134240000043064,
+        "stream_json_hash_and_buffered_file_output": 0.2519965000683442
+      },
+      "compiler_stages": {
+        "initial_placement": 0.00030839990358799696,
+        "physical_expansion": 0.011836599791422486,
+        "lowering_and_scheduling": 0.13848029728978872,
+        "gate_layout_search": 0.038752700551413,
+        "routing": 0.08504870068281889,
+        "compiler_geometry_checks": 0.1250954014249146
+      },
+      "worker_peak_rss_bytes": 42315776,
+      "sampled_process_tree_peak_bytes": 54386688,
+      "python_traced_peak_bytes": null,
+      "output_bytes": 4918849,
+      "operation_stream_sha256": "0d8f4da9c1b728750eb5b599fb007ee1d540ffa2f63b24ff249d6234150e1c3a",
+      "input_hashes": {
+        "physical_program": "078b5c261c0a9e8699482b0eda1a1ab7c49891aba5fa46333dea5cb6fb854190",
+        "device": "1c436306473c9938e7febf7abceb1ebceb28a52c7c5fc6d3e5aa02bf338ccf5f"
+      }
+    },
+    {
+      "case": "rounds-5-traced",
+      "path": "examples/atom/profiles/T402-retry1/rounds-5-traced.json",
+      "sha256": "1f2ab0ff2595bca6803506965599bae24df1bd230a1f040551f4f5a601c35469",
+      "job_status": "completed",
+      "physical_ops": 1156,
+      "actions": 5664,
+      "makespan_us": 798653.0,
+      "structure": {
+        "template_count": 5,
+        "stored_template_ops": 218,
+        "body_nodes": 9,
+        "template_invocations": 25,
+        "structured_json_bytes": 65380
+      },
+      "phases_wall_seconds": {
+        "structure_construction": 0.023839900037273765,
+        "standalone_stream_and_hash": 0.08389200002420694,
+        "compile_including_its_own_expansion": 2.4337188999634236,
+        "stream_json_hash_and_buffered_file_output": 3.490455099963583
+      },
+      "compiler_stages": {
+        "initial_placement": 0.0015502999303862453,
+        "physical_expansion": 0.055525999632664025,
+        "lowering_and_scheduling": 0.7045804045628756,
+        "gate_layout_search": 0.17809730069711804,
+        "routing": 0.5682584969326854,
+        "compiler_geometry_checks": 0.9145754990167916
+      },
+      "worker_peak_rss_bytes": 62320640,
+      "sampled_process_tree_peak_bytes": 74842112,
+      "python_traced_peak_bytes": 13643444,
+      "output_bytes": 4918846,
+      "operation_stream_sha256": "0d8f4da9c1b728750eb5b599fb007ee1d540ffa2f63b24ff249d6234150e1c3a",
+      "input_hashes": {
+        "physical_program": "078b5c261c0a9e8699482b0eda1a1ab7c49891aba5fa46333dea5cb6fb854190",
+        "device": "1c436306473c9938e7febf7abceb1ebceb28a52c7c5fc6d3e5aa02bf338ccf5f"
+      }
+    }
+  ],
+  "all_complete": true,
+  "failed_attempts": [
+    {
+      "path": "examples/atom/profiles/T402/rounds-5-traced-job/status.json",
+      "status": {
+        "status": "supervisor_failed_incomplete",
+        "supervisor_pid": 41592,
+        "started_at_utc": "2026-10-06T09:39:00.588664+00:00",
+        "peak_root_rss_bytes": 4501504,
+        "peak_tree_rss_bytes": 74612736,
+        "root_rss_measured": true,
+        "job": "C:\\Users\\yuyqp\\Documents\\ChatGPT\\中性原子平台仿真\\examples\\atom\\profiles\\T402\\rounds-5-traced-job",
+        "child_pid": 81456,
+        "elapsed_seconds": 2.952999999979511,
+        "root_rss_bytes": 4501504,
+        "tree_rss_bytes": 74612736,
+        "memory_scope": "sampled_process_tree_rss",
+        "processes_measured": 3,
+        "memory_unreadable_pids": [],
+        "error": "[WinError 5] 拒绝访问。: 'C:\\\\Users\\\\yuyqp\\\\Documents\\\\ChatGPT\\\\中性原子平台仿真\\\\examples\\\\atom\\\\profiles\\\\T402\\\\rounds-5-traced-job\\\\status.tmp' -> 'C:\\\\Users\\\\yuyqp\\\\Documents\\\\ChatGPT\\\\中性原子平台仿真\\\\examples\\\\atom\\\\profiles\\\\T402\\\\rounds-5-traced-job\\\\status.json'",
+        "finished_at_utc": "2026-10-06T09:39:03.928939+00:00"
+      },
+      "resolution": "Preserved failed attempt; own status reader now uses FILE_SHARE_DELETE; original full rounds=5 rerun completed in T402-retry1"
+    }
+  ],
+  "method": "one isolated process per rounds/mode; sequential jobs; plain timings are primary; tracemalloc overhead is not a cache speedup",
+  "acceptance_scope": "cost measurement and source-stream equivalence only; no new runtime/physics qualification",
+  "budget": {
+    "per_job_wall_seconds": 300,
+    "per_job_sampled_process_tree_rss_limit_bytes": 2147483648,
+    "per_job_compute_threads": 1,
+    "note": "Worker budget field root_process_rss_bytes is a legacy label; job.json/status.json confirm actual process-tree RSS enforcement"
+  }
+}

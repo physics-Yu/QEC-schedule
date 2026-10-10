@@ -1,0 +1,336 @@
+{
+  "schema_version": "ScenarioInput/0.2.0-draft",
+  "artifact_id": "scenario-T504-native/batch-0-0",
+  "provenance": {
+    "producer": "na_pipeline.runtime.make_scenario",
+    "fixture": false,
+    "description": "Explicit configured zero bits for a real compiled strategy path; not sampling"
+  },
+  "execution_kind": "scenario",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "sampled": false,
+  "results": {
+    "ec-707265706172652e4c302f7230/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c302f7230/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c302f7230/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c302f7230/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c302f7230/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c302f7230/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c302f7230/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c302f7230/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c312f7230/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c312f7230/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c312f7230/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c312f7230/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c312f7230/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c312f7230/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c312f7230/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-707265706172652e4c312f7230/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7230/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7230/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7230/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7230/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7230/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7230/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7230/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7230/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7231/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7231/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7231/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7231/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7231/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7231/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7231/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7231/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7232/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7232/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7232/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7232/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7232/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7232/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7232/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c302f7232/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7230/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7230/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7230/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7230/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7230/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7230/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7230/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7230/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7231/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7231/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7231/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7231/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7231/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7231/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7231/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7231/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7232/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7232/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7232/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7232/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7232/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7232/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7232/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-6265666f72652e4c312f7232/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c302f7230/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c302f7230/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c302f7230/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c302f7230/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c302f7230/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c302f7230/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c302f7230/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c302f7230/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c312f7230/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c312f7230/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c312f7230/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c312f7230/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c312f7230/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c312f7230/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c312f7230/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "ec-61667465722e4c312f7230/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    }
+  }
+}

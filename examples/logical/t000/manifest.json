@@ -1,0 +1,33 @@
+{
+  "schema_version": "R2EncodedManifest/0.1.0",
+  "artifact_id": "T203-manifest",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T203",
+    "kb_revision": "kb-0005",
+    "plan_revision": "plan-0007"
+  },
+  "files": {
+    "program.json": {
+      "bytes": 26012,
+      "sha256": "50ec347a7b72cceec342200792b3525d67b0a8a5ed47ca601eef571d70bf754f"
+    },
+    "operation_catalog.json": {
+      "bytes": 11347,
+      "sha256": "37467dd677346b41f6b5f55ca62b5aad3872315ce8a92efb5f56601a4d15678b"
+    },
+    "expanded_calls.json": {
+      "bytes": 43970,
+      "sha256": "be90f5710eabe79ca6a43d218821ab410d4ed7c36cade6fc87191312ec858a59"
+    },
+    "rejected_missing_readout_member.json": {
+      "bytes": 25792,
+      "sha256": "ed004663aef76475e32a0076e369a4ef7c61610c094014d08ed431961f19025d"
+    },
+    "author_checks.json": {
+      "bytes": 2013,
+      "sha256": "fd06969b8b115debe581b44c0394e58af86f45cf6869a86927f1518a7ebe8b02"
+    }
+  },
+  "scope": "semantic_artifacts_not_T000_qualification"
+}

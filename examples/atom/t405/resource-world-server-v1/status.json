@@ -1,0 +1,92 @@
+{
+  "stage": "completed_inventory_placement_only",
+  "full_program_passed": false,
+  "logical_nodes": 2102,
+  "resource_count": 205,
+  "complete": true,
+  "wall_seconds": 33.712616473436356,
+  "atoms": 205,
+  "patches": 12,
+  "nonpatch_atoms": 1,
+  "cost": {
+    "model": "sum(max(1-0.1*layer,0.1)*Euclidean_cell_distance)",
+    "baseline_mapping": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        3,
+        2
+      ]
+    ],
+    "baseline": 5.062741699796953,
+    "candidate": 4.497056274847715,
+    "units": "weighted_cells",
+    "uniform_cell_step_um": 60.0,
+    "candidate_weighted_distance_um": 269.82337649086287,
+    "makespan_objective": false
+  },
+  "search": {
+    "seed": 7,
+    "budget": {
+      "max_iterations": 1000,
+      "moves_per_iteration": 400,
+      "initial_moves": 100,
+      "max_wall_seconds": 600.0,
+      "max_moves": 400100
+    },
+    "moves": 400100,
+    "iterations": 1000,
+    "wall_seconds": 25.414777437224984,
+    "parallelism": 1,
+    "stop_reason": "iteration_budget",
+    "complete": true,
+    "optimality_proven": false
+  },
+  "source_observation_stable": true,
+  "independent_validation": "pending_R6",
+  "physical_execution": false,
+  "ready_magic_tokens": [],
+  "output_sha256": "2d1cf03843e0b5b91594b51aed263864687a31a70fe4f32f9f0f7ee48fe26512"
+}

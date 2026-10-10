@@ -1,0 +1,53 @@
+{
+  "schema_version": "R2LogicalDAGManifest/0.1.0",
+  "artifact_id": "T204-dag-manifest",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T204",
+    "kb_revision": "kb-0006",
+    "plan_revision": "plan-0008"
+  },
+  "files": {
+    "shor15_dag.json": {
+      "bytes": 7919115,
+      "sha256": "1112ed3b40a085bc915e9f4da42ed9d480c6ed3acd0b8f288605bd88e822a66a"
+    },
+    "shor15_interactions.json": {
+      "bytes": 388278,
+      "sha256": "367a742a7ddf945d0dcabdd524fe0a9da4c8ef2b1a6369f17dd17ea63453d69b"
+    },
+    "shor15_placement_input.json": {
+      "bytes": 373004,
+      "sha256": "7b54ee28240993a54182faf1eededd5bff6505a94a304607c8d511593dbb8f90"
+    },
+    "shor15_requirements.json": {
+      "bytes": 5095,
+      "sha256": "b7b973fc357a8eeac6bfe063a9b8bc12074d55ae3d633fbe74fcc1eb3a4a1a8f"
+    },
+    "four_patch_dag.json": {
+      "bytes": 35027,
+      "sha256": "67a5cd8d863bc445f563391377626aca8d252c978fcef4366abbdc04df308bee"
+    },
+    "four_patch_interactions.json": {
+      "bytes": 2255,
+      "sha256": "027e66800bc3f58a363095e2d0381095359b4e66c0907be05bcc09882d7f361c"
+    },
+    "four_patch_placement_input.json": {
+      "bytes": 1734,
+      "sha256": "32d286ece59f5331a63ff7fcf420b1f691783055105f482e905e49924e8057dd"
+    },
+    "rejected_cycle.json": {
+      "bytes": 35139,
+      "sha256": "3e48d627308502621b2dfa6d6ef8f2b005b4ba6c3768a2226ca15b2f511a803d"
+    },
+    "rejected_missing_producer.json": {
+      "bytes": 35058,
+      "sha256": "f80530a1bef3575832cf43ee78300fdf89a96f80b5ffed4b8b6d82e1aec13911"
+    },
+    "author_checks.json": {
+      "bytes": 3389,
+      "sha256": "f26f9218d8ef4ea4f17dd61d53c310c6babfb12c57e887303b3b29a010f6852e"
+    }
+  },
+  "scope": "complete_logical_source_and_semantic_graph_only"
+}

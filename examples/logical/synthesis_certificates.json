@@ -1,0 +1,606 @@
+{
+  "schema_version": "R2SynthesisCertificates/0.1.0",
+  "artifact_id": "shor15-logical-35f3dca2de207731-ct-v1-certificates",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T202",
+    "logical_artifact_id": "shor15-logical-35f3dca2de207731-ct-v1"
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "synthesis": {
+    "status": "complete",
+    "metric": "operator_norm_per_path",
+    "path_error_budget": 0.001,
+    "allocation": "equal_over_15_nonexact_conditional_rotations",
+    "unresolved_operation_ids": [],
+    "clifford_t_ready": true,
+    "table_version": "shor15-feedback/1",
+    "phase_policy": "retain_classical_branch_global_phase_ledger",
+    "coherent_quantum_control_supported": false,
+    "certified_path_error_upper_bound": "0.00007976544028659785637406462969549629749622949651184150269451629705267274",
+    "certificate_kind": "static_directed_interval_operator_bound"
+  },
+  "certificates": {
+    "feedback-minus-pi-over-8/1": {
+      "method": "directed_decimal_interval_frobenius_v1",
+      "decimal_precision": 70,
+      "phase_sensitive": true,
+      "phase_optimized": false,
+      "metric": "operator_2_norm_bounded_by_frobenius",
+      "angle_pi": {
+        "numerator": -1,
+        "denominator": 8
+      },
+      "global_phase_pi": {
+        "numerator": -13,
+        "denominator": 16
+      },
+      "gate_word_sha256": "1d3d93688efb9dd63b9096a8f41414dcf9a6f63646bc8a09286c5c48245e01a9",
+      "gate_count": 121,
+      "t_count": 50,
+      "tdg_count": 0,
+      "operator_error_upper_bound": "0.000006590083411722618599039511209002432898200863879099477113687379688559257",
+      "corrected_matrix_intervals": [
+        [
+          {
+            "real": [
+              "0.9999999999891427001566345928486142839140828000819654601936383676855633",
+              "0.9999999999891427001566345928486142839140828000819654601945312305685414"
+            ],
+            "imag": [
+              "0.0000043268891363737913086004686196689559831762640522407563010650402386",
+              "0.0000043268891363737913086004686196689559831762640522407571939279232169"
+            ]
+          },
+          {
+            "real": [
+              "-0.000001623399605812427823271649512974592854245957091989791819083118265480327",
+              "-0.000001623399605812427823271649512974592854245957091989790848608358092759901"
+            ],
+            "imag": [
+              "-5.976652976302486492503546536395520668541707507596027201880520890048683E-7",
+              "-5.976652976302486492503546536395520668541707507596017497132919163120342E-7"
+            ]
+          }
+        ],
+        [
+          {
+            "real": [
+              "0.000001271109061394346508313258245031142748214874568704431225169164058852080",
+              "0.000001271109061394346508313258245031142748214874568704432118032047004243344"
+            ],
+            "imag": [
+              "-0.000001173418869025286801560820269432750828396309349760339305943430238958629",
+              "-0.000001173418869025286801560820269432750828396309349760338413080547293760494"
+            ]
+          },
+          {
+            "real": [
+              "0.9238778766724697482830999700562726417137041633202168039537766437107491",
+              "0.9238778766724697482830999700562726417137041633202168039547471184709546"
+            ],
+            "imag": [
+              "-0.3826874298852474041417858767705620990140187165223784667378533237167608",
+              "-0.3826874298852474041417858767705620990140187165223784667368828489565552"
+            ]
+          }
+        ]
+      ],
+      "bound_scope": "static_2x2_operator_not_quantum_state_execution",
+      "table_version": "shor15-feedback/1",
+      "synthesizer": "pygridsynth/1.2.0",
+      "seed": 7,
+      "dps": 80,
+      "generation_epsilon": "0.00001"
+    },
+    "feedback-minus-pi-over-16/1": {
+      "method": "directed_decimal_interval_frobenius_v1",
+      "decimal_precision": 70,
+      "phase_sensitive": true,
+      "phase_optimized": false,
+      "metric": "operator_2_norm_bounded_by_frobenius",
+      "angle_pi": {
+        "numerator": -1,
+        "denominator": 16
+      },
+      "global_phase_pi": {
+        "numerator": -17,
+        "denominator": 32
+      },
+      "gate_word_sha256": "e9d6eaefbaac33460835981a03883d676ef521465f7bd935f81de7ffc4c0e7a8",
+      "gate_count": 127,
+      "t_count": 52,
+      "tdg_count": 0,
+      "operator_error_upper_bound": "0.000005337722390699646198284859880195328790893147117531264255710737057264036",
+      "corrected_matrix_intervals": [
+        [
+          {
+            "real": [
+              "0.9999999999928771799199559133860458857090407236026280253348797559136128",
+              "0.9999999999928771799199559133860458857090407236026280253367288861531067"
+            ],
+            "imag": [
+              "0.00000287740883220298599884396567242040583416607445309371447276771609117",
+              "0.00000287740883220298599884396567242040583416607445309371632189795557942"
+            ]
+          },
+          {
+            "real": [
+              "-5.9736846032774469509364419418973648075172861330588894605775638924509E-9",
+              "-5.9736846032774469509364419418973648075172861330577101403424217044709E-9"
+            ],
+            "imag": [
+              "-0.000002442564817459292643418660209987046818483069923568130360157833047269141",
+              "-0.000002442564817459292643418660209987046818483069923568129180837597905879628"
+            ]
+          }
+        ],
+        [
+          {
+            "real": [
+              "-4.706618548547330320585810403252208665455566417867410454833213498179434E-7",
+              "-4.706618548547330320585810403252208665455566417867391963530818670215532E-7"
+            ],
+            "imag": [
+              "-0.000002396797027447753916807551656332437218154724704686154439035568952384742",
+              "-0.000002396797027447753916807551656332437218154724704686152589905329470476534"
+            ]
+          },
+          {
+            "real": [
+              "0.9807847190416288455045862055410866767387021064457398563752111583430667",
+              "0.9807847190416288455045862055410866767387021064457398563763904785782199"
+            ],
+            "imag": [
+              "-0.1950931441349670015227015642073564597659195348250453434156082883796655",
+              "-0.1950931441349670015227015642073564597659195348250453434144289681445177"
+            ]
+          }
+        ]
+      ],
+      "bound_scope": "static_2x2_operator_not_quantum_state_execution",
+      "table_version": "shor15-feedback/1",
+      "synthesizer": "pygridsynth/1.2.0",
+      "seed": 7,
+      "dps": 80,
+      "generation_epsilon": "0.00001"
+    },
+    "feedback-minus-pi-over-32/1": {
+      "method": "directed_decimal_interval_frobenius_v1",
+      "decimal_precision": 70,
+      "phase_sensitive": true,
+      "phase_optimized": false,
+      "metric": "operator_2_norm_bounded_by_frobenius",
+      "angle_pi": {
+        "numerator": -1,
+        "denominator": 32
+      },
+      "global_phase_pi": {
+        "numerator": -1,
+        "denominator": 64
+      },
+      "gate_word_sha256": "a096725be1320d7d53b3368ef7f23e5d69ef123c3746f29d3189144939dd483f",
+      "gate_count": 134,
+      "t_count": 52,
+      "tdg_count": 0,
+      "operator_error_upper_bound": "0.000003116635335533402870453445605093382958980531040235103802263861219887076",
+      "corrected_matrix_intervals": [
+        [
+          {
+            "real": [
+              "0.9999999999975716460463261483267560523217807595290529589175312377762300",
+              "0.9999999999975716460463261483267560523217807595290529589186891767557907"
+            ],
+            "imag": [
+              "0.00000166931655308304493815511459765680652309358165688018562866510262976",
+              "0.00000166931655308304493815511459765680652309358165688018678660408218358"
+            ]
+          },
+          {
+            "real": [
+              "-6.642480104221597325391347194739341967945286014935404801293360004029690E-7",
+              "-6.642480104221597325391347194739341967945286014935387453630328204189181E-7"
+            ],
+            "imag": [
+              "0.000001276269851400929406944370070593646119232392378527584969016758073095387",
+              "0.000001276269851400929406944370070593646119232392378527586703783061251911277"
+            ]
+          }
+        ],
+        [
+          {
+            "real": [
+              "7.861457958176799764006119519849165678623822755247321548476808717418588E-7",
+              "7.861457958176799764006119519849165678623822755247333127866604256978094E-7"
+            ],
+            "imag": [
+              "0.000001205016572775219004320316358827961598052171100551434054090941719398468",
+              "0.000001205016572775219004320316358827961598052171100551435212029921272205253"
+            ]
+          },
+          {
+            "real": [
+              "0.9951845630481453874799712100073043358166325252676372612642199866956480",
+              "0.9951845630481453874799712100073043358166325252676372612659547529988348"
+            ],
+            "imag": [
+              "-0.09801880160766019100786963363557034583567803817712848613289324679639603",
+              "-0.09801880160766019100786963363557034583567803817712848613115848049321619"
+            ]
+          }
+        ]
+      ],
+      "bound_scope": "static_2x2_operator_not_quantum_state_execution",
+      "table_version": "shor15-feedback/1",
+      "synthesizer": "pygridsynth/1.2.0",
+      "seed": 7,
+      "dps": 80,
+      "generation_epsilon": "0.00001"
+    },
+    "feedback-minus-pi-over-64/1": {
+      "method": "directed_decimal_interval_frobenius_v1",
+      "decimal_precision": 70,
+      "phase_sensitive": true,
+      "phase_optimized": false,
+      "metric": "operator_2_norm_bounded_by_frobenius",
+      "angle_pi": {
+        "numerator": -1,
+        "denominator": 64
+      },
+      "global_phase_pi": {
+        "numerator": -1,
+        "denominator": 128
+      },
+      "gate_word_sha256": "706326cf1947cdd8e95bd909d91be9d939540f32868af664d731af6f302227c5",
+      "gate_count": 139,
+      "t_count": 54,
+      "tdg_count": 0,
+      "operator_error_upper_bound": "0.000005317880355250880033801586331215605390407611369929754858527801866830564",
+      "corrected_matrix_intervals": [
+        [
+          {
+            "real": [
+              "0.9999999999929300371318091934921266688428559331374351338570630625149495",
+              "0.9999999999929300371318091934921266688428559331374351338626565936802014"
+            ],
+            "imag": [
+              "-5.126913423082133419001006584269369521135755022266993744876182001E-8",
+              "-5.126913423082133419001006584269369521135755022266434391759657532E-8"
+            ]
+          },
+          {
+            "real": [
+              "-0.000003736502439535398307637976533860529669979559843071030551102733795204143",
+              "-0.000003736502439535398307637976533860529669979559843071024598711940115880732"
+            ],
+            "imag": [
+              "4.193408298184995233344641984907531796165380861181231524555821256212903E-7",
+              "4.193408298184995233344641984907531796165380861181291048463758056662957E-7"
+            ]
+          }
+        ],
+        [
+          {
+            "real": [
+              "0.000003752577737977221082298288947642207400566921138679982180256943453821723",
+              "0.000003752577737977221082298288947642207400566921138679987773788108697661035"
+            ],
+            "imag": [
+              "2.354942305972979454306811680840892995677390310496029303290597482716312E-7",
+              "2.354942305972979454306811680840892995677390310496085238602249934078814E-7"
+            ]
+          },
+          {
+            "real": [
+              "0.9987954587137681274131034397867180183729307451482032367751805949053800",
+              "0.9987954587137681274131034397867180183729307451482032367811329856990667"
+            ],
+            "imag": [
+              "-0.04906762311969279430201697288408898429539323959578776258649607420728744",
+              "-0.04906762311969279430201697288408898429539323959578776258054368341360727"
+            ]
+          }
+        ]
+      ],
+      "bound_scope": "static_2x2_operator_not_quantum_state_execution",
+      "table_version": "shor15-feedback/1",
+      "synthesizer": "pygridsynth/1.2.0",
+      "seed": 7,
+      "dps": 80,
+      "generation_epsilon": "0.00001"
+    },
+    "feedback-minus-pi-over-128/1": {
+      "method": "directed_decimal_interval_frobenius_v1",
+      "decimal_precision": 70,
+      "phase_sensitive": true,
+      "phase_optimized": false,
+      "metric": "operator_2_norm_bounded_by_frobenius",
+      "angle_pi": {
+        "numerator": -1,
+        "denominator": 128
+      },
+      "global_phase_pi": {
+        "numerator": 255,
+        "denominator": 256
+      },
+      "gate_word_sha256": "14d3eec3aaa9e9926acbb5a92e19f9611f6187abb401355e08b1d863629ab8d4",
+      "gate_count": 140,
+      "t_count": 54,
+      "tdg_count": 0,
+      "operator_error_upper_bound": "0.000005478466948084209906764124651991458183895772785654238979389262987497900",
+      "corrected_matrix_intervals": [
+        [
+          {
+            "real": [
+              "0.9999999999924965999746872207285475179038570913388972381317745934040577",
+              "0.9999999999924965999746872207285475179038570913388972381367414612807002"
+            ],
+            "imag": [
+              "6.1308354524867875865175867244131547779146580430393849992281723597E-7",
+              "6.1308354524867875865175867244131547779146580430394346679069387125E-7"
+            ]
+          },
+          {
+            "real": [
+              "0.000003817883755215314150032763168510411094786528683366503651315304121885114",
+              "0.000003817883755215314150032763168510411094786528683366506816432177096788845"
+            ],
+            "imag": [
+              "-2.338637397665144235230862651826586524895146977855329609437386831099309E-7",
+              "-2.338637397665144235230862651826586524895146977855297958268657068323974E-7"
+            ]
+          }
+        ],
+        [
+          {
+            "real": [
+              "-0.000003822473183489010594060691336010794309230952975827195958892396309886620",
+              "-0.000003822473183489010594060691336010794309230952975827190992024519705078089"
+            ],
+            "imag": [
+              "-1.400977466698074442070724314073875169739524540554454543823703928219406E-7",
+              "-1.400977466698074442070724314073875169739524540554404875144937868312119E-7"
+            ]
+          },
+          {
+            "real": [
+              "0.9996988036428796923891938799615280769816569627686826235307920417746335",
+              "0.9996988036428796923891938799615280769816569627686826235339571586476464"
+            ],
+            "imag": [
+              "-0.02454184142162409256203707423214942951908726230833747353671059056965989",
+              "-0.02454184142162409256203707423214942951908726230833747353354547369665451"
+            ]
+          }
+        ]
+      ],
+      "bound_scope": "static_2x2_operator_not_quantum_state_execution",
+      "table_version": "shor15-feedback/1",
+      "synthesizer": "pygridsynth/1.2.0",
+      "seed": 7,
+      "dps": 80,
+      "generation_epsilon": "0.00001"
+    }
+  },
+  "branch_global_phases": [
+    {
+      "source_operation_id": "round4/feedback_from_7",
+      "condition": {
+        "bit": "phase[7]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -13,
+        "denominator": 16
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round3/feedback_from_6",
+      "condition": {
+        "bit": "phase[6]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -13,
+        "denominator": 16
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round3/feedback_from_7",
+      "condition": {
+        "bit": "phase[7]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -17,
+        "denominator": 32
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round2/feedback_from_5",
+      "condition": {
+        "bit": "phase[5]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -13,
+        "denominator": 16
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round2/feedback_from_6",
+      "condition": {
+        "bit": "phase[6]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -17,
+        "denominator": 32
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round2/feedback_from_7",
+      "condition": {
+        "bit": "phase[7]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -1,
+        "denominator": 64
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round1/feedback_from_4",
+      "condition": {
+        "bit": "phase[4]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -13,
+        "denominator": 16
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round1/feedback_from_5",
+      "condition": {
+        "bit": "phase[5]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -17,
+        "denominator": 32
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round1/feedback_from_6",
+      "condition": {
+        "bit": "phase[6]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -1,
+        "denominator": 64
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round1/feedback_from_7",
+      "condition": {
+        "bit": "phase[7]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -1,
+        "denominator": 128
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round0/feedback_from_3",
+      "condition": {
+        "bit": "phase[3]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -13,
+        "denominator": 16
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round0/feedback_from_4",
+      "condition": {
+        "bit": "phase[4]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -17,
+        "denominator": 32
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round0/feedback_from_5",
+      "condition": {
+        "bit": "phase[5]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -1,
+        "denominator": 64
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round0/feedback_from_6",
+      "condition": {
+        "bit": "phase[6]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": -1,
+        "denominator": 128
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    },
+    {
+      "source_operation_id": "round0/feedback_from_7",
+      "condition": {
+        "bit": "phase[7]",
+        "equals": 1
+      },
+      "global_phase_pi": {
+        "numerator": 255,
+        "denominator": 256
+      },
+      "semantics": "exp(i*pi*phase)*chronological_word",
+      "scope": "classical_branch_global_not_quantum_control"
+    }
+  ],
+  "resource_summary": {
+    "modular_multiply_fredkin": 5,
+    "modular_multiply_t_like": 35,
+    "exact_feedback_t_like": 6,
+    "conditional_feedback_count": 28,
+    "nonexact_feedback_count": 15,
+    "total_t_like": 817,
+    "total_t_like_status": "all_conditions_true_static_upper_bound",
+    "unresolved_feedback_count": 0,
+    "synthesized_feedback_count": 15,
+    "unconditional_t_like": 35,
+    "conditional_t_like_by_bit_equals_one": {
+      "phase[7]": 263,
+      "phase[6]": 209,
+      "phase[5]": 155,
+      "phase[4]": 103,
+      "phase[3]": 51,
+      "phase[2]": 1
+    },
+    "path_t_like_status": "determined_only_after_explicit_phase_bits"
+  }
+}

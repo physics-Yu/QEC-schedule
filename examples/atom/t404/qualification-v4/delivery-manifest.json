@@ -1,0 +1,60 @@
+{
+  "task": "T404",
+  "qualification_directory": "qualification-v4",
+  "artifact_hash_mismatches": [],
+  "source_drift_since_run": [
+    "src/na_pipeline/validation/strategy_run.py"
+  ],
+  "source_unchanged_during_run": true,
+  "files": {
+    "summary.json": {
+      "sha256": "6a2bbc226a0379168a58614ee399b96a9f470094eadb58e504e7dde52e9cfaaf",
+      "bytes": 12479
+    },
+    "run-report.json": {
+      "sha256": "858d2ff732789b234b295a40635a89f27a8fc59330592d9f1b3755bb7eb2c3f4",
+      "bytes": 82170
+    },
+    "strategy-reports.json": {
+      "sha256": "07af82865fd7535ffa822713d2089a2bc499a2a4aea9a69f91d7e6988f9cc5d4",
+      "bytes": 28175
+    },
+    "binding-costs.json": {
+      "sha256": "c7a775b1e4bda36c4802cd8c0ea00bcd4a85e56310d32d7f52567dd0c9001a1f",
+      "bytes": 68283
+    },
+    "viewer.html": {
+      "sha256": "207bf2f41c6d9274b7e451d4f5dab41ffaa817ab6a1e7acce1ac524d77b572f1",
+      "bytes": 51924367
+    },
+    "interface-examples.json": {
+      "sha256": "aaab9350490de4756ecf8f047b353d4d7821896f069f12a750d9c47a35e9b28c",
+      "bytes": 50380
+    },
+    "run.json.gz": {
+      "sha256": "2e0cbfb7eae798e39a7d142901e91f56b2857bfc25a562c12b4eaec1dba91a98",
+      "bytes": 1285963
+    },
+    "enola-observation.json.gz": {
+      "sha256": "f3e07adc1b988f49842c360e85f1b30a907b859500318a9fe9158cdf8f70bc34",
+      "bytes": 1060524
+    },
+    "validation-recheck.json": {
+      "sha256": "2277518e87b16cd46fb1f768ce2b2284c565bab90161cb4d097e7738d310b49c",
+      "bytes": 2722
+    },
+    "run-report-current.json": {
+      "sha256": "e9052dcbfb1a76da0a91cc5f55fd589393d0013fd2a9e0058407b2e7d2228680",
+      "bytes": 129856
+    }
+  },
+  "R0_integration_acceptance": "pending",
+  "user_visual_acceptance": "pending",
+  "validation_drift_resolution": {
+    "scope": "fresh independent recheck of same frozen actual run",
+    "passed": true,
+    "source_unchanged_during_recheck": true,
+    "record": "validation-recheck.json",
+    "report": "run-report-current.json"
+  }
+}

@@ -1,0 +1,3965 @@
+{
+  "fixture": false,
+  "host": "yubowl",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "kb_revision": "kb-0005",
+  "plan_revision": "plan-0007",
+  "scope": "T504 real compiled strategy calls, not whole Shor or factory",
+  "budget": {
+    "parallelism": 1,
+    "wall_seconds_guidance": 600,
+    "binding_attempts_per_call": 4096
+  },
+  "runtime_completed": true,
+  "action_count": 2192,
+  "result_count": 80,
+  "duration_us": 168972.0,
+  "group_metrics": [
+    {
+      "group_id": "L0-prepare/initialization.block",
+      "formal_group_id": "L0-prepare/initialization.block",
+      "call_id": "L0-prepare",
+      "purpose": "patch_initialization_transport",
+      "cycle_start_us": 0,
+      "cycle_end_us": 17198.0,
+      "transport_batch_count": 1,
+      "split_reasons": [],
+      "per_atom_wait_us": {},
+      "members": [
+        "atom:L0/d0",
+        "atom:L0/d1",
+        "atom:L0/d2",
+        "atom:L0/d3",
+        "atom:L0/d4",
+        "atom:L0/d5",
+        "atom:L0/d6",
+        "atom:L0/d7",
+        "atom:L0/d8",
+        "atom:L0/x0",
+        "atom:L0/x1",
+        "atom:L0/x2",
+        "atom:L0/x3",
+        "atom:L0/z0",
+        "atom:L0/z1",
+        "atom:L0/z2",
+        "atom:L0/z3"
+      ],
+      "cycle_duration_us": 17198.0,
+      "group_transport_interval_us": 500.0,
+      "cycle_scope": "complete_logical_call",
+      "initialization_completion_span_us": 0.0,
+      "metric_scope": "actual runtime events; source eligibility and waiting reasons require independent validation"
+    },
+    {
+      "group_id": "L0-prepare/maintenance.block.r0",
+      "formal_group_id": "L0-prepare/maintenance.block.r0",
+      "call_id": "L0-prepare",
+      "purpose": "maintenance_readout",
+      "cycle_start_us": 0,
+      "cycle_end_us": 17198.0,
+      "transport_batch_count": 2,
+      "split_reasons": [],
+      "per_atom_wait_us": {
+        "atom:L0/x0": 0.0,
+        "atom:L0/x1": 0.0,
+        "atom:L0/x2": 0.0,
+        "atom:L0/x3": 0.0,
+        "atom:L0/z0": 0.0,
+        "atom:L0/z1": 0.0,
+        "atom:L0/z2": 0.0,
+        "atom:L0/z3": 0.0
+      },
+      "members": [
+        {
+          "atom_id": "atom:L0/x0",
+          "result_id": "L0-prepare/r0/m_x0",
+          "earliest_readout_us": 16635.0,
+          "readout_start_us": 16635.0,
+          "readout_end_us": 16735.0,
+          "result_ready_us": 16740.0
+        },
+        {
+          "atom_id": "atom:L0/x1",
+          "result_id": "L0-prepare/r0/m_x1",
+          "earliest_readout_us": 16635.0,
+          "readout_start_us": 16635.0,
+          "readout_end_us": 16735.0,
+          "result_ready_us": 16740.0
+        },
+        {
+          "atom_id": "atom:L0/x2",
+          "result_id": "L0-prepare/r0/m_x2",
+          "earliest_readout_us": 16635.0,
+          "readout_start_us": 16635.0,
+          "readout_end_us": 16735.0,
+          "result_ready_us": 16740.0
+        },
+        {
+          "atom_id": "atom:L0/x3",
+          "result_id": "L0-prepare/r0/m_x3",
+          "earliest_readout_us": 16635.0,
+          "readout_start_us": 16635.0,
+          "readout_end_us": 16735.0,
+          "result_ready_us": 16740.0
+        },
+        {
+          "atom_id": "atom:L0/z0",
+          "result_id": "L0-prepare/r0/m_z0",
+          "earliest_readout_us": 16635.0,
+          "readout_start_us": 16635.0,
+          "readout_end_us": 16735.0,
+          "result_ready_us": 16740.0
+        },
+        {
+          "atom_id": "atom:L0/z1",
+          "result_id": "L0-prepare/r0/m_z1",
+          "earliest_readout_us": 16635.0,
+          "readout_start_us": 16635.0,
+          "readout_end_us": 16735.0,
+          "result_ready_us": 16740.0
+        },
+        {
+          "atom_id": "atom:L0/z2",
+          "result_id": "L0-prepare/r0/m_z2",
+          "earliest_readout_us": 16635.0,
+          "readout_start_us": 16635.0,
+          "readout_end_us": 16735.0,
+          "result_ready_us": 16740.0
+        },
+        {
+          "atom_id": "atom:L0/z3",
+          "result_id": "L0-prepare/r0/m_z3",
+          "earliest_readout_us": 16635.0,
+          "readout_start_us": 16635.0,
+          "readout_end_us": 16735.0,
+          "result_ready_us": 16740.0
+        }
+      ],
+      "cycle_duration_us": 17198.0,
+      "group_transport_interval_us": 1010.0,
+      "cycle_scope": "complete_logical_call",
+      "readout_start_span_us": 0.0,
+      "readout_end_span_us": 0.0,
+      "result_ready_span_us": 0.0,
+      "metric_scope": "actual runtime events; source eligibility and waiting reasons require independent validation"
+    },
+    {
+      "group_id": "L0-round0/maintenance.block.r0",
+      "formal_group_id": "L0-round0/maintenance.block.r0",
+      "call_id": "L0-round0",
+      "purpose": "maintenance_readout",
+      "cycle_start_us": 17198.0,
+      "cycle_end_us": 33893.0,
+      "transport_batch_count": 2,
+      "split_reasons": [],
+      "per_atom_wait_us": {
+        "atom:L0/x0": 0.0,
+        "atom:L0/x1": 0.0,
+        "atom:L0/x2": 0.0,
+        "atom:L0/x3": 0.0,
+        "atom:L0/z0": 0.0,
+        "atom:L0/z1": 0.0,
+        "atom:L0/z2": 0.0,
+        "atom:L0/z3": 0.0
+      },
+      "members": [
+        {
+          "atom_id": "atom:L0/x0",
+          "result_id": "L0-round0/r0/m_x0",
+          "earliest_readout_us": 33333.0,
+          "readout_start_us": 33333.0,
+          "readout_end_us": 33433.0,
+          "result_ready_us": 33438.0
+        },
+        {
+          "atom_id": "atom:L0/x1",
+          "result_id": "L0-round0/r0/m_x1",
+          "earliest_readout_us": 33333.0,
+          "readout_start_us": 33333.0,
+          "readout_end_us": 33433.0,
+          "result_ready_us": 33438.0
+        },
+        {
+          "atom_id": "atom:L0/x2",
+          "result_id": "L0-round0/r0/m_x2",
+          "earliest_readout_us": 33333.0,
+          "readout_start_us": 33333.0,
+          "readout_end_us": 33433.0,
+          "result_ready_us": 33438.0
+        },
+        {
+          "atom_id": "atom:L0/x3",
+          "result_id": "L0-round0/r0/m_x3",
+          "earliest_readout_us": 33333.0,
+          "readout_start_us": 33333.0,
+          "readout_end_us": 33433.0,
+          "result_ready_us": 33438.0
+        },
+        {
+          "atom_id": "atom:L0/z0",
+          "result_id": "L0-round0/r0/m_z0",
+          "earliest_readout_us": 33333.0,
+          "readout_start_us": 33333.0,
+          "readout_end_us": 33433.0,
+          "result_ready_us": 33438.0
+        },
+        {
+          "atom_id": "atom:L0/z1",
+          "result_id": "L0-round0/r0/m_z1",
+          "earliest_readout_us": 33333.0,
+          "readout_start_us": 33333.0,
+          "readout_end_us": 33433.0,
+          "result_ready_us": 33438.0
+        },
+        {
+          "atom_id": "atom:L0/z2",
+          "result_id": "L0-round0/r0/m_z2",
+          "earliest_readout_us": 33333.0,
+          "readout_start_us": 33333.0,
+          "readout_end_us": 33433.0,
+          "result_ready_us": 33438.0
+        },
+        {
+          "atom_id": "atom:L0/z3",
+          "result_id": "L0-round0/r0/m_z3",
+          "earliest_readout_us": 33333.0,
+          "readout_start_us": 33333.0,
+          "readout_end_us": 33433.0,
+          "result_ready_us": 33438.0
+        }
+      ],
+      "cycle_duration_us": 16695.0,
+      "group_transport_interval_us": 1010.0,
+      "cycle_scope": "complete_logical_call",
+      "readout_start_span_us": 0.0,
+      "readout_end_span_us": 0.0,
+      "result_ready_span_us": 0.0,
+      "metric_scope": "actual runtime events; source eligibility and waiting reasons require independent validation"
+    },
+    {
+      "group_id": "L0-round1/maintenance.block.r0",
+      "formal_group_id": "L0-round1/maintenance.block.r0",
+      "call_id": "L0-round1",
+      "purpose": "maintenance_readout",
+      "cycle_start_us": 33893.0,
+      "cycle_end_us": 50588.0,
+      "transport_batch_count": 2,
+      "split_reasons": [],
+      "per_atom_wait_us": {
+        "atom:L0/x0": 0.0,
+        "atom:L0/x1": 0.0,
+        "atom:L0/x2": 0.0,
+        "atom:L0/x3": 0.0,
+        "atom:L0/z0": 0.0,
+        "atom:L0/z1": 0.0,
+        "atom:L0/z2": 0.0,
+        "atom:L0/z3": 0.0
+      },
+      "members": [
+        {
+          "atom_id": "atom:L0/x0",
+          "result_id": "L0-round1/r0/m_x0",
+          "earliest_readout_us": 50028.0,
+          "readout_start_us": 50028.0,
+          "readout_end_us": 50128.0,
+          "result_ready_us": 50133.0
+        },
+        {
+          "atom_id": "atom:L0/x1",
+          "result_id": "L0-round1/r0/m_x1",
+          "earliest_readout_us": 50028.0,
+          "readout_start_us": 50028.0,
+          "readout_end_us": 50128.0,
+          "result_ready_us": 50133.0
+        },
+        {
+          "atom_id": "atom:L0/x2",
+          "result_id": "L0-round1/r0/m_x2",
+          "earliest_readout_us": 50028.0,
+          "readout_start_us": 50028.0,
+          "readout_end_us": 50128.0,
+          "result_ready_us": 50133.0
+        },
+        {
+          "atom_id": "atom:L0/x3",
+          "result_id": "L0-round1/r0/m_x3",
+          "earliest_readout_us": 50028.0,
+          "readout_start_us": 50028.0,
+          "readout_end_us": 50128.0,
+          "result_ready_us": 50133.0
+        },
+        {
+          "atom_id": "atom:L0/z0",
+          "result_id": "L0-round1/r0/m_z0",
+          "earliest_readout_us": 50028.0,
+          "readout_start_us": 50028.0,
+          "readout_end_us": 50128.0,
+          "result_ready_us": 50133.0
+        },
+        {
+          "atom_id": "atom:L0/z1",
+          "result_id": "L0-round1/r0/m_z1",
+          "earliest_readout_us": 50028.0,
+          "readout_start_us": 50028.0,
+          "readout_end_us": 50128.0,
+          "result_ready_us": 50133.0
+        },
+        {
+          "atom_id": "atom:L0/z2",
+          "result_id": "L0-round1/r0/m_z2",
+          "earliest_readout_us": 50028.0,
+          "readout_start_us": 50028.0,
+          "readout_end_us": 50128.0,
+          "result_ready_us": 50133.0
+        },
+        {
+          "atom_id": "atom:L0/z3",
+          "result_id": "L0-round1/r0/m_z3",
+          "earliest_readout_us": 50028.0,
+          "readout_start_us": 50028.0,
+          "readout_end_us": 50128.0,
+          "result_ready_us": 50133.0
+        }
+      ],
+      "cycle_duration_us": 16695.0,
+      "group_transport_interval_us": 1010.0,
+      "cycle_scope": "complete_logical_call",
+      "readout_start_span_us": 0.0,
+      "readout_end_span_us": 0.0,
+      "result_ready_span_us": 0.0,
+      "metric_scope": "actual runtime events; source eligibility and waiting reasons require independent validation"
+    },
+    {
+      "group_id": "L0-round2/maintenance.block.r0",
+      "formal_group_id": "L0-round2/maintenance.block.r0",
+      "call_id": "L0-round2",
+      "purpose": "maintenance_readout",
+      "cycle_start_us": 50588.0,
+      "cycle_end_us": 67283.0,
+      "transport_batch_count": 2,
+      "split_reasons": [],
+      "per_atom_wait_us": {
+        "atom:L0/x0": 0.0,
+        "atom:L0/x1": 0.0,
+        "atom:L0/x2": 0.0,
+        "atom:L0/x3": 0.0,
+        "atom:L0/z0": 0.0,
+        "atom:L0/z1": 0.0,
+        "atom:L0/z2": 0.0,
+        "atom:L0/z3": 0.0
+      },
+      "members": [
+        {
+          "atom_id": "atom:L0/x0",
+          "result_id": "L0-round2/r0/m_x0",
+          "earliest_readout_us": 66723.0,
+          "readout_start_us": 66723.0,
+          "readout_end_us": 66823.0,
+          "result_ready_us": 66828.0
+        },
+        {
+          "atom_id": "atom:L0/x1",
+          "result_id": "L0-round2/r0/m_x1",
+          "earliest_readout_us": 66723.0,
+          "readout_start_us": 66723.0,
+          "readout_end_us": 66823.0,
+          "result_ready_us": 66828.0
+        },
+        {
+          "atom_id": "atom:L0/x2",
+          "result_id": "L0-round2/r0/m_x2",
+          "earliest_readout_us": 66723.0,
+          "readout_start_us": 66723.0,
+          "readout_end_us": 66823.0,
+          "result_ready_us": 66828.0
+        },
+        {
+          "atom_id": "atom:L0/x3",
+          "result_id": "L0-round2/r0/m_x3",
+          "earliest_readout_us": 66723.0,
+          "readout_start_us": 66723.0,
+          "readout_end_us": 66823.0,
+          "result_ready_us": 66828.0
+        },
+        {
+          "atom_id": "atom:L0/z0",
+          "result_id": "L0-round2/r0/m_z0",
+          "earliest_readout_us": 66723.0,
+          "readout_start_us": 66723.0,
+          "readout_end_us": 66823.0,
+          "result_ready_us": 66828.0
+        },
+        {
+          "atom_id": "atom:L0/z1",
+          "result_id": "L0-round2/r0/m_z1",
+          "earliest_readout_us": 66723.0,
+          "readout_start_us": 66723.0,
+          "readout_end_us": 66823.0,
+          "result_ready_us": 66828.0
+        },
+        {
+          "atom_id": "atom:L0/z2",
+          "result_id": "L0-round2/r0/m_z2",
+          "earliest_readout_us": 66723.0,
+          "readout_start_us": 66723.0,
+          "readout_end_us": 66823.0,
+          "result_ready_us": 66828.0
+        },
+        {
+          "atom_id": "atom:L0/z3",
+          "result_id": "L0-round2/r0/m_z3",
+          "earliest_readout_us": 66723.0,
+          "readout_start_us": 66723.0,
+          "readout_end_us": 66823.0,
+          "result_ready_us": 66828.0
+        }
+      ],
+      "cycle_duration_us": 16695.0,
+      "group_transport_interval_us": 1010.0,
+      "cycle_scope": "complete_logical_call",
+      "readout_start_span_us": 0.0,
+      "readout_end_span_us": 0.0,
+      "result_ready_span_us": 0.0,
+      "metric_scope": "actual runtime events; source eligibility and waiting reasons require independent validation"
+    },
+    {
+      "group_id": "L1-prepare/initialization.block",
+      "formal_group_id": "L1-prepare/initialization.block",
+      "call_id": "L1-prepare",
+      "purpose": "patch_initialization_transport",
+      "cycle_start_us": 67283.0,
+      "cycle_end_us": 84480.0,
+      "transport_batch_count": 1,
+      "split_reasons": [],
+      "per_atom_wait_us": {},
+      "members": [
+        "atom:L1/d0",
+        "atom:L1/d1",
+        "atom:L1/d2",
+        "atom:L1/d3",
+        "atom:L1/d4",
+        "atom:L1/d5",
+        "atom:L1/d6",
+        "atom:L1/d7",
+        "atom:L1/d8",
+        "atom:L1/x0",
+        "atom:L1/x1",
+        "atom:L1/x2",
+        "atom:L1/x3",
+        "atom:L1/z0",
+        "atom:L1/z1",
+        "atom:L1/z2",
+        "atom:L1/z3"
+      ],
+      "cycle_duration_us": 17197.0,
+      "group_transport_interval_us": 500.0,
+      "cycle_scope": "complete_logical_call",
+      "initialization_completion_span_us": 0.0,
+      "metric_scope": "actual runtime events; source eligibility and waiting reasons require independent validation"
+    },
+    {
+      "group_id": "L1-prepare/maintenance.block.r0",
+      "formal_group_id": "L1-prepare/maintenance.block.r0",
+      "call_id": "L1-prepare",
+      "purpose": "maintenance_readout",
+      "cycle_start_us": 67283.0,
+      "cycle_end_us": 84480.0,
+      "transport_batch_count": 2,
+      "split_reasons": [],
+      "per_atom_wait_us": {
+        "atom:L1/x0": 0.0,
+        "atom:L1/x1": 0.0,
+        "atom:L1/x2": 0.0,
+        "atom:L1/x3": 0.0,
+        "atom:L1/z0": 0.0,
+        "atom:L1/z1": 0.0,
+        "atom:L1/z2": 0.0,
+        "atom:L1/z3": 0.0
+      },
+      "members": [
+        {
+          "atom_id": "atom:L1/x0",
+          "result_id": "L1-prepare/r0/m_x0",
+          "earliest_readout_us": 83918.0,
+          "readout_start_us": 83918.0,
+          "readout_end_us": 84018.0,
+          "result_ready_us": 84023.0
+        },
+        {
+          "atom_id": "atom:L1/x1",
+          "result_id": "L1-prepare/r0/m_x1",
+          "earliest_readout_us": 83918.0,
+          "readout_start_us": 83918.0,
+          "readout_end_us": 84018.0,
+          "result_ready_us": 84023.0
+        },
+        {
+          "atom_id": "atom:L1/x2",
+          "result_id": "L1-prepare/r0/m_x2",
+          "earliest_readout_us": 83918.0,
+          "readout_start_us": 83918.0,
+          "readout_end_us": 84018.0,
+          "result_ready_us": 84023.0
+        },
+        {
+          "atom_id": "atom:L1/x3",
+          "result_id": "L1-prepare/r0/m_x3",
+          "earliest_readout_us": 83918.0,
+          "readout_start_us": 83918.0,
+          "readout_end_us": 84018.0,
+          "result_ready_us": 84023.0
+        },
+        {
+          "atom_id": "atom:L1/z0",
+          "result_id": "L1-prepare/r0/m_z0",
+          "earliest_readout_us": 83918.0,
+          "readout_start_us": 83918.0,
+          "readout_end_us": 84018.0,
+          "result_ready_us": 84023.0
+        },
+        {
+          "atom_id": "atom:L1/z1",
+          "result_id": "L1-prepare/r0/m_z1",
+          "earliest_readout_us": 83918.0,
+          "readout_start_us": 83918.0,
+          "readout_end_us": 84018.0,
+          "result_ready_us": 84023.0
+        },
+        {
+          "atom_id": "atom:L1/z2",
+          "result_id": "L1-prepare/r0/m_z2",
+          "earliest_readout_us": 83918.0,
+          "readout_start_us": 83918.0,
+          "readout_end_us": 84018.0,
+          "result_ready_us": 84023.0
+        },
+        {
+          "atom_id": "atom:L1/z3",
+          "result_id": "L1-prepare/r0/m_z3",
+          "earliest_readout_us": 83918.0,
+          "readout_start_us": 83918.0,
+          "readout_end_us": 84018.0,
+          "result_ready_us": 84023.0
+        }
+      ],
+      "cycle_duration_us": 17197.0,
+      "group_transport_interval_us": 1010.0,
+      "cycle_scope": "complete_logical_call",
+      "readout_start_span_us": 0.0,
+      "readout_end_span_us": 0.0,
+      "result_ready_span_us": 0.0,
+      "metric_scope": "actual runtime events; source eligibility and waiting reasons require independent validation"
+    },
+    {
+      "group_id": "L1-round0/maintenance.block.r0",
+      "formal_group_id": "L1-round0/maintenance.block.r0",
+      "call_id": "L1-round0",
+      "purpose": "maintenance_readout",
+      "cycle_start_us": 84480.0,
+      "cycle_end_us": 101175.0,
+      "transport_batch_count": 2,
+      "split_reasons": [],
+      "per_atom_wait_us": {
+        "atom:L1/x0": 0.0,
+        "atom:L1/x1": 0.0,
+        "atom:L1/x2": 0.0,
+        "atom:L1/x3": 0.0,
+        "atom:L1/z0": 0.0,
+        "atom:L1/z1": 0.0,
+        "atom:L1/z2": 0.0,
+        "atom:L1/z3": 0.0
+      },
+      "members": [
+        {
+          "atom_id": "atom:L1/x0",
+          "result_id": "L1-round0/r0/m_x0",
+          "earliest_readout_us": 100615.0,
+          "readout_start_us": 100615.0,
+          "readout_end_us": 100715.0,
+          "result_ready_us": 100720.0
+        },
+        {
+          "atom_id": "atom:L1/x1",
+          "result_id": "L1-round0/r0/m_x1",
+          "earliest_readout_us": 100615.0,
+          "readout_start_us": 100615.0,
+          "readout_end_us": 100715.0,
+          "result_ready_us": 100720.0
+        },
+        {
+          "atom_id": "atom:L1/x2",
+          "result_id": "L1-round0/r0/m_x2",
+          "earliest_readout_us": 100615.0,
+          "readout_start_us": 100615.0,
+          "readout_end_us": 100715.0,
+          "result_ready_us": 100720.0
+        },
+        {
+          "atom_id": "atom:L1/x3",
+          "result_id": "L1-round0/r0/m_x3",
+          "earliest_readout_us": 100615.0,
+          "readout_start_us": 100615.0,
+          "readout_end_us": 100715.0,
+          "result_ready_us": 100720.0
+        },
+        {
+          "atom_id": "atom:L1/z0",
+          "result_id": "L1-round0/r0/m_z0",
+          "earliest_readout_us": 100615.0,
+          "readout_start_us": 100615.0,
+          "readout_end_us": 100715.0,
+          "result_ready_us": 100720.0
+        },
+        {
+          "atom_id": "atom:L1/z1",
+          "result_id": "L1-round0/r0/m_z1",
+          "earliest_readout_us": 100615.0,
+          "readout_start_us": 100615.0,
+          "readout_end_us": 100715.0,
+          "result_ready_us": 100720.0
+        },
+        {
+          "atom_id": "atom:L1/z2",
+          "result_id": "L1-round0/r0/m_z2",
+          "earliest_readout_us": 100615.0,
+          "readout_start_us": 100615.0,
+          "readout_end_us": 100715.0,
+          "result_ready_us": 100720.0
+        },
+        {
+          "atom_id": "atom:L1/z3",
+          "result_id": "L1-round0/r0/m_z3",
+          "earliest_readout_us": 100615.0,
+          "readout_start_us": 100615.0,
+          "readout_end_us": 100715.0,
+          "result_ready_us": 100720.0
+        }
+      ],
+      "cycle_duration_us": 16695.0,
+      "group_transport_interval_us": 1010.0,
+      "cycle_scope": "complete_logical_call",
+      "readout_start_span_us": 0.0,
+      "readout_end_span_us": 0.0,
+      "result_ready_span_us": 0.0,
+      "metric_scope": "actual runtime events; source eligibility and waiting reasons require independent validation"
+    },
+    {
+      "group_id": "L1-round1/maintenance.block.r0",
+      "formal_group_id": "L1-round1/maintenance.block.r0",
+      "call_id": "L1-round1",
+      "purpose": "maintenance_readout",
+      "cycle_start_us": 101175.0,
+      "cycle_end_us": 117870.0,
+      "transport_batch_count": 2,
+      "split_reasons": [],
+      "per_atom_wait_us": {
+        "atom:L1/x0": 0.0,
+        "atom:L1/x1": 0.0,
+        "atom:L1/x2": 0.0,
+        "atom:L1/x3": 0.0,
+        "atom:L1/z0": 0.0,
+        "atom:L1/z1": 0.0,
+        "atom:L1/z2": 0.0,
+        "atom:L1/z3": 0.0
+      },
+      "members": [
+        {
+          "atom_id": "atom:L1/x0",
+          "result_id": "L1-round1/r0/m_x0",
+          "earliest_readout_us": 117310.0,
+          "readout_start_us": 117310.0,
+          "readout_end_us": 117410.0,
+          "result_ready_us": 117415.0
+        },
+        {
+          "atom_id": "atom:L1/x1",
+          "result_id": "L1-round1/r0/m_x1",
+          "earliest_readout_us": 117310.0,
+          "readout_start_us": 117310.0,
+          "readout_end_us": 117410.0,
+          "result_ready_us": 117415.0
+        },
+        {
+          "atom_id": "atom:L1/x2",
+          "result_id": "L1-round1/r0/m_x2",
+          "earliest_readout_us": 117310.0,
+          "readout_start_us": 117310.0,
+          "readout_end_us": 117410.0,
+          "result_ready_us": 117415.0
+        },
+        {
+          "atom_id": "atom:L1/x3",
+          "result_id": "L1-round1/r0/m_x3",
+          "earliest_readout_us": 117310.0,
+          "readout_start_us": 117310.0,
+          "readout_end_us": 117410.0,
+          "result_ready_us": 117415.0
+        },
+        {
+          "atom_id": "atom:L1/z0",
+          "result_id": "L1-round1/r0/m_z0",
+          "earliest_readout_us": 117310.0,
+          "readout_start_us": 117310.0,
+          "readout_end_us": 117410.0,
+          "result_ready_us": 117415.0
+        },
+        {
+          "atom_id": "atom:L1/z1",
+          "result_id": "L1-round1/r0/m_z1",
+          "earliest_readout_us": 117310.0,
+          "readout_start_us": 117310.0,
+          "readout_end_us": 117410.0,
+          "result_ready_us": 117415.0
+        },
+        {
+          "atom_id": "atom:L1/z2",
+          "result_id": "L1-round1/r0/m_z2",
+          "earliest_readout_us": 117310.0,
+          "readout_start_us": 117310.0,
+          "readout_end_us": 117410.0,
+          "result_ready_us": 117415.0
+        },
+        {
+          "atom_id": "atom:L1/z3",
+          "result_id": "L1-round1/r0/m_z3",
+          "earliest_readout_us": 117310.0,
+          "readout_start_us": 117310.0,
+          "readout_end_us": 117410.0,
+          "result_ready_us": 117415.0
+        }
+      ],
+      "cycle_duration_us": 16695.0,
+      "group_transport_interval_us": 1010.0,
+      "cycle_scope": "complete_logical_call",
+      "readout_start_span_us": 0.0,
+      "readout_end_span_us": 0.0,
+      "result_ready_span_us": 0.0,
+      "metric_scope": "actual runtime events; source eligibility and waiting reasons require independent validation"
+    },
+    {
+      "group_id": "L1-round2/maintenance.block.r0",
+      "formal_group_id": "L1-round2/maintenance.block.r0",
+      "call_id": "L1-round2",
+      "purpose": "maintenance_readout",
+      "cycle_start_us": 117870.0,
+      "cycle_end_us": 134565.0,
+      "transport_batch_count": 2,
+      "split_reasons": [],
+      "per_atom_wait_us": {
+        "atom:L1/x0": 0.0,
+        "atom:L1/x1": 0.0,
+        "atom:L1/x2": 0.0,
+        "atom:L1/x3": 0.0,
+        "atom:L1/z0": 0.0,
+        "atom:L1/z1": 0.0,
+        "atom:L1/z2": 0.0,
+        "atom:L1/z3": 0.0
+      },
+      "members": [
+        {
+          "atom_id": "atom:L1/x0",
+          "result_id": "L1-round2/r0/m_x0",
+          "earliest_readout_us": 134005.0,
+          "readout_start_us": 134005.0,
+          "readout_end_us": 134105.0,
+          "result_ready_us": 134110.0
+        },
+        {
+          "atom_id": "atom:L1/x1",
+          "result_id": "L1-round2/r0/m_x1",
+          "earliest_readout_us": 134005.0,
+          "readout_start_us": 134005.0,
+          "readout_end_us": 134105.0,
+          "result_ready_us": 134110.0
+        },
+        {
+          "atom_id": "atom:L1/x2",
+          "result_id": "L1-round2/r0/m_x2",
+          "earliest_readout_us": 134005.0,
+          "readout_start_us": 134005.0,
+          "readout_end_us": 134105.0,
+          "result_ready_us": 134110.0
+        },
+        {
+          "atom_id": "atom:L1/x3",
+          "result_id": "L1-round2/r0/m_x3",
+          "earliest_readout_us": 134005.0,
+          "readout_start_us": 134005.0,
+          "readout_end_us": 134105.0,
+          "result_ready_us": 134110.0
+        },
+        {
+          "atom_id": "atom:L1/z0",
+          "result_id": "L1-round2/r0/m_z0",
+          "earliest_readout_us": 134005.0,
+          "readout_start_us": 134005.0,
+          "readout_end_us": 134105.0,
+          "result_ready_us": 134110.0
+        },
+        {
+          "atom_id": "atom:L1/z1",
+          "result_id": "L1-round2/r0/m_z1",
+          "earliest_readout_us": 134005.0,
+          "readout_start_us": 134005.0,
+          "readout_end_us": 134105.0,
+          "result_ready_us": 134110.0
+        },
+        {
+          "atom_id": "atom:L1/z2",
+          "result_id": "L1-round2/r0/m_z2",
+          "earliest_readout_us": 134005.0,
+          "readout_start_us": 134005.0,
+          "readout_end_us": 134105.0,
+          "result_ready_us": 134110.0
+        },
+        {
+          "atom_id": "atom:L1/z3",
+          "result_id": "L1-round2/r0/m_z3",
+          "earliest_readout_us": 134005.0,
+          "readout_start_us": 134005.0,
+          "readout_end_us": 134105.0,
+          "result_ready_us": 134110.0
+        }
+      ],
+      "cycle_duration_us": 16695.0,
+      "group_transport_interval_us": 1010.0,
+      "cycle_scope": "complete_logical_call",
+      "readout_start_span_us": 0.0,
+      "readout_end_span_us": 0.0,
+      "result_ready_span_us": 0.0,
+      "metric_scope": "actual runtime events; source eligibility and waiting reasons require independent validation"
+    },
+    {
+      "group_id": "L0-after-cx/maintenance.block.r0",
+      "formal_group_id": "L0-after-cx/maintenance.block.r0",
+      "call_id": "L0-after-cx",
+      "purpose": "maintenance_readout",
+      "cycle_start_us": 135582.0,
+      "cycle_end_us": 152277.0,
+      "transport_batch_count": 2,
+      "split_reasons": [],
+      "per_atom_wait_us": {
+        "atom:L0/x0": 0.0,
+        "atom:L0/x1": 0.0,
+        "atom:L0/x2": 0.0,
+        "atom:L0/x3": 0.0,
+        "atom:L0/z0": 0.0,
+        "atom:L0/z1": 0.0,
+        "atom:L0/z2": 0.0,
+        "atom:L0/z3": 0.0
+      },
+      "members": [
+        {
+          "atom_id": "atom:L0/x0",
+          "result_id": "L0-after-cx/r0/m_x0",
+          "earliest_readout_us": 151717.0,
+          "readout_start_us": 151717.0,
+          "readout_end_us": 151817.0,
+          "result_ready_us": 151822.0
+        },
+        {
+          "atom_id": "atom:L0/x1",
+          "result_id": "L0-after-cx/r0/m_x1",
+          "earliest_readout_us": 151717.0,
+          "readout_start_us": 151717.0,
+          "readout_end_us": 151817.0,
+          "result_ready_us": 151822.0
+        },
+        {
+          "atom_id": "atom:L0/x2",
+          "result_id": "L0-after-cx/r0/m_x2",
+          "earliest_readout_us": 151717.0,
+          "readout_start_us": 151717.0,
+          "readout_end_us": 151817.0,
+          "result_ready_us": 151822.0
+        },
+        {
+          "atom_id": "atom:L0/x3",
+          "result_id": "L0-after-cx/r0/m_x3",
+          "earliest_readout_us": 151717.0,
+          "readout_start_us": 151717.0,
+          "readout_end_us": 151817.0,
+          "result_ready_us": 151822.0
+        },
+        {
+          "atom_id": "atom:L0/z0",
+          "result_id": "L0-after-cx/r0/m_z0",
+          "earliest_readout_us": 151717.0,
+          "readout_start_us": 151717.0,
+          "readout_end_us": 151817.0,
+          "result_ready_us": 151822.0
+        },
+        {
+          "atom_id": "atom:L0/z1",
+          "result_id": "L0-after-cx/r0/m_z1",
+          "earliest_readout_us": 151717.0,
+          "readout_start_us": 151717.0,
+          "readout_end_us": 151817.0,
+          "result_ready_us": 151822.0
+        },
+        {
+          "atom_id": "atom:L0/z2",
+          "result_id": "L0-after-cx/r0/m_z2",
+          "earliest_readout_us": 151717.0,
+          "readout_start_us": 151717.0,
+          "readout_end_us": 151817.0,
+          "result_ready_us": 151822.0
+        },
+        {
+          "atom_id": "atom:L0/z3",
+          "result_id": "L0-after-cx/r0/m_z3",
+          "earliest_readout_us": 151717.0,
+          "readout_start_us": 151717.0,
+          "readout_end_us": 151817.0,
+          "result_ready_us": 151822.0
+        }
+      ],
+      "cycle_duration_us": 16695.0,
+      "group_transport_interval_us": 1010.0,
+      "cycle_scope": "complete_logical_call",
+      "readout_start_span_us": 0.0,
+      "readout_end_span_us": 0.0,
+      "result_ready_span_us": 0.0,
+      "metric_scope": "actual runtime events; source eligibility and waiting reasons require independent validation"
+    },
+    {
+      "group_id": "L1-after-cx/maintenance.block.r0",
+      "formal_group_id": "L1-after-cx/maintenance.block.r0",
+      "call_id": "L1-after-cx",
+      "purpose": "maintenance_readout",
+      "cycle_start_us": 152277.0,
+      "cycle_end_us": 168972.0,
+      "transport_batch_count": 2,
+      "split_reasons": [],
+      "per_atom_wait_us": {
+        "atom:L1/x0": 0.0,
+        "atom:L1/x1": 0.0,
+        "atom:L1/x2": 0.0,
+        "atom:L1/x3": 0.0,
+        "atom:L1/z0": 0.0,
+        "atom:L1/z1": 0.0,
+        "atom:L1/z2": 0.0,
+        "atom:L1/z3": 0.0
+      },
+      "members": [
+        {
+          "atom_id": "atom:L1/x0",
+          "result_id": "L1-after-cx/r0/m_x0",
+          "earliest_readout_us": 168412.0,
+          "readout_start_us": 168412.0,
+          "readout_end_us": 168512.0,
+          "result_ready_us": 168517.0
+        },
+        {
+          "atom_id": "atom:L1/x1",
+          "result_id": "L1-after-cx/r0/m_x1",
+          "earliest_readout_us": 168412.0,
+          "readout_start_us": 168412.0,
+          "readout_end_us": 168512.0,
+          "result_ready_us": 168517.0
+        },
+        {
+          "atom_id": "atom:L1/x2",
+          "result_id": "L1-after-cx/r0/m_x2",
+          "earliest_readout_us": 168412.0,
+          "readout_start_us": 168412.0,
+          "readout_end_us": 168512.0,
+          "result_ready_us": 168517.0
+        },
+        {
+          "atom_id": "atom:L1/x3",
+          "result_id": "L1-after-cx/r0/m_x3",
+          "earliest_readout_us": 168412.0,
+          "readout_start_us": 168412.0,
+          "readout_end_us": 168512.0,
+          "result_ready_us": 168517.0
+        },
+        {
+          "atom_id": "atom:L1/z0",
+          "result_id": "L1-after-cx/r0/m_z0",
+          "earliest_readout_us": 168412.0,
+          "readout_start_us": 168412.0,
+          "readout_end_us": 168512.0,
+          "result_ready_us": 168517.0
+        },
+        {
+          "atom_id": "atom:L1/z1",
+          "result_id": "L1-after-cx/r0/m_z1",
+          "earliest_readout_us": 168412.0,
+          "readout_start_us": 168412.0,
+          "readout_end_us": 168512.0,
+          "result_ready_us": 168517.0
+        },
+        {
+          "atom_id": "atom:L1/z2",
+          "result_id": "L1-after-cx/r0/m_z2",
+          "earliest_readout_us": 168412.0,
+          "readout_start_us": 168412.0,
+          "readout_end_us": 168512.0,
+          "result_ready_us": 168517.0
+        },
+        {
+          "atom_id": "atom:L1/z3",
+          "result_id": "L1-after-cx/r0/m_z3",
+          "earliest_readout_us": 168412.0,
+          "readout_start_us": 168412.0,
+          "readout_end_us": 168512.0,
+          "result_ready_us": 168517.0
+        }
+      ],
+      "cycle_duration_us": 16695.0,
+      "group_transport_interval_us": 1010.0,
+      "cycle_scope": "complete_logical_call",
+      "readout_start_span_us": 0.0,
+      "readout_end_span_us": 0.0,
+      "result_ready_span_us": 0.0,
+      "metric_scope": "actual runtime events; source eligibility and waiting reasons require independent validation"
+    }
+  ],
+  "independent_validation": "executed",
+  "passed": false,
+  "failures": [
+    {
+      "code": "BIND_COMPOSITION_COUNT",
+      "message": "Every call needs a separately counted binding and composition check",
+      "call_id": "L1-prepare"
+    },
+    {
+      "code": "BIND_COMPOSITION_COUNT",
+      "message": "Every call needs a separately counted binding and composition check",
+      "call_id": "L1-after-cx"
+    }
+  ],
+  "unverified": [
+    {
+      "code": "ENCODED_PROGRAM_MISSING",
+      "message": "Supply the original R2 EncodedLogicalProgram for end-to-end logical control qualification"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L0-prepare"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L0-round0"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L0-round1"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L0-round2"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L1-prepare"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L1-round0"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L1-round1"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L1-round2"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "cross-cx"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L0-after-cx"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L1-after-cx"
+    },
+    {
+      "code": "T000_CASE_NOT_DEMONSTRATED",
+      "message": "Required qualification case independent_blocks_legal_overlap was not demonstrated"
+    }
+  ],
+  "wall_seconds": 182.12470779998694,
+  "library_stats": {
+    "strategy_compile_count": 4,
+    "placement_search_count": 2136,
+    "routing_search_count": 118,
+    "cache_hit_count": 7,
+    "bind_count": 28,
+    "composition_check_count": 517
+  },
+  "snapshot": {
+    "schema_version": "logical-controller-state/0.1",
+    "run_id": "T504-native",
+    "revision": 1,
+    "time_us": 168972.0,
+    "world_state": {
+      "time_us": 168972.0,
+      "atoms": [
+        {
+          "atom_id": "atom:L0/d0",
+          "qubit_id": "L0/d0",
+          "position_um": [
+            0.0,
+            0.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/d0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/d1",
+          "qubit_id": "L0/d1",
+          "position_um": [
+            10.0,
+            0.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/d1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/d2",
+          "qubit_id": "L0/d2",
+          "position_um": [
+            20.0,
+            0.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/d2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/d3",
+          "qubit_id": "L0/d3",
+          "position_um": [
+            0.0,
+            10.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/d3",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/d4",
+          "qubit_id": "L0/d4",
+          "position_um": [
+            10.0,
+            10.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/d4",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/d5",
+          "qubit_id": "L0/d5",
+          "position_um": [
+            20.0,
+            10.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/d5",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/d6",
+          "qubit_id": "L0/d6",
+          "position_um": [
+            0.0,
+            20.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/d6",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/d7",
+          "qubit_id": "L0/d7",
+          "position_um": [
+            10.0,
+            20.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/d7",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/d8",
+          "qubit_id": "L0/d8",
+          "position_um": [
+            20.0,
+            20.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/d8",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/x0",
+          "qubit_id": "L0/x0",
+          "position_um": [
+            0.0,
+            40.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/x0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/x1",
+          "qubit_id": "L0/x1",
+          "position_um": [
+            10.0,
+            40.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/x1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/x2",
+          "qubit_id": "L0/x2",
+          "position_um": [
+            20.0,
+            40.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/x2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/x3",
+          "qubit_id": "L0/x3",
+          "position_um": [
+            30.0,
+            40.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/x3",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/z0",
+          "qubit_id": "L0/z0",
+          "position_um": [
+            0.0,
+            50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/z0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/z1",
+          "qubit_id": "L0/z1",
+          "position_um": [
+            10.0,
+            50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/z1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/z2",
+          "qubit_id": "L0/z2",
+          "position_um": [
+            20.0,
+            50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/z2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L0/z3",
+          "qubit_id": "L0/z3",
+          "position_um": [
+            30.0,
+            50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L0-prepare/slm:patch_home:block/z3",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/d0",
+          "qubit_id": "L1/d0",
+          "position_um": [
+            100.0,
+            0.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/d0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/d1",
+          "qubit_id": "L1/d1",
+          "position_um": [
+            110.0,
+            0.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/d1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/d2",
+          "qubit_id": "L1/d2",
+          "position_um": [
+            120.0,
+            0.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/d2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/d3",
+          "qubit_id": "L1/d3",
+          "position_um": [
+            100.0,
+            10.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/d3",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/d4",
+          "qubit_id": "L1/d4",
+          "position_um": [
+            110.0,
+            10.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/d4",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/d5",
+          "qubit_id": "L1/d5",
+          "position_um": [
+            120.0,
+            10.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/d5",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/d6",
+          "qubit_id": "L1/d6",
+          "position_um": [
+            100.0,
+            20.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/d6",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/d7",
+          "qubit_id": "L1/d7",
+          "position_um": [
+            110.0,
+            20.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/d7",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/d8",
+          "qubit_id": "L1/d8",
+          "position_um": [
+            120.0,
+            20.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/d8",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 0,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/x0",
+          "qubit_id": "L1/x0",
+          "position_um": [
+            100.0,
+            40.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/x0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/x1",
+          "qubit_id": "L1/x1",
+          "position_um": [
+            110.0,
+            40.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/x1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/x2",
+          "qubit_id": "L1/x2",
+          "position_um": [
+            120.0,
+            40.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/x2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/x3",
+          "qubit_id": "L1/x3",
+          "position_um": [
+            130.0,
+            40.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/x3",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/z0",
+          "qubit_id": "L1/z0",
+          "position_um": [
+            100.0,
+            50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/z0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/z1",
+          "qubit_id": "L1/z1",
+          "position_um": [
+            110.0,
+            50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/z1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/z2",
+          "qubit_id": "L1/z2",
+          "position_um": [
+            120.0,
+            50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/z2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        },
+        {
+          "atom_id": "atom:L1/z3",
+          "qubit_id": "L1/z3",
+          "position_um": [
+            130.0,
+            50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "L1-prepare/slm:patch_home:block/z3",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 10,
+          "measurement_count": 5,
+          "preparation_status": "reset_0_quantum_untracked"
+        }
+      ],
+      "slm_traps": [
+        {
+          "trap_id": "slm:L0/init/d0",
+          "position_um": [
+            0.0,
+            -100.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/d1",
+          "position_um": [
+            10.0,
+            -100.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/d2",
+          "position_um": [
+            20.0,
+            -100.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/d3",
+          "position_um": [
+            0.0,
+            -90.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/d4",
+          "position_um": [
+            10.0,
+            -90.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/d5",
+          "position_um": [
+            20.0,
+            -90.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/d6",
+          "position_um": [
+            0.0,
+            -80.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/d7",
+          "position_um": [
+            10.0,
+            -80.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/d8",
+          "position_um": [
+            20.0,
+            -80.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/x0",
+          "position_um": [
+            0.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/x1",
+          "position_um": [
+            10.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/x2",
+          "position_um": [
+            20.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/x3",
+          "position_um": [
+            30.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/z0",
+          "position_um": [
+            0.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/z1",
+          "position_um": [
+            10.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/z2",
+          "position_um": [
+            20.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L0/init/z3",
+          "position_um": [
+            30.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/d0",
+          "position_um": [
+            100.0,
+            -100.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/d1",
+          "position_um": [
+            110.0,
+            -100.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/d2",
+          "position_um": [
+            120.0,
+            -100.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/d3",
+          "position_um": [
+            100.0,
+            -90.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/d4",
+          "position_um": [
+            110.0,
+            -90.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/d5",
+          "position_um": [
+            120.0,
+            -90.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/d6",
+          "position_um": [
+            100.0,
+            -80.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/d7",
+          "position_um": [
+            110.0,
+            -80.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/d8",
+          "position_um": [
+            120.0,
+            -80.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/x0",
+          "position_um": [
+            100.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/x1",
+          "position_um": [
+            110.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/x2",
+          "position_um": [
+            120.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/x3",
+          "position_um": [
+            130.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/z0",
+          "position_um": [
+            100.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/z1",
+          "position_um": [
+            110.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/z2",
+          "position_um": [
+            120.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "slm:L1/init/z3",
+          "position_um": [
+            130.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/d0",
+          "position_um": [
+            0.0,
+            0.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/d0"
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/d1",
+          "position_um": [
+            10.0,
+            0.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/d1"
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/d2",
+          "position_um": [
+            20.0,
+            0.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/d2"
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/d3",
+          "position_um": [
+            0.0,
+            10.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/d3"
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/d4",
+          "position_um": [
+            10.0,
+            10.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/d4"
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/d5",
+          "position_um": [
+            20.0,
+            10.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/d5"
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/d6",
+          "position_um": [
+            0.0,
+            20.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/d6"
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/d7",
+          "position_um": [
+            10.0,
+            20.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/d7"
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/d8",
+          "position_um": [
+            20.0,
+            20.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/d8"
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/x0",
+          "position_um": [
+            0.0,
+            40.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/x0"
+        },
+        {
+          "trap_id": "L0-prepare/slm:ancilla_readout:block/x0",
+          "position_um": [
+            0.0,
+            90.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/x1",
+          "position_um": [
+            10.0,
+            40.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/x1"
+        },
+        {
+          "trap_id": "L0-prepare/slm:ancilla_readout:block/x1",
+          "position_um": [
+            10.0,
+            90.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/x2",
+          "position_um": [
+            20.0,
+            40.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/x2"
+        },
+        {
+          "trap_id": "L0-prepare/slm:ancilla_readout:block/x2",
+          "position_um": [
+            20.0,
+            90.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/x3",
+          "position_um": [
+            30.0,
+            40.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/x3"
+        },
+        {
+          "trap_id": "L0-prepare/slm:ancilla_readout:block/x3",
+          "position_um": [
+            30.0,
+            90.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/z0",
+          "position_um": [
+            0.0,
+            50.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/z0"
+        },
+        {
+          "trap_id": "L0-prepare/slm:ancilla_readout:block/z0",
+          "position_um": [
+            0.0,
+            100.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/z1",
+          "position_um": [
+            10.0,
+            50.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/z1"
+        },
+        {
+          "trap_id": "L0-prepare/slm:ancilla_readout:block/z1",
+          "position_um": [
+            10.0,
+            100.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/z2",
+          "position_um": [
+            20.0,
+            50.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/z2"
+        },
+        {
+          "trap_id": "L0-prepare/slm:ancilla_readout:block/z2",
+          "position_um": [
+            20.0,
+            100.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:patch_home:block/z3",
+          "position_um": [
+            30.0,
+            50.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L0/z3"
+        },
+        {
+          "trap_id": "L0-prepare/slm:ancilla_readout:block/z3",
+          "position_um": [
+            30.0,
+            100.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:gate:34:atom:block/x0",
+          "position_um": [
+            2.0,
+            0.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:gate:43:atom:block/x2",
+          "position_um": [
+            12.0,
+            10.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:gate:52:atom:block/x3",
+          "position_um": [
+            2.0,
+            20.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:gate:62:atom:block/z1",
+          "position_um": [
+            12.0,
+            0.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:gate:73:atom:block/z2",
+          "position_um": [
+            2.0,
+            10.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:gate:73:atom:block/z3",
+          "position_um": [
+            22.0,
+            10.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:gate:101:atom:block/x3",
+          "position_um": [
+            12.0,
+            20.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:gate:123:atom:block/z3",
+          "position_um": [
+            22.0,
+            20.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L0-prepare/slm:gate:151:atom:block/z1",
+          "position_um": [
+            22.0,
+            0.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/d0",
+          "position_um": [
+            100.0,
+            0.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/d0"
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/d1",
+          "position_um": [
+            110.0,
+            0.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/d1"
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/d2",
+          "position_um": [
+            120.0,
+            0.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/d2"
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/d3",
+          "position_um": [
+            100.0,
+            10.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/d3"
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/d4",
+          "position_um": [
+            110.0,
+            10.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/d4"
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/d5",
+          "position_um": [
+            120.0,
+            10.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/d5"
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/d6",
+          "position_um": [
+            100.0,
+            20.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/d6"
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/d7",
+          "position_um": [
+            110.0,
+            20.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/d7"
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/d8",
+          "position_um": [
+            120.0,
+            20.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/d8"
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/x0",
+          "position_um": [
+            100.0,
+            40.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/x0"
+        },
+        {
+          "trap_id": "L1-prepare/slm:ancilla_readout:block/x0",
+          "position_um": [
+            100.0,
+            90.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/x1",
+          "position_um": [
+            110.0,
+            40.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/x1"
+        },
+        {
+          "trap_id": "L1-prepare/slm:ancilla_readout:block/x1",
+          "position_um": [
+            110.0,
+            90.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/x2",
+          "position_um": [
+            120.0,
+            40.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/x2"
+        },
+        {
+          "trap_id": "L1-prepare/slm:ancilla_readout:block/x2",
+          "position_um": [
+            120.0,
+            90.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/x3",
+          "position_um": [
+            130.0,
+            40.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/x3"
+        },
+        {
+          "trap_id": "L1-prepare/slm:ancilla_readout:block/x3",
+          "position_um": [
+            130.0,
+            90.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/z0",
+          "position_um": [
+            100.0,
+            50.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/z0"
+        },
+        {
+          "trap_id": "L1-prepare/slm:ancilla_readout:block/z0",
+          "position_um": [
+            100.0,
+            100.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/z1",
+          "position_um": [
+            110.0,
+            50.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/z1"
+        },
+        {
+          "trap_id": "L1-prepare/slm:ancilla_readout:block/z1",
+          "position_um": [
+            110.0,
+            100.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/z2",
+          "position_um": [
+            120.0,
+            50.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/z2"
+        },
+        {
+          "trap_id": "L1-prepare/slm:ancilla_readout:block/z2",
+          "position_um": [
+            120.0,
+            100.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:patch_home:block/z3",
+          "position_um": [
+            130.0,
+            50.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": "atom:L1/z3"
+        },
+        {
+          "trap_id": "L1-prepare/slm:ancilla_readout:block/z3",
+          "position_um": [
+            130.0,
+            100.0
+          ],
+          "zone_id": "measurement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:gate:25:atom:block/x0",
+          "position_um": [
+            102.0,
+            0.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:gate:34:atom:block/x2",
+          "position_um": [
+            112.0,
+            10.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:gate:43:atom:block/x3",
+          "position_um": [
+            102.0,
+            20.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:gate:53:atom:block/z1",
+          "position_um": [
+            112.0,
+            0.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:gate:64:atom:block/z2",
+          "position_um": [
+            102.0,
+            10.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:gate:64:atom:block/z3",
+          "position_um": [
+            122.0,
+            10.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:gate:92:atom:block/x3",
+          "position_um": [
+            112.0,
+            20.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:gate:114:atom:block/z3",
+          "position_um": [
+            122.0,
+            20.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        },
+        {
+          "trap_id": "L1-prepare/slm:gate:142:atom:block/z1",
+          "position_um": [
+            122.0,
+            0.0
+          ],
+          "zone_id": "storage_entanglement",
+          "occupant": null
+        }
+      ],
+      "aod_rows": [],
+      "aod_columns": []
+    },
+    "blocks": {
+      "L0": {
+        "logical_id": "L0",
+        "qubits": {
+          "d0": "L0/d0",
+          "d1": "L0/d1",
+          "d2": "L0/d2",
+          "d3": "L0/d3",
+          "d4": "L0/d4",
+          "d5": "L0/d5",
+          "d6": "L0/d6",
+          "d7": "L0/d7",
+          "d8": "L0/d8",
+          "x0": "L0/x0",
+          "x1": "L0/x1",
+          "x2": "L0/x2",
+          "x3": "L0/x3",
+          "z0": "L0/z0",
+          "z1": "L0/z1",
+          "z2": "L0/z2",
+          "z3": "L0/z3"
+        },
+        "atoms": {
+          "d0": "atom:L0/d0",
+          "d1": "atom:L0/d1",
+          "d2": "atom:L0/d2",
+          "d3": "atom:L0/d3",
+          "d4": "atom:L0/d4",
+          "d5": "atom:L0/d5",
+          "d6": "atom:L0/d6",
+          "d7": "atom:L0/d7",
+          "d8": "atom:L0/d8",
+          "x0": "atom:L0/x0",
+          "x1": "atom:L0/x1",
+          "x2": "atom:L0/x2",
+          "x3": "atom:L0/x3",
+          "z0": "atom:L0/z0",
+          "z1": "atom:L0/z1",
+          "z2": "atom:L0/z2",
+          "z3": "atom:L0/z3"
+        },
+        "data_slots": [
+          "d0",
+          "d1",
+          "d2",
+          "d3",
+          "d4",
+          "d5",
+          "d6",
+          "d7",
+          "d8"
+        ],
+        "code_profile": {
+          "code": "rotated_surface",
+          "distance": 3,
+          "convention": "surface17-row-major-x-vertical/1",
+          "orientation": "x_vertical_z_horizontal"
+        },
+        "layout_profile": "patch_home",
+        "offset_um": [
+          0,
+          0
+        ],
+        "lifecycle": "live",
+        "ready_at_us": 152277.0,
+        "epoch": 6,
+        "frame": {
+          "status": "physical_corrections_only_no_decoder",
+          "result_ids": [
+            "L0-prepare/r0/m_x0",
+            "L0-prepare/r0/m_x1",
+            "L0-prepare/r0/m_x2",
+            "L0-prepare/r0/m_x3",
+            "L0-prepare/r0/m_z0",
+            "L0-prepare/r0/m_z1",
+            "L0-prepare/r0/m_z2",
+            "L0-prepare/r0/m_z3",
+            "L0-round0/r0/m_x0",
+            "L0-round0/r0/m_x1",
+            "L0-round0/r0/m_x2",
+            "L0-round0/r0/m_x3",
+            "L0-round0/r0/m_z0",
+            "L0-round0/r0/m_z1",
+            "L0-round0/r0/m_z2",
+            "L0-round0/r0/m_z3",
+            "L0-round1/r0/m_x0",
+            "L0-round1/r0/m_x1",
+            "L0-round1/r0/m_x2",
+            "L0-round1/r0/m_x3",
+            "L0-round1/r0/m_z0",
+            "L0-round1/r0/m_z1",
+            "L0-round1/r0/m_z2",
+            "L0-round1/r0/m_z3",
+            "L0-round2/r0/m_x0",
+            "L0-round2/r0/m_x1",
+            "L0-round2/r0/m_x2",
+            "L0-round2/r0/m_x3",
+            "L0-round2/r0/m_z0",
+            "L0-round2/r0/m_z1",
+            "L0-round2/r0/m_z2",
+            "L0-round2/r0/m_z3",
+            "L0-after-cx/r0/m_x0",
+            "L0-after-cx/r0/m_x1",
+            "L0-after-cx/r0/m_x2",
+            "L0-after-cx/r0/m_x3",
+            "L0-after-cx/r0/m_z0",
+            "L0-after-cx/r0/m_z1",
+            "L0-after-cx/r0/m_z2",
+            "L0-after-cx/r0/m_z3"
+          ]
+        },
+        "last_call_id": "L0-after-cx"
+      },
+      "L1": {
+        "logical_id": "L1",
+        "qubits": {
+          "d0": "L1/d0",
+          "d1": "L1/d1",
+          "d2": "L1/d2",
+          "d3": "L1/d3",
+          "d4": "L1/d4",
+          "d5": "L1/d5",
+          "d6": "L1/d6",
+          "d7": "L1/d7",
+          "d8": "L1/d8",
+          "x0": "L1/x0",
+          "x1": "L1/x1",
+          "x2": "L1/x2",
+          "x3": "L1/x3",
+          "z0": "L1/z0",
+          "z1": "L1/z1",
+          "z2": "L1/z2",
+          "z3": "L1/z3"
+        },
+        "atoms": {
+          "d0": "atom:L1/d0",
+          "d1": "atom:L1/d1",
+          "d2": "atom:L1/d2",
+          "d3": "atom:L1/d3",
+          "d4": "atom:L1/d4",
+          "d5": "atom:L1/d5",
+          "d6": "atom:L1/d6",
+          "d7": "atom:L1/d7",
+          "d8": "atom:L1/d8",
+          "x0": "atom:L1/x0",
+          "x1": "atom:L1/x1",
+          "x2": "atom:L1/x2",
+          "x3": "atom:L1/x3",
+          "z0": "atom:L1/z0",
+          "z1": "atom:L1/z1",
+          "z2": "atom:L1/z2",
+          "z3": "atom:L1/z3"
+        },
+        "data_slots": [
+          "d0",
+          "d1",
+          "d2",
+          "d3",
+          "d4",
+          "d5",
+          "d6",
+          "d7",
+          "d8"
+        ],
+        "code_profile": {
+          "code": "rotated_surface",
+          "distance": 3,
+          "convention": "surface17-row-major-x-vertical/1",
+          "orientation": "x_vertical_z_horizontal"
+        },
+        "layout_profile": "patch_home",
+        "offset_um": [
+          100,
+          0
+        ],
+        "lifecycle": "live",
+        "ready_at_us": 168972.0,
+        "epoch": 6,
+        "frame": {
+          "status": "physical_corrections_only_no_decoder",
+          "result_ids": [
+            "L1-prepare/r0/m_x0",
+            "L1-prepare/r0/m_x1",
+            "L1-prepare/r0/m_x2",
+            "L1-prepare/r0/m_x3",
+            "L1-prepare/r0/m_z0",
+            "L1-prepare/r0/m_z1",
+            "L1-prepare/r0/m_z2",
+            "L1-prepare/r0/m_z3",
+            "L1-round0/r0/m_x0",
+            "L1-round0/r0/m_x1",
+            "L1-round0/r0/m_x2",
+            "L1-round0/r0/m_x3",
+            "L1-round0/r0/m_z0",
+            "L1-round0/r0/m_z1",
+            "L1-round0/r0/m_z2",
+            "L1-round0/r0/m_z3",
+            "L1-round1/r0/m_x0",
+            "L1-round1/r0/m_x1",
+            "L1-round1/r0/m_x2",
+            "L1-round1/r0/m_x3",
+            "L1-round1/r0/m_z0",
+            "L1-round1/r0/m_z1",
+            "L1-round1/r0/m_z2",
+            "L1-round1/r0/m_z3",
+            "L1-round2/r0/m_x0",
+            "L1-round2/r0/m_x1",
+            "L1-round2/r0/m_x2",
+            "L1-round2/r0/m_x3",
+            "L1-round2/r0/m_z0",
+            "L1-round2/r0/m_z1",
+            "L1-round2/r0/m_z2",
+            "L1-round2/r0/m_z3",
+            "L1-after-cx/r0/m_x0",
+            "L1-after-cx/r0/m_x1",
+            "L1-after-cx/r0/m_x2",
+            "L1-after-cx/r0/m_x3",
+            "L1-after-cx/r0/m_z0",
+            "L1-after-cx/r0/m_z1",
+            "L1-after-cx/r0/m_z2",
+            "L1-after-cx/r0/m_z3"
+          ]
+        },
+        "last_call_id": "L1-after-cx"
+      }
+    },
+    "planned_blocks": {
+      "L0": {
+        "logical_id": "L0",
+        "qubits": {
+          "d0": "L0/d0",
+          "d1": "L0/d1",
+          "d2": "L0/d2",
+          "d3": "L0/d3",
+          "d4": "L0/d4",
+          "d5": "L0/d5",
+          "d6": "L0/d6",
+          "d7": "L0/d7",
+          "d8": "L0/d8",
+          "x0": "L0/x0",
+          "x1": "L0/x1",
+          "x2": "L0/x2",
+          "x3": "L0/x3",
+          "z0": "L0/z0",
+          "z1": "L0/z1",
+          "z2": "L0/z2",
+          "z3": "L0/z3"
+        },
+        "atoms": {
+          "d0": "atom:L0/d0",
+          "d1": "atom:L0/d1",
+          "d2": "atom:L0/d2",
+          "d3": "atom:L0/d3",
+          "d4": "atom:L0/d4",
+          "d5": "atom:L0/d5",
+          "d6": "atom:L0/d6",
+          "d7": "atom:L0/d7",
+          "d8": "atom:L0/d8",
+          "x0": "atom:L0/x0",
+          "x1": "atom:L0/x1",
+          "x2": "atom:L0/x2",
+          "x3": "atom:L0/x3",
+          "z0": "atom:L0/z0",
+          "z1": "atom:L0/z1",
+          "z2": "atom:L0/z2",
+          "z3": "atom:L0/z3"
+        },
+        "data_slots": [
+          "d0",
+          "d1",
+          "d2",
+          "d3",
+          "d4",
+          "d5",
+          "d6",
+          "d7",
+          "d8"
+        ],
+        "code_profile": {
+          "code": "rotated_surface",
+          "distance": 3,
+          "convention": "surface17-row-major-x-vertical/1",
+          "orientation": "x_vertical_z_horizontal"
+        },
+        "layout_profile": "patch_home",
+        "offset_um": [
+          0,
+          0
+        ],
+        "lifecycle": "live",
+        "ready_at_us": 152277.0,
+        "epoch": 6,
+        "frame": {
+          "status": "physical_corrections_only_no_decoder",
+          "result_ids": [
+            "L0-prepare/r0/m_x0",
+            "L0-prepare/r0/m_x1",
+            "L0-prepare/r0/m_x2",
+            "L0-prepare/r0/m_x3",
+            "L0-prepare/r0/m_z0",
+            "L0-prepare/r0/m_z1",
+            "L0-prepare/r0/m_z2",
+            "L0-prepare/r0/m_z3",
+            "L0-round0/r0/m_x0",
+            "L0-round0/r0/m_x1",
+            "L0-round0/r0/m_x2",
+            "L0-round0/r0/m_x3",
+            "L0-round0/r0/m_z0",
+            "L0-round0/r0/m_z1",
+            "L0-round0/r0/m_z2",
+            "L0-round0/r0/m_z3",
+            "L0-round1/r0/m_x0",
+            "L0-round1/r0/m_x1",
+            "L0-round1/r0/m_x2",
+            "L0-round1/r0/m_x3",
+            "L0-round1/r0/m_z0",
+            "L0-round1/r0/m_z1",
+            "L0-round1/r0/m_z2",
+            "L0-round1/r0/m_z3",
+            "L0-round2/r0/m_x0",
+            "L0-round2/r0/m_x1",
+            "L0-round2/r0/m_x2",
+            "L0-round2/r0/m_x3",
+            "L0-round2/r0/m_z0",
+            "L0-round2/r0/m_z1",
+            "L0-round2/r0/m_z2",
+            "L0-round2/r0/m_z3",
+            "L0-after-cx/r0/m_x0",
+            "L0-after-cx/r0/m_x1",
+            "L0-after-cx/r0/m_x2",
+            "L0-after-cx/r0/m_x3",
+            "L0-after-cx/r0/m_z0",
+            "L0-after-cx/r0/m_z1",
+            "L0-after-cx/r0/m_z2",
+            "L0-after-cx/r0/m_z3"
+          ]
+        },
+        "last_call_id": "L0-after-cx"
+      },
+      "L1": {
+        "logical_id": "L1",
+        "qubits": {
+          "d0": "L1/d0",
+          "d1": "L1/d1",
+          "d2": "L1/d2",
+          "d3": "L1/d3",
+          "d4": "L1/d4",
+          "d5": "L1/d5",
+          "d6": "L1/d6",
+          "d7": "L1/d7",
+          "d8": "L1/d8",
+          "x0": "L1/x0",
+          "x1": "L1/x1",
+          "x2": "L1/x2",
+          "x3": "L1/x3",
+          "z0": "L1/z0",
+          "z1": "L1/z1",
+          "z2": "L1/z2",
+          "z3": "L1/z3"
+        },
+        "atoms": {
+          "d0": "atom:L1/d0",
+          "d1": "atom:L1/d1",
+          "d2": "atom:L1/d2",
+          "d3": "atom:L1/d3",
+          "d4": "atom:L1/d4",
+          "d5": "atom:L1/d5",
+          "d6": "atom:L1/d6",
+          "d7": "atom:L1/d7",
+          "d8": "atom:L1/d8",
+          "x0": "atom:L1/x0",
+          "x1": "atom:L1/x1",
+          "x2": "atom:L1/x2",
+          "x3": "atom:L1/x3",
+          "z0": "atom:L1/z0",
+          "z1": "atom:L1/z1",
+          "z2": "atom:L1/z2",
+          "z3": "atom:L1/z3"
+        },
+        "data_slots": [
+          "d0",
+          "d1",
+          "d2",
+          "d3",
+          "d4",
+          "d5",
+          "d6",
+          "d7",
+          "d8"
+        ],
+        "code_profile": {
+          "code": "rotated_surface",
+          "distance": 3,
+          "convention": "surface17-row-major-x-vertical/1",
+          "orientation": "x_vertical_z_horizontal"
+        },
+        "layout_profile": "patch_home",
+        "offset_um": [
+          100,
+          0
+        ],
+        "lifecycle": "live",
+        "ready_at_us": 168972.0,
+        "epoch": 6,
+        "frame": {
+          "status": "physical_corrections_only_no_decoder",
+          "result_ids": [
+            "L1-prepare/r0/m_x0",
+            "L1-prepare/r0/m_x1",
+            "L1-prepare/r0/m_x2",
+            "L1-prepare/r0/m_x3",
+            "L1-prepare/r0/m_z0",
+            "L1-prepare/r0/m_z1",
+            "L1-prepare/r0/m_z2",
+            "L1-prepare/r0/m_z3",
+            "L1-round0/r0/m_x0",
+            "L1-round0/r0/m_x1",
+            "L1-round0/r0/m_x2",
+            "L1-round0/r0/m_x3",
+            "L1-round0/r0/m_z0",
+            "L1-round0/r0/m_z1",
+            "L1-round0/r0/m_z2",
+            "L1-round0/r0/m_z3",
+            "L1-round1/r0/m_x0",
+            "L1-round1/r0/m_x1",
+            "L1-round1/r0/m_x2",
+            "L1-round1/r0/m_x3",
+            "L1-round1/r0/m_z0",
+            "L1-round1/r0/m_z1",
+            "L1-round1/r0/m_z2",
+            "L1-round1/r0/m_z3",
+            "L1-round2/r0/m_x0",
+            "L1-round2/r0/m_x1",
+            "L1-round2/r0/m_x2",
+            "L1-round2/r0/m_x3",
+            "L1-round2/r0/m_z0",
+            "L1-round2/r0/m_z1",
+            "L1-round2/r0/m_z2",
+            "L1-round2/r0/m_z3",
+            "L1-after-cx/r0/m_x0",
+            "L1-after-cx/r0/m_x1",
+            "L1-after-cx/r0/m_x2",
+            "L1-after-cx/r0/m_x3",
+            "L1-after-cx/r0/m_z0",
+            "L1-after-cx/r0/m_z1",
+            "L1-after-cx/r0/m_z2",
+            "L1-after-cx/r0/m_z3"
+          ]
+        },
+        "last_call_id": "L1-after-cx"
+      }
+    },
+    "pending_call_ids": [],
+    "results": {
+      "L0-prepare/r0/m_x0": {
+        "result_id": "L0-prepare/r0/m_x0",
+        "action_id": "L0-prepare/strategy-action:000214",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 16740.0,
+        "derivation": "scenario",
+        "available_us": 16740.0
+      },
+      "L0-prepare/r0/m_x1": {
+        "result_id": "L0-prepare/r0/m_x1",
+        "action_id": "L0-prepare/strategy-action:000215",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 16740.0,
+        "derivation": "scenario",
+        "available_us": 16740.0
+      },
+      "L0-prepare/r0/m_x2": {
+        "result_id": "L0-prepare/r0/m_x2",
+        "action_id": "L0-prepare/strategy-action:000216",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 16740.0,
+        "derivation": "scenario",
+        "available_us": 16740.0
+      },
+      "L0-prepare/r0/m_x3": {
+        "result_id": "L0-prepare/r0/m_x3",
+        "action_id": "L0-prepare/strategy-action:000217",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 16740.0,
+        "derivation": "scenario",
+        "available_us": 16740.0
+      },
+      "L0-prepare/r0/m_z0": {
+        "result_id": "L0-prepare/r0/m_z0",
+        "action_id": "L0-prepare/strategy-action:000218",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 16740.0,
+        "derivation": "scenario",
+        "available_us": 16740.0
+      },
+      "L0-prepare/r0/m_z1": {
+        "result_id": "L0-prepare/r0/m_z1",
+        "action_id": "L0-prepare/strategy-action:000219",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 16740.0,
+        "derivation": "scenario",
+        "available_us": 16740.0
+      },
+      "L0-prepare/r0/m_z2": {
+        "result_id": "L0-prepare/r0/m_z2",
+        "action_id": "L0-prepare/strategy-action:000220",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 16740.0,
+        "derivation": "scenario",
+        "available_us": 16740.0
+      },
+      "L0-prepare/r0/m_z3": {
+        "result_id": "L0-prepare/r0/m_z3",
+        "action_id": "L0-prepare/strategy-action:000221",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 16740.0,
+        "derivation": "scenario",
+        "available_us": 16740.0
+      },
+      "L0-round0/r0/m_x0": {
+        "result_id": "L0-round0/r0/m_x0",
+        "action_id": "L0-round0/strategy-action:000193",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 33438.0,
+        "derivation": "scenario",
+        "available_us": 33438.0
+      },
+      "L0-round0/r0/m_x1": {
+        "result_id": "L0-round0/r0/m_x1",
+        "action_id": "L0-round0/strategy-action:000194",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 33438.0,
+        "derivation": "scenario",
+        "available_us": 33438.0
+      },
+      "L0-round0/r0/m_x2": {
+        "result_id": "L0-round0/r0/m_x2",
+        "action_id": "L0-round0/strategy-action:000195",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 33438.0,
+        "derivation": "scenario",
+        "available_us": 33438.0
+      },
+      "L0-round0/r0/m_x3": {
+        "result_id": "L0-round0/r0/m_x3",
+        "action_id": "L0-round0/strategy-action:000196",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 33438.0,
+        "derivation": "scenario",
+        "available_us": 33438.0
+      },
+      "L0-round0/r0/m_z0": {
+        "result_id": "L0-round0/r0/m_z0",
+        "action_id": "L0-round0/strategy-action:000197",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 33438.0,
+        "derivation": "scenario",
+        "available_us": 33438.0
+      },
+      "L0-round0/r0/m_z1": {
+        "result_id": "L0-round0/r0/m_z1",
+        "action_id": "L0-round0/strategy-action:000198",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 33438.0,
+        "derivation": "scenario",
+        "available_us": 33438.0
+      },
+      "L0-round0/r0/m_z2": {
+        "result_id": "L0-round0/r0/m_z2",
+        "action_id": "L0-round0/strategy-action:000199",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 33438.0,
+        "derivation": "scenario",
+        "available_us": 33438.0
+      },
+      "L0-round0/r0/m_z3": {
+        "result_id": "L0-round0/r0/m_z3",
+        "action_id": "L0-round0/strategy-action:000200",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 33438.0,
+        "derivation": "scenario",
+        "available_us": 33438.0
+      },
+      "L0-round1/r0/m_x0": {
+        "result_id": "L0-round1/r0/m_x0",
+        "action_id": "L0-round1/strategy-action:000193",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 50133.0,
+        "derivation": "scenario",
+        "available_us": 50133.0
+      },
+      "L0-round1/r0/m_x1": {
+        "result_id": "L0-round1/r0/m_x1",
+        "action_id": "L0-round1/strategy-action:000194",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 50133.0,
+        "derivation": "scenario",
+        "available_us": 50133.0
+      },
+      "L0-round1/r0/m_x2": {
+        "result_id": "L0-round1/r0/m_x2",
+        "action_id": "L0-round1/strategy-action:000195",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 50133.0,
+        "derivation": "scenario",
+        "available_us": 50133.0
+      },
+      "L0-round1/r0/m_x3": {
+        "result_id": "L0-round1/r0/m_x3",
+        "action_id": "L0-round1/strategy-action:000196",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 50133.0,
+        "derivation": "scenario",
+        "available_us": 50133.0
+      },
+      "L0-round1/r0/m_z0": {
+        "result_id": "L0-round1/r0/m_z0",
+        "action_id": "L0-round1/strategy-action:000197",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 50133.0,
+        "derivation": "scenario",
+        "available_us": 50133.0
+      },
+      "L0-round1/r0/m_z1": {
+        "result_id": "L0-round1/r0/m_z1",
+        "action_id": "L0-round1/strategy-action:000198",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 50133.0,
+        "derivation": "scenario",
+        "available_us": 50133.0
+      },
+      "L0-round1/r0/m_z2": {
+        "result_id": "L0-round1/r0/m_z2",
+        "action_id": "L0-round1/strategy-action:000199",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 50133.0,
+        "derivation": "scenario",
+        "available_us": 50133.0
+      },
+      "L0-round1/r0/m_z3": {
+        "result_id": "L0-round1/r0/m_z3",
+        "action_id": "L0-round1/strategy-action:000200",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 50133.0,
+        "derivation": "scenario",
+        "available_us": 50133.0
+      },
+      "L0-round2/r0/m_x0": {
+        "result_id": "L0-round2/r0/m_x0",
+        "action_id": "L0-round2/strategy-action:000193",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 66828.0,
+        "derivation": "scenario",
+        "available_us": 66828.0
+      },
+      "L0-round2/r0/m_x1": {
+        "result_id": "L0-round2/r0/m_x1",
+        "action_id": "L0-round2/strategy-action:000194",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 66828.0,
+        "derivation": "scenario",
+        "available_us": 66828.0
+      },
+      "L0-round2/r0/m_x2": {
+        "result_id": "L0-round2/r0/m_x2",
+        "action_id": "L0-round2/strategy-action:000195",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 66828.0,
+        "derivation": "scenario",
+        "available_us": 66828.0
+      },
+      "L0-round2/r0/m_x3": {
+        "result_id": "L0-round2/r0/m_x3",
+        "action_id": "L0-round2/strategy-action:000196",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 66828.0,
+        "derivation": "scenario",
+        "available_us": 66828.0
+      },
+      "L0-round2/r0/m_z0": {
+        "result_id": "L0-round2/r0/m_z0",
+        "action_id": "L0-round2/strategy-action:000197",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 66828.0,
+        "derivation": "scenario",
+        "available_us": 66828.0
+      },
+      "L0-round2/r0/m_z1": {
+        "result_id": "L0-round2/r0/m_z1",
+        "action_id": "L0-round2/strategy-action:000198",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 66828.0,
+        "derivation": "scenario",
+        "available_us": 66828.0
+      },
+      "L0-round2/r0/m_z2": {
+        "result_id": "L0-round2/r0/m_z2",
+        "action_id": "L0-round2/strategy-action:000199",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 66828.0,
+        "derivation": "scenario",
+        "available_us": 66828.0
+      },
+      "L0-round2/r0/m_z3": {
+        "result_id": "L0-round2/r0/m_z3",
+        "action_id": "L0-round2/strategy-action:000200",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 66828.0,
+        "derivation": "scenario",
+        "available_us": 66828.0
+      },
+      "L1-prepare/r0/m_x0": {
+        "result_id": "L1-prepare/r0/m_x0",
+        "action_id": "L1-prepare/strategy-action:000205",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 84023.0,
+        "derivation": "scenario",
+        "available_us": 84023.0
+      },
+      "L1-prepare/r0/m_x1": {
+        "result_id": "L1-prepare/r0/m_x1",
+        "action_id": "L1-prepare/strategy-action:000206",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 84023.0,
+        "derivation": "scenario",
+        "available_us": 84023.0
+      },
+      "L1-prepare/r0/m_x2": {
+        "result_id": "L1-prepare/r0/m_x2",
+        "action_id": "L1-prepare/strategy-action:000207",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 84023.0,
+        "derivation": "scenario",
+        "available_us": 84023.0
+      },
+      "L1-prepare/r0/m_x3": {
+        "result_id": "L1-prepare/r0/m_x3",
+        "action_id": "L1-prepare/strategy-action:000208",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 84023.0,
+        "derivation": "scenario",
+        "available_us": 84023.0
+      },
+      "L1-prepare/r0/m_z0": {
+        "result_id": "L1-prepare/r0/m_z0",
+        "action_id": "L1-prepare/strategy-action:000209",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 84023.0,
+        "derivation": "scenario",
+        "available_us": 84023.0
+      },
+      "L1-prepare/r0/m_z1": {
+        "result_id": "L1-prepare/r0/m_z1",
+        "action_id": "L1-prepare/strategy-action:000210",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 84023.0,
+        "derivation": "scenario",
+        "available_us": 84023.0
+      },
+      "L1-prepare/r0/m_z2": {
+        "result_id": "L1-prepare/r0/m_z2",
+        "action_id": "L1-prepare/strategy-action:000211",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 84023.0,
+        "derivation": "scenario",
+        "available_us": 84023.0
+      },
+      "L1-prepare/r0/m_z3": {
+        "result_id": "L1-prepare/r0/m_z3",
+        "action_id": "L1-prepare/strategy-action:000212",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 84023.0,
+        "derivation": "scenario",
+        "available_us": 84023.0
+      },
+      "L1-round0/r0/m_x0": {
+        "result_id": "L1-round0/r0/m_x0",
+        "action_id": "L1-round0/strategy-action:000193",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 100720.0,
+        "derivation": "scenario",
+        "available_us": 100720.0
+      },
+      "L1-round0/r0/m_x1": {
+        "result_id": "L1-round0/r0/m_x1",
+        "action_id": "L1-round0/strategy-action:000194",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 100720.0,
+        "derivation": "scenario",
+        "available_us": 100720.0
+      },
+      "L1-round0/r0/m_x2": {
+        "result_id": "L1-round0/r0/m_x2",
+        "action_id": "L1-round0/strategy-action:000195",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 100720.0,
+        "derivation": "scenario",
+        "available_us": 100720.0
+      },
+      "L1-round0/r0/m_x3": {
+        "result_id": "L1-round0/r0/m_x3",
+        "action_id": "L1-round0/strategy-action:000196",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 100720.0,
+        "derivation": "scenario",
+        "available_us": 100720.0
+      },
+      "L1-round0/r0/m_z0": {
+        "result_id": "L1-round0/r0/m_z0",
+        "action_id": "L1-round0/strategy-action:000197",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 100720.0,
+        "derivation": "scenario",
+        "available_us": 100720.0
+      },
+      "L1-round0/r0/m_z1": {
+        "result_id": "L1-round0/r0/m_z1",
+        "action_id": "L1-round0/strategy-action:000198",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 100720.0,
+        "derivation": "scenario",
+        "available_us": 100720.0
+      },
+      "L1-round0/r0/m_z2": {
+        "result_id": "L1-round0/r0/m_z2",
+        "action_id": "L1-round0/strategy-action:000199",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 100720.0,
+        "derivation": "scenario",
+        "available_us": 100720.0
+      },
+      "L1-round0/r0/m_z3": {
+        "result_id": "L1-round0/r0/m_z3",
+        "action_id": "L1-round0/strategy-action:000200",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 100720.0,
+        "derivation": "scenario",
+        "available_us": 100720.0
+      },
+      "L1-round1/r0/m_x0": {
+        "result_id": "L1-round1/r0/m_x0",
+        "action_id": "L1-round1/strategy-action:000193",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 117415.0,
+        "derivation": "scenario",
+        "available_us": 117415.0
+      },
+      "L1-round1/r0/m_x1": {
+        "result_id": "L1-round1/r0/m_x1",
+        "action_id": "L1-round1/strategy-action:000194",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 117415.0,
+        "derivation": "scenario",
+        "available_us": 117415.0
+      },
+      "L1-round1/r0/m_x2": {
+        "result_id": "L1-round1/r0/m_x2",
+        "action_id": "L1-round1/strategy-action:000195",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 117415.0,
+        "derivation": "scenario",
+        "available_us": 117415.0
+      },
+      "L1-round1/r0/m_x3": {
+        "result_id": "L1-round1/r0/m_x3",
+        "action_id": "L1-round1/strategy-action:000196",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 117415.0,
+        "derivation": "scenario",
+        "available_us": 117415.0
+      },
+      "L1-round1/r0/m_z0": {
+        "result_id": "L1-round1/r0/m_z0",
+        "action_id": "L1-round1/strategy-action:000197",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 117415.0,
+        "derivation": "scenario",
+        "available_us": 117415.0
+      },
+      "L1-round1/r0/m_z1": {
+        "result_id": "L1-round1/r0/m_z1",
+        "action_id": "L1-round1/strategy-action:000198",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 117415.0,
+        "derivation": "scenario",
+        "available_us": 117415.0
+      },
+      "L1-round1/r0/m_z2": {
+        "result_id": "L1-round1/r0/m_z2",
+        "action_id": "L1-round1/strategy-action:000199",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 117415.0,
+        "derivation": "scenario",
+        "available_us": 117415.0
+      },
+      "L1-round1/r0/m_z3": {
+        "result_id": "L1-round1/r0/m_z3",
+        "action_id": "L1-round1/strategy-action:000200",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 117415.0,
+        "derivation": "scenario",
+        "available_us": 117415.0
+      },
+      "L1-round2/r0/m_x0": {
+        "result_id": "L1-round2/r0/m_x0",
+        "action_id": "L1-round2/strategy-action:000193",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 134110.0,
+        "derivation": "scenario",
+        "available_us": 134110.0
+      },
+      "L1-round2/r0/m_x1": {
+        "result_id": "L1-round2/r0/m_x1",
+        "action_id": "L1-round2/strategy-action:000194",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 134110.0,
+        "derivation": "scenario",
+        "available_us": 134110.0
+      },
+      "L1-round2/r0/m_x2": {
+        "result_id": "L1-round2/r0/m_x2",
+        "action_id": "L1-round2/strategy-action:000195",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 134110.0,
+        "derivation": "scenario",
+        "available_us": 134110.0
+      },
+      "L1-round2/r0/m_x3": {
+        "result_id": "L1-round2/r0/m_x3",
+        "action_id": "L1-round2/strategy-action:000196",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 134110.0,
+        "derivation": "scenario",
+        "available_us": 134110.0
+      },
+      "L1-round2/r0/m_z0": {
+        "result_id": "L1-round2/r0/m_z0",
+        "action_id": "L1-round2/strategy-action:000197",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 134110.0,
+        "derivation": "scenario",
+        "available_us": 134110.0
+      },
+      "L1-round2/r0/m_z1": {
+        "result_id": "L1-round2/r0/m_z1",
+        "action_id": "L1-round2/strategy-action:000198",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 134110.0,
+        "derivation": "scenario",
+        "available_us": 134110.0
+      },
+      "L1-round2/r0/m_z2": {
+        "result_id": "L1-round2/r0/m_z2",
+        "action_id": "L1-round2/strategy-action:000199",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 134110.0,
+        "derivation": "scenario",
+        "available_us": 134110.0
+      },
+      "L1-round2/r0/m_z3": {
+        "result_id": "L1-round2/r0/m_z3",
+        "action_id": "L1-round2/strategy-action:000200",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 134110.0,
+        "derivation": "scenario",
+        "available_us": 134110.0
+      },
+      "L0-after-cx/r0/m_x0": {
+        "result_id": "L0-after-cx/r0/m_x0",
+        "action_id": "L0-after-cx/strategy-action:000193",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 151822.0,
+        "derivation": "scenario",
+        "available_us": 151822.0
+      },
+      "L0-after-cx/r0/m_x1": {
+        "result_id": "L0-after-cx/r0/m_x1",
+        "action_id": "L0-after-cx/strategy-action:000194",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 151822.0,
+        "derivation": "scenario",
+        "available_us": 151822.0
+      },
+      "L0-after-cx/r0/m_x2": {
+        "result_id": "L0-after-cx/r0/m_x2",
+        "action_id": "L0-after-cx/strategy-action:000195",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 151822.0,
+        "derivation": "scenario",
+        "available_us": 151822.0
+      },
+      "L0-after-cx/r0/m_x3": {
+        "result_id": "L0-after-cx/r0/m_x3",
+        "action_id": "L0-after-cx/strategy-action:000196",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 151822.0,
+        "derivation": "scenario",
+        "available_us": 151822.0
+      },
+      "L0-after-cx/r0/m_z0": {
+        "result_id": "L0-after-cx/r0/m_z0",
+        "action_id": "L0-after-cx/strategy-action:000197",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 151822.0,
+        "derivation": "scenario",
+        "available_us": 151822.0
+      },
+      "L0-after-cx/r0/m_z1": {
+        "result_id": "L0-after-cx/r0/m_z1",
+        "action_id": "L0-after-cx/strategy-action:000198",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 151822.0,
+        "derivation": "scenario",
+        "available_us": 151822.0
+      },
+      "L0-after-cx/r0/m_z2": {
+        "result_id": "L0-after-cx/r0/m_z2",
+        "action_id": "L0-after-cx/strategy-action:000199",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 151822.0,
+        "derivation": "scenario",
+        "available_us": 151822.0
+      },
+      "L0-after-cx/r0/m_z3": {
+        "result_id": "L0-after-cx/r0/m_z3",
+        "action_id": "L0-after-cx/strategy-action:000200",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 151822.0,
+        "derivation": "scenario",
+        "available_us": 151822.0
+      },
+      "L1-after-cx/r0/m_x0": {
+        "result_id": "L1-after-cx/r0/m_x0",
+        "action_id": "L1-after-cx/strategy-action:000193",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 168517.0,
+        "derivation": "scenario",
+        "available_us": 168517.0
+      },
+      "L1-after-cx/r0/m_x1": {
+        "result_id": "L1-after-cx/r0/m_x1",
+        "action_id": "L1-after-cx/strategy-action:000194",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 168517.0,
+        "derivation": "scenario",
+        "available_us": 168517.0
+      },
+      "L1-after-cx/r0/m_x2": {
+        "result_id": "L1-after-cx/r0/m_x2",
+        "action_id": "L1-after-cx/strategy-action:000195",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 168517.0,
+        "derivation": "scenario",
+        "available_us": 168517.0
+      },
+      "L1-after-cx/r0/m_x3": {
+        "result_id": "L1-after-cx/r0/m_x3",
+        "action_id": "L1-after-cx/strategy-action:000196",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 168517.0,
+        "derivation": "scenario",
+        "available_us": 168517.0
+      },
+      "L1-after-cx/r0/m_z0": {
+        "result_id": "L1-after-cx/r0/m_z0",
+        "action_id": "L1-after-cx/strategy-action:000197",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 168517.0,
+        "derivation": "scenario",
+        "available_us": 168517.0
+      },
+      "L1-after-cx/r0/m_z1": {
+        "result_id": "L1-after-cx/r0/m_z1",
+        "action_id": "L1-after-cx/strategy-action:000198",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 168517.0,
+        "derivation": "scenario",
+        "available_us": 168517.0
+      },
+      "L1-after-cx/r0/m_z2": {
+        "result_id": "L1-after-cx/r0/m_z2",
+        "action_id": "L1-after-cx/strategy-action:000199",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 168517.0,
+        "derivation": "scenario",
+        "available_us": 168517.0
+      },
+      "L1-after-cx/r0/m_z3": {
+        "result_id": "L1-after-cx/r0/m_z3",
+        "action_id": "L1-after-cx/strategy-action:000200",
+        "value": 0,
+        "origin": "fake",
+        "ready_us": 168517.0,
+        "derivation": "scenario",
+        "available_us": 168517.0
+      }
+    },
+    "illumination_counts": {
+      "atom:L0/d0": 181,
+      "atom:L0/d1": 181,
+      "atom:L0/d2": 181,
+      "atom:L0/d3": 181,
+      "atom:L0/d4": 181,
+      "atom:L0/d5": 181,
+      "atom:L0/d6": 181,
+      "atom:L0/d7": 181,
+      "atom:L0/d8": 181,
+      "atom:L0/x0": 181,
+      "atom:L0/x1": 181,
+      "atom:L0/x2": 181,
+      "atom:L0/x3": 181,
+      "atom:L0/z0": 181,
+      "atom:L0/z1": 181,
+      "atom:L0/z2": 181,
+      "atom:L0/z3": 181,
+      "atom:L1/d0": 109,
+      "atom:L1/d1": 109,
+      "atom:L1/d2": 109,
+      "atom:L1/d3": 109,
+      "atom:L1/d4": 109,
+      "atom:L1/d5": 109,
+      "atom:L1/d6": 109,
+      "atom:L1/d7": 109,
+      "atom:L1/d8": 109,
+      "atom:L1/x0": 109,
+      "atom:L1/x1": 109,
+      "atom:L1/x2": 109,
+      "atom:L1/x3": 109,
+      "atom:L1/z0": 109,
+      "atom:L1/z1": 109,
+      "atom:L1/z2": 109,
+      "atom:L1/z3": 109
+    },
+    "logical_result_aliases": {
+      "L0-prepare/x0": "L0-prepare/r0/m_x0",
+      "L0-prepare/x1": "L0-prepare/r0/m_x1",
+      "L0-prepare/x2": "L0-prepare/r0/m_x2",
+      "L0-prepare/x3": "L0-prepare/r0/m_x3",
+      "L0-prepare/z0": "L0-prepare/r0/m_z0",
+      "L0-prepare/z1": "L0-prepare/r0/m_z1",
+      "L0-prepare/z2": "L0-prepare/r0/m_z2",
+      "L0-prepare/z3": "L0-prepare/r0/m_z3",
+      "L0-round0/x0": "L0-round0/r0/m_x0",
+      "L0-round0/x1": "L0-round0/r0/m_x1",
+      "L0-round0/x2": "L0-round0/r0/m_x2",
+      "L0-round0/x3": "L0-round0/r0/m_x3",
+      "L0-round0/z0": "L0-round0/r0/m_z0",
+      "L0-round0/z1": "L0-round0/r0/m_z1",
+      "L0-round0/z2": "L0-round0/r0/m_z2",
+      "L0-round0/z3": "L0-round0/r0/m_z3",
+      "L0-round1/x0": "L0-round1/r0/m_x0",
+      "L0-round1/x1": "L0-round1/r0/m_x1",
+      "L0-round1/x2": "L0-round1/r0/m_x2",
+      "L0-round1/x3": "L0-round1/r0/m_x3",
+      "L0-round1/z0": "L0-round1/r0/m_z0",
+      "L0-round1/z1": "L0-round1/r0/m_z1",
+      "L0-round1/z2": "L0-round1/r0/m_z2",
+      "L0-round1/z3": "L0-round1/r0/m_z3",
+      "L0-round2/x0": "L0-round2/r0/m_x0",
+      "L0-round2/x1": "L0-round2/r0/m_x1",
+      "L0-round2/x2": "L0-round2/r0/m_x2",
+      "L0-round2/x3": "L0-round2/r0/m_x3",
+      "L0-round2/z0": "L0-round2/r0/m_z0",
+      "L0-round2/z1": "L0-round2/r0/m_z1",
+      "L0-round2/z2": "L0-round2/r0/m_z2",
+      "L0-round2/z3": "L0-round2/r0/m_z3",
+      "L1-prepare/x0": "L1-prepare/r0/m_x0",
+      "L1-prepare/x1": "L1-prepare/r0/m_x1",
+      "L1-prepare/x2": "L1-prepare/r0/m_x2",
+      "L1-prepare/x3": "L1-prepare/r0/m_x3",
+      "L1-prepare/z0": "L1-prepare/r0/m_z0",
+      "L1-prepare/z1": "L1-prepare/r0/m_z1",
+      "L1-prepare/z2": "L1-prepare/r0/m_z2",
+      "L1-prepare/z3": "L1-prepare/r0/m_z3",
+      "L1-round0/x0": "L1-round0/r0/m_x0",
+      "L1-round0/x1": "L1-round0/r0/m_x1",
+      "L1-round0/x2": "L1-round0/r0/m_x2",
+      "L1-round0/x3": "L1-round0/r0/m_x3",
+      "L1-round0/z0": "L1-round0/r0/m_z0",
+      "L1-round0/z1": "L1-round0/r0/m_z1",
+      "L1-round0/z2": "L1-round0/r0/m_z2",
+      "L1-round0/z3": "L1-round0/r0/m_z3",
+      "L1-round1/x0": "L1-round1/r0/m_x0",
+      "L1-round1/x1": "L1-round1/r0/m_x1",
+      "L1-round1/x2": "L1-round1/r0/m_x2",
+      "L1-round1/x3": "L1-round1/r0/m_x3",
+      "L1-round1/z0": "L1-round1/r0/m_z0",
+      "L1-round1/z1": "L1-round1/r0/m_z1",
+      "L1-round1/z2": "L1-round1/r0/m_z2",
+      "L1-round1/z3": "L1-round1/r0/m_z3",
+      "L1-round2/x0": "L1-round2/r0/m_x0",
+      "L1-round2/x1": "L1-round2/r0/m_x1",
+      "L1-round2/x2": "L1-round2/r0/m_x2",
+      "L1-round2/x3": "L1-round2/r0/m_x3",
+      "L1-round2/z0": "L1-round2/r0/m_z0",
+      "L1-round2/z1": "L1-round2/r0/m_z1",
+      "L1-round2/z2": "L1-round2/r0/m_z2",
+      "L1-round2/z3": "L1-round2/r0/m_z3",
+      "L0-after-cx/x0": "L0-after-cx/r0/m_x0",
+      "L0-after-cx/x1": "L0-after-cx/r0/m_x1",
+      "L0-after-cx/x2": "L0-after-cx/r0/m_x2",
+      "L0-after-cx/x3": "L0-after-cx/r0/m_x3",
+      "L0-after-cx/z0": "L0-after-cx/r0/m_z0",
+      "L0-after-cx/z1": "L0-after-cx/r0/m_z1",
+      "L0-after-cx/z2": "L0-after-cx/r0/m_z2",
+      "L0-after-cx/z3": "L0-after-cx/r0/m_z3",
+      "L1-after-cx/x0": "L1-after-cx/r0/m_x0",
+      "L1-after-cx/x1": "L1-after-cx/r0/m_x1",
+      "L1-after-cx/x2": "L1-after-cx/r0/m_x2",
+      "L1-after-cx/x3": "L1-after-cx/r0/m_x3",
+      "L1-after-cx/z0": "L1-after-cx/r0/m_z0",
+      "L1-after-cx/z1": "L1-after-cx/r0/m_z1",
+      "L1-after-cx/z2": "L1-after-cx/r0/m_z2",
+      "L1-after-cx/z3": "L1-after-cx/r0/m_z3"
+    },
+    "history_hash": "9ea5e4b4d4d8a33530a88742d0e22505de5d7773b4fba5c11680d7a208aeea96",
+    "library_stats": {
+      "strategy_compile_count": 4,
+      "placement_search_count": 2136,
+      "routing_search_count": 118,
+      "cache_hit_count": 7,
+      "bind_count": 28,
+      "composition_check_count": 517
+    },
+    "fixture": false
+  },
+  "user_visual_acceptance": "pending",
+  "source_sha256_before": {
+    "src/na_pipeline/runtime/controller.py": "ddba0a18f7bee0edda6341f5885ffeebe1ffca649ee77d47047917a6cd962840",
+    "src/na_pipeline/runtime/engine.py": "088d7d5577d7c3020cec801d17f2d32372cc5e42284ac8be890144596e531830",
+    "src/na_pipeline/runtime/errors.py": "e03402d2423a8797aac833258ef1288332a2b82f18d5e97b167b5897df09b69a",
+    "src/na_pipeline/runtime/factory.py": "0ccf7511ce536f7cd5e175df3d14071eab3f6d34c4b722ac2a1f9945cf72cf08",
+    "src/na_pipeline/runtime/group_metrics.py": "020a5609e2657e8a4609b801373c07e928521e4e637a9db23964c7004bd4a94e",
+    "src/na_pipeline/runtime/scenario.py": "9e665447b033d22c1a547d00eb45e7f62103856fc03dd975ac38a4378b253f54",
+    "src/na_pipeline/runtime/state.py": "8f2e6d1e8fcecb424134a955ee72097ccec68fd69d25a310331b3645b429ded8",
+    "src/na_pipeline/runtime/__init__.py": "af5b07b803b1c3497db991f18c6f9099d9bffca1d69de65a8755cfe2bcc7376d",
+    "src/na_pipeline/backend/compiler.py": "64cd210d67e94bffe3ccdba2b819cd2753297186a26543d36ccf91f15ab29ab1",
+    "src/na_pipeline/backend/enola_kernel.py": "a8d1af35b6d4f5219de2bcecdbfa3f4a0e9d5dbe4b40045e34068ed8ee8e668a",
+    "src/na_pipeline/backend/geometry.py": "25f494028ada2ec49c00ac881face147edfc2d1e351d670d1192e9925f8cd3c8",
+    "src/na_pipeline/backend/reuse.py": "791c18592f2498b865eaeabb8928efc3c1b23321e32cd65e4b255567f209164b",
+    "src/na_pipeline/backend/strategy.py": "50246200fa47181ff83d1d6a7baa64900bca6bbc5adabb4951d1713302fef9c9",
+    "src/na_pipeline/backend/strategy_bind.py": "50ee08fe043a93f4b81b12cb9b50e616b76d247a40ab1f84c2fd500c9ac49af1",
+    "src/na_pipeline/backend/strategy_compile.py": "b715ef77723ca40fb8c3c3ca2f6d81def28478130df72b2740a39c08fc920d76",
+    "src/na_pipeline/backend/__init__.py": "d108e4eccc4e193fa0ea22bd81fef747bf3b360396280b48a0c0434691f02ac0",
+    "src/na_pipeline/qec/factory.py": "8e1542a7026c7c104a0b63f3393b2868ff54d5c9f37c8d73984440a5cec672e1",
+    "src/na_pipeline/qec/factory_primitives.py": "94aa4aa79e649e560db99d8b7f10a90ff95278db6fa06bd25d94d946d415143f",
+    "src/na_pipeline/qec/logical_primitives.py": "401a82367d13f96962b451fe31b227007fc58d6a0a9cadd3b5cc0b6a7ccb48dd",
+    "src/na_pipeline/qec/program.py": "76c374bb13838487620508c1cdde88d9ccd66e781469874e44005968e80dfb36",
+    "src/na_pipeline/qec/projection.py": "64b8844fda7e195bd80ab23f6992f7b57ee2f9b35b55ef707ea0c42ae00697d2",
+    "src/na_pipeline/qec/surface17.py": "fdd7b0238a95979cd590e5c0e8c0567d78f26ae4b79b437eb056716b76eb8d2a",
+    "src/na_pipeline/qec/__init__.py": "2f96c29be58f4d333ac41d343efdcbf768f778ac2b1d6f387c629e57271c42df",
+    "src/na_pipeline/device/groups.py": "a157f61784c22a659cb9208cdfd8e8d7927fbdc62903f8b0cfd4cbf017f7bef5",
+    "src/na_pipeline/device/model.py": "aedf2855d20215bace0117598a1c982e8b77c091a33f22dce6b044c2c3980e96",
+    "src/na_pipeline/device/spec.py": "30c66f2ad3d45f65a9b4690f2c35a37ff5bcbd1fc715d4b368421d694e9b9611",
+    "src/na_pipeline/device/__init__.py": "92196161c8e4ba8458289a9e5a87bf51fe05a54ec93535794e122f5a35aef890",
+    "src/na_pipeline/validation/strategy.py": "408a608f01a8453a0a79557b7070eb4b17287609214339a7a0ae1e7895691931",
+    "src/na_pipeline/validation/strategy_capture.py": "0fe30877c29ae6a9bfabbe2a7a2763d484e292c640de726a8b3cc4a7b8c9a4db",
+    "src/na_pipeline/validation/strategy_common.py": "36f4056c8d4fe31c1f4646ac03be5fe632a1f4cbcdb2ee12c141ddbcd3ea77b1",
+    "src/na_pipeline/validation/strategy_enola.py": "7acb2f11e9bd34c5b8d4c4001356fe878bffd9a7bbe6ccb3af7b6eff0eccbbd2",
+    "src/na_pipeline/validation/strategy_groups.py": "40e87af7e58d29aba14314cb7bc283366d749d6b6503edbd378b7fd4ae298fe5",
+    "src/na_pipeline/validation/strategy_observer.py": "cbd456d80ec2d1ad03237500fc54cd44387026e2f4514f6eae70489f86af854f",
+    "src/na_pipeline/validation/strategy_run.py": "be1c2842fd25b0cb2385c83056d981a9dd6c151f8c21e4dcb46f9a094dc8c2dc",
+    "src/na_pipeline/validation/strategy_source.py": "b92448586a43d39cd6bb0955308b4017082a40e57b4f1074b5f78a9e6ecdf88c",
+    "examples/scenarios/probe_t504.py": "eefd38054dd324704a3b5a458519c0a668c0f695b8cf48e614d3705e5d286d3e"
+  },
+  "source_sha256_after": {
+    "src/na_pipeline/runtime/controller.py": "ddba0a18f7bee0edda6341f5885ffeebe1ffca649ee77d47047917a6cd962840",
+    "src/na_pipeline/runtime/engine.py": "088d7d5577d7c3020cec801d17f2d32372cc5e42284ac8be890144596e531830",
+    "src/na_pipeline/runtime/errors.py": "e03402d2423a8797aac833258ef1288332a2b82f18d5e97b167b5897df09b69a",
+    "src/na_pipeline/runtime/factory.py": "0ccf7511ce536f7cd5e175df3d14071eab3f6d34c4b722ac2a1f9945cf72cf08",
+    "src/na_pipeline/runtime/group_metrics.py": "020a5609e2657e8a4609b801373c07e928521e4e637a9db23964c7004bd4a94e",
+    "src/na_pipeline/runtime/scenario.py": "9e665447b033d22c1a547d00eb45e7f62103856fc03dd975ac38a4378b253f54",
+    "src/na_pipeline/runtime/state.py": "8f2e6d1e8fcecb424134a955ee72097ccec68fd69d25a310331b3645b429ded8",
+    "src/na_pipeline/runtime/__init__.py": "af5b07b803b1c3497db991f18c6f9099d9bffca1d69de65a8755cfe2bcc7376d",
+    "src/na_pipeline/backend/compiler.py": "64cd210d67e94bffe3ccdba2b819cd2753297186a26543d36ccf91f15ab29ab1",
+    "src/na_pipeline/backend/enola_kernel.py": "a8d1af35b6d4f5219de2bcecdbfa3f4a0e9d5dbe4b40045e34068ed8ee8e668a",
+    "src/na_pipeline/backend/geometry.py": "25f494028ada2ec49c00ac881face147edfc2d1e351d670d1192e9925f8cd3c8",
+    "src/na_pipeline/backend/reuse.py": "791c18592f2498b865eaeabb8928efc3c1b23321e32cd65e4b255567f209164b",
+    "src/na_pipeline/backend/strategy.py": "50246200fa47181ff83d1d6a7baa64900bca6bbc5adabb4951d1713302fef9c9",
+    "src/na_pipeline/backend/strategy_bind.py": "50ee08fe043a93f4b81b12cb9b50e616b76d247a40ab1f84c2fd500c9ac49af1",
+    "src/na_pipeline/backend/strategy_compile.py": "b715ef77723ca40fb8c3c3ca2f6d81def28478130df72b2740a39c08fc920d76",
+    "src/na_pipeline/backend/__init__.py": "d108e4eccc4e193fa0ea22bd81fef747bf3b360396280b48a0c0434691f02ac0",
+    "src/na_pipeline/qec/factory.py": "8e1542a7026c7c104a0b63f3393b2868ff54d5c9f37c8d73984440a5cec672e1",
+    "src/na_pipeline/qec/factory_primitives.py": "94aa4aa79e649e560db99d8b7f10a90ff95278db6fa06bd25d94d946d415143f",
+    "src/na_pipeline/qec/logical_primitives.py": "401a82367d13f96962b451fe31b227007fc58d6a0a9cadd3b5cc0b6a7ccb48dd",
+    "src/na_pipeline/qec/program.py": "76c374bb13838487620508c1cdde88d9ccd66e781469874e44005968e80dfb36",
+    "src/na_pipeline/qec/projection.py": "64b8844fda7e195bd80ab23f6992f7b57ee2f9b35b55ef707ea0c42ae00697d2",
+    "src/na_pipeline/qec/surface17.py": "fdd7b0238a95979cd590e5c0e8c0567d78f26ae4b79b437eb056716b76eb8d2a",
+    "src/na_pipeline/qec/__init__.py": "2f96c29be58f4d333ac41d343efdcbf768f778ac2b1d6f387c629e57271c42df",
+    "src/na_pipeline/device/groups.py": "a157f61784c22a659cb9208cdfd8e8d7927fbdc62903f8b0cfd4cbf017f7bef5",
+    "src/na_pipeline/device/model.py": "aedf2855d20215bace0117598a1c982e8b77c091a33f22dce6b044c2c3980e96",
+    "src/na_pipeline/device/spec.py": "30c66f2ad3d45f65a9b4690f2c35a37ff5bcbd1fc715d4b368421d694e9b9611",
+    "src/na_pipeline/device/__init__.py": "92196161c8e4ba8458289a9e5a87bf51fe05a54ec93535794e122f5a35aef890",
+    "src/na_pipeline/validation/strategy.py": "408a608f01a8453a0a79557b7070eb4b17287609214339a7a0ae1e7895691931",
+    "src/na_pipeline/validation/strategy_capture.py": "0fe30877c29ae6a9bfabbe2a7a2763d484e292c640de726a8b3cc4a7b8c9a4db",
+    "src/na_pipeline/validation/strategy_common.py": "36f4056c8d4fe31c1f4646ac03be5fe632a1f4cbcdb2ee12c141ddbcd3ea77b1",
+    "src/na_pipeline/validation/strategy_enola.py": "7acb2f11e9bd34c5b8d4c4001356fe878bffd9a7bbe6ccb3af7b6eff0eccbbd2",
+    "src/na_pipeline/validation/strategy_groups.py": "40e87af7e58d29aba14314cb7bc283366d749d6b6503edbd378b7fd4ae298fe5",
+    "src/na_pipeline/validation/strategy_observer.py": "c4f994683ba0a4cb692603963759bf1c160982a9ee6b1de7b1d34cd6e5dccded",
+    "src/na_pipeline/validation/strategy_run.py": "b5a3b6cba5923835d71ed01578887b86b14429acab743bbbd47cd9ee2614f9ee",
+    "src/na_pipeline/validation/strategy_source.py": "b92448586a43d39cd6bb0955308b4017082a40e57b4f1074b5f78a9e6ecdf88c",
+    "examples/scenarios/probe_t504.py": "eefd38054dd324704a3b5a458519c0a668c0f695b8cf48e614d3705e5d286d3e"
+  },
+  "sources_stable_during_run": false
+}

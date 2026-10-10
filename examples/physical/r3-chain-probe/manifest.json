@@ -1,0 +1,136 @@
+{
+  "schema_version": "na-run-manifest/0.1.0",
+  "created_at_utc": "2026-10-06T09:24:58.991345+00:00",
+  "producer_version": "0.1.0",
+  "kb_revision": "kb-0003",
+  "interface_version": "IF-MVP-001/0.2.0-draft",
+  "execution_kind": "fake_event_run",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "integration": "real_producer_modules",
+  "fixture": false,
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "host": "yubowl",
+  "source_byte_sha256": {
+    "__init__.py": "6ff5d5cf7ce1056c0f0a7a7714294793b5d79515321cff017756c78fee2a3a8d",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "backend/__init__.py": "06d191fe36d44718a4925b2f51564ac21b04df1d878462499c4af306baf88d78",
+    "backend/compiler.py": "0cf78fe2d08c3d25ff135ac0ee8bd0f9e203541761c96a0dd48e8c013b0ba664",
+    "backend/geometry.py": "74f3ce2ec0b04e86db4b93524b0395cd3b92780b1195d13cd774595cedd49373",
+    "cli.py": "3ce2d213383b1be023b5fa90b702ca74d4078337eea62aa2ef28d3c03078481d",
+    "device/__init__.py": "8dbc4cea9cecbefb63ed36480ba3a4d328524ce1395ddb7da0b1d0ca8c19e641",
+    "device/model.py": "aedf2855d20215bace0117598a1c982e8b77c091a33f22dce6b044c2c3980e96",
+    "device/spec.py": "ae8390ec1f0483f0fdbbbec276a880a9dd2536529821e5daea6e4a4f916f6ebf",
+    "frontend/__init__.py": "179ab06751075a83358e3f47cceb22de3a72f99a163f1728c2171c390816e92f",
+    "frontend/postprocess.py": "23c5525deb3f5ecfbeff903ec2f84bfbe924dd66adeb9625bcce3a926501652a",
+    "frontend/program.py": "d8e207f54b34ccba894543018af04a4ab3bb0025e95333a7c59e06ff00358956",
+    "frontend/qasm.py": "de8996dd7e89bb3654f53b40f607926133b4acf02c8b89161ae7b75fefc1525f",
+    "qec/__init__.py": "a930211e00ae57c8c2079d671cc34c30178738b86bc3c743a1b626a3c506f9fd",
+    "qec/program.py": "af622cefd22b895f667150da274821bee8ae90f9d8c0114965b370b762193f19",
+    "qec/surface17.py": "fdd7b0238a95979cd590e5c0e8c0567d78f26ae4b79b437eb056716b76eb8d2a",
+    "runtime/__init__.py": "253fbfd5bdafc1c22f0750f61a70f0947c7e80426f98e1022be2098a59c4596d",
+    "runtime/engine.py": "2956305527f22cdc405d710d3250ceff5373e76da96dbf85312d37842f811aab",
+    "runtime/errors.py": "e03402d2423a8797aac833258ef1288332a2b82f18d5e97b167b5897df09b69a",
+    "runtime/scenario.py": "ae3bcdbced3f92d2f351cad0facb8da67208110ba5986da0d01eb54fcf4c2e6e",
+    "runtime/state.py": "55ffcebeb7dd4950426ee71917d218420f2b72612c94b39f6d3f05c7e8c87a88",
+    "validation/__init__.py": "227db735810418dc0a4dab241d010d078bcfa488ea81f1baa8fdcb4af1f815fe",
+    "validation/__main__.py": "6a503e484a605f56b29668441fce491410fe48a6d53caf468bf68d744d100409",
+    "validation/checker.py": "821440f2bfa0e7f8f411e8d77934a2fad225cb49d999b0edda424b749862d615",
+    "validation/geometry.py": "b0762d0ce5ac2f2a50706c2e4541d6125ca007137a52f9bc2791946d128e3227",
+    "validation/scenario.py": "2b8b85bb318118903363f12607d710a90ab92c7a2666be9f8f7b3ed6ffd39964",
+    "validation/source.py": "538229b064b24f24d530f3f40c74bc5360a3cff2f65c67c0d5c730543c6ff395",
+    "validation/trace.py": "273c2ace8ee3fc7f69070068f7cbb87fab581676057f8701d4ee30030fe293bc"
+  },
+  "stage_wall_seconds": {
+    "build_structured_inputs": 0.012222400051541626,
+    "compile_layout_route_schedule": 0.1727060000412166,
+    "scenario": 0.001160499989055097,
+    "runtime": 0.42193569999653846,
+    "independent_validation": 0.3913531999569386,
+    "viewer_output": 1.5305236999411136
+  },
+  "files": {
+    "device": {
+      "path": "device.json",
+      "bytes": 11785,
+      "byte_sha256": "0f8af9ba0ec94ac37e6ece6580938fa10ba09f7ca19cfc56d28d1169c0907360",
+      "canonical_sha256": "1c436306473c9938e7febf7abceb1ebceb28a52c7c5fc6d3e5aa02bf338ccf5f"
+    },
+    "physical": {
+      "path": "physical.json",
+      "bytes": 143190,
+      "byte_sha256": "986781c29b99f776d959b662095f19b72092602e2068da3688060cdba524590f",
+      "canonical_sha256": "0ce826136de951b1f5832b6bb9dbe287b6584f795e85e1efc577e01952efdc55"
+    },
+    "atom": {
+      "path": "atom.json",
+      "bytes": 2197163,
+      "byte_sha256": "1b1e06e20b50089c762ffe5ca4153c4be3c0eef45b5839630283877313bdbf69",
+      "canonical_sha256": "ead6c6e50af3c5f0076f78e65c0d33016847fb0c9913a6eaf89e4f34cb309b60"
+    },
+    "scenario": {
+      "path": "scenario.json",
+      "bytes": 5632,
+      "byte_sha256": "cce3e79857198d7d63d72081a7d853e04ca8b4247c0fd2d96df2cce85f1e1f47",
+      "canonical_sha256": "b49ab52f0cdc46f8265ac0cc7b16a2c3023b2180114d112ccbc17eae36c756d3"
+    },
+    "trace": {
+      "path": "trace.json",
+      "bytes": 8587949,
+      "byte_sha256": "14fc6ca043c552c714c7d314aa59872bfb4210866ab00f4ffe707519d42fbbf7",
+      "canonical_sha256": "16072feb5105404dc2c13fe6e8b790f8012fb34b492e2302d2cb0befd2a341f7"
+    },
+    "validation": {
+      "path": "validation.json",
+      "bytes": 2523,
+      "byte_sha256": "db64d04a92ba7353be78dc3d8bf658228be59d7a4b5a2739f9875364f6c6ae63",
+      "canonical_sha256": "05c6151fc1333c6aeb9bf920e14ef54c882f920e8e2f161adef483e85992abc9"
+    },
+    "viewer": {
+      "path": "viewer.html",
+      "byte_sha256": "8d3e228bbd2d903324bfa0c6212c2a20880b9bb7263343c0181da251c545173e"
+    }
+  },
+  "engineering_acceptance": "independent_report_passed",
+  "user_visual_acceptance": "pending",
+  "current_stage": "done",
+  "status": "completed",
+  "compile_identity": {
+    "code": {
+      "__init__.py": "6ff5d5cf7ce1056c0f0a7a7714294793b5d79515321cff017756c78fee2a3a8d",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "backend/__init__.py": "06d191fe36d44718a4925b2f51564ac21b04df1d878462499c4af306baf88d78",
+      "backend/compiler.py": "0cf78fe2d08c3d25ff135ac0ee8bd0f9e203541761c96a0dd48e8c013b0ba664",
+      "backend/geometry.py": "74f3ce2ec0b04e86db4b93524b0395cd3b92780b1195d13cd774595cedd49373",
+      "cli.py": "3ce2d213383b1be023b5fa90b702ca74d4078337eea62aa2ef28d3c03078481d",
+      "device/__init__.py": "8dbc4cea9cecbefb63ed36480ba3a4d328524ce1395ddb7da0b1d0ca8c19e641",
+      "device/model.py": "aedf2855d20215bace0117598a1c982e8b77c091a33f22dce6b044c2c3980e96",
+      "device/spec.py": "ae8390ec1f0483f0fdbbbec276a880a9dd2536529821e5daea6e4a4f916f6ebf",
+      "frontend/__init__.py": "179ab06751075a83358e3f47cceb22de3a72f99a163f1728c2171c390816e92f",
+      "frontend/postprocess.py": "23c5525deb3f5ecfbeff903ec2f84bfbe924dd66adeb9625bcce3a926501652a",
+      "frontend/program.py": "d8e207f54b34ccba894543018af04a4ab3bb0025e95333a7c59e06ff00358956",
+      "frontend/qasm.py": "de8996dd7e89bb3654f53b40f607926133b4acf02c8b89161ae7b75fefc1525f",
+      "qec/__init__.py": "a930211e00ae57c8c2079d671cc34c30178738b86bc3c743a1b626a3c506f9fd",
+      "qec/program.py": "af622cefd22b895f667150da274821bee8ae90f9d8c0114965b370b762193f19",
+      "qec/surface17.py": "fdd7b0238a95979cd590e5c0e8c0567d78f26ae4b79b437eb056716b76eb8d2a",
+      "runtime/__init__.py": "253fbfd5bdafc1c22f0750f61a70f0947c7e80426f98e1022be2098a59c4596d",
+      "runtime/engine.py": "2956305527f22cdc405d710d3250ceff5373e76da96dbf85312d37842f811aab",
+      "runtime/errors.py": "e03402d2423a8797aac833258ef1288332a2b82f18d5e97b167b5897df09b69a",
+      "runtime/scenario.py": "ae3bcdbced3f92d2f351cad0facb8da67208110ba5986da0d01eb54fcf4c2e6e",
+      "runtime/state.py": "55ffcebeb7dd4950426ee71917d218420f2b72612c94b39f6d3f05c7e8c87a88",
+      "validation/__init__.py": "227db735810418dc0a4dab241d010d078bcfa488ea81f1baa8fdcb4af1f815fe",
+      "validation/__main__.py": "6a503e484a605f56b29668441fce491410fe48a6d53caf468bf68d744d100409",
+      "validation/checker.py": "821440f2bfa0e7f8f411e8d77934a2fad225cb49d999b0edda424b749862d615",
+      "validation/geometry.py": "b0762d0ce5ac2f2a50706c2e4541d6125ca007137a52f9bc2791946d128e3227",
+      "validation/scenario.py": "2b8b85bb318118903363f12607d710a90ab92c7a2666be9f8f7b3ed6ffd39964",
+      "validation/source.py": "538229b064b24f24d530f3f40c74bc5360a3cff2f65c67c0d5c730543c6ff395",
+      "validation/trace.py": "273c2ace8ee3fc7f69070068f7cbb87fab581676057f8701d4ee30030fe293bc"
+    },
+    "device": "1c436306473c9938e7febf7abceb1ebceb28a52c7c5fc6d3e5aa02bf338ccf5f",
+    "physical": "0ce826136de951b1f5832b6bb9dbe287b6584f795e85e1efc577e01952efdc55",
+    "rounds": 1,
+    "max_ops": 1000
+  },
+  "compile_checkpoint_reused": false
+}

@@ -1,0 +1,1170 @@
+{
+  "schema_version": "LogicalDAG/0.1.0",
+  "artifact_id": "logical-dag-1521bf0837e6e223014a",
+  "producer_version": "na_pipeline.frontend.logical_dag/0.1.0",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T204",
+    "kb_revision": "kb-0006",
+    "plan_revision": "plan-0008",
+    "interface_ref": "IF-HIERARCHICAL-DAG-001/0.1.0",
+    "fixture": false,
+    "purpose": "nontrivial_patch_placement_semantic_input"
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "entry_mode": "preinitialized",
+  "patches": [
+    {
+      "patch_id": "P0",
+      "logical_id": "P0",
+      "role": "algorithm",
+      "code_profile": {
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1",
+        "orientation": "x_vertical_z_horizontal"
+      },
+      "initial_state": {
+        "logical_basis": "Z",
+        "logical_value": 0,
+        "encoding_status": "assumed_encoded_surface17",
+        "data_stabilizers": "+1",
+        "ancilla_basis": "Z",
+        "ancilla_value": 0,
+        "evidence_kind": "declared_precondition_not_simulated"
+      },
+      "physical_binding_ref": null,
+      "atom_binding_ref": null,
+      "local_geometry_ref": "R1/R3-patch-definition-required",
+      "initial_placement": {
+        "owner": "R4",
+        "status": "unbound",
+        "anchor_um": null
+      },
+      "runtime_binding_required": true
+    },
+    {
+      "patch_id": "P1",
+      "logical_id": "P1",
+      "role": "algorithm",
+      "code_profile": {
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1",
+        "orientation": "x_vertical_z_horizontal"
+      },
+      "initial_state": {
+        "logical_basis": "Z",
+        "logical_value": 0,
+        "encoding_status": "assumed_encoded_surface17",
+        "data_stabilizers": "+1",
+        "ancilla_basis": "Z",
+        "ancilla_value": 0,
+        "evidence_kind": "declared_precondition_not_simulated"
+      },
+      "physical_binding_ref": null,
+      "atom_binding_ref": null,
+      "local_geometry_ref": "R1/R3-patch-definition-required",
+      "initial_placement": {
+        "owner": "R4",
+        "status": "unbound",
+        "anchor_um": null
+      },
+      "runtime_binding_required": true
+    },
+    {
+      "patch_id": "P2",
+      "logical_id": "P2",
+      "role": "algorithm",
+      "code_profile": {
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1",
+        "orientation": "x_vertical_z_horizontal"
+      },
+      "initial_state": {
+        "logical_basis": "Z",
+        "logical_value": 0,
+        "encoding_status": "assumed_encoded_surface17",
+        "data_stabilizers": "+1",
+        "ancilla_basis": "Z",
+        "ancilla_value": 0,
+        "evidence_kind": "declared_precondition_not_simulated"
+      },
+      "physical_binding_ref": null,
+      "atom_binding_ref": null,
+      "local_geometry_ref": "R1/R3-patch-definition-required",
+      "initial_placement": {
+        "owner": "R4",
+        "status": "unbound",
+        "anchor_um": null
+      },
+      "runtime_binding_required": true
+    },
+    {
+      "patch_id": "P3",
+      "logical_id": "P3",
+      "role": "algorithm",
+      "code_profile": {
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1",
+        "orientation": "x_vertical_z_horizontal"
+      },
+      "initial_state": {
+        "logical_basis": "Z",
+        "logical_value": 0,
+        "encoding_status": "assumed_encoded_surface17",
+        "data_stabilizers": "+1",
+        "ancilla_basis": "Z",
+        "ancilla_value": 0,
+        "evidence_kind": "declared_precondition_not_simulated"
+      },
+      "physical_binding_ref": null,
+      "atom_binding_ref": null,
+      "local_geometry_ref": "R1/R3-patch-definition-required",
+      "initial_placement": {
+        "owner": "R4",
+        "status": "unbound",
+        "anchor_um": null
+      },
+      "runtime_binding_required": true
+    }
+  ],
+  "entry": {
+    "startup_transport_required": false,
+    "initialization_zone": null,
+    "source_preconditions": [],
+    "assumptions_are_not_hardware_receipts": true
+  },
+  "nodes": [
+    {
+      "id": "maintenance/entry/P0",
+      "operation": "SE",
+      "semantic_version": "1.0.0",
+      "patch_operands": {
+        "block": "P0"
+      },
+      "params": {},
+      "reads": [],
+      "writes": [
+        "maintenance/entry/P0/x0",
+        "maintenance/entry/P0/x1",
+        "maintenance/entry/P0/x2",
+        "maintenance/entry/P0/x3",
+        "maintenance/entry/P0/z0",
+        "maintenance/entry/P0/z1",
+        "maintenance/entry/P0/z2",
+        "maintenance/entry/P0/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "maintenance-policy:phase-round-boundaries/1",
+        "maintenance/entry/P0"
+      ],
+      "resource_requests": [],
+      "implementation_status": "requires_patch_operation_spec_and_qualification",
+      "groups": [
+        {
+          "purpose": "maintenance_readout",
+          "patch_id": "P0",
+          "group_id": "maintenance/entry/P0/readout",
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P0/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P0/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P0/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P0/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P0/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P0/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P0/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P0/z3"
+            }
+          ],
+          "physical_binding_status": "requires_R3_physical_dependencies_and_R4_routing"
+        }
+      ],
+      "data_effect": "preserve_live_data_no_data_reset"
+    },
+    {
+      "id": "maintenance/entry/P1",
+      "operation": "SE",
+      "semantic_version": "1.0.0",
+      "patch_operands": {
+        "block": "P1"
+      },
+      "params": {},
+      "reads": [],
+      "writes": [
+        "maintenance/entry/P1/x0",
+        "maintenance/entry/P1/x1",
+        "maintenance/entry/P1/x2",
+        "maintenance/entry/P1/x3",
+        "maintenance/entry/P1/z0",
+        "maintenance/entry/P1/z1",
+        "maintenance/entry/P1/z2",
+        "maintenance/entry/P1/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "maintenance-policy:phase-round-boundaries/1",
+        "maintenance/entry/P1"
+      ],
+      "resource_requests": [],
+      "implementation_status": "requires_patch_operation_spec_and_qualification",
+      "groups": [
+        {
+          "purpose": "maintenance_readout",
+          "patch_id": "P1",
+          "group_id": "maintenance/entry/P1/readout",
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P1/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P1/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P1/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P1/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P1/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P1/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P1/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P1/z3"
+            }
+          ],
+          "physical_binding_status": "requires_R3_physical_dependencies_and_R4_routing"
+        }
+      ],
+      "data_effect": "preserve_live_data_no_data_reset"
+    },
+    {
+      "id": "maintenance/entry/P2",
+      "operation": "SE",
+      "semantic_version": "1.0.0",
+      "patch_operands": {
+        "block": "P2"
+      },
+      "params": {},
+      "reads": [],
+      "writes": [
+        "maintenance/entry/P2/x0",
+        "maintenance/entry/P2/x1",
+        "maintenance/entry/P2/x2",
+        "maintenance/entry/P2/x3",
+        "maintenance/entry/P2/z0",
+        "maintenance/entry/P2/z1",
+        "maintenance/entry/P2/z2",
+        "maintenance/entry/P2/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "maintenance-policy:phase-round-boundaries/1",
+        "maintenance/entry/P2"
+      ],
+      "resource_requests": [],
+      "implementation_status": "requires_patch_operation_spec_and_qualification",
+      "groups": [
+        {
+          "purpose": "maintenance_readout",
+          "patch_id": "P2",
+          "group_id": "maintenance/entry/P2/readout",
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P2/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P2/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P2/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P2/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P2/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P2/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P2/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P2/z3"
+            }
+          ],
+          "physical_binding_status": "requires_R3_physical_dependencies_and_R4_routing"
+        }
+      ],
+      "data_effect": "preserve_live_data_no_data_reset"
+    },
+    {
+      "id": "maintenance/entry/P3",
+      "operation": "SE",
+      "semantic_version": "1.0.0",
+      "patch_operands": {
+        "block": "P3"
+      },
+      "params": {},
+      "reads": [],
+      "writes": [
+        "maintenance/entry/P3/x0",
+        "maintenance/entry/P3/x1",
+        "maintenance/entry/P3/x2",
+        "maintenance/entry/P3/x3",
+        "maintenance/entry/P3/z0",
+        "maintenance/entry/P3/z1",
+        "maintenance/entry/P3/z2",
+        "maintenance/entry/P3/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "maintenance-policy:phase-round-boundaries/1",
+        "maintenance/entry/P3"
+      ],
+      "resource_requests": [],
+      "implementation_status": "requires_patch_operation_spec_and_qualification",
+      "groups": [
+        {
+          "purpose": "maintenance_readout",
+          "patch_id": "P3",
+          "group_id": "maintenance/entry/P3/readout",
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P3/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P3/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P3/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P3/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P3/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P3/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P3/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/entry/P3/z3"
+            }
+          ],
+          "physical_binding_status": "requires_R3_physical_dependencies_and_R4_routing"
+        }
+      ],
+      "data_effect": "preserve_live_data_no_data_reset"
+    },
+    {
+      "id": "example/couple0",
+      "operation": "CX",
+      "semantic_version": "1.0.0",
+      "patch_operands": {
+        "control": "P0",
+        "target": "P3"
+      },
+      "params": {},
+      "reads": [],
+      "writes": [],
+      "condition": null,
+      "source_ids": [
+        "patch-example:0"
+      ],
+      "resource_requests": [],
+      "implementation_status": "requires_patch_operation_spec_and_qualification"
+    },
+    {
+      "id": "example/couple1",
+      "operation": "CZ",
+      "semantic_version": "1.0.0",
+      "patch_operands": {
+        "left": "P1",
+        "right": "P2"
+      },
+      "params": {},
+      "reads": [],
+      "writes": [],
+      "condition": null,
+      "source_ids": [
+        "patch-example:1"
+      ],
+      "resource_requests": [],
+      "implementation_status": "requires_patch_operation_spec_and_qualification"
+    },
+    {
+      "id": "example/couple2",
+      "operation": "CX",
+      "semantic_version": "1.0.0",
+      "patch_operands": {
+        "control": "P0",
+        "target": "P2"
+      },
+      "params": {},
+      "reads": [],
+      "writes": [],
+      "condition": null,
+      "source_ids": [
+        "patch-example:2"
+      ],
+      "resource_requests": [],
+      "implementation_status": "requires_patch_operation_spec_and_qualification"
+    },
+    {
+      "id": "example/couple3",
+      "operation": "CX",
+      "semantic_version": "1.0.0",
+      "patch_operands": {
+        "control": "P0",
+        "target": "P3"
+      },
+      "params": {},
+      "reads": [],
+      "writes": [],
+      "condition": null,
+      "source_ids": [
+        "patch-example:3"
+      ],
+      "resource_requests": [],
+      "implementation_status": "requires_patch_operation_spec_and_qualification"
+    },
+    {
+      "id": "maintenance/after-coupling/P0",
+      "operation": "SE",
+      "semantic_version": "1.0.0",
+      "patch_operands": {
+        "block": "P0"
+      },
+      "params": {},
+      "reads": [],
+      "writes": [
+        "maintenance/after-coupling/P0/x0",
+        "maintenance/after-coupling/P0/x1",
+        "maintenance/after-coupling/P0/x2",
+        "maintenance/after-coupling/P0/x3",
+        "maintenance/after-coupling/P0/z0",
+        "maintenance/after-coupling/P0/z1",
+        "maintenance/after-coupling/P0/z2",
+        "maintenance/after-coupling/P0/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "maintenance-policy:phase-round-boundaries/1",
+        "maintenance/after-coupling/P0"
+      ],
+      "resource_requests": [],
+      "implementation_status": "requires_patch_operation_spec_and_qualification",
+      "groups": [
+        {
+          "purpose": "maintenance_readout",
+          "patch_id": "P0",
+          "group_id": "maintenance/after-coupling/P0/readout",
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P0/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P0/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P0/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P0/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P0/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P0/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P0/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P0/z3"
+            }
+          ],
+          "physical_binding_status": "requires_R3_physical_dependencies_and_R4_routing"
+        }
+      ],
+      "data_effect": "preserve_live_data_no_data_reset"
+    },
+    {
+      "id": "maintenance/after-coupling/P1",
+      "operation": "SE",
+      "semantic_version": "1.0.0",
+      "patch_operands": {
+        "block": "P1"
+      },
+      "params": {},
+      "reads": [],
+      "writes": [
+        "maintenance/after-coupling/P1/x0",
+        "maintenance/after-coupling/P1/x1",
+        "maintenance/after-coupling/P1/x2",
+        "maintenance/after-coupling/P1/x3",
+        "maintenance/after-coupling/P1/z0",
+        "maintenance/after-coupling/P1/z1",
+        "maintenance/after-coupling/P1/z2",
+        "maintenance/after-coupling/P1/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "maintenance-policy:phase-round-boundaries/1",
+        "maintenance/after-coupling/P1"
+      ],
+      "resource_requests": [],
+      "implementation_status": "requires_patch_operation_spec_and_qualification",
+      "groups": [
+        {
+          "purpose": "maintenance_readout",
+          "patch_id": "P1",
+          "group_id": "maintenance/after-coupling/P1/readout",
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P1/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P1/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P1/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P1/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P1/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P1/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P1/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P1/z3"
+            }
+          ],
+          "physical_binding_status": "requires_R3_physical_dependencies_and_R4_routing"
+        }
+      ],
+      "data_effect": "preserve_live_data_no_data_reset"
+    },
+    {
+      "id": "maintenance/after-coupling/P2",
+      "operation": "SE",
+      "semantic_version": "1.0.0",
+      "patch_operands": {
+        "block": "P2"
+      },
+      "params": {},
+      "reads": [],
+      "writes": [
+        "maintenance/after-coupling/P2/x0",
+        "maintenance/after-coupling/P2/x1",
+        "maintenance/after-coupling/P2/x2",
+        "maintenance/after-coupling/P2/x3",
+        "maintenance/after-coupling/P2/z0",
+        "maintenance/after-coupling/P2/z1",
+        "maintenance/after-coupling/P2/z2",
+        "maintenance/after-coupling/P2/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "maintenance-policy:phase-round-boundaries/1",
+        "maintenance/after-coupling/P2"
+      ],
+      "resource_requests": [],
+      "implementation_status": "requires_patch_operation_spec_and_qualification",
+      "groups": [
+        {
+          "purpose": "maintenance_readout",
+          "patch_id": "P2",
+          "group_id": "maintenance/after-coupling/P2/readout",
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P2/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P2/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P2/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P2/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P2/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P2/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P2/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P2/z3"
+            }
+          ],
+          "physical_binding_status": "requires_R3_physical_dependencies_and_R4_routing"
+        }
+      ],
+      "data_effect": "preserve_live_data_no_data_reset"
+    },
+    {
+      "id": "maintenance/after-coupling/P3",
+      "operation": "SE",
+      "semantic_version": "1.0.0",
+      "patch_operands": {
+        "block": "P3"
+      },
+      "params": {},
+      "reads": [],
+      "writes": [
+        "maintenance/after-coupling/P3/x0",
+        "maintenance/after-coupling/P3/x1",
+        "maintenance/after-coupling/P3/x2",
+        "maintenance/after-coupling/P3/x3",
+        "maintenance/after-coupling/P3/z0",
+        "maintenance/after-coupling/P3/z1",
+        "maintenance/after-coupling/P3/z2",
+        "maintenance/after-coupling/P3/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "maintenance-policy:phase-round-boundaries/1",
+        "maintenance/after-coupling/P3"
+      ],
+      "resource_requests": [],
+      "implementation_status": "requires_patch_operation_spec_and_qualification",
+      "groups": [
+        {
+          "purpose": "maintenance_readout",
+          "patch_id": "P3",
+          "group_id": "maintenance/after-coupling/P3/readout",
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P3/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P3/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P3/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P3/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P3/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P3/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P3/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_id": "maintenance/after-coupling/P3/z3"
+            }
+          ],
+          "physical_binding_status": "requires_R3_physical_dependencies_and_R4_routing"
+        }
+      ],
+      "data_effect": "preserve_live_data_no_data_reset"
+    }
+  ],
+  "edges": [
+    {
+      "source": "maintenance/entry/P0",
+      "target": "example/couple0",
+      "kind": "quantum",
+      "patch_id": "P0"
+    },
+    {
+      "source": "maintenance/entry/P3",
+      "target": "example/couple0",
+      "kind": "quantum",
+      "patch_id": "P3"
+    },
+    {
+      "source": "maintenance/entry/P1",
+      "target": "example/couple1",
+      "kind": "quantum",
+      "patch_id": "P1"
+    },
+    {
+      "source": "maintenance/entry/P2",
+      "target": "example/couple1",
+      "kind": "quantum",
+      "patch_id": "P2"
+    },
+    {
+      "source": "example/couple0",
+      "target": "example/couple2",
+      "kind": "quantum",
+      "patch_id": "P0"
+    },
+    {
+      "source": "example/couple1",
+      "target": "example/couple2",
+      "kind": "quantum",
+      "patch_id": "P2"
+    },
+    {
+      "source": "example/couple2",
+      "target": "example/couple3",
+      "kind": "quantum",
+      "patch_id": "P0"
+    },
+    {
+      "source": "example/couple0",
+      "target": "example/couple3",
+      "kind": "quantum",
+      "patch_id": "P3"
+    },
+    {
+      "source": "example/couple3",
+      "target": "maintenance/after-coupling/P0",
+      "kind": "quantum",
+      "patch_id": "P0"
+    },
+    {
+      "source": "example/couple1",
+      "target": "maintenance/after-coupling/P1",
+      "kind": "quantum",
+      "patch_id": "P1"
+    },
+    {
+      "source": "example/couple2",
+      "target": "maintenance/after-coupling/P2",
+      "kind": "quantum",
+      "patch_id": "P2"
+    },
+    {
+      "source": "example/couple3",
+      "target": "maintenance/after-coupling/P3",
+      "kind": "quantum",
+      "patch_id": "P3"
+    }
+  ],
+  "result_types": {
+    "maintenance/entry/P0/x0": "bit",
+    "maintenance/entry/P0/x1": "bit",
+    "maintenance/entry/P0/x2": "bit",
+    "maintenance/entry/P0/x3": "bit",
+    "maintenance/entry/P0/z0": "bit",
+    "maintenance/entry/P0/z1": "bit",
+    "maintenance/entry/P0/z2": "bit",
+    "maintenance/entry/P0/z3": "bit",
+    "maintenance/entry/P1/x0": "bit",
+    "maintenance/entry/P1/x1": "bit",
+    "maintenance/entry/P1/x2": "bit",
+    "maintenance/entry/P1/x3": "bit",
+    "maintenance/entry/P1/z0": "bit",
+    "maintenance/entry/P1/z1": "bit",
+    "maintenance/entry/P1/z2": "bit",
+    "maintenance/entry/P1/z3": "bit",
+    "maintenance/entry/P2/x0": "bit",
+    "maintenance/entry/P2/x1": "bit",
+    "maintenance/entry/P2/x2": "bit",
+    "maintenance/entry/P2/x3": "bit",
+    "maintenance/entry/P2/z0": "bit",
+    "maintenance/entry/P2/z1": "bit",
+    "maintenance/entry/P2/z2": "bit",
+    "maintenance/entry/P2/z3": "bit",
+    "maintenance/entry/P3/x0": "bit",
+    "maintenance/entry/P3/x1": "bit",
+    "maintenance/entry/P3/x2": "bit",
+    "maintenance/entry/P3/x3": "bit",
+    "maintenance/entry/P3/z0": "bit",
+    "maintenance/entry/P3/z1": "bit",
+    "maintenance/entry/P3/z2": "bit",
+    "maintenance/entry/P3/z3": "bit",
+    "maintenance/after-coupling/P0/x0": "bit",
+    "maintenance/after-coupling/P0/x1": "bit",
+    "maintenance/after-coupling/P0/x2": "bit",
+    "maintenance/after-coupling/P0/x3": "bit",
+    "maintenance/after-coupling/P0/z0": "bit",
+    "maintenance/after-coupling/P0/z1": "bit",
+    "maintenance/after-coupling/P0/z2": "bit",
+    "maintenance/after-coupling/P0/z3": "bit",
+    "maintenance/after-coupling/P1/x0": "bit",
+    "maintenance/after-coupling/P1/x1": "bit",
+    "maintenance/after-coupling/P1/x2": "bit",
+    "maintenance/after-coupling/P1/x3": "bit",
+    "maintenance/after-coupling/P1/z0": "bit",
+    "maintenance/after-coupling/P1/z1": "bit",
+    "maintenance/after-coupling/P1/z2": "bit",
+    "maintenance/after-coupling/P1/z3": "bit",
+    "maintenance/after-coupling/P2/x0": "bit",
+    "maintenance/after-coupling/P2/x1": "bit",
+    "maintenance/after-coupling/P2/x2": "bit",
+    "maintenance/after-coupling/P2/x3": "bit",
+    "maintenance/after-coupling/P2/z0": "bit",
+    "maintenance/after-coupling/P2/z1": "bit",
+    "maintenance/after-coupling/P2/z2": "bit",
+    "maintenance/after-coupling/P2/z3": "bit",
+    "maintenance/after-coupling/P3/x0": "bit",
+    "maintenance/after-coupling/P3/x1": "bit",
+    "maintenance/after-coupling/P3/x2": "bit",
+    "maintenance/after-coupling/P3/x3": "bit",
+    "maintenance/after-coupling/P3/z0": "bit",
+    "maintenance/after-coupling/P3/z1": "bit",
+    "maintenance/after-coupling/P3/z2": "bit",
+    "maintenance/after-coupling/P3/z3": "bit"
+  },
+  "source_coverage": {},
+  "source_program_ref": null,
+  "branch_global_phases": [],
+  "resource_policy": {
+    "magic_initial_ready_inventory": 0,
+    "magic_factory_count": 1,
+    "max_ready_magic_outputs": 1,
+    "protocol": "single-level-15-to-1",
+    "supply_status": "requires_R3_factory_and_R5_lifecycle"
+  },
+  "dependency_policy": "typed_semantic_dependencies_with_audited_serialization_relaxation",
+  "source_dependency_audit": [],
+  "engineering_validation": "pending_R6",
+  "user_visual_acceptance": "pending",
+  "input_hashes": {
+    "logical_source": null,
+    "semantic_graph": "1521bf0837e6e223014af52f394beb07f52e23a5a0b71615fba1d90e32349ef0"
+  },
+  "operation_counts": {
+    "CX": 3,
+    "CZ": 1,
+    "SE": 8
+  },
+  "patch_interaction_graph": {
+    "schema_version": "PatchInteractionGraph/0.1.0",
+    "artifact_id": "logical-dag-1521bf0837e6e223014a-interactions",
+    "provenance": {
+      "owner": "R2",
+      "task_id": "T204",
+      "logical_dag_id": "logical-dag-1521bf0837e6e223014a"
+    },
+    "execution_kind": "compile_plan",
+    "quantum_state_simulated": false,
+    "hardware_executed": false,
+    "loss_enabled": false,
+    "patch_ids": [
+      "P0",
+      "P1",
+      "P2",
+      "P3"
+    ],
+    "weight_semantics": "static_potential_two_patch_call_count_no_fake_branch_prediction",
+    "edges": [
+      {
+        "patches": [
+          "P0",
+          "P2"
+        ],
+        "weight": 1,
+        "interactions": [
+          {
+            "node_id": "example/couple2",
+            "operation": "CX",
+            "patch_operands": {
+              "control": "P0",
+              "target": "P2"
+            },
+            "condition": null,
+            "source_ids": [
+              "patch-example:2"
+            ]
+          }
+        ]
+      },
+      {
+        "patches": [
+          "P0",
+          "P3"
+        ],
+        "weight": 2,
+        "interactions": [
+          {
+            "node_id": "example/couple0",
+            "operation": "CX",
+            "patch_operands": {
+              "control": "P0",
+              "target": "P3"
+            },
+            "condition": null,
+            "source_ids": [
+              "patch-example:0"
+            ]
+          },
+          {
+            "node_id": "example/couple3",
+            "operation": "CX",
+            "patch_operands": {
+              "control": "P0",
+              "target": "P3"
+            },
+            "condition": null,
+            "source_ids": [
+              "patch-example:3"
+            ]
+          }
+        ]
+      },
+      {
+        "patches": [
+          "P1",
+          "P2"
+        ],
+        "weight": 1,
+        "interactions": [
+          {
+            "node_id": "example/couple1",
+            "operation": "CZ",
+            "patch_operands": {
+              "left": "P1",
+              "right": "P2"
+            },
+            "condition": null,
+            "source_ids": [
+              "patch-example:1"
+            ]
+          }
+        ]
+      }
+    ],
+    "placement_owner": "R4",
+    "coordinates_assigned": false,
+    "resource_patch_extensions_required": false,
+    "resource_demands": [],
+    "patch_scope": "declared_algorithm_patches_resource_strategy_patches_require_R3_binding"
+  }
+}

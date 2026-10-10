@@ -1,0 +1,933 @@
+{
+  "schema_version": "physical-program/0.2.0-draft",
+  "artifact_id": "logical-primitive-logical_cx-10adb0effc094084",
+  "producer_version": "na_pipeline.qec.logical_primitives/0.1.0",
+  "provenance": {
+    "producer": "R3",
+    "task_id": "T303",
+    "kb_revision": "kb-0005",
+    "planning_revision": "plan-0007",
+    "interface_version": "IF-STRATEGY-001/0.1.0",
+    "fixture": false,
+    "binding_scope": "formal"
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "device_ref": null,
+  "device_ref_reason": "R4 resolves R1 full-cycle profiles",
+  "qubits": [
+    {
+      "id": "control/d0",
+      "block_id": "control",
+      "local_id": "d0",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/d1",
+      "block_id": "control",
+      "local_id": "d1",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/d2",
+      "block_id": "control",
+      "local_id": "d2",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/d3",
+      "block_id": "control",
+      "local_id": "d3",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/d4",
+      "block_id": "control",
+      "local_id": "d4",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/d5",
+      "block_id": "control",
+      "local_id": "d5",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/d6",
+      "block_id": "control",
+      "local_id": "d6",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/d7",
+      "block_id": "control",
+      "local_id": "d7",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/d8",
+      "block_id": "control",
+      "local_id": "d8",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/x0",
+      "block_id": "control",
+      "local_id": "x0",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/x1",
+      "block_id": "control",
+      "local_id": "x1",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/x2",
+      "block_id": "control",
+      "local_id": "x2",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/x3",
+      "block_id": "control",
+      "local_id": "x3",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/z0",
+      "block_id": "control",
+      "local_id": "z0",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/z1",
+      "block_id": "control",
+      "local_id": "z1",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/z2",
+      "block_id": "control",
+      "local_id": "z2",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "control/z3",
+      "block_id": "control",
+      "local_id": "z3",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/d0",
+      "block_id": "target",
+      "local_id": "d0",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/d1",
+      "block_id": "target",
+      "local_id": "d1",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/d2",
+      "block_id": "target",
+      "local_id": "d2",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/d3",
+      "block_id": "target",
+      "local_id": "d3",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/d4",
+      "block_id": "target",
+      "local_id": "d4",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/d5",
+      "block_id": "target",
+      "local_id": "d5",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/d6",
+      "block_id": "target",
+      "local_id": "d6",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/d7",
+      "block_id": "target",
+      "local_id": "d7",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/d8",
+      "block_id": "target",
+      "local_id": "d8",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/x0",
+      "block_id": "target",
+      "local_id": "x0",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/x1",
+      "block_id": "target",
+      "local_id": "x1",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/x2",
+      "block_id": "target",
+      "local_id": "x2",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/x3",
+      "block_id": "target",
+      "local_id": "x3",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/z0",
+      "block_id": "target",
+      "local_id": "z0",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/z1",
+      "block_id": "target",
+      "local_id": "z1",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/z2",
+      "block_id": "target",
+      "local_id": "z2",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "target/z3",
+      "block_id": "target",
+      "local_id": "z3",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    }
+  ],
+  "templates": {
+    "s17.logical.logical_cx.default.v1": {
+      "template_id": "s17.logical.logical_cx.default.v1",
+      "qubits": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "t0",
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7",
+        "t8"
+      ],
+      "body": [
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_0",
+            "kind": "gate",
+            "qubits": [
+              "c0",
+              "t0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_1",
+            "kind": "gate",
+            "qubits": [
+              "c1",
+              "t1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_2",
+            "kind": "gate",
+            "qubits": [
+              "c2",
+              "t2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_3",
+            "kind": "gate",
+            "qubits": [
+              "c3",
+              "t3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_4",
+            "kind": "gate",
+            "qubits": [
+              "c4",
+              "t4"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_4"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_5",
+            "kind": "gate",
+            "qubits": [
+              "c5",
+              "t5"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_5"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_6",
+            "kind": "gate",
+            "qubits": [
+              "c6",
+              "t6"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_6"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_7",
+            "kind": "gate",
+            "qubits": [
+              "c7",
+              "t7"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_7"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_8",
+            "kind": "gate",
+            "qubits": [
+              "c8",
+              "t8"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_8"
+            ],
+            "condition": null
+          }
+        }
+      ],
+      "metadata": {
+        "protocol": "surface17",
+        "protocol_version": "0.1.0",
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1",
+        "orientation": "x_vertical_z_horizontal",
+        "boundary": "standalone_patch",
+        "stage": "logical_cx",
+        "gate_set": [
+          "H",
+          "X",
+          "Z",
+          "CX",
+          "MZ",
+          "RESET_Z"
+        ],
+        "sources": [
+          "R8-FACT-013@0.1.0",
+          "R8-FACT-017@0.1.0",
+          "https://arxiv.org/html/1404.3747v2#S2.T2"
+        ],
+        "pairing": "matching_data_index",
+        "direction": "control_to_target",
+        "preconditions": [
+          "same_code_convention",
+          "prepared_compatible_patches"
+        ],
+        "logical_primitive": {
+          "name": "logical_cx",
+          "params": {},
+          "version": "0.1.0"
+        }
+      }
+    }
+  },
+  "body": [
+    {
+      "kind": "call",
+      "id": "primitive",
+      "template_id": "s17.logical.logical_cx.default.v1",
+      "bindings": {
+        "c0": "control/d0",
+        "c1": "control/d1",
+        "c2": "control/d2",
+        "c3": "control/d3",
+        "c4": "control/d4",
+        "c5": "control/d5",
+        "c6": "control/d6",
+        "c7": "control/d7",
+        "c8": "control/d8",
+        "t0": "target/d0",
+        "t1": "target/d1",
+        "t2": "target/d2",
+        "t3": "target/d3",
+        "t4": "target/d4",
+        "t5": "target/d5",
+        "t6": "target/d6",
+        "t7": "target/d7",
+        "t8": "target/d8"
+      },
+      "repeat": 1,
+      "source_ids": [
+        "R3:T303:logical_cx",
+        "surface17-circuit-convention/1"
+      ]
+    }
+  ],
+  "strategy_contract": {
+    "schema_version": "strategy_contract/0.1",
+    "producer_version": "0.1.0",
+    "operation": {
+      "name": "logical_cx",
+      "semantic_version": "1.0.0",
+      "params": {},
+      "formal_operands": [
+        "control",
+        "target"
+      ],
+      "direction": {
+        "control": "control",
+        "target": "target"
+      },
+      "encoding": {
+        "family": "rotated_surface",
+        "distance": 3,
+        "orientation": "x_vertical_z_horizontal",
+        "logical_convention": "surface17-row-major-x-vertical/1",
+        "logical_x": [
+          "d0",
+          "d3",
+          "d6"
+        ],
+        "logical_z": [
+          "d0",
+          "d1",
+          "d2"
+        ]
+      },
+      "code_profile": {
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1",
+        "orientation": "x_vertical_z_horizontal"
+      },
+      "encoded_result_slots": []
+    },
+    "formal_bindings": {
+      "physical_qubits": [
+        {
+          "physical_qubit_id": "control/d0",
+          "atom_slot": "atom:control/d0",
+          "formal_block": "control",
+          "local_role": "d0"
+        },
+        {
+          "physical_qubit_id": "control/d1",
+          "atom_slot": "atom:control/d1",
+          "formal_block": "control",
+          "local_role": "d1"
+        },
+        {
+          "physical_qubit_id": "control/d2",
+          "atom_slot": "atom:control/d2",
+          "formal_block": "control",
+          "local_role": "d2"
+        },
+        {
+          "physical_qubit_id": "control/d3",
+          "atom_slot": "atom:control/d3",
+          "formal_block": "control",
+          "local_role": "d3"
+        },
+        {
+          "physical_qubit_id": "control/d4",
+          "atom_slot": "atom:control/d4",
+          "formal_block": "control",
+          "local_role": "d4"
+        },
+        {
+          "physical_qubit_id": "control/d5",
+          "atom_slot": "atom:control/d5",
+          "formal_block": "control",
+          "local_role": "d5"
+        },
+        {
+          "physical_qubit_id": "control/d6",
+          "atom_slot": "atom:control/d6",
+          "formal_block": "control",
+          "local_role": "d6"
+        },
+        {
+          "physical_qubit_id": "control/d7",
+          "atom_slot": "atom:control/d7",
+          "formal_block": "control",
+          "local_role": "d7"
+        },
+        {
+          "physical_qubit_id": "control/d8",
+          "atom_slot": "atom:control/d8",
+          "formal_block": "control",
+          "local_role": "d8"
+        },
+        {
+          "physical_qubit_id": "control/x0",
+          "atom_slot": "atom:control/x0",
+          "formal_block": "control",
+          "local_role": "x0"
+        },
+        {
+          "physical_qubit_id": "control/x1",
+          "atom_slot": "atom:control/x1",
+          "formal_block": "control",
+          "local_role": "x1"
+        },
+        {
+          "physical_qubit_id": "control/x2",
+          "atom_slot": "atom:control/x2",
+          "formal_block": "control",
+          "local_role": "x2"
+        },
+        {
+          "physical_qubit_id": "control/x3",
+          "atom_slot": "atom:control/x3",
+          "formal_block": "control",
+          "local_role": "x3"
+        },
+        {
+          "physical_qubit_id": "control/z0",
+          "atom_slot": "atom:control/z0",
+          "formal_block": "control",
+          "local_role": "z0"
+        },
+        {
+          "physical_qubit_id": "control/z1",
+          "atom_slot": "atom:control/z1",
+          "formal_block": "control",
+          "local_role": "z1"
+        },
+        {
+          "physical_qubit_id": "control/z2",
+          "atom_slot": "atom:control/z2",
+          "formal_block": "control",
+          "local_role": "z2"
+        },
+        {
+          "physical_qubit_id": "control/z3",
+          "atom_slot": "atom:control/z3",
+          "formal_block": "control",
+          "local_role": "z3"
+        },
+        {
+          "physical_qubit_id": "target/d0",
+          "atom_slot": "atom:target/d0",
+          "formal_block": "target",
+          "local_role": "d0"
+        },
+        {
+          "physical_qubit_id": "target/d1",
+          "atom_slot": "atom:target/d1",
+          "formal_block": "target",
+          "local_role": "d1"
+        },
+        {
+          "physical_qubit_id": "target/d2",
+          "atom_slot": "atom:target/d2",
+          "formal_block": "target",
+          "local_role": "d2"
+        },
+        {
+          "physical_qubit_id": "target/d3",
+          "atom_slot": "atom:target/d3",
+          "formal_block": "target",
+          "local_role": "d3"
+        },
+        {
+          "physical_qubit_id": "target/d4",
+          "atom_slot": "atom:target/d4",
+          "formal_block": "target",
+          "local_role": "d4"
+        },
+        {
+          "physical_qubit_id": "target/d5",
+          "atom_slot": "atom:target/d5",
+          "formal_block": "target",
+          "local_role": "d5"
+        },
+        {
+          "physical_qubit_id": "target/d6",
+          "atom_slot": "atom:target/d6",
+          "formal_block": "target",
+          "local_role": "d6"
+        },
+        {
+          "physical_qubit_id": "target/d7",
+          "atom_slot": "atom:target/d7",
+          "formal_block": "target",
+          "local_role": "d7"
+        },
+        {
+          "physical_qubit_id": "target/d8",
+          "atom_slot": "atom:target/d8",
+          "formal_block": "target",
+          "local_role": "d8"
+        },
+        {
+          "physical_qubit_id": "target/x0",
+          "atom_slot": "atom:target/x0",
+          "formal_block": "target",
+          "local_role": "x0"
+        },
+        {
+          "physical_qubit_id": "target/x1",
+          "atom_slot": "atom:target/x1",
+          "formal_block": "target",
+          "local_role": "x1"
+        },
+        {
+          "physical_qubit_id": "target/x2",
+          "atom_slot": "atom:target/x2",
+          "formal_block": "target",
+          "local_role": "x2"
+        },
+        {
+          "physical_qubit_id": "target/x3",
+          "atom_slot": "atom:target/x3",
+          "formal_block": "target",
+          "local_role": "x3"
+        },
+        {
+          "physical_qubit_id": "target/z0",
+          "atom_slot": "atom:target/z0",
+          "formal_block": "target",
+          "local_role": "z0"
+        },
+        {
+          "physical_qubit_id": "target/z1",
+          "atom_slot": "atom:target/z1",
+          "formal_block": "target",
+          "local_role": "z1"
+        },
+        {
+          "physical_qubit_id": "target/z2",
+          "atom_slot": "atom:target/z2",
+          "formal_block": "target",
+          "local_role": "z2"
+        },
+        {
+          "physical_qubit_id": "target/z3",
+          "atom_slot": "atom:target/z3",
+          "formal_block": "target",
+          "local_role": "z3"
+        }
+      ],
+      "result_slots": [],
+      "source_ids": [
+        "R3:surface17-row-major-x-vertical/1:cx_0",
+        "R3:T303:logical_cx",
+        "surface17-circuit-convention/1",
+        "primitive",
+        "s17.logical.logical_cx.default.v1",
+        "logical-primitive-logical_cx-10adb0effc094084",
+        "primitive/r0/cx_0",
+        "R3:surface17-row-major-x-vertical/1:cx_1",
+        "primitive/r0/cx_1",
+        "R3:surface17-row-major-x-vertical/1:cx_2",
+        "primitive/r0/cx_2",
+        "R3:surface17-row-major-x-vertical/1:cx_3",
+        "primitive/r0/cx_3",
+        "R3:surface17-row-major-x-vertical/1:cx_4",
+        "primitive/r0/cx_4",
+        "R3:surface17-row-major-x-vertical/1:cx_5",
+        "primitive/r0/cx_5",
+        "R3:surface17-row-major-x-vertical/1:cx_6",
+        "primitive/r0/cx_6",
+        "R3:surface17-row-major-x-vertical/1:cx_7",
+        "primitive/r0/cx_7",
+        "R3:surface17-row-major-x-vertical/1:cx_8",
+        "primitive/r0/cx_8"
+      ]
+    },
+    "entry": {
+      "layout_profile_role": "patch_home",
+      "layout_profile_id": "patch_home",
+      "formal_blocks": [
+        "control",
+        "target"
+      ],
+      "orientation": "x_vertical_z_horizontal",
+      "carrier": "SLM",
+      "occupancy": "all_17_members_present_per_patch",
+      "aod_occupancy": "empty_for_bound_members",
+      "requires_encoded_data": true,
+      "allows_data_destruction": false,
+      "requires_lifecycle_authorization": "live_encoded_block"
+    },
+    "exit": {
+      "layout_profile_role": "patch_home",
+      "layout_profile_id": "patch_home",
+      "formal_blocks": [
+        "control",
+        "target"
+      ],
+      "orientation": "x_vertical_z_horizontal",
+      "carrier": "SLM",
+      "occupancy": "same_carriers_as_entry",
+      "aod_occupancy": "empty_for_bound_members",
+      "data_effect": "logical_cx",
+      "ancilla_effect": "preserved",
+      "results_effect": "no_results",
+      "frame_effect": "no_decoder_update",
+      "requires_completed_actions_and_published_results": true,
+      "home_relation": "same_formal_home_as_entry",
+      "next_local_primitive": "syndrome_round"
+    },
+    "groups": [],
+    "physical_input_hash": "10adb0effc094084682a9f13190ffc7870f46ae28e2528f89940532967d49045",
+    "qec_source_sha256": {
+      "surface17.py": "fdd7b0238a95979cd590e5c0e8c0567d78f26ae4b79b437eb056716b76eb8d2a",
+      "program.py": "76c374bb13838487620508c1cdde88d9ccd66e781469874e44005968e80dfb36",
+      "logical_primitives.py": "401a82367d13f96962b451fe31b227007fc58d6a0a9cadd3b5cc0b6a7ccb48dd"
+    },
+    "profile_resolution": {
+      "owner": "R1_R4",
+      "status": "requires_device_profile_binding",
+      "grouped_profile_schema": "grouped-device-profile/0.1",
+      "grouped_profile_id": "surface17-grouped-v1",
+      "producer_contract": "R1-GROUP-IF-001/0.1.0",
+      "readout_profile_pointer": "/grouped_profile/readout",
+      "cache_must_bind": [
+        "layout_profiles",
+        "group_profiles",
+        "device",
+        "enola_pin",
+        "compiler_rules"
+      ]
+    },
+    "unsupported_conditions": [
+      "whole_call_condition",
+      "non_d3_or_changed_encoding",
+      "mirrored_or_rotated_convention",
+      "missing_carrier",
+      "unknown_layout_or_group_profile",
+      "real_decoder_noise_loss"
+    ],
+    "protocol_source": [
+      "R3-QEC-001/0.1.0",
+      "IF-PATCH-GROUP-001/0.2.0",
+      "R8-FACT-013@0.1.0",
+      "R8-FACT-017@0.1.0"
+    ],
+    "qualification": {
+      "physical_input": "implemented",
+      "compiled_strategy": "not_qualified",
+      "enola": "not_asserted_by_R3",
+      "runtime": "not_qualified",
+      "independent_validation": "pending",
+      "user_visual": "pending"
+    },
+    "contract_hash": "d67c4f5abecd98889963b732f8d13db97872750a21d66a97f9944707849474c0"
+  },
+  "input_hashes": {
+    "physical_input": "10adb0effc094084682a9f13190ffc7870f46ae28e2528f89940532967d49045",
+    "strategy_contract": "d67c4f5abecd98889963b732f8d13db97872750a21d66a97f9944707849474c0"
+  }
+}

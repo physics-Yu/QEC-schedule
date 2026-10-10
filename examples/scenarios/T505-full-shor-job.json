@@ -1,0 +1,30 @@
+{
+  "schema_version": "r7-server-job/0.2",
+  "name": "r5-full-shor15-dag-phase64",
+  "purpose_id": "shor15-complete-two-level-dag-fake-phase64",
+  "stage_kind": "full_shor",
+  "argv": [
+    "{python}",
+    "examples/scenarios/run_full_shor_session.py",
+    "--world",
+    "examples/atom/t405/resource-world-server-v1/world.json.gz",
+    "--out",
+    "scripts/outputs/T704/run",
+    "--phase-value",
+    "64",
+    "--stage-budget-seconds",
+    "3600",
+    "--factory-scenarios",
+    "examples/scenarios/T505-reject-then-accept.json"
+  ],
+  "output_roots": [
+    "scripts/outputs/T704/run"
+  ],
+  "budget": {
+    "wall_seconds": 86400,
+    "memory_gib": 32,
+    "parallelism": 1,
+    "search_expansions": 20000000
+  },
+  "budget_rationale": "For R0/R7 unified dispatch after current compiler/runtime qualification, not an R5 dispatch authorization. Retain all 2102 LogicalDAG nodes, all eight rounds and the complete R4 205-carrier placement. Explicit fake phase scenario 01000000 is configured through physical measurement parity inputs; no public phase output or factors are injected. A static capacity projection for this scenario has 157 execute candidates, including 35 T/TDG requests, and 1945 conditional skips; actual branch decisions still wait for published results. The existing full representative factory job uses a frozen older direct compiler and continues independently; this new whole-algorithm job uses the current R4 CompiledPhysicalStrategy cache with new contexts, namespaces and epochs, plus immutable event and logical-decision chunks. Allocate 24 hours, 32 GiB sampled tree RSS, one process, 3600 seconds and 100000 source operations per complete physical window. This expands beyond measured multi-minute 936-1312-operation first factory stages and allows first compilation of multiple live-target strategies before reuse. Search count is recorded, not claimed enforced by the searcher; wall/operation budgets are enforced. R7 must perform fresh CPU/cgroup/memory/disk checks and inspect its active index before dispatch. Checkpoints preserve complete prefixes; exhaustion is incomplete, never an infeasibility proof or success. Compiled strategy import across a restarted process still needs the R4 public restore API; no runtime values/tokens/acceptance may be imported as templates. The first unconditional source T/TDG node logical/round1/multiply/swap0/g03 has exactly two configured attempts: first terminal parities 1000, then 0000. These configure physical measurements only; actual all_zero selects rejection, actual reject_cleanup must complete before a fresh epoch, and the same logical parent can complete only after the second actual consumption. Thus capacity includes one extra rejected factory attempt. Other source requests each have one all-zero terminal scenario."
+}

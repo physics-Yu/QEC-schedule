@@ -1,0 +1,50 @@
+{
+  "schema_version": "enola-source-pin/0.1.0",
+  "repository": "https://github.com/UCLA-VAST/Enola",
+  "commit": "2944dbf4e163e8d2eeeec607add0d9139edce689",
+  "source_root": "third_party/enola/upstream",
+  "source_selection": [
+    "enola/**",
+    "LICENSE",
+    "README.md",
+    "run.py"
+  ],
+  "omitted": "upstream examples, videos and fidelity reports; not required by core imports",
+  "source_files_sha256": {
+    "LICENSE": "a8663338fce27cf0e5da614f04d0b72e7559b31bcd41b6b115572d1d8df985f0",
+    "README.md": "3b5492368947a7e82ec2ff2ea7d0ebc7ac0a005de3814323e6acb542403eb6f5",
+    "enola/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "enola/enola.py": "f07dc426c15018ae8bcc6aadc28d0d95f8cf45ec8f71b435685da51326f32434",
+    "enola/placer/placer.py": "d256c84490bd72d525515f24acb081d7b21bcd5f7bbc31302a3bbf79a16997cf",
+    "enola/placer/placer_parital_mapping.py": "97bd63a02257390f7c9d39cf912fc4f88937075168bdd084806fd5d9587355d6",
+    "enola/router/codegen.py": "1b2882b8cafdc7a117c19eb11d0b95e6c6400ee2558e4c89f5be1048026ea497",
+    "enola/router/router.py": "046e6f72102b9c2200c3a30e919806527720b5b5da80b5e09605d1fa875e686a",
+    "enola/router/router_mis.py": "a75e92353a74b6f3597a33b214d358b0782de2fa60400362c5e1967646cecb82",
+    "enola/scheduler/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "enola/scheduler/custom_types.py": "4dc0c0935386382e962bf6a2969d8de6bbbe4eb78ec15adc01fbe640e8c17ae6",
+    "enola/scheduler/gate_scheduler.py": "e5a77fb3980c4425f9aea5796d1fd28339359a14516fd4c9a5df25a26023d1e4",
+    "enola/scheduler/graph.py": "1add8e7dd502bf32b15efb37a84e0af5d93a19fcdf8c5cca606fe78ebd03230a",
+    "enola/scheduler/sequence_view.py": "e8b41ec335eae1d542aa73e5554ce5957b0332b16838aa30a0ffb5fcb73c816f",
+    "run.py": "f98ae6f5dc6aa260bd04048e3af3419a8c2da1552e2360b10ff2a2c0fbfa437a"
+  },
+  "source_tree_sha256": "6641c56ee05f0da134d5aa58bed53549be61d8c88e335d0150680c125dcb75b5",
+  "license_files": [
+    {
+      "path": "LICENSE",
+      "sha256": "a8663338fce27cf0e5da614f04d0b72e7559b31bcd41b6b115572d1d8df985f0",
+      "declared_license": "BSD-3-Clause",
+      "copyright": "2024 UCLA VAST Lab"
+    }
+  ],
+  "attribution": "Upstream README credits OLSQ-DPQA for codegen and Misra-Gries-coloring for scheduler. Original source, notice and README preserved.",
+  "dependencies_lock": "third_party/enola/requirements.lock",
+  "dependencies_lock_sha256": "3b5436fe4c5255a3d9798e0e4bd5640d7f4fb150467b5e27eea2c554e985fe00",
+  "dependencies": {
+    "networkx": "3.5",
+    "rustworkx": "0.17.1",
+    "numpy": "2.3.5"
+  },
+  "verification_status": "git_blob_identity_verified_environment_pending",
+  "created_at_utc": "2026-10-06T12:05:02.723903+00:00",
+  "integration_qualified": false
+}

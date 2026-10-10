@@ -1,0 +1,15 @@
+{
+  "scope": "broadcast_candidate_geometry_only_not_end_to_end_speedup",
+  "atoms": 205,
+  "candidate_trials": 400,
+  "all_pair_lists_equal": true,
+  "full_pair_scan_seconds": 0.9327495000325143,
+  "exact_changed_endpoint_seconds": 0.06420009990688413,
+  "ratio": 14.528785802286519,
+  "input_byte_sha256": "2d1cf03843e0b5b91594b51aed263864687a31a70fe4f32f9f0f7ee48fe26512",
+  "source_sha256": {
+    "physical_window.py": "6cba9b673ec1a90af25778c384ae3686326ffe2589b3bba5466cfc0e3b5f07b9",
+    "geometry.py": "25f494028ada2ec49c00ac881face147edfc2d1e351d670d1192e9925f8cd3c8",
+    "strategy_compile.py": "4a114e863cd507b9759556b2ce37dd54e49fa983039f6bb93fe7f225c39ba071"
+  }
+}

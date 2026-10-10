@@ -1,0 +1,8 @@
+{
+  "schema_version": "r7-server-job/0.1",
+  "name": "r5-live-factory-complete-protocol",
+  "stage_kind": "factory_t",
+  "argv": ["{python}", "examples/scenarios/run_factory_session.py", "--world", "examples/atom/t405/resource-world-server-v1/world.json.gz", "--out", "scripts/outputs/T704/run", "--stage-budget-seconds", "3600"],
+  "budget": {"wall_seconds": 14400, "memory_gib": 16, "parallelism": 1, "search_expansions": 2000000},
+  "budget_rationale": "Complete R3 representative 15-to-1 T protocol including all executed adaptive stages, accepted/rejected path, same-carrier output conversion, real live-data consumption and cleanup, in the R4 server-placed 205-carrier world. This is a representative route, not full Shor completion. R5 four-patch 12-node first integration used 307 seconds locally including 5 compile windows; each factory stage receives 3600 seconds and 100000 operation capacity, with 4 hours total and 16 GiB sampled process-tree RSS, single process. Search expansions are recorded by R7 and are not claimed enforced by the physical compiler; stage wall/operation limits are enforced. Persistent stage checkpoints preserve prefixes on exhaustion. Measure stage costs before scaling all 817 static T/TDG requests; do not truncate a physical stage or call budget exhaustion infeasibility. Full 205-carrier placement is reused, not recomputed."
+}

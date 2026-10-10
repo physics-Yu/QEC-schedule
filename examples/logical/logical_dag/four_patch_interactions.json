@@ -1,0 +1,102 @@
+{
+  "schema_version": "PatchInteractionGraph/0.1.0",
+  "artifact_id": "logical-dag-1521bf0837e6e223014a-interactions",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T204",
+    "logical_dag_id": "logical-dag-1521bf0837e6e223014a"
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "patch_ids": [
+    "P0",
+    "P1",
+    "P2",
+    "P3"
+  ],
+  "weight_semantics": "static_potential_two_patch_call_count_no_fake_branch_prediction",
+  "edges": [
+    {
+      "patches": [
+        "P0",
+        "P2"
+      ],
+      "weight": 1,
+      "interactions": [
+        {
+          "node_id": "example/couple2",
+          "operation": "CX",
+          "patch_operands": {
+            "control": "P0",
+            "target": "P2"
+          },
+          "condition": null,
+          "source_ids": [
+            "patch-example:2"
+          ]
+        }
+      ]
+    },
+    {
+      "patches": [
+        "P0",
+        "P3"
+      ],
+      "weight": 2,
+      "interactions": [
+        {
+          "node_id": "example/couple0",
+          "operation": "CX",
+          "patch_operands": {
+            "control": "P0",
+            "target": "P3"
+          },
+          "condition": null,
+          "source_ids": [
+            "patch-example:0"
+          ]
+        },
+        {
+          "node_id": "example/couple3",
+          "operation": "CX",
+          "patch_operands": {
+            "control": "P0",
+            "target": "P3"
+          },
+          "condition": null,
+          "source_ids": [
+            "patch-example:3"
+          ]
+        }
+      ]
+    },
+    {
+      "patches": [
+        "P1",
+        "P2"
+      ],
+      "weight": 1,
+      "interactions": [
+        {
+          "node_id": "example/couple1",
+          "operation": "CZ",
+          "patch_operands": {
+            "left": "P1",
+            "right": "P2"
+          },
+          "condition": null,
+          "source_ids": [
+            "patch-example:1"
+          ]
+        }
+      ]
+    }
+  ],
+  "placement_owner": "R4",
+  "coordinates_assigned": false,
+  "resource_patch_extensions_required": false,
+  "resource_demands": [],
+  "patch_scope": "declared_algorithm_patches_resource_strategy_patches_require_R3_binding"
+}

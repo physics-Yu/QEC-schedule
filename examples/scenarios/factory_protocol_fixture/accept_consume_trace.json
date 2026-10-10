@@ -1,0 +1,1136 @@
+{
+  "schema_version": "EventTrace/0.2.0-draft",
+  "artifact_id": "trace-db36a025de063d7e35ca98c1",
+  "producer_version": "0.1.0",
+  "provenance": {
+    "producer": "na_pipeline.runtime.run",
+    "version": "0.1.0",
+    "fixture": true,
+    "scenario_provenance": {
+      "producer": "na_pipeline.runtime.make_scenario",
+      "fixture": true,
+      "description": "Explicit configured bits, not sampled outcomes"
+    }
+  },
+  "input_hashes": {
+    "atom_program": "397aebadd5fa0baafcd00d3fb47e0043ef660dc818f9f5977989b017b3cff744",
+    "scenario": "aa87dee00c64cdae3eb2aaabf0c5264e11e64a8d961ef4ed2fcc12d2a9645fd8",
+    "device": "1c436306473c9938e7febf7abceb1ebceb28a52c7c5fc6d3e5aa02bf338ccf5f"
+  },
+  "device_ref": "device:engineering-reference-v1",
+  "atom_program_ref": "runtime-fixture",
+  "scenario_ref": "scenario-runtime-fixture-0",
+  "execution_kind": "fake_event_run",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "measurement_origin": "fake",
+  "sampled": false,
+  "events": [
+    {
+      "action_id": "prep",
+      "kind": "gate",
+      "status": "completed",
+      "t_start_us": 0,
+      "t_end_us": 1,
+      "atoms": [
+        "a0"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:prep"
+      ],
+      "depends_on": [],
+      "payload": {
+        "name": "H"
+      },
+      "condition": null,
+      "condition_reads": [],
+      "reads": [],
+      "result_ids": [],
+      "state_before": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            0,
+            0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "state_after": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            0,
+            0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "result_ready_us": {}
+    },
+    {
+      "action_id": "check",
+      "kind": "measure",
+      "status": "completed",
+      "t_start_us": 0,
+      "t_end_us": 100,
+      "atoms": [
+        "a1"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:check"
+      ],
+      "depends_on": [],
+      "payload": {
+        "basis": "Z",
+        "result_id": "attempt1/check",
+        "result_ready_us": 105,
+        "origin": "fake"
+      },
+      "condition": null,
+      "condition_reads": [],
+      "reads": [],
+      "result_ids": [
+        "attempt1/check"
+      ],
+      "state_before": {
+        "a1": {
+          "atom_id": "a1",
+          "qubit_id": "q1",
+          "position_um": [
+            50,
+            1020
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "state_after": {
+        "a1": {
+          "atom_id": "a1",
+          "qubit_id": "q1",
+          "position_um": [
+            50,
+            1020
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 1,
+          "preparation_status": "measured_quantum_untracked"
+        }
+      },
+      "result_ready_us": {
+        "attempt1/check": 105
+      }
+    },
+    {
+      "action_id": "phase_conversion",
+      "kind": "gate",
+      "status": "completed",
+      "t_start_us": 106,
+      "t_end_us": 107,
+      "atoms": [
+        "a0"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:phase_conversion"
+      ],
+      "depends_on": [],
+      "payload": {
+        "name": "S"
+      },
+      "condition": null,
+      "condition_reads": [],
+      "reads": [],
+      "result_ids": [],
+      "state_before": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            0,
+            0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "state_after": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            0,
+            0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "result_ready_us": {}
+    },
+    {
+      "action_id": "pick",
+      "kind": "pickup",
+      "status": "completed",
+      "t_start_us": 107,
+      "t_end_us": 307,
+      "atoms": [
+        "a0"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:pick"
+      ],
+      "depends_on": [],
+      "payload": {
+        "aod_group": "data",
+        "row_id": "r0",
+        "column_id": "c0",
+        "from_trap_id": "slm0",
+        "to_trap_id": "dynamic",
+        "position_um": [
+          0,
+          0
+        ]
+      },
+      "condition": null,
+      "condition_reads": [],
+      "reads": [],
+      "result_ids": [],
+      "state_before": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            0,
+            0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "state_after": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            0,
+            0
+          ],
+          "carrier": "AOD",
+          "trap_id": "dynamic",
+          "aod_group": "data",
+          "row_id": "r0",
+          "column_id": "c0",
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "result_ready_us": {}
+    },
+    {
+      "action_id": "move",
+      "kind": "move",
+      "status": "completed",
+      "t_start_us": 307,
+      "t_end_us": 317,
+      "atoms": [
+        "a0"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:move"
+      ],
+      "depends_on": [],
+      "payload": {
+        "aod_group": "data",
+        "interpolation": "linear",
+        "trajectories": [
+          {
+            "atom_id": "a0",
+            "row_id": "r0",
+            "column_id": "c0",
+            "from_um": [
+              0,
+              0
+            ],
+            "to_um": [
+              10,
+              0
+            ]
+          }
+        ]
+      },
+      "condition": null,
+      "condition_reads": [],
+      "reads": [],
+      "result_ids": [],
+      "state_before": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            0,
+            0
+          ],
+          "carrier": "AOD",
+          "trap_id": "dynamic",
+          "aod_group": "data",
+          "row_id": "r0",
+          "column_id": "c0",
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "state_after": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            0
+          ],
+          "carrier": "AOD",
+          "trap_id": "dynamic",
+          "aod_group": "data",
+          "row_id": "r0",
+          "column_id": "c0",
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "result_ready_us": {}
+    },
+    {
+      "action_id": "drop",
+      "kind": "drop",
+      "status": "completed",
+      "t_start_us": 317,
+      "t_end_us": 517,
+      "atoms": [
+        "a0"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:drop"
+      ],
+      "depends_on": [],
+      "payload": {
+        "aod_group": "data",
+        "row_id": "r0",
+        "column_id": "c0",
+        "from_trap_id": "dynamic",
+        "to_trap_id": "delivery",
+        "position_um": [
+          10,
+          0
+        ]
+      },
+      "condition": null,
+      "condition_reads": [],
+      "reads": [],
+      "result_ids": [],
+      "state_before": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            0
+          ],
+          "carrier": "AOD",
+          "trap_id": "dynamic",
+          "aod_group": "data",
+          "row_id": "r0",
+          "column_id": "c0",
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "state_after": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            0
+          ],
+          "carrier": "SLM",
+          "trap_id": "delivery",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "result_ready_us": {}
+    },
+    {
+      "action_id": "couple",
+      "kind": "gate",
+      "status": "completed",
+      "t_start_us": 517,
+      "t_end_us": 518,
+      "atoms": [
+        "a0",
+        "a2"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:couple"
+      ],
+      "depends_on": [],
+      "payload": {
+        "name": "CZ",
+        "broadcast": true,
+        "zone_id": "storage_entanglement",
+        "pairs": [
+          [
+            "a0",
+            "a2"
+          ]
+        ]
+      },
+      "condition": null,
+      "condition_reads": [],
+      "reads": [],
+      "result_ids": [],
+      "state_before": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            0
+          ],
+          "carrier": "SLM",
+          "trap_id": "delivery",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        },
+        "a2": {
+          "atom_id": "a2",
+          "qubit_id": "q2",
+          "position_um": [
+            12,
+            0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "state_after": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            0
+          ],
+          "carrier": "SLM",
+          "trap_id": "delivery",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        },
+        "a2": {
+          "atom_id": "a2",
+          "qubit_id": "q2",
+          "position_um": [
+            12,
+            0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "result_ready_us": {}
+    },
+    {
+      "action_id": "pick_readout",
+      "kind": "pickup",
+      "status": "completed",
+      "t_start_us": 518,
+      "t_end_us": 718,
+      "atoms": [
+        "a0"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:pick_readout"
+      ],
+      "depends_on": [],
+      "payload": {
+        "aod_group": "data",
+        "row_id": "r0",
+        "column_id": "c0",
+        "from_trap_id": "delivery",
+        "to_trap_id": "dynamic",
+        "position_um": [
+          10,
+          0
+        ]
+      },
+      "condition": null,
+      "condition_reads": [],
+      "reads": [],
+      "result_ids": [],
+      "state_before": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            0
+          ],
+          "carrier": "SLM",
+          "trap_id": "delivery",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "state_after": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            0
+          ],
+          "carrier": "AOD",
+          "trap_id": "dynamic",
+          "aod_group": "data",
+          "row_id": "r0",
+          "column_id": "c0",
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "result_ready_us": {}
+    },
+    {
+      "action_id": "move_readout",
+      "kind": "move",
+      "status": "completed",
+      "t_start_us": 718,
+      "t_end_us": 1738,
+      "atoms": [
+        "a0"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:move_readout"
+      ],
+      "depends_on": [],
+      "payload": {
+        "aod_group": "data",
+        "interpolation": "linear",
+        "trajectories": [
+          {
+            "atom_id": "a0",
+            "row_id": "r0",
+            "column_id": "c0",
+            "from_um": [
+              10,
+              0
+            ],
+            "to_um": [
+              10,
+              1020
+            ]
+          }
+        ]
+      },
+      "condition": null,
+      "condition_reads": [],
+      "reads": [],
+      "result_ids": [],
+      "state_before": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            0
+          ],
+          "carrier": "AOD",
+          "trap_id": "dynamic",
+          "aod_group": "data",
+          "row_id": "r0",
+          "column_id": "c0",
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "state_after": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            1020
+          ],
+          "carrier": "AOD",
+          "trap_id": "dynamic",
+          "aod_group": "data",
+          "row_id": "r0",
+          "column_id": "c0",
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "result_ready_us": {}
+    },
+    {
+      "action_id": "drop_readout",
+      "kind": "drop",
+      "status": "completed",
+      "t_start_us": 1738,
+      "t_end_us": 1938,
+      "atoms": [
+        "a0"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:drop_readout"
+      ],
+      "depends_on": [],
+      "payload": {
+        "aod_group": "data",
+        "row_id": "r0",
+        "column_id": "c0",
+        "from_trap_id": "dynamic",
+        "to_trap_id": "output_readout",
+        "position_um": [
+          10,
+          1020
+        ]
+      },
+      "condition": null,
+      "condition_reads": [],
+      "reads": [],
+      "result_ids": [],
+      "state_before": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            1020
+          ],
+          "carrier": "AOD",
+          "trap_id": "dynamic",
+          "aod_group": "data",
+          "row_id": "r0",
+          "column_id": "c0",
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "state_after": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            1020
+          ],
+          "carrier": "SLM",
+          "trap_id": "output_readout",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "result_ready_us": {}
+    },
+    {
+      "action_id": "out",
+      "kind": "measure",
+      "status": "completed",
+      "t_start_us": 1938,
+      "t_end_us": 2038,
+      "atoms": [
+        "a0"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:out"
+      ],
+      "depends_on": [],
+      "payload": {
+        "basis": "Z",
+        "result_id": "attempt1/consume",
+        "result_ready_us": 2043,
+        "origin": "fake"
+      },
+      "condition": null,
+      "condition_reads": [],
+      "reads": [],
+      "result_ids": [
+        "attempt1/consume"
+      ],
+      "state_before": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            1020
+          ],
+          "carrier": "SLM",
+          "trap_id": "output_readout",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "state_after": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            1020
+          ],
+          "carrier": "SLM",
+          "trap_id": "output_readout",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 1,
+          "preparation_status": "measured_quantum_untracked"
+        }
+      },
+      "result_ready_us": {
+        "attempt1/consume": 2043
+      }
+    },
+    {
+      "action_id": "correction",
+      "kind": "gate",
+      "status": "completed",
+      "t_start_us": 2044,
+      "t_end_us": 2045,
+      "atoms": [
+        "a2"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:correction"
+      ],
+      "depends_on": [],
+      "payload": {
+        "name": "X"
+      },
+      "condition": {
+        "bit": "attempt1/consume",
+        "equals": 1
+      },
+      "condition_reads": [
+        {
+          "result_id": "attempt1/consume",
+          "value": 1,
+          "origin": "fake",
+          "ready_us": 2043,
+          "action_id": "out"
+        }
+      ],
+      "reads": [],
+      "result_ids": [],
+      "state_before": {
+        "a2": {
+          "atom_id": "a2",
+          "qubit_id": "q2",
+          "position_um": [
+            12,
+            0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "state_after": {
+        "a2": {
+          "atom_id": "a2",
+          "qubit_id": "q2",
+          "position_um": [
+            12,
+            0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 0,
+          "preparation_status": "unspecified"
+        }
+      },
+      "result_ready_us": {}
+    },
+    {
+      "action_id": "reset_out",
+      "kind": "reset",
+      "status": "completed",
+      "t_start_us": 2045,
+      "t_end_us": 2055,
+      "atoms": [
+        "a0"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:reset_out"
+      ],
+      "depends_on": [],
+      "payload": {
+        "state": 0
+      },
+      "condition": null,
+      "condition_reads": [],
+      "reads": [],
+      "result_ids": [],
+      "state_before": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            1020
+          ],
+          "carrier": "SLM",
+          "trap_id": "output_readout",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 1,
+          "preparation_status": "measured_quantum_untracked"
+        }
+      },
+      "state_after": {
+        "a0": {
+          "atom_id": "a0",
+          "qubit_id": "q0",
+          "position_um": [
+            10,
+            1020
+          ],
+          "carrier": "SLM",
+          "trap_id": "output_readout",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 1,
+          "preparation_status": "reset_0_quantum_untracked"
+        }
+      },
+      "result_ready_us": {}
+    },
+    {
+      "action_id": "reset_check",
+      "kind": "reset",
+      "status": "completed",
+      "t_start_us": 2045,
+      "t_end_us": 2055,
+      "atoms": [
+        "a1"
+      ],
+      "resources": [],
+      "source_ids": [
+        "fixture:reset_check"
+      ],
+      "depends_on": [],
+      "payload": {
+        "state": 0
+      },
+      "condition": null,
+      "condition_reads": [],
+      "reads": [],
+      "result_ids": [],
+      "state_before": {
+        "a1": {
+          "atom_id": "a1",
+          "qubit_id": "q1",
+          "position_um": [
+            50,
+            1020
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 0,
+          "measurement_count": 1,
+          "preparation_status": "measured_quantum_untracked"
+        }
+      },
+      "state_after": {
+        "a1": {
+          "atom_id": "a1",
+          "qubit_id": "q1",
+          "position_um": [
+            50,
+            1020
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null,
+          "reset_epoch": 1,
+          "measurement_count": 1,
+          "preparation_status": "reset_0_quantum_untracked"
+        }
+      },
+      "result_ready_us": {}
+    }
+  ],
+  "results": {
+    "attempt1/check": {
+      "result_id": "attempt1/check",
+      "action_id": "check",
+      "value": 0,
+      "origin": "fake",
+      "ready_us": 105,
+      "derivation": "scenario",
+      "available_us": 105
+    },
+    "attempt1/consume": {
+      "result_id": "attempt1/consume",
+      "action_id": "out",
+      "value": 1,
+      "origin": "fake",
+      "ready_us": 2043,
+      "derivation": "scenario",
+      "available_us": 2043
+    }
+  },
+  "final_state": {
+    "time_us": 2055,
+    "atoms": [
+      {
+        "atom_id": "a0",
+        "qubit_id": "q0",
+        "position_um": [
+          10,
+          1020
+        ],
+        "carrier": "SLM",
+        "trap_id": "output_readout",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "reset_epoch": 1,
+        "measurement_count": 1,
+        "preparation_status": "reset_0_quantum_untracked"
+      },
+      {
+        "atom_id": "a1",
+        "qubit_id": "q1",
+        "position_um": [
+          50,
+          1020
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm1",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "reset_epoch": 1,
+        "measurement_count": 1,
+        "preparation_status": "reset_0_quantum_untracked"
+      },
+      {
+        "atom_id": "a2",
+        "qubit_id": "q2",
+        "position_um": [
+          12,
+          0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm2",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      }
+    ],
+    "slm_traps": [
+      {
+        "trap_id": "slm0",
+        "position_um": [
+          0,
+          0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm1",
+        "position_um": [
+          50,
+          1020
+        ],
+        "zone_id": "measurement",
+        "occupant": "a1"
+      },
+      {
+        "trap_id": "slm2",
+        "position_um": [
+          12,
+          0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "a2"
+      },
+      {
+        "trap_id": "delivery",
+        "position_um": [
+          10,
+          0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": null
+      },
+      {
+        "trap_id": "output_readout",
+        "position_um": [
+          10,
+          1020
+        ],
+        "zone_id": "measurement",
+        "occupant": "a0"
+      }
+    ],
+    "aod_rows": [],
+    "aod_columns": []
+  },
+  "illumination_counts": {
+    "a0": 1,
+    "a1": 0,
+    "a2": 1
+  },
+  "stats": {
+    "t_start_us": 0,
+    "t_end_us": 2055,
+    "duration_us": 2055,
+    "atom_count": 3,
+    "action_count": 14,
+    "executed_action_count": 14,
+    "skipped_action_count": 0,
+    "result_count": 2,
+    "unused_scenario_result_ids": [],
+    "wall_time_s": 0.0010800999589264393
+  },
+  "scope": "T501 fixed-plan fake event execution; independent acceptance is performed by R6",
+  "unverified": [],
+  "out_of_scope": [
+    "quantum_state",
+    "noise",
+    "decoding",
+    "hardware_execution",
+    "factory_token_lifecycle",
+    "online_window_resume"
+  ]
+}

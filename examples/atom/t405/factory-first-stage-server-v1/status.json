@@ -1,0 +1,33 @@
+{
+  "scope": "full_first_factory_stage_in_complete_world",
+  "full_program_passed": false,
+  "complete_factory_protocol": false,
+  "stage": "completed_first_factory_stage_only",
+  "physical_operations": 1312,
+  "groups": 18,
+  "atoms": 205,
+  "compile": {
+    "physical_op_count": 1312,
+    "action_count": 4906,
+    "atom_count": 205,
+    "t_start_us": 0.0,
+    "t_end_us": 397375.0,
+    "duration_us": 397375.0,
+    "routing_search_count": 1248,
+    "placement_candidate_count": 40304,
+    "compile_wall_seconds": 847.1983990557492
+  },
+  "complete": true,
+  "wall_seconds": 913.668268866837,
+  "trace_stats": {
+    "t_start_us": 0,
+    "t_end_us": 397375.0,
+    "duration_us": 397375.0,
+    "action_count": 4906,
+    "completed_action_count": 4906,
+    "result_count": 144,
+    "atom_count": 205
+  },
+  "ready_magic_tokens": [],
+  "independent_validation": "pending_R6"
+}

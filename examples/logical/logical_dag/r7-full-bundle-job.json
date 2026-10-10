@@ -1,0 +1,26 @@
+{
+  "schema_version": "r7-server-job/0.1",
+  "name": "t204-complete-shor-physical-bundle",
+  "stage_kind": "representative_compile",
+  "argv": [
+    "{python}",
+    "examples/logical/probe_dag_dependencies.py",
+    "--logical", "examples/logical/logical_dag/shor15_dag.json",
+    "--full-bundle",
+    "--out", "scripts/outputs/T704/r2-full-bundle"
+  ],
+  "budget": {
+    "wall_seconds": 1800,
+    "memory_gib": 4,
+    "parallelism": 1,
+    "search_expansions": 1
+  },
+  "budget_rationale": "Complete 2102-node LogicalDAG to R3 shared PhysicalDAGBundle, preserving all eight rounds, 817 potential T requests and the 205-carrier resource declaration. No physical instances or factory retries are flattened and no circuit scope is truncated. The 1800s/4GiB admission budget includes a fresh frozen-source environment and full source/certificate checks. This job performs no placement/routing search; search_expansions=1 is recorded-only/not applicable. Physical scheduling, factory execution and independent qualification are separate subsequent stages.",
+  "required_snapshot_inputs": [
+    "examples/logical/probe_dag_dependencies.py",
+    "examples/logical/logical_dag/shor15_dag.json"
+  ],
+  "dispatch_owner": "R7",
+  "dispatch_status": "prepared_not_dispatched_by_R2",
+  "duplicate_policy": "reuse_an_existing_matching_R7_job_if_one_exists"
+}

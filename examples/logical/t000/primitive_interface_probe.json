@@ -1,0 +1,294 @@
+{
+  "schema_version": "R2R3PrimitiveFieldProbe/0.1.0",
+  "artifact_id": "T203-R3-field-probe",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T203",
+    "kb_revision": "kb-0005",
+    "fixture": false
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "scope": "actual_R2_and_R3_public_semantic_inputs_only",
+  "field_correspondence_passed": true,
+  "encoded_program_sha256": "4ba784e35d6cc3448a9ff752e036cf472d09544bea1d907e246055ffb0c21ecb",
+  "distinct_formal_physical_inputs": 4,
+  "calls": [
+    {
+      "encoded_call_id": "prepare.L0/r0",
+      "operation": "prepare",
+      "formal_physical_artifact_id": "logical-primitive-prepare-3ca6e7ff9cfbf362",
+      "formal_physical_sha256": "0706b11145608495df1f3bfe32c8c10cb8524234fee446f59323012f5cb3758d",
+      "formal_contract_sha256": "d54b23841083cb9bbfd30530fcc83fbaac8f9e8fc396c312ecce622998597688",
+      "groups": [
+        {
+          "encoded_group_id": "prepare.L0/r0/initialization",
+          "formal_group_id": "initialization.block",
+          "members": 17
+        },
+        {
+          "encoded_group_id": "prepare.L0/r0/readout",
+          "formal_group_id": "maintenance.block.r0",
+          "members": 8
+        }
+      ],
+      "result_slot_mapping": {
+        "prepare.L0/r0/x0": "primitive/r0/m_x0",
+        "prepare.L0/r0/x1": "primitive/r0/m_x1",
+        "prepare.L0/r0/x2": "primitive/r0/m_x2",
+        "prepare.L0/r0/x3": "primitive/r0/m_x3",
+        "prepare.L0/r0/z0": "primitive/r0/m_z0",
+        "prepare.L0/r0/z1": "primitive/r0/m_z1",
+        "prepare.L0/r0/z2": "primitive/r0/m_z2",
+        "prepare.L0/r0/z3": "primitive/r0/m_z3"
+      },
+      "binding_note": "R5 must further bind run/call/atom/time; formal result IDs are not live results"
+    },
+    {
+      "encoded_call_id": "before.L0/r0",
+      "operation": "syndrome_round",
+      "formal_physical_artifact_id": "logical-primitive-syndrome_round-facae111a02c56b8",
+      "formal_physical_sha256": "d87417ef0dbe73b2a27a3ca816dc76ec2627ddb930afd4e8fffa0acd0962aef8",
+      "formal_contract_sha256": "d379b377b7a9d73a779b065805bbc2ccdeae9cb22bf6fa0fb65bbd1043736f4a",
+      "groups": [
+        {
+          "encoded_group_id": "before.L0/r0/readout",
+          "formal_group_id": "maintenance.block.r0",
+          "members": 8
+        }
+      ],
+      "result_slot_mapping": {
+        "before.L0/r0/x0": "primitive/r0/m_x0",
+        "before.L0/r0/x1": "primitive/r0/m_x1",
+        "before.L0/r0/x2": "primitive/r0/m_x2",
+        "before.L0/r0/x3": "primitive/r0/m_x3",
+        "before.L0/r0/z0": "primitive/r0/m_z0",
+        "before.L0/r0/z1": "primitive/r0/m_z1",
+        "before.L0/r0/z2": "primitive/r0/m_z2",
+        "before.L0/r0/z3": "primitive/r0/m_z3"
+      },
+      "binding_note": "R5 must further bind run/call/atom/time; formal result IDs are not live results"
+    },
+    {
+      "encoded_call_id": "before.L0/r1",
+      "operation": "syndrome_round",
+      "formal_physical_artifact_id": "logical-primitive-syndrome_round-facae111a02c56b8",
+      "formal_physical_sha256": "d87417ef0dbe73b2a27a3ca816dc76ec2627ddb930afd4e8fffa0acd0962aef8",
+      "formal_contract_sha256": "d379b377b7a9d73a779b065805bbc2ccdeae9cb22bf6fa0fb65bbd1043736f4a",
+      "groups": [
+        {
+          "encoded_group_id": "before.L0/r1/readout",
+          "formal_group_id": "maintenance.block.r0",
+          "members": 8
+        }
+      ],
+      "result_slot_mapping": {
+        "before.L0/r1/x0": "primitive/r0/m_x0",
+        "before.L0/r1/x1": "primitive/r0/m_x1",
+        "before.L0/r1/x2": "primitive/r0/m_x2",
+        "before.L0/r1/x3": "primitive/r0/m_x3",
+        "before.L0/r1/z0": "primitive/r0/m_z0",
+        "before.L0/r1/z1": "primitive/r0/m_z1",
+        "before.L0/r1/z2": "primitive/r0/m_z2",
+        "before.L0/r1/z3": "primitive/r0/m_z3"
+      },
+      "binding_note": "R5 must further bind run/call/atom/time; formal result IDs are not live results"
+    },
+    {
+      "encoded_call_id": "before.L0/r2",
+      "operation": "syndrome_round",
+      "formal_physical_artifact_id": "logical-primitive-syndrome_round-facae111a02c56b8",
+      "formal_physical_sha256": "d87417ef0dbe73b2a27a3ca816dc76ec2627ddb930afd4e8fffa0acd0962aef8",
+      "formal_contract_sha256": "d379b377b7a9d73a779b065805bbc2ccdeae9cb22bf6fa0fb65bbd1043736f4a",
+      "groups": [
+        {
+          "encoded_group_id": "before.L0/r2/readout",
+          "formal_group_id": "maintenance.block.r0",
+          "members": 8
+        }
+      ],
+      "result_slot_mapping": {
+        "before.L0/r2/x0": "primitive/r0/m_x0",
+        "before.L0/r2/x1": "primitive/r0/m_x1",
+        "before.L0/r2/x2": "primitive/r0/m_x2",
+        "before.L0/r2/x3": "primitive/r0/m_x3",
+        "before.L0/r2/z0": "primitive/r0/m_z0",
+        "before.L0/r2/z1": "primitive/r0/m_z1",
+        "before.L0/r2/z2": "primitive/r0/m_z2",
+        "before.L0/r2/z3": "primitive/r0/m_z3"
+      },
+      "binding_note": "R5 must further bind run/call/atom/time; formal result IDs are not live results"
+    },
+    {
+      "encoded_call_id": "prepare.L1/r0",
+      "operation": "prepare",
+      "formal_physical_artifact_id": "logical-primitive-prepare-22bc60141797f6e4",
+      "formal_physical_sha256": "9b42b9b7c9371fccd93bb82cf2e1d8b2a32846675b42b86498e0160b7f0a6dd4",
+      "formal_contract_sha256": "aac49b17141b71f9cdb043b1bcf89a5043f714e33391c47798198f08d1dc7c2b",
+      "groups": [
+        {
+          "encoded_group_id": "prepare.L1/r0/initialization",
+          "formal_group_id": "initialization.block",
+          "members": 17
+        },
+        {
+          "encoded_group_id": "prepare.L1/r0/readout",
+          "formal_group_id": "maintenance.block.r0",
+          "members": 8
+        }
+      ],
+      "result_slot_mapping": {
+        "prepare.L1/r0/x0": "primitive/r0/m_x0",
+        "prepare.L1/r0/x1": "primitive/r0/m_x1",
+        "prepare.L1/r0/x2": "primitive/r0/m_x2",
+        "prepare.L1/r0/x3": "primitive/r0/m_x3",
+        "prepare.L1/r0/z0": "primitive/r0/m_z0",
+        "prepare.L1/r0/z1": "primitive/r0/m_z1",
+        "prepare.L1/r0/z2": "primitive/r0/m_z2",
+        "prepare.L1/r0/z3": "primitive/r0/m_z3"
+      },
+      "binding_note": "R5 must further bind run/call/atom/time; formal result IDs are not live results"
+    },
+    {
+      "encoded_call_id": "before.L1/r0",
+      "operation": "syndrome_round",
+      "formal_physical_artifact_id": "logical-primitive-syndrome_round-facae111a02c56b8",
+      "formal_physical_sha256": "d87417ef0dbe73b2a27a3ca816dc76ec2627ddb930afd4e8fffa0acd0962aef8",
+      "formal_contract_sha256": "d379b377b7a9d73a779b065805bbc2ccdeae9cb22bf6fa0fb65bbd1043736f4a",
+      "groups": [
+        {
+          "encoded_group_id": "before.L1/r0/readout",
+          "formal_group_id": "maintenance.block.r0",
+          "members": 8
+        }
+      ],
+      "result_slot_mapping": {
+        "before.L1/r0/x0": "primitive/r0/m_x0",
+        "before.L1/r0/x1": "primitive/r0/m_x1",
+        "before.L1/r0/x2": "primitive/r0/m_x2",
+        "before.L1/r0/x3": "primitive/r0/m_x3",
+        "before.L1/r0/z0": "primitive/r0/m_z0",
+        "before.L1/r0/z1": "primitive/r0/m_z1",
+        "before.L1/r0/z2": "primitive/r0/m_z2",
+        "before.L1/r0/z3": "primitive/r0/m_z3"
+      },
+      "binding_note": "R5 must further bind run/call/atom/time; formal result IDs are not live results"
+    },
+    {
+      "encoded_call_id": "before.L1/r1",
+      "operation": "syndrome_round",
+      "formal_physical_artifact_id": "logical-primitive-syndrome_round-facae111a02c56b8",
+      "formal_physical_sha256": "d87417ef0dbe73b2a27a3ca816dc76ec2627ddb930afd4e8fffa0acd0962aef8",
+      "formal_contract_sha256": "d379b377b7a9d73a779b065805bbc2ccdeae9cb22bf6fa0fb65bbd1043736f4a",
+      "groups": [
+        {
+          "encoded_group_id": "before.L1/r1/readout",
+          "formal_group_id": "maintenance.block.r0",
+          "members": 8
+        }
+      ],
+      "result_slot_mapping": {
+        "before.L1/r1/x0": "primitive/r0/m_x0",
+        "before.L1/r1/x1": "primitive/r0/m_x1",
+        "before.L1/r1/x2": "primitive/r0/m_x2",
+        "before.L1/r1/x3": "primitive/r0/m_x3",
+        "before.L1/r1/z0": "primitive/r0/m_z0",
+        "before.L1/r1/z1": "primitive/r0/m_z1",
+        "before.L1/r1/z2": "primitive/r0/m_z2",
+        "before.L1/r1/z3": "primitive/r0/m_z3"
+      },
+      "binding_note": "R5 must further bind run/call/atom/time; formal result IDs are not live results"
+    },
+    {
+      "encoded_call_id": "before.L1/r2",
+      "operation": "syndrome_round",
+      "formal_physical_artifact_id": "logical-primitive-syndrome_round-facae111a02c56b8",
+      "formal_physical_sha256": "d87417ef0dbe73b2a27a3ca816dc76ec2627ddb930afd4e8fffa0acd0962aef8",
+      "formal_contract_sha256": "d379b377b7a9d73a779b065805bbc2ccdeae9cb22bf6fa0fb65bbd1043736f4a",
+      "groups": [
+        {
+          "encoded_group_id": "before.L1/r2/readout",
+          "formal_group_id": "maintenance.block.r0",
+          "members": 8
+        }
+      ],
+      "result_slot_mapping": {
+        "before.L1/r2/x0": "primitive/r0/m_x0",
+        "before.L1/r2/x1": "primitive/r0/m_x1",
+        "before.L1/r2/x2": "primitive/r0/m_x2",
+        "before.L1/r2/x3": "primitive/r0/m_x3",
+        "before.L1/r2/z0": "primitive/r0/m_z0",
+        "before.L1/r2/z1": "primitive/r0/m_z1",
+        "before.L1/r2/z2": "primitive/r0/m_z2",
+        "before.L1/r2/z3": "primitive/r0/m_z3"
+      },
+      "binding_note": "R5 must further bind run/call/atom/time; formal result IDs are not live results"
+    },
+    {
+      "encoded_call_id": "couple/r0",
+      "operation": "logical_cx",
+      "formal_physical_artifact_id": "logical-primitive-logical_cx-10adb0effc094084",
+      "formal_physical_sha256": "8d532d1c9451f54cd4e74db608130eda72220a44617fc0f64fc2f3a73bd6dc54",
+      "formal_contract_sha256": "cae12d2ed556ba232cf63e5b46039f54844e80e0d114f3418fdb8fb6dae729e6",
+      "groups": [],
+      "result_slot_mapping": {},
+      "binding_note": "R5 must further bind run/call/atom/time; formal result IDs are not live results"
+    },
+    {
+      "encoded_call_id": "after.L0/r0",
+      "operation": "syndrome_round",
+      "formal_physical_artifact_id": "logical-primitive-syndrome_round-facae111a02c56b8",
+      "formal_physical_sha256": "d87417ef0dbe73b2a27a3ca816dc76ec2627ddb930afd4e8fffa0acd0962aef8",
+      "formal_contract_sha256": "d379b377b7a9d73a779b065805bbc2ccdeae9cb22bf6fa0fb65bbd1043736f4a",
+      "groups": [
+        {
+          "encoded_group_id": "after.L0/r0/readout",
+          "formal_group_id": "maintenance.block.r0",
+          "members": 8
+        }
+      ],
+      "result_slot_mapping": {
+        "after.L0/r0/x0": "primitive/r0/m_x0",
+        "after.L0/r0/x1": "primitive/r0/m_x1",
+        "after.L0/r0/x2": "primitive/r0/m_x2",
+        "after.L0/r0/x3": "primitive/r0/m_x3",
+        "after.L0/r0/z0": "primitive/r0/m_z0",
+        "after.L0/r0/z1": "primitive/r0/m_z1",
+        "after.L0/r0/z2": "primitive/r0/m_z2",
+        "after.L0/r0/z3": "primitive/r0/m_z3"
+      },
+      "binding_note": "R5 must further bind run/call/atom/time; formal result IDs are not live results"
+    },
+    {
+      "encoded_call_id": "after.L1/r0",
+      "operation": "syndrome_round",
+      "formal_physical_artifact_id": "logical-primitive-syndrome_round-facae111a02c56b8",
+      "formal_physical_sha256": "d87417ef0dbe73b2a27a3ca816dc76ec2627ddb930afd4e8fffa0acd0962aef8",
+      "formal_contract_sha256": "d379b377b7a9d73a779b065805bbc2ccdeae9cb22bf6fa0fb65bbd1043736f4a",
+      "groups": [
+        {
+          "encoded_group_id": "after.L1/r0/readout",
+          "formal_group_id": "maintenance.block.r0",
+          "members": 8
+        }
+      ],
+      "result_slot_mapping": {
+        "after.L1/r0/x0": "primitive/r0/m_x0",
+        "after.L1/r0/x1": "primitive/r0/m_x1",
+        "after.L1/r0/x2": "primitive/r0/m_x2",
+        "after.L1/r0/x3": "primitive/r0/m_x3",
+        "after.L1/r0/z0": "primitive/r0/m_z0",
+        "after.L1/r0/z1": "primitive/r0/m_z1",
+        "after.L1/r0/z2": "primitive/r0/m_z2",
+        "after.L1/r0/z3": "primitive/r0/m_z3"
+      },
+      "binding_note": "R5 must further bind run/call/atom/time; formal result IDs are not live results"
+    }
+  ],
+  "strategy_compile_or_search_measured": false,
+  "enola_executed": false,
+  "runtime_executed": false,
+  "T000_qualification_passed": false
+}

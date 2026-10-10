@@ -1,0 +1,158 @@
+{
+  "schema_version": "R4CostProfile/0.1.0",
+  "task_id": "T402",
+  "kb_revision": "kb-0004",
+  "rounds": 2,
+  "complete": true,
+  "fixture": false,
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "tracemalloc_enabled": true,
+  "budget": {
+    "wall_seconds": 300,
+    "root_process_rss_bytes": 2147483648,
+    "threads": 1,
+    "enforcement": "R7 jobs supervisor; sampled process-tree RSS, not a kernel hard cap"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "C:\\Users\\yuyqp\\Documents\\ChatGPT\\中性原子平台仿真\\scripts\\.venv\\Scripts\\python.exe",
+  "host": "yubowl",
+  "rss_before": {
+    "current_rss_bytes": 27279360,
+    "peak_rss_bytes": 28008448,
+    "source": "Windows GetProcessMemoryInfo working set; full process"
+  },
+  "phases_wall_seconds": {
+    "structure_construction": 0.02379279991146177,
+    "standalone_stream_and_hash": 0.04193399997893721,
+    "compile_including_its_own_expansion": 1.1400668999413028,
+    "stream_json_hash_and_buffered_file_output": 1.3985624000197276
+  },
+  "unverified": [
+    "no runtime path or independent acceptance executed for this performance-only run",
+    "one observation per mode and rounds; no speedup significance or global optimum claim"
+  ],
+  "structure": {
+    "template_count": 5,
+    "stored_template_ops": 218,
+    "body_nodes": 9,
+    "template_invocations": 13,
+    "structured_json_bytes": 65380
+  },
+  "expanded_count": 580,
+  "operation_stream_sha256": "60c6b2fee05018b4c2934b8d7f669f94365eda1eac77cb1ccec84082a64b3774",
+  "compiler_stats": {
+    "physical_op_count": 580,
+    "action_count": 2724,
+    "atom_count": 34,
+    "t_start_us": 0.0,
+    "t_end_us": 393923.0,
+    "duration_us": 393923.0,
+    "action_counts": {
+      "reset": 132,
+      "gate": 848,
+      "pickup": 445,
+      "move": 756,
+      "drop": 445,
+      "measure": 98
+    },
+    "planned_illumination_counts": {
+      "atom:0": 249,
+      "atom:1": 249,
+      "atom:2": 249,
+      "atom:3": 249,
+      "atom:4": 249,
+      "atom:5": 249,
+      "atom:6": 249,
+      "atom:7": 249,
+      "atom:8": 249,
+      "atom:9": 249,
+      "atom:10": 249,
+      "atom:11": 249,
+      "atom:12": 249,
+      "atom:13": 249,
+      "atom:14": 249,
+      "atom:15": 249,
+      "atom:16": 249,
+      "atom:17": 249,
+      "atom:18": 249,
+      "atom:19": 249,
+      "atom:20": 249,
+      "atom:21": 249,
+      "atom:22": 249,
+      "atom:23": 249,
+      "atom:24": 249,
+      "atom:25": 249,
+      "atom:26": 249,
+      "atom:27": 249,
+      "atom:28": 249,
+      "atom:29": 249,
+      "atom:30": 249,
+      "atom:31": 249,
+      "atom:32": 249,
+      "atom:33": 249
+    },
+    "stage_wall_seconds": {
+      "initial_placement": 0.0015048000495880842,
+      "physical_expansion": 0.029672500677406788,
+      "lowering_and_scheduling": 0.3234240955207497,
+      "gate_layout_search": 0.08153880131430924,
+      "routing": 0.26355770183727145,
+      "compiler_geometry_checks": 0.4316836000652984
+    },
+    "wall_seconds": 1.1386809999821708,
+    "max_live_physical_ops": 1,
+    "route_candidates_per_segment": 7,
+    "layout_candidates_per_cz": 4,
+    "cache_hits": 0,
+    "cache_policy": "no mutable instance state or result cache; upstream templates reused by reference"
+  },
+  "input_hashes": {
+    "physical_program": "8edfa0db835c8a037d2b4d7e5801d24c372798c54b12e78e1399f90a13e957a0",
+    "device": "1c436306473c9938e7febf7abceb1ebceb28a52c7c5fc6d3e5aa02bf338ccf5f"
+  },
+  "action_work_us": {
+    "reset": 1320.0,
+    "gate": 848.0,
+    "pickup": 89000.0,
+    "move": 205853.0,
+    "drop": 89000.0,
+    "measure": 9800.0
+  },
+  "rss_after_compile": {
+    "current_rss_bytes": 44724224,
+    "peak_rss_bytes": 44724224,
+    "source": "Windows GetProcessMemoryInfo working set; full process"
+  },
+  "output": {
+    "bytes": 2364716,
+    "sha256": "6567252ce84d1eb1c27a86bc894410e5f8703aacef86b4fbfba20fd9305cd576",
+    "retained": false,
+    "durability": "buffered write/flush measured; no fsync or physical-disk latency claim"
+  },
+  "rss_final": {
+    "current_rss_bytes": 44752896,
+    "peak_rss_bytes": 44752896,
+    "source": "Windows GetProcessMemoryInfo working set; full process"
+  },
+  "python_traced_bytes": {
+    "current": 6566843,
+    "peak": 6770484,
+    "scope": "tracked Python allocations, not RSS"
+  },
+  "wall_seconds": 2.6839015999576077,
+  "code_sha256": {
+    "src/na_pipeline/device/__init__.py": "8dbc4cea9cecbefb63ed36480ba3a4d328524ce1395ddb7da0b1d0ca8c19e641",
+    "src/na_pipeline/device/model.py": "aedf2855d20215bace0117598a1c982e8b77c091a33f22dce6b044c2c3980e96",
+    "src/na_pipeline/device/spec.py": "ae8390ec1f0483f0fdbbbec276a880a9dd2536529821e5daea6e4a4f916f6ebf",
+    "src/na_pipeline/qec/__init__.py": "a930211e00ae57c8c2079d671cc34c30178738b86bc3c743a1b626a3c506f9fd",
+    "src/na_pipeline/qec/program.py": "af622cefd22b895f667150da274821bee8ae90f9d8c0114965b370b762193f19",
+    "src/na_pipeline/qec/surface17.py": "fdd7b0238a95979cd590e5c0e8c0567d78f26ae4b79b437eb056716b76eb8d2a",
+    "src/na_pipeline/backend/__init__.py": "c9cddd8b5d08dcb75a9f496ef5f77d7518299bb8c06fd7affa74acdc42380ef1",
+    "src/na_pipeline/backend/compiler.py": "64cd210d67e94bffe3ccdba2b819cd2753297186a26543d36ccf91f15ab29ab1",
+    "src/na_pipeline/backend/geometry.py": "25f494028ada2ec49c00ac881face147edfc2d1e351d670d1192e9925f8cd3c8",
+    "examples/atom/profile_t402.py": "dc960b202c525fca9f4b2e503b18f00c7cd033bd5406f025c541d6c339c9ee3e"
+  }
+}

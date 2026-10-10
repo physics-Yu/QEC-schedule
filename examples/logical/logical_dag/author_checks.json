@@ -1,0 +1,129 @@
+{
+  "schema_version": "R2DAGAuthorChecks/0.1.0",
+  "artifact_id": "T204-author-checks",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T204",
+    "kb_revision": "kb-0006",
+    "plan_revision": "plan-0008"
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "source_operations": 2069,
+  "entry_precondition_operations": 5,
+  "logical_nodes": 2102,
+  "logical_edges": 4122,
+  "operation_counts": {
+    "CLASSICAL_POSTPROCESS": 1,
+    "CX": 40,
+    "H": 809,
+    "MEASURE": 8,
+    "RESET": 8,
+    "S": 367,
+    "SDG": 7,
+    "SE": 37,
+    "T": 796,
+    "TDG": 21,
+    "X": 8
+  },
+  "source_dependency_audit_counts": {
+    "covered_by_preinitialized_entry": 6,
+    "covered_by_patch_order": 5926,
+    "relaxed_generated_serialization": 83
+  },
+  "source_errors": [],
+  "example_errors": [],
+  "cycle_negative_errors": [
+    {
+      "code": "LOGICAL_DAG_CYCLE",
+      "source_id": "dag",
+      "message": "LOGICAL_DAG_CYCLE"
+    }
+  ],
+  "producer_negative_errors": [
+    {
+      "code": "MISSING_RESULT_PRODUCER",
+      "source_id": "maintenance/entry/P0",
+      "message": "missing/result"
+    }
+  ],
+  "four_patch_roots": [
+    {
+      "node_id": "maintenance/entry/P0",
+      "decision": "execute",
+      "patch_operands": {
+        "block": "P0"
+      },
+      "resources_checked": false,
+      "placement_checked": false,
+      "scope": "semantic_candidate_not_scheduled_or_committed"
+    },
+    {
+      "node_id": "maintenance/entry/P1",
+      "decision": "execute",
+      "patch_operands": {
+        "block": "P1"
+      },
+      "resources_checked": false,
+      "placement_checked": false,
+      "scope": "semantic_candidate_not_scheduled_or_committed"
+    },
+    {
+      "node_id": "maintenance/entry/P2",
+      "decision": "execute",
+      "patch_operands": {
+        "block": "P2"
+      },
+      "resources_checked": false,
+      "placement_checked": false,
+      "scope": "semantic_candidate_not_scheduled_or_committed"
+    },
+    {
+      "node_id": "maintenance/entry/P3",
+      "decision": "execute",
+      "patch_operands": {
+        "block": "P3"
+      },
+      "resources_checked": false,
+      "placement_checked": false,
+      "scope": "semantic_candidate_not_scheduled_or_committed"
+    }
+  ],
+  "four_patch_next_ready": [
+    {
+      "node_id": "example/couple0",
+      "decision": "execute",
+      "patch_operands": {
+        "control": "P0",
+        "target": "P3"
+      },
+      "resources_checked": false,
+      "placement_checked": false,
+      "scope": "semantic_candidate_not_scheduled_or_committed"
+    },
+    {
+      "node_id": "example/couple1",
+      "decision": "execute",
+      "patch_operands": {
+        "left": "P1",
+        "right": "P2"
+      },
+      "resources_checked": false,
+      "placement_checked": false,
+      "scope": "semantic_candidate_not_scheduled_or_committed"
+    }
+  ],
+  "readiness_examples_scope": "logical_completion_fixtures_no_runtime_or_physical_parallel_claim",
+  "semantic_author_checks_passed": true,
+  "independent_validation_passed": false,
+  "full_physical_pipeline_completed": false,
+  "unverified": [
+    "actual_R4_patch_placement_for_full_world",
+    "R3_all_operation_specs_and_factory_binding",
+    "R5_resource_schedule_and_continuous_fake_run",
+    "R6_independent_graph_and_physical_checks",
+    "user_visual_acceptance"
+  ]
+}

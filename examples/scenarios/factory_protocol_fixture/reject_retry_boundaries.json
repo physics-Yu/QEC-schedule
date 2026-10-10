@@ -1,0 +1,99 @@
+[
+  {
+    "id": "request",
+    "kind": "request",
+    "time_us": 0,
+    "after": [],
+    "request_id": "T0",
+    "resource_kind": "T",
+    "live_data_atom_ids": [
+      "a2"
+    ],
+    "live_block_atom_ids": [
+      "a2"
+    ]
+  },
+  {
+    "id": "begin",
+    "kind": "begin",
+    "time_us": 0,
+    "after": [],
+    "request_id": "T0",
+    "attempt_id": "try1",
+    "epoch": 0,
+    "candidate_id": "candidate1",
+    "output_atom_ids": [
+      "a0"
+    ],
+    "output_data_atom_ids": [
+      "a0"
+    ],
+    "production_action_ids": [
+      "prep1",
+      "check1"
+    ]
+  },
+  {
+    "id": "decide",
+    "kind": "decide",
+    "time_us": 106,
+    "after": [],
+    "output_id": "output1",
+    "acceptance_checks": [
+      {
+        "id": "fixture-check",
+        "result_ids": [
+          "attempt1/check"
+        ],
+        "expected_parity": 0
+      }
+    ]
+  },
+  {
+    "id": "cleanup",
+    "kind": "cleanup",
+    "time_us": 116,
+    "after": [],
+    "attempt_id": "try1",
+    "reset_action_ids": [
+      "reset0",
+      "reset1"
+    ]
+  },
+  {
+    "id": "begin2",
+    "kind": "begin",
+    "time_us": 116,
+    "after": [],
+    "request_id": "T0",
+    "attempt_id": "try2",
+    "epoch": 1,
+    "candidate_id": "candidate2",
+    "output_atom_ids": [
+      "a0"
+    ],
+    "output_data_atom_ids": [
+      "a0"
+    ],
+    "production_action_ids": [
+      "prep2",
+      "check2"
+    ]
+  },
+  {
+    "id": "decide2",
+    "kind": "decide",
+    "time_us": 222,
+    "after": [],
+    "output_id": "output2",
+    "acceptance_checks": [
+      {
+        "id": "fixture-check",
+        "result_ids": [
+          "attempt2/check"
+        ],
+        "expected_parity": 0
+      }
+    ]
+  }
+]

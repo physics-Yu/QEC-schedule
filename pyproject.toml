@@ -1,29 +1,27 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools==84.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "neutral-atom-env"
+name = "na-pipeline"
 version = "0.1.0"
-description = "Deterministic neutral atom scheduling foundations"
-requires-python = ">=3.11"
+description = "Evidence-scoped neutral atom compilation and fake event pipeline"
+requires-python = ">=3.12"
 dependencies = []
 
 [project.optional-dependencies]
-test = ["pytest>=8", "matplotlib>=3.8"]
-smt = ["z3-solver>=4.12,<6"]
+enola = ["networkx==3.5", "rustworkx==0.17.1", "numpy==2.3.5"]
+
+[project.scripts]
+na-pipeline = "na_pipeline.cli:main"
+
+[tool.setuptools]
+package-dir = {"na_pipeline" = "src/na_pipeline", "viewer" = "viewer"}
+include-package-data = true
 
 [tool.setuptools.packages.find]
-where = ["src"]
-namespaces = false
+where = ["src", "."]
+include = ["na_pipeline*", "viewer"]
 
 [tool.setuptools.package-data]
-"neutral_atom_experiments.testing" = ["*.html"]
-"neutral_atom_env.visualization" = ["*.html", "*.js"]
-"neutral_atom_app.visualization" = ["*.html", "*.js"]
-"neutral_atom_strategies.motion" = ["*.js"]
-
-[tool.pytest.ini_options]
-pythonpath = ["src"]
-testpaths = ["tests"]
-addopts = "--basetemp=artifacts/pytest-tmp"
+viewer = ["*.html", "*.js", "*.css"]

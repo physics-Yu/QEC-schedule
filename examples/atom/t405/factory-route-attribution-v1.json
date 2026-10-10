@@ -1,0 +1,1768 @@
+{
+  "schema_version": "R4FrozenRouteAttribution/0.1",
+  "source_report_sha256": "ff18841e091a8abec3987d5f9690314cffcd96a24413004e614dbdaf80663b24",
+  "physical_plan_byte_sha256": "b3614371fe21ef500857d30c06784ba3eb43fbf0e3d6609abf2688dfeb6e160b",
+  "requested_sources": 25,
+  "classified_sources": 25,
+  "classes": {
+    "continuous_multisegment": 25
+  },
+  "records": [
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw0_encode_0",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw0_encode_0",
+        "pair": [
+          "atom:factory0:W3/d8",
+          "atom:factory0:W3/d6"
+        ],
+        "mover": "atom:factory0:W3/d8",
+        "from_um": [
+          140.0,
+          20.0
+        ],
+        "to_um": [
+          122.0,
+          20.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          20.0,
+          20.0,
+          140.0,
+          122.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000193",
+      "pulse_start_us": 450.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000190",
+          "from_um": [
+            140.0,
+            20.0
+          ],
+          "to_um": [
+            145.0,
+            22.5
+          ],
+          "t_start_us": 222.0,
+          "t_end_us": 227.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000191",
+          "from_um": [
+            145.0,
+            22.5
+          ],
+          "to_um": [
+            122.0,
+            20.0
+          ],
+          "t_start_us": 227.0,
+          "t_end_us": 250.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000192",
+          "position_um": [
+            122.0,
+            20.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw1_encode_0",
+      "candidate_index": 16,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw1_encode_0",
+        "pair": [
+          "atom:factory0:W2/d8",
+          "atom:factory0:W2/d6"
+        ],
+        "mover": "atom:factory0:W2/d8",
+        "from_um": [
+          20.0,
+          20.0
+        ],
+        "to_um": [
+          2.0,
+          20.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          20.0,
+          20.0,
+          20.0,
+          2.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000193",
+      "pulse_start_us": 450.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000190",
+          "from_um": [
+            20.0,
+            20.0
+          ],
+          "to_um": [
+            25.0,
+            22.5
+          ],
+          "t_start_us": 222.0,
+          "t_end_us": 227.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000191",
+          "from_um": [
+            25.0,
+            22.5
+          ],
+          "to_um": [
+            2.0,
+            20.0
+          ],
+          "t_start_us": 227.0,
+          "t_end_us": 250.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000192",
+          "position_um": [
+            2.0,
+            20.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw2_encode_0",
+      "candidate_index": 32,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw2_encode_0",
+        "pair": [
+          "atom:factory0:W1/d8",
+          "atom:factory0:W1/d6"
+        ],
+        "mover": "atom:factory0:W1/d8",
+        "from_um": [
+          80.0,
+          20.0
+        ],
+        "to_um": [
+          62.0,
+          20.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          20.0,
+          20.0,
+          80.0,
+          62.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000193",
+      "pulse_start_us": 450.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000190",
+          "from_um": [
+            80.0,
+            20.0
+          ],
+          "to_um": [
+            85.0,
+            22.5
+          ],
+          "t_start_us": 222.0,
+          "t_end_us": 227.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000191",
+          "from_um": [
+            85.0,
+            22.5
+          ],
+          "to_um": [
+            62.0,
+            20.0
+          ],
+          "t_start_us": 227.0,
+          "t_end_us": 250.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000192",
+          "position_um": [
+            62.0,
+            20.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw0_encode_8",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw0_encode_8",
+        "pair": [
+          "atom:factory0:W3/d6",
+          "atom:factory0:W3/d8"
+        ],
+        "mover": "atom:factory0:W3/d6",
+        "from_um": [
+          120.0,
+          20.0
+        ],
+        "to_um": [
+          142.0,
+          20.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          20.0,
+          20.0,
+          120.0,
+          142.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000299",
+      "pulse_start_us": 7134.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000296",
+          "from_um": [
+            120.0,
+            20.0
+          ],
+          "to_um": [
+            125.0,
+            22.5
+          ],
+          "t_start_us": 6912.0,
+          "t_end_us": 6917.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000297",
+          "from_um": [
+            125.0,
+            22.5
+          ],
+          "to_um": [
+            142.0,
+            20.0
+          ],
+          "t_start_us": 6917.0,
+          "t_end_us": 6934.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000298",
+          "position_um": [
+            142.0,
+            20.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw1_encode_8",
+      "candidate_index": 16,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw1_encode_8",
+        "pair": [
+          "atom:factory0:W2/d6",
+          "atom:factory0:W2/d8"
+        ],
+        "mover": "atom:factory0:W2/d6",
+        "from_um": [
+          0.0,
+          20.0
+        ],
+        "to_um": [
+          22.0,
+          20.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          20.0,
+          20.0,
+          0.0,
+          22.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000299",
+      "pulse_start_us": 7134.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000296",
+          "from_um": [
+            0.0,
+            20.0
+          ],
+          "to_um": [
+            5.0,
+            22.5
+          ],
+          "t_start_us": 6912.0,
+          "t_end_us": 6917.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000297",
+          "from_um": [
+            5.0,
+            22.5
+          ],
+          "to_um": [
+            22.0,
+            20.0
+          ],
+          "t_start_us": 6917.0,
+          "t_end_us": 6934.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000298",
+          "position_um": [
+            22.0,
+            20.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw2_encode_8",
+      "candidate_index": 32,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw2_encode_8",
+        "pair": [
+          "atom:factory0:W1/d6",
+          "atom:factory0:W1/d8"
+        ],
+        "mover": "atom:factory0:W1/d6",
+        "from_um": [
+          60.0,
+          20.0
+        ],
+        "to_um": [
+          82.0,
+          20.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          20.0,
+          20.0,
+          60.0,
+          82.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000299",
+      "pulse_start_us": 7134.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000296",
+          "from_um": [
+            60.0,
+            20.0
+          ],
+          "to_um": [
+            65.0,
+            22.5
+          ],
+          "t_start_us": 6912.0,
+          "t_end_us": 6917.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000297",
+          "from_um": [
+            65.0,
+            22.5
+          ],
+          "to_um": [
+            82.0,
+            20.0
+          ],
+          "t_start_us": 6917.0,
+          "t_end_us": 6934.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000298",
+          "position_um": [
+            82.0,
+            20.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw0_encode_25",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw0_encode_25",
+        "pair": [
+          "atom:factory0:W3/d3",
+          "atom:factory0:W3/d5"
+        ],
+        "mover": "atom:factory0:W3/d3",
+        "from_um": [
+          120.0,
+          10.0
+        ],
+        "to_um": [
+          142.0,
+          10.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          10.0,
+          10.0,
+          120.0,
+          142.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000478",
+      "pulse_start_us": 19653.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000475",
+          "from_um": [
+            120.0,
+            10.0
+          ],
+          "to_um": [
+            125.0,
+            12.5
+          ],
+          "t_start_us": 19431.0,
+          "t_end_us": 19436.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000476",
+          "from_um": [
+            125.0,
+            12.5
+          ],
+          "to_um": [
+            142.0,
+            10.0
+          ],
+          "t_start_us": 19436.0,
+          "t_end_us": 19453.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000477",
+          "position_um": [
+            142.0,
+            10.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw0_encode_27",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw0_encode_27",
+        "pair": [
+          "atom:factory0:W3/d3",
+          "atom:factory0:W3/d4"
+        ],
+        "mover": "atom:factory0:W3/d3",
+        "from_um": [
+          120.0,
+          10.0
+        ],
+        "to_um": [
+          132.0,
+          10.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          10.0,
+          10.0,
+          120.0,
+          132.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000498",
+      "pulse_start_us": 21319.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000495",
+          "from_um": [
+            120.0,
+            10.0
+          ],
+          "to_um": [
+            125.0,
+            12.5
+          ],
+          "t_start_us": 21107.0,
+          "t_end_us": 21112.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000496",
+          "from_um": [
+            125.0,
+            12.5
+          ],
+          "to_um": [
+            132.0,
+            10.0
+          ],
+          "t_start_us": 21112.0,
+          "t_end_us": 21119.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000497",
+          "position_um": [
+            132.0,
+            10.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw0_encode_32",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw0_encode_32",
+        "pair": [
+          "atom:factory0:W3/d2",
+          "atom:factory0:W3/d0"
+        ],
+        "mover": "atom:factory0:W3/d2",
+        "from_um": [
+          140.0,
+          0.0
+        ],
+        "to_um": [
+          122.0,
+          0.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          0.0,
+          0.0,
+          140.0,
+          122.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000549",
+      "pulse_start_us": 25500.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000546",
+          "from_um": [
+            140.0,
+            0.0
+          ],
+          "to_um": [
+            145.0,
+            2.5
+          ],
+          "t_start_us": 25272.0,
+          "t_end_us": 25277.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000547",
+          "from_um": [
+            145.0,
+            2.5
+          ],
+          "to_um": [
+            122.0,
+            0.0
+          ],
+          "t_start_us": 25277.0,
+          "t_end_us": 25300.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:000548",
+          "position_um": [
+            122.0,
+            0.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw1_encode_25",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw1_encode_25",
+        "pair": [
+          "atom:factory0:W2/d3",
+          "atom:factory0:W2/d5"
+        ],
+        "mover": "atom:factory0:W2/d3",
+        "from_um": [
+          0.0,
+          10.0
+        ],
+        "to_um": [
+          22.0,
+          10.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          10.0,
+          10.0,
+          0.0,
+          22.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001275",
+      "pulse_start_us": 88569.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001272",
+          "from_um": [
+            0.0,
+            10.0
+          ],
+          "to_um": [
+            5.0,
+            12.5
+          ],
+          "t_start_us": 88347.0,
+          "t_end_us": 88352.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001273",
+          "from_um": [
+            5.0,
+            12.5
+          ],
+          "to_um": [
+            22.0,
+            10.0
+          ],
+          "t_start_us": 88352.0,
+          "t_end_us": 88369.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001274",
+          "position_um": [
+            22.0,
+            10.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw2_encode_25",
+      "candidate_index": 15,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw2_encode_25",
+        "pair": [
+          "atom:factory0:W1/d3",
+          "atom:factory0:W1/d5"
+        ],
+        "mover": "atom:factory0:W1/d3",
+        "from_um": [
+          60.0,
+          10.0
+        ],
+        "to_um": [
+          82.0,
+          10.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          10.0,
+          10.0,
+          60.0,
+          82.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001275",
+      "pulse_start_us": 88569.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001272",
+          "from_um": [
+            60.0,
+            10.0
+          ],
+          "to_um": [
+            65.0,
+            12.5
+          ],
+          "t_start_us": 88347.0,
+          "t_end_us": 88352.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001273",
+          "from_um": [
+            65.0,
+            12.5
+          ],
+          "to_um": [
+            82.0,
+            10.0
+          ],
+          "t_start_us": 88352.0,
+          "t_end_us": 88369.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001274",
+          "position_um": [
+            82.0,
+            10.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw1_encode_27",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw1_encode_27",
+        "pair": [
+          "atom:factory0:W2/d3",
+          "atom:factory0:W2/d4"
+        ],
+        "mover": "atom:factory0:W2/d3",
+        "from_um": [
+          0.0,
+          10.0
+        ],
+        "to_um": [
+          12.0,
+          10.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          10.0,
+          10.0,
+          0.0,
+          12.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001299",
+      "pulse_start_us": 90235.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001296",
+          "from_um": [
+            0.0,
+            10.0
+          ],
+          "to_um": [
+            5.0,
+            12.5
+          ],
+          "t_start_us": 90023.0,
+          "t_end_us": 90028.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001297",
+          "from_um": [
+            5.0,
+            12.5
+          ],
+          "to_um": [
+            12.0,
+            10.0
+          ],
+          "t_start_us": 90028.0,
+          "t_end_us": 90035.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001298",
+          "position_um": [
+            12.0,
+            10.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw2_encode_27",
+      "candidate_index": 23,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw2_encode_27",
+        "pair": [
+          "atom:factory0:W1/d3",
+          "atom:factory0:W1/d4"
+        ],
+        "mover": "atom:factory0:W1/d3",
+        "from_um": [
+          60.0,
+          10.0
+        ],
+        "to_um": [
+          72.0,
+          10.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          10.0,
+          10.0,
+          60.0,
+          72.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001299",
+      "pulse_start_us": 90235.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001296",
+          "from_um": [
+            60.0,
+            10.0
+          ],
+          "to_um": [
+            65.0,
+            12.5
+          ],
+          "t_start_us": 90023.0,
+          "t_end_us": 90028.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001297",
+          "from_um": [
+            65.0,
+            12.5
+          ],
+          "to_um": [
+            72.0,
+            10.0
+          ],
+          "t_start_us": 90028.0,
+          "t_end_us": 90035.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001298",
+          "position_um": [
+            72.0,
+            10.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw1_encode_32",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw1_encode_32",
+        "pair": [
+          "atom:factory0:W2/d2",
+          "atom:factory0:W2/d0"
+        ],
+        "mover": "atom:factory0:W2/d2",
+        "from_um": [
+          20.0,
+          0.0
+        ],
+        "to_um": [
+          2.0,
+          0.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          0.0,
+          0.0,
+          20.0,
+          2.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001356",
+      "pulse_start_us": 94392.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001353",
+          "from_um": [
+            20.0,
+            0.0
+          ],
+          "to_um": [
+            25.0,
+            2.5
+          ],
+          "t_start_us": 94164.0,
+          "t_end_us": 94169.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001354",
+          "from_um": [
+            25.0,
+            2.5
+          ],
+          "to_um": [
+            2.0,
+            0.0
+          ],
+          "t_start_us": 94169.0,
+          "t_end_us": 94192.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001355",
+          "position_um": [
+            2.0,
+            0.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw2_encode_32",
+      "candidate_index": 21,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw2_encode_32",
+        "pair": [
+          "atom:factory0:W1/d2",
+          "atom:factory0:W1/d0"
+        ],
+        "mover": "atom:factory0:W1/d2",
+        "from_um": [
+          80.0,
+          0.0
+        ],
+        "to_um": [
+          62.0,
+          0.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          0.0,
+          0.0,
+          80.0,
+          62.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001356",
+      "pulse_start_us": 94392.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001353",
+          "from_um": [
+            80.0,
+            0.0
+          ],
+          "to_um": [
+            85.0,
+            2.5
+          ],
+          "t_start_us": 94164.0,
+          "t_end_us": 94169.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001354",
+          "from_um": [
+            85.0,
+            2.5
+          ],
+          "to_um": [
+            62.0,
+            0.0
+          ],
+          "t_start_us": 94169.0,
+          "t_end_us": 94192.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:001355",
+          "position_um": [
+            62.0,
+            0.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw3_encode_0",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw3_encode_0",
+        "pair": [
+          "atom:factory0:W0/d8",
+          "atom:factory0:W0/d6"
+        ],
+        "mover": "atom:factory0:W0/d8",
+        "from_um": [
+          20.0,
+          140.0
+        ],
+        "to_um": [
+          2.0,
+          140.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          140.0,
+          140.0,
+          20.0,
+          2.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002435",
+      "pulse_start_us": 181200.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002432",
+          "from_um": [
+            20.0,
+            140.0
+          ],
+          "to_um": [
+            25.0,
+            142.5
+          ],
+          "t_start_us": 180972.0,
+          "t_end_us": 180977.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002433",
+          "from_um": [
+            25.0,
+            142.5
+          ],
+          "to_um": [
+            2.0,
+            140.0
+          ],
+          "t_start_us": 180977.0,
+          "t_end_us": 181000.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002434",
+          "position_um": [
+            2.0,
+            140.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw3_encode_8",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw3_encode_8",
+        "pair": [
+          "atom:factory0:W0/d6",
+          "atom:factory0:W0/d8"
+        ],
+        "mover": "atom:factory0:W0/d6",
+        "from_um": [
+          0.0,
+          140.0
+        ],
+        "to_um": [
+          22.0,
+          140.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          140.0,
+          140.0,
+          0.0,
+          22.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002500",
+      "pulse_start_us": 187057.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002497",
+          "from_um": [
+            0.0,
+            140.0
+          ],
+          "to_um": [
+            5.0,
+            142.5
+          ],
+          "t_start_us": 186835.0,
+          "t_end_us": 186840.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002498",
+          "from_um": [
+            5.0,
+            142.5
+          ],
+          "to_um": [
+            22.0,
+            140.0
+          ],
+          "t_start_us": 186840.0,
+          "t_end_us": 186857.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002499",
+          "position_um": [
+            22.0,
+            140.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw3_encode_25",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw3_encode_25",
+        "pair": [
+          "atom:factory0:W0/d3",
+          "atom:factory0:W0/d5"
+        ],
+        "mover": "atom:factory0:W0/d3",
+        "from_um": [
+          0.0,
+          130.0
+        ],
+        "to_um": [
+          22.0,
+          130.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          130.0,
+          130.0,
+          0.0,
+          22.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002641",
+      "pulse_start_us": 199568.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002638",
+          "from_um": [
+            0.0,
+            130.0
+          ],
+          "to_um": [
+            5.0,
+            132.5
+          ],
+          "t_start_us": 199346.0,
+          "t_end_us": 199351.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002639",
+          "from_um": [
+            5.0,
+            132.5
+          ],
+          "to_um": [
+            22.0,
+            130.0
+          ],
+          "t_start_us": 199351.0,
+          "t_end_us": 199368.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002640",
+          "position_um": [
+            22.0,
+            130.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw3_encode_27",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw3_encode_27",
+        "pair": [
+          "atom:factory0:W0/d3",
+          "atom:factory0:W0/d4"
+        ],
+        "mover": "atom:factory0:W0/d3",
+        "from_um": [
+          0.0,
+          130.0
+        ],
+        "to_um": [
+          12.0,
+          130.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          130.0,
+          130.0,
+          0.0,
+          12.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002661",
+      "pulse_start_us": 201234.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002658",
+          "from_um": [
+            0.0,
+            130.0
+          ],
+          "to_um": [
+            5.0,
+            132.5
+          ],
+          "t_start_us": 201022.0,
+          "t_end_us": 201027.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002659",
+          "from_um": [
+            5.0,
+            132.5
+          ],
+          "to_um": [
+            12.0,
+            130.0
+          ],
+          "t_start_us": 201027.0,
+          "t_end_us": 201034.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002660",
+          "position_um": [
+            12.0,
+            130.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw3_encode_32",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/raw3_encode_32",
+        "pair": [
+          "atom:factory0:W0/d2",
+          "atom:factory0:W0/d0"
+        ],
+        "mover": "atom:factory0:W0/d2",
+        "from_um": [
+          20.0,
+          120.0
+        ],
+        "to_um": [
+          2.0,
+          120.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          120.0,
+          120.0,
+          20.0,
+          2.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002708",
+      "pulse_start_us": 205391.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002705",
+          "from_um": [
+            20.0,
+            120.0
+          ],
+          "to_um": [
+            25.0,
+            122.5
+          ],
+          "t_start_us": 205163.0,
+          "t_end_us": 205168.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002706",
+          "from_um": [
+            25.0,
+            122.5
+          ],
+          "to_um": [
+            2.0,
+            120.0
+          ],
+          "t_start_us": 205168.0,
+          "t_end_us": 205191.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:002707",
+          "position_um": [
+            2.0,
+            120.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/work_plus_encode_0",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/work_plus_encode_0",
+        "pair": [
+          "atom:factory0:W4/d8",
+          "atom:factory0:W4/d6"
+        ],
+        "mover": "atom:factory0:W4/d8",
+        "from_um": [
+          200.0,
+          80.0
+        ],
+        "to_um": [
+          182.0,
+          80.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          80.0,
+          80.0,
+          200.0,
+          182.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003367",
+      "pulse_start_us": 262736.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003364",
+          "from_um": [
+            200.0,
+            80.0
+          ],
+          "to_um": [
+            205.0,
+            82.5
+          ],
+          "t_start_us": 262508.0,
+          "t_end_us": 262513.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003365",
+          "from_um": [
+            205.0,
+            82.5
+          ],
+          "to_um": [
+            182.0,
+            80.0
+          ],
+          "t_start_us": 262513.0,
+          "t_end_us": 262536.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003366",
+          "position_um": [
+            182.0,
+            80.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/work_plus_encode_8",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/work_plus_encode_8",
+        "pair": [
+          "atom:factory0:W4/d6",
+          "atom:factory0:W4/d8"
+        ],
+        "mover": "atom:factory0:W4/d6",
+        "from_um": [
+          180.0,
+          80.0
+        ],
+        "to_um": [
+          202.0,
+          80.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          80.0,
+          80.0,
+          180.0,
+          202.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003441",
+      "pulse_start_us": 269420.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003438",
+          "from_um": [
+            180.0,
+            80.0
+          ],
+          "to_um": [
+            185.0,
+            82.5
+          ],
+          "t_start_us": 269198.0,
+          "t_end_us": 269203.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003439",
+          "from_um": [
+            185.0,
+            82.5
+          ],
+          "to_um": [
+            202.0,
+            80.0
+          ],
+          "t_start_us": 269203.0,
+          "t_end_us": 269220.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003440",
+          "position_um": [
+            202.0,
+            80.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/work_plus_encode_25",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/work_plus_encode_25",
+        "pair": [
+          "atom:factory0:W4/d3",
+          "atom:factory0:W4/d5"
+        ],
+        "mover": "atom:factory0:W4/d3",
+        "from_um": [
+          180.0,
+          70.0
+        ],
+        "to_um": [
+          202.0,
+          70.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          70.0,
+          70.0,
+          180.0,
+          202.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003582",
+      "pulse_start_us": 281931.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003579",
+          "from_um": [
+            180.0,
+            70.0
+          ],
+          "to_um": [
+            185.0,
+            72.5
+          ],
+          "t_start_us": 281709.0,
+          "t_end_us": 281714.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003580",
+          "from_um": [
+            185.0,
+            72.5
+          ],
+          "to_um": [
+            202.0,
+            70.0
+          ],
+          "t_start_us": 281714.0,
+          "t_end_us": 281731.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003581",
+          "position_um": [
+            202.0,
+            70.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/work_plus_encode_27",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/work_plus_encode_27",
+        "pair": [
+          "atom:factory0:W4/d3",
+          "atom:factory0:W4/d4"
+        ],
+        "mover": "atom:factory0:W4/d3",
+        "from_um": [
+          180.0,
+          70.0
+        ],
+        "to_um": [
+          192.0,
+          70.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          70.0,
+          70.0,
+          180.0,
+          192.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003602",
+      "pulse_start_us": 283597.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003599",
+          "from_um": [
+            180.0,
+            70.0
+          ],
+          "to_um": [
+            185.0,
+            72.5
+          ],
+          "t_start_us": 283385.0,
+          "t_end_us": 283390.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003600",
+          "from_um": [
+            185.0,
+            72.5
+          ],
+          "to_um": [
+            192.0,
+            70.0
+          ],
+          "t_start_us": 283390.0,
+          "t_end_us": 283397.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003601",
+          "position_um": [
+            192.0,
+            70.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    },
+    {
+      "source_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/work_plus_encode_32",
+      "candidate_index": 0,
+      "candidate": {
+        "op_id": "factory0-e0-logical-bb4de6ca01e36f4e37824a1d5f15df615e7bce874b87fd6ac608d9fee5b1b1b2-T.initialize/r0/work_plus_encode_32",
+        "pair": [
+          "atom:factory0:W4/d2",
+          "atom:factory0:W4/d0"
+        ],
+        "mover": "atom:factory0:W4/d2",
+        "from_um": [
+          200.0,
+          60.0
+        ],
+        "to_um": [
+          182.0,
+          60.0
+        ],
+        "aod_group": "magic",
+        "vector": [
+          60.0,
+          60.0,
+          200.0,
+          182.0
+        ]
+      },
+      "pulse_action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003649",
+      "pulse_start_us": 287754.0,
+      "classification": "continuous_multisegment",
+      "continuous": true,
+      "endpoint_matches": true,
+      "legs": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003646",
+          "from_um": [
+            200.0,
+            60.0
+          ],
+          "to_um": [
+            205.0,
+            62.5
+          ],
+          "t_start_us": 287526.0,
+          "t_end_us": 287531.0
+        },
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003647",
+          "from_um": [
+            205.0,
+            62.5
+          ],
+          "to_um": [
+            182.0,
+            60.0
+          ],
+          "t_start_us": 287531.0,
+          "t_end_us": 287554.0
+        }
+      ],
+      "pre_pulse_drops": [
+        {
+          "action_id": "window:8beed3e2478b50d842ed69cb/strategy-action:003648",
+          "position_um": [
+            182.0,
+            60.0
+          ]
+        }
+      ],
+      "single_leg_direct_match": false
+    }
+  ],
+  "recompiled": false,
+  "search_calls": 0,
+  "source_unchanged": true,
+  "original_router_return_provenance": "still_unverified_in_frozen_observer",
+  "acceptance_owner": "R6",
+  "interpretation": "A continuous polyline may have no single direct from-to segment; this does not relax global geometry or pulse checks."
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": "HierarchicalValidationReport/0.1.0",
+  "scope": "patch_placement",
+  "provenance": {
+    "owner": "R6",
+    "task": "T605",
+    "kb_revision": "kb-0006",
+    "plan_revision": "plan-0008"
+  },
+  "passed": true,
+  "scoped_pass": true,
+  "full_program_passed": false,
+  "checks": [
+    {
+      "id": "real_patch_placement_and_entry",
+      "status": "passed"
+    }
+  ],
+  "failures": [],
+  "unverified": [],
+  "metrics": {
+    "patch_count": 12,
+    "atom_count": 205,
+    "startup_duration_us": 0,
+    "magic_initial_ready_inventory": 0,
+    "node_count": 2102,
+    "edge_count": 4122,
+    "result_count": 305,
+    "initial_ready": [
+      "maintenance/entry/ctrl",
+      "maintenance/entry/w0",
+      "maintenance/entry/w1",
+      "maintenance/entry/w2",
+      "maintenance/entry/w3"
+    ],
+    "storage_model": "O(V+E); on-demand reachability",
+    "placement_candidate_cost": 4.497056274847715,
+    "placement_baseline_cost": 5.062741699796953,
+    "placement_improvement": 0.5656854249492378,
+    "actual_sa_moves": 400100,
+    "patch_placement_contributed": true,
+    "placement_global_optimality": false
+  },
+  "input_sha256": {
+    "placement": "7900f4d6773ba6bfe7b9ce4ac761de58d43effd172996263c369deaede56b017",
+    "device": "43c8541ec838d73dc0ede84b412a32443585683cac3b57c3293b27af009af247",
+    "logical_dag": "183a8c2ac3826b05494fc21880adc8f54f8d95900d1402cc5d62eb93ed91e51f",
+    "observation": "7b6fac5210297e03ccd6b589a4dfec15c7c4c47e482343c621e6f42d156a848e",
+    "pin": "99e28d25778dd7ebc78bd5c9735d263a70ad056f23c4e044fb0e47e3c8bd4306"
+  },
+  "consumed_interfaces": {
+    "R1-PREINITIALIZED-IF-001": "0.1.0",
+    "R2-LOGICAL-DAG-001": "0.1.0-draft",
+    "R4-HIERARCHICAL-IF-001": "0.1.0-draft"
+  },
+  "fixture": false,
+  "sampled": false,
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "out_of_scope": [
+    "quantum_state_execution",
+    "measurement_probabilities",
+    "noise",
+    "physical_hardware",
+    "user_visual_acceptance"
+  ]
+}

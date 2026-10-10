@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "supervisor_pid": 26056,
+  "started_at_utc": "2026-10-06T12:46:49.276236+00:00",
+  "peak_root_rss_bytes": 4509696,
+  "peak_tree_rss_bytes": 245587968,
+  "root_rss_measured": true,
+  "job": "C:\\Users\\yuyqp\\Documents\\ChatGPT\\中性原子平台仿真\\examples\\atom\\t404\\qualification-job-v3",
+  "child_pid": 92152,
+  "elapsed_seconds": 34.35900000005495,
+  "root_rss_bytes": 4481024,
+  "tree_rss_bytes": 221773824,
+  "memory_scope": "sampled_process_tree_rss",
+  "processes_measured": 3,
+  "memory_unreadable_pids": [],
+  "returncode": 0,
+  "finished_at_utc": "2026-10-06T12:47:23.639761+00:00"
+}

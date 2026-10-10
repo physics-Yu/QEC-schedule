@@ -1,0 +1,72 @@
+{
+  "schema_version": "R2EncodedAuthorChecks/0.1.0",
+  "artifact_id": "T203-author-checks",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T203",
+    "kb_revision": "kb-0005",
+    "plan_revision": "plan-0007"
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "semantic_errors": [],
+  "executable_errors": [
+    {
+      "code": "STRATEGY_UNAVAILABLE",
+      "source_id": "prepare.L0",
+      "message": "no explicit strategy capability snapshot"
+    },
+    {
+      "code": "STRATEGY_UNAVAILABLE",
+      "source_id": "before.L0",
+      "message": "no explicit strategy capability snapshot"
+    },
+    {
+      "code": "STRATEGY_UNAVAILABLE",
+      "source_id": "prepare.L1",
+      "message": "no explicit strategy capability snapshot"
+    },
+    {
+      "code": "STRATEGY_UNAVAILABLE",
+      "source_id": "before.L1",
+      "message": "no explicit strategy capability snapshot"
+    },
+    {
+      "code": "STRATEGY_UNAVAILABLE",
+      "source_id": "couple",
+      "message": "no explicit strategy capability snapshot"
+    },
+    {
+      "code": "STRATEGY_UNAVAILABLE",
+      "source_id": "after.L0",
+      "message": "no explicit strategy capability snapshot"
+    },
+    {
+      "code": "STRATEGY_UNAVAILABLE",
+      "source_id": "after.L1",
+      "message": "no explicit strategy capability snapshot"
+    }
+  ],
+  "negative_group_errors": [
+    {
+      "code": "GROUP_INTENT_MISMATCH",
+      "source_id": "before.L0",
+      "message": "missing/changed members, basis, slots or transport intent"
+    }
+  ],
+  "semantic_check_passed": true,
+  "executable_strategy_check_passed": false,
+  "independent_validation_passed": false,
+  "expanded_call_count": 11,
+  "instance_result_slot_count": 80,
+  "unverified": [
+    "R3_physical_primitive_mapping",
+    "Enola_strategy_qualification",
+    "runtime_binding_and_ready",
+    "complete_group_transport_and_timing",
+    "R6_independent_validation",
+    "user_visual_acceptance"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "FactorySpecification/0.1.0-draft",
+  "fixture": true,
+  "factory_id": "fixture-factory",
+  "protocol_ref": "fixture/minimal-action-witnesses-NOT-15-to-1",
+  "factory_atom_ids": [
+    "a0",
+    "a1"
+  ],
+  "cleanup_atom_ids": [
+    "a0",
+    "a1"
+  ]
+}

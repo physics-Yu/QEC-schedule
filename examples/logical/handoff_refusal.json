@@ -1,0 +1,25 @@
+{
+  "status": "rejected_for_executable_handoff",
+  "code": "SYNTHESIS_REQUIRED",
+  "operation_ids": [
+    "round4/feedback_from_7",
+    "round3/feedback_from_6",
+    "round3/feedback_from_7",
+    "round2/feedback_from_5",
+    "round2/feedback_from_6",
+    "round2/feedback_from_7",
+    "round1/feedback_from_4",
+    "round1/feedback_from_5",
+    "round1/feedback_from_6",
+    "round1/feedback_from_7",
+    "round0/feedback_from_3",
+    "round0/feedback_from_4",
+    "round0/feedback_from_5",
+    "round0/feedback_from_6",
+    "round0/feedback_from_7"
+  ],
+  "unresolved_count": 15,
+  "reason": "explicit_unsynthesized_source_negative_fixture",
+  "fixture": true,
+  "does_not_describe_default_build": true
+}

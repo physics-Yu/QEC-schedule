@@ -1,0 +1,79 @@
+{
+  "schema_version": "LogicalPatchPlacementInput/0.1.0",
+  "artifact_id": "logical-dag-1521bf0837e6e223014a-placement-input",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T204",
+    "consumer_interface": "R4-HIERARCHICAL-IF-001/0.1.0-draft"
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "logical_dag_ref": {
+    "artifact_id": "logical-dag-1521bf0837e6e223014a",
+    "canonical_sha256": "5cbb644cdcf87fe73a54f51ebdf09b1091a14d95fb1404beb39ba46953c43099"
+  },
+  "patches": {
+    "P0": {
+      "aod_group": "data",
+      "basis": "Z",
+      "value": 0
+    },
+    "P1": {
+      "aod_group": "data",
+      "basis": "Z",
+      "value": 0
+    },
+    "P2": {
+      "aod_group": "data",
+      "basis": "Z",
+      "value": 0
+    },
+    "P3": {
+      "aod_group": "data",
+      "basis": "Z",
+      "value": 0
+    }
+  },
+  "interactions": [
+    {
+      "node_id": "example/couple0",
+      "patch_operands": [
+        "P0",
+        "P3"
+      ],
+      "layer": 1
+    },
+    {
+      "node_id": "example/couple1",
+      "patch_operands": [
+        "P1",
+        "P2"
+      ],
+      "layer": 1
+    },
+    {
+      "node_id": "example/couple2",
+      "patch_operands": [
+        "P0",
+        "P2"
+      ],
+      "layer": 2
+    },
+    {
+      "node_id": "example/couple3",
+      "patch_operands": [
+        "P0",
+        "P3"
+      ],
+      "layer": 3
+    }
+  ],
+  "layer_semantics": "logical_dependency_depth_not_microseconds",
+  "resource_patch_extensions_required": false,
+  "resource_demands": [],
+  "scope": "declared_algorithm_patch_placement_input_not_a_full_factory_world",
+  "placement_executed": false,
+  "owner_of_placement_execution": "R4"
+}

@@ -1,0 +1,120 @@
+{
+  "source_directory": "scripts\\outputs\\T704\\server\\20261006T145147858253Z-shor15-frontend-placement\\result\\T704\\run",
+  "logical_dag_sha256": "fb74e1200eb6498be6795f365750468642423d01795005e10cbc7cba0ed544e7",
+  "current_frontend_validation_errors": [],
+  "placement_artifact_id": "patch-placement:a31c4d0a6d61f954b0a9ae88ae3d69dd9a433ef911e11fd8bfbf3cbeb9539446",
+  "placement_sha256": "2c9708afa027c31d8228d244e5d9022d1e617f33cb2d17b797d2a5969c1d8402",
+  "actual_enola_record": {
+    "repository": "https://github.com/UCLA-VAST/Enola",
+    "commit": "2944dbf4e163e8d2eeeec607add0d9139edce689",
+    "source_file": "enola/placer/placer.py",
+    "source_sha256": "d256c84490bd72d525515f24acb081d7b21bcd5f7bbc31302a3bbf79a16997cf",
+    "license": "BSD-3-Clause",
+    "license_sha256": "a8663338fce27cf0e5da614f04d0b72e7559b31bcd41b6b115572d1d8df985f0",
+    "loading": "unmodified SAPlacer class AST from hash-verified full source; private RNG globals",
+    "called": [
+      "SAPlacer.run",
+      "SAPlacer.init_sa_solution",
+      "SAPlacer.init_perturb",
+      "SAPlacer.make_movement",
+      "SAPlacer.get_cost",
+      "SAPlacer.update_temperature"
+    ],
+    "adaptations": [
+      "explicit budget via initialize_param override",
+      "private seeded RNG",
+      "stop at frozen temperature if initial perturbation has no uphill move"
+    ],
+    "not_called": [
+      "Enola.solve",
+      "upstream codegen",
+      "upstream simulator"
+    ],
+    "raw_output": {
+      "best_mapping": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "best_cost": 4.497056274847704,
+      "initial_mapping": [
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          1
+        ]
+      ],
+      "effective_grid_shape": [
+        3,
+        2
+      ]
+    },
+    "stdout": "[INFO] Enola: Start SA-based placement\n[INFO] Enola: SA-Based Placer: Iter 0, cost: 4.497056\n"
+  },
+  "cost": {
+    "model": "sum(max(1-0.1*layer,0.1)*Euclidean_cell_distance)",
+    "baseline_mapping": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        0
+      ]
+    ],
+    "baseline": 5.225798040898392,
+    "candidate": 4.497056274847715,
+    "units": "weighted_cells",
+    "uniform_cell_step_um": 60.0,
+    "candidate_weighted_distance_um": 269.82337649086287,
+    "makespan_objective": false
+  },
+  "initial_atom_count": 85,
+  "startup_actions": [],
+  "scope": "read_actual_R7_server_artifacts_no_new_placement_run_or_qualification"
+}

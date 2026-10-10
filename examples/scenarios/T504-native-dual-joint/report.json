@@ -1,0 +1,1159 @@
+{
+  "fixture": false,
+  "host": "yubowl",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "kb_revision": "kb-0005",
+  "plan_revision": "plan-0007",
+  "scope": "T504 real compiled strategy calls, not whole Shor or factory",
+  "budget": {
+    "parallelism": 1,
+    "wall_seconds_guidance": 300
+  },
+  "runtime_completed": false,
+  "passed": false,
+  "failed_stage": "queue",
+  "error_type": "RuntimeContractError",
+  "error": "BINDING_BUDGET_EXHAUSTED: No completed binding within the composition-attempt budget; this is not an infeasibility proof",
+  "error_code": "BINDING_BUDGET_EXHAUSTED",
+  "details": null,
+  "wall_seconds": 20.84196410002187,
+  "library_stats": {
+    "strategy_compile_count": 2,
+    "placement_search_count": 1376,
+    "routing_search_count": 77,
+    "cache_hit_count": 3,
+    "bind_count": 11,
+    "composition_check_count": 260
+  },
+  "snapshot": {
+    "schema_version": "logical-controller-state/0.1",
+    "run_id": "T504-native",
+    "revision": 0,
+    "time_us": 0,
+    "world_state": {
+      "time_us": 0,
+      "atoms": [
+        {
+          "atom_id": "atom:L0/d0",
+          "qubit_id": "L0/d0",
+          "position_um": [
+            0.0,
+            -100.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/d0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/d1",
+          "qubit_id": "L0/d1",
+          "position_um": [
+            10.0,
+            -100.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/d1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/d2",
+          "qubit_id": "L0/d2",
+          "position_um": [
+            20.0,
+            -100.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/d2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/d3",
+          "qubit_id": "L0/d3",
+          "position_um": [
+            0.0,
+            -90.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/d3",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/d4",
+          "qubit_id": "L0/d4",
+          "position_um": [
+            10.0,
+            -90.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/d4",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/d5",
+          "qubit_id": "L0/d5",
+          "position_um": [
+            20.0,
+            -90.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/d5",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/d6",
+          "qubit_id": "L0/d6",
+          "position_um": [
+            0.0,
+            -80.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/d6",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/d7",
+          "qubit_id": "L0/d7",
+          "position_um": [
+            10.0,
+            -80.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/d7",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/d8",
+          "qubit_id": "L0/d8",
+          "position_um": [
+            20.0,
+            -80.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/d8",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/x0",
+          "qubit_id": "L0/x0",
+          "position_um": [
+            0.0,
+            -60.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/x0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/x1",
+          "qubit_id": "L0/x1",
+          "position_um": [
+            10.0,
+            -60.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/x1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/x2",
+          "qubit_id": "L0/x2",
+          "position_um": [
+            20.0,
+            -60.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/x2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/x3",
+          "qubit_id": "L0/x3",
+          "position_um": [
+            30.0,
+            -60.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/x3",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/z0",
+          "qubit_id": "L0/z0",
+          "position_um": [
+            0.0,
+            -50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/z0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/z1",
+          "qubit_id": "L0/z1",
+          "position_um": [
+            10.0,
+            -50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/z1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/z2",
+          "qubit_id": "L0/z2",
+          "position_um": [
+            20.0,
+            -50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/z2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L0/z3",
+          "qubit_id": "L0/z3",
+          "position_um": [
+            30.0,
+            -50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L0/init/z3",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/d0",
+          "qubit_id": "L1/d0",
+          "position_um": [
+            100.0,
+            -100.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/d0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/d1",
+          "qubit_id": "L1/d1",
+          "position_um": [
+            110.0,
+            -100.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/d1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/d2",
+          "qubit_id": "L1/d2",
+          "position_um": [
+            120.0,
+            -100.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/d2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/d3",
+          "qubit_id": "L1/d3",
+          "position_um": [
+            100.0,
+            -90.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/d3",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/d4",
+          "qubit_id": "L1/d4",
+          "position_um": [
+            110.0,
+            -90.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/d4",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/d5",
+          "qubit_id": "L1/d5",
+          "position_um": [
+            120.0,
+            -90.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/d5",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/d6",
+          "qubit_id": "L1/d6",
+          "position_um": [
+            100.0,
+            -80.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/d6",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/d7",
+          "qubit_id": "L1/d7",
+          "position_um": [
+            110.0,
+            -80.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/d7",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/d8",
+          "qubit_id": "L1/d8",
+          "position_um": [
+            120.0,
+            -80.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/d8",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/x0",
+          "qubit_id": "L1/x0",
+          "position_um": [
+            100.0,
+            -60.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/x0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/x1",
+          "qubit_id": "L1/x1",
+          "position_um": [
+            110.0,
+            -60.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/x1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/x2",
+          "qubit_id": "L1/x2",
+          "position_um": [
+            120.0,
+            -60.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/x2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/x3",
+          "qubit_id": "L1/x3",
+          "position_um": [
+            130.0,
+            -60.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/x3",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/z0",
+          "qubit_id": "L1/z0",
+          "position_um": [
+            100.0,
+            -50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/z0",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/z1",
+          "qubit_id": "L1/z1",
+          "position_um": [
+            110.0,
+            -50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/z1",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/z2",
+          "qubit_id": "L1/z2",
+          "position_um": [
+            120.0,
+            -50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/z2",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        },
+        {
+          "atom_id": "atom:L1/z3",
+          "qubit_id": "L1/z3",
+          "position_um": [
+            130.0,
+            -50.0
+          ],
+          "carrier": "SLM",
+          "trap_id": "slm:L1/init/z3",
+          "aod_group": "data",
+          "row_id": null,
+          "column_id": null
+        }
+      ],
+      "slm_traps": [
+        {
+          "trap_id": "slm:L0/init/d0",
+          "position_um": [
+            0.0,
+            -100.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/d0"
+        },
+        {
+          "trap_id": "slm:L0/init/d1",
+          "position_um": [
+            10.0,
+            -100.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/d1"
+        },
+        {
+          "trap_id": "slm:L0/init/d2",
+          "position_um": [
+            20.0,
+            -100.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/d2"
+        },
+        {
+          "trap_id": "slm:L0/init/d3",
+          "position_um": [
+            0.0,
+            -90.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/d3"
+        },
+        {
+          "trap_id": "slm:L0/init/d4",
+          "position_um": [
+            10.0,
+            -90.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/d4"
+        },
+        {
+          "trap_id": "slm:L0/init/d5",
+          "position_um": [
+            20.0,
+            -90.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/d5"
+        },
+        {
+          "trap_id": "slm:L0/init/d6",
+          "position_um": [
+            0.0,
+            -80.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/d6"
+        },
+        {
+          "trap_id": "slm:L0/init/d7",
+          "position_um": [
+            10.0,
+            -80.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/d7"
+        },
+        {
+          "trap_id": "slm:L0/init/d8",
+          "position_um": [
+            20.0,
+            -80.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/d8"
+        },
+        {
+          "trap_id": "slm:L0/init/x0",
+          "position_um": [
+            0.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/x0"
+        },
+        {
+          "trap_id": "slm:L0/init/x1",
+          "position_um": [
+            10.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/x1"
+        },
+        {
+          "trap_id": "slm:L0/init/x2",
+          "position_um": [
+            20.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/x2"
+        },
+        {
+          "trap_id": "slm:L0/init/x3",
+          "position_um": [
+            30.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/x3"
+        },
+        {
+          "trap_id": "slm:L0/init/z0",
+          "position_um": [
+            0.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/z0"
+        },
+        {
+          "trap_id": "slm:L0/init/z1",
+          "position_um": [
+            10.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/z1"
+        },
+        {
+          "trap_id": "slm:L0/init/z2",
+          "position_um": [
+            20.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/z2"
+        },
+        {
+          "trap_id": "slm:L0/init/z3",
+          "position_um": [
+            30.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L0/z3"
+        },
+        {
+          "trap_id": "slm:L1/init/d0",
+          "position_um": [
+            100.0,
+            -100.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/d0"
+        },
+        {
+          "trap_id": "slm:L1/init/d1",
+          "position_um": [
+            110.0,
+            -100.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/d1"
+        },
+        {
+          "trap_id": "slm:L1/init/d2",
+          "position_um": [
+            120.0,
+            -100.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/d2"
+        },
+        {
+          "trap_id": "slm:L1/init/d3",
+          "position_um": [
+            100.0,
+            -90.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/d3"
+        },
+        {
+          "trap_id": "slm:L1/init/d4",
+          "position_um": [
+            110.0,
+            -90.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/d4"
+        },
+        {
+          "trap_id": "slm:L1/init/d5",
+          "position_um": [
+            120.0,
+            -90.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/d5"
+        },
+        {
+          "trap_id": "slm:L1/init/d6",
+          "position_um": [
+            100.0,
+            -80.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/d6"
+        },
+        {
+          "trap_id": "slm:L1/init/d7",
+          "position_um": [
+            110.0,
+            -80.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/d7"
+        },
+        {
+          "trap_id": "slm:L1/init/d8",
+          "position_um": [
+            120.0,
+            -80.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/d8"
+        },
+        {
+          "trap_id": "slm:L1/init/x0",
+          "position_um": [
+            100.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/x0"
+        },
+        {
+          "trap_id": "slm:L1/init/x1",
+          "position_um": [
+            110.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/x1"
+        },
+        {
+          "trap_id": "slm:L1/init/x2",
+          "position_um": [
+            120.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/x2"
+        },
+        {
+          "trap_id": "slm:L1/init/x3",
+          "position_um": [
+            130.0,
+            -60.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/x3"
+        },
+        {
+          "trap_id": "slm:L1/init/z0",
+          "position_um": [
+            100.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/z0"
+        },
+        {
+          "trap_id": "slm:L1/init/z1",
+          "position_um": [
+            110.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/z1"
+        },
+        {
+          "trap_id": "slm:L1/init/z2",
+          "position_um": [
+            120.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/z2"
+        },
+        {
+          "trap_id": "slm:L1/init/z3",
+          "position_um": [
+            130.0,
+            -50.0
+          ],
+          "zone_id": "initialization",
+          "occupant": "atom:L1/z3"
+        }
+      ],
+      "aod_rows": [],
+      "aod_columns": []
+    },
+    "blocks": {
+      "L0": {
+        "logical_id": "L0",
+        "qubits": {
+          "d0": "L0/d0",
+          "d1": "L0/d1",
+          "d2": "L0/d2",
+          "d3": "L0/d3",
+          "d4": "L0/d4",
+          "d5": "L0/d5",
+          "d6": "L0/d6",
+          "d7": "L0/d7",
+          "d8": "L0/d8",
+          "x0": "L0/x0",
+          "x1": "L0/x1",
+          "x2": "L0/x2",
+          "x3": "L0/x3",
+          "z0": "L0/z0",
+          "z1": "L0/z1",
+          "z2": "L0/z2",
+          "z3": "L0/z3"
+        },
+        "atoms": {
+          "d0": "atom:L0/d0",
+          "d1": "atom:L0/d1",
+          "d2": "atom:L0/d2",
+          "d3": "atom:L0/d3",
+          "d4": "atom:L0/d4",
+          "d5": "atom:L0/d5",
+          "d6": "atom:L0/d6",
+          "d7": "atom:L0/d7",
+          "d8": "atom:L0/d8",
+          "x0": "atom:L0/x0",
+          "x1": "atom:L0/x1",
+          "x2": "atom:L0/x2",
+          "x3": "atom:L0/x3",
+          "z0": "atom:L0/z0",
+          "z1": "atom:L0/z1",
+          "z2": "atom:L0/z2",
+          "z3": "atom:L0/z3"
+        },
+        "data_slots": [
+          "d0",
+          "d1",
+          "d2",
+          "d3",
+          "d4",
+          "d5",
+          "d6",
+          "d7",
+          "d8"
+        ],
+        "code_profile": {
+          "code": "rotated_surface",
+          "distance": 3,
+          "convention": "surface17-row-major-x-vertical/1",
+          "orientation": "x_vertical_z_horizontal"
+        },
+        "layout_profile": "patch_initialization",
+        "offset_um": [
+          0,
+          0
+        ],
+        "lifecycle": "unprepared",
+        "ready_at_us": 0,
+        "epoch": 0,
+        "frame": {
+          "status": "physical_corrections_only_no_decoder",
+          "result_ids": []
+        },
+        "last_call_id": null
+      },
+      "L1": {
+        "logical_id": "L1",
+        "qubits": {
+          "d0": "L1/d0",
+          "d1": "L1/d1",
+          "d2": "L1/d2",
+          "d3": "L1/d3",
+          "d4": "L1/d4",
+          "d5": "L1/d5",
+          "d6": "L1/d6",
+          "d7": "L1/d7",
+          "d8": "L1/d8",
+          "x0": "L1/x0",
+          "x1": "L1/x1",
+          "x2": "L1/x2",
+          "x3": "L1/x3",
+          "z0": "L1/z0",
+          "z1": "L1/z1",
+          "z2": "L1/z2",
+          "z3": "L1/z3"
+        },
+        "atoms": {
+          "d0": "atom:L1/d0",
+          "d1": "atom:L1/d1",
+          "d2": "atom:L1/d2",
+          "d3": "atom:L1/d3",
+          "d4": "atom:L1/d4",
+          "d5": "atom:L1/d5",
+          "d6": "atom:L1/d6",
+          "d7": "atom:L1/d7",
+          "d8": "atom:L1/d8",
+          "x0": "atom:L1/x0",
+          "x1": "atom:L1/x1",
+          "x2": "atom:L1/x2",
+          "x3": "atom:L1/x3",
+          "z0": "atom:L1/z0",
+          "z1": "atom:L1/z1",
+          "z2": "atom:L1/z2",
+          "z3": "atom:L1/z3"
+        },
+        "data_slots": [
+          "d0",
+          "d1",
+          "d2",
+          "d3",
+          "d4",
+          "d5",
+          "d6",
+          "d7",
+          "d8"
+        ],
+        "code_profile": {
+          "code": "rotated_surface",
+          "distance": 3,
+          "convention": "surface17-row-major-x-vertical/1",
+          "orientation": "x_vertical_z_horizontal"
+        },
+        "layout_profile": "patch_initialization",
+        "offset_um": [
+          100,
+          0
+        ],
+        "lifecycle": "unprepared",
+        "ready_at_us": 0,
+        "epoch": 0,
+        "frame": {
+          "status": "physical_corrections_only_no_decoder",
+          "result_ids": []
+        },
+        "last_call_id": null
+      }
+    },
+    "planned_blocks": {
+      "L0": {
+        "logical_id": "L0",
+        "qubits": {
+          "d0": "L0/d0",
+          "d1": "L0/d1",
+          "d2": "L0/d2",
+          "d3": "L0/d3",
+          "d4": "L0/d4",
+          "d5": "L0/d5",
+          "d6": "L0/d6",
+          "d7": "L0/d7",
+          "d8": "L0/d8",
+          "x0": "L0/x0",
+          "x1": "L0/x1",
+          "x2": "L0/x2",
+          "x3": "L0/x3",
+          "z0": "L0/z0",
+          "z1": "L0/z1",
+          "z2": "L0/z2",
+          "z3": "L0/z3"
+        },
+        "atoms": {
+          "d0": "atom:L0/d0",
+          "d1": "atom:L0/d1",
+          "d2": "atom:L0/d2",
+          "d3": "atom:L0/d3",
+          "d4": "atom:L0/d4",
+          "d5": "atom:L0/d5",
+          "d6": "atom:L0/d6",
+          "d7": "atom:L0/d7",
+          "d8": "atom:L0/d8",
+          "x0": "atom:L0/x0",
+          "x1": "atom:L0/x1",
+          "x2": "atom:L0/x2",
+          "x3": "atom:L0/x3",
+          "z0": "atom:L0/z0",
+          "z1": "atom:L0/z1",
+          "z2": "atom:L0/z2",
+          "z3": "atom:L0/z3"
+        },
+        "data_slots": [
+          "d0",
+          "d1",
+          "d2",
+          "d3",
+          "d4",
+          "d5",
+          "d6",
+          "d7",
+          "d8"
+        ],
+        "code_profile": {
+          "code": "rotated_surface",
+          "distance": 3,
+          "convention": "surface17-row-major-x-vertical/1",
+          "orientation": "x_vertical_z_horizontal"
+        },
+        "layout_profile": "patch_home",
+        "offset_um": [
+          0,
+          0
+        ],
+        "lifecycle": "live",
+        "ready_at_us": 67282.0,
+        "epoch": 4,
+        "frame": {
+          "status": "physical_corrections_only_no_decoder",
+          "result_ids": []
+        },
+        "last_call_id": "L0-round2"
+      },
+      "L1": {
+        "logical_id": "L1",
+        "qubits": {
+          "d0": "L1/d0",
+          "d1": "L1/d1",
+          "d2": "L1/d2",
+          "d3": "L1/d3",
+          "d4": "L1/d4",
+          "d5": "L1/d5",
+          "d6": "L1/d6",
+          "d7": "L1/d7",
+          "d8": "L1/d8",
+          "x0": "L1/x0",
+          "x1": "L1/x1",
+          "x2": "L1/x2",
+          "x3": "L1/x3",
+          "z0": "L1/z0",
+          "z1": "L1/z1",
+          "z2": "L1/z2",
+          "z3": "L1/z3"
+        },
+        "atoms": {
+          "d0": "atom:L1/d0",
+          "d1": "atom:L1/d1",
+          "d2": "atom:L1/d2",
+          "d3": "atom:L1/d3",
+          "d4": "atom:L1/d4",
+          "d5": "atom:L1/d5",
+          "d6": "atom:L1/d6",
+          "d7": "atom:L1/d7",
+          "d8": "atom:L1/d8",
+          "x0": "atom:L1/x0",
+          "x1": "atom:L1/x1",
+          "x2": "atom:L1/x2",
+          "x3": "atom:L1/x3",
+          "z0": "atom:L1/z0",
+          "z1": "atom:L1/z1",
+          "z2": "atom:L1/z2",
+          "z3": "atom:L1/z3"
+        },
+        "data_slots": [
+          "d0",
+          "d1",
+          "d2",
+          "d3",
+          "d4",
+          "d5",
+          "d6",
+          "d7",
+          "d8"
+        ],
+        "code_profile": {
+          "code": "rotated_surface",
+          "distance": 3,
+          "convention": "surface17-row-major-x-vertical/1",
+          "orientation": "x_vertical_z_horizontal"
+        },
+        "layout_profile": "patch_initialization",
+        "offset_um": [
+          100,
+          0
+        ],
+        "lifecycle": "unprepared",
+        "ready_at_us": 0,
+        "epoch": 0,
+        "frame": {
+          "status": "physical_corrections_only_no_decoder",
+          "result_ids": []
+        },
+        "last_call_id": null
+      }
+    },
+    "pending_call_ids": [
+      "L0-prepare",
+      "L0-round0",
+      "L0-round1",
+      "L0-round2"
+    ],
+    "results": {},
+    "illumination_counts": {
+      "atom:L0/d0": 0,
+      "atom:L0/d1": 0,
+      "atom:L0/d2": 0,
+      "atom:L0/d3": 0,
+      "atom:L0/d4": 0,
+      "atom:L0/d5": 0,
+      "atom:L0/d6": 0,
+      "atom:L0/d7": 0,
+      "atom:L0/d8": 0,
+      "atom:L0/x0": 0,
+      "atom:L0/x1": 0,
+      "atom:L0/x2": 0,
+      "atom:L0/x3": 0,
+      "atom:L0/z0": 0,
+      "atom:L0/z1": 0,
+      "atom:L0/z2": 0,
+      "atom:L0/z3": 0,
+      "atom:L1/d0": 0,
+      "atom:L1/d1": 0,
+      "atom:L1/d2": 0,
+      "atom:L1/d3": 0,
+      "atom:L1/d4": 0,
+      "atom:L1/d5": 0,
+      "atom:L1/d6": 0,
+      "atom:L1/d7": 0,
+      "atom:L1/d8": 0,
+      "atom:L1/x0": 0,
+      "atom:L1/x1": 0,
+      "atom:L1/x2": 0,
+      "atom:L1/x3": 0,
+      "atom:L1/z0": 0,
+      "atom:L1/z1": 0,
+      "atom:L1/z2": 0,
+      "atom:L1/z3": 0
+    },
+    "logical_result_aliases": {},
+    "history_hash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "library_stats": {
+      "strategy_compile_count": 2,
+      "placement_search_count": 1376,
+      "routing_search_count": 77,
+      "cache_hit_count": 3,
+      "bind_count": 11,
+      "composition_check_count": 260
+    },
+    "fixture": false
+  },
+  "user_visual_acceptance": "pending",
+  "source_sha256": {
+    "src/na_pipeline/runtime/controller.py": "04268cc4f0f42f9d69c44b2e6b3a33b04c7d7a817841cdae77eead48b2795bcb",
+    "src/na_pipeline/runtime/engine.py": "088d7d5577d7c3020cec801d17f2d32372cc5e42284ac8be890144596e531830",
+    "src/na_pipeline/runtime/errors.py": "e03402d2423a8797aac833258ef1288332a2b82f18d5e97b167b5897df09b69a",
+    "src/na_pipeline/runtime/factory.py": "0ccf7511ce536f7cd5e175df3d14071eab3f6d34c4b722ac2a1f9945cf72cf08",
+    "src/na_pipeline/runtime/group_metrics.py": "4e7a22ad65682184729e40f385e071be3ff2ff8330618e663e87069bbb89ffd4",
+    "src/na_pipeline/runtime/scenario.py": "9e665447b033d22c1a547d00eb45e7f62103856fc03dd975ac38a4378b253f54",
+    "src/na_pipeline/runtime/state.py": "9ff9f903b3e7f420fe572f00760e89217b71fd6534e5d8d9f78eb4de0d794a48",
+    "src/na_pipeline/runtime/__init__.py": "af5b07b803b1c3497db991f18c6f9099d9bffca1d69de65a8755cfe2bcc7376d",
+    "src/na_pipeline/backend/compiler.py": "64cd210d67e94bffe3ccdba2b819cd2753297186a26543d36ccf91f15ab29ab1",
+    "src/na_pipeline/backend/enola_kernel.py": "a8d1af35b6d4f5219de2bcecdbfa3f4a0e9d5dbe4b40045e34068ed8ee8e668a",
+    "src/na_pipeline/backend/geometry.py": "25f494028ada2ec49c00ac881face147edfc2d1e351d670d1192e9925f8cd3c8",
+    "src/na_pipeline/backend/reuse.py": "791c18592f2498b865eaeabb8928efc3c1b23321e32cd65e4b255567f209164b",
+    "src/na_pipeline/backend/strategy.py": "50246200fa47181ff83d1d6a7baa64900bca6bbc5adabb4951d1713302fef9c9",
+    "src/na_pipeline/backend/strategy_bind.py": "45634d8c07ab9e7d3cc2191bf689101819f75e1bef50947a328f908be54bab96",
+    "src/na_pipeline/backend/strategy_compile.py": "b715ef77723ca40fb8c3c3ca2f6d81def28478130df72b2740a39c08fc920d76",
+    "src/na_pipeline/backend/__init__.py": "d108e4eccc4e193fa0ea22bd81fef747bf3b360396280b48a0c0434691f02ac0",
+    "src/na_pipeline/qec/factory.py": "8e1542a7026c7c104a0b63f3393b2868ff54d5c9f37c8d73984440a5cec672e1",
+    "src/na_pipeline/qec/factory_primitives.py": "94aa4aa79e649e560db99d8b7f10a90ff95278db6fa06bd25d94d946d415143f",
+    "src/na_pipeline/qec/logical_primitives.py": "401a82367d13f96962b451fe31b227007fc58d6a0a9cadd3b5cc0b6a7ccb48dd",
+    "src/na_pipeline/qec/program.py": "76c374bb13838487620508c1cdde88d9ccd66e781469874e44005968e80dfb36",
+    "src/na_pipeline/qec/surface17.py": "fdd7b0238a95979cd590e5c0e8c0567d78f26ae4b79b437eb056716b76eb8d2a",
+    "src/na_pipeline/qec/__init__.py": "eb2becaf1c6088012c0ecb4ff6354efbc1f373908c6cf4f12593dc5c391f61ec",
+    "examples/scenarios/probe_t504.py": "c129ca1f6e19c134527cf34b8a57d55b96d7f85c186addbc158854efc8fb1a3e"
+  }
+}

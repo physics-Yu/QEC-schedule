@@ -1,0 +1,3088 @@
+{
+  "schema_version": "physical-program/0.2.0-draft",
+  "artifact_id": "logical-primitive-prepare-3ca6e7ff9cfbf362",
+  "producer_version": "na_pipeline.qec.logical_primitives/0.1.0",
+  "provenance": {
+    "producer": "R3",
+    "task_id": "T303",
+    "kb_revision": "kb-0005",
+    "planning_revision": "plan-0007",
+    "interface_version": "IF-STRATEGY-001/0.1.0",
+    "fixture": false,
+    "binding_scope": "formal"
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "device_ref": null,
+  "device_ref_reason": "R4 resolves R1 full-cycle profiles",
+  "qubits": [
+    {
+      "id": "block/d0",
+      "block_id": "block",
+      "local_id": "d0",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/d1",
+      "block_id": "block",
+      "local_id": "d1",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/d2",
+      "block_id": "block",
+      "local_id": "d2",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/d3",
+      "block_id": "block",
+      "local_id": "d3",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/d4",
+      "block_id": "block",
+      "local_id": "d4",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/d5",
+      "block_id": "block",
+      "local_id": "d5",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/d6",
+      "block_id": "block",
+      "local_id": "d6",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/d7",
+      "block_id": "block",
+      "local_id": "d7",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/d8",
+      "block_id": "block",
+      "local_id": "d8",
+      "role": "data",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/x0",
+      "block_id": "block",
+      "local_id": "x0",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/x1",
+      "block_id": "block",
+      "local_id": "x1",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/x2",
+      "block_id": "block",
+      "local_id": "x2",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/x3",
+      "block_id": "block",
+      "local_id": "x3",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/z0",
+      "block_id": "block",
+      "local_id": "z0",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/z1",
+      "block_id": "block",
+      "local_id": "z1",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/z2",
+      "block_id": "block",
+      "local_id": "z2",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    },
+    {
+      "id": "block/z3",
+      "block_id": "block",
+      "local_id": "z3",
+      "role": "syndrome",
+      "aod_group": "data",
+      "formal": true
+    }
+  ],
+  "templates": {
+    "s17.logical.prepare.plus.v1": {
+      "template_id": "s17.logical.prepare.plus.v1",
+      "qubits": [
+        "d0",
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8",
+        "x0",
+        "x1",
+        "x2",
+        "x3",
+        "z0",
+        "z1",
+        "z2",
+        "z3"
+      ],
+      "body": [
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d0",
+            "kind": "reset",
+            "qubits": [
+              "d0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d1",
+            "kind": "reset",
+            "qubits": [
+              "d1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d2",
+            "kind": "reset",
+            "qubits": [
+              "d2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d3",
+            "kind": "reset",
+            "qubits": [
+              "d3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d4",
+            "kind": "reset",
+            "qubits": [
+              "d4"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d4"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d5",
+            "kind": "reset",
+            "qubits": [
+              "d5"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d5"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d6",
+            "kind": "reset",
+            "qubits": [
+              "d6"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d6"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d7",
+            "kind": "reset",
+            "qubits": [
+              "d7"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d7"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d8",
+            "kind": "reset",
+            "qubits": [
+              "d8"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d8"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d0",
+            "kind": "gate",
+            "qubits": [
+              "d0"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d1",
+            "kind": "gate",
+            "qubits": [
+              "d1"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d2",
+            "kind": "gate",
+            "qubits": [
+              "d2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d3",
+            "kind": "gate",
+            "qubits": [
+              "d3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d4",
+            "kind": "gate",
+            "qubits": [
+              "d4"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d4"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d5",
+            "kind": "gate",
+            "qubits": [
+              "d5"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d5"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d6",
+            "kind": "gate",
+            "qubits": [
+              "d6"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d6"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d7",
+            "kind": "gate",
+            "qubits": [
+              "d7"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d7"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d8",
+            "kind": "gate",
+            "qubits": [
+              "d8"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d8"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x0",
+            "kind": "reset",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x1",
+            "kind": "reset",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x2",
+            "kind": "reset",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x3",
+            "kind": "reset",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z0",
+            "kind": "reset",
+            "qubits": [
+              "z0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z1",
+            "kind": "reset",
+            "qubits": [
+              "z1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z2",
+            "kind": "reset",
+            "qubits": [
+              "z2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z3",
+            "kind": "reset",
+            "qubits": [
+              "z3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x0",
+            "kind": "gate",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x1",
+            "kind": "gate",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x2",
+            "kind": "gate",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x3",
+            "kind": "gate",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_NW",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_NW",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d4"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x3_NW",
+            "kind": "gate",
+            "qubits": [
+              "x3",
+              "d6"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x3_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "x3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_NW",
+            "kind": "gate",
+            "qubits": [
+              "d1",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_NW",
+            "kind": "gate",
+            "qubits": [
+              "d3",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z3_NW",
+            "kind": "gate",
+            "qubits": [
+              "d5",
+              "z3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z3_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "z3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_NE",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "NE",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_NE",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d5"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "NE",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x3_NE",
+            "kind": "gate",
+            "qubits": [
+              "x3",
+              "d7"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x3_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "NE",
+              "check_id": "x3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_SW",
+            "kind": "gate",
+            "qubits": [
+              "d4",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "SW",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_SW",
+            "kind": "gate",
+            "qubits": [
+              "d6",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "SW",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z3_SW",
+            "kind": "gate",
+            "qubits": [
+              "d8",
+              "z3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z3_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "SW",
+              "check_id": "z3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_SW",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "SW",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x1_SW",
+            "kind": "gate",
+            "qubits": [
+              "x1",
+              "d1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x1_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "SW",
+              "check_id": "x1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_SW",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d7"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "SW",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z0_NE",
+            "kind": "gate",
+            "qubits": [
+              "d0",
+              "z0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z0_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "NE",
+              "check_id": "z0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_NE",
+            "kind": "gate",
+            "qubits": [
+              "d2",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "NE",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_NE",
+            "kind": "gate",
+            "qubits": [
+              "d4",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "NE",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_SE",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d4"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x1_SE",
+            "kind": "gate",
+            "qubits": [
+              "x1",
+              "d2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x1_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "x1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_SE",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d8"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z0_SE",
+            "kind": "gate",
+            "qubits": [
+              "d3",
+              "z0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z0_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "z0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_SE",
+            "kind": "gate",
+            "qubits": [
+              "d5",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_SE",
+            "kind": "gate",
+            "qubits": [
+              "d7",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x0",
+            "kind": "gate",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x1",
+            "kind": "gate",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x2",
+            "kind": "gate",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x3",
+            "kind": "gate",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x0",
+            "kind": "measure",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x0"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x1",
+            "kind": "measure",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x1"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x2",
+            "kind": "measure",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x2"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x3",
+            "kind": "measure",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x3"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z0",
+            "kind": "measure",
+            "qubits": [
+              "z0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z0"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z1",
+            "kind": "measure",
+            "qubits": [
+              "z1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z1"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z2",
+            "kind": "measure",
+            "qubits": [
+              "z2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z2"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z3",
+            "kind": "measure",
+            "qubits": [
+              "z3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z3"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_0_d3",
+            "kind": "gate",
+            "qubits": [
+              "d3"
+            ],
+            "params": {
+              "name": "X"
+            },
+            "reads": [
+              "m_z0"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_0_d3"
+            ],
+            "condition": {
+              "bit": "m_z0",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_0_d6",
+            "kind": "gate",
+            "qubits": [
+              "d6"
+            ],
+            "params": {
+              "name": "X"
+            },
+            "reads": [
+              "m_z0"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_0_d6"
+            ],
+            "condition": {
+              "bit": "m_z0",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_1_d4",
+            "kind": "gate",
+            "qubits": [
+              "d4"
+            ],
+            "params": {
+              "name": "X"
+            },
+            "reads": [
+              "m_z1"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_1_d4"
+            ],
+            "condition": {
+              "bit": "m_z1",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_1_d6",
+            "kind": "gate",
+            "qubits": [
+              "d6"
+            ],
+            "params": {
+              "name": "X"
+            },
+            "reads": [
+              "m_z1"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_1_d6"
+            ],
+            "condition": {
+              "bit": "m_z1",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_2_d6",
+            "kind": "gate",
+            "qubits": [
+              "d6"
+            ],
+            "params": {
+              "name": "X"
+            },
+            "reads": [
+              "m_z2"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_2_d6"
+            ],
+            "condition": {
+              "bit": "m_z2",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_3_d8",
+            "kind": "gate",
+            "qubits": [
+              "d8"
+            ],
+            "params": {
+              "name": "X"
+            },
+            "reads": [
+              "m_z3"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_3_d8"
+            ],
+            "condition": {
+              "bit": "m_z3",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "service_reset_x0",
+            "kind": "reset",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "measure_x0"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:service_reset_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "service_reset_x1",
+            "kind": "reset",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "measure_x1"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:service_reset_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "service_reset_x2",
+            "kind": "reset",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "measure_x2"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:service_reset_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "service_reset_x3",
+            "kind": "reset",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "measure_x3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:service_reset_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "service_reset_z0",
+            "kind": "reset",
+            "qubits": [
+              "z0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "measure_z0"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:service_reset_z0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "service_reset_z1",
+            "kind": "reset",
+            "qubits": [
+              "z1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "measure_z1"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:service_reset_z1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "service_reset_z2",
+            "kind": "reset",
+            "qubits": [
+              "z2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "measure_z2"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:service_reset_z2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "service_reset_z3",
+            "kind": "reset",
+            "qubits": [
+              "z3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:service_reset_z3"
+            ],
+            "condition": null
+          }
+        }
+      ],
+      "metadata": {
+        "protocol": "surface17",
+        "protocol_version": "0.1.0",
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1",
+        "orientation": "x_vertical_z_horizontal",
+        "boundary": "standalone_patch",
+        "stage": "prepare_plus",
+        "gate_set": [
+          "H",
+          "X",
+          "Z",
+          "CX",
+          "MZ",
+          "RESET_Z"
+        ],
+        "sources": [
+          "R8-FACT-013@0.1.0",
+          "R8-FACT-017@0.1.0",
+          "https://arxiv.org/html/1404.3747v2#S2.T2"
+        ],
+        "sign_fixes": {
+          "m_z0": [
+            "d3",
+            "d6"
+          ],
+          "m_z1": [
+            "d4",
+            "d6"
+          ],
+          "m_z2": [
+            "d6"
+          ],
+          "m_z3": [
+            "d8"
+          ]
+        },
+        "sign_fix_gate": "X",
+        "sign_fix_scope": "ideal_projection_signs_not_noise_decoding",
+        "logical_primitive": {
+          "name": "prepare",
+          "params": {
+            "state": "+"
+          },
+          "version": "0.1.0"
+        }
+      }
+    }
+  },
+  "body": [
+    {
+      "kind": "call",
+      "id": "primitive",
+      "template_id": "s17.logical.prepare.plus.v1",
+      "bindings": {
+        "d0": "block/d0",
+        "d1": "block/d1",
+        "d2": "block/d2",
+        "d3": "block/d3",
+        "d4": "block/d4",
+        "d5": "block/d5",
+        "d6": "block/d6",
+        "d7": "block/d7",
+        "d8": "block/d8",
+        "x0": "block/x0",
+        "x1": "block/x1",
+        "x2": "block/x2",
+        "x3": "block/x3",
+        "z0": "block/z0",
+        "z1": "block/z1",
+        "z2": "block/z2",
+        "z3": "block/z3"
+      },
+      "repeat": 1,
+      "source_ids": [
+        "R3:T303:prepare",
+        "surface17-circuit-convention/1"
+      ]
+    }
+  ],
+  "strategy_contract": {
+    "schema_version": "strategy_contract/0.1",
+    "producer_version": "0.1.0",
+    "operation": {
+      "name": "prepare",
+      "semantic_version": "1.0.0",
+      "params": {
+        "state": "+"
+      },
+      "formal_operands": [
+        "block"
+      ],
+      "direction": null,
+      "encoding": {
+        "family": "rotated_surface",
+        "distance": 3,
+        "orientation": "x_vertical_z_horizontal",
+        "logical_convention": "surface17-row-major-x-vertical/1",
+        "logical_x": [
+          "d0",
+          "d3",
+          "d6"
+        ],
+        "logical_z": [
+          "d0",
+          "d1",
+          "d2"
+        ]
+      },
+      "code_profile": {
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1",
+        "orientation": "x_vertical_z_horizontal"
+      },
+      "encoded_result_slots": [
+        "x0",
+        "x1",
+        "x2",
+        "x3",
+        "z0",
+        "z1",
+        "z2",
+        "z3"
+      ]
+    },
+    "formal_bindings": {
+      "physical_qubits": [
+        {
+          "physical_qubit_id": "block/d0",
+          "atom_slot": "atom:block/d0",
+          "formal_block": "block",
+          "local_role": "d0"
+        },
+        {
+          "physical_qubit_id": "block/d1",
+          "atom_slot": "atom:block/d1",
+          "formal_block": "block",
+          "local_role": "d1"
+        },
+        {
+          "physical_qubit_id": "block/d2",
+          "atom_slot": "atom:block/d2",
+          "formal_block": "block",
+          "local_role": "d2"
+        },
+        {
+          "physical_qubit_id": "block/d3",
+          "atom_slot": "atom:block/d3",
+          "formal_block": "block",
+          "local_role": "d3"
+        },
+        {
+          "physical_qubit_id": "block/d4",
+          "atom_slot": "atom:block/d4",
+          "formal_block": "block",
+          "local_role": "d4"
+        },
+        {
+          "physical_qubit_id": "block/d5",
+          "atom_slot": "atom:block/d5",
+          "formal_block": "block",
+          "local_role": "d5"
+        },
+        {
+          "physical_qubit_id": "block/d6",
+          "atom_slot": "atom:block/d6",
+          "formal_block": "block",
+          "local_role": "d6"
+        },
+        {
+          "physical_qubit_id": "block/d7",
+          "atom_slot": "atom:block/d7",
+          "formal_block": "block",
+          "local_role": "d7"
+        },
+        {
+          "physical_qubit_id": "block/d8",
+          "atom_slot": "atom:block/d8",
+          "formal_block": "block",
+          "local_role": "d8"
+        },
+        {
+          "physical_qubit_id": "block/x0",
+          "atom_slot": "atom:block/x0",
+          "formal_block": "block",
+          "local_role": "x0"
+        },
+        {
+          "physical_qubit_id": "block/x1",
+          "atom_slot": "atom:block/x1",
+          "formal_block": "block",
+          "local_role": "x1"
+        },
+        {
+          "physical_qubit_id": "block/x2",
+          "atom_slot": "atom:block/x2",
+          "formal_block": "block",
+          "local_role": "x2"
+        },
+        {
+          "physical_qubit_id": "block/x3",
+          "atom_slot": "atom:block/x3",
+          "formal_block": "block",
+          "local_role": "x3"
+        },
+        {
+          "physical_qubit_id": "block/z0",
+          "atom_slot": "atom:block/z0",
+          "formal_block": "block",
+          "local_role": "z0"
+        },
+        {
+          "physical_qubit_id": "block/z1",
+          "atom_slot": "atom:block/z1",
+          "formal_block": "block",
+          "local_role": "z1"
+        },
+        {
+          "physical_qubit_id": "block/z2",
+          "atom_slot": "atom:block/z2",
+          "formal_block": "block",
+          "local_role": "z2"
+        },
+        {
+          "physical_qubit_id": "block/z3",
+          "atom_slot": "atom:block/z3",
+          "formal_block": "block",
+          "local_role": "z3"
+        }
+      ],
+      "result_slots": [
+        {
+          "result_id": "primitive/r0/m_x0",
+          "encoded_result_slot": "x0",
+          "producer_op_id": "primitive/r0/measure_x0",
+          "physical_qubit_id": "block/x0",
+          "measurement_basis": "Z",
+          "check_type": "X"
+        },
+        {
+          "result_id": "primitive/r0/m_x1",
+          "encoded_result_slot": "x1",
+          "producer_op_id": "primitive/r0/measure_x1",
+          "physical_qubit_id": "block/x1",
+          "measurement_basis": "Z",
+          "check_type": "X"
+        },
+        {
+          "result_id": "primitive/r0/m_x2",
+          "encoded_result_slot": "x2",
+          "producer_op_id": "primitive/r0/measure_x2",
+          "physical_qubit_id": "block/x2",
+          "measurement_basis": "Z",
+          "check_type": "X"
+        },
+        {
+          "result_id": "primitive/r0/m_x3",
+          "encoded_result_slot": "x3",
+          "producer_op_id": "primitive/r0/measure_x3",
+          "physical_qubit_id": "block/x3",
+          "measurement_basis": "Z",
+          "check_type": "X"
+        },
+        {
+          "result_id": "primitive/r0/m_z0",
+          "encoded_result_slot": "z0",
+          "producer_op_id": "primitive/r0/measure_z0",
+          "physical_qubit_id": "block/z0",
+          "measurement_basis": "Z",
+          "check_type": "Z"
+        },
+        {
+          "result_id": "primitive/r0/m_z1",
+          "encoded_result_slot": "z1",
+          "producer_op_id": "primitive/r0/measure_z1",
+          "physical_qubit_id": "block/z1",
+          "measurement_basis": "Z",
+          "check_type": "Z"
+        },
+        {
+          "result_id": "primitive/r0/m_z2",
+          "encoded_result_slot": "z2",
+          "producer_op_id": "primitive/r0/measure_z2",
+          "physical_qubit_id": "block/z2",
+          "measurement_basis": "Z",
+          "check_type": "Z"
+        },
+        {
+          "result_id": "primitive/r0/m_z3",
+          "encoded_result_slot": "z3",
+          "producer_op_id": "primitive/r0/measure_z3",
+          "physical_qubit_id": "block/z3",
+          "measurement_basis": "Z",
+          "check_type": "Z"
+        }
+      ],
+      "source_ids": [
+        "R3:surface17-row-major-x-vertical/1:init_d0",
+        "R3:T303:prepare",
+        "surface17-circuit-convention/1",
+        "primitive",
+        "s17.logical.prepare.plus.v1",
+        "logical-primitive-prepare-3ca6e7ff9cfbf362",
+        "primitive/r0/init_d0",
+        "R3:surface17-row-major-x-vertical/1:init_d1",
+        "primitive/r0/init_d1",
+        "R3:surface17-row-major-x-vertical/1:init_d2",
+        "primitive/r0/init_d2",
+        "R3:surface17-row-major-x-vertical/1:init_d3",
+        "primitive/r0/init_d3",
+        "R3:surface17-row-major-x-vertical/1:init_d4",
+        "primitive/r0/init_d4",
+        "R3:surface17-row-major-x-vertical/1:init_d5",
+        "primitive/r0/init_d5",
+        "R3:surface17-row-major-x-vertical/1:init_d6",
+        "primitive/r0/init_d6",
+        "R3:surface17-row-major-x-vertical/1:init_d7",
+        "primitive/r0/init_d7",
+        "R3:surface17-row-major-x-vertical/1:init_d8",
+        "primitive/r0/init_d8",
+        "R3:surface17-row-major-x-vertical/1:init_h_d0",
+        "primitive/r0/init_h_d0",
+        "R3:surface17-row-major-x-vertical/1:init_h_d1",
+        "primitive/r0/init_h_d1",
+        "R3:surface17-row-major-x-vertical/1:init_h_d2",
+        "primitive/r0/init_h_d2",
+        "R3:surface17-row-major-x-vertical/1:init_h_d3",
+        "primitive/r0/init_h_d3",
+        "R3:surface17-row-major-x-vertical/1:init_h_d4",
+        "primitive/r0/init_h_d4",
+        "R3:surface17-row-major-x-vertical/1:init_h_d5",
+        "primitive/r0/init_h_d5",
+        "R3:surface17-row-major-x-vertical/1:init_h_d6",
+        "primitive/r0/init_h_d6",
+        "R3:surface17-row-major-x-vertical/1:init_h_d7",
+        "primitive/r0/init_h_d7",
+        "R3:surface17-row-major-x-vertical/1:init_h_d8",
+        "primitive/r0/init_h_d8",
+        "R3:surface17-row-major-x-vertical/1:reset_x0",
+        "primitive/r0/reset_x0",
+        "R3:surface17-row-major-x-vertical/1:reset_x1",
+        "primitive/r0/reset_x1",
+        "R3:surface17-row-major-x-vertical/1:reset_x2",
+        "primitive/r0/reset_x2",
+        "R3:surface17-row-major-x-vertical/1:reset_x3",
+        "primitive/r0/reset_x3",
+        "R3:surface17-row-major-x-vertical/1:reset_z0",
+        "primitive/r0/reset_z0",
+        "R3:surface17-row-major-x-vertical/1:reset_z1",
+        "primitive/r0/reset_z1",
+        "R3:surface17-row-major-x-vertical/1:reset_z2",
+        "primitive/r0/reset_z2",
+        "R3:surface17-row-major-x-vertical/1:reset_z3",
+        "primitive/r0/reset_z3",
+        "R3:surface17-row-major-x-vertical/1:prepare_x0",
+        "primitive/r0/prepare_x0",
+        "R3:surface17-row-major-x-vertical/1:prepare_x1",
+        "primitive/r0/prepare_x1",
+        "R3:surface17-row-major-x-vertical/1:prepare_x2",
+        "primitive/r0/prepare_x2",
+        "R3:surface17-row-major-x-vertical/1:prepare_x3",
+        "primitive/r0/prepare_x3",
+        "R3:surface17-row-major-x-vertical/1:cx_x0_NW",
+        "primitive/r0/cx_x0_NW",
+        "R3:surface17-row-major-x-vertical/1:cx_x2_NW",
+        "primitive/r0/cx_x2_NW",
+        "R3:surface17-row-major-x-vertical/1:cx_x3_NW",
+        "primitive/r0/cx_x3_NW",
+        "R3:surface17-row-major-x-vertical/1:cx_z1_NW",
+        "primitive/r0/cx_z1_NW",
+        "R3:surface17-row-major-x-vertical/1:cx_z2_NW",
+        "primitive/r0/cx_z2_NW",
+        "R3:surface17-row-major-x-vertical/1:cx_z3_NW",
+        "primitive/r0/cx_z3_NW",
+        "R3:surface17-row-major-x-vertical/1:cx_x0_NE",
+        "primitive/r0/cx_x0_NE",
+        "R3:surface17-row-major-x-vertical/1:cx_x2_NE",
+        "primitive/r0/cx_x2_NE",
+        "R3:surface17-row-major-x-vertical/1:cx_x3_NE",
+        "primitive/r0/cx_x3_NE",
+        "R3:surface17-row-major-x-vertical/1:cx_z1_SW",
+        "primitive/r0/cx_z1_SW",
+        "R3:surface17-row-major-x-vertical/1:cx_z2_SW",
+        "primitive/r0/cx_z2_SW",
+        "R3:surface17-row-major-x-vertical/1:cx_z3_SW",
+        "primitive/r0/cx_z3_SW",
+        "R3:surface17-row-major-x-vertical/1:cx_x0_SW",
+        "primitive/r0/cx_x0_SW",
+        "R3:surface17-row-major-x-vertical/1:cx_x1_SW",
+        "primitive/r0/cx_x1_SW",
+        "R3:surface17-row-major-x-vertical/1:cx_x2_SW",
+        "primitive/r0/cx_x2_SW",
+        "R3:surface17-row-major-x-vertical/1:cx_z0_NE",
+        "primitive/r0/cx_z0_NE",
+        "R3:surface17-row-major-x-vertical/1:cx_z1_NE",
+        "primitive/r0/cx_z1_NE",
+        "R3:surface17-row-major-x-vertical/1:cx_z2_NE",
+        "primitive/r0/cx_z2_NE",
+        "R3:surface17-row-major-x-vertical/1:cx_x0_SE",
+        "primitive/r0/cx_x0_SE",
+        "R3:surface17-row-major-x-vertical/1:cx_x1_SE",
+        "primitive/r0/cx_x1_SE",
+        "R3:surface17-row-major-x-vertical/1:cx_x2_SE",
+        "primitive/r0/cx_x2_SE",
+        "R3:surface17-row-major-x-vertical/1:cx_z0_SE",
+        "primitive/r0/cx_z0_SE",
+        "R3:surface17-row-major-x-vertical/1:cx_z1_SE",
+        "primitive/r0/cx_z1_SE",
+        "R3:surface17-row-major-x-vertical/1:cx_z2_SE",
+        "primitive/r0/cx_z2_SE",
+        "R3:surface17-row-major-x-vertical/1:read_basis_x0",
+        "primitive/r0/read_basis_x0",
+        "R3:surface17-row-major-x-vertical/1:read_basis_x1",
+        "primitive/r0/read_basis_x1",
+        "R3:surface17-row-major-x-vertical/1:read_basis_x2",
+        "primitive/r0/read_basis_x2",
+        "R3:surface17-row-major-x-vertical/1:read_basis_x3",
+        "primitive/r0/read_basis_x3",
+        "R3:surface17-row-major-x-vertical/1:measure_x0",
+        "primitive/r0/measure_x0",
+        "R3:surface17-row-major-x-vertical/1:measure_x1",
+        "primitive/r0/measure_x1",
+        "R3:surface17-row-major-x-vertical/1:measure_x2",
+        "primitive/r0/measure_x2",
+        "R3:surface17-row-major-x-vertical/1:measure_x3",
+        "primitive/r0/measure_x3",
+        "R3:surface17-row-major-x-vertical/1:measure_z0",
+        "primitive/r0/measure_z0",
+        "R3:surface17-row-major-x-vertical/1:measure_z1",
+        "primitive/r0/measure_z1",
+        "R3:surface17-row-major-x-vertical/1:measure_z2",
+        "primitive/r0/measure_z2",
+        "R3:surface17-row-major-x-vertical/1:measure_z3",
+        "primitive/r0/measure_z3",
+        "R3:surface17-row-major-x-vertical/1:fix_0_d3",
+        "primitive/r0/fix_0_d3",
+        "R3:surface17-row-major-x-vertical/1:fix_0_d6",
+        "primitive/r0/fix_0_d6",
+        "R3:surface17-row-major-x-vertical/1:fix_1_d4",
+        "primitive/r0/fix_1_d4",
+        "R3:surface17-row-major-x-vertical/1:fix_1_d6",
+        "primitive/r0/fix_1_d6",
+        "R3:surface17-row-major-x-vertical/1:fix_2_d6",
+        "primitive/r0/fix_2_d6",
+        "R3:surface17-row-major-x-vertical/1:fix_3_d8",
+        "primitive/r0/fix_3_d8",
+        "R3:surface17-row-major-x-vertical/1:service_reset_x0",
+        "primitive/r0/service_reset_x0",
+        "R3:surface17-row-major-x-vertical/1:service_reset_x1",
+        "primitive/r0/service_reset_x1",
+        "R3:surface17-row-major-x-vertical/1:service_reset_x2",
+        "primitive/r0/service_reset_x2",
+        "R3:surface17-row-major-x-vertical/1:service_reset_x3",
+        "primitive/r0/service_reset_x3",
+        "R3:surface17-row-major-x-vertical/1:service_reset_z0",
+        "primitive/r0/service_reset_z0",
+        "R3:surface17-row-major-x-vertical/1:service_reset_z1",
+        "primitive/r0/service_reset_z1",
+        "R3:surface17-row-major-x-vertical/1:service_reset_z2",
+        "primitive/r0/service_reset_z2",
+        "R3:surface17-row-major-x-vertical/1:service_reset_z3",
+        "primitive/r0/service_reset_z3"
+      ]
+    },
+    "entry": {
+      "layout_profile_role": "initialization_entry",
+      "layout_profile_id": "patch_initialization",
+      "formal_blocks": [
+        "block"
+      ],
+      "orientation": "x_vertical_z_horizontal",
+      "carrier": "SLM",
+      "occupancy": "all_17_members_present_per_patch",
+      "aod_occupancy": "empty_for_bound_members",
+      "requires_encoded_data": false,
+      "allows_data_destruction": true,
+      "requires_lifecycle_authorization": "prepare_uninitialized_or_explicit_discard"
+    },
+    "exit": {
+      "layout_profile_role": "patch_home",
+      "layout_profile_id": "patch_home",
+      "formal_blocks": [
+        "block"
+      ],
+      "orientation": "x_vertical_z_horizontal",
+      "carrier": "SLM",
+      "occupancy": "same_carriers_as_entry",
+      "aod_occupancy": "empty_for_bound_members",
+      "data_effect": "prepared_+_L",
+      "ancilla_effect": "reset_zero_and_returned",
+      "results_effect": "new_independent_ready_slots",
+      "frame_effect": "explicit_prepare_sign_corrections",
+      "requires_completed_actions_and_published_results": true,
+      "home_relation": "declared_target_home",
+      "next_local_primitive": "syndrome_round"
+    },
+    "groups": [
+      {
+        "group_id": "initialization.block",
+        "purpose": "patch_initialization_transport",
+        "formal_block": "block",
+        "round_slot": "initialization",
+        "members": [
+          {
+            "physical_qubit_id": "block/d0",
+            "atom_slot": "atom:block/d0",
+            "formal_block": "block",
+            "local_role": "d0",
+            "prepare_before_op_ids": [
+              "primitive/r0/init_d0"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "d0",
+            "target_slot_role": "d0"
+          },
+          {
+            "physical_qubit_id": "block/d1",
+            "atom_slot": "atom:block/d1",
+            "formal_block": "block",
+            "local_role": "d1",
+            "prepare_before_op_ids": [
+              "primitive/r0/init_d1"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "d1",
+            "target_slot_role": "d1"
+          },
+          {
+            "physical_qubit_id": "block/d2",
+            "atom_slot": "atom:block/d2",
+            "formal_block": "block",
+            "local_role": "d2",
+            "prepare_before_op_ids": [
+              "primitive/r0/init_d2"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "d2",
+            "target_slot_role": "d2"
+          },
+          {
+            "physical_qubit_id": "block/d3",
+            "atom_slot": "atom:block/d3",
+            "formal_block": "block",
+            "local_role": "d3",
+            "prepare_before_op_ids": [
+              "primitive/r0/init_d3"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "d3",
+            "target_slot_role": "d3"
+          },
+          {
+            "physical_qubit_id": "block/d4",
+            "atom_slot": "atom:block/d4",
+            "formal_block": "block",
+            "local_role": "d4",
+            "prepare_before_op_ids": [
+              "primitive/r0/init_d4"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "d4",
+            "target_slot_role": "d4"
+          },
+          {
+            "physical_qubit_id": "block/d5",
+            "atom_slot": "atom:block/d5",
+            "formal_block": "block",
+            "local_role": "d5",
+            "prepare_before_op_ids": [
+              "primitive/r0/init_d5"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "d5",
+            "target_slot_role": "d5"
+          },
+          {
+            "physical_qubit_id": "block/d6",
+            "atom_slot": "atom:block/d6",
+            "formal_block": "block",
+            "local_role": "d6",
+            "prepare_before_op_ids": [
+              "primitive/r0/init_d6"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "d6",
+            "target_slot_role": "d6"
+          },
+          {
+            "physical_qubit_id": "block/d7",
+            "atom_slot": "atom:block/d7",
+            "formal_block": "block",
+            "local_role": "d7",
+            "prepare_before_op_ids": [
+              "primitive/r0/init_d7"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "d7",
+            "target_slot_role": "d7"
+          },
+          {
+            "physical_qubit_id": "block/d8",
+            "atom_slot": "atom:block/d8",
+            "formal_block": "block",
+            "local_role": "d8",
+            "prepare_before_op_ids": [
+              "primitive/r0/init_d8"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "d8",
+            "target_slot_role": "d8"
+          },
+          {
+            "physical_qubit_id": "block/x0",
+            "atom_slot": "atom:block/x0",
+            "formal_block": "block",
+            "local_role": "x0",
+            "prepare_before_op_ids": [
+              "primitive/r0/reset_x0"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "x0",
+            "target_slot_role": "x0"
+          },
+          {
+            "physical_qubit_id": "block/x1",
+            "atom_slot": "atom:block/x1",
+            "formal_block": "block",
+            "local_role": "x1",
+            "prepare_before_op_ids": [
+              "primitive/r0/reset_x1"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "x1",
+            "target_slot_role": "x1"
+          },
+          {
+            "physical_qubit_id": "block/x2",
+            "atom_slot": "atom:block/x2",
+            "formal_block": "block",
+            "local_role": "x2",
+            "prepare_before_op_ids": [
+              "primitive/r0/reset_x2"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "x2",
+            "target_slot_role": "x2"
+          },
+          {
+            "physical_qubit_id": "block/x3",
+            "atom_slot": "atom:block/x3",
+            "formal_block": "block",
+            "local_role": "x3",
+            "prepare_before_op_ids": [
+              "primitive/r0/reset_x3"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "x3",
+            "target_slot_role": "x3"
+          },
+          {
+            "physical_qubit_id": "block/z0",
+            "atom_slot": "atom:block/z0",
+            "formal_block": "block",
+            "local_role": "z0",
+            "prepare_before_op_ids": [
+              "primitive/r0/reset_z0"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "z0",
+            "target_slot_role": "z0"
+          },
+          {
+            "physical_qubit_id": "block/z1",
+            "atom_slot": "atom:block/z1",
+            "formal_block": "block",
+            "local_role": "z1",
+            "prepare_before_op_ids": [
+              "primitive/r0/reset_z1"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "z1",
+            "target_slot_role": "z1"
+          },
+          {
+            "physical_qubit_id": "block/z2",
+            "atom_slot": "atom:block/z2",
+            "formal_block": "block",
+            "local_role": "z2",
+            "prepare_before_op_ids": [
+              "primitive/r0/reset_z2"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "z2",
+            "target_slot_role": "z2"
+          },
+          {
+            "physical_qubit_id": "block/z3",
+            "atom_slot": "atom:block/z3",
+            "formal_block": "block",
+            "local_role": "z3",
+            "prepare_before_op_ids": [
+              "primitive/r0/reset_z3"
+            ],
+            "transport_after_op_ids": [],
+            "requires_present_carrier": true,
+            "source_slot_role": "z3",
+            "target_slot_role": "z3"
+          }
+        ],
+        "source_layout_profile_role": "initialization_entry",
+        "target_layout_profile_role": "patch_home",
+        "transport_policy": "complete_patch_group",
+        "source_layout_id": "patch_initialization",
+        "target_layout_id": "patch_home",
+        "return_layout_id": null,
+        "scope": "one_patch",
+        "required_member_count": 17,
+        "split_policy": "explicit_constraint_reason_required",
+        "destination_is_measurement_zone": false,
+        "initial_state_may_not_skip_transport": true
+      },
+      {
+        "group_id": "maintenance.block.r0",
+        "purpose": "maintenance_readout",
+        "formal_block": "block",
+        "round_slot": "r0",
+        "members": [
+          {
+            "physical_qubit_id": "block/x0",
+            "atom_slot": "atom:block/x0",
+            "formal_block": "block",
+            "local_role": "x0",
+            "check_id": "x0",
+            "check_type": "X",
+            "measurement_basis": "Z",
+            "last_coupling_op_id": "primitive/r0/cx_x0_SE",
+            "basis_change_op_id": "primitive/r0/read_basis_x0",
+            "prepare_op_ids": [
+              "primitive/r0/reset_x0",
+              "primitive/r0/prepare_x0"
+            ],
+            "transport_after_op_ids": [
+              "primitive/r0/cx_x0_SE",
+              "primitive/r0/read_basis_x0"
+            ],
+            "readout_after_op_ids": [
+              "primitive/r0/cx_x0_SE",
+              "primitive/r0/read_basis_x0"
+            ],
+            "measurement_op_id": "primitive/r0/measure_x0",
+            "result_id": "primitive/r0/m_x0",
+            "encoded_result_slot": "x0",
+            "post_readout_reset_op_id": "primitive/r0/service_reset_x0",
+            "return_after_op_ids": [
+              "primitive/r0/service_reset_x0"
+            ],
+            "mz_slot_role": "x0"
+          },
+          {
+            "physical_qubit_id": "block/x1",
+            "atom_slot": "atom:block/x1",
+            "formal_block": "block",
+            "local_role": "x1",
+            "check_id": "x1",
+            "check_type": "X",
+            "measurement_basis": "Z",
+            "last_coupling_op_id": "primitive/r0/cx_x1_SE",
+            "basis_change_op_id": "primitive/r0/read_basis_x1",
+            "prepare_op_ids": [
+              "primitive/r0/reset_x1",
+              "primitive/r0/prepare_x1"
+            ],
+            "transport_after_op_ids": [
+              "primitive/r0/cx_x1_SE",
+              "primitive/r0/read_basis_x1"
+            ],
+            "readout_after_op_ids": [
+              "primitive/r0/cx_x1_SE",
+              "primitive/r0/read_basis_x1"
+            ],
+            "measurement_op_id": "primitive/r0/measure_x1",
+            "result_id": "primitive/r0/m_x1",
+            "encoded_result_slot": "x1",
+            "post_readout_reset_op_id": "primitive/r0/service_reset_x1",
+            "return_after_op_ids": [
+              "primitive/r0/service_reset_x1"
+            ],
+            "mz_slot_role": "x1"
+          },
+          {
+            "physical_qubit_id": "block/x2",
+            "atom_slot": "atom:block/x2",
+            "formal_block": "block",
+            "local_role": "x2",
+            "check_id": "x2",
+            "check_type": "X",
+            "measurement_basis": "Z",
+            "last_coupling_op_id": "primitive/r0/cx_x2_SE",
+            "basis_change_op_id": "primitive/r0/read_basis_x2",
+            "prepare_op_ids": [
+              "primitive/r0/reset_x2",
+              "primitive/r0/prepare_x2"
+            ],
+            "transport_after_op_ids": [
+              "primitive/r0/cx_x2_SE",
+              "primitive/r0/read_basis_x2"
+            ],
+            "readout_after_op_ids": [
+              "primitive/r0/cx_x2_SE",
+              "primitive/r0/read_basis_x2"
+            ],
+            "measurement_op_id": "primitive/r0/measure_x2",
+            "result_id": "primitive/r0/m_x2",
+            "encoded_result_slot": "x2",
+            "post_readout_reset_op_id": "primitive/r0/service_reset_x2",
+            "return_after_op_ids": [
+              "primitive/r0/service_reset_x2"
+            ],
+            "mz_slot_role": "x2"
+          },
+          {
+            "physical_qubit_id": "block/x3",
+            "atom_slot": "atom:block/x3",
+            "formal_block": "block",
+            "local_role": "x3",
+            "check_id": "x3",
+            "check_type": "X",
+            "measurement_basis": "Z",
+            "last_coupling_op_id": "primitive/r0/cx_x3_NE",
+            "basis_change_op_id": "primitive/r0/read_basis_x3",
+            "prepare_op_ids": [
+              "primitive/r0/reset_x3",
+              "primitive/r0/prepare_x3"
+            ],
+            "transport_after_op_ids": [
+              "primitive/r0/cx_x3_NE",
+              "primitive/r0/read_basis_x3"
+            ],
+            "readout_after_op_ids": [
+              "primitive/r0/cx_x3_NE",
+              "primitive/r0/read_basis_x3"
+            ],
+            "measurement_op_id": "primitive/r0/measure_x3",
+            "result_id": "primitive/r0/m_x3",
+            "encoded_result_slot": "x3",
+            "post_readout_reset_op_id": "primitive/r0/service_reset_x3",
+            "return_after_op_ids": [
+              "primitive/r0/service_reset_x3"
+            ],
+            "mz_slot_role": "x3"
+          },
+          {
+            "physical_qubit_id": "block/z0",
+            "atom_slot": "atom:block/z0",
+            "formal_block": "block",
+            "local_role": "z0",
+            "check_id": "z0",
+            "check_type": "Z",
+            "measurement_basis": "Z",
+            "last_coupling_op_id": "primitive/r0/cx_z0_SE",
+            "basis_change_op_id": null,
+            "prepare_op_ids": [
+              "primitive/r0/reset_z0"
+            ],
+            "transport_after_op_ids": [
+              "primitive/r0/cx_z0_SE"
+            ],
+            "readout_after_op_ids": [
+              "primitive/r0/cx_z0_SE"
+            ],
+            "measurement_op_id": "primitive/r0/measure_z0",
+            "result_id": "primitive/r0/m_z0",
+            "encoded_result_slot": "z0",
+            "post_readout_reset_op_id": "primitive/r0/service_reset_z0",
+            "return_after_op_ids": [
+              "primitive/r0/service_reset_z0"
+            ],
+            "mz_slot_role": "z0"
+          },
+          {
+            "physical_qubit_id": "block/z1",
+            "atom_slot": "atom:block/z1",
+            "formal_block": "block",
+            "local_role": "z1",
+            "check_id": "z1",
+            "check_type": "Z",
+            "measurement_basis": "Z",
+            "last_coupling_op_id": "primitive/r0/cx_z1_SE",
+            "basis_change_op_id": null,
+            "prepare_op_ids": [
+              "primitive/r0/reset_z1"
+            ],
+            "transport_after_op_ids": [
+              "primitive/r0/cx_z1_SE"
+            ],
+            "readout_after_op_ids": [
+              "primitive/r0/cx_z1_SE"
+            ],
+            "measurement_op_id": "primitive/r0/measure_z1",
+            "result_id": "primitive/r0/m_z1",
+            "encoded_result_slot": "z1",
+            "post_readout_reset_op_id": "primitive/r0/service_reset_z1",
+            "return_after_op_ids": [
+              "primitive/r0/service_reset_z1"
+            ],
+            "mz_slot_role": "z1"
+          },
+          {
+            "physical_qubit_id": "block/z2",
+            "atom_slot": "atom:block/z2",
+            "formal_block": "block",
+            "local_role": "z2",
+            "check_id": "z2",
+            "check_type": "Z",
+            "measurement_basis": "Z",
+            "last_coupling_op_id": "primitive/r0/cx_z2_SE",
+            "basis_change_op_id": null,
+            "prepare_op_ids": [
+              "primitive/r0/reset_z2"
+            ],
+            "transport_after_op_ids": [
+              "primitive/r0/cx_z2_SE"
+            ],
+            "readout_after_op_ids": [
+              "primitive/r0/cx_z2_SE"
+            ],
+            "measurement_op_id": "primitive/r0/measure_z2",
+            "result_id": "primitive/r0/m_z2",
+            "encoded_result_slot": "z2",
+            "post_readout_reset_op_id": "primitive/r0/service_reset_z2",
+            "return_after_op_ids": [
+              "primitive/r0/service_reset_z2"
+            ],
+            "mz_slot_role": "z2"
+          },
+          {
+            "physical_qubit_id": "block/z3",
+            "atom_slot": "atom:block/z3",
+            "formal_block": "block",
+            "local_role": "z3",
+            "check_id": "z3",
+            "check_type": "Z",
+            "measurement_basis": "Z",
+            "last_coupling_op_id": "primitive/r0/cx_z3_SW",
+            "basis_change_op_id": null,
+            "prepare_op_ids": [
+              "primitive/r0/reset_z3"
+            ],
+            "transport_after_op_ids": [
+              "primitive/r0/cx_z3_SW"
+            ],
+            "readout_after_op_ids": [
+              "primitive/r0/cx_z3_SW"
+            ],
+            "measurement_op_id": "primitive/r0/measure_z3",
+            "result_id": "primitive/r0/m_z3",
+            "encoded_result_slot": "z3",
+            "post_readout_reset_op_id": "primitive/r0/service_reset_z3",
+            "return_after_op_ids": [
+              "primitive/r0/service_reset_z3"
+            ],
+            "mz_slot_role": "z3"
+          }
+        ],
+        "source_layout_profile_role": "patch_home",
+        "target_layout_profile_role": "syndrome_mz",
+        "readout_resource_profile_role": "patch_group_z_readout",
+        "source_layout_id": "patch_home",
+        "target_layout_id": "ancilla_readout",
+        "return_layout_id": "patch_home",
+        "return_layout_profile_role": "patch_home",
+        "return_required": true,
+        "transport_policy": "compatible_groups_allow_early_members",
+        "readout_policy": "earliest_common_feasible_start",
+        "scope": "one_patch_one_round",
+        "split_policy": "explicit_constraint_reason_required",
+        "numeric_synchronization_tolerance_us": null
+      }
+    ],
+    "physical_input_hash": "3ca6e7ff9cfbf362647d9d675fae89591b11a860848bc359fba778051b9848c8",
+    "qec_source_sha256": {
+      "surface17.py": "fdd7b0238a95979cd590e5c0e8c0567d78f26ae4b79b437eb056716b76eb8d2a",
+      "program.py": "76c374bb13838487620508c1cdde88d9ccd66e781469874e44005968e80dfb36",
+      "logical_primitives.py": "401a82367d13f96962b451fe31b227007fc58d6a0a9cadd3b5cc0b6a7ccb48dd"
+    },
+    "profile_resolution": {
+      "owner": "R1_R4",
+      "status": "requires_device_profile_binding",
+      "grouped_profile_schema": "grouped-device-profile/0.1",
+      "grouped_profile_id": "surface17-grouped-v1",
+      "producer_contract": "R1-GROUP-IF-001/0.1.0",
+      "readout_profile_pointer": "/grouped_profile/readout",
+      "cache_must_bind": [
+        "layout_profiles",
+        "group_profiles",
+        "device",
+        "enola_pin",
+        "compiler_rules"
+      ]
+    },
+    "unsupported_conditions": [
+      "whole_call_condition",
+      "non_d3_or_changed_encoding",
+      "mirrored_or_rotated_convention",
+      "missing_carrier",
+      "unknown_layout_or_group_profile",
+      "real_decoder_noise_loss"
+    ],
+    "protocol_source": [
+      "R3-QEC-001/0.1.0",
+      "IF-PATCH-GROUP-001/0.2.0",
+      "R8-FACT-013@0.1.0",
+      "R8-FACT-017@0.1.0"
+    ],
+    "qualification": {
+      "physical_input": "implemented",
+      "compiled_strategy": "not_qualified",
+      "enola": "not_asserted_by_R3",
+      "runtime": "not_qualified",
+      "independent_validation": "pending",
+      "user_visual": "pending"
+    },
+    "contract_hash": "ae568d1e9bb60c8e2bb5bba05b79ea605ce3d7f051deaa20251a82583b80b610"
+  },
+  "input_hashes": {
+    "physical_input": "3ca6e7ff9cfbf362647d9d675fae89591b11a860848bc359fba778051b9848c8",
+    "strategy_contract": "ae568d1e9bb60c8e2bb5bba05b79ea605ce3d7f051deaa20251a82583b80b610"
+  }
+}

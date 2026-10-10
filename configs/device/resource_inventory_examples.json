@@ -1,0 +1,123 @@
+{
+  "schema_version": "resource-inventory-examples/0.1",
+  "fixture": true,
+  "scope": "Three-patch and one-probe interface example only; not the complete Shor resource plan",
+  "patches": {
+    "L0": {
+      "aod_group": "data",
+      "basis": "Z",
+      "value": 0
+    },
+    "F0": {
+      "aod_group": "magic",
+      "basis": "Z",
+      "value": 0
+    },
+    "Y0": {
+      "aod_group": "magic",
+      "basis": "Z",
+      "value": 0
+    }
+  },
+  "placements": {
+    "L0": {
+      "anchor_um": [
+        0,
+        0
+      ],
+      "orientation": "x_vertical_z_horizontal"
+    },
+    "F0": {
+      "anchor_um": [
+        80,
+        0
+      ],
+      "orientation": "x_vertical_z_horizontal"
+    },
+    "Y0": {
+      "anchor_um": [
+        160,
+        0
+      ],
+      "orientation": "x_vertical_z_horizontal"
+    }
+  },
+  "placement_ref": {
+    "artifact_id": "fixture-complete-carrier-layout",
+    "producer": "R1-fixture",
+    "fixture": true
+  },
+  "resource_inventory": {
+    "schema_version": "initial-resource-inventory/0.1",
+    "artifact_id": "fixture-resource-plan",
+    "provenance": {
+      "producer": "R5-contract-fixture",
+      "fixture": true,
+      "source_refs": [
+        "R0:D04",
+        "R1-PREINITIALIZED-IF-001@0.2.0"
+      ]
+    },
+    "patch_roles": {
+      "L0": {
+        "role": "algorithm",
+        "pool_id": "algorithm",
+        "slot_id": "algorithm:L0"
+      },
+      "F0": {
+        "role": "factory",
+        "pool_id": "factory",
+        "slot_id": "factory:F0"
+      },
+      "Y0": {
+        "role": "scratch",
+        "pool_id": "scratch",
+        "slot_id": "scratch:Y0"
+      }
+    },
+    "nonpatch_atoms": {
+      "atom:parity_probe0": {
+        "qubit_id": "parity_probe0",
+        "trap_id": "slm:parity_probe0",
+        "position_um": [
+          240,
+          120
+        ],
+        "aod_group": "magic",
+        "role": "probe",
+        "pool_id": "parity",
+        "slot_id": "parity:probe0",
+        "basis": "Z",
+        "value": 0
+      }
+    }
+  },
+  "expected_counts": {
+    "patch_count": 3,
+    "patch_atom_count": 51,
+    "nonpatch_atom_count": 1,
+    "total_atom_count": 52,
+    "resource_slot_count": 4,
+    "atoms_by_role": {
+      "algorithm": 17,
+      "factory": 17,
+      "probe": 1,
+      "scratch": 17
+    }
+  },
+  "rejected_atom_id_alias": {
+    "rename_nonpatch_atom_id_to": "atom:L0/d0",
+    "expected_error": "ATOM_ID_ALIAS"
+  },
+  "rejected_probe_in_patch": {
+    "position_um": [
+      35,
+      35
+    ],
+    "expected_error": "RESOURCE_IN_PATCH_CELL"
+  },
+  "rejected_prepared_magic": {
+    "basis": "T",
+    "expected_error": "INITIAL_RESOURCE_STATE"
+  }
+}

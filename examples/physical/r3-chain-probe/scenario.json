@@ -1,0 +1,280 @@
+{
+  "schema_version": "ScenarioInput/0.2.0-draft",
+  "artifact_id": "atom-0ce826136de9-1c436306473c/explicit-fake-1",
+  "provenance": {
+    "producer": "R7 CLI explicit scenario enumeration",
+    "fixture": false,
+    "policy": "user_cli_selected_constant_1",
+    "sampling": "none"
+  },
+  "execution_kind": "scenario",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "results": {
+    "prepare_control/r0/m_x0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_control/r0/m_x1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_control/r0/m_x2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_control/r0/m_x3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_control/r0/m_z0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_control/r0/m_z1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_control/r0/m_z2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_control/r0/m_z3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_target/r0/m_x0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_target/r0/m_x1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_target/r0/m_x2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_target/r0/m_x3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_target/r0/m_z0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_target/r0/m_z1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_target/r0/m_z2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "prepare_target/r0/m_z3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_control/r0/m_x0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_control/r0/m_x1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_control/r0/m_x2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_control/r0/m_x3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_control/r0/m_z0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_control/r0/m_z1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_control/r0/m_z2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_control/r0/m_z3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_target/r0/m_x0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_target/r0/m_x1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_target/r0/m_x2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_target/r0/m_x3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_target/r0/m_z0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_target/r0/m_z1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_target/r0/m_z2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "pre_target/r0/m_z3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_control/r0/m_x0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_control/r0/m_x1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_control/r0/m_x2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_control/r0/m_x3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_control/r0/m_z0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_control/r0/m_z1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_control/r0/m_z2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_control/r0/m_z3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_target/r0/m_x0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_target/r0/m_x1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_target/r0/m_x2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_target/r0/m_x3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_target/r0/m_z0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_target/r0/m_z1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_target/r0/m_z2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "post_target/r0/m_z3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_control/r0/m_d0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_control/r0/m_d1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_control/r0/m_d2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_control/r0/m_d3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_control/r0/m_d4": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_control/r0/m_d5": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_control/r0/m_d6": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_control/r0/m_d7": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_control/r0/m_d8": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_target/r0/m_d0": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_target/r0/m_d1": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_target/r0/m_d2": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_target/r0/m_d3": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_target/r0/m_d4": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_target/r0/m_d5": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_target/r0/m_d6": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_target/r0/m_d7": {
+      "value": 1,
+      "origin": "fake"
+    },
+    "readout_target/r0/m_d8": {
+      "value": 1,
+      "origin": "fake"
+    }
+  }
+}

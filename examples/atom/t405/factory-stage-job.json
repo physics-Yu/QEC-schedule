@@ -1,0 +1,8 @@
+{
+  "schema_version": "r7-server-job/0.1",
+  "name": "r4-factory-first-stage-205",
+  "stage_kind": "factory_t",
+  "argv": ["{python}", "examples/atom/t405/run_factory_stage.py", "--world", "examples/atom/t405/resource-world-server-v1/world.json.gz", "--out", "examples/atom/t405/factory-stage-v1"],
+  "budget": {"wall_seconds": 3600, "memory_gib": 16, "parallelism": 1, "search_expansions": 10000000},
+  "budget_rationale": "Complete R3 first factory stage (1312 operations, 18 SE groups) in the complete 205-carrier world. No truncation, no algorithm-predecessor execution claim. Prior four-patch 224-operation joint window took 35.65 seconds under the independent observer; larger full-world geometry and 1312-operation input receive 3000 seconds enforced compile/refinement time, 3600 seconds supervision including fixed dependency setup, 16 GiB sampled tree RSS, one worker. Search-expansions is recorded, not an infeasibility bound. This is a measured step toward adaptive factory/T consumption and full Shor."
+}

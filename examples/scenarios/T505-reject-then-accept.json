@@ -1,0 +1,36 @@
+{
+  "schema_version": "factory-attempt-scenarios/0.1",
+  "default": [
+    {
+      "default_measurement_bit": 0,
+      "terminal_x_parities": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "requests": {
+    "logical/round1/multiply/swap0/g03": [
+      {
+        "default_measurement_bit": 0,
+        "terminal_x_parities": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "default_measurement_bit": 0,
+        "terminal_x_parities": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  }
+}

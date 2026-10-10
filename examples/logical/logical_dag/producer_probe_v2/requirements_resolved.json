@@ -1,0 +1,201 @@
+{
+  "schema_version": "LogicalDAGRequirements/0.1.0",
+  "artifact_id": "logical-dag-afbac393ba61bfd3da6d-requirements",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T204"
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "requirements": [
+    {
+      "operation": "CLASSICAL_POSTPROCESS",
+      "semantic_version": "1.0.0",
+      "node_count": 1,
+      "operand_roles": [],
+      "has_classical_conditions": false,
+      "params_variants": [
+        {
+          "function": "postprocess_phase",
+          "N": 15,
+          "a": 2,
+          "bits_msb_first": [
+            "phase[0]",
+            "phase[1]",
+            "phase[2]",
+            "phase[3]",
+            "phase[4]",
+            "phase[5]",
+            "phase[6]",
+            "phase[7]"
+          ],
+          "failure_policy": "return_explicit_classical_failure"
+        }
+      ],
+      "physical_spec_declared_available": true,
+      "qualified": false,
+      "example_node_id": "classical/postprocess"
+    },
+    {
+      "operation": "CX",
+      "semantic_version": "1.0.0",
+      "node_count": 40,
+      "operand_roles": [
+        "control",
+        "target"
+      ],
+      "has_classical_conditions": false,
+      "params_variants": [
+        {}
+      ],
+      "physical_spec_declared_available": true,
+      "qualified": false,
+      "example_node_id": "logical/round1/multiply/swap0/g00"
+    },
+    {
+      "operation": "H",
+      "semantic_version": "1.0.0",
+      "node_count": 809,
+      "operand_roles": [
+        "block"
+      ],
+      "has_classical_conditions": true,
+      "params_variants": [
+        {}
+      ],
+      "physical_spec_declared_available": true,
+      "qualified": false,
+      "example_node_id": "logical/round7/prepare"
+    },
+    {
+      "operation": "MEASURE",
+      "semantic_version": "1.0.0",
+      "node_count": 8,
+      "operand_roles": [
+        "block"
+      ],
+      "has_classical_conditions": false,
+      "params_variants": [
+        {
+          "basis": "Z"
+        }
+      ],
+      "physical_spec_declared_available": true,
+      "qualified": false,
+      "example_node_id": "logical/round7/measure"
+    },
+    {
+      "operation": "RESET",
+      "semantic_version": "1.0.0",
+      "node_count": 8,
+      "operand_roles": [
+        "block"
+      ],
+      "has_classical_conditions": false,
+      "params_variants": [
+        {
+          "basis": "Z",
+          "value": 0
+        }
+      ],
+      "physical_spec_declared_available": true,
+      "qualified": false,
+      "example_node_id": "logical/round6/reset"
+    },
+    {
+      "operation": "S",
+      "semantic_version": "1.0.0",
+      "node_count": 367,
+      "operand_roles": [
+        "block"
+      ],
+      "has_classical_conditions": true,
+      "params_variants": [
+        {}
+      ],
+      "physical_spec_declared_available": true,
+      "qualified": false,
+      "example_node_id": "logical/round4/feedback_from_7/g000"
+    },
+    {
+      "operation": "SDG",
+      "semantic_version": "1.0.0",
+      "node_count": 7,
+      "operand_roles": [
+        "block"
+      ],
+      "has_classical_conditions": true,
+      "params_variants": [
+        {}
+      ],
+      "physical_spec_declared_available": true,
+      "qualified": false,
+      "example_node_id": "logical/round6/feedback_from_7"
+    },
+    {
+      "operation": "SE",
+      "semantic_version": "1.0.0",
+      "node_count": 37,
+      "operand_roles": [
+        "block"
+      ],
+      "has_classical_conditions": false,
+      "params_variants": [
+        {}
+      ],
+      "physical_spec_declared_available": true,
+      "qualified": false,
+      "example_node_id": "maintenance/entry/ctrl"
+    },
+    {
+      "operation": "T",
+      "semantic_version": "1.0.0",
+      "node_count": 796,
+      "operand_roles": [
+        "block"
+      ],
+      "has_classical_conditions": true,
+      "params_variants": [
+        {}
+      ],
+      "physical_spec_declared_available": true,
+      "qualified": false,
+      "example_node_id": "logical/round4/feedback_from_7/g003"
+    },
+    {
+      "operation": "TDG",
+      "semantic_version": "1.0.0",
+      "node_count": 21,
+      "operand_roles": [
+        "block"
+      ],
+      "has_classical_conditions": true,
+      "params_variants": [
+        {}
+      ],
+      "physical_spec_declared_available": true,
+      "qualified": false,
+      "example_node_id": "logical/round5/feedback_from_7"
+    },
+    {
+      "operation": "X",
+      "semantic_version": "1.0.0",
+      "node_count": 8,
+      "operand_roles": [
+        "block"
+      ],
+      "has_classical_conditions": true,
+      "params_variants": [
+        {}
+      ],
+      "physical_spec_declared_available": true,
+      "qualified": false,
+      "example_node_id": "logical/init/work_one"
+    }
+  ],
+  "unsupported_operations": [],
+  "magic_requests_static_upper_bound": 817,
+  "complete_physical_execution_qualified": false
+}

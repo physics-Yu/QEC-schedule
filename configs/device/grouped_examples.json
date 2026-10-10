@@ -1,0 +1,540 @@
+{
+  "schema_version": "grouped-device-examples/0.1",
+  "fixture": true,
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "initialization": {
+    "purpose": "patch_initialization_transport",
+    "atoms": {
+      "atom:d0": {
+        "position_um": [
+          0.0,
+          -100.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d1": {
+        "position_um": [
+          10.0,
+          -100.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d2": {
+        "position_um": [
+          20.0,
+          -100.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d3": {
+        "position_um": [
+          0.0,
+          -90.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d4": {
+        "position_um": [
+          10.0,
+          -90.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d5": {
+        "position_um": [
+          20.0,
+          -90.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d6": {
+        "position_um": [
+          0.0,
+          -80.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d7": {
+        "position_um": [
+          10.0,
+          -80.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d8": {
+        "position_um": [
+          20.0,
+          -80.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:x0": {
+        "position_um": [
+          0.0,
+          -60.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:x1": {
+        "position_um": [
+          10.0,
+          -60.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:x2": {
+        "position_um": [
+          20.0,
+          -60.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:x3": {
+        "position_um": [
+          30.0,
+          -60.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:z0": {
+        "position_um": [
+          0.0,
+          -50.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:z1": {
+        "position_um": [
+          10.0,
+          -50.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:z2": {
+        "position_um": [
+          20.0,
+          -50.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:z3": {
+        "position_um": [
+          30.0,
+          -50.0
+        ],
+        "carrier": "SLM"
+      }
+    },
+    "bindings": {
+      "d0": "atom:d0",
+      "d1": "atom:d1",
+      "d2": "atom:d2",
+      "d3": "atom:d3",
+      "d4": "atom:d4",
+      "d5": "atom:d5",
+      "d6": "atom:d6",
+      "d7": "atom:d7",
+      "d8": "atom:d8",
+      "x0": "atom:x0",
+      "x1": "atom:x1",
+      "x2": "atom:x2",
+      "x3": "atom:x3",
+      "z0": "atom:z0",
+      "z1": "atom:z1",
+      "z2": "atom:z2",
+      "z3": "atom:z3"
+    },
+    "target_layout_id": "patch_home",
+    "expected_errors": []
+  },
+  "maintenance_outbound": {
+    "purpose": "maintenance_readout",
+    "atoms": {
+      "atom:d0": {
+        "position_um": [
+          0.0,
+          0.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d1": {
+        "position_um": [
+          10.0,
+          0.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d2": {
+        "position_um": [
+          20.0,
+          0.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d3": {
+        "position_um": [
+          0.0,
+          10.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d4": {
+        "position_um": [
+          10.0,
+          10.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d5": {
+        "position_um": [
+          20.0,
+          10.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d6": {
+        "position_um": [
+          0.0,
+          20.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d7": {
+        "position_um": [
+          10.0,
+          20.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:d8": {
+        "position_um": [
+          20.0,
+          20.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:x0": {
+        "position_um": [
+          0.0,
+          40.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:x1": {
+        "position_um": [
+          10.0,
+          40.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:x2": {
+        "position_um": [
+          20.0,
+          40.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:x3": {
+        "position_um": [
+          30.0,
+          40.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:z0": {
+        "position_um": [
+          0.0,
+          50.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:z1": {
+        "position_um": [
+          10.0,
+          50.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:z2": {
+        "position_um": [
+          20.0,
+          50.0
+        ],
+        "carrier": "SLM"
+      },
+      "atom:z3": {
+        "position_um": [
+          30.0,
+          50.0
+        ],
+        "carrier": "SLM"
+      }
+    },
+    "bindings": {
+      "x0": "atom:x0",
+      "x1": "atom:x1",
+      "x2": "atom:x2",
+      "x3": "atom:x3",
+      "z0": "atom:z0",
+      "z1": "atom:z1",
+      "z2": "atom:z2",
+      "z3": "atom:z3"
+    },
+    "target_layout_id": "ancilla_readout",
+    "expected_errors": []
+  },
+  "readout": {
+    "entries": [
+      {
+        "atom_id": "atom:x0",
+        "bank_id": "bank:patch0",
+        "site_id": "x0",
+        "position_um": [
+          0.0,
+          90.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 440.0,
+        "result_id": "fixture:call0:x0",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:x1",
+        "bank_id": "bank:patch0",
+        "site_id": "x1",
+        "position_um": [
+          10.0,
+          90.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 441.0,
+        "result_id": "fixture:call0:x1",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:x2",
+        "bank_id": "bank:patch0",
+        "site_id": "x2",
+        "position_um": [
+          20.0,
+          90.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 442.0,
+        "result_id": "fixture:call0:x2",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:x3",
+        "bank_id": "bank:patch0",
+        "site_id": "x3",
+        "position_um": [
+          30.0,
+          90.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 443.0,
+        "result_id": "fixture:call0:x3",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:z0",
+        "bank_id": "bank:patch0",
+        "site_id": "z0",
+        "position_um": [
+          0.0,
+          100.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 444.0,
+        "result_id": "fixture:call0:z0",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:z1",
+        "bank_id": "bank:patch0",
+        "site_id": "z1",
+        "position_um": [
+          10.0,
+          100.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 445.0,
+        "result_id": "fixture:call0:z1",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:z2",
+        "bank_id": "bank:patch0",
+        "site_id": "z2",
+        "position_um": [
+          20.0,
+          100.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 446.0,
+        "result_id": "fixture:call0:z2",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:z3",
+        "bank_id": "bank:patch0",
+        "site_id": "z3",
+        "position_um": [
+          30.0,
+          100.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 447.0,
+        "result_id": "fixture:call0:z3",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      }
+    ],
+    "device_file": "grouped_device.json",
+    "expected_errors": []
+  },
+  "capacity_insufficient": {
+    "entries": [
+      {
+        "atom_id": "atom:x0",
+        "bank_id": "bank:patch0",
+        "site_id": "x0",
+        "position_um": [
+          0.0,
+          90.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 440.0,
+        "result_id": "fixture:call0:x0",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:x1",
+        "bank_id": "bank:patch0",
+        "site_id": "x1",
+        "position_um": [
+          10.0,
+          90.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 441.0,
+        "result_id": "fixture:call0:x1",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:x2",
+        "bank_id": "bank:patch0",
+        "site_id": "x2",
+        "position_um": [
+          20.0,
+          90.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 442.0,
+        "result_id": "fixture:call0:x2",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:x3",
+        "bank_id": "bank:patch0",
+        "site_id": "x3",
+        "position_um": [
+          30.0,
+          90.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 443.0,
+        "result_id": "fixture:call0:x3",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:z0",
+        "bank_id": "bank:patch0",
+        "site_id": "z0",
+        "position_um": [
+          0.0,
+          100.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 444.0,
+        "result_id": "fixture:call0:z0",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:z1",
+        "bank_id": "bank:patch0",
+        "site_id": "z1",
+        "position_um": [
+          10.0,
+          100.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 445.0,
+        "result_id": "fixture:call0:z1",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:z2",
+        "bank_id": "bank:patch0",
+        "site_id": "z2",
+        "position_um": [
+          20.0,
+          100.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 446.0,
+        "result_id": "fixture:call0:z2",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      },
+      {
+        "atom_id": "atom:z3",
+        "bank_id": "bank:patch0",
+        "site_id": "z3",
+        "position_um": [
+          30.0,
+          100.0
+        ],
+        "t_start_us": 447.0,
+        "t_end_us": 547.0,
+        "earliest_ready_us": 447.0,
+        "result_id": "fixture:call0:z3",
+        "result_ready_us": 552.0,
+        "basis": "Z"
+      }
+    ],
+    "device_file": "grouped_capacity4_device.json",
+    "expected_error_code": "READOUT_CAPACITY_EXCEEDED"
+  },
+  "limits": "Geometry/readout fixtures only, no Enola compilation or complete strategy execution."
+}

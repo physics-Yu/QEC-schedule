@@ -1,0 +1,51 @@
+{
+  "schema_version": "R2ArtifactManifest/0.1.0",
+  "artifact_id": "shor15-logical-35f3dca2de207731-ct-v1-manifest",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T202",
+    "generator": "examples/logical/build_artifacts.py"
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "files": {
+    "shor15.logical.json": {
+      "sha256": "aea909ed8a74046f3038d16701fca26b6db6caa47672a88ff1a902abaf386d61",
+      "bytes": 495873
+    },
+    "shor15.qasm": {
+      "sha256": "bb0cb0b14aba4302252982f17e1eb5a91efbf8ad422fc11506aefd46441384db",
+      "bytes": 148867
+    },
+    "shor15.symbolic.json": {
+      "sha256": "279837e5da56b7347c271f12c27d3f9c16fabdb8a362a856c5c56229460bec3c",
+      "bytes": 101993
+    },
+    "shor15.symbolic.qasm": {
+      "sha256": "5b8cc86e400fa6829b06cc4cdb02f67172b74eb9acfa49da7e1e71baf818ba3c",
+      "bytes": 8296
+    },
+    "rejected_missing_feedback_dependency.json": {
+      "sha256": "cb7aadf74d081da8b3a4baf91fd84c2fc3d09122077632f8f916310177fa8454",
+      "bytes": 495877
+    },
+    "postprocess_examples.json": {
+      "sha256": "0ba09838552d8675d19dc4d5274447cc1ff9758b8a1a19d310a9b6181e91a520",
+      "bytes": 4663
+    },
+    "handoff_refusal.json": {
+      "sha256": "cf7ac8c1334a144cf15538e8adad0b34d598b05eddf35a147e12fa7c8c8a6cbd",
+      "bytes": 707
+    },
+    "synthesis_certificates.json": {
+      "sha256": "67aa7039b74e37761933044862f9a0b34316f504cf211e6387fe51a7dae8a11d",
+      "bytes": 21331
+    },
+    "t_demand_examples.json": {
+      "sha256": "0afe37d921080ab64c8b85fb4c8c45879b70fbb4e40fb79cb9c683ff0cfb5625",
+      "bytes": 378401
+    }
+  }
+}

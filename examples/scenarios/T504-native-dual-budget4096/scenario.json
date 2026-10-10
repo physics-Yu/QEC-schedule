@@ -1,0 +1,336 @@
+{
+  "schema_version": "ScenarioInput/0.2.0-draft",
+  "artifact_id": "scenario-T504-native/batch-0-0",
+  "provenance": {
+    "producer": "na_pipeline.runtime.make_scenario",
+    "fixture": false,
+    "description": "Explicit configured zero bits for a real compiled strategy path; not sampling"
+  },
+  "execution_kind": "scenario",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "sampled": false,
+  "results": {
+    "L0-prepare/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-prepare/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-prepare/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-prepare/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-prepare/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-prepare/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-prepare/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-prepare/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round0/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round0/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round0/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round0/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round0/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round0/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round0/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round0/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round1/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round1/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round1/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round1/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round1/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round1/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round1/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round1/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round2/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round2/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round2/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round2/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round2/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round2/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round2/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-round2/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-prepare/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-prepare/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-prepare/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-prepare/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-prepare/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-prepare/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-prepare/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-prepare/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round0/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round0/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round0/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round0/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round0/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round0/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round0/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round0/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round1/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round1/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round1/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round1/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round1/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round1/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round1/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round1/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round2/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round2/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round2/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round2/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round2/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round2/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round2/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-round2/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-after-cx/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-after-cx/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-after-cx/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-after-cx/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-after-cx/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-after-cx/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-after-cx/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L0-after-cx/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-after-cx/r0/m_x0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-after-cx/r0/m_x1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-after-cx/r0/m_x2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-after-cx/r0/m_x3": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-after-cx/r0/m_z0": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-after-cx/r0/m_z1": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-after-cx/r0/m_z2": {
+      "value": 0,
+      "origin": "fake"
+    },
+    "L1-after-cx/r0/m_z3": {
+      "value": 0,
+      "origin": "fake"
+    }
+  }
+}

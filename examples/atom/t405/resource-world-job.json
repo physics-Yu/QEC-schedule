@@ -1,0 +1,8 @@
+{
+  "schema_version": "r7-server-job/0.1",
+  "name": "r4-full-resource-placement",
+  "stage_kind": "representative_compile",
+  "argv": ["{python}", "examples/atom/t405/run_resource_world.py", "--out", "examples/atom/t405/resource-world-v1"],
+  "budget": {"wall_seconds": 1200, "memory_gib": 8, "parallelism": 1, "search_expansions": 400100},
+  "budget_rationale": "Complete eight-round Shor source and complete R3/R5 declared carrier inventory, no physical-stage truncation. One SA placer uses 1000 x 400 moves plus 100 initial moves, enforced 600-second search wall budget; 1200 seconds includes pinned environment setup and source/output verification. Prior 5-patch observed placement cost was under 90 seconds; 12-patch budget expanded with 8 GiB sampled tree RSS, not all shared-server resources. This stage is inventory and placement only, not a full Shor physical run."
+}

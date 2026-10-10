@@ -1,0 +1,4540 @@
+{
+  "schema_version": "LogicalProgram/0.2.0-draft",
+  "artifact_id": "shor15-logical-35f3dca2de207731",
+  "producer_version": "na_pipeline.frontend/0.2.0",
+  "input_hashes": {
+    "algorithm_config_sha256": "35f3dca2de20773175003bf9db25eb8002255dfe1f04426f98ccce54177d068c"
+  },
+  "device_ref": null,
+  "device_ref_reason": "device-independent logical source",
+  "capability_profile": "shor15-semiclassical-qpe8/full-permutation-v1",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T201",
+    "knowledge_revision": "kb-0004",
+    "interface_ref": "IF-MVP-001/0.2.1-draft",
+    "fixture": false,
+    "source_kind": "generated_algorithm",
+    "generator": "build_shor15",
+    "source_refs": [
+      "R8-ADR-001@0.4.0",
+      "R8-FACT-015@0.1.0"
+    ]
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "algorithm": {
+    "N": 15,
+    "a": 2,
+    "work_bits": 4,
+    "phase_bits": 8,
+    "extension_x15": "fixed",
+    "synthesis_error_budget": 0.001
+  },
+  "qubits": [
+    {
+      "id": "ctrl",
+      "role": "reused_phase_control"
+    },
+    {
+      "id": "w0",
+      "role": "work",
+      "significance": 0
+    },
+    {
+      "id": "w1",
+      "role": "work",
+      "significance": 1
+    },
+    {
+      "id": "w2",
+      "role": "work",
+      "significance": 2
+    },
+    {
+      "id": "w3",
+      "role": "work",
+      "significance": 3
+    }
+  ],
+  "classical_bits": [
+    {
+      "id": "phase[0]",
+      "role": "phase_output",
+      "binary_fraction_weight": "1/2"
+    },
+    {
+      "id": "phase[1]",
+      "role": "phase_output",
+      "binary_fraction_weight": "1/4"
+    },
+    {
+      "id": "phase[2]",
+      "role": "phase_output",
+      "binary_fraction_weight": "1/8"
+    },
+    {
+      "id": "phase[3]",
+      "role": "phase_output",
+      "binary_fraction_weight": "1/16"
+    },
+    {
+      "id": "phase[4]",
+      "role": "phase_output",
+      "binary_fraction_weight": "1/32"
+    },
+    {
+      "id": "phase[5]",
+      "role": "phase_output",
+      "binary_fraction_weight": "1/64"
+    },
+    {
+      "id": "phase[6]",
+      "role": "phase_output",
+      "binary_fraction_weight": "1/128"
+    },
+    {
+      "id": "phase[7]",
+      "role": "phase_output",
+      "binary_fraction_weight": "1/256"
+    }
+  ],
+  "bit_order": {
+    "work": "little_endian_w0_lsb",
+    "postprocess": "phase[0..7]_msb_first",
+    "measurement_order": [
+      "phase[7]",
+      "phase[6]",
+      "phase[5]",
+      "phase[4]",
+      "phase[3]",
+      "phase[2]",
+      "phase[1]",
+      "phase[0]"
+    ]
+  },
+  "templates": {
+    "controlled_mul1/1": {
+      "template_id": "controlled_mul1/1",
+      "formal_qubits": [
+        "ctrl",
+        "w0",
+        "w1",
+        "w2",
+        "w3"
+      ],
+      "body": [],
+      "metadata": {
+        "protocol": "controlled-full-permutation-mod15",
+        "version": "1",
+        "multiplier": 1,
+        "modulus": 15,
+        "extension_x15": "fixed",
+        "bit_order": "w0_lsb",
+        "exact": true,
+        "identity": true,
+        "fredkin_count": 0,
+        "t_like_count": 0,
+        "source": "R8-FACT-015@0.1.0",
+        "decomposition_source": "Qiskit qelib1.inc ccx/cswap"
+      }
+    },
+    "controlled_mul2/1": {
+      "template_id": "controlled_mul2/1",
+      "formal_qubits": [
+        "ctrl",
+        "w0",
+        "w1",
+        "w2",
+        "w3"
+      ],
+      "body": [
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g00",
+            "kind": "gate",
+            "qubits": [
+              "w1",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g01",
+            "kind": "gate",
+            "qubits": [
+              "w1"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g00"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g02",
+            "kind": "gate",
+            "qubits": [
+              "w0",
+              "w1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g01"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g03",
+            "kind": "gate",
+            "qubits": [
+              "w1"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g02"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g04",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g03"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g05",
+            "kind": "gate",
+            "qubits": [
+              "w1"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g04"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g06",
+            "kind": "gate",
+            "qubits": [
+              "w0",
+              "w1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g05"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g07",
+            "kind": "gate",
+            "qubits": [
+              "w1"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g06"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g08",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g07"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g09",
+            "kind": "gate",
+            "qubits": [
+              "w0"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g08"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g10",
+            "kind": "gate",
+            "qubits": [
+              "w1"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g09"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g11",
+            "kind": "gate",
+            "qubits": [
+              "w1"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g10"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g12",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g11"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g13",
+            "kind": "gate",
+            "qubits": [
+              "ctrl"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g12"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g14",
+            "kind": "gate",
+            "qubits": [
+              "w0"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g13"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g15",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g14"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g16",
+            "kind": "gate",
+            "qubits": [
+              "w1",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g15"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g00",
+            "kind": "gate",
+            "qubits": [
+              "w2",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g16"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g01",
+            "kind": "gate",
+            "qubits": [
+              "w2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g00"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g02",
+            "kind": "gate",
+            "qubits": [
+              "w0",
+              "w2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g01"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g03",
+            "kind": "gate",
+            "qubits": [
+              "w2"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g02"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g04",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g03"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g05",
+            "kind": "gate",
+            "qubits": [
+              "w2"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g04"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g06",
+            "kind": "gate",
+            "qubits": [
+              "w0",
+              "w2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g05"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g07",
+            "kind": "gate",
+            "qubits": [
+              "w2"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g06"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g08",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g07"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g09",
+            "kind": "gate",
+            "qubits": [
+              "w0"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g08"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g10",
+            "kind": "gate",
+            "qubits": [
+              "w2"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g09"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g11",
+            "kind": "gate",
+            "qubits": [
+              "w2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g10"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g12",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g11"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g13",
+            "kind": "gate",
+            "qubits": [
+              "ctrl"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g12"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g14",
+            "kind": "gate",
+            "qubits": [
+              "w0"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g13"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g15",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g14"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g16",
+            "kind": "gate",
+            "qubits": [
+              "w2",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g15"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g00",
+            "kind": "gate",
+            "qubits": [
+              "w3",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g16"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g01",
+            "kind": "gate",
+            "qubits": [
+              "w3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g00"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g02",
+            "kind": "gate",
+            "qubits": [
+              "w0",
+              "w3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g01"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g03",
+            "kind": "gate",
+            "qubits": [
+              "w3"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g02"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g04",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g03"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g05",
+            "kind": "gate",
+            "qubits": [
+              "w3"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g04"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g06",
+            "kind": "gate",
+            "qubits": [
+              "w0",
+              "w3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g05"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g07",
+            "kind": "gate",
+            "qubits": [
+              "w3"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g06"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g08",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g07"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g09",
+            "kind": "gate",
+            "qubits": [
+              "w0"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g08"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g10",
+            "kind": "gate",
+            "qubits": [
+              "w3"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g09"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g11",
+            "kind": "gate",
+            "qubits": [
+              "w3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g10"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g12",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g11"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g13",
+            "kind": "gate",
+            "qubits": [
+              "ctrl"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g12"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g14",
+            "kind": "gate",
+            "qubits": [
+              "w0"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g13"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g15",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g14"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap2/g16",
+            "kind": "gate",
+            "qubits": [
+              "w3",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap2/g15"
+            ],
+            "source_ids": [
+              "template:mul2",
+              "template:mul2/fredkin2",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        }
+      ],
+      "metadata": {
+        "protocol": "controlled-full-permutation-mod15",
+        "version": "1",
+        "multiplier": 2,
+        "modulus": 15,
+        "extension_x15": "fixed",
+        "bit_order": "w0_lsb",
+        "exact": true,
+        "identity": false,
+        "fredkin_count": 3,
+        "t_like_count": 21,
+        "source": "R8-FACT-015@0.1.0",
+        "decomposition_source": "Qiskit qelib1.inc ccx/cswap"
+      }
+    },
+    "controlled_mul4/1": {
+      "template_id": "controlled_mul4/1",
+      "formal_qubits": [
+        "ctrl",
+        "w0",
+        "w1",
+        "w2",
+        "w3"
+      ],
+      "body": [
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g00",
+            "kind": "gate",
+            "qubits": [
+              "w2",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g01",
+            "kind": "gate",
+            "qubits": [
+              "w2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g00"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g02",
+            "kind": "gate",
+            "qubits": [
+              "w0",
+              "w2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g01"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g03",
+            "kind": "gate",
+            "qubits": [
+              "w2"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g02"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g04",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g03"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g05",
+            "kind": "gate",
+            "qubits": [
+              "w2"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g04"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g06",
+            "kind": "gate",
+            "qubits": [
+              "w0",
+              "w2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g05"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g07",
+            "kind": "gate",
+            "qubits": [
+              "w2"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g06"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g08",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g07"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g09",
+            "kind": "gate",
+            "qubits": [
+              "w0"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g08"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g10",
+            "kind": "gate",
+            "qubits": [
+              "w2"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g09"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g11",
+            "kind": "gate",
+            "qubits": [
+              "w2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g10"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g12",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g11"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g13",
+            "kind": "gate",
+            "qubits": [
+              "ctrl"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g12"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g14",
+            "kind": "gate",
+            "qubits": [
+              "w0"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g13"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g15",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g14"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap0/g16",
+            "kind": "gate",
+            "qubits": [
+              "w2",
+              "w0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g15"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin0",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g00",
+            "kind": "gate",
+            "qubits": [
+              "w3",
+              "w1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap0/g16"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g01",
+            "kind": "gate",
+            "qubits": [
+              "w3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g00"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g02",
+            "kind": "gate",
+            "qubits": [
+              "w1",
+              "w3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g01"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g03",
+            "kind": "gate",
+            "qubits": [
+              "w3"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g02"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g04",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g03"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g05",
+            "kind": "gate",
+            "qubits": [
+              "w3"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g04"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g06",
+            "kind": "gate",
+            "qubits": [
+              "w1",
+              "w3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g05"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g07",
+            "kind": "gate",
+            "qubits": [
+              "w3"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g06"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g08",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g07"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g09",
+            "kind": "gate",
+            "qubits": [
+              "w1"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g08"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g10",
+            "kind": "gate",
+            "qubits": [
+              "w3"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g09"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g11",
+            "kind": "gate",
+            "qubits": [
+              "w3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g10"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g12",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g11"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g13",
+            "kind": "gate",
+            "qubits": [
+              "ctrl"
+            ],
+            "params": {
+              "name": "T"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g12"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g14",
+            "kind": "gate",
+            "qubits": [
+              "w1"
+            ],
+            "params": {
+              "name": "TDG"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g13"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g15",
+            "kind": "gate",
+            "qubits": [
+              "ctrl",
+              "w1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g14"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "swap1/g16",
+            "kind": "gate",
+            "qubits": [
+              "w3",
+              "w1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [
+              "swap1/g15"
+            ],
+            "source_ids": [
+              "template:mul4",
+              "template:mul4/fredkin1",
+              "decomposition:fredkin-exact-7t/1"
+            ],
+            "condition": null
+          }
+        }
+      ],
+      "metadata": {
+        "protocol": "controlled-full-permutation-mod15",
+        "version": "1",
+        "multiplier": 4,
+        "modulus": 15,
+        "extension_x15": "fixed",
+        "bit_order": "w0_lsb",
+        "exact": true,
+        "identity": false,
+        "fredkin_count": 2,
+        "t_like_count": 14,
+        "source": "R8-FACT-015@0.1.0",
+        "decomposition_source": "Qiskit qelib1.inc ccx/cswap"
+      }
+    }
+  },
+  "body": [
+    {
+      "kind": "op",
+      "op": {
+        "id": "init/reset_w0",
+        "kind": "reset",
+        "qubits": [
+          "w0"
+        ],
+        "params": {
+          "basis": "Z",
+          "value": 0
+        },
+        "reads": [],
+        "writes": [],
+        "after": [],
+        "source_ids": [
+          "shor15:init/reset_w0"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "init/reset_w1",
+        "kind": "reset",
+        "qubits": [
+          "w1"
+        ],
+        "params": {
+          "basis": "Z",
+          "value": 0
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "init/reset_w0"
+        ],
+        "source_ids": [
+          "shor15:init/reset_w1"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "init/reset_w2",
+        "kind": "reset",
+        "qubits": [
+          "w2"
+        ],
+        "params": {
+          "basis": "Z",
+          "value": 0
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "init/reset_w1"
+        ],
+        "source_ids": [
+          "shor15:init/reset_w2"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "init/reset_w3",
+        "kind": "reset",
+        "qubits": [
+          "w3"
+        ],
+        "params": {
+          "basis": "Z",
+          "value": 0
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "init/reset_w2"
+        ],
+        "source_ids": [
+          "shor15:init/reset_w3"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "init/work_one",
+        "kind": "gate",
+        "qubits": [
+          "w0"
+        ],
+        "params": {
+          "name": "X"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "init/reset_w3"
+        ],
+        "source_ids": [
+          "shor15:init/work_one"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round7/reset",
+        "kind": "reset",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z",
+          "value": 0
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "init/work_one"
+        ],
+        "source_ids": [
+          "shor15:round/7",
+          "shor15:round7/reset"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round7/prepare",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round7/reset"
+        ],
+        "source_ids": [
+          "shor15:round7/prepare"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "call",
+      "id": "round7/multiply",
+      "template_id": "controlled_mul1/1",
+      "repeat": 1,
+      "bindings": {
+        "ctrl": "ctrl",
+        "w0": "w0",
+        "w1": "w1",
+        "w2": "w2",
+        "w3": "w3"
+      },
+      "after": [
+        "round7/prepare"
+      ],
+      "source_ids": [
+        "shor15:round/7",
+        "shor15:U^(2^7)"
+      ],
+      "metadata": {
+        "power_index": 7,
+        "multiplier": 1
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round7/readout_h",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round7/multiply"
+        ],
+        "source_ids": [
+          "shor15:round7/readout_h"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round7/measure",
+        "kind": "measure",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z"
+        },
+        "reads": [],
+        "writes": [
+          "phase[7]"
+        ],
+        "after": [
+          "round7/readout_h"
+        ],
+        "source_ids": [
+          "shor15:round7/measure"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round6/reset",
+        "kind": "reset",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z",
+          "value": 0
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round7/measure"
+        ],
+        "source_ids": [
+          "shor15:round/6",
+          "shor15:round6/reset"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round6/prepare",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round6/reset"
+        ],
+        "source_ids": [
+          "shor15:round6/prepare"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "call",
+      "id": "round6/multiply",
+      "template_id": "controlled_mul1/1",
+      "repeat": 1,
+      "bindings": {
+        "ctrl": "ctrl",
+        "w0": "w0",
+        "w1": "w1",
+        "w2": "w2",
+        "w3": "w3"
+      },
+      "after": [
+        "round6/prepare"
+      ],
+      "source_ids": [
+        "shor15:round/6",
+        "shor15:U^(2^6)"
+      ],
+      "metadata": {
+        "power_index": 6,
+        "multiplier": 1
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round6/feedback_from_7",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "SDG",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 2
+          },
+          "angle_rad": -1.5707963267948966,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "exact",
+          "error_bound": 0.0,
+          "error_budget": 0.0
+        },
+        "reads": [
+          "phase[7]"
+        ],
+        "writes": [],
+        "after": [
+          "round6/multiply",
+          "round7/measure"
+        ],
+        "source_ids": [
+          "shor15:round6/feedback_from_7"
+        ],
+        "condition": {
+          "bit": "phase[7]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round6/readout_h",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round6/feedback_from_7"
+        ],
+        "source_ids": [
+          "shor15:round6/readout_h"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round6/measure",
+        "kind": "measure",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z"
+        },
+        "reads": [],
+        "writes": [
+          "phase[6]"
+        ],
+        "after": [
+          "round6/readout_h"
+        ],
+        "source_ids": [
+          "shor15:round6/measure"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round5/reset",
+        "kind": "reset",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z",
+          "value": 0
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round6/measure"
+        ],
+        "source_ids": [
+          "shor15:round/5",
+          "shor15:round5/reset"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round5/prepare",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round5/reset"
+        ],
+        "source_ids": [
+          "shor15:round5/prepare"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "call",
+      "id": "round5/multiply",
+      "template_id": "controlled_mul1/1",
+      "repeat": 1,
+      "bindings": {
+        "ctrl": "ctrl",
+        "w0": "w0",
+        "w1": "w1",
+        "w2": "w2",
+        "w3": "w3"
+      },
+      "after": [
+        "round5/prepare"
+      ],
+      "source_ids": [
+        "shor15:round/5",
+        "shor15:U^(2^5)"
+      ],
+      "metadata": {
+        "power_index": 5,
+        "multiplier": 1
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round5/feedback_from_6",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "SDG",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 2
+          },
+          "angle_rad": -1.5707963267948966,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "exact",
+          "error_bound": 0.0,
+          "error_budget": 0.0
+        },
+        "reads": [
+          "phase[6]"
+        ],
+        "writes": [],
+        "after": [
+          "round5/multiply",
+          "round6/measure"
+        ],
+        "source_ids": [
+          "shor15:round5/feedback_from_6"
+        ],
+        "condition": {
+          "bit": "phase[6]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round5/feedback_from_7",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "TDG",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 4
+          },
+          "angle_rad": -0.7853981633974483,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "exact",
+          "error_bound": 0.0,
+          "error_budget": 0.0
+        },
+        "reads": [
+          "phase[7]"
+        ],
+        "writes": [],
+        "after": [
+          "round5/feedback_from_6",
+          "round7/measure"
+        ],
+        "source_ids": [
+          "shor15:round5/feedback_from_7"
+        ],
+        "condition": {
+          "bit": "phase[7]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round5/readout_h",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round5/feedback_from_7"
+        ],
+        "source_ids": [
+          "shor15:round5/readout_h"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round5/measure",
+        "kind": "measure",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z"
+        },
+        "reads": [],
+        "writes": [
+          "phase[5]"
+        ],
+        "after": [
+          "round5/readout_h"
+        ],
+        "source_ids": [
+          "shor15:round5/measure"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round4/reset",
+        "kind": "reset",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z",
+          "value": 0
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round5/measure"
+        ],
+        "source_ids": [
+          "shor15:round/4",
+          "shor15:round4/reset"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round4/prepare",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round4/reset"
+        ],
+        "source_ids": [
+          "shor15:round4/prepare"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "call",
+      "id": "round4/multiply",
+      "template_id": "controlled_mul1/1",
+      "repeat": 1,
+      "bindings": {
+        "ctrl": "ctrl",
+        "w0": "w0",
+        "w1": "w1",
+        "w2": "w2",
+        "w3": "w3"
+      },
+      "after": [
+        "round4/prepare"
+      ],
+      "source_ids": [
+        "shor15:round/4",
+        "shor15:U^(2^4)"
+      ],
+      "metadata": {
+        "power_index": 4,
+        "multiplier": 1
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round4/feedback_from_5",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "SDG",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 2
+          },
+          "angle_rad": -1.5707963267948966,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "exact",
+          "error_bound": 0.0,
+          "error_budget": 0.0
+        },
+        "reads": [
+          "phase[5]"
+        ],
+        "writes": [],
+        "after": [
+          "round4/multiply",
+          "round5/measure"
+        ],
+        "source_ids": [
+          "shor15:round4/feedback_from_5"
+        ],
+        "condition": {
+          "bit": "phase[5]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round4/feedback_from_6",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "TDG",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 4
+          },
+          "angle_rad": -0.7853981633974483,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "exact",
+          "error_bound": 0.0,
+          "error_budget": 0.0
+        },
+        "reads": [
+          "phase[6]"
+        ],
+        "writes": [],
+        "after": [
+          "round4/feedback_from_5",
+          "round6/measure"
+        ],
+        "source_ids": [
+          "shor15:round4/feedback_from_6"
+        ],
+        "condition": {
+          "bit": "phase[6]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round4/feedback_from_7",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 8
+          },
+          "angle_rad": -0.39269908169872414,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[7]"
+        ],
+        "writes": [],
+        "after": [
+          "round4/feedback_from_6",
+          "round7/measure"
+        ],
+        "source_ids": [
+          "shor15:round4/feedback_from_7"
+        ],
+        "condition": {
+          "bit": "phase[7]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round4/readout_h",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round4/feedback_from_7"
+        ],
+        "source_ids": [
+          "shor15:round4/readout_h"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round4/measure",
+        "kind": "measure",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z"
+        },
+        "reads": [],
+        "writes": [
+          "phase[4]"
+        ],
+        "after": [
+          "round4/readout_h"
+        ],
+        "source_ids": [
+          "shor15:round4/measure"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round3/reset",
+        "kind": "reset",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z",
+          "value": 0
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round4/measure"
+        ],
+        "source_ids": [
+          "shor15:round/3",
+          "shor15:round3/reset"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round3/prepare",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round3/reset"
+        ],
+        "source_ids": [
+          "shor15:round3/prepare"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "call",
+      "id": "round3/multiply",
+      "template_id": "controlled_mul1/1",
+      "repeat": 1,
+      "bindings": {
+        "ctrl": "ctrl",
+        "w0": "w0",
+        "w1": "w1",
+        "w2": "w2",
+        "w3": "w3"
+      },
+      "after": [
+        "round3/prepare"
+      ],
+      "source_ids": [
+        "shor15:round/3",
+        "shor15:U^(2^3)"
+      ],
+      "metadata": {
+        "power_index": 3,
+        "multiplier": 1
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round3/feedback_from_4",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "SDG",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 2
+          },
+          "angle_rad": -1.5707963267948966,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "exact",
+          "error_bound": 0.0,
+          "error_budget": 0.0
+        },
+        "reads": [
+          "phase[4]"
+        ],
+        "writes": [],
+        "after": [
+          "round3/multiply",
+          "round4/measure"
+        ],
+        "source_ids": [
+          "shor15:round3/feedback_from_4"
+        ],
+        "condition": {
+          "bit": "phase[4]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round3/feedback_from_5",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "TDG",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 4
+          },
+          "angle_rad": -0.7853981633974483,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "exact",
+          "error_bound": 0.0,
+          "error_budget": 0.0
+        },
+        "reads": [
+          "phase[5]"
+        ],
+        "writes": [],
+        "after": [
+          "round3/feedback_from_4",
+          "round5/measure"
+        ],
+        "source_ids": [
+          "shor15:round3/feedback_from_5"
+        ],
+        "condition": {
+          "bit": "phase[5]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round3/feedback_from_6",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 8
+          },
+          "angle_rad": -0.39269908169872414,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[6]"
+        ],
+        "writes": [],
+        "after": [
+          "round3/feedback_from_5",
+          "round6/measure"
+        ],
+        "source_ids": [
+          "shor15:round3/feedback_from_6"
+        ],
+        "condition": {
+          "bit": "phase[6]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round3/feedback_from_7",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 16
+          },
+          "angle_rad": -0.19634954084936207,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[7]"
+        ],
+        "writes": [],
+        "after": [
+          "round3/feedback_from_6",
+          "round7/measure"
+        ],
+        "source_ids": [
+          "shor15:round3/feedback_from_7"
+        ],
+        "condition": {
+          "bit": "phase[7]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round3/readout_h",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round3/feedback_from_7"
+        ],
+        "source_ids": [
+          "shor15:round3/readout_h"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round3/measure",
+        "kind": "measure",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z"
+        },
+        "reads": [],
+        "writes": [
+          "phase[3]"
+        ],
+        "after": [
+          "round3/readout_h"
+        ],
+        "source_ids": [
+          "shor15:round3/measure"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round2/reset",
+        "kind": "reset",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z",
+          "value": 0
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round3/measure"
+        ],
+        "source_ids": [
+          "shor15:round/2",
+          "shor15:round2/reset"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round2/prepare",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round2/reset"
+        ],
+        "source_ids": [
+          "shor15:round2/prepare"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "call",
+      "id": "round2/multiply",
+      "template_id": "controlled_mul1/1",
+      "repeat": 1,
+      "bindings": {
+        "ctrl": "ctrl",
+        "w0": "w0",
+        "w1": "w1",
+        "w2": "w2",
+        "w3": "w3"
+      },
+      "after": [
+        "round2/prepare"
+      ],
+      "source_ids": [
+        "shor15:round/2",
+        "shor15:U^(2^2)"
+      ],
+      "metadata": {
+        "power_index": 2,
+        "multiplier": 1
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round2/feedback_from_3",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "SDG",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 2
+          },
+          "angle_rad": -1.5707963267948966,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "exact",
+          "error_bound": 0.0,
+          "error_budget": 0.0
+        },
+        "reads": [
+          "phase[3]"
+        ],
+        "writes": [],
+        "after": [
+          "round2/multiply",
+          "round3/measure"
+        ],
+        "source_ids": [
+          "shor15:round2/feedback_from_3"
+        ],
+        "condition": {
+          "bit": "phase[3]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round2/feedback_from_4",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "TDG",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 4
+          },
+          "angle_rad": -0.7853981633974483,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "exact",
+          "error_bound": 0.0,
+          "error_budget": 0.0
+        },
+        "reads": [
+          "phase[4]"
+        ],
+        "writes": [],
+        "after": [
+          "round2/feedback_from_3",
+          "round4/measure"
+        ],
+        "source_ids": [
+          "shor15:round2/feedback_from_4"
+        ],
+        "condition": {
+          "bit": "phase[4]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round2/feedback_from_5",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 8
+          },
+          "angle_rad": -0.39269908169872414,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[5]"
+        ],
+        "writes": [],
+        "after": [
+          "round2/feedback_from_4",
+          "round5/measure"
+        ],
+        "source_ids": [
+          "shor15:round2/feedback_from_5"
+        ],
+        "condition": {
+          "bit": "phase[5]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round2/feedback_from_6",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 16
+          },
+          "angle_rad": -0.19634954084936207,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[6]"
+        ],
+        "writes": [],
+        "after": [
+          "round2/feedback_from_5",
+          "round6/measure"
+        ],
+        "source_ids": [
+          "shor15:round2/feedback_from_6"
+        ],
+        "condition": {
+          "bit": "phase[6]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round2/feedback_from_7",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 32
+          },
+          "angle_rad": -0.09817477042468103,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[7]"
+        ],
+        "writes": [],
+        "after": [
+          "round2/feedback_from_6",
+          "round7/measure"
+        ],
+        "source_ids": [
+          "shor15:round2/feedback_from_7"
+        ],
+        "condition": {
+          "bit": "phase[7]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round2/readout_h",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round2/feedback_from_7"
+        ],
+        "source_ids": [
+          "shor15:round2/readout_h"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round2/measure",
+        "kind": "measure",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z"
+        },
+        "reads": [],
+        "writes": [
+          "phase[2]"
+        ],
+        "after": [
+          "round2/readout_h"
+        ],
+        "source_ids": [
+          "shor15:round2/measure"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round1/reset",
+        "kind": "reset",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z",
+          "value": 0
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round2/measure"
+        ],
+        "source_ids": [
+          "shor15:round/1",
+          "shor15:round1/reset"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round1/prepare",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round1/reset"
+        ],
+        "source_ids": [
+          "shor15:round1/prepare"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "call",
+      "id": "round1/multiply",
+      "template_id": "controlled_mul4/1",
+      "repeat": 1,
+      "bindings": {
+        "ctrl": "ctrl",
+        "w0": "w0",
+        "w1": "w1",
+        "w2": "w2",
+        "w3": "w3"
+      },
+      "after": [
+        "round1/prepare"
+      ],
+      "source_ids": [
+        "shor15:round/1",
+        "shor15:U^(2^1)"
+      ],
+      "metadata": {
+        "power_index": 1,
+        "multiplier": 4
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round1/feedback_from_2",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "SDG",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 2
+          },
+          "angle_rad": -1.5707963267948966,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "exact",
+          "error_bound": 0.0,
+          "error_budget": 0.0
+        },
+        "reads": [
+          "phase[2]"
+        ],
+        "writes": [],
+        "after": [
+          "round1/multiply",
+          "round2/measure"
+        ],
+        "source_ids": [
+          "shor15:round1/feedback_from_2"
+        ],
+        "condition": {
+          "bit": "phase[2]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round1/feedback_from_3",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "TDG",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 4
+          },
+          "angle_rad": -0.7853981633974483,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "exact",
+          "error_bound": 0.0,
+          "error_budget": 0.0
+        },
+        "reads": [
+          "phase[3]"
+        ],
+        "writes": [],
+        "after": [
+          "round1/feedback_from_2",
+          "round3/measure"
+        ],
+        "source_ids": [
+          "shor15:round1/feedback_from_3"
+        ],
+        "condition": {
+          "bit": "phase[3]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round1/feedback_from_4",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 8
+          },
+          "angle_rad": -0.39269908169872414,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[4]"
+        ],
+        "writes": [],
+        "after": [
+          "round1/feedback_from_3",
+          "round4/measure"
+        ],
+        "source_ids": [
+          "shor15:round1/feedback_from_4"
+        ],
+        "condition": {
+          "bit": "phase[4]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round1/feedback_from_5",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 16
+          },
+          "angle_rad": -0.19634954084936207,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[5]"
+        ],
+        "writes": [],
+        "after": [
+          "round1/feedback_from_4",
+          "round5/measure"
+        ],
+        "source_ids": [
+          "shor15:round1/feedback_from_5"
+        ],
+        "condition": {
+          "bit": "phase[5]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round1/feedback_from_6",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 32
+          },
+          "angle_rad": -0.09817477042468103,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[6]"
+        ],
+        "writes": [],
+        "after": [
+          "round1/feedback_from_5",
+          "round6/measure"
+        ],
+        "source_ids": [
+          "shor15:round1/feedback_from_6"
+        ],
+        "condition": {
+          "bit": "phase[6]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round1/feedback_from_7",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 64
+          },
+          "angle_rad": -0.04908738521234052,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[7]"
+        ],
+        "writes": [],
+        "after": [
+          "round1/feedback_from_6",
+          "round7/measure"
+        ],
+        "source_ids": [
+          "shor15:round1/feedback_from_7"
+        ],
+        "condition": {
+          "bit": "phase[7]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round1/readout_h",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round1/feedback_from_7"
+        ],
+        "source_ids": [
+          "shor15:round1/readout_h"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round1/measure",
+        "kind": "measure",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z"
+        },
+        "reads": [],
+        "writes": [
+          "phase[1]"
+        ],
+        "after": [
+          "round1/readout_h"
+        ],
+        "source_ids": [
+          "shor15:round1/measure"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round0/reset",
+        "kind": "reset",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z",
+          "value": 0
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round1/measure"
+        ],
+        "source_ids": [
+          "shor15:round/0",
+          "shor15:round0/reset"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round0/prepare",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round0/reset"
+        ],
+        "source_ids": [
+          "shor15:round0/prepare"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "call",
+      "id": "round0/multiply",
+      "template_id": "controlled_mul2/1",
+      "repeat": 1,
+      "bindings": {
+        "ctrl": "ctrl",
+        "w0": "w0",
+        "w1": "w1",
+        "w2": "w2",
+        "w3": "w3"
+      },
+      "after": [
+        "round0/prepare"
+      ],
+      "source_ids": [
+        "shor15:round/0",
+        "shor15:U^(2^0)"
+      ],
+      "metadata": {
+        "power_index": 0,
+        "multiplier": 2
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round0/feedback_from_1",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "SDG",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 2
+          },
+          "angle_rad": -1.5707963267948966,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "exact",
+          "error_bound": 0.0,
+          "error_budget": 0.0
+        },
+        "reads": [
+          "phase[1]"
+        ],
+        "writes": [],
+        "after": [
+          "round0/multiply",
+          "round1/measure"
+        ],
+        "source_ids": [
+          "shor15:round0/feedback_from_1"
+        ],
+        "condition": {
+          "bit": "phase[1]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round0/feedback_from_2",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "TDG",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 4
+          },
+          "angle_rad": -0.7853981633974483,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "exact",
+          "error_bound": 0.0,
+          "error_budget": 0.0
+        },
+        "reads": [
+          "phase[2]"
+        ],
+        "writes": [],
+        "after": [
+          "round0/feedback_from_1",
+          "round2/measure"
+        ],
+        "source_ids": [
+          "shor15:round0/feedback_from_2"
+        ],
+        "condition": {
+          "bit": "phase[2]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round0/feedback_from_3",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 8
+          },
+          "angle_rad": -0.39269908169872414,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[3]"
+        ],
+        "writes": [],
+        "after": [
+          "round0/feedback_from_2",
+          "round3/measure"
+        ],
+        "source_ids": [
+          "shor15:round0/feedback_from_3"
+        ],
+        "condition": {
+          "bit": "phase[3]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round0/feedback_from_4",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 16
+          },
+          "angle_rad": -0.19634954084936207,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[4]"
+        ],
+        "writes": [],
+        "after": [
+          "round0/feedback_from_3",
+          "round4/measure"
+        ],
+        "source_ids": [
+          "shor15:round0/feedback_from_4"
+        ],
+        "condition": {
+          "bit": "phase[4]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round0/feedback_from_5",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 32
+          },
+          "angle_rad": -0.09817477042468103,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[5]"
+        ],
+        "writes": [],
+        "after": [
+          "round0/feedback_from_4",
+          "round5/measure"
+        ],
+        "source_ids": [
+          "shor15:round0/feedback_from_5"
+        ],
+        "condition": {
+          "bit": "phase[5]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round0/feedback_from_6",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 64
+          },
+          "angle_rad": -0.04908738521234052,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[6]"
+        ],
+        "writes": [],
+        "after": [
+          "round0/feedback_from_5",
+          "round6/measure"
+        ],
+        "source_ids": [
+          "shor15:round0/feedback_from_6"
+        ],
+        "condition": {
+          "bit": "phase[6]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round0/feedback_from_7",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "P",
+          "angle_pi": {
+            "numerator": -1,
+            "denominator": 128
+          },
+          "angle_rad": -0.02454369260617026,
+          "angle_unit": "rad",
+          "phase_convention": "diag(1,exp(i*theta))",
+          "synthesis_status": "required",
+          "error_bound": null,
+          "error_budget": 6.666666666666667e-05
+        },
+        "reads": [
+          "phase[7]"
+        ],
+        "writes": [],
+        "after": [
+          "round0/feedback_from_6",
+          "round7/measure"
+        ],
+        "source_ids": [
+          "shor15:round0/feedback_from_7"
+        ],
+        "condition": {
+          "bit": "phase[7]",
+          "equals": 1
+        }
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round0/readout_h",
+        "kind": "gate",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "name": "H"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round0/feedback_from_7"
+        ],
+        "source_ids": [
+          "shor15:round0/readout_h"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "round0/measure",
+        "kind": "measure",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z"
+        },
+        "reads": [],
+        "writes": [
+          "phase[0]"
+        ],
+        "after": [
+          "round0/readout_h"
+        ],
+        "source_ids": [
+          "shor15:round0/measure"
+        ],
+        "condition": null
+      }
+    },
+    {
+      "kind": "op",
+      "op": {
+        "id": "release/control_reset",
+        "kind": "reset",
+        "qubits": [
+          "ctrl"
+        ],
+        "params": {
+          "basis": "Z",
+          "value": 0
+        },
+        "reads": [],
+        "writes": [],
+        "after": [
+          "round0/measure"
+        ],
+        "source_ids": [
+          "shor15:release/control_reset"
+        ],
+        "condition": null
+      }
+    }
+  ],
+  "rounds": [
+    {
+      "id": "round7",
+      "power_index": 7,
+      "controlled_multiplier": 1,
+      "measurement_bit": "phase[7]",
+      "feedback_ops": []
+    },
+    {
+      "id": "round6",
+      "power_index": 6,
+      "controlled_multiplier": 1,
+      "measurement_bit": "phase[6]",
+      "feedback_ops": [
+        "round6/feedback_from_7"
+      ]
+    },
+    {
+      "id": "round5",
+      "power_index": 5,
+      "controlled_multiplier": 1,
+      "measurement_bit": "phase[5]",
+      "feedback_ops": [
+        "round5/feedback_from_6",
+        "round5/feedback_from_7"
+      ]
+    },
+    {
+      "id": "round4",
+      "power_index": 4,
+      "controlled_multiplier": 1,
+      "measurement_bit": "phase[4]",
+      "feedback_ops": [
+        "round4/feedback_from_5",
+        "round4/feedback_from_6",
+        "round4/feedback_from_7"
+      ]
+    },
+    {
+      "id": "round3",
+      "power_index": 3,
+      "controlled_multiplier": 1,
+      "measurement_bit": "phase[3]",
+      "feedback_ops": [
+        "round3/feedback_from_4",
+        "round3/feedback_from_5",
+        "round3/feedback_from_6",
+        "round3/feedback_from_7"
+      ]
+    },
+    {
+      "id": "round2",
+      "power_index": 2,
+      "controlled_multiplier": 1,
+      "measurement_bit": "phase[2]",
+      "feedback_ops": [
+        "round2/feedback_from_3",
+        "round2/feedback_from_4",
+        "round2/feedback_from_5",
+        "round2/feedback_from_6",
+        "round2/feedback_from_7"
+      ]
+    },
+    {
+      "id": "round1",
+      "power_index": 1,
+      "controlled_multiplier": 4,
+      "measurement_bit": "phase[1]",
+      "feedback_ops": [
+        "round1/feedback_from_2",
+        "round1/feedback_from_3",
+        "round1/feedback_from_4",
+        "round1/feedback_from_5",
+        "round1/feedback_from_6",
+        "round1/feedback_from_7"
+      ]
+    },
+    {
+      "id": "round0",
+      "power_index": 0,
+      "controlled_multiplier": 2,
+      "measurement_bit": "phase[0]",
+      "feedback_ops": [
+        "round0/feedback_from_1",
+        "round0/feedback_from_2",
+        "round0/feedback_from_3",
+        "round0/feedback_from_4",
+        "round0/feedback_from_5",
+        "round0/feedback_from_6",
+        "round0/feedback_from_7"
+      ]
+    }
+  ],
+  "synthesis": {
+    "status": "incomplete",
+    "metric": "operator_norm_per_path",
+    "path_error_budget": 0.001,
+    "allocation": "equal_over_15_nonexact_conditional_rotations",
+    "unresolved_operation_ids": [
+      "round4/feedback_from_7",
+      "round3/feedback_from_6",
+      "round3/feedback_from_7",
+      "round2/feedback_from_5",
+      "round2/feedback_from_6",
+      "round2/feedback_from_7",
+      "round1/feedback_from_4",
+      "round1/feedback_from_5",
+      "round1/feedback_from_6",
+      "round1/feedback_from_7",
+      "round0/feedback_from_3",
+      "round0/feedback_from_4",
+      "round0/feedback_from_5",
+      "round0/feedback_from_6",
+      "round0/feedback_from_7"
+    ],
+    "clifford_t_ready": false
+  },
+  "resource_summary": {
+    "modular_multiply_fredkin": 5,
+    "modular_multiply_t_like": 35,
+    "exact_feedback_t_like": 6,
+    "conditional_feedback_count": 28,
+    "nonexact_feedback_count": 15,
+    "total_t_like": null,
+    "total_t_like_status": "unknown_until_synthesis_and_path_selection"
+  },
+  "lifecycle": {
+    "work_initial_value": 1,
+    "work_persists_across_rounds": true,
+    "work_final_state": "live_unmeasured",
+    "control_final_state": "reset_zero",
+    "measurement_results": "runtime_only_no_values_in_compile_plan"
+  },
+  "template_hashes": {
+    "controlled_mul1/1": "7bd3e3a32b54f10a0595ee9653dc410c15e5ee85700875dd1218f539601b7448",
+    "controlled_mul2/1": "3ac51a350c7ce43b0497cd5c9362ef1827dfdeafa3e8584aff273d35dae5b956",
+    "controlled_mul4/1": "2c4b24349db31c9ba5e01304fedf319d61e870ff469b4167465930ed603b9671"
+  }
+}

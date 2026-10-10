@@ -1,0 +1,67 @@
+{
+  "schema_version": "preinitialized-examples/0.1",
+  "fixture": true,
+  "patches": {
+    "L0": {
+      "aod_group": "data",
+      "basis": "Z",
+      "value": 0
+    },
+    "L1": {
+      "aod_group": "data",
+      "basis": "Z",
+      "value": 1
+    }
+  },
+  "placements": {
+    "L0": {
+      "anchor_um": [
+        0,
+        0
+      ],
+      "orientation": "x_vertical_z_horizontal"
+    },
+    "L1": {
+      "anchor_um": [
+        80,
+        60
+      ],
+      "orientation": "x_vertical_z_horizontal"
+    }
+  },
+  "placement_ref": {
+    "artifact_id": "fixture-placement-2",
+    "producer": "R1-fixture",
+    "fixture": true
+  },
+  "rejected_overlap": {
+    "placements": {
+      "L0": {
+        "anchor_um": [
+          0,
+          0
+        ],
+        "orientation": "x_vertical_z_horizontal"
+      },
+      "L1": {
+        "anchor_um": [
+          10,
+          10
+        ],
+        "orientation": "x_vertical_z_horizontal"
+      }
+    },
+    "expected_error": "PATCH_FOOTPRINT_OVERLAP"
+  },
+  "rejected_magic": {
+    "patches": {
+      "L0": {
+        "aod_group": "magic",
+        "basis": "T",
+        "value": 0
+      }
+    },
+    "expected_error": "INITIAL_LOGICAL_STATE"
+  },
+  "scope": "Input declarations and geometry fixtures only; no Enola placement or state simulation has run."
+}

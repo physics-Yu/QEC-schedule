@@ -1,0 +1,20 @@
+{
+  "scope": "existing_joint-v1_artifact_and_current_independent_report_bytes",
+  "files": {
+    "batch-01.json.gz": "8220f1c8f1c8f6a858ac2900181aaf9abbbae0b82ed384b5caa2a0218a84dd4b",
+    "batch-02.json.gz": "ff8a5e4ea7cdabd92012c9261be166049932a33e11ec0c3fde37e5e6a8a0b24e",
+    "batch-03.json.gz": "7ec05475ed37f45da100d8d99a1bba6b0f34b2a28e10c4751d939457a61b9fd8",
+    "batch-04.json.gz": "a50ecac57b4926a230a60c175a650d18b3f7c63b35623de03608f6db18809da4",
+    "batch-05.json.gz": "4d1984414cd98d30e928596c94c1825289046782d13964f04424371b536ddca4",
+    "checkpoint.json.gz": "80fa171f7ae25fcf1db5f1d8ef399c7ccb18c96bd995f52705777c6214b713a7",
+    "inputs.json.gz": "4a820879ae097f13bde340d69b6fe09c8610a2a231333674eb5457f686f8bdd7",
+    "logical-schedule.json": "45b85dde36dcf9570e3563454aaf51f5df57f333edcc3beacc60228038342d9b",
+    "plan-reports.json": "ea6f32c9856163f95d4e85020c4d1fc667309094851849a26c54dc2b035a7f36",
+    "session-report.json": "12e3adf514e50070c3c6dd8994fa58147377b602f1189785bd5b28be1c6f3cd7",
+    "status.json": "f7a015a4b2431f4aafd32b8a9176a00c346080e3e8b824d318e6a1935ba1401e",
+    "summary.json": "bcaa68a154b48b9a9ee5e241ac8dfdd6d7081116d5dc4d271b803a8ce80ff30c",
+    "trace.json.gz": "7642550f92c95d6a15f10808a119dbdd6bfe883f0dad15e08865895dab56a0a1"
+  },
+  "runtime_recompiled": false,
+  "old_incomplete_plan_reports_retained": true
+}

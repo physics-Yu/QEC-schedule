@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "supervisor_pid": 512,
+  "started_at_utc": "2026-10-06T09:38:51.685243+00:00",
+  "peak_root_rss_bytes": 4509696,
+  "peak_tree_rss_bytes": 41447424,
+  "root_rss_measured": true,
+  "job": "C:\\Users\\yuyqp\\Documents\\ChatGPT\\中性原子平台仿真\\examples\\atom\\profiles\\T402\\rounds-1-plain-job",
+  "child_pid": 99792,
+  "elapsed_seconds": 0.640999999945052,
+  "root_rss_bytes": 4509696,
+  "tree_rss_bytes": 30892032,
+  "memory_scope": "sampled_process_tree_rss",
+  "processes_measured": 3,
+  "memory_unreadable_pids": [],
+  "returncode": 0,
+  "finished_at_utc": "2026-10-06T09:38:52.331635+00:00"
+}

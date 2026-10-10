@@ -1,0 +1,85 @@
+{
+  "schema_version": "ValidationReport/0.2.0-draft",
+  "artifact_id": "validation/ead6c6e50af3c5f0",
+  "provenance": {
+    "producer": "na_pipeline.validation",
+    "version": "0.1.0",
+    "kb_revision": "kb-0003",
+    "contract": "IF-MVP-001/0.2.0-draft"
+  },
+  "passed": true,
+  "scoped_pass": true,
+  "scope": "T601 supported compile/schedule profile; one fake path",
+  "checks": [
+    {
+      "id": "contract",
+      "scope": "JSON artifact envelope, identities and required fields",
+      "status": "passed"
+    },
+    {
+      "id": "timing",
+      "scope": "finite intervals, action dependencies and result causality",
+      "status": "passed"
+    },
+    {
+      "id": "resources",
+      "scope": "declared and independently inferred resource conflicts",
+      "status": "passed"
+    },
+    {
+      "id": "geometry",
+      "scope": "carrier lifecycle, piecewise linear trajectories and shared axes",
+      "status": "passed"
+    },
+    {
+      "id": "broadcast",
+      "scope": "all geometrically eligible illuminated pairs and counts",
+      "status": "passed"
+    },
+    {
+      "id": "source",
+      "scope": "physical operation coverage and supported native lowering semantics",
+      "status": "passed"
+    },
+    {
+      "id": "trace",
+      "scope": "single fake path, trace correspondence and final state",
+      "status": "passed"
+    }
+  ],
+  "failures": [],
+  "unverified": [],
+  "out_of_scope": [
+    "quantum_state",
+    "hardware_execution",
+    "noise_or_fidelity",
+    "fault_tolerance_proof",
+    "user_visual_acceptance",
+    "full_Shor_acceptance",
+    "factory_lifecycle_until_T302"
+  ],
+  "input_hashes": {
+    "atom_program": "ead6c6e50af3c5f0076f78e65c0d33016847fb0c9913a6eaf89e4f34cb309b60",
+    "device": "1c436306473c9938e7febf7abceb1ebceb28a52c7c5fc6d3e5aa02bf338ccf5f",
+    "trace": "16072feb5105404dc2c13fe6e8b790f8012fb34b492e2302d2cb0befd2a341f7",
+    "physical_program": "0ce826136de951b1f5832b6bb9dbe287b6584f795e85e1efc577e01952efdc55"
+  },
+  "input_versions": {
+    "atom_program": "AtomProgram/0.2.0-draft",
+    "device": "DeviceSpec/0.2.0-draft",
+    "trace": "EventTrace/0.2.0-draft",
+    "physical_program": "physical-program/0.2.0-draft"
+  },
+  "metrics": {
+    "action_count": 1744,
+    "measurement_count": 66,
+    "makespan_us": 259013.0,
+    "atom_count": 34,
+    "broadcast_count": 153,
+    "physical_operation_count": 388,
+    "validation_wall_seconds": 0.3892788999946788
+  },
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false
+}

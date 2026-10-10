@@ -1,0 +1,187 @@
+{
+  "logical_dag_sha256": "5cbb644cdcf87fe73a54f51ebdf09b1091a14d95fb1404beb39ba46953c43099",
+  "bundle_hash": "294a6fac5316ec6741d53c200a68cfb1f62cbd2864c14d4efd9b82b962374ae8",
+  "instances": [
+    {
+      "logical_node_id": "maintenance/entry/P0",
+      "operation": "SE",
+      "physical_schema": "PhysicalDAG/0.1.0",
+      "physical_node_count": 56,
+      "physical_dag_sha256": "9814c5730b453fdd72e9a75236b018619392dfbd598c91c2b1fc2ee0bf089a88",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/entry/P1",
+      "operation": "SE",
+      "physical_schema": "PhysicalDAG/0.1.0",
+      "physical_node_count": 56,
+      "physical_dag_sha256": "6938a24a563e60b31a965c67d32f74b4ab332301d499b5ac0757ec35c46ebc45",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/entry/P2",
+      "operation": "SE",
+      "physical_schema": "PhysicalDAG/0.1.0",
+      "physical_node_count": 56,
+      "physical_dag_sha256": "a3ea21f7fdd9c915a3f06e29abb72dab61dc1fe06c5aad3d063040dc457d44f6",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/entry/P3",
+      "operation": "SE",
+      "physical_schema": "PhysicalDAG/0.1.0",
+      "physical_node_count": 56,
+      "physical_dag_sha256": "21e3fd73b69cd75c91d1db1e34573aec7e223875ae8d1ce4156acd6adc72ae6f",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "example/couple0",
+      "operation": "CX",
+      "physical_schema": "PhysicalDAG/0.1.0",
+      "physical_node_count": 9,
+      "physical_dag_sha256": "74194484052f6eb16633fb37b2a9502c6557d0df577c4d54d0b5afe26639eba9",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 9,
+        "edges": 0,
+        "groups": 0,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "example/couple1",
+      "operation": "CZ",
+      "physical_schema": "PhysicalDAG/0.1.0",
+      "physical_node_count": 63,
+      "physical_dag_sha256": "93f514cc910ae5f840bfa3d435b21b95d8aa8e123a22015487d2edce1074d977",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 63,
+        "edges": 66,
+        "groups": 0,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "example/couple2",
+      "operation": "CX",
+      "physical_schema": "PhysicalDAG/0.1.0",
+      "physical_node_count": 9,
+      "physical_dag_sha256": "1e395ea47a6607694a4de2928e786c669d7a1884c2601fff170681994d71267a",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 9,
+        "edges": 0,
+        "groups": 0,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "example/couple3",
+      "operation": "CX",
+      "physical_schema": "PhysicalDAG/0.1.0",
+      "physical_node_count": 9,
+      "physical_dag_sha256": "99edad481ea0a6852b5d9d76adcd35b75f64f84838821bb6b44dad5d899364a9",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 9,
+        "edges": 0,
+        "groups": 0,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/after-coupling/P0",
+      "operation": "SE",
+      "physical_schema": "PhysicalDAG/0.1.0",
+      "physical_node_count": 56,
+      "physical_dag_sha256": "a64a2e0230ed0ced8619ce645f75176db107d8eb626f5e317e4be1e6225db91a",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/after-coupling/P1",
+      "operation": "SE",
+      "physical_schema": "PhysicalDAG/0.1.0",
+      "physical_node_count": 56,
+      "physical_dag_sha256": "395d7c82c66f1d2017c92624face6057cdcc59075923d281c92f0232255b0e29",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/after-coupling/P2",
+      "operation": "SE",
+      "physical_schema": "PhysicalDAG/0.1.0",
+      "physical_node_count": 56,
+      "physical_dag_sha256": "744d915ce688739b89230d6e37b034f0a6ad42884bcce88a0d94e2eda1cfbad5",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    },
+    {
+      "logical_node_id": "maintenance/after-coupling/P3",
+      "operation": "SE",
+      "physical_schema": "PhysicalDAG/0.1.0",
+      "physical_node_count": 56,
+      "physical_dag_sha256": "b493f38ea92b99456f6629ec2a22d821efb4f792dfb793160dcfa4255a982fc9",
+      "errors": {
+        "passed": true,
+        "scope": "R3_source_structure_only",
+        "nodes": 56,
+        "edges": 63,
+        "groups": 1,
+        "physical_compilation_verified": false
+      }
+    }
+  ],
+  "scope": "actual_small_R3_materialization_not_routing_or_runtime"
+}

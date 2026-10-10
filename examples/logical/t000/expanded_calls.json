@@ -1,0 +1,1479 @@
+{
+  "schema_version": "ExpandedEncodedCalls/0.1.0",
+  "artifact_id": "encoded-2c4068bdaf1c923a-calls",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T203",
+    "kb_revision": "kb-0005",
+    "plan_revision": "plan-0007",
+    "fixture": false,
+    "interfaces": {
+      "IF-LOGICAL-OPS-001": "0.3.0",
+      "IF-PATCH-GROUP-001": "0.2.0",
+      "IF-STRATEGY-001": "0.1.0"
+    }
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "calls": [
+    {
+      "kind": "logical_call",
+      "id": "prepare.L0/r0",
+      "operation": "prepare",
+      "semantic_version": "1.0.0",
+      "operands": {
+        "block": "L0"
+      },
+      "params": {
+        "state": "+"
+      },
+      "repeat": 1,
+      "after": [],
+      "reads": [],
+      "writes": [
+        "prepare.L0/r0/x0",
+        "prepare.L0/r0/x1",
+        "prepare.L0/r0/x2",
+        "prepare.L0/r0/x3",
+        "prepare.L0/r0/z0",
+        "prepare.L0/r0/z1",
+        "prepare.L0/r0/z2",
+        "prepare.L0/r0/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "t000:prepare.L0",
+        "prepare.L0",
+        "prepare.L0/r0"
+      ],
+      "groups": [
+        {
+          "group_id": "prepare.L0/r0/initialization",
+          "purpose": "patch_initialization_transport",
+          "logical_block_id": "L0",
+          "call_id": "prepare.L0/r0",
+          "round_slot": 0,
+          "members": [
+            {
+              "role": "d0"
+            },
+            {
+              "role": "d1"
+            },
+            {
+              "role": "d2"
+            },
+            {
+              "role": "d3"
+            },
+            {
+              "role": "d4"
+            },
+            {
+              "role": "d5"
+            },
+            {
+              "role": "d6"
+            },
+            {
+              "role": "d7"
+            },
+            {
+              "role": "d8"
+            },
+            {
+              "role": "x0"
+            },
+            {
+              "role": "x1"
+            },
+            {
+              "role": "x2"
+            },
+            {
+              "role": "x3"
+            },
+            {
+              "role": "z0"
+            },
+            {
+              "role": "z1"
+            },
+            {
+              "role": "z2"
+            },
+            {
+              "role": "z3"
+            }
+          ],
+          "source_layout_profile_ref": "$runtime.initialization_entry",
+          "target_layout_profile_ref": "$strategy.prepared_exit",
+          "return_layout_profile_ref": null,
+          "physical_binding_status": "requires_strategy_lowering",
+          "preserve_data": false
+        },
+        {
+          "group_id": "prepare.L0/r0/readout",
+          "purpose": "maintenance_readout",
+          "logical_block_id": "L0",
+          "call_id": "prepare.L0/r0",
+          "round_slot": 0,
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L0/r0/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L0/r0/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L0/r0/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L0/r0/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L0/r0/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L0/r0/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L0/r0/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L0/r0/z3"
+            }
+          ],
+          "source_layout_profile_ref": "$strategy.ez_exit",
+          "target_layout_profile_ref": "$device.mz_group",
+          "return_layout_profile_ref": "$strategy.local_entry",
+          "readout_resource_profile_ref": "$device.readout_group",
+          "physical_binding_status": "requires_strategy_lowering",
+          "preserve_data": true
+        }
+      ],
+      "source_call_id": "prepare.L0",
+      "round_index": 0
+    },
+    {
+      "kind": "logical_call",
+      "id": "before.L0/r0",
+      "operation": "syndrome_round",
+      "semantic_version": "1.0.0",
+      "operands": {
+        "block": "L0"
+      },
+      "params": {},
+      "repeat": 1,
+      "after": [
+        "prepare.L0/r0"
+      ],
+      "reads": [],
+      "writes": [
+        "before.L0/r0/x0",
+        "before.L0/r0/x1",
+        "before.L0/r0/x2",
+        "before.L0/r0/x3",
+        "before.L0/r0/z0",
+        "before.L0/r0/z1",
+        "before.L0/r0/z2",
+        "before.L0/r0/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "t000:before.L0",
+        "before.L0",
+        "before.L0/r0"
+      ],
+      "groups": [
+        {
+          "group_id": "before.L0/r0/readout",
+          "purpose": "maintenance_readout",
+          "logical_block_id": "L0",
+          "call_id": "before.L0/r0",
+          "round_slot": 0,
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r0/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r0/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r0/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r0/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r0/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r0/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r0/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r0/z3"
+            }
+          ],
+          "source_layout_profile_ref": "$strategy.ez_exit",
+          "target_layout_profile_ref": "$device.mz_group",
+          "return_layout_profile_ref": "$strategy.local_entry",
+          "readout_resource_profile_ref": "$device.readout_group",
+          "physical_binding_status": "requires_strategy_lowering",
+          "preserve_data": true
+        }
+      ],
+      "source_call_id": "before.L0",
+      "round_index": 0
+    },
+    {
+      "kind": "logical_call",
+      "id": "before.L0/r1",
+      "operation": "syndrome_round",
+      "semantic_version": "1.0.0",
+      "operands": {
+        "block": "L0"
+      },
+      "params": {},
+      "repeat": 1,
+      "after": [
+        "before.L0/r0"
+      ],
+      "reads": [],
+      "writes": [
+        "before.L0/r1/x0",
+        "before.L0/r1/x1",
+        "before.L0/r1/x2",
+        "before.L0/r1/x3",
+        "before.L0/r1/z0",
+        "before.L0/r1/z1",
+        "before.L0/r1/z2",
+        "before.L0/r1/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "t000:before.L0",
+        "before.L0",
+        "before.L0/r1"
+      ],
+      "groups": [
+        {
+          "group_id": "before.L0/r1/readout",
+          "purpose": "maintenance_readout",
+          "logical_block_id": "L0",
+          "call_id": "before.L0/r1",
+          "round_slot": 1,
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r1/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r1/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r1/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r1/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r1/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r1/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r1/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r1/z3"
+            }
+          ],
+          "source_layout_profile_ref": "$strategy.ez_exit",
+          "target_layout_profile_ref": "$device.mz_group",
+          "return_layout_profile_ref": "$strategy.local_entry",
+          "readout_resource_profile_ref": "$device.readout_group",
+          "physical_binding_status": "requires_strategy_lowering",
+          "preserve_data": true
+        }
+      ],
+      "source_call_id": "before.L0",
+      "round_index": 1
+    },
+    {
+      "kind": "logical_call",
+      "id": "before.L0/r2",
+      "operation": "syndrome_round",
+      "semantic_version": "1.0.0",
+      "operands": {
+        "block": "L0"
+      },
+      "params": {},
+      "repeat": 1,
+      "after": [
+        "before.L0/r1"
+      ],
+      "reads": [],
+      "writes": [
+        "before.L0/r2/x0",
+        "before.L0/r2/x1",
+        "before.L0/r2/x2",
+        "before.L0/r2/x3",
+        "before.L0/r2/z0",
+        "before.L0/r2/z1",
+        "before.L0/r2/z2",
+        "before.L0/r2/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "t000:before.L0",
+        "before.L0",
+        "before.L0/r2"
+      ],
+      "groups": [
+        {
+          "group_id": "before.L0/r2/readout",
+          "purpose": "maintenance_readout",
+          "logical_block_id": "L0",
+          "call_id": "before.L0/r2",
+          "round_slot": 2,
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r2/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r2/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r2/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r2/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r2/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r2/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r2/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L0/r2/z3"
+            }
+          ],
+          "source_layout_profile_ref": "$strategy.ez_exit",
+          "target_layout_profile_ref": "$device.mz_group",
+          "return_layout_profile_ref": "$strategy.local_entry",
+          "readout_resource_profile_ref": "$device.readout_group",
+          "physical_binding_status": "requires_strategy_lowering",
+          "preserve_data": true
+        }
+      ],
+      "source_call_id": "before.L0",
+      "round_index": 2
+    },
+    {
+      "kind": "logical_call",
+      "id": "prepare.L1/r0",
+      "operation": "prepare",
+      "semantic_version": "1.0.0",
+      "operands": {
+        "block": "L1"
+      },
+      "params": {
+        "state": "0"
+      },
+      "repeat": 1,
+      "after": [],
+      "reads": [],
+      "writes": [
+        "prepare.L1/r0/x0",
+        "prepare.L1/r0/x1",
+        "prepare.L1/r0/x2",
+        "prepare.L1/r0/x3",
+        "prepare.L1/r0/z0",
+        "prepare.L1/r0/z1",
+        "prepare.L1/r0/z2",
+        "prepare.L1/r0/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "t000:prepare.L1",
+        "prepare.L1",
+        "prepare.L1/r0"
+      ],
+      "groups": [
+        {
+          "group_id": "prepare.L1/r0/initialization",
+          "purpose": "patch_initialization_transport",
+          "logical_block_id": "L1",
+          "call_id": "prepare.L1/r0",
+          "round_slot": 0,
+          "members": [
+            {
+              "role": "d0"
+            },
+            {
+              "role": "d1"
+            },
+            {
+              "role": "d2"
+            },
+            {
+              "role": "d3"
+            },
+            {
+              "role": "d4"
+            },
+            {
+              "role": "d5"
+            },
+            {
+              "role": "d6"
+            },
+            {
+              "role": "d7"
+            },
+            {
+              "role": "d8"
+            },
+            {
+              "role": "x0"
+            },
+            {
+              "role": "x1"
+            },
+            {
+              "role": "x2"
+            },
+            {
+              "role": "x3"
+            },
+            {
+              "role": "z0"
+            },
+            {
+              "role": "z1"
+            },
+            {
+              "role": "z2"
+            },
+            {
+              "role": "z3"
+            }
+          ],
+          "source_layout_profile_ref": "$runtime.initialization_entry",
+          "target_layout_profile_ref": "$strategy.prepared_exit",
+          "return_layout_profile_ref": null,
+          "physical_binding_status": "requires_strategy_lowering",
+          "preserve_data": false
+        },
+        {
+          "group_id": "prepare.L1/r0/readout",
+          "purpose": "maintenance_readout",
+          "logical_block_id": "L1",
+          "call_id": "prepare.L1/r0",
+          "round_slot": 0,
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L1/r0/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L1/r0/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L1/r0/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L1/r0/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L1/r0/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L1/r0/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L1/r0/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "prepare.L1/r0/z3"
+            }
+          ],
+          "source_layout_profile_ref": "$strategy.ez_exit",
+          "target_layout_profile_ref": "$device.mz_group",
+          "return_layout_profile_ref": "$strategy.local_entry",
+          "readout_resource_profile_ref": "$device.readout_group",
+          "physical_binding_status": "requires_strategy_lowering",
+          "preserve_data": true
+        }
+      ],
+      "source_call_id": "prepare.L1",
+      "round_index": 0
+    },
+    {
+      "kind": "logical_call",
+      "id": "before.L1/r0",
+      "operation": "syndrome_round",
+      "semantic_version": "1.0.0",
+      "operands": {
+        "block": "L1"
+      },
+      "params": {},
+      "repeat": 1,
+      "after": [
+        "prepare.L1/r0"
+      ],
+      "reads": [],
+      "writes": [
+        "before.L1/r0/x0",
+        "before.L1/r0/x1",
+        "before.L1/r0/x2",
+        "before.L1/r0/x3",
+        "before.L1/r0/z0",
+        "before.L1/r0/z1",
+        "before.L1/r0/z2",
+        "before.L1/r0/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "t000:before.L1",
+        "before.L1",
+        "before.L1/r0"
+      ],
+      "groups": [
+        {
+          "group_id": "before.L1/r0/readout",
+          "purpose": "maintenance_readout",
+          "logical_block_id": "L1",
+          "call_id": "before.L1/r0",
+          "round_slot": 0,
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r0/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r0/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r0/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r0/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r0/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r0/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r0/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r0/z3"
+            }
+          ],
+          "source_layout_profile_ref": "$strategy.ez_exit",
+          "target_layout_profile_ref": "$device.mz_group",
+          "return_layout_profile_ref": "$strategy.local_entry",
+          "readout_resource_profile_ref": "$device.readout_group",
+          "physical_binding_status": "requires_strategy_lowering",
+          "preserve_data": true
+        }
+      ],
+      "source_call_id": "before.L1",
+      "round_index": 0
+    },
+    {
+      "kind": "logical_call",
+      "id": "before.L1/r1",
+      "operation": "syndrome_round",
+      "semantic_version": "1.0.0",
+      "operands": {
+        "block": "L1"
+      },
+      "params": {},
+      "repeat": 1,
+      "after": [
+        "before.L1/r0"
+      ],
+      "reads": [],
+      "writes": [
+        "before.L1/r1/x0",
+        "before.L1/r1/x1",
+        "before.L1/r1/x2",
+        "before.L1/r1/x3",
+        "before.L1/r1/z0",
+        "before.L1/r1/z1",
+        "before.L1/r1/z2",
+        "before.L1/r1/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "t000:before.L1",
+        "before.L1",
+        "before.L1/r1"
+      ],
+      "groups": [
+        {
+          "group_id": "before.L1/r1/readout",
+          "purpose": "maintenance_readout",
+          "logical_block_id": "L1",
+          "call_id": "before.L1/r1",
+          "round_slot": 1,
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r1/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r1/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r1/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r1/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r1/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r1/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r1/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r1/z3"
+            }
+          ],
+          "source_layout_profile_ref": "$strategy.ez_exit",
+          "target_layout_profile_ref": "$device.mz_group",
+          "return_layout_profile_ref": "$strategy.local_entry",
+          "readout_resource_profile_ref": "$device.readout_group",
+          "physical_binding_status": "requires_strategy_lowering",
+          "preserve_data": true
+        }
+      ],
+      "source_call_id": "before.L1",
+      "round_index": 1
+    },
+    {
+      "kind": "logical_call",
+      "id": "before.L1/r2",
+      "operation": "syndrome_round",
+      "semantic_version": "1.0.0",
+      "operands": {
+        "block": "L1"
+      },
+      "params": {},
+      "repeat": 1,
+      "after": [
+        "before.L1/r1"
+      ],
+      "reads": [],
+      "writes": [
+        "before.L1/r2/x0",
+        "before.L1/r2/x1",
+        "before.L1/r2/x2",
+        "before.L1/r2/x3",
+        "before.L1/r2/z0",
+        "before.L1/r2/z1",
+        "before.L1/r2/z2",
+        "before.L1/r2/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "t000:before.L1",
+        "before.L1",
+        "before.L1/r2"
+      ],
+      "groups": [
+        {
+          "group_id": "before.L1/r2/readout",
+          "purpose": "maintenance_readout",
+          "logical_block_id": "L1",
+          "call_id": "before.L1/r2",
+          "round_slot": 2,
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r2/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r2/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r2/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r2/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r2/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r2/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r2/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "before.L1/r2/z3"
+            }
+          ],
+          "source_layout_profile_ref": "$strategy.ez_exit",
+          "target_layout_profile_ref": "$device.mz_group",
+          "return_layout_profile_ref": "$strategy.local_entry",
+          "readout_resource_profile_ref": "$device.readout_group",
+          "physical_binding_status": "requires_strategy_lowering",
+          "preserve_data": true
+        }
+      ],
+      "source_call_id": "before.L1",
+      "round_index": 2
+    },
+    {
+      "kind": "logical_call",
+      "id": "couple/r0",
+      "operation": "logical_cx",
+      "semantic_version": "1.0.0",
+      "operands": {
+        "control": "L0",
+        "target": "L1"
+      },
+      "params": {},
+      "repeat": 1,
+      "after": [
+        "before.L0/r2",
+        "before.L1/r2"
+      ],
+      "reads": [],
+      "writes": [],
+      "condition": null,
+      "source_ids": [
+        "t000:couple",
+        "couple",
+        "couple/r0"
+      ],
+      "groups": [],
+      "source_call_id": "couple",
+      "round_index": 0
+    },
+    {
+      "kind": "logical_call",
+      "id": "after.L0/r0",
+      "operation": "syndrome_round",
+      "semantic_version": "1.0.0",
+      "operands": {
+        "block": "L0"
+      },
+      "params": {},
+      "repeat": 1,
+      "after": [
+        "couple/r0"
+      ],
+      "reads": [],
+      "writes": [
+        "after.L0/r0/x0",
+        "after.L0/r0/x1",
+        "after.L0/r0/x2",
+        "after.L0/r0/x3",
+        "after.L0/r0/z0",
+        "after.L0/r0/z1",
+        "after.L0/r0/z2",
+        "after.L0/r0/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "t000:after.L0",
+        "after.L0",
+        "after.L0/r0"
+      ],
+      "groups": [
+        {
+          "group_id": "after.L0/r0/readout",
+          "purpose": "maintenance_readout",
+          "logical_block_id": "L0",
+          "call_id": "after.L0/r0",
+          "round_slot": 0,
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L0/r0/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L0/r0/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L0/r0/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L0/r0/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L0/r0/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L0/r0/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L0/r0/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L0/r0/z3"
+            }
+          ],
+          "source_layout_profile_ref": "$strategy.ez_exit",
+          "target_layout_profile_ref": "$device.mz_group",
+          "return_layout_profile_ref": "$strategy.local_entry",
+          "readout_resource_profile_ref": "$device.readout_group",
+          "physical_binding_status": "requires_strategy_lowering",
+          "preserve_data": true
+        }
+      ],
+      "source_call_id": "after.L0",
+      "round_index": 0
+    },
+    {
+      "kind": "logical_call",
+      "id": "after.L1/r0",
+      "operation": "syndrome_round",
+      "semantic_version": "1.0.0",
+      "operands": {
+        "block": "L1"
+      },
+      "params": {},
+      "repeat": 1,
+      "after": [
+        "couple/r0"
+      ],
+      "reads": [],
+      "writes": [
+        "after.L1/r0/x0",
+        "after.L1/r0/x1",
+        "after.L1/r0/x2",
+        "after.L1/r0/x3",
+        "after.L1/r0/z0",
+        "after.L1/r0/z1",
+        "after.L1/r0/z2",
+        "after.L1/r0/z3"
+      ],
+      "condition": null,
+      "source_ids": [
+        "t000:after.L1",
+        "after.L1",
+        "after.L1/r0"
+      ],
+      "groups": [
+        {
+          "group_id": "after.L1/r0/readout",
+          "purpose": "maintenance_readout",
+          "logical_block_id": "L1",
+          "call_id": "after.L1/r0",
+          "round_slot": 0,
+          "members": [
+            {
+              "role": "x0",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L1/r0/x0"
+            },
+            {
+              "role": "x1",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L1/r0/x1"
+            },
+            {
+              "role": "x2",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L1/r0/x2"
+            },
+            {
+              "role": "x3",
+              "check_type": "X",
+              "measurement_basis": "Z",
+              "result_slot": "x3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L1/r0/x3"
+            },
+            {
+              "role": "z0",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z0",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L1/r0/z0"
+            },
+            {
+              "role": "z1",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z1",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L1/r0/z1"
+            },
+            {
+              "role": "z2",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z2",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L1/r0/z2"
+            },
+            {
+              "role": "z3",
+              "check_type": "Z",
+              "measurement_basis": "Z",
+              "result_slot": "z3",
+              "last_coupling_ref": null,
+              "basis_change_ref": null,
+              "preparation_ref": null,
+              "result_id": "after.L1/r0/z3"
+            }
+          ],
+          "source_layout_profile_ref": "$strategy.ez_exit",
+          "target_layout_profile_ref": "$device.mz_group",
+          "return_layout_profile_ref": "$strategy.local_entry",
+          "readout_resource_profile_ref": "$device.readout_group",
+          "physical_binding_status": "requires_strategy_lowering",
+          "preserve_data": true
+        }
+      ],
+      "source_call_id": "after.L1",
+      "round_index": 0
+    }
+  ]
+}

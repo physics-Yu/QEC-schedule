@@ -1,0 +1,3968 @@
+{
+  "schema_version": "HierarchicalValidationReport/0.1.0",
+  "scope": "continuous_logical_physical_session",
+  "provenance": {
+    "owner": "R6",
+    "task": "T605",
+    "kb_revision": "kb-0006",
+    "plan_revision": "plan-0008"
+  },
+  "passed": true,
+  "scoped_pass": true,
+  "full_program_passed": false,
+  "checks": [
+    {
+      "id": "capture_closure",
+      "status": "passed"
+    },
+    {
+      "id": "readout_capacity",
+      "status": "passed"
+    },
+    {
+      "id": "all_windows_source_time_causality_and_geometry",
+      "status": "passed"
+    }
+  ],
+  "failures": [],
+  "unverified": [],
+  "metrics": {
+    "node_count": 4,
+    "edge_count": 2,
+    "result_count": 32,
+    "initial_ready": [
+      "reuse-benchmark/round0/P0",
+      "reuse-benchmark/round0/P1"
+    ],
+    "storage_model": "O(V+E); on-demand reachability",
+    "action_count": 666,
+    "measurement_count": 32,
+    "classical_result_count": 0,
+    "makespan_us": 51684.0,
+    "atom_count": 34,
+    "broadcast_count": 46,
+    "pickup_capture_batches": [
+      {
+        "time_us": 12.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000026"
+        ]
+      },
+      {
+        "time_us": 453.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000030"
+        ]
+      },
+      {
+        "time_us": 895.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000037"
+        ]
+      },
+      {
+        "time_us": 1326.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000041"
+        ]
+      },
+      {
+        "time_us": 1758.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000048"
+        ]
+      },
+      {
+        "time_us": 2187.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000052"
+        ]
+      },
+      {
+        "time_us": 2617.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000061"
+        ]
+      },
+      {
+        "time_us": 3068.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000065"
+        ]
+      },
+      {
+        "time_us": 3520.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000076"
+        ]
+      },
+      {
+        "time_us": 3961.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000080"
+        ]
+      },
+      {
+        "time_us": 4403.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000089"
+        ]
+      },
+      {
+        "time_us": 4844.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000093"
+        ]
+      },
+      {
+        "time_us": 5286.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000102"
+        ]
+      },
+      {
+        "time_us": 5717.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000106"
+        ]
+      },
+      {
+        "time_us": 6149.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000115"
+        ]
+      },
+      {
+        "time_us": 6570.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000119"
+        ]
+      },
+      {
+        "time_us": 6993.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000128"
+        ]
+      },
+      {
+        "time_us": 7434.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000132"
+        ]
+      },
+      {
+        "time_us": 7876.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000141"
+        ]
+      },
+      {
+        "time_us": 8307.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000145"
+        ]
+      },
+      {
+        "time_us": 8739.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000154"
+        ]
+      },
+      {
+        "time_us": 9160.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000158"
+        ]
+      },
+      {
+        "time_us": 9582.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000164"
+        ]
+      },
+      {
+        "time_us": 10033.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000168"
+        ]
+      },
+      {
+        "time_us": 10485.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000176"
+        ]
+      },
+      {
+        "time_us": 10926.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000180"
+        ]
+      },
+      {
+        "time_us": 11368.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000188"
+        ]
+      },
+      {
+        "time_us": 11799.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000192"
+        ]
+      },
+      {
+        "time_us": 12232.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000199"
+        ]
+      },
+      {
+        "time_us": 12673.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000203"
+        ]
+      },
+      {
+        "time_us": 13116.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000211"
+        ]
+      },
+      {
+        "time_us": 13537.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000215"
+        ]
+      },
+      {
+        "time_us": 13960.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000223"
+        ]
+      },
+      {
+        "time_us": 14391.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000227"
+        ]
+      },
+      {
+        "time_us": 14822.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000231"
+        ]
+      },
+      {
+        "time_us": 16312.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000250"
+        ]
+      },
+      {
+        "time_us": 17693.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000254"
+        ]
+      },
+      {
+        "time_us": 18134.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000258"
+        ]
+      },
+      {
+        "time_us": 18576.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000263"
+        ]
+      },
+      {
+        "time_us": 19027.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000267"
+        ]
+      },
+      {
+        "time_us": 19479.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000272"
+        ]
+      },
+      {
+        "time_us": 19920.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000276"
+        ]
+      },
+      {
+        "time_us": 20362.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000281"
+        ]
+      },
+      {
+        "time_us": 20793.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000285"
+        ]
+      },
+      {
+        "time_us": 21226.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000292"
+        ]
+      },
+      {
+        "time_us": 21667.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000296"
+        ]
+      },
+      {
+        "time_us": 22110.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000303"
+        ]
+      },
+      {
+        "time_us": 22541.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000307"
+        ]
+      },
+      {
+        "time_us": 22972.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000311"
+        ]
+      },
+      {
+        "time_us": 24462.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000330"
+        ]
+      },
+      {
+        "time_us": 25854.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000026"
+        ]
+      },
+      {
+        "time_us": 26295.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000030"
+        ]
+      },
+      {
+        "time_us": 26737.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000037"
+        ]
+      },
+      {
+        "time_us": 27168.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000041"
+        ]
+      },
+      {
+        "time_us": 27600.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000048"
+        ]
+      },
+      {
+        "time_us": 28029.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000052"
+        ]
+      },
+      {
+        "time_us": 28459.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000061"
+        ]
+      },
+      {
+        "time_us": 28910.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000065"
+        ]
+      },
+      {
+        "time_us": 29362.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000076"
+        ]
+      },
+      {
+        "time_us": 29803.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000080"
+        ]
+      },
+      {
+        "time_us": 30245.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000089"
+        ]
+      },
+      {
+        "time_us": 30686.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000093"
+        ]
+      },
+      {
+        "time_us": 31128.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000102"
+        ]
+      },
+      {
+        "time_us": 31559.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000106"
+        ]
+      },
+      {
+        "time_us": 31991.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000115"
+        ]
+      },
+      {
+        "time_us": 32412.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000119"
+        ]
+      },
+      {
+        "time_us": 32835.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000128"
+        ]
+      },
+      {
+        "time_us": 33276.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000132"
+        ]
+      },
+      {
+        "time_us": 33718.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000141"
+        ]
+      },
+      {
+        "time_us": 34149.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000145"
+        ]
+      },
+      {
+        "time_us": 34581.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000154"
+        ]
+      },
+      {
+        "time_us": 35002.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000158"
+        ]
+      },
+      {
+        "time_us": 35424.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000164"
+        ]
+      },
+      {
+        "time_us": 35875.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000168"
+        ]
+      },
+      {
+        "time_us": 36327.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000176"
+        ]
+      },
+      {
+        "time_us": 36768.0,
+        "aod_group": "data",
+        "requested_count": 4,
+        "captured_count": 4,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000180"
+        ]
+      },
+      {
+        "time_us": 37210.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000188"
+        ]
+      },
+      {
+        "time_us": 37641.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000192"
+        ]
+      },
+      {
+        "time_us": 38074.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000199"
+        ]
+      },
+      {
+        "time_us": 38515.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000203"
+        ]
+      },
+      {
+        "time_us": 38958.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000211"
+        ]
+      },
+      {
+        "time_us": 39379.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000215"
+        ]
+      },
+      {
+        "time_us": 39802.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000223"
+        ]
+      },
+      {
+        "time_us": 40233.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000227"
+        ]
+      },
+      {
+        "time_us": 40664.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000231"
+        ]
+      },
+      {
+        "time_us": 42154.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000250"
+        ]
+      },
+      {
+        "time_us": 43535.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000254"
+        ]
+      },
+      {
+        "time_us": 43976.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000258"
+        ]
+      },
+      {
+        "time_us": 44418.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000263"
+        ]
+      },
+      {
+        "time_us": 44869.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000267"
+        ]
+      },
+      {
+        "time_us": 45321.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000272"
+        ]
+      },
+      {
+        "time_us": 45762.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000276"
+        ]
+      },
+      {
+        "time_us": 46204.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000281"
+        ]
+      },
+      {
+        "time_us": 46635.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000285"
+        ]
+      },
+      {
+        "time_us": 47068.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000292"
+        ]
+      },
+      {
+        "time_us": 47509.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000296"
+        ]
+      },
+      {
+        "time_us": 47952.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000303"
+        ]
+      },
+      {
+        "time_us": 48383.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000307"
+        ]
+      },
+      {
+        "time_us": 48814.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000311"
+        ]
+      },
+      {
+        "time_us": 50304.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000330"
+        ]
+      }
+    ],
+    "cartesian_intersection_segments_checked": 256,
+    "full_active_axes_checked": true,
+    "physical_operation_count": 224,
+    "initial_carrier_count": 34,
+    "physical_parallel_witnesses": [
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000000",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000001",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000002",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000003",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000004",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000005",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000006",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000007",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000000",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000001",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000002",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000003",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000004",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000005",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000006",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000007",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000000",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000001",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000002",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000003",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000004",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000005",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000006",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000007",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000000",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000001",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000002",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000003",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000004",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000005",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000006",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000007",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000000",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000001",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000002",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000003",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000004",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000005",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000006",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000007",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000000",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000001",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000002",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000003",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000004",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000005",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000006",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000007",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000000",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000001",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000002",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000003",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000004",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000005",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000006",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000007",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000000",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000001",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000002",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000003",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000004",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000005",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000006",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000007",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000016",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000020"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000017",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000020"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000018",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000020"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000019",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000020"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000016",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000021"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000017",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000021"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000018",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000021"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000019",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000021"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000016",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000022"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000017",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000022"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000018",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000022"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000019",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000022"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000016",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000023"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000017",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000023"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000018",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000023"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000019",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000023"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000024",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000025"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000033",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000034"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000035",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000036"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000044",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000045"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000046",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000047"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000055",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000056"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000057",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000059"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000058",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000059"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000057",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000060"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000058",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000060"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000068",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000070"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000069",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000070"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000068",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000071"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000069",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000071"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000072",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000074"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000073",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000074"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000072",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000075"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000073",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000075"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000083",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000085"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000084",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000085"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000083",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000086"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000084",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000086"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000087",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000088"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000096",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000097"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000098",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000100"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000099",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000100"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000098",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000101"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000099",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000101"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000109",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000111"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000110",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000111"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000109",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000112"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000110",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000112"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000113",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000114"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000122",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000123"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000124",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000125"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000137",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000139"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000138",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000139"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000137",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000140"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000138",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000140"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000148",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000150"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000149",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000150"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000148",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000151"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000149",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000151"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000152",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000153"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000161",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000162"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000172",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000174"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000173",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000174"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000172",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000175"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000173",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000175"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000183",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000185"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000184",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000185"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000183",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000186"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000184",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000186"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000209",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000210"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000218",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000219"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round0/P0",
+          "reuse-benchmark/round0/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:372a145fadc85e56efa9a072/action:000220",
+          "strategy-instance:372a145fadc85e56efa9a072/action:000221"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000000",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000001",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000002",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000003",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000004",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000005",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000006",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000007",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000008"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000000",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000001",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000002",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000003",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000004",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000005",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000006",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000007",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000009"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000000",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000001",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000002",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000003",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000004",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000005",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000006",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000007",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000010"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000000",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000001",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000002",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000003",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000004",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000005",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000006",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000007",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000011"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000000",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000001",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000002",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000003",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000004",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000005",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000006",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000007",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000012"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000000",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000001",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000002",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000003",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000004",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000005",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000006",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000007",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000013"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000000",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000001",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000002",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000003",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000004",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000005",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000006",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000007",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000014"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000000",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000001",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000002",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000003",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000004",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000005",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000006",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000007",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000015"
+        ],
+        "overlap_us": 10.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000016",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000020"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000017",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000020"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000018",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000020"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000019",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000020"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000016",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000021"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000017",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000021"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000018",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000021"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000019",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000021"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000016",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000022"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000017",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000022"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000018",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000022"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000019",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000022"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000016",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000023"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000017",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000023"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000018",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000023"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000019",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000023"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000024",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000025"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000033",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000034"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000035",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000036"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000044",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000045"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000046",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000047"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000055",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000056"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000057",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000059"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000058",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000059"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000057",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000060"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000058",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000060"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000068",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000070"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000069",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000070"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000068",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000071"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000069",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000071"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000072",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000074"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000073",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000074"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000072",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000075"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000073",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000075"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000083",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000085"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000084",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000085"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000083",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000086"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000084",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000086"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000087",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000088"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000096",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000097"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000098",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000100"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000099",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000100"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000098",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000101"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000099",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000101"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000109",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000111"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000110",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000111"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000109",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000112"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000110",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000112"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000113",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000114"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000122",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000123"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000124",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000125"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000137",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000139"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000138",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000139"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000137",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000140"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000138",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000140"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000148",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000150"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000149",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000150"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000148",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000151"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000149",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000151"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000152",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000153"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000161",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000162"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000172",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000174"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000173",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000174"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000172",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000175"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000173",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000175"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000183",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000185"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000184",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000185"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000183",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000186"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000184",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000186"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000209",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000210"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000218",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000219"
+        ],
+        "overlap_us": 1.0
+      },
+      {
+        "node_ids": [
+          "reuse-benchmark/round1/P0",
+          "reuse-benchmark/round1/P1"
+        ],
+        "action_ids": [
+          "strategy-instance:cd924adad34ab67645b407dd/action:000220",
+          "strategy-instance:cd924adad34ab67645b407dd/action:000221"
+        ],
+        "overlap_us": 1.0
+      }
+    ],
+    "shared_physical_actions_counted_once": 168,
+    "window_count": 2,
+    "logical_node_count": 4,
+    "session_clock_us": 51684.0,
+    "physical_makespan_us": 51684.0
+  },
+  "input_sha256": {
+    "bundle": "08ea558916acd81b62f5381c97c5725f24d8b8bc2be605fab8e0109fbfe7bbb6"
+  },
+  "consumed_interfaces": {
+    "R5-SESSION-BIND-001": "0.1.1",
+    "R5-DAG-IF-001": "0.1.0-draft"
+  },
+  "fixture": false,
+  "sampled": false,
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "out_of_scope": [
+    "quantum_state_execution",
+    "measurement_probabilities",
+    "noise",
+    "physical_hardware",
+    "user_visual_acceptance"
+  ]
+}

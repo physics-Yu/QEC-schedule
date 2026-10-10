@@ -1,0 +1,176 @@
+[
+  {
+    "label": "explicit_fake_quarter",
+    "fixture": true,
+    "scope": "postprocessing_unit_input_not_runtime_trace",
+    "result": {
+      "schema_version": "PhasePostprocess/0.1.0",
+      "origin": "fake",
+      "artifact_id": "phase-postprocess-b40a2c8d1d1755cc",
+      "producer_version": "na_pipeline.frontend/0.1.0",
+      "provenance": {
+        "owner": "R2",
+        "task_id": "T201",
+        "fixture": false,
+        "input_origin": "fake",
+        "input_sha256": "b40a2c8d1d1755cca62214aa03d1183f00b64efed851f3d34ae8d29dd0bc088f",
+        "classification": "classical_computation_on_supplied_bits"
+      },
+      "execution_kind": "compile_plan",
+      "computation_kind": "classical_postprocessing",
+      "loss_enabled": false,
+      "quantum_state_simulated": false,
+      "hardware_executed": false,
+      "input_bits_msb_first": [
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "N": 15,
+      "a": 2,
+      "phase_numerator": 64,
+      "phase_denominator": 256,
+      "continued_fraction_convergents": [
+        {
+          "numerator": 0,
+          "denominator": 1
+        },
+        {
+          "numerator": 1,
+          "denominator": 4
+        }
+      ],
+      "candidate_checks": [
+        {
+          "numerator": 1,
+          "denominator": 4,
+          "modular_power": 1,
+          "half_power": 4,
+          "accepted": true
+        }
+      ],
+      "period": 4,
+      "minimal_order_proven": false,
+      "factors": [
+        3,
+        5
+      ],
+      "status": "success",
+      "reason": "verified_period_and_nontrivial_gcd",
+      "method": "continued_fractions_no_multiple_search"
+    }
+  },
+  {
+    "label": "explicit_fake_zero",
+    "fixture": true,
+    "scope": "postprocessing_unit_input_not_runtime_trace",
+    "result": {
+      "schema_version": "PhasePostprocess/0.1.0",
+      "origin": "fake",
+      "artifact_id": "phase-postprocess-00ddec6f06cffc2d",
+      "producer_version": "na_pipeline.frontend/0.1.0",
+      "provenance": {
+        "owner": "R2",
+        "task_id": "T201",
+        "fixture": false,
+        "input_origin": "fake",
+        "input_sha256": "00ddec6f06cffc2db1ef4f2824d7f87ad97842883832e7c27846a7e8528508bb",
+        "classification": "classical_computation_on_supplied_bits"
+      },
+      "execution_kind": "compile_plan",
+      "computation_kind": "classical_postprocessing",
+      "loss_enabled": false,
+      "quantum_state_simulated": false,
+      "hardware_executed": false,
+      "input_bits_msb_first": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "N": 15,
+      "a": 2,
+      "phase_numerator": 0,
+      "phase_denominator": 256,
+      "continued_fraction_convergents": [],
+      "candidate_checks": [],
+      "period": null,
+      "minimal_order_proven": false,
+      "factors": [],
+      "status": "failed",
+      "reason": "zero_phase_no_period_information",
+      "method": "continued_fractions_no_multiple_search"
+    }
+  },
+  {
+    "label": "explicit_fake_half",
+    "fixture": true,
+    "scope": "postprocessing_unit_input_not_runtime_trace",
+    "result": {
+      "schema_version": "PhasePostprocess/0.1.0",
+      "origin": "fake",
+      "artifact_id": "phase-postprocess-726c3c99fcaea026",
+      "producer_version": "na_pipeline.frontend/0.1.0",
+      "provenance": {
+        "owner": "R2",
+        "task_id": "T201",
+        "fixture": false,
+        "input_origin": "fake",
+        "input_sha256": "726c3c99fcaea02698101f2fa7ff2cd2fd5d841d9aa22a0fbf3c3fd6cb684822",
+        "classification": "classical_computation_on_supplied_bits"
+      },
+      "execution_kind": "compile_plan",
+      "computation_kind": "classical_postprocessing",
+      "loss_enabled": false,
+      "quantum_state_simulated": false,
+      "hardware_executed": false,
+      "input_bits_msb_first": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "N": 15,
+      "a": 2,
+      "phase_numerator": 128,
+      "phase_denominator": 256,
+      "continued_fraction_convergents": [
+        {
+          "numerator": 0,
+          "denominator": 1
+        },
+        {
+          "numerator": 1,
+          "denominator": 2
+        }
+      ],
+      "candidate_checks": [
+        {
+          "numerator": 1,
+          "denominator": 2,
+          "modular_power": 4,
+          "rejection": "not_a_period"
+        }
+      ],
+      "period": null,
+      "minimal_order_proven": false,
+      "factors": [],
+      "status": "failed",
+      "reason": "no_useful_verified_period",
+      "method": "continued_fractions_no_multiple_search"
+    }
+  }
+]

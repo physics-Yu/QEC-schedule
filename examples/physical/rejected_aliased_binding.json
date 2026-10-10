@@ -1,0 +1,6196 @@
+{
+  "schema_version": "physical-program/0.2.0-draft",
+  "artifact_id": "r3-rejected-aliased-binding",
+  "producer_version": "na_pipeline.qec/0.1.0",
+  "provenance": {
+    "producer": "R3",
+    "task_id": "T301",
+    "kb_revision": "kb-0003",
+    "interface_version": "IF-MVP-001/0.2.0-draft",
+    "fixture": true,
+    "source_program": "two_block_slice_reference_circuit"
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "device_ref": null,
+  "capability_profile": "surface17-h-cx-measure-z-reset-conditional-pauli",
+  "input_hashes": {
+    "code_definition": "33a08d2e2c4873c4b940aeefec07b2dcac128a6f90ce2fc493af62825229d11c",
+    "templates": "a8f4e285215c21e20dac8517eb431562f0a8cf04607a6967046e29be76e350d7"
+  },
+  "qubits": [
+    {
+      "id": "control/d0",
+      "block_id": "control",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        0,
+        0
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/d1",
+      "block_id": "control",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        1,
+        0
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/d2",
+      "block_id": "control",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        2,
+        0
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/d3",
+      "block_id": "control",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        0,
+        1
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/d4",
+      "block_id": "control",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        1,
+        1
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/d5",
+      "block_id": "control",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        2,
+        1
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/d6",
+      "block_id": "control",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        0,
+        2
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/d7",
+      "block_id": "control",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        1,
+        2
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/d8",
+      "block_id": "control",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        2,
+        2
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/x0",
+      "block_id": "control",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        0.5,
+        0.5
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/x1",
+      "block_id": "control",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        1.5,
+        -0.5
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/x2",
+      "block_id": "control",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        1.5,
+        1.5
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/x3",
+      "block_id": "control",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        0.5,
+        2.5
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/z0",
+      "block_id": "control",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        -0.5,
+        0.5
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/z1",
+      "block_id": "control",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        1.5,
+        0.5
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/z2",
+      "block_id": "control",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        0.5,
+        1.5
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "control/z3",
+      "block_id": "control",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        2.5,
+        1.5
+      ],
+      "logical_id": "control"
+    },
+    {
+      "id": "target/d0",
+      "block_id": "target",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        0,
+        0
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/d1",
+      "block_id": "target",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        1,
+        0
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/d2",
+      "block_id": "target",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        2,
+        0
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/d3",
+      "block_id": "target",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        0,
+        1
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/d4",
+      "block_id": "target",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        1,
+        1
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/d5",
+      "block_id": "target",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        2,
+        1
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/d6",
+      "block_id": "target",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        0,
+        2
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/d7",
+      "block_id": "target",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        1,
+        2
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/d8",
+      "block_id": "target",
+      "role": "data",
+      "aod_group": "data",
+      "code_coordinate": [
+        2,
+        2
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/x0",
+      "block_id": "target",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        0.5,
+        0.5
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/x1",
+      "block_id": "target",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        1.5,
+        -0.5
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/x2",
+      "block_id": "target",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        1.5,
+        1.5
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/x3",
+      "block_id": "target",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        0.5,
+        2.5
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/z0",
+      "block_id": "target",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        -0.5,
+        0.5
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/z1",
+      "block_id": "target",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        1.5,
+        0.5
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/z2",
+      "block_id": "target",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        0.5,
+        1.5
+      ],
+      "logical_id": "target"
+    },
+    {
+      "id": "target/z3",
+      "block_id": "target",
+      "role": "syndrome",
+      "aod_group": "data",
+      "code_coordinate": [
+        2.5,
+        1.5
+      ],
+      "logical_id": "target"
+    }
+  ],
+  "templates": {
+    "s17.syndrome.v1": {
+      "template_id": "s17.syndrome.v1",
+      "qubits": [
+        "d0",
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8",
+        "x0",
+        "x1",
+        "x2",
+        "x3",
+        "z0",
+        "z1",
+        "z2",
+        "z3"
+      ],
+      "body": [
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x0",
+            "kind": "reset",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x1",
+            "kind": "reset",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x2",
+            "kind": "reset",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x3",
+            "kind": "reset",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z0",
+            "kind": "reset",
+            "qubits": [
+              "z0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z1",
+            "kind": "reset",
+            "qubits": [
+              "z1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z2",
+            "kind": "reset",
+            "qubits": [
+              "z2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z3",
+            "kind": "reset",
+            "qubits": [
+              "z3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x0",
+            "kind": "gate",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x1",
+            "kind": "gate",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x2",
+            "kind": "gate",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x3",
+            "kind": "gate",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_NW",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_NW",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d4"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x3_NW",
+            "kind": "gate",
+            "qubits": [
+              "x3",
+              "d6"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x3_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "x3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_NW",
+            "kind": "gate",
+            "qubits": [
+              "d1",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_NW",
+            "kind": "gate",
+            "qubits": [
+              "d3",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z3_NW",
+            "kind": "gate",
+            "qubits": [
+              "d5",
+              "z3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z3_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "z3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_NE",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "NE",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_NE",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d5"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "NE",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x3_NE",
+            "kind": "gate",
+            "qubits": [
+              "x3",
+              "d7"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x3_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "NE",
+              "check_id": "x3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_SW",
+            "kind": "gate",
+            "qubits": [
+              "d4",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "SW",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_SW",
+            "kind": "gate",
+            "qubits": [
+              "d6",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "SW",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z3_SW",
+            "kind": "gate",
+            "qubits": [
+              "d8",
+              "z3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z3_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "SW",
+              "check_id": "z3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_SW",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "SW",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x1_SW",
+            "kind": "gate",
+            "qubits": [
+              "x1",
+              "d1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x1_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "SW",
+              "check_id": "x1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_SW",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d7"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "SW",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z0_NE",
+            "kind": "gate",
+            "qubits": [
+              "d0",
+              "z0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z0_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "NE",
+              "check_id": "z0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_NE",
+            "kind": "gate",
+            "qubits": [
+              "d2",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "NE",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_NE",
+            "kind": "gate",
+            "qubits": [
+              "d4",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "NE",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_SE",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d4"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x1_SE",
+            "kind": "gate",
+            "qubits": [
+              "x1",
+              "d2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x1_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "x1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_SE",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d8"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z0_SE",
+            "kind": "gate",
+            "qubits": [
+              "d3",
+              "z0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z0_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "z0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_SE",
+            "kind": "gate",
+            "qubits": [
+              "d5",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_SE",
+            "kind": "gate",
+            "qubits": [
+              "d7",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x0",
+            "kind": "gate",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x1",
+            "kind": "gate",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x2",
+            "kind": "gate",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x3",
+            "kind": "gate",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x0",
+            "kind": "measure",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x0"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x1",
+            "kind": "measure",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x1"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x2",
+            "kind": "measure",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x2"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x3",
+            "kind": "measure",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x3"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z0",
+            "kind": "measure",
+            "qubits": [
+              "z0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z0"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z1",
+            "kind": "measure",
+            "qubits": [
+              "z1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z1"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z2",
+            "kind": "measure",
+            "qubits": [
+              "z2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z2"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z3",
+            "kind": "measure",
+            "qubits": [
+              "z3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z3"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z3"
+            ],
+            "condition": null
+          }
+        }
+      ],
+      "metadata": {
+        "protocol": "surface17",
+        "protocol_version": "0.1.0",
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1",
+        "orientation": "x_vertical_z_horizontal",
+        "boundary": "standalone_patch",
+        "stage": "memory_round",
+        "gate_set": [
+          "H",
+          "X",
+          "Z",
+          "CX",
+          "MZ",
+          "RESET_Z"
+        ],
+        "sources": [
+          "R8-FACT-013@0.1.0",
+          "R8-FACT-017@0.1.0",
+          "https://arxiv.org/html/1404.3747v2#S2.T2"
+        ],
+        "cnot_corner_order": {
+          "X": [
+            "NW",
+            "NE",
+            "SW",
+            "SE"
+          ],
+          "Z": [
+            "NW",
+            "SW",
+            "NE",
+            "SE"
+          ]
+        }
+      }
+    },
+    "s17.prepare_zero.v1": {
+      "template_id": "s17.prepare_zero.v1",
+      "qubits": [
+        "d0",
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8",
+        "x0",
+        "x1",
+        "x2",
+        "x3",
+        "z0",
+        "z1",
+        "z2",
+        "z3"
+      ],
+      "body": [
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d0",
+            "kind": "reset",
+            "qubits": [
+              "d0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d1",
+            "kind": "reset",
+            "qubits": [
+              "d1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d2",
+            "kind": "reset",
+            "qubits": [
+              "d2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d3",
+            "kind": "reset",
+            "qubits": [
+              "d3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d4",
+            "kind": "reset",
+            "qubits": [
+              "d4"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d4"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d5",
+            "kind": "reset",
+            "qubits": [
+              "d5"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d5"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d6",
+            "kind": "reset",
+            "qubits": [
+              "d6"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d6"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d7",
+            "kind": "reset",
+            "qubits": [
+              "d7"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d7"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d8",
+            "kind": "reset",
+            "qubits": [
+              "d8"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d8"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x0",
+            "kind": "reset",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x1",
+            "kind": "reset",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x2",
+            "kind": "reset",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x3",
+            "kind": "reset",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z0",
+            "kind": "reset",
+            "qubits": [
+              "z0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z1",
+            "kind": "reset",
+            "qubits": [
+              "z1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z2",
+            "kind": "reset",
+            "qubits": [
+              "z2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z3",
+            "kind": "reset",
+            "qubits": [
+              "z3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x0",
+            "kind": "gate",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x1",
+            "kind": "gate",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x2",
+            "kind": "gate",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x3",
+            "kind": "gate",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_NW",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_NW",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d4"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x3_NW",
+            "kind": "gate",
+            "qubits": [
+              "x3",
+              "d6"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x3_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "x3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_NW",
+            "kind": "gate",
+            "qubits": [
+              "d1",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_NW",
+            "kind": "gate",
+            "qubits": [
+              "d3",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z3_NW",
+            "kind": "gate",
+            "qubits": [
+              "d5",
+              "z3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z3_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "z3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_NE",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "NE",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_NE",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d5"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "NE",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x3_NE",
+            "kind": "gate",
+            "qubits": [
+              "x3",
+              "d7"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x3_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "NE",
+              "check_id": "x3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_SW",
+            "kind": "gate",
+            "qubits": [
+              "d4",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "SW",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_SW",
+            "kind": "gate",
+            "qubits": [
+              "d6",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "SW",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z3_SW",
+            "kind": "gate",
+            "qubits": [
+              "d8",
+              "z3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z3_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "SW",
+              "check_id": "z3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_SW",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "SW",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x1_SW",
+            "kind": "gate",
+            "qubits": [
+              "x1",
+              "d1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x1_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "SW",
+              "check_id": "x1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_SW",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d7"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "SW",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z0_NE",
+            "kind": "gate",
+            "qubits": [
+              "d0",
+              "z0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z0_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "NE",
+              "check_id": "z0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_NE",
+            "kind": "gate",
+            "qubits": [
+              "d2",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "NE",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_NE",
+            "kind": "gate",
+            "qubits": [
+              "d4",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "NE",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_SE",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d4"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x1_SE",
+            "kind": "gate",
+            "qubits": [
+              "x1",
+              "d2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x1_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "x1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_SE",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d8"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z0_SE",
+            "kind": "gate",
+            "qubits": [
+              "d3",
+              "z0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z0_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "z0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_SE",
+            "kind": "gate",
+            "qubits": [
+              "d5",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_SE",
+            "kind": "gate",
+            "qubits": [
+              "d7",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x0",
+            "kind": "gate",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x1",
+            "kind": "gate",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x2",
+            "kind": "gate",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x3",
+            "kind": "gate",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x0",
+            "kind": "measure",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x0"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x1",
+            "kind": "measure",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x1"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x2",
+            "kind": "measure",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x2"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x3",
+            "kind": "measure",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x3"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z0",
+            "kind": "measure",
+            "qubits": [
+              "z0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z0"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z1",
+            "kind": "measure",
+            "qubits": [
+              "z1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z1"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z2",
+            "kind": "measure",
+            "qubits": [
+              "z2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z2"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z3",
+            "kind": "measure",
+            "qubits": [
+              "z3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z3"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_0_d1",
+            "kind": "gate",
+            "qubits": [
+              "d1"
+            ],
+            "params": {
+              "name": "Z"
+            },
+            "reads": [
+              "m_x0"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_0_d1"
+            ],
+            "condition": {
+              "bit": "m_x0",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_0_d2",
+            "kind": "gate",
+            "qubits": [
+              "d2"
+            ],
+            "params": {
+              "name": "Z"
+            },
+            "reads": [
+              "m_x0"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_0_d2"
+            ],
+            "condition": {
+              "bit": "m_x0",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_1_d2",
+            "kind": "gate",
+            "qubits": [
+              "d2"
+            ],
+            "params": {
+              "name": "Z"
+            },
+            "reads": [
+              "m_x1"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_1_d2"
+            ],
+            "condition": {
+              "bit": "m_x1",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_2_d5",
+            "kind": "gate",
+            "qubits": [
+              "d5"
+            ],
+            "params": {
+              "name": "Z"
+            },
+            "reads": [
+              "m_x2"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_2_d5"
+            ],
+            "condition": {
+              "bit": "m_x2",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_3_d5",
+            "kind": "gate",
+            "qubits": [
+              "d5"
+            ],
+            "params": {
+              "name": "Z"
+            },
+            "reads": [
+              "m_x3"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_3_d5"
+            ],
+            "condition": {
+              "bit": "m_x3",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_3_d7",
+            "kind": "gate",
+            "qubits": [
+              "d7"
+            ],
+            "params": {
+              "name": "Z"
+            },
+            "reads": [
+              "m_x3"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_3_d7"
+            ],
+            "condition": {
+              "bit": "m_x3",
+              "equals": 1
+            }
+          }
+        }
+      ],
+      "metadata": {
+        "protocol": "surface17",
+        "protocol_version": "0.1.0",
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1",
+        "orientation": "x_vertical_z_horizontal",
+        "boundary": "standalone_patch",
+        "stage": "prepare_zero",
+        "gate_set": [
+          "H",
+          "X",
+          "Z",
+          "CX",
+          "MZ",
+          "RESET_Z"
+        ],
+        "sources": [
+          "R8-FACT-013@0.1.0",
+          "R8-FACT-017@0.1.0",
+          "https://arxiv.org/html/1404.3747v2#S2.T2"
+        ],
+        "sign_fixes": {
+          "m_x0": [
+            "d1",
+            "d2"
+          ],
+          "m_x1": [
+            "d2"
+          ],
+          "m_x2": [
+            "d5"
+          ],
+          "m_x3": [
+            "d5",
+            "d7"
+          ]
+        },
+        "sign_fix_gate": "Z",
+        "sign_fix_scope": "ideal_projection_signs_not_noise_decoding"
+      }
+    },
+    "s17.prepare_plus.v1": {
+      "template_id": "s17.prepare_plus.v1",
+      "qubits": [
+        "d0",
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8",
+        "x0",
+        "x1",
+        "x2",
+        "x3",
+        "z0",
+        "z1",
+        "z2",
+        "z3"
+      ],
+      "body": [
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d0",
+            "kind": "reset",
+            "qubits": [
+              "d0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d1",
+            "kind": "reset",
+            "qubits": [
+              "d1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d2",
+            "kind": "reset",
+            "qubits": [
+              "d2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d3",
+            "kind": "reset",
+            "qubits": [
+              "d3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d4",
+            "kind": "reset",
+            "qubits": [
+              "d4"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d4"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d5",
+            "kind": "reset",
+            "qubits": [
+              "d5"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d5"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d6",
+            "kind": "reset",
+            "qubits": [
+              "d6"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d6"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d7",
+            "kind": "reset",
+            "qubits": [
+              "d7"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d7"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_d8",
+            "kind": "reset",
+            "qubits": [
+              "d8"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_d8"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d0",
+            "kind": "gate",
+            "qubits": [
+              "d0"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d1",
+            "kind": "gate",
+            "qubits": [
+              "d1"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d2",
+            "kind": "gate",
+            "qubits": [
+              "d2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d3",
+            "kind": "gate",
+            "qubits": [
+              "d3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d4",
+            "kind": "gate",
+            "qubits": [
+              "d4"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d4"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d5",
+            "kind": "gate",
+            "qubits": [
+              "d5"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d5"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d6",
+            "kind": "gate",
+            "qubits": [
+              "d6"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d6"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d7",
+            "kind": "gate",
+            "qubits": [
+              "d7"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d7"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "init_h_d8",
+            "kind": "gate",
+            "qubits": [
+              "d8"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:init_h_d8"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x0",
+            "kind": "reset",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x1",
+            "kind": "reset",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x2",
+            "kind": "reset",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x3",
+            "kind": "reset",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z0",
+            "kind": "reset",
+            "qubits": [
+              "z0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z1",
+            "kind": "reset",
+            "qubits": [
+              "z1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z2",
+            "kind": "reset",
+            "qubits": [
+              "z2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z3",
+            "kind": "reset",
+            "qubits": [
+              "z3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x0",
+            "kind": "gate",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x1",
+            "kind": "gate",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x2",
+            "kind": "gate",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "prepare_x3",
+            "kind": "gate",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:prepare_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_NW",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_NW",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d4"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x3_NW",
+            "kind": "gate",
+            "qubits": [
+              "x3",
+              "d6"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x3_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "x3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_NW",
+            "kind": "gate",
+            "qubits": [
+              "d1",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_NW",
+            "kind": "gate",
+            "qubits": [
+              "d3",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z3_NW",
+            "kind": "gate",
+            "qubits": [
+              "d5",
+              "z3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z3_NW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 0,
+              "corner": "NW",
+              "check_id": "z3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_NE",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "NE",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_NE",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d5"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "NE",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x3_NE",
+            "kind": "gate",
+            "qubits": [
+              "x3",
+              "d7"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x3_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "NE",
+              "check_id": "x3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_SW",
+            "kind": "gate",
+            "qubits": [
+              "d4",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "SW",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_SW",
+            "kind": "gate",
+            "qubits": [
+              "d6",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "SW",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z3_SW",
+            "kind": "gate",
+            "qubits": [
+              "d8",
+              "z3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z3_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 1,
+              "corner": "SW",
+              "check_id": "z3"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_SW",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "SW",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x1_SW",
+            "kind": "gate",
+            "qubits": [
+              "x1",
+              "d1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x1_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "SW",
+              "check_id": "x1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_SW",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d7"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_SW"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "SW",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z0_NE",
+            "kind": "gate",
+            "qubits": [
+              "d0",
+              "z0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z0_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "NE",
+              "check_id": "z0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_NE",
+            "kind": "gate",
+            "qubits": [
+              "d2",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "NE",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_NE",
+            "kind": "gate",
+            "qubits": [
+              "d4",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_NE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 2,
+              "corner": "NE",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x0_SE",
+            "kind": "gate",
+            "qubits": [
+              "x0",
+              "d4"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x0_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "x0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x1_SE",
+            "kind": "gate",
+            "qubits": [
+              "x1",
+              "d2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x1_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "x1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_x2_SE",
+            "kind": "gate",
+            "qubits": [
+              "x2",
+              "d8"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_x2_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "x2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z0_SE",
+            "kind": "gate",
+            "qubits": [
+              "d3",
+              "z0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z0_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "z0"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z1_SE",
+            "kind": "gate",
+            "qubits": [
+              "d5",
+              "z1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z1_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "z1"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_z2_SE",
+            "kind": "gate",
+            "qubits": [
+              "d7",
+              "z2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_z2_SE"
+            ],
+            "condition": null,
+            "metadata": {
+              "syndrome_layer": 3,
+              "corner": "SE",
+              "check_id": "z2"
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x0",
+            "kind": "gate",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x1",
+            "kind": "gate",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x2",
+            "kind": "gate",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "read_basis_x3",
+            "kind": "gate",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "name": "H"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:read_basis_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x0",
+            "kind": "measure",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x0"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x1",
+            "kind": "measure",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x1"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x2",
+            "kind": "measure",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x2"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_x3",
+            "kind": "measure",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_x3"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z0",
+            "kind": "measure",
+            "qubits": [
+              "z0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z0"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z1",
+            "kind": "measure",
+            "qubits": [
+              "z1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z1"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z2",
+            "kind": "measure",
+            "qubits": [
+              "z2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z2"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_z3",
+            "kind": "measure",
+            "qubits": [
+              "z3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_z3"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_z3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_0_d3",
+            "kind": "gate",
+            "qubits": [
+              "d3"
+            ],
+            "params": {
+              "name": "X"
+            },
+            "reads": [
+              "m_z0"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_0_d3"
+            ],
+            "condition": {
+              "bit": "m_z0",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_0_d6",
+            "kind": "gate",
+            "qubits": [
+              "d6"
+            ],
+            "params": {
+              "name": "X"
+            },
+            "reads": [
+              "m_z0"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_0_d6"
+            ],
+            "condition": {
+              "bit": "m_z0",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_1_d4",
+            "kind": "gate",
+            "qubits": [
+              "d4"
+            ],
+            "params": {
+              "name": "X"
+            },
+            "reads": [
+              "m_z1"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_1_d4"
+            ],
+            "condition": {
+              "bit": "m_z1",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_1_d6",
+            "kind": "gate",
+            "qubits": [
+              "d6"
+            ],
+            "params": {
+              "name": "X"
+            },
+            "reads": [
+              "m_z1"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_1_d6"
+            ],
+            "condition": {
+              "bit": "m_z1",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_2_d6",
+            "kind": "gate",
+            "qubits": [
+              "d6"
+            ],
+            "params": {
+              "name": "X"
+            },
+            "reads": [
+              "m_z2"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_2_d6"
+            ],
+            "condition": {
+              "bit": "m_z2",
+              "equals": 1
+            }
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "fix_3_d8",
+            "kind": "gate",
+            "qubits": [
+              "d8"
+            ],
+            "params": {
+              "name": "X"
+            },
+            "reads": [
+              "m_z3"
+            ],
+            "writes": [],
+            "after": [
+              "measure_x0",
+              "measure_x1",
+              "measure_x2",
+              "measure_x3",
+              "measure_z0",
+              "measure_z1",
+              "measure_z2",
+              "measure_z3"
+            ],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:fix_3_d8"
+            ],
+            "condition": {
+              "bit": "m_z3",
+              "equals": 1
+            }
+          }
+        }
+      ],
+      "metadata": {
+        "protocol": "surface17",
+        "protocol_version": "0.1.0",
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1",
+        "orientation": "x_vertical_z_horizontal",
+        "boundary": "standalone_patch",
+        "stage": "prepare_plus",
+        "gate_set": [
+          "H",
+          "X",
+          "Z",
+          "CX",
+          "MZ",
+          "RESET_Z"
+        ],
+        "sources": [
+          "R8-FACT-013@0.1.0",
+          "R8-FACT-017@0.1.0",
+          "https://arxiv.org/html/1404.3747v2#S2.T2"
+        ],
+        "sign_fixes": {
+          "m_z0": [
+            "d3",
+            "d6"
+          ],
+          "m_z1": [
+            "d4",
+            "d6"
+          ],
+          "m_z2": [
+            "d6"
+          ],
+          "m_z3": [
+            "d8"
+          ]
+        },
+        "sign_fix_gate": "X",
+        "sign_fix_scope": "ideal_projection_signs_not_noise_decoding"
+      }
+    },
+    "s17.transversal_cx.v1": {
+      "template_id": "s17.transversal_cx.v1",
+      "qubits": [
+        "c0",
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6",
+        "c7",
+        "c8",
+        "t0",
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5",
+        "t6",
+        "t7",
+        "t8"
+      ],
+      "body": [
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_0",
+            "kind": "gate",
+            "qubits": [
+              "c0",
+              "t0"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_1",
+            "kind": "gate",
+            "qubits": [
+              "c1",
+              "t1"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_2",
+            "kind": "gate",
+            "qubits": [
+              "c2",
+              "t2"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_3",
+            "kind": "gate",
+            "qubits": [
+              "c3",
+              "t3"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_4",
+            "kind": "gate",
+            "qubits": [
+              "c4",
+              "t4"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_4"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_5",
+            "kind": "gate",
+            "qubits": [
+              "c5",
+              "t5"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_5"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_6",
+            "kind": "gate",
+            "qubits": [
+              "c6",
+              "t6"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_6"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_7",
+            "kind": "gate",
+            "qubits": [
+              "c7",
+              "t7"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_7"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "cx_8",
+            "kind": "gate",
+            "qubits": [
+              "c8",
+              "t8"
+            ],
+            "params": {
+              "name": "CX"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:cx_8"
+            ],
+            "condition": null
+          }
+        }
+      ],
+      "metadata": {
+        "protocol": "surface17",
+        "protocol_version": "0.1.0",
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1",
+        "orientation": "x_vertical_z_horizontal",
+        "boundary": "standalone_patch",
+        "stage": "logical_cx",
+        "gate_set": [
+          "H",
+          "X",
+          "Z",
+          "CX",
+          "MZ",
+          "RESET_Z"
+        ],
+        "sources": [
+          "R8-FACT-013@0.1.0",
+          "R8-FACT-017@0.1.0",
+          "https://arxiv.org/html/1404.3747v2#S2.T2"
+        ],
+        "pairing": "matching_data_index",
+        "direction": "control_to_target",
+        "preconditions": [
+          "same_code_convention",
+          "prepared_compatible_patches"
+        ]
+      }
+    },
+    "s17.measure_z_reset.v1": {
+      "template_id": "s17.measure_z_reset.v1",
+      "qubits": [
+        "d0",
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8",
+        "x0",
+        "x1",
+        "x2",
+        "x3",
+        "z0",
+        "z1",
+        "z2",
+        "z3"
+      ],
+      "body": [
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_d0",
+            "kind": "measure",
+            "qubits": [
+              "d0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_d0"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_d0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_d1",
+            "kind": "measure",
+            "qubits": [
+              "d1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_d1"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_d1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_d2",
+            "kind": "measure",
+            "qubits": [
+              "d2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_d2"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_d2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_d3",
+            "kind": "measure",
+            "qubits": [
+              "d3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_d3"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_d3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_d4",
+            "kind": "measure",
+            "qubits": [
+              "d4"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_d4"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_d4"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_d5",
+            "kind": "measure",
+            "qubits": [
+              "d5"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_d5"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_d5"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_d6",
+            "kind": "measure",
+            "qubits": [
+              "d6"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_d6"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_d6"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_d7",
+            "kind": "measure",
+            "qubits": [
+              "d7"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_d7"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_d7"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "measure_d8",
+            "kind": "measure",
+            "qubits": [
+              "d8"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [
+              "m_d8"
+            ],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:measure_d8"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_d0",
+            "kind": "reset",
+            "qubits": [
+              "d0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_d0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_d1",
+            "kind": "reset",
+            "qubits": [
+              "d1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_d1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_d2",
+            "kind": "reset",
+            "qubits": [
+              "d2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_d2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_d3",
+            "kind": "reset",
+            "qubits": [
+              "d3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_d3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_d4",
+            "kind": "reset",
+            "qubits": [
+              "d4"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_d4"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_d5",
+            "kind": "reset",
+            "qubits": [
+              "d5"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_d5"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_d6",
+            "kind": "reset",
+            "qubits": [
+              "d6"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_d6"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_d7",
+            "kind": "reset",
+            "qubits": [
+              "d7"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_d7"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_d8",
+            "kind": "reset",
+            "qubits": [
+              "d8"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_d8"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x0",
+            "kind": "reset",
+            "qubits": [
+              "x0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x1",
+            "kind": "reset",
+            "qubits": [
+              "x1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x2",
+            "kind": "reset",
+            "qubits": [
+              "x2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_x3",
+            "kind": "reset",
+            "qubits": [
+              "x3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_x3"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z0",
+            "kind": "reset",
+            "qubits": [
+              "z0"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z0"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z1",
+            "kind": "reset",
+            "qubits": [
+              "z1"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z1"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z2",
+            "kind": "reset",
+            "qubits": [
+              "z2"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z2"
+            ],
+            "condition": null
+          }
+        },
+        {
+          "kind": "op",
+          "op": {
+            "id": "reset_z3",
+            "kind": "reset",
+            "qubits": [
+              "z3"
+            ],
+            "params": {
+              "basis": "Z"
+            },
+            "reads": [],
+            "writes": [],
+            "after": [],
+            "source_ids": [
+              "R3:surface17-row-major-x-vertical/1:reset_z3"
+            ],
+            "condition": null
+          }
+        }
+      ],
+      "metadata": {
+        "protocol": "surface17",
+        "protocol_version": "0.1.0",
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1",
+        "orientation": "x_vertical_z_horizontal",
+        "boundary": "standalone_patch",
+        "stage": "destructive_z_readout_reset",
+        "gate_set": [
+          "H",
+          "X",
+          "Z",
+          "CX",
+          "MZ",
+          "RESET_Z"
+        ],
+        "sources": [
+          "R8-FACT-013@0.1.0",
+          "R8-FACT-017@0.1.0",
+          "https://arxiv.org/html/1404.3747v2#S2.T2"
+        ],
+        "logical_z_result_parity": [
+          "m_d0",
+          "m_d1",
+          "m_d2"
+        ],
+        "output_state": "all_physical_qubits_zero_not_encoded"
+      }
+    }
+  },
+  "body": [
+    {
+      "kind": "call",
+      "id": "prepare_control",
+      "template_id": "s17.prepare_plus.v1",
+      "bindings": {
+        "d0": "control/d1",
+        "d1": "control/d1",
+        "d2": "control/d2",
+        "d3": "control/d3",
+        "d4": "control/d4",
+        "d5": "control/d5",
+        "d6": "control/d6",
+        "d7": "control/d7",
+        "d8": "control/d8",
+        "x0": "control/x0",
+        "x1": "control/x1",
+        "x2": "control/x2",
+        "x3": "control/x3",
+        "z0": "control/z0",
+        "z1": "control/z1",
+        "z2": "control/z2",
+        "z3": "control/z3"
+      },
+      "repeat": 1,
+      "source_ids": [
+        "two_block_slice:prepare:control"
+      ]
+    },
+    {
+      "kind": "call",
+      "id": "prepare_target",
+      "template_id": "s17.prepare_zero.v1",
+      "bindings": {
+        "d0": "target/d0",
+        "d1": "target/d1",
+        "d2": "target/d2",
+        "d3": "target/d3",
+        "d4": "target/d4",
+        "d5": "target/d5",
+        "d6": "target/d6",
+        "d7": "target/d7",
+        "d8": "target/d8",
+        "x0": "target/x0",
+        "x1": "target/x1",
+        "x2": "target/x2",
+        "x3": "target/x3",
+        "z0": "target/z0",
+        "z1": "target/z1",
+        "z2": "target/z2",
+        "z3": "target/z3"
+      },
+      "repeat": 1,
+      "source_ids": [
+        "two_block_slice:prepare:target"
+      ]
+    },
+    {
+      "kind": "call",
+      "id": "pre_control",
+      "template_id": "s17.syndrome.v1",
+      "bindings": {
+        "d0": "control/d0",
+        "d1": "control/d1",
+        "d2": "control/d2",
+        "d3": "control/d3",
+        "d4": "control/d4",
+        "d5": "control/d5",
+        "d6": "control/d6",
+        "d7": "control/d7",
+        "d8": "control/d8",
+        "x0": "control/x0",
+        "x1": "control/x1",
+        "x2": "control/x2",
+        "x3": "control/x3",
+        "z0": "control/z0",
+        "z1": "control/z1",
+        "z2": "control/z2",
+        "z3": "control/z3"
+      },
+      "repeat": 1,
+      "source_ids": [
+        "two_block_slice:pre:control"
+      ]
+    },
+    {
+      "kind": "call",
+      "id": "pre_target",
+      "template_id": "s17.syndrome.v1",
+      "bindings": {
+        "d0": "target/d0",
+        "d1": "target/d1",
+        "d2": "target/d2",
+        "d3": "target/d3",
+        "d4": "target/d4",
+        "d5": "target/d5",
+        "d6": "target/d6",
+        "d7": "target/d7",
+        "d8": "target/d8",
+        "x0": "target/x0",
+        "x1": "target/x1",
+        "x2": "target/x2",
+        "x3": "target/x3",
+        "z0": "target/z0",
+        "z1": "target/z1",
+        "z2": "target/z2",
+        "z3": "target/z3"
+      },
+      "repeat": 1,
+      "source_ids": [
+        "two_block_slice:pre:target"
+      ]
+    },
+    {
+      "kind": "call",
+      "id": "logical_cx",
+      "template_id": "s17.transversal_cx.v1",
+      "bindings": {
+        "c0": "control/d0",
+        "c1": "control/d1",
+        "c2": "control/d2",
+        "c3": "control/d3",
+        "c4": "control/d4",
+        "c5": "control/d5",
+        "c6": "control/d6",
+        "c7": "control/d7",
+        "c8": "control/d8",
+        "t0": "target/d0",
+        "t1": "target/d1",
+        "t2": "target/d2",
+        "t3": "target/d3",
+        "t4": "target/d4",
+        "t5": "target/d5",
+        "t6": "target/d6",
+        "t7": "target/d7",
+        "t8": "target/d8"
+      },
+      "repeat": 1,
+      "source_ids": [
+        "two_block_slice:logical_cx"
+      ]
+    },
+    {
+      "kind": "call",
+      "id": "post_control",
+      "template_id": "s17.syndrome.v1",
+      "bindings": {
+        "d0": "control/d0",
+        "d1": "control/d1",
+        "d2": "control/d2",
+        "d3": "control/d3",
+        "d4": "control/d4",
+        "d5": "control/d5",
+        "d6": "control/d6",
+        "d7": "control/d7",
+        "d8": "control/d8",
+        "x0": "control/x0",
+        "x1": "control/x1",
+        "x2": "control/x2",
+        "x3": "control/x3",
+        "z0": "control/z0",
+        "z1": "control/z1",
+        "z2": "control/z2",
+        "z3": "control/z3"
+      },
+      "repeat": 1,
+      "source_ids": [
+        "two_block_slice:post:control"
+      ]
+    },
+    {
+      "kind": "call",
+      "id": "post_target",
+      "template_id": "s17.syndrome.v1",
+      "bindings": {
+        "d0": "target/d0",
+        "d1": "target/d1",
+        "d2": "target/d2",
+        "d3": "target/d3",
+        "d4": "target/d4",
+        "d5": "target/d5",
+        "d6": "target/d6",
+        "d7": "target/d7",
+        "d8": "target/d8",
+        "x0": "target/x0",
+        "x1": "target/x1",
+        "x2": "target/x2",
+        "x3": "target/x3",
+        "z0": "target/z0",
+        "z1": "target/z1",
+        "z2": "target/z2",
+        "z3": "target/z3"
+      },
+      "repeat": 1,
+      "source_ids": [
+        "two_block_slice:post:target"
+      ]
+    },
+    {
+      "kind": "call",
+      "id": "readout_control",
+      "template_id": "s17.measure_z_reset.v1",
+      "bindings": {
+        "d0": "control/d0",
+        "d1": "control/d1",
+        "d2": "control/d2",
+        "d3": "control/d3",
+        "d4": "control/d4",
+        "d5": "control/d5",
+        "d6": "control/d6",
+        "d7": "control/d7",
+        "d8": "control/d8",
+        "x0": "control/x0",
+        "x1": "control/x1",
+        "x2": "control/x2",
+        "x3": "control/x3",
+        "z0": "control/z0",
+        "z1": "control/z1",
+        "z2": "control/z2",
+        "z3": "control/z3"
+      },
+      "repeat": 1,
+      "source_ids": [
+        "two_block_slice:readout:control"
+      ]
+    },
+    {
+      "kind": "call",
+      "id": "readout_target",
+      "template_id": "s17.measure_z_reset.v1",
+      "bindings": {
+        "d0": "target/d0",
+        "d1": "target/d1",
+        "d2": "target/d2",
+        "d3": "target/d3",
+        "d4": "target/d4",
+        "d5": "target/d5",
+        "d6": "target/d6",
+        "d7": "target/d7",
+        "d8": "target/d8",
+        "x0": "target/x0",
+        "x1": "target/x1",
+        "x2": "target/x2",
+        "x3": "target/x3",
+        "z0": "target/z0",
+        "z1": "target/z1",
+        "z2": "target/z2",
+        "z3": "target/z3"
+      },
+      "repeat": 1,
+      "source_ids": [
+        "two_block_slice:readout:target"
+      ]
+    }
+  ],
+  "metadata": {
+    "code_definition": {
+      "code": "rotated_surface",
+      "distance": 3,
+      "convention": "surface17-row-major-x-vertical/1",
+      "data_qubits": [
+        "d0",
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "d7",
+        "d8"
+      ],
+      "stabilizers": [
+        {
+          "id": "x0",
+          "pauli": "X",
+          "support": [
+            "d0",
+            "d1",
+            "d3",
+            "d4"
+          ],
+          "sign": 1,
+          "ancilla": "x0",
+          "code_coordinate": [
+            0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "x1",
+          "pauli": "X",
+          "support": [
+            "d1",
+            "d2"
+          ],
+          "sign": 1,
+          "ancilla": "x1",
+          "code_coordinate": [
+            1.5,
+            -0.5
+          ]
+        },
+        {
+          "id": "x2",
+          "pauli": "X",
+          "support": [
+            "d4",
+            "d5",
+            "d7",
+            "d8"
+          ],
+          "sign": 1,
+          "ancilla": "x2",
+          "code_coordinate": [
+            1.5,
+            1.5
+          ]
+        },
+        {
+          "id": "x3",
+          "pauli": "X",
+          "support": [
+            "d6",
+            "d7"
+          ],
+          "sign": 1,
+          "ancilla": "x3",
+          "code_coordinate": [
+            0.5,
+            2.5
+          ]
+        },
+        {
+          "id": "z0",
+          "pauli": "Z",
+          "support": [
+            "d0",
+            "d3"
+          ],
+          "sign": 1,
+          "ancilla": "z0",
+          "code_coordinate": [
+            -0.5,
+            0.5
+          ]
+        },
+        {
+          "id": "z1",
+          "pauli": "Z",
+          "support": [
+            "d1",
+            "d2",
+            "d4",
+            "d5"
+          ],
+          "sign": 1,
+          "ancilla": "z1",
+          "code_coordinate": [
+            1.5,
+            0.5
+          ]
+        },
+        {
+          "id": "z2",
+          "pauli": "Z",
+          "support": [
+            "d3",
+            "d4",
+            "d6",
+            "d7"
+          ],
+          "sign": 1,
+          "ancilla": "z2",
+          "code_coordinate": [
+            0.5,
+            1.5
+          ]
+        },
+        {
+          "id": "z3",
+          "pauli": "Z",
+          "support": [
+            "d5",
+            "d8"
+          ],
+          "sign": 1,
+          "ancilla": "z3",
+          "code_coordinate": [
+            2.5,
+            1.5
+          ]
+        }
+      ],
+      "logical_x": [
+        "d0",
+        "d3",
+        "d6"
+      ],
+      "logical_z": [
+        "d0",
+        "d1",
+        "d2"
+      ],
+      "cnot_corner_order": {
+        "X": [
+          "NW",
+          "NE",
+          "SW",
+          "SE"
+        ],
+        "Z": [
+          "NW",
+          "SW",
+          "NE",
+          "SE"
+        ]
+      },
+      "coordinate_units": "dimensionless_code_diagram",
+      "sources": [
+        "R8-FACT-013@0.1.0",
+        "R8-FACT-017@0.1.0",
+        "https://arxiv.org/html/1404.3747v2#S2.T2"
+      ]
+    },
+    "rounds_before_and_after_cx": 1,
+    "result_origin_required": "fake",
+    "logical_observables": [
+      {
+        "id": "logical_z_control",
+        "kind": "result_parity",
+        "results": [
+          "readout_control/r0/m_d0",
+          "readout_control/r0/m_d1",
+          "readout_control/r0/m_d2"
+        ],
+        "status": "not_evaluated",
+        "basis": "Z"
+      },
+      {
+        "id": "logical_z_target",
+        "kind": "result_parity",
+        "results": [
+          "readout_target/r0/m_d0",
+          "readout_target/r0/m_d1",
+          "readout_target/r0/m_d2"
+        ],
+        "status": "not_evaluated",
+        "basis": "Z"
+      }
+    ],
+    "unverified": [
+      "fault_tolerance",
+      "noise",
+      "physical_routing",
+      "quantum_state",
+      "real_decoder",
+      "factory15to1",
+      "lattice_surgery",
+      "shor_lowering"
+    ],
+    "expected_error": "BAD_BINDINGS"
+  }
+}

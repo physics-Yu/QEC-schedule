@@ -1,0 +1,4758 @@
+{
+  "schema_version": "StrategyValidationReport/0.1.0",
+  "artifact_id": "R6/strategy_run/cc0a307204791ddea963",
+  "provenance": {
+    "producer": "R6",
+    "task": "T604",
+    "kb_revision": "kb-0005",
+    "plan_revision": "plan-0007"
+  },
+  "scope": "strategy_run",
+  "passed": false,
+  "scoped_pass": false,
+  "checks": [
+    {
+      "id": "encoded_logical_source",
+      "status": "unverified"
+    },
+    {
+      "id": "capture_closure",
+      "status": "passed"
+    },
+    {
+      "id": "readout_capacity",
+      "status": "passed"
+    },
+    {
+      "id": "bound_instances_and_history",
+      "status": "failed"
+    }
+  ],
+  "failures": [
+    {
+      "code": "BIND_COMPOSITION_COUNT",
+      "message": "Every call needs a separately counted binding and composition check",
+      "call_id": "L1-prepare"
+    },
+    {
+      "code": "BIND_COMPOSITION_COUNT",
+      "message": "Every call needs a separately counted binding and composition check",
+      "call_id": "L1-after-cx"
+    }
+  ],
+  "unverified": [
+    {
+      "code": "ENCODED_PROGRAM_MISSING",
+      "message": "Supply the original R2 EncodedLogicalProgram for end-to-end logical control qualification"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L0-prepare"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L0-round0"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L0-round1"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L0-round2"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L1-prepare"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L1-round0"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L1-round1"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L1-round2"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "cross-cx"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L0-after-cx"
+    },
+    {
+      "code": "BIND_PROJECT_SEARCH_OBSERVATION_MISSING",
+      "message": "Project placement/routing search was not independently observed for this binding",
+      "call_id": "L1-after-cx"
+    },
+    {
+      "code": "T000_CASE_NOT_DEMONSTRATED",
+      "message": "Required qualification case independent_blocks_legal_overlap was not demonstrated"
+    }
+  ],
+  "metrics": {
+    "strategy_reports": {
+      "1702ea595500f33bb57fcd565a5d6ea5057d1a2e2a30d74206988492bba95e0d": {
+        "passed": true,
+        "failure_count": 0,
+        "unverified": []
+      },
+      "2e90f9cf2cb478f1d54e4dfd016d5b01b291e8d543c7dcc9c8079a82ec6c776e": {
+        "passed": true,
+        "failure_count": 0,
+        "unverified": []
+      },
+      "e4a0e46a544f60e0358d003de4c1dcbfe72408085bfa722ec2ff0136f32eb27b": {
+        "passed": true,
+        "failure_count": 0,
+        "unverified": []
+      },
+      "9d7f8ec179d96694a4ed4de235873f9b5374175bf7c18066c2da78e961f12a78": {
+        "passed": true,
+        "failure_count": 0,
+        "unverified": []
+      }
+    },
+    "action_count": 2192,
+    "measurement_count": 80,
+    "makespan_us": 168972.0,
+    "atom_count": 34,
+    "broadcast_count": 181,
+    "pickup_capture_batches": [
+      {
+        "time_us": 0.0,
+        "aod_group": "data",
+        "requested_count": 17,
+        "captured_count": 17,
+        "action_ids": [
+          "L0-prepare/strategy-action:000000"
+        ]
+      },
+      {
+        "time_us": 512.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000034"
+        ]
+      },
+      {
+        "time_us": 953.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000038"
+        ]
+      },
+      {
+        "time_us": 1395.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000043"
+        ]
+      },
+      {
+        "time_us": 1826.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000047"
+        ]
+      },
+      {
+        "time_us": 2258.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000052"
+        ]
+      },
+      {
+        "time_us": 2687.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000056"
+        ]
+      },
+      {
+        "time_us": 3117.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-prepare/strategy-action:000062"
+        ]
+      },
+      {
+        "time_us": 3568.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-prepare/strategy-action:000066"
+        ]
+      },
+      {
+        "time_us": 4020.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-prepare/strategy-action:000073"
+        ]
+      },
+      {
+        "time_us": 4461.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-prepare/strategy-action:000077"
+        ]
+      },
+      {
+        "time_us": 4903.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000083"
+        ]
+      },
+      {
+        "time_us": 5344.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000087"
+        ]
+      },
+      {
+        "time_us": 5786.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000092"
+        ]
+      },
+      {
+        "time_us": 6217.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000096"
+        ]
+      },
+      {
+        "time_us": 6649.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000101"
+        ]
+      },
+      {
+        "time_us": 7070.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000105"
+        ]
+      },
+      {
+        "time_us": 7493.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-prepare/strategy-action:000112"
+        ]
+      },
+      {
+        "time_us": 7934.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-prepare/strategy-action:000116"
+        ]
+      },
+      {
+        "time_us": 8376.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-prepare/strategy-action:000123"
+        ]
+      },
+      {
+        "time_us": 8807.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-prepare/strategy-action:000127"
+        ]
+      },
+      {
+        "time_us": 9239.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000133"
+        ]
+      },
+      {
+        "time_us": 9670.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000137"
+        ]
+      },
+      {
+        "time_us": 10102.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000142"
+        ]
+      },
+      {
+        "time_us": 10523.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000146"
+        ]
+      },
+      {
+        "time_us": 10945.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000151"
+        ]
+      },
+      {
+        "time_us": 11396.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000155"
+        ]
+      },
+      {
+        "time_us": 11848.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-prepare/strategy-action:000161"
+        ]
+      },
+      {
+        "time_us": 12289.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-prepare/strategy-action:000165"
+        ]
+      },
+      {
+        "time_us": 12731.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000171"
+        ]
+      },
+      {
+        "time_us": 13162.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000175"
+        ]
+      },
+      {
+        "time_us": 13595.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-prepare/strategy-action:000182"
+        ]
+      },
+      {
+        "time_us": 14036.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-prepare/strategy-action:000186"
+        ]
+      },
+      {
+        "time_us": 14479.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000193"
+        ]
+      },
+      {
+        "time_us": 14900.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000197"
+        ]
+      },
+      {
+        "time_us": 15323.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000203"
+        ]
+      },
+      {
+        "time_us": 15754.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-prepare/strategy-action:000207"
+        ]
+      },
+      {
+        "time_us": 16185.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L0-prepare/strategy-action:000211"
+        ]
+      },
+      {
+        "time_us": 16745.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L0-prepare/strategy-action:000230"
+        ]
+      },
+      {
+        "time_us": 17210.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000013"
+        ]
+      },
+      {
+        "time_us": 17651.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000017"
+        ]
+      },
+      {
+        "time_us": 18093.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000022"
+        ]
+      },
+      {
+        "time_us": 18524.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000026"
+        ]
+      },
+      {
+        "time_us": 18956.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000031"
+        ]
+      },
+      {
+        "time_us": 19385.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000035"
+        ]
+      },
+      {
+        "time_us": 19815.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round0/strategy-action:000041"
+        ]
+      },
+      {
+        "time_us": 20266.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round0/strategy-action:000045"
+        ]
+      },
+      {
+        "time_us": 20718.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round0/strategy-action:000052"
+        ]
+      },
+      {
+        "time_us": 21159.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round0/strategy-action:000056"
+        ]
+      },
+      {
+        "time_us": 21601.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000062"
+        ]
+      },
+      {
+        "time_us": 22042.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000066"
+        ]
+      },
+      {
+        "time_us": 22484.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000071"
+        ]
+      },
+      {
+        "time_us": 22915.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000075"
+        ]
+      },
+      {
+        "time_us": 23347.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000080"
+        ]
+      },
+      {
+        "time_us": 23768.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000084"
+        ]
+      },
+      {
+        "time_us": 24191.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round0/strategy-action:000091"
+        ]
+      },
+      {
+        "time_us": 24632.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round0/strategy-action:000095"
+        ]
+      },
+      {
+        "time_us": 25074.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round0/strategy-action:000102"
+        ]
+      },
+      {
+        "time_us": 25505.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round0/strategy-action:000106"
+        ]
+      },
+      {
+        "time_us": 25937.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000112"
+        ]
+      },
+      {
+        "time_us": 26368.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000116"
+        ]
+      },
+      {
+        "time_us": 26800.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000121"
+        ]
+      },
+      {
+        "time_us": 27221.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000125"
+        ]
+      },
+      {
+        "time_us": 27643.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000130"
+        ]
+      },
+      {
+        "time_us": 28094.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000134"
+        ]
+      },
+      {
+        "time_us": 28546.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round0/strategy-action:000140"
+        ]
+      },
+      {
+        "time_us": 28987.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round0/strategy-action:000144"
+        ]
+      },
+      {
+        "time_us": 29429.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000150"
+        ]
+      },
+      {
+        "time_us": 29860.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000154"
+        ]
+      },
+      {
+        "time_us": 30293.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round0/strategy-action:000161"
+        ]
+      },
+      {
+        "time_us": 30734.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round0/strategy-action:000165"
+        ]
+      },
+      {
+        "time_us": 31177.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000172"
+        ]
+      },
+      {
+        "time_us": 31598.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000176"
+        ]
+      },
+      {
+        "time_us": 32021.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000182"
+        ]
+      },
+      {
+        "time_us": 32452.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round0/strategy-action:000186"
+        ]
+      },
+      {
+        "time_us": 32883.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L0-round0/strategy-action:000190"
+        ]
+      },
+      {
+        "time_us": 33443.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L0-round0/strategy-action:000209"
+        ]
+      },
+      {
+        "time_us": 33905.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000013"
+        ]
+      },
+      {
+        "time_us": 34346.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000017"
+        ]
+      },
+      {
+        "time_us": 34788.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000022"
+        ]
+      },
+      {
+        "time_us": 35219.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000026"
+        ]
+      },
+      {
+        "time_us": 35651.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000031"
+        ]
+      },
+      {
+        "time_us": 36080.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000035"
+        ]
+      },
+      {
+        "time_us": 36510.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round1/strategy-action:000041"
+        ]
+      },
+      {
+        "time_us": 36961.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round1/strategy-action:000045"
+        ]
+      },
+      {
+        "time_us": 37413.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round1/strategy-action:000052"
+        ]
+      },
+      {
+        "time_us": 37854.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round1/strategy-action:000056"
+        ]
+      },
+      {
+        "time_us": 38296.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000062"
+        ]
+      },
+      {
+        "time_us": 38737.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000066"
+        ]
+      },
+      {
+        "time_us": 39179.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000071"
+        ]
+      },
+      {
+        "time_us": 39610.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000075"
+        ]
+      },
+      {
+        "time_us": 40042.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000080"
+        ]
+      },
+      {
+        "time_us": 40463.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000084"
+        ]
+      },
+      {
+        "time_us": 40886.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round1/strategy-action:000091"
+        ]
+      },
+      {
+        "time_us": 41327.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round1/strategy-action:000095"
+        ]
+      },
+      {
+        "time_us": 41769.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round1/strategy-action:000102"
+        ]
+      },
+      {
+        "time_us": 42200.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round1/strategy-action:000106"
+        ]
+      },
+      {
+        "time_us": 42632.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000112"
+        ]
+      },
+      {
+        "time_us": 43063.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000116"
+        ]
+      },
+      {
+        "time_us": 43495.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000121"
+        ]
+      },
+      {
+        "time_us": 43916.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000125"
+        ]
+      },
+      {
+        "time_us": 44338.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000130"
+        ]
+      },
+      {
+        "time_us": 44789.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000134"
+        ]
+      },
+      {
+        "time_us": 45241.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round1/strategy-action:000140"
+        ]
+      },
+      {
+        "time_us": 45682.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round1/strategy-action:000144"
+        ]
+      },
+      {
+        "time_us": 46124.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000150"
+        ]
+      },
+      {
+        "time_us": 46555.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000154"
+        ]
+      },
+      {
+        "time_us": 46988.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round1/strategy-action:000161"
+        ]
+      },
+      {
+        "time_us": 47429.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round1/strategy-action:000165"
+        ]
+      },
+      {
+        "time_us": 47872.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000172"
+        ]
+      },
+      {
+        "time_us": 48293.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000176"
+        ]
+      },
+      {
+        "time_us": 48716.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000182"
+        ]
+      },
+      {
+        "time_us": 49147.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round1/strategy-action:000186"
+        ]
+      },
+      {
+        "time_us": 49578.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L0-round1/strategy-action:000190"
+        ]
+      },
+      {
+        "time_us": 50138.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L0-round1/strategy-action:000209"
+        ]
+      },
+      {
+        "time_us": 50600.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000013"
+        ]
+      },
+      {
+        "time_us": 51041.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000017"
+        ]
+      },
+      {
+        "time_us": 51483.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000022"
+        ]
+      },
+      {
+        "time_us": 51914.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000026"
+        ]
+      },
+      {
+        "time_us": 52346.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000031"
+        ]
+      },
+      {
+        "time_us": 52775.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000035"
+        ]
+      },
+      {
+        "time_us": 53205.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round2/strategy-action:000041"
+        ]
+      },
+      {
+        "time_us": 53656.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round2/strategy-action:000045"
+        ]
+      },
+      {
+        "time_us": 54108.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round2/strategy-action:000052"
+        ]
+      },
+      {
+        "time_us": 54549.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round2/strategy-action:000056"
+        ]
+      },
+      {
+        "time_us": 54991.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000062"
+        ]
+      },
+      {
+        "time_us": 55432.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000066"
+        ]
+      },
+      {
+        "time_us": 55874.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000071"
+        ]
+      },
+      {
+        "time_us": 56305.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000075"
+        ]
+      },
+      {
+        "time_us": 56737.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000080"
+        ]
+      },
+      {
+        "time_us": 57158.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000084"
+        ]
+      },
+      {
+        "time_us": 57581.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round2/strategy-action:000091"
+        ]
+      },
+      {
+        "time_us": 58022.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round2/strategy-action:000095"
+        ]
+      },
+      {
+        "time_us": 58464.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round2/strategy-action:000102"
+        ]
+      },
+      {
+        "time_us": 58895.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round2/strategy-action:000106"
+        ]
+      },
+      {
+        "time_us": 59327.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000112"
+        ]
+      },
+      {
+        "time_us": 59758.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000116"
+        ]
+      },
+      {
+        "time_us": 60190.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000121"
+        ]
+      },
+      {
+        "time_us": 60611.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000125"
+        ]
+      },
+      {
+        "time_us": 61033.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000130"
+        ]
+      },
+      {
+        "time_us": 61484.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000134"
+        ]
+      },
+      {
+        "time_us": 61936.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round2/strategy-action:000140"
+        ]
+      },
+      {
+        "time_us": 62377.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round2/strategy-action:000144"
+        ]
+      },
+      {
+        "time_us": 62819.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000150"
+        ]
+      },
+      {
+        "time_us": 63250.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000154"
+        ]
+      },
+      {
+        "time_us": 63683.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round2/strategy-action:000161"
+        ]
+      },
+      {
+        "time_us": 64124.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-round2/strategy-action:000165"
+        ]
+      },
+      {
+        "time_us": 64567.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000172"
+        ]
+      },
+      {
+        "time_us": 64988.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000176"
+        ]
+      },
+      {
+        "time_us": 65411.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000182"
+        ]
+      },
+      {
+        "time_us": 65842.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-round2/strategy-action:000186"
+        ]
+      },
+      {
+        "time_us": 66273.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L0-round2/strategy-action:000190"
+        ]
+      },
+      {
+        "time_us": 66833.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L0-round2/strategy-action:000209"
+        ]
+      },
+      {
+        "time_us": 67283.0,
+        "aod_group": "data",
+        "requested_count": 17,
+        "captured_count": 17,
+        "action_ids": [
+          "L1-prepare/strategy-action:000000"
+        ]
+      },
+      {
+        "time_us": 67795.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000025"
+        ]
+      },
+      {
+        "time_us": 68236.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000029"
+        ]
+      },
+      {
+        "time_us": 68678.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000034"
+        ]
+      },
+      {
+        "time_us": 69109.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000038"
+        ]
+      },
+      {
+        "time_us": 69541.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000043"
+        ]
+      },
+      {
+        "time_us": 69970.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000047"
+        ]
+      },
+      {
+        "time_us": 70400.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-prepare/strategy-action:000053"
+        ]
+      },
+      {
+        "time_us": 70851.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-prepare/strategy-action:000057"
+        ]
+      },
+      {
+        "time_us": 71303.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-prepare/strategy-action:000064"
+        ]
+      },
+      {
+        "time_us": 71744.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-prepare/strategy-action:000068"
+        ]
+      },
+      {
+        "time_us": 72186.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000074"
+        ]
+      },
+      {
+        "time_us": 72627.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000078"
+        ]
+      },
+      {
+        "time_us": 73069.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000083"
+        ]
+      },
+      {
+        "time_us": 73500.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000087"
+        ]
+      },
+      {
+        "time_us": 73932.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000092"
+        ]
+      },
+      {
+        "time_us": 74353.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000096"
+        ]
+      },
+      {
+        "time_us": 74776.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-prepare/strategy-action:000103"
+        ]
+      },
+      {
+        "time_us": 75217.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-prepare/strategy-action:000107"
+        ]
+      },
+      {
+        "time_us": 75659.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-prepare/strategy-action:000114"
+        ]
+      },
+      {
+        "time_us": 76090.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-prepare/strategy-action:000118"
+        ]
+      },
+      {
+        "time_us": 76522.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000124"
+        ]
+      },
+      {
+        "time_us": 76953.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000128"
+        ]
+      },
+      {
+        "time_us": 77385.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000133"
+        ]
+      },
+      {
+        "time_us": 77806.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000137"
+        ]
+      },
+      {
+        "time_us": 78228.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000142"
+        ]
+      },
+      {
+        "time_us": 78679.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000146"
+        ]
+      },
+      {
+        "time_us": 79131.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-prepare/strategy-action:000152"
+        ]
+      },
+      {
+        "time_us": 79572.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-prepare/strategy-action:000156"
+        ]
+      },
+      {
+        "time_us": 80014.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000162"
+        ]
+      },
+      {
+        "time_us": 80445.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000166"
+        ]
+      },
+      {
+        "time_us": 80878.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-prepare/strategy-action:000173"
+        ]
+      },
+      {
+        "time_us": 81319.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-prepare/strategy-action:000177"
+        ]
+      },
+      {
+        "time_us": 81762.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000184"
+        ]
+      },
+      {
+        "time_us": 82183.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000188"
+        ]
+      },
+      {
+        "time_us": 82606.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000194"
+        ]
+      },
+      {
+        "time_us": 83037.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-prepare/strategy-action:000198"
+        ]
+      },
+      {
+        "time_us": 83468.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L1-prepare/strategy-action:000202"
+        ]
+      },
+      {
+        "time_us": 84028.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L1-prepare/strategy-action:000221"
+        ]
+      },
+      {
+        "time_us": 84492.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000013"
+        ]
+      },
+      {
+        "time_us": 84933.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000017"
+        ]
+      },
+      {
+        "time_us": 85375.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000022"
+        ]
+      },
+      {
+        "time_us": 85806.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000026"
+        ]
+      },
+      {
+        "time_us": 86238.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000031"
+        ]
+      },
+      {
+        "time_us": 86667.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000035"
+        ]
+      },
+      {
+        "time_us": 87097.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round0/strategy-action:000041"
+        ]
+      },
+      {
+        "time_us": 87548.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round0/strategy-action:000045"
+        ]
+      },
+      {
+        "time_us": 88000.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round0/strategy-action:000052"
+        ]
+      },
+      {
+        "time_us": 88441.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round0/strategy-action:000056"
+        ]
+      },
+      {
+        "time_us": 88883.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000062"
+        ]
+      },
+      {
+        "time_us": 89324.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000066"
+        ]
+      },
+      {
+        "time_us": 89766.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000071"
+        ]
+      },
+      {
+        "time_us": 90197.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000075"
+        ]
+      },
+      {
+        "time_us": 90629.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000080"
+        ]
+      },
+      {
+        "time_us": 91050.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000084"
+        ]
+      },
+      {
+        "time_us": 91473.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round0/strategy-action:000091"
+        ]
+      },
+      {
+        "time_us": 91914.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round0/strategy-action:000095"
+        ]
+      },
+      {
+        "time_us": 92356.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round0/strategy-action:000102"
+        ]
+      },
+      {
+        "time_us": 92787.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round0/strategy-action:000106"
+        ]
+      },
+      {
+        "time_us": 93219.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000112"
+        ]
+      },
+      {
+        "time_us": 93650.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000116"
+        ]
+      },
+      {
+        "time_us": 94082.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000121"
+        ]
+      },
+      {
+        "time_us": 94503.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000125"
+        ]
+      },
+      {
+        "time_us": 94925.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000130"
+        ]
+      },
+      {
+        "time_us": 95376.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000134"
+        ]
+      },
+      {
+        "time_us": 95828.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round0/strategy-action:000140"
+        ]
+      },
+      {
+        "time_us": 96269.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round0/strategy-action:000144"
+        ]
+      },
+      {
+        "time_us": 96711.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000150"
+        ]
+      },
+      {
+        "time_us": 97142.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000154"
+        ]
+      },
+      {
+        "time_us": 97575.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round0/strategy-action:000161"
+        ]
+      },
+      {
+        "time_us": 98016.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round0/strategy-action:000165"
+        ]
+      },
+      {
+        "time_us": 98459.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000172"
+        ]
+      },
+      {
+        "time_us": 98880.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000176"
+        ]
+      },
+      {
+        "time_us": 99303.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000182"
+        ]
+      },
+      {
+        "time_us": 99734.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round0/strategy-action:000186"
+        ]
+      },
+      {
+        "time_us": 100165.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L1-round0/strategy-action:000190"
+        ]
+      },
+      {
+        "time_us": 100725.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L1-round0/strategy-action:000209"
+        ]
+      },
+      {
+        "time_us": 101187.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000013"
+        ]
+      },
+      {
+        "time_us": 101628.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000017"
+        ]
+      },
+      {
+        "time_us": 102070.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000022"
+        ]
+      },
+      {
+        "time_us": 102501.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000026"
+        ]
+      },
+      {
+        "time_us": 102933.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000031"
+        ]
+      },
+      {
+        "time_us": 103362.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000035"
+        ]
+      },
+      {
+        "time_us": 103792.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round1/strategy-action:000041"
+        ]
+      },
+      {
+        "time_us": 104243.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round1/strategy-action:000045"
+        ]
+      },
+      {
+        "time_us": 104695.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round1/strategy-action:000052"
+        ]
+      },
+      {
+        "time_us": 105136.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round1/strategy-action:000056"
+        ]
+      },
+      {
+        "time_us": 105578.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000062"
+        ]
+      },
+      {
+        "time_us": 106019.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000066"
+        ]
+      },
+      {
+        "time_us": 106461.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000071"
+        ]
+      },
+      {
+        "time_us": 106892.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000075"
+        ]
+      },
+      {
+        "time_us": 107324.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000080"
+        ]
+      },
+      {
+        "time_us": 107745.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000084"
+        ]
+      },
+      {
+        "time_us": 108168.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round1/strategy-action:000091"
+        ]
+      },
+      {
+        "time_us": 108609.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round1/strategy-action:000095"
+        ]
+      },
+      {
+        "time_us": 109051.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round1/strategy-action:000102"
+        ]
+      },
+      {
+        "time_us": 109482.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round1/strategy-action:000106"
+        ]
+      },
+      {
+        "time_us": 109914.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000112"
+        ]
+      },
+      {
+        "time_us": 110345.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000116"
+        ]
+      },
+      {
+        "time_us": 110777.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000121"
+        ]
+      },
+      {
+        "time_us": 111198.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000125"
+        ]
+      },
+      {
+        "time_us": 111620.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000130"
+        ]
+      },
+      {
+        "time_us": 112071.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000134"
+        ]
+      },
+      {
+        "time_us": 112523.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round1/strategy-action:000140"
+        ]
+      },
+      {
+        "time_us": 112964.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round1/strategy-action:000144"
+        ]
+      },
+      {
+        "time_us": 113406.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000150"
+        ]
+      },
+      {
+        "time_us": 113837.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000154"
+        ]
+      },
+      {
+        "time_us": 114270.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round1/strategy-action:000161"
+        ]
+      },
+      {
+        "time_us": 114711.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round1/strategy-action:000165"
+        ]
+      },
+      {
+        "time_us": 115154.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000172"
+        ]
+      },
+      {
+        "time_us": 115575.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000176"
+        ]
+      },
+      {
+        "time_us": 115998.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000182"
+        ]
+      },
+      {
+        "time_us": 116429.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round1/strategy-action:000186"
+        ]
+      },
+      {
+        "time_us": 116860.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L1-round1/strategy-action:000190"
+        ]
+      },
+      {
+        "time_us": 117420.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L1-round1/strategy-action:000209"
+        ]
+      },
+      {
+        "time_us": 117882.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000013"
+        ]
+      },
+      {
+        "time_us": 118323.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000017"
+        ]
+      },
+      {
+        "time_us": 118765.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000022"
+        ]
+      },
+      {
+        "time_us": 119196.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000026"
+        ]
+      },
+      {
+        "time_us": 119628.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000031"
+        ]
+      },
+      {
+        "time_us": 120057.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000035"
+        ]
+      },
+      {
+        "time_us": 120487.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round2/strategy-action:000041"
+        ]
+      },
+      {
+        "time_us": 120938.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round2/strategy-action:000045"
+        ]
+      },
+      {
+        "time_us": 121390.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round2/strategy-action:000052"
+        ]
+      },
+      {
+        "time_us": 121831.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round2/strategy-action:000056"
+        ]
+      },
+      {
+        "time_us": 122273.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000062"
+        ]
+      },
+      {
+        "time_us": 122714.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000066"
+        ]
+      },
+      {
+        "time_us": 123156.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000071"
+        ]
+      },
+      {
+        "time_us": 123587.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000075"
+        ]
+      },
+      {
+        "time_us": 124019.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000080"
+        ]
+      },
+      {
+        "time_us": 124440.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000084"
+        ]
+      },
+      {
+        "time_us": 124863.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round2/strategy-action:000091"
+        ]
+      },
+      {
+        "time_us": 125304.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round2/strategy-action:000095"
+        ]
+      },
+      {
+        "time_us": 125746.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round2/strategy-action:000102"
+        ]
+      },
+      {
+        "time_us": 126177.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round2/strategy-action:000106"
+        ]
+      },
+      {
+        "time_us": 126609.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000112"
+        ]
+      },
+      {
+        "time_us": 127040.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000116"
+        ]
+      },
+      {
+        "time_us": 127472.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000121"
+        ]
+      },
+      {
+        "time_us": 127893.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000125"
+        ]
+      },
+      {
+        "time_us": 128315.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000130"
+        ]
+      },
+      {
+        "time_us": 128766.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000134"
+        ]
+      },
+      {
+        "time_us": 129218.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round2/strategy-action:000140"
+        ]
+      },
+      {
+        "time_us": 129659.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round2/strategy-action:000144"
+        ]
+      },
+      {
+        "time_us": 130101.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000150"
+        ]
+      },
+      {
+        "time_us": 130532.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000154"
+        ]
+      },
+      {
+        "time_us": 130965.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round2/strategy-action:000161"
+        ]
+      },
+      {
+        "time_us": 131406.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-round2/strategy-action:000165"
+        ]
+      },
+      {
+        "time_us": 131849.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000172"
+        ]
+      },
+      {
+        "time_us": 132270.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000176"
+        ]
+      },
+      {
+        "time_us": 132693.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000182"
+        ]
+      },
+      {
+        "time_us": 133124.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-round2/strategy-action:000186"
+        ]
+      },
+      {
+        "time_us": 133555.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L1-round2/strategy-action:000190"
+        ]
+      },
+      {
+        "time_us": 134115.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L1-round2/strategy-action:000209"
+        ]
+      },
+      {
+        "time_us": 134566.0,
+        "aod_group": "data",
+        "requested_count": 9,
+        "captured_count": 9,
+        "action_ids": [
+          "cross-cx/strategy-action:000009"
+        ]
+      },
+      {
+        "time_us": 135069.0,
+        "aod_group": "data",
+        "requested_count": 9,
+        "captured_count": 9,
+        "action_ids": [
+          "cross-cx/strategy-action:000014"
+        ]
+      },
+      {
+        "time_us": 135594.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000013"
+        ]
+      },
+      {
+        "time_us": 136035.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000017"
+        ]
+      },
+      {
+        "time_us": 136477.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000022"
+        ]
+      },
+      {
+        "time_us": 136908.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000026"
+        ]
+      },
+      {
+        "time_us": 137340.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000031"
+        ]
+      },
+      {
+        "time_us": 137769.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000035"
+        ]
+      },
+      {
+        "time_us": 138199.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000041"
+        ]
+      },
+      {
+        "time_us": 138650.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000045"
+        ]
+      },
+      {
+        "time_us": 139102.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000052"
+        ]
+      },
+      {
+        "time_us": 139543.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000056"
+        ]
+      },
+      {
+        "time_us": 139985.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000062"
+        ]
+      },
+      {
+        "time_us": 140426.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000066"
+        ]
+      },
+      {
+        "time_us": 140868.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000071"
+        ]
+      },
+      {
+        "time_us": 141299.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000075"
+        ]
+      },
+      {
+        "time_us": 141731.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000080"
+        ]
+      },
+      {
+        "time_us": 142152.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000084"
+        ]
+      },
+      {
+        "time_us": 142575.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000091"
+        ]
+      },
+      {
+        "time_us": 143016.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000095"
+        ]
+      },
+      {
+        "time_us": 143458.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000102"
+        ]
+      },
+      {
+        "time_us": 143889.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000106"
+        ]
+      },
+      {
+        "time_us": 144321.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000112"
+        ]
+      },
+      {
+        "time_us": 144752.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000116"
+        ]
+      },
+      {
+        "time_us": 145184.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000121"
+        ]
+      },
+      {
+        "time_us": 145605.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000125"
+        ]
+      },
+      {
+        "time_us": 146027.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000130"
+        ]
+      },
+      {
+        "time_us": 146478.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000134"
+        ]
+      },
+      {
+        "time_us": 146930.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000140"
+        ]
+      },
+      {
+        "time_us": 147371.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000144"
+        ]
+      },
+      {
+        "time_us": 147813.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000150"
+        ]
+      },
+      {
+        "time_us": 148244.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000154"
+        ]
+      },
+      {
+        "time_us": 148677.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000161"
+        ]
+      },
+      {
+        "time_us": 149118.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000165"
+        ]
+      },
+      {
+        "time_us": 149561.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000172"
+        ]
+      },
+      {
+        "time_us": 149982.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000176"
+        ]
+      },
+      {
+        "time_us": 150405.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000182"
+        ]
+      },
+      {
+        "time_us": 150836.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000186"
+        ]
+      },
+      {
+        "time_us": 151267.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000190"
+        ]
+      },
+      {
+        "time_us": 151827.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L0-after-cx/strategy-action:000209"
+        ]
+      },
+      {
+        "time_us": 152289.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000013"
+        ]
+      },
+      {
+        "time_us": 152730.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000017"
+        ]
+      },
+      {
+        "time_us": 153172.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000022"
+        ]
+      },
+      {
+        "time_us": 153603.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000026"
+        ]
+      },
+      {
+        "time_us": 154035.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000031"
+        ]
+      },
+      {
+        "time_us": 154464.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000035"
+        ]
+      },
+      {
+        "time_us": 154894.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000041"
+        ]
+      },
+      {
+        "time_us": 155345.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000045"
+        ]
+      },
+      {
+        "time_us": 155797.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000052"
+        ]
+      },
+      {
+        "time_us": 156238.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000056"
+        ]
+      },
+      {
+        "time_us": 156680.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000062"
+        ]
+      },
+      {
+        "time_us": 157121.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000066"
+        ]
+      },
+      {
+        "time_us": 157563.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000071"
+        ]
+      },
+      {
+        "time_us": 157994.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000075"
+        ]
+      },
+      {
+        "time_us": 158426.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000080"
+        ]
+      },
+      {
+        "time_us": 158847.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000084"
+        ]
+      },
+      {
+        "time_us": 159270.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000091"
+        ]
+      },
+      {
+        "time_us": 159711.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000095"
+        ]
+      },
+      {
+        "time_us": 160153.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000102"
+        ]
+      },
+      {
+        "time_us": 160584.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000106"
+        ]
+      },
+      {
+        "time_us": 161016.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000112"
+        ]
+      },
+      {
+        "time_us": 161447.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000116"
+        ]
+      },
+      {
+        "time_us": 161879.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000121"
+        ]
+      },
+      {
+        "time_us": 162300.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000125"
+        ]
+      },
+      {
+        "time_us": 162722.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000130"
+        ]
+      },
+      {
+        "time_us": 163173.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000134"
+        ]
+      },
+      {
+        "time_us": 163625.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000140"
+        ]
+      },
+      {
+        "time_us": 164066.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000144"
+        ]
+      },
+      {
+        "time_us": 164508.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000150"
+        ]
+      },
+      {
+        "time_us": 164939.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000154"
+        ]
+      },
+      {
+        "time_us": 165372.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000161"
+        ]
+      },
+      {
+        "time_us": 165813.0,
+        "aod_group": "data",
+        "requested_count": 2,
+        "captured_count": 2,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000165"
+        ]
+      },
+      {
+        "time_us": 166256.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000172"
+        ]
+      },
+      {
+        "time_us": 166677.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000176"
+        ]
+      },
+      {
+        "time_us": 167100.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000182"
+        ]
+      },
+      {
+        "time_us": 167531.0,
+        "aod_group": "data",
+        "requested_count": 1,
+        "captured_count": 1,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000186"
+        ]
+      },
+      {
+        "time_us": 167962.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000190"
+        ]
+      },
+      {
+        "time_us": 168522.0,
+        "aod_group": "data",
+        "requested_count": 8,
+        "captured_count": 8,
+        "action_ids": [
+          "L1-after-cx/strategy-action:000209"
+        ]
+      }
+    ],
+    "cartesian_intersection_segments_checked": 716,
+    "physical_operation_count": 56,
+    "groups": [
+      {
+        "group_id": "L0-prepare/initialization.block",
+        "purpose": "patch_initialization_transport",
+        "member_count": 17,
+        "moved_member_count": 17,
+        "transport_start_us": 200.0,
+        "transport_end_us": 300.0,
+        "completion_span_us": 0.0,
+        "transport_batch_count": 1,
+        "motion_segment_count": 1,
+        "full_patch_move_ids": [
+          "L0-prepare/strategy-action:000001"
+        ],
+        "call_id": "L0-prepare"
+      },
+      {
+        "group_id": "L0-prepare/maintenance.block.r0",
+        "purpose": "maintenance_readout",
+        "member_count": 8,
+        "readout_start_span_us": 0.0,
+        "readout_end_span_us": 0.0,
+        "result_ready_span_us": 0.0,
+        "per_member": [
+          {
+            "atom_id": "atom:L0/x0",
+            "result_id": "L0-prepare/r0/m_x0",
+            "earliest_readout_us": 16635.0,
+            "t_start_us": 16635.0,
+            "t_end_us": 16735.0,
+            "result_ready_us": 16740.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x1",
+            "result_id": "L0-prepare/r0/m_x1",
+            "earliest_readout_us": 16635.0,
+            "t_start_us": 16635.0,
+            "t_end_us": 16735.0,
+            "result_ready_us": 16740.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x2",
+            "result_id": "L0-prepare/r0/m_x2",
+            "earliest_readout_us": 16635.0,
+            "t_start_us": 16635.0,
+            "t_end_us": 16735.0,
+            "result_ready_us": 16740.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x3",
+            "result_id": "L0-prepare/r0/m_x3",
+            "earliest_readout_us": 16635.0,
+            "t_start_us": 16635.0,
+            "t_end_us": 16735.0,
+            "result_ready_us": 16740.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z0",
+            "result_id": "L0-prepare/r0/m_z0",
+            "earliest_readout_us": 16635.0,
+            "t_start_us": 16635.0,
+            "t_end_us": 16735.0,
+            "result_ready_us": 16740.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z1",
+            "result_id": "L0-prepare/r0/m_z1",
+            "earliest_readout_us": 16635.0,
+            "t_start_us": 16635.0,
+            "t_end_us": 16735.0,
+            "result_ready_us": 16740.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z2",
+            "result_id": "L0-prepare/r0/m_z2",
+            "earliest_readout_us": 16635.0,
+            "t_start_us": 16635.0,
+            "t_end_us": 16735.0,
+            "result_ready_us": 16740.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z3",
+            "result_id": "L0-prepare/r0/m_z3",
+            "earliest_readout_us": 16635.0,
+            "t_start_us": 16635.0,
+            "t_end_us": 16735.0,
+            "result_ready_us": 16740.0,
+            "wait_us": 0.0
+          }
+        ],
+        "per_atom_wait_us": {
+          "atom:L0/x0": 0.0,
+          "atom:L0/x1": 0.0,
+          "atom:L0/x2": 0.0,
+          "atom:L0/x3": 0.0,
+          "atom:L0/z0": 0.0,
+          "atom:L0/z1": 0.0,
+          "atom:L0/z2": 0.0,
+          "atom:L0/z3": 0.0
+        },
+        "earliest_common_readout_us": 16635.0,
+        "transport_batch_count": 2,
+        "readout_batch_count": 1,
+        "split_reasons": [],
+        "call_id": "L0-prepare"
+      },
+      {
+        "group_id": "L0-round0/maintenance.block.r0",
+        "purpose": "maintenance_readout",
+        "member_count": 8,
+        "readout_start_span_us": 0.0,
+        "readout_end_span_us": 0.0,
+        "result_ready_span_us": 0.0,
+        "per_member": [
+          {
+            "atom_id": "atom:L0/x0",
+            "result_id": "L0-round0/r0/m_x0",
+            "earliest_readout_us": 33333.0,
+            "t_start_us": 33333.0,
+            "t_end_us": 33433.0,
+            "result_ready_us": 33438.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x1",
+            "result_id": "L0-round0/r0/m_x1",
+            "earliest_readout_us": 33333.0,
+            "t_start_us": 33333.0,
+            "t_end_us": 33433.0,
+            "result_ready_us": 33438.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x2",
+            "result_id": "L0-round0/r0/m_x2",
+            "earliest_readout_us": 33333.0,
+            "t_start_us": 33333.0,
+            "t_end_us": 33433.0,
+            "result_ready_us": 33438.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x3",
+            "result_id": "L0-round0/r0/m_x3",
+            "earliest_readout_us": 33333.0,
+            "t_start_us": 33333.0,
+            "t_end_us": 33433.0,
+            "result_ready_us": 33438.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z0",
+            "result_id": "L0-round0/r0/m_z0",
+            "earliest_readout_us": 33333.0,
+            "t_start_us": 33333.0,
+            "t_end_us": 33433.0,
+            "result_ready_us": 33438.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z1",
+            "result_id": "L0-round0/r0/m_z1",
+            "earliest_readout_us": 33333.0,
+            "t_start_us": 33333.0,
+            "t_end_us": 33433.0,
+            "result_ready_us": 33438.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z2",
+            "result_id": "L0-round0/r0/m_z2",
+            "earliest_readout_us": 33333.0,
+            "t_start_us": 33333.0,
+            "t_end_us": 33433.0,
+            "result_ready_us": 33438.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z3",
+            "result_id": "L0-round0/r0/m_z3",
+            "earliest_readout_us": 33333.0,
+            "t_start_us": 33333.0,
+            "t_end_us": 33433.0,
+            "result_ready_us": 33438.0,
+            "wait_us": 0.0
+          }
+        ],
+        "per_atom_wait_us": {
+          "atom:L0/x0": 0.0,
+          "atom:L0/x1": 0.0,
+          "atom:L0/x2": 0.0,
+          "atom:L0/x3": 0.0,
+          "atom:L0/z0": 0.0,
+          "atom:L0/z1": 0.0,
+          "atom:L0/z2": 0.0,
+          "atom:L0/z3": 0.0
+        },
+        "earliest_common_readout_us": 33333.0,
+        "transport_batch_count": 2,
+        "readout_batch_count": 1,
+        "split_reasons": [],
+        "call_id": "L0-round0"
+      },
+      {
+        "group_id": "L0-round1/maintenance.block.r0",
+        "purpose": "maintenance_readout",
+        "member_count": 8,
+        "readout_start_span_us": 0.0,
+        "readout_end_span_us": 0.0,
+        "result_ready_span_us": 0.0,
+        "per_member": [
+          {
+            "atom_id": "atom:L0/x0",
+            "result_id": "L0-round1/r0/m_x0",
+            "earliest_readout_us": 50028.0,
+            "t_start_us": 50028.0,
+            "t_end_us": 50128.0,
+            "result_ready_us": 50133.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x1",
+            "result_id": "L0-round1/r0/m_x1",
+            "earliest_readout_us": 50028.0,
+            "t_start_us": 50028.0,
+            "t_end_us": 50128.0,
+            "result_ready_us": 50133.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x2",
+            "result_id": "L0-round1/r0/m_x2",
+            "earliest_readout_us": 50028.0,
+            "t_start_us": 50028.0,
+            "t_end_us": 50128.0,
+            "result_ready_us": 50133.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x3",
+            "result_id": "L0-round1/r0/m_x3",
+            "earliest_readout_us": 50028.0,
+            "t_start_us": 50028.0,
+            "t_end_us": 50128.0,
+            "result_ready_us": 50133.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z0",
+            "result_id": "L0-round1/r0/m_z0",
+            "earliest_readout_us": 50028.0,
+            "t_start_us": 50028.0,
+            "t_end_us": 50128.0,
+            "result_ready_us": 50133.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z1",
+            "result_id": "L0-round1/r0/m_z1",
+            "earliest_readout_us": 50028.0,
+            "t_start_us": 50028.0,
+            "t_end_us": 50128.0,
+            "result_ready_us": 50133.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z2",
+            "result_id": "L0-round1/r0/m_z2",
+            "earliest_readout_us": 50028.0,
+            "t_start_us": 50028.0,
+            "t_end_us": 50128.0,
+            "result_ready_us": 50133.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z3",
+            "result_id": "L0-round1/r0/m_z3",
+            "earliest_readout_us": 50028.0,
+            "t_start_us": 50028.0,
+            "t_end_us": 50128.0,
+            "result_ready_us": 50133.0,
+            "wait_us": 0.0
+          }
+        ],
+        "per_atom_wait_us": {
+          "atom:L0/x0": 0.0,
+          "atom:L0/x1": 0.0,
+          "atom:L0/x2": 0.0,
+          "atom:L0/x3": 0.0,
+          "atom:L0/z0": 0.0,
+          "atom:L0/z1": 0.0,
+          "atom:L0/z2": 0.0,
+          "atom:L0/z3": 0.0
+        },
+        "earliest_common_readout_us": 50028.0,
+        "transport_batch_count": 2,
+        "readout_batch_count": 1,
+        "split_reasons": [],
+        "call_id": "L0-round1"
+      },
+      {
+        "group_id": "L0-round2/maintenance.block.r0",
+        "purpose": "maintenance_readout",
+        "member_count": 8,
+        "readout_start_span_us": 0.0,
+        "readout_end_span_us": 0.0,
+        "result_ready_span_us": 0.0,
+        "per_member": [
+          {
+            "atom_id": "atom:L0/x0",
+            "result_id": "L0-round2/r0/m_x0",
+            "earliest_readout_us": 66723.0,
+            "t_start_us": 66723.0,
+            "t_end_us": 66823.0,
+            "result_ready_us": 66828.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x1",
+            "result_id": "L0-round2/r0/m_x1",
+            "earliest_readout_us": 66723.0,
+            "t_start_us": 66723.0,
+            "t_end_us": 66823.0,
+            "result_ready_us": 66828.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x2",
+            "result_id": "L0-round2/r0/m_x2",
+            "earliest_readout_us": 66723.0,
+            "t_start_us": 66723.0,
+            "t_end_us": 66823.0,
+            "result_ready_us": 66828.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x3",
+            "result_id": "L0-round2/r0/m_x3",
+            "earliest_readout_us": 66723.0,
+            "t_start_us": 66723.0,
+            "t_end_us": 66823.0,
+            "result_ready_us": 66828.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z0",
+            "result_id": "L0-round2/r0/m_z0",
+            "earliest_readout_us": 66723.0,
+            "t_start_us": 66723.0,
+            "t_end_us": 66823.0,
+            "result_ready_us": 66828.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z1",
+            "result_id": "L0-round2/r0/m_z1",
+            "earliest_readout_us": 66723.0,
+            "t_start_us": 66723.0,
+            "t_end_us": 66823.0,
+            "result_ready_us": 66828.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z2",
+            "result_id": "L0-round2/r0/m_z2",
+            "earliest_readout_us": 66723.0,
+            "t_start_us": 66723.0,
+            "t_end_us": 66823.0,
+            "result_ready_us": 66828.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z3",
+            "result_id": "L0-round2/r0/m_z3",
+            "earliest_readout_us": 66723.0,
+            "t_start_us": 66723.0,
+            "t_end_us": 66823.0,
+            "result_ready_us": 66828.0,
+            "wait_us": 0.0
+          }
+        ],
+        "per_atom_wait_us": {
+          "atom:L0/x0": 0.0,
+          "atom:L0/x1": 0.0,
+          "atom:L0/x2": 0.0,
+          "atom:L0/x3": 0.0,
+          "atom:L0/z0": 0.0,
+          "atom:L0/z1": 0.0,
+          "atom:L0/z2": 0.0,
+          "atom:L0/z3": 0.0
+        },
+        "earliest_common_readout_us": 66723.0,
+        "transport_batch_count": 2,
+        "readout_batch_count": 1,
+        "split_reasons": [],
+        "call_id": "L0-round2"
+      },
+      {
+        "group_id": "L1-prepare/initialization.block",
+        "purpose": "patch_initialization_transport",
+        "member_count": 17,
+        "moved_member_count": 17,
+        "transport_start_us": 67483.0,
+        "transport_end_us": 67583.0,
+        "completion_span_us": 0.0,
+        "transport_batch_count": 1,
+        "motion_segment_count": 1,
+        "full_patch_move_ids": [
+          "L1-prepare/strategy-action:000001"
+        ],
+        "call_id": "L1-prepare"
+      },
+      {
+        "group_id": "L1-prepare/maintenance.block.r0",
+        "purpose": "maintenance_readout",
+        "member_count": 8,
+        "readout_start_span_us": 0.0,
+        "readout_end_span_us": 0.0,
+        "result_ready_span_us": 0.0,
+        "per_member": [
+          {
+            "atom_id": "atom:L1/x0",
+            "result_id": "L1-prepare/r0/m_x0",
+            "earliest_readout_us": 83918.0,
+            "t_start_us": 83918.0,
+            "t_end_us": 84018.0,
+            "result_ready_us": 84023.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x1",
+            "result_id": "L1-prepare/r0/m_x1",
+            "earliest_readout_us": 83918.0,
+            "t_start_us": 83918.0,
+            "t_end_us": 84018.0,
+            "result_ready_us": 84023.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x2",
+            "result_id": "L1-prepare/r0/m_x2",
+            "earliest_readout_us": 83918.0,
+            "t_start_us": 83918.0,
+            "t_end_us": 84018.0,
+            "result_ready_us": 84023.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x3",
+            "result_id": "L1-prepare/r0/m_x3",
+            "earliest_readout_us": 83918.0,
+            "t_start_us": 83918.0,
+            "t_end_us": 84018.0,
+            "result_ready_us": 84023.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z0",
+            "result_id": "L1-prepare/r0/m_z0",
+            "earliest_readout_us": 83918.0,
+            "t_start_us": 83918.0,
+            "t_end_us": 84018.0,
+            "result_ready_us": 84023.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z1",
+            "result_id": "L1-prepare/r0/m_z1",
+            "earliest_readout_us": 83918.0,
+            "t_start_us": 83918.0,
+            "t_end_us": 84018.0,
+            "result_ready_us": 84023.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z2",
+            "result_id": "L1-prepare/r0/m_z2",
+            "earliest_readout_us": 83918.0,
+            "t_start_us": 83918.0,
+            "t_end_us": 84018.0,
+            "result_ready_us": 84023.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z3",
+            "result_id": "L1-prepare/r0/m_z3",
+            "earliest_readout_us": 83918.0,
+            "t_start_us": 83918.0,
+            "t_end_us": 84018.0,
+            "result_ready_us": 84023.0,
+            "wait_us": 0.0
+          }
+        ],
+        "per_atom_wait_us": {
+          "atom:L1/x0": 0.0,
+          "atom:L1/x1": 0.0,
+          "atom:L1/x2": 0.0,
+          "atom:L1/x3": 0.0,
+          "atom:L1/z0": 0.0,
+          "atom:L1/z1": 0.0,
+          "atom:L1/z2": 0.0,
+          "atom:L1/z3": 0.0
+        },
+        "earliest_common_readout_us": 83918.0,
+        "transport_batch_count": 2,
+        "readout_batch_count": 1,
+        "split_reasons": [],
+        "call_id": "L1-prepare"
+      },
+      {
+        "group_id": "L1-round0/maintenance.block.r0",
+        "purpose": "maintenance_readout",
+        "member_count": 8,
+        "readout_start_span_us": 0.0,
+        "readout_end_span_us": 0.0,
+        "result_ready_span_us": 0.0,
+        "per_member": [
+          {
+            "atom_id": "atom:L1/x0",
+            "result_id": "L1-round0/r0/m_x0",
+            "earliest_readout_us": 100615.0,
+            "t_start_us": 100615.0,
+            "t_end_us": 100715.0,
+            "result_ready_us": 100720.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x1",
+            "result_id": "L1-round0/r0/m_x1",
+            "earliest_readout_us": 100615.0,
+            "t_start_us": 100615.0,
+            "t_end_us": 100715.0,
+            "result_ready_us": 100720.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x2",
+            "result_id": "L1-round0/r0/m_x2",
+            "earliest_readout_us": 100615.0,
+            "t_start_us": 100615.0,
+            "t_end_us": 100715.0,
+            "result_ready_us": 100720.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x3",
+            "result_id": "L1-round0/r0/m_x3",
+            "earliest_readout_us": 100615.0,
+            "t_start_us": 100615.0,
+            "t_end_us": 100715.0,
+            "result_ready_us": 100720.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z0",
+            "result_id": "L1-round0/r0/m_z0",
+            "earliest_readout_us": 100615.0,
+            "t_start_us": 100615.0,
+            "t_end_us": 100715.0,
+            "result_ready_us": 100720.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z1",
+            "result_id": "L1-round0/r0/m_z1",
+            "earliest_readout_us": 100615.0,
+            "t_start_us": 100615.0,
+            "t_end_us": 100715.0,
+            "result_ready_us": 100720.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z2",
+            "result_id": "L1-round0/r0/m_z2",
+            "earliest_readout_us": 100615.0,
+            "t_start_us": 100615.0,
+            "t_end_us": 100715.0,
+            "result_ready_us": 100720.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z3",
+            "result_id": "L1-round0/r0/m_z3",
+            "earliest_readout_us": 100615.0,
+            "t_start_us": 100615.0,
+            "t_end_us": 100715.0,
+            "result_ready_us": 100720.0,
+            "wait_us": 0.0
+          }
+        ],
+        "per_atom_wait_us": {
+          "atom:L1/x0": 0.0,
+          "atom:L1/x1": 0.0,
+          "atom:L1/x2": 0.0,
+          "atom:L1/x3": 0.0,
+          "atom:L1/z0": 0.0,
+          "atom:L1/z1": 0.0,
+          "atom:L1/z2": 0.0,
+          "atom:L1/z3": 0.0
+        },
+        "earliest_common_readout_us": 100615.0,
+        "transport_batch_count": 2,
+        "readout_batch_count": 1,
+        "split_reasons": [],
+        "call_id": "L1-round0"
+      },
+      {
+        "group_id": "L1-round1/maintenance.block.r0",
+        "purpose": "maintenance_readout",
+        "member_count": 8,
+        "readout_start_span_us": 0.0,
+        "readout_end_span_us": 0.0,
+        "result_ready_span_us": 0.0,
+        "per_member": [
+          {
+            "atom_id": "atom:L1/x0",
+            "result_id": "L1-round1/r0/m_x0",
+            "earliest_readout_us": 117310.0,
+            "t_start_us": 117310.0,
+            "t_end_us": 117410.0,
+            "result_ready_us": 117415.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x1",
+            "result_id": "L1-round1/r0/m_x1",
+            "earliest_readout_us": 117310.0,
+            "t_start_us": 117310.0,
+            "t_end_us": 117410.0,
+            "result_ready_us": 117415.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x2",
+            "result_id": "L1-round1/r0/m_x2",
+            "earliest_readout_us": 117310.0,
+            "t_start_us": 117310.0,
+            "t_end_us": 117410.0,
+            "result_ready_us": 117415.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x3",
+            "result_id": "L1-round1/r0/m_x3",
+            "earliest_readout_us": 117310.0,
+            "t_start_us": 117310.0,
+            "t_end_us": 117410.0,
+            "result_ready_us": 117415.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z0",
+            "result_id": "L1-round1/r0/m_z0",
+            "earliest_readout_us": 117310.0,
+            "t_start_us": 117310.0,
+            "t_end_us": 117410.0,
+            "result_ready_us": 117415.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z1",
+            "result_id": "L1-round1/r0/m_z1",
+            "earliest_readout_us": 117310.0,
+            "t_start_us": 117310.0,
+            "t_end_us": 117410.0,
+            "result_ready_us": 117415.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z2",
+            "result_id": "L1-round1/r0/m_z2",
+            "earliest_readout_us": 117310.0,
+            "t_start_us": 117310.0,
+            "t_end_us": 117410.0,
+            "result_ready_us": 117415.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z3",
+            "result_id": "L1-round1/r0/m_z3",
+            "earliest_readout_us": 117310.0,
+            "t_start_us": 117310.0,
+            "t_end_us": 117410.0,
+            "result_ready_us": 117415.0,
+            "wait_us": 0.0
+          }
+        ],
+        "per_atom_wait_us": {
+          "atom:L1/x0": 0.0,
+          "atom:L1/x1": 0.0,
+          "atom:L1/x2": 0.0,
+          "atom:L1/x3": 0.0,
+          "atom:L1/z0": 0.0,
+          "atom:L1/z1": 0.0,
+          "atom:L1/z2": 0.0,
+          "atom:L1/z3": 0.0
+        },
+        "earliest_common_readout_us": 117310.0,
+        "transport_batch_count": 2,
+        "readout_batch_count": 1,
+        "split_reasons": [],
+        "call_id": "L1-round1"
+      },
+      {
+        "group_id": "L1-round2/maintenance.block.r0",
+        "purpose": "maintenance_readout",
+        "member_count": 8,
+        "readout_start_span_us": 0.0,
+        "readout_end_span_us": 0.0,
+        "result_ready_span_us": 0.0,
+        "per_member": [
+          {
+            "atom_id": "atom:L1/x0",
+            "result_id": "L1-round2/r0/m_x0",
+            "earliest_readout_us": 134005.0,
+            "t_start_us": 134005.0,
+            "t_end_us": 134105.0,
+            "result_ready_us": 134110.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x1",
+            "result_id": "L1-round2/r0/m_x1",
+            "earliest_readout_us": 134005.0,
+            "t_start_us": 134005.0,
+            "t_end_us": 134105.0,
+            "result_ready_us": 134110.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x2",
+            "result_id": "L1-round2/r0/m_x2",
+            "earliest_readout_us": 134005.0,
+            "t_start_us": 134005.0,
+            "t_end_us": 134105.0,
+            "result_ready_us": 134110.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x3",
+            "result_id": "L1-round2/r0/m_x3",
+            "earliest_readout_us": 134005.0,
+            "t_start_us": 134005.0,
+            "t_end_us": 134105.0,
+            "result_ready_us": 134110.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z0",
+            "result_id": "L1-round2/r0/m_z0",
+            "earliest_readout_us": 134005.0,
+            "t_start_us": 134005.0,
+            "t_end_us": 134105.0,
+            "result_ready_us": 134110.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z1",
+            "result_id": "L1-round2/r0/m_z1",
+            "earliest_readout_us": 134005.0,
+            "t_start_us": 134005.0,
+            "t_end_us": 134105.0,
+            "result_ready_us": 134110.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z2",
+            "result_id": "L1-round2/r0/m_z2",
+            "earliest_readout_us": 134005.0,
+            "t_start_us": 134005.0,
+            "t_end_us": 134105.0,
+            "result_ready_us": 134110.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z3",
+            "result_id": "L1-round2/r0/m_z3",
+            "earliest_readout_us": 134005.0,
+            "t_start_us": 134005.0,
+            "t_end_us": 134105.0,
+            "result_ready_us": 134110.0,
+            "wait_us": 0.0
+          }
+        ],
+        "per_atom_wait_us": {
+          "atom:L1/x0": 0.0,
+          "atom:L1/x1": 0.0,
+          "atom:L1/x2": 0.0,
+          "atom:L1/x3": 0.0,
+          "atom:L1/z0": 0.0,
+          "atom:L1/z1": 0.0,
+          "atom:L1/z2": 0.0,
+          "atom:L1/z3": 0.0
+        },
+        "earliest_common_readout_us": 134005.0,
+        "transport_batch_count": 2,
+        "readout_batch_count": 1,
+        "split_reasons": [],
+        "call_id": "L1-round2"
+      },
+      {
+        "group_id": "L0-after-cx/maintenance.block.r0",
+        "purpose": "maintenance_readout",
+        "member_count": 8,
+        "readout_start_span_us": 0.0,
+        "readout_end_span_us": 0.0,
+        "result_ready_span_us": 0.0,
+        "per_member": [
+          {
+            "atom_id": "atom:L0/x0",
+            "result_id": "L0-after-cx/r0/m_x0",
+            "earliest_readout_us": 151717.0,
+            "t_start_us": 151717.0,
+            "t_end_us": 151817.0,
+            "result_ready_us": 151822.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x1",
+            "result_id": "L0-after-cx/r0/m_x1",
+            "earliest_readout_us": 151717.0,
+            "t_start_us": 151717.0,
+            "t_end_us": 151817.0,
+            "result_ready_us": 151822.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x2",
+            "result_id": "L0-after-cx/r0/m_x2",
+            "earliest_readout_us": 151717.0,
+            "t_start_us": 151717.0,
+            "t_end_us": 151817.0,
+            "result_ready_us": 151822.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/x3",
+            "result_id": "L0-after-cx/r0/m_x3",
+            "earliest_readout_us": 151717.0,
+            "t_start_us": 151717.0,
+            "t_end_us": 151817.0,
+            "result_ready_us": 151822.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z0",
+            "result_id": "L0-after-cx/r0/m_z0",
+            "earliest_readout_us": 151717.0,
+            "t_start_us": 151717.0,
+            "t_end_us": 151817.0,
+            "result_ready_us": 151822.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z1",
+            "result_id": "L0-after-cx/r0/m_z1",
+            "earliest_readout_us": 151717.0,
+            "t_start_us": 151717.0,
+            "t_end_us": 151817.0,
+            "result_ready_us": 151822.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z2",
+            "result_id": "L0-after-cx/r0/m_z2",
+            "earliest_readout_us": 151717.0,
+            "t_start_us": 151717.0,
+            "t_end_us": 151817.0,
+            "result_ready_us": 151822.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L0/z3",
+            "result_id": "L0-after-cx/r0/m_z3",
+            "earliest_readout_us": 151717.0,
+            "t_start_us": 151717.0,
+            "t_end_us": 151817.0,
+            "result_ready_us": 151822.0,
+            "wait_us": 0.0
+          }
+        ],
+        "per_atom_wait_us": {
+          "atom:L0/x0": 0.0,
+          "atom:L0/x1": 0.0,
+          "atom:L0/x2": 0.0,
+          "atom:L0/x3": 0.0,
+          "atom:L0/z0": 0.0,
+          "atom:L0/z1": 0.0,
+          "atom:L0/z2": 0.0,
+          "atom:L0/z3": 0.0
+        },
+        "earliest_common_readout_us": 151717.0,
+        "transport_batch_count": 2,
+        "readout_batch_count": 1,
+        "split_reasons": [],
+        "call_id": "L0-after-cx"
+      },
+      {
+        "group_id": "L1-after-cx/maintenance.block.r0",
+        "purpose": "maintenance_readout",
+        "member_count": 8,
+        "readout_start_span_us": 0.0,
+        "readout_end_span_us": 0.0,
+        "result_ready_span_us": 0.0,
+        "per_member": [
+          {
+            "atom_id": "atom:L1/x0",
+            "result_id": "L1-after-cx/r0/m_x0",
+            "earliest_readout_us": 168412.0,
+            "t_start_us": 168412.0,
+            "t_end_us": 168512.0,
+            "result_ready_us": 168517.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x1",
+            "result_id": "L1-after-cx/r0/m_x1",
+            "earliest_readout_us": 168412.0,
+            "t_start_us": 168412.0,
+            "t_end_us": 168512.0,
+            "result_ready_us": 168517.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x2",
+            "result_id": "L1-after-cx/r0/m_x2",
+            "earliest_readout_us": 168412.0,
+            "t_start_us": 168412.0,
+            "t_end_us": 168512.0,
+            "result_ready_us": 168517.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/x3",
+            "result_id": "L1-after-cx/r0/m_x3",
+            "earliest_readout_us": 168412.0,
+            "t_start_us": 168412.0,
+            "t_end_us": 168512.0,
+            "result_ready_us": 168517.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z0",
+            "result_id": "L1-after-cx/r0/m_z0",
+            "earliest_readout_us": 168412.0,
+            "t_start_us": 168412.0,
+            "t_end_us": 168512.0,
+            "result_ready_us": 168517.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z1",
+            "result_id": "L1-after-cx/r0/m_z1",
+            "earliest_readout_us": 168412.0,
+            "t_start_us": 168412.0,
+            "t_end_us": 168512.0,
+            "result_ready_us": 168517.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z2",
+            "result_id": "L1-after-cx/r0/m_z2",
+            "earliest_readout_us": 168412.0,
+            "t_start_us": 168412.0,
+            "t_end_us": 168512.0,
+            "result_ready_us": 168517.0,
+            "wait_us": 0.0
+          },
+          {
+            "atom_id": "atom:L1/z3",
+            "result_id": "L1-after-cx/r0/m_z3",
+            "earliest_readout_us": 168412.0,
+            "t_start_us": 168412.0,
+            "t_end_us": 168512.0,
+            "result_ready_us": 168517.0,
+            "wait_us": 0.0
+          }
+        ],
+        "per_atom_wait_us": {
+          "atom:L1/x0": 0.0,
+          "atom:L1/x1": 0.0,
+          "atom:L1/x2": 0.0,
+          "atom:L1/x3": 0.0,
+          "atom:L1/z0": 0.0,
+          "atom:L1/z1": 0.0,
+          "atom:L1/z2": 0.0,
+          "atom:L1/z3": 0.0
+        },
+        "earliest_common_readout_us": 168412.0,
+        "transport_batch_count": 2,
+        "readout_batch_count": 1,
+        "split_reasons": [],
+        "call_id": "L1-after-cx"
+      }
+    ],
+    "cycle_duration_us": 16695.0,
+    "reuse_calls": [
+      {
+        "call_id": "L0-prepare",
+        "strategy_hash": "1702ea595500f33bb57fcd565a5d6ea5057d1a2e2a30d74206988492bba95e0d",
+        "counter_delta": {
+          "strategy_compile_count": 1,
+          "placement_search_count": 688,
+          "routing_search_count": 39,
+          "cache_hit_count": 0,
+          "bind_count": 1,
+          "composition_check_count": 1
+        }
+      },
+      {
+        "call_id": "L0-round0",
+        "strategy_hash": "2e90f9cf2cb478f1d54e4dfd016d5b01b291e8d543c7dcc9c8079a82ec6c776e",
+        "counter_delta": {
+          "strategy_compile_count": 1,
+          "placement_search_count": 688,
+          "routing_search_count": 38,
+          "cache_hit_count": 0,
+          "bind_count": 1,
+          "composition_check_count": 1
+        }
+      },
+      {
+        "call_id": "L0-round1",
+        "strategy_hash": "2e90f9cf2cb478f1d54e4dfd016d5b01b291e8d543c7dcc9c8079a82ec6c776e",
+        "counter_delta": {
+          "strategy_compile_count": 0,
+          "placement_search_count": 0,
+          "routing_search_count": 0,
+          "cache_hit_count": 1,
+          "bind_count": 1,
+          "composition_check_count": 1
+        }
+      },
+      {
+        "call_id": "L0-round2",
+        "strategy_hash": "2e90f9cf2cb478f1d54e4dfd016d5b01b291e8d543c7dcc9c8079a82ec6c776e",
+        "counter_delta": {
+          "strategy_compile_count": 0,
+          "placement_search_count": 0,
+          "routing_search_count": 0,
+          "cache_hit_count": 1,
+          "bind_count": 1,
+          "composition_check_count": 1
+        }
+      },
+      {
+        "call_id": "L1-prepare",
+        "strategy_hash": "e4a0e46a544f60e0358d003de4c1dcbfe72408085bfa722ec2ff0136f32eb27b",
+        "counter_delta": {
+          "strategy_compile_count": 1,
+          "placement_search_count": 688,
+          "routing_search_count": 39,
+          "cache_hit_count": 0,
+          "bind_count": 15,
+          "composition_check_count": 406
+        }
+      },
+      {
+        "call_id": "L1-round0",
+        "strategy_hash": "2e90f9cf2cb478f1d54e4dfd016d5b01b291e8d543c7dcc9c8079a82ec6c776e",
+        "counter_delta": {
+          "strategy_compile_count": 0,
+          "placement_search_count": 0,
+          "routing_search_count": 0,
+          "cache_hit_count": 1,
+          "bind_count": 1,
+          "composition_check_count": 1
+        }
+      },
+      {
+        "call_id": "L1-round1",
+        "strategy_hash": "2e90f9cf2cb478f1d54e4dfd016d5b01b291e8d543c7dcc9c8079a82ec6c776e",
+        "counter_delta": {
+          "strategy_compile_count": 0,
+          "placement_search_count": 0,
+          "routing_search_count": 0,
+          "cache_hit_count": 1,
+          "bind_count": 1,
+          "composition_check_count": 1
+        }
+      },
+      {
+        "call_id": "L1-round2",
+        "strategy_hash": "2e90f9cf2cb478f1d54e4dfd016d5b01b291e8d543c7dcc9c8079a82ec6c776e",
+        "counter_delta": {
+          "strategy_compile_count": 0,
+          "placement_search_count": 0,
+          "routing_search_count": 0,
+          "cache_hit_count": 1,
+          "bind_count": 1,
+          "composition_check_count": 1
+        }
+      },
+      {
+        "call_id": "cross-cx",
+        "strategy_hash": "9d7f8ec179d96694a4ed4de235873f9b5374175bf7c18066c2da78e961f12a78",
+        "counter_delta": {
+          "strategy_compile_count": 1,
+          "placement_search_count": 72,
+          "routing_search_count": 2,
+          "cache_hit_count": 0,
+          "bind_count": 1,
+          "composition_check_count": 1
+        }
+      },
+      {
+        "call_id": "L0-after-cx",
+        "strategy_hash": "2e90f9cf2cb478f1d54e4dfd016d5b01b291e8d543c7dcc9c8079a82ec6c776e",
+        "counter_delta": {
+          "strategy_compile_count": 0,
+          "placement_search_count": 0,
+          "routing_search_count": 0,
+          "cache_hit_count": 1,
+          "bind_count": 1,
+          "composition_check_count": 1
+        }
+      },
+      {
+        "call_id": "L1-after-cx",
+        "strategy_hash": "2e90f9cf2cb478f1d54e4dfd016d5b01b291e8d543c7dcc9c8079a82ec6c776e",
+        "counter_delta": {
+          "strategy_compile_count": 0,
+          "placement_search_count": 0,
+          "routing_search_count": 0,
+          "cache_hit_count": 1,
+          "bind_count": 4,
+          "composition_check_count": 102
+        }
+      }
+    ],
+    "t000_cases": {
+      "full_patch_prepare": true,
+      "single_block_three_rounds": true,
+      "two_blocks_same_strategy": true,
+      "cx_then_same_local_reuse": true,
+      "independent_blocks_legal_overlap": false
+    }
+  },
+  "input_hashes": {
+    "run": "1d5929448878339ccff68ff95c05b6b27cdcadf9310935044ad249c97e5522ba",
+    "device": "8fccbae5109b845f58b5d8cb46a540d8a50978d9038656e393a96ce15e330ba5",
+    "strategies": "30a2435e3bf719712fe43fd6cff3b6b5a89f9102c182b88002bed1755a92c257",
+    "enola_evidence": "68595f1f971ebc71ad4f5776887cf2806c1eda58766b67c103f82c89efd608e4"
+  },
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "sampled": false,
+  "out_of_scope": [
+    "noise",
+    "fault_tolerance",
+    "physical_hardware",
+    "factory_production",
+    "full_Shor",
+    "user_visual_acceptance"
+  ]
+}

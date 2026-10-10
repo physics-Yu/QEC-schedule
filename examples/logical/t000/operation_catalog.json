@@ -1,0 +1,379 @@
+{
+  "schema_version": "EncodedOperationCatalog/0.1.0",
+  "artifact_id": "encoded-operations-v1",
+  "producer_version": "na_pipeline.frontend.encoded/0.1.0",
+  "provenance": {
+    "owner": "R2",
+    "task_id": "T203",
+    "kb_revision": "kb-0005"
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "operations": {
+    "prepare": {
+      "name": "prepare",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "block"
+      ],
+      "parameter_values": {
+        "state": [
+          "0",
+          "+"
+        ]
+      },
+      "result_slots": [
+        "x0",
+        "x1",
+        "x2",
+        "x3",
+        "z0",
+        "z1",
+        "z2",
+        "z3"
+      ],
+      "pre_lifecycle": [
+        "unprepared",
+        "measured"
+      ],
+      "post_lifecycle": "live",
+      "logical_effect": "destroy_previous_information_and_encode",
+      "classical_condition_supported": false,
+      "repeat_supported": false,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    },
+    "syndrome_round": {
+      "name": "syndrome_round",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "block"
+      ],
+      "parameter_values": {},
+      "result_slots": [
+        "x0",
+        "x1",
+        "x2",
+        "x3",
+        "z0",
+        "z1",
+        "z2",
+        "z3"
+      ],
+      "pre_lifecycle": [
+        "live"
+      ],
+      "post_lifecycle": "live",
+      "logical_effect": "preserve_data_extract_eight_checks",
+      "classical_condition_supported": false,
+      "repeat_supported": true,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    },
+    "logical_cx": {
+      "name": "logical_cx",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "control",
+        "target"
+      ],
+      "parameter_values": {},
+      "result_slots": [],
+      "pre_lifecycle": [
+        "live"
+      ],
+      "post_lifecycle": "live",
+      "logical_effect": "CX_control_to_target",
+      "classical_condition_supported": true,
+      "repeat_supported": false,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    },
+    "logical_cz": {
+      "name": "logical_cz",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "left",
+        "right"
+      ],
+      "parameter_values": {},
+      "result_slots": [],
+      "pre_lifecycle": [
+        "live"
+      ],
+      "post_lifecycle": "live",
+      "logical_effect": "CZ_symmetric",
+      "classical_condition_supported": true,
+      "repeat_supported": false,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    },
+    "measure": {
+      "name": "measure",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "block"
+      ],
+      "parameter_values": {
+        "basis": [
+          "Z",
+          "X"
+        ]
+      },
+      "result_slots": [
+        "value"
+      ],
+      "pre_lifecycle": [
+        "live"
+      ],
+      "post_lifecycle": "measured",
+      "logical_effect": "destructive_logical_observation_preserve_carriers",
+      "classical_condition_supported": false,
+      "repeat_supported": false,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    },
+    "reset": {
+      "name": "reset",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "block"
+      ],
+      "parameter_values": {},
+      "result_slots": [],
+      "pre_lifecycle": [
+        "live",
+        "measured",
+        "unprepared"
+      ],
+      "post_lifecycle": "unprepared",
+      "logical_effect": "destroy_encoded_information_preserve_carriers",
+      "classical_condition_supported": false,
+      "repeat_supported": false,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    },
+    "release": {
+      "name": "release",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "block"
+      ],
+      "parameter_values": {},
+      "result_slots": [],
+      "pre_lifecycle": [
+        "measured",
+        "unprepared"
+      ],
+      "post_lifecycle": "released",
+      "logical_effect": "release_binding_no_implicit_reset_or_atom_creation",
+      "classical_condition_supported": false,
+      "repeat_supported": false,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    },
+    "logical_x": {
+      "name": "logical_x",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "block"
+      ],
+      "parameter_values": {},
+      "result_slots": [],
+      "pre_lifecycle": [
+        "live"
+      ],
+      "post_lifecycle": "live",
+      "logical_effect": "X",
+      "classical_condition_supported": true,
+      "repeat_supported": false,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    },
+    "logical_z": {
+      "name": "logical_z",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "block"
+      ],
+      "parameter_values": {},
+      "result_slots": [],
+      "pre_lifecycle": [
+        "live"
+      ],
+      "post_lifecycle": "live",
+      "logical_effect": "Z",
+      "classical_condition_supported": true,
+      "repeat_supported": false,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    },
+    "logical_h": {
+      "name": "logical_h",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "block"
+      ],
+      "parameter_values": {},
+      "result_slots": [],
+      "pre_lifecycle": [
+        "live"
+      ],
+      "post_lifecycle": "live",
+      "logical_effect": "H",
+      "classical_condition_supported": true,
+      "repeat_supported": false,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    },
+    "logical_s": {
+      "name": "logical_s",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "block"
+      ],
+      "parameter_values": {},
+      "result_slots": [],
+      "pre_lifecycle": [
+        "live"
+      ],
+      "post_lifecycle": "live",
+      "logical_effect": "S",
+      "classical_condition_supported": true,
+      "repeat_supported": false,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    },
+    "logical_sdg": {
+      "name": "logical_sdg",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "block"
+      ],
+      "parameter_values": {},
+      "result_slots": [],
+      "pre_lifecycle": [
+        "live"
+      ],
+      "post_lifecycle": "live",
+      "logical_effect": "SDG",
+      "classical_condition_supported": true,
+      "repeat_supported": false,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    },
+    "logical_t": {
+      "name": "logical_t",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "block"
+      ],
+      "parameter_values": {},
+      "result_slots": [],
+      "pre_lifecycle": [
+        "live"
+      ],
+      "post_lifecycle": "live",
+      "logical_effect": "T",
+      "classical_condition_supported": true,
+      "repeat_supported": false,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [
+        "encoded_magic_resource_consumption_protocol"
+      ],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    },
+    "logical_tdg": {
+      "name": "logical_tdg",
+      "semantic_version": "1.0.0",
+      "operand_roles": [
+        "block"
+      ],
+      "parameter_values": {},
+      "result_slots": [],
+      "pre_lifecycle": [
+        "live"
+      ],
+      "post_lifecycle": "live",
+      "logical_effect": "TDG",
+      "classical_condition_supported": true,
+      "repeat_supported": false,
+      "semantic_defined": true,
+      "strategy_available": false,
+      "qualified": false,
+      "executable": false,
+      "frame_effect": "requires_explicit_strategy_and_runtime_frame_contract",
+      "resource_requirements": [
+        "encoded_magic_resource_consumption_protocol"
+      ],
+      "implementation_policy": "qualified_encoded_strategy_only_no_physical_gate_substitution"
+    }
+  },
+  "availability_scope": "semantic_registry_only_consume_explicit_strategy_snapshot"
+}

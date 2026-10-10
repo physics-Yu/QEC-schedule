@@ -1,0 +1,6696 @@
+{
+  "schema_version": "CommittedBatchRegression/0.1",
+  "provenance": {
+    "source_file": "artifacts/demos/joint-factory-accepted-20261008/protocols/T/e0-initialize.json.gz",
+    "source_sha256": "75cb28c963f0b59dc5af932934016f3b3f3ddfff782be371b2be3c15be68a899",
+    "module_id": "module:6",
+    "old_pulse_pairs": [
+      11,
+      1
+    ],
+    "old_pulse_start_us": [
+      861.0,
+      1092.0
+    ],
+    "scope": "selected source leaf and complete initial geometry; no cached runtime results"
+  },
+  "dag": {
+    "schema_version": "PhysicalDAG/0.1.0",
+    "artifact_id": "module:6",
+    "entry_mode": "preinitialized",
+    "operation": "MODULE_FRAGMENT",
+    "qubits": [
+      {
+        "id": "factory0:W3/d1",
+        "block_id": "factory0:W3",
+        "role": "data",
+        "aod_group": "magic"
+      },
+      {
+        "id": "factory0:W3/d2",
+        "block_id": "factory0:W3",
+        "role": "data",
+        "aod_group": "magic"
+      },
+      {
+        "id": "factory0:W2/d1",
+        "block_id": "factory0:W2",
+        "role": "data",
+        "aod_group": "magic"
+      },
+      {
+        "id": "factory0:W2/d2",
+        "block_id": "factory0:W2",
+        "role": "data",
+        "aod_group": "magic"
+      },
+      {
+        "id": "factory0:W1/d1",
+        "block_id": "factory0:W1",
+        "role": "data",
+        "aod_group": "magic"
+      },
+      {
+        "id": "factory0:W1/d2",
+        "block_id": "factory0:W1",
+        "role": "data",
+        "aod_group": "magic"
+      },
+      {
+        "id": "factory0:W0/d1",
+        "block_id": "factory0:W0",
+        "role": "data",
+        "aod_group": "magic"
+      },
+      {
+        "id": "factory0:W0/d2",
+        "block_id": "factory0:W0",
+        "role": "data",
+        "aod_group": "magic"
+      },
+      {
+        "id": "live_data/d4",
+        "block_id": "live_data",
+        "role": "data",
+        "aod_group": "data"
+      },
+      {
+        "id": "live_data/z1",
+        "block_id": "live_data",
+        "role": "syndrome",
+        "aod_group": "data"
+      },
+      {
+        "id": "live_data/d6",
+        "block_id": "live_data",
+        "role": "data",
+        "aod_group": "data"
+      },
+      {
+        "id": "live_data/z2",
+        "block_id": "live_data",
+        "role": "syndrome",
+        "aod_group": "data"
+      },
+      {
+        "id": "live_data/d8",
+        "block_id": "live_data",
+        "role": "data",
+        "aod_group": "data"
+      },
+      {
+        "id": "live_data/z3",
+        "block_id": "live_data",
+        "role": "syndrome",
+        "aod_group": "data"
+      },
+      {
+        "id": "live_data/x0",
+        "block_id": "live_data",
+        "role": "syndrome",
+        "aod_group": "data"
+      },
+      {
+        "id": "live_data/d3",
+        "block_id": "live_data",
+        "role": "data",
+        "aod_group": "data"
+      },
+      {
+        "id": "live_data/x1",
+        "block_id": "live_data",
+        "role": "syndrome",
+        "aod_group": "data"
+      },
+      {
+        "id": "live_data/d1",
+        "block_id": "live_data",
+        "role": "data",
+        "aod_group": "data"
+      },
+      {
+        "id": "live_data/x2",
+        "block_id": "live_data",
+        "role": "syndrome",
+        "aod_group": "data"
+      },
+      {
+        "id": "live_data/d7",
+        "block_id": "live_data",
+        "role": "data",
+        "aod_group": "data"
+      },
+      {
+        "id": "live_data/d0",
+        "block_id": "live_data",
+        "role": "data",
+        "aod_group": "data"
+      },
+      {
+        "id": "live_data/z0",
+        "block_id": "live_data",
+        "role": "syndrome",
+        "aod_group": "data"
+      },
+      {
+        "id": "factory0:W3/d5",
+        "block_id": "factory0:W3",
+        "role": "data",
+        "aod_group": "magic"
+      },
+      {
+        "id": "factory0:W3/z3",
+        "block_id": "factory0:W3",
+        "role": "syndrome",
+        "aod_group": "magic"
+      }
+    ],
+    "nodes": [
+      {
+        "id": "factory0-e0-T_request_0-T.initialize/r0/raw0_encode_3",
+        "kind": "gate",
+        "qubits": [
+          "factory0:W3/d1",
+          "factory0:W3/d2"
+        ],
+        "params": {
+          "name": "CX"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [],
+        "source_ids": [
+          "R3:T302:raw0_encode_3",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/raw0_encode_3"
+        ],
+        "condition": null,
+        "metadata": {
+          "phase": "raw_encoding",
+          "logical_block": "W3",
+          "encoder_implementation": "surface17_parallel_raw_encoder/3"
+        }
+      },
+      {
+        "id": "factory0-e0-T_request_0-T.initialize/r0/raw1_encode_3",
+        "kind": "gate",
+        "qubits": [
+          "factory0:W2/d1",
+          "factory0:W2/d2"
+        ],
+        "params": {
+          "name": "CX"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [],
+        "source_ids": [
+          "R3:T302:raw1_encode_3",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/raw1_encode_3"
+        ],
+        "condition": null,
+        "metadata": {
+          "phase": "raw_encoding",
+          "logical_block": "W2",
+          "encoder_implementation": "surface17_parallel_raw_encoder/3"
+        }
+      },
+      {
+        "id": "factory0-e0-T_request_0-T.initialize/r0/raw2_encode_3",
+        "kind": "gate",
+        "qubits": [
+          "factory0:W1/d1",
+          "factory0:W1/d2"
+        ],
+        "params": {
+          "name": "CX"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [],
+        "source_ids": [
+          "R3:T302:raw2_encode_3",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/raw2_encode_3"
+        ],
+        "condition": null,
+        "metadata": {
+          "phase": "raw_encoding",
+          "logical_block": "W1",
+          "encoder_implementation": "surface17_parallel_raw_encoder/3"
+        }
+      },
+      {
+        "id": "factory0-e0-T_request_0-T.initialize/r0/raw3_encode_3",
+        "kind": "gate",
+        "qubits": [
+          "factory0:W0/d1",
+          "factory0:W0/d2"
+        ],
+        "params": {
+          "name": "CX"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [],
+        "source_ids": [
+          "R3:T302:raw3_encode_3",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/raw3_encode_3"
+        ],
+        "condition": null,
+        "metadata": {
+          "phase": "raw_encoding",
+          "logical_block": "W0",
+          "encoder_implementation": "surface17_parallel_raw_encoder/3"
+        }
+      },
+      {
+        "id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z1_SW",
+        "kind": "gate",
+        "qubits": [
+          "live_data/d4",
+          "live_data/z1"
+        ],
+        "params": {
+          "name": "CX"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [],
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_z1_SW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z1_SW"
+        ],
+        "condition": null,
+        "metadata": {
+          "syndrome_layer": 1,
+          "corner": "SW",
+          "check_id": "z1",
+          "phase": "SE",
+          "logical_block": "D",
+          "se_round": 0,
+          "se_instance": "live_data_hold"
+        }
+      },
+      {
+        "id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z2_SW",
+        "kind": "gate",
+        "qubits": [
+          "live_data/d6",
+          "live_data/z2"
+        ],
+        "params": {
+          "name": "CX"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [],
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_z2_SW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z2_SW"
+        ],
+        "condition": null,
+        "metadata": {
+          "syndrome_layer": 1,
+          "corner": "SW",
+          "check_id": "z2",
+          "phase": "SE",
+          "logical_block": "D",
+          "se_round": 0,
+          "se_instance": "live_data_hold"
+        }
+      },
+      {
+        "id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z3_SW",
+        "kind": "gate",
+        "qubits": [
+          "live_data/d8",
+          "live_data/z3"
+        ],
+        "params": {
+          "name": "CX"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [],
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_z3_SW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z3_SW"
+        ],
+        "condition": null,
+        "metadata": {
+          "syndrome_layer": 1,
+          "corner": "SW",
+          "check_id": "z3",
+          "phase": "SE",
+          "logical_block": "D",
+          "se_round": 0,
+          "se_instance": "live_data_hold"
+        }
+      },
+      {
+        "id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x0_SW",
+        "kind": "gate",
+        "qubits": [
+          "live_data/x0",
+          "live_data/d3"
+        ],
+        "params": {
+          "name": "CX"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [],
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_x0_SW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x0_SW"
+        ],
+        "condition": null,
+        "metadata": {
+          "syndrome_layer": 2,
+          "corner": "SW",
+          "check_id": "x0",
+          "phase": "SE",
+          "logical_block": "D",
+          "se_round": 0,
+          "se_instance": "live_data_hold"
+        }
+      },
+      {
+        "id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x1_SW",
+        "kind": "gate",
+        "qubits": [
+          "live_data/x1",
+          "live_data/d1"
+        ],
+        "params": {
+          "name": "CX"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [],
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_x1_SW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x1_SW"
+        ],
+        "condition": null,
+        "metadata": {
+          "syndrome_layer": 2,
+          "corner": "SW",
+          "check_id": "x1",
+          "phase": "SE",
+          "logical_block": "D",
+          "se_round": 0,
+          "se_instance": "live_data_hold"
+        }
+      },
+      {
+        "id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x2_SW",
+        "kind": "gate",
+        "qubits": [
+          "live_data/x2",
+          "live_data/d7"
+        ],
+        "params": {
+          "name": "CX"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [],
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_x2_SW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x2_SW"
+        ],
+        "condition": null,
+        "metadata": {
+          "syndrome_layer": 2,
+          "corner": "SW",
+          "check_id": "x2",
+          "phase": "SE",
+          "logical_block": "D",
+          "se_round": 0,
+          "se_instance": "live_data_hold"
+        }
+      },
+      {
+        "id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z0_NE",
+        "kind": "gate",
+        "qubits": [
+          "live_data/d0",
+          "live_data/z0"
+        ],
+        "params": {
+          "name": "CX"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [],
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_z0_NE",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z0_NE"
+        ],
+        "condition": null,
+        "metadata": {
+          "syndrome_layer": 2,
+          "corner": "NE",
+          "check_id": "z0",
+          "phase": "SE",
+          "logical_block": "D",
+          "se_round": 0,
+          "se_instance": "live_data_hold"
+        }
+      },
+      {
+        "id": "factory0-e0-T_request_0-T.initialize/r0/raw0_qec_r0_cx_z3_NW",
+        "kind": "gate",
+        "qubits": [
+          "factory0:W3/d5",
+          "factory0:W3/z3"
+        ],
+        "params": {
+          "name": "CX"
+        },
+        "reads": [],
+        "writes": [],
+        "after": [],
+        "source_ids": [
+          "R3:T302:raw0_qec_r0_cx_z3_NW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/raw0_qec_r0_cx_z3_NW"
+        ],
+        "condition": null,
+        "metadata": {
+          "syndrome_layer": 0,
+          "corner": "NW",
+          "check_id": "z3",
+          "phase": "SE",
+          "logical_block": "W3",
+          "se_round": 0,
+          "se_instance": "raw0_qec"
+        }
+      }
+    ],
+    "edges": [],
+    "roots": [
+      "factory0-e0-T_request_0-T.initialize/r0/raw0_encode_3",
+      "factory0-e0-T_request_0-T.initialize/r0/raw1_encode_3",
+      "factory0-e0-T_request_0-T.initialize/r0/raw2_encode_3",
+      "factory0-e0-T_request_0-T.initialize/r0/raw3_encode_3",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z1_SW",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z2_SW",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z3_SW",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x0_SW",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x1_SW",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x2_SW",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z0_NE",
+      "factory0-e0-T_request_0-T.initialize/r0/raw0_qec_r0_cx_z3_NW"
+    ],
+    "terminals": [
+      "factory0-e0-T_request_0-T.initialize/r0/raw0_encode_3",
+      "factory0-e0-T_request_0-T.initialize/r0/raw1_encode_3",
+      "factory0-e0-T_request_0-T.initialize/r0/raw2_encode_3",
+      "factory0-e0-T_request_0-T.initialize/r0/raw3_encode_3",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z1_SW",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z2_SW",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z3_SW",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x0_SW",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x1_SW",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x2_SW",
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z0_NE",
+      "factory0-e0-T_request_0-T.initialize/r0/raw0_qec_r0_cx_z3_NW"
+    ],
+    "groups": [],
+    "external_reads": [],
+    "execution_guard": null,
+    "result_producers": {},
+    "result_types": {},
+    "source_map": {
+      "factory0-e0-T_request_0-T.initialize/r0/raw0_encode_3": {
+        "physical_source_op_id": "factory0-e0-T_request_0-T.initialize/r0/raw0_encode_3",
+        "source_ids": [
+          "R3:T302:raw0_encode_3",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/raw0_encode_3"
+        ]
+      },
+      "factory0-e0-T_request_0-T.initialize/r0/raw1_encode_3": {
+        "physical_source_op_id": "factory0-e0-T_request_0-T.initialize/r0/raw1_encode_3",
+        "source_ids": [
+          "R3:T302:raw1_encode_3",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/raw1_encode_3"
+        ]
+      },
+      "factory0-e0-T_request_0-T.initialize/r0/raw2_encode_3": {
+        "physical_source_op_id": "factory0-e0-T_request_0-T.initialize/r0/raw2_encode_3",
+        "source_ids": [
+          "R3:T302:raw2_encode_3",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/raw2_encode_3"
+        ]
+      },
+      "factory0-e0-T_request_0-T.initialize/r0/raw3_encode_3": {
+        "physical_source_op_id": "factory0-e0-T_request_0-T.initialize/r0/raw3_encode_3",
+        "source_ids": [
+          "R3:T302:raw3_encode_3",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/raw3_encode_3"
+        ]
+      },
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z1_SW": {
+        "physical_source_op_id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z1_SW",
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_z1_SW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z1_SW"
+        ]
+      },
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z2_SW": {
+        "physical_source_op_id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z2_SW",
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_z2_SW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z2_SW"
+        ]
+      },
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z3_SW": {
+        "physical_source_op_id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z3_SW",
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_z3_SW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z3_SW"
+        ]
+      },
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x0_SW": {
+        "physical_source_op_id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x0_SW",
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_x0_SW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x0_SW"
+        ]
+      },
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x1_SW": {
+        "physical_source_op_id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x1_SW",
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_x1_SW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x1_SW"
+        ]
+      },
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x2_SW": {
+        "physical_source_op_id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x2_SW",
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_x2_SW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_x2_SW"
+        ]
+      },
+      "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z0_NE": {
+        "physical_source_op_id": "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z0_NE",
+        "source_ids": [
+          "R3:T302:live_data_hold_r0_cx_z0_NE",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/live_data_hold_r0_cx_z0_NE"
+        ]
+      },
+      "factory0-e0-T_request_0-T.initialize/r0/raw0_qec_r0_cx_z3_NW": {
+        "physical_source_op_id": "factory0-e0-T_request_0-T.initialize/r0/raw0_qec_r0_cx_z3_NW",
+        "source_ids": [
+          "R3:T302:raw0_qec_r0_cx_z3_NW",
+          "Litinski-v3-Eq1",
+          "T302:initialize",
+          "factory0-e0-T_request_0-T",
+          "factory0-e0-T_request_0-T.initialize",
+          "factory.initialize.v1",
+          "factory0-e0-T_request_0-T.initialize/r0/raw0_qec_r0_cx_z3_NW"
+        ]
+      }
+    },
+    "provenance": {
+      "owner": "R0",
+      "fixture": false
+    },
+    "execution_kind": "compile_plan",
+    "quantum_state_simulated": false,
+    "hardware_executed": false,
+    "loss_enabled": false
+  },
+  "world": {
+    "atoms": [
+      {
+        "atom_id": "atom:factory0:M/d0",
+        "qubit_id": "factory0:M/d0",
+        "patch_id": "factory0:M",
+        "local_id": "d0",
+        "position_um": [
+          520.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/d0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:M"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/d1",
+        "qubit_id": "factory0:M/d1",
+        "patch_id": "factory0:M",
+        "local_id": "d1",
+        "position_um": [
+          540.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/d1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:M"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/d2",
+        "qubit_id": "factory0:M/d2",
+        "patch_id": "factory0:M",
+        "local_id": "d2",
+        "position_um": [
+          560.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/d2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:M"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/d3",
+        "qubit_id": "factory0:M/d3",
+        "patch_id": "factory0:M",
+        "local_id": "d3",
+        "position_um": [
+          520.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/d3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:M"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/d4",
+        "qubit_id": "factory0:M/d4",
+        "patch_id": "factory0:M",
+        "local_id": "d4",
+        "position_um": [
+          540.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/d4",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:M"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/d5",
+        "qubit_id": "factory0:M/d5",
+        "patch_id": "factory0:M",
+        "local_id": "d5",
+        "position_um": [
+          560.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/d5",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:M"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/d6",
+        "qubit_id": "factory0:M/d6",
+        "patch_id": "factory0:M",
+        "local_id": "d6",
+        "position_um": [
+          520.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/d6",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:M"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/d7",
+        "qubit_id": "factory0:M/d7",
+        "patch_id": "factory0:M",
+        "local_id": "d7",
+        "position_um": [
+          540.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/d7",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:M"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/d8",
+        "qubit_id": "factory0:M/d8",
+        "patch_id": "factory0:M",
+        "local_id": "d8",
+        "position_um": [
+          560.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/d8",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:M"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/x0",
+        "qubit_id": "factory0:M/x0",
+        "patch_id": "factory0:M",
+        "local_id": "x0",
+        "position_um": [
+          530.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/x0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/x1",
+        "qubit_id": "factory0:M/x1",
+        "patch_id": "factory0:M",
+        "local_id": "x1",
+        "position_um": [
+          550.0,
+          910.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/x1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/x2",
+        "qubit_id": "factory0:M/x2",
+        "patch_id": "factory0:M",
+        "local_id": "x2",
+        "position_um": [
+          550.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/x2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/x3",
+        "qubit_id": "factory0:M/x3",
+        "patch_id": "factory0:M",
+        "local_id": "x3",
+        "position_um": [
+          530.0,
+          970.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/x3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/z0",
+        "qubit_id": "factory0:M/z0",
+        "patch_id": "factory0:M",
+        "local_id": "z0",
+        "position_um": [
+          510.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/z0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/z1",
+        "qubit_id": "factory0:M/z1",
+        "patch_id": "factory0:M",
+        "local_id": "z1",
+        "position_um": [
+          550.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/z1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/z2",
+        "qubit_id": "factory0:M/z2",
+        "patch_id": "factory0:M",
+        "local_id": "z2",
+        "position_um": [
+          530.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/z2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:M/z3",
+        "qubit_id": "factory0:M/z3",
+        "patch_id": "factory0:M",
+        "local_id": "z3",
+        "position_um": [
+          570.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:M/z3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:M",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/d0",
+        "qubit_id": "factory0:W0/d0",
+        "patch_id": "factory0:W0",
+        "local_id": "d0",
+        "position_um": [
+          20.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/d0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W0"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/d1",
+        "qubit_id": "factory0:W0/d1",
+        "patch_id": "factory0:W0",
+        "local_id": "d1",
+        "position_um": [
+          40.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/d1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W0"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/d2",
+        "qubit_id": "factory0:W0/d2",
+        "patch_id": "factory0:W0",
+        "local_id": "d2",
+        "position_um": [
+          60.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/d2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W0"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/d3",
+        "qubit_id": "factory0:W0/d3",
+        "patch_id": "factory0:W0",
+        "local_id": "d3",
+        "position_um": [
+          20.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/d3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W0"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/d4",
+        "qubit_id": "factory0:W0/d4",
+        "patch_id": "factory0:W0",
+        "local_id": "d4",
+        "position_um": [
+          40.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/d4",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W0"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/d5",
+        "qubit_id": "factory0:W0/d5",
+        "patch_id": "factory0:W0",
+        "local_id": "d5",
+        "position_um": [
+          60.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/d5",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W0"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/d6",
+        "qubit_id": "factory0:W0/d6",
+        "patch_id": "factory0:W0",
+        "local_id": "d6",
+        "position_um": [
+          20.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/d6",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W0"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/d7",
+        "qubit_id": "factory0:W0/d7",
+        "patch_id": "factory0:W0",
+        "local_id": "d7",
+        "position_um": [
+          40.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/d7",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W0"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/d8",
+        "qubit_id": "factory0:W0/d8",
+        "patch_id": "factory0:W0",
+        "local_id": "d8",
+        "position_um": [
+          60.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/d8",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W0"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/x0",
+        "qubit_id": "factory0:W0/x0",
+        "patch_id": "factory0:W0",
+        "local_id": "x0",
+        "position_um": [
+          30.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/x0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/x1",
+        "qubit_id": "factory0:W0/x1",
+        "patch_id": "factory0:W0",
+        "local_id": "x1",
+        "position_um": [
+          50.0,
+          910.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/x1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/x2",
+        "qubit_id": "factory0:W0/x2",
+        "patch_id": "factory0:W0",
+        "local_id": "x2",
+        "position_um": [
+          50.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/x2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/x3",
+        "qubit_id": "factory0:W0/x3",
+        "patch_id": "factory0:W0",
+        "local_id": "x3",
+        "position_um": [
+          30.0,
+          970.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/x3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/z0",
+        "qubit_id": "factory0:W0/z0",
+        "patch_id": "factory0:W0",
+        "local_id": "z0",
+        "position_um": [
+          10.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/z0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/z1",
+        "qubit_id": "factory0:W0/z1",
+        "patch_id": "factory0:W0",
+        "local_id": "z1",
+        "position_um": [
+          50.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/z1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/z2",
+        "qubit_id": "factory0:W0/z2",
+        "patch_id": "factory0:W0",
+        "local_id": "z2",
+        "position_um": [
+          30.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/z2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W0/z3",
+        "qubit_id": "factory0:W0/z3",
+        "patch_id": "factory0:W0",
+        "local_id": "z3",
+        "position_um": [
+          70.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W0/z3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W0",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/d0",
+        "qubit_id": "factory0:W1/d0",
+        "patch_id": "factory0:W1",
+        "local_id": "d0",
+        "position_um": [
+          120.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/d0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W1"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/d1",
+        "qubit_id": "factory0:W1/d1",
+        "patch_id": "factory0:W1",
+        "local_id": "d1",
+        "position_um": [
+          140.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/d1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W1"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/d2",
+        "qubit_id": "factory0:W1/d2",
+        "patch_id": "factory0:W1",
+        "local_id": "d2",
+        "position_um": [
+          160.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/d2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W1"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/d3",
+        "qubit_id": "factory0:W1/d3",
+        "patch_id": "factory0:W1",
+        "local_id": "d3",
+        "position_um": [
+          120.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/d3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W1"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/d4",
+        "qubit_id": "factory0:W1/d4",
+        "patch_id": "factory0:W1",
+        "local_id": "d4",
+        "position_um": [
+          140.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/d4",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W1"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/d5",
+        "qubit_id": "factory0:W1/d5",
+        "patch_id": "factory0:W1",
+        "local_id": "d5",
+        "position_um": [
+          160.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/d5",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W1"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/d6",
+        "qubit_id": "factory0:W1/d6",
+        "patch_id": "factory0:W1",
+        "local_id": "d6",
+        "position_um": [
+          120.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/d6",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W1"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/d7",
+        "qubit_id": "factory0:W1/d7",
+        "patch_id": "factory0:W1",
+        "local_id": "d7",
+        "position_um": [
+          140.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/d7",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W1"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/d8",
+        "qubit_id": "factory0:W1/d8",
+        "patch_id": "factory0:W1",
+        "local_id": "d8",
+        "position_um": [
+          160.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/d8",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W1"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/x0",
+        "qubit_id": "factory0:W1/x0",
+        "patch_id": "factory0:W1",
+        "local_id": "x0",
+        "position_um": [
+          130.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/x0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/x1",
+        "qubit_id": "factory0:W1/x1",
+        "patch_id": "factory0:W1",
+        "local_id": "x1",
+        "position_um": [
+          150.0,
+          910.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/x1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/x2",
+        "qubit_id": "factory0:W1/x2",
+        "patch_id": "factory0:W1",
+        "local_id": "x2",
+        "position_um": [
+          150.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/x2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/x3",
+        "qubit_id": "factory0:W1/x3",
+        "patch_id": "factory0:W1",
+        "local_id": "x3",
+        "position_um": [
+          130.0,
+          970.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/x3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/z0",
+        "qubit_id": "factory0:W1/z0",
+        "patch_id": "factory0:W1",
+        "local_id": "z0",
+        "position_um": [
+          110.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/z0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/z1",
+        "qubit_id": "factory0:W1/z1",
+        "patch_id": "factory0:W1",
+        "local_id": "z1",
+        "position_um": [
+          150.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/z1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/z2",
+        "qubit_id": "factory0:W1/z2",
+        "patch_id": "factory0:W1",
+        "local_id": "z2",
+        "position_um": [
+          130.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/z2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W1/z3",
+        "qubit_id": "factory0:W1/z3",
+        "patch_id": "factory0:W1",
+        "local_id": "z3",
+        "position_um": [
+          170.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W1/z3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W1",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/d0",
+        "qubit_id": "factory0:W2/d0",
+        "patch_id": "factory0:W2",
+        "local_id": "d0",
+        "position_um": [
+          220.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/d0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W2"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/d1",
+        "qubit_id": "factory0:W2/d1",
+        "patch_id": "factory0:W2",
+        "local_id": "d1",
+        "position_um": [
+          240.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/d1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W2"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/d2",
+        "qubit_id": "factory0:W2/d2",
+        "patch_id": "factory0:W2",
+        "local_id": "d2",
+        "position_um": [
+          260.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/d2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W2"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/d3",
+        "qubit_id": "factory0:W2/d3",
+        "patch_id": "factory0:W2",
+        "local_id": "d3",
+        "position_um": [
+          220.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/d3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W2"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/d4",
+        "qubit_id": "factory0:W2/d4",
+        "patch_id": "factory0:W2",
+        "local_id": "d4",
+        "position_um": [
+          240.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/d4",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W2"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/d5",
+        "qubit_id": "factory0:W2/d5",
+        "patch_id": "factory0:W2",
+        "local_id": "d5",
+        "position_um": [
+          260.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/d5",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W2"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/d6",
+        "qubit_id": "factory0:W2/d6",
+        "patch_id": "factory0:W2",
+        "local_id": "d6",
+        "position_um": [
+          220.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/d6",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W2"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/d7",
+        "qubit_id": "factory0:W2/d7",
+        "patch_id": "factory0:W2",
+        "local_id": "d7",
+        "position_um": [
+          240.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/d7",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W2"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/d8",
+        "qubit_id": "factory0:W2/d8",
+        "patch_id": "factory0:W2",
+        "local_id": "d8",
+        "position_um": [
+          260.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/d8",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W2"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/x0",
+        "qubit_id": "factory0:W2/x0",
+        "patch_id": "factory0:W2",
+        "local_id": "x0",
+        "position_um": [
+          230.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/x0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/x1",
+        "qubit_id": "factory0:W2/x1",
+        "patch_id": "factory0:W2",
+        "local_id": "x1",
+        "position_um": [
+          250.0,
+          910.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/x1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/x2",
+        "qubit_id": "factory0:W2/x2",
+        "patch_id": "factory0:W2",
+        "local_id": "x2",
+        "position_um": [
+          250.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/x2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/x3",
+        "qubit_id": "factory0:W2/x3",
+        "patch_id": "factory0:W2",
+        "local_id": "x3",
+        "position_um": [
+          230.0,
+          970.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/x3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/z0",
+        "qubit_id": "factory0:W2/z0",
+        "patch_id": "factory0:W2",
+        "local_id": "z0",
+        "position_um": [
+          210.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/z0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/z1",
+        "qubit_id": "factory0:W2/z1",
+        "patch_id": "factory0:W2",
+        "local_id": "z1",
+        "position_um": [
+          250.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/z1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/z2",
+        "qubit_id": "factory0:W2/z2",
+        "patch_id": "factory0:W2",
+        "local_id": "z2",
+        "position_um": [
+          230.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/z2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W2/z3",
+        "qubit_id": "factory0:W2/z3",
+        "patch_id": "factory0:W2",
+        "local_id": "z3",
+        "position_um": [
+          270.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W2/z3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W2",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/d0",
+        "qubit_id": "factory0:W3/d0",
+        "patch_id": "factory0:W3",
+        "local_id": "d0",
+        "position_um": [
+          320.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/d0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W3"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/d1",
+        "qubit_id": "factory0:W3/d1",
+        "patch_id": "factory0:W3",
+        "local_id": "d1",
+        "position_um": [
+          340.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/d1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W3"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/d2",
+        "qubit_id": "factory0:W3/d2",
+        "patch_id": "factory0:W3",
+        "local_id": "d2",
+        "position_um": [
+          360.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/d2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W3"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/d3",
+        "qubit_id": "factory0:W3/d3",
+        "patch_id": "factory0:W3",
+        "local_id": "d3",
+        "position_um": [
+          320.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/d3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W3"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/d4",
+        "qubit_id": "factory0:W3/d4",
+        "patch_id": "factory0:W3",
+        "local_id": "d4",
+        "position_um": [
+          340.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/d4",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W3"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/d5",
+        "qubit_id": "factory0:W3/d5",
+        "patch_id": "factory0:W3",
+        "local_id": "d5",
+        "position_um": [
+          360.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/d5",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W3"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/d6",
+        "qubit_id": "factory0:W3/d6",
+        "patch_id": "factory0:W3",
+        "local_id": "d6",
+        "position_um": [
+          320.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/d6",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W3"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/d7",
+        "qubit_id": "factory0:W3/d7",
+        "patch_id": "factory0:W3",
+        "local_id": "d7",
+        "position_um": [
+          340.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/d7",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W3"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/d8",
+        "qubit_id": "factory0:W3/d8",
+        "patch_id": "factory0:W3",
+        "local_id": "d8",
+        "position_um": [
+          360.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/d8",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W3"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/x0",
+        "qubit_id": "factory0:W3/x0",
+        "patch_id": "factory0:W3",
+        "local_id": "x0",
+        "position_um": [
+          330.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/x0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/x1",
+        "qubit_id": "factory0:W3/x1",
+        "patch_id": "factory0:W3",
+        "local_id": "x1",
+        "position_um": [
+          350.0,
+          910.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/x1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/x2",
+        "qubit_id": "factory0:W3/x2",
+        "patch_id": "factory0:W3",
+        "local_id": "x2",
+        "position_um": [
+          350.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/x2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/x3",
+        "qubit_id": "factory0:W3/x3",
+        "patch_id": "factory0:W3",
+        "local_id": "x3",
+        "position_um": [
+          330.0,
+          970.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/x3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/z0",
+        "qubit_id": "factory0:W3/z0",
+        "patch_id": "factory0:W3",
+        "local_id": "z0",
+        "position_um": [
+          310.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/z0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/z1",
+        "qubit_id": "factory0:W3/z1",
+        "patch_id": "factory0:W3",
+        "local_id": "z1",
+        "position_um": [
+          350.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/z1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/z2",
+        "qubit_id": "factory0:W3/z2",
+        "patch_id": "factory0:W3",
+        "local_id": "z2",
+        "position_um": [
+          330.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/z2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W3/z3",
+        "qubit_id": "factory0:W3/z3",
+        "patch_id": "factory0:W3",
+        "local_id": "z3",
+        "position_um": [
+          370.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W3/z3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W3",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/d0",
+        "qubit_id": "factory0:W4/d0",
+        "patch_id": "factory0:W4",
+        "local_id": "d0",
+        "position_um": [
+          420.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/d0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W4"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/d1",
+        "qubit_id": "factory0:W4/d1",
+        "patch_id": "factory0:W4",
+        "local_id": "d1",
+        "position_um": [
+          440.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/d1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W4"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/d2",
+        "qubit_id": "factory0:W4/d2",
+        "patch_id": "factory0:W4",
+        "local_id": "d2",
+        "position_um": [
+          460.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/d2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W4"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/d3",
+        "qubit_id": "factory0:W4/d3",
+        "patch_id": "factory0:W4",
+        "local_id": "d3",
+        "position_um": [
+          420.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/d3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W4"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/d4",
+        "qubit_id": "factory0:W4/d4",
+        "patch_id": "factory0:W4",
+        "local_id": "d4",
+        "position_um": [
+          440.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/d4",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W4"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/d5",
+        "qubit_id": "factory0:W4/d5",
+        "patch_id": "factory0:W4",
+        "local_id": "d5",
+        "position_um": [
+          460.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/d5",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W4"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/d6",
+        "qubit_id": "factory0:W4/d6",
+        "patch_id": "factory0:W4",
+        "local_id": "d6",
+        "position_um": [
+          420.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/d6",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W4"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/d7",
+        "qubit_id": "factory0:W4/d7",
+        "patch_id": "factory0:W4",
+        "local_id": "d7",
+        "position_um": [
+          440.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/d7",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W4"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/d8",
+        "qubit_id": "factory0:W4/d8",
+        "patch_id": "factory0:W4",
+        "local_id": "d8",
+        "position_um": [
+          460.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/d8",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:W4"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/x0",
+        "qubit_id": "factory0:W4/x0",
+        "patch_id": "factory0:W4",
+        "local_id": "x0",
+        "position_um": [
+          430.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/x0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/x1",
+        "qubit_id": "factory0:W4/x1",
+        "patch_id": "factory0:W4",
+        "local_id": "x1",
+        "position_um": [
+          450.0,
+          910.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/x1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/x2",
+        "qubit_id": "factory0:W4/x2",
+        "patch_id": "factory0:W4",
+        "local_id": "x2",
+        "position_um": [
+          450.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/x2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/x3",
+        "qubit_id": "factory0:W4/x3",
+        "patch_id": "factory0:W4",
+        "local_id": "x3",
+        "position_um": [
+          430.0,
+          970.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/x3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/z0",
+        "qubit_id": "factory0:W4/z0",
+        "patch_id": "factory0:W4",
+        "local_id": "z0",
+        "position_um": [
+          410.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/z0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/z1",
+        "qubit_id": "factory0:W4/z1",
+        "patch_id": "factory0:W4",
+        "local_id": "z1",
+        "position_um": [
+          450.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/z1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/z2",
+        "qubit_id": "factory0:W4/z2",
+        "patch_id": "factory0:W4",
+        "local_id": "z2",
+        "position_um": [
+          430.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/z2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:W4/z3",
+        "qubit_id": "factory0:W4/z3",
+        "patch_id": "factory0:W4",
+        "local_id": "z3",
+        "position_um": [
+          470.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:W4/z3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:W4",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/d0",
+        "qubit_id": "factory0:Y/d0",
+        "patch_id": "factory0:Y",
+        "local_id": "d0",
+        "position_um": [
+          620.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/d0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:Y"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/d1",
+        "qubit_id": "factory0:Y/d1",
+        "patch_id": "factory0:Y",
+        "local_id": "d1",
+        "position_um": [
+          640.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/d1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:Y"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/d2",
+        "qubit_id": "factory0:Y/d2",
+        "patch_id": "factory0:Y",
+        "local_id": "d2",
+        "position_um": [
+          660.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/d2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:Y"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/d3",
+        "qubit_id": "factory0:Y/d3",
+        "patch_id": "factory0:Y",
+        "local_id": "d3",
+        "position_um": [
+          620.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/d3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:Y"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/d4",
+        "qubit_id": "factory0:Y/d4",
+        "patch_id": "factory0:Y",
+        "local_id": "d4",
+        "position_um": [
+          640.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/d4",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:Y"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/d5",
+        "qubit_id": "factory0:Y/d5",
+        "patch_id": "factory0:Y",
+        "local_id": "d5",
+        "position_um": [
+          660.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/d5",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:Y"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/d6",
+        "qubit_id": "factory0:Y/d6",
+        "patch_id": "factory0:Y",
+        "local_id": "d6",
+        "position_um": [
+          620.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/d6",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:Y"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/d7",
+        "qubit_id": "factory0:Y/d7",
+        "patch_id": "factory0:Y",
+        "local_id": "d7",
+        "position_um": [
+          640.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/d7",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:Y"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/d8",
+        "qubit_id": "factory0:Y/d8",
+        "patch_id": "factory0:Y",
+        "local_id": "d8",
+        "position_um": [
+          660.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/d8",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "factory0:Y"
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/x0",
+        "qubit_id": "factory0:Y/x0",
+        "patch_id": "factory0:Y",
+        "local_id": "x0",
+        "position_um": [
+          630.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/x0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/x1",
+        "qubit_id": "factory0:Y/x1",
+        "patch_id": "factory0:Y",
+        "local_id": "x1",
+        "position_um": [
+          650.0,
+          910.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/x1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/x2",
+        "qubit_id": "factory0:Y/x2",
+        "patch_id": "factory0:Y",
+        "local_id": "x2",
+        "position_um": [
+          650.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/x2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/x3",
+        "qubit_id": "factory0:Y/x3",
+        "patch_id": "factory0:Y",
+        "local_id": "x3",
+        "position_um": [
+          630.0,
+          970.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/x3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/z0",
+        "qubit_id": "factory0:Y/z0",
+        "patch_id": "factory0:Y",
+        "local_id": "z0",
+        "position_um": [
+          610.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/z0",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/z1",
+        "qubit_id": "factory0:Y/z1",
+        "patch_id": "factory0:Y",
+        "local_id": "z1",
+        "position_um": [
+          650.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/z1",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/z2",
+        "qubit_id": "factory0:Y/z2",
+        "patch_id": "factory0:Y",
+        "local_id": "z2",
+        "position_um": [
+          630.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/z2",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:Y/z3",
+        "qubit_id": "factory0:Y/z3",
+        "patch_id": "factory0:Y",
+        "local_id": "z3",
+        "position_um": [
+          670.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:factory0:Y/z3",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "factory",
+        "pool_id": "component",
+        "resource_slot_id": "factory0:Y",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/d0",
+        "qubit_id": "live_data/d0",
+        "patch_id": "live_data",
+        "local_id": "d0",
+        "position_um": [
+          720.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/d0",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "live_data"
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/d1",
+        "qubit_id": "live_data/d1",
+        "patch_id": "live_data",
+        "local_id": "d1",
+        "position_um": [
+          740.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/d1",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "live_data"
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/d2",
+        "qubit_id": "live_data/d2",
+        "patch_id": "live_data",
+        "local_id": "d2",
+        "position_um": [
+          760.0,
+          920.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/d2",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "live_data"
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/d3",
+        "qubit_id": "live_data/d3",
+        "patch_id": "live_data",
+        "local_id": "d3",
+        "position_um": [
+          720.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/d3",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "live_data"
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/d4",
+        "qubit_id": "live_data/d4",
+        "patch_id": "live_data",
+        "local_id": "d4",
+        "position_um": [
+          740.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/d4",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "live_data"
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/d5",
+        "qubit_id": "live_data/d5",
+        "patch_id": "live_data",
+        "local_id": "d5",
+        "position_um": [
+          760.0,
+          940.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/d5",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "live_data"
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/d6",
+        "qubit_id": "live_data/d6",
+        "patch_id": "live_data",
+        "local_id": "d6",
+        "position_um": [
+          720.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/d6",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "live_data"
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/d7",
+        "qubit_id": "live_data/d7",
+        "patch_id": "live_data",
+        "local_id": "d7",
+        "position_um": [
+          740.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/d7",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "live_data"
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/d8",
+        "qubit_id": "live_data/d8",
+        "patch_id": "live_data",
+        "local_id": "d8",
+        "position_um": [
+          760.0,
+          960.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/d8",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "encoded_member",
+          "patch_id": "live_data"
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/x0",
+        "qubit_id": "live_data/x0",
+        "patch_id": "live_data",
+        "local_id": "x0",
+        "position_um": [
+          730.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/x0",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/x1",
+        "qubit_id": "live_data/x1",
+        "patch_id": "live_data",
+        "local_id": "x1",
+        "position_um": [
+          750.0,
+          910.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/x1",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/x2",
+        "qubit_id": "live_data/x2",
+        "patch_id": "live_data",
+        "local_id": "x2",
+        "position_um": [
+          750.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/x2",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/x3",
+        "qubit_id": "live_data/x3",
+        "patch_id": "live_data",
+        "local_id": "x3",
+        "position_um": [
+          730.0,
+          970.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/x3",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/z0",
+        "qubit_id": "live_data/z0",
+        "patch_id": "live_data",
+        "local_id": "z0",
+        "position_um": [
+          710.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/z0",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/z1",
+        "qubit_id": "live_data/z1",
+        "patch_id": "live_data",
+        "local_id": "z1",
+        "position_um": [
+          750.0,
+          930.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/z1",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/z2",
+        "qubit_id": "live_data/z2",
+        "patch_id": "live_data",
+        "local_id": "z2",
+        "position_um": [
+          730.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/z2",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:live_data/z3",
+        "qubit_id": "live_data/z3",
+        "patch_id": "live_data",
+        "local_id": "z3",
+        "position_um": [
+          770.0,
+          950.0
+        ],
+        "carrier": "SLM",
+        "trap_id": "slm:live_data/z3",
+        "aod_group": "data",
+        "row_id": null,
+        "column_id": null,
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "resource_role": "algorithm",
+        "pool_id": "component",
+        "resource_slot_id": "live_data",
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      },
+      {
+        "atom_id": "atom:factory0:join_probe",
+        "qubit_id": "factory0:join_probe",
+        "trap_id": "slm:factory0:join_probe",
+        "patch_id": null,
+        "local_id": null,
+        "position_um": [
+          800.0,
+          980.0
+        ],
+        "carrier": "SLM",
+        "aod_group": "magic",
+        "row_id": null,
+        "column_id": null,
+        "resource_role": "probe",
+        "pool_id": "component",
+        "resource_slot_id": "probe:factory0:join_probe",
+        "initial_state": {
+          "kind": "physical_basis",
+          "basis": "Z",
+          "value": 0
+        },
+        "reset_epoch": 0,
+        "measurement_count": 0,
+        "preparation_status": "unspecified"
+      }
+    ],
+    "slm_traps": [
+      {
+        "trap_id": "slm:factory0:M/d0",
+        "position_um": [
+          520.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/d0"
+      },
+      {
+        "trap_id": "slm:factory0:M/d1",
+        "position_um": [
+          540.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/d1"
+      },
+      {
+        "trap_id": "slm:factory0:M/d2",
+        "position_um": [
+          560.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/d2"
+      },
+      {
+        "trap_id": "slm:factory0:M/d3",
+        "position_um": [
+          520.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/d3"
+      },
+      {
+        "trap_id": "slm:factory0:M/d4",
+        "position_um": [
+          540.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/d4"
+      },
+      {
+        "trap_id": "slm:factory0:M/d5",
+        "position_um": [
+          560.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/d5"
+      },
+      {
+        "trap_id": "slm:factory0:M/d6",
+        "position_um": [
+          520.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/d6"
+      },
+      {
+        "trap_id": "slm:factory0:M/d7",
+        "position_um": [
+          540.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/d7"
+      },
+      {
+        "trap_id": "slm:factory0:M/d8",
+        "position_um": [
+          560.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/d8"
+      },
+      {
+        "trap_id": "slm:factory0:M/x0",
+        "position_um": [
+          530.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/x0"
+      },
+      {
+        "trap_id": "slm:factory0:M/x1",
+        "position_um": [
+          550.0,
+          910.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/x1"
+      },
+      {
+        "trap_id": "slm:factory0:M/x2",
+        "position_um": [
+          550.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/x2"
+      },
+      {
+        "trap_id": "slm:factory0:M/x3",
+        "position_um": [
+          530.0,
+          970.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/x3"
+      },
+      {
+        "trap_id": "slm:factory0:M/z0",
+        "position_um": [
+          510.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/z0"
+      },
+      {
+        "trap_id": "slm:factory0:M/z1",
+        "position_um": [
+          550.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/z1"
+      },
+      {
+        "trap_id": "slm:factory0:M/z2",
+        "position_um": [
+          530.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/z2"
+      },
+      {
+        "trap_id": "slm:factory0:M/z3",
+        "position_um": [
+          570.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:M/z3"
+      },
+      {
+        "trap_id": "slm:factory0:W0/d0",
+        "position_um": [
+          20.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/d0"
+      },
+      {
+        "trap_id": "slm:factory0:W0/d1",
+        "position_um": [
+          40.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/d1"
+      },
+      {
+        "trap_id": "slm:factory0:W0/d2",
+        "position_um": [
+          60.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/d2"
+      },
+      {
+        "trap_id": "slm:factory0:W0/d3",
+        "position_um": [
+          20.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/d3"
+      },
+      {
+        "trap_id": "slm:factory0:W0/d4",
+        "position_um": [
+          40.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/d4"
+      },
+      {
+        "trap_id": "slm:factory0:W0/d5",
+        "position_um": [
+          60.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/d5"
+      },
+      {
+        "trap_id": "slm:factory0:W0/d6",
+        "position_um": [
+          20.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/d6"
+      },
+      {
+        "trap_id": "slm:factory0:W0/d7",
+        "position_um": [
+          40.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/d7"
+      },
+      {
+        "trap_id": "slm:factory0:W0/d8",
+        "position_um": [
+          60.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/d8"
+      },
+      {
+        "trap_id": "slm:factory0:W0/x0",
+        "position_um": [
+          30.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/x0"
+      },
+      {
+        "trap_id": "slm:factory0:W0/x1",
+        "position_um": [
+          50.0,
+          910.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/x1"
+      },
+      {
+        "trap_id": "slm:factory0:W0/x2",
+        "position_um": [
+          50.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/x2"
+      },
+      {
+        "trap_id": "slm:factory0:W0/x3",
+        "position_um": [
+          30.0,
+          970.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/x3"
+      },
+      {
+        "trap_id": "slm:factory0:W0/z0",
+        "position_um": [
+          10.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/z0"
+      },
+      {
+        "trap_id": "slm:factory0:W0/z1",
+        "position_um": [
+          50.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/z1"
+      },
+      {
+        "trap_id": "slm:factory0:W0/z2",
+        "position_um": [
+          30.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/z2"
+      },
+      {
+        "trap_id": "slm:factory0:W0/z3",
+        "position_um": [
+          70.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W0/z3"
+      },
+      {
+        "trap_id": "slm:factory0:W1/d0",
+        "position_um": [
+          120.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/d0"
+      },
+      {
+        "trap_id": "slm:factory0:W1/d1",
+        "position_um": [
+          140.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/d1"
+      },
+      {
+        "trap_id": "slm:factory0:W1/d2",
+        "position_um": [
+          160.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/d2"
+      },
+      {
+        "trap_id": "slm:factory0:W1/d3",
+        "position_um": [
+          120.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/d3"
+      },
+      {
+        "trap_id": "slm:factory0:W1/d4",
+        "position_um": [
+          140.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/d4"
+      },
+      {
+        "trap_id": "slm:factory0:W1/d5",
+        "position_um": [
+          160.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/d5"
+      },
+      {
+        "trap_id": "slm:factory0:W1/d6",
+        "position_um": [
+          120.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/d6"
+      },
+      {
+        "trap_id": "slm:factory0:W1/d7",
+        "position_um": [
+          140.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/d7"
+      },
+      {
+        "trap_id": "slm:factory0:W1/d8",
+        "position_um": [
+          160.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/d8"
+      },
+      {
+        "trap_id": "slm:factory0:W1/x0",
+        "position_um": [
+          130.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/x0"
+      },
+      {
+        "trap_id": "slm:factory0:W1/x1",
+        "position_um": [
+          150.0,
+          910.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/x1"
+      },
+      {
+        "trap_id": "slm:factory0:W1/x2",
+        "position_um": [
+          150.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/x2"
+      },
+      {
+        "trap_id": "slm:factory0:W1/x3",
+        "position_um": [
+          130.0,
+          970.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/x3"
+      },
+      {
+        "trap_id": "slm:factory0:W1/z0",
+        "position_um": [
+          110.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/z0"
+      },
+      {
+        "trap_id": "slm:factory0:W1/z1",
+        "position_um": [
+          150.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/z1"
+      },
+      {
+        "trap_id": "slm:factory0:W1/z2",
+        "position_um": [
+          130.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/z2"
+      },
+      {
+        "trap_id": "slm:factory0:W1/z3",
+        "position_um": [
+          170.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W1/z3"
+      },
+      {
+        "trap_id": "slm:factory0:W2/d0",
+        "position_um": [
+          220.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/d0"
+      },
+      {
+        "trap_id": "slm:factory0:W2/d1",
+        "position_um": [
+          240.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/d1"
+      },
+      {
+        "trap_id": "slm:factory0:W2/d2",
+        "position_um": [
+          260.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/d2"
+      },
+      {
+        "trap_id": "slm:factory0:W2/d3",
+        "position_um": [
+          220.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/d3"
+      },
+      {
+        "trap_id": "slm:factory0:W2/d4",
+        "position_um": [
+          240.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/d4"
+      },
+      {
+        "trap_id": "slm:factory0:W2/d5",
+        "position_um": [
+          260.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/d5"
+      },
+      {
+        "trap_id": "slm:factory0:W2/d6",
+        "position_um": [
+          220.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/d6"
+      },
+      {
+        "trap_id": "slm:factory0:W2/d7",
+        "position_um": [
+          240.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/d7"
+      },
+      {
+        "trap_id": "slm:factory0:W2/d8",
+        "position_um": [
+          260.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/d8"
+      },
+      {
+        "trap_id": "slm:factory0:W2/x0",
+        "position_um": [
+          230.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/x0"
+      },
+      {
+        "trap_id": "slm:factory0:W2/x1",
+        "position_um": [
+          250.0,
+          910.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/x1"
+      },
+      {
+        "trap_id": "slm:factory0:W2/x2",
+        "position_um": [
+          250.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/x2"
+      },
+      {
+        "trap_id": "slm:factory0:W2/x3",
+        "position_um": [
+          230.0,
+          970.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/x3"
+      },
+      {
+        "trap_id": "slm:factory0:W2/z0",
+        "position_um": [
+          210.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/z0"
+      },
+      {
+        "trap_id": "slm:factory0:W2/z1",
+        "position_um": [
+          250.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/z1"
+      },
+      {
+        "trap_id": "slm:factory0:W2/z2",
+        "position_um": [
+          230.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/z2"
+      },
+      {
+        "trap_id": "slm:factory0:W2/z3",
+        "position_um": [
+          270.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W2/z3"
+      },
+      {
+        "trap_id": "slm:factory0:W3/d0",
+        "position_um": [
+          320.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/d0"
+      },
+      {
+        "trap_id": "slm:factory0:W3/d1",
+        "position_um": [
+          340.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/d1"
+      },
+      {
+        "trap_id": "slm:factory0:W3/d2",
+        "position_um": [
+          360.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/d2"
+      },
+      {
+        "trap_id": "slm:factory0:W3/d3",
+        "position_um": [
+          320.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/d3"
+      },
+      {
+        "trap_id": "slm:factory0:W3/d4",
+        "position_um": [
+          340.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/d4"
+      },
+      {
+        "trap_id": "slm:factory0:W3/d5",
+        "position_um": [
+          360.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/d5"
+      },
+      {
+        "trap_id": "slm:factory0:W3/d6",
+        "position_um": [
+          320.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/d6"
+      },
+      {
+        "trap_id": "slm:factory0:W3/d7",
+        "position_um": [
+          340.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/d7"
+      },
+      {
+        "trap_id": "slm:factory0:W3/d8",
+        "position_um": [
+          360.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/d8"
+      },
+      {
+        "trap_id": "slm:factory0:W3/x0",
+        "position_um": [
+          330.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/x0"
+      },
+      {
+        "trap_id": "slm:factory0:W3/x1",
+        "position_um": [
+          350.0,
+          910.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/x1"
+      },
+      {
+        "trap_id": "slm:factory0:W3/x2",
+        "position_um": [
+          350.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/x2"
+      },
+      {
+        "trap_id": "slm:factory0:W3/x3",
+        "position_um": [
+          330.0,
+          970.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/x3"
+      },
+      {
+        "trap_id": "slm:factory0:W3/z0",
+        "position_um": [
+          310.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/z0"
+      },
+      {
+        "trap_id": "slm:factory0:W3/z1",
+        "position_um": [
+          350.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/z1"
+      },
+      {
+        "trap_id": "slm:factory0:W3/z2",
+        "position_um": [
+          330.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/z2"
+      },
+      {
+        "trap_id": "slm:factory0:W3/z3",
+        "position_um": [
+          370.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W3/z3"
+      },
+      {
+        "trap_id": "slm:factory0:W4/d0",
+        "position_um": [
+          420.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/d0"
+      },
+      {
+        "trap_id": "slm:factory0:W4/d1",
+        "position_um": [
+          440.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/d1"
+      },
+      {
+        "trap_id": "slm:factory0:W4/d2",
+        "position_um": [
+          460.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/d2"
+      },
+      {
+        "trap_id": "slm:factory0:W4/d3",
+        "position_um": [
+          420.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/d3"
+      },
+      {
+        "trap_id": "slm:factory0:W4/d4",
+        "position_um": [
+          440.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/d4"
+      },
+      {
+        "trap_id": "slm:factory0:W4/d5",
+        "position_um": [
+          460.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/d5"
+      },
+      {
+        "trap_id": "slm:factory0:W4/d6",
+        "position_um": [
+          420.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/d6"
+      },
+      {
+        "trap_id": "slm:factory0:W4/d7",
+        "position_um": [
+          440.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/d7"
+      },
+      {
+        "trap_id": "slm:factory0:W4/d8",
+        "position_um": [
+          460.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/d8"
+      },
+      {
+        "trap_id": "slm:factory0:W4/x0",
+        "position_um": [
+          430.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/x0"
+      },
+      {
+        "trap_id": "slm:factory0:W4/x1",
+        "position_um": [
+          450.0,
+          910.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/x1"
+      },
+      {
+        "trap_id": "slm:factory0:W4/x2",
+        "position_um": [
+          450.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/x2"
+      },
+      {
+        "trap_id": "slm:factory0:W4/x3",
+        "position_um": [
+          430.0,
+          970.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/x3"
+      },
+      {
+        "trap_id": "slm:factory0:W4/z0",
+        "position_um": [
+          410.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/z0"
+      },
+      {
+        "trap_id": "slm:factory0:W4/z1",
+        "position_um": [
+          450.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/z1"
+      },
+      {
+        "trap_id": "slm:factory0:W4/z2",
+        "position_um": [
+          430.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/z2"
+      },
+      {
+        "trap_id": "slm:factory0:W4/z3",
+        "position_um": [
+          470.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:W4/z3"
+      },
+      {
+        "trap_id": "slm:factory0:Y/d0",
+        "position_um": [
+          620.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/d0"
+      },
+      {
+        "trap_id": "slm:factory0:Y/d1",
+        "position_um": [
+          640.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/d1"
+      },
+      {
+        "trap_id": "slm:factory0:Y/d2",
+        "position_um": [
+          660.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/d2"
+      },
+      {
+        "trap_id": "slm:factory0:Y/d3",
+        "position_um": [
+          620.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/d3"
+      },
+      {
+        "trap_id": "slm:factory0:Y/d4",
+        "position_um": [
+          640.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/d4"
+      },
+      {
+        "trap_id": "slm:factory0:Y/d5",
+        "position_um": [
+          660.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/d5"
+      },
+      {
+        "trap_id": "slm:factory0:Y/d6",
+        "position_um": [
+          620.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/d6"
+      },
+      {
+        "trap_id": "slm:factory0:Y/d7",
+        "position_um": [
+          640.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/d7"
+      },
+      {
+        "trap_id": "slm:factory0:Y/d8",
+        "position_um": [
+          660.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/d8"
+      },
+      {
+        "trap_id": "slm:factory0:Y/x0",
+        "position_um": [
+          630.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/x0"
+      },
+      {
+        "trap_id": "slm:factory0:Y/x1",
+        "position_um": [
+          650.0,
+          910.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/x1"
+      },
+      {
+        "trap_id": "slm:factory0:Y/x2",
+        "position_um": [
+          650.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/x2"
+      },
+      {
+        "trap_id": "slm:factory0:Y/x3",
+        "position_um": [
+          630.0,
+          970.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/x3"
+      },
+      {
+        "trap_id": "slm:factory0:Y/z0",
+        "position_um": [
+          610.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/z0"
+      },
+      {
+        "trap_id": "slm:factory0:Y/z1",
+        "position_um": [
+          650.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/z1"
+      },
+      {
+        "trap_id": "slm:factory0:Y/z2",
+        "position_um": [
+          630.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/z2"
+      },
+      {
+        "trap_id": "slm:factory0:Y/z3",
+        "position_um": [
+          670.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:Y/z3"
+      },
+      {
+        "trap_id": "slm:live_data/d0",
+        "position_um": [
+          720.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/d0"
+      },
+      {
+        "trap_id": "slm:live_data/d1",
+        "position_um": [
+          740.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/d1"
+      },
+      {
+        "trap_id": "slm:live_data/d2",
+        "position_um": [
+          760.0,
+          920.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/d2"
+      },
+      {
+        "trap_id": "slm:live_data/d3",
+        "position_um": [
+          720.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/d3"
+      },
+      {
+        "trap_id": "slm:live_data/d4",
+        "position_um": [
+          740.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/d4"
+      },
+      {
+        "trap_id": "slm:live_data/d5",
+        "position_um": [
+          760.0,
+          940.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/d5"
+      },
+      {
+        "trap_id": "slm:live_data/d6",
+        "position_um": [
+          720.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/d6"
+      },
+      {
+        "trap_id": "slm:live_data/d7",
+        "position_um": [
+          740.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/d7"
+      },
+      {
+        "trap_id": "slm:live_data/d8",
+        "position_um": [
+          760.0,
+          960.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/d8"
+      },
+      {
+        "trap_id": "slm:live_data/x0",
+        "position_um": [
+          730.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/x0"
+      },
+      {
+        "trap_id": "slm:live_data/x1",
+        "position_um": [
+          750.0,
+          910.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/x1"
+      },
+      {
+        "trap_id": "slm:live_data/x2",
+        "position_um": [
+          750.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/x2"
+      },
+      {
+        "trap_id": "slm:live_data/x3",
+        "position_um": [
+          730.0,
+          970.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/x3"
+      },
+      {
+        "trap_id": "slm:live_data/z0",
+        "position_um": [
+          710.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/z0"
+      },
+      {
+        "trap_id": "slm:live_data/z1",
+        "position_um": [
+          750.0,
+          930.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/z1"
+      },
+      {
+        "trap_id": "slm:live_data/z2",
+        "position_um": [
+          730.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/z2"
+      },
+      {
+        "trap_id": "slm:live_data/z3",
+        "position_um": [
+          770.0,
+          950.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:live_data/z3"
+      },
+      {
+        "trap_id": "slm:factory0:join_probe",
+        "position_um": [
+          800.0,
+          980.0
+        ],
+        "zone_id": "storage_entanglement",
+        "occupant": "atom:factory0:join_probe"
+      },
+      {
+        "trap_id": "slm:module:bf384e62bad6343db50611e7",
+        "position_um": [
+          730.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:6c16744e720d60f8d0fcc9b8",
+        "position_um": [
+          750.0,
+          1030.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:e171546628b8414f24fc424d",
+        "position_um": [
+          750.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:f77abad94d935ac64a432992",
+        "position_um": [
+          730.0,
+          1090.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:4bf577762680c1dcb4268aa4",
+        "position_um": [
+          710.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:5fe903814d73405b6f763e48",
+        "position_um": [
+          750.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:2df6c471b0a0b42b63efa178",
+        "position_um": [
+          730.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:6280f7ac1ec32f4e3be52806",
+        "position_um": [
+          770.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:c19185356290a0422e596578",
+        "position_um": [
+          250.0,
+          1030.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:3c31edd6ce58754f2d8d850e",
+        "position_um": [
+          350.0,
+          1030.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:27b5865566042f6ebe92c9c5",
+        "position_um": [
+          130.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:c0893454c287b39a63283cbc",
+        "position_um": [
+          150.0,
+          1030.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:578c1f61b4aa54471c87130b",
+        "position_um": [
+          150.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:9f8bb1819acb8958e7268cc8",
+        "position_um": [
+          130.0,
+          1090.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:d0c61cbdd1f8f15fcca30c77",
+        "position_um": [
+          110.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:b84b42333b317bb3cd879d26",
+        "position_um": [
+          150.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:818b83d3242f3dc4a6a3797b",
+        "position_um": [
+          130.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:df91293beace5b2082160da8",
+        "position_um": [
+          170.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:08e99491fbc160287dd7408e",
+        "position_um": [
+          230.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:de941ef1b156ef50bc6829da",
+        "position_um": [
+          250.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:b99e01110c348cb740e23f64",
+        "position_um": [
+          230.0,
+          1090.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:fd1a520eb82b88849027a841",
+        "position_um": [
+          210.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:e20f992bd9f7d89c5ccf228a",
+        "position_um": [
+          250.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:82940131753828dc1d5f1620",
+        "position_um": [
+          230.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:49ebc9538d189893aa842f3a",
+        "position_um": [
+          270.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:5236f868093c5d7629151a16",
+        "position_um": [
+          330.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:ac5b78bc1f5b3e86326942ec",
+        "position_um": [
+          350.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:30df3cc8d104e9f13ca4eab4",
+        "position_um": [
+          330.0,
+          1090.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:255a5327b4ccc5a1480151ec",
+        "position_um": [
+          310.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:e6a29c1c5a1d04a53369b525",
+        "position_um": [
+          350.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:9fb26e3be030e80cce741008",
+        "position_um": [
+          330.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:738e3524a1b99112dfa0cd92",
+        "position_um": [
+          370.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:c1cc543b869ac6fd1a56cbac",
+        "position_um": [
+          430.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:f7d432f2b62a52c422cfd0e6",
+        "position_um": [
+          450.0,
+          1030.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:6bb7df4ba9d9a8b6ee47ad41",
+        "position_um": [
+          450.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:a3358cd944fbbfe2fbbf32d5",
+        "position_um": [
+          430.0,
+          1090.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:6d5fa557d0953721f05fcf30",
+        "position_um": [
+          410.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:2a95a3e9ffef0dcd2fbc5f4f",
+        "position_um": [
+          450.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:9e69689141520603f11983b7",
+        "position_um": [
+          430.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:48ce055b20b4df05ab5b5324",
+        "position_um": [
+          470.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:439dac4568e867b136c39fd2",
+        "position_um": [
+          30.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:77c3f2453146a3aadaa19549",
+        "position_um": [
+          50.0,
+          1030.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:5afbdbc7b760e308a1df57c2",
+        "position_um": [
+          50.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:15f0d17acb51cf3c9061b05f",
+        "position_um": [
+          30.0,
+          1090.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:cd37a2a0ee4bbc95bf3389e4",
+        "position_um": [
+          10.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:aea7f19e9fc6b5df70973a1b",
+        "position_um": [
+          50.0,
+          1050.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:f3a0edf129a4cec476f805e9",
+        "position_um": [
+          30.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      },
+      {
+        "trap_id": "slm:module:64f2c4503a757840b241d799",
+        "position_um": [
+          70.0,
+          1070.0
+        ],
+        "zone_id": "measurement",
+        "occupant": null
+      }
+    ],
+    "aod_rows": [],
+    "aod_columns": []
+  },
+  "device": {
+    "schema_version": "DeviceSpec/0.2.0-draft",
+    "artifact_id": "device:surface17-canonical-rigid-v5:cz-aod-held:mz-x-unbounded:readout-unlimited:transfer-100.0",
+    "device_id": "neutral-atom-canonical-surface17-engineering-reference",
+    "device_version": "0.1.0",
+    "producer_version": "na_pipeline.device/0.1.0",
+    "provenance": {
+      "owner": "R1",
+      "kb_revision": "kb-0006",
+      "interface_version": "IF-HIERARCHICAL-DAG-001/0.1.0",
+      "source_refs": [
+        "ADR-0008@1.0.0",
+        "R1-PREINITIALIZED-IF-001@0.1.0"
+      ],
+      "evidence_boundary": "Engineering model, not calibrated hardware or quantum sampling."
+    },
+    "execution_kind": "compile_plan",
+    "quantum_state_simulated": false,
+    "hardware_executed": false,
+    "loss_enabled": false,
+    "units": {
+      "time": "us",
+      "length": "um",
+      "angle": "rad"
+    },
+    "timings_us": {
+      "gate_1q": 1.0,
+      "cz": 1.0,
+      "pickup": 100.0,
+      "drop": 100.0,
+      "measure": 100.0,
+      "reset": 10.0,
+      "result_latency": 5.0,
+      "classical": 1.0,
+      "feedback_latency": 1.0
+    },
+    "movement": {
+      "model": "parallel_axes_linear",
+      "speed_um_per_us": 1.0,
+      "acceleration_model": "ignored",
+      "identity_preserved": true
+    },
+    "geometry": {
+      "initial_spacing_um": 10.0,
+      "gate_pair_distance_um": 2.0,
+      "distance_tolerance_um": 1e-06,
+      "pair_metric": "euclidean",
+      "pair_rule": "distance_equal_with_tolerance",
+      "atom_model": "point",
+      "extra_pair_center_exclusion": false
+    },
+    "zones": {
+      "storage_entanglement": {
+        "x_range_um": [
+          null,
+          null
+        ],
+        "y_range_um": [
+          0.0,
+          1000.0
+        ],
+        "boundary": "closed"
+      },
+      "measurement": {
+        "x_range_um": [
+          null,
+          null
+        ],
+        "y_range_um": [
+          1020.0,
+          1220.0
+        ],
+        "boundary": "closed"
+      }
+    },
+    "broadcast": {
+      "zone_id": "storage_entanglement",
+      "resource_id": "rydberg:global",
+      "gate": "CZ",
+      "all_geometric_pairs": true,
+      "spectator_response": "unevaluated",
+      "geometry_stationary_during_pulse": true
+    },
+    "aod_groups": {
+      "data": {
+        "resource_id": "aod:data",
+        "max_rows": null,
+        "max_columns": null,
+        "shared_rows": true,
+        "shared_columns": true,
+        "non_crossing": true
+      },
+      "magic": {
+        "resource_id": "aod:magic",
+        "max_rows": null,
+        "max_columns": null,
+        "shared_rows": true,
+        "shared_columns": true,
+        "non_crossing": true
+      }
+    },
+    "slm": {
+      "resource_id": "slm:static",
+      "static_traps": true
+    },
+    "operations": {
+      "native_1q_gates": [
+        "H",
+        "X",
+        "Y",
+        "Z",
+        "S",
+        "SDG",
+        "T",
+        "TDG",
+        "RX",
+        "RY",
+        "RZ"
+      ],
+      "native_2q_gates": [
+        "CZ"
+      ],
+      "measurement_bases": [
+        "Z"
+      ],
+      "reset_target": 0,
+      "action_kinds": [
+        "pickup",
+        "move",
+        "drop",
+        "gate",
+        "measure",
+        "reset",
+        "wait",
+        "classical",
+        "rebind"
+      ],
+      "parameter_units": "rad"
+    },
+    "concurrency": {
+      "atom_exclusive": true,
+      "trap_exclusive": true,
+      "aod_lock_scope": "affected_rows_and_columns",
+      "independent_aod_parallel": true,
+      "independent_1q_parallel": true,
+      "independent_measure_parallel": true,
+      "independent_reset_parallel": true,
+      "independent_transfer_parallel": true,
+      "global_motion_lock": false,
+      "global_measure_lock": false,
+      "global_1q_lock": false
+    },
+    "measurement": {
+      "zone_id": "measurement",
+      "basis": "Z",
+      "preserves_atom": true,
+      "result_ready_rule": "end_plus_result_latency"
+    },
+    "reset": {
+      "target": 0,
+      "preserves_atom": true,
+      "requires_present_atom": true,
+      "allowed_zone_ids": [
+        "storage_entanglement",
+        "measurement"
+      ]
+    },
+    "illumination": {
+      "unit": "one_per_broadcast",
+      "scope": "all_atoms_in_broadcast_zone",
+      "include_spectators": true,
+      "required_output": "per_atom_cumulative_count",
+      "per_event_log_required": false,
+      "noise_model_ref": null,
+      "fidelity_status": "unevaluated"
+    },
+    "physics": {
+      "species": "Rb87",
+      "storage_encoding": "hyperfine_ground_state",
+      "coherence_reference": {
+        "effective_time_range_us": [
+          1000000.0,
+          2000000.0
+        ],
+        "kind": "literature_reference",
+        "source_ref": "R8-FACT-008@0.1.0",
+        "conditions": "S7 Rb87 hyperfine clock states, echo/decoupling and motion sequence.",
+        "used_for_noise": false,
+        "calibrated": false
+      },
+      "t2star_us": null,
+      "gate_error_rate": null,
+      "loss_rate": null,
+      "unknown_parameter_status": "unknown",
+      "noise_evaluation": "unevaluated"
+    },
+    "parameter_provenance": {
+      "/movement": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R8-PLATFORM-001@0.8.0:UA-02/03/04",
+          "R1-IF-01@0.1.0"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/geometry": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R8-PLATFORM-001@0.8.0:UA-05/09",
+          "R1-IF-01@0.1.0"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/zones": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "ADR-0008@1.0.0",
+          "R1-PREINITIALIZED-IF-001@0.1.0",
+          "ADR-0009@1.1.0",
+          "T044-user-20261007:measurement-all-x"
+        ],
+        "scope": "User-requested rigid-array measurement region. Region dimensions and compile-time static SLM receiver patterns are engineering assumptions, not hardware calibration. Concurrency is explicitly configured; None means no readout-channel cap. Timing and movement constraints remain unchanged. Measurement extends over all x by explicit user instruction; not a calibrated optical field of view.",
+        "calibrated": false
+      },
+      "/broadcast": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R8-PLATFORM-001@0.8.0:UA-07/11"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/slm": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R8-PLATFORM-001@0.8.0:UA-02",
+          "ADR-0009@1.1.0"
+        ],
+        "scope": "User-requested rigid-array measurement region. Region dimensions and compile-time static SLM receiver patterns are engineering assumptions, not hardware calibration. Concurrency is explicitly configured; None means no readout-channel cap. Timing and movement constraints remain unchanged.",
+        "calibrated": false
+      },
+      "/operations": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R8-PLATFORM-001@0.8.0:UA-06/10/22",
+          "R1-IF-01@0.1.0"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/concurrency": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R8-PLATFORM-001@0.8.0:UA-03/10/19"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/measurement": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R8-PLATFORM-001@0.8.0:UA-06/19/22",
+          "R1-IF-01@0.1.0"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/reset": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R8-PLATFORM-001@0.8.0:UA-06/19",
+          "R1-IF-01@0.1.0",
+          "T044-user-20261008:reset-in-AOD"
+        ],
+        "scope": "In-place reset is allowed on stationary atoms in SLM or AOD in the declared zones; no carrier transfer required.",
+        "calibrated": false
+      },
+      "/illumination": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R8-PLATFORM-001@0.8.0:UA-11/12"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/physics/species": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R8-PLATFORM-001@0.8.0:UA-08",
+          "R1-IF-01@0.1.0"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/physics/storage_encoding": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R8-FACT-001@0.1.0",
+          "R1-IF-01@0.1.0"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/timings_us/gate_1q": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R1-IF-01@0.1.0",
+          "R1-PARAM-001@0.1.0"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/timings_us/cz": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R1-IF-01@0.1.0",
+          "R1-PARAM-001@0.1.0"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/timings_us/pickup": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "T044-user-20261008:transfer-100us"
+        ],
+        "scope": "Default 100 us from user instruction; explicit caller override otherwise. Per parallel batch, not per atom; not hardware calibration.",
+        "calibrated": false
+      },
+      "/timings_us/drop": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "T044-user-20261008:transfer-100us"
+        ],
+        "scope": "Default 100 us from user instruction; explicit caller override otherwise. Per parallel batch, not per atom; not hardware calibration.",
+        "calibrated": false
+      },
+      "/timings_us/measure": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R1-IF-01@0.1.0",
+          "R1-PARAM-001@0.1.0"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/timings_us/reset": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R1-IF-01@0.1.0",
+          "R1-PARAM-001@0.1.0"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/timings_us/result_latency": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R1-IF-01@0.1.0",
+          "R1-PARAM-001@0.1.0"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/timings_us/classical": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R1-IF-01@0.1.0",
+          "R1-PARAM-001@0.1.0"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/timings_us/feedback_latency": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R1-IF-01@0.1.0",
+          "R1-PARAM-001@0.1.0"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/aod_groups/data": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R8-PLATFORM-001@0.8.0:UA-03"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/aod_groups/magic": {
+        "kind": "project_assumption",
+        "source_refs": [
+          "R8-PLATFORM-001@0.8.0:UA-03"
+        ],
+        "scope": "First loss-free fake compile/schedule profile; not calibrated hardware.",
+        "calibrated": false
+      },
+      "/physics/coherence_reference": {
+        "kind": "literature_reference",
+        "source_refs": [
+          "R8-FACT-008@0.1.0"
+        ],
+        "calibrated": false,
+        "scope": "Conditional reference only; no noise, fidelity or hardware claim."
+      },
+      "/physics/t2star_us": {
+        "kind": "unknown",
+        "source_refs": [
+          "R1-PARAM-001@0.1.0"
+        ],
+        "calibrated": false,
+        "scope": "Conditional reference only; no noise, fidelity or hardware claim."
+      },
+      "/physics/gate_error_rate": {
+        "kind": "unknown",
+        "source_refs": [
+          "R1-PARAM-001@0.1.0"
+        ],
+        "calibrated": false,
+        "scope": "Conditional reference only; no noise, fidelity or hardware claim."
+      },
+      "/physics/loss_rate": {
+        "kind": "unknown",
+        "source_refs": [
+          "R1-PARAM-001@0.1.0"
+        ],
+        "calibrated": false,
+        "scope": "Conditional reference only; no noise, fidelity or hardware claim."
+      }
+    },
+    "grouped_profile": {
+      "schema_version": "grouped-device-profile/0.2",
+      "profile_id": "surface17-preinitialized-v1",
+      "provenance": {
+        "kind": "project_assumption",
+        "calibrated": false,
+        "source_refs": [
+          "ADR-0008@1.0.0",
+          "R1-PREINITIALIZED-IF-001@0.1.0"
+        ],
+        "scope": "Canonical code coordinates, 20 um data pitch; rigid readout uses actual captured shape. Uncalibrated engineering assumption."
+      },
+      "layouts": {
+        "patch_home": {
+          "zone_id": "storage_entanglement",
+          "carrier": "SLM",
+          "slots": {
+            "d0": {
+              "position_um": [
+                20.0,
+                20.0
+              ],
+              "row_id": "r2",
+              "column_id": "c2"
+            },
+            "d1": {
+              "position_um": [
+                40.0,
+                20.0
+              ],
+              "row_id": "r2",
+              "column_id": "c4"
+            },
+            "d2": {
+              "position_um": [
+                60.0,
+                20.0
+              ],
+              "row_id": "r2",
+              "column_id": "c6"
+            },
+            "d3": {
+              "position_um": [
+                20.0,
+                40.0
+              ],
+              "row_id": "r4",
+              "column_id": "c2"
+            },
+            "d4": {
+              "position_um": [
+                40.0,
+                40.0
+              ],
+              "row_id": "r4",
+              "column_id": "c4"
+            },
+            "d5": {
+              "position_um": [
+                60.0,
+                40.0
+              ],
+              "row_id": "r4",
+              "column_id": "c6"
+            },
+            "d6": {
+              "position_um": [
+                20.0,
+                60.0
+              ],
+              "row_id": "r6",
+              "column_id": "c2"
+            },
+            "d7": {
+              "position_um": [
+                40.0,
+                60.0
+              ],
+              "row_id": "r6",
+              "column_id": "c4"
+            },
+            "d8": {
+              "position_um": [
+                60.0,
+                60.0
+              ],
+              "row_id": "r6",
+              "column_id": "c6"
+            },
+            "x0": {
+              "position_um": [
+                30.0,
+                30.0
+              ],
+              "row_id": "r3",
+              "column_id": "c3"
+            },
+            "x1": {
+              "position_um": [
+                50.0,
+                10.0
+              ],
+              "row_id": "r1",
+              "column_id": "c5"
+            },
+            "x2": {
+              "position_um": [
+                50.0,
+                50.0
+              ],
+              "row_id": "r5",
+              "column_id": "c5"
+            },
+            "x3": {
+              "position_um": [
+                30.0,
+                70.0
+              ],
+              "row_id": "r7",
+              "column_id": "c3"
+            },
+            "z0": {
+              "position_um": [
+                10.0,
+                30.0
+              ],
+              "row_id": "r3",
+              "column_id": "c1"
+            },
+            "z1": {
+              "position_um": [
+                50.0,
+                30.0
+              ],
+              "row_id": "r3",
+              "column_id": "c5"
+            },
+            "z2": {
+              "position_um": [
+                30.0,
+                50.0
+              ],
+              "row_id": "r5",
+              "column_id": "c3"
+            },
+            "z3": {
+              "position_um": [
+                70.0,
+                50.0
+              ],
+              "row_id": "r5",
+              "column_id": "c7"
+            }
+          }
+        },
+        "ancilla_readout": {
+          "zone_id": "measurement",
+          "carrier": "SLM",
+          "slots": {
+            "x0": {
+              "position_um": [
+                0.0,
+                1020.0
+              ],
+              "row_id": "r4",
+              "column_id": "c0"
+            },
+            "x1": {
+              "position_um": [
+                10.0,
+                1020.0
+              ],
+              "row_id": "r4",
+              "column_id": "c1"
+            },
+            "x2": {
+              "position_um": [
+                20.0,
+                1020.0
+              ],
+              "row_id": "r4",
+              "column_id": "c2"
+            },
+            "x3": {
+              "position_um": [
+                30.0,
+                1020.0
+              ],
+              "row_id": "r4",
+              "column_id": "c3"
+            },
+            "z0": {
+              "position_um": [
+                0.0,
+                1030.0
+              ],
+              "row_id": "r5",
+              "column_id": "c0"
+            },
+            "z1": {
+              "position_um": [
+                10.0,
+                1030.0
+              ],
+              "row_id": "r5",
+              "column_id": "c1"
+            },
+            "z2": {
+              "position_um": [
+                20.0,
+                1030.0
+              ],
+              "row_id": "r5",
+              "column_id": "c2"
+            },
+            "z3": {
+              "position_um": [
+                30.0,
+                1030.0
+              ],
+              "row_id": "r5",
+              "column_id": "c3"
+            }
+          }
+        }
+      },
+      "groups": {
+        "maintenance_readout": {
+          "members": [
+            "x0",
+            "x1",
+            "x2",
+            "x3",
+            "z0",
+            "z1",
+            "z2",
+            "z3"
+          ],
+          "source_layout": "patch_home",
+          "target_layout": "ancilla_readout",
+          "return_layout": "patch_home"
+        }
+      },
+      "capture": {
+        "model": "cartesian_product",
+        "tolerance_ref": "geometry.distance_tolerance_um",
+        "selective_atom_mask": false
+      },
+      "readout": {
+        "model": "per_site_parallel",
+        "bank_capacity": 8,
+        "resource_scope": "instantiated_bank_and_site",
+        "independent_banks": true,
+        "basis": "Z",
+        "timing_ref": "timings_us"
+      }
+    },
+    "entry_mode": "preinitialized",
+    "patch_geometry": {
+      "schema_version": "patch-geometry/0.2",
+      "code_profile": {
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1"
+      },
+      "allowed_orientations": [
+        "x_vertical_z_horizontal",
+        "canonical_rot90"
+      ],
+      "local_layout_id": "patch_home",
+      "occupied_bounds_um": [
+        10.0,
+        10.0,
+        70.0,
+        70.0
+      ],
+      "cell_extent_um": [
+        80.0,
+        80.0
+      ],
+      "suggested_anchor_step_um": [
+        80.0,
+        80.0
+      ],
+      "cell_boundary": "half_open",
+      "anchor_zone_id": "storage_entanglement",
+      "ports": {
+        "data_coupling": {
+          "layout_id": "patch_home",
+          "members": [
+            "d0",
+            "d1",
+            "d2",
+            "d3",
+            "d4",
+            "d5",
+            "d6",
+            "d7",
+            "d8"
+          ],
+          "anchor_mode": "patch_relative"
+        },
+        "ancilla_departure": {
+          "layout_id": "patch_home",
+          "members": [
+            "x0",
+            "x1",
+            "x2",
+            "x3",
+            "z0",
+            "z1",
+            "z2",
+            "z3"
+          ],
+          "anchor_mode": "patch_relative"
+        },
+        "measurement_receiver": {
+          "layout_id": "ancilla_readout",
+          "members": [
+            "x0",
+            "x1",
+            "x2",
+            "x3",
+            "z0",
+            "z1",
+            "z2",
+            "z3"
+          ],
+          "anchor_mode": "global_mz_with_independent_bank_x"
+        }
+      },
+      "provenance": {
+        "kind": "project_assumption",
+        "calibrated": false,
+        "source_refs": [
+          "ADR-0008@1.0.0",
+          "R1-PREINITIALIZED-IF-001@0.1.0",
+          "T044:initial-canonical-quarter-turn/1"
+        ],
+        "scope": "Canonical rotated Surface-17 patch; fixed internal structure, caller-selected patch anchors. No optimization claim."
+      }
+    },
+    "rigid_readout": {
+      "schema_version": "rigid-readout-profile/0.3",
+      "bank_id": "rigid-mz",
+      "max_parallel_readouts": null,
+      "site_pitch_um": 10.0,
+      "site_origin_um": [
+        0.0,
+        1020.0
+      ],
+      "site_policy": "static_lattice_with_shape_preserving_translation",
+      "provenance": {
+        "kind": "project_assumption",
+        "calibrated": false,
+        "source_refs": [
+          "ADR-0009@1.1.0"
+        ]
+      }
+    }
+  }
+}

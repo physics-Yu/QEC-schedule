@@ -1,0 +1,122 @@
+{
+  "scope": "actual_R2_nontrivial_patch_placement_component",
+  "fixture": false,
+  "physical_compilation_complete": false,
+  "runtime_executed": false,
+  "full_shor": false,
+  "patch_count": 4,
+  "logical_nodes": 12,
+  "cost": {
+    "model": "sum(max(1-0.1*layer,0.1)*Euclidean_cell_distance)",
+    "baseline_mapping": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "baseline": 4.3355339059327385,
+    "candidate": 3.3,
+    "units": "weighted_cells",
+    "uniform_cell_step_um": 60.0,
+    "candidate_weighted_distance_um": 198.0,
+    "makespan_objective": false
+  },
+  "search": {
+    "seed": 7,
+    "budget": {
+      "max_iterations": 1000,
+      "moves_per_iteration": 400,
+      "initial_moves": 100,
+      "max_wall_seconds": 60.0,
+      "max_moves": 400100
+    },
+    "moves": 400100,
+    "iterations": 1000,
+    "wall_seconds": 4.427356599946506,
+    "parallelism": 1,
+    "stop_reason": "iteration_budget",
+    "complete": true,
+    "optimality_proven": false
+  },
+  "wall_seconds_with_observer": 4.453086300054565,
+  "host": "yubowl",
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "source_before": {
+    "src/na_pipeline/device/groups.py": "685ab37a1c068fd29ff6bb0e209918f2001c070d132b902b16210701e0b665ef",
+    "src/na_pipeline/device/initial.py": "4d38215bd1e2e82b1bc5a4e2e67bc3f19e010fb58a5b2766df9ac794e5cc7e65",
+    "src/na_pipeline/device/model.py": "aedf2855d20215bace0117598a1c982e8b77c091a33f22dce6b044c2c3980e96",
+    "src/na_pipeline/device/spec.py": "1ac20ab108c2086e10e5316af7f64ed535e1e65cd73853beb4c25f54a910d6a4",
+    "src/na_pipeline/device/__init__.py": "1eb68bd763e6c3ef81f1c22dd413ef9907b182dc12558676382d2b9b15fbd67a",
+    "src/na_pipeline/frontend/encoded.py": "d42ce666d1a570f555faba20f2d7745a10e44616fdde1e1a3b65b3628d6d2c59",
+    "src/na_pipeline/frontend/logical_dag.py": "abdee9420ae9a903c6bb35b2290fa3f91bb8c75be6ff64362d4d9f2e3325113e",
+    "src/na_pipeline/frontend/operator_certificate.py": "56de71de3e1ebcd8a6ec6907c79eb301d4ba82e16fc4d5000187854d0883afbf",
+    "src/na_pipeline/frontend/postprocess.py": "23c5525deb3f5ecfbeff903ec2f84bfbe924dd66adeb9625bcce3a926501652a",
+    "src/na_pipeline/frontend/program.py": "15e8b7c82323f9756abc9ed492dc0b407199ab9fe2325154871fc6da97700380",
+    "src/na_pipeline/frontend/qasm.py": "02e96cc381608e6f6aa9151ee148b51fbbd38f8da923ec2685a8de918d82654a",
+    "src/na_pipeline/frontend/rotation_table.py": "aa420c14074105d6c7dea63daaae34b387da658c873a099e8cbea75a3a5a97b8",
+    "src/na_pipeline/frontend/synthesis.py": "4b58c1ccbdd4109b9ff127a7a75e37d4704e3e3b88b49906bbb1f7cd2053614c",
+    "src/na_pipeline/frontend/__init__.py": "da5a2b160c37a0ef9ae5849e4444b78a79608ff3ec072abf42ff274b7c7e1ee9",
+    "src/na_pipeline/backend/compiler.py": "64cd210d67e94bffe3ccdba2b819cd2753297186a26543d36ccf91f15ab29ab1",
+    "src/na_pipeline/backend/enola_kernel.py": "8c9305766b4b2de032bcb0f7a5e57068f6e8072a26e1579ad27c32953b842592",
+    "src/na_pipeline/backend/enola_scheduler.py": "c9cf2c7988f4f79d8597c925e00e30fdbc945416ac05332380eb393b5e4fd3c6",
+    "src/na_pipeline/backend/geometry.py": "25f494028ada2ec49c00ac881face147edfc2d1e351d670d1192e9925f8cd3c8",
+    "src/na_pipeline/backend/patch_placement.py": "67d000d221135455b5c3537822a5578d3b81d6d568827b1e2523d0e034a79593",
+    "src/na_pipeline/backend/reuse.py": "791c18592f2498b865eaeabb8928efc3c1b23321e32cd65e4b255567f209164b",
+    "src/na_pipeline/backend/strategy.py": "4d33a488cf5a0719352487b04d8deaf796fefda9c9b6ac25dbb8f770df7cfa12",
+    "src/na_pipeline/backend/strategy_bind.py": "a7953c3e678f438ba648ace4db062e06cb59f175049b30d30395863f4242c8b5",
+    "src/na_pipeline/backend/strategy_compile.py": "4453a942f2be98ef8984b1469a7159631315fd6a1ff30a01a7125fe604d9ce73",
+    "src/na_pipeline/backend/__init__.py": "4c6f693a5c2de0ab72df839eaa8034e15cbc20b70e862be7a92f7a22d300d7f5",
+    "examples/atom/t405/run_placement.py": "2148684fb0b812dca7eec80d57eaa8bf058128c1d933ac9159f7bdc9b892bb11"
+  },
+  "source_after": {
+    "src/na_pipeline/device/groups.py": "685ab37a1c068fd29ff6bb0e209918f2001c070d132b902b16210701e0b665ef",
+    "src/na_pipeline/device/initial.py": "4d38215bd1e2e82b1bc5a4e2e67bc3f19e010fb58a5b2766df9ac794e5cc7e65",
+    "src/na_pipeline/device/model.py": "aedf2855d20215bace0117598a1c982e8b77c091a33f22dce6b044c2c3980e96",
+    "src/na_pipeline/device/spec.py": "1ac20ab108c2086e10e5316af7f64ed535e1e65cd73853beb4c25f54a910d6a4",
+    "src/na_pipeline/device/__init__.py": "1eb68bd763e6c3ef81f1c22dd413ef9907b182dc12558676382d2b9b15fbd67a",
+    "src/na_pipeline/frontend/encoded.py": "d42ce666d1a570f555faba20f2d7745a10e44616fdde1e1a3b65b3628d6d2c59",
+    "src/na_pipeline/frontend/logical_dag.py": "abdee9420ae9a903c6bb35b2290fa3f91bb8c75be6ff64362d4d9f2e3325113e",
+    "src/na_pipeline/frontend/operator_certificate.py": "56de71de3e1ebcd8a6ec6907c79eb301d4ba82e16fc4d5000187854d0883afbf",
+    "src/na_pipeline/frontend/postprocess.py": "23c5525deb3f5ecfbeff903ec2f84bfbe924dd66adeb9625bcce3a926501652a",
+    "src/na_pipeline/frontend/program.py": "15e8b7c82323f9756abc9ed492dc0b407199ab9fe2325154871fc6da97700380",
+    "src/na_pipeline/frontend/qasm.py": "02e96cc381608e6f6aa9151ee148b51fbbd38f8da923ec2685a8de918d82654a",
+    "src/na_pipeline/frontend/rotation_table.py": "aa420c14074105d6c7dea63daaae34b387da658c873a099e8cbea75a3a5a97b8",
+    "src/na_pipeline/frontend/synthesis.py": "4b58c1ccbdd4109b9ff127a7a75e37d4704e3e3b88b49906bbb1f7cd2053614c",
+    "src/na_pipeline/frontend/__init__.py": "da5a2b160c37a0ef9ae5849e4444b78a79608ff3ec072abf42ff274b7c7e1ee9",
+    "src/na_pipeline/backend/compiler.py": "64cd210d67e94bffe3ccdba2b819cd2753297186a26543d36ccf91f15ab29ab1",
+    "src/na_pipeline/backend/enola_kernel.py": "8c9305766b4b2de032bcb0f7a5e57068f6e8072a26e1579ad27c32953b842592",
+    "src/na_pipeline/backend/enola_scheduler.py": "c9cf2c7988f4f79d8597c925e00e30fdbc945416ac05332380eb393b5e4fd3c6",
+    "src/na_pipeline/backend/geometry.py": "25f494028ada2ec49c00ac881face147edfc2d1e351d670d1192e9925f8cd3c8",
+    "src/na_pipeline/backend/patch_placement.py": "67d000d221135455b5c3537822a5578d3b81d6d568827b1e2523d0e034a79593",
+    "src/na_pipeline/backend/reuse.py": "791c18592f2498b865eaeabb8928efc3c1b23321e32cd65e4b255567f209164b",
+    "src/na_pipeline/backend/strategy.py": "4d33a488cf5a0719352487b04d8deaf796fefda9c9b6ac25dbb8f770df7cfa12",
+    "src/na_pipeline/backend/strategy_bind.py": "a7953c3e678f438ba648ace4db062e06cb59f175049b30d30395863f4242c8b5",
+    "src/na_pipeline/backend/strategy_compile.py": "4453a942f2be98ef8984b1469a7159631315fd6a1ff30a01a7125fe604d9ce73",
+    "src/na_pipeline/backend/__init__.py": "4c6f693a5c2de0ab72df839eaa8034e15cbc20b70e862be7a92f7a22d300d7f5",
+    "examples/atom/t405/run_placement.py": "2148684fb0b812dca7eec80d57eaa8bf058128c1d933ac9159f7bdc9b892bb11"
+  },
+  "source_stable": true,
+  "original_run_observed": true,
+  "original_mapping_matches": true,
+  "independent_validation": "pending_R6",
+  "user_visual_acceptance": "pending",
+  "files": {
+    "device.json": "8ff2267de6fbc2bb45e29f43b48c92780a6832e3a8cac4d2cebdcfdd1a939857",
+    "initial-state.json": "b1fa24b69fbfe5892f8f3c1bc54269df6634d1096890e359f47a8ef03489a2f2",
+    "logical-dag.json": "aebb28c32e03baa3ae23f34f430ef422025e4cc4dcfce7e5ac5f0627c2762ade",
+    "patch-placement.json": "3bbdd077fafc9889fe56b7c80191985351d55e2f22cfea95523ab2d8fca140c8",
+    "placer-observation.json": "5396b8b41170766302b858e3a9547d33d899e824fa1659c600e82b49913c65a5"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "scope": "real_four_patch_two_DAG_SE_coupling_SE_component",
+  "full_shor": false,
+  "fixture": false,
+  "complete": true,
+  "logical_nodes": 12,
+  "batches": 5,
+  "trace_stats": {
+    "t_start_us": 0,
+    "t_end_us": 152108.0,
+    "duration_us": 152108.0,
+    "action_count": 1927,
+    "completed_action_count": 1927,
+    "result_count": 64,
+    "atom_count": 68
+  },
+  "wall_seconds": 78.14932179998141,
+  "independent_validation": "pending_R6",
+  "user_visual_acceptance": "pending"
+}

@@ -1,0 +1,318 @@
+{
+  "schema_version": "FactoryLedger/0.1.0-draft",
+  "fixture": true,
+  "execution_kind": "protocol_state_fixture",
+  "physical_factory_executed": false,
+  "protocol_ref": "fixture/minimal-action-witnesses-NOT-15-to-1",
+  "atom_program_ref": "runtime-fixture",
+  "trace_ref": "trace-db36a025de063d7e35ca98c1",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "sampled": false,
+  "state": {
+    "factory_id": "fixture-factory",
+    "phase": "idle",
+    "epoch": 0,
+    "attempt_id": null,
+    "request_id": null,
+    "output_id": null,
+    "requests": {
+      "T0": {
+        "status": "fulfilled",
+        "live_data_atom_ids": [
+          "a2"
+        ],
+        "live_block_atom_ids": [
+          "a2"
+        ],
+        "resource_kind": "T",
+        "live_identity": {
+          "a2": {
+            "atom_id": "a2",
+            "qubit_id": "q2",
+            "reset_epoch": 0,
+            "measurement_count": 0
+          }
+        },
+        "requested_at_us": 0,
+        "fulfilled_us": 2045,
+        "output_id": "output1"
+      }
+    },
+    "attempts": {
+      "try1": {
+        "epoch": 0,
+        "candidate_id": "candidate1",
+        "request_id": "T0",
+        "output_atom_ids": [
+          "a0"
+        ],
+        "output_data_atom_ids": [
+          "a0"
+        ],
+        "production_action_ids": [
+          "check",
+          "prep"
+        ],
+        "begin_us": 0,
+        "accepted": true,
+        "checks": [
+          {
+            "id": "fixture-check",
+            "parity": 0,
+            "expected_parity": 0
+          }
+        ],
+        "decision_us": 106,
+        "acceptance_result_ids": [
+          "attempt1/check"
+        ],
+        "cleaned_us": 2055
+      }
+    },
+    "outputs": {
+      "output1": {
+        "status": "consumed",
+        "request_id": "T0",
+        "attempt_id": "try1",
+        "epoch": 0,
+        "carrier_atom_ids": [
+          "a0"
+        ],
+        "data_atom_ids": [
+          "a0"
+        ],
+        "accepted_us": 106,
+        "identity": {
+          "a0": {
+            "atom_id": "a0",
+            "qubit_id": "q0",
+            "reset_epoch": 0,
+            "measurement_count": 0
+          }
+        },
+        "ready_us": 107,
+        "phase_conversion_action_ids": [
+          "phase_conversion"
+        ],
+        "reserved_us": 107,
+        "delivered_us": 517,
+        "delivery_mode": "transport",
+        "consume_start_us": 517,
+        "consumed_us": 2045,
+        "consumption_action_ids": [
+          "correction",
+          "couple",
+          "out"
+        ]
+      }
+    },
+    "history": [
+      {
+        "event": {
+          "id": "request",
+          "kind": "request",
+          "time_us": 0,
+          "after": [],
+          "request_id": "T0",
+          "resource_kind": "T",
+          "live_data_atom_ids": [
+            "a2"
+          ],
+          "live_block_atom_ids": [
+            "a2"
+          ]
+        },
+        "phase_before": "idle",
+        "phase_after": "idle",
+        "epoch": -1,
+        "committed_until_us": 0
+      },
+      {
+        "event": {
+          "id": "begin",
+          "kind": "begin",
+          "time_us": 0,
+          "after": [],
+          "request_id": "T0",
+          "attempt_id": "try1",
+          "epoch": 0,
+          "candidate_id": "candidate1",
+          "output_atom_ids": [
+            "a0"
+          ],
+          "output_data_atom_ids": [
+            "a0"
+          ],
+          "production_action_ids": [
+            "prep",
+            "check"
+          ]
+        },
+        "phase_before": "idle",
+        "phase_after": "producing",
+        "epoch": 0,
+        "committed_until_us": 0
+      },
+      {
+        "event": {
+          "id": "decide",
+          "kind": "decide",
+          "time_us": 106,
+          "after": [
+            "prep",
+            "check"
+          ],
+          "output_id": "output1",
+          "acceptance_checks": [
+            {
+              "id": "fixture-check",
+              "result_ids": [
+                "attempt1/check"
+              ],
+              "expected_parity": 0
+            }
+          ]
+        },
+        "phase_before": "producing",
+        "phase_after": "candidate",
+        "epoch": 0,
+        "committed_until_us": 106
+      },
+      {
+        "event": {
+          "id": "make_ready",
+          "kind": "make_ready",
+          "time_us": 107,
+          "after": [],
+          "request_id": "T0",
+          "output_id": "output1",
+          "phase_conversion_action_ids": [
+            "phase_conversion"
+          ]
+        },
+        "phase_before": "candidate",
+        "phase_after": "ready",
+        "epoch": 0,
+        "committed_until_us": 107
+      },
+      {
+        "event": {
+          "id": "reserve",
+          "kind": "reserve",
+          "time_us": 107,
+          "after": [],
+          "request_id": "T0",
+          "output_id": "output1"
+        },
+        "phase_before": "ready",
+        "phase_after": "reserved",
+        "epoch": 0,
+        "committed_until_us": 107
+      },
+      {
+        "event": {
+          "id": "deliver",
+          "kind": "deliver",
+          "time_us": 517,
+          "after": [
+            "pick",
+            "move",
+            "drop"
+          ],
+          "delivery_mode": "transport",
+          "request_id": "T0",
+          "output_id": "output1",
+          "output_atom_ids": [
+            "a0"
+          ]
+        },
+        "phase_before": "reserved",
+        "phase_after": "delivered",
+        "epoch": 0,
+        "committed_until_us": 517
+      },
+      {
+        "event": {
+          "id": "consume_begin",
+          "kind": "consume_begin",
+          "time_us": 517,
+          "after": [],
+          "request_id": "T0",
+          "output_id": "output1"
+        },
+        "phase_before": "delivered",
+        "phase_after": "consuming",
+        "epoch": 0,
+        "committed_until_us": 517
+      },
+      {
+        "event": {
+          "id": "consume_finish",
+          "kind": "consume_finish",
+          "time_us": 2045,
+          "after": [],
+          "request_id": "T0",
+          "output_id": "output1",
+          "consumption_action_ids": [
+            "couple",
+            "out",
+            "correction"
+          ]
+        },
+        "phase_before": "consuming",
+        "phase_after": "consumed",
+        "epoch": 0,
+        "committed_until_us": 2045
+      },
+      {
+        "event": {
+          "id": "cleanup",
+          "kind": "cleanup",
+          "time_us": 2055,
+          "after": [],
+          "attempt_id": "try1",
+          "reset_action_ids": [
+            "reset_out",
+            "reset_check"
+          ]
+        },
+        "phase_before": "consumed",
+        "phase_after": "idle",
+        "epoch": 0,
+        "committed_until_us": 2055
+      }
+    ],
+    "last_time_us": 2055,
+    "event_ids": [
+      "request",
+      "begin",
+      "decide",
+      "make_ready",
+      "reserve",
+      "deliver",
+      "consume_begin",
+      "consume_finish",
+      "cleanup"
+    ],
+    "allocated_action_ids": [
+      "check",
+      "prep"
+    ],
+    "allocated_result_ids": [
+      "attempt1/check"
+    ],
+    "allocated_candidate_ids": [
+      "candidate1"
+    ],
+    "allocated_output_ids": [
+      "output1"
+    ]
+  },
+  "unverified": [
+    "R3 complete 15-to-1 protocol and acceptance/frame map",
+    "online commit and backpressure enforcement",
+    "R6 independent lifecycle acceptance"
+  ]
+}

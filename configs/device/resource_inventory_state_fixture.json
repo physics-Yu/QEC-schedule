@@ -1,0 +1,2029 @@
+{
+  "schema_version": "preinitialized-state/0.1",
+  "artifact_id": "entry:ab87522cae729498c31552d1",
+  "provenance": {
+    "producer": "na_pipeline.device.initial/0.2.0",
+    "kb_revision": "kb-0006",
+    "source_refs": [
+      "ADR-0008@1.0.0",
+      "R1-PREINITIALIZED-IF-001@0.1.0"
+    ],
+    "fixture": true,
+    "preparation": "declared_precondition_not_quantum_execution"
+  },
+  "execution_kind": "compile_plan",
+  "quantum_state_simulated": false,
+  "hardware_executed": false,
+  "loss_enabled": false,
+  "entry_mode": "preinitialized",
+  "t_start_us": 0.0,
+  "device_ref": "device:surface17-preinitialized-v1:readout-8",
+  "device_hash": "43c8541ec838d73dc0ede84b412a32443585683cac3b57c3293b27af009af247",
+  "placement_ref": {
+    "artifact_id": "fixture-complete-carrier-layout",
+    "producer": "R1-fixture",
+    "fixture": true
+  },
+  "placement_binding_sha256": "59f7e76379b5939717009f293db5fc04fc2032104dff093b7bbef97492d148e2",
+  "entry_spec": {
+    "patches": {
+      "L0": {
+        "aod_group": "data",
+        "basis": "Z",
+        "value": 0
+      },
+      "F0": {
+        "aod_group": "magic",
+        "basis": "Z",
+        "value": 0
+      },
+      "Y0": {
+        "aod_group": "magic",
+        "basis": "Z",
+        "value": 0
+      }
+    },
+    "placements": {
+      "L0": {
+        "anchor_um": [
+          0,
+          0
+        ],
+        "orientation": "x_vertical_z_horizontal"
+      },
+      "F0": {
+        "anchor_um": [
+          80,
+          0
+        ],
+        "orientation": "x_vertical_z_horizontal"
+      },
+      "Y0": {
+        "anchor_um": [
+          160,
+          0
+        ],
+        "orientation": "x_vertical_z_horizontal"
+      }
+    },
+    "placement_ref": {
+      "artifact_id": "fixture-complete-carrier-layout",
+      "producer": "R1-fixture",
+      "fixture": true
+    },
+    "resource_inventory": {
+      "schema_version": "initial-resource-inventory/0.1",
+      "artifact_id": "fixture-resource-plan",
+      "provenance": {
+        "producer": "R5-contract-fixture",
+        "fixture": true,
+        "source_refs": [
+          "R0:D04",
+          "R1-PREINITIALIZED-IF-001@0.2.0"
+        ]
+      },
+      "patch_roles": {
+        "L0": {
+          "role": "algorithm",
+          "pool_id": "algorithm",
+          "slot_id": "algorithm:L0"
+        },
+        "F0": {
+          "role": "factory",
+          "pool_id": "factory",
+          "slot_id": "factory:F0"
+        },
+        "Y0": {
+          "role": "scratch",
+          "pool_id": "scratch",
+          "slot_id": "scratch:Y0"
+        }
+      },
+      "nonpatch_atoms": {
+        "atom:parity_probe0": {
+          "qubit_id": "parity_probe0",
+          "trap_id": "slm:parity_probe0",
+          "position_um": [
+            240,
+            120
+          ],
+          "aod_group": "magic",
+          "role": "probe",
+          "pool_id": "parity",
+          "slot_id": "parity:probe0",
+          "basis": "Z",
+          "value": 0
+        }
+      }
+    }
+  },
+  "patches": {
+    "F0": {
+      "logical_id": "F0",
+      "code_profile": {
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1"
+      },
+      "anchor_um": [
+        80.0,
+        0.0
+      ],
+      "orientation": "x_vertical_z_horizontal",
+      "aod_group": "magic",
+      "atom_ids": [
+        "atom:F0/d0",
+        "atom:F0/d1",
+        "atom:F0/d2",
+        "atom:F0/d3",
+        "atom:F0/d4",
+        "atom:F0/d5",
+        "atom:F0/d6",
+        "atom:F0/d7",
+        "atom:F0/d8",
+        "atom:F0/x0",
+        "atom:F0/x1",
+        "atom:F0/x2",
+        "atom:F0/x3",
+        "atom:F0/z0",
+        "atom:F0/z1",
+        "atom:F0/z2",
+        "atom:F0/z3"
+      ],
+      "data_atom_ids": [
+        "atom:F0/d0",
+        "atom:F0/d1",
+        "atom:F0/d2",
+        "atom:F0/d3",
+        "atom:F0/d4",
+        "atom:F0/d5",
+        "atom:F0/d6",
+        "atom:F0/d7",
+        "atom:F0/d8"
+      ],
+      "auxiliary_atom_ids": [
+        "atom:F0/x0",
+        "atom:F0/x1",
+        "atom:F0/x2",
+        "atom:F0/x3",
+        "atom:F0/z0",
+        "atom:F0/z1",
+        "atom:F0/z2",
+        "atom:F0/z3"
+      ],
+      "initial_logical_state": {
+        "kind": "encoded_pauli_eigenstate",
+        "basis": "Z",
+        "value": 0,
+        "origin": "declared_precondition"
+      },
+      "preparation_boundary": "Encoded input is assumed at t=0, not dynamically prepared or verified here.",
+      "lifecycle": "prepared",
+      "layout_profile": "patch_home",
+      "magic_resource_ready": false,
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    "L0": {
+      "logical_id": "L0",
+      "code_profile": {
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1"
+      },
+      "anchor_um": [
+        0.0,
+        0.0
+      ],
+      "orientation": "x_vertical_z_horizontal",
+      "aod_group": "data",
+      "atom_ids": [
+        "atom:L0/d0",
+        "atom:L0/d1",
+        "atom:L0/d2",
+        "atom:L0/d3",
+        "atom:L0/d4",
+        "atom:L0/d5",
+        "atom:L0/d6",
+        "atom:L0/d7",
+        "atom:L0/d8",
+        "atom:L0/x0",
+        "atom:L0/x1",
+        "atom:L0/x2",
+        "atom:L0/x3",
+        "atom:L0/z0",
+        "atom:L0/z1",
+        "atom:L0/z2",
+        "atom:L0/z3"
+      ],
+      "data_atom_ids": [
+        "atom:L0/d0",
+        "atom:L0/d1",
+        "atom:L0/d2",
+        "atom:L0/d3",
+        "atom:L0/d4",
+        "atom:L0/d5",
+        "atom:L0/d6",
+        "atom:L0/d7",
+        "atom:L0/d8"
+      ],
+      "auxiliary_atom_ids": [
+        "atom:L0/x0",
+        "atom:L0/x1",
+        "atom:L0/x2",
+        "atom:L0/x3",
+        "atom:L0/z0",
+        "atom:L0/z1",
+        "atom:L0/z2",
+        "atom:L0/z3"
+      ],
+      "initial_logical_state": {
+        "kind": "encoded_pauli_eigenstate",
+        "basis": "Z",
+        "value": 0,
+        "origin": "declared_precondition"
+      },
+      "preparation_boundary": "Encoded input is assumed at t=0, not dynamically prepared or verified here.",
+      "lifecycle": "prepared",
+      "layout_profile": "patch_home",
+      "magic_resource_ready": false,
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    "Y0": {
+      "logical_id": "Y0",
+      "code_profile": {
+        "code": "rotated_surface",
+        "distance": 3,
+        "convention": "surface17-row-major-x-vertical/1"
+      },
+      "anchor_um": [
+        160.0,
+        0.0
+      ],
+      "orientation": "x_vertical_z_horizontal",
+      "aod_group": "magic",
+      "atom_ids": [
+        "atom:Y0/d0",
+        "atom:Y0/d1",
+        "atom:Y0/d2",
+        "atom:Y0/d3",
+        "atom:Y0/d4",
+        "atom:Y0/d5",
+        "atom:Y0/d6",
+        "atom:Y0/d7",
+        "atom:Y0/d8",
+        "atom:Y0/x0",
+        "atom:Y0/x1",
+        "atom:Y0/x2",
+        "atom:Y0/x3",
+        "atom:Y0/z0",
+        "atom:Y0/z1",
+        "atom:Y0/z2",
+        "atom:Y0/z3"
+      ],
+      "data_atom_ids": [
+        "atom:Y0/d0",
+        "atom:Y0/d1",
+        "atom:Y0/d2",
+        "atom:Y0/d3",
+        "atom:Y0/d4",
+        "atom:Y0/d5",
+        "atom:Y0/d6",
+        "atom:Y0/d7",
+        "atom:Y0/d8"
+      ],
+      "auxiliary_atom_ids": [
+        "atom:Y0/x0",
+        "atom:Y0/x1",
+        "atom:Y0/x2",
+        "atom:Y0/x3",
+        "atom:Y0/z0",
+        "atom:Y0/z1",
+        "atom:Y0/z2",
+        "atom:Y0/z3"
+      ],
+      "initial_logical_state": {
+        "kind": "encoded_pauli_eigenstate",
+        "basis": "Z",
+        "value": 0,
+        "origin": "declared_precondition"
+      },
+      "preparation_boundary": "Encoded input is assumed at t=0, not dynamically prepared or verified here.",
+      "lifecycle": "prepared",
+      "layout_profile": "patch_home",
+      "magic_resource_ready": false,
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    }
+  },
+  "atoms": [
+    {
+      "atom_id": "atom:F0/d0",
+      "qubit_id": "F0/d0",
+      "patch_id": "F0",
+      "local_id": "d0",
+      "position_um": [
+        80.0,
+        0.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/d0",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "F0"
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/d1",
+      "qubit_id": "F0/d1",
+      "patch_id": "F0",
+      "local_id": "d1",
+      "position_um": [
+        90.0,
+        0.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/d1",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "F0"
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/d2",
+      "qubit_id": "F0/d2",
+      "patch_id": "F0",
+      "local_id": "d2",
+      "position_um": [
+        100.0,
+        0.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/d2",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "F0"
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/d3",
+      "qubit_id": "F0/d3",
+      "patch_id": "F0",
+      "local_id": "d3",
+      "position_um": [
+        80.0,
+        10.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/d3",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "F0"
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/d4",
+      "qubit_id": "F0/d4",
+      "patch_id": "F0",
+      "local_id": "d4",
+      "position_um": [
+        90.0,
+        10.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/d4",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "F0"
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/d5",
+      "qubit_id": "F0/d5",
+      "patch_id": "F0",
+      "local_id": "d5",
+      "position_um": [
+        100.0,
+        10.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/d5",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "F0"
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/d6",
+      "qubit_id": "F0/d6",
+      "patch_id": "F0",
+      "local_id": "d6",
+      "position_um": [
+        80.0,
+        20.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/d6",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "F0"
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/d7",
+      "qubit_id": "F0/d7",
+      "patch_id": "F0",
+      "local_id": "d7",
+      "position_um": [
+        90.0,
+        20.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/d7",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "F0"
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/d8",
+      "qubit_id": "F0/d8",
+      "patch_id": "F0",
+      "local_id": "d8",
+      "position_um": [
+        100.0,
+        20.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/d8",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "F0"
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/x0",
+      "qubit_id": "F0/x0",
+      "patch_id": "F0",
+      "local_id": "x0",
+      "position_um": [
+        80.0,
+        40.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/x0",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/x1",
+      "qubit_id": "F0/x1",
+      "patch_id": "F0",
+      "local_id": "x1",
+      "position_um": [
+        90.0,
+        40.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/x1",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/x2",
+      "qubit_id": "F0/x2",
+      "patch_id": "F0",
+      "local_id": "x2",
+      "position_um": [
+        100.0,
+        40.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/x2",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/x3",
+      "qubit_id": "F0/x3",
+      "patch_id": "F0",
+      "local_id": "x3",
+      "position_um": [
+        110.0,
+        40.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/x3",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/z0",
+      "qubit_id": "F0/z0",
+      "patch_id": "F0",
+      "local_id": "z0",
+      "position_um": [
+        80.0,
+        50.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/z0",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/z1",
+      "qubit_id": "F0/z1",
+      "patch_id": "F0",
+      "local_id": "z1",
+      "position_um": [
+        90.0,
+        50.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/z1",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/z2",
+      "qubit_id": "F0/z2",
+      "patch_id": "F0",
+      "local_id": "z2",
+      "position_um": [
+        100.0,
+        50.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/z2",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:F0/z3",
+      "qubit_id": "F0/z3",
+      "patch_id": "F0",
+      "local_id": "z3",
+      "position_um": [
+        110.0,
+        50.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:F0/z3",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "factory",
+      "pool_id": "factory",
+      "resource_slot_id": "factory:F0"
+    },
+    {
+      "atom_id": "atom:L0/d0",
+      "qubit_id": "L0/d0",
+      "patch_id": "L0",
+      "local_id": "d0",
+      "position_um": [
+        0.0,
+        0.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/d0",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "L0"
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/d1",
+      "qubit_id": "L0/d1",
+      "patch_id": "L0",
+      "local_id": "d1",
+      "position_um": [
+        10.0,
+        0.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/d1",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "L0"
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/d2",
+      "qubit_id": "L0/d2",
+      "patch_id": "L0",
+      "local_id": "d2",
+      "position_um": [
+        20.0,
+        0.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/d2",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "L0"
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/d3",
+      "qubit_id": "L0/d3",
+      "patch_id": "L0",
+      "local_id": "d3",
+      "position_um": [
+        0.0,
+        10.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/d3",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "L0"
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/d4",
+      "qubit_id": "L0/d4",
+      "patch_id": "L0",
+      "local_id": "d4",
+      "position_um": [
+        10.0,
+        10.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/d4",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "L0"
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/d5",
+      "qubit_id": "L0/d5",
+      "patch_id": "L0",
+      "local_id": "d5",
+      "position_um": [
+        20.0,
+        10.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/d5",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "L0"
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/d6",
+      "qubit_id": "L0/d6",
+      "patch_id": "L0",
+      "local_id": "d6",
+      "position_um": [
+        0.0,
+        20.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/d6",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "L0"
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/d7",
+      "qubit_id": "L0/d7",
+      "patch_id": "L0",
+      "local_id": "d7",
+      "position_um": [
+        10.0,
+        20.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/d7",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "L0"
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/d8",
+      "qubit_id": "L0/d8",
+      "patch_id": "L0",
+      "local_id": "d8",
+      "position_um": [
+        20.0,
+        20.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/d8",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "L0"
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/x0",
+      "qubit_id": "L0/x0",
+      "patch_id": "L0",
+      "local_id": "x0",
+      "position_um": [
+        0.0,
+        40.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/x0",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/x1",
+      "qubit_id": "L0/x1",
+      "patch_id": "L0",
+      "local_id": "x1",
+      "position_um": [
+        10.0,
+        40.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/x1",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/x2",
+      "qubit_id": "L0/x2",
+      "patch_id": "L0",
+      "local_id": "x2",
+      "position_um": [
+        20.0,
+        40.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/x2",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/x3",
+      "qubit_id": "L0/x3",
+      "patch_id": "L0",
+      "local_id": "x3",
+      "position_um": [
+        30.0,
+        40.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/x3",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/z0",
+      "qubit_id": "L0/z0",
+      "patch_id": "L0",
+      "local_id": "z0",
+      "position_um": [
+        0.0,
+        50.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/z0",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/z1",
+      "qubit_id": "L0/z1",
+      "patch_id": "L0",
+      "local_id": "z1",
+      "position_um": [
+        10.0,
+        50.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/z1",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/z2",
+      "qubit_id": "L0/z2",
+      "patch_id": "L0",
+      "local_id": "z2",
+      "position_um": [
+        20.0,
+        50.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/z2",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:L0/z3",
+      "qubit_id": "L0/z3",
+      "patch_id": "L0",
+      "local_id": "z3",
+      "position_um": [
+        30.0,
+        50.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:L0/z3",
+      "aod_group": "data",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "algorithm",
+      "pool_id": "algorithm",
+      "resource_slot_id": "algorithm:L0"
+    },
+    {
+      "atom_id": "atom:Y0/d0",
+      "qubit_id": "Y0/d0",
+      "patch_id": "Y0",
+      "local_id": "d0",
+      "position_um": [
+        160.0,
+        0.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/d0",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "Y0"
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/d1",
+      "qubit_id": "Y0/d1",
+      "patch_id": "Y0",
+      "local_id": "d1",
+      "position_um": [
+        170.0,
+        0.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/d1",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "Y0"
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/d2",
+      "qubit_id": "Y0/d2",
+      "patch_id": "Y0",
+      "local_id": "d2",
+      "position_um": [
+        180.0,
+        0.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/d2",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "Y0"
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/d3",
+      "qubit_id": "Y0/d3",
+      "patch_id": "Y0",
+      "local_id": "d3",
+      "position_um": [
+        160.0,
+        10.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/d3",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "Y0"
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/d4",
+      "qubit_id": "Y0/d4",
+      "patch_id": "Y0",
+      "local_id": "d4",
+      "position_um": [
+        170.0,
+        10.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/d4",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "Y0"
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/d5",
+      "qubit_id": "Y0/d5",
+      "patch_id": "Y0",
+      "local_id": "d5",
+      "position_um": [
+        180.0,
+        10.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/d5",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "Y0"
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/d6",
+      "qubit_id": "Y0/d6",
+      "patch_id": "Y0",
+      "local_id": "d6",
+      "position_um": [
+        160.0,
+        20.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/d6",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "Y0"
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/d7",
+      "qubit_id": "Y0/d7",
+      "patch_id": "Y0",
+      "local_id": "d7",
+      "position_um": [
+        170.0,
+        20.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/d7",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "Y0"
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/d8",
+      "qubit_id": "Y0/d8",
+      "patch_id": "Y0",
+      "local_id": "d8",
+      "position_um": [
+        180.0,
+        20.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/d8",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "encoded_member",
+        "patch_id": "Y0"
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/x0",
+      "qubit_id": "Y0/x0",
+      "patch_id": "Y0",
+      "local_id": "x0",
+      "position_um": [
+        160.0,
+        40.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/x0",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/x1",
+      "qubit_id": "Y0/x1",
+      "patch_id": "Y0",
+      "local_id": "x1",
+      "position_um": [
+        170.0,
+        40.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/x1",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/x2",
+      "qubit_id": "Y0/x2",
+      "patch_id": "Y0",
+      "local_id": "x2",
+      "position_um": [
+        180.0,
+        40.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/x2",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/x3",
+      "qubit_id": "Y0/x3",
+      "patch_id": "Y0",
+      "local_id": "x3",
+      "position_um": [
+        190.0,
+        40.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/x3",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/z0",
+      "qubit_id": "Y0/z0",
+      "patch_id": "Y0",
+      "local_id": "z0",
+      "position_um": [
+        160.0,
+        50.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/z0",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/z1",
+      "qubit_id": "Y0/z1",
+      "patch_id": "Y0",
+      "local_id": "z1",
+      "position_um": [
+        170.0,
+        50.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/z1",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/z2",
+      "qubit_id": "Y0/z2",
+      "patch_id": "Y0",
+      "local_id": "z2",
+      "position_um": [
+        180.0,
+        50.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/z2",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:Y0/z3",
+      "qubit_id": "Y0/z3",
+      "patch_id": "Y0",
+      "local_id": "z3",
+      "position_um": [
+        190.0,
+        50.0
+      ],
+      "carrier": "SLM",
+      "trap_id": "slm:Y0/z3",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      },
+      "resource_role": "scratch",
+      "pool_id": "scratch",
+      "resource_slot_id": "scratch:Y0"
+    },
+    {
+      "atom_id": "atom:parity_probe0",
+      "qubit_id": "parity_probe0",
+      "trap_id": "slm:parity_probe0",
+      "patch_id": null,
+      "local_id": null,
+      "position_um": [
+        240.0,
+        120.0
+      ],
+      "carrier": "SLM",
+      "aod_group": "magic",
+      "row_id": null,
+      "column_id": null,
+      "resource_role": "probe",
+      "pool_id": "parity",
+      "resource_slot_id": "parity:probe0",
+      "initial_state": {
+        "kind": "physical_basis",
+        "basis": "Z",
+        "value": 0
+      }
+    }
+  ],
+  "slm_traps": [
+    {
+      "trap_id": "slm:F0/d0",
+      "position_um": [
+        80.0,
+        0.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/d0"
+    },
+    {
+      "trap_id": "slm:F0/d1",
+      "position_um": [
+        90.0,
+        0.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/d1"
+    },
+    {
+      "trap_id": "slm:F0/d2",
+      "position_um": [
+        100.0,
+        0.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/d2"
+    },
+    {
+      "trap_id": "slm:F0/d3",
+      "position_um": [
+        80.0,
+        10.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/d3"
+    },
+    {
+      "trap_id": "slm:F0/d4",
+      "position_um": [
+        90.0,
+        10.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/d4"
+    },
+    {
+      "trap_id": "slm:F0/d5",
+      "position_um": [
+        100.0,
+        10.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/d5"
+    },
+    {
+      "trap_id": "slm:F0/d6",
+      "position_um": [
+        80.0,
+        20.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/d6"
+    },
+    {
+      "trap_id": "slm:F0/d7",
+      "position_um": [
+        90.0,
+        20.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/d7"
+    },
+    {
+      "trap_id": "slm:F0/d8",
+      "position_um": [
+        100.0,
+        20.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/d8"
+    },
+    {
+      "trap_id": "slm:F0/x0",
+      "position_um": [
+        80.0,
+        40.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/x0"
+    },
+    {
+      "trap_id": "slm:F0/x1",
+      "position_um": [
+        90.0,
+        40.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/x1"
+    },
+    {
+      "trap_id": "slm:F0/x2",
+      "position_um": [
+        100.0,
+        40.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/x2"
+    },
+    {
+      "trap_id": "slm:F0/x3",
+      "position_um": [
+        110.0,
+        40.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/x3"
+    },
+    {
+      "trap_id": "slm:F0/z0",
+      "position_um": [
+        80.0,
+        50.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/z0"
+    },
+    {
+      "trap_id": "slm:F0/z1",
+      "position_um": [
+        90.0,
+        50.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/z1"
+    },
+    {
+      "trap_id": "slm:F0/z2",
+      "position_um": [
+        100.0,
+        50.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/z2"
+    },
+    {
+      "trap_id": "slm:F0/z3",
+      "position_um": [
+        110.0,
+        50.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:F0/z3"
+    },
+    {
+      "trap_id": "slm:L0/d0",
+      "position_um": [
+        0.0,
+        0.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/d0"
+    },
+    {
+      "trap_id": "slm:L0/d1",
+      "position_um": [
+        10.0,
+        0.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/d1"
+    },
+    {
+      "trap_id": "slm:L0/d2",
+      "position_um": [
+        20.0,
+        0.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/d2"
+    },
+    {
+      "trap_id": "slm:L0/d3",
+      "position_um": [
+        0.0,
+        10.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/d3"
+    },
+    {
+      "trap_id": "slm:L0/d4",
+      "position_um": [
+        10.0,
+        10.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/d4"
+    },
+    {
+      "trap_id": "slm:L0/d5",
+      "position_um": [
+        20.0,
+        10.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/d5"
+    },
+    {
+      "trap_id": "slm:L0/d6",
+      "position_um": [
+        0.0,
+        20.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/d6"
+    },
+    {
+      "trap_id": "slm:L0/d7",
+      "position_um": [
+        10.0,
+        20.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/d7"
+    },
+    {
+      "trap_id": "slm:L0/d8",
+      "position_um": [
+        20.0,
+        20.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/d8"
+    },
+    {
+      "trap_id": "slm:L0/x0",
+      "position_um": [
+        0.0,
+        40.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/x0"
+    },
+    {
+      "trap_id": "slm:L0/x1",
+      "position_um": [
+        10.0,
+        40.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/x1"
+    },
+    {
+      "trap_id": "slm:L0/x2",
+      "position_um": [
+        20.0,
+        40.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/x2"
+    },
+    {
+      "trap_id": "slm:L0/x3",
+      "position_um": [
+        30.0,
+        40.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/x3"
+    },
+    {
+      "trap_id": "slm:L0/z0",
+      "position_um": [
+        0.0,
+        50.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/z0"
+    },
+    {
+      "trap_id": "slm:L0/z1",
+      "position_um": [
+        10.0,
+        50.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/z1"
+    },
+    {
+      "trap_id": "slm:L0/z2",
+      "position_um": [
+        20.0,
+        50.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/z2"
+    },
+    {
+      "trap_id": "slm:L0/z3",
+      "position_um": [
+        30.0,
+        50.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:L0/z3"
+    },
+    {
+      "trap_id": "slm:Y0/d0",
+      "position_um": [
+        160.0,
+        0.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/d0"
+    },
+    {
+      "trap_id": "slm:Y0/d1",
+      "position_um": [
+        170.0,
+        0.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/d1"
+    },
+    {
+      "trap_id": "slm:Y0/d2",
+      "position_um": [
+        180.0,
+        0.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/d2"
+    },
+    {
+      "trap_id": "slm:Y0/d3",
+      "position_um": [
+        160.0,
+        10.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/d3"
+    },
+    {
+      "trap_id": "slm:Y0/d4",
+      "position_um": [
+        170.0,
+        10.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/d4"
+    },
+    {
+      "trap_id": "slm:Y0/d5",
+      "position_um": [
+        180.0,
+        10.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/d5"
+    },
+    {
+      "trap_id": "slm:Y0/d6",
+      "position_um": [
+        160.0,
+        20.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/d6"
+    },
+    {
+      "trap_id": "slm:Y0/d7",
+      "position_um": [
+        170.0,
+        20.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/d7"
+    },
+    {
+      "trap_id": "slm:Y0/d8",
+      "position_um": [
+        180.0,
+        20.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/d8"
+    },
+    {
+      "trap_id": "slm:Y0/x0",
+      "position_um": [
+        160.0,
+        40.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/x0"
+    },
+    {
+      "trap_id": "slm:Y0/x1",
+      "position_um": [
+        170.0,
+        40.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/x1"
+    },
+    {
+      "trap_id": "slm:Y0/x2",
+      "position_um": [
+        180.0,
+        40.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/x2"
+    },
+    {
+      "trap_id": "slm:Y0/x3",
+      "position_um": [
+        190.0,
+        40.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/x3"
+    },
+    {
+      "trap_id": "slm:Y0/z0",
+      "position_um": [
+        160.0,
+        50.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/z0"
+    },
+    {
+      "trap_id": "slm:Y0/z1",
+      "position_um": [
+        170.0,
+        50.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/z1"
+    },
+    {
+      "trap_id": "slm:Y0/z2",
+      "position_um": [
+        180.0,
+        50.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/z2"
+    },
+    {
+      "trap_id": "slm:Y0/z3",
+      "position_um": [
+        190.0,
+        50.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:Y0/z3"
+    },
+    {
+      "trap_id": "slm:parity_probe0",
+      "position_um": [
+        240.0,
+        120.0
+      ],
+      "zone_id": "storage_entanglement",
+      "occupant": "atom:parity_probe0"
+    }
+  ],
+  "aod_rows": [],
+  "aod_columns": [],
+  "startup_actions": [],
+  "startup_duration_us": 0.0,
+  "results": {},
+  "ready_magic_tokens": [],
+  "resource_inventory": {
+    "schema_version": "initial-resource-inventory/0.1",
+    "artifact_id": "fixture-resource-plan",
+    "provenance": {
+      "producer": "R5-contract-fixture",
+      "fixture": true,
+      "source_refs": [
+        "R0:D04",
+        "R1-PREINITIALIZED-IF-001@0.2.0"
+      ]
+    },
+    "patch_roles": {
+      "L0": {
+        "role": "algorithm",
+        "pool_id": "algorithm",
+        "slot_id": "algorithm:L0"
+      },
+      "F0": {
+        "role": "factory",
+        "pool_id": "factory",
+        "slot_id": "factory:F0"
+      },
+      "Y0": {
+        "role": "scratch",
+        "pool_id": "scratch",
+        "slot_id": "scratch:Y0"
+      }
+    },
+    "nonpatch_atoms": {
+      "atom:parity_probe0": {
+        "qubit_id": "parity_probe0",
+        "trap_id": "slm:parity_probe0",
+        "position_um": [
+          240,
+          120
+        ],
+        "aod_group": "magic",
+        "role": "probe",
+        "pool_id": "parity",
+        "slot_id": "parity:probe0",
+        "basis": "Z",
+        "value": 0
+      }
+    }
+  },
+  "resource_inventory_sha256": "9d139e9cdb9d4013eb9741bc6d2d155e92d7f7b700f1040e930c03e746c0e792",
+  "resource_counts": {
+    "patch_count": 3,
+    "patch_atom_count": 51,
+    "nonpatch_atom_count": 1,
+    "total_atom_count": 52,
+    "resource_slot_count": 4,
+    "atoms_by_role": {
+      "algorithm": 17,
+      "factory": 17,
+      "probe": 1,
+      "scratch": 17
+    }
+  }
+}
