@@ -15,7 +15,7 @@ paths.update({f'compiled_window_{i}':old/f'window-{i:03}.json.gz' for i in range
 paths.update({f'history_{i}':current/'history'/f'window-{i:03}.json.gz' for i in range(5)})
 paths.update({role:old/name for role,name in [('device','device.json.gz'),('logical_dag','logical-dag.json.gz'),('placement','patch-placement.json.gz'),('physical_bundle','physical-bundle.json.gz')]})
 paths.update({role:current/name for role,name in [('event_trace','event-trace.json.gz'),('logical_schedule','logical-schedule.json.gz'),('producer_receipt','receipt.json')]})
-runner=root/'tests/validation/qualify_chunked_session_artifacts.py';manifest=out/'chunked-session-input-manifest-v1.json';spec_path=kb/'chunked-session-validation-job-spec-v1.json';output='knowledge/roles/R6/evidence/T605/chunked-session-validation-v1'
+runner=root/'scripts/legacy_validation/qualify_chunked_session_artifacts.py';manifest=out/'chunked-session-input-manifest-v1.json';spec_path=kb/'chunked-session-validation-job-spec-v1.json';output='knowledge/roles/R6/evidence/T605/chunked-session-validation-v1'
 inputs={role:{'path':p.relative_to(root).as_posix(),'byte_sha256':digest(p)} for role,p in paths.items()}
 source_files=list((root/'src/na_pipeline/validation').glob('*.py'))+[runner]
 save(manifest,{'schema_version':'R6FrozenChunkedSessionInputs/0.1','owner':'R6','kb_revision':'kb-0006','created_at':datetime.now().astimezone().isoformat(),'inputs':inputs,'verifier_source_byte_sha256':{p.relative_to(root).as_posix():digest(p) for p in source_files},'output_directory':output,'recompile':False,'search_calls':0,'scope':'actual five-window archived session, not full Shor or factory qualification'})

@@ -13,7 +13,7 @@ def digest(p):
 def save(p,v):p.write_bytes((json.dumps(v,ensure_ascii=False,indent=2)+'\n').encode('utf-8'))
 roles={'input':'input.json.gz','physical_plan':'physical-plan.json.gz','execution':'execution.json.gz','observation':'enola-observation.json.gz','producer_status':'status.json'}
 inputs={role:{'path':(source/name).relative_to(root).as_posix(),'byte_sha256':digest(source/name)} for role,name in roles.items()}
-runner=root/'tests/validation/qualify_factory_stage_artifacts.py';manifest=out/f'factory-stage-input-manifest-{revision}.json';spec_path=kb/f'factory-stage-validation-job-spec-{revision}.json'
+runner=root/'scripts/legacy_validation/qualify_factory_stage_artifacts.py';manifest=out/f'factory-stage-input-manifest-{revision}.json';spec_path=kb/f'factory-stage-validation-job-spec-{revision}.json'
 if manifest.exists() or spec_path.exists():raise ValueError('Do not overwrite an already prepared revision')
 output_directory=f'knowledge/roles/R6/evidence/T605/factory-stage-validation-{revision}'
 source_files=list((root/'src/na_pipeline/validation').glob('*.py'))+[runner]
@@ -39,6 +39,6 @@ save(kb/f'factory-stage-validation-handoff-{revision}.json',{'schema_version':'R
  'dependencies':['completed source job 20261006T152602272401Z-r4-factory-first-stage-205'],
  'unresolved_questions':[], 'original_source_job_untouched':True,'rerun_reason':'Verifier v1 required one direct move for every candidate. All 25 failures are actual continuous two-leg detours; candidate_motion_witness now checks complete ordered route chains. Regression still rejects missing/broken/overlapping/wrong-endpoint paths. Original report and input bytes retained; no compiler rerun.',
  'dispatch_argv':['scripts/.venv/Scripts/python.exe','scripts/server_pipeline_job.py','dispatch','--spec',spec_path.relative_to(root).as_posix(),*[part for p in read_paths for part in ('--input',p)]],
- 'result_read_interface':'Read exported job stdout.log; use tests/validation/import_factory_stage_result.py --stdout PATH. Full original report is in R6_VALIDATION_ARTIFACTS_JSON.',
+ 'result_read_interface':'Read exported job stdout.log; use scripts/legacy_validation/import_factory_stage_result.py --stdout PATH. Full original report is in R6_VALIDATION_ARTIFACTS_JSON.',
  'pre_dispatch_checks':'Verifier source is bound by manifest. If changed, do not bypass; compare reason and prepare a new reviewed manifest. R6 does not dispatch.'})
 print(json.dumps({'status':'ready_for_R7_dispatch','spec':spec_path.relative_to(root).as_posix(),'inputs':len(inputs),'verifier_files':len(source_files)},ensure_ascii=False))

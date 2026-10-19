@@ -5,3 +5,7 @@ build/
 dist/
 scripts/.venv/
 artifacts/environment/R7/jobs/
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/

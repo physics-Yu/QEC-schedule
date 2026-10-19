@@ -27,7 +27,7 @@ def launch():
     stamp=datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     local=out/('server-session-'+stamp); local.mkdir(parents=True,exist_ok=False); save(local/'preflight.json',preflight)
     if not preflight['connected']: raise RuntimeError('Server unavailable; preflight evidence preserved')
-    files=list((root/'src/na_pipeline').rglob('*.py'))+[root/'scripts/jobs.py',root/'pyproject.toml',Path(__file__),root/'tests/validation/qualify_session_artifacts.py']
+    files=list((root/'src/na_pipeline').rglob('*.py'))+[root/'scripts/jobs.py',root/'pyproject.toml',Path(__file__),root/'scripts/legacy_validation/qualify_session_artifacts.py']
     files+=list((root/'viewer').glob('*.py'))
     for base in ('T505-dag-session-v1','T505-dag-session-fixed-runtime'):
         directory=root/'examples/scenarios'/base
@@ -50,7 +50,7 @@ expected=MANIFEST
 for name,value in expected.items():
  p=(root/name).resolve()
  if not p.is_relative_to(root) or hashlib.sha256(p.read_bytes()).hexdigest()!=value:raise ValueError('Frozen input identity mismatch: '+name)
-command=[sys.executable,str(root/'scripts/jobs.py'),'launch','--job-dir',str(root/'knowledge/roles/R6/evidence/T605/job-server'),'--wall-seconds','1800','--memory-gib','12','--parallelism','1','--search-expansions','1','--',sys.executable,str(root/'tests/validation/qualify_session_artifacts.py')]
+command=[sys.executable,str(root/'scripts/jobs.py'),'launch','--job-dir',str(root/'knowledge/roles/R6/evidence/T605/job-server'),'--wall-seconds','1800','--memory-gib','12','--parallelism','1','--search-expansions','1','--',sys.executable,str(root/'scripts/legacy_validation/qualify_session_artifacts.py')]
 p=subprocess.run(command,cwd=root,text=True,capture_output=True)
 if p.returncode:raise RuntimeError(p.stderr)
 print(json.dumps({'python':sys.version,'verified_files':len(expected),'dispatch':json.loads(p.stdout)}))

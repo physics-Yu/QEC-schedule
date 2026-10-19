@@ -11,6 +11,14 @@ dependencies = []
 
 [project.optional-dependencies]
 enola = ["networkx==3.5", "rustworkx==0.17.1", "numpy==2.3.5"]
+dev = [
+  "pytest>=8",
+  "pytest-xdist>=3.6",
+  "ruff>=0.14.1",
+  "mypy>=1.11",
+  "import-linter>=2.1",
+  "pre-commit>=4.0",
+]
 
 [project.scripts]
 na-pipeline = "na_pipeline.cli:main"
@@ -25,3 +33,20 @@ include = ["na_pipeline*", "viewer"]
 
 [tool.setuptools.package-data]
 viewer = ["*.html", "*.js", "*.css"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--import-mode=importlib -ra"
+pythonpath = ["src", ".", "tests/runtime", "tests/backend", "tests/qec", "tests/validation"]
+markers = [
+  "requires_enola: requires the optional [enola] dependencies",
+  "requires_artifacts: requires historical artifacts unavailable in a clean checkout",
+  "slow: long-running regression or benchmark",
+  "env_sensitive: depends on host process accounting or timing",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+extend-exclude = ["src/na_pipeline", "scripts", "tests", "viewer", "third_party", "examples"]
+force-exclude = true
