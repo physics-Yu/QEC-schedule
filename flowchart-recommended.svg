@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1340" height="1535" viewBox="0 0 1340 1535" role="img" aria-labelledby="title desc">
+<title id="title">Shor algorithm to atom actions — compilation flow</title>
+<desc id="desc">Shor algorithm feeds Logical circuit. Zone architecture stays inside the physical compiler. Compute zone and Storage + entanglement zone merge into one arrow to Placement. A full-size AOD constraints module feeds Placement and Routing. Placement exchanges positions and route feedback with Routing. Atom action returns physical constraints to logical Constraint map and provides local actions for Entire atom action. Validation and runtime feedback follow the assembled program.</desc>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 Z" fill="#000"/></marker>
+</defs>
+<style>text { font-family: Arial, Helvetica, sans-serif; fill: #000; font-weight: 400; } .box { fill: #fff; stroke: #000; stroke-width: 1.8; } .edge { fill: none; stroke: #000; stroke-width: 1.7; stroke-linejoin: round; } </style>
+<rect width="1340" height="1535" fill="#fff"/>
+<g id="shor-algorithm" data-node="true"><rect class="box" x="315" y="35" width="270" height="55"/>
+<text x="450.0" y="69.98" text-anchor="middle" font-size="22" >
+<tspan x="450.0" dy="0">Shor algorithm</tspan>
+</text>
+</g>
+<path id="shor-logical-circuit" class="edge" d="M450 90 V125" marker-end="url(#arrow)"/>
+<g id="main-flow" transform="translate(0 90)">
+<g id="logical-circuit" data-node="true"><rect class="box" x="315" y="35" width="270" height="55"/>
+<text x="450.0" y="69.98" text-anchor="middle" font-size="22" >
+<tspan x="450.0" dy="0">Logical circuit</tspan>
+</text>
+</g>
+<g id="logical-dag" data-node="true"><rect class="box" x="295" y="125" width="310" height="80"/>
+<text x="450.0" y="156.6" text-anchor="middle" font-size="22" >
+<tspan x="450.0" dy="0">Logical DAG</tspan>
+</text>
+<text x="450.0" y="186.6" text-anchor="middle" font-size="16" >
+<tspan x="450.0" dy="0">Quantum + classical dependencies</tspan>
+</text>
+</g>
+<path id="logical-dag-edge" class="edge" d="M450 90 V125" marker-end="url(#arrow)"/>
+<g id="components" data-node="true"><rect class="box" x="35" y="250" width="215" height="85"/>
+<text x="142.5" y="284.1" text-anchor="middle" font-size="22" >
+<tspan x="142.5" dy="0">QEC code</tspan>
+</text>
+<text x="142.5" y="314.1" text-anchor="middle" font-size="16" >
+<tspan x="142.5" dy="0">Code / protocol selection</tspan>
+</text>
+</g>
+<g id="lowering" data-node="true"><rect class="box" x="285" y="250" width="330" height="85"/>
+<text x="450.0" y="284.1" text-anchor="middle" font-size="22" >
+<tspan x="450.0" dy="0">Gate component</tspan>
+</text>
+<text x="450.0" y="314.1" text-anchor="middle" font-size="16" >
+<tspan x="450.0" dy="0">Code-dependent physical lowering</tspan>
+</text>
+</g>
+<path id="dag-lowering" class="edge" d="M450 205 V250" marker-end="url(#arrow)"/>
+<path id="library-lowering" class="edge" d="M250 292.5 H285" marker-end="url(#arrow)"/>
+<rect id="physical-compiler" x="235" y="380" width="565" height="785" fill="none" stroke="#000" stroke-width="1.8"/>
+<text x="255" y="410" text-anchor="start" font-size="20" >
+<tspan x="255" dy="0">Physical compiler</tspan>
+</text>
+<g id="physical-circuit" data-node="true"><rect class="box" x="310" y="435" width="330" height="55"/>
+<text x="475.0" y="469.98" text-anchor="middle" font-size="22" >
+<tspan x="475.0" dy="0">Physical circuit</tspan>
+</text>
+</g>
+<path id="lowering-physical" class="edge" d="M450 335 V435" marker-end="url(#arrow)"/>
+<g id="physical-dag" data-node="true"><rect class="box" x="310" y="525" width="330" height="75"/>
+<text x="475.0" y="554.1" text-anchor="middle" font-size="22" >
+<tspan x="475.0" dy="0">Physical DAG</tspan>
+</text>
+<text x="475.0" y="584.1" text-anchor="middle" font-size="16" >
+<tspan x="475.0" dy="0">Dependencies + local gate scheduling</tspan>
+</text>
+</g>
+<path id="circuit-physical-dag" class="edge" d="M475 490 V525" marker-end="url(#arrow)"/>
+<g id="zone-architecture" data-node="true"><rect class="box" x="310" y="635" width="330" height="65"/>
+<text x="475.0" y="659.1" text-anchor="middle" font-size="22" >
+<tspan x="475.0" dy="0">Zone architecture</tspan>
+</text>
+<text x="475.0" y="689.1" text-anchor="middle" font-size="16" >
+<tspan x="475.0" dy="0">Physical implementation details</tspan>
+</text>
+</g>
+<path id="physical-dag-zone" class="edge" d="M475 600 V635" marker-end="url(#arrow)"/>
+<g id="compute-zone" data-node="true"><rect class="box" x="255" y="735" width="220" height="64"/>
+<text x="365.0" y="774.14" text-anchor="middle" font-size="21" >
+<tspan x="365.0" dy="0">Compute zone</tspan>
+</text>
+</g>
+<g id="storage-entanglement-zone" data-node="true"><rect class="box" x="510" y="735" width="270" height="64"/>
+<text x="645.0" y="760.49" text-anchor="middle" font-size="21" >
+<tspan x="645.0" dy="0">Storage +</tspan>
+<tspan x="645.0" dy="27.3">entanglement zone</tspan>
+</text>
+</g>
+<path id="zone-compute" class="edge" d="M385 700 V718 H365 V735" marker-end="url(#arrow)"/>
+<path id="zone-storage" class="edge" d="M565 700 V718 H645 V735" marker-end="url(#arrow)"/>
+<g id="reuse" data-node="true"><rect class="box" x="675" y="814" width="105" height="34"/>
+<text x="727.5" y="836.78" text-anchor="middle" font-size="17" >
+<tspan x="727.5" dy="0">Reuse</tspan>
+</text>
+</g>
+<path id="storage-reuse" class="edge" d="M727.5 799 V814" marker-end="url(#arrow)"/>
+<g id="placement" data-node="true"><rect class="box" x="255" y="935" width="220" height="74"/>
+<text x="365.0" y="963.6" text-anchor="middle" font-size="22" >
+<tspan x="365.0" dy="0">Placement</tspan>
+</text>
+<text x="365.0" y="993.6" text-anchor="middle" font-size="16" >
+<tspan x="365.0" dy="0">Positions + reuse decisions</tspan>
+</text>
+</g>
+<g id="routing" data-node="true"><rect class="box" x="560" y="935" width="220" height="74"/>
+<text x="670.0" y="963.6" text-anchor="middle" font-size="22" >
+<tspan x="670.0" dy="0">Routing</tspan>
+</text>
+<text x="670.0" y="993.6" text-anchor="middle" font-size="16" >
+<tspan x="670.0" dy="0">Moves / transfers / timing</tspan>
+</text>
+</g>
+<path id="compute-zone-join" class="edge" d="M365 799 V817"/>
+<path id="storage-zone-join" class="edge" d="M645 799 V817 H365"/>
+<circle id="zone-join" cx="365" cy="817" r="2.8" fill="#000"/>
+<path id="zone-join-placement" class="edge" d="M365 817 V935" marker-end="url(#arrow)"/>
+<path id="placement-routing" class="edge" d="M475 962 H560" marker-end="url(#arrow)"/>
+<path id="routing-placement-feedback" class="edge" d="M560 986 H475" marker-end="url(#arrow)"/>
+<text x="517.5" y="954" text-anchor="middle" font-size="12" >
+<tspan x="517.5" dy="0">Positions</tspan>
+</text>
+<text x="517.5" y="1004" text-anchor="middle" font-size="12" >
+<tspan x="517.5" dy="0">Feedback</tspan>
+</text>
+<g id="atom-action" data-node="true"><rect class="box" x="285" y="1062" width="480" height="82"/>
+<text x="525.0" y="1084.1" text-anchor="middle" font-size="22" >
+<tspan x="525.0" dy="0">Atom action</tspan>
+</text>
+<text x="525.0" y="1114.1" text-anchor="middle" font-size="16" >
+<tspan x="525.0" dy="0">Local atom actions + constraint summary</tspan>
+<tspan x="525.0" dy="21">Resource intervals / entry-exit state</tspan>
+</text>
+</g>
+<path id="routing-atom-action" class="edge" d="M670 1009 V1043 H525 V1062" marker-end="url(#arrow)"/>
+<g id="aod-constraints" data-node="true"><rect class="box" x="405" y="849" width="260" height="54"/>
+<text x="535.0" y="883.48" text-anchor="middle" font-size="22" >
+<tspan x="535.0" dy="0">AOD constraints</tspan>
+</text>
+</g>
+<path id="aod-placement" class="edge" d="M435 903 V935" marker-end="url(#arrow)"/>
+<path id="aod-routing" class="edge" d="M635 903 V935" marker-end="url(#arrow)"/>
+<text x="910" y="516" text-anchor="start" font-size="19" >
+<tspan x="910" dy="0">Logical scheduling</tspan>
+</text>
+<g id="constraints" data-node="true"><rect class="box" x="910" y="550" width="365" height="98"/>
+<text x="1092.5" y="580.1" text-anchor="middle" font-size="22" >
+<tspan x="1092.5" dy="0">Constraint map</tspan>
+</text>
+<text x="1092.5" y="610.1" text-anchor="middle" font-size="16" >
+<tspan x="1092.5" dy="0">Physical constraints on logical operations</tspan>
+<tspan x="1092.5" dy="21">Duration / resources / feasible concurrency</tspan>
+</text>
+</g>
+<path id="logical-constraints" class="edge" d="M605 165 H1092.5 V550" marker-end="url(#arrow)"/>
+<text x="837" y="152" text-anchor="middle" font-size="16" >
+<tspan x="837" dy="0">Logical operation IDs + dependencies</tspan>
+</text>
+<path id="physical-constraints-return" class="edge" d="M765 1086 H845 V599 H910" marker-end="url(#arrow)"/>
+<text x="858" y="722" text-anchor="start" font-size="15" >
+<tspan x="858" dy="0">Returned physical</tspan>
+<tspan x="858" dy="21">constraints</tspan>
+</text>
+<g id="global-scheduler" data-node="true"><rect class="box" x="910" y="920" width="365" height="112"/>
+<text x="1092.5" y="957.1" text-anchor="middle" font-size="22" >
+<tspan x="1092.5" dy="0">Global scheduler</tspan>
+</text>
+<text x="1092.5" y="987.1" text-anchor="middle" font-size="16" >
+<tspan x="1092.5" dy="0">Logical ready sets + resource allocation</tspan>
+<tspan x="1092.5" dy="21">Operation timing + instance binding</tspan>
+</text>
+</g>
+<path id="constraints-global" class="edge" d="M1092.5 648 V920" marker-end="url(#arrow)"/>
+<g id="program" data-node="true"><rect class="box" x="910" y="1098" width="365" height="96"/>
+<text x="1092.5" y="1127.1" text-anchor="middle" font-size="22" >
+<tspan x="1092.5" dy="0">Entire atom action</tspan>
+</text>
+<text x="1092.5" y="1157.1" text-anchor="middle" font-size="16" >
+<tspan x="1092.5" dy="0">Timed atom program</tspan>
+<tspan x="1092.5" dy="21">Explicit conditions + source mapping</tspan>
+</text>
+</g>
+<path id="schedule-program" class="edge" d="M1092.5 1032 V1098" marker-end="url(#arrow)"/>
+<path id="local-actions-program" class="edge" d="M765 1122 H865 V1146 H910" marker-end="url(#arrow)"/>
+<text x="840" y="1178" text-anchor="middle" font-size="15" >
+<tspan x="840" dy="0">Local actions</tspan>
+</text>
+<g id="validation" data-node="true"><rect class="box" x="910" y="1235" width="365" height="70"/>
+<text x="1092.5" y="1261.6" text-anchor="middle" font-size="22" >
+<tspan x="1092.5" dy="0">Validation</tspan>
+</text>
+<text x="1092.5" y="1291.6" text-anchor="middle" font-size="16" >
+<tspan x="1092.5" dy="0">Semantics / geometry / resources / timing</tspan>
+</text>
+</g>
+<path id="program-validation" class="edge" d="M1092.5 1194 V1235" marker-end="url(#arrow)"/>
+<g id="runtime" data-node="true"><rect class="box" x="910" y="1350" width="365" height="70"/>
+<text x="1092.5" y="1376.6" text-anchor="middle" font-size="22" >
+<tspan x="1092.5" dy="0">Runtime / event interface</tspan>
+</text>
+<text x="1092.5" y="1406.6" text-anchor="middle" font-size="16" >
+<tspan x="1092.5" dy="0">Measurement / frame / resource state</tspan>
+</text>
+</g>
+<path id="validation-runtime" class="edge" d="M1092.5 1305 V1350" marker-end="url(#arrow)"/>
+<path id="runtime-feedback" class="edge" d="M1275 1385 H1315 V976 H1275" marker-end="url(#arrow)" stroke-dasharray="7 5"/>
+<text x="1304" y="1190" text-anchor="middle" font-size="15" transform="rotate(-90 1304 1190)">
+<tspan x="1304" dy="0">Results / resource state</tspan>
+</text>
+<text x="255" y="1220" text-anchor="start" font-size="16" >
+<tspan x="255" dy="0">Solid arrows: compilation and returned constraints</tspan>
+<tspan x="255" dy="26">Dashed arrows: runtime feedback</tspan>
+</text>
+</g>
+</svg>
