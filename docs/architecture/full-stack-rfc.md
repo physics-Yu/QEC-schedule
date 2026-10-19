@@ -6,6 +6,8 @@
 
 本文接续输入的 `architecture-v2.md` 与 `engineering-workflow.md`。保留分层 IR、插件、独立验证、不可变产物和渐进迁移方向，修订其中影响长期扩展的假设。工程落地见 [测试、回退与发布](engineering-workflow.md)，本轮核查见 [基线审计](baseline-2026-10-19.md)。
 
+新增外部资料评估见 [hsim、AQCIS 与电路格式的接入评估](external-interfaces-2026-10-19.md)。该补充记录固定源码版本、设备能力限制与候选适配接口，供 Claude 审查，尚未冻结为实现决定。
+
 ## 1. 产品应当提供什么
 
 | 使用者 | 需要完成的工作 | 稳定入口与验收结果 |
