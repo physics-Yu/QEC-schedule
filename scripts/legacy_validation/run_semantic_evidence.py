@@ -17,7 +17,7 @@ cases=[postprocess_phase([(y>>(7-i))&1 for i in range(8)],N=N,a=a) for N,a in [(
 start=time.perf_counter(); frontend=audit_shor15(logical,cases); front_time=time.perf_counter()-start
 start=time.perf_counter(); qec=audit_surface17(physical); qec_time=time.perf_counter()-start
 stream=io.StringIO(); start=time.perf_counter()
-suite=unittest.defaultTestLoader.discover(str(Path(__file__).parent),pattern='test_semantics.py')
+suite=unittest.defaultTestLoader.discover(str(root/'tests/validation'),pattern='test_semantics.py')
 result=unittest.TextTestRunner(stream=stream,verbosity=2).run(suite); test_time=time.perf_counter()-start
 (out/'unittest.txt').write_bytes(stream.getvalue().encode('utf-8'))
 bundle={'logical.json':logical,'physical.json':physical,'postprocess-cases.json':cases}

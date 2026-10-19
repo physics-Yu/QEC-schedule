@@ -1,0 +1,3 @@
+# Enola provenance checks hash exact upstream and lockfile bytes.
+# Keep checkout bytes unchanged even when core.autocrlf is enabled on Windows.
+/third_party/enola/** -text

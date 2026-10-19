@@ -6,6 +6,7 @@ import sys
 import time
 import unittest
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'tests/validation'))
 from test_validation import fixture, action, pickup
 from na_pipeline.validation import validate
 
@@ -24,7 +25,7 @@ class Result(unittest.TextTestResult):
         super().addError(test,err); self.records.append({'test':test.id(),'status':'error'})
 
 stream=io.StringIO()
-suite=unittest.defaultTestLoader.discover(str(Path(__file__).parent),pattern='test_validation.py')
+suite=unittest.defaultTestLoader.discover(str(Path(__file__).resolve().parents[2] / 'tests/validation'),pattern='test_validation.py')
 started=time.perf_counter()
 result=unittest.TextTestRunner(stream=stream,verbosity=2,resultclass=Result).run(suite)
 elapsed=time.perf_counter()-started
