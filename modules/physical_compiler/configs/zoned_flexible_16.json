@@ -1,0 +1,201 @@
+{
+  "name": "zoned_flexible_16",
+  "zones": [
+    {
+      "id": "storage",
+      "bounds": {
+        "x_min": 0,
+        "y_min": 0,
+        "x_max": 160,
+        "y_max": 20
+      },
+      "operations": [
+        "load",
+        "store",
+        "rotate",
+        "reset"
+      ],
+      "role": "storage"
+    },
+    {
+      "id": "entanglement",
+      "bounds": {
+        "x_min": 0,
+        "y_min": 140,
+        "x_max": 160,
+        "y_max": 140
+      },
+      "operations": [
+        "load",
+        "store",
+        "cz",
+        "rotate",
+        "reset"
+      ],
+      "role": "entanglement"
+    },
+    {
+      "id": "measurement",
+      "bounds": {
+        "x_min": 0,
+        "y_min": 260,
+        "x_max": 160,
+        "y_max": 270
+      },
+      "operations": [
+        "measure"
+      ],
+      "role": "measurement"
+    }
+  ],
+  "slm_grids": [
+    {
+      "prefix": "storage",
+      "origin": {
+        "x": 0,
+        "y": 0
+      },
+      "rows": 4,
+      "columns": 32,
+      "pitch": {
+        "x": 5,
+        "y": 5
+      }
+    },
+    {
+      "prefix": "gate_left",
+      "origin": {
+        "x": 0,
+        "y": 140
+      },
+      "rows": 1,
+      "columns": 20,
+      "pitch": {
+        "x": 8,
+        "y": 8
+      }
+    },
+    {
+      "prefix": "gate_right",
+      "origin": {
+        "x": 2,
+        "y": 140
+      },
+      "rows": 1,
+      "columns": 20,
+      "pitch": {
+        "x": 8,
+        "y": 8
+      }
+    }
+  ],
+  "aods": [
+    {
+      "id": "transport",
+      "workspace": {
+        "x_min": -10,
+        "y_min": -10,
+        "x_max": 170,
+        "y_max": 280
+      },
+      "min_spacing": 1,
+      "max_rows": 16,
+      "max_columns": 16,
+      "motion": "flexible"
+    }
+  ],
+  "timing": {
+    "load_us": 10,
+    "store_us": 10,
+    "move_us_per_um": 1
+  },
+  "cz": {
+    "channel": "rydberg",
+    "radius_um": 4.6,
+    "duration_us": 0.5,
+    "holder_pairs": [
+      [
+        "slm",
+        "slm"
+      ],
+      [
+        "slm",
+        "aod"
+      ],
+      [
+        "aod",
+        "aod"
+      ]
+    ]
+  },
+  "local": {
+    "channel": "raman",
+    "rotation_us": 1,
+    "reset_us": 5
+  },
+  "readout": {
+    "channel": "camera",
+    "duration_us": 10,
+    "latency_us": 500,
+    "min_spacing_um": 5,
+    "retain_atoms": true,
+    "holders": [
+      "slm",
+      "aod"
+    ]
+  },
+  "pair_arrays": [
+    {
+      "id": "entanglement",
+      "zone": "entanglement",
+      "left": [
+        [
+          "gate_left_r0_c0",
+          "gate_left_r0_c1",
+          "gate_left_r0_c2",
+          "gate_left_r0_c3",
+          "gate_left_r0_c4",
+          "gate_left_r0_c5",
+          "gate_left_r0_c6",
+          "gate_left_r0_c7",
+          "gate_left_r0_c8",
+          "gate_left_r0_c9",
+          "gate_left_r0_c10",
+          "gate_left_r0_c11",
+          "gate_left_r0_c12",
+          "gate_left_r0_c13",
+          "gate_left_r0_c14",
+          "gate_left_r0_c15",
+          "gate_left_r0_c16",
+          "gate_left_r0_c17",
+          "gate_left_r0_c18",
+          "gate_left_r0_c19"
+        ]
+      ],
+      "right": [
+        [
+          "gate_right_r0_c0",
+          "gate_right_r0_c1",
+          "gate_right_r0_c2",
+          "gate_right_r0_c3",
+          "gate_right_r0_c4",
+          "gate_right_r0_c5",
+          "gate_right_r0_c6",
+          "gate_right_r0_c7",
+          "gate_right_r0_c8",
+          "gate_right_r0_c9",
+          "gate_right_r0_c10",
+          "gate_right_r0_c11",
+          "gate_right_r0_c12",
+          "gate_right_r0_c13",
+          "gate_right_r0_c14",
+          "gate_right_r0_c15",
+          "gate_right_r0_c16",
+          "gate_right_r0_c17",
+          "gate_right_r0_c18",
+          "gate_right_r0_c19"
+        ]
+      ]
+    }
+  ]
+}
