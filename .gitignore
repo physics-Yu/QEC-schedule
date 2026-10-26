@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+/artifacts/msd-object-local/
+build/
+dist/
+/modules/physical_compiler/artifacts/
+/modules/physical_compiler/suites/paper26/*.qasm

@@ -1,0 +1,10 @@
+{
+  "schema": "nadit.factory_component_schedule/1",
+  "code": "rotated_surface_d3",
+  "world": {
+    "aod_ids": ["transport"],
+    "role_aod_ids": {"W2": "transport", "W3": "transport", "W4": "transport", "W5": "transport"},
+    "block_spacing_columns": 10
+  },
+  "max_parallel": 4
+}

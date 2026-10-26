@@ -1,0 +1,14 @@
+{
+  "schema": "nadit.msd.level2_local/1",
+  "distance": 3,
+  "level1_factories": 1,
+  "level2_factories": 1,
+  "buffer_capacity": 1,
+  "level2_rounds": 1,
+  "producer_round_budget": 32,
+  "strategy": "asynchronous",
+  "seed": 0,
+  "case_timeout_seconds": 20,
+  "worker_timeout_seconds": 60,
+  "physical_compilation": false
+}

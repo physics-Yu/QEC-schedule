@@ -1,0 +1,407 @@
+{
+  "schema": "nadit.msd.object_migration/1",
+  "base_commit": "852fd731196673ed07fcac46c4ae172dab31ebb5",
+  "reference_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+  "files": [
+    {
+      "path": ".gitignore",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "3c3d4360b9fadcaac57cb5d66d05602214bc84c4d9aab8ba9a79d35d5f381893",
+      "working_sha256": "8127371cdb5a8237a69b92dc88cf0857abb83d3f01cc57e38bb10c9263002777",
+      "mode": "adapted"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "73778d7aa9964de1e39e0ecf46872c03f4104db4b5d01183bda7edfde2c99965",
+      "working_sha256": "0b273037f88c0b166d5f61dbee67f18c570976afc35ed7e5edd83b88240b97f8",
+      "mode": "adapted"
+    },
+    {
+      "path": "docs/testing.md",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "aa5316ecfaa4267c2bc6612663284c7a0dc598cd0eeb28e7c70eff51ac020b56",
+      "working_sha256": "aa5316ecfaa4267c2bc6612663284c7a0dc598cd0eeb28e7c70eff51ac020b56",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/_support/atom_template.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "916555ff299664d659806402d837534be9d5185de14761a57501a34e387781cb",
+      "working_sha256": "916555ff299664d659806402d837534be9d5185de14761a57501a34e387781cb",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/_support/detector_probability.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "14053191a4ec2169859606f6c8acc42879a907546386b8f98dab5dcee3935b29",
+      "working_sha256": "14053191a4ec2169859606f6c8acc42879a907546386b8f98dab5dcee3935b29",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/_support/pauli_detector_events.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "778bc45a362dde480565633b0cbb830cc611e36338923c92429513ae955556e9",
+      "working_sha256": "778bc45a362dde480565633b0cbb830cc611e36338923c92429513ae955556e9",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/_support/raw_t_round_policy.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "4ac8aac0908f7890d3ac99ca286ecfd6437d8baf5be4096e13650840089cac38",
+      "working_sha256": "4ac8aac0908f7890d3ac99ca286ecfd6437d8baf5be4096e13650840089cac38",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/_support/raw_t_sequence.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "473a6d879fd2484e288bf42fa601a0a54c906f9d52e9bf1f92d2105cb7ec1c0c",
+      "working_sha256": "473a6d879fd2484e288bf42fa601a0a54c906f9d52e9bf1f92d2105cb7ec1c0c",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/contracts/factory_recipe.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "3ff89fd98a0175a037029f9c921c85ecc00d97ce3365dd0655c44d9761012402",
+      "working_sha256": "a5964dfac62138164e9ccef540ec932bc145c545ec4f5c8c1aee1b178a1ff2bb",
+      "mode": "adapted"
+    },
+    {
+      "path": "modules/codes/contracts/geometry.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "b95c7e93942cb957b7a82b9d12ef37a732585cd8c9ffddf3d1eea31b5cb73818",
+      "working_sha256": "b95c7e93942cb957b7a82b9d12ef37a732585cd8c9ffddf3d1eea31b5cb73818",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/contracts/parallel.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "ca55c4f5555cc51769c0885ef5099544206a585a35d35dadd5c1bf9cdccfa138",
+      "working_sha256": "ef0aa439b775ded1b882709656c6690c451e344a922bf81bb793ee226290053d",
+      "mode": "adapted"
+    },
+    {
+      "path": "modules/codes/rotated_surface/__init__.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "48a48914c1eb37da31a1a6d12274fe1728867e080ef149db4381e32db00e37f0",
+      "working_sha256": "ff589e93f6ab9476d11f2e71172584ea44bf127834dabd0ad85fcaa32e986008",
+      "mode": "adapted"
+    },
+    {
+      "path": "modules/codes/rotated_surface/algebra.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "07b3c63a142b06c528c3e1e5db1e789b186794320df2800d1736640ed8e81677",
+      "working_sha256": "07b3c63a142b06c528c3e1e5db1e789b186794320df2800d1736640ed8e81677",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/catalog.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "2820dcfadab570e3ffb773e21ff3646cbea5a7ffccd8530bafff60b3f0b8df33",
+      "working_sha256": "2820dcfadab570e3ffb773e21ff3646cbea5a7ffccd8530bafff60b3f0b8df33",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/circuits.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "aa8cf4a99195c7f860d87ff6962f427adc3093a743cd6c0166f66c129bede0aa",
+      "working_sha256": "aa8cf4a99195c7f860d87ff6962f427adc3093a743cd6c0166f66c129bede0aa",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/components.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "73df14ed44436969f74ea566bb02ed14e2598f0e3842d65867a3749cc1a92d16",
+      "working_sha256": "73df14ed44436969f74ea566bb02ed14e2598f0e3842d65867a3749cc1a92d16",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/definition.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "96b33da1e603f145c89b8cbc48c7a1ea7af4bcd780551872904893fbcdf10333",
+      "working_sha256": "96b33da1e603f145c89b8cbc48c7a1ea7af4bcd780551872904893fbcdf10333",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/fast_factory.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "927aedd5dfdb223bb8a56c4e67a3beffbd379faf23e7d1985f9fe49819b2d8e6",
+      "working_sha256": "fd4f12b5a4b517f943877b628d1dd358dafdd3c5e630d47c332feab0a24f36ef",
+      "mode": "adapted"
+    },
+    {
+      "path": "modules/codes/rotated_surface/geometry.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "a344add621e75b05d770395cb46973ce8b627270a21425c42c1d32c3d57a6ab6",
+      "working_sha256": "a344add621e75b05d770395cb46973ce8b627270a21425c42c1d32c3d57a6ab6",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/growth.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "00cd2fbe007abb465031d13f0f23aee5dcb998424b4c99fcad517ff68f2b8673",
+      "working_sha256": "00cd2fbe007abb465031d13f0f23aee5dcb998424b4c99fcad517ff68f2b8673",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/growth_decoder.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "8a62009765c500f1ebcbbfe22e3172a4bd8890103cec78f344411517cee85d26",
+      "working_sha256": "8a62009765c500f1ebcbbfe22e3172a4bd8890103cec78f344411517cee85d26",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/hadamard.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "6e8290f6f7c128640debbf34921f6c5f1dcde9207d4bf4f9d27724eaeb636aa5",
+      "working_sha256": "6e8290f6f7c128640debbf34921f6c5f1dcde9207d4bf4f9d27724eaeb636aa5",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/measurement.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "13888b6366beb55037ff7a231dd6d880cb623c8a73c3c1c9c7e8243a3983fed9",
+      "working_sha256": "13888b6366beb55037ff7a231dd6d880cb623c8a73c3c1c9c7e8243a3983fed9",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/probabilities/__init__.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "6d5ef34b7dd59d61ff37bbe0276e272e7732f2b26669446bf8786a62e45fcc6a",
+      "working_sha256": "6d5ef34b7dd59d61ff37bbe0276e272e7732f2b26669446bf8786a62e45fcc6a",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/probabilities/raw_t.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "c2f1a10ef47352eae3972d01a58de172b8a28905fabda53903df201940ab7dec",
+      "working_sha256": "c2f1a10ef47352eae3972d01a58de172b8a28905fabda53903df201940ab7dec",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/raw_t_postselection.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "00b24dfb13080f000cb48279f7adf45d7c3d0016c7ba740a599805ce07a51172",
+      "working_sha256": "00b24dfb13080f000cb48279f7adf45d7c3d0016c7ba740a599805ce07a51172",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/small_raw_t.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "c887cfc3d9a544b99b7714dc5e6c46bd88c443b5b2ca9a91da683f14e2901701",
+      "working_sha256": "c887cfc3d9a544b99b7714dc5e6c46bd88c443b5b2ca9a91da683f14e2901701",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/staged_raw_t.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "127b2fc300fca039e1ffd97742dadc9d1b07bccb32671beed39d02d4b369ccf7",
+      "working_sha256": "127b2fc300fca039e1ffd97742dadc9d1b07bccb32671beed39d02d4b369ccf7",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface/transversal.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "12452ce2239342930c4693653be4fe7b096fd650db4b64d74402b809cc148c77",
+      "working_sha256": "12452ce2239342930c4693653be4fe7b096fd650db4b64d74402b809cc148c77",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/fast_profile.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "e15c03fa1a644b738e50234cb851c1115ee6780431ef4d9faf4470e5701ed0b3",
+      "working_sha256": "64f7ec9426b9f2b910b5d4164e060b3ad372606ca413cf5913af85a389736cf0",
+      "mode": "adapted"
+    },
+    {
+      "path": "modules/logical_compiler/src/estimation/kernel.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "abf9a938ffbc7e0b9ca008deca59046c1309d96111d3471b7c1a141fcd61b7b1",
+      "working_sha256": "eb65c25fcddef4ea34e8ec9cdf8db2b99163bc06a55bfd7c6dad04accccf8b87",
+      "mode": "adapted"
+    },
+    {
+      "path": "modules/logical_compiler/src/placement/__init__.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "0901a69678c97c2ce748556bbe87afa79e9a7fbaba2c45cca02e91b5bcb59919",
+      "working_sha256": "0901a69678c97c2ce748556bbe87afa79e9a7fbaba2c45cca02e91b5bcb59919",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/logical_compiler/src/placement/model.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "35f63930cfef9e78595df27734cf773d87e76e52bbafbbb78f1946db9ab7341f",
+      "working_sha256": "35f63930cfef9e78595df27734cf773d87e76e52bbafbbb78f1946db9ab7341f",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/logical_compiler/src/placement/strategies.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "02b34b6ddcde72a81b8b925ae7d9b691fe9c15624567db8599e923edda3a52e0",
+      "working_sha256": "02b34b6ddcde72a81b8b925ae7d9b691fe9c15624567db8599e923edda3a52e0",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/cooperative.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "b9cf96089764344404b088a1d8e5c04818f862b854bab59b1eeb7e00c9ec258c",
+      "working_sha256": "34d5c4bb1ea72cc365a943d96b4972cc0c662e942a0fad1d903ca889936ea9a3",
+      "mode": "adapted"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/execution_kernel.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "f6bd59cec5fea305e1f61532f7d7c5ec9a465cb3dce0723a208a9e6c82f579f0",
+      "working_sha256": "4dd4a3187c84c8e7fcc3f5c088e2e528007eef8f72dbd9861b961ad379a76fde",
+      "mode": "adapted"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/factory.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "ac706df7547dfdebc70de440eca2846b31c97f931689059502a7d255afa4105a",
+      "working_sha256": "d0d60d7c25b5e3c879329eb2eab112cd7660a22b5a842575b5a00d4404283eb6",
+      "mode": "adapted"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/factory_process.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "dc77736a6cfaa0e4cee4c9f4e1fde8fbe894237e1071136ec10da34dd248afa3",
+      "working_sha256": "b626d3d14575fba8f583cb96c0dd8030bd85b281da8fa6a9601e0f168b6ff5b3",
+      "mode": "adapted"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/production.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "d2d96137d526461bf2ba8b0628ba5d6dea266b205a61b5f236bfd9b6cca8580f",
+      "working_sha256": "fe6b031b7f3e55b3b08eff0baed3cea5d5a60c182b03053ea5511b512f952e8c",
+      "mode": "adapted"
+    },
+    {
+      "path": "modules/physical_compiler/pyproject.toml",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "2af8ced7d2b0cccd4072c05007c9ddf4882acfb3627362eaf4b85ba01d4dc6cb",
+      "working_sha256": "fe88272cae196f5a99105e97b6ea5713be7159947908479726858c80452acb9a",
+      "mode": "adapted"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/noise/config.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "1dc5d2bbc9804e8d82480c0220483552321cc253445c056fc5d58a1b2370fd99",
+      "working_sha256": "1dc5d2bbc9804e8d82480c0220483552321cc253445c056fc5d58a1b2370fd99",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/noise/transport.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "5af3b710142390e0827ca24b09fd9239e59f2c08aabe505cdb2df9beba44cb9b",
+      "working_sha256": "5af3b710142390e0827ca24b09fd9239e59f2c08aabe505cdb2df9beba44cb9b",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/methods/__init__.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "fa3163cda22f34df3b4541b73be774c75314fb89a3320c2b29a08b9f594fb4d4",
+      "working_sha256": "cf2f41f063ecdd24983f483c8f738f5238abd739b12258e3f71afe1d2f184574",
+      "mode": "adapted"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/methods/clifford.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "f5e3671d27c5672a5e9bdc02432e6e5745a8c46d6475b1d7226f610b380b0dd9",
+      "working_sha256": "f5e3671d27c5672a5e9bdc02432e6e5745a8c46d6475b1d7226f610b380b0dd9",
+      "mode": "exact"
+    },
+    {
+      "path": "modules/physical_compiler/uv.lock",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "0e8e0003a5768c9b7a9421894adbc4d7c21a721727b43cb97573580828faf688",
+      "working_sha256": "0e8e0003a5768c9b7a9421894adbc4d7c21a721727b43cb97573580828faf688",
+      "mode": "exact"
+    },
+    {
+      "path": "pytest.ini",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "5ff4a8b92e4715da4c48400933807e48e6de118cfb152faa2b86d1cba538ba2b",
+      "working_sha256": "5ff4a8b92e4715da4c48400933807e48e6de118cfb152faa2b86d1cba538ba2b",
+      "mode": "exact"
+    },
+    {
+      "path": "tests/test-map.json",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "deb19bc13bb0b64d2551ccc4f54ab4109f1a44be99b1ae4dec0448e3484ace57",
+      "working_sha256": "560c1b53c1a3ebdcde0c4e69f4381b2d6ead7ef6903237843a3d1abffd2a69a2",
+      "mode": "adapted"
+    },
+    {
+      "path": "tools/__init__.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "24637df4fab64bd182f17c4d7688961aaaaa0e7dddd73096a9942f49835899e9",
+      "working_sha256": "24637df4fab64bd182f17c4d7688961aaaaa0e7dddd73096a9942f49835899e9",
+      "mode": "exact"
+    },
+    {
+      "path": "tools/testing/__init__.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "a4cf826a0174961d964265690ba41584ebfca0c1606d29354abea615d200abbc",
+      "working_sha256": "a4cf826a0174961d964265690ba41584ebfca0c1606d29354abea615d200abbc",
+      "mode": "exact"
+    },
+    {
+      "path": "tools/testing/plugin.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "842f515fec7374771e1528cf16ca674aed8a68cff444cb1418867e5db2a169fe",
+      "working_sha256": "842f515fec7374771e1528cf16ca674aed8a68cff444cb1418867e5db2a169fe",
+      "mode": "exact"
+    },
+    {
+      "path": "tools/testing/policy.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "a9572d44387df1ed544a2ce3e984a807c85aca1d6ca0fdff4d32d6302fb5bdd7",
+      "working_sha256": "a9572d44387df1ed544a2ce3e984a807c85aca1d6ca0fdff4d32d6302fb5bdd7",
+      "mode": "exact"
+    },
+    {
+      "path": "tools/testing/run.py",
+      "source_commit": "85f5479da14c842228a1274e9eff7ee11535adcd",
+      "source_sha256": "f65f7da8913a0a1e83e6146baf00ec9987e9183b69f2dea1f23ca305373916ca",
+      "working_sha256": "f65f7da8913a0a1e83e6146baf00ec9987e9183b69f2dea1f23ca305373916ca",
+      "mode": "exact"
+    }
+  ],
+  "task_owned_new_files": [
+    "docs/decisions/0052-msd-object-waves.md",
+    "experiments/msd/OBJECT_CASES.md",
+    "experiments/msd/object-cases.json",
+    "modules/codes/rotated_surface/object_readout.py",
+    "modules/codes/rotated_surface/tests/test_object_migration.py",
+    "modules/logical_compiler/examples/object_cases.py",
+    "modules/logical_compiler/examples/object_fixtures.py",
+    "modules/logical_compiler/src/estimation/phases.py",
+    "modules/logical_compiler/tests/test_object_case_runner.py",
+    "modules/logical_compiler/tests/test_object_integration.py",
+    "modules/logical_compiler/tests/test_object_phases.py",
+    "modules/physical_compiler/tests/test_transfer_noise_migration.py",
+    "docs/experiments/msd-object-local-20261025.md"
+  ],
+  "adaptations": [
+    "Surface exports exclude second-level seed-transfer helpers. Generic factory file contains only the recipe and finite variant enumeration.",
+    "Methods package supplies the missing Clifford helper without unrelated CLI/simulation exports.",
+    "Reference test tiers filtered to present files/functions; two retained legacy report/configuration unit files classified fast; object acceptance files mapped explicitly.",
+    "Preparation parameter forwarding preserves legacy serialization when optional parameters are empty.",
+    "Only first-level production/sink/cohort capability is migrated; second-level handoff and supply are excluded.",
+    "Simulation optional dependency versions and lockfile are inherited; no installation or upgrade was performed.",
+    "Missing load_pauli/store_pauli support is migrated with unchanged zero defaults.",
+    "Task-specific related-fast and bounded-control testing overrides blanket full-suite rules, as explicitly authorized."
+  ],
+  "not_migrated": [
+    "MSD campaign/server infrastructure",
+    "exact-frontier joint calibration and cache",
+    "main working-tree changes",
+    "second-level supply and mixed target distances"
+  ],
+  "pending_first_level": [
+    "Complete factory component object costs beyond logical_mz",
+    "Schedule-dependent raw-T acceptance adapter",
+    "Full-factory d/N production and steady-state estimation"
+  ]
+}
