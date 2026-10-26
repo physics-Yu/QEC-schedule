@@ -1,0 +1,281 @@
+{
+  "schema": "nadit.msd.campaign/1",
+  "standard": "nadit.msd.standard/2",
+  "aod_count": 1,
+  "distances": [
+    3,
+    5,
+    7
+  ],
+  "factory_counts": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "production_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "budget": {
+    "workers": 4,
+    "max_atoms": 5000,
+    "memory_bytes": 8589934592,
+    "calibration_timeout_s": 300,
+    "production_timeout_s": 1800,
+    "pilot_timeout_s": 1800,
+    "export_timeout_s": 1800,
+    "export_reserve_s": 3600,
+    "export_reserve_bytes": 4294967296,
+    "campaign_timeout_s": 86400,
+    "max_storage_bytes": 53687091200,
+    "software_max_attempts": 1,
+    "max_artifact_refreshes": 1
+  },
+  "sink": {
+    "kind": "ideal_external",
+    "acknowledge_excluded_costs": true
+  },
+  "noise_params": {
+    "single": {
+      "backend": "pauli",
+      "probabilities": [
+        0.0001,
+        0.0001,
+        0.0001
+      ]
+    },
+    "single_overrides": {
+      "Z": {
+        "backend": "pauli",
+        "probabilities": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "cz": {
+      "backend": "pauli",
+      "probabilities": [
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001
+      ]
+    },
+    "transport": {
+      "backend": "rates/v1",
+      "load_loss": 0.0001,
+      "store_loss": 0.0001,
+      "move_loss": 2e-05,
+      "loss_per_um": 1e-06,
+      "loss_per_us": 0,
+      "aod_loss_per_us": 1e-08,
+      "slm_loss_per_us": 0,
+      "move_pauli": [
+        1e-05,
+        1e-05,
+        1e-05
+      ]
+    },
+    "exposure": {
+      "slm_t2_us": 1500000,
+      "aod_t2_us": 1500000,
+      "include_transport": true
+    },
+    "readout_flip": 0.001,
+    "reset_flip": 0.001,
+    "cz_atom_loss": 0,
+    "spectator_pauli": [
+      0,
+      0,
+      0
+    ]
+  },
+  "sampling": {
+    "shots": 1024,
+    "seed": 20261024
+  },
+  "pilot_seed": 20261025,
+  "input_z_error": 0.01,
+  "limits": {
+    "raw_attempts": 8,
+    "batches": 4,
+    "max_component_calls": 200000,
+    "max_cycles": 256
+  },
+  "observation_rule": {
+    "pilot_cycles": 2,
+    "warmup_cycles": 1,
+    "target_observation_cycles": 16,
+    "minimum_observation_cycles": 2,
+    "max_total_simulated_us": 1000000000,
+    "software_safety_factor": 2
+  },
+  "pilot_cost_model": {
+    "mode": "cached_replay",
+    "future_miss_reserve_fraction": 0.25
+  },
+  "two_level": {
+    "worker_seconds_fraction": 0.5,
+    "pilot_seed": 20261026,
+    "acknowledge_theory_transport_exclusions": true,
+    "limits": {
+      "raw_attempts": 8,
+      "max_component_calls": 500000,
+      "producer_max_cycles": 512,
+      "consumer_max_cycles": 32,
+      "level1_batches": 4,
+      "level2_batches": 4
+    },
+    "observation_rule": {
+      "pilot_cycles": 2,
+      "warmup_cycles": 1,
+      "target_observation_cycles": 8,
+      "minimum_observation_cycles": 2,
+      "max_total_simulated_us": 1000000000,
+      "software_safety_factor": 2
+    },
+    "candidate_rule": {
+      "schema": "nadit.msd.two_level_campaign/1",
+      "standard": "nadit.msd.standard/2",
+      "aod_count": 1,
+      "distance_pairs": [
+        [
+          3,
+          3
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          7,
+          7
+        ]
+      ],
+      "level2_counts": [
+        1,
+        2
+      ],
+      "buffer_capacities": [
+        1,
+        2
+      ],
+      "grid_columns": [
+        1,
+        2
+      ],
+      "layout_families": [
+        "centralized",
+        "boundary",
+        "local_groups"
+      ],
+      "production_seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "minimum_arrival_seeds": 16,
+      "max_candidate_layouts": 12,
+      "parking_gap_um": 40,
+      "budget": {
+        "max_atoms": 5000,
+        "max_footprint_um2": 2000000
+      }
+    }
+  },
+  "extensions": {
+    "enabled": false,
+    "distances": [
+      9,
+      11
+    ],
+    "factory_counts": [
+      16
+    ],
+    "stop_rule": "Do not expand without a separately resolved budget and supported predecessor evidence.",
+    "mixed_distance": {
+      "enabled": false,
+      "distance_pairs": [
+        [
+          3,
+          5
+        ],
+        [
+          3,
+          7
+        ]
+      ],
+      "scope": "separate future phase; not a prerequisite for single-level or equal-distance two-level execution"
+    }
+  },
+  "assumptions": {
+    "logical_s": "existing measured fold implementation",
+    "injection": "d3 injection with three postselected SE rounds; accepted growth is ordinary SE and decoder",
+    "timing_us": {
+      "load": 10,
+      "store": 10,
+      "measurement": 100,
+      "classical_processing": 0
+    },
+    "layout": "storage/gates y<=0; readout y>=50 um; same factory internal ordering and gaps",
+    "waiting_maintenance": "existing recipe only; no added SE after each CNOT",
+    "quality": "existing theory parameters; transport/growth/wait noise does not establish a decoded output LER",
+    "actual_output_error": null,
+    "growth_boundary": "only existing d3-to-target growth may be connected; other mixed pairs remain blocked",
+    "final_sink": "ideal external; external transport, consumption and reset costs excluded; next factory preparation included",
+    "calibration_uncertainty": "1024-shot calibration; across-production-seed confidence intervals exclude calibration uncertainty"
+  },
+  "source_paths": [
+    "modules/physical_compiler/cost_params/noise_illustrative.json",
+    "experiments/analysis/msd_campaign_acceptance.py",
+    "experiments/analysis/msd_two_level_audit.py",
+    "experiments/analysis/joint_factory_report.py"
+  ],
+  "parameter_provenance": {
+    "noise_file": "modules/physical_compiler/cost_params/noise_illustrative.json",
+    "noise_file_sha256": "7f3c61a43dcce39afae293084d90514a577dbd906dbaaee1b02a68d50bb5c6fd",
+    "approved_server_budget": "User confirmed 4 workers, 8 GiB each, 24 hours, 50 GiB, 5000 atoms; d9/d11 extensions disabled.",
+    "execution_status": "First campaign: single-level d3/5/7 and equal-distance two-level; final source-matched acceptance and committed source required. Mixed distances are disabled and are not a submission gate."
+  }
+}

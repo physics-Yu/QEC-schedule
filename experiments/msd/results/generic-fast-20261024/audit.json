@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "seeded_trajectories": 288,
+  "witness_schedules": 18,
+  "witness_calls": 4940,
+  "mean_software_seconds": 0.3357812298611129,
+  "checks": [
+    "seed coverage",
+    "aggregate output/time arithmetic",
+    "paired hardware outcomes",
+    "atom budgets",
+    "CSV matches execution records",
+    "exclusive resource and patch intervals",
+    "event release after dependencies",
+    "accepted-only growth",
+    "single-use consumed tokens"
+  ],
+  "scope": "saved logical estimates; does not establish physical joint factory feasibility or output LER"
+}

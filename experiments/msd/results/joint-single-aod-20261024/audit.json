@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "complete_grid": true,
+  "cohort_policy": "retained",
+  "aod_count": 1,
+  "seeds": [
+    0
+  ],
+  "case_count": 9,
+  "call_count": 2464,
+  "joint_calibrations": 301,
+  "checks": [
+    "trace content hashes",
+    "physical validation receipts",
+    "return-home world equality",
+    "unchanged device timings",
+    "actual joint group coverage and phase times",
+    "measurement availability",
+    "accepted-only growth",
+    "cross-factory raw transport",
+    "cohort barriers retained",
+    "no exclusive AOD component leases",
+    "native activity and peaks independently reconstructed from atom actions"
+  ],
+  "scope": "resource schedules from validated joint wave fragments; no noisy output LER"
+}
