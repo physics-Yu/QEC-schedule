@@ -1,0 +1,261 @@
+{
+  "schema": "nadit.raw_t_r3_fast_smoke/1",
+  "status": "passed",
+  "scope": "One full d3 serial R3 reference -> new v2 calibration -> fast profile run; explicit zero noise and theory input_z_error=0; not a noise benchmark",
+  "reference": {
+    "status": "complete",
+    "physical_validation_ok": true,
+    "raw_attempts": 15,
+    "raw_parts_each": 3,
+    "source_stable": true,
+    "duration_us": 80308.68735479694
+  },
+  "profile": {
+    "schema": "nadit.fast_surface_factory_profile/2",
+    "sha256": "43c9e1d3d80b60928064a06d39369058634982cf9772713fd6405f34f0418810",
+    "raw_t_protocol": {
+      "distance": 3,
+      "extra_rounds": 2,
+      "protocol_version": "2",
+      "round_policy": "distance",
+      "total_rounds": 3
+    },
+    "raw_result_count": 24,
+    "entry_count": 45,
+    "old_schema_rejected": "UNSUPPORTED_FAST_PROFILE",
+    "old_round_identity_rejected": "INCONSISTENT_FAST_RAW_T_PROTOCOL"
+  },
+  "fast": {
+    "execution_completed": true,
+    "outputs": 1,
+    "raw_attempts": 15,
+    "physical_validation_ok": null,
+    "summary": {
+      "schema": "nadit.fast_factory_run/1",
+      "case_id": "factory-array-theory-v1",
+      "experiment_model": {
+        "mode": "theory",
+        "input_z_error": 0,
+        "case_id": "factory-array-theory-v1",
+        "final_event_selector": "factory_mx",
+        "acceptance_model_id": "factory_15_to_1.iid_input_z.ideal_clifford.v1",
+        "theoretical_acceptance_probability": 1.0,
+        "conditional_output_z_error": 0.0,
+        "physical_no_fault_controls_acceptance": false,
+        "actual_logical_quality_established": false,
+        "assumptions": [
+          "Assumed iid accepted canonical input mixture (1-p)A + p ZAZ",
+          "All Clifford gates, storage, and readout are ideal",
+          "Preparation rejection probability does not determine input p",
+          "No shared-world physical-noise estimate or FT certification"
+        ]
+      },
+      "code": "rotated_surface_d3",
+      "seed": 0,
+      "factory_count": 1,
+      "profile_sha256": "43c9e1d3d80b60928064a06d39369058634982cf9772713fd6405f34f0418810",
+      "representation": "logical_estimate",
+      "physical_validation": "not_run",
+      "physical_validation_ok": null,
+      "logical_success": null,
+      "physical_execution": false,
+      "status": "complete",
+      "execution_completed": true,
+      "configuration": {
+        "code": "rotated_surface_d3",
+        "experiment_model": {
+          "mode": "theory",
+          "input_z_error": 0,
+          "case_id": "factory-array-theory-v1",
+          "final_event_selector": "factory_mx",
+          "acceptance_model_id": "factory_15_to_1.iid_input_z.ideal_clifford.v1",
+          "theoretical_acceptance_probability": 1.0,
+          "conditional_output_z_error": 0.0,
+          "physical_no_fault_controls_acceptance": false,
+          "actual_logical_quality_established": false,
+          "assumptions": [
+            "Assumed iid accepted canonical input mixture (1-p)A + p ZAZ",
+            "All Clifford gates, storage, and readout are ideal",
+            "Preparation rejection probability does not determine input p",
+            "No shared-world physical-noise estimate or FT certification"
+          ]
+        },
+        "device_budget": {
+          "aod_count": 1,
+          "aod_id": "transport",
+          "aod_max_rows": 4,
+          "aod_max_columns": 24,
+          "max_readout_atoms": 48,
+          "factory_count": 1,
+          "patch_count": 6,
+          "atom_count_estimate": 102,
+          "shared_bounds_um": [
+            -22,
+            -2,
+            585,
+            80
+          ],
+          "readout_bounds_um": [
+            -20,
+            90,
+            585,
+            130
+          ],
+          "capacity_scales_with_factory_count": false,
+          "representation": "logical_estimate"
+        },
+        "max_parallel": 1,
+        "limits": {
+          "raw_attempts": 8,
+          "batches": 1,
+          "max_component_calls": 2000
+        }
+      },
+      "lines": {
+        "factory0": {
+          "factory_id": "factory0",
+          "status": "complete",
+          "failure": null,
+          "production_success": true,
+          "factory_final_accepted": true,
+          "batch_decisions": [
+            {
+              "accepted": true,
+              "at_us": 80307.68735479694,
+              "batch": 0,
+              "factory_id": "factory0",
+              "kind": "batch_decision"
+            }
+          ],
+          "raw_attempts": 15,
+          "raw_accepted_events": 15,
+          "raw_rejections": 0,
+          "s_calls": 2,
+          "se_calls": 0,
+          "component_calls": 109,
+          "waiting_us": {
+            "waiting_resources": 0.0,
+            "waiting_feedback": 10518.999999999996
+          },
+          "completed_at_us": 80308.68735479694,
+          "output_token_id": "factory0/batch[0]/output",
+          "output_status": "offered",
+          "algorithm_consumed_token_id": null,
+          "role_bindings": {
+            "R": "factory0/R",
+            "W1": "factory0/W1",
+            "W2": "factory0/W2",
+            "W3": "factory0/W3",
+            "W4": "factory0/W4",
+            "W5": "factory0/W5"
+          },
+          "logical_success": null,
+          "factory_check_events": [
+            {
+              "event_id": "factory0/batch[0]/final/event",
+              "outcome_key": "mx_0000",
+              "values": {
+                "accepted": true,
+                "m_w2": 0,
+                "m_w3": 0,
+                "m_w4": 0,
+                "m_w5": 0
+              },
+              "released_at_us": 80307.68735479694,
+              "port_sha256": "70860227938c81942e76ae0afa198691e7348746ee24bb9377d4f77c4f8c451d",
+              "acceptance_probability": 1.0,
+              "conditional_output_z_error": 0.0
+            }
+          ],
+          "factory_acceptance_probability": 1.0,
+          "conditional_output_z_error": 0.0
+        }
+      },
+      "counts": {
+        "lines": 1,
+        "successful_lines": 1,
+        "failed_lines": 0,
+        "raw_attempts": 15,
+        "raw_rejections": 0,
+        "s_calls": 2
+      },
+      "outputs": 1,
+      "makespan_us": 80308.68735479694,
+      "accounting": {
+        "category_busy_us": {
+          "gate": 1404.5,
+          "measurement": 630.0,
+          "movement": 52055.18735479683,
+          "reset": 320.0,
+          "transfer": 15380.0
+        },
+        "category_sum_is_elapsed": false,
+        "component_counts": {
+          "initialize_plus": 1,
+          "initialize_plus/canonicalize": 1,
+          "logical_mx": 4,
+          "logical_mz": 11,
+          "logical_s": 2,
+          "logical_x": 1,
+          "raw_t_postselection": 15,
+          "raw_t_postselection/canonicalize": 15,
+          "transversal_cnot": 59
+        },
+        "explicit_global_wait_us": 10518.999999999996,
+        "global_busy_union_us": 69789.68735479681,
+        "makespan_us": 80308.68735479694,
+        "primitive_counts": {
+          "actions_CZPulse": 253,
+          "actions_Load": 769,
+          "actions_Measure": 63,
+          "actions_Move": 832,
+          "actions_Reset": 528,
+          "actions_Rotation": 7802,
+          "actions_Store": 769,
+          "cz_pairs": 1691,
+          "targets_CZPulse": 7021,
+          "targets_Load": 3901,
+          "targets_Measure": 519,
+          "targets_Move": 4420,
+          "targets_Reset": 528,
+          "targets_Rotation": 7802,
+          "targets_Store": 3901
+        },
+        "resource_busy_us": {
+          "aod": 67435.18735479683,
+          "camera": 630.0,
+          "local": 1598.0,
+          "rydberg": 126.5
+        },
+        "resource_sum_is_elapsed": false,
+        "schema": "nadit.profiled_cost_accounting/1",
+        "time_unit": "us",
+        "unoccupied_timeline_us": 10519.000000000131,
+        "work_basis": "sum_of_member_category_union_times_not_atom_time",
+        "work_by_category_us": {
+          "gate": 1404.5,
+          "measurement": 630.0,
+          "movement": 52055.18735479683,
+          "reset": 320.0,
+          "transfer": 15380.0
+        }
+      },
+      "factory_acceptance_probabilities": {
+        "factory0": [
+          1.0
+        ]
+      },
+      "physical_no_fault_diagnostics": {
+        "factory0": [
+          1.0
+        ]
+      },
+      "conditional_output_z_error": 0.0,
+      "wave_count": 109,
+      "parallel_wave_count": 0,
+      "wall_seconds": 0.23182580000138842
+    }
+  },
+  "source_stable_across_smoke": true,
+  "wall_seconds": 45.72667360000196
+}

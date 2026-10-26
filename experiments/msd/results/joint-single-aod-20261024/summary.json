@@ -1,0 +1,302 @@
+[
+  {
+    "d": 3,
+    "n": 1,
+    "duration": 80217.2701480719,
+    "outputs": 1,
+    "atoms": 102,
+    "fast_seconds": 0.2699437000001126,
+    "groups": 24,
+    "profile_sha256": "77102069d520d10f2ad1f52ac181962e4ca7e2072a1677e5ec1f6165c66839de",
+    "source_sha256": "69bbfef27da926b0787881291476468443e5db59cdaf29b056ee895268f61c63",
+    "raw_wave_us": 2374.452471403588,
+    "raw_factory_concurrency": {
+      "peak_active_factories": 1,
+      "multi_factory_active_us": 0.0,
+      "shared_transport_batches": 0
+    },
+    "raw_time_partition_us": {
+      "reset": 20.0,
+      "rotation": 63.0,
+      "cz_load": 360.0,
+      "cz_move": 545.4524714035932,
+      "cz_store": 360.0,
+      "cz_pulse": 6.0,
+      "readout_load": 30.0,
+      "readout_move": 660.0,
+      "readout_exposure": 300.0,
+      "readout_store": 30.0
+    },
+    "raw_readout_batches_per_member": {
+      "raw_t_postselection:factory0/R": 3
+    }
+  },
+  {
+    "d": 3,
+    "n": 2,
+    "duration": 112007.69809164124,
+    "outputs": 2,
+    "atoms": 204,
+    "fast_seconds": 0.34519940000018323,
+    "groups": 32,
+    "profile_sha256": "0f986c0403c5495b497252ec579dbedfa4fa2dd0e94b66f41326ad61c504605c",
+    "source_sha256": "69bbfef27da926b0787881291476468443e5db59cdaf29b056ee895268f61c63",
+    "raw_wave_us": 2974.45247140359,
+    "raw_factory_concurrency": {
+      "peak_active_factories": 2,
+      "multi_factory_active_us": 2974.452471403592,
+      "shared_transport_batches": 39
+    },
+    "raw_time_partition_us": {
+      "reset": 20.0,
+      "rotation": 63.0,
+      "cz_load": 360.0,
+      "cz_move": 545.4524714035932,
+      "cz_store": 360.0,
+      "cz_pulse": 6.0,
+      "readout_load": 30.0,
+      "readout_move": 1260.0,
+      "readout_exposure": 300.0,
+      "readout_store": 30.0
+    },
+    "raw_readout_batches_per_member": {
+      "raw_t_postselection:factory0/R": 3,
+      "raw_t_postselection:factory1/R": 3
+    }
+  },
+  {
+    "d": 3,
+    "n": 4,
+    "duration": 155061.53819713817,
+    "outputs": 3,
+    "atoms": 408,
+    "fast_seconds": 0.8230312999999114,
+    "groups": 44,
+    "profile_sha256": "aea5e88f03c4dd4981b888939f49774f6f57e651a03e00c731fc5ae3d8323e7e",
+    "source_sha256": "69bbfef27da926b0787881291476468443e5db59cdaf29b056ee895268f61c63",
+    "raw_wave_us": 4174.452471403607,
+    "raw_factory_concurrency": {
+      "peak_active_factories": 4,
+      "multi_factory_active_us": 4174.452471403592,
+      "shared_transport_batches": 39
+    },
+    "raw_time_partition_us": {
+      "reset": 20.0,
+      "rotation": 63.0,
+      "cz_load": 360.0,
+      "cz_move": 545.4524714035932,
+      "cz_store": 360.0,
+      "cz_pulse": 6.0,
+      "readout_load": 30.0,
+      "readout_move": 2460.0,
+      "readout_exposure": 300.0,
+      "readout_store": 30.0
+    },
+    "raw_readout_batches_per_member": {
+      "raw_t_postselection:factory0/R": 3,
+      "raw_t_postselection:factory1/R": 3,
+      "raw_t_postselection:factory2/R": 3,
+      "raw_t_postselection:factory3/R": 3
+    }
+  },
+  {
+    "d": 5,
+    "n": 1,
+    "duration": 184905.34866050867,
+    "outputs": 1,
+    "atoms": 294,
+    "fast_seconds": 0.29414269999961107,
+    "groups": 24,
+    "profile_sha256": "646ab731b677b3c98082f7b2a8fbeb4501fd27828e4644b9cb03ed22cefa47d7",
+    "source_sha256": "69bbfef27da926b0787881291476468443e5db59cdaf29b056ee895268f61c63",
+    "raw_wave_us": 4601.898463625348,
+    "raw_factory_concurrency": {
+      "peak_active_factories": 1,
+      "multi_factory_active_us": 0.0,
+      "shared_transport_batches": 0
+    },
+    "raw_time_partition_us": {
+      "reset": 20.0,
+      "rotation": 63.0,
+      "cz_load": 480.0,
+      "cz_move": 732.8984636253534,
+      "cz_store": 480.0,
+      "cz_pulse": 6.0,
+      "readout_load": 90.0,
+      "readout_move": 1740.0,
+      "readout_exposure": 900.0,
+      "readout_store": 90.0
+    },
+    "raw_readout_batches_per_member": {
+      "raw_t_postselection:factory0/R": 9
+    }
+  },
+  {
+    "d": 5,
+    "n": 2,
+    "duration": 307330.78302791965,
+    "outputs": 2,
+    "atoms": 588,
+    "fast_seconds": 0.5118449999999939,
+    "groups": 32,
+    "profile_sha256": "3e49460b5fff3410cab05d2adb94d79713ee899a3fbefffd551511118c67025e",
+    "source_sha256": "69bbfef27da926b0787881291476468443e5db59cdaf29b056ee895268f61c63",
+    "raw_wave_us": 7121.898463625397,
+    "raw_factory_concurrency": {
+      "peak_active_factories": 2,
+      "multi_factory_active_us": 7121.898463625348,
+      "shared_transport_batches": 57
+    },
+    "raw_time_partition_us": {
+      "reset": 20.0,
+      "rotation": 63.0,
+      "cz_load": 480.0,
+      "cz_move": 732.8984636253534,
+      "cz_store": 480.0,
+      "cz_pulse": 6.0,
+      "readout_load": 90.0,
+      "readout_move": 4260.0,
+      "readout_exposure": 900.0,
+      "readout_store": 90.0
+    },
+    "raw_readout_batches_per_member": {
+      "raw_t_postselection:factory0/R": 9,
+      "raw_t_postselection:factory1/R": 9
+    }
+  },
+  {
+    "d": 5,
+    "n": 4,
+    "duration": 524120.2932065178,
+    "outputs": 3,
+    "atoms": 1176,
+    "fast_seconds": 1.5427894999997989,
+    "groups": 44,
+    "profile_sha256": "4d25f4a0e78e40cfb06c9e85bd93bb1786334ac57adc5a3d5f420cf498198589",
+    "source_sha256": "69bbfef27da926b0787881291476468443e5db59cdaf29b056ee895268f61c63",
+    "raw_wave_us": 12161.898463625577,
+    "raw_factory_concurrency": {
+      "peak_active_factories": 4,
+      "multi_factory_active_us": 12161.89846362535,
+      "shared_transport_batches": 57
+    },
+    "raw_time_partition_us": {
+      "reset": 20.0,
+      "rotation": 63.0,
+      "cz_load": 480.0,
+      "cz_move": 732.8984636253534,
+      "cz_store": 480.0,
+      "cz_pulse": 6.0,
+      "readout_load": 90.0,
+      "readout_move": 9300.0,
+      "readout_exposure": 900.0,
+      "readout_store": 90.0
+    },
+    "raw_readout_batches_per_member": {
+      "raw_t_postselection:factory0/R": 9,
+      "raw_t_postselection:factory1/R": 9,
+      "raw_t_postselection:factory2/R": 9,
+      "raw_t_postselection:factory3/R": 9
+    }
+  },
+  {
+    "d": 7,
+    "n": 1,
+    "duration": 236659.76961397287,
+    "outputs": 1,
+    "atoms": 582,
+    "fast_seconds": 0.2553932000000714,
+    "groups": 24,
+    "profile_sha256": "ed0c0ce0c33121314ec2656ac4457196fb0dda4b55b36b71bd06f19660483071",
+    "source_sha256": "69bbfef27da926b0787881291476468443e5db59cdaf29b056ee895268f61c63",
+    "raw_wave_us": 4601.898463625346,
+    "raw_factory_concurrency": {
+      "peak_active_factories": 1,
+      "multi_factory_active_us": 0.0,
+      "shared_transport_batches": 0
+    },
+    "raw_time_partition_us": {
+      "reset": 20.0,
+      "rotation": 63.0,
+      "cz_load": 480.0,
+      "cz_move": 732.8984636253534,
+      "cz_store": 480.0,
+      "cz_pulse": 6.0,
+      "readout_load": 90.0,
+      "readout_move": 1740.0,
+      "readout_exposure": 900.0,
+      "readout_store": 90.0
+    },
+    "raw_readout_batches_per_member": {
+      "raw_t_postselection:factory0/R": 9
+    }
+  },
+  {
+    "d": 7,
+    "n": 2,
+    "duration": 408916.1800682979,
+    "outputs": 2,
+    "atoms": 1164,
+    "fast_seconds": 0.6006082999997489,
+    "groups": 32,
+    "profile_sha256": "7cbdf8ce3d9026e0dbee2d5c970a7be7743e50b3c09a8687a3ba221c7f3caa1a",
+    "source_sha256": "69bbfef27da926b0787881291476468443e5db59cdaf29b056ee895268f61c63",
+    "raw_wave_us": 7841.8984636254245,
+    "raw_factory_concurrency": {
+      "peak_active_factories": 2,
+      "multi_factory_active_us": 7841.898463625348,
+      "shared_transport_batches": 57
+    },
+    "raw_time_partition_us": {
+      "reset": 20.0,
+      "rotation": 63.0,
+      "cz_load": 480.0,
+      "cz_move": 732.8984636253534,
+      "cz_store": 480.0,
+      "cz_pulse": 6.0,
+      "readout_load": 90.0,
+      "readout_move": 4980.0,
+      "readout_exposure": 900.0,
+      "readout_store": 90.0
+    },
+    "raw_readout_batches_per_member": {
+      "raw_t_postselection:factory0/R": 9,
+      "raw_t_postselection:factory1/R": 9
+    }
+  },
+  {
+    "d": 7,
+    "n": 4,
+    "duration": 725685.4369980153,
+    "outputs": 3,
+    "atoms": 2328,
+    "fast_seconds": 1.2111866999994163,
+    "groups": 45,
+    "profile_sha256": "84b80bd0626721056047dd96fc670117f4565eca37bb97ab8a0a5dc1495176ef",
+    "source_sha256": "69bbfef27da926b0787881291476468443e5db59cdaf29b056ee895268f61c63",
+    "raw_wave_us": 14321.898463625577,
+    "raw_factory_concurrency": {
+      "peak_active_factories": 4,
+      "multi_factory_active_us": 14321.89846362535,
+      "shared_transport_batches": 57
+    },
+    "raw_time_partition_us": {
+      "reset": 20.0,
+      "rotation": 63.0,
+      "cz_load": 480.0,
+      "cz_move": 732.8984636253534,
+      "cz_store": 480.0,
+      "cz_pulse": 6.0,
+      "readout_load": 90.0,
+      "readout_move": 11460.0,
+      "readout_exposure": 900.0,
+      "readout_store": 90.0
+    },
+    "raw_readout_batches_per_member": {
+      "raw_t_postselection:factory0/R": 9,
+      "raw_t_postselection:factory1/R": 9,
+      "raw_t_postselection:factory2/R": 9,
+      "raw_t_postselection:factory3/R": 9
+    }
+  }
+]
