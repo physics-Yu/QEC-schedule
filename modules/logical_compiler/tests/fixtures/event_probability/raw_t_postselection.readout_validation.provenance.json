@@ -1,0 +1,14 @@
+{
+  "fixture": "raw_t_postselection.readout_validation.json",
+  "origin": "Copied from the surface-code producer artifact without editing the probability document",
+  "source_artifact": "modules/physical_compiler/artifacts/event-probability-v1/readout-validation-final/raw_t_postselection.json",
+  "producer_callable": "modules.codes.rotated_surface_d3.probabilities.raw_t.raw_t_pauli_port",
+  "producer_commit": "9498503",
+  "export_commit": "e4875c1",
+  "content_sha256": "62a4b122a740cbd2861b720c8bdbac47cf84017cc4757b7c5c4afed6bb59639a",
+  "validation_only": true,
+  "production_noise_selected": false,
+  "noise_scope": "Explicit readout_flip=0.1 with other errors disabled, solely to exercise reject/retry/accept; complete resolved parameters are in the unmodified probability document",
+  "evidence_scope": "Exact detector acceptance for the supplied validation noise model; no logical fidelity or canonical magic-state claim",
+  "timing_scope": "Integration test offsets are synthetic abstract fixtures and do not use the producer's reported physical activity duration"
+}

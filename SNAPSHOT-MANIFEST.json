@@ -1,0 +1,4307 @@
+{
+  "snapshot_date": "2026-10-26",
+  "timezone": "Asia/Shanghai",
+  "source_workspace": "logical-qasm-frontend",
+  "source_head": "852fd731196673ed07fcac46c4ae172dab31ebb5",
+  "source_branch": "refs/heads/codex/logical-qasm-frontend",
+  "destination_branch": "codex/logical-qasm-frontend",
+  "source_status_porcelain_v1_z": "",
+  "purpose": "Logical QASM frontend, shared-resource scheduling and fast estimates.",
+  "verification": "Source-byte and Git-blob equality only; no runtime tests executed for publication.",
+  "source_file_count": 715,
+  "source_files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 235,
+      "git_blob": "b27f4e2a57d2f891b0274b0235b63473ca10489e",
+      "sha256": "14152d739f03ad8b9adc05a8334710d2432e0e1108c9a7b5c6bc242ad62029b8"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 194,
+      "git_blob": "f1973d0605195bc123228e2b6b7f6d518e332454",
+      "sha256": "b4ab32e2b95387fa5927b030b3d99f201444c641f385ce53f98c3e09a7916c8f"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 20538,
+      "git_blob": "90d9e8026282d2a81a79868eab4c6d013b252469",
+      "sha256": "e109d3cd3aa7e9cd81e6ca6dc9491fa1e004434c290c89fec375efda2525d8b1"
+    },
+    {
+      "path": "agent.md",
+      "bytes": 4666,
+      "git_blob": "17b84be38608a47d21f9a8f70d6d61052a6ed4a9",
+      "sha256": "3a7539acaa07dbd7dcde56d8c80ed10519e9419581a0d1b86b971b27426b1d57"
+    },
+    {
+      "path": "architecture.md",
+      "bytes": 16003,
+      "git_blob": "3cb7a311961adf59eb6dd7beea70d8b949d00ccb",
+      "sha256": "d2d3a918a21e3d0acc70366b4976bf3ce300ffe452809eb50a2d229b532eeae6"
+    },
+    {
+      "path": "docs/decisions/0001-module-workspaces.md",
+      "bytes": 1022,
+      "git_blob": "d5f830ac46ef31f6c7199b8a6aa7102412deacb6",
+      "sha256": "c4eb2c17ff1ddcc6681204da1b27311d74cd49d6b64a4146313f935293422027"
+    },
+    {
+      "path": "docs/decisions/0002-pluggable-physical-compiler.md",
+      "bytes": 1416,
+      "git_blob": "757b139fad97db19b511ea64c112d7724628ace3",
+      "sha256": "b94db9dea73f9797196d9ef3cd0581829551a3975a757f8c04f0659f5456ef78"
+    },
+    {
+      "path": "docs/decisions/0003-qasm-physical-dag-frontend.md",
+      "bytes": 3899,
+      "git_blob": "3e7055801b9b4ccc65511daf32784e41a5472139",
+      "sha256": "cbe04dc10bbcd6b3f51637068b698d8456949685fd9ac148f63d4f26d5dc1e1c"
+    },
+    {
+      "path": "docs/decisions/0004-measurement-feedback.md",
+      "bytes": 4662,
+      "git_blob": "3a76370b1803b320d4208faf8dc342db52a3dc37",
+      "sha256": "3281a4d8ad1154393cf10bc15bf59c7c91a1df9e29ae740f6a6409e7f4e0b8ae"
+    },
+    {
+      "path": "docs/decisions/0005-case-driven-physical-compilation.md",
+      "bytes": 3981,
+      "git_blob": "a4e39937080e5108286c4f9882a098a0eea32d9e",
+      "sha256": "698f912439a500dd1bed56ccce23e5917ec4c5b97f5222840640815b26e7ac77"
+    },
+    {
+      "path": "docs/decisions/0006-device-zones-and-interaction-sites.md",
+      "bytes": 1554,
+      "git_blob": "df3812090efbafa07dfb1c3227d4b2d4c3bd6b0c",
+      "sha256": "bea9e77ff27f0fb2973fd567cf6b5b61afeb4d34ab13a1a3db60d5471cd43ec3"
+    },
+    {
+      "path": "docs/decisions/0007-explicit-physical-and-atom-ir.md",
+      "bytes": 1444,
+      "git_blob": "47fd5d6ec20dfd71c13cbd778258cdebe31d8569",
+      "sha256": "5a12755bd4fd1acc19ccc135ecea9f39f8fada7a0c7416f836106ac1c75a162b"
+    },
+    {
+      "path": "docs/decisions/0008-native-frontend-and-module-contracts.md",
+      "bytes": 2458,
+      "git_blob": "127f14c6a1b674e497e75f44d527d80f5e050bd8",
+      "sha256": "0f4096f6223f278c62c75fcec3fa8dc955bbcab4750e9051edd451e425587f37"
+    },
+    {
+      "path": "docs/decisions/0009-one-pair-compilation.md",
+      "bytes": 3263,
+      "git_blob": "7a9920f3f25433f6d7f1ae859033007a10c8e531",
+      "sha256": "6d82c22dcee80806137a88e20c6590995e3b72cd19e5a87ac6fcc8a4d00e8374"
+    },
+    {
+      "path": "docs/decisions/0010-multipair-compilation.md",
+      "bytes": 5575,
+      "git_blob": "ee3436df36b985459aad699a297bb9877af3ba31",
+      "sha256": "708e86ece718f22940772a899d22a6b5e0006c3cbe53b1c85a3be6064cf80c2c"
+    },
+    {
+      "path": "docs/decisions/0011-strict-parallel-transport.md",
+      "bytes": 4088,
+      "git_blob": "28c29de2dca300435fb5ba269d5d790737fe4a19",
+      "sha256": "93bb3dd947efe5442444394db025565cf7617a0fae63146e603a03a8fc0fa425"
+    },
+    {
+      "path": "docs/decisions/0012-lookahead-and-matching-reuse.md",
+      "bytes": 4373,
+      "git_blob": "452fa22fbd9ed21cc586b6121843beec229ff476",
+      "sha256": "39332dc07b0c0eccbb6dd403a0006afdbf6aecf2d12182cfe016c79c821ac1a4"
+    },
+    {
+      "path": "docs/decisions/0013-routing-aware-ids-placement.md",
+      "bytes": 6699,
+      "git_blob": "315f559ff9320b2ed1a1c379aafad5d019c7c523",
+      "sha256": "7b889dc2077737a3e5fc561aa58fe036dde55010b73d8a1e7bd5ebbd1428b422"
+    },
+    {
+      "path": "docs/decisions/0014-explicit-retained-atoms.md",
+      "bytes": 2590,
+      "git_blob": "0606550714a50aa056b6972d7e804eccf8068f6d",
+      "sha256": "2ff232ea822c0327bd85d62d54929c8dbe67594eaecae7f43443a388046ebc14"
+    },
+    {
+      "path": "docs/decisions/0015-staged-strict-transport.md",
+      "bytes": 5003,
+      "git_blob": "1fa1658f5c3c19c85667cac28dc91790ce001573",
+      "sha256": "cf23df4b25e494e4ea5d9b33cb46427371ccbc780d9b460600b2bd69666ab1f2"
+    },
+    {
+      "path": "docs/decisions/0016-relaxed-routing.md",
+      "bytes": 5024,
+      "git_blob": "7bc9accf34c492d7b97238997f9e1e4be0f79eaf",
+      "sha256": "13061392171d79a832f1e15ed03bce4d770ffb2af7c48e6e98bb46cb047880fb"
+    },
+    {
+      "path": "docs/decisions/0017-source-routing-audit.md",
+      "bytes": 7169,
+      "git_blob": "b088d72c49f587a8ae1c049fb78a8a08992fa54f",
+      "sha256": "7c4d060caf78b670a55e730c81300c9a98a07f33607cdd04eacdb99de1b1e95d"
+    },
+    {
+      "path": "docs/decisions/0018-source-placement-path.md",
+      "bytes": 6040,
+      "git_blob": "b9cea346feca90db1f4dff42a72da9ae042175f5",
+      "sha256": "860064f2c417666eeb4da7a1ceea9d584ba047e3de3679257a313598da9ef308"
+    },
+    {
+      "path": "docs/decisions/0019-full-source-pipeline.md",
+      "bytes": 9742,
+      "git_blob": "9b69a884a064ef18d3d6ce6c247e0b0e747951b1",
+      "sha256": "9bc2088579c56e552c4c8e41a5cee08537b0f9c8732bbcc44662be04f5e6305d"
+    },
+    {
+      "path": "docs/decisions/0020-placement-decision-parity.md",
+      "bytes": 5097,
+      "git_blob": "3718041c61ca2d6a00e8ec79a4dc4a27000479b3",
+      "sha256": "72369d3245d395a176ff640e8f93e9be4869e246bbcd7fb0d9da7ce09016b03d"
+    },
+    {
+      "path": "docs/decisions/0021-job-spec-and-result-document.md",
+      "bytes": 9797,
+      "git_blob": "a93d5a5dc9399be8ebd2140cbfb92142b7774c11",
+      "sha256": "b58b318cde2ff926629aedb708beb6e2be7696492a99291ba2d40e1d3ff84cb7"
+    },
+    {
+      "path": "docs/decisions/0022-atom-replay-viewer.md",
+      "bytes": 4898,
+      "git_blob": "a431bcf202c823ef2aff7964572b68bf87eed4eb",
+      "sha256": "f8b30194d579fd2a9c46b845abb55f2c83c59abea5289b6aaf420dd81029b23d"
+    },
+    {
+      "path": "docs/decisions/0023-semantic-validation-and-self-contained-results.md",
+      "bytes": 10208,
+      "git_blob": "ba95e5cdfc6ce0a5cfd3d937ee0b216cdf7f8958",
+      "sha256": "dfb13a7d981cc581385ca5027f447e84dbda4f4b3b36ea3e22470f169c1a716d"
+    },
+    {
+      "path": "docs/decisions/0024-rigid-aod-motion.md",
+      "bytes": 8332,
+      "git_blob": "8ea040cee689814203e79249aa917da6c95d7d33",
+      "sha256": "f40ede3e4bbef00bc9f727fa08dceeff079708102740314bf9a5ef426180e5f6"
+    },
+    {
+      "path": "docs/decisions/0025-parametric-architectures-and-strategy-support.md",
+      "bytes": 10782,
+      "git_blob": "d8a09d51c73d2d75ec91662e2e85cfbdfc7b3414",
+      "sha256": "d2cbd237f0d2e06bc191b545804567bf9b15d5d2b20012bf762d086d613d32c6"
+    },
+    {
+      "path": "docs/decisions/0026-cost-model-adapter.md",
+      "bytes": 9555,
+      "git_blob": "8231c82e2003daa8c1f825de4c3d724c9c20b3cd",
+      "sha256": "3d07b71ea22f56b763dd76020ba4137eed6b8172a0ba20c7aa0a5238b25cca05"
+    },
+    {
+      "path": "docs/decisions/0027-experiments.md",
+      "bytes": 11542,
+      "git_blob": "28450389e41d47824d32256acbaae5afaa9514c6",
+      "sha256": "dc3b75a1345c3e32a28c66a8a0df8295974630200da67fbb86f4520d927c3206"
+    },
+    {
+      "path": "docs/decisions/0028-rigid-partial-release.md",
+      "bytes": 3691,
+      "git_blob": "b89f7b5185c90f72d01027bf7a328c51a502668f",
+      "sha256": "423fc97edeee17c17d93d21d3476d6f13032c6d811d08f6dbaac36f34226b2a9"
+    },
+    {
+      "path": "docs/decisions/0029-batched-aod-readout.md",
+      "bytes": 5632,
+      "git_blob": "cc237d4d40edba5d802dab7aac8177e692bd0a19",
+      "sha256": "d2df5a8571b9c7cfa84aa29d85cab557ac4606b0e2e78e0932ec46b237399023"
+    },
+    {
+      "path": "docs/decisions/0030-nonzoned-fixed-layout.md",
+      "bytes": 5813,
+      "git_blob": "bfe1a602a5e014bea9cf5284ad502e291995b692",
+      "sha256": "6c95744eb5a0e75029b804bd28a1d1dc728e8811c8eb26d474392bfd3ef63198"
+    },
+    {
+      "path": "docs/decisions/0031-enola-initial-layout.md",
+      "bytes": 4232,
+      "git_blob": "7610f5fc13439333b05b39d02a8c9fe480d54796",
+      "sha256": "f38a85f956e223dae4416953abb37131ec0be584757e0b9a5fa3bdada5aa297f"
+    },
+    {
+      "path": "docs/decisions/0032-unified-compiler-interface.md",
+      "bytes": 18171,
+      "git_blob": "5e362e66fd8ec77fec425a15fe345bbe8b80620a",
+      "sha256": "7a1edc2373084762c50ee2217e93b4ce50f5d3647d080851ab74e37fae295398"
+    },
+    {
+      "path": "docs/decisions/0033-search-smarter-qec-mode.md",
+      "bytes": 3463,
+      "git_blob": "38e06adc29b77cf760e860fe94517a627210932e",
+      "sha256": "b2074d357f14838e472c12c4844e3f174b5c01b1be0d3f3446bb7449120dde23"
+    },
+    {
+      "path": "docs/decisions/0034-modular-noise-estimates.md",
+      "bytes": 8929,
+      "git_blob": "00fab63e7117176ae71f256a2f2030069c7d3590",
+      "sha256": "29e4439b207db37b53e1abd7ca61de0cba2cf7eca5e8494797adfba38f8f17c3"
+    },
+    {
+      "path": "docs/decisions/0035-fixed-home-cross-layer-reuse.md",
+      "bytes": 4556,
+      "git_blob": "3e8d8e5d2cd21e55afed1b10232352f7951f7a60",
+      "sha256": "f7e54d41c5ab9778f0a86eb21e8866f8eba7006102f25e652f4b2f973ca864f3"
+    },
+    {
+      "path": "docs/decisions/0036-packaged-viewer-cli.md",
+      "bytes": 3831,
+      "git_blob": "34986f5db63ffe62154c10aaaf622393bbd9271d",
+      "sha256": "bba68857e24354ee15bc4762832d032050ba8ae99445a262010aa0bf62969515"
+    },
+    {
+      "path": "docs/decisions/0037-code-library-and-logical-compiler-workspaces.md",
+      "bytes": 5067,
+      "git_blob": "17c36961644e545b376d9ed4084a0f726a1de3c2",
+      "sha256": "466b5943ea7d3e1a8999414bcfb28e85749f553a8e111f1936ba775fc0c88e0b"
+    },
+    {
+      "path": "docs/decisions/0039-logical-qasm-translation.md",
+      "bytes": 5109,
+      "git_blob": "ba303c2a6d8d64db84818f931c15a29742de2b1c",
+      "sha256": "b2e3404fd03e0d996458954634b21dd46b5f9340030f0c0daac0afc803354fb0"
+    },
+    {
+      "path": "docs/decisions/0040-protocol-aware-case-compilation.md",
+      "bytes": 3211,
+      "git_blob": "95b9bcc59e912118912ebde284aab0b6f3c2f6c1",
+      "sha256": "19f47fc209b6bde39b69de0c8ddd3e2338373c6828fb01a04523bc1175b907b0"
+    },
+    {
+      "path": "docs/decisions/0046-component-frontier-batching.md",
+      "bytes": 3309,
+      "git_blob": "bc392b5728874b51017b6c3afa50a1e10b3c6101",
+      "sha256": "0a99a609cd355c05733e9ddffdd9ca36c82ea565d5cd384d8ab543e47bbe1dbe"
+    },
+    {
+      "path": "docs/decisions/0047-shared-aod-component-waves.md",
+      "bytes": 2916,
+      "git_blob": "846697c9e4ca610041f8e514ae6eacd0ab426574",
+      "sha256": "c2e13f93b37415c0385a2fa09c8e8b666a82d7ce48a88af252a19ddc983c8642"
+    },
+    {
+      "path": "docs/decisions/0048-synchronized-factory-resource-ledger.md",
+      "bytes": 4303,
+      "git_blob": "536bd42595449058defbfdfaf11bc00734538d8d",
+      "sha256": "8fc5503b5e639d987f86b26ddd1abc702d6ea211e64f2c6cb852a75231a8f3d2"
+    },
+    {
+      "path": "docs/decisions/0049-component-parallel-admission.md",
+      "bytes": 5602,
+      "git_blob": "29be68a876018ebcbddb46a1efbeea32abe9ca7d",
+      "sha256": "5955d1e792df6989c60ddfd0ed969736da6d74a0713022a8e32726975411eb30"
+    },
+    {
+      "path": "docs/decisions/0050-fast-logical-experiments.md",
+      "bytes": 19491,
+      "git_blob": "7afb8252af555b2d2c2f819fb7f1c5633ebf1030",
+      "sha256": "0a24ef8b055da98a5b452afbf4233713f9e34a2002b735704b621eeab7df41ef"
+    },
+    {
+      "path": "docs/decisions/0051-theoretical-factory-acceptance.md",
+      "bytes": 12866,
+      "git_blob": "7d47dbac3c79b531961fcccf83a30e46f7d72bb1",
+      "sha256": "a4bfeba7f0b8744655244d8ed7e240dac8342b679e35dce0e805e803a42d9d40"
+    },
+    {
+      "path": "docs/decisions/drafts/0028-rigid-drop-tests.py.txt",
+      "bytes": 3190,
+      "git_blob": "aad5085ad722dd3b214937ebe70d4f922cf2d7ff",
+      "sha256": "8721fe169be34a38dcb820bd4ffca580d84969bdd72ff53f89ed0dd78f2113c8"
+    },
+    {
+      "path": "docs/third-party-notices.md",
+      "bytes": 4066,
+      "git_blob": "9729045f1c1a002fc7769af4cbe792ad438eaa81",
+      "sha256": "9520f6beaa5f5689589c0cb966f7d9db988b2a7da95738cc557d2839472df3b1"
+    },
+    {
+      "path": "modules/codes/README.md",
+      "bytes": 3307,
+      "git_blob": "5582a67d99e716db35ec4da00c03bf4b741c0f1e",
+      "sha256": "2d962cfaf7ff42653037d5e4d6cbc6b5c7c77c6f3cc3dd672c90e56fc39f9d54"
+    },
+    {
+      "path": "modules/codes/__init__.py",
+      "bytes": 72,
+      "git_blob": "8151c2d68cf75e546a229c971c9783675fd838a3",
+      "sha256": "386f1a97e92c7bd9f83a6ed62c4fa0673804968381c3a93cf20abf28a145a328"
+    },
+    {
+      "path": "modules/codes/_support/atom_binding.py",
+      "bytes": 4458,
+      "git_blob": "2f9422b2cd101f24e6b3bdaae8fbdb39b16ff34d",
+      "sha256": "4555f96a6efd38dc7289fc0d19d2f5114c635a7256421119a2fd5957266af018"
+    },
+    {
+      "path": "modules/codes/_support/atom_template.py",
+      "bytes": 18420,
+      "git_blob": "074fe50f989d0823e030ee31d28671a56c6e53fa",
+      "sha256": "421ff55013d44fc34d88e08f25227b63ef94dd88fa2f522ad49397b65a7db7e0"
+    },
+    {
+      "path": "modules/codes/_surface.py",
+      "bytes": 442,
+      "git_blob": "6eb7cc5ff0f66a218a2d8eaa62fc5b209e4013f9",
+      "sha256": "a7752897ce8eb5dc005ff6e473baeadfd5054962a1a534fdc514895e4d3383c9"
+    },
+    {
+      "path": "modules/codes/contracts/README.md",
+      "bytes": 1864,
+      "git_blob": "6b86f82d8635cccc7c280f3af7d0d3bf8c2ce450",
+      "sha256": "79fb32e6c76d39ac367c83d233e1f29031ae4b6ed85d15eae3b59d1584dbb10d"
+    },
+    {
+      "path": "modules/codes/contracts/__init__.py",
+      "bytes": 1160,
+      "git_blob": "6e3dce1e5b5dfbe46c80147e3e1e38eca116003a",
+      "sha256": "e7a57c8662d1dae46884dcb61605a3dce5f102665b76f6ee4c19d3ec079828c3"
+    },
+    {
+      "path": "modules/codes/contracts/component.py",
+      "bytes": 9094,
+      "git_blob": "35145ee508e765ff1d6db50333336a9d922d8baa",
+      "sha256": "5dc19228fce4e1b931d7d4e4a27274cb0e1c492244797a2f8dadefe335e3a162"
+    },
+    {
+      "path": "modules/codes/contracts/event_probability.py",
+      "bytes": 9960,
+      "git_blob": "1d51cdd021d3922fc37441f5a2f17c3e86fdca62",
+      "sha256": "6f354fb6d4512e83a134092e8216e1d50361d659e694958cacc5b3214cbcfdf6"
+    },
+    {
+      "path": "modules/codes/contracts/event_probability_v1.md",
+      "bytes": 8447,
+      "git_blob": "9e5f126329abfb7f4bf377fb725b5d611d3ab6c2",
+      "sha256": "dbf917f75f5b9b668e17f05038e72713c6051d16f435f7dc919debed2a52070c"
+    },
+    {
+      "path": "modules/codes/contracts/factory_recipe.py",
+      "bytes": 3299,
+      "git_blob": "28317e2b78a2c855b26ba753e000aa32de4c8254",
+      "sha256": "e27082cf8d9defc43a636df6bf5af8ee9fd1fac85b993adf26bfde93ffbf9afe"
+    },
+    {
+      "path": "modules/codes/contracts/parallel.py",
+      "bytes": 7314,
+      "git_blob": "bad4207b51169617081b2a279a9f9b5950cd5bdc",
+      "sha256": "4125969c51108ee52d2dd3d400768d1727ce0982979166cbcd8e1f1ed41de8fd"
+    },
+    {
+      "path": "modules/codes/contracts/tests/test_event_probability.py",
+      "bytes": 7480,
+      "git_blob": "28afa6305b66f2d33865aa65863acaf366d5790a",
+      "sha256": "236de13449dcd66bdcaebe49b543954b65fce41e1386fec6b8c2ed02ea6be6d8"
+    },
+    {
+      "path": "modules/codes/protocols/README.md",
+      "bytes": 929,
+      "git_blob": "23f8ec1232da7db6f73245d942a9f035733265c2",
+      "sha256": "1304f841c58ce223bbc296239c065aa5a6f8b1688063f2424f9327124aeaae3a"
+    },
+    {
+      "path": "modules/codes/registry.py",
+      "bytes": 716,
+      "git_blob": "786b633643c25ab72eca06365061db27e6d9a359",
+      "sha256": "4dd1afaeef63859d6ecce7254f9b18b13c883b0dada49fc9dfa0b75648ed4343"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/README.md",
+      "bytes": 1884,
+      "git_blob": "bb0671ac1b428afb11f93383ce7cf567f827e4ba",
+      "sha256": "1d77a29e5ce538f3af5acbcb77c38e84438c7f4ef4da1e8725f03b318ed9cd81"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/__init__.py",
+      "bytes": 53,
+      "git_blob": "af43f4eb923399ff542881f1e5425fddf245d52f",
+      "sha256": "b8fbe17f24271407a8d809db654fcff6beab6f4ddd222208f92736dc511a16d5"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/README.md",
+      "bytes": 11499,
+      "git_blob": "9ded448bc496dd86a135cb1675b0d065dfdf8946",
+      "sha256": "5f8a89892595a86fa1b0e277441bb88a417849a07ddec7d9ccca74c38a4bcb14"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/__init__.py",
+      "bytes": 5664,
+      "git_blob": "1d50378fd9bd354a60c2e95658944f675ad3b28a",
+      "sha256": "023f9a8542cfca16c65ba2c0fca0a74d8692b8fc8671a37307d8894cbef437fb"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/canonicalization.py",
+      "bytes": 16559,
+      "git_blob": "443ad31d9728291fd21238e35f0c8396afb54bc2",
+      "sha256": "a5ef5c54d073e4a7c4d307fa253e96839e097413d9f8bf399555829b8453fb7d"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/circuits.py",
+      "bytes": 2640,
+      "git_blob": "fe2e79177ea03dbc8b5ee3f509fbcbb0fd944c14",
+      "sha256": "ba9fbaffba0177d433b80afde70a795db73870eeb7ade231b70dd5ff8e6e1fc1"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/hadamard.py",
+      "bytes": 8885,
+      "git_blob": "43a6b07498e5359bcb936992765f5bc497a2efcc",
+      "sha256": "b391a86214077842a1a48bb15869a9faa080ce0e2ad908e7a9b2ce259c27380a"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/initialize_0/README.md",
+      "bytes": 536,
+      "git_blob": "82ed772fe6a1272a305a564421a6a4271c9f22e0",
+      "sha256": "12adac147a69553aad474c43d53da1e3633840b9e1dd190fcac08244276ddba0"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/initialize_plus/README.md",
+      "bytes": 542,
+      "git_blob": "11b213e1c1a14d40bbd1dd71245ca4df7e731378",
+      "sha256": "8e911f35897b41a3087336a37068ac319cb4e1e22d0bd3a8e7ac01a21fde18b6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/injection.py",
+      "bytes": 4484,
+      "git_blob": "debdeceb8932871e2398356fbfca1e49050c2b20",
+      "sha256": "d0807b38055945baccb97e72479121aa2c86a0ba34e29316192ffba595c64d62"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/measurement.py",
+      "bytes": 7360,
+      "git_blob": "5b6683b08fb98f252f596946b4857067ceaa09cd",
+      "sha256": "1d4e7053b885cf9f316e204d97e83bc3af5bedd1901af30b9f1652d93e672ec4"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/measurement/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/phase.py",
+      "bytes": 8172,
+      "git_blob": "2badac2923ddb49ccff53095be3f37e8096cc0b7",
+      "sha256": "4c7f9853dd7c19202c6edf2a67a4d37d7cb871fb1915a2def9757f2a48547970"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/preparation/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/raw_t/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/se/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/trans_cnot/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/components/transversal.py",
+      "bytes": 9648,
+      "git_blob": "de415c294bacf5d46a5584b3c4cd869f2887544f",
+      "sha256": "d730645e53c52bd9b97a5ea2b469297015b231254bda61208790436647d4aa2c"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/configs/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/configs/nonzoned_cnot_reference.json",
+      "bytes": 1277,
+      "git_blob": "b05d342c74aaaf4d42a2d715bc559ce538e18c5c",
+      "sha256": "441bb1e505017c4a3471b1aeed1f53c1718ae1ccf76303b36b3661f0d6b9054d"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/configs/nonzoned_h_reference.json",
+      "bytes": 1806,
+      "git_blob": "ae43042e26bbe7367975d847b42735055fdc2104",
+      "sha256": "b153005eff281fd46d2c20bba60b53a383dedf6441ff018fb77fd94909172f87"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/configs/nonzoned_reference.json",
+      "bytes": 1802,
+      "git_blob": "783eede21695f0c54afac5b28e322c1f78604d4e",
+      "sha256": "be828edf3ca2fb247a047e2c901c19687a0021074399539f994a89274d0e6662"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/definition.md",
+      "bytes": 1123,
+      "git_blob": "6887b2b4e0586988619d9242fdbc5ff5bec04c1a",
+      "sha256": "5a81499b671a17b5a8c60d82559e6684192c3f1a8ff2e2a6393b7ee9b10bbc24"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/definition.py",
+      "bytes": 746,
+      "git_blob": "3157d7ea05f0a9f111050d00d78ba07d9616b091",
+      "sha256": "9c47108d0dbecf8f03e3b5690c4cdcd5b676034a5d6dc07999209ae8969b26df"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/entry.py",
+      "bytes": 381,
+      "git_blob": "3bc5fabe892fa94344b6b53b5945c235ecb35cfe",
+      "sha256": "4909923b167f0597ce71a95d8d02a0c1d7e1185c682ea4745956c1851afe7e27"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/examples/build_components.py",
+      "bytes": 14084,
+      "git_blob": "3f6399e013d469ae6e27fb61f19b9d9490d34400",
+      "sha256": "ddc4a789ccdf999702cb9261e6daf6b46676e0aef7c44b483bfbb0dca8e13a53"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/examples/export_event_probabilities.py",
+      "bytes": 3715,
+      "git_blob": "2e617e81e17b58d03f4291ba9804b38840d59290",
+      "sha256": "1dc51d477de8e72e31b44d9308f1e7b6621c47e239a5f5e4a2e7d934840682c1"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/examples/raw_t_postselection_export.py",
+      "bytes": 7626,
+      "git_blob": "12d3cfd24b1e5f14cf479c8abbe1e81a55197f65",
+      "sha256": "ee98709fb905e2c103d495ffd97b00fc99fad237044eaed75c5254c3dd9ed251"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/layouts/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/probabilities/README.md",
+      "bytes": 12773,
+      "git_blob": "d861801b68874c346cccd4b1ddb5361e3c7dea29",
+      "sha256": "959987dfd3c372afbc69ae455e0e8deb974118a9ad992ed71cc20a1d195b82e9"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/probabilities/cost_proxy.py",
+      "bytes": 19556,
+      "git_blob": "958cd33242eb4e5b2481362dbd4175c9bf0be72c",
+      "sha256": "d79c27d76237b9662daeae566533ebd730c5e17427394fb45a49e4e4e5a94794"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/probabilities/factory.py",
+      "bytes": 7678,
+      "git_blob": "e9770100a2119287aba5f2c323701f7295cd57d3",
+      "sha256": "b5b7ed7643e5ed4dee11e7abba65475afd7c61c54a35ccd69e0afcf41c107e1c"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/probabilities/preparation.py",
+      "bytes": 3492,
+      "git_blob": "40558a5a4255648d9c3d2a1b36a85eab99d4c75b",
+      "sha256": "ec2f9c9cf39b806c339d7e839c57d0ad8042af06df3c0289ed4e9b7227fead37"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/probabilities/raw_t.py",
+      "bytes": 18506,
+      "git_blob": "01e69a155dcdabd85315ebc6c37ee4000bc6bb67",
+      "sha256": "ea439a3250867697b21bb526020d2d9b911413bb49f7c0c18386be143e6dae55"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/probabilities/raw_t_detectors.py",
+      "bytes": 13874,
+      "git_blob": "eb1b268cc77ac940b1f841533cfb9317e3ad7858",
+      "sha256": "1cdc8f354d440e42d8f46995e9446accc365afabce76b9fc98923343a9e70ed2"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/probabilities/raw_t_preparation.py",
+      "bytes": 8229,
+      "git_blob": "47ffe545e54de571c16354c3d69b86c67e61c3c5",
+      "sha256": "5567728c2060bbfd4cff087a7c7433a2a030e35c90c42438f943807b4edf0d94"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/probabilities/t_injection.py",
+      "bytes": 9381,
+      "git_blob": "3dc310f8ff30237e55df69880de448102204f717",
+      "sha256": "34f69393caab314b5575273e7053019614d05f441bb8438d13139a3c232e7c85"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/cost_proxy.md",
+      "bytes": 6292,
+      "git_blob": "ac7e710c7a585f854a2514a43c5db8d2e6836b43",
+      "sha256": "39fa8befb1732b0b460f8e1063143c525318ab3ef9158ea46aaa7a0c20269aa4"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/cost_proxy.py",
+      "bytes": 10110,
+      "git_blob": "2bdfab06c15a4ced7a73cc2c427a12258a8ef723",
+      "sha256": "eca5c7941fde7cc5595aee6030373279885a5b96f11b8a9bb328c57ee731ff4c"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/factory.md",
+      "bytes": 7526,
+      "git_blob": "9a50c84bc522070163185a87396d7f185bb9651c",
+      "sha256": "8f8865ac338fa82732d7433f49b66006601857c0e93611ca9792c35084120945"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/factory.py",
+      "bytes": 4939,
+      "git_blob": "7b6b07d11ad74cedb7bc71e6e737e1e9b738aeef",
+      "sha256": "3ae1ba17253c767e2e17291dd79e17b02180385d278ed125bddc358def03cfa5"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/factory_array.py",
+      "bytes": 9233,
+      "git_blob": "150c2fcad556a6bb7743fa04316b589c708f56cf",
+      "sha256": "f9fb9d6096d9d756daad093ae78dddfd78d04c58c563a52c9347d30c0621eee3"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/factory_backend.py",
+      "bytes": 28162,
+      "git_blob": "b70bb432fe779e468c98b6833e486daccc7544d1",
+      "sha256": "45e4064b9d98e92f6a11340a21f98fdc98f6488f004dd202b9b8cb3ca29136b0"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/factory_experiment.py",
+      "bytes": 9210,
+      "git_blob": "686925a37e8542aeea77494354a96da3ed4d2c90",
+      "sha256": "3afe6a20e1a2f3114dc0fd153344fa05864874d3d7a8762c993cbdb4baeeb7df"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/factory_world.py",
+      "bytes": 8482,
+      "git_blob": "bdf45f87d6e09490210a490708794d669056157b",
+      "sha256": "8c68d44589ed384e9160abed28bc01cafacb01bfe798836b326ab599eba71283"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/fast_backend.py",
+      "bytes": 10722,
+      "git_blob": "a5bab42289b3d728129442c40bd3ec330451903f",
+      "sha256": "296f7dd7782bb0ac6eda829b6894eb940fa9c638cbaa204bbf1f4315204b5e09"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/fast_calibration.py",
+      "bytes": 21651,
+      "git_blob": "72fdb576b80f0f723f5e739c65cea766ae0e14c2",
+      "sha256": "10942a3612ba185750f0c8124a8d6627b9893bd116f6582994b98c603a5a4e1e"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/fast_cost.py",
+      "bytes": 12923,
+      "git_blob": "b7a2cd4b76329ff574de9a263f968eb05174d11d",
+      "sha256": "659ff17fe704e681a299e29dfe6e54f2023419549cf59f6bd7439bce0a8bfe44"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/fast_profile.py",
+      "bytes": 19171,
+      "git_blob": "d5abaffa0279ffbc7eea1b372c8449a96e687837",
+      "sha256": "a92c344f555760e386384026f7c38a7b0c9fddca3f56c46300d26a4297cda28c"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/hadamard.md",
+      "bytes": 6581,
+      "git_blob": "a74c687116708b751abb357d0dcc04238161309f",
+      "sha256": "ddf1fb76b28871a00ea7d4d0a71aef1d4b9ec3e9437193755f717b04dffabe1f"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/noisy_raw_preparation.md",
+      "bytes": 6373,
+      "git_blob": "1dd50e50acfde8d78d630a5651f3c783908a33c8",
+      "sha256": "1c0d89b23c91e70c27141fd821d9b8fecb60f37c57358e0cd88c5335c46e8d7c"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/parallel.py",
+      "bytes": 17612,
+      "git_blob": "641319eca4d038366b0cfd37cc8d400b34bc3072",
+      "sha256": "1c015c598bc2f197ae2f0450ddeeb1250bcd327d21be9b8e5c9b5d95f6c7e26c"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/parallel_backend.py",
+      "bytes": 36753,
+      "git_blob": "c82ee9775c8c1f85c9a77b55fd2d98d8275bc11a",
+      "sha256": "f59f534287e4f02664c96b30999bebf0008808ac6cab6c157f04cd7550028aeb"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/pauli.md",
+      "bytes": 2134,
+      "git_blob": "0ec772c366832a95a096e1121605db255cc2b43b",
+      "sha256": "4ddf1e721e8ffbf1275ca4a7a8cd913294dc36deff61bbf8d5d0822341971eb9"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/phase.md",
+      "bytes": 6657,
+      "git_blob": "23d4a3ed8273b93e6f94f828da4516558446c62d",
+      "sha256": "13519443693befa7d4f31ef87b18fb279d7f2092819be60b8f2f39385baaa943"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/raw_t.md",
+      "bytes": 12669,
+      "git_blob": "e0bf3fe9c9cb4dbbb6eb54a1e373a484fef15f0e",
+      "sha256": "d52093f3f4296aedd44856abab878943347bb21d439c30dc7230d8996113fa98"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/raw_t_postselection.py",
+      "bytes": 10540,
+      "git_blob": "4b9b453882ce34bfdbab0d02ffb59c96c5a4f7f3",
+      "sha256": "04a91d517ad25807ef46e70c5ff54d9b995f8a9e707fbef735a3befb5c63cbe6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/protocols/transversal.md",
+      "bytes": 4980,
+      "git_blob": "20a40674108f1816c7b65548afe1394a25848f0e",
+      "sha256": "669c62e9848b85bd2aa53485ba9152171579f2937096ab86cdba99175213d86b"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/dense_quantum.py",
+      "bytes": 9139,
+      "git_blob": "166c1634f7bbc692123a4a001079f136612e5113",
+      "sha256": "b281afddd5a897231c0307bce6693df5d740920e8922bb548eaede218ec1b9d8"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/injection_sequence_checks.py",
+      "bytes": 7163,
+      "git_blob": "818a86b86bd02cd2fdd486cbeec8270d4cb2b0a4",
+      "sha256": "6c688797be5984819edd94df06cab7bacb70b5d44e5a4677cd49ca84567d2f9a"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/phase_checks.py",
+      "bytes": 5276,
+      "git_blob": "35e406bf366363dce9627d6c617b26d68451e43f",
+      "sha256": "f03cd44bb734de16ce948382f4f8bfce67470259eb4679a971a3b498f293c4be"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/quantum_checks.py",
+      "bytes": 4824,
+      "git_blob": "a632c5a475441b8493298cc96d2d88a722fa7865",
+      "sha256": "0984e1f74b3b382520acc80d2b66ec17c73c527a38bca7a047465ef09770560c"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_canonicalization.py",
+      "bytes": 16723,
+      "git_blob": "7a7867c378830e22ed0f886d39e72dd7fd12c511",
+      "sha256": "3a4e5599bf4edf01ffcf568ef5dc35504a456180842b72363216e63a27828c4e"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_component_time.py",
+      "bytes": 4973,
+      "git_blob": "f0cd9aa05859f0ef96b02044b23c65205a6d5182",
+      "sha256": "8c6c6bf1cb71e696f23f2e8f299b8f93156fb1603d9cc6523f3677b25423ae6f"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_components.py",
+      "bytes": 18147,
+      "git_blob": "d2dc3747906711fcaeaa780f37330df2c044b139",
+      "sha256": "41ce426c41ce5a1945a842632000a9e71fd38e8a6163c2405cd8e61c1bbbd493"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_cost_proxy.py",
+      "bytes": 15716,
+      "git_blob": "aa08cc595c84cb7f2e28dad9b79f8359e61e9f67",
+      "sha256": "01493bfa7274c9de61102765c96f4b731d1cc405cd4c874fa6bc238302c4f5cd"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_cost_proxy_backend.py",
+      "bytes": 5739,
+      "git_blob": "61abe2a470cb66ae39f4724a6d390fe55441fb8b",
+      "sha256": "b388afa9dd259c1c50681a45a05b57775a7e70e2bc89e4454edf72b50754ac90"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_event_raw_t.py",
+      "bytes": 13224,
+      "git_blob": "af8af2cfe02209bd39beaf56bb9fa8dddf6515e8",
+      "sha256": "e8b5ab99574b58b2c557b8b9bc01954d49e0facc3cdd1c4bc1f43a9452a16052"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_event_t_injection.py",
+      "bytes": 7788,
+      "git_blob": "cd7141e26ab4c972f80ab9d572c711dd4ad109b2",
+      "sha256": "f47adb78021559deb31d3dbc3c8c5e7803c86842a39318a3b2b655d2f4dad3b1"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_factory_array.py",
+      "bytes": 4836,
+      "git_blob": "30e668e9c736d268637412367e73243f8161fc86",
+      "sha256": "974620a0fa98ec4d5d278217f54b4a78aed29b087c46c8271970d30539698619"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_factory_backend.py",
+      "bytes": 13434,
+      "git_blob": "67afd4d317a124fcd0e40e409550392749e16647",
+      "sha256": "d31fcee482a025427c82d2b3c9b9c9aaf9496989daf0a95026e04cead338f37f"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_factory_experiment.py",
+      "bytes": 7053,
+      "git_blob": "901d16d6e69249ae4b126b43d089d115e8f8fbe7",
+      "sha256": "e252b0fe9e95063401967c21328c681f7b917bb59b1681f254466b751dc4ae15"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_factory_noise_backend.py",
+      "bytes": 5744,
+      "git_blob": "1bffa2fccc8b1646ec611353e74c78e145b25250",
+      "sha256": "a65c47d270004b10191c7003670367025146a70ef6a320fc26b69add4cc45609"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_factory_probabilities.py",
+      "bytes": 4498,
+      "git_blob": "dd9fe97196241616f042b97d34cddba29e3576ef",
+      "sha256": "8f08aa1f7985a034a4e0fe0a49cfc44b1f0c0c5d3a35f197c6f17f0ab599ad3a"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_factory_recipe.py",
+      "bytes": 3794,
+      "git_blob": "46e06489755f7564c4da12327f01aa5f6d42bd62",
+      "sha256": "281f146f4d4db1695cb3a72f3183f360887afe9449146062938fac32c9d6699e"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_factory_world.py",
+      "bytes": 8981,
+      "git_blob": "2b0dd09dca525ab0225f7eebc13ca2e54f7baa2c",
+      "sha256": "72e7a171cf990ea354242d6326dfc53001386d3b4c45b3561ce7157ada91cd16"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_fast_calibration.py",
+      "bytes": 1748,
+      "git_blob": "2973827f8882e2e7de0467945f5f462edb8771c7",
+      "sha256": "94d1b222732cf29247e5c3a3ef21eee14c7ecd5eddb720bbfafcaa3117e89309"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_fast_cost.py",
+      "bytes": 7244,
+      "git_blob": "4164ac501c5a8098a16e742daa94e3d529b23e92",
+      "sha256": "cd4d5492e7bbed3126ed7354d3b76558bbced9342f94ce297ecfd57683c82710"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_fast_profile.py",
+      "bytes": 7183,
+      "git_blob": "3c1bf4f3938456c79923de51086b439f5896c442",
+      "sha256": "3a51b32c60dba1adc344c13c7dd8e890a0e8b325c9d980a264c31d0666ad8f7c"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_hadamard.py",
+      "bytes": 11832,
+      "git_blob": "6fe8741ee8ec11458cffeee6fa64855f6df61821",
+      "sha256": "e2eeca37741296fc99a53df11d6427b63ea857cedb2639e3111a0994ec013ba9"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_injection.py",
+      "bytes": 9409,
+      "git_blob": "863419050d5576a3dce47eef104aca546c004210",
+      "sha256": "4b1670e1c2097008a3c6e539e7b040a3ac244957100004e44ea2951459844a28"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_measurement.py",
+      "bytes": 12772,
+      "git_blob": "20d2305978ae60d90205377173e84b930b2abba4",
+      "sha256": "f405a03a4f40a4b35f7699476522cf21f3b866d60ec669a0bf162b0fec8a0cea"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_parallel.py",
+      "bytes": 15797,
+      "git_blob": "c8ba55aa4b6b28847b6a17dccb3fa13089931bcd",
+      "sha256": "20fe12c59691b2ee8254785bc102687efc1179fbf736acc3c45f53a5a0a1ab4d"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_parallel_backend.py",
+      "bytes": 23471,
+      "git_blob": "ec701256217db05e764a1f1cce36ebd194adf0bc",
+      "sha256": "91ed7670a2936fb64b37c3bba411dc99b904ab90e93e2b0545981a8d4495be0d"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_parallel_measurement_cnot.py",
+      "bytes": 10142,
+      "git_blob": "fce770bdd18b364ae9745d1919d2f102e15de5a4",
+      "sha256": "d501089ee8e7f073e12420c083fce44a46e6a0af4b6740f779671be5098cde1c"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_pauli.py",
+      "bytes": 8702,
+      "git_blob": "d64e36479c0b6604cbb2dedf07752a1fd265b36a",
+      "sha256": "4b4b309e085859973f4c84d142d747b6a758a292d58176012b105c3cb6c4dd1e"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_phase.py",
+      "bytes": 12154,
+      "git_blob": "ba1e2950cc99dcaa333899cf29d14280266caf83",
+      "sha256": "f483dce93f468a57a2b2264440265c950adefd2858aed3f7114ceba5e7101f2c"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_raw_t_postselection.py",
+      "bytes": 8652,
+      "git_blob": "cf8d88346e1198275b02e36defd96169eb034701",
+      "sha256": "d91d248f2af27bf928478dce06060eeb0bd533e9e843797949b091eab3af2878"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_raw_t_postselection_quantum.py",
+      "bytes": 9751,
+      "git_blob": "b2cf7154171b5c1ceea2a2c19c4a62c04f8bc8da",
+      "sha256": "000e0a4ed09663c0f93d951ca72b0f0fadb801946ba05ab24870153fef943849"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_raw_t_preparation.py",
+      "bytes": 11023,
+      "git_blob": "b01593abfb390e3e8b30e899ea8d369fb147d1d3",
+      "sha256": "3e8d792cf9b7da4cdd72f5a9e474e44cef0784e1f70091b04c460877feb041b3"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_raw_t_world.py",
+      "bytes": 15805,
+      "git_blob": "fd7e54942f5bfd0bdb2f051766e785486a246aff",
+      "sha256": "8795947c17392e3a51bde037710fbc647b5fa293be3753f1603e31b64506e154"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d3/tests/test_transversal.py",
+      "bytes": 11450,
+      "git_blob": "26696b5c166c4fff9a78f867c2cf7fc80df6366b",
+      "sha256": "96faa31515ef43c4fbddbb362ffb6622e78062dc3e11099babcfea081c7fb581"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/README.md",
+      "bytes": 1564,
+      "git_blob": "a248caecdfa6024eeb875d6d9a0ea7a134ba3eeb",
+      "sha256": "19dbdd094cc58ecbcbacd25c23007352cb125cc3d8b2bc39076c74bfece2611d"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/__init__.py",
+      "bytes": 52,
+      "git_blob": "c925564d9a4222ba1fd8ceea854f271b58f1d7c2",
+      "sha256": "083ba6a4588db2ebf5f44c91d95b341bf71d4f1a88f403600ba6c9426f957bc2"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/components/README.md",
+      "bytes": 1583,
+      "git_blob": "c5f6bdeb67ed13ef45ecc6a7209e5e4ed25471ed",
+      "sha256": "0657f685537b169b353fc420cd71f453eed4b682e3d5309f5af14a8439bab758"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/components/initialize_0/README.md",
+      "bytes": 525,
+      "git_blob": "d97f4580a85deb0e0809ece64040755c15397c54",
+      "sha256": "5bdd6ff12d3523a7d6ba1f26041825e70fe0224be654d516edef2ebcb35a1ea5"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/components/initialize_plus/README.md",
+      "bytes": 531,
+      "git_blob": "0a7f3b4e198d007e20a017f653621a10f7c5029f",
+      "sha256": "188d0ea2a9c56b4480122e4e7aa782a278d098f4e6cd89db0aa80e4b48433ccb"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/components/measurement/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/components/raw_t/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/components/se/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/components/trans_cnot/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/configs/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/definition.md",
+      "bytes": 1123,
+      "git_blob": "f16e264c62d628894401d400c07b812435978042",
+      "sha256": "314c2ffd5555443cfe01fe85f8d108aa9c2d0d525a197abebb5c931f75baa8b3"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/entry.py",
+      "bytes": 380,
+      "git_blob": "a30bae20ea688d8ae032213d09066169581e6a59",
+      "sha256": "cf25a373b1fed2f4111a510601fe6838f114716d6ecea6fe22127bed4a81f369"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/layouts/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/protocols/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/codes/rotated_surface_d5/tests/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/logical_compiler/.gitignore",
+      "bytes": 12,
+      "git_blob": "37beecae3371bb0679e5f7b7a23f798a15ea9b9f",
+      "sha256": "defc758c6720f3e63dbe47182a9c485a47eeed2999b3903f8dbfbdca4c906499"
+    },
+    {
+      "path": "modules/logical_compiler/README.md",
+      "bytes": 8236,
+      "git_blob": "ba074c7aa55c63344cebccd96f8520a08021bc24",
+      "sha256": "e67ea729e2a05070f8dfb09b03f6b73b173229854e1bc7ac788f660cde281cd7"
+    },
+    {
+      "path": "modules/logical_compiler/__init__.py",
+      "bytes": 486,
+      "git_blob": "0a358d817131d66ba81694a419f4bb87cdc1b710",
+      "sha256": "ef324627892cbc6d3d62267ade4269244e4752e19bc70023285576a6923160dc"
+    },
+    {
+      "path": "modules/logical_compiler/__main__.py",
+      "bytes": 1923,
+      "git_blob": "8367728a525af1010e4d42b5d7600e043845b857",
+      "sha256": "c36fa41ccf12f814a7de801be2e1f877d28f599fd5e785fcd6c8c68c9256d1c0"
+    },
+    {
+      "path": "modules/logical_compiler/configs/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/logical_compiler/configs/factory_array_reference.json",
+      "bytes": 584,
+      "git_blob": "1a82836868ab74d4997ae5ec4cc9fb7083364ffd",
+      "sha256": "158e8b096623026af8db69a8148c2954ba0371e363ea33ceca2f3ef73944da9c"
+    },
+    {
+      "path": "modules/logical_compiler/configs/factory_parallel_reference.json",
+      "bytes": 284,
+      "git_blob": "03d5b4f083380077fe5f4e3bc6ec14000f40b82e",
+      "sha256": "c864bc31b72f365e4c74fb1ae9f25f2dd0bea752c9f079319dfa3af938514e9b"
+    },
+    {
+      "path": "modules/logical_compiler/docs/architecture.md",
+      "bytes": 5515,
+      "git_blob": "89a25c99612994fe907c02dbdcc155c5512c1d2b",
+      "sha256": "d776b6f1396eab69fc3886940e10b812d0890b78cd7d0362ee6e691510f282f1"
+    },
+    {
+      "path": "modules/logical_compiler/docs/case-driven-compilation.md",
+      "bytes": 20290,
+      "git_blob": "e7050b09d123cde791a16f7e6ee2f6631ccdf4b1",
+      "sha256": "4f4ed1e3aadf4c6a07777ba9bdc2e501280183372ae60510703eadffdcc1cc40"
+    },
+    {
+      "path": "modules/logical_compiler/docs/component-scheduling.md",
+      "bytes": 9059,
+      "git_blob": "3a236215b9d50bfdfd1235f712864e5490d306e2",
+      "sha256": "af74e5f3b9b0de1c78c904a153475f9646ada0b84e68727b5daebd063db62775"
+    },
+    {
+      "path": "modules/logical_compiler/docs/factory-array.md",
+      "bytes": 7777,
+      "git_blob": "b5e37a6f76c5195abb13dd443ab63a1700a7e810",
+      "sha256": "b48c9d26b2e67c0c19e44e3ea0655c9b8812322437783caceacb148cc268a3e7"
+    },
+    {
+      "path": "modules/logical_compiler/docs/factory-pipeline.md",
+      "bytes": 16145,
+      "git_blob": "6a71219e5bb9a7a2e1b37c4749c387b9a52b3045",
+      "sha256": "dd96f4bdddb1b94c77c84d58693e4d2519e5d4291749ef00ad036f7cba0f93ec"
+    },
+    {
+      "path": "modules/logical_compiler/docs/fast-experiments.md",
+      "bytes": 14213,
+      "git_blob": "8d2637af0581d58182bd1fc55ebda4b0265079aa",
+      "sha256": "c12d286aa3bb3a42b6adc461f1e65d1fc720a20cf8c978429de81ae03ccae20e"
+    },
+    {
+      "path": "modules/logical_compiler/docs/qasm-translation.md",
+      "bytes": 7573,
+      "git_blob": "b10cd1291ee65071efce35b7696f5639b7a7d3f1",
+      "sha256": "7db9d3d71349edb8ea650cd5c95a512c5b053095a94b5edb80e38c2aca57eb58"
+    },
+    {
+      "path": "modules/logical_compiler/examples/array_backend.py",
+      "bytes": 11221,
+      "git_blob": "a81e2fa25087228908867a85e5073da94a263a46",
+      "sha256": "04dbcfa051d3628cf13eea6ec52459e93bc7efe91e4700371bb1327b98545676"
+    },
+    {
+      "path": "modules/logical_compiler/examples/array_report.py",
+      "bytes": 25227,
+      "git_blob": "dc28d6ec48e5c1393c41d1296cf7e8b4c95ed3c6",
+      "sha256": "5a5473a021dc85d7522f6a8187a4e9aab939146762ed34acb6e29545127c51cd"
+    },
+    {
+      "path": "modules/logical_compiler/examples/factory_array.py",
+      "bytes": 11581,
+      "git_blob": "413a8a2d1b869d78ad85d93f1fe961712b65c768",
+      "sha256": "37e64f7f2c3df11517ee641f11930f885cd02b1f8deb42de2514866afff8cbb2"
+    },
+    {
+      "path": "modules/logical_compiler/examples/factory_fast.py",
+      "bytes": 18214,
+      "git_blob": "ce961bbc4281cbd5111731cf26d437bad0c56ff5",
+      "sha256": "e62d3a64006bace0991b697f4de735ff1a09d41bdb80eabb3adc0aaf15222dcd"
+    },
+    {
+      "path": "modules/logical_compiler/examples/factory_noise.py",
+      "bytes": 21073,
+      "git_blob": "ccdeb89cb89576e9e1b4a63c068481987d88a5c4",
+      "sha256": "2c48b4ac853a4cab0fa6ad798e3ecf3b1276a2ea4bd9657838da2b12804bc2ca"
+    },
+    {
+      "path": "modules/logical_compiler/examples/factory_parallel.py",
+      "bytes": 9462,
+      "git_blob": "4ab09cdb411a4dc590c75718381a0d450d9d27d6",
+      "sha256": "740b5f546e633f9d5525f0b15261704d1d1ede77ed762cab3c489e08ed2ebe52"
+    },
+    {
+      "path": "modules/logical_compiler/examples/factory_proxy.py",
+      "bytes": 26308,
+      "git_blob": "a82b989bec2331bbef04501e46b0d76c5b9dcdf9",
+      "sha256": "e2340f17d5e9f0b08bb89eb114ce2817cdfe96455387b308f2f1c1b3f7b62584"
+    },
+    {
+      "path": "modules/logical_compiler/examples/factory_to_t.py",
+      "bytes": 18905,
+      "git_blob": "ef8391dc4cc02ab48416eff650e1f8e007d93e43",
+      "sha256": "9d73b89729e7d4b4c57fe10c6bbbba71f42e27d2060ac1abc1e229ca0a84426d"
+    },
+    {
+      "path": "modules/logical_compiler/examples/fast_acceptance.py",
+      "bytes": 13757,
+      "git_blob": "e433e76e86c2959bb8f7ea58586e63950b496831",
+      "sha256": "f2ae82b82f03a5c4816ad14a76ccdfd667656cec680d600eb7811108574276bd"
+    },
+    {
+      "path": "modules/logical_compiler/examples/fast_report.py",
+      "bytes": 13826,
+      "git_blob": "5b370663ab8d8e65b636637b682642981c0aa3c6",
+      "sha256": "a1e8f7b1f51fd4900b09cec6e193ec884a56b3f398378fedd49d0a6309ee5f33"
+    },
+    {
+      "path": "modules/logical_compiler/examples/logical_feedback.qasm3",
+      "bytes": 218,
+      "git_blob": "aff19db0b013de35a256e27c171627c65c2e3b23",
+      "sha256": "298f989666023ec4f81c5a2b2be2346b55e8e186cac7a59f1d63e458de0bc18d"
+    },
+    {
+      "path": "modules/logical_compiler/examples/parallel_report.py",
+      "bytes": 27680,
+      "git_blob": "b3126e4144ce7924b5b6d32b760b451073f9e732",
+      "sha256": "ea52844fa92d4ca91b117ef40ad93fa5841508ddce984fcd0e515bba8eff78aa"
+    },
+    {
+      "path": "modules/logical_compiler/factory.py",
+      "bytes": 440,
+      "git_blob": "9c2abf314b29e9f03df5079b2aaff685f6103b0a",
+      "sha256": "03fe229c4b9f53b889a48b812e5a8096c02d9bd7a4f51a6a1f14634045d7b182"
+    },
+    {
+      "path": "modules/logical_compiler/pytest.ini",
+      "bytes": 60,
+      "git_blob": "8b5e26c61223e670ed9b4617ace82961c5b33319",
+      "sha256": "e83266abe3fb7212a75aa1d3d3ee3aa9c5a07dd0f900a57333b97343cd575aca"
+    },
+    {
+      "path": "modules/logical_compiler/src/README.md",
+      "bytes": 2528,
+      "git_blob": "974f248d5ddbecf2eb8bb4b2e75069f822900f36",
+      "sha256": "148daaa7e2eb09b751cc2abf8cade6f38af8faf2ad58c4705e74ca44eb18c42e"
+    },
+    {
+      "path": "modules/logical_compiler/src/__init__.py",
+      "bytes": 39,
+      "git_blob": "4a81bd0d9eff5a4e530e81143e4ef62583033457",
+      "sha256": "8a2b6990d7be372480cd3d487210dde4a31237cfb8d20a1f8750eff89725abf9"
+    },
+    {
+      "path": "modules/logical_compiler/src/cases/__init__.py",
+      "bytes": 472,
+      "git_blob": "2a709379560801080178fb47b1c5beb434feef74",
+      "sha256": "b41fda9ac7343c315567d477b53e90f435c7a2b6ef5ed07e3b8ae676cd977b97"
+    },
+    {
+      "path": "modules/logical_compiler/src/cases/backend.py",
+      "bytes": 8557,
+      "git_blob": "2f4124b0ef303a8d162244215483835b6ae66212",
+      "sha256": "4434a36f97d32ed255a82663117955cfcaeb736469b934c3bf1ca2245f618fc6"
+    },
+    {
+      "path": "modules/logical_compiler/src/cases/engine.py",
+      "bytes": 16169,
+      "git_blob": "e63be84149d06497071ee0a7dba67246c3d71a3f",
+      "sha256": "9f6b0cfac88dca68d15af343f639817488e21d15a2e9f21720094a6c50179ebc"
+    },
+    {
+      "path": "modules/logical_compiler/src/cases/model.py",
+      "bytes": 5442,
+      "git_blob": "7eea475962730afdaedf2ad8d6d6d7e2ddf848c4",
+      "sha256": "377ce8513415e4fd35b10c1f8f504f5e78e8a672ee048cba029cef50d12dbc6c"
+    },
+    {
+      "path": "modules/logical_compiler/src/compilation.py",
+      "bytes": 4311,
+      "git_blob": "abce7cbe1964e39e7fb25793f13f08347fefc211",
+      "sha256": "4bf086809f9fa0e9fcbfdf2c23e5ca8cb9b0129c1e266578d2595f63b3ef9542"
+    },
+    {
+      "path": "modules/logical_compiler/src/dag/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/logical_compiler/src/dag/__init__.py",
+      "bytes": 1012,
+      "git_blob": "cb8d8c08c9e40d76202ee2664fc79823a3491e5d",
+      "sha256": "766f63cefe717e0f8de659010c23b7fb62f3a4817ac4f232b5d76cfaf59a8751"
+    },
+    {
+      "path": "modules/logical_compiler/src/estimation/__init__.py",
+      "bytes": 80,
+      "git_blob": "b52329832592f93100c7b515b1b74ff8039e4305",
+      "sha256": "498e171e48db3f6a6a16374d92b188a537debccc044c0c311658ff536a3fd5b5"
+    },
+    {
+      "path": "modules/logical_compiler/src/estimation/kernel.py",
+      "bytes": 11396,
+      "git_blob": "e9279c131a85637409076a8d3e645d5c6551a5fe",
+      "sha256": "7f74c9972ea5a7e2855ebddbf83cf7bc1487501016fea62b3a31bf81522767f2"
+    },
+    {
+      "path": "modules/logical_compiler/src/estimation/metrics.py",
+      "bytes": 7094,
+      "git_blob": "1c3cbfd72749ae2074e2798518aff76a3f96b243",
+      "sha256": "4f2d9802c42f584419a5a4be14410ff4caacadadac72bedb99736ef43ccfaef0"
+    },
+    {
+      "path": "modules/logical_compiler/src/expansion/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/logical_compiler/src/frontend/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/logical_compiler/src/frontend/__init__.py",
+      "bytes": 53,
+      "git_blob": "0b85a26d2c0feadfe3656e581d0fac3db599974f",
+      "sha256": "940974c3530577e2380bf4d0662321a35f146246ef2b762a7f3a02a0c2484087"
+    },
+    {
+      "path": "modules/logical_compiler/src/frontend/qasm.py",
+      "bytes": 8806,
+      "git_blob": "da93f2fe1ad6ff7f01f0c650196dc4d48658022b",
+      "sha256": "78bb05869d44e2fe02d4a9fa348b18ec08519ff4d6b1c8db6ef628c50531d223"
+    },
+    {
+      "path": "modules/logical_compiler/src/model.py",
+      "bytes": 4410,
+      "git_blob": "fc033736566c4a98977bf3e385abfc45c0376a27",
+      "sha256": "b6805ad34ff61ff80db0c30d4e098103cc17a0897214c1607896b1c74ca4d84f"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/__init__.py",
+      "bytes": 81,
+      "git_blob": "54227b16fd91129b9bbdf5cf07b23db6213aae4a",
+      "sha256": "f7266d7c330ec5617ab4bf613714f3f58ce9eb4d1d4a7b3663b38c488982739d"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/array_ledger.py",
+      "bytes": 11103,
+      "git_blob": "687880b5eb4d70647f26d77b30678774c1f637cc",
+      "sha256": "c5ab9eaf27f512e2086f0f0d35d530b3dfbbffc08b20ddd291e38bb4c0bb7ead"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/assembly.py",
+      "bytes": 22557,
+      "git_blob": "7a8dc1bbd44fe36a862345d60feb53d4084a813f",
+      "sha256": "5bb745f6f26e543f077842b26c08984492c1f4263ce6f856fad147c86b8a8c4c"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/cooperative.py",
+      "bytes": 29766,
+      "git_blob": "a75835d7a04c2db08caa783b395b6a5024835068",
+      "sha256": "4b75276ab9b8ba5dcac8460dba32d0d957a9b55cbd1cfa7e24209eea3d24c571"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/cost.py",
+      "bytes": 20553,
+      "git_blob": "84f2c4b3af2667f74cbcaf7e87b976269c5701af",
+      "sha256": "5898e967517d5b09c8cd65dacf8077dec90007e4589d6faf5d9406fd8f7b4b4c"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/events.py",
+      "bytes": 12240,
+      "git_blob": "d8f0c7594305685c96a5332e067017e6ff8dcbc4",
+      "sha256": "04253763ad73b4d43749e5e1a2ece5a6b42984da03d0a7b7c92c1bd09ad687da"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/execution_kernel.py",
+      "bytes": 9412,
+      "git_blob": "d13c83a448a5cb421cffa9d95abcd2146d64c3d3",
+      "sha256": "855917a2c20437d342c98f07b379d5041272b612a3fb9d517b84bb606c12c378"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/experiment_ledger.py",
+      "bytes": 12635,
+      "git_blob": "bdd577d7345c1478f643f11106ce59d58bffd57d",
+      "sha256": "6f08472b0235481f0d3a652e2b873032b5de9c5d1ceeace242f5435f3df0373e"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/factory.py",
+      "bytes": 37865,
+      "git_blob": "8b33372fc244688be3dd14e38f5e022f82f5fa4b",
+      "sha256": "7a35cfdf16977bda12ca1991248d5a2c1e57c289417ec4e4aacfd6c69ab91dad"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/factory_process.py",
+      "bytes": 21646,
+      "git_blob": "1fb204d9c95e0e28c8ec3700db2cf86df9e63070",
+      "sha256": "d6fb6deba168eba9b7794355c548a825bb1d13e4badeabcad106d381700e6748"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/initial_supply.py",
+      "bytes": 8878,
+      "git_blob": "fca91f278f282fce43205dbf3e01d594b640171e",
+      "sha256": "7447475400f398cc7c716d11824997045d6eef62c8623f74bd8cc5a68be9aea9"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/local_batch.py",
+      "bytes": 4929,
+      "git_blob": "02b4aa2f3ce2655cf18cec1af85ba9c7b263413d",
+      "sha256": "4d2c714b9ed42c07deafb6507fe22d91e81a529791eda74afaa703e9172dde18"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/parallel_physical.py",
+      "bytes": 27794,
+      "git_blob": "f8b0ad994797b1d35d2e57e7c71c7d89b9856a34",
+      "sha256": "3ce27d20fe6ef211a5a011099d849f4af65dd0c1bccc021e6150f554127e40be"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/participant_cost.py",
+      "bytes": 8799,
+      "git_blob": "f85b248b1551a98de18294ff15ab00afdfef60ce",
+      "sha256": "705007df20d97190fe092903765fcb30b1a6baa807d7cc79409438198cf03e33"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/physical.py",
+      "bytes": 18583,
+      "git_blob": "22ded4f016ae8773d0bf666cb564bdb1f4f3ebfa",
+      "sha256": "a0f88b266f616171063431c210ee479d76bd7bf7b7bafb7ff3a1a718544355df"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/protocol_intents.py",
+      "bytes": 2223,
+      "git_blob": "967f7e3e5921ddbeb275d243f649766266187eb4",
+      "sha256": "091e4c45ae082be9317b4aa9e83d8e8b4c10e656cbdac56227591ee7e8e70b5f"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/receipts.py",
+      "bytes": 4529,
+      "git_blob": "e1443177c3a36655c84f604c1b7f68aa3cfeacb0",
+      "sha256": "1915ba57b6fe2688a356a4f1c05eec7026f9f2f20202222566e385ad94002f11"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/resources.py",
+      "bytes": 23814,
+      "git_blob": "6ef8741908d1672e05dd7693afdc95b629a4036f",
+      "sha256": "1a108248c53dc9c997dff2ee86fbc6a6e96958a4b393ca77ad9561aca486823e"
+    },
+    {
+      "path": "modules/logical_compiler/src/protocols/shared_grid.py",
+      "bytes": 8600,
+      "git_blob": "b4f8bc75ca6863d2e6784320f82450a088b45e70",
+      "sha256": "6445324cae7f8c535bddc1e20992a39f6e6df0f7d5d4e8b920af08d2f8bf7cff"
+    },
+    {
+      "path": "modules/logical_compiler/src/scheduling/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/logical_compiler/src/scheduling/__init__.py",
+      "bytes": 208,
+      "git_blob": "b7908554e77575590ae8ac0d3d75f3025a6619b3",
+      "sha256": "adebe38e7f22fe9d082267db16db9feec31c58743197d4e2c33b32075f3a2493"
+    },
+    {
+      "path": "modules/logical_compiler/src/scheduling/compatibility.py",
+      "bytes": 4127,
+      "git_blob": "a7afd02bedf02b4b46adfccc75b115214d0877d3",
+      "sha256": "8b031805ed6281f4157c448d405e25eb278d9aa434bc3b409095c9555caf9113"
+    },
+    {
+      "path": "modules/logical_compiler/src/scheduling/components.py",
+      "bytes": 16451,
+      "git_blob": "fcfb33346ccb921cb1950e9ac98fc88c82dfc224",
+      "sha256": "5794131451c19fbc7d7c79543938e55cfca08c926a816997b255bce259ead11e"
+    },
+    {
+      "path": "modules/logical_compiler/src/state/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/logical_compiler/src/translation/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/logical_compiler/src/translation/__init__.py",
+      "bytes": 70,
+      "git_blob": "53044676f92f1e6f85c7703afc22c42149572ccf",
+      "sha256": "b0f9bf216a2e2d310a678dacdf8d01bedb86fd02862de6d034cb94105ee7ce55"
+    },
+    {
+      "path": "modules/logical_compiler/src/translation/optimize.py",
+      "bytes": 3741,
+      "git_blob": "1191c8c1d14a53f6c65118e5ee441f899b35c6cc",
+      "sha256": "b288b9df53bc6f1954987608549917eb03cdeeb34001950f892918ab720b5af1"
+    },
+    {
+      "path": "modules/logical_compiler/src/translation/synthesis.py",
+      "bytes": 6390,
+      "git_blob": "0af83ce4f1766ba6bb9db47723d4e40d67810b0f",
+      "sha256": "98df83b8a469b0229976aa1deb114e05cce9f33413a2624f657e504bceb6673f"
+    },
+    {
+      "path": "modules/logical_compiler/tests/.gitkeep",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/logical_compiler/tests/fixtures/event_probability/raw_t_postselection.ideal.json",
+      "bytes": 1601,
+      "git_blob": "3095fd36e26b634de921a0b2934b6c4e9ec16cc6",
+      "sha256": "0720afdb3660b10f70a3b1b26794922d7144af300a478324e51d07bf4a3335d3"
+    },
+    {
+      "path": "modules/logical_compiler/tests/fixtures/event_probability/raw_t_postselection.ideal.provenance.json",
+      "bytes": 822,
+      "git_blob": "5b42fb41f88a6a4fbabd2b3d8f291a29d3115f30",
+      "sha256": "652192fa28f46f78b1778845971f4263103d302acebb5475ffd512981177208d"
+    },
+    {
+      "path": "modules/logical_compiler/tests/fixtures/event_probability/raw_t_postselection.readout_validation.json",
+      "bytes": 7470,
+      "git_blob": "56252c9b82710631367d85e9436f622a0a62273a",
+      "sha256": "3dec40bba0cf0bee38621036ae49bc80ac936abd18c57a959b647402b9ca7b72"
+    },
+    {
+      "path": "modules/logical_compiler/tests/fixtures/event_probability/raw_t_postselection.readout_validation.provenance.json",
+      "bytes": 1079,
+      "git_blob": "89d864f0fb5d4bc908b02dda5818d0187b5b680c",
+      "sha256": "5900ff2749f47b1eaae3cf53d7d505d370c7a51744f62aaa3d113facab432b90"
+    },
+    {
+      "path": "modules/logical_compiler/tests/fixtures/event_probability/t_injection.ideal.json",
+      "bytes": 2397,
+      "git_blob": "96607bb4b3bb67aafaff4a48369622f255ca56d4",
+      "sha256": "01da547be22c63e9587d15b9b2f63c171c97618cd0a0316b3f567c842fe84062"
+    },
+    {
+      "path": "modules/logical_compiler/tests/fixtures/event_probability/t_injection.ideal.provenance.json",
+      "bytes": 714,
+      "git_blob": "71ca6f23b2faca5fdbda46e87328e34ac3e2990b",
+      "sha256": "9f789bb996efdddd5b7ddb3eb009d7d78cca61e821eabb824e9aebd21fbbdfe7"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_array_cost_backend.py",
+      "bytes": 8198,
+      "git_blob": "457b34a5daa4e46badfc90990ae4e580b9d31538",
+      "sha256": "6ab464f94544d1800c1b340c2cf31287d1d3c167ed33169299cc5e3d54c00dba"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_array_ledger.py",
+      "bytes": 4271,
+      "git_blob": "7807320101712f26e0396a1aef510033f24bd6cf",
+      "sha256": "4919e1b90c01c0d249655e0dba389fac5a01a5f1e7705086c7a6765847bea517"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_array_report.py",
+      "bytes": 7835,
+      "git_blob": "caa935b0ad36d4f45a6b977dd30e0b8083538c97",
+      "sha256": "542a2ed2ba2240c1192258eb718920f9b2dbf21a8672bea70e93fef73e1b0252"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_cases.py",
+      "bytes": 15047,
+      "git_blob": "185c0dce631e7fd76c7725771daddb4802580e69",
+      "sha256": "ae7ecb7024b33cabbfafde2247b0b224af4f056bb9ad653bad0cd065ce292500"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_component_scheduling.py",
+      "bytes": 12435,
+      "git_blob": "93b6c395486a68ea9673df176fabd1dda9f11f0e",
+      "sha256": "072ca7a74004c60d46e44536a0d1f80385566c577885cee8fa9ed5549b1a150b"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_event_backend.py",
+      "bytes": 11371,
+      "git_blob": "f60bc313e7fdb56cb76664c84632fe217f53a0f1",
+      "sha256": "3a628e3df9b2283e38deb33af3ec2810f5411286e69d0904a5fd1e2fff7a40d7"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_execution_kernel.py",
+      "bytes": 3935,
+      "git_blob": "f0ac18bf66759786c6aedf1bacd439fb9ef1135d",
+      "sha256": "df4bfecf078c499629991186a63c9c55df6a95b2f44f467e9d7b7f6a4b8f8013"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_execution_receipts.py",
+      "bytes": 3096,
+      "git_blob": "1c0efdb6d6263e8b3348a9ad1b34ec1c3f76c345",
+      "sha256": "346b83bd33150633e064d791a0b1eda9a5eae0a552f3eca629f0d4f3c6237938"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_experiment_ledger.py",
+      "bytes": 12689,
+      "git_blob": "af5905b0e8107f03dca83ae3a4a400931b7dc2a8",
+      "sha256": "69610dcd6c663f456298630667db0f3b0032cfa94caa564f15cbe0f718e74ceb"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_factory_array_entry.py",
+      "bytes": 3005,
+      "git_blob": "f04dc5d21591461044cda788079f0bbdb85d3e81",
+      "sha256": "84c2d87984b46e8d311695d7cb1fc3358c178e5c3246dcba0366a2e2e7fc723d"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_factory_execution.py",
+      "bytes": 27404,
+      "git_blob": "a303aaede98bbe46b0660c943ef836f8d26354ee",
+      "sha256": "dceee437bd8bddd27c3b67173f94331e5bf372be21eb4d5dea8f0baecdd2f5a8"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_factory_export_ledger.py",
+      "bytes": 3434,
+      "git_blob": "4242165901b40b20cbb6ff33232693a6a681c935",
+      "sha256": "9048340b78effb0ab8fd8ea8420ce2ba34d136a523cd11e1171607dcf3d620a6"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_factory_integration.py",
+      "bytes": 15339,
+      "git_blob": "c60606b227c32f06ea4227bba935c2ac8154b2b4",
+      "sha256": "1f716f5585ffccaa9f09bcc629c377c7ca6d78f44285db1b7603d4611325c328"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_factory_noise.py",
+      "bytes": 10506,
+      "git_blob": "732a1230c3c26549a919605bc40781f2acb0a4dc",
+      "sha256": "f7e827fb94921a38fd84d30710949f5e66677cd68209a7152abb36d5145e70f9"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_factory_parallel_entry.py",
+      "bytes": 4155,
+      "git_blob": "f91516c1af624a884376556368f81fe5b5d6d85c",
+      "sha256": "b2c7f89b341ab5e068213196ad2aac327f319966fec8f9cfad72576c676bb6b9"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_factory_process.py",
+      "bytes": 12163,
+      "git_blob": "20b2fd34e84222c18694ec86ee94f9c7eb21de20",
+      "sha256": "91cb1e296e005a2cdf59282a80bac29016adeee968fd48a45e73a1e22ec1ce74"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_factory_proxy.py",
+      "bytes": 17572,
+      "git_blob": "1c03920413cc57b3f39c23221b426c5d454148c9",
+      "sha256": "a17bd0452feaaf2b2a6f493a7d8d99072100bc62b91f08c4d22c9fa81811163a"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_fast_acceptance.py",
+      "bytes": 8840,
+      "git_blob": "f2de661d715f35ed3bed31da3a02880f275ee816",
+      "sha256": "4d361870118703ce5724640d36a6a4853128f37aac10ea1e4f8af2e8f65411dd"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_fast_entry.py",
+      "bytes": 3782,
+      "git_blob": "8d911b25d70e933927950f05971d90b73c9d99d3",
+      "sha256": "ca84693bde923157c9f6f7ab9a66b1807323ccd721b2042494eb9f3c2561678e"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_fast_experiment_review.py",
+      "bytes": 22924,
+      "git_blob": "602694024ca718d4c05eed049d98e609b5b2a2ad",
+      "sha256": "b9b05e615d717312ed564cd2ced1aa31cd74d6098af4f96522c2bf1a199df57f"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_fast_kernel.py",
+      "bytes": 3531,
+      "git_blob": "10085debe3fe1a1f7c05589257de127dfb11a179",
+      "sha256": "0156d49ebae403a145faf6c9706821d7d5aba93c766e9964fb61cdfce951f8c6"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_fast_metrics.py",
+      "bytes": 3645,
+      "git_blob": "d3e91dfdd76d542186912cbaf0504d9335a2dc79",
+      "sha256": "00036d3acee0b41f5886c412cde55198fd3a70ec4755e8c819019e2b3847ee91"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_general_component_admission.py",
+      "bytes": 4875,
+      "git_blob": "a66d4222e1c237b5bf3cd49fcb01aaa295de592a",
+      "sha256": "240b1bd3090f4fae4a5671b157f874c39f383a9c9f7b50c0f9ce3d58ad8d8fbe"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_joint_component_batch_review.py",
+      "bytes": 9915,
+      "git_blob": "98dda6ba0be2894efadc01b4253374c4009def14",
+      "sha256": "580eb3635a61d3291b67986f65dad57ba10f7042d5e2458a2153c1542a3f5d75"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_local_batch.py",
+      "bytes": 3270,
+      "git_blob": "64ba494b456cd6ce2ba1eccddb971f441bc30552",
+      "sha256": "300bbb7dc6a84dbb2f0d54fce76110c0aab5161ab6466735225320734c264434"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_local_physical.py",
+      "bytes": 8724,
+      "git_blob": "a55548fa71f691a46901197b6cdff61ec8db83f5",
+      "sha256": "343a9736d290eba878c60b372012cebfd267947c39fecee65489ccf07138a49d"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_logical_execution_kernel.py",
+      "bytes": 7970,
+      "git_blob": "8d31214d344dc6ffd51f2f229e856957d91a1b65",
+      "sha256": "73361c9ffb0329e90837e5166ecc0a668628576ba59d3941000df44ea496e267"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_multifactory_review.py",
+      "bytes": 11043,
+      "git_blob": "69324eb5b0af916a006f8ac96ecf0011cb356a6b",
+      "sha256": "c08ccb473314863e766ffd7e545ae86e2fab6b4b927a2e875dee29ac61906293"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_nested_cases.py",
+      "bytes": 5254,
+      "git_blob": "50bd40f984804b91ad0ae19b579ce7076e2dade1",
+      "sha256": "a9b3846da250d47cce2220e111b04a0804a750f2c8e82853686d04407d152612"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_parallel_report.py",
+      "bytes": 10373,
+      "git_blob": "f73855287a6aaaf425d1ff95f13bada6e1dc386c",
+      "sha256": "efb02fa75d47a56caef2e2951696deec776305644881aa05f031b1c5489d67a9"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_participant_cost.py",
+      "bytes": 10359,
+      "git_blob": "9aeb7bb6e70e785da0153d0fda218849f4771c1c",
+      "sha256": "14184132e86eb2ab1b47b238030fa008a80fc821f246175d8305f048cd2e7bd0"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_physical_parallel.py",
+      "bytes": 16566,
+      "git_blob": "2d5fe28e413b1e5811facd494fa3480401450eaf",
+      "sha256": "fb10d3b71acdaef6a054adc0a4af0c0d19ebf2b55eade2f0dbfb50058125d11b"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_producer_cases.py",
+      "bytes": 12760,
+      "git_blob": "bf313b3740191746f3fb570fe52feaba64151c07",
+      "sha256": "b2b79fe0d3fb1735f9cbc333011dff2ab273d9be526afde32362470a86750163"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_protocol_cost.py",
+      "bytes": 21484,
+      "git_blob": "78b92bc46a43bcef252151a781e167a4019c5b6e",
+      "sha256": "4b853bd5ab3592de8f4b36b701ae71c015ab805593f1897aa373351c662f1723"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_protocol_events.py",
+      "bytes": 10687,
+      "git_blob": "30789db3d41ff7fa7d5481ac06f619e7594f2142",
+      "sha256": "9ba6262fb3de7ab988caf4c2c075c77bf5c55aa95754c3fbdbc052b90368c2aa"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_protocol_physical.py",
+      "bytes": 19928,
+      "git_blob": "53040ccdfd04d80f3243fce44ec927a0eb953328",
+      "sha256": "1ec5eabc1d2ea5d0dc00188d2ae9cf6b1536d69a1b46b112705c8f361b571e8b"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_resources.py",
+      "bytes": 13612,
+      "git_blob": "afb430c3674895d05cecb30bbb1ed19f94421742",
+      "sha256": "6e073490f64189d28a564a64096ae13992f2a09566c76113a45c943090a0e765"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_scheduled_factory.py",
+      "bytes": 5758,
+      "git_blob": "b54de0ec2f13ec803459d6667e62bdd8891be3a1",
+      "sha256": "a2c2006a73d05a7c2d593681b573d0b12f38453103e8d61e81ddc7ab9eb270f3"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_scheduler_cancellation.py",
+      "bytes": 2190,
+      "git_blob": "c1fff2739533a3fdd71d1107171b2810e46bdabc",
+      "sha256": "f08996f3997734788f081867799a2eac1911da16c25ea1f8c4d7976670099bcb"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_shared_aod_admission_review.py",
+      "bytes": 4303,
+      "git_blob": "30a6d74731f085ae8ef232ddeee0784f506ff962",
+      "sha256": "c73ab648fe9de70fb7ed84123d91f2899350e9a7bef0a30a302c58eaef8666be"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_shared_aod_scheduler.py",
+      "bytes": 4363,
+      "git_blob": "79ece15101181ed3ae399b8b3e946289a1f5a4e1",
+      "sha256": "ec28e74c8881461fd9e83f4e7a3a9c06de5224dc6cf4af2a1139eb795632bf56"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_shared_grid.py",
+      "bytes": 9774,
+      "git_blob": "230fa6a8c0b506f2e1160a9c7bf8b63caf8ad8b3",
+      "sha256": "ed124e8c6349ce385fa0b1445e38e23dadd6fb0fbebe2e76bf262c0cf5ffb91e"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_shared_grid_review.py",
+      "bytes": 5749,
+      "git_blob": "ac493f35ccfc8c2b8302585fbc454d9e3f5e20cf",
+      "sha256": "90ad7d3a28b666b11ad3e7b3cceb5ab2b7501568a7fbed02bc7d3c2238c561da"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_theoretical_fast_factory.py",
+      "bytes": 4077,
+      "git_blob": "9ab85750e8d2645bed3cca9323a2b424faf24551",
+      "sha256": "38b62a737d854a820768e0a85b77ebb8ef79a156e4c78b6bd1bedf5865860dc7"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_theory_model_review.py",
+      "bytes": 7060,
+      "git_blob": "bc97c6418cb27fbdffa86c8bb3208ff99308a01c",
+      "sha256": "0de501ef8af07928b295f232b5002282b70856fcf8ca12a27966f232a600ba79"
+    },
+    {
+      "path": "modules/logical_compiler/tests/test_translation.py",
+      "bytes": 15901,
+      "git_blob": "34f5cb204d9ea0e23c00d1aa5a6b3280f8cf5168",
+      "sha256": "1c7d61ba3fa5bf8dc99165dbafd704dd5e92d09a05eb17a24c584724e444f5c0"
+    },
+    {
+      "path": "modules/physical_compiler/.gitattributes",
+      "bytes": 36,
+      "git_blob": "1bb2ea65df1c4ca8558b0c5181d27d0aa7dc003b",
+      "sha256": "4d465a333e07947b263e4533287bb291ce83db39e52ec96e38a5428572a5d759"
+    },
+    {
+      "path": "modules/physical_compiler/README.md",
+      "bytes": 80590,
+      "git_blob": "eca462b2045696f9172e0a690103f3ac4b130e7c",
+      "sha256": "9c1417b8dc0bb3f19a30dc49eb352b6f12cf3e9aa4aa0cb4d0d03967de5ebc19"
+    },
+    {
+      "path": "modules/physical_compiler/configs/.gitkeep",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "modules/physical_compiler/configs/multipair_flexible.json",
+      "bytes": 2068,
+      "git_blob": "1c06b32ba0a91e20c29eed80aca7125954e73417",
+      "sha256": "98d788be386a705feedb277305a7e743d0c06c9d5bfe58d0b6e96c3447c50035"
+    },
+    {
+      "path": "modules/physical_compiler/configs/one_pair_flexible.json",
+      "bytes": 2067,
+      "git_blob": "4a106cbbd81074a579a43d01ec8b5225bb5bacd2",
+      "sha256": "2025e09e39d8b063070d5743e5788d6c445a54e7d5d5b2ef84c875dc6309e9ad"
+    },
+    {
+      "path": "modules/physical_compiler/configs/zoned_flexible.json",
+      "bytes": 3906,
+      "git_blob": "05b4d55582953057bbf33f4bb22cef4e264ad226",
+      "sha256": "48e2b08591b6b2e571f1a085aa7e99e9c0920f93edc5a5684812b8f71b5b39ec"
+    },
+    {
+      "path": "modules/physical_compiler/configs/zoned_flexible_16.json",
+      "bytes": 3905,
+      "git_blob": "572ad8037b48c44581ec3672efa37071d08722a0",
+      "sha256": "96574b1066f77d847657f95216f6232fbbc5b18a763e983aaafc431b16d7ca0d"
+    },
+    {
+      "path": "modules/physical_compiler/configs/zoned_rigid_16.json",
+      "bytes": 3899,
+      "git_blob": "b263df11d95241e2cef66cbda28c326436137d55",
+      "sha256": "1d77312e7d6b6a771f3a12665bc4d7e46a04f6e67b81ea26b9a4024ebed6179b"
+    },
+    {
+      "path": "modules/physical_compiler/cost_params/baseline.json",
+      "bytes": 258,
+      "git_blob": "56ffca5ca630075af04f001cec310d1383bcf662",
+      "sha256": "4c6991327a87e0f8ed4499e41e4692f0cbc4ad2dbae99f801e0584c11fca69d5"
+    },
+    {
+      "path": "modules/physical_compiler/cost_params/hsim_ideal.json",
+      "bytes": 112,
+      "git_blob": "531fbedf831b33857c3abd268b011dc6496533c4",
+      "sha256": "372369e88c4f3837d66dc17d8157f26b1952f56b17e8fb3e2e11543398eeba94"
+    },
+    {
+      "path": "modules/physical_compiler/cost_params/hsim_overrotation.json",
+      "bytes": 281,
+      "git_blob": "a15e15adc031c21548a591f4169a443c4d009bb4",
+      "sha256": "8a2ac85d60defad69137d4cdc05be26696149d4589c63658b5a230a60c618c06"
+    },
+    {
+      "path": "modules/physical_compiler/cost_params/ideal.json",
+      "bytes": 4,
+      "git_blob": "69a88e3b65423624fe7ea8b0f8beefcc62cc3d5f",
+      "sha256": "e3566b3a06430868d71e9287dfd6c6c520a3da027aabea01951d407ee131dc2f"
+    },
+    {
+      "path": "modules/physical_compiler/cost_params/noise_hsim_overrotation.json",
+      "bytes": 294,
+      "git_blob": "55919901d335e43a42eec84b230261f8d4b2b77a",
+      "sha256": "28eba188716b860b9cfb1e641e92f2bbd4298e04c0b9de9d29572563ace0f58f"
+    },
+    {
+      "path": "modules/physical_compiler/cost_params/noise_illustrative.json",
+      "bytes": 821,
+      "git_blob": "bdbbcdfe7878ecab96bf4f5f38f2cdac8dae82ad",
+      "sha256": "58094b9b6e317ccf9973e7dbd940c90f13cb593e1b465c752b2a757a7257869c"
+    },
+    {
+      "path": "modules/physical_compiler/docs/.gitkeep",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "modules/physical_compiler/docs/atom-ir-and-components.md",
+      "bytes": 6208,
+      "git_blob": "d55c1b622cb1b3a559096ec186250ed26eec0cc5",
+      "sha256": "412bc78739c3234c08c47ff68664515ac253cce23a3fcb2bff07e30ecbb990b2"
+    },
+    {
+      "path": "modules/physical_compiler/docs/atom-replay-viewer.md",
+      "bytes": 14909,
+      "git_blob": "7eb4b325191aeac721b7dbf08a36f5439805eafe",
+      "sha256": "c8139318d56af962c506075aa0a20dbc6dccf6267e1473d6db4103c681a3bb47"
+    },
+    {
+      "path": "modules/physical_compiler/docs/configuration-reference.md",
+      "bytes": 40913,
+      "git_blob": "249ac5228b7ac808f8ebf1c7fc97e75122fd144b",
+      "sha256": "24d07f0fab73f7fdbe7e44b0e5f4cf3a27d62edd1c75d3cf8b8d5e8ccb1f40fc"
+    },
+    {
+      "path": "modules/physical_compiler/docs/device-and-zones.md",
+      "bytes": 10814,
+      "git_blob": "132f2ad95919f6479b52062338a42e427b78e58d",
+      "sha256": "3c5e53c60d1b9f72a2d0773303521d762bbede1770acfdb4547cc04b2c4a0ef6"
+    },
+    {
+      "path": "modules/physical_compiler/docs/experiments/2026-10-22-surface-code-symmetry.md",
+      "bytes": 6004,
+      "git_blob": "c7c6199cfd0eec4f96d3720a7ff4d5cfdeca638c",
+      "sha256": "f39d2ef5b49f21849ee5786953048b9b1d22f75145d22a9571308f7140d6ae7a"
+    },
+    {
+      "path": "modules/physical_compiler/docs/feedback-validation.md",
+      "bytes": 3066,
+      "git_blob": "abef8260c130b5d6baf9501da2ff258f8fbdb09b",
+      "sha256": "93004d7f6bac352a6fcc70e8cdadb45662851ecaeadeef546968038cfac74875"
+    },
+    {
+      "path": "modules/physical_compiler/docs/implementation-plan.md",
+      "bytes": 17613,
+      "git_blob": "d5c52ad3349fd30df335b93bfb9c20c91f670cb9",
+      "sha256": "7fbdd09dbe64e74ef72b3e698853bc9719aac023d2f3728c70bafabe2df39da3"
+    },
+    {
+      "path": "modules/physical_compiler/docs/jobs-and-results.md",
+      "bytes": 10540,
+      "git_blob": "9276c4b528a8976ebd1554a79fd336ce3746c095",
+      "sha256": "981cfecdf5b4981d65be75c3342e0bc7c50dcf56b36c1a1d64255dfe383c9dc3"
+    },
+    {
+      "path": "modules/physical_compiler/examples/__init__.py",
+      "bytes": 74,
+      "git_blob": "1c5ab8cfef6436c88aa0fe2e7b7a67c57e558f6b",
+      "sha256": "c8becedaddf6123324eaf42e4e90f1694abe4c9dd038f3974c888d63f2efe865"
+    },
+    {
+      "path": "modules/physical_compiler/examples/architectures/multipair_flexible.json",
+      "bytes": 2833,
+      "git_blob": "b38ca879bb896bca7d57505ba64ef02087e45994",
+      "sha256": "132e61d4c43c195e3b850ffddabd51586ed91359ad86fdb360c5c3a118ce4be9"
+    },
+    {
+      "path": "modules/physical_compiler/examples/architectures/nonzoned.json",
+      "bytes": 1796,
+      "git_blob": "fb8416ac29fdc3e5bd6dcdaccd1ff9f9705e8433",
+      "sha256": "74ba9a090104771188d4cae3a4a1934d047908fcfafc1b793d5683e12336feaa"
+    },
+    {
+      "path": "modules/physical_compiler/examples/architectures/one_pair_flexible.json",
+      "bytes": 2688,
+      "git_blob": "d0c319ed74d7001f9b36542b0e805783e39e9399",
+      "sha256": "d60037d44ed50835a72e46d164f34b0e8ac5498d238d62c3685a4a5ec165d2f9"
+    },
+    {
+      "path": "modules/physical_compiler/examples/architectures/zoned_flexible.json",
+      "bytes": 2223,
+      "git_blob": "030274cb2264d8d550a7ea070492246354417d00",
+      "sha256": "f3cd198d6640e66e882179ccfa0319d1a6d1c91e56a886ced27b32634366a950"
+    },
+    {
+      "path": "modules/physical_compiler/examples/architectures/zoned_flexible_16.json",
+      "bytes": 2222,
+      "git_blob": "5d5d62771157e542cea4f0acc6e47c561fff439c",
+      "sha256": "1d89d7a76e58ee189c147af50cb62189d8a7b15f0c0687f57e242ae38f980950"
+    },
+    {
+      "path": "modules/physical_compiler/examples/architectures/zoned_rigid_16.json",
+      "bytes": 2216,
+      "git_blob": "b6754e28dcc6c493fc62990823b0c7118a7dc16e",
+      "sha256": "b7b5ba347a952ddf64c23f9023bfbd786ff4476061a06daea6d850e57088a310"
+    },
+    {
+      "path": "modules/physical_compiler/examples/atom_ir_example.py",
+      "bytes": 2913,
+      "git_blob": "a00c22a073208651d71974336de77ff33f701882",
+      "sha256": "c40457038468aadfddedad6c987a9d59584695a556eb324a1f81a2da53c7e2e9"
+    },
+    {
+      "path": "modules/physical_compiler/examples/circuits/nonzoned.qasm3",
+      "bytes": 362,
+      "git_blob": "fd09c68c433e6efa7ff7ae27a3e2201727a3b451",
+      "sha256": "1ba64493e6939582b17ad33855bbc94d9f7183bf4cc100fc229220893f99bd9d"
+    },
+    {
+      "path": "modules/physical_compiler/examples/compare_motion.py",
+      "bytes": 7368,
+      "git_blob": "650d64f002dc7a4419b61a4e23cc90eadb1e99ef",
+      "sha256": "3f54e6867550c7376bdab1607b0436a292678956b3a895ff31690a8217fab5ef"
+    },
+    {
+      "path": "modules/physical_compiler/examples/compile_multipair.py",
+      "bytes": 6180,
+      "git_blob": "2d1a51941d4bc25aefc08b4e7fa61da8090ce0af",
+      "sha256": "4d2dc36c05aa160bb93b8080822b7d44cb59dbe4979fde07e7249cfbc98c1006"
+    },
+    {
+      "path": "modules/physical_compiler/examples/compile_pair.py",
+      "bytes": 2563,
+      "git_blob": "737ece830af7510779c2618a7f306a2e86abd0bd",
+      "sha256": "ab8287a53c71caebf40eb85e143a88404b86134e20cd8eab872ad6d32290d8c0"
+    },
+    {
+      "path": "modules/physical_compiler/examples/devices/nonzoned.json",
+      "bytes": 1192,
+      "git_blob": "a02deed6f4f201a241e46eefada5a56a3e43399f",
+      "sha256": "25af6fbcf77a95253beb88203b2e2baf745d06c903e250b520342e0f205998c6"
+    },
+    {
+      "path": "modules/physical_compiler/examples/experiments/compiler-comparison.json",
+      "bytes": 1378,
+      "git_blob": "3e33a2007161dc653b0271a7377df533bdc054cb",
+      "sha256": "00c835e029bc78137585d4d493eba365b0fdcb24da997e0e67bee2de3b4071d6"
+    },
+    {
+      "path": "modules/physical_compiler/examples/experiments/feedback.json",
+      "bytes": 1271,
+      "git_blob": "29a37d2acbdfab1fe30ec1e8a7c88dd88a18def8",
+      "sha256": "99f00488a0c794f500bb4ae6623066389b898534c2ed3d12881534a2a623ef5b"
+    },
+    {
+      "path": "modules/physical_compiler/examples/experiments/ids_strict.json",
+      "bytes": 264,
+      "git_blob": "318dc8c20929c8ca30e523f53b2c016a25d05762",
+      "sha256": "0019dde87c2f5faa4fbde4c0fabd2fa4e1541fad328afb33b83edbf1ae12fbcb"
+    },
+    {
+      "path": "modules/physical_compiler/examples/experiments/paper26-bounded.json",
+      "bytes": 1157,
+      "git_blob": "1530b648903857b1636295596c7b702b00d70ad9",
+      "sha256": "3a988f05157b32b18ef2e24295d6ef16a76941941fe19805f93d9de1779ad217"
+    },
+    {
+      "path": "modules/physical_compiler/examples/experiments/paper_zoned.json",
+      "bytes": 1817,
+      "git_blob": "d6df87a0b35066b00a7f9bc809448794de86d8f6",
+      "sha256": "2567537675874f59f00229fb382dd71f38cbb48e626d064a2f13a5439097f44e"
+    },
+    {
+      "path": "modules/physical_compiler/examples/feedback_study.py",
+      "bytes": 4908,
+      "git_blob": "44650fc45f4e35aeb3f52972e232b5f31261098c",
+      "sha256": "b7c0854af01c083debc9c9623f428c089231840e439ae41876b176f1598091a0"
+    },
+    {
+      "path": "modules/physical_compiler/examples/jobs/generated_zoned.json",
+      "bytes": 4160,
+      "git_blob": "9954fcb6ced498a328842653c40e5e464fc5462a",
+      "sha256": "60d865bcd5a14a7b7f108bba587b0144b9493755d315abe563baa5a7329befe7"
+    },
+    {
+      "path": "modules/physical_compiler/examples/jobs/multipair.json",
+      "bytes": 725,
+      "git_blob": "dffd176d530115115f24f9287628e7254864f072",
+      "sha256": "6bee38c329707fec5592cf13347170a2c61dd183be9ffc88ef856c74935ce8e2"
+    },
+    {
+      "path": "modules/physical_compiler/examples/jobs/nonzoned-enola-initial.json",
+      "bytes": 358,
+      "git_blob": "20d7db91b415f98c871c1bfc9da8dda99ef6323e",
+      "sha256": "82b6694ba551195cf763ca6bbad608c7354c2da3dcd4d71c15d3cf6c633795f0"
+    },
+    {
+      "path": "modules/physical_compiler/examples/jobs/nonzoned.json",
+      "bytes": 459,
+      "git_blob": "45fb24638ed47e02003a07edd722faa4344ddb60",
+      "sha256": "26c8ded321ae5c030f86817a3ea58a3232e049c2d4b9896e231b6f5b85a29cfc"
+    },
+    {
+      "path": "modules/physical_compiler/examples/jobs/pair.json",
+      "bytes": 716,
+      "git_blob": "01e9c055d5f4bdc73435a17c90dfbe0898d35170",
+      "sha256": "42cb7423a138b01b60c3c31fb6d1dbebfae1c4ee7338a8371e4442d60041108b"
+    },
+    {
+      "path": "modules/physical_compiler/examples/jobs/search-smarter-qec-reuse.json",
+      "bytes": 1216,
+      "git_blob": "c5301eb0a3eaf60d7bef5a37e6fd5f76b3a609ed",
+      "sha256": "3a81232fd8cc62c973ee42d227adbcb26e15c552ca04d89d660ea7f9d34a2b2f"
+    },
+    {
+      "path": "modules/physical_compiler/examples/jobs/search-smarter-qec.json",
+      "bytes": 841,
+      "git_blob": "e8d0392b28c7ecc75f95318497e2848bfa09a7e3",
+      "sha256": "718a20c1e9ed256890b44b3ea962e5732c6106451150b4924d8b850d3f1e4506"
+    },
+    {
+      "path": "modules/physical_compiler/examples/materialize_paper_suite.py",
+      "bytes": 2028,
+      "git_blob": "50f59d0077aaf2515c9c65656a9a9df8af963d71",
+      "sha256": "636417e1c7e14e6d0736c01c7fe00e2e86c1cfb8e8cdaa944f3c704bd46c3972"
+    },
+    {
+      "path": "modules/physical_compiler/examples/motion_capacity.qasm3",
+      "bytes": 404,
+      "git_blob": "37931db3a0d4aa11aedd39d665d0c871102f6e07",
+      "sha256": "b63f9f4d5ab6125284a60ac41d3f337b28c8cfc0c3772666111cd4d870b56b44"
+    },
+    {
+      "path": "modules/physical_compiler/examples/multipair_feedback.qasm3",
+      "bytes": 296,
+      "git_blob": "362c05b6ba0487978df30ed1bfc268525845fd94",
+      "sha256": "1436f0bf280e376e4b2334ec2888caaa08ba5ccd80f81f623350dcd3dbe0f9a4"
+    },
+    {
+      "path": "modules/physical_compiler/examples/pair_feedback.qasm3",
+      "bytes": 182,
+      "git_blob": "7d4b8409e8059f59cc4b2f109dfbe25044cbb294",
+      "sha256": "93ec225d729d72e0938378e02e7af43e93a710635058847e12ce01717ad47dd2"
+    },
+    {
+      "path": "modules/physical_compiler/examples/source_benchmark.py",
+      "bytes": 9096,
+      "git_blob": "3a22d926f9cd5756c5256408e0113e09c832ac3c",
+      "sha256": "f239b4ea149399f98fbd446b79362e45eba5c432c437dc8c5bea10a1868d39f7"
+    },
+    {
+      "path": "modules/physical_compiler/examples/viewer_cases.py",
+      "bytes": 7188,
+      "git_blob": "f78b9d85ab465a78dbeaf446856a3ccfeda129bb",
+      "sha256": "abae046fe1e30ef8d75f7cbb913cf7fc89906238e939d3075062a5cce4694cf7"
+    },
+    {
+      "path": "modules/physical_compiler/examples/visualize_compilation.py",
+      "bytes": 1951,
+      "git_blob": "f8020eab727d07701742535ddf4af6240eaaea7b",
+      "sha256": "2b517cca973fbf53e8befd9d5ebb22370545960a9f6df11bfe48157ee8f13e7c"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/README.md",
+      "bytes": 5944,
+      "git_blob": "c8ff52ad7f739ad10dd0aa1ca48da9c1ed04d764",
+      "sha256": "9162786fa42c8376fc9862bf0b194ed73a9747ea07a76ab0f5e838ecc2013d97"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/atom-replay-redesign.html",
+      "bytes": 839883,
+      "git_blob": "a41616e2fb079171698b7cde9e8cfa97070de3fa",
+      "sha256": "330eb10254d31702dbaf27aae642b83203c743376dac95ba7789d7ce8d3b7591"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/build_example.py",
+      "bytes": 2211,
+      "git_blob": "236097bb92ee09e025bbc435702d58405a62a3cb",
+      "sha256": "b0289b6bd2a254daf5abeb41ce661f44f77a99c7fe270630a473fe9f70c7fb02"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/inputs/_cap_zoned_flexible.result.json",
+      "bytes": 250778,
+      "git_blob": "5b16e28feeda4c00cdc5f9c9e752d78794e30467",
+      "sha256": "7abd8e3f730cf8d50531a84e3d4478c52d7023018a30fd36abaf711dda621a97"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/inputs/_cap_zoned_rigid_16.result.json",
+      "bytes": 284057,
+      "git_blob": "a891dd81971ae8863adc82251e2d8fdf66eaa80a",
+      "sha256": "bc12ff60e1f0ced8574916e8a30070a9f2ba8fe3d2e7b04828df90f32a005542"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/inputs/multipair.result.json",
+      "bytes": 72255,
+      "git_blob": "b4327d58c5e641364f5b1f76451a84b47f0883f0",
+      "sha256": "9bff1767709c3eacaa798ab9697e67da62f1f072542250550f85fce01abdbea5"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/inputs/nonzoned.result.json",
+      "bytes": 65648,
+      "git_blob": "007481baefb2669034cfb27389f28f3a0e5b57d1",
+      "sha256": "0ad92507d7c61a6a2a3c2b9aabca4af09d3b632f8a29c7695cf5a3543b95e70f"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/preview-normal.png",
+      "bytes": 267240,
+      "git_blob": "2fc6d2414e6074526a092f3a96f33fd18d9198ac",
+      "sha256": "9b8f27d2e02a6c562065091f433596602857de0a8241cfb527a414e78b9358d0"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/preview-present.png",
+      "bytes": 115129,
+      "git_blob": "09f07572f5e2a9787db977ab48d7632f9348285f",
+      "sha256": "307eb74ea83c61d22625c972aef03ba7199071148a8a21090f9e26b1def4087a"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/web/analysis.js",
+      "bytes": 1755,
+      "git_blob": "4d5da160bcfa4133ab261af3c01c530330c453d2",
+      "sha256": "a0e3b171bee2b037ec6b8bb999b219339ee91180e8590ec807488293106b6462"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/web/dashboard.js",
+      "bytes": 7747,
+      "git_blob": "9970eb8ef90a23a4fd2cee40cb48291ea6e2fbee",
+      "sha256": "b0a251d93c49edbfab93915bf155ba0e55810f33de2d78b3ad1e86ec57587622"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/web/loss-panel.js",
+      "bytes": 2310,
+      "git_blob": "e9b18c60e5d589320d38daac2039008cd2bc33b8",
+      "sha256": "01d8ec2f147c65c8a02197d8c80e8ba85a91d22b90bc34179a9d525e55856b21"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/web/loss.js",
+      "bytes": 3443,
+      "git_blob": "e355b6d91e7ce516daebef3555f37a882818d109",
+      "sha256": "70f69b20ac3a75a8d037f6de6f7336aed47ac870b71a22490eb9b26401f5ffe9"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/web/model.js",
+      "bytes": 6722,
+      "git_blob": "51109298e62247206040206fc8a31e8a4c2ec66e",
+      "sha256": "eb5eff2d47afe89632f14280b23dd14f6061102db9037c504b6d1d7e2373fe56"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/web/paths.js",
+      "bytes": 6515,
+      "git_blob": "9ac76ac28565976b48b7029edf8f3b291907a33e",
+      "sha256": "38fe95a4b2030fd364638baa442ff4aaf709d631bd12774e437269ebfa0e74de"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/web/viewer.css",
+      "bytes": 21209,
+      "git_blob": "41c86e56a8160987e5e6c45ab8142b039e029548",
+      "sha256": "e5e29bb54e3699842d8782539215fd3f721c862ade16ff61ff68f167cdbe682b"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/web/viewer.html",
+      "bytes": 13199,
+      "git_blob": "5a62bde9b68ae6d74d25771b6a626e0e34b928da",
+      "sha256": "88301de584002a9ecd31aea36f7f4fdeb8d91d01a92b48bbfa8ab009c6d038fd"
+    },
+    {
+      "path": "modules/physical_compiler/prototypes/atom-replay-redesign/web/viewer.js",
+      "bytes": 30802,
+      "git_blob": "c53454322d26bf046b1add2c2e5ee14d4d933a7e",
+      "sha256": "1e4f15bc5c54041542735324a45dcbf09a3e29c8634589bab578db10df539486"
+    },
+    {
+      "path": "modules/physical_compiler/pyproject.toml",
+      "bytes": 1380,
+      "git_blob": "d8254080278c5124aab6c4a05cee6bfa278d06de",
+      "sha256": "fa71bcd7aabde578a66891664f91fee87f9e207d568243d8e823d1cdc95c967e"
+    },
+    {
+      "path": "modules/physical_compiler/reference/README.md",
+      "bytes": 6497,
+      "git_blob": "9091e89963aa16367f561e76885ad964a435f8bc",
+      "sha256": "73c66ebd5d3c6f968da9f4cee569c8e9ea1906b489c3165aeafad9f0ad0681a6"
+    },
+    {
+      "path": "modules/physical_compiler/reference/__init__.py",
+      "bytes": 73,
+      "git_blob": "97a7b9b82ec0c5b7f7b6b2cbcd7b2ef81ec1ea8a",
+      "sha256": "93a6a0b8a6720c10d0bbb4c849a7f1bf14b6bec25a3be8988a0f637f14c042b2"
+    },
+    {
+      "path": "modules/physical_compiler/reference/adapter_prefix.cpp",
+      "bytes": 3045,
+      "git_blob": "73f1742fe7c954275cd7a9adfc9b7de562d16f78",
+      "sha256": "b9bf2c44e1011659362984d8946201633920d9fe389079a7d320f7e585cb0e1a"
+    },
+    {
+      "path": "modules/physical_compiler/reference/adapter_suffix.cpp",
+      "bytes": 1581,
+      "git_blob": "b43e367a5c41711e4f1f03f11226423f9e505acb",
+      "sha256": "64942827110bdc55edf9cb9ea7c3ffb18960a0c00435d3a2aeb3ec1a3dc8e6e9"
+    },
+    {
+      "path": "modules/physical_compiler/reference/benchmark.py",
+      "bytes": 9483,
+      "git_blob": "380109b49a0ee8494753071d7e28fa4528568a63",
+      "sha256": "34aa2b16f1ca1e27fcdd79bd36d3e09bbdf902ef28aa79fea5824d1c53fda929"
+    },
+    {
+      "path": "modules/physical_compiler/reference/benchmark_README.md",
+      "bytes": 8868,
+      "git_blob": "e8350d9105243b7e43b3d774534fd5f09e0bdec5",
+      "sha256": "ca2467f91e1470d127d7e533bb33b14825cb3bb44c04256e5684ec7c725a0499"
+    },
+    {
+      "path": "modules/physical_compiler/reference/benchmark_results.json",
+      "bytes": 114461,
+      "git_blob": "1fd494f9bf2ed3e863293579c19a1da6866a60a2",
+      "sha256": "49f995e2c3bbde330eb7d8c26f698c2339f06b1d3b8ccda0f3158500c3aeea07"
+    },
+    {
+      "path": "modules/physical_compiler/reference/cases.py",
+      "bytes": 4782,
+      "git_blob": "7b220ca7c3180fdd87539f59b723f8b363781332",
+      "sha256": "ff4b27e6f0835235ee4b502fc95eff238e6ebe7f7374a64951046a6ca11456a0"
+    },
+    {
+      "path": "modules/physical_compiler/reference/expected.json",
+      "bytes": 22388,
+      "git_blob": "8480213eedcd78232e43d996c8bdb4dec4c6d172",
+      "sha256": "bf90bb2047213384aff30b155273ab62df7ba23cd7c772dfad1974e7f0fecc78"
+    },
+    {
+      "path": "modules/physical_compiler/reference/fixtures.json",
+      "bytes": 2615,
+      "git_blob": "cd5d552e0f09063314395e7bf7e53dcbb38c821b",
+      "sha256": "faf974bae0fc3ad8bab504500bc90477c5a103248fe42791a4506e52a8d75bae"
+    },
+    {
+      "path": "modules/physical_compiler/reference/pipeline_README.md",
+      "bytes": 7262,
+      "git_blob": "fb575e5eed0f296c63c4217dea5ee04c4527d89f",
+      "sha256": "438febeaa0ece34a80316c7e6612898f0c6249383c4173954518bc9d39207bb5"
+    },
+    {
+      "path": "modules/physical_compiler/reference/pipeline_adapter_prefix.cpp",
+      "bytes": 4891,
+      "git_blob": "d57a63a66a8c5b39a781ec2440c0467b98b6503e",
+      "sha256": "2aeae8bc780a5484f590cfcec1336b5d64bdcf6b9ab38d4f5e0a79e523a3af4f"
+    },
+    {
+      "path": "modules/physical_compiler/reference/pipeline_adapter_suffix.cpp",
+      "bytes": 11083,
+      "git_blob": "92a7c320c18c04879e0d0b8f1ad5ec3bb6122d62",
+      "sha256": "afe0a37b749f959627cea90415570a048307c06d5e9b4378f850d546cfe43516"
+    },
+    {
+      "path": "modules/physical_compiler/reference/pipeline_candidate.py",
+      "bytes": 23956,
+      "git_blob": "da98410c8826c186c1d59388cd3af5bf1e063765",
+      "sha256": "4d7b92088ca4707395c76d36d884c4e07e5302f25e73881d3255ffb247be6d8a"
+    },
+    {
+      "path": "modules/physical_compiler/reference/pipeline_expected.json",
+      "bytes": 116541,
+      "git_blob": "87a36fa769593f508b13e1b04b15d055bde84222",
+      "sha256": "2b9667d672a2f03095048920947fc446121b371420372573dded70e174735873"
+    },
+    {
+      "path": "modules/physical_compiler/reference/pipeline_fixtures.json",
+      "bytes": 22912,
+      "git_blob": "c119c5dc34a5f77edc9a90c4c3074b697ad884e1",
+      "sha256": "74c575a98408a7c03e0dfcecc1c4520ebc395edaf446c7e4dc7fc6ea35616748"
+    },
+    {
+      "path": "modules/physical_compiler/reference/pipeline_reference.py",
+      "bytes": 13771,
+      "git_blob": "28777c727eb08143f6f47a5174132489fbda4043",
+      "sha256": "a8e98b2120db28e0fb25377d885f440b4edb6fbe9ee6ea8eb586a091d29cbb34"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_README.md",
+      "bytes": 5050,
+      "git_blob": "d86dde9432a23af349a1f2865b3180a062099d01",
+      "sha256": "b38c2bf1d0ab6b9a9184460a104f36c4bd2e93e1f15fcfff13c960b14afd6f04"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_adapter_prefix.cpp",
+      "bytes": 1032,
+      "git_blob": "4d8dbf6f5fe3682882eb03840b840bedd2a99293",
+      "sha256": "fb293702fb705d53811c556a9d189ae54d3826576bfdae544f31744b60ee976c"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_adapter_suffix.cpp",
+      "bytes": 8018,
+      "git_blob": "40f5dadbf06d6af0a77c8f8d310ab22d180e7d10",
+      "sha256": "3f508c90f77ccef2c4a2f62f31501e1b2a2996add591020264ec276336364e5c"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_candidate.py",
+      "bytes": 12030,
+      "git_blob": "3f1154e55d8086e4674dfb752299df23a84ea147",
+      "sha256": "81e66be37e78cf939a53d4e55ca03835d28bd3769e9400bf7cdaaf3f2407da75"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_decision_evidence.json",
+      "bytes": 16391,
+      "git_blob": "4e5214b2e61aacb34315f715c50b9b43ee56739f",
+      "sha256": "267bb75dc68bd084499861e13d2b91e5a49a56366b65c6a54f71b6549717bc2a"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_expected.json",
+      "bytes": 184398,
+      "git_blob": "96a236614f5f099b4477f3dcb8c4b9a75a03cbdb",
+      "sha256": "de8c530180371bb1cfc7d96ac03339969717320406c953f9e014d6133ce5196d"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_fixtures.json",
+      "bytes": 23631,
+      "git_blob": "68c5bee467041961be855baafabca9bf888ba2f6",
+      "sha256": "ec8611c7d4824ed8f4706e00db821cc3a6dc160aabde5e307f903dc8e2000ced"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_recheck_results.json",
+      "bytes": 43470,
+      "git_blob": "d543f0aadddcb17acb1af9ba7dbc6420914211e4",
+      "sha256": "58e9b3dbe9b6cc0e75e6870cc65460cb4f53d2b0a7fd74fa1789df843a58eac0"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_reference.py",
+      "bytes": 10563,
+      "git_blob": "2547ff3001fcf1233bf41addc6187fa908c7d5d8",
+      "sha256": "0ff29010f81b96717bdfb71ebf208b60d77cc54fffc3fadefae37e8a56bfe898"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_stage_fixtures.json",
+      "bytes": 96472,
+      "git_blob": "6d7d19ccfed19ac2a257a4b134b4cf6ccf4cea49",
+      "sha256": "d28b7759c5b64a3e218065bf73d8c87da6196ad9cb696d194f647346381041c9"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_trace_README.md",
+      "bytes": 6159,
+      "git_blob": "e6ad21d8d456d397434ff1de408281b33c5c3409",
+      "sha256": "42ffe373422ba9811bdd19a6198a01b4e9aad8ab64aaaac0cc21133530ede4ae"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_trace_candidate.py",
+      "bytes": 12553,
+      "git_blob": "62ba0a537d2ad7260046e0b65f460ee8b0195bf3",
+      "sha256": "2d1e2aa1ecc8f7669bbfdce08f2a980aec5f5a450b13585ea6fdac281ee54b7e"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_trace_observer.cpp",
+      "bytes": 2014,
+      "git_blob": "32ccc6cd7cac8dfe99e799600dc6c12a6846d7f7",
+      "sha256": "bab7d0266d5ce536179ebc50e9f95b574210a29cc98485977b847b5aa6bf7eab"
+    },
+    {
+      "path": "modules/physical_compiler/reference/placement_trace_reference.py",
+      "bytes": 7537,
+      "git_blob": "f2aa8858082a0f40e463636655bfe73211d6363c",
+      "sha256": "b24a554b012ab71f6fff85a12ded35effbeb3e11987c17a7d9e9797e3aca0e31"
+    },
+    {
+      "path": "modules/physical_compiler/reference/queue_expected.json",
+      "bytes": 4025,
+      "git_blob": "bcf038b9a0caec9813fd38d51ebf0e6275241eef",
+      "sha256": "83f034524b426ed7f867b90e036bd0a52ae635f6f3f66cd2989edeb2ab41aeca"
+    },
+    {
+      "path": "modules/physical_compiler/reference/queue_fixtures.json",
+      "bytes": 7859,
+      "git_blob": "298ab29762d3d12184a92a03f24d9c8d5f8c46bc",
+      "sha256": "b699da35ee79e8bba17f639ba2d36387c09311fd1f3dfaf598571d8383b363a1"
+    },
+    {
+      "path": "modules/physical_compiler/reference/queue_reference.py",
+      "bytes": 4244,
+      "git_blob": "6ef0dacb4e6389ace0cbdb87c2a9060f12fe1e1e",
+      "sha256": "722ba0992e5673b384073af587f3a29137bc36af6cfe4f5fb9c139e7e6197d58"
+    },
+    {
+      "path": "modules/physical_compiler/reference/relaxed_README.md",
+      "bytes": 4699,
+      "git_blob": "f81aa19d4dc8192d2676bbc6b9737407b3d23ab6",
+      "sha256": "6ae30585cfc811956914c89f32d650e43d3f235c2a912bbfd4afb695d726149c"
+    },
+    {
+      "path": "modules/physical_compiler/reference/relaxed_adapter_prefix.cpp",
+      "bytes": 2069,
+      "git_blob": "a5a5396557619d81b06194d66042e448c031567e",
+      "sha256": "96fe715df49b1b76d3aa2a5d585149d33516cdd0d6a5be569b04601af9a48637"
+    },
+    {
+      "path": "modules/physical_compiler/reference/relaxed_adapter_suffix.cpp",
+      "bytes": 3134,
+      "git_blob": "d61f889d7e4f83f70d5816127ff0fd378d530fc6",
+      "sha256": "db037c0edf1e20f8193916994b4b3c35e7c61e87dc2d5872f5fabf76a66ecbef"
+    },
+    {
+      "path": "modules/physical_compiler/reference/relaxed_candidate.py",
+      "bytes": 5385,
+      "git_blob": "d934dd1abece653ba6a14a7fb43027e1e36fe648",
+      "sha256": "3fdb94ec92d9b5e49d67743432bf25850f74882d3580edf98d22445755ed945e"
+    },
+    {
+      "path": "modules/physical_compiler/reference/relaxed_expected.json",
+      "bytes": 8032,
+      "git_blob": "15a562ece1e437cc4a0019030a9e63d08a377c82",
+      "sha256": "cd8dc9ea2b96cb3d9f622ae09114a4167b3265a08fd875fe1ce70a2385a1c993"
+    },
+    {
+      "path": "modules/physical_compiler/reference/relaxed_fixtures.json",
+      "bytes": 1874,
+      "git_blob": "c68e5c8fb73774549131f8cc2cc83409b8a758fd",
+      "sha256": "7fdeb9390c1188aae8eb8894dcde2fcdd51aa9c95a07195e13abca28c3ae8b9a"
+    },
+    {
+      "path": "modules/physical_compiler/reference/relaxed_pipeline_divergence.json",
+      "bytes": 9656,
+      "git_blob": "db9fbecb6c013e184ccf3f79229a72f6b3b1198f",
+      "sha256": "1f0f387fe350b5e9fc3ffdb0ca230d207e338edf45e959fcfd8327b4647b0361"
+    },
+    {
+      "path": "modules/physical_compiler/reference/relaxed_reference.py",
+      "bytes": 10066,
+      "git_blob": "96e5a9d4693f8d6af1d06c7a390fcd4555de0463",
+      "sha256": "48b1a870878b02ac4bb1760fcb92ce5155fb27b887a599f0821b7508d4467b8e"
+    },
+    {
+      "path": "modules/physical_compiler/reference/relaxed_staging_expected.json",
+      "bytes": 5975,
+      "git_blob": "4b8a85a38909345bbc6f93895a50f4cb7b3ff5be",
+      "sha256": "c87ff046e6ba17ca6c3f496a29cd3f43a401eac31e47c736c338c6847df8cddc"
+    },
+    {
+      "path": "modules/physical_compiler/reference/relaxed_staging_fixtures.json",
+      "bytes": 930,
+      "git_blob": "73a93cc8492b297792a49515e90bc9a6fcbeadb6",
+      "sha256": "f8cade18ab09b107fff01bf588ae195eac9f171f3069f3b9f61501c669814c40"
+    },
+    {
+      "path": "modules/physical_compiler/reference/run_candidate.py",
+      "bytes": 1991,
+      "git_blob": "29a56456aaf602c3734bcf40b7d5b1c09dbf3713",
+      "sha256": "7963b4f889d46eb5c8a042cc6c02708d26533663f76caec58970f0cfc8ba9e82"
+    },
+    {
+      "path": "modules/physical_compiler/reference/run_reference.py",
+      "bytes": 11750,
+      "git_blob": "4bc00eec479631e90847a1a79bf983f1c6e82a8e",
+      "sha256": "bcb8c202cfea28d15e8e1b7587d1b3919795121acf7c09b59f99b0b9e0ad2dbb"
+    },
+    {
+      "path": "modules/physical_compiler/reference/unsafe_sparse_gate.json",
+      "bytes": 13445,
+      "git_blob": "99da4184040c6ef6f22f4631710dc7a43433e848",
+      "sha256": "613227aa4ef839436256cc724dcf278b7611e31405f7db290f91d3d5f328da70"
+    },
+    {
+      "path": "modules/physical_compiler/src/.gitkeep",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/__init__.py",
+      "bytes": 2655,
+      "git_blob": "512a6a82f2dc8b9987eb3856725b5b5959e649db",
+      "sha256": "8ce433861fd84f879d5e49b2b140d1a106d01973382d0e034d75557677da4995"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/activity.py",
+      "bytes": 10438,
+      "git_blob": "e235318b9b42c4e1e4ff99c175e9f74a360a2cbe",
+      "sha256": "6dff1a879168cfedc99ceef7c027107033b1a9988f72f82eb00feb5f0e6fa75b"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/architectures/__init__.py",
+      "bytes": 967,
+      "git_blob": "830d746b374cac5c51faf39b010a7ac0dfea99b4",
+      "sha256": "03132fae0c18107fb5a75a32be1139f00d4e9a6aa240caff9cf4c7ef42b5d25f"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/architectures/geometry.py",
+      "bytes": 4130,
+      "git_blob": "1ba3a1af5b6cd09595c75c39d4cc28e92fa1f5e8",
+      "sha256": "3a2aed98acf7edbc756d59bd7fa02889dc34670b1f3a23d83bf35a560e127134"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/architectures/schema.py",
+      "bytes": 3449,
+      "git_blob": "8b400bb4e9e7d39ad7d05b6f403659c89b9855e1",
+      "sha256": "d0e4fd7fb0490c6f866b863e5f0724a0c483c9af967896ced030b643c343b4cb"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/architectures/shared.py",
+      "bytes": 3237,
+      "git_blob": "a20f2653182a506e93438dc56365827f0182952f",
+      "sha256": "7fc6b98d5642f35f86b1cf71cfe3974cd30819a08c0e409b1cb83473ae9e4eb2"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/architectures/zoned.py",
+      "bytes": 12154,
+      "git_blob": "810d36328097388e32454d776e20e8904162cd93",
+      "sha256": "32a0d2fa8134d52eeafe340e0a3f8ec537490bceba5cbbba2e715191fe138473"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/atom_ir.py",
+      "bytes": 12621,
+      "git_blob": "eef71d7b817dc0f791b4079402229d7b4c3278d6",
+      "sha256": "90066de13abba086e58e47f938dabd8dbc6994ea04afa72d5a8aac7887d1b180"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/capabilities.py",
+      "bytes": 3230,
+      "git_blob": "a02e01cc8b01ae9c36b1864a23d4b5a5e4a73dcf",
+      "sha256": "7a3e04fb0e8092622483c913f1a48146af793cc408fb270d3fb0aa22c04674ca"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cli.py",
+      "bytes": 11820,
+      "git_blob": "f52af33f922640071e6e72a78bea38ab454a74cc",
+      "sha256": "424c048111216719c60fe51eaccf1e7c94081f40f14a94694d5e75668fd0ed3e"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/compiler.py",
+      "bytes": 10900,
+      "git_blob": "fc23f4903c75827c18a198b297c31c0ad45fd31c",
+      "sha256": "1ecdfbf25a739b3e4800779ed924d1a37aa48d446da0fe2d46db8f43c9307c45"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/compilers/__init__.py",
+      "bytes": 70,
+      "git_blob": "387a67493ef9fef6c336a9c939e73bfa2d927c2b",
+      "sha256": "a66d29afa909864539c977f8a367ad40b5a6edaa56b95a99abc79964d5cf6dd3"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/compilers/budgets.py",
+      "bytes": 1330,
+      "git_blob": "4e430c8d553445c6f49dfcdd545884e8712460bc",
+      "sha256": "4cfef94d7a98f20f28d49758e3f5af3ff88c4651c8ac6e45880be3eaf45fd3b1"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/compilers/builtin.py",
+      "bytes": 4174,
+      "git_blob": "bc320faa032c0a8928546444804001085280ed6b",
+      "sha256": "e837d02bc5bb6963e1693adcc91464f4ee267561702fc283ab9f121bb08d3ffe"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/compilers/contracts.py",
+      "bytes": 1462,
+      "git_blob": "d022a5a8ed9898c2d1c05f03fcbfd42b1bc9d23f",
+      "sha256": "30a1607a3a913fdddbe7867baf7639683b7ac06346967c61e1dce9747a2bdd3a"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/compilers/registry.py",
+      "bytes": 4607,
+      "git_blob": "c6ce033997b7e10455b198ec026d1b7037a94bc4",
+      "sha256": "2c24f42370f504bc78f328b6903b0c6cb2b3cdb6fd7acea10a029f26f8ba64d1"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/contracts.py",
+      "bytes": 4978,
+      "git_blob": "0b1984027becdb0ae5f1e4dfad54eb11c8904727",
+      "sha256": "415aa031734875fd19039624653eff6defba87ed2071e356638a4c12e5592d51"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/__init__.py",
+      "bytes": 2069,
+      "git_blob": "3368dcdbe0c677fe760693c495a9ba1ac9ee927e",
+      "sha256": "4c67030db01b95cd2cc77ab4739601599a48c24bddc5eef8ac48e96fe1ac51fa"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/additive.py",
+      "bytes": 4090,
+      "git_blob": "5cee484b70a745c2ac35aba30aa6d940c3d9d9ce",
+      "sha256": "f5b7e5102d8f21f169e696972fd00a31f55f018be6a35b74fab07af00abc9d58"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/base.py",
+      "bytes": 1830,
+      "git_blob": "8c3ed14d89ce671e60a0bf026c62cd5947169ba4",
+      "sha256": "0266b428d0b404d693f6fb4c85804dccac14fe89062eb5c28809fd0329f0dbd6"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/cli.py",
+      "bytes": 1672,
+      "git_blob": "aca8a0b0fcaa5b29dee826a09af8ce1a658904c4",
+      "sha256": "7755f7dd4bb3511ab87b007270a17061b7e67c07e9e75ea6ac54ecca688ed35f"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/hsim.py",
+      "bytes": 8073,
+      "git_blob": "677d7c65fc497d80ba3c87f56ce4d528300a75c7",
+      "sha256": "6a0641ed9a446de9023379d30cbbcfbdcc689cde4d1310d0ab29d53140ce5dd4"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/noise/__init__.py",
+      "bytes": 6305,
+      "git_blob": "ffec1ce8e20949c152e5197df4750bf08d265948",
+      "sha256": "07917622671967f2c1808c6fd56c07bf4f4fba3550f29d140071b923b3433397"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/noise/config.py",
+      "bytes": 5436,
+      "git_blob": "710d7652c13da6b7696b07522125ca94183cc1e8",
+      "sha256": "b29944389f0b0dd826640ba5e4afb099935f6d5422d3bd8288605ade625dd2fc"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/noise/exposure.py",
+      "bytes": 1632,
+      "git_blob": "e827fed3d85cf4c6d02da52edd4f3bad4723b9bb",
+      "sha256": "ac7ed41fe465bfec8619dab21c87a4dae5a70b41abff243207686f0ea89c7ba6"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/noise/gates.py",
+      "bytes": 6842,
+      "git_blob": "f1a412329ecbfaa9ac8864afce5648df48c601cd",
+      "sha256": "39a28194ac1f6c8d328fdbae9fadaf72afaac828a6812543b19ca50b0529822d"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/noise/native.py",
+      "bytes": 1802,
+      "git_blob": "dbe27f455515a5784a79da018de6f6d9362db5f2",
+      "sha256": "5407590ac9f0250f3fc6fc03dfeca5252bc15499396a754791083ea8df6d4693"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/noise/report.py",
+      "bytes": 4412,
+      "git_blob": "d1ec82054a351d8cb7364ec51e601bdef0889358",
+      "sha256": "08db5ee1907c1afd96ac24968431da696fae8afd7760f92f6f393d43de5ff529"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/cost/noise/transport.py",
+      "bytes": 1780,
+      "git_blob": "d158d530dedc347e20f04ad6e9f6c4bdcf6864ce",
+      "sha256": "7fe3a358915672b9c76d4f4ec6e50a8f9e3470915d77047cca3aca00c810f582"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/coverage.py",
+      "bytes": 602,
+      "git_blob": "b41d5dd76fe78a62a9ca6c1a09c05b333c3e33aa",
+      "sha256": "1838484669eb108c4c212d552ff0bf289768748f052a6c9600e1a65e91abe1d4"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/device.py",
+      "bytes": 15298,
+      "git_blob": "0a1e181e850af82107d2827e43f2559170a7f392",
+      "sha256": "9bfc9ccdeaeb73fd80e1e4aca6b40be04d8deb8bfa1f7181d232b3d87e55c5b5"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/device_pairs.py",
+      "bytes": 5206,
+      "git_blob": "ae412663a1252a64885391d24afaf7ed9e066a0a",
+      "sha256": "97f5a8a03a0d2b5e695f46afd3e96490320fb31305355c093d85c4eee6ec6581"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/discovery.py",
+      "bytes": 3599,
+      "git_blob": "977493f997d2c9e459838ba6da57f907260cd766",
+      "sha256": "43f5a4e724980d40f6a1826ffdba49d1b68e55de3c2f4e95aef8b25120189477"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/emission/__init__.py",
+      "bytes": 181,
+      "git_blob": "db281e8048f0e52c9899b3b9a8ab34d5b70c6efb",
+      "sha256": "071aaebf288a1c7056e6be3be328cd61c34256a3f5a2b1172b3d7a3625826ad8"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/emission/actions.py",
+      "bytes": 4734,
+      "git_blob": "eec4e8078b41133851f840f60df9d70679b56403",
+      "sha256": "3bd7c5d6dc1bfbd10f2a70bf194722385e8e15d894410375d499f975802acf9c"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/emission/layer.py",
+      "bytes": 1993,
+      "git_blob": "3e4d4713e5b457f7ec8e4f50f9cf8f38b7a25cb1",
+      "sha256": "5410aaaa2acd941728642823a1c8488b8268aab195d28e14df7cd85540017efa"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/errors.py",
+      "bytes": 184,
+      "git_blob": "74097c5742bcc6441f05fe718fe42462e3d58e47",
+      "sha256": "88d6f00543f4b9c967052d2d32ad118e6de23629febbb7916c7e5b0944135381"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/execution.py",
+      "bytes": 7492,
+      "git_blob": "ea5e4723a44ff1832719102f05cec522648335f0",
+      "sha256": "b77ff87bd58ee924049ffe887c6e439d901df3bc758056684ac3e60f2d4b68d0"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/experiments/__init__.py",
+      "bytes": 258,
+      "git_blob": "6417bc8ba422a974427d6a59a281a476f81153ce",
+      "sha256": "3e929030f4c0aac8334235bd153aa7a2ac2c778d0533aa89025812e5925751c8"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/experiments/cli.py",
+      "bytes": 2811,
+      "git_blob": "8ba818d5090fde24fed91f870871fa1a61e615c0",
+      "sha256": "27a3934ff250c943b6c88591d4c1036973a7fb4040b0777f1b2cd739a1a33b3b"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/experiments/costs.py",
+      "bytes": 2767,
+      "git_blob": "de439c70cf0bea30375f1e25ce68d4bc25145675",
+      "sha256": "6e829bfa379bf9f66d46eb97767fe1b9ba815aa23ed45b60f512b51547bd7880"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/experiments/journal.py",
+      "bytes": 2988,
+      "git_blob": "638318c7b36c5b04fce3600074de3a29f5943f8f",
+      "sha256": "a07d900ff731c690b5dac4721a79b9f33248667230f33c06c9f5cd2f5dcd3160"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/experiments/runner.py",
+      "bytes": 9692,
+      "git_blob": "280fe36b18df50e4b690d2664c454b35369c5dbf",
+      "sha256": "783b4b8b24b573734b031370b7ac8a1526e33b21b59cf32389e9d1d6089871f9"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/experiments/spec.py",
+      "bytes": 10333,
+      "git_blob": "2f3aed73a24adeae778a9645bddd20cf895bcf37",
+      "sha256": "bf39d515f0e25186e2c4f3541dddec20d738fd1c7f131bd2da494e60d9aaa09f"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/experiments/suite.py",
+      "bytes": 2908,
+      "git_blob": "3115f372be8a40d3ffa61ed68145614bce5b042c",
+      "sha256": "c6a7c7a28cb1b177d1746d754fa52a2b274edd423daf0bb25c0a4d3abf9cc0a0"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/experiments/summary.py",
+      "bytes": 12760,
+      "git_blob": "952544cedc92b71f7a90b899c5ea9f8a6ba2141d",
+      "sha256": "cbb7169bbfb7910e938185b261382c9050f28b200e323a606da66236a261fe2f"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/experiments/sweep.py",
+      "bytes": 2968,
+      "git_blob": "06815c833041e62a9095d918ab53a034d0680b66",
+      "sha256": "f5a52f3fd726aacca4fa932b427733db0e1d8e4b84aae4494aff47feb60295dd"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/experiments/version.py",
+      "bytes": 1499,
+      "git_blob": "deabb29e4dda2d265a5b21a9d84b163fb1dc6a48",
+      "sha256": "fc091574cba34b3a3f4bbe36ba24bcfe8dcd6ebdf6bd132b92a5595264476294"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/experiments/viewers.py",
+      "bytes": 2147,
+      "git_blob": "e4edbe5dfdfcb539adba72429f838456bc55fd6e",
+      "sha256": "4608d05c4ebe7692fe972934658038c0196626b40367a2e312937721ba1e2fe2"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/experiments/worker.py",
+      "bytes": 4658,
+      "git_blob": "d91b93d6fec6410f29b5b1f91c4ce4e3a8c9d583",
+      "sha256": "d29d296654024feb4fa15f7289f75efc7dd1d3f38391e59555dcda17b7fa21fd"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/frontend/__init__.py",
+      "bytes": 245,
+      "git_blob": "279ef23d8166b3fc9ff9dabbcbaa0bbba4ff843e",
+      "sha256": "eb2e9d7f20c557731ce3703609e3a65fdb83a9ae5a0121b3ded15dd41a7dd143"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/frontend/dag.py",
+      "bytes": 2509,
+      "git_blob": "1569aa32e0f6fa05c95e1395b9c6326d792073ea",
+      "sha256": "dad898d94ae1bc9732083802407dea45269c7c9239419252cec733dab963ab3f"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/frontend/native.py",
+      "bytes": 3565,
+      "git_blob": "af704b47c25f50a132741aaf92dc14fef3791475",
+      "sha256": "0a370d872e04b3c3fefd1d71d36e8e690e19c099f3a1374d69eb6d80a7679953"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/frontend/qasm.py",
+      "bytes": 9130,
+      "git_blob": "f266ef5869fa9ba0cc4c25fe2a745f4e1d378f7d",
+      "sha256": "44c04aa47fa8b0a13b401a0cfa1009219f3a4d5d63377f66b071139f0cd1c8ae"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/job.py",
+      "bytes": 15661,
+      "git_blob": "17e744ac32419d788b871e6c8967d72e3256aa78",
+      "sha256": "ebf019ce01b5da76c7527725998a1c0b4c69db1d02d3d664fbfb01406a30c781"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/job_fields.py",
+      "bytes": 1957,
+      "git_blob": "b5e67690ccda56e7e92ad1848c9a8311a426f85a",
+      "sha256": "5673796d8bf169859cf9fa0d7de0848dd34e1511ce9660dab80089d66768e551"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/job_geometry.py",
+      "bytes": 7026,
+      "git_blob": "086f87d6351f7b9e237ea8bbbc2e89638000d6d2",
+      "sha256": "d99abcc8077cf4ac7c405ee4c15b945e52a6a8c5793f3ce91df83710b07dfe33"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/metrics.py",
+      "bytes": 3041,
+      "git_blob": "d88de03575919b45626bd106b145144588d5883b",
+      "sha256": "e6bd73782b1ce0b0bc8b691371b4e5bc9dd1c5015f4d029e89d5bc23d0e5c6a8"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/motion.py",
+      "bytes": 13803,
+      "git_blob": "d39b0865c3b38f6de0a45a0702757415ed2a1246",
+      "sha256": "cdb7bb733a27f6af4049ad5804176f2bb3b1c70a6dfc9760d58f7124d2853351"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/nonzoned/__init__.py",
+      "bytes": 71,
+      "git_blob": "630ae3884c4a77031efbe282e8cf4e2fbfd9bcd5",
+      "sha256": "214dc9698ca4826149be8de9169d9a608a195580745f16281503649d3aab8758"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/nonzoned/emission.py",
+      "bytes": 2121,
+      "git_blob": "8c78fe8d0d5918cbe1548d197887d60fa0213da4",
+      "sha256": "d7ce8b99cff840c8ff0d19d1c78555542853d5dcba2df1a2fb99306a4799b8a1"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/nonzoned/planning.py",
+      "bytes": 7423,
+      "git_blob": "98ba80b9c57dd8bc7db3873c29f0626432e64871",
+      "sha256": "ccf96152752144cb0efb3810658ad0b5bbad2f2c309733d7dba0e68443deaec6"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/nonzoned/support.py",
+      "bytes": 1193,
+      "git_blob": "2b53fdb3ff44c2d1fc8e0fd84ef90320dd9474ee",
+      "sha256": "d9172cd4ba3ec445b281cb1e35ba40f95db2f927f1e9a509ae1a032b27929c8d"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/physical_ir.py",
+      "bytes": 6548,
+      "git_blob": "284e2335f7a47e73d6ebf935df0310b02bb05b29",
+      "sha256": "6967daf4fc2e26d8db2b486dfb49584e9d2a7a60de76555ab2d40fb72751fd61"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/__init__.py",
+      "bytes": 528,
+      "git_blob": "cf114a57067d04890921bdfb94d334710b1fbb3d",
+      "sha256": "c2ea84ad9be4aaa08d2fd46e9cf85ae5d32a3cf5dfbfbcfc6a418265ed8a38aa"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/arithmetic.py",
+      "bytes": 574,
+      "git_blob": "bb7fd85b6fd8837f879af90dd9269e427563ecbe",
+      "sha256": "6b305d9a8abe3cc7a27590a8dc79fb50bf29e6bfbdec79a8ed5f0c8b2d53cdf4"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/astar.py",
+      "bytes": 2245,
+      "git_blob": "8db3ca7a9cb48691ab0396a6ea9aadc1da844e7a",
+      "sha256": "2c81a04a6196bdb66c763317d8478978b82710169bb32c5ff23ceb3260091cf9"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/candidates.py",
+      "bytes": 16363,
+      "git_blob": "4803b14be2d5ee80f71836ba41ead6bc43fa4a30",
+      "sha256": "6c4a2b50abab6271806da43cb6b07a056c5e88592c7bc4b4b072fd07fb04a322"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/catalog.py",
+      "bytes": 5983,
+      "git_blob": "905dde9d9a055f205fddaafd19204a967468e194",
+      "sha256": "b67c6c920ebf1bd2ab4d506c363f66c2108d553ecb04e9e9f08acba48243104f"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/coordinates.py",
+      "bytes": 2094,
+      "git_blob": "782995a2fa7b4e4ebab0e5bc3b563cc5b120b8a7",
+      "sha256": "f03b24ddcafcfef3329b53d6cf76ad9bc282f61110b364970f6de427769537d7"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/enola_initial.py",
+      "bytes": 4075,
+      "git_blob": "508a2fb8bf49969f085857e79bab5077e6cb6e89",
+      "sha256": "8926a16d6b1e83f8fbba052cbbb8be17c038e147ee60389e2dd111bfc339a09c"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/enola_sa.py",
+      "bytes": 3690,
+      "git_blob": "d5a42ee615413b81bc293f532c47508243d36d69",
+      "sha256": "6a803005b3318d1a7f187cb5132b32a34c9e0c8598e363c6cbe7145e78c14d31"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/enola_source/LICENSE",
+      "bytes": 1500,
+      "git_blob": "267b0a31a8c272645f3d02a727d8c3adcd8691c7",
+      "sha256": "a8663338fce27cf0e5da614f04d0b72e7559b31bcd41b6b115572d1d8df985f0"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/enola_source/placer.py.txt",
+      "bytes": 12526,
+      "git_blob": "9e1d67e484ea5b4657613dd5ef574060d172531c",
+      "sha256": "d256c84490bd72d525515f24acb081d7b21bcd5f7bbc31302a3bbf79a16997cf"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/fixed_reuse.py",
+      "bytes": 3170,
+      "git_blob": "6fd7cb916a3466633ffaa4ca88a27db1457134b1",
+      "sha256": "5f1bf9ddffe88eae84822333c3cdc83db7af4371acf556e33d8efe8971655e9d"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/geometry.py",
+      "bytes": 13997,
+      "git_blob": "3b0c7fd240d5acb87af69b3d84524a3f72de26ca",
+      "sha256": "3d008caf76be498869a968a804bf76f2d2cd9ec520c4d75e61b497743afc40c7"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/global_rotation.py",
+      "bytes": 4615,
+      "git_blob": "6561f120cd0bae4da7d14f12b7475de9570ed27b",
+      "sha256": "5c21d2600f334dd5513e7a58ef5edea16ceb8d22f74d157bb2be8afb57649b52"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/heuristic.py",
+      "bytes": 10440,
+      "git_blob": "61b11f105190a1bb2860c89fdc26e9d2fed82e94",
+      "sha256": "8f871a2d1aa5b288ba1bf6795ca9bccad0f4c3eceb10efdef1090fd25b3b30c8"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/ids.py",
+      "bytes": 3474,
+      "git_blob": "7cd3d38940ad7d15271f04bb68c009bfceec0fa3",
+      "sha256": "caf379f4e3e3a106af393b736855442a26cffb448218a543a048057f8833fdca"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/initial.py",
+      "bytes": 2295,
+      "git_blob": "c3066cdb7c083044779e28fe77b5ac82a87256ce",
+      "sha256": "a0b6e6dfa4164cc4a58382eac9d3eae52b548415e50b86b78d14a03a7253512c"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/multipair.py",
+      "bytes": 10782,
+      "git_blob": "400057b77236fd1326050b959e414c4ff9598c0b",
+      "sha256": "eb2187b8465e2663279234e1200e2ba355dac111a6b72d191301a2d5b91d74fc"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/pair.py",
+      "bytes": 10454,
+      "git_blob": "d167ca6fea6f26bd98e46f03ee5fe02f0ae2d4c2",
+      "sha256": "c7fc1b0b5b487587ea191a7f072456dc3c82b326abd83b0ae8260536058b696b"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/queue.py",
+      "bytes": 5190,
+      "git_blob": "5c71075ae8a4a6775a1b1fa976d437c8d368ed63",
+      "sha256": "e9bcf7df4cda21bc271b2c9494d3f68730c051a54cc8a9fe8a010fe96d5777ed"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/reference.py",
+      "bytes": 1298,
+      "git_blob": "39aa1d49162342b9f9fd17d2c65f1e9778f3532d",
+      "sha256": "7804e9c997f30dbd3cdd2f3bf5e9b3e0571df93fc44aee51b6485d615a744b76"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/retention.py",
+      "bytes": 4214,
+      "git_blob": "ab1d04e4c518bc92783f538de7a01a66d27da4b9",
+      "sha256": "400c5a25edf98494565543dd91ee3bbd73077f8144023ace896c4fdd732e2c99"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/scoring.py",
+      "bytes": 14259,
+      "git_blob": "ba859293573e2537409c8a5eabe57b5dfb2a5c80",
+      "sha256": "4656bac091bd7ff68926ce46d81bb2ad08429a64082caebd49afb4fae54ef123"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/placement/windows.py",
+      "bytes": 4291,
+      "git_blob": "6ec570baaf517fcd245134907a0471ec35e99cd5",
+      "sha256": "6cc8ac720deb39c3dd7bc85f54865cb7030f0bb6d8b53e66cbb3dce7465ff357"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/provenance.py",
+      "bytes": 3326,
+      "git_blob": "ff37d9517e1b8ac7d1b3d0d502cdebbd0d64be9a",
+      "sha256": "12958d3a4d7903cc624b8d953c6a2630fff8837aca318c7d33ff30a8fc1dbae1"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/py.typed",
+      "bytes": 2,
+      "git_blob": "d3f5a12faa99758192ecc4ed3fc22c9249232e86",
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/qasm.py",
+      "bytes": 147,
+      "git_blob": "d53b2d3a644fc95cbaaad97b7861314e1773fb8a",
+      "sha256": "2308a540437295cd61dd7dd2723c133d18d1079d8bc96e334c01970d6f0c05b8"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/readout/__init__.py",
+      "bytes": 132,
+      "git_blob": "dc9463d159bd3a5be56fb54b29bb6b7534df0eac",
+      "sha256": "5ef1b7ae10ca67a090113c6828a050e1c41712d4185df0f6da75c65946c395c2"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/readout/emission.py",
+      "bytes": 3403,
+      "git_blob": "13651931e67bcaa3e776b86d78abb4cff6294f57",
+      "sha256": "589e79348e0dc835eab7e579fc9c8ba47006b31064742790ab3735222520d482"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/readout/planning.py",
+      "bytes": 7865,
+      "git_blob": "f60401d590cd4a3927996e91648ccf5ae57639d3",
+      "sha256": "23d51a798963cc99d9204bf4fd2a9703461d26e02677287b1f693e49aa29731f"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/registry.py",
+      "bytes": 16281,
+      "git_blob": "4b3cfae23a7e80955f4217056c4a73136d28e41f",
+      "sha256": "340f0b8ad307460dcbe03c320dc7295fb5fc565fc6c0bb9ebdea6b4ac0136be9"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/replay.py",
+      "bytes": 3392,
+      "git_blob": "f6075e6eed3b3292dc060ef303af082fccf17cee",
+      "sha256": "98e18c9a76f729a26d76d562347bc244664a06402220bfe2448efa49d908cf76"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/reuse/__init__.py",
+      "bytes": 219,
+      "git_blob": "1458df0509ed1ca13b8b6a540339fd5a7ab1bf7f",
+      "sha256": "ae6c6c052b0ea82f0024982c7a7821fdca1cddbaac827f106fa9c0b5fbdbdfe2"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/reuse/matching.py",
+      "bytes": 3544,
+      "git_blob": "55d02c6b44cba8cb8fa747a0ff26e2015ae1a2aa",
+      "sha256": "d9ea8591dcfdcf1ab3412d98f1ca6647f4123e3670f0d1ded531418b9b0015d3"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/reuse/source.py",
+      "bytes": 5089,
+      "git_blob": "e19af931f9bb3b76f1e486e27e0325ca24a9aace",
+      "sha256": "92e7502a6dd43afa8f3c708e2790594cb7d5ff0a2325926a0a4a6d5d2aefc990"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/scheduling/__init__.py",
+      "bytes": 291,
+      "git_blob": "3ea3078e202632ea01f985461cfc0c7f1f9381e7",
+      "sha256": "73264663de08226fec7d9b161d7928feadcaf04251a15f22de1aed231c0efe5f"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/scheduling/asap.py",
+      "bytes": 2659,
+      "git_blob": "d2440a9fd8b1ad8e2ca831f6388062657eb39dbb",
+      "sha256": "b1db9d6e5cc098c21745c32ec733ceda4103dfc5744b6685975ea753956583cc"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/scheduling/lookahead.py",
+      "bytes": 3333,
+      "git_blob": "b2962ccee5741ade07f61fa57977b7b24d178c88",
+      "sha256": "8624599ada6c30ce1a35b3275b87ef031d9b920a989c963cdecd231226120381"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/scheduling/source.py",
+      "bytes": 5746,
+      "git_blob": "ad99913e1979e983c89ca68f8eddc4dd723cffb1",
+      "sha256": "103c2b79ce00869fa2ae0be84ff7533f95c6f7a349ae0163c7dad654eb692360"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/schemas/__init__.py",
+      "bytes": 81,
+      "git_blob": "7e9031c048c2a6f990b4382c209174f218440203",
+      "sha256": "6a08120caa1d14180089f11fb0c4df74f38dc560e9f6ef372d4213a960413d38"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/schemas/device.py",
+      "bytes": 1646,
+      "git_blob": "18d78d9d83e7d203ce9456e2ded47dad8d85c18a",
+      "sha256": "acf1ae9d0c5f836a6087c6386d76411d577582e8925c34f9b15a8d56211d6aa8"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/schemas/job.py",
+      "bytes": 7956,
+      "git_blob": "d796d9543f68a73253867a230ac35b05d2fa81c4",
+      "sha256": "d3df8c0d996b29c291accc71dd3588abd0cf903d476780a8c1fbc5d74f9cecb6"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/schemas/primitives.py",
+      "bytes": 3603,
+      "git_blob": "ff52d2c513b03f81e7625c6ea8552f89cccc2e44",
+      "sha256": "74e7875ed3c4440b193d80c4e18851024ddd2682becb7bbbecf6da7406352362"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/semantic_actions.py",
+      "bytes": 17009,
+      "git_blob": "d4d50f30a7db8f156e7de4a37cf73e8d61a0cf33",
+      "sha256": "2c4f3b49e50ca2f88a4c6092c9bcadc250ae5ca5d095925200e280cb71111d70"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/semantic_geometry.py",
+      "bytes": 1652,
+      "git_blob": "1622be57c224bb80c045d277fbc38d87ce9e3d70",
+      "sha256": "093c09b63fdfdf973a8d7e6979eb04979f1bb25ab9aed43bc3ed5fa4c7025ad3"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/serialization.py",
+      "bytes": 15586,
+      "git_blob": "21a51dfd3febce5733ea778de945916966fc7172",
+      "sha256": "3fd08f95fd083d02aa6388dbe62cc0d9cdee451d7d8648a54651190662177e69"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/state.py",
+      "bytes": 9518,
+      "git_blob": "41f8614d9623775a3f08a419bec462e128bbabe8",
+      "sha256": "17bfad7c102ed60d364e5c0d048bf3c6b54510765625dd24d573b9d26bfedf27"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/strategies/__init__.py",
+      "bytes": 208,
+      "git_blob": "5c07b1a11c3350b195be536733d7cf6a33102f82",
+      "sha256": "919afccbf51244e12ebaccd2f0cbc366d098a5afd11dec17cd25e4c43feb2871"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/strategies/fixed_reuse.py",
+      "bytes": 3633,
+      "git_blob": "af12aacb8e27eb2f624443007715e3b6ef2cf732",
+      "sha256": "e5544fa57e3f80e5e32e6858192bb21b9ec1c11a911db1c95608db442a7f61b8"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/strategies/nonzoned.py",
+      "bytes": 3381,
+      "git_blob": "94b21cf80d5557eb5b58912b1a83018b13c72d71",
+      "sha256": "bb8080f3d6308063ccf580f3375768b733aeb549840728db7705e2538989776d"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/strategies/search_smarter.py",
+      "bytes": 5590,
+      "git_blob": "a332831b33e7bb4c4592d4450fa86726249ad1ae",
+      "sha256": "5682eb19189cb1439fe757a4531af6388a70c183eb8e47ad52b6dada00507ea7"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/strategy_selection.py",
+      "bytes": 922,
+      "git_blob": "62111102d3fa9c9e7a79fec69819736cc54ac380",
+      "sha256": "8e9f2ad364c18129910adc62cb9707aa0dcc33fd74caa11d246a17fccd045833"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/support.py",
+      "bytes": 5431,
+      "git_blob": "ab96a569377373c98d020502af9b6e0b9e18a219",
+      "sha256": "f34754fdb775e0af86a88182408f7e0afe9b00401eaf4cd2c2a8775ab7a2058f"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/__init__.py",
+      "bytes": 922,
+      "git_blob": "30c2e213d281cb3162192c134794ee85fe71939d",
+      "sha256": "e88fb8275cdcdca05ff6ace38721e51572335ffe226aae062b6ca2011d8115c9"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/occupancy.py",
+      "bytes": 3186,
+      "git_blob": "cd5f1e8fcbc739606ca0184d2f7e41f3d728e4e0",
+      "sha256": "5929a37743d3501c0f44e7b2ed25de3cd69c6df22d5c54a46d5689de8f134d74"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/pair.py",
+      "bytes": 9172,
+      "git_blob": "5e261231aca21db2f2c38f66b616f0eb91cfb6d8",
+      "sha256": "e9d0382f60760959d21f9c5b3f0c7e428a4a8472147b8cb64573575fb0c09329"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/relaxed.py",
+      "bytes": 5925,
+      "git_blob": "b239fbb727e832883d6d05df9a783b005ca1249d",
+      "sha256": "1f45a882b80178dee803e57ac6750540c812d0700eba171d598b2030312380f5"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/relaxed_groups.py",
+      "bytes": 8382,
+      "git_blob": "2b887221dff5d8be97b8abb5ef673e2276423a50",
+      "sha256": "82c6047b7c08e01d1ab0f3abbe4cfd77f4143c84fbb7d4e8f025fe457210a7e6"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/relaxed_policy.py",
+      "bytes": 2615,
+      "git_blob": "c31cc1c4ac942c5e45ad3f232ff3cbcea844a9f6",
+      "sha256": "ef755c0ace1ee9862eaa3ba0feb4caf13f6c2cfed4bc1545c7ad2f7adf5bf8a8"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/relaxed_rules.py",
+      "bytes": 3790,
+      "git_blob": "72d697b5abe1a4bd68d818d827780b352447527a",
+      "sha256": "322fb86164c6fc28517cee0042079e76505af15b8046a0e866152d8d49f936e5"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/rules.py",
+      "bytes": 9378,
+      "git_blob": "ebe71f97cde47bd9b2f526e9b566e35127f3dff7",
+      "sha256": "0bfcb428e70ecd6d54d441e9cdb7b52d7dbf5bf46863a25c70d52a37bc04d0de"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/sequential.py",
+      "bytes": 5360,
+      "git_blob": "bab1d1d9b81b03684fcf29ff1da7fcd513df02b2",
+      "sha256": "56ed80f21744a10af60f925d06b5d0d179ba054466bdbdd2d8a8a249787de3a2"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/staged.py",
+      "bytes": 7975,
+      "git_blob": "dc560f114ac439a5589e3769ea96657e72814a3b",
+      "sha256": "2b64b8bffdb8c24191bebc97084e830c64d3adafafd663d9387822e33bc9b9d4"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/staged_emission.py",
+      "bytes": 4378,
+      "git_blob": "94679209729f27a8ab490f6d88ccf0b8c578e8e2",
+      "sha256": "83525491e69f9aab757d8fd5f35ef9ba189ac36e6faa59ca721e1e6c5484d1e1"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/staged_plan.py",
+      "bytes": 4875,
+      "git_blob": "a47402a52ffd590cc08b5b212bc6391807f3f648",
+      "sha256": "7e5449752db60def8e433cab41431e3854f4f34d3f781c1340e68b5ed927db05"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/staged_policy.py",
+      "bytes": 3400,
+      "git_blob": "7d9acc6baddd22863242635760e4a9cfed1e22ff",
+      "sha256": "a183abbec1854a1c5317390b21c3c407be5c40f0550a64d136ff623cf6224846"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/staging.py",
+      "bytes": 28323,
+      "git_blob": "788d316f5fb9cc7e3639f8e9b48134e8948dcde3",
+      "sha256": "eacc83f85602b51ea24701b486631b62236dcd2f1718ccf97926de7e4cd9cbc2"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/staging_geometry.py",
+      "bytes": 6245,
+      "git_blob": "9c31855919a5352b065af1381396ccb6780ee227",
+      "sha256": "02b9004157ed009e95ff78cf41d688b84fb97d017c1667dc0bbdcb59e364784b"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/transport/strict.py",
+      "bytes": 8158,
+      "git_blob": "7dc9fe80b2e161a2e1b57005e68575a45e2bd698",
+      "sha256": "79be7c297ac93fff2dc952e15c52e68d21af3a60c585f5eedad97ae864d0cd96"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/validation.py",
+      "bytes": 13889,
+      "git_blob": "7f864a051c4f5c354066004e36b78eb38793ff33",
+      "sha256": "16aca756296e27a14d7b9fd37d4fcada974bc7c9f523075355a5a15ccf6d394c"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/validation_durations.py",
+      "bytes": 3156,
+      "git_blob": "e37dd96e5f4ad0b5312f38aec770f4c6e7ef13e7",
+      "sha256": "90a405618ea97425957939fef6a5a66d492d50e3169110690be6e9ad3815b57f"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/validation_timing.py",
+      "bytes": 12869,
+      "git_blob": "296efa37955f11d5b56b7c01ded61339cdd0b830",
+      "sha256": "6b901f37895c646c872146c2fa06d8a29ff68aebf7998a13814cac6f5a443e10"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/__init__.py",
+      "bytes": 236,
+      "git_blob": "3bc0c066886728df6a99cb925524f5d4d9325e9a",
+      "sha256": "b1403e67ecd0dd53d210705824b4c75fa0d0d6637f7e66647bbedb0191bf3d84"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/cli.py",
+      "bytes": 4043,
+      "git_blob": "93e053f399e199c3b8af581d7feaa5f6debcc2bf",
+      "sha256": "81f8a967b165a34a5b39494fe889f0392d6c4702bce76f3c7b5db48a98c27b43"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/export.py",
+      "bytes": 2011,
+      "git_blob": "e6209896c676910443b49850b5dc48ef6612907b",
+      "sha256": "b9294a172e4afcf1289ee880eef3ad7c1ac49e5550ace22eb670135df5f29997"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/result.py",
+      "bytes": 2537,
+      "git_blob": "069da7bbcc7813cea6f4a3b2527d859a02eed20d",
+      "sha256": "ba76abf479695b330e2ffcf04245e225aa1943c29f348df7f19bc538ea6f4fff"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/trace.py",
+      "bytes": 12079,
+      "git_blob": "1ae409679d0ca9ea7af35baec2ee133dc342a54d",
+      "sha256": "a92a216b637eb08a137fccf576db78f96565de7a943203e17b36d3018ecc0053"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/web/analysis.js",
+      "bytes": 1755,
+      "git_blob": "4d5da160bcfa4133ab261af3c01c530330c453d2",
+      "sha256": "a0e3b171bee2b037ec6b8bb999b219339ee91180e8590ec807488293106b6462"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/web/dashboard.js",
+      "bytes": 7747,
+      "git_blob": "9970eb8ef90a23a4fd2cee40cb48291ea6e2fbee",
+      "sha256": "b0a251d93c49edbfab93915bf155ba0e55810f33de2d78b3ad1e86ec57587622"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/web/loss-panel.js",
+      "bytes": 2310,
+      "git_blob": "e9b18c60e5d589320d38daac2039008cd2bc33b8",
+      "sha256": "01d8ec2f147c65c8a02197d8c80e8ba85a91d22b90bc34179a9d525e55856b21"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/web/loss.js",
+      "bytes": 3443,
+      "git_blob": "e355b6d91e7ce516daebef3555f37a882818d109",
+      "sha256": "70f69b20ac3a75a8d037f6de6f7336aed47ac870b71a22490eb9b26401f5ffe9"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/web/model.js",
+      "bytes": 6722,
+      "git_blob": "51109298e62247206040206fc8a31e8a4c2ec66e",
+      "sha256": "eb5eff2d47afe89632f14280b23dd14f6061102db9037c504b6d1d7e2373fe56"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/web/paths.js",
+      "bytes": 6515,
+      "git_blob": "9ac76ac28565976b48b7029edf8f3b291907a33e",
+      "sha256": "38fe95a4b2030fd364638baa442ff4aaf709d631bd12774e437269ebfa0e74de"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/web/viewer.css",
+      "bytes": 21689,
+      "git_blob": "eec933e9337b5fb4abc7a245651ba324a9c0bfa8",
+      "sha256": "fc0b5f99766bca2ee4cfb64bca081e13ff8701dff3f08e04be08914fc952f48a"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/web/viewer.html",
+      "bytes": 14434,
+      "git_blob": "462d18f1d97d456a8502464bff1271aadbe6c134",
+      "sha256": "1234d9fa3f0609741b135491d93a5eddb191b3809ab7297238787a180958445b"
+    },
+    {
+      "path": "modules/physical_compiler/src/nadit_physical_compiler/visualization/web/viewer.js",
+      "bytes": 34856,
+      "git_blob": "f10cbc91b6bced225910903dc8cd28aeefccdbd4",
+      "sha256": "72e6887b964ff6a0030467ec3ccb1b94eba3cbbbe0b4964390eba2c949d4d391"
+    },
+    {
+      "path": "modules/physical_compiler/suites/feedback/multipair.qasm3",
+      "bytes": 296,
+      "git_blob": "362c05b6ba0487978df30ed1bfc268525845fd94",
+      "sha256": "1436f0bf280e376e4b2334ec2888caaa08ba5ccd80f81f623350dcd3dbe0f9a4"
+    },
+    {
+      "path": "modules/physical_compiler/suites/feedback/suite.json",
+      "bytes": 367,
+      "git_blob": "e6b2c43c163c29a74a9db9f2c1cd026acd0a8d86",
+      "sha256": "488da665bcbea1c570531b3ae3234a84ea48723f337a1f3c5ae7e67e5b678ed4"
+    },
+    {
+      "path": "modules/physical_compiler/suites/paper26/suite.json",
+      "bytes": 5216,
+      "git_blob": "6a0d209c0c1d9daea10c55578412e5b0ec2f3dd2",
+      "sha256": "644bb74af971a8daa038d9a72a60beff3147b43b1053b2fb7c8d5ee273e9fc7f"
+    },
+    {
+      "path": "modules/physical_compiler/tests/.gitkeep",
+      "bytes": 0,
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "modules/physical_compiler/tests/fixtures/devices/zoned_small.json",
+      "bytes": 1358,
+      "git_blob": "aa6e366cbe2b0659e8e4be1c00bae42d5c092aa4",
+      "sha256": "b293a2ae2dfed74c6ebd0d385e7896749fe0bfd8a6abd71b49bc94131f655230"
+    },
+    {
+      "path": "modules/physical_compiler/tests/fixtures/enola/LICENSE",
+      "bytes": 1500,
+      "git_blob": "267b0a31a8c272645f3d02a727d8c3adcd8691c7",
+      "sha256": "a8663338fce27cf0e5da614f04d0b72e7559b31bcd41b6b115572d1d8df985f0"
+    },
+    {
+      "path": "modules/physical_compiler/tests/fixtures/enola/router_mis.py.txt",
+      "bytes": 14438,
+      "git_blob": "93d884647d2a2ec444fbcaab54316caa4d7d0f52",
+      "sha256": "a75e92353a74b6f3597a33b214d358b0782de2fa60400362c5e1967646cecb82"
+    },
+    {
+      "path": "modules/physical_compiler/tests/fixtures/logical.qasm3",
+      "bytes": 2542,
+      "git_blob": "099e9073e214e8a663c653858dd582f1ae97232e",
+      "sha256": "57a6613215c0b6118fcf21b9c491ef22cde0bfe93ca7f0c6cdecad7e90deb391"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_architectures.py",
+      "bytes": 8375,
+      "git_blob": "b3c3a3f9e5459b6b439ba39973ad908cd36a0925",
+      "sha256": "128d03d58d161e31b309eed6c73bbdcab33bd3c1ec896a986b1186cf891db15d"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_astar.py",
+      "bytes": 4109,
+      "git_blob": "d645a136d9f44aaadaf5a9582885dbff684caea1",
+      "sha256": "17323d9e0acb872b552289d45c437211cf99fc9b46c626499450e84d0be2f5d7"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_astar_source_precision.py",
+      "bytes": 1410,
+      "git_blob": "90d9c52f9a86a0bc84a0315d2119a59d6202432e",
+      "sha256": "24f185db6ccd5ec53a6dacf3d549b61dbaf0bbf70843c19bcc7c7d4c261c8647"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_atom_ir.py",
+      "bytes": 10557,
+      "git_blob": "5f519a8c3deb41ba95b5c3d82b28f8331e186d99",
+      "sha256": "f5b25d542621bbb9d09f1e429ae023a3ab6af2a40b7ea7634ba9163960647fe2"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_batch_readout.py",
+      "bytes": 11544,
+      "git_blob": "727493f175025e4736277691807b6fb1b6f82c34",
+      "sha256": "84120957deb79a70967ecde87a02c332c5df3a4f6370aacf70b8534f094c4a73"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_capabilities.py",
+      "bytes": 3230,
+      "git_blob": "27b2d06c3892bd5d84357783e19f281f73e7d31b",
+      "sha256": "743c8413522912086a30278e6f25431d5f64f2bf7cd66e2136eabc0e0e84e715"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_cli.py",
+      "bytes": 10989,
+      "git_blob": "9402c84afe0dc932c832835b0b7bc2a0b0401a1b",
+      "sha256": "7574cea58526c7cb1bca9c2dc129ecc02b062e7911ff836ca3dfc34526700cb2"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_cli_v2.py",
+      "bytes": 6905,
+      "git_blob": "38ec3cee9e85308ac081c969f158af31e23a27ff",
+      "sha256": "ca4c7ed82fb16027384161025dfefd92889b6eb0f89e93b4d43d4c31589fe49e"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_compiler.py",
+      "bytes": 12578,
+      "git_blob": "28d6282358e6deb8112379d300c4e363b7251bf7",
+      "sha256": "de882c7e5de91375aed7b03fd074b5d9d44bcaa1ad2488528587af72e02f9e42"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_compiler_conformance.py",
+      "bytes": 4376,
+      "git_blob": "667eb06dfe2626cd3b7201059b93551fcddfe492",
+      "sha256": "50071a522c4e9f99228d1bbd931eb642b5ba51f5d13581dd006107d9fe0ee624"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_contracts.py",
+      "bytes": 6806,
+      "git_blob": "ffda04bf760a1a8872fc64e88eff9cee98a093a0",
+      "sha256": "0fdc22626025702d01d0d922795bab94d09f0ab4e1255e49d3d5cb8caa8d68fd"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_cost.py",
+      "bytes": 8975,
+      "git_blob": "3af56b024cb3565a31ff94375f7d267f73228ff0",
+      "sha256": "893ff96de3f3bd8ba742b1d7bfea00ae639b543fe688d170adddd0b2d2715762"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_device.py",
+      "bytes": 6881,
+      "git_blob": "bf6d5e4bc3c66e029da254920c7e76469fdace6f",
+      "sha256": "2f2b53ec5f3d27b8a8622d746c91714d2bca623335db86267343355de3f1d2b5"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_discovery.py",
+      "bytes": 2029,
+      "git_blob": "6df719981138c02df832767aaf46c07ee3219680",
+      "sha256": "14c2ecb1d0620e7688e3271d4e0c992a58c9d454b4aa22bf038ccbf976987f14"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_emission.py",
+      "bytes": 4552,
+      "git_blob": "4c8fc11848d34e821efb6a584064ac2a5ec8107f",
+      "sha256": "73e88aee484f2dc6c81eb9e749f04adf28782bc0a9d21a9f9b420ce757ad8341"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_enola_initial.py",
+      "bytes": 8856,
+      "git_blob": "2e8ff3fd68af1d686e43d1ccdbd41879b3b75871",
+      "sha256": "3686fd0400c8c09f331f4052ae95db9c98f1f7a280683c1230ee4fd49ee8aba3"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_execution.py",
+      "bytes": 9183,
+      "git_blob": "161dd195657e9e2e7aa58a501f0eebbc47df003b",
+      "sha256": "8dad7e48f6717c7b41fe83e782915965ff3752ff35948026c140cff24c9db93e"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_experiment_summary.py",
+      "bytes": 3982,
+      "git_blob": "6a2022a75e8a2e20892296f1f2d26341de9ad733",
+      "sha256": "afc771369af9f1a1e7610009533e7c903e72745e426ed7ca6eb8433e37c61972"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_experiment_viewers.py",
+      "bytes": 2098,
+      "git_blob": "c73dd94e3351046fc015992e80bf1172203c5eb3",
+      "sha256": "f24f4fc512252cb5a464936a65fa2cba376687e7ce4374755ef810e4479c39b4"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_experiments.py",
+      "bytes": 11500,
+      "git_blob": "af0728ac46e7abfc2fa31ca48b21ba54d875c7de",
+      "sha256": "bcb739f08315350372a1d49c546dfd26a85dce75d3a0fd519e88af8be9726c85"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_feedback.py",
+      "bytes": 10390,
+      "git_blob": "8db79d96aa93b29e44e1060016d35268227017d9",
+      "sha256": "f4c3263ec12050bccb35519306e6fc0080100b60fcc7c031f1065a8bb0143e31"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_fixed_home_reuse.py",
+      "bytes": 8593,
+      "git_blob": "ae1b82a99ab5223f2c240e51bb1f44204e3c230f",
+      "sha256": "5bfc8096c08392c28481b7e50a38be237c232381860b3eaf34b4803da55e253f"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_global_rotation_placement.py",
+      "bytes": 7351,
+      "git_blob": "949053ad84e819463bc7a720e9c2c48f5ca5c3ca",
+      "sha256": "7f1b50f43334c86a8cf6c146cc291b042c4056b20094b92b7cb77ca16609a674"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_heuristic_placement.py",
+      "bytes": 10210,
+      "git_blob": "3bed04aa4d451b3eefaf63e5b7619d7126c65a5b",
+      "sha256": "debfafc0ae2b6c2a9ad46b3ecdb1de640280fbf76cacd7a8532d6f90a3b22fb4"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_ids.py",
+      "bytes": 3502,
+      "git_blob": "8941388df6a1ca4c75a7d53e4452b61f02536916",
+      "sha256": "f3881b8ed2159575dd8532571c9246c82582d03bba4261c6a956bee7b9f90e1e"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_ids_compiler.py",
+      "bytes": 10346,
+      "git_blob": "582373d30c21a337901a56a759218e1bcdb95d1e",
+      "sha256": "048b98a79d81c05d9af0762467c242fedba9b15dbd10d4c6cdc97de73b159d8f"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_ids_example.py",
+      "bytes": 1120,
+      "git_blob": "118a1f7ba2f381ec25272e966fa4351c4f917958",
+      "sha256": "8b760fb30466b75fadddbe768d9f919c236baaa56bae098b7cb1c9ff455826d2"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_initial_placement.py",
+      "bytes": 3400,
+      "git_blob": "b113c51b98f03d5c90f35db05574ef5f30532aa8",
+      "sha256": "c15aa63ec25ab19d2530f95baf158e62c1ea3479b0e09cab66723d31bf4cf3c5"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_job.py",
+      "bytes": 23272,
+      "git_blob": "f690210d89d59d0e7762731edc8a52e3edf5176e",
+      "sha256": "787b6c3958b386f7c87f7c65de4249ad876b6150aaffcf71a7396020d60d0bd5"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_job_examples.py",
+      "bytes": 4139,
+      "git_blob": "d1133ac7f88bd5aca14d4d1c86123bf80ab922a0",
+      "sha256": "2e43662bed9986057a48aa3128f5ed5f3e885932a01aaa7cd484b5e53e7902b0"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_layer_emission.py",
+      "bytes": 5204,
+      "git_blob": "7e595695950c022aab374af8d5b15d6774160575",
+      "sha256": "3ecf50bdfd09ef9bf8d2360c08c141aefb42d96e55c0e68c9ade99d1cca59510"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_lookahead.py",
+      "bytes": 8845,
+      "git_blob": "a2bcadf714017a123c12b396468776b5d52c340e",
+      "sha256": "66aa654b3ea23e351c0ede9896815466db2775c938382ebe45a760ac99735f0d"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_metrics.py",
+      "bytes": 4056,
+      "git_blob": "4d9583f038ffbd12c747bfb59fd51ab297f0f7c4",
+      "sha256": "1333c52458716d3313e18b7d1018be37128d9bd193336198ef5446f6d1bd04d1"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_motion.py",
+      "bytes": 17671,
+      "git_blob": "db5bd164f3d08e6c0b7b2ed2a25e0546c9f9ee01",
+      "sha256": "56697232229d041e5c65ae048cb6291ba06d7b999d6486a1151354defb6af6ff"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_motion_profiles.py",
+      "bytes": 3594,
+      "git_blob": "672d988aba7147cb261dba971c6b7ea1e105cfa9",
+      "sha256": "01d351a1ef68507856fabbc2c5916e333637f316fe292a5c6f72623a4855bc10"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_multi_scheduling.py",
+      "bytes": 2750,
+      "git_blob": "9728ae8712885c46671a317744383389c7de4537",
+      "sha256": "8a7b9e6ae5e7bc6c81a69e995a12be5d3a72c82fb192b16dc051731194c715be"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_multipair_compiler.py",
+      "bytes": 12446,
+      "git_blob": "d3072b319d806abe1056618341d7d70efbee5507",
+      "sha256": "2179d057e31a306934c3f24c420a13bf950664cb6cc24e6fa82a70adcc1dbd1c"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_multipair_placement.py",
+      "bytes": 9309,
+      "git_blob": "4647f2823367d33ddc0bcfbecad74d0bb60cfbec",
+      "sha256": "6baff7f7d8be76cd5f5bc4fd4a2a7b39d9756ad11cb2d0ec2033812638f5e93d"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_multizone_pipeline.py",
+      "bytes": 10807,
+      "git_blob": "2f8a9364fc36e031b42e6aa4a4c207aa5a102716",
+      "sha256": "2068a5673844c8f016033e825c9a44398e743cd153cf42915403791463bdd423"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_native_frontend.py",
+      "bytes": 9653,
+      "git_blob": "eeb07f057f520553102d8e04ade4844c43290018",
+      "sha256": "3aa6fbf1698819ba75d8837900829b4a0859632e8550797dc508a49cea69bee9"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_noise.py",
+      "bytes": 8608,
+      "git_blob": "7fd53774f60dbd68039887b4db921aa618d3b9c7",
+      "sha256": "4b73fa8ea4831ba58cfdae7b1180206a2209cb493599a131b69a88e2290569e3"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_nonzoned.py",
+      "bytes": 14438,
+      "git_blob": "dd25e96ca88c24563e7225ea35b2f3477e13479e",
+      "sha256": "789d46453d62621e246f832f2837028f8eb5f0468c0b882883cb52e9db135151"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_nonzoned_reference.py",
+      "bytes": 3686,
+      "git_blob": "57e3104ccd4f24219d34b6cdfe99addd1f47164c",
+      "sha256": "a4616b8fdb912c530faeb5717a97da9ee92f6dfa48f7b76d79731607457b2c5b"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_occupancy_grid.py",
+      "bytes": 2327,
+      "git_blob": "5cd6425be96f194b0a3aef85c478679457347b98",
+      "sha256": "b43582062cd511c21cb3b6aeeee2d2f5d84008f545b0ce5d90253cad1727feaf"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_pair_arrays.py",
+      "bytes": 5853,
+      "git_blob": "0cb3e241ce845819cf6c90a89b92e119fc692d20",
+      "sha256": "182b07bb4ec7fcc123f66a35cd54075c370f30e2dac5a1b6c6c3252bb3d68823"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_pair_catalog.py",
+      "bytes": 3367,
+      "git_blob": "6194cfb1fd3c667147275208b35ae87d53a05f0e",
+      "sha256": "1fbdb8ccaba35d076fa1a8cc2c878261479cf3d39c34bb5a2ea1f9a1acccafac"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_paper_timing.py",
+      "bytes": 3128,
+      "git_blob": "7d863c6d2f794e87f126665ce062952262c358d1",
+      "sha256": "31ee9369291c932e037261b40ee45438b509fcdb7d68ac133fb06b781bb39768"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_physical_ir.py",
+      "bytes": 6308,
+      "git_blob": "731e871d17c8155d9cd68ea9be8db82444033aa8",
+      "sha256": "a9b0cb52a350cc42a5b7574021d11f2b06b641a6ff450adaf58ab585ba455f0f"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_pipeline_comparison.py",
+      "bytes": 10610,
+      "git_blob": "669e4c8157d0cc9c56213f7a0603a3f3bb14524c",
+      "sha256": "ec85d298778e5ad5b2bf088490514384cdd03b30601f0669efe4ad0b4de3a1e5"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_pipeline_reference_data.py",
+      "bytes": 5292,
+      "git_blob": "69a54e3f77456a35f301126816f99e667060f245",
+      "sha256": "19c2a4ded431189294383f252835f63a353354f3172935218fed012c7564ebf4"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_placement.py",
+      "bytes": 6929,
+      "git_blob": "0799e4224e08886a415e6d1dcd87713e474ddbd9",
+      "sha256": "fce350010bb4d72cc5d4f949bb05d85170bcd2bef77e55b0c8457f00949c8cb5"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_placement_arithmetic.py",
+      "bytes": 792,
+      "git_blob": "9bc6159b582f42f95a22871b627621f2f681ab74",
+      "sha256": "c2464f4eb28e4bcf4b0f36f163d001b3f0d1ac4b48e14ddbb68c6a7247d40f07"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_placement_candidates.py",
+      "bytes": 4504,
+      "git_blob": "51c4428acc3df0061572ba063c6d5bad572a415a",
+      "sha256": "a63d9b1285b00c89c9afd7f7b426862f317de724c73ab93dfa45da2b1a784295"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_placement_geometry.py",
+      "bytes": 9109,
+      "git_blob": "0a2d66923b526d8a7b22306295c5e223b38edec9",
+      "sha256": "79fa6f071fb5b5810ff8d09472c98220111f49aa99dd0cdc99e1a4e091146669"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_placement_handoff.py",
+      "bytes": 2314,
+      "git_blob": "6a20661c0db1e9abb1c4a955355aeb530c138c4f",
+      "sha256": "c9c7b4a267ef317af49f2bfe7bd74a5ae089c03b05f9279e9039b69300b7ee5b"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_placement_scoring.py",
+      "bytes": 7725,
+      "git_blob": "d5d3038333c3a86bf50c5e7e1355535484940df6",
+      "sha256": "c76e6a6772fe09e9a95ccef9006e3daee643894a6e037f1b42dafa665bacbcb9"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_placement_stage_trace.py",
+      "bytes": 1675,
+      "git_blob": "4537532620dfad4ca07ca0f26f79a49346b5a8eb",
+      "sha256": "5df9fbfd0dfab51d2eef668f2e4da9b3d9c3ea0580ae37dd7dd7027015e71cc1"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_placement_trace_reference.py",
+      "bytes": 1399,
+      "git_blob": "28e24e56c10d3dddeae405f75132b6f8641ae4a0",
+      "sha256": "185a9bf0012d95fa147805b65c6a5840bb07581f35b1eb861b9b29f4ffb411c4"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_program_compiler.py",
+      "bytes": 3500,
+      "git_blob": "e2fb5471b70fea5c3750def41be9a14867cac3fe",
+      "sha256": "2d6b8a917cc28b93e483e151088db6241cdced2d22aaec5cd97f765c50981c84"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_qasm.py",
+      "bytes": 13594,
+      "git_blob": "342e186a3e4e0a77987ac269d3835c7a3d69bc34",
+      "sha256": "9330e956a912c7e23f76f2eac45d2f6262b906c5280362d007fac8683eb63800"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_qec_mode.py",
+      "bytes": 12119,
+      "git_blob": "03702a1d437cf2a5f544f9fd171d104d7db8cec7",
+      "sha256": "c2ebcd6862ff10ea392719c06a1368aa7f5170dbfe37edcc53f15d7d4c54119f"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_relaxed_compiler.py",
+      "bytes": 3967,
+      "git_blob": "9789f579dd564cba633eea65d6807c31b6821d55",
+      "sha256": "63cbe351ffffa5da1c0e764c532b9314fd630924eb8937e68ed206eb3efc3019"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_relaxed_groups.py",
+      "bytes": 6200,
+      "git_blob": "b3c75e53ec034946e66c78425d0ef494fc9549b7",
+      "sha256": "fd0731c10eabe3ae72ab2dd51689393c74b16e95fb3e1b25f827cbc87b2e8c50"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_relaxed_reference.py",
+      "bytes": 2564,
+      "git_blob": "ef8b5bf6de5db0859b8f526ffbbf4435ef3648df",
+      "sha256": "ff57b78ff9c5729e15ad4cb9b94322bffedb92d5fa0bb97e4a5cdfa90e522c9f"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_relaxed_rules.py",
+      "bytes": 5209,
+      "git_blob": "e600f9f0c80259eeae76582f11bd8446938cafda",
+      "sha256": "4f549284316dcaf711498f1d66dc313ae4461a888555ee9bd48d3ad9e26467cc"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_relaxed_transport.py",
+      "bytes": 4398,
+      "git_blob": "0e393d6f1fee79fcd02577348993634e0ab76784",
+      "sha256": "a2c2a663a7325bf9dd1d983d4fd8487f31ccdd4aab2e627f7a657df928e71b86"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_relaxed_zone_handoff.py",
+      "bytes": 4814,
+      "git_blob": "b7707da4ce8c95375e30703887f1f4c004eda727",
+      "sha256": "eea68715811ed15541cb137a1c66802f3a96d5a8862cf1f26ff591b03ab4b568"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_replay.py",
+      "bytes": 6760,
+      "git_blob": "c7e6c47ab06555a9c1787f440d02622c730a34ad",
+      "sha256": "4f31d55bd6e93d3ad5d700be8f7e6324c0d68ceb8762c57704209ddc27adad2d"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_result_identity.py",
+      "bytes": 6234,
+      "git_blob": "2674602a17327d138a099ac71694ff8203dd0598",
+      "sha256": "1cb76c18d77e9a9acd5b696dd41fae88be9f88f76b72e6142ef4e1e7df3d9350"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_result_v2.py",
+      "bytes": 11311,
+      "git_blob": "7c1d2475d976235d507323a942b2edb73e60beca",
+      "sha256": "30f45a2f072a1489d02ed22e25bc9ee9b3a09d9c0de209528f23f5293d52d657"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_retention_lifecycle.py",
+      "bytes": 11682,
+      "git_blob": "36b4d01b2cf0690d60a5313d7f84b1610a115d5f",
+      "sha256": "dac27b86820fdcf6149d74de0880016309e6db224b0435bc2f2626318c32db60"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_retention_placement.py",
+      "bytes": 7656,
+      "git_blob": "f68149b2672138de36fe2cc5b50a01453bc88af8",
+      "sha256": "b744136aefa2c2f61104e27bb1b7f0edc3b0100fffdd6f32ecc20a04ebb8ebe2"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_retention_regression.py",
+      "bytes": 7710,
+      "git_blob": "eb6b1890287453ccfceb0692bb6adac248a1180a",
+      "sha256": "63dffd0e0c4849c825a936f11f91784d23fbc24d0633170ece7861d3c3fd92b5"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_reuse.py",
+      "bytes": 5944,
+      "git_blob": "e596d7eb13b3388791308058359574efd2a41029",
+      "sha256": "b2ed680d532a1f28e3c958eb21a64a7df0837bd6a563e4516ebb9fdc94bdcf28"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_reuse_compiler.py",
+      "bytes": 9571,
+      "git_blob": "7bec45aa64a3bd6de686ec317111c7629d8b04cd",
+      "sha256": "c5e48bbb4cc33536fcba90e9962075b07f6a6c69611f6ba90658c6746f2e3ba4"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_reuse_feedback_timing.py",
+      "bytes": 9876,
+      "git_blob": "dd593ac58d11df6dd988d4ea455aab572dc5e5ca",
+      "sha256": "c17fa4ab1788337eb31748bef789211489fdcdb9471ddd70f36d3ba0e46cf066"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_reuse_metrics.py",
+      "bytes": 3448,
+      "git_blob": "21a7bc9f8fee5668eb8a71247e3f1cdcc4846257",
+      "sha256": "a6e8d92c413bb1ce6698b549f8062749a4c776b9c732e34f4d52542229cb5388"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_reuse_placement.py",
+      "bytes": 10012,
+      "git_blob": "7192eaf0b0b546d4819024183ac456fe98992cd6",
+      "sha256": "8b09d30a85b8c3135d3724b81c7b257b715ac73c82cfdf8a482ac857b691f6bf"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_rigid_motion.py",
+      "bytes": 11753,
+      "git_blob": "ce892d5a28a577b9e698a8d7bef9a0c4880d82c6",
+      "sha256": "47dfee7ecf2d6d3de7eefd52cc6e81afd1637318ec31e7e4ba8eb2c327089aff"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_rigid_placement.py",
+      "bytes": 4630,
+      "git_blob": "030b57511117c6e481d8a08373aa959791cb2c46",
+      "sha256": "03ea5d528b1a3de5e644c6831b3bee8979f97ef309b5e943dcf19c511eae87b7"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_rigid_rules.py",
+      "bytes": 9557,
+      "git_blob": "bdd2af0e088e86e719772c9c5cfc290bcd757cbe",
+      "sha256": "7007886a5fba11f11ef2b5c7c1a20ac2cdea968619767779c2503b3cfd987c5e"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_rigid_transport.py",
+      "bytes": 8462,
+      "git_blob": "1dac392ce64fc46b25764caf1fa5fcb151804a35",
+      "sha256": "2f73900e67d9eda9834da5814bac5e1565c9627275bb40a3a1828df012c7d0a2"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_scheduling.py",
+      "bytes": 1785,
+      "git_blob": "5c70648ff5f43f0399d02b79b227379a2aad6ef8",
+      "sha256": "0066fa494f433a3d157bae1e9f35f95a51e089c76aacabfb23cbc9dfd10fb75d"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_semantic_actions.py",
+      "bytes": 15488,
+      "git_blob": "1ff40452649c6776f87d2dd75787b29341e17886",
+      "sha256": "a9433215b313d1a084bde3d7af5f7811b283814b96b5411b598755ebb7763ee9"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_semantic_reference_pipeline.py",
+      "bytes": 1339,
+      "git_blob": "6ccd66ce509cf8aaec124c51f4f9a733be66ea23",
+      "sha256": "bd2af558fc2de547363044d2cb605ddc4937f7c2c7d2eec6ab855b4edc5774d4"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_semantic_timing.py",
+      "bytes": 15949,
+      "git_blob": "700c6e6bac39eb07146bb5feb2ceb697516e6f1e",
+      "sha256": "15eb49fb51047330f542d34aafb3223cfb6f4f86b338e9ec4f78f3f9a6ec40e4"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_sequential_transport.py",
+      "bytes": 10011,
+      "git_blob": "8d03bd59c412c91f5154eb8df08a8b8dff32616f",
+      "sha256": "dc62117c79917f1dfd5949ff2d32fa2e8ac7f3b797f63723ced13174ab017885"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_serialization.py",
+      "bytes": 9435,
+      "git_blob": "e25896ef197d1678170309e096e1eb8e87b312e6",
+      "sha256": "764d8bcbadd8165951cd98ce0d8046663c33791ca947fa10fd5fcd1e173441ce"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_shared_architecture.py",
+      "bytes": 905,
+      "git_blob": "5b65164703eeb2972bb979dd7420c38c375f660d",
+      "sha256": "72178b874a947fb8d4de737d7ee9f1f354c30060693089285ccd25148b1b011e"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_source_benchmark.py",
+      "bytes": 4312,
+      "git_blob": "166fc4686fd6a0968041bab81b437703460dfc77",
+      "sha256": "7d19fea74354290a77fdf6a5a40d5c76ddb65a9d61308bead1b28281d0ee4d80"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_source_candidate_order.py",
+      "bytes": 1950,
+      "git_blob": "9f2934c646d39b6515825924f9a8e0dd7dcfbabf",
+      "sha256": "bd7bd8688a997c14045316ab65120eade3f87c256da7ae982d4aca5a252352d4"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_source_layout_candidates.py",
+      "bytes": 10460,
+      "git_blob": "a9ecef04c06adabf48a32053825c9bd369b04439",
+      "sha256": "82fb5302dad4147df01f4388798f691bab070372d63b014ebf3b05bea2a7f71b"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_source_layout_pipeline.py",
+      "bytes": 2838,
+      "git_blob": "577d40fb3c0f2914c4fb33fbeb8935e578f925b6",
+      "sha256": "4fd53a2b875e7a0a381f6ede791caca86ad00a62b0a30e4ff494c78685c736de"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_source_layout_reference.py",
+      "bytes": 2400,
+      "git_blob": "cab908708dcb7eaf90610adc3067f856f7a9bbe9",
+      "sha256": "48a20c5f8df57c1a8ee58eef54177fd373a9f149ccafc32aca2770367c45e384"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_source_queue.py",
+      "bytes": 1537,
+      "git_blob": "61a323f844fad997b2aec7a97dd81882df1b8bcb",
+      "sha256": "5bceaa13e678cb09fd04cdd3585f0286b8799e13d5b85ac1a7da9bd262c20252"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_source_reuse.py",
+      "bytes": 4085,
+      "git_blob": "31c1a9fdaea2e4298e29500a1ab2086fa52fc6d1",
+      "sha256": "a86787b4f5a832120bda9a31f2376c2eb40911794f629e0e9e599f6dd1885706"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_source_scheduler.py",
+      "bytes": 5070,
+      "git_blob": "5048e539da45f1b43c04bd1ed8b4823d070e5ca2",
+      "sha256": "fd3f60521158eadddbe230055b25bee44fbc5f6589ea60a10b8ec3ddb30f0fcf"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_source_scheduling.py",
+      "bytes": 4728,
+      "git_blob": "457225dc5549f8a6496584bcc3c177650c2aefc3",
+      "sha256": "1bc00e43fc99d732d9f58e581fcc765f5254c4c3273fc91c8b781f9c2753ec8f"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_staged_admission.py",
+      "bytes": 3451,
+      "git_blob": "9b18e7580015aa124732edc948f0f5e35e45f584",
+      "sha256": "4efa4b2fd966d76d48965e6c088c116fbd2ad609c491e7875cbbd3a0b9797712"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_staged_compiler.py",
+      "bytes": 5664,
+      "git_blob": "99d1ac292510aa142507253db1eff702d67d0915",
+      "sha256": "691392c46970790f0f0c8dc57ff6c4e49130549f8e4d7577c7f9745814867f4e"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_staged_geometry_admission.py",
+      "bytes": 4346,
+      "git_blob": "2c8c18f5dac9a1a62eb59cf6e9acfff3d5b1392f",
+      "sha256": "8b0386346b6137058830d3aa027ae4d98c2609e0d77c85ab4aac174e5846047e"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_staged_reference.py",
+      "bytes": 4785,
+      "git_blob": "0d52a9921bf1e9f790dde8c8b50600d9df6dc961",
+      "sha256": "ace0269bce54bcd56b133963615b0e0226b297439d770d8290cdda08fc458d03"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_staged_transport.py",
+      "bytes": 5341,
+      "git_blob": "8a1a480b7c87b6e220c62f4cd450940f0179f20f",
+      "sha256": "877461e6559b8a36b44d444641a2d153c4790d80fa9a057aaf64d13cdc4ab5ea"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_staging_geometry.py",
+      "bytes": 6017,
+      "git_blob": "a5c87250a398fbe5e3ba44bdf09d4848b66191ad",
+      "sha256": "8d0b0348b582b0a4bb7fc796e51d1fab393dce17218dad60fbeb1a8a5e8bd064"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_staging_plan.py",
+      "bytes": 5296,
+      "git_blob": "4cfa7a02a19f4e8e258b918723af87a60cebcf90",
+      "sha256": "a39f4ac268bd158994ec4a56782be8cd11875278bba16a3a710030342527ac06"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_state.py",
+      "bytes": 7611,
+      "git_blob": "3b688795a765dfe1e56690ac33bd6fd680357493",
+      "sha256": "c2577c54b104a27e06aad53368f9d8e4cd5adf39e0ddddf5622b8385a5f2fa08"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_strategy_support.py",
+      "bytes": 5468,
+      "git_blob": "e0ebd51398e1022db303833e53990a0a5d4b34c5",
+      "sha256": "5ae2140ebc0a0064ff81ffdbc7c6e2c580b3ddcfd8089cf680404bd9b1cbb62e"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_strict_compiler.py",
+      "bytes": 12433,
+      "git_blob": "014965469c734a78ec033ee234b0583fdf80c663",
+      "sha256": "5b77aba174c2ee549dcf6695b1b2aafeb7e94fc1ccb149219e8e9a53bd9b71b8"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_strict_transport.py",
+      "bytes": 11237,
+      "git_blob": "f9cd0119a596fc2418ca42f83de85face891665b",
+      "sha256": "7548a91cb34cd4160cb20387cf575b90854f57717dfd0d7e6d50f82c2407040e"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_transport.py",
+      "bytes": 8199,
+      "git_blob": "ffbab930a2933a5dfa08618dcb211dc59b9198dc",
+      "sha256": "0ab18df6a6f3d54ff1cf3b7780561618e4a770685a08e74b9755d6d1fa029cc9"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_transport_rules.py",
+      "bytes": 7824,
+      "git_blob": "34221c9f3936931a3633848a2ee2ffa62a01d40b",
+      "sha256": "b7562b28c096582bab758d1860dd6a1b092463f7f8f09af0345d1668301655fc"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_transport_source_scope.py",
+      "bytes": 8936,
+      "git_blob": "4272b27e24c1d5ca4cf7517d2522d4e16ab6efd3",
+      "sha256": "66731657b4f3b0b8a0fe1b1c9edc8a68343e648115c4b4429269ad4325c715ad"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_unified_experiments.py",
+      "bytes": 4074,
+      "git_blob": "8e49eae6877ff0b45c8f8d21d5e76c094bcb2830",
+      "sha256": "bfc3ffba13571f04eaf38234f6ce8006983c1df83ef3b9a79b2c676ddda9376c"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_validation.py",
+      "bytes": 11689,
+      "git_blob": "936144f8345db9806705522719a70cff3d061d58",
+      "sha256": "c6c216dbc593c1384d0fba8ad7d87c9b65aecd980964b4ceaf7466d9aaf35eb3"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_validation_durations.py",
+      "bytes": 4391,
+      "git_blob": "6d58bc75fb7d2935b888bc4116a6975c6783eb5d",
+      "sha256": "defad241792b813b8e3235149a796db3cdb265a2237f07dbb9d85bbae66f97b8"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_validation_semantics.py",
+      "bytes": 7603,
+      "git_blob": "d7b070e2989b169c38c227c0a361c37142ef25b6",
+      "sha256": "80fd4dda5ec8d66e938ed18f042c7ec18e83fb07c5b3346f15e0f11bb231cb25"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_view_cli.py",
+      "bytes": 3723,
+      "git_blob": "89cec492f0d52975aac4688dddc4de89d0b1870b",
+      "sha256": "6a2db63bedabea26ca9f0f66a9fc03c3299cf69dd7265633cdc683923258f636"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_visualization_examples.py",
+      "bytes": 4186,
+      "git_blob": "87a72405efeb2a17ec72a2f303b9e814f98f77bf",
+      "sha256": "34eb91f1e57107109b404b836e24e440daf7e02648a3b49f275ffcfdbccfed4f"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_visualization_export.py",
+      "bytes": 1845,
+      "git_blob": "20bbdf86ac6c265b6bc74baca6ac30f368bcb48e",
+      "sha256": "45e32c47e8424c0dc836aab1d078588778fd425362c4aa1f826d943dd2bbc10a"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_visualization_noise.py",
+      "bytes": 1279,
+      "git_blob": "b2f95d4c2a0489392d974edaf96d124925430cbf",
+      "sha256": "b7712ca3e8ddda794e564261f0e6e4761f010259f8c8469af68dbfd56b030fee"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_visualization_result.py",
+      "bytes": 3777,
+      "git_blob": "ef5bddf6145362a13a25b06d5aad5432f30b01e2",
+      "sha256": "8eec8d3df2cd652a479c5f02e33470b23385463367f695e5f8f8db280dd20acc"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_visualization_trace.py",
+      "bytes": 11808,
+      "git_blob": "a8c7c63af810b5dd97fb3daec147a43219ecb83b",
+      "sha256": "46b49d594a860e1540ae46c405afdd91607d348036fdc226b168e1c9928ea7ad"
+    },
+    {
+      "path": "modules/physical_compiler/tests/test_visualization_v2.py",
+      "bytes": 2913,
+      "git_blob": "bb91081ad82b532d09bef8c2a542a830bdd700fb",
+      "sha256": "ab74ee5f9e644c9a2c50a8a94f082d9f51d4a9aeff268b96e23d4ed8b3210016"
+    },
+    {
+      "path": "modules/physical_compiler/tests/web/analysis-model.test.cjs",
+      "bytes": 2051,
+      "git_blob": "47826accc9ac99687878fb3e010d0c4b61a3bb09",
+      "sha256": "3958477a04c7648ecf044566dbba88655dc2080096d401c4b8ebaeaec4f63323"
+    },
+    {
+      "path": "modules/physical_compiler/tests/web/dashboard.test.cjs",
+      "bytes": 3441,
+      "git_blob": "8027f389c30195c878e3fe4441c301da39724bb7",
+      "sha256": "8dacb57cae08dc4e326db546ebe27e28956f49ab5a521fab58b8194754ac67e1"
+    },
+    {
+      "path": "modules/physical_compiler/tests/web/loss-model.test.cjs",
+      "bytes": 3041,
+      "git_blob": "69de2918021de60ded8ed6d6fc86c4113624fd1c",
+      "sha256": "1c5b933756110cd929209ecc9f6c524b6beef16981778acfa9152b784904cd93"
+    },
+    {
+      "path": "modules/physical_compiler/tests/web/move-path.test.cjs",
+      "bytes": 6233,
+      "git_blob": "5c254905b7b9a6a8f3630c67bceb90352e457f97",
+      "sha256": "3f6b1518add235926fd308461b3f228a0932670ba153347af6ad8d63ed04d1e5"
+    },
+    {
+      "path": "modules/physical_compiler/tests/web/replay-model.test.cjs",
+      "bytes": 6021,
+      "git_blob": "baac0124d41b61d7e6a4cfb367291af47a47695c",
+      "sha256": "469dc7273b1823747be4f58be78ee1402785638641c7359c5cb18413e864af80"
+    },
+    {
+      "path": "modules/physical_compiler/tests/web/viewer-controls.test.cjs",
+      "bytes": 12817,
+      "git_blob": "ca792e1d15f9ca085d7506bf0d0b0854e3795f1e",
+      "sha256": "0dfe145701ec38f1822f0928ef35cb30032d9b8d7997820d121963824161d8f2"
+    },
+    {
+      "path": "modules/physical_compiler/tests_hsim/test_adapter.py",
+      "bytes": 3894,
+      "git_blob": "872dd30586a808f0665b9c7f8d424abf162753ff",
+      "sha256": "68824f7feefd5e1318823bd6969d305d04341887c1897d489c37e45d3ec273a0"
+    },
+    {
+      "path": "modules/physical_compiler/tests_hsim/test_noise_channels.py",
+      "bytes": 5272,
+      "git_blob": "867cb46717f4705078f4729cd5a1098feb2b00a7",
+      "sha256": "ad4c1e10bf87555256ef6926e1acdc7c1ce468d3e63f4ad4ed6f5c5e48d3c674"
+    },
+    {
+      "path": "modules/physical_compiler/tests_hsim/test_upstream_records.py",
+      "bytes": 6426,
+      "git_blob": "205b3ba5af5f67199c1049afc4572764a90c49b9",
+      "sha256": "f035d478de8d5dbc82f0b492d987b0542b22a8b4aafa73bba93e8582dc8f2a07"
+    },
+    {
+      "path": "modules/physical_compiler/uv.lock",
+      "bytes": 40050,
+      "git_blob": "e499506170d7fcff53988edead3afec20d2e5035",
+      "sha256": "731710cc3b1f303eabca6338afd01e1e852ffe4c14d16d7a6c0577d70b4e2585"
+    }
+  ],
+  "excluded_untracked_artifacts": [],
+  "implicit_exclusions": "Untracked files ignored by the source worktree, including environments, caches and generated physical-compiler artifacts.",
+  "preserved_main_documents": {}
+}

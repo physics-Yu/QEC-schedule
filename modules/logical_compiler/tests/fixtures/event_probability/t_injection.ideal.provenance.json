@@ -1,0 +1,11 @@
+{
+  "fixture": "t_injection.ideal.json",
+  "origin": "Copied from the surface-code producer artifact without editing the probability document",
+  "source_artifact": "modules/physical_compiler/artifacts/event-probability-v1/t_injection.ideal.json",
+  "producer_callable": "modules.codes.rotated_surface_d3.probabilities.t_injection.t_injection_port",
+  "producer_arguments": {},
+  "producer_commit": "1e67a0a",
+  "content_sha256": "027a1520ac29d3ebb4381518b8119c3d503ee9067abb8c285aa9ac7478e6371f",
+  "evidence_scope": "Real producer probability contract; logical branch statistics only",
+  "timing_scope": "Durations in the integration tests are synthetic abstract fixtures, not physical execution measurements"
+}
