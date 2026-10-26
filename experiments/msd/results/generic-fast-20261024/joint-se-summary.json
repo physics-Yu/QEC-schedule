@@ -1,0 +1,1586 @@
+[
+  {
+    "schema": "nadit.msd.parallel_se/1",
+    "standard": "nadit.msd.standard/2",
+    "parameters": {
+      "distance": 3,
+      "pipelines": 2,
+      "patch_gap_um": 40.0,
+      "factory_gap_um": 40.0,
+      "window_padding_um": 20.0
+    },
+    "mode": "joint",
+    "factory_indices": [
+      0,
+      1
+    ],
+    "active_patch_role": "W1",
+    "se_instances": 2,
+    "expected_measurements": 16,
+    "compile_wall_s": 0.020700499997474253,
+    "validation_wall_s": 0.019320799998240545,
+    "metrics": {
+      "execution_duration_us": 988.8174904678644,
+      "atom_count": 204,
+      "atom_time_us": 201718.76805544435,
+      "atom_idle_us": 189014.742138717,
+      "atom_busy_us": 12704.025916727334,
+      "movement_distance_atom_um": 6084.4838956805925,
+      "transport_elapsed_us": 861.8174904678644,
+      "transport_action_sum_us": 861.8174904678644,
+      "trajectory_bbox_um": [
+        0.0,
+        -160.0,
+        560.0,
+        85.0
+      ],
+      "trajectory_bbox_area_um2": 137200.0,
+      "exposure_by_action": {
+        "Reset": {
+          "action_count": 16,
+          "atom_events": 16,
+          "atom_us": 80.0
+        },
+        "Rotation": {
+          "action_count": 224,
+          "atom_events": 224,
+          "atom_us": 224.0
+        },
+        "Load": {
+          "action_count": 13,
+          "atom_events": 112,
+          "atom_us": 1120.0
+        },
+        "Move": {
+          "action_count": 14,
+          "atom_events": 128,
+          "atom_us": 8152.025916727335
+        },
+        "Store": {
+          "action_count": 13,
+          "atom_events": 112,
+          "atom_us": 1120.0
+        },
+        "CZPulse": {
+          "action_count": 4,
+          "atom_events": 816,
+          "atom_us": 408.0
+        },
+        "Measure": {
+          "action_count": 1,
+          "atom_events": 16,
+          "atom_us": 1600.0
+        }
+      },
+      "accepted_outputs": null,
+      "accepted_output_throughput_per_s": null,
+      "logical_error_probability": null,
+      "physical_validation_ok": true
+    },
+    "scheduler": {
+      "identity": "compile_physical / NonZonedStrategy / ReadyScheduler",
+      "single_physical_compile": true,
+      "submitted_at_us": 0,
+      "time_partition_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 120.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 120.0,
+        "cz_pulse": 2.0,
+        "readout_load": 10.0,
+        "readout_move": 420.0,
+        "readout_exposure": 100.0,
+        "readout_store": 10.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 2,
+        "multi_factory_active_time_us": 988.8174904678644,
+        "multi_factory_layer_count": 26,
+        "shared_transport_batch_count": 13,
+        "maximum_factories_in_transport_batch": 2
+      },
+      "per_factory": [
+        {
+          "factory_id": 0,
+          "measurement_ready_us": 768.8174904678644,
+          "action_completion_us": 988.8174904678644,
+          "final_home_us": 988.8174904678644
+        },
+        {
+          "factory_id": 1,
+          "measurement_ready_us": 768.8174904678644,
+          "action_completion_us": 988.8174904678644,
+          "final_home_us": 988.8174904678644
+        }
+      ],
+      "layer_count": 26,
+      "transport_batch_count": 13
+    },
+    "source_sha256": "4d207611ef7b0839d915519558a1568fde1a0efc42504cbc0db31a7c5044cf05",
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "device_sha256": "ffb74f87aefd44da644e7abf488701e50362b16dc69b4cc07574940f016e2e4b",
+    "physical_execution": false,
+    "scope": "joint SE round; not a complete distillation production cycle",
+    "measurement_values": "compiler fixtures; not sampled quantum outcomes"
+  },
+  {
+    "schema": "nadit.msd.parallel_se/1",
+    "standard": "nadit.msd.standard/2",
+    "parameters": {
+      "distance": 3,
+      "pipelines": 4,
+      "patch_gap_um": 40.0,
+      "factory_gap_um": 40.0,
+      "window_padding_um": 20.0
+    },
+    "mode": "joint",
+    "factory_indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "active_patch_role": "W1",
+    "se_instances": 4,
+    "expected_measurements": 32,
+    "compile_wall_s": 0.06697740001254715,
+    "validation_wall_s": 0.06812829998671077,
+    "metrics": {
+      "execution_duration_us": 1388.8174904678644,
+      "atom_count": 408,
+      "atom_time_us": 566637.5361108887,
+      "atom_idle_us": 528429.4842774341,
+      "atom_busy_us": 38208.05183345467,
+      "movement_distance_atom_um": 19848.967791361185,
+      "transport_elapsed_us": 1261.8174904678644,
+      "transport_action_sum_us": 1261.8174904678644,
+      "trajectory_bbox_um": [
+        0.0,
+        -360.0,
+        560.0,
+        125.0
+      ],
+      "trajectory_bbox_area_um2": 271600.0,
+      "exposure_by_action": {
+        "Reset": {
+          "action_count": 32,
+          "atom_events": 32,
+          "atom_us": 160.0
+        },
+        "Rotation": {
+          "action_count": 448,
+          "atom_events": 448,
+          "atom_us": 448.0
+        },
+        "Load": {
+          "action_count": 13,
+          "atom_events": 224,
+          "atom_us": 2240.0
+        },
+        "Move": {
+          "action_count": 14,
+          "atom_events": 256,
+          "atom_us": 29104.051833454672
+        },
+        "Store": {
+          "action_count": 13,
+          "atom_events": 224,
+          "atom_us": 2240.0
+        },
+        "CZPulse": {
+          "action_count": 4,
+          "atom_events": 1632,
+          "atom_us": 816.0
+        },
+        "Measure": {
+          "action_count": 1,
+          "atom_events": 32,
+          "atom_us": 3200.0
+        }
+      },
+      "accepted_outputs": null,
+      "accepted_output_throughput_per_s": null,
+      "logical_error_probability": null,
+      "physical_validation_ok": true
+    },
+    "scheduler": {
+      "identity": "compile_physical / NonZonedStrategy / ReadyScheduler",
+      "single_physical_compile": true,
+      "submitted_at_us": 0,
+      "time_partition_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 120.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 120.0,
+        "cz_pulse": 2.0,
+        "readout_load": 10.0,
+        "readout_move": 820.0,
+        "readout_exposure": 100.0,
+        "readout_store": 10.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 4,
+        "multi_factory_active_time_us": 1388.8174904678644,
+        "multi_factory_layer_count": 26,
+        "shared_transport_batch_count": 13,
+        "maximum_factories_in_transport_batch": 4
+      },
+      "per_factory": [
+        {
+          "factory_id": 0,
+          "measurement_ready_us": 968.8174904678644,
+          "action_completion_us": 1388.8174904678644,
+          "final_home_us": 1388.8174904678644
+        },
+        {
+          "factory_id": 1,
+          "measurement_ready_us": 968.8174904678644,
+          "action_completion_us": 1388.8174904678644,
+          "final_home_us": 1388.8174904678644
+        },
+        {
+          "factory_id": 2,
+          "measurement_ready_us": 968.8174904678644,
+          "action_completion_us": 1388.8174904678644,
+          "final_home_us": 1388.8174904678644
+        },
+        {
+          "factory_id": 3,
+          "measurement_ready_us": 968.8174904678644,
+          "action_completion_us": 1388.8174904678644,
+          "final_home_us": 1388.8174904678644
+        }
+      ],
+      "layer_count": 26,
+      "transport_batch_count": 13
+    },
+    "source_sha256": "67b04c4b3cd9a811601189d254a1941c80ac6a66ccf3268f60f4002517d0479d",
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "device_sha256": "bc2f37bc5135041c0c8c897434d3035fb59902b47df42e175b9b24ece2ede59a",
+    "physical_execution": false,
+    "scope": "joint SE round; not a complete distillation production cycle",
+    "measurement_values": "compiler fixtures; not sampled quantum outcomes"
+  },
+  {
+    "schema": "nadit.msd.parallel_se/1",
+    "standard": "nadit.msd.standard/2",
+    "parameters": {
+      "distance": 3,
+      "pipelines": 4,
+      "patch_gap_um": 40.0,
+      "factory_gap_um": 40.0,
+      "window_padding_um": 20.0
+    },
+    "mode": "serial",
+    "factory_indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "active_patch_role": "W1",
+    "se_instances": 4,
+    "expected_measurements": 32,
+    "compile_wall_s": 0.0629097999772057,
+    "validation_wall_s": 0.2511207000061404,
+    "metrics": {
+      "execution_duration_us": 4355.269961871458,
+      "atom_count": 408,
+      "atom_time_us": 1776950.1444435548,
+      "atom_idle_us": 1745894.0926101,
+      "atom_busy_us": 31056.05183345466,
+      "movement_distance_atom_um": 17928.967791361185,
+      "transport_elapsed_us": 3847.269961871456,
+      "transport_action_sum_us": 3847.269961871456,
+      "trajectory_bbox_um": [
+        0.0,
+        -360.0,
+        560.0,
+        65.0
+      ],
+      "trajectory_bbox_area_um2": 238000.0,
+      "exposure_by_action": {
+        "Reset": {
+          "action_count": 32,
+          "atom_events": 32,
+          "atom_us": 160.0
+        },
+        "Rotation": {
+          "action_count": 448,
+          "atom_events": 448,
+          "atom_us": 448.0
+        },
+        "Load": {
+          "action_count": 52,
+          "atom_events": 224,
+          "atom_us": 2240.0
+        },
+        "Move": {
+          "action_count": 56,
+          "atom_events": 256,
+          "atom_us": 19504.05183345467
+        },
+        "Store": {
+          "action_count": 52,
+          "atom_events": 224,
+          "atom_us": 2240.0
+        },
+        "CZPulse": {
+          "action_count": 16,
+          "atom_events": 6528,
+          "atom_us": 3264.0
+        },
+        "Measure": {
+          "action_count": 4,
+          "atom_events": 32,
+          "atom_us": 3200.0
+        }
+      },
+      "accepted_outputs": null,
+      "accepted_output_throughput_per_s": null,
+      "logical_error_probability": null,
+      "physical_validation_ok": true
+    },
+    "scheduler": {
+      "identity": "compile_physical / NonZonedStrategy / ReadyScheduler",
+      "single_physical_compile": true,
+      "submitted_at_us": 0,
+      "time_partition_us": {
+        "reset": 20.0,
+        "rotation": 80.0,
+        "cz_load": 480.0,
+        "cz_move": 727.2699618714581,
+        "cz_store": 480.0,
+        "cz_pulse": 8.0,
+        "readout_load": 40.0,
+        "readout_move": 2080.0,
+        "readout_exposure": 400.0,
+        "readout_store": 40.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "per_factory": [
+        {
+          "factory_id": 0,
+          "measurement_ready_us": 668.8174904678644,
+          "action_completion_us": 788.8174904678644,
+          "final_home_us": 788.8174904678644
+        },
+        {
+          "factory_id": 1,
+          "measurement_ready_us": 1557.6349809357293,
+          "action_completion_us": 1777.6349809357293,
+          "final_home_us": 1777.6349809357293
+        },
+        {
+          "factory_id": 2,
+          "measurement_ready_us": 2646.4524714035933,
+          "action_completion_us": 2966.4524714035933,
+          "final_home_us": 2966.4524714035933
+        },
+        {
+          "factory_id": 3,
+          "measurement_ready_us": 3935.269961871456,
+          "action_completion_us": 4355.269961871456,
+          "final_home_us": 4355.269961871456
+        }
+      ],
+      "layer_count": 104,
+      "transport_batch_count": 52
+    },
+    "source_sha256": "5460c659ec360d0927a09ea6d50a45e50792ea9367d8c974883d6443877554c9",
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "device_sha256": "bc2f37bc5135041c0c8c897434d3035fb59902b47df42e175b9b24ece2ede59a",
+    "physical_execution": false,
+    "scope": "joint SE round; not a complete distillation production cycle",
+    "measurement_values": "compiler fixtures; not sampled quantum outcomes"
+  },
+  {
+    "schema": "nadit.msd.parallel_se/1",
+    "standard": "nadit.msd.standard/2",
+    "parameters": {
+      "distance": 3,
+      "pipelines": 2,
+      "patch_gap_um": 40.0,
+      "factory_gap_um": 40.0,
+      "window_padding_um": 20.0
+    },
+    "mode": "serial",
+    "factory_indices": [
+      0,
+      1
+    ],
+    "active_patch_role": "W1",
+    "se_instances": 2,
+    "expected_measurements": 16,
+    "compile_wall_s": 0.019330100010847673,
+    "validation_wall_s": 0.033800499979406595,
+    "metrics": {
+      "execution_duration_us": 1777.634980935729,
+      "atom_count": 204,
+      "atom_time_us": 362637.5361108887,
+      "atom_idle_us": 351125.5101941614,
+      "atom_busy_us": 11512.025916727336,
+      "movement_distance_atom_um": 5764.4838956805925,
+      "transport_elapsed_us": 1523.6349809357293,
+      "transport_action_sum_us": 1523.6349809357293,
+      "trajectory_bbox_um": [
+        0.0,
+        -160.0,
+        560.0,
+        65.0
+      ],
+      "trajectory_bbox_area_um2": 126000.0,
+      "exposure_by_action": {
+        "Reset": {
+          "action_count": 16,
+          "atom_events": 16,
+          "atom_us": 80.0
+        },
+        "Rotation": {
+          "action_count": 224,
+          "atom_events": 224,
+          "atom_us": 224.0
+        },
+        "Load": {
+          "action_count": 26,
+          "atom_events": 112,
+          "atom_us": 1120.0
+        },
+        "Move": {
+          "action_count": 28,
+          "atom_events": 128,
+          "atom_us": 6552.025916727334
+        },
+        "Store": {
+          "action_count": 26,
+          "atom_events": 112,
+          "atom_us": 1120.0
+        },
+        "CZPulse": {
+          "action_count": 8,
+          "atom_events": 1632,
+          "atom_us": 816.0
+        },
+        "Measure": {
+          "action_count": 2,
+          "atom_events": 16,
+          "atom_us": 1600.0
+        }
+      },
+      "accepted_outputs": null,
+      "accepted_output_throughput_per_s": null,
+      "logical_error_probability": null,
+      "physical_validation_ok": true
+    },
+    "scheduler": {
+      "identity": "compile_physical / NonZonedStrategy / ReadyScheduler",
+      "single_physical_compile": true,
+      "submitted_at_us": 0,
+      "time_partition_us": {
+        "reset": 10.0,
+        "rotation": 40.0,
+        "cz_load": 240.0,
+        "cz_move": 363.6349809357288,
+        "cz_store": 240.0,
+        "cz_pulse": 4.0,
+        "readout_load": 20.0,
+        "readout_move": 640.0,
+        "readout_exposure": 200.0,
+        "readout_store": 20.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "per_factory": [
+        {
+          "factory_id": 0,
+          "measurement_ready_us": 668.8174904678644,
+          "action_completion_us": 788.8174904678644,
+          "final_home_us": 788.8174904678644
+        },
+        {
+          "factory_id": 1,
+          "measurement_ready_us": 1557.6349809357293,
+          "action_completion_us": 1777.6349809357293,
+          "final_home_us": 1777.6349809357293
+        }
+      ],
+      "layer_count": 52,
+      "transport_batch_count": 26
+    },
+    "source_sha256": "128d2e9893801223d92929e8a0dbcaa9c4724451698db793c6fc53026d4028f2",
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "device_sha256": "ffb74f87aefd44da644e7abf488701e50362b16dc69b4cc07574940f016e2e4b",
+    "physical_execution": false,
+    "scope": "joint SE round; not a complete distillation production cycle",
+    "measurement_values": "compiler fixtures; not sampled quantum outcomes"
+  },
+  {
+    "schema": "nadit.msd.parallel_se/1",
+    "standard": "nadit.msd.standard/2",
+    "parameters": {
+      "distance": 5,
+      "pipelines": 2,
+      "patch_gap_um": 40.0,
+      "factory_gap_um": 40.0,
+      "window_padding_um": 20.0
+    },
+    "mode": "joint",
+    "factory_indices": [
+      0,
+      1
+    ],
+    "active_patch_role": "W1",
+    "se_instances": 2,
+    "expected_measurements": 48,
+    "compile_wall_s": 0.07756249999511056,
+    "validation_wall_s": 0.10809080000035465,
+    "metrics": {
+      "execution_duration_us": 1148.8174904678644,
+      "atom_count": 588,
+      "atom_time_us": 675504.6843951043,
+      "atom_idle_us": 628579.2646726798,
+      "atom_busy_us": 46925.41972242445,
+      "movement_distance_atom_um": 23508.27965226864,
+      "transport_elapsed_us": 1021.8174904678644,
+      "transport_action_sum_us": 1021.8174904678644,
+      "trajectory_bbox_um": [
+        0.0,
+        -240.0,
+        800.0,
+        105.0
+      ],
+      "trajectory_bbox_area_um2": 276000.0,
+      "exposure_by_action": {
+        "Reset": {
+          "action_count": 48,
+          "atom_events": 48,
+          "atom_us": 240.0
+        },
+        "Rotation": {
+          "action_count": 736,
+          "atom_events": 736,
+          "atom_us": 736.0
+        },
+        "Load": {
+          "action_count": 13,
+          "atom_events": 368,
+          "atom_us": 3680.0
+        },
+        "Move": {
+          "action_count": 14,
+          "atom_events": 416,
+          "atom_us": 32613.41972242445
+        },
+        "Store": {
+          "action_count": 13,
+          "atom_events": 368,
+          "atom_us": 3680.0
+        },
+        "CZPulse": {
+          "action_count": 4,
+          "atom_events": 2352,
+          "atom_us": 1176.0
+        },
+        "Measure": {
+          "action_count": 1,
+          "atom_events": 48,
+          "atom_us": 4800.0
+        }
+      },
+      "accepted_outputs": null,
+      "accepted_output_throughput_per_s": null,
+      "logical_error_probability": null,
+      "physical_validation_ok": true
+    },
+    "scheduler": {
+      "identity": "compile_physical / NonZonedStrategy / ReadyScheduler",
+      "single_physical_compile": true,
+      "submitted_at_us": 0,
+      "time_partition_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 120.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 120.0,
+        "cz_pulse": 2.0,
+        "readout_load": 10.0,
+        "readout_move": 580.0,
+        "readout_exposure": 100.0,
+        "readout_store": 10.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 2,
+        "multi_factory_active_time_us": 1148.8174904678644,
+        "multi_factory_layer_count": 26,
+        "shared_transport_batch_count": 13,
+        "maximum_factories_in_transport_batch": 2
+      },
+      "per_factory": [
+        {
+          "factory_id": 0,
+          "measurement_ready_us": 848.8174904678644,
+          "action_completion_us": 1148.8174904678644,
+          "final_home_us": 1148.8174904678644
+        },
+        {
+          "factory_id": 1,
+          "measurement_ready_us": 848.8174904678644,
+          "action_completion_us": 1148.8174904678644,
+          "final_home_us": 1148.8174904678644
+        }
+      ],
+      "layer_count": 26,
+      "transport_batch_count": 13
+    },
+    "source_sha256": "5a66e90561142afbc6ba9947c94497f01cdade8bf70f342acbfb7c84ce65d0d2",
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "device_sha256": "755edc842f467e000b843f5f8f1531bd2ee096de0fe1065bc5d3a36667955fd7",
+    "physical_execution": false,
+    "scope": "joint SE round; not a complete distillation production cycle",
+    "measurement_values": "compiler fixtures; not sampled quantum outcomes"
+  },
+  {
+    "schema": "nadit.msd.parallel_se/1",
+    "standard": "nadit.msd.standard/2",
+    "parameters": {
+      "distance": 5,
+      "pipelines": 4,
+      "patch_gap_um": 40.0,
+      "factory_gap_um": 40.0,
+      "window_padding_um": 20.0
+    },
+    "mode": "joint",
+    "factory_indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "active_patch_role": "W1",
+    "se_instances": 4,
+    "expected_measurements": 96,
+    "compile_wall_s": 0.3362912000156939,
+    "validation_wall_s": 0.4629228000121657,
+    "metrics": {
+      "execution_duration_us": 1708.8174904678644,
+      "atom_count": 1176,
+      "atom_time_us": 2009569.3687902086,
+      "atom_idle_us": 1861958.52934536,
+      "atom_busy_us": 147610.83944484888,
+      "movement_distance_atom_um": 79656.55930453728,
+      "transport_elapsed_us": 1581.8174904678644,
+      "transport_action_sum_us": 1581.8174904678644,
+      "trajectory_bbox_um": [
+        0.0,
+        -520.0,
+        800.0,
+        165.0
+      ],
+      "trajectory_bbox_area_um2": 548000.0,
+      "exposure_by_action": {
+        "Reset": {
+          "action_count": 96,
+          "atom_events": 96,
+          "atom_us": 480.0
+        },
+        "Rotation": {
+          "action_count": 1472,
+          "atom_events": 1472,
+          "atom_us": 1472.0
+        },
+        "Load": {
+          "action_count": 13,
+          "atom_events": 736,
+          "atom_us": 7360.0
+        },
+        "Move": {
+          "action_count": 14,
+          "atom_events": 832,
+          "atom_us": 118986.8394448489
+        },
+        "Store": {
+          "action_count": 13,
+          "atom_events": 736,
+          "atom_us": 7360.0
+        },
+        "CZPulse": {
+          "action_count": 4,
+          "atom_events": 4704,
+          "atom_us": 2352.0
+        },
+        "Measure": {
+          "action_count": 1,
+          "atom_events": 96,
+          "atom_us": 9600.0
+        }
+      },
+      "accepted_outputs": null,
+      "accepted_output_throughput_per_s": null,
+      "logical_error_probability": null,
+      "physical_validation_ok": true
+    },
+    "scheduler": {
+      "identity": "compile_physical / NonZonedStrategy / ReadyScheduler",
+      "single_physical_compile": true,
+      "submitted_at_us": 0,
+      "time_partition_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 120.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 120.0,
+        "cz_pulse": 2.0,
+        "readout_load": 10.0,
+        "readout_move": 1140.0,
+        "readout_exposure": 100.0,
+        "readout_store": 10.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 4,
+        "multi_factory_active_time_us": 1708.8174904678644,
+        "multi_factory_layer_count": 26,
+        "shared_transport_batch_count": 13,
+        "maximum_factories_in_transport_batch": 4
+      },
+      "per_factory": [
+        {
+          "factory_id": 0,
+          "measurement_ready_us": 1128.8174904678644,
+          "action_completion_us": 1708.8174904678644,
+          "final_home_us": 1708.8174904678644
+        },
+        {
+          "factory_id": 1,
+          "measurement_ready_us": 1128.8174904678644,
+          "action_completion_us": 1708.8174904678644,
+          "final_home_us": 1708.8174904678644
+        },
+        {
+          "factory_id": 2,
+          "measurement_ready_us": 1128.8174904678644,
+          "action_completion_us": 1708.8174904678644,
+          "final_home_us": 1708.8174904678644
+        },
+        {
+          "factory_id": 3,
+          "measurement_ready_us": 1128.8174904678644,
+          "action_completion_us": 1708.8174904678644,
+          "final_home_us": 1708.8174904678644
+        }
+      ],
+      "layer_count": 26,
+      "transport_batch_count": 13
+    },
+    "source_sha256": "ab344d8a1ba6fa33fa29cec2cf0c4ea97faac77b876987a5b151117adfd34793",
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "device_sha256": "8df331f9a7a6ebb43714f6305ae3e952da98c2fd635bad7607cea8b68e07486a",
+    "physical_execution": false,
+    "scope": "joint SE round; not a complete distillation production cycle",
+    "measurement_values": "compiler fixtures; not sampled quantum outcomes"
+  },
+  {
+    "schema": "nadit.msd.parallel_se/1",
+    "standard": "nadit.msd.standard/2",
+    "parameters": {
+      "distance": 5,
+      "pipelines": 4,
+      "patch_gap_um": 40.0,
+      "factory_gap_um": 40.0,
+      "window_padding_um": 20.0
+    },
+    "mode": "serial",
+    "factory_indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "active_patch_role": "W1",
+    "se_instances": 4,
+    "expected_measurements": 96,
+    "compile_wall_s": 0.1828257000015583,
+    "validation_wall_s": 1.4757022999983747,
+    "metrics": {
+      "execution_duration_us": 5155.269961871458,
+      "atom_count": 1176,
+      "atom_time_us": 6062597.475160834,
+      "atom_idle_us": 5948250.6357159875,
+      "atom_busy_us": 114346.83944484885,
+      "movement_distance_atom_um": 71016.55930453728,
+      "transport_elapsed_us": 4647.269961871454,
+      "transport_action_sum_us": 4647.269961871454,
+      "trajectory_bbox_um": [
+        0.0,
+        -520.0,
+        800.0,
+        75.0
+      ],
+      "trajectory_bbox_area_um2": 476000.0,
+      "exposure_by_action": {
+        "Reset": {
+          "action_count": 96,
+          "atom_events": 96,
+          "atom_us": 480.0
+        },
+        "Rotation": {
+          "action_count": 1472,
+          "atom_events": 1472,
+          "atom_us": 1472.0
+        },
+        "Load": {
+          "action_count": 52,
+          "atom_events": 736,
+          "atom_us": 7360.0
+        },
+        "Move": {
+          "action_count": 56,
+          "atom_events": 832,
+          "atom_us": 78666.83944484894
+        },
+        "Store": {
+          "action_count": 52,
+          "atom_events": 736,
+          "atom_us": 7360.0
+        },
+        "CZPulse": {
+          "action_count": 16,
+          "atom_events": 18816,
+          "atom_us": 9408.0
+        },
+        "Measure": {
+          "action_count": 4,
+          "atom_events": 96,
+          "atom_us": 9600.0
+        }
+      },
+      "accepted_outputs": null,
+      "accepted_output_throughput_per_s": null,
+      "logical_error_probability": null,
+      "physical_validation_ok": true
+    },
+    "scheduler": {
+      "identity": "compile_physical / NonZonedStrategy / ReadyScheduler",
+      "single_physical_compile": true,
+      "submitted_at_us": 0,
+      "time_partition_us": {
+        "reset": 20.0,
+        "rotation": 80.0,
+        "cz_load": 480.0,
+        "cz_move": 727.2699618714581,
+        "cz_store": 480.0,
+        "cz_pulse": 8.0,
+        "readout_load": 40.0,
+        "readout_move": 2880.0,
+        "readout_exposure": 400.0,
+        "readout_store": 40.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "per_factory": [
+        {
+          "factory_id": 0,
+          "measurement_ready_us": 708.8174904678644,
+          "action_completion_us": 868.8174904678644,
+          "final_home_us": 868.8174904678644
+        },
+        {
+          "factory_id": 1,
+          "measurement_ready_us": 1717.6349809357293,
+          "action_completion_us": 2017.6349809357293,
+          "final_home_us": 2017.6349809357293
+        },
+        {
+          "factory_id": 2,
+          "measurement_ready_us": 3006.452471403592,
+          "action_completion_us": 3446.452471403592,
+          "final_home_us": 3446.452471403592
+        },
+        {
+          "factory_id": 3,
+          "measurement_ready_us": 4575.269961871454,
+          "action_completion_us": 5155.269961871454,
+          "final_home_us": 5155.269961871454
+        }
+      ],
+      "layer_count": 104,
+      "transport_batch_count": 52
+    },
+    "source_sha256": "7cfc682cd7a2a695a34cd845dba7811af36e4051d819fd17c79ae89ec70936f2",
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "device_sha256": "8df331f9a7a6ebb43714f6305ae3e952da98c2fd635bad7607cea8b68e07486a",
+    "physical_execution": false,
+    "scope": "joint SE round; not a complete distillation production cycle",
+    "measurement_values": "compiler fixtures; not sampled quantum outcomes"
+  },
+  {
+    "schema": "nadit.msd.parallel_se/1",
+    "standard": "nadit.msd.standard/2",
+    "parameters": {
+      "distance": 5,
+      "pipelines": 2,
+      "patch_gap_um": 40.0,
+      "factory_gap_um": 40.0,
+      "window_padding_um": 20.0
+    },
+    "mode": "serial",
+    "factory_indices": [
+      0,
+      1
+    ],
+    "active_patch_role": "W1",
+    "se_instances": 2,
+    "expected_measurements": 48,
+    "compile_wall_s": 0.06287619998329319,
+    "validation_wall_s": 0.1972607999923639,
+    "metrics": {
+      "execution_duration_us": 2017.634980935729,
+      "atom_count": 588,
+      "atom_time_us": 1186369.3687902086,
+      "atom_idle_us": 1144987.9490677842,
+      "atom_busy_us": 41381.419722424456,
+      "movement_distance_atom_um": 22068.27965226864,
+      "transport_elapsed_us": 1763.6349809357293,
+      "transport_action_sum_us": 1763.6349809357293,
+      "trajectory_bbox_um": [
+        0.0,
+        -240.0,
+        800.0,
+        75.0
+      ],
+      "trajectory_bbox_area_um2": 252000.0,
+      "exposure_by_action": {
+        "Reset": {
+          "action_count": 48,
+          "atom_events": 48,
+          "atom_us": 240.0
+        },
+        "Rotation": {
+          "action_count": 736,
+          "atom_events": 736,
+          "atom_us": 736.0
+        },
+        "Load": {
+          "action_count": 26,
+          "atom_events": 368,
+          "atom_us": 3680.0
+        },
+        "Move": {
+          "action_count": 28,
+          "atom_events": 416,
+          "atom_us": 25893.41972242445
+        },
+        "Store": {
+          "action_count": 26,
+          "atom_events": 368,
+          "atom_us": 3680.0
+        },
+        "CZPulse": {
+          "action_count": 8,
+          "atom_events": 4704,
+          "atom_us": 2352.0
+        },
+        "Measure": {
+          "action_count": 2,
+          "atom_events": 48,
+          "atom_us": 4800.0
+        }
+      },
+      "accepted_outputs": null,
+      "accepted_output_throughput_per_s": null,
+      "logical_error_probability": null,
+      "physical_validation_ok": true
+    },
+    "scheduler": {
+      "identity": "compile_physical / NonZonedStrategy / ReadyScheduler",
+      "single_physical_compile": true,
+      "submitted_at_us": 0,
+      "time_partition_us": {
+        "reset": 10.0,
+        "rotation": 40.0,
+        "cz_load": 240.0,
+        "cz_move": 363.6349809357288,
+        "cz_store": 240.0,
+        "cz_pulse": 4.0,
+        "readout_load": 20.0,
+        "readout_move": 880.0,
+        "readout_exposure": 200.0,
+        "readout_store": 20.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "per_factory": [
+        {
+          "factory_id": 0,
+          "measurement_ready_us": 708.8174904678644,
+          "action_completion_us": 868.8174904678644,
+          "final_home_us": 868.8174904678644
+        },
+        {
+          "factory_id": 1,
+          "measurement_ready_us": 1717.6349809357293,
+          "action_completion_us": 2017.6349809357293,
+          "final_home_us": 2017.6349809357293
+        }
+      ],
+      "layer_count": 52,
+      "transport_batch_count": 26
+    },
+    "source_sha256": "f422bac2c97066f0d3b16a405e1f2354fcab789261b3c177862175b3bcfa4a2c",
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "device_sha256": "755edc842f467e000b843f5f8f1531bd2ee096de0fe1065bc5d3a36667955fd7",
+    "physical_execution": false,
+    "scope": "joint SE round; not a complete distillation production cycle",
+    "measurement_values": "compiler fixtures; not sampled quantum outcomes"
+  },
+  {
+    "schema": "nadit.msd.parallel_se/1",
+    "standard": "nadit.msd.standard/2",
+    "parameters": {
+      "distance": 7,
+      "pipelines": 2,
+      "patch_gap_um": 40.0,
+      "factory_gap_um": 40.0,
+      "window_padding_um": 20.0
+    },
+    "mode": "joint",
+    "factory_indices": [
+      0,
+      1
+    ],
+    "active_patch_role": "W1",
+    "se_instances": 2,
+    "expected_measurements": 96,
+    "compile_wall_s": 0.2265911000140477,
+    "validation_wall_s": 0.3882638999784831,
+    "metrics": {
+      "execution_duration_us": 1308.8174904678644,
+      "atom_count": 1164,
+      "atom_time_us": 1523463.5589045943,
+      "atom_idle_us": 1413095.3774875028,
+      "atom_busy_us": 110368.18141709134,
+      "movement_distance_atom_um": 57071.38726976414,
+      "transport_elapsed_us": 1181.8174904678644,
+      "transport_action_sum_us": 1181.8174904678644,
+      "trajectory_bbox_um": [
+        0.0,
+        -320.0,
+        1040.0,
+        125.0
+      ],
+      "trajectory_bbox_area_um2": 462800.0,
+      "exposure_by_action": {
+        "Reset": {
+          "action_count": 96,
+          "atom_events": 96,
+          "atom_us": 480.0
+        },
+        "Rotation": {
+          "action_count": 1536,
+          "atom_events": 1536,
+          "atom_us": 1536.0
+        },
+        "Load": {
+          "action_count": 13,
+          "atom_events": 768,
+          "atom_us": 7680.0
+        },
+        "Move": {
+          "action_count": 14,
+          "atom_events": 864,
+          "atom_us": 81064.18141709134
+        },
+        "Store": {
+          "action_count": 13,
+          "atom_events": 768,
+          "atom_us": 7680.0
+        },
+        "CZPulse": {
+          "action_count": 4,
+          "atom_events": 4656,
+          "atom_us": 2328.0
+        },
+        "Measure": {
+          "action_count": 1,
+          "atom_events": 96,
+          "atom_us": 9600.0
+        }
+      },
+      "accepted_outputs": null,
+      "accepted_output_throughput_per_s": null,
+      "logical_error_probability": null,
+      "physical_validation_ok": true
+    },
+    "scheduler": {
+      "identity": "compile_physical / NonZonedStrategy / ReadyScheduler",
+      "single_physical_compile": true,
+      "submitted_at_us": 0,
+      "time_partition_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 120.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 120.0,
+        "cz_pulse": 2.0,
+        "readout_load": 10.0,
+        "readout_move": 740.0,
+        "readout_exposure": 100.0,
+        "readout_store": 10.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 2,
+        "multi_factory_active_time_us": 1308.8174904678644,
+        "multi_factory_layer_count": 26,
+        "shared_transport_batch_count": 13,
+        "maximum_factories_in_transport_batch": 2
+      },
+      "per_factory": [
+        {
+          "factory_id": 0,
+          "measurement_ready_us": 928.8174904678644,
+          "action_completion_us": 1308.8174904678644,
+          "final_home_us": 1308.8174904678644
+        },
+        {
+          "factory_id": 1,
+          "measurement_ready_us": 928.8174904678644,
+          "action_completion_us": 1308.8174904678644,
+          "final_home_us": 1308.8174904678644
+        }
+      ],
+      "layer_count": 26,
+      "transport_batch_count": 13
+    },
+    "source_sha256": "68b131220779003514aac8c1d5e6116fbcf4b9221611c6a64f57d00052ad3494",
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "device_sha256": "367f7d4dbc79c34b19fae38fe72e2bb3cfcb12fc306ab6f0a8d8e69152d35033",
+    "physical_execution": false,
+    "scope": "joint SE round; not a complete distillation production cycle",
+    "measurement_values": "compiler fixtures; not sampled quantum outcomes"
+  },
+  {
+    "schema": "nadit.msd.parallel_se/1",
+    "standard": "nadit.msd.standard/2",
+    "parameters": {
+      "distance": 7,
+      "pipelines": 4,
+      "patch_gap_um": 40.0,
+      "factory_gap_um": 40.0,
+      "window_padding_um": 20.0
+    },
+    "mode": "joint",
+    "factory_indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "active_patch_role": "W1",
+    "se_instances": 4,
+    "expected_measurements": 192,
+    "compile_wall_s": 1.0142765000055078,
+    "validation_wall_s": 2.0092480999883264,
+    "metrics": {
+      "execution_duration_us": 2028.8174904678644,
+      "atom_count": 2328,
+      "atom_time_us": 4723087.117809189,
+      "atom_idle_us": 4364110.754975006,
+      "atom_busy_us": 358976.3628341827,
+      "movement_distance_atom_um": 198622.7745395283,
+      "transport_elapsed_us": 1901.8174904678644,
+      "transport_action_sum_us": 1901.8174904678644,
+      "trajectory_bbox_um": [
+        0.0,
+        -680.0,
+        1040.0,
+        205.0
+      ],
+      "trajectory_bbox_area_um2": 920400.0,
+      "exposure_by_action": {
+        "Reset": {
+          "action_count": 192,
+          "atom_events": 192,
+          "atom_us": 960.0
+        },
+        "Rotation": {
+          "action_count": 3072,
+          "atom_events": 3072,
+          "atom_us": 3072.0
+        },
+        "Load": {
+          "action_count": 13,
+          "atom_events": 1536,
+          "atom_us": 15360.0
+        },
+        "Move": {
+          "action_count": 14,
+          "atom_events": 1728,
+          "atom_us": 300368.3628341827
+        },
+        "Store": {
+          "action_count": 13,
+          "atom_events": 1536,
+          "atom_us": 15360.0
+        },
+        "CZPulse": {
+          "action_count": 4,
+          "atom_events": 9312,
+          "atom_us": 4656.0
+        },
+        "Measure": {
+          "action_count": 1,
+          "atom_events": 192,
+          "atom_us": 19200.0
+        }
+      },
+      "accepted_outputs": null,
+      "accepted_output_throughput_per_s": null,
+      "logical_error_probability": null,
+      "physical_validation_ok": true
+    },
+    "scheduler": {
+      "identity": "compile_physical / NonZonedStrategy / ReadyScheduler",
+      "single_physical_compile": true,
+      "submitted_at_us": 0,
+      "time_partition_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 120.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 120.0,
+        "cz_pulse": 2.0,
+        "readout_load": 10.0,
+        "readout_move": 1460.0,
+        "readout_exposure": 100.0,
+        "readout_store": 10.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 4,
+        "multi_factory_active_time_us": 2028.8174904678644,
+        "multi_factory_layer_count": 26,
+        "shared_transport_batch_count": 13,
+        "maximum_factories_in_transport_batch": 4
+      },
+      "per_factory": [
+        {
+          "factory_id": 0,
+          "measurement_ready_us": 1288.8174904678644,
+          "action_completion_us": 2028.8174904678644,
+          "final_home_us": 2028.8174904678644
+        },
+        {
+          "factory_id": 1,
+          "measurement_ready_us": 1288.8174904678644,
+          "action_completion_us": 2028.8174904678644,
+          "final_home_us": 2028.8174904678644
+        },
+        {
+          "factory_id": 2,
+          "measurement_ready_us": 1288.8174904678644,
+          "action_completion_us": 2028.8174904678644,
+          "final_home_us": 2028.8174904678644
+        },
+        {
+          "factory_id": 3,
+          "measurement_ready_us": 1288.8174904678644,
+          "action_completion_us": 2028.8174904678644,
+          "final_home_us": 2028.8174904678644
+        }
+      ],
+      "layer_count": 26,
+      "transport_batch_count": 13
+    },
+    "source_sha256": "71d8378c4cb45a953ebe30d2ba92b25a0b0cb3d1746843afa985bef8a3362f1a",
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "device_sha256": "bd5ee5fac605a4d1c2e7a6ddf8ceac0e41e9965514aebb0a84f46e63bd083d73",
+    "physical_execution": false,
+    "scope": "joint SE round; not a complete distillation production cycle",
+    "measurement_values": "compiler fixtures; not sampled quantum outcomes"
+  },
+  {
+    "schema": "nadit.msd.parallel_se/1",
+    "standard": "nadit.msd.standard/2",
+    "parameters": {
+      "distance": 7,
+      "pipelines": 4,
+      "patch_gap_um": 40.0,
+      "factory_gap_um": 40.0,
+      "window_padding_um": 20.0
+    },
+    "mode": "serial",
+    "factory_indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "active_patch_role": "W1",
+    "se_instances": 4,
+    "expected_measurements": 192,
+    "compile_wall_s": 0.6292763999954332,
+    "validation_wall_s": 8.131102500017732,
+    "metrics": {
+      "execution_duration_us": 5955.269961871458,
+      "atom_count": 2328,
+      "atom_time_us": 13863868.471236754,
+      "atom_idle_us": 13594604.10840258,
+      "atom_busy_us": 269264.3628341826,
+      "movement_distance_atom_um": 175582.7745395283,
+      "transport_elapsed_us": 5447.269961871455,
+      "transport_action_sum_us": 5447.269961871455,
+      "trajectory_bbox_um": [
+        0.0,
+        -680.0,
+        1040.0,
+        85.0
+      ],
+      "trajectory_bbox_area_um2": 795600.0,
+      "exposure_by_action": {
+        "Reset": {
+          "action_count": 192,
+          "atom_events": 192,
+          "atom_us": 960.0
+        },
+        "Rotation": {
+          "action_count": 3072,
+          "atom_events": 3072,
+          "atom_us": 3072.0
+        },
+        "Load": {
+          "action_count": 52,
+          "atom_events": 1536,
+          "atom_us": 15360.0
+        },
+        "Move": {
+          "action_count": 56,
+          "atom_events": 1728,
+          "atom_us": 196688.36283418263
+        },
+        "Store": {
+          "action_count": 52,
+          "atom_events": 1536,
+          "atom_us": 15360.0
+        },
+        "CZPulse": {
+          "action_count": 16,
+          "atom_events": 37248,
+          "atom_us": 18624.0
+        },
+        "Measure": {
+          "action_count": 4,
+          "atom_events": 192,
+          "atom_us": 19200.0
+        }
+      },
+      "accepted_outputs": null,
+      "accepted_output_throughput_per_s": null,
+      "logical_error_probability": null,
+      "physical_validation_ok": true
+    },
+    "scheduler": {
+      "identity": "compile_physical / NonZonedStrategy / ReadyScheduler",
+      "single_physical_compile": true,
+      "submitted_at_us": 0,
+      "time_partition_us": {
+        "reset": 20.0,
+        "rotation": 80.0,
+        "cz_load": 480.0,
+        "cz_move": 727.2699618714581,
+        "cz_store": 480.0,
+        "cz_pulse": 8.0,
+        "readout_load": 40.0,
+        "readout_move": 3680.0,
+        "readout_exposure": 400.0,
+        "readout_store": 40.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "per_factory": [
+        {
+          "factory_id": 0,
+          "measurement_ready_us": 748.8174904678644,
+          "action_completion_us": 948.8174904678644,
+          "final_home_us": 948.8174904678644
+        },
+        {
+          "factory_id": 1,
+          "measurement_ready_us": 1877.6349809357293,
+          "action_completion_us": 2257.6349809357293,
+          "final_home_us": 2257.6349809357293
+        },
+        {
+          "factory_id": 2,
+          "measurement_ready_us": 3366.452471403592,
+          "action_completion_us": 3926.452471403592,
+          "final_home_us": 3926.452471403592
+        },
+        {
+          "factory_id": 3,
+          "measurement_ready_us": 5215.269961871455,
+          "action_completion_us": 5955.269961871455,
+          "final_home_us": 5955.269961871455
+        }
+      ],
+      "layer_count": 104,
+      "transport_batch_count": 52
+    },
+    "source_sha256": "d407bd575b06ecc0b1a837b982725a2701f6b54c406bc4ee06c8edf1dc89f541",
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "device_sha256": "bd5ee5fac605a4d1c2e7a6ddf8ceac0e41e9965514aebb0a84f46e63bd083d73",
+    "physical_execution": false,
+    "scope": "joint SE round; not a complete distillation production cycle",
+    "measurement_values": "compiler fixtures; not sampled quantum outcomes"
+  },
+  {
+    "schema": "nadit.msd.parallel_se/1",
+    "standard": "nadit.msd.standard/2",
+    "parameters": {
+      "distance": 7,
+      "pipelines": 2,
+      "patch_gap_um": 40.0,
+      "factory_gap_um": 40.0,
+      "window_padding_um": 20.0
+    },
+    "mode": "serial",
+    "factory_indices": [
+      0,
+      1
+    ],
+    "active_patch_role": "W1",
+    "se_instances": 2,
+    "expected_measurements": 96,
+    "compile_wall_s": 0.15670099999988452,
+    "validation_wall_s": 0.7504933000018355,
+    "metrics": {
+      "execution_duration_us": 2257.634980935729,
+      "atom_count": 1164,
+      "atom_time_us": 2627887.1178091886,
+      "atom_idle_us": 2532470.9363920973,
+      "atom_busy_us": 95416.18141709136,
+      "movement_distance_atom_um": 53231.38726976414,
+      "transport_elapsed_us": 2003.6349809357293,
+      "transport_action_sum_us": 2003.6349809357293,
+      "trajectory_bbox_um": [
+        0.0,
+        -320.0,
+        1040.0,
+        85.0
+      ],
+      "trajectory_bbox_area_um2": 421200.0,
+      "exposure_by_action": {
+        "Reset": {
+          "action_count": 96,
+          "atom_events": 96,
+          "atom_us": 480.0
+        },
+        "Rotation": {
+          "action_count": 1536,
+          "atom_events": 1536,
+          "atom_us": 1536.0
+        },
+        "Load": {
+          "action_count": 26,
+          "atom_events": 768,
+          "atom_us": 7680.0
+        },
+        "Move": {
+          "action_count": 28,
+          "atom_events": 864,
+          "atom_us": 63784.18141709136
+        },
+        "Store": {
+          "action_count": 26,
+          "atom_events": 768,
+          "atom_us": 7680.0
+        },
+        "CZPulse": {
+          "action_count": 8,
+          "atom_events": 9312,
+          "atom_us": 4656.0
+        },
+        "Measure": {
+          "action_count": 2,
+          "atom_events": 96,
+          "atom_us": 9600.0
+        }
+      },
+      "accepted_outputs": null,
+      "accepted_output_throughput_per_s": null,
+      "logical_error_probability": null,
+      "physical_validation_ok": true
+    },
+    "scheduler": {
+      "identity": "compile_physical / NonZonedStrategy / ReadyScheduler",
+      "single_physical_compile": true,
+      "submitted_at_us": 0,
+      "time_partition_us": {
+        "reset": 10.0,
+        "rotation": 40.0,
+        "cz_load": 240.0,
+        "cz_move": 363.6349809357288,
+        "cz_store": 240.0,
+        "cz_pulse": 4.0,
+        "readout_load": 20.0,
+        "readout_move": 1120.0,
+        "readout_exposure": 200.0,
+        "readout_store": 20.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "per_factory": [
+        {
+          "factory_id": 0,
+          "measurement_ready_us": 748.8174904678644,
+          "action_completion_us": 948.8174904678644,
+          "final_home_us": 948.8174904678644
+        },
+        {
+          "factory_id": 1,
+          "measurement_ready_us": 1877.6349809357293,
+          "action_completion_us": 2257.6349809357293,
+          "final_home_us": 2257.6349809357293
+        }
+      ],
+      "layer_count": 52,
+      "transport_batch_count": 26
+    },
+    "source_sha256": "fdbe600384332a768c7000cf1106a3af4debcfd4f910c7caada40840b6612f9c",
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "device_sha256": "367f7d4dbc79c34b19fae38fe72e2bb3cfcb12fc306ab6f0a8d8e69152d35033",
+    "physical_execution": false,
+    "scope": "joint SE round; not a complete distillation production cycle",
+    "measurement_values": "compiler fixtures; not sampled quantum outcomes"
+  }
+]

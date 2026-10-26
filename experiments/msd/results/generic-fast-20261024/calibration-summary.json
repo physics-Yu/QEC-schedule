@@ -1,0 +1,1196 @@
+[
+  {
+    "distance": 3,
+    "factory_count": 1,
+    "variant_count": 33,
+    "calibration_wall_seconds": 4.761950699990848,
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "profile_file_sha256": "c8c31d3f367fc43fde2165affcae3e04fd7f1132eab4f4cc2fb3d106939a5b18",
+    "raw_acceptance": [
+      {
+        "block": "factory0/R",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W2",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W3",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W4",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W5",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      }
+    ],
+    "timing": {
+      "load_us": 10,
+      "store_us": 10,
+      "measure_us": 100,
+      "result_processing_us": 0
+    }
+  },
+  {
+    "distance": 3,
+    "factory_count": 2,
+    "variant_count": 66,
+    "calibration_wall_seconds": 18.496042299986584,
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "profile_file_sha256": "67e481aec8c41510ef3f1fc59a7536d508354992f8b54f34ab4cdea8ecb95562",
+    "raw_acceptance": [
+      {
+        "block": "factory0/R",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W2",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W3",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W4",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W5",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/R",
+        "probability": 0.7807464599609375,
+        "ci95": [
+          0.7775624102123323,
+          0.7838975991641098
+        ],
+        "accepted": 51167,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W2",
+        "probability": 0.7807464599609375,
+        "ci95": [
+          0.7775624102123323,
+          0.7838975991641098
+        ],
+        "accepted": 51167,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W3",
+        "probability": 0.7807464599609375,
+        "ci95": [
+          0.7775624102123323,
+          0.7838975991641098
+        ],
+        "accepted": 51167,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W4",
+        "probability": 0.7807464599609375,
+        "ci95": [
+          0.7775624102123323,
+          0.7838975991641098
+        ],
+        "accepted": 51167,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W5",
+        "probability": 0.7807464599609375,
+        "ci95": [
+          0.7775624102123323,
+          0.7838975991641098
+        ],
+        "accepted": 51167,
+        "shots": 65536
+      }
+    ],
+    "timing": {
+      "load_us": 10,
+      "store_us": 10,
+      "measure_us": 100,
+      "result_processing_us": 0
+    }
+  },
+  {
+    "distance": 3,
+    "factory_count": 4,
+    "variant_count": 132,
+    "calibration_wall_seconds": 100.18271829999867,
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "profile_file_sha256": "249a7d148d1e0164ed88d5d02cabc85ecf7f85ab0a3169cf1edecd9d5a94ccdc",
+    "raw_acceptance": [
+      {
+        "block": "factory0/R",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W2",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W3",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W4",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W5",
+        "probability": 0.7817840576171875,
+        "ci95": [
+          0.7786053515020882,
+          0.7849297315543148
+        ],
+        "accepted": 51235,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/R",
+        "probability": 0.7807464599609375,
+        "ci95": [
+          0.7775624102123323,
+          0.7838975991641098
+        ],
+        "accepted": 51167,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W2",
+        "probability": 0.7807464599609375,
+        "ci95": [
+          0.7775624102123323,
+          0.7838975991641098
+        ],
+        "accepted": 51167,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W3",
+        "probability": 0.7807464599609375,
+        "ci95": [
+          0.7775624102123323,
+          0.7838975991641098
+        ],
+        "accepted": 51167,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W4",
+        "probability": 0.7807464599609375,
+        "ci95": [
+          0.7775624102123323,
+          0.7838975991641098
+        ],
+        "accepted": 51167,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W5",
+        "probability": 0.7807464599609375,
+        "ci95": [
+          0.7775624102123323,
+          0.7838975991641098
+        ],
+        "accepted": 51167,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/R",
+        "probability": 0.7804107666015625,
+        "ci95": [
+          0.7772249942660369,
+          0.7835636677433592
+        ],
+        "accepted": 51145,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/W2",
+        "probability": 0.7804107666015625,
+        "ci95": [
+          0.7772249942660369,
+          0.7835636677433592
+        ],
+        "accepted": 51145,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/W3",
+        "probability": 0.7804107666015625,
+        "ci95": [
+          0.7772249942660369,
+          0.7835636677433592
+        ],
+        "accepted": 51145,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/W4",
+        "probability": 0.7804107666015625,
+        "ci95": [
+          0.7772249942660369,
+          0.7835636677433592
+        ],
+        "accepted": 51145,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/W5",
+        "probability": 0.7804107666015625,
+        "ci95": [
+          0.7772249942660369,
+          0.7835636677433592
+        ],
+        "accepted": 51145,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/R",
+        "probability": 0.7786102294921875,
+        "ci95": [
+          0.775415269584492,
+          0.7817725292743838
+        ],
+        "accepted": 51027,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/W2",
+        "probability": 0.7786102294921875,
+        "ci95": [
+          0.775415269584492,
+          0.7817725292743838
+        ],
+        "accepted": 51027,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/W3",
+        "probability": 0.7786102294921875,
+        "ci95": [
+          0.775415269584492,
+          0.7817725292743838
+        ],
+        "accepted": 51027,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/W4",
+        "probability": 0.7786102294921875,
+        "ci95": [
+          0.775415269584492,
+          0.7817725292743838
+        ],
+        "accepted": 51027,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/W5",
+        "probability": 0.7786102294921875,
+        "ci95": [
+          0.775415269584492,
+          0.7817725292743838
+        ],
+        "accepted": 51027,
+        "shots": 65536
+      }
+    ],
+    "timing": {
+      "load_us": 10,
+      "store_us": 10,
+      "measure_us": 100,
+      "result_processing_us": 0
+    }
+  },
+  {
+    "distance": 5,
+    "factory_count": 1,
+    "variant_count": 33,
+    "calibration_wall_seconds": 18.669294399995124,
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "profile_file_sha256": "5e47afd9674343b170cea14f319bea3913a2ded373e4bb9987a0402e15906fa4",
+    "raw_acceptance": [
+      {
+        "block": "factory0/R",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W2",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W3",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W4",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W5",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      }
+    ],
+    "timing": {
+      "load_us": 10,
+      "store_us": 10,
+      "measure_us": 100,
+      "result_processing_us": 0
+    }
+  },
+  {
+    "distance": 5,
+    "factory_count": 2,
+    "variant_count": 66,
+    "calibration_wall_seconds": 98.02759799998603,
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "profile_file_sha256": "5b7e3dbeb30a6bfbb305aee4fa6da03a8a884c13a7e99d998dead8eb46aba290",
+    "raw_acceptance": [
+      {
+        "block": "factory0/R",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W2",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W3",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W4",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W5",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/R",
+        "probability": 0.7732696533203125,
+        "ci95": [
+          0.7700479491922716,
+          0.7764593233726886
+        ],
+        "accepted": 50677,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W2",
+        "probability": 0.7732696533203125,
+        "ci95": [
+          0.7700479491922716,
+          0.7764593233726886
+        ],
+        "accepted": 50677,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W3",
+        "probability": 0.7732696533203125,
+        "ci95": [
+          0.7700479491922716,
+          0.7764593233726886
+        ],
+        "accepted": 50677,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W4",
+        "probability": 0.7732696533203125,
+        "ci95": [
+          0.7700479491922716,
+          0.7764593233726886
+        ],
+        "accepted": 50677,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W5",
+        "probability": 0.7732696533203125,
+        "ci95": [
+          0.7700479491922716,
+          0.7764593233726886
+        ],
+        "accepted": 50677,
+        "shots": 65536
+      }
+    ],
+    "timing": {
+      "load_us": 10,
+      "store_us": 10,
+      "measure_us": 100,
+      "result_processing_us": 0
+    }
+  },
+  {
+    "distance": 5,
+    "factory_count": 4,
+    "variant_count": 132,
+    "calibration_wall_seconds": 659.106636499986,
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "profile_file_sha256": "2c92bf55cbaabba48b615a1e85f8d1f2a906a8a196fe86d51596a33d788c1dd8",
+    "raw_acceptance": [
+      {
+        "block": "factory0/R",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W2",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W3",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W4",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W5",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/R",
+        "probability": 0.7732696533203125,
+        "ci95": [
+          0.7700479491922716,
+          0.7764593233726886
+        ],
+        "accepted": 50677,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W2",
+        "probability": 0.7732696533203125,
+        "ci95": [
+          0.7700479491922716,
+          0.7764593233726886
+        ],
+        "accepted": 50677,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W3",
+        "probability": 0.7732696533203125,
+        "ci95": [
+          0.7700479491922716,
+          0.7764593233726886
+        ],
+        "accepted": 50677,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W4",
+        "probability": 0.7732696533203125,
+        "ci95": [
+          0.7700479491922716,
+          0.7764593233726886
+        ],
+        "accepted": 50677,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W5",
+        "probability": 0.7732696533203125,
+        "ci95": [
+          0.7700479491922716,
+          0.7764593233726886
+        ],
+        "accepted": 50677,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/R",
+        "probability": 0.7704010009765625,
+        "ci95": [
+          0.7671652395547873,
+          0.7736050646008695
+        ],
+        "accepted": 50489,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/W2",
+        "probability": 0.7704010009765625,
+        "ci95": [
+          0.7671652395547873,
+          0.7736050646008695
+        ],
+        "accepted": 50489,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/W3",
+        "probability": 0.7704010009765625,
+        "ci95": [
+          0.7671652395547873,
+          0.7736050646008695
+        ],
+        "accepted": 50489,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/W4",
+        "probability": 0.7704010009765625,
+        "ci95": [
+          0.7671652395547873,
+          0.7736050646008695
+        ],
+        "accepted": 50489,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/W5",
+        "probability": 0.7704010009765625,
+        "ci95": [
+          0.7671652395547873,
+          0.7736050646008695
+        ],
+        "accepted": 50489,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/R",
+        "probability": 0.7665863037109375,
+        "ci95": [
+          0.7633321765572342,
+          0.7698091802456258
+        ],
+        "accepted": 50239,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/W2",
+        "probability": 0.7665863037109375,
+        "ci95": [
+          0.7633321765572342,
+          0.7698091802456258
+        ],
+        "accepted": 50239,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/W3",
+        "probability": 0.7665863037109375,
+        "ci95": [
+          0.7633321765572342,
+          0.7698091802456258
+        ],
+        "accepted": 50239,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/W4",
+        "probability": 0.7665863037109375,
+        "ci95": [
+          0.7633321765572342,
+          0.7698091802456258
+        ],
+        "accepted": 50239,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/W5",
+        "probability": 0.7665863037109375,
+        "ci95": [
+          0.7633321765572342,
+          0.7698091802456258
+        ],
+        "accepted": 50239,
+        "shots": 65536
+      }
+    ],
+    "timing": {
+      "load_us": 10,
+      "store_us": 10,
+      "measure_us": 100,
+      "result_processing_us": 0
+    }
+  },
+  {
+    "distance": 7,
+    "factory_count": 1,
+    "variant_count": 33,
+    "calibration_wall_seconds": 53.42507779999869,
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "profile_file_sha256": "f10ef6d6754cc4f7655ec057a878e5cde7cc5fb407e0a6b34f5314443f49f623",
+    "raw_acceptance": [
+      {
+        "block": "factory0/R",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W2",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W3",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W4",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W5",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      }
+    ],
+    "timing": {
+      "load_us": 10,
+      "store_us": 10,
+      "measure_us": 100,
+      "result_processing_us": 0
+    }
+  },
+  {
+    "distance": 7,
+    "factory_count": 2,
+    "variant_count": 66,
+    "calibration_wall_seconds": 309.20612690001144,
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "profile_file_sha256": "d85a8c1c7f42cccbbf022aaca72d23a9cf8beb2f94f052e476b3304eb7a9e67c",
+    "raw_acceptance": [
+      {
+        "block": "factory0/R",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W2",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W3",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W4",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W5",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/R",
+        "probability": 0.7724151611328125,
+        "ci95": [
+          0.7691892474209259,
+          0.7756091409370078
+        ],
+        "accepted": 50621,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W2",
+        "probability": 0.7724151611328125,
+        "ci95": [
+          0.7691892474209259,
+          0.7756091409370078
+        ],
+        "accepted": 50621,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W3",
+        "probability": 0.7724151611328125,
+        "ci95": [
+          0.7691892474209259,
+          0.7756091409370078
+        ],
+        "accepted": 50621,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W4",
+        "probability": 0.7724151611328125,
+        "ci95": [
+          0.7691892474209259,
+          0.7756091409370078
+        ],
+        "accepted": 50621,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W5",
+        "probability": 0.7724151611328125,
+        "ci95": [
+          0.7691892474209259,
+          0.7756091409370078
+        ],
+        "accepted": 50621,
+        "shots": 65536
+      }
+    ],
+    "timing": {
+      "load_us": 10,
+      "store_us": 10,
+      "measure_us": 100,
+      "result_processing_us": 0
+    }
+  },
+  {
+    "distance": 7,
+    "factory_count": 4,
+    "variant_count": 132,
+    "calibration_wall_seconds": 2411.571868400002,
+    "source_tree_sha256": "123c9752baa95eb0eba411b990834a6e6ffd34025d96a9a7871205622568d57c",
+    "profile_file_sha256": "3aaffae5864301bcf37153e551d4aa7a723c357109743c85d6ca091097ce7a4f",
+    "raw_acceptance": [
+      {
+        "block": "factory0/R",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W2",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W3",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W4",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory0/W5",
+        "probability": 0.7775421142578125,
+        "ci95": [
+          0.7743417451121791,
+          0.7807099484879135
+        ],
+        "accepted": 50957,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/R",
+        "probability": 0.7724151611328125,
+        "ci95": [
+          0.7691892474209259,
+          0.7756091409370078
+        ],
+        "accepted": 50621,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W2",
+        "probability": 0.7724151611328125,
+        "ci95": [
+          0.7691892474209259,
+          0.7756091409370078
+        ],
+        "accepted": 50621,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W3",
+        "probability": 0.7724151611328125,
+        "ci95": [
+          0.7691892474209259,
+          0.7756091409370078
+        ],
+        "accepted": 50621,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W4",
+        "probability": 0.7724151611328125,
+        "ci95": [
+          0.7691892474209259,
+          0.7756091409370078
+        ],
+        "accepted": 50621,
+        "shots": 65536
+      },
+      {
+        "block": "factory1/W5",
+        "probability": 0.7724151611328125,
+        "ci95": [
+          0.7691892474209259,
+          0.7756091409370078
+        ],
+        "accepted": 50621,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/R",
+        "probability": 0.767547607421875,
+        "ci95": [
+          0.7642980735049236,
+          0.7707657780308412
+        ],
+        "accepted": 50302,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/W2",
+        "probability": 0.767547607421875,
+        "ci95": [
+          0.7642980735049236,
+          0.7707657780308412
+        ],
+        "accepted": 50302,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/W3",
+        "probability": 0.767547607421875,
+        "ci95": [
+          0.7642980735049236,
+          0.7707657780308412
+        ],
+        "accepted": 50302,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/W4",
+        "probability": 0.767547607421875,
+        "ci95": [
+          0.7642980735049236,
+          0.7707657780308412
+        ],
+        "accepted": 50302,
+        "shots": 65536
+      },
+      {
+        "block": "factory2/W5",
+        "probability": 0.767547607421875,
+        "ci95": [
+          0.7642980735049236,
+          0.7707657780308412
+        ],
+        "accepted": 50302,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/R",
+        "probability": 0.76251220703125,
+        "ci95": [
+          0.7592388714722114,
+          0.7657547695578615
+        ],
+        "accepted": 49972,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/W2",
+        "probability": 0.76251220703125,
+        "ci95": [
+          0.7592388714722114,
+          0.7657547695578615
+        ],
+        "accepted": 49972,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/W3",
+        "probability": 0.76251220703125,
+        "ci95": [
+          0.7592388714722114,
+          0.7657547695578615
+        ],
+        "accepted": 49972,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/W4",
+        "probability": 0.76251220703125,
+        "ci95": [
+          0.7592388714722114,
+          0.7657547695578615
+        ],
+        "accepted": 49972,
+        "shots": 65536
+      },
+      {
+        "block": "factory3/W5",
+        "probability": 0.76251220703125,
+        "ci95": [
+          0.7592388714722114,
+          0.7657547695578615
+        ],
+        "accepted": 49972,
+        "shots": 65536
+      }
+    ],
+    "timing": {
+      "load_us": 10,
+      "store_us": 10,
+      "measure_us": 100,
+      "result_processing_us": 0
+    }
+  }
+]

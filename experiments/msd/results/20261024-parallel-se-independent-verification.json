@@ -1,0 +1,2411 @@
+{
+  "schema": "nadit.msd.parallel_se_independent_verification/1",
+  "ok": true,
+  "completed_utc": "2026-10-24T04:23:45.917621+00:00",
+  "source_commit": "dbff6e9637f2bb8f9cfe601b77b56a198ce1fcb7",
+  "source_tree_sha256": "3bb88c358293dc3132b3aed0383ba6db4e273462dbecbc1c45c2865f6b4f13eb",
+  "verifier_sha256": "1d126f0af276c4abbbf3dd8dc69b84c0be3ba3249ba5d994768f0abd21cc846c",
+  "case_count": 39,
+  "comparison_count": 9,
+  "check_count": 156396,
+  "errors": [],
+  "cases": {
+    "d3-n1-joint": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3128.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 220.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3101.8174904678644,
+      "entry_atoms_sha256": "b816a0c9789a8e65f78229a0ba6ab68c91786f362fdbbfdd3c896b4b416672ff",
+      "program_sha256": "518709a36a4fba890d9f2b2fc0b2410b23f9e608489a26f7bec37b894b52325e"
+    },
+    "d3-n1-serial": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3128.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 220.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3101.8174904678644,
+      "entry_atoms_sha256": "b816a0c9789a8e65f78229a0ba6ab68c91786f362fdbbfdd3c896b4b416672ff",
+      "program_sha256": "518709a36a4fba890d9f2b2fc0b2410b23f9e608489a26f7bec37b894b52325e"
+    },
+    "d3-n1-solo-f0": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3128.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 220.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3101.8174904678644,
+      "entry_atoms_sha256": "b816a0c9789a8e65f78229a0ba6ab68c91786f362fdbbfdd3c896b4b416672ff",
+      "program_sha256": "518709a36a4fba890d9f2b2fc0b2410b23f9e608489a26f7bec37b894b52325e"
+    },
+    "d3-n2-joint": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3328.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 420.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 2,
+        "multi_factory_active_time_us": 3328.8174904678644,
+        "multi_factory_layer_count": 26,
+        "shared_transport_batch_count": 13,
+        "maximum_factories_in_transport_batch": 2
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 4,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3301.8174904678644,
+      "entry_atoms_sha256": "2cac81aa23ce73879eaf2810d0813d05ffcba5563930128b29f45d34be5a7ce8",
+      "program_sha256": "73387a88b418f1d02a3a0c376c35e5377c6ac1403105c82032a4bb20eff6831d"
+    },
+    "d3-n2-serial": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 6457.634980935729,
+      "phase_us": {
+        "reset": 10.0,
+        "rotation": 40.0,
+        "cz_load": 2400.0,
+        "cz_move": 363.6349809357288,
+        "cz_store": 2400.0,
+        "cz_pulse": 4.0,
+        "readout_load": 200.0,
+        "readout_move": 640.0,
+        "readout_exposure": 200.0,
+        "readout_store": 200.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 8,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 2,
+      "transport_batch_counts": {
+        "cz": 24,
+        "readout": 2
+      },
+      "transport_episode_busy_us": 6403.634980935727,
+      "entry_atoms_sha256": "2cac81aa23ce73879eaf2810d0813d05ffcba5563930128b29f45d34be5a7ce8",
+      "program_sha256": "1350d38f1561902e1091b653e632cf134b815ed2faa69c6a13ba906025162a6a"
+    },
+    "d3-n2-solo-f0": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3128.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 220.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3101.8174904678644,
+      "entry_atoms_sha256": "2cac81aa23ce73879eaf2810d0813d05ffcba5563930128b29f45d34be5a7ce8",
+      "program_sha256": "a685bf292fc146ad668d926b970d35e527d2a91a79b7965c19572aeb14e84a7f"
+    },
+    "d3-n2-solo-f1": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3328.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 420.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3301.8174904678644,
+      "entry_atoms_sha256": "2cac81aa23ce73879eaf2810d0813d05ffcba5563930128b29f45d34be5a7ce8",
+      "program_sha256": "fd89e0675427be6c9b9677dcd4b29281788ab7c4dc6a6af68172e193bde67225"
+    },
+    "d3-n4-joint": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3728.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 820.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 4,
+        "multi_factory_active_time_us": 3728.8174904678644,
+        "multi_factory_layer_count": 26,
+        "shared_transport_batch_count": 13,
+        "maximum_factories_in_transport_batch": 4
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 4,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3701.8174904678644,
+      "entry_atoms_sha256": "adef5a3b39b15becf1b578589d12b47baa38c40c7b5e8b2678dc03171e32216a",
+      "program_sha256": "1169af8352451d6466ac1687dc8f884aefefeb2685687bbd08b101be3cd617c3"
+    },
+    "d3-n4-serial": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 13715.269961871458,
+      "phase_us": {
+        "reset": 20.0,
+        "rotation": 80.0,
+        "cz_load": 4800.0,
+        "cz_move": 727.2699618714581,
+        "cz_store": 4800.0,
+        "cz_pulse": 8.0,
+        "readout_load": 400.0,
+        "readout_move": 2080.0,
+        "readout_exposure": 400.0,
+        "readout_store": 400.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 16,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 4,
+      "transport_batch_counts": {
+        "cz": 48,
+        "readout": 4
+      },
+      "transport_episode_busy_us": 13607.269961871454,
+      "entry_atoms_sha256": "adef5a3b39b15becf1b578589d12b47baa38c40c7b5e8b2678dc03171e32216a",
+      "program_sha256": "a236033e685737236ed33c654eb7bb76b7e1aa84845b28ab23f2f4da89f88c54"
+    },
+    "d3-n4-solo-f0": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3128.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 220.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3101.8174904678644,
+      "entry_atoms_sha256": "adef5a3b39b15becf1b578589d12b47baa38c40c7b5e8b2678dc03171e32216a",
+      "program_sha256": "c01942e108e900a78693d9f826b8bddc3d169c6d0af0d68d164ced4bd31a7c52"
+    },
+    "d3-n4-solo-f1": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3328.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 420.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3301.8174904678644,
+      "entry_atoms_sha256": "adef5a3b39b15becf1b578589d12b47baa38c40c7b5e8b2678dc03171e32216a",
+      "program_sha256": "9083f37d86512078397b0a4f93c6aa50b80540bd7804f581b4947a86f1feb187"
+    },
+    "d3-n4-solo-f2": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3528.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 620.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3501.8174904678644,
+      "entry_atoms_sha256": "adef5a3b39b15becf1b578589d12b47baa38c40c7b5e8b2678dc03171e32216a",
+      "program_sha256": "e29bfb4987e0cec11295c59054430da3cb8f70240aa7e78cd21bfdaf35c7590a"
+    },
+    "d3-n4-solo-f3": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3728.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 820.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3701.8174904678644,
+      "entry_atoms_sha256": "adef5a3b39b15becf1b578589d12b47baa38c40c7b5e8b2678dc03171e32216a",
+      "program_sha256": "5f9079bc2f4a8a6146c775e1973f3c06131ec7d954ced1e575cc3ecd450435cd"
+    },
+    "d5-n1-joint": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3208.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 300.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3181.8174904678644,
+      "entry_atoms_sha256": "1ef5fd1da4ba18cf4bf12423235780779d49c56d4e182b92b7c0a5abb544c7e8",
+      "program_sha256": "cd91405c98cd571bc26ccdcf5e0890fda636fd63354a5ec7c03e93a9c663cb8b"
+    },
+    "d5-n1-serial": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3208.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 300.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3181.8174904678644,
+      "entry_atoms_sha256": "1ef5fd1da4ba18cf4bf12423235780779d49c56d4e182b92b7c0a5abb544c7e8",
+      "program_sha256": "cd91405c98cd571bc26ccdcf5e0890fda636fd63354a5ec7c03e93a9c663cb8b"
+    },
+    "d5-n1-solo-f0": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3208.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 300.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3181.8174904678644,
+      "entry_atoms_sha256": "1ef5fd1da4ba18cf4bf12423235780779d49c56d4e182b92b7c0a5abb544c7e8",
+      "program_sha256": "cd91405c98cd571bc26ccdcf5e0890fda636fd63354a5ec7c03e93a9c663cb8b"
+    },
+    "d5-n2-joint": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3488.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 580.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 2,
+        "multi_factory_active_time_us": 3488.8174904678644,
+        "multi_factory_layer_count": 26,
+        "shared_transport_batch_count": 13,
+        "maximum_factories_in_transport_batch": 2
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 4,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3461.8174904678644,
+      "entry_atoms_sha256": "01f3a4cbb1054895ccbcf2617bd598675917f562e67ff29512fba6f447da378f",
+      "program_sha256": "0c863be9ddbb72aa2b8f8a36e3ad48c97fd1e1042b5abad63efa8f74657c902c"
+    },
+    "d5-n2-serial": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 6697.634980935729,
+      "phase_us": {
+        "reset": 10.0,
+        "rotation": 40.0,
+        "cz_load": 2400.0,
+        "cz_move": 363.6349809357288,
+        "cz_store": 2400.0,
+        "cz_pulse": 4.0,
+        "readout_load": 200.0,
+        "readout_move": 880.0,
+        "readout_exposure": 200.0,
+        "readout_store": 200.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 8,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 2,
+      "transport_batch_counts": {
+        "cz": 24,
+        "readout": 2
+      },
+      "transport_episode_busy_us": 6643.634980935727,
+      "entry_atoms_sha256": "01f3a4cbb1054895ccbcf2617bd598675917f562e67ff29512fba6f447da378f",
+      "program_sha256": "d1fa3395e49c9070907a0e6d53425298109cd59b11543cd994d7ead1b80e1559"
+    },
+    "d5-n2-solo-f0": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3208.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 300.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3181.8174904678644,
+      "entry_atoms_sha256": "01f3a4cbb1054895ccbcf2617bd598675917f562e67ff29512fba6f447da378f",
+      "program_sha256": "bb446c0e02f36d2b3d2ab11e9ad056a567d6c9ca34f988cbc0d334e291cb2c81"
+    },
+    "d5-n2-solo-f1": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3488.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 580.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3461.8174904678644,
+      "entry_atoms_sha256": "01f3a4cbb1054895ccbcf2617bd598675917f562e67ff29512fba6f447da378f",
+      "program_sha256": "73fd0e62acd2824e8c9208e4fe7ac3abb9fe8a849e9e21874eb7f328aa53a7df"
+    },
+    "d5-n4-joint": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 4048.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 1140.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 4,
+        "multi_factory_active_time_us": 4048.8174904678644,
+        "multi_factory_layer_count": 26,
+        "shared_transport_batch_count": 13,
+        "maximum_factories_in_transport_batch": 4
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 4,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 4021.8174904678644,
+      "entry_atoms_sha256": "1d1ed2a9552b8e5681f797afddd86ab399646cc67456c6cb911242a26be89b8a",
+      "program_sha256": "30f2ea795408e38bc81f6ca0294e5debd635defb028a1524714ff0b90d8a413f"
+    },
+    "d5-n4-serial": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 14515.269961871458,
+      "phase_us": {
+        "reset": 20.0,
+        "rotation": 80.0,
+        "cz_load": 4800.0,
+        "cz_move": 727.2699618714581,
+        "cz_store": 4800.0,
+        "cz_pulse": 8.0,
+        "readout_load": 400.0,
+        "readout_move": 2880.0,
+        "readout_exposure": 400.0,
+        "readout_store": 400.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 16,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 4,
+      "transport_batch_counts": {
+        "cz": 48,
+        "readout": 4
+      },
+      "transport_episode_busy_us": 14407.269961871454,
+      "entry_atoms_sha256": "1d1ed2a9552b8e5681f797afddd86ab399646cc67456c6cb911242a26be89b8a",
+      "program_sha256": "852ad9df924b2b02f1f5b7107fccdc272953cb6ca9f4e02f39b7c165232b3282"
+    },
+    "d5-n4-solo-f0": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3208.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 300.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3181.8174904678644,
+      "entry_atoms_sha256": "1d1ed2a9552b8e5681f797afddd86ab399646cc67456c6cb911242a26be89b8a",
+      "program_sha256": "fcf925a7a119da460d7d6a66e45d8b921cc8d5fec7e813f71cf0085f231bcbc2"
+    },
+    "d5-n4-solo-f1": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3488.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 580.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3461.8174904678644,
+      "entry_atoms_sha256": "1d1ed2a9552b8e5681f797afddd86ab399646cc67456c6cb911242a26be89b8a",
+      "program_sha256": "76b6bf2fe96bca3be69d4975b29576f895a3da77a34ec82454a10ead8ce5785f"
+    },
+    "d5-n4-solo-f2": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3768.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 860.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3741.8174904678644,
+      "entry_atoms_sha256": "1d1ed2a9552b8e5681f797afddd86ab399646cc67456c6cb911242a26be89b8a",
+      "program_sha256": "18589c81ac085591ae9f96345c70b0b7acc7bfa48b2d40da736d15e1a72615b5"
+    },
+    "d5-n4-solo-f3": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 4048.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 1140.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 4021.8174904678644,
+      "entry_atoms_sha256": "1d1ed2a9552b8e5681f797afddd86ab399646cc67456c6cb911242a26be89b8a",
+      "program_sha256": "41fe29857c62c9808808fa72e1347d67e3cff880b1c7d58b952918f73d9d9de1"
+    },
+    "d7-n1-joint": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3288.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 380.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3261.8174904678644,
+      "entry_atoms_sha256": "fc2701fbdc6e4987ef92598c290609c17293e8fa8bb7da0a4c583c926bdb5f73",
+      "program_sha256": "d74b99aad3ec7f04c8d4d2bfb6259e8a43960497d384720f5a56884a4b655965"
+    },
+    "d7-n1-serial": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3288.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 380.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3261.8174904678644,
+      "entry_atoms_sha256": "fc2701fbdc6e4987ef92598c290609c17293e8fa8bb7da0a4c583c926bdb5f73",
+      "program_sha256": "d74b99aad3ec7f04c8d4d2bfb6259e8a43960497d384720f5a56884a4b655965"
+    },
+    "d7-n1-solo-f0": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3288.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 380.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3261.8174904678644,
+      "entry_atoms_sha256": "fc2701fbdc6e4987ef92598c290609c17293e8fa8bb7da0a4c583c926bdb5f73",
+      "program_sha256": "d74b99aad3ec7f04c8d4d2bfb6259e8a43960497d384720f5a56884a4b655965"
+    },
+    "d7-n2-joint": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3648.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 740.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 2,
+        "multi_factory_active_time_us": 3648.8174904678644,
+        "multi_factory_layer_count": 26,
+        "shared_transport_batch_count": 13,
+        "maximum_factories_in_transport_batch": 2
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 4,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3621.8174904678644,
+      "entry_atoms_sha256": "80871b22283cda0578840e9e1b682fb560cad6414e44bc160d2437cc46fa5440",
+      "program_sha256": "c62935741331a1fe3b466a5c7bcd91a5b8515cab865294d09c17dfb05762d017"
+    },
+    "d7-n2-serial": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 6937.634980935729,
+      "phase_us": {
+        "reset": 10.0,
+        "rotation": 40.0,
+        "cz_load": 2400.0,
+        "cz_move": 363.6349809357288,
+        "cz_store": 2400.0,
+        "cz_pulse": 4.0,
+        "readout_load": 200.0,
+        "readout_move": 1120.0,
+        "readout_exposure": 200.0,
+        "readout_store": 200.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 8,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 2,
+      "transport_batch_counts": {
+        "cz": 24,
+        "readout": 2
+      },
+      "transport_episode_busy_us": 6883.634980935727,
+      "entry_atoms_sha256": "80871b22283cda0578840e9e1b682fb560cad6414e44bc160d2437cc46fa5440",
+      "program_sha256": "319aad7b8bf74c5773e7b80cfdfc85b7c8e4f2aadc128ab709252bd4f62e8ae7"
+    },
+    "d7-n2-solo-f0": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3288.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 380.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3261.8174904678644,
+      "entry_atoms_sha256": "80871b22283cda0578840e9e1b682fb560cad6414e44bc160d2437cc46fa5440",
+      "program_sha256": "867feecb810ad9870dbecb111d889b1d47af9e4406034bc587dc0956a5511f93"
+    },
+    "d7-n2-solo-f1": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3648.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 740.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3621.8174904678644,
+      "entry_atoms_sha256": "80871b22283cda0578840e9e1b682fb560cad6414e44bc160d2437cc46fa5440",
+      "program_sha256": "a72dd0c102bc552ded245795c5c1c7f8fde7d33137739858648043b85b6c0ce5"
+    },
+    "d7-n4-joint": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 4368.817490467864,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 1460.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 4,
+        "multi_factory_active_time_us": 4368.817490467864,
+        "multi_factory_layer_count": 26,
+        "shared_transport_batch_count": 13,
+        "maximum_factories_in_transport_batch": 4
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 4,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 4341.817490467864,
+      "entry_atoms_sha256": "5efaf22863eaf2d55b56e2690f58e21b3531a5f190389f9a20b71e3910f33cea",
+      "program_sha256": "20d431ad4723e0557d444599bc5a566293961aeb86a1b614c3f5162055efebf6"
+    },
+    "d7-n4-serial": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 15315.269961871458,
+      "phase_us": {
+        "reset": 20.0,
+        "rotation": 80.0,
+        "cz_load": 4800.0,
+        "cz_move": 727.2699618714581,
+        "cz_store": 4800.0,
+        "cz_pulse": 8.0,
+        "readout_load": 400.0,
+        "readout_move": 3680.0,
+        "readout_exposure": 400.0,
+        "readout_store": 400.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 16,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 4,
+      "transport_batch_counts": {
+        "cz": 48,
+        "readout": 4
+      },
+      "transport_episode_busy_us": 15207.269961871454,
+      "entry_atoms_sha256": "5efaf22863eaf2d55b56e2690f58e21b3531a5f190389f9a20b71e3910f33cea",
+      "program_sha256": "b7fd834bc4c86952c4f04b16e1a0d32f41109a393a25255209009e97da425f67"
+    },
+    "d7-n4-solo-f0": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3288.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 380.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3261.8174904678644,
+      "entry_atoms_sha256": "5efaf22863eaf2d55b56e2690f58e21b3531a5f190389f9a20b71e3910f33cea",
+      "program_sha256": "778b72530e604f68c0f0fd81cca35e31b81e98fd76ab05aa1df12da292aa2777"
+    },
+    "d7-n4-solo-f1": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 3648.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 740.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3621.8174904678644,
+      "entry_atoms_sha256": "5efaf22863eaf2d55b56e2690f58e21b3531a5f190389f9a20b71e3910f33cea",
+      "program_sha256": "763a3197a95e01adf50251ac206feeb40657c631adda2dc6d7373b05c380a242"
+    },
+    "d7-n4-solo-f2": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 4008.817490467865,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 1100.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 3981.8174904678644,
+      "entry_atoms_sha256": "5efaf22863eaf2d55b56e2690f58e21b3531a5f190389f9a20b71e3910f33cea",
+      "program_sha256": "217672697a5080542b93d0f4dd738e960ad02d34ddbd7052092a1ee3b482c646"
+    },
+    "d7-n4-solo-f3": {
+      "semantic_validation_ok": true,
+      "replay_ok": true,
+      "makespan_us": 4368.817490467864,
+      "phase_us": {
+        "reset": 5.0,
+        "rotation": 20.0,
+        "cz_load": 1200.0,
+        "cz_move": 181.81749046786445,
+        "cz_store": 1200.0,
+        "cz_pulse": 2.0,
+        "readout_load": 100.0,
+        "readout_move": 1460.0,
+        "readout_exposure": 100.0,
+        "readout_store": 100.0
+      },
+      "concurrency": {
+        "peak_active_factory_count": 1,
+        "multi_factory_active_time_us": 0.0,
+        "multi_factory_layer_count": 0,
+        "shared_transport_batch_count": 0,
+        "maximum_factories_in_transport_batch": 1
+      },
+      "cz_pulse_count": 4,
+      "multi_owner_cz_pulses": 0,
+      "readout_exposure_count": 1,
+      "transport_batch_counts": {
+        "cz": 12,
+        "readout": 1
+      },
+      "transport_episode_busy_us": 4341.817490467864,
+      "entry_atoms_sha256": "5efaf22863eaf2d55b56e2690f58e21b3531a5f190389f9a20b71e3910f33cea",
+      "program_sha256": "3cab33ed851322f21ddb5fd6ee6aa8770a1d797e6a1fd3d48be543cd3c23783e"
+    }
+  },
+  "comparisons": [
+    {
+      "distance": 3,
+      "pipelines": 1,
+      "joint_round_us": 3128.817490467865,
+      "serial_round_us": 3128.817490467865,
+      "top_solo_us": 3128.817490467865,
+      "slowest_solo_us": 3128.817490467865,
+      "slowest_factory": 0,
+      "position_effect_us": 0.0,
+      "net_joint_effect_us": 0.0,
+      "serial_speedup": 1.0,
+      "rounds_per_second": 319.6095659291606,
+      "position_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 0.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 0.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3128.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 220.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 1,
+          "multi_factory_active_time_us": 0.0,
+          "multi_factory_layer_count": 0,
+          "shared_transport_batch_count": 0,
+          "maximum_factories_in_transport_batch": 1
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 0,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3101.8174904678644,
+        "entry_atoms_sha256": "b816a0c9789a8e65f78229a0ba6ab68c91786f362fdbbfdd3c896b4b416672ff",
+        "program_sha256": "518709a36a4fba890d9f2b2fc0b2410b23f9e608489a26f7bec37b894b52325e"
+      },
+      "slowest_solo_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3128.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 220.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 1,
+          "multi_factory_active_time_us": 0.0,
+          "multi_factory_layer_count": 0,
+          "shared_transport_batch_count": 0,
+          "maximum_factories_in_transport_batch": 1
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 0,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3101.8174904678644,
+        "entry_atoms_sha256": "b816a0c9789a8e65f78229a0ba6ab68c91786f362fdbbfdd3c896b4b416672ff",
+        "program_sha256": "518709a36a4fba890d9f2b2fc0b2410b23f9e608489a26f7bec37b894b52325e"
+      }
+    },
+    {
+      "distance": 3,
+      "pipelines": 2,
+      "joint_round_us": 3328.817490467865,
+      "serial_round_us": 6457.634980935729,
+      "top_solo_us": 3128.817490467865,
+      "slowest_solo_us": 3328.817490467865,
+      "slowest_factory": 1,
+      "position_effect_us": 200.0,
+      "net_joint_effect_us": 0.0,
+      "serial_speedup": 1.939918604557713,
+      "rounds_per_second": 600.8139544228663,
+      "position_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 200.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 0.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3328.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 420.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 2,
+          "multi_factory_active_time_us": 3328.8174904678644,
+          "multi_factory_layer_count": 26,
+          "shared_transport_batch_count": 13,
+          "maximum_factories_in_transport_batch": 2
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 4,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3301.8174904678644,
+        "entry_atoms_sha256": "2cac81aa23ce73879eaf2810d0813d05ffcba5563930128b29f45d34be5a7ce8",
+        "program_sha256": "73387a88b418f1d02a3a0c376c35e5377c6ac1403105c82032a4bb20eff6831d"
+      },
+      "slowest_solo_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3328.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 420.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 1,
+          "multi_factory_active_time_us": 0.0,
+          "multi_factory_layer_count": 0,
+          "shared_transport_batch_count": 0,
+          "maximum_factories_in_transport_batch": 1
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 0,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3301.8174904678644,
+        "entry_atoms_sha256": "2cac81aa23ce73879eaf2810d0813d05ffcba5563930128b29f45d34be5a7ce8",
+        "program_sha256": "fd89e0675427be6c9b9677dcd4b29281788ab7c4dc6a6af68172e193bde67225"
+      }
+    },
+    {
+      "distance": 3,
+      "pipelines": 4,
+      "joint_round_us": 3728.817490467865,
+      "serial_round_us": 13715.269961871458,
+      "top_solo_us": 3128.817490467865,
+      "slowest_solo_us": 3728.817490467865,
+      "slowest_factory": 3,
+      "position_effect_us": 600.0,
+      "net_joint_effect_us": 0.0,
+      "serial_speedup": 3.6781821574620874,
+      "rounds_per_second": 1072.7261417930404,
+      "position_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 600.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 0.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3728.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 820.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 4,
+          "multi_factory_active_time_us": 3728.8174904678644,
+          "multi_factory_layer_count": 26,
+          "shared_transport_batch_count": 13,
+          "maximum_factories_in_transport_batch": 4
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 4,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3701.8174904678644,
+        "entry_atoms_sha256": "adef5a3b39b15becf1b578589d12b47baa38c40c7b5e8b2678dc03171e32216a",
+        "program_sha256": "1169af8352451d6466ac1687dc8f884aefefeb2685687bbd08b101be3cd617c3"
+      },
+      "slowest_solo_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3728.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 820.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 1,
+          "multi_factory_active_time_us": 0.0,
+          "multi_factory_layer_count": 0,
+          "shared_transport_batch_count": 0,
+          "maximum_factories_in_transport_batch": 1
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 0,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3701.8174904678644,
+        "entry_atoms_sha256": "adef5a3b39b15becf1b578589d12b47baa38c40c7b5e8b2678dc03171e32216a",
+        "program_sha256": "5f9079bc2f4a8a6146c775e1973f3c06131ec7d954ced1e575cc3ecd450435cd"
+      }
+    },
+    {
+      "distance": 5,
+      "pipelines": 1,
+      "joint_round_us": 3208.817490467865,
+      "serial_round_us": 3208.817490467865,
+      "top_solo_us": 3208.817490467865,
+      "slowest_solo_us": 3208.817490467865,
+      "slowest_factory": 0,
+      "position_effect_us": 0.0,
+      "net_joint_effect_us": 0.0,
+      "serial_speedup": 1.0,
+      "rounds_per_second": 311.641283111491,
+      "position_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 0.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 0.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3208.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 300.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 1,
+          "multi_factory_active_time_us": 0.0,
+          "multi_factory_layer_count": 0,
+          "shared_transport_batch_count": 0,
+          "maximum_factories_in_transport_batch": 1
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 0,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3181.8174904678644,
+        "entry_atoms_sha256": "1ef5fd1da4ba18cf4bf12423235780779d49c56d4e182b92b7c0a5abb544c7e8",
+        "program_sha256": "cd91405c98cd571bc26ccdcf5e0890fda636fd63354a5ec7c03e93a9c663cb8b"
+      },
+      "slowest_solo_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3208.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 300.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 1,
+          "multi_factory_active_time_us": 0.0,
+          "multi_factory_layer_count": 0,
+          "shared_transport_batch_count": 0,
+          "maximum_factories_in_transport_batch": 1
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 0,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3181.8174904678644,
+        "entry_atoms_sha256": "1ef5fd1da4ba18cf4bf12423235780779d49c56d4e182b92b7c0a5abb544c7e8",
+        "program_sha256": "cd91405c98cd571bc26ccdcf5e0890fda636fd63354a5ec7c03e93a9c663cb8b"
+      }
+    },
+    {
+      "distance": 5,
+      "pipelines": 2,
+      "joint_round_us": 3488.817490467865,
+      "serial_round_us": 6697.634980935729,
+      "top_solo_us": 3208.817490467865,
+      "slowest_solo_us": 3488.817490467865,
+      "slowest_factory": 1,
+      "position_effect_us": 280.0,
+      "net_joint_effect_us": 0.0,
+      "serial_speedup": 1.9197435805211893,
+      "rounds_per_second": 573.2601391343609,
+      "position_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 280.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 0.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3488.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 580.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 2,
+          "multi_factory_active_time_us": 3488.8174904678644,
+          "multi_factory_layer_count": 26,
+          "shared_transport_batch_count": 13,
+          "maximum_factories_in_transport_batch": 2
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 4,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3461.8174904678644,
+        "entry_atoms_sha256": "01f3a4cbb1054895ccbcf2617bd598675917f562e67ff29512fba6f447da378f",
+        "program_sha256": "0c863be9ddbb72aa2b8f8a36e3ad48c97fd1e1042b5abad63efa8f74657c902c"
+      },
+      "slowest_solo_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3488.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 580.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 1,
+          "multi_factory_active_time_us": 0.0,
+          "multi_factory_layer_count": 0,
+          "shared_transport_batch_count": 0,
+          "maximum_factories_in_transport_batch": 1
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 0,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3461.8174904678644,
+        "entry_atoms_sha256": "01f3a4cbb1054895ccbcf2617bd598675917f562e67ff29512fba6f447da378f",
+        "program_sha256": "73fd0e62acd2824e8c9208e4fe7ac3abb9fe8a849e9e21874eb7f328aa53a7df"
+      }
+    },
+    {
+      "distance": 5,
+      "pipelines": 4,
+      "joint_round_us": 4048.817490467865,
+      "serial_round_us": 14515.269961871458,
+      "top_solo_us": 3208.817490467865,
+      "slowest_solo_us": 4048.817490467865,
+      "slowest_factory": 3,
+      "position_effect_us": 840.0,
+      "net_joint_effect_us": 0.0,
+      "serial_speedup": 3.5850640331515984,
+      "rounds_per_second": 987.9427782104785,
+      "position_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 840.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 0.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 4048.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 1140.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 4,
+          "multi_factory_active_time_us": 4048.8174904678644,
+          "multi_factory_layer_count": 26,
+          "shared_transport_batch_count": 13,
+          "maximum_factories_in_transport_batch": 4
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 4,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 4021.8174904678644,
+        "entry_atoms_sha256": "1d1ed2a9552b8e5681f797afddd86ab399646cc67456c6cb911242a26be89b8a",
+        "program_sha256": "30f2ea795408e38bc81f6ca0294e5debd635defb028a1524714ff0b90d8a413f"
+      },
+      "slowest_solo_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 4048.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 1140.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 1,
+          "multi_factory_active_time_us": 0.0,
+          "multi_factory_layer_count": 0,
+          "shared_transport_batch_count": 0,
+          "maximum_factories_in_transport_batch": 1
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 0,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 4021.8174904678644,
+        "entry_atoms_sha256": "1d1ed2a9552b8e5681f797afddd86ab399646cc67456c6cb911242a26be89b8a",
+        "program_sha256": "41fe29857c62c9808808fa72e1347d67e3cff880b1c7d58b952918f73d9d9de1"
+      }
+    },
+    {
+      "distance": 7,
+      "pipelines": 1,
+      "joint_round_us": 3288.817490467865,
+      "serial_round_us": 3288.817490467865,
+      "top_solo_us": 3288.817490467865,
+      "slowest_solo_us": 3288.817490467865,
+      "slowest_factory": 0,
+      "position_effect_us": 0.0,
+      "net_joint_effect_us": 0.0,
+      "serial_speedup": 1.0,
+      "rounds_per_second": 304.06065490053714,
+      "position_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 0.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 0.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3288.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 380.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 1,
+          "multi_factory_active_time_us": 0.0,
+          "multi_factory_layer_count": 0,
+          "shared_transport_batch_count": 0,
+          "maximum_factories_in_transport_batch": 1
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 0,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3261.8174904678644,
+        "entry_atoms_sha256": "fc2701fbdc6e4987ef92598c290609c17293e8fa8bb7da0a4c583c926bdb5f73",
+        "program_sha256": "d74b99aad3ec7f04c8d4d2bfb6259e8a43960497d384720f5a56884a4b655965"
+      },
+      "slowest_solo_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3288.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 380.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 1,
+          "multi_factory_active_time_us": 0.0,
+          "multi_factory_layer_count": 0,
+          "shared_transport_batch_count": 0,
+          "maximum_factories_in_transport_batch": 1
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 0,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3261.8174904678644,
+        "entry_atoms_sha256": "fc2701fbdc6e4987ef92598c290609c17293e8fa8bb7da0a4c583c926bdb5f73",
+        "program_sha256": "d74b99aad3ec7f04c8d4d2bfb6259e8a43960497d384720f5a56884a4b655965"
+      }
+    },
+    {
+      "distance": 7,
+      "pipelines": 2,
+      "joint_round_us": 3648.817490467865,
+      "serial_round_us": 6937.634980935729,
+      "top_solo_us": 3288.817490467865,
+      "slowest_solo_us": 3648.817490467865,
+      "slowest_factory": 1,
+      "position_effect_us": 360.0,
+      "net_joint_effect_us": 0.0,
+      "serial_speedup": 1.9013378989383654,
+      "rounds_per_second": 548.1227836757471,
+      "position_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 360.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 0.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3648.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 740.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 2,
+          "multi_factory_active_time_us": 3648.8174904678644,
+          "multi_factory_layer_count": 26,
+          "shared_transport_batch_count": 13,
+          "maximum_factories_in_transport_batch": 2
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 4,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3621.8174904678644,
+        "entry_atoms_sha256": "80871b22283cda0578840e9e1b682fb560cad6414e44bc160d2437cc46fa5440",
+        "program_sha256": "c62935741331a1fe3b466a5c7bcd91a5b8515cab865294d09c17dfb05762d017"
+      },
+      "slowest_solo_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 3648.817490467865,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 740.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 1,
+          "multi_factory_active_time_us": 0.0,
+          "multi_factory_layer_count": 0,
+          "shared_transport_batch_count": 0,
+          "maximum_factories_in_transport_batch": 1
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 0,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 3621.8174904678644,
+        "entry_atoms_sha256": "80871b22283cda0578840e9e1b682fb560cad6414e44bc160d2437cc46fa5440",
+        "program_sha256": "a72dd0c102bc552ded245795c5c1c7f8fde7d33137739858648043b85b6c0ce5"
+      }
+    },
+    {
+      "distance": 7,
+      "pipelines": 4,
+      "joint_round_us": 4368.817490467864,
+      "serial_round_us": 15315.269961871458,
+      "top_solo_us": 3288.817490467865,
+      "slowest_solo_us": 4368.817490467864,
+      "slowest_factory": 3,
+      "position_effect_us": 1079.9999999999995,
+      "net_joint_effect_us": 0.0,
+      "serial_speedup": 3.505587037061445,
+      "rounds_per_second": 915.5795609973244,
+      "position_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 1080.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_by_phase_us": {
+        "readout_store": 0.0,
+        "rotation": 0.0,
+        "cz_load": 0.0,
+        "cz_store": 0.0,
+        "readout_exposure": 0.0,
+        "cz_pulse": 0.0,
+        "readout_move": 0.0,
+        "reset": 0.0,
+        "readout_load": 0.0,
+        "cz_move": 0.0
+      },
+      "joint_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 4368.817490467864,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 1460.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 4,
+          "multi_factory_active_time_us": 4368.817490467864,
+          "multi_factory_layer_count": 26,
+          "shared_transport_batch_count": 13,
+          "maximum_factories_in_transport_batch": 4
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 4,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 4341.817490467864,
+        "entry_atoms_sha256": "5efaf22863eaf2d55b56e2690f58e21b3531a5f190389f9a20b71e3910f33cea",
+        "program_sha256": "20d431ad4723e0557d444599bc5a566293961aeb86a1b614c3f5162055efebf6"
+      },
+      "slowest_solo_observations": {
+        "semantic_validation_ok": true,
+        "replay_ok": true,
+        "makespan_us": 4368.817490467864,
+        "phase_us": {
+          "reset": 5.0,
+          "rotation": 20.0,
+          "cz_load": 1200.0,
+          "cz_move": 181.81749046786445,
+          "cz_store": 1200.0,
+          "cz_pulse": 2.0,
+          "readout_load": 100.0,
+          "readout_move": 1460.0,
+          "readout_exposure": 100.0,
+          "readout_store": 100.0
+        },
+        "concurrency": {
+          "peak_active_factory_count": 1,
+          "multi_factory_active_time_us": 0.0,
+          "multi_factory_layer_count": 0,
+          "shared_transport_batch_count": 0,
+          "maximum_factories_in_transport_batch": 1
+        },
+        "cz_pulse_count": 4,
+        "multi_owner_cz_pulses": 0,
+        "readout_exposure_count": 1,
+        "transport_batch_counts": {
+          "cz": 12,
+          "readout": 1
+        },
+        "transport_episode_busy_us": 4341.817490467864,
+        "entry_atoms_sha256": "5efaf22863eaf2d55b56e2690f58e21b3531a5f190389f9a20b71e3910f33cea",
+        "program_sha256": "3cab33ed851322f21ddb5fd6ee6aa8770a1d797e6a1fd3d48be543cd3c23783e"
+      }
+    }
+  ],
+  "artifact_sha256": {
+    "manifest.json": "1b6ccdec4c932ed7394d594d0e347f6971cb63c3d87f04d0c906bfdf65bb3e3d",
+    "summary.json": "ab75bb01e69377d1ec597183c6b3a8cb0ebd7e62caddd000811984d934094cd9",
+    "journal.jsonl": "57bd4c3b70efdf3093d2bc285ac4fc5e4219884f8bfc5cfe01a0c08d7f9550d4",
+    "source-snapshot.json": "833f5d70a156b2357c7d93b64e6d4a3c78915210947f6bf6ae928667f5d685a4",
+    "d3-n1-joint.json": "708248ac6a25910cda2610e8cb7cfee45a0c9bd0b136185237dc22a522e977dc",
+    "d3-n1-joint.result.json": "f8e94613cffb05d4054e6e3ff3481676847c1f728cad2da853fcc3b773598620",
+    "d3-n1-joint.schedule.json": "f7adc450d918877b63700f1ab4d72ca524e93e678d9941792318defc996fea5a",
+    "d3-n1-serial.json": "b7d69d64648feaa425004f5debff40e1ec2eb710c5a32fa9dcc178a10b13a65e",
+    "d3-n1-serial.result.json": "539fe36182630acba1aa11013de92f07557824308484dba6430884dbf9ca16ab",
+    "d3-n1-serial.schedule.json": "f7adc450d918877b63700f1ab4d72ca524e93e678d9941792318defc996fea5a",
+    "d3-n1-solo-f0.json": "440176ed919b52be7228b725e363753f5f88e34d38293a86326380b445080530",
+    "d3-n1-solo-f0.result.json": "3fb4583edab67ad97d0782a94186b4deaf7ee401d2450fab41c37af2cec738e8",
+    "d3-n1-solo-f0.schedule.json": "f7adc450d918877b63700f1ab4d72ca524e93e678d9941792318defc996fea5a",
+    "d3-n2-joint.json": "430d734654e115596bbfc99c1190a21c84db4b24a32955d6047fe2b577b7949e",
+    "d3-n2-joint.result.json": "659ea61ea16079b48b3feeb00939e230b8af9edef9d2380b54e95908714c39c0",
+    "d3-n2-joint.schedule.json": "481558841a324b70a14d66cde5a44c06cc9924d21e3ef0c2f162133ece093c9c",
+    "d3-n2-serial.json": "0c530c623f5d4ce83d4e237f41051817f1debafea988b75a8f48da3ac9b05b05",
+    "d3-n2-serial.result.json": "cc1fd9b437f663bccff57fb6de9b9597494d10476c45fe28aa6ce507cb819b47",
+    "d3-n2-serial.schedule.json": "ca476cdff9d6f657668df6a0d039df72207789cc162045effa164ce1d723cc53",
+    "d3-n2-solo-f0.json": "2de3ac02349fb030b57aeda2ded604991079edc85f5ec7ca8fa44a5cdaf5dbcd",
+    "d3-n2-solo-f0.result.json": "af13cb373d66407c3f9bbfa0c510d0a6a46ab69c81996918a4ec73c6b3cc3426",
+    "d3-n2-solo-f0.schedule.json": "4338481b7dceccb43e0334f84e6994db6e5d488af5e0ab947b2c17b5814fa0b7",
+    "d3-n2-solo-f1.json": "d2a0ee7d64773397b3664078106ca8fe01f1ce61322e2005ffa109b6caf399b1",
+    "d3-n2-solo-f1.result.json": "5eb47cc67fdd46755897ae784bc3eb18a3a970750607ac84d80db618943ca18a",
+    "d3-n2-solo-f1.schedule.json": "c9edf3adfd794221e20dd7993eed7a8bb834b310ed9d97e2c42127370834fdeb",
+    "d3-n4-joint.json": "1980d846a36a3c4a451ac0c10af74503e45dfde3fc66d86a13502ec119279b1a",
+    "d3-n4-joint.result.json": "cec9836518fe30c820f28be5d91ad8d5761281e1bbbd84b60ff283740263b8a1",
+    "d3-n4-joint.schedule.json": "6a347bdbaf5ed7f8540191c6e188dcd61af5de7fcfd79791f751c55d530a07bd",
+    "d3-n4-serial.json": "603add371a399c0ed270685a3b4c14064ea5f737cc383f4516a8f2bcfc82a007",
+    "d3-n4-serial.result.json": "8f1bd575c09aad9832261a85fadf7bd868221ac7c840f4df5dba93bd01d1b8c5",
+    "d3-n4-serial.schedule.json": "3c12727dd2395ac897615eb05e15eee5e653d9d62ce1c4b510b11c61be9dbe84",
+    "d3-n4-solo-f0.json": "019de0c0bc37cb8b5040cb1fe5fb83758d0500fc304fe5b413ee56dbea8a7a99",
+    "d3-n4-solo-f0.result.json": "a5df3d5920aec018a6d2a119e2dc1225326b7a73e21c21ab9b83781665158e99",
+    "d3-n4-solo-f0.schedule.json": "12639abafbb22e8992eeb70b9e06ffc6ca296aaf34397bb359b98ca189ff9eb6",
+    "d3-n4-solo-f1.json": "63e1eefd8676f05dcf795c8adca829973ce3156e185fa5535fe21ee70d7de251",
+    "d3-n4-solo-f1.result.json": "56010c321b1fd194ce0c7a2e5ad15a28cae954a9bd46110cc5cd1c443d59b1b9",
+    "d3-n4-solo-f1.schedule.json": "02394d4df5ec5bd4a28c00c2a0e2db9cc68196abcf7c58c3c483a895e2afae4b",
+    "d3-n4-solo-f2.json": "5b73d28d8a7be56f1083c8ccbd5b82a3ce78da67e8fb194e86c8bc9ccd6aa4e4",
+    "d3-n4-solo-f2.result.json": "3e8b4150136757615a9e2ed13570e94c80b25fc459c7ff8102d048fb646231d1",
+    "d3-n4-solo-f2.schedule.json": "fca39da1a714359e1236e90341416690672be905ffbba141b4b9244599336dc7",
+    "d3-n4-solo-f3.json": "56380016b02257e8ab88be625be42056b4c2c0050d4e22bda968cda34ea16025",
+    "d3-n4-solo-f3.result.json": "9c5409f42658e2f70fb56cfcbc0551249548cd2e029112cc05126bea0e420e31",
+    "d3-n4-solo-f3.schedule.json": "6f76a98236ef8d2565e3446a43ab606642a1b2210a856577df2e6803ca0b194a",
+    "d5-n1-joint.json": "dfc8c065ebcd52c8b3d051567763592eb22efb09a57b5453602bf9e756af1eaf",
+    "d5-n1-joint.result.json": "bd7243d1f853f65715f680977ef19be6a5ae5303081572a206dc74e1cf832358",
+    "d5-n1-joint.schedule.json": "d903dcdcc069041a62b8a6efd2b80fcebd0244e12d775a53e66976da6cdf6551",
+    "d5-n1-serial.json": "334afed254327e3a59add5a6eb4c9349b450bbd97605d791add5a01e089e42e7",
+    "d5-n1-serial.result.json": "ebbe7bb2d209f8cee3358a5ddde9587e6b3c811a27403c7c9e6fc17854c726cf",
+    "d5-n1-serial.schedule.json": "d903dcdcc069041a62b8a6efd2b80fcebd0244e12d775a53e66976da6cdf6551",
+    "d5-n1-solo-f0.json": "e320726cc62519f3fbdd9c769b2a9e99285e137c4f96b39ec666f50d6dfa18dc",
+    "d5-n1-solo-f0.result.json": "ec56c5b2ac28a3e23972f7e37902b7c96d92172b0a398de86b04cbc445066712",
+    "d5-n1-solo-f0.schedule.json": "d903dcdcc069041a62b8a6efd2b80fcebd0244e12d775a53e66976da6cdf6551",
+    "d5-n2-joint.json": "2938cb1a95f711871464891b937a37224e58d856a3126f67ae36ebafd7a68ba8",
+    "d5-n2-joint.result.json": "b62952b0b581aeb76f419ee7532fd1af885e89a1711be4498d20bccbc39d2f19",
+    "d5-n2-joint.schedule.json": "6313fcbcd23ca48826be010ca5f6570e24e16008e98211211c61ca1f8efedb51",
+    "d5-n2-serial.json": "836f3948dc18c6d44500440b77c8001a082e9478b7766b96267b97e22d07dd0b",
+    "d5-n2-serial.result.json": "df0fd98527e214cbcb1dcfad632ff7bc5e040c3a865f9cfc07f5f98a39f5976b",
+    "d5-n2-serial.schedule.json": "84dc1436f1524393a66ce8d6389cfce433fbe6da982315415042bdb2c0d604fa",
+    "d5-n2-solo-f0.json": "995580363190527ed780b0cb8839de2a615f21f213221624f16d4b09ca15df5a",
+    "d5-n2-solo-f0.result.json": "76271540a367dfdc9c281e7c5e77d8dcc4d40de94a09ef075e54a71be542ecc1",
+    "d5-n2-solo-f0.schedule.json": "faae0094eb21426fab37e115e2ea5231cf0012cfb0e86dac8345832149813d83",
+    "d5-n2-solo-f1.json": "82fd8f6de4ca3e9370ecb39c04393abff801ed21d93aa733f7fb3102fb6afaba",
+    "d5-n2-solo-f1.result.json": "03e9ee9d73f0dfce9edf760b6de2d91c09f5082178d62ab5191a47e27bb4c436",
+    "d5-n2-solo-f1.schedule.json": "228e53a83d41b640e8952b46ba27f1ed0017ce601396d8577c5736e17489521c",
+    "d5-n4-joint.json": "37e74991f872707cf6e25d2cd4c2fbffc8d14cab4fdce6cc580e99e49015c6e6",
+    "d5-n4-joint.result.json": "87c05b3010e2988401f27365b0bea5b69f475460bb587415b383deca62d1eae0",
+    "d5-n4-joint.schedule.json": "42d272596fb082a0cd5be6b3d9911883706a8429a29c713b7ff9130cb6618121",
+    "d5-n4-serial.json": "4cdee0787b73c539b354097c628e8ad7eefcf9c5ae8c6c04a1799d6847a27f03",
+    "d5-n4-serial.result.json": "d525cba5483da3bad67562882222227be76116bc632d66d063360ddf8b9932ee",
+    "d5-n4-serial.schedule.json": "20f86b16f4c473a006ac3660b7ad4ec4895e9bd4f2acce6c6f78c2c051b24669",
+    "d5-n4-solo-f0.json": "22bf20b5218a842372aa4b242acac848e4861085c40eb1c019d4dcf10192bcc5",
+    "d5-n4-solo-f0.result.json": "d19c6a288b410294c18a3376b5967385ce220fcf08ff756d0404fdccd07ecc70",
+    "d5-n4-solo-f0.schedule.json": "52392420f09969248023089e4c1c6290d8b1d42ae997809c0b355cdf073a2524",
+    "d5-n4-solo-f1.json": "2719e5760bba301109a8d7dd8b9d03a853af8ebbc4299041cb12b20156f3bc1d",
+    "d5-n4-solo-f1.result.json": "f7cbe7518b43066e670356a8df942b6d81c0b7f8ec2b092d8a0db9b4390748bf",
+    "d5-n4-solo-f1.schedule.json": "416e48a462c776c1f7cc709b4522b2d19e44603429768667997e462f21add504",
+    "d5-n4-solo-f2.json": "852935e2943402b3499202c74ccfc3d41a30b732ab884658095361bca4aaca08",
+    "d5-n4-solo-f2.result.json": "0853a129933609ca42aa05b96fe43a9bbce7d3f180a09b5ab2cf8f17006d030c",
+    "d5-n4-solo-f2.schedule.json": "5da5d43024f65b935450fcad2d36be58efc27e5d0df9dd88ba4c34455dedc689",
+    "d5-n4-solo-f3.json": "f7edc16ffacf40092ec2d416b55e9b06669b49ecdd74cbe0f8171765c95ad2ac",
+    "d5-n4-solo-f3.result.json": "b470d854631bd61e4ce23a365b8e5c2e6c3b0fc35dcec055823e466bc4478f89",
+    "d5-n4-solo-f3.schedule.json": "6b667b4aa9ac19489da9026c529b38af741d9da61ea0860ed38d6dfb74d5b5a7",
+    "d7-n1-joint.json": "34930d8d2dafb6b144819be637c61716fe07d8dfe8a52c3ddfa1a350a50a8103",
+    "d7-n1-joint.result.json": "6acf619e1f2e7cd968b3533abc2fecd7810c730cf4d8cb83ba329813d8b25883",
+    "d7-n1-joint.schedule.json": "dbfb6e867fbb15fae91d2472446e70b3055d3cc629b246c2ba0eefd436740f5a",
+    "d7-n1-serial.json": "13b809e51d6011c209d8a7d3417cdf13dc3855417d479f33bc3f4a36cb4073c3",
+    "d7-n1-serial.result.json": "edbfbea79e948ddbc8d828251c82b0497703b7666960a67821ac4f25781ebef8",
+    "d7-n1-serial.schedule.json": "dbfb6e867fbb15fae91d2472446e70b3055d3cc629b246c2ba0eefd436740f5a",
+    "d7-n1-solo-f0.json": "f2f59b8aa1edccf7033aefde3929ef816a21efaa69c0b2603ea83f839e5d3ca8",
+    "d7-n1-solo-f0.result.json": "ae7088b2f8ad1573daf562f914cbbd1b11181184a1e36a52df745da9746c8543",
+    "d7-n1-solo-f0.schedule.json": "dbfb6e867fbb15fae91d2472446e70b3055d3cc629b246c2ba0eefd436740f5a",
+    "d7-n2-joint.json": "6f5192629c2563e37d8f8e451ba54a3ff148a62d9839898feab7265079e960ae",
+    "d7-n2-joint.result.json": "77bb720af83fb5d51145734876140f394a6b23c29c0949900073bbb027d2c6ef",
+    "d7-n2-joint.schedule.json": "266900ff5cd5c384e91ab4d77d8ff5a20f0c6df58e15757799fdeb29ebde119a",
+    "d7-n2-serial.json": "24c6284c8c31747da1a0846c81552efd48fcbe44be383a4350fc5eed6a5d91a2",
+    "d7-n2-serial.result.json": "4d773d5a633a5c0e7be7caf76bf62b0b4b3d495d0a6a05eade04703c998e4250",
+    "d7-n2-serial.schedule.json": "dfec1534f0e330eeba69a472d07dc56212e51b34807eb2650323df0088bb9186",
+    "d7-n2-solo-f0.json": "c7965d3bfbcc8d277bf80a798e3c691698d64a761eced26cd3ce067568bb593b",
+    "d7-n2-solo-f0.result.json": "c48d5a95c3e26de7c1c373254bac945f0a710eab5ce7076429ad4d2b18d958bb",
+    "d7-n2-solo-f0.schedule.json": "709878b732ee74b9fb3d05e0c42114fee30b78dc405af41bf8bd09a732de1e15",
+    "d7-n2-solo-f1.json": "1215131d9a1e4d1a2055fa4228129716c49a01625f69574bb3b508402e910caa",
+    "d7-n2-solo-f1.result.json": "30df5e7693389d48d1246707f6af8d7b8802cf1a38f98f65b7320f58d9e213e5",
+    "d7-n2-solo-f1.schedule.json": "4cc82dcbd3e7640b8f41d5e5c1835f37e4e1c726a32704ff128b6110bd3d8498",
+    "d7-n4-joint.json": "ba2c53adf9fdcc0767eae3078fcbdf9a3fe52e8c763f7daa3d85eb6a98c4f0ce",
+    "d7-n4-joint.result.json": "6cc9dc07e75cc3ae1648c585f382292fa96a3581a4b9f4cba7248ab22a5e898b",
+    "d7-n4-joint.schedule.json": "9f442b8a611b24029892864c69dfd4fe4b6d278237bd05d56ef912887b8b0863",
+    "d7-n4-serial.json": "ef4a0ea7e06eb466206da99e4795f0971b6a25356b32b96eb1d2d7ddefc5a991",
+    "d7-n4-serial.result.json": "c95f6b4d53121e730b467b174660cc511121b4e65708a0788d4c26898f5b2f05",
+    "d7-n4-serial.schedule.json": "d59547c4d86690059c443eb198155aa7ca954ad0d95ea894df5b84ef964858bf",
+    "d7-n4-solo-f0.json": "e3d59d96927ef84325848e997a748d7420779afba7b258070d4385453d010933",
+    "d7-n4-solo-f0.result.json": "10dd3093515d472f6b38d852819eed39fc2940f5d2c6642281b667e44aa78db2",
+    "d7-n4-solo-f0.schedule.json": "f07efe37f0c33313388abe295b8ce2477427cfbccb54556467df734768d79180",
+    "d7-n4-solo-f1.json": "294efc6f2bed2aaa300f005fb5b4cc6f1136de1c916b94c1f0b4ab8410ed7367",
+    "d7-n4-solo-f1.result.json": "cd028036aa91b13a0b5d0e3ec4b747d6f98915e9fe06c1de58bc2b833fb7cca7",
+    "d7-n4-solo-f1.schedule.json": "2f74ca10d8c0134e6cfc9ee0fddfce2c7e9840d6d3d1c35a03e3e737e9eb744a",
+    "d7-n4-solo-f2.json": "4af32ce86159d215d51d0dadc227cbe8b9c37d29b21b040ba42330fb18dad936",
+    "d7-n4-solo-f2.result.json": "c89da038d459dcd12a08f5d3deb3d96ffbe3ff6769848d1a6b4fa8d97e5edef5",
+    "d7-n4-solo-f2.schedule.json": "ee07674cfa7b174115c1798615dbae14bd29ce8692f3899da04879d3d17558d0",
+    "d7-n4-solo-f3.json": "ecc0ee8be7223f11cfd9bff1f834b933ef3e0a0b28890cc64e715871d955fd9e",
+    "d7-n4-solo-f3.result.json": "b591d1ce27f26a40f9f6c722293d092d6a9d16baac0eb26e3eaf7986eeffa4f8",
+    "d7-n4-solo-f3.schedule.json": "329884d3177d31f1f7fb5c48dbf5f5897a3fab0ca6265a20336e7679a4d60fe7"
+  },
+  "scope": "Actual joint W1 SE and matched controls in one full world. No distillation production or logical-error evidence; J is a signed net scheduling/layout/resource effect, not pure AOD contention."
+}
