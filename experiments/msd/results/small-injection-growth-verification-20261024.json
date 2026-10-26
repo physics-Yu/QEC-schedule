@@ -1,0 +1,175 @@
+{
+  "source_snapshot_current": true,
+  "unchanged_noise": true,
+  "validated_segments": [
+    {
+      "file": "d3.injection.result.json",
+      "duration_us": 9394.452471403594,
+      "source_operation_counts": {
+        "reset": 33,
+        "ry": 173,
+        "rx": 173,
+        "rz": 1,
+        "barrier": 19,
+        "cz": 72,
+        "measure": 24
+      },
+      "validation_checks": [
+        "motion",
+        "coverage",
+        "replay",
+        "pulse",
+        "addressing",
+        "timing"
+      ]
+    },
+    {
+      "file": "d3.raw.result.json",
+      "duration_us": 3136.817490467865,
+      "source_operation_counts": {
+        "reset": 17,
+        "ry": 61,
+        "rx": 61,
+        "rz": 1,
+        "barrier": 7,
+        "cz": 24,
+        "measure": 8
+      },
+      "validation_checks": [
+        "motion",
+        "coverage",
+        "replay",
+        "pulse",
+        "addressing",
+        "timing"
+      ]
+    },
+    {
+      "file": "d5.growth.result.json",
+      "duration_us": 16051.087452339323,
+      "source_operation_counts": {
+        "reset": 136,
+        "ry": 930,
+        "rx": 930,
+        "barrier": 31,
+        "cz": 400,
+        "measure": 120
+      },
+      "validation_checks": [
+        "motion",
+        "coverage",
+        "replay",
+        "pulse",
+        "addressing",
+        "timing"
+      ]
+    },
+    {
+      "file": "d5.injection.result.json",
+      "duration_us": 14861.898463625354,
+      "source_operation_counts": {
+        "reset": 33,
+        "ry": 173,
+        "rx": 173,
+        "rz": 1,
+        "barrier": 19,
+        "cz": 72,
+        "measure": 24
+      },
+      "validation_checks": [
+        "motion",
+        "coverage",
+        "replay",
+        "pulse",
+        "addressing",
+        "timing"
+      ]
+    },
+    {
+      "file": "d5.raw.result.json",
+      "duration_us": 21010.38694021444,
+      "source_operation_counts": {
+        "reset": 153,
+        "ry": 991,
+        "rx": 991,
+        "rz": 1,
+        "barrier": 43,
+        "cz": 424,
+        "measure": 128
+      },
+      "validation_checks": [
+        "motion",
+        "coverage",
+        "replay",
+        "pulse",
+        "addressing",
+        "timing"
+      ]
+    },
+    {
+      "file": "d7.growth.result.json",
+      "duration_us": 23028.722433275052,
+      "source_operation_counts": {
+        "reset": 376,
+        "ry": 2716,
+        "rx": 2716,
+        "barrier": 43,
+        "cz": 1176,
+        "measure": 336
+      },
+      "validation_checks": [
+        "motion",
+        "coverage",
+        "replay",
+        "pulse",
+        "addressing",
+        "timing"
+      ]
+    },
+    {
+      "file": "d7.injection.result.json",
+      "duration_us": 14861.898463625354,
+      "source_operation_counts": {
+        "reset": 33,
+        "ry": 173,
+        "rx": 173,
+        "rz": 1,
+        "barrier": 19,
+        "cz": 72,
+        "measure": 24
+      },
+      "validation_checks": [
+        "motion",
+        "coverage",
+        "replay",
+        "pulse",
+        "addressing",
+        "timing"
+      ]
+    },
+    {
+      "file": "d7.raw.result.json",
+      "duration_us": 27988.021921150168,
+      "source_operation_counts": {
+        "reset": 393,
+        "ry": 2777,
+        "rx": 2777,
+        "rz": 1,
+        "barrier": 57,
+        "cz": 1200,
+        "measure": 344
+      },
+      "validation_checks": [
+        "motion",
+        "coverage",
+        "replay",
+        "pulse",
+        "addressing",
+        "timing"
+      ]
+    }
+  ],
+  "conditional_resource_formula_verified": true,
+  "physical_execution": false,
+  "output_LER_estimated": false
+}

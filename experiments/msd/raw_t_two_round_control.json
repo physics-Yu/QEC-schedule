@@ -1,0 +1,14 @@
+{
+  "schema": "nadit.msd.raw_t_acceptance_plan/2",
+  "distances": [3, 5, 7],
+  "pipelines": 1,
+  "factory_index": 0,
+  "patch_role": "W1",
+  "round_policy": "explicit_control",
+  "extra_rounds": 1,
+  "noise_profile": "modules/physical_compiler/cost_params/noise_illustrative.json",
+  "readout_control_flip": 0.001,
+  "estimator": {"method": "auto", "shots": 262144, "seed": 20261024, "batch_size": 65536},
+  "max_world_atoms": 2048,
+  "scope": "Explicit historical two-round research control; not the current distance-round postselection standard. Original implementation and exact metadata are at ad33f65."
+}

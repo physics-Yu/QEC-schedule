@@ -1,0 +1,95 @@
+{
+  "source_snapshot_current": true,
+  "unchanged_noise": true,
+  "only_requested_timing_fields_changed_test": true,
+  "tests_passed": 229,
+  "mypy_files_passed": 2,
+  "animation_scope": "complete conditional accepted preparation path; measurements unobserved",
+  "browser_review": "d5 playback, growth readout and default Direct/proportional controls verified",
+  "traces": [
+    {
+      "title": "d3 injection -> d5: 3+5 SE rounds",
+      "duration_us": 8952.985915964675,
+      "steps": 601,
+      "atom_count": 294,
+      "action_counts": {
+        "Reset": 169,
+        "Rotation": 2207,
+        "Load": 122,
+        "Move": 136,
+        "Store": 122,
+        "CZPulse": 32,
+        "Measure": 14
+      },
+      "stages": [
+        {
+          "name": "d5.injection.result.json",
+          "start_us": 0.0,
+          "end_us": 4601.898463625351,
+          "source_sha256": "97418121bf0fea2aa147244804f168ae7df27fcab284ee27efa1253823b4fd43"
+        },
+        {
+          "name": "d5.growth.result.json",
+          "start_us": 4601.898463625351,
+          "end_us": 8952.985915964668,
+          "source_sha256": "5f882f9eccb97b1199907098ef0d854c5a55b96bffc078c04d1e9e5e2d11891b"
+        }
+      ],
+      "boundary_issues": 0
+    },
+    {
+      "title": "d3 injection -> d7: 3+7 SE rounds",
+      "duration_us": 11250.620896900404,
+      "steps": 733,
+      "atom_count": 582,
+      "action_counts": {
+        "Reset": 409,
+        "Rotation": 5779,
+        "Load": 148,
+        "Move": 164,
+        "Store": 148,
+        "CZPulse": 40,
+        "Measure": 16
+      },
+      "stages": [
+        {
+          "name": "d7.injection.result.json",
+          "start_us": 0.0,
+          "end_us": 4601.898463625351,
+          "source_sha256": "7b71df8e1e058a593fa6e2c44f6851e9dd2d3d99b57368df1ee2606e023dea0e"
+        },
+        {
+          "name": "d7.growth.result.json",
+          "start_us": 4601.898463625351,
+          "end_us": 11250.620896900395,
+          "source_sha256": "e34e8cf333b3625bf81e3ba488cb5054556e419e1aad8a37af9d02011cf80909"
+        }
+      ],
+      "boundary_issues": 0
+    },
+    {
+      "title": "d3 injection -> d3: 3+0 SE rounds",
+      "duration_us": 2374.4524714035933,
+      "steps": 202,
+      "atom_count": 102,
+      "action_counts": {
+        "Reset": 33,
+        "Rotation": 347,
+        "Load": 39,
+        "Move": 42,
+        "Store": 39,
+        "CZPulse": 12,
+        "Measure": 3
+      },
+      "stages": [
+        {
+          "name": "d3.injection.result.json",
+          "start_us": 0.0,
+          "end_us": 2374.4524714035942,
+          "source_sha256": "e81903716fd84caa6cc759e614d7412c566b96163485245a35f692bb714ba567"
+        }
+      ],
+      "boundary_issues": 0
+    }
+  ]
+}
