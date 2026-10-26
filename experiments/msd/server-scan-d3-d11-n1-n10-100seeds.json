@@ -1,0 +1,34 @@
+{
+  "schema": "nadit.object_scan/1",
+  "distances": [
+    3,
+    5,
+    7,
+    9,
+    11
+  ],
+  "factory_counts": [
+    1,
+    2,
+    4,
+    6,
+    8,
+    10
+  ],
+  "seed_start": 0,
+  "seed_count": 100,
+  "production_basis": "production_rounds",
+  "rounds_per_factory": 1,
+  "layout_rule": "all_full_rectangles_unique_coordinates",
+  "input_z_error": 0.01,
+  "raw_attempt_limit": 32,
+  "case_timeout_seconds": 20,
+  "wave_timeout_seconds": 5,
+  "cell_wall_seconds": 2060,
+  "scan_wall_seconds": 3600,
+  "cpu_fraction": 0.8,
+  "worker_cap": 89,
+  "representative_seed": 0,
+  "probability_policy": "precomputed_component_reference",
+  "scope": "single_round_shot_restart_renewal_statistics_no_physical_compilation"
+}

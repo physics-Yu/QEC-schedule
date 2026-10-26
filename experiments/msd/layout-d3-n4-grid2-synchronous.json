@@ -1,0 +1,25 @@
+{
+  "schema": "nadit.factory_objects_local/1",
+  "distance": 3,
+  "strategy": "synchronous/v2",
+  "factory_counts": [
+    4
+  ],
+  "seeds": [
+    0,
+    1
+  ],
+  "cycles_per_factory": 2,
+  "input_z_error": 0.01,
+  "raw_probability_policy": "precomputed_component_reference",
+  "raw_attempt_limit": 32,
+  "batch_attempt_limit": 16,
+  "case_timeout_seconds": 20,
+  "wall_timeout_seconds": 60,
+  "scope": "full_factory_finite_round_resource_estimate_no_compilation",
+  "production_basis": "production_rounds",
+  "placement": {
+    "kind": "grid",
+    "columns": 2
+  }
+}

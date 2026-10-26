@@ -1,0 +1,15 @@
+{
+  "schema": "nadit.msd.object_acceptance/1",
+  "scope": "three_local_cases_not_full_factory_performance",
+  "distances": [3, 5, 7],
+  "factory_counts": [1, 2, 4, 8],
+  "reuse_seeds": [0, 11, 23],
+  "retry_fixture": {
+    "factories": 2,
+    "seed": 0,
+    "reject_attempts": 1,
+    "cycles": 2,
+    "timeout_seconds": 10
+  },
+  "wall_timeout_seconds": 45
+}

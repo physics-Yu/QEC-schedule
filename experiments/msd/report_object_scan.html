@@ -1,0 +1,41 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NADiT 大规模对象工厂扫描</title>
+<style>body{font:16px/1.65 system-ui,sans-serif;background:#f5f7fa;color:#172b43;max-width:1460px;margin:32px auto;padding:0 24px}h1{font-size:32px}h2{margin-top:30px}section{margin:24px 0}table{border-collapse:collapse;background:white;width:100%;font-size:13px}th,td{border:1px solid #d6dee8;padding:9px;text-align:left}th{background:#eaf0f8;position:sticky;top:0}.scroll{overflow:auto;max-height:650px}a{color:#155eaa}.ok{padding:18px;background:#e5f4ec}.note{padding:18px;background:#fff2d6;border-left:4px solid #bd8515}.controls{display:flex;flex-wrap:wrap;gap:12px;padding:15px;background:white;border:1px solid #d6dee8}select{font:inherit;padding:6px;max-width:400px}img{width:100%;height:auto;background:white;border:1px solid #d6dee8}.small{font-size:13px;color:#53647a}code{overflow-wrap:anywhere}.metric-note{padding:12px;background:#edf2fa}button{font:inherit;padding:8px;cursor:pointer}</style></head><body>
+<h1>NADiT 工厂资源与产出：d、N、布局、策略</h1>
+<p>d=3/5/7/9/11 · N=1/2/4/6/8/10 · 每 shot 一轮生产 · 每组合 100 个 seed · 单 AOD · 原概率 fake backend</p><p class="small">曲线中的时间来自对象 schedule 的 μs/ms 估算；服务器运行秒数是另行记录的程序墙钟时间。</p>
+<div class="ok">完整完成并核验 <strong>__CELLS__ 个参数组合、__SHOTS__ 个 shot</strong>。所有配对条件的概率事件／调用签名一致，组件复用检查通过，物理编译与原子展开计数为 0。服务器墙钟时间 __WALL__ 秒。</div>
+<p><a href="aggregate-results.json">全部聚合结果 JSON</a> · <a href="cell-summary.csv">各指标均值／方差 CSV</a> · <a href="all-shots.jsonl.gz">全部逐-shot数据（gzip）</a> · <a href="audit.json">覆盖与配对核验</a> · <a href="schedules/index.html">代表性完整 time schedules</a></p>
+<div class="note"><strong>生产率口径：</strong>主指标为 Σ接受输出／Σ周期耗时，按独立 shot 重启的更新模型解释为长期平均率。异步 shot 会等待所有厂结束后再重启，其与不间断异步流水线的等价性未建立。同步仍遵循 raw 成功等待、条件 S+SE 汇合，以及成功／失败都进入下一轮的规则。<br><strong>物理范围：</strong>占地目前只有存储包围盒；完整读出／运输扫掠面积未提供。横向宽度、AOD 行列和读出容量未设上限。比较的是资源模型，不是已验证的原子执行程序或实际解码错误率。</div>
+__FINDINGS__
+<section><h2>如何读均值与方差、误差棒</h2><p>普通逐-shot指标采用样本均值及无偏样本方差（m−1）。全拒绝 shot 的成本仍计入总资源分子；单次未观察到输出的启动延迟为空，不当作零。启动延迟同时提供直接观测的条件统计和含空 shot 重试的更新模型估计。生产率、每输出时空成本采用比值估计，另报估计量方差／95%区间；它们与 shot 间方差不同。</p><p><strong>误差棒是估计值 ± 1.96×标准误（近似 95% 置信区间），不是单次 shot 的标准差。</strong>普通均值的标准误为样本标准差／√100；比值估计沿用 delta method。固定配置的原子数、存储占地不随 seed 改变，误差为零。非零区间很小时仍可能被点标记遮住；图中不人为放大误差。若区间不可用则画叉号，不把缺失当零。</p><p>每个指标同时提供横轴 N／图例 d 和横轴 d／图例 N 两版。各子图独立设置纵轴范围和刻度，优先保证曲线可读性；跨布局或策略比较时请读取坐标数值。<a href="plot-audit.json">下载误差棒与刻度核验记录</a>；精确均值和方差见下表及 CSV。</p></section>
+<section><h2>完整参数表与指标选择</h2><div class="controls">
+<label>d <select id="d"><option value="all">全部</option><option>3</option><option>5</option><option>7</option><option>9</option><option>11</option></select></label>
+<label>N <select id="n"><option value="all">全部</option><option>1</option><option>2</option><option>4</option><option>6</option><option>8</option><option>10</option></select></label>
+<label>策略 <select id="mode"><option value="all">全部</option><option value="asynchronous">异步</option><option value="synchronous">同步</option></select></label>
+<label>指标 <select id="metric"></select></label></div>
+<p id="metric-note" class="metric-note"></p><p id="count"></p><div class="scroll"><table><thead><tr><th>d</th><th>N</th><th>工厂行×列</th><th>策略</th><th>有效样本</th><th>均值／比值估计</th><th>方差</th><th>接受输出总数</th><th>无输出 shot</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+__FIGURES__
+<section><h2>指标定义与缺项</h2><table><tr><th>指标</th><th>本报告口径</th></tr>
+<tr><td>原子数</td><td>6N(2d²−1)，包括暂时闲置的全部配置原子。</td></tr>
+<tr><td>物理占地</td><td>存储包围盒宽、深、面积；完整设备／读出／运输空间面积为空，不用存储面积冒充。</td></tr>
+<tr><td>移动距离</td><td>原子总路程：已存参考路径 + 共同读出平移的对象模型估算。AOD 命令距离：每个共享 Move 阶段最大位移之和，命令计一次，二者不可混用。</td></tr>
+<tr><td>运输时间</td><td>Move、Load、Store 分别统计；门运输与读出运输分开。共享命令仅计一次。</td></tr>
+<tr><td>空闲时间</td><td>厂级调度／协议等待、成员级波尾／AOD等待，以及没有组件占用的码块时间。乘原子数得到的占用代理量不等于逐原子退相干历史。</td></tr>
+<tr><td>噪声暴露</td><td>保留原生单比特门、CZ、测量、复位次数及类别成员时间；修正沿用原有 Pauli 层上界。未新增噪声估计器、逻辑错误率或逐原子 T2 诊断。</td></tr>
+<tr><td>输出消费</td><td>理想外部 sink，排除外部注入成本；工厂内部 raw 重试、复位和组件操作均计入。</td></tr></table></section>
+<section><h2>布局与复现</h2><p>只合并实际坐标完全相同的别名：N1 的上下／左右／1×1 为同一布局；N2 的上下、左右各保留。N6 的 2×3/3×2、N8 的 2×4/4×2、N10 的 2×5/5×2 均单独运行。每个码距的每厂内部仍是同一组 W1–W5、R，身份与种子映射保持不变。</p><p>运行源码提交：<code>__SOURCE__</code>。100 个 seed 为 0–99。每 shot 20秒、每波 5秒、每组合 2060秒、整批 3600秒上限；至多 89 个单线程 worker，任一失败或超时立即停止本扫描的自有进程。未修改旧服务器任务。</p></section>
+<script id="data" type="application/json">__DATA__</script>
+<script>
+const data=JSON.parse(document.getElementById('data').textContent);
+const specs=[
+ ['rate','更新模型生产率 /s','pooled_rate_per_second','rate_estimator_variance_delta','比值：Σ输出／Σ时间；方差为估计量方差，不是 shot 间方差。'],
+ ['startup','更新模型启动延迟 μs','renewal_startup_mean_us','startup_estimator_variance_delta','包括空 shot 后重启的首个可交付输出估计；方差为估计量方差。'],
+ ['cost','每输出 atom·μs','atom_us_per_output','atom_cost_estimator_variance_delta','总 atom·μs／总接受输出，包含所有失败 shot；方差为比值估计量方差。'],
+ ['area_cost','每输出 存储μm²·μs','storage_area_us_per_output','area_cost_estimator_variance_delta','存储包围盒成本，不是完整设备面积成本。']
+];
+const labels={duration_us:'单轮总时间 μs',startup_us:'有输出条件下启动延迟 μs',shot_rate_per_second:'逐-shot产率 /s',outputs:'每shot接受输出数',atoms:'原子数',storage_area_um2:'存储包围盒 μm²',storage_width_um:'存储宽度 μm',storage_depth_um:'存储深度 μm',full_physical_area_um2:'完整物理占地（未提供）',atom_distance_estimate_um:'原子总路程估算 atom·μm',aod_move_command_distance_um:'AOD命令位移总和 μm',move_command_us:'Move 命令时间 μs',load_command_us:'Load 命令时间 μs',store_command_us:'Store 命令时间 μs',transport_command_us:'Move+Load+Store μs',readout_transport_command_us:'读出运输 μs',gate_transport_command_us:'门运输 μs',aod_busy_us:'AOD占用 μs',protocol_wait_factory_us:'协议等待 厂·μs',dispatch_wait_factory_us:'调度等待 厂·μs',wave_tail_wait_member_us:'波尾等待 成员·μs',aod_phase_wait_member_us:'AOD阶段等待 成员·μs',unassigned_block_us:'无组件占用 块·μs',unassigned_block_atom_us:'空闲占用代理 atom·μs',single_qubit_operation_count:'单比特门次数',cz_operation_count:'CZ次数',measure_operation_count:'测量原子次数',reset_operation_count:'复位原子次数',raw_rejections:'raw拒绝次数',final_rejections:'最终拒绝次数'};
+for(const [key,label] of Object.entries(labels)) specs.push([key,label,null,null,'逐-shot样本均值与无偏样本方差；缺失值单独计数。']);
+const metric=document.getElementById('metric');for(const s of specs){const o=document.createElement('option');o.value=s[0];o.textContent=s[1];metric.append(o)}
+function fmt(x){return x===null||x===undefined?'未提供':Number(x).toLocaleString('zh-CN',{maximumSignificantDigits:7})}
+function update(){const chosen=specs.find(s=>s[0]===metric.value);document.getElementById('metric-note').textContent=chosen[4];const selected=data.filter(e=>['d','n','mode'].every(k=>{const val=document.getElementById(k).value;return val==='all'||String(e.cell[k==='d'?'distance':k==='n'?'factories':'strategy'])===val}));document.getElementById('count').textContent=`显示 ${selected.length} / ${data.length} 个组合`;const body=document.getElementById('rows');body.replaceChildren();for(const entry of selected){const c=entry.cell,s=entry.statistics;const m=chosen[2]?{n:s.shots,mean:s[chosen[2]],variance:s[chosen[3]]}:s.metrics[chosen[0]];const row=document.createElement('tr');for(const v of [c.distance,c.factories,`${c.rows}×${c.columns}`,c.strategy==='synchronous'?'同步':'异步',m?.n??0,fmt(m?.mean),fmt(m?.variance),s.total_outputs,`${(100*s.no_output_fraction).toFixed(1)}%`]){const td=document.createElement('td');td.textContent=v;row.append(td)}body.append(row)}}
+for(const id of ['d','n','mode','metric'])document.getElementById(id).addEventListener('change',update);update();
+</script></body></html>

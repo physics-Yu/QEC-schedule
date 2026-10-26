@@ -1,0 +1,12 @@
+{
+  "fixture": "raw_t_postselection.ideal.json",
+  "origin": "Copied from the surface-code producer artifact without editing the probability document",
+  "source_artifact": "modules/physical_compiler/artifacts/event-probability-v1/ideal/raw_t_postselection.json",
+  "producer_callable": "modules.codes.rotated_surface_d3.probabilities.raw_t.raw_t_ideal_port",
+  "producer_arguments": {"extra_rounds": 1},
+  "producer_commit": "9498503",
+  "export_commit": "e4875c1",
+  "content_sha256": "67473fdb73d402200402db983ed05d3ec942ddadb30c20d04edbfc351ab8aede",
+  "evidence_scope": "Ideal acceptance of raw T preparation with two complete SE rounds and twelve detectors; bulk frame remains unresolved",
+  "timing_scope": "Durations in the integration tests are synthetic abstract fixtures, not physical execution measurements"
+}

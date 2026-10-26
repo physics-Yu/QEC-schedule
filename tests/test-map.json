@@ -1,0 +1,2041 @@
+{
+  "schema": 1,
+  "repository": "..",
+  "roots": [
+    "tests",
+    "modules/physical_compiler/tests",
+    "modules/physical_compiler/tests_hsim",
+    "modules/physical_compiler/tests_simulation",
+    "modules/codes",
+    "modules/logical_compiler/tests",
+    "experiments/msd/tests"
+  ],
+  "areas": {
+    "physical.core": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/"
+      ],
+      "consumers": [
+        "physical.device",
+        "physical.frontend",
+        "physical.scheduling",
+        "physical.placement",
+        "physical.transport",
+        "physical.compiler",
+        "physical.results",
+        "physical.validation",
+        "physical.cost",
+        "physical.simulation",
+        "physical.jobs",
+        "physical.experiments",
+        "physical.viewer",
+        "codes.contracts"
+      ]
+    },
+    "physical.device": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/device.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/device_pairs.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/capabilities.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/architectures/"
+      ],
+      "consumers": [
+        "physical.frontend",
+        "physical.scheduling",
+        "physical.placement",
+        "physical.transport",
+        "physical.validation"
+      ]
+    },
+    "physical.frontend": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/frontend/",
+        "modules/physical_compiler/src/nadit_physical_compiler/qasm.py"
+      ],
+      "consumers": [
+        "physical.compiler"
+      ]
+    },
+    "physical.scheduling": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/scheduling/"
+      ],
+      "consumers": [
+        "physical.compiler"
+      ]
+    },
+    "physical.placement": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/placement/",
+        "modules/physical_compiler/src/nadit_physical_compiler/reuse/"
+      ],
+      "consumers": [
+        "physical.compiler"
+      ]
+    },
+    "physical.transport": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/transport/",
+        "modules/physical_compiler/src/nadit_physical_compiler/readout/",
+        "modules/physical_compiler/src/nadit_physical_compiler/motion.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/emission/"
+      ],
+      "consumers": [
+        "physical.compiler",
+        "physical.validation"
+      ]
+    },
+    "physical.compiler": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/compiler.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/compilers/",
+        "modules/physical_compiler/src/nadit_physical_compiler/strategies/",
+        "modules/physical_compiler/src/nadit_physical_compiler/nonzoned/",
+        "modules/physical_compiler/src/nadit_physical_compiler/registry.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/strategy_selection.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/support.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/execution.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/semantic_actions.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/semantic_geometry.py"
+      ],
+      "consumers": [
+        "physical.jobs",
+        "physical.simulation",
+        "codes.d3",
+        "codes.surface"
+      ]
+    },
+    "physical.results": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/serialization.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/metrics.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/activity.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/provenance.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/coverage.py"
+      ],
+      "consumers": [
+        "physical.jobs",
+        "physical.cost",
+        "physical.validation",
+        "physical.viewer"
+      ]
+    },
+    "physical.validation": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/validation.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/validation_durations.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/validation_timing.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/replay.py"
+      ],
+      "consumers": [
+        "physical.compiler"
+      ]
+    },
+    "physical.cost": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/cost/",
+        "modules/physical_compiler/cost_params/"
+      ],
+      "consumers": [
+        "physical.jobs",
+        "physical.simulation",
+        "codes.d3"
+      ]
+    },
+    "physical.simulation": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/methods/"
+      ],
+      "consumers": [
+        "physical.jobs"
+      ]
+    },
+    "physical.jobs": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/job.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/job_fields.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/job_geometry.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/cli.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/discovery.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/schemas/",
+        "modules/physical_compiler/configs/",
+        "modules/physical_compiler/examples/"
+      ],
+      "consumers": [
+        "physical.experiments",
+        "physical.viewer"
+      ]
+    },
+    "physical.experiments": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/experiments/",
+        "modules/physical_compiler/experiments/",
+        "modules/physical_compiler/suites/",
+        "modules/physical_compiler/reference/",
+        "modules/physical_compiler/prototypes/"
+      ],
+      "consumers": []
+    },
+    "physical.viewer": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/visualization/"
+      ],
+      "consumers": [
+        "msd"
+      ]
+    },
+    "codes.contracts": {
+      "sources": [
+        "modules/codes/contracts/",
+        "modules/codes/_support/",
+        "modules/codes/registry.py",
+        "modules/codes/_surface.py"
+      ],
+      "consumers": [
+        "codes.d3",
+        "logical",
+        "codes.surface"
+      ]
+    },
+    "codes.d3": {
+      "sources": [
+        "modules/codes/rotated_surface_d3/"
+      ],
+      "consumers": [
+        "logical",
+        "msd",
+        "codes.surface"
+      ]
+    },
+    "logical": {
+      "sources": [
+        "modules/logical_compiler/"
+      ],
+      "consumers": [
+        "msd"
+      ]
+    },
+    "testing": {
+      "sources": [
+        "tools/testing/",
+        "tools/__init__.py",
+        "tests/test-map.json",
+        "pytest.ini",
+        "modules/logical_compiler/pytest.ini",
+        "modules/physical_compiler/pyproject.toml",
+        "modules/physical_compiler/uv.lock"
+      ],
+      "consumers": [
+        "physical.core",
+        "physical.device",
+        "physical.frontend",
+        "physical.scheduling",
+        "physical.placement",
+        "physical.transport",
+        "physical.compiler",
+        "physical.results",
+        "physical.validation",
+        "physical.cost",
+        "physical.simulation",
+        "physical.jobs",
+        "physical.experiments",
+        "physical.viewer",
+        "codes.contracts",
+        "codes.d3",
+        "logical",
+        "codes.surface",
+        "msd",
+        "logical.placement",
+        "logical.calibration",
+        "codes.frontend"
+      ]
+    },
+    "codes.frontend": {
+      "sources": [
+        "modules/codes/__init__.py",
+        "modules/codes/registry.py",
+        "modules/codes/_surface.py",
+        "modules/codes/rotated_surface_d5/"
+      ],
+      "consumers": [
+        "logical"
+      ]
+    },
+    "codes.surface": {
+      "sources": [
+        "modules/codes/rotated_surface/",
+        "modules/codes/rotated_surface_d5/",
+        "modules/codes/rotated_surface_d9/",
+        "modules/codes/rotated_surface_d11/"
+      ],
+      "consumers": [
+        "logical",
+        "msd"
+      ]
+    },
+    "msd": {
+      "sources": [
+        "experiments/msd/",
+        "experiments/analysis/"
+      ],
+      "consumers": []
+    },
+    "logical.placement": {
+      "sources": [
+        "modules/logical_compiler/src/placement/"
+      ],
+      "consumers": [
+        "logical",
+        "msd",
+        "codes.d3",
+        "codes.surface"
+      ]
+    },
+    "logical.calibration": {
+      "sources": [
+        "modules/logical_compiler/src/estimation/calibration.py"
+      ],
+      "consumers": [
+        "logical",
+        "codes.d3"
+      ]
+    },
+    "logical.objects": {
+      "sources": [
+        "modules/logical_compiler/src/estimation/phases.py",
+        "modules/logical_compiler/examples/object_cases.py",
+        "modules/codes/rotated_surface/object_readout.py",
+        "experiments/msd/object-cases.json",
+        "modules/logical_compiler/examples/object_fixtures.py",
+        "modules/codes/rotated_surface/object_factory.py",
+        "modules/logical_compiler/examples/factory_objects.py",
+        "modules/logical_compiler/examples/factory_schedule.py",
+        "modules/logical_compiler/examples/factory_schedule.html",
+        "modules/logical_compiler/src/protocols/factory_strategy.py",
+        "modules/codes/rotated_surface/configs/object_d3_reference.json",
+        "modules/codes/rotated_surface/configs/object_d5_reference.json",
+        "modules/codes/rotated_surface/configs/object_d7_reference.json",
+        "experiments/msd/factory-objects-d3.json",
+        "experiments/msd/factory-objects-d5.json",
+        "experiments/msd/factory-objects-d7.json",
+        "experiments/msd/factory-objects-sync-d3.json",
+        "experiments/msd/factory-objects-sync-d5.json",
+        "experiments/msd/factory-objects-sync-d7.json"
+      ],
+      "consumers": []
+    }
+  },
+  "tests": {
+    "modules/codes/contracts/tests/test_event_probability.py": {
+      "areas": [
+        "codes.contracts"
+      ],
+      "tier": "fast"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_canonicalization.py": {
+      "areas": [
+        "codes.d3",
+        "physical.core",
+        "physical.device"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_component_time.py": {
+      "areas": [
+        "codes.d3",
+        "physical.compiler",
+        "physical.core",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_components.py": {
+      "areas": [
+        "codes.d3",
+        "physical.core",
+        "physical.device"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_cost_proxy.py": {
+      "areas": [
+        "codes.d3",
+        "physical.cost",
+        "physical.results"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_cost_proxy_backend.py": {
+      "areas": [
+        "codes.d3"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_event_raw_t.py": {
+      "areas": [
+        "codes.d3",
+        "physical.core",
+        "physical.cost",
+        "physical.device"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_event_t_injection.py": {
+      "areas": [
+        "codes.d3"
+      ],
+      "tier": "fast"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_factory_array.py": {
+      "areas": [
+        "codes.d3"
+      ],
+      "tier": "fast",
+      "overrides": {
+        "test_real_last_patch_component_preserves_all_other_atoms": "slow"
+      }
+    },
+    "modules/codes/rotated_surface_d3/tests/test_factory_backend.py": {
+      "areas": [
+        "codes.d3",
+        "physical.device"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_factory_experiment.py": {
+      "areas": [
+        "codes.d3"
+      ],
+      "tier": "fast"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_factory_noise_backend.py": {
+      "areas": [
+        "codes.d3"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_factory_probabilities.py": {
+      "areas": [
+        "codes.d3"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_factory_recipe.py": {
+      "areas": [
+        "codes.d3"
+      ],
+      "tier": "slow",
+      "overrides": {
+        "test_resource_boundaries_and_gate_count": "fast",
+        "test_injection_forbids_alias_and_declares_feedback_before_return": "fast"
+      }
+    },
+    "modules/codes/rotated_surface_d3/tests/test_factory_world.py": {
+      "areas": [
+        "codes.d3",
+        "physical.core",
+        "physical.device"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_fast_calibration.py": {
+      "areas": [
+        "codes.d3",
+        "physical.results",
+        "physical.cost"
+      ],
+      "tier": "fast"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_fast_cost.py": {
+      "areas": [
+        "codes.d3",
+        "physical.cost"
+      ],
+      "tier": "fast"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_fast_profile.py": {
+      "areas": [
+        "codes.d3"
+      ],
+      "tier": "fast"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_hadamard.py": {
+      "areas": [
+        "codes.d3",
+        "physical.core",
+        "physical.device"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_injection.py": {
+      "areas": [
+        "codes.d3",
+        "physical.core",
+        "physical.device"
+      ],
+      "tier": "slow",
+      "overrides": {
+        "test_all_16_raw_t_branches_match_actual_atoms": "bench"
+      }
+    },
+    "modules/codes/rotated_surface_d3/tests/test_measurement.py": {
+      "areas": [
+        "codes.d3",
+        "physical.core",
+        "physical.device"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_parallel.py": {
+      "areas": [
+        "codes.d3"
+      ],
+      "tier": "fast",
+      "overrides": {
+        "test_supported_translated_calls_reuse_one_exact_relative_template": "slow",
+        "test_canonicalization_keeps_unrelated_patch_physical_changes": "slow",
+        "test_canonicalization_does_not_ignore_local_or_world_identity_changes": "slow"
+      }
+    },
+    "modules/codes/rotated_surface_d3/tests/test_parallel_backend.py": {
+      "areas": [
+        "codes.d3",
+        "physical.results",
+        "physical.cost"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_parallel_measurement_cnot.py": {
+      "areas": [
+        "codes.d3"
+      ],
+      "tier": "fast",
+      "overrides": {
+        "test_translated_measurements_reuse_template_and_honor_real_demands": "slow",
+        "test_measurement_profile_fits_exact_three_by_three_grid": "slow",
+        "test_translated_cnot_reuses_pair_template_and_preserves_all_participants": "slow"
+      }
+    },
+    "modules/codes/rotated_surface_d3/tests/test_pauli.py": {
+      "areas": [
+        "codes.d3",
+        "physical.core",
+        "physical.device"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_phase.py": {
+      "areas": [
+        "codes.d3",
+        "physical.core",
+        "physical.device"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_raw_t_postselection.py": {
+      "areas": [
+        "codes.d3",
+        "physical.device"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_raw_t_postselection_quantum.py": {
+      "areas": [
+        "codes.d3",
+        "physical.device"
+      ],
+      "tier": "bench",
+      "reason": "Dense multi-round source/action quantum evidence and bounded adversarial fault sweeps."
+    },
+    "modules/codes/rotated_surface_d3/tests/test_raw_t_preparation.py": {
+      "areas": [
+        "codes.d3",
+        "physical.core"
+      ],
+      "tier": "slow",
+      "overrides": {
+        "test_source_and_actual_se_are_sixteen_arbitrary_seed_isometries": "bench",
+        "test_real_t_seed_fault_keeps_joint_class_uniform_source_and_atoms": "bench",
+        "test_real_t_double_readout_flip_passes_and_miscanonicalizes_each_class": "bench"
+      }
+    },
+    "modules/codes/rotated_surface_d3/tests/test_raw_t_world.py": {
+      "areas": [
+        "codes.d3",
+        "physical.core",
+        "physical.cost",
+        "physical.device",
+        "physical.results"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_transversal.py": {
+      "areas": [
+        "codes.d3",
+        "physical.core",
+        "physical.device"
+      ],
+      "tier": "slow"
+    },
+    "modules/logical_compiler/tests/test_array_cost_backend.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_array_ledger.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_array_report.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_cases.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_component_scheduling.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_event_backend.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_execution_kernel.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast",
+      "overrides": {
+        "test_native_source_without_optional_exit_binding_normalizes_after_commit": "slow"
+      }
+    },
+    "modules/logical_compiler/tests/test_execution_receipts.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_experiment_ledger.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_factory_array_entry.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_factory_execution.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_factory_export_ledger.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_factory_integration.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "bench",
+      "overrides": {
+        "test_invalid_quality_is_rejected_before_any_physical_work": "fast"
+      },
+      "reason": "Real complete 15-to-1 factory/algorithm action exports, including seven retry/exhaustion scenarios and a two-batch rebuild."
+    },
+    "modules/logical_compiler/tests/test_factory_noise.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast",
+      "overrides": {
+        "test_real_cost_noise_stops_after_canonicalized_unsupported_resource": "slow"
+      }
+    },
+    "modules/logical_compiler/tests/test_factory_process.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast",
+      "overrides": {
+        "test_real_two_factory_initial_raw_wave_uses_one_shared_aod": "slow"
+      }
+    },
+    "modules/logical_compiler/tests/test_factory_proxy.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast",
+      "overrides": {
+        "test_real_proxy_pipeline_retains_physical_and_model_evidence": "bench"
+      },
+      "reason": "The real proxy pipeline compiles and exports complete physical factory batches; all other functions use bounded fixtures or isolated adapters."
+    },
+    "modules/logical_compiler/tests/test_fast_acceptance.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_fast_entry.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_fast_experiment_review.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_fast_kernel.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_fast_metrics.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_general_component_admission.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_joint_component_batch_review.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "slow"
+    },
+    "modules/logical_compiler/tests/test_local_batch.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_local_physical.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "slow"
+    },
+    "modules/logical_compiler/tests/test_logical_execution_kernel.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_multifactory_review.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_nested_cases.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_participant_cost.py": {
+      "areas": [
+        "logical",
+        "physical.cost",
+        "physical.results"
+      ],
+      "tier": "slow"
+    },
+    "modules/logical_compiler/tests/test_physical_parallel.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast",
+      "overrides": {
+        "test_real_single_patch_components_embed_in_one_validated_world": "slow"
+      }
+    },
+    "modules/logical_compiler/tests/test_producer_cases.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_protocol_cost.py": {
+      "areas": [
+        "logical",
+        "physical.cost",
+        "physical.results"
+      ],
+      "tier": "slow"
+    },
+    "modules/logical_compiler/tests/test_protocol_events.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_protocol_physical.py": {
+      "areas": [
+        "logical",
+        "physical.results",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/logical_compiler/tests/test_resources.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_scheduled_factory.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_scheduler_cancellation.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_shared_aod_admission_review.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_shared_aod_scheduler.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_shared_grid.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "slow"
+    },
+    "modules/logical_compiler/tests/test_shared_grid_review.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "slow"
+    },
+    "modules/logical_compiler/tests/test_theoretical_fast_factory.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_theory_model_review.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_translation.py": {
+      "areas": [
+        "logical",
+        "codes.frontend",
+        "physical.frontend"
+      ],
+      "tier": "fast",
+      "overrides": {
+        "test_general_rotations_obey_circuit_error_budget": "slow",
+        "test_synthesis_is_deterministic": "slow",
+        "test_nested_branches_and_approximation_preserve_each_branch": "slow",
+        "test_mixed_circuits_against_independent_state_evolution": "slow"
+      }
+    },
+    "modules/physical_compiler/tests/test_architectures.py": {
+      "areas": [
+        "physical.device",
+        "physical.jobs",
+        "physical.results",
+        "physical.validation"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_astar.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_astar_source_precision.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.experiments",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_atom_ir.py": {
+      "areas": [
+        "physical.core",
+        "physical.device"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_batch_readout.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.jobs",
+        "physical.placement",
+        "physical.results",
+        "physical.scheduling",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_capabilities.py": {
+      "areas": [
+        "physical.device"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_cli.py": {
+      "areas": [
+        "physical.jobs",
+        "physical.results"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_cli_v2.py": {
+      "areas": [
+        "physical.jobs"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_compiler.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.placement",
+        "physical.scheduling",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_compiler_conformance.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.jobs",
+        "physical.results",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_contracts.py": {
+      "areas": [
+        "physical.core",
+        "physical.device"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_cost.py": {
+      "areas": [
+        "physical.core",
+        "physical.cost",
+        "physical.device",
+        "physical.jobs",
+        "physical.results",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_device.py": {
+      "areas": [
+        "physical.device"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_discovery.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.jobs"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_emission.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_enola_initial.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.jobs",
+        "physical.placement",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_execution.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_experiment_summary.py": {
+      "areas": [
+        "physical.experiments",
+        "physical.results"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_experiment_viewers.py": {
+      "areas": [
+        "physical.experiments",
+        "physical.jobs",
+        "physical.viewer"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_experiments.py": {
+      "areas": [
+        "physical.experiments"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_feedback.py": {
+      "areas": [
+        "physical.core",
+        "physical.frontend"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_fixed_home_reuse.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.jobs",
+        "physical.placement",
+        "physical.results",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_global_rotation_placement.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.placement",
+        "physical.scheduling",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_heuristic_placement.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement",
+        "physical.results",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_ids.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_ids_compiler.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.frontend",
+        "physical.placement",
+        "physical.scheduling",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_ids_example.py": {
+      "areas": [
+        "physical.jobs"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_initial_placement.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_job.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.jobs",
+        "physical.placement",
+        "physical.results",
+        "physical.scheduling",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_job_examples.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.jobs"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_layer_emission.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_lookahead.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.scheduling"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_metrics.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.experiments",
+        "physical.results"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_motion.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_motion_profiles.py": {
+      "areas": [
+        "physical.core",
+        "physical.jobs",
+        "physical.results",
+        "physical.transport"
+      ],
+      "tier": "fast",
+      "overrides": {
+        "test_study_preserves_circuits_feedback_validation_and_saved_results": "slow",
+        "test_study_cli_preserves_report_json": "slow"
+      }
+    },
+    "modules/physical_compiler/tests/test_multi_scheduling.py": {
+      "areas": [
+        "physical.core",
+        "physical.scheduling"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_multipair_compiler.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.placement",
+        "physical.scheduling",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_multipair_placement.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement",
+        "physical.results"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_multizone_pipeline.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.experiments",
+        "physical.placement",
+        "physical.scheduling",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_native_frontend.py": {
+      "areas": [
+        "physical.core",
+        "physical.frontend"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_noise.py": {
+      "areas": [
+        "physical.cost",
+        "physical.experiments",
+        "physical.jobs",
+        "physical.results",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_nonzoned.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.jobs",
+        "physical.placement",
+        "physical.results",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_nonzoned_reference.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.device",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_occupancy_grid.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement",
+        "physical.transport"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_pair_arrays.py": {
+      "areas": [
+        "physical.device",
+        "physical.jobs",
+        "physical.placement",
+        "physical.results"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_pair_catalog.py": {
+      "areas": [
+        "physical.device",
+        "physical.placement"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_paper_timing.py": {
+      "areas": [
+        "physical.cost",
+        "physical.device",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_physical_ir.py": {
+      "areas": [
+        "physical.core"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_pipeline_comparison.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.experiments",
+        "physical.results",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_pipeline_reference_data.py": {
+      "areas": [
+        "physical.experiments"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_placement.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_placement_arithmetic.py": {
+      "areas": [
+        "physical.placement"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_placement_candidates.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_placement_geometry.py": {
+      "areas": [
+        "physical.device",
+        "physical.placement",
+        "physical.transport"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_placement_handoff.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.placement",
+        "physical.scheduling"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_placement_scoring.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_placement_stage_trace.py": {
+      "areas": [
+        "physical.experiments",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_placement_trace_reference.py": {
+      "areas": [
+        "physical.experiments",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_program_compiler.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.jobs",
+        "physical.results"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_qasm.py": {
+      "areas": [
+        "physical.core",
+        "physical.frontend"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_qec_mode.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.jobs",
+        "physical.placement",
+        "physical.results",
+        "physical.scheduling",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_relaxed_compiler.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.frontend",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_relaxed_groups.py": {
+      "areas": [
+        "physical.device",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_relaxed_reference.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.experiments",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_relaxed_rules.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_relaxed_transport.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.experiments",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_relaxed_zone_handoff.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_replay.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_result_identity.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.results"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_result_v2.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.jobs",
+        "physical.results"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_retention_lifecycle.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.scheduling",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_retention_placement.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_retention_regression.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.frontend",
+        "physical.placement",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_reuse.py": {
+      "areas": [
+        "physical.core",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_reuse_compiler.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.placement",
+        "physical.scheduling",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_reuse_feedback_timing.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_reuse_metrics.py": {
+      "areas": [
+        "physical.results"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_reuse_placement.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_rigid_motion.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.results",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_rigid_placement.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_rigid_rules.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_rigid_transport.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.jobs",
+        "physical.results",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_scheduling.py": {
+      "areas": [
+        "physical.core",
+        "physical.scheduling"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_semantic_actions.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.jobs",
+        "physical.results",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_semantic_reference_pipeline.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.experiments",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_semantic_timing.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.jobs",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_sequential_transport.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_serialization.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.jobs",
+        "physical.results",
+        "physical.validation"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_shared_architecture.py": {
+      "areas": [
+        "physical.device",
+        "physical.results"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_source_benchmark.py": {
+      "areas": [
+        "physical.experiments"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_source_candidate_order.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_source_layout_candidates.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_source_layout_pipeline.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.experiments",
+        "physical.frontend",
+        "physical.placement",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_source_layout_reference.py": {
+      "areas": [
+        "physical.experiments"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_source_queue.py": {
+      "areas": [
+        "physical.placement",
+        "physical.scheduling"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_source_reuse.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.device",
+        "physical.frontend",
+        "physical.placement",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_source_scheduler.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.scheduling"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_source_scheduling.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement",
+        "physical.scheduling"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_staged_admission.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_staged_compiler.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.frontend",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_staged_geometry_admission.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_staged_reference.py": {
+      "areas": [
+        "physical.core",
+        "physical.experiments",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_staged_transport.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_staging_geometry.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_staging_plan.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.experiments",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_state.py": {
+      "areas": [
+        "physical.core",
+        "physical.device"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_strategy_support.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.jobs",
+        "physical.results",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_strict_compiler.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.frontend",
+        "physical.placement",
+        "physical.scheduling",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_strict_transport.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_transport.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_transport_rules.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_transport_source_scope.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.experiments",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_unified_experiments.py": {
+      "areas": [
+        "physical.core",
+        "physical.experiments",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_validation.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.jobs",
+        "physical.placement",
+        "physical.scheduling",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_validation_durations.py": {
+      "areas": [
+        "physical.core",
+        "physical.cost",
+        "physical.device",
+        "physical.jobs",
+        "physical.results",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_validation_semantics.py": {
+      "areas": [
+        "physical.core",
+        "physical.jobs",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_view_cli.py": {
+      "areas": [
+        "physical.jobs",
+        "physical.viewer"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_visualization_examples.py": {
+      "areas": [
+        "physical.core",
+        "physical.jobs",
+        "physical.viewer"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_visualization_export.py": {
+      "areas": [
+        "physical.viewer"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_visualization_noise.py": {
+      "areas": [
+        "physical.cost",
+        "physical.viewer"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_visualization_result.py": {
+      "areas": [
+        "physical.jobs",
+        "physical.results",
+        "physical.viewer"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_visualization_trace.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.results",
+        "physical.validation",
+        "physical.viewer"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_visualization_v2.py": {
+      "areas": [
+        "physical.jobs",
+        "physical.viewer"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests_hsim/test_adapter.py": {
+      "areas": [
+        "physical.cost",
+        "physical.jobs",
+        "physical.results",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests_hsim/test_noise_channels.py": {
+      "areas": [
+        "physical.cost",
+        "physical.results"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests_hsim/test_upstream_records.py": {
+      "areas": [
+        "physical.cost"
+      ],
+      "tier": "slow"
+    },
+    "modules/logical_compiler/tests/test_parallel_report.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_factory_parallel_entry.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_object_phases.py": {
+      "areas": [
+        "logical.objects"
+      ],
+      "tier": "fast"
+    },
+    "modules/codes/rotated_surface/tests/test_object_migration.py": {
+      "areas": [
+        "codes.surface"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_object_integration.py": {
+      "areas": [
+        "logical.objects"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_object_case_runner.py": {
+      "areas": [
+        "logical.objects"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_transfer_noise_migration.py": {
+      "areas": [
+        "physical.cost"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_synchronous_factory.py": {
+      "areas": ["logical.objects"],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_factory_strategy.py": {
+      "areas": [
+        "logical.objects"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_factory_schedule_report.py": {
+      "areas": [
+        "logical.objects"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_parallel_final_measurements.py": {
+      "areas": [
+        "logical.objects"
+      ],
+      "tier": "fast"
+    },
+    "modules/codes/rotated_surface/tests/test_factory_distances.py": {
+      "areas": [
+        "logical.objects"
+      ],
+      "tier": "fast"
+    },
+    "modules/codes/rotated_surface/tests/test_factory_objects.py": {
+      "areas": [
+        "logical.objects"
+      ],
+      "tier": "fast"
+    }
+  }
+}
