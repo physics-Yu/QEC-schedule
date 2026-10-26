@@ -1,0 +1,355 @@
+{
+  "schema": "nadit.center_independent_acceptance/1",
+  "passed": true,
+  "scope": "actual d3 N2 two-cycle pure-fast component model; no physical execution or quantum correctness claim",
+  "configuration_sha256": "9ac326dee00696c95c79c4ff4439dba5ef2b068ed6669356fccb9608cfebaccb",
+  "reference_payload_sha256": "fcc39fae291d025753ef227da7b3ae7deb1d28931c6a2c973d5e3828c2e3de9f",
+  "runtime_source_bytes_sha256": {
+    "modules/codes/rotated_surface/center_profile.py": "8da16073a9350ed297eaf9070e4e867dc8de5f264274a12bdd2216895be376f9",
+    "modules/codes/rotated_surface/center_costs.py": "39cda113ab70b26d273d871d14016198f3d203998edb763fade189e719918ed6",
+    "modules/codes/rotated_surface/factory_assumptions.py": "a6e625e2ac46f270bcbc360ebc70d160eb4a45e02ad9a119b71b0748990550c5",
+    "modules/codes/rotated_surface/assumed_s_profile.py": "c397d70b30a70fd12d697e3b19c76d5044b9d2135f60dbe9629911656e199041",
+    "modules/logical_compiler/examples/surface_factory_fast.py": "5d9e35ad73aea771306371ac99ded8c71488f3a222f30c0844f4c4b4380a4f4b",
+    "modules/logical_compiler/src/protocols/factory_process.py": "1aa9efe49a994b3f042a24ed2b29a01bd9c872cbbebc9683b69864e3a2cfd4d8",
+    "modules/logical_compiler/src/estimation/kernel.py": "54377691a5b708dc0f03a65d51189531a3cac43b9a1d1197fde73bb48f1e28a2"
+  },
+  "seed0_exact_replay": {
+    "case_equal": true,
+    "ledger_equal": true,
+    "first_case_sha256": "da382616e9251fb21e8e29864a4c99772b0c8ab694b6b118d837fe7b5cb33197",
+    "replay_case_sha256": "da382616e9251fb21e8e29864a4c99772b0c8ab694b6b118d837fe7b5cb33197",
+    "first_ledger_sha256": "ffa0250698aec707b55ee4bac20cbd7a5ce9c11723c6139f50cbd2d4cb5fa242",
+    "replay_ledger_sha256": "ffa0250698aec707b55ee4bac20cbd7a5ce9c11723c6139f50cbd2d4cb5fa242"
+  },
+  "seed_variation": {
+    "seed0": {
+      "lines": 2,
+      "successful_lines": 2,
+      "accepted_outputs": 4,
+      "delivered_outputs": 4,
+      "failed_lines": 0,
+      "raw_attempts": 82,
+      "raw_rejections": 22,
+      "s_calls": 20,
+      "se_calls": 660
+    },
+    "seed1": {
+      "lines": 2,
+      "successful_lines": 2,
+      "accepted_outputs": 4,
+      "delivered_outputs": 4,
+      "failed_lines": 0,
+      "raw_attempts": 111,
+      "raw_rejections": 21,
+      "s_calls": 41,
+      "se_calls": 990
+    },
+    "event_ledgers_differ": true,
+    "production_seed_set_unchanged": true
+  },
+  "cases": [
+    {
+      "seed": 0,
+      "passed": true,
+      "case_sha256": "da382616e9251fb21e8e29864a4c99772b0c8ab694b6b118d837fe7b5cb33197",
+      "ledger_sha256": "ffa0250698aec707b55ee4bac20cbd7a5ce9c11723c6139f50cbd2d4cb5fa242",
+      "event_ledger_sha256": "8c2f279f45922d46bb785686e4bf0c1924be42fb7fc98f16a80bc54ebb540756",
+      "duration_us": 274452.59315076505,
+      "ledger_counts": {
+        "lines": 2,
+        "successful_lines": 2,
+        "accepted_outputs": 4,
+        "delivered_outputs": 4,
+        "failed_lines": 0,
+        "raw_attempts": 82,
+        "raw_rejections": 22,
+        "s_calls": 20,
+        "se_calls": 660
+      },
+      "initial_raw_wave": "components/6587e8154f39fd57978f14cfc5e0f5297f888eb83ba0e96f0f6ee43bea034841",
+      "initial_raw_member_count": 8,
+      "initial_rejections": 2,
+      "initial_patch_attempts": [
+        {
+          "factory": "factory0",
+          "role": "W2",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        },
+        {
+          "factory": "factory0",
+          "role": "W3",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        },
+        {
+          "factory": "factory0",
+          "role": "W4",
+          "attempts": 2,
+          "rejections": 1,
+          "epochs": [
+            1,
+            2
+          ],
+          "accepted_at_us": 6947.722433275048
+        },
+        {
+          "factory": "factory0",
+          "role": "W5",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        },
+        {
+          "factory": "factory1",
+          "role": "W2",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        },
+        {
+          "factory": "factory1",
+          "role": "W3",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        },
+        {
+          "factory": "factory1",
+          "role": "W4",
+          "attempts": 2,
+          "rejections": 1,
+          "epochs": [
+            1,
+            2
+          ],
+          "accepted_at_us": 6947.722433275048
+        },
+        {
+          "factory": "factory1",
+          "role": "W5",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        }
+      ],
+      "patch_local_retry_verified": true,
+      "accepted_initial_states_not_reprepared_before_cohort_ready": true,
+      "resource_ready_and_epoch_checks": 128,
+      "resource_consumption_unique": true,
+      "outputs": 4,
+      "consumption_events": 44,
+      "conditional_s_before_uncompute": 20,
+      "ec_work_patch_groups": 132,
+      "ec_group_width": 5,
+      "ec_result_readiness_verified": true,
+      "logical_success": null
+    },
+    {
+      "seed": 1,
+      "passed": true,
+      "case_sha256": "a1bd71297e50dbd391fb1fd787a4c6fbfbe8b2d286d34b2278f5f7fe4529220b",
+      "ledger_sha256": "ea6ac316a3dccc72cfe5618c673ce99a320d73475da8b81adff8a6cb0facbb75",
+      "event_ledger_sha256": "bde8b6f664454d2cf5873d1edd57fb07ce916087d3921b235df630137504b084",
+      "duration_us": 504268.3992304762,
+      "ledger_counts": {
+        "lines": 2,
+        "successful_lines": 2,
+        "accepted_outputs": 4,
+        "delivered_outputs": 4,
+        "failed_lines": 0,
+        "raw_attempts": 111,
+        "raw_rejections": 21,
+        "s_calls": 41,
+        "se_calls": 990
+      },
+      "initial_raw_wave": "components/6587e8154f39fd57978f14cfc5e0f5297f888eb83ba0e96f0f6ee43bea034841",
+      "initial_raw_member_count": 8,
+      "initial_rejections": 0,
+      "initial_patch_attempts": [
+        {
+          "factory": "factory0",
+          "role": "W2",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        },
+        {
+          "factory": "factory0",
+          "role": "W3",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        },
+        {
+          "factory": "factory0",
+          "role": "W4",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        },
+        {
+          "factory": "factory0",
+          "role": "W5",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        },
+        {
+          "factory": "factory1",
+          "role": "W2",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        },
+        {
+          "factory": "factory1",
+          "role": "W3",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        },
+        {
+          "factory": "factory1",
+          "role": "W4",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        },
+        {
+          "factory": "factory1",
+          "role": "W5",
+          "attempts": 1,
+          "rejections": 0,
+          "epochs": [
+            1
+          ],
+          "accepted_at_us": 3972.2699618714564
+        }
+      ],
+      "patch_local_retry_verified": true,
+      "accepted_initial_states_not_reprepared_before_cohort_ready": true,
+      "resource_ready_and_epoch_checks": 188,
+      "resource_consumption_unique": true,
+      "outputs": 4,
+      "consumption_events": 66,
+      "conditional_s_before_uncompute": 41,
+      "ec_work_patch_groups": 198,
+      "ec_group_width": 5,
+      "ec_result_readiness_verified": true,
+      "logical_success": null
+    }
+  ],
+  "guards": [
+    {
+      "schema": "nadit.no_atom_execution_audit/1",
+      "guard": "python_profile_call_entry",
+      "scope": "current_thread_only; install separately in every worker",
+      "thread_id": 29208,
+      "forbidden_entrypoints": [
+        "nadit_physical_compiler.compiler:compile_physical",
+        "nadit_physical_compiler.compiler:_Compilation.run",
+        "nadit_physical_compiler.execution:execute",
+        "nadit_physical_compiler.execution:_Execution.run",
+        "nadit_physical_compiler.replay:replay",
+        "nadit_physical_compiler.replay:apply_step",
+        "nadit_physical_compiler.validation:validate_result",
+        "nadit_physical_compiler.activity:derive_activity",
+        "nadit_physical_compiler.serialization:decode_program",
+        "nadit_physical_compiler.frontend:loads_qasm",
+        "nadit_physical_compiler.frontend.qasm:loads_qasm",
+        "modules.logical_compiler.src.protocols.execution_kernel:PhysicalExecutionKernel.execute",
+        "modules.logical_compiler.src.protocols.physical:PhysicalContext.invoke",
+        "modules.logical_compiler.src.protocols.physical:PhysicalContext.invoke_batch",
+        "modules.logical_compiler.src.protocols.physical:PhysicalContext.finalize",
+        "modules.logical_compiler.src.protocols.parallel_physical:build_batch",
+        "experiments.msd.joint_factory_calibration:compile_joint_actions",
+        "experiments.msd.joint_factory_calibration:compile_joint_group",
+        "experiments.msd.joint_factory_calibration:evaluate_joint_probabilities",
+        "experiments.msd.joint_cache:JointCalibrationCache.get_or_create",
+        "modules.codes.*:*.expand"
+      ],
+      "intercepted_call_count": 0,
+      "intercepted_entrypoints": [],
+      "completed": true,
+      "passed": true,
+      "limitations": "Known Python entrypoints only; not a security sandbox or atom-level legality proof"
+    },
+    {
+      "schema": "nadit.no_atom_execution_audit/1",
+      "guard": "python_profile_call_entry",
+      "scope": "current_thread_only; install separately in every worker",
+      "thread_id": 29208,
+      "forbidden_entrypoints": [
+        "nadit_physical_compiler.compiler:compile_physical",
+        "nadit_physical_compiler.compiler:_Compilation.run",
+        "nadit_physical_compiler.execution:execute",
+        "nadit_physical_compiler.execution:_Execution.run",
+        "nadit_physical_compiler.replay:replay",
+        "nadit_physical_compiler.replay:apply_step",
+        "nadit_physical_compiler.validation:validate_result",
+        "nadit_physical_compiler.activity:derive_activity",
+        "nadit_physical_compiler.serialization:decode_program",
+        "nadit_physical_compiler.frontend:loads_qasm",
+        "nadit_physical_compiler.frontend.qasm:loads_qasm",
+        "modules.logical_compiler.src.protocols.execution_kernel:PhysicalExecutionKernel.execute",
+        "modules.logical_compiler.src.protocols.physical:PhysicalContext.invoke",
+        "modules.logical_compiler.src.protocols.physical:PhysicalContext.invoke_batch",
+        "modules.logical_compiler.src.protocols.physical:PhysicalContext.finalize",
+        "modules.logical_compiler.src.protocols.parallel_physical:build_batch",
+        "experiments.msd.joint_factory_calibration:compile_joint_actions",
+        "experiments.msd.joint_factory_calibration:compile_joint_group",
+        "experiments.msd.joint_factory_calibration:evaluate_joint_probabilities",
+        "experiments.msd.joint_cache:JointCalibrationCache.get_or_create",
+        "modules.codes.*:*.expand"
+      ],
+      "intercepted_call_count": 0,
+      "intercepted_entrypoints": [],
+      "completed": true,
+      "passed": true,
+      "limitations": "Known Python entrypoints only; not a security sandbox or atom-level legality proof"
+    }
+  ],
+  "source_case_archive": "center-seed0-audit-case.json.gz"
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "nadit.joint_factory_acceptance_plan/1",
+  "standard": "nadit.msd.standard/2",
+  "distances": [3, 5, 7],
+  "factory_counts": [1, 2, 4],
+  "seeds": [0],
+  "witness_seed": 0,
+  "scope": "complete representative schedules; not a throughput precision campaign",
+  "hardware": "one shared transport AOD, original vertical layout",
+  "coordination": "cohort_stage_barriers",
+  "input_z_error": 0.01,
+  "acceptance_shots": 65536,
+  "acceptance_seed": 20261024,
+  "noise_params": "modules/physical_compiler/cost_params/noise_illustrative.json",
+  "limits": {"raw_attempts": 8, "batches": 1},
+  "calibration_parallel_processes": 2,
+  "timing_us": {"load": 10, "store": 10, "measurement": 100, "processing": 0}
+}

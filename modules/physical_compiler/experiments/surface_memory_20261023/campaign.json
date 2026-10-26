@@ -1,0 +1,24 @@
+{
+  "schema": "nadit.surface-memory-campaign/1",
+  "name": "surface-memory-ea8c348-large-zones",
+  "compiler_commit": "ea8c348",
+  "distances": [3, 5, 7, 9],
+  "bases": ["x", "z"],
+  "backends": ["nonzoned", "qec"],
+  "rounds": "distance",
+  "case_seed": 17,
+  "homes": {"rows": 19, "columns": 19, "pitch_um": 8},
+  "gate_array": {"rows": 32, "pairs_per_row": 32, "x": 0, "y": 172, "pitch_x_um": 8, "pitch_y_um": 6, "separation_um": 2},
+  "readout": {"x": 0, "y": 380, "width_um": 256, "height_um": 256, "min_spacing_um": 5, "max_atoms": null},
+  "workspace": {"x_min": -10, "y_min": -10, "x_max": 266, "y_max": 646},
+  "placement": {"kind": "ids", "trials": 16, "queue_capacity": 2000, "max_nodes": 1000000, "use_window": true, "window_min_width": 16, "window_ratio": 1.0, "window_share": 0.8},
+  "budget": {"compile_timeout_s": 7200, "export_timeout_s": 1800, "shard_timeout_s": 1800, "compile_workers": 4, "sample_workers": 16, "shards": 16, "shots_per_shard": 65536, "batch_size": 4096, "numerical_threads": 1},
+  "noise": {
+    "single": {"backend": "pauli", "probabilities": [0.0001, 0.0001, 0.0001]},
+    "single_overrides": {"Z": {"backend": "pauli", "probabilities": [0, 0, 0]}},
+    "cz": {"backend": "pauli", "probabilities": [0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001, 0.0001]},
+    "transport": {"backend": "rates/v1", "load_loss": 0.0001, "store_loss": 0.0001, "move_loss": 0.00002, "loss_per_um": 0.000001, "loss_per_us": 0, "aod_loss_per_us": 0.00000001, "slm_loss_per_us": 0, "move_pauli": [0.00001, 0.00001, 0.00001], "load_pauli": [0, 0, 0], "store_pauli": [0, 0, 0]},
+    "exposure": {"slm_t2_us": 1500000, "aod_t2_us": 1500000, "include_transport": true},
+    "readout_flip": 0.001, "reset_flip": 0.001, "cz_atom_loss": 0, "spectator_pauli": [0, 0, 0]
+  }
+}
