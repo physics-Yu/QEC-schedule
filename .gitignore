@@ -1,7 +1,11 @@
+.venv/
 __pycache__/
 *.py[cod]
 *.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
 build/
 dist/
-scripts/.venv/
-artifacts/environment/R7/jobs/
+/modules/physical_compiler/artifacts/
+/modules/physical_compiler/suites/paper26/*.qasm
