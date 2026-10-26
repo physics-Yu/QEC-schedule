@@ -1,0 +1,16 @@
+{
+  "calibration_variants_checked": 693,
+  "seeded_trajectories_audited": 288,
+  "schedule_calls_audited": 4940,
+  "joint_physical_controls_validated": 12,
+  "ruff": "passed scoped E4,E7,E9,F,I,UP,B",
+  "mypy": "strict, explicit-package-bases, 8 source files passed",
+  "ui": [
+    "case selection",
+    "zoom and reset",
+    "call detail",
+    "rendered timeline screenshot"
+  ],
+  "documentation": "new links and whitespace checked; two inherited generated-artifact links absent in isolated checkout",
+  "bench_tests_run": false
+}
