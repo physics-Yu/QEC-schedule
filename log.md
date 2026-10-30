@@ -5,9 +5,9 @@ What's new
 
 今天主要把 N=15、N=21 的半经典 Shor 动画整理成面向实验组的中文展示，加入时间、loss 和 T₂ 参数滑轨，联动显示调度和损耗统计。也重新梳理了公式、参数含义和假设，希望让实验组看清损耗来自哪里、调整设备参数会怎样。当前仍是模型粗估，部分参数还需实验标定。
 
-SMT 搜索长时间没有得到解，今天已停下排查。编码复杂度和几何限制都值得重新检查，不能把超时当作无解，也不能只靠加预算继续跑；应先确认模型能表达已知的搬运方案。
+SMT 搜索rigid AOD下单行entanglement zone长时间没有得到解，今天已停下排查。
 
-另外在 Claude 上学习了 color code，保留了[学习记录](https://claude.ai/share/e575043d-1439-41c9-b09c-e4465400e2d4)。
+另外在 Claude 上学习了 color code，主要学习Kishony & Fowler，Color code off-the-hook: avoiding hook errors with a single auxiliary per plaquette（arXiv:2603.28852，2026 年 3 月）如何解决的问题，并且思考怎么做在原子平台上做SE
 
 ### 2026-10-29
 
