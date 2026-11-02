@@ -1,6 +1,12 @@
 # 项目工作记录
 
 What's new
+### 2026-11-02
+
+今天主要为实验组完成了包含 T₂* 退相干和 DD 的 Shor-15/21 量子态模拟。从最后的采样效果来看，我觉得在当前模拟条件下，这个深度的电路很有希望实现。
+
+剩下的时间继续理解 Kishony 和 Fowler 的两篇文章：[Color code off-the-hook](https://arxiv.org/abs/2603.28852v1) 和 [Surface code off-the-hook: diagonal syndrome-extraction scheduling](https://arxiv.org/abs/2602.09099)。主要关注怎样通过 SE 的门顺序设计减轻 hook error 对电路级码距的影响。另外也在了解通过逆转 SE 时序减轻 hook error 的思路，目前还没弄清楚具体的适用条件，也不确定能否用到 qLDPC 中，正在继续学习。
+
 ### 2026-11-01
 
 今天主要学习原子平台的退相干机制，以及怎样通过动态解耦（DD）抑制退相干。读了 [Engineering dynamically decoupled quantum simulations with trapped ions](https://arxiv.org/abs/2209.05509)，这篇是在离子阱上做的，重点关注怎样在抑制噪声的同时保留想要的演化。
