@@ -7,6 +7,22 @@ Research software for compiling quantum error-correction circuits into neutral-a
 
 The implementation is called **NADiT**. This repository publishes its source, experimental snapshots and research notes. It is a research prototype with working compilation and analysis tools; a general logical-circuit-to-hardware execution system is still under development.
 
+## Start here
+
+| Goal | Entry point |
+| --- | --- |
+| Run the integrated compiler and experiments | [Method guide on `develop`](https://github.com/physics-Yu/QEC-schedule/blob/develop/docs/methods.md) · [Architecture](https://github.com/physics-Yu/QEC-schedule/blob/develop/architecture.md) · [Small Shor replay and sampling](https://github.com/physics-Yu/QEC-schedule/blob/develop/experiments/small_shor_algorithm/README.md) |
+| Find the source behind the synchronized code | [NADiT source repository](https://github.com/physics-Yu/NADiT) · [QEC-schedule `develop` source tree](https://github.com/physics-Yu/QEC-schedule/tree/develop) |
+| Read research progress | [Research log](log.md) · [Short-term tasks](short-term%20task.md) · [Surface-code framework](Framework%20%28Surface%20Code%29.md) |
+| Reproduce an earlier result | [Published workspace snapshots](WORKTREES.md) · [Historical MSD scans and model versions](https://github.com/physics-Yu/QEC-schedule/blob/develop/docs/experiments/msd-historical-scans.md) · [Legacy QEC source](https://github.com/physics-Yu/QEC-schedule/tree/6b632876cf30d505052acaad166c1bb839278be9) |
+
+The module links, installation example and CI badge below refer to `main`.
+For the integrated methods above, clone the synchronized branch directly:
+
+```sh
+git clone --depth 1 --single-branch --branch develop https://github.com/physics-Yu/QEC-schedule.git
+```
+
 ## Purpose
 
 The central question is how a QEC circuit's dependencies interact with neutral-atom hardware: shared AOD rows and columns, atom transport, trapping sites, gate illumination, measurement resources and classical feedback.
@@ -41,7 +57,7 @@ Parts of this chain already work through explicit APIs. The diagram is not a cla
 
 See the [architecture](architecture.md), [configuration reference](modules/physical_compiler/docs/configuration-reference.md), [MSD experiments](experiments/msd/README.md) and [Stim memory method](modules/physical_compiler/docs/stim-memory.md) for details.
 
-## Install and run a small example
+## Install and run the main-branch example
 
 Use **Python 3.12**. Run these commands from the repository root in a fresh virtual environment:
 
@@ -94,9 +110,9 @@ The repository's broader test policy distinguishes `fast`, `slow` and `bench`. S
 5. **Packaging and repository organization need consolidation.** Cross-module imports still depend on the checkout layout. Research notes and provenance files coexist with code at the root. Several remote branches are workspace snapshots, including unfinished changes, rather than reviewed feature releases.
 6. **Old large artifacts remain in Git history.** Removing an archive from the current tree does not remove its historical blob. A shallow clone reduces the initial download; history cleanup has not been performed. Prefer ignored local outputs or Release attachments for future large deliveries.
 
-Experimental branches include SMT architecture studies, object-level factory scans and QEC viewer work. Their presence in [WORKTREES.md](WORKTREES.md) does not mean those features are in `main`. Check the branch, its recorded source identity and its evidence before reusing a result. This README describes the published `main` source, not unpublished local integrations.
+The [snapshot index](WORKTREES.md) pins the original SMT, factory and viewer publications by commit. When comparing a historical result to the integrated implementation, use the model and inputs recorded at that revision.
 
-## Where to start
+## Main-branch references
 
 | Goal | Entry point |
 | --- | --- |
@@ -105,9 +121,7 @@ Experimental branches include SMT architecture studies, object-level factory sca
 | Study logical translation | [QASM translation](modules/logical_compiler/docs/qasm-translation.md) |
 | Explore QEC components | [Code library](modules/codes/README.md) |
 | Reproduce a factory study | [MSD guide](experiments/msd/README.md), then its specific configuration and scope |
-| Locate a published workspace snapshot | [WORKTREES.md](WORKTREES.md) |
 | Inspect snapshot provenance | [SNAPSHOT-MANIFEST.json](SNAPSHOT-MANIFEST.json); this is a historical publication inventory, not a live index of later commits |
-| Read research progress and plans | [Log](log.md), [short-term tasks](short-term%20task.md), [surface-code framework notes](Framework%20%28Surface%20Code%29.md) |
 | Contribute code | [Engineering standards](agent.md) and [testing policy](docs/testing.md) |
 
 `agent.md` is a contributor/automation policy, not a user tutorial. Research notes record changing hypotheses and priorities; implemented behavior is established by code, tests and the relevant experiment evidence.
