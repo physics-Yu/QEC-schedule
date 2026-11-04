@@ -37,6 +37,16 @@ button, input, select { font: inherit; color: inherit; }
 button, select { cursor: pointer; }
 h1, h2, h3, p, dl, dd { margin: 0; }
 [hidden] { display: none !important; }
+.qec-controls {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px 18px;
+  padding: 8px 0; border-top: 1px solid var(--line); font-size: 12px;
+}
+.qec-controls label { display: inline-flex; align-items: center; gap: 5px; }
+.qec-x { color: #8656ad; }
+.qec-z { color: #2e9167; }
+.qec-x input { accent-color: #8656ad; }
+.qec-z input { accent-color: #2e9167; }
+.qec-note { color: var(--muted); margin-left: auto; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 input[type=checkbox], input[type=range] { accent-color: var(--accent); }
 select, input[type=number] {

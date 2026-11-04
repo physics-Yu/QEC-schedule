@@ -79,6 +79,7 @@ def generate_zoned(params: Mapping[str, Any]) -> dict[str, Any]:
         "aods": [aod],
         "timing": timing,
         "cz": _capability(required(data, "cz", "params"), CZ, "params.cz"),
+        "cphase": _capability(data.get("cphase"), CZ, "params.cphase"),
         "local": _capability(data.get("local"), LOCAL, "params.local"),
         "global_control": _capability(
             data.get("global_control"), GLOBAL, "params.global_control"

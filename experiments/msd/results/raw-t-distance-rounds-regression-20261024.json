@@ -1,0 +1,38 @@
+{
+  "schema": "nadit.raw_t_distance_rounds_regression/1",
+  "baseline_selected_passed": 96,
+  "regular_sweep": {
+    "tests": 1486,
+    "failures": 6,
+    "errors": 0,
+    "skipped": 0
+  },
+  "expensive_physical_noise_case": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "repair_rechecks": [
+    {
+      "modules": [
+        "test_execution_kernel.py"
+      ],
+      "passed": 5,
+      "change": "Explicit empty parameter serialization; exact projection restores original toy goldens."
+    },
+    {
+      "modules": [
+        "test_physical_parallel.py",
+        "test_shared_grid.py"
+      ],
+      "passed": 31,
+      "change": "Normal three-round component count and old prefix plus actual additional SE duration."
+    }
+  ],
+  "remaining_known_failures": [],
+  "unique_cases_covered": 1487,
+  "post_repair_full_sweep_repeated": false,
+  "lint": "Formatting and E4,E7,E9,F,I,UP,B checks passed for 47 changed/new Python files.",
+  "strict_mypy": "21 changed production files passed; build_components.py has 17 verified pre-existing diagnostics."
+}

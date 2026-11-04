@@ -1,0 +1,326 @@
+{
+  "schema": "nadit.stim.annotations/1",
+  "qasm_sha256": "bc59a04b1a3515c611c3ce145c3de8886fedd3d3460738fcdd519c90dcc6adb7",
+  "measurement_ids": [
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    166,
+    167,
+    168,
+    169,
+    170,
+    171,
+    172,
+    173,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190
+  ],
+  "detectors": [
+    {
+      "measurement_ids": [
+        60
+      ],
+      "coordinates": [
+        0.0,
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        57
+      ],
+      "coordinates": [
+        2.0,
+        2.0,
+        0.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        62
+      ],
+      "coordinates": [
+        4.0,
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        59
+      ],
+      "coordinates": [
+        6.0,
+        2.0,
+        0.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        111,
+        56
+      ],
+      "coordinates": [
+        2.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        112,
+        57
+      ],
+      "coordinates": [
+        2.0,
+        2.0,
+        1.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        113,
+        58
+      ],
+      "coordinates": [
+        4.0,
+        2.0,
+        1.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        114,
+        59
+      ],
+      "coordinates": [
+        6.0,
+        2.0,
+        1.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        115,
+        60
+      ],
+      "coordinates": [
+        0.0,
+        4.0,
+        1.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        116,
+        61
+      ],
+      "coordinates": [
+        2.0,
+        4.0,
+        1.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        117,
+        62
+      ],
+      "coordinates": [
+        4.0,
+        4.0,
+        1.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        118,
+        63
+      ],
+      "coordinates": [
+        4.0,
+        6.0,
+        1.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        166,
+        111
+      ],
+      "coordinates": [
+        2.0,
+        0.0,
+        2.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        167,
+        112
+      ],
+      "coordinates": [
+        2.0,
+        2.0,
+        2.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        168,
+        113
+      ],
+      "coordinates": [
+        4.0,
+        2.0,
+        2.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        169,
+        114
+      ],
+      "coordinates": [
+        6.0,
+        2.0,
+        2.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        170,
+        115
+      ],
+      "coordinates": [
+        0.0,
+        4.0,
+        2.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        171,
+        116
+      ],
+      "coordinates": [
+        2.0,
+        4.0,
+        2.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        172,
+        117
+      ],
+      "coordinates": [
+        4.0,
+        4.0,
+        2.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        173,
+        118
+      ],
+      "coordinates": [
+        4.0,
+        6.0,
+        2.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        188,
+        185,
+        170
+      ],
+      "coordinates": [
+        0.0,
+        4.0,
+        3.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        186,
+        185,
+        183,
+        182,
+        167
+      ],
+      "coordinates": [
+        2.0,
+        2.0,
+        3.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        190,
+        189,
+        187,
+        186,
+        172
+      ],
+      "coordinates": [
+        4.0,
+        4.0,
+        3.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        187,
+        184,
+        169
+      ],
+      "coordinates": [
+        6.0,
+        2.0,
+        3.0
+      ]
+    }
+  ],
+  "observables": [
+    {
+      "measurement_ids": [
+        184,
+        183,
+        182
+      ],
+      "index": 0
+    }
+  ],
+  "workload": {
+    "kind": "rotated_surface_memory",
+    "distance": 3,
+    "rounds": 3,
+    "basis": "z",
+    "stim_version": "1.16.0"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "nadit.msd.raw_t_acceptance_plan/2",
+  "distances": [3, 5, 7],
+  "pipelines": 1,
+  "factory_index": 0,
+  "patch_role": "W1",
+  "round_policy": "distance",
+  "noise_profile": "modules/physical_compiler/cost_params/noise_illustrative.json",
+  "readout_control_flip": 0.001,
+  "estimator": {"method": "auto", "shots": 262144, "seed": 20261024, "batch_size": 65536},
+  "max_world_atoms": 2048,
+  "scope": "One raw-T attempt with total SE rounds equal to code distance in the unchanged complete standard world; binary detector acceptance and attempt resources, not accepted-state fidelity or complete factory yield"
+}

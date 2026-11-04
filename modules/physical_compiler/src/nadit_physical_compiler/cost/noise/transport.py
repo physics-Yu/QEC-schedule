@@ -35,7 +35,8 @@ class RateTransportModel:
         """Estimate one atom using endpoints; no trajectory/velocity simulation."""
         p = self.params
         if event.kind in ("Load", "Store"):
-            return TransportEffect(1 - p[event.kind.lower() + "_loss"])
+            name = event.kind.lower()
+            return TransportEffect(1 - p[name + "_loss"], tuple(p[name + "_pauli"]))
         if event.kind != "Move":
             return TransportEffect()
         x, y = event.starts[atom_index]

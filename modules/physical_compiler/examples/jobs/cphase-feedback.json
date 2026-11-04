@@ -1,0 +1,27 @@
+{
+  "schema": "nadit.job/1",
+  "circuit": {"qasm": "../circuits/cphase-feedback.qasm3", "gate_set": ["h", "t", "cz", "cp"]},
+  "device": {"architecture": {"family": "zoned/v1", "params": {
+    "name": "cphase_feedback",
+    "storage": [{"id": "storage", "origin": {"x": 0, "y": 0}, "rows": 1, "columns": 4, "pitch": {"x": 5, "y": 5}}],
+    "gate_zones": [{
+      "id": "entanglement", "position": {"x": 0, "y": 20}, "rows": 1, "pairs_per_row": 2,
+      "separation": 2, "pitch": {"x": 8, "y": 8}, "operations": ["load", "store", "cz", "cp", "rotate", "reset"]
+    }],
+    "measurement": {
+      "position": {"x": 0, "y": 40}, "bounds": {"x_min": 0, "y_min": 0, "x_max": 20, "y_max": 5},
+      "readout": {"channel": "camera", "duration_us": 10, "latency_us": 5}
+    },
+    "aod": {"motion": "rigid"},
+    "cz": {"channel": "rydberg", "duration_us": 0.5, "radius_um": 4.6},
+    "cphase": {"channel": "rydberg", "duration_us": 0.75, "radius_um": 4.6},
+    "local": {"channel": "raman", "rotation_us": 1, "reset_us": 5}
+  }}},
+  "aod": "transport",
+  "strategy": {
+    "kind": "search_smarter", "scheduler": {"kind": "ready", "max_cz_gates": "catalog"},
+    "placement": {"kind": "ids"}, "transport": {"kind": "strict"},
+    "emitter": {"kind": "whole_layer"}, "reuse": {"kind": "matching"}
+  },
+  "case": {"seed": 17, "overrides": {"3": 1}}
+}

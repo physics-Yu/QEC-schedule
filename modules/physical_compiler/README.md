@@ -5,6 +5,39 @@ For configuration by external projects, people, and AI clients, start with the
 Device fields, compiler options, experiment controls, defaults, combination
 restrictions, complete examples, and CLI/Python invocation.
 
+The optional [bounded SMT compiler](docs/smt.md) accepts a static native circuit,
+an explicit layout and a finite coordinate/time domain. It supports flexible and
+rigid AODs and keeps solver bounds separate from independently validated schedules.
+
+The [QEC viewer overlay](docs/viewer-qec.md) adds explicit X/Z check markers and
+check-to-data support edges through `nadit view --qec`. Saved result bytes remain
+unchanged. [Archived SMT experiments](../../experiments/surface_smt/README.md)
+can be revalidated and exported without running a new solver search.
+
+The [Stim memory method](docs/stim-memory.md) translates validated Atom IR results
+through `noise/v1` into sampled Clifford circuits. It includes standard single-block
+surface-memory input generation, both fixed-home physical backends and decoded
+Pauli/readout memory statistics. Physical loss and leakage stay separate reports.
+
+## Native phase gates
+
+Search Smarter with ready scheduling accepts native `cp` when the Device
+declares a `cphase` capability and its entangling zones permit `cp`. It shares
+CZ geometry and channel, with an independently configured duration. Disjoint
+equal-angle pairs may share a pulse. [Design decision](../../docs/decisions/0062-native-controlled-phase.md)
+
+From the repository root, compile the [four-qubit feedback job](examples/jobs/cphase-feedback.json)
+and check the saved result:
+
+```console
+nadit compile modules/physical_compiler/examples/jobs/cphase-feedback.json --validate -o cphase-result.json
+nadit validate cphase-result.json
+```
+
+With the supplied measurement override of one, the example emits two
+`CPhasePulse` actions with angles `-pi/4` and `pi/8` and a duration of
+0.75 microseconds each. An override of zero skips the second pulse.
+
 ## Unified compiler interface
 
 `strategy.kind` selects a registration in `compilers/registry.py`. Existing
@@ -368,11 +401,8 @@ over all 26 inputs and three motion/capacity profiles. It is distinct from
 the paper's 900-second budget. The 14 MB of restored QASM remain ignored;
 their committed manifest and archive hash fix their identities.
 
-Verification, including the optional upstream integration:
-
-```text
-uv run --locked --extra cost-hsim pytest -q tests tests_hsim
-```
+The original optional adapter comparisons are available at
+`6bbe046:modules/physical_compiler/tests_hsim`.
 
 ## Parametric architecture and strategy discovery
 
@@ -666,6 +696,11 @@ Read the root [engineering standards](../../agent.md) and
 [architecture](../../architecture.md) before working here.
 
 ## Setup and verification
+
+The commands below use this module's environment. Here `pytest -q` runs the
+regressions under `tests/` and excludes bench by default. Use the
+[repository testing workflow](../../docs/testing.md) to select affected
+consumers or run the required commit checks.
 
 Use Python 3.12 and run these commands from `modules/physical_compiler/`:
 

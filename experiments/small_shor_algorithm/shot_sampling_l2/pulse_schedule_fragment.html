@@ -1,0 +1,21 @@
+<section class="card pulse-panel" id="pulse-panel" aria-labelledby="pulse-title">
+  <div class="row"><h2 id="pulse-title">脉冲与门的时间安排</h2><span id="pulse-summary" class="badge">等待调度</span></div>
+  <p class="muted" id="pulse-branch">尚未采样，条件门显示为待定。</p>
+  <p class="pulse-note">横轴为物理时间，纵轴为比特。色块标出 tπ 对应的时间范围，中心线标出旋转时刻。读出期间的 X/Y 只画在存储区作用对象上，测量原子不受这些脉冲作用。</p>
+  <div class="pulse-toolbar">
+    <button type="button" id="pulse-full">查看全程</button>
+    <button type="button" id="pulse-readout" disabled>查看读出期间的保护</button>
+    <label>放大 <input id="pulse-zoom" aria-label="脉冲时间图放大倍数" type="range" min="0" max="10" step="0.25" value="0"><output id="pulse-zoom-label">1×</output></label>
+    <label class="pulse-position">时间位置 <input id="pulse-position" aria-label="脉冲时间图时间位置" type="range" min="0" max="1000" step="1" value="0"></label>
+    <label><input type="checkbox" id="pulse-context"> 显示搬运与转移</label>
+  </div>
+  <div class="pulse-legend" aria-label="颜色说明">
+    <span><i class="pulse-key pulse-key-x"></i>X 脉冲</span><span><i class="pulse-key pulse-key-y"></i>Y 脉冲</span>
+    <span><i class="pulse-key pulse-key-gate"></i>单比特门</span><span><i class="pulse-key pulse-key-cz"></i>CZ</span>
+    <span><i class="pulse-key pulse-key-measure"></i>测量／初始化</span><span><i class="pulse-key pulse-key-idle"></i>未执行的条件门</span>
+  </div>
+  <div class="pulse-canvas-wrap"><canvas id="pulse-canvas" aria-label="物理时间与比特的二维脉冲调度图"></canvas></div>
+  <div class="pulse-overview-wrap"><canvas id="pulse-overview" aria-label="脉冲调度全程缩略图，点击可移动查看范围"></canvas></div>
+  <div class="pulse-caption"><span id="pulse-window">—</span><span>放大查看密集脉冲；点击下方缩略图可定位。</span></div>
+  <p id="pulse-detail" class="pulse-detail">将鼠标移到脉冲或门上，可查看时间、作用比特和条件。</p>
+</section>

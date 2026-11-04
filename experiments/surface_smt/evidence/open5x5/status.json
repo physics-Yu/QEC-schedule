@@ -1,0 +1,69 @@
+{
+  "attempts": [
+    {
+      "depth": 3,
+      "model_build_s": 0.7071898765861988,
+      "solve_s": 0.2353386301547289,
+      "solver": "4.16.0",
+      "source_and_inputs_verified": true,
+      "status": "unsat",
+      "worker_wall_s": 0.9496320374310017
+    },
+    {
+      "depth": 4,
+      "metrics": {
+        "action_counts": {
+          "CZPulse": 4,
+          "Load": 4,
+          "Move": 4,
+          "Reset": 1,
+          "Rotation": 20,
+          "Store": 4
+        },
+        "atom_load_count": 34,
+        "atom_steps": 43,
+        "atom_store_count": 34,
+        "cz_gates_per_pulse": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "duration_us": 216.16135954999578,
+        "load_batch_sizes": [
+          6,
+          8,
+          9,
+          11
+        ],
+        "max_parallel_atoms": 11,
+        "program_duration_us": 216.16135954999578,
+        "transport_duration_us": 184.72135954999578
+      },
+      "model_build_s": 0.8969521094113588,
+      "solve_s": 1.0524038262665272,
+      "solver": "4.16.0",
+      "source_and_inputs_verified": true,
+      "status": "sat",
+      "validated": true,
+      "worker_wall_s": 2.0574234630912542
+    }
+  ],
+  "final_home": false,
+  "manifest_sha256": "68fa15d2c1a0a67a69bf573b908b92f641e07a1646c24d212ed504de4dec39dc",
+  "minimum_move_depth": 4,
+  "output_hashes": {
+    "depth-3.json": "4671fe88eed37c8e548b81aa6b11e397151ddc8c69fece9371051c8e47809e00",
+    "depth-3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "depth-4.checks.json": "648fe2ee2618cca375e6577f6ced8ca9c2e7d0bb424b8e994043017745d3b8f8",
+    "depth-4.json": "244fee6ce3d5f267619cd91e2c098437a349210fdf74c3b85968f26ef3022333",
+    "depth-4.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "depth-4.result.json": "d7eae14d5a33dbad9db836db2074b77c74c395884c5e55bce8e15f23bd61ed98",
+    "depth-4.witness.json": "27cd7f7c840d35ce4f4fca8bd8556aa46397d14a1df8fd5b5f3fee63cc0763f0"
+  },
+  "readout_included": false,
+  "scope": "Fixed four N/Z matchings; free atom assignment to a 5x5 double-trap bank; one initially isolated atom per cell; full-field CZ; flexible AOD; unlimited line capacity; all endpoints SLM.",
+  "source_and_inputs_verified": true,
+  "status": "optimal_in_declared_model",
+  "wall_s": 4.194079363718629
+}

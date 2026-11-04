@@ -6,6 +6,7 @@ from math import hypot
 from typing import Any
 
 from .atom_ir import (
+    CPhasePulse,
     CZPulse,
     GlobalRY,
     Load,
@@ -163,7 +164,7 @@ def derive_activity(document: Mapping[str, Any]) -> AtomActivity:
                         "phi": action.phi,
                         "lam": action.lam,
                     }
-            elif isinstance(action, CZPulse | GlobalRY):
+            elif isinstance(action, CPhasePulse | CZPulse | GlobalRY):
                 illumination = action.coverage
                 if isinstance(illumination, tuple):
                     ids = illumination
@@ -181,7 +182,9 @@ def derive_activity(document: Mapping[str, Any]) -> AtomActivity:
                     )
                     coverage = {"regions": [asdict(region) for region in regions]}
                     area = _area(regions)
-                if isinstance(action, CZPulse):
+                if isinstance(action, CPhasePulse):
+                    parameters = {"angle": action.angle}
+                if isinstance(action, CPhasePulse | CZPulse):
                     pairs = tuple(
                         tuple(
                             layout.qubit_to_atom[q]

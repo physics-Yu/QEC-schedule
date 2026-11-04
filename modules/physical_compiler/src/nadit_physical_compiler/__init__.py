@@ -4,6 +4,7 @@ from .atom_ir import (
     AtomAction,
     AtomProgram,
     AtomStep,
+    CPhasePulse,
     CZPulse,
     GlobalRY,
     Load,
@@ -15,7 +16,13 @@ from .atom_ir import (
     Store,
     Wait,
 )
-from .capabilities import CZCapability, GlobalControl, LocalControl, ReadoutCapability
+from .capabilities import (
+    CPhaseCapability,
+    CZCapability,
+    GlobalControl,
+    LocalControl,
+    ReadoutCapability,
+)
 from .compiler import (
     CompilationResult,
     CompilationStrategy,
@@ -75,7 +82,9 @@ __all__ = [
     "AtomState",
     "AtomStep",
     "CZCapability",
+    "CPhaseCapability",
     "CZPulse",
+    "CPhasePulse",
     "CompilationResult",
     "CompilationStrategy",
     "CompiledOperation",

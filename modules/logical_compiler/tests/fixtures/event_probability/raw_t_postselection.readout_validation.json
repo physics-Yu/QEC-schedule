@@ -1,0 +1,253 @@
+{
+  "branches": [
+    {
+      "key": "deliver",
+      "steps": [],
+      "transition": "deliver"
+    },
+    {
+      "key": "retry",
+      "steps": [],
+      "transition": "retry"
+    }
+  ],
+  "model": {
+    "assumptions": [
+      "Approved unobserved raw-T plus ordinary SE action sequence",
+      "Independent noise/v1 Pauli channels; alternatives within each channel exclusive",
+      "Detector acceptance only; accepted does not imply an error-free logical state",
+      "Physical loss and leakage excluded from the acceptance event",
+      "Final temporal boundary remains open after the last SE"
+    ],
+    "evidence": {
+      "activity_duration_us": 1725.634980935729,
+      "calculation": "Finite XOR convolution of exclusive Pauli/readout channel branches",
+      "center_t_identity_checks": 12,
+      "channel_signatures_sha256": "6180d51ae9ade563e018d3724598e4fdf5c25f4fac1aa928c0d7bd4b60520d9c",
+      "conditioning": "Computational subspace with retained atoms; physical loss is not propagated",
+      "detector_count": 12,
+      "detectors_sha256": "1190741b616883e4f06323643d6d778dfc2f8d482c08a1d0b8aedfdc6440de44",
+      "device_sha256": "0099ff53cc4b1ca3f76401ee309298f7242c12f74991a834ad5c0201c3ef9291",
+      "estimator_sources_sha256": "3782bece0e732b38454f8f9ab3c1dd40e52c2d0ef92dbea47cdf5f895831ac09",
+      "excluded_effects": [
+        "physical_atom_loss",
+        "leakage",
+        "coherent_non_pauli_effects"
+      ],
+      "logical_error_rate_claimed": false,
+      "logical_state_replaced_by_clifford_proxy": false,
+      "noise_model": {
+        "model": "noise",
+        "registered_id": "noise/v1",
+        "version": "v1.1"
+      },
+      "noise_params_hash": "1e67b4a414c93f5104fd30cbfb7f453eda6e75f68e15f5dd1f9e7dca3be7d961",
+      "noise_report_sha256": "ce7f9d75a9adeacc89eeb248abf5d899fa625a41134ac8772060ca0de22beb18",
+      "non_clifford_seed_gates": 1,
+      "normalization_absolute_tolerance": 1e-12,
+      "part_template_content_sha256": [
+        "bef4352c5d9d36a47f08c11146a70cde89b5a855c055a0475acc363da31a6914",
+        "5efb934f2d6f8bb96666a83ef9fa37dc51f0d61d2eb04bb2df146ff7aed91f55"
+      ],
+      "physical_loss": {
+        "all_atoms_survive_probability": 1.0,
+        "events": [],
+        "expected_lost_atoms": 0.0,
+        "per_atom": [
+          {
+            "atom": 0,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 1,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 2,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 3,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 4,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 5,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 6,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 7,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 8,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 9,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 10,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 11,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 12,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 13,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 14,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 15,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          },
+          {
+            "atom": 16,
+            "loss_probability": 0.0,
+            "survival_probability": 1.0
+          }
+        ]
+      },
+      "postselection_scope": "first_boundary_and_adjacent_round_parities",
+      "proof": "Backward detector observables are identity on the seed at the real T pulse",
+      "result_hash": "e52fc02951ec97eb8473289e18a18b8742904ec3cdef678d583a16ae53a70e64",
+      "sampling": null,
+      "scope": "pauli_readout_only",
+      "source_qasm_sha256": "7936f09ac19873ecf60073e5e582e8a9f65e6406c997f2fbbc5b5c61b22b3bf8",
+      "statistical_uncertainty": null,
+      "stim_version": "1.16.0",
+      "structural_validation_bits_are_samples": false,
+      "template_content_sha256": "1d2db51870fdf518b279e328a83a30f037ce736ff5ef7b7c798fab61850e2854",
+      "terminal_boundary": "open_after_last_se"
+    },
+    "id": "raw_t_postselection.pauli_detector_exact.v1",
+    "kind": "pauli_exact",
+    "parameters": {
+      "extra_rounds": 1,
+      "noise": {
+        "cz": {
+          "backend": "pauli",
+          "probabilities": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "cz_atom_loss": 0.0,
+        "exposure": {
+          "aod_t2_us": null,
+          "include_transport": true,
+          "slm_t2_us": null
+        },
+        "readout_flip": 0.1,
+        "reset_flip": 0.0,
+        "single": {
+          "backend": "pauli",
+          "probabilities": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "single_overrides": {},
+        "spectator_pauli": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "transport": {
+          "aod_loss_per_us": 0.0,
+          "backend": "rates/v1",
+          "load_loss": 0.0,
+          "load_pauli": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "loss_per_um": 0.0,
+          "loss_per_us": 0.0,
+          "move_loss": 0.0,
+          "move_pauli": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "slm_loss_per_us": 0.0,
+          "store_loss": 0.0,
+          "store_pauli": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  },
+  "outcomes": [
+    {
+      "branch_id": "deliver",
+      "key": "accepted",
+      "probability": 0.1946235926074897,
+      "values": {
+        "accepted": true
+      }
+    },
+    {
+      "branch_id": "retry",
+      "key": "rejected",
+      "probability": 0.8053764073925103,
+      "values": {
+        "accepted": false
+      }
+    }
+  ],
+  "port_id": "rotated_surface_d3.raw_t_postselection.acceptance",
+  "protocol_id": "rotated_surface_d3.raw_t_postselection",
+  "protocol_version": "1",
+  "schema": "nadit.event_probability/1"
+}

@@ -1,0 +1,18 @@
+OPENQASM 3.0;
+include "stdgates.inc";
+qubit[3] q;
+bit c;
+h q[0];
+cx q[0], q[1];
+for int i in [0:1] {
+    h q[2];
+}
+cp(pi/7) q[1], q[2];
+c = measure q[0];
+if (c) {
+    h q[1];
+} else {
+    s q[1];
+}
+reset q[2];
+h q[2];

@@ -60,7 +60,7 @@ def _cz_pairs(dag: PhysicalDAG, layer: GateLayer) -> dict[int, frozenset[int]]:
     return {
         gate: frozenset(dag.nodes[gate].qubits)
         for gate in sorted(layer.operation_ids)
-        if dag.nodes[gate].name == "cz"
+        if dag.nodes[gate].name in ("cz", "cp")
     }
 
 

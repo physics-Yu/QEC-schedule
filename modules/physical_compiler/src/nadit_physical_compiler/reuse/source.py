@@ -57,7 +57,7 @@ def _pairs(dag: PhysicalDAG, layer: GateLayer) -> tuple[tuple[int, ...], ...]:
     return tuple(
         tuple(sorted(dag.nodes[index].qubits))
         for index in layer.operation_ids
-        if dag.nodes[index].name == "cz"
+        if dag.nodes[index].name in ("cz", "cp")
     )
 
 

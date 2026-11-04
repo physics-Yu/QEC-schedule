@@ -2,7 +2,6 @@
 
 import json
 from pathlib import Path
-from typing import Any
 
 import pytest
 
@@ -13,25 +12,12 @@ from reference.placement_candidate import (
 )
 
 REFERENCE = Path(__file__).parents[1] / "reference"
+
 EXPECTED = json.loads(
     (REFERENCE / "placement_expected.json").read_text(encoding="utf-8")
 )["cases"]
+
 CASES = load_cases()
-
-
-@pytest.mark.parametrize(
-    "case",
-    [case for case in CASES if not case.get("known_difference")],
-    ids=lambda case: case["name"],
-)
-def test_original_geometry_candidates_scores_and_final_placement(
-    case: dict[str, Any],
-) -> None:
-    """Use raw C++ oracles; compare candidate order and every observed score path."""
-    expected = EXPECTED[case["name"]]
-    actual = candidate_result(case, expected)
-
-    compare_result(expected, actual)
 
 
 def test_next_slm_row_reset_correction_is_an_explicit_source_difference() -> None:

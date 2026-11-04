@@ -1,0 +1,4033 @@
+{
+  "actual_output_error": null,
+  "all_guards_passed": true,
+  "all_observation_windows_complete": false,
+  "campaign": "C:\\Users\\yuyqp\\.codex\\worktrees\\msd-single-level-fast\\NADiT\\modules\\logical_compiler\\artifacts\\msd-single-level-fast\\production-20261025-optimized",
+  "cells": [
+    {
+      "complete_windows": 16,
+      "distance": 3,
+      "exclusion": null,
+      "factory_count": 1,
+      "half_window_diagnostic": {
+        "binary_stationarity_verdict": null,
+        "difference_definition": "second-half accepted output rate minus first-half rate within the same seed",
+        "eligible_seed_count": 16,
+        "ineligible_seed_count": 0,
+        "interpretation": "finite-window temporal diagnostic, not an asymptotic steady-state proof; a difference interval containing zero does not establish stationarity",
+        "sampling_unit": "independent production seed, not individual factory lines or output states",
+        "schema": "nadit.single_fast_half_window_diagnostic/1",
+        "statistics": {
+          "first_half_rate_per_second": {
+            "confidence_interval_95": [
+              7.3254299778851735,
+              8.595376077298365
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 7.960403027591769,
+            "missing_values": 0,
+            "n": 16
+          },
+          "paired_rate_difference_per_second": {
+            "confidence_interval_95": [
+              -0.48345125906357267,
+              1.0106302675133587
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 0.263589504224893,
+            "missing_values": 0,
+            "n": 16
+          },
+          "second_half_rate_per_second": {
+            "confidence_interval_95": [
+              7.667433230104943,
+              8.780551833528381
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 8.223992531816663,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "missing_seeds": [],
+      "observation_policy": {
+        "basis": "separate pilot duration divided by completed cycles; window frozen before production",
+        "boundary_convention": "[warmup_us, stop_us)",
+        "cycle_us": 148194.44391333617,
+        "pilot_completion_sha256": "d010679dd5434eb880d5680f156d0f4db04517b1b7dc022642797aea5c710759",
+        "pilot_seed": 20261025,
+        "schema": "nadit.single_fast_observation/1",
+        "stop_us": 2519305.546526715,
+        "warmup_us": 148194.44391333617
+      },
+      "observed_window_secondary": {
+        "accepted_outputs": 307,
+        "budget_abort_seed_count": 0,
+        "covered_seed_count": 16,
+        "incurred_costs": {
+          "allocated_scene_bbox_area_time_um2_us": 3611676431500.6987,
+          "busy_atom_time_us": 506151900.267295,
+          "configured_atom_time_us": 3869653319.465034,
+          "home_area_time_um2_us": 1274709328764.9524,
+          "idle_atom_time_us": 3363501419.197739,
+          "movement_distance_atom_um": 316349673.7797126,
+          "transport_elapsed_us": 33522942.833828334
+        },
+        "observed_window_us": 37937777.64181406,
+        "pooled_accepted_outputs_per_second": 8.092197779704216,
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 11764418343.650484,
+          "busy_atom_time_us": 1648703.258199658,
+          "configured_atom_time_us": 12604733.939625518,
+          "home_area_time_um2_us": 4152147650.7001705,
+          "idle_atom_time_us": 10956030.68142586,
+          "movement_distance_atom_um": 1030454.9634518326,
+          "transport_elapsed_us": 109195.25353038545
+        },
+        "primary_excluded_but_covered_seeds": [],
+        "rate_statistics": {
+          "confidence_interval_95": [
+            7.626411305465094,
+            8.557984253943339
+          ],
+          "eligible_valid_seeds": 16,
+          "mean": 8.092197779704216,
+          "missing_values": 0,
+          "n": 16
+        },
+        "schema": "nadit.single_fast_observed_window_diagnostic/1",
+        "scope": "secondary descriptive observed-window statistic including pre-stop line budget aborts; zero-output covered seeds contribute costs; truly truncated windows excluded; primary planned conditional statistics unchanged",
+        "steady_state_claim": false,
+        "uncovered_seeds": []
+      },
+      "pooled_atom_time_shares": {
+        "gate": 0.003179930082651713,
+        "idle": 0.8691996779863238,
+        "other_active": 0.0,
+        "readout": 0.01822512428823171,
+        "reset": 0.0009343834451040282,
+        "transport": 0.10846088419768868
+      },
+      "recorded_seeds": 16,
+      "statistics": {
+        "all_seed_incurred_costs": {
+          "accepted_outputs": 307,
+          "actual_observation_us": 37937777.64181406,
+          "basis": "observed window intersections including failed and incomplete seeds; diagnostic, not steady-state throughput",
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 3611676431500.6987,
+            "busy_atom_time_us": 506151900.267295,
+            "configured_atom_time_us": 3869653319.465034,
+            "home_area_time_um2_us": 1274709328764.9524,
+            "idle_atom_time_us": 3363501419.197739,
+            "movement_distance_atom_um": 316349673.7797126,
+            "transport_elapsed_us": 33522942.833828334
+          },
+          "delivered_outputs": 307,
+          "per_accepted_output": {
+            "allocated_scene_bbox_area_time_um2_us": 11764418343.650484,
+            "busy_atom_time_us": 1648703.258199658,
+            "configured_atom_time_us": 12604733.939625518,
+            "home_area_time_um2_us": 4152147650.7001705,
+            "idle_atom_time_us": 10956030.68142586,
+            "movement_distance_atom_um": 1030454.9634518326,
+            "transport_elapsed_us": 109195.25353038545
+          }
+        },
+        "complete_seed_count": 16,
+        "complete_window_totals": {
+          "accepted_outputs": 307,
+          "actual_observation_us": 37937777.64181406,
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 3611676431500.6987,
+            "busy_atom_time_us": 506151900.267295,
+            "configured_atom_time_us": 3869653319.465034,
+            "home_area_time_um2_us": 1274709328764.9524,
+            "idle_atom_time_us": 3363501419.197739,
+            "movement_distance_atom_um": 316349673.7797126,
+            "transport_elapsed_us": 33522942.833828334
+          }
+        },
+        "distance": 3,
+        "excluded_seeds": [],
+        "factory_count": 1,
+        "interval_basis": "two-sided Student-t 95%; independent seeds conditional on complete windows; excludes calibration uncertainty and model discrepancy",
+        "pooled_accepted_outputs_per_second": 8.092197779704216,
+        "pooled_cost_basis": "all complete observation windows, including zero-output seeds, divided by their total accepted outputs",
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 11764418343.650484,
+          "busy_atom_time_us": 1648703.258199658,
+          "configured_atom_time_us": 12604733.939625518,
+          "home_area_time_um2_us": 4152147650.7001705,
+          "idle_atom_time_us": 10956030.68142586,
+          "movement_distance_atom_um": 1030454.9634518326,
+          "transport_elapsed_us": 109195.25353038545
+        },
+        "schema": "nadit.center_factory_sample_statistics/1",
+        "seed_count": 16,
+        "statistics": {
+          "accepted_outputs_per_second": {
+            "confidence_interval_95": [
+              7.626411305465094,
+              8.557984253943339
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 8.092197779704216,
+            "missing_values": 0,
+            "n": 16
+          },
+          "allocated_scene_bbox_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              11153532339.500132,
+              12660159810.372583
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 11906846074.936357,
+            "missing_values": 0,
+            "n": 16
+          },
+          "busy_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              1562821.8294185884,
+              1774581.2668483164
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 1668701.5481334524,
+            "missing_values": 0,
+            "n": 16
+          },
+          "configured_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              11950213.220893,
+              13564456.939684909
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 12757335.080288954,
+            "missing_values": 0,
+            "n": 16
+          },
+          "delivered_outputs_per_second": {
+            "confidence_interval_95": [
+              7.626411305465094,
+              8.557984253943339
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 8.092197779704216,
+            "missing_values": 0,
+            "n": 16
+          },
+          "home_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              3936540825.705929,
+              4468291697.778559
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 4202416261.742244,
+            "missing_values": 0,
+            "n": 16
+          },
+          "idle_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              10387319.563335773,
+              11789947.500975229
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 11088633.5321555,
+            "missing_values": 0,
+            "n": 16
+          },
+          "movement_distance_atom_um_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              976760.5950160604,
+              1109153.1955909636
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 1042956.895303512,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_attempts": {
+            "confidence_interval_95": [
+              439.74739576230354,
+              446.87760423769646
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 443.3125,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_rejections": {
+            "confidence_interval_95": [
+              95.57943902656949,
+              105.04556097343051
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 100.3125,
+            "missing_values": 0,
+            "n": 16
+          },
+          "s_calls": {
+            "confidence_interval_95": [
+              118.00182668252724,
+              128.12317331747278
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 123.0625,
+            "missing_values": 0,
+            "n": 16
+          },
+          "standalone_ec_calls": {
+            "confidence_interval_95": [
+              3754.381901166095,
+              3789.993098833905
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 3772.1875,
+            "missing_values": 0,
+            "n": 16
+          },
+          "startup_deliverable_latency_us": {
+            "confidence_interval_95": [
+              95651.64703121188,
+              122899.33038818606
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 109275.48870969897,
+            "missing_values": 0,
+            "n": 16
+          },
+          "transport_elapsed_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              103524.01769184548,
+              117510.94954767803
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 110517.48361976176,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "complete_windows": 16,
+      "distance": 3,
+      "exclusion": null,
+      "factory_count": 2,
+      "half_window_diagnostic": {
+        "binary_stationarity_verdict": null,
+        "difference_definition": "second-half accepted output rate minus first-half rate within the same seed",
+        "eligible_seed_count": 16,
+        "ineligible_seed_count": 0,
+        "interpretation": "finite-window temporal diagnostic, not an asymptotic steady-state proof; a difference interval containing zero does not establish stationarity",
+        "sampling_unit": "independent production seed, not individual factory lines or output states",
+        "schema": "nadit.single_fast_half_window_diagnostic/1",
+        "statistics": {
+          "first_half_rate_per_second": {
+            "confidence_interval_95": [
+              10.768159872756,
+              12.456116664004183
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 11.612138268380091,
+            "missing_values": 0,
+            "n": 16
+          },
+          "paired_rate_difference_per_second": {
+            "confidence_interval_95": [
+              -0.8006438911381939,
+              1.4762592085712174
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 0.33780765871651175,
+            "missing_values": 0,
+            "n": 16
+          },
+          "second_half_rate_per_second": {
+            "confidence_interval_95": [
+              11.070865220291292,
+              12.829026633901915
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 11.949945927096604,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "missing_seeds": [],
+      "observation_policy": {
+        "basis": "separate pilot duration divided by completed cycles; window frozen before production",
+        "boundary_convention": "[warmup_us, stop_us)",
+        "cycle_us": 185016.52756324867,
+        "pilot_completion_sha256": "1724cbf05d6aca8466775d94f05fbc162fe83fec1baf7e019ee8a5a9567fe7cb",
+        "pilot_seed": 20261025,
+        "schema": "nadit.single_fast_observation/1",
+        "stop_us": 3145280.9685752275,
+        "warmup_us": 185016.52756324867
+      },
+      "observed_window_secondary": {
+        "accepted_outputs": 558,
+        "budget_abort_seed_count": 0,
+        "covered_seed_count": 16,
+        "incurred_costs": {
+          "allocated_scene_bbox_area_time_um2_us": 9813868674842.912,
+          "busy_atom_time_us": 1160626720.5147548,
+          "configured_atom_time_us": 9662303135.463099,
+          "home_area_time_um2_us": 4243835102634.773,
+          "idle_atom_time_us": 8501676414.948343,
+          "movement_distance_atom_um": 820437221.1147757,
+          "transport_elapsed_us": 42623349.558091424
+        },
+        "observed_window_us": 47364231.05619166,
+        "pooled_accepted_outputs_per_second": 11.781042097738348,
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 17587578270.3278,
+          "busy_atom_time_us": 2079976.2016393454,
+          "configured_atom_time_us": 17315955.439898025,
+          "home_area_time_um2_us": 7605439252.033644,
+          "idle_atom_time_us": 15235979.23825868,
+          "movement_distance_atom_um": 1470317.600564114,
+          "transport_elapsed_us": 76385.93110769072
+        },
+        "primary_excluded_but_covered_seeds": [],
+        "rate_statistics": {
+          "confidence_interval_95": [
+            11.134108385649448,
+            12.427975809827249
+          ],
+          "eligible_valid_seeds": 16,
+          "mean": 11.781042097738348,
+          "missing_values": 0,
+          "n": 16
+        },
+        "schema": "nadit.single_fast_observed_window_diagnostic/1",
+        "scope": "secondary descriptive observed-window statistic including pre-stop line budget aborts; zero-output covered seeds contribute costs; truly truncated windows excluded; primary planned conditional statistics unchanged",
+        "steady_state_claim": false,
+        "uncovered_seeds": []
+      },
+      "pooled_atom_time_shares": {
+        "gate": 0.0022824763093031377,
+        "idle": 0.8798809451283948,
+        "other_active": 0.0,
+        "readout": 0.013079685625657249,
+        "reset": 0.000670126460453846,
+        "transport": 0.10408676647619095
+      },
+      "recorded_seeds": 16,
+      "statistics": {
+        "all_seed_incurred_costs": {
+          "accepted_outputs": 558,
+          "actual_observation_us": 47364231.05619166,
+          "basis": "observed window intersections including failed and incomplete seeds; diagnostic, not steady-state throughput",
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 9813868674842.912,
+            "busy_atom_time_us": 1160626720.5147548,
+            "configured_atom_time_us": 9662303135.463099,
+            "home_area_time_um2_us": 4243835102634.773,
+            "idle_atom_time_us": 8501676414.948343,
+            "movement_distance_atom_um": 820437221.1147757,
+            "transport_elapsed_us": 42623349.558091424
+          },
+          "delivered_outputs": 558,
+          "per_accepted_output": {
+            "allocated_scene_bbox_area_time_um2_us": 17587578270.3278,
+            "busy_atom_time_us": 2079976.2016393454,
+            "configured_atom_time_us": 17315955.439898025,
+            "home_area_time_um2_us": 7605439252.033644,
+            "idle_atom_time_us": 15235979.23825868,
+            "movement_distance_atom_um": 1470317.600564114,
+            "transport_elapsed_us": 76385.93110769072
+          }
+        },
+        "complete_seed_count": 16,
+        "complete_window_totals": {
+          "accepted_outputs": 558,
+          "actual_observation_us": 47364231.05619166,
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 9813868674842.912,
+            "busy_atom_time_us": 1160626720.5147548,
+            "configured_atom_time_us": 9662303135.463099,
+            "home_area_time_um2_us": 4243835102634.773,
+            "idle_atom_time_us": 8501676414.948343,
+            "movement_distance_atom_um": 820437221.1147757,
+            "transport_elapsed_us": 42623349.558091424
+          }
+        },
+        "distance": 3,
+        "excluded_seeds": [],
+        "factory_count": 2,
+        "interval_basis": "two-sided Student-t 95%; independent seeds conditional on complete windows; excludes calibration uncertainty and model discrepancy",
+        "pooled_accepted_outputs_per_second": 11.781042097738348,
+        "pooled_cost_basis": "all complete observation windows, including zero-output seeds, divided by their total accepted outputs",
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 17587578270.3278,
+          "busy_atom_time_us": 2079976.2016393454,
+          "configured_atom_time_us": 17315955.439898025,
+          "home_area_time_um2_us": 7605439252.033644,
+          "idle_atom_time_us": 15235979.23825868,
+          "movement_distance_atom_um": 1470317.600564114,
+          "transport_elapsed_us": 76385.93110769072
+        },
+        "schema": "nadit.center_factory_sample_statistics/1",
+        "seed_count": 16,
+        "statistics": {
+          "accepted_outputs_per_second": {
+            "confidence_interval_95": [
+              11.134108385649448,
+              12.427975809827249
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 11.781042097738348,
+            "missing_values": 0,
+            "n": 16
+          },
+          "allocated_scene_bbox_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              16783369231.752874,
+              18743280446.3481
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 17763324839.050488,
+            "missing_values": 0,
+            "n": 16
+          },
+          "busy_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              2016375.7604839283,
+              2170595.172578719
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 2093485.4665313237,
+            "missing_values": 0,
+            "n": 16
+          },
+          "configured_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              16524166.618135069,
+              18453808.933663186
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 17488987.775899127,
+            "missing_values": 0,
+            "n": 16
+          },
+          "delivered_outputs_per_second": {
+            "confidence_interval_95": [
+              11.134108385649448,
+              12.427975809827249
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 11.781042097738348,
+            "missing_values": 0,
+            "n": 16
+          },
+          "home_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              7257673181.29854,
+              8105202355.177557
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 7681437768.238049,
+            "missing_values": 0,
+            "n": 16
+          },
+          "idle_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              14505215.026998319,
+              16285789.591737289
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 15395502.309367804,
+            "missing_values": 0,
+            "n": 16
+          },
+          "movement_distance_atom_um_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              1425331.1621667526,
+              1534417.1739444493
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 1479874.168055601,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_attempts": {
+            "confidence_interval_95": [
+              770.2043829844006,
+              808.0456170155994
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 789.125,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_rejections": {
+            "confidence_interval_95": [
+              164.9349100629316,
+              183.8150899370684
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 174.375,
+            "missing_values": 0,
+            "n": 16
+          },
+          "s_calls": {
+            "confidence_interval_95": [
+              217.85987798264742,
+              231.89012201735258
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 224.875,
+            "missing_values": 0,
+            "n": 16
+          },
+          "standalone_ec_calls": {
+            "confidence_interval_95": [
+              6635.153653168683,
+              6914.846346831317
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 6775.0,
+            "missing_values": 0,
+            "n": 16
+          },
+          "startup_deliverable_latency_us": {
+            "confidence_interval_95": [
+              122605.97582733525,
+              154868.94265618583
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 138737.45924176055,
+            "missing_values": 0,
+            "n": 16
+          },
+          "transport_elapsed_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              72884.59054187348,
+              81417.21354104072
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 77150.9020414571,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "complete_windows": 16,
+      "distance": 3,
+      "exclusion": null,
+      "factory_count": 4,
+      "half_window_diagnostic": {
+        "binary_stationarity_verdict": null,
+        "difference_definition": "second-half accepted output rate minus first-half rate within the same seed",
+        "eligible_seed_count": 16,
+        "ineligible_seed_count": 0,
+        "interpretation": "finite-window temporal diagnostic, not an asymptotic steady-state proof; a difference interval containing zero does not establish stationarity",
+        "sampling_unit": "independent production seed, not individual factory lines or output states",
+        "schema": "nadit.single_fast_half_window_diagnostic/1",
+        "statistics": {
+          "first_half_rate_per_second": {
+            "confidence_interval_95": [
+              12.919043418232182,
+              15.331568288281499
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 14.12530585325684,
+            "missing_values": 0,
+            "n": 16
+          },
+          "paired_rate_difference_per_second": {
+            "confidence_interval_95": [
+              -0.8160974870771567,
+              2.216451084598309
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 0.700176798760576,
+            "missing_values": 0,
+            "n": 16
+          },
+          "second_half_rate_per_second": {
+            "confidence_interval_95": [
+              13.892227932707469,
+              15.758737371327362
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 14.825482652017415,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "missing_seeds": [],
+      "observation_policy": {
+        "basis": "separate pilot duration divided by completed cycles; window frozen before production",
+        "boundary_convention": "[warmup_us, stop_us)",
+        "cycle_us": 256631.6112131612,
+        "pilot_completion_sha256": "76785647d5e2689a7944c560f7015401a6771d3d7ff47ad78cb89c7141ec5ba1",
+        "pilot_seed": 20261025,
+        "schema": "nadit.single_fast_observation/1",
+        "stop_us": 4362737.390623741,
+        "warmup_us": 256631.6112131612
+      },
+      "observed_window_secondary": {
+        "accepted_outputs": 951,
+        "budget_abort_seed_count": 0,
+        "covered_seed_count": 16,
+        "incurred_costs": {
+          "allocated_scene_bbox_area_time_um2_us": 28328844993309.473,
+          "busy_atom_time_us": 2811043666.597516,
+          "configured_atom_time_us": 26804658527.992264,
+          "home_area_time_um2_us": 13244654802066.766,
+          "idle_atom_time_us": 23993614861.39475,
+          "movement_distance_atom_um": 2237202782.0376825,
+          "transport_elapsed_us": 60618493.27570306
+        },
+        "observed_window_us": 65697692.470569275,
+        "pooled_accepted_outputs_per_second": 14.475394252637129,
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 29788480539.757595,
+          "busy_atom_time_us": 2955881.8786514364,
+          "configured_atom_time_us": 28185760.807562843,
+          "home_area_time_um2_us": 13927081810.795757,
+          "idle_atom_time_us": 25229878.928911407,
+          "movement_distance_atom_um": 2352474.0084518217,
+          "transport_elapsed_us": 63741.84361272666
+        },
+        "primary_excluded_but_covered_seeds": [],
+        "rate_statistics": {
+          "confidence_interval_95": [
+            13.70842307380459,
+            15.242365431469663
+          ],
+          "eligible_valid_seeds": 16,
+          "mean": 14.475394252637127,
+          "missing_values": 0,
+          "n": 16
+        },
+        "schema": "nadit.single_fast_observed_window_diagnostic/1",
+        "scope": "secondary descriptive observed-window statistic including pre-stop line budget aborts; zero-output covered seeds contribute costs; truly truncated windows excluded; primary planned conditional statistics unchanged",
+        "steady_state_claim": false,
+        "uncovered_seeds": []
+      },
+      "pooled_atom_time_shares": {
+        "gate": 0.0013878656051528745,
+        "idle": 0.8951285402997421,
+        "other_active": 2.1385009184366844e-14,
+        "readout": 0.00795356522737873,
+        "reset": 0.00040737881396983827,
+        "transport": 0.09512265005373512
+      },
+      "recorded_seeds": 16,
+      "statistics": {
+        "all_seed_incurred_costs": {
+          "accepted_outputs": 951,
+          "actual_observation_us": 65697692.470569275,
+          "basis": "observed window intersections including failed and incomplete seeds; diagnostic, not steady-state throughput",
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 28328844993309.473,
+            "busy_atom_time_us": 2811043666.597516,
+            "configured_atom_time_us": 26804658527.992264,
+            "home_area_time_um2_us": 13244654802066.766,
+            "idle_atom_time_us": 23993614861.39475,
+            "movement_distance_atom_um": 2237202782.0376825,
+            "transport_elapsed_us": 60618493.27570306
+          },
+          "delivered_outputs": 951,
+          "per_accepted_output": {
+            "allocated_scene_bbox_area_time_um2_us": 29788480539.757595,
+            "busy_atom_time_us": 2955881.8786514364,
+            "configured_atom_time_us": 28185760.807562843,
+            "home_area_time_um2_us": 13927081810.795757,
+            "idle_atom_time_us": 25229878.928911407,
+            "movement_distance_atom_um": 2352474.0084518217,
+            "transport_elapsed_us": 63741.84361272666
+          }
+        },
+        "complete_seed_count": 16,
+        "complete_window_totals": {
+          "accepted_outputs": 951,
+          "actual_observation_us": 65697692.470569275,
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 28328844993309.473,
+            "busy_atom_time_us": 2811043666.597516,
+            "configured_atom_time_us": 26804658527.992264,
+            "home_area_time_um2_us": 13244654802066.766,
+            "idle_atom_time_us": 23993614861.39475,
+            "movement_distance_atom_um": 2237202782.0376825,
+            "transport_elapsed_us": 60618493.27570306
+          }
+        },
+        "distance": 3,
+        "excluded_seeds": [],
+        "factory_count": 4,
+        "interval_basis": "two-sided Student-t 95%; independent seeds conditional on complete windows; excludes calibration uncertainty and model discrepancy",
+        "pooled_accepted_outputs_per_second": 14.475394252637129,
+        "pooled_cost_basis": "all complete observation windows, including zero-output seeds, divided by their total accepted outputs",
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 29788480539.757595,
+          "busy_atom_time_us": 2955881.8786514364,
+          "configured_atom_time_us": 28185760.807562843,
+          "home_area_time_um2_us": 13927081810.795757,
+          "idle_atom_time_us": 25229878.928911407,
+          "movement_distance_atom_um": 2352474.0084518217,
+          "transport_elapsed_us": 63741.84361272666
+        },
+        "schema": "nadit.center_factory_sample_statistics/1",
+        "seed_count": 16,
+        "statistics": {
+          "accepted_outputs_per_second": {
+            "confidence_interval_95": [
+              13.70842307380459,
+              15.242365431469663
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 14.475394252637127,
+            "missing_values": 0,
+            "n": 16
+          },
+          "allocated_scene_bbox_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              28527747827.790646,
+              31581034998.32178
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 30054391413.056213,
+            "missing_values": 0,
+            "n": 16
+          },
+          "busy_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              2881500.301357027,
+              3058588.087337627
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 2970044.194347327,
+            "missing_values": 0,
+            "n": 16
+          },
+          "configured_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              26992859.725738827,
+              29881869.849989068
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 28437364.787863947,
+            "missing_values": 0,
+            "n": 16
+          },
+          "delivered_outputs_per_second": {
+            "confidence_interval_95": [
+              13.70842307380459,
+              15.242365431469663
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 14.475394252637127,
+            "missing_values": 0,
+            "n": 16
+          },
+          "home_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              13337648335.07095,
+              14765159219.994598
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 14051403777.532774,
+            "missing_values": 0,
+            "n": 16
+          },
+          "idle_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              24105299.307451505,
+              26829341.87958174
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 25467320.59351662,
+            "missing_values": 0,
+            "n": 16
+          },
+          "movement_distance_atom_um_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              2293250.079083873,
+              2434253.4576828573
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 2363751.768383365,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_attempts": {
+            "confidence_interval_95": [
+              1287.9600491660194,
+              1367.9149508339806
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 1327.9375,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_rejections": {
+            "confidence_interval_95": [
+              271.8521128441999,
+              306.0228871558001
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 288.9375,
+            "missing_values": 0,
+            "n": 16
+          },
+          "s_calls": {
+            "confidence_interval_95": [
+              364.94871517819945,
+              392.42628482180055
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 378.6875,
+            "missing_values": 0,
+            "n": 16
+          },
+          "standalone_ec_calls": {
+            "confidence_interval_95": [
+              11130.53153340867,
+              11743.84346659133
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 11437.1875,
+            "missing_values": 0,
+            "n": 16
+          },
+          "startup_deliverable_latency_us": {
+            "confidence_interval_95": [
+              181456.62655824507,
+              199165.7299001447
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 190311.1782291949,
+            "missing_values": 0,
+            "n": 16
+          },
+          "transport_elapsed_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              61037.27733545098,
+              67587.39112576963
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 64312.33423061031,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "complete_windows": 13,
+      "distance": 3,
+      "exclusion": null,
+      "factory_count": 8,
+      "half_window_diagnostic": {
+        "binary_stationarity_verdict": null,
+        "difference_definition": "second-half accepted output rate minus first-half rate within the same seed",
+        "eligible_seed_count": 13,
+        "ineligible_seed_count": 3,
+        "interpretation": "finite-window temporal diagnostic, not an asymptotic steady-state proof; a difference interval containing zero does not establish stationarity",
+        "sampling_unit": "independent production seed, not individual factory lines or output states",
+        "schema": "nadit.single_fast_half_window_diagnostic/1",
+        "statistics": {
+          "first_half_rate_per_second": {
+            "confidence_interval_95": [
+              13.999817186215243,
+              15.70157160292893
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 14.850694394572086,
+            "missing_values": 0,
+            "n": 13
+          },
+          "paired_rate_difference_per_second": {
+            "confidence_interval_95": [
+              -0.20465213908948854,
+              2.130072300690671
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 0.9627100808005914,
+            "missing_values": 0,
+            "n": 13
+          },
+          "second_half_rate_per_second": {
+            "confidence_interval_95": [
+              15.078616432343496,
+              16.548192518401855
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 15.813404475372677,
+            "missing_values": 0,
+            "n": 13
+          }
+        }
+      },
+      "missing_seeds": [],
+      "observation_policy": {
+        "basis": "separate pilot duration divided by completed cycles; window frozen before production",
+        "boundary_convention": "[warmup_us, stop_us)",
+        "cycle_us": 539342.819386472,
+        "pilot_completion_sha256": "5a45e7264ced4c1a195e2fa78140e45c095b700e563010f2bb1e692d3eaddd6c",
+        "pilot_seed": 20261025,
+        "schema": "nadit.single_fast_observation/1",
+        "stop_us": 9168827.929570023,
+        "warmup_us": 539342.819386472
+      },
+      "observed_window_secondary": {
+        "accepted_outputs": 2080,
+        "budget_abort_seed_count": 3,
+        "covered_seed_count": 16,
+        "incurred_costs": {
+          "allocated_scene_bbox_area_time_um2_us": 121392692941974.06,
+          "busy_atom_time_us": 9920855518.346567,
+          "configured_atom_time_us": 112666557598.55646,
+          "home_area_time_um2_us": 58763341806305.914,
+          "idle_atom_time_us": 102745702080.20988,
+          "movement_distance_atom_um": 8660546095.194286,
+          "transport_elapsed_us": 130809161.2211101
+        },
+        "observed_window_us": 138071761.76293683,
+        "pooled_accepted_outputs_per_second": 15.064629968083329,
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 58361871606.7183,
+          "busy_atom_time_us": 4769642.076128157,
+          "configured_atom_time_us": 54166614.23007522,
+          "home_area_time_um2_us": 28251606637.647076,
+          "idle_atom_time_us": 49396972.15394706,
+          "movement_distance_atom_um": 4163724.0842280225,
+          "transport_elapsed_us": 62889.0198178414
+        },
+        "primary_excluded_but_covered_seeds": [
+          5,
+          11,
+          13
+        ],
+        "rate_statistics": {
+          "confidence_interval_95": [
+            14.41896611100916,
+            15.710293825157498
+          ],
+          "eligible_valid_seeds": 16,
+          "mean": 15.064629968083329,
+          "missing_values": 0,
+          "n": 16
+        },
+        "schema": "nadit.single_fast_observed_window_diagnostic/1",
+        "scope": "secondary descriptive observed-window statistic including pre-stop line budget aborts; zero-output covered seeds contribute costs; truly truncated windows excluded; primary planned conditional statistics unchanged",
+        "steady_state_claim": false,
+        "uncovered_seeds": []
+      },
+      "pooled_atom_time_shares": {
+        "gate": 0.0007309818273430708,
+        "idle": 0.9112313833530161,
+        "other_active": 2.0408736944029342e-14,
+        "readout": 0.0041902318220910055,
+        "reset": 0.00021450121811890244,
+        "transport": 0.08363290177941055
+      },
+      "recorded_seeds": 16,
+      "statistics": {
+        "all_seed_incurred_costs": {
+          "accepted_outputs": 2080,
+          "actual_observation_us": 138071761.76293683,
+          "basis": "observed window intersections including failed and incomplete seeds; diagnostic, not steady-state throughput",
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 121392692941974.06,
+            "busy_atom_time_us": 9920855518.346567,
+            "configured_atom_time_us": 112666557598.55646,
+            "home_area_time_um2_us": 58763341806305.914,
+            "idle_atom_time_us": 102745702080.20988,
+            "movement_distance_atom_um": 8660546095.194286,
+            "transport_elapsed_us": 130809161.2211101
+          },
+          "delivered_outputs": 2080,
+          "per_accepted_output": {
+            "allocated_scene_bbox_area_time_um2_us": 58361871606.7183,
+            "busy_atom_time_us": 4769642.076128157,
+            "configured_atom_time_us": 54166614.23007522,
+            "home_area_time_um2_us": 28251606637.647076,
+            "idle_atom_time_us": 49396972.15394706,
+            "movement_distance_atom_um": 4163724.0842280225,
+            "transport_elapsed_us": 62889.0198178414
+          }
+        },
+        "complete_seed_count": 13,
+        "complete_window_totals": {
+          "accepted_outputs": 1720,
+          "actual_observation_us": 112183306.43238617,
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 98631563015353.92,
+            "busy_atom_time_us": 8126019249.076297,
+            "configured_atom_time_us": 91541578048.82712,
+            "home_area_time_um2_us": 47745215217623.555,
+            "idle_atom_time_us": 83415558799.75082,
+            "movement_distance_atom_um": 7093818764.095545,
+            "transport_elapsed_us": 106282132.8905594
+          }
+        },
+        "distance": 3,
+        "excluded_seeds": [
+          {
+            "seed": 5,
+            "window_status": "failed"
+          },
+          {
+            "seed": 11,
+            "window_status": "failed"
+          },
+          {
+            "seed": 13,
+            "window_status": "failed"
+          }
+        ],
+        "factory_count": 8,
+        "interval_basis": "two-sided Student-t 95%; independent seeds conditional on complete windows; excludes calibration uncertainty and model discrepancy",
+        "pooled_accepted_outputs_per_second": 15.332049434972381,
+        "pooled_cost_basis": "all complete observation windows, including zero-output seeds, divided by their total accepted outputs",
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 57343931985.67088,
+          "busy_atom_time_us": 4724429.795974591,
+          "configured_atom_time_us": 53221847.702806465,
+          "home_area_time_um2_us": 27758846056.75788,
+          "idle_atom_time_us": 48497417.906831875,
+          "movement_distance_atom_um": 4124313.23493927,
+          "transport_elapsed_us": 61791.937727069424
+        },
+        "schema": "nadit.center_factory_sample_statistics/1",
+        "seed_count": 16,
+        "statistics": {
+          "accepted_outputs_per_second": {
+            "confidence_interval_95": [
+              14.792355903574032,
+              15.87174296637073
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 15.332049434972381,
+            "missing_values": 0,
+            "n": 13
+          },
+          "allocated_scene_bbox_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              55500876182.26048,
+              59546395452.84891
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 57523635817.554695,
+            "missing_values": 0,
+            "n": 13
+          },
+          "busy_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              4637718.054401974,
+              4824752.987432987
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 4731235.520917481,
+            "missing_values": 0,
+            "n": 13
+          },
+          "configured_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              51511277.25742102,
+              55265990.32020554
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 53388633.78881328,
+            "missing_values": 0,
+            "n": 13
+          },
+          "delivered_outputs_per_second": {
+            "confidence_interval_95": [
+              14.792355903574032,
+              15.87174296637073
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 15.332049434972381,
+            "missing_values": 0,
+            "n": 13
+          },
+          "home_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              26866666177.39998,
+              28825006716.02877
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 27845836446.714375,
+            "missing_values": 0,
+            "n": 13
+          },
+          "idle_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              46856140.578985505,
+              50458655.95680607
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 48657398.26789579,
+            "missing_values": 0,
+            "n": 13
+          },
+          "movement_distance_atom_um_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              4048656.471398544,
+              4211847.036397038
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 4130251.7538977913,
+            "missing_values": 0,
+            "n": 13
+          },
+          "raw_attempts": {
+            "confidence_interval_95": [
+              2863.2571008869063,
+              3003.050591420786
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 2933.153846153846,
+            "missing_values": 0,
+            "n": 13
+          },
+          "raw_rejections": {
+            "confidence_interval_95": [
+              604.9649152289389,
+              655.0350847710611
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 630.0,
+            "missing_values": 0,
+            "n": 13
+          },
+          "s_calls": {
+            "confidence_interval_95": [
+              817.1675132053988,
+              866.5247944869088
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 841.8461538461538,
+            "missing_values": 0,
+            "n": 13
+          },
+          "standalone_ec_calls": {
+            "confidence_interval_95": [
+              24777.520155244016,
+              25889.402921679062
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 25333.46153846154,
+            "missing_values": 0,
+            "n": 13
+          },
+          "startup_deliverable_latency_us": {
+            "confidence_interval_95": [
+              295725.1505040055,
+              317555.55115708883
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 306640.35083054716,
+            "missing_values": 0,
+            "n": 13
+          },
+          "transport_elapsed_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              59803.62947587432,
+              64167.97923683675
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 61985.80435635553,
+            "missing_values": 0,
+            "n": 13
+          }
+        }
+      },
+      "status": "partial_failure"
+    },
+    {
+      "complete_windows": 16,
+      "distance": 5,
+      "exclusion": null,
+      "factory_count": 1,
+      "half_window_diagnostic": {
+        "binary_stationarity_verdict": null,
+        "difference_definition": "second-half accepted output rate minus first-half rate within the same seed",
+        "eligible_seed_count": 16,
+        "ineligible_seed_count": 0,
+        "interpretation": "finite-window temporal diagnostic, not an asymptotic steady-state proof; a difference interval containing zero does not establish stationarity",
+        "sampling_unit": "independent production seed, not individual factory lines or output states",
+        "schema": "nadit.single_fast_half_window_diagnostic/1",
+        "statistics": {
+          "first_half_rate_per_second": {
+            "confidence_interval_95": [
+              3.0911485327863097,
+              3.627034075856109
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 3.3590913043212094,
+            "missing_values": 0,
+            "n": 16
+          },
+          "paired_rate_difference_per_second": {
+            "confidence_interval_95": [
+              -0.252276670280826,
+              0.385750496942596
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 0.06673691333088497,
+            "missing_values": 0,
+            "n": 16
+          },
+          "second_half_rate_per_second": {
+            "confidence_interval_95": [
+              3.197445145562437,
+              3.6542112897417525
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 3.4258282176520947,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "missing_seeds": [],
+      "observation_policy": {
+        "basis": "separate pilot duration divided by completed cycles; window frozen before production",
+        "boundary_convention": "[warmup_us, stop_us)",
+        "cycle_us": 351192.44852988183,
+        "pilot_completion_sha256": "d6bbccace6bfe9e6dbeddfd8574af9a3514d298f893f4992f99927947e0e7b78",
+        "pilot_seed": 20261025,
+        "schema": "nadit.single_fast_observation/1",
+        "stop_us": 5970271.625007991,
+        "warmup_us": 351192.44852988183
+      },
+      "observed_window_secondary": {
+        "accepted_outputs": 305,
+        "budget_abort_seed_count": 0,
+        "covered_seed_count": 16,
+        "incurred_costs": {
+          "allocated_scene_bbox_area_time_um2_us": 17981053364729.95,
+          "busy_atom_time_us": 2677550636.092632,
+          "configured_atom_time_us": 26432148446.153027,
+          "home_area_time_um2_us": 7192421345891.9795,
+          "idle_atom_time_us": 23754597810.060394,
+          "movement_distance_atom_um": 1725662489.4948518,
+          "transport_elapsed_us": 77945699.0902031
+        },
+        "observed_window_us": 89905266.82364975,
+        "pooled_accepted_outputs_per_second": 3.392459760986652,
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 58954273326.98344,
+          "busy_atom_time_us": 8778854.544566005,
+          "configured_atom_time_us": 86662781.79066566,
+          "home_area_time_um2_us": 23581709330.793377,
+          "idle_atom_time_us": 77883927.24609965,
+          "movement_distance_atom_um": 5657909.801622465,
+          "transport_elapsed_us": 255559.6691482069
+        },
+        "primary_excluded_but_covered_seeds": [],
+        "rate_statistics": {
+          "confidence_interval_95": [
+            3.2013219531482755,
+            3.5835975688250286
+          ],
+          "eligible_valid_seeds": 16,
+          "mean": 3.392459760986652,
+          "missing_values": 0,
+          "n": 16
+        },
+        "schema": "nadit.single_fast_observed_window_diagnostic/1",
+        "scope": "secondary descriptive observed-window statistic including pre-stop line budget aborts; zero-output covered seeds contribute costs; truly truncated windows excluded; primary planned conditional statistics unchanged",
+        "steady_state_claim": false,
+        "uncovered_seeds": []
+      },
+      "pooled_atom_time_shares": {
+        "gate": 0.002396187170673145,
+        "idle": 0.8987009837075001,
+        "other_active": 6.5609390143705386e-15,
+        "readout": 0.01276926138084988,
+        "reset": 0.0006430269955022784,
+        "transport": 0.08549054074546804
+      },
+      "recorded_seeds": 16,
+      "statistics": {
+        "all_seed_incurred_costs": {
+          "accepted_outputs": 305,
+          "actual_observation_us": 89905266.82364975,
+          "basis": "observed window intersections including failed and incomplete seeds; diagnostic, not steady-state throughput",
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 17981053364729.95,
+            "busy_atom_time_us": 2677550636.092632,
+            "configured_atom_time_us": 26432148446.153027,
+            "home_area_time_um2_us": 7192421345891.9795,
+            "idle_atom_time_us": 23754597810.060394,
+            "movement_distance_atom_um": 1725662489.4948518,
+            "transport_elapsed_us": 77945699.0902031
+          },
+          "delivered_outputs": 305,
+          "per_accepted_output": {
+            "allocated_scene_bbox_area_time_um2_us": 58954273326.98344,
+            "busy_atom_time_us": 8778854.544566005,
+            "configured_atom_time_us": 86662781.79066566,
+            "home_area_time_um2_us": 23581709330.793377,
+            "idle_atom_time_us": 77883927.24609965,
+            "movement_distance_atom_um": 5657909.801622465,
+            "transport_elapsed_us": 255559.6691482069
+          }
+        },
+        "complete_seed_count": 16,
+        "complete_window_totals": {
+          "accepted_outputs": 305,
+          "actual_observation_us": 89905266.82364975,
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 17981053364729.95,
+            "busy_atom_time_us": 2677550636.092632,
+            "configured_atom_time_us": 26432148446.153027,
+            "home_area_time_um2_us": 7192421345891.9795,
+            "idle_atom_time_us": 23754597810.060394,
+            "movement_distance_atom_um": 1725662489.4948518,
+            "transport_elapsed_us": 77945699.0902031
+          }
+        },
+        "distance": 5,
+        "excluded_seeds": [],
+        "factory_count": 1,
+        "interval_basis": "two-sided Student-t 95%; independent seeds conditional on complete windows; excludes calibration uncertainty and model discrepancy",
+        "pooled_accepted_outputs_per_second": 3.392459760986652,
+        "pooled_cost_basis": "all complete observation windows, including zero-output seeds, divided by their total accepted outputs",
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 58954273326.98344,
+          "busy_atom_time_us": 8778854.544566005,
+          "configured_atom_time_us": 86662781.79066566,
+          "home_area_time_um2_us": 23581709330.793377,
+          "idle_atom_time_us": 77883927.24609965,
+          "movement_distance_atom_um": 5657909.801622465,
+          "transport_elapsed_us": 255559.6691482069
+        },
+        "schema": "nadit.center_factory_sample_statistics/1",
+        "seed_count": 16,
+        "statistics": {
+          "accepted_outputs_per_second": {
+            "confidence_interval_95": [
+              3.2013219531482755,
+              3.5835975688250286
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 3.392459760986652,
+            "missing_values": 0,
+            "n": 16
+          },
+          "allocated_scene_bbox_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              55970819475.00637,
+              63291916921.28507
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 59631368198.14572,
+            "missing_values": 0,
+            "n": 16
+          },
+          "busy_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              8331343.113701901,
+              9428347.583429087
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 8879845.348565495,
+            "missing_values": 0,
+            "n": 16
+          },
+          "configured_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              82277104.62825936,
+              93039117.87428907
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 87658111.25127421,
+            "missing_values": 0,
+            "n": 16
+          },
+          "delivered_outputs_per_second": {
+            "confidence_interval_95": [
+              3.2013219531482755,
+              3.5835975688250286
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 3.392459760986652,
+            "missing_values": 0,
+            "n": 16
+          },
+          "home_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              22388327790.00255,
+              25316766768.51403
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 23852547279.25829,
+            "missing_values": 0,
+            "n": 16
+          },
+          "idle_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              73944392.59487419,
+              83612139.21054326
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 78778265.90270872,
+            "missing_values": 0,
+            "n": 16
+          },
+          "movement_distance_atom_um_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              5369581.464838915,
+              6076362.258986937
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 5722971.861912926,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_attempts": {
+            "confidence_interval_95": [
+              440.4296767079135,
+              446.5703232920865
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 443.5,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_rejections": {
+            "confidence_interval_95": [
+              97.26581432395,
+              106.73418567605
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 102.0,
+            "missing_values": 0,
+            "n": 16
+          },
+          "s_calls": {
+            "confidence_interval_95": [
+              117.64838050230878,
+              127.72661949769122
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 122.6875,
+            "missing_values": 0,
+            "n": 16
+          },
+          "standalone_ec_calls": {
+            "confidence_interval_95": [
+              6228.202164662154,
+              6289.922835337846
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 6259.0625,
+            "missing_values": 0,
+            "n": 16
+          },
+          "startup_deliverable_latency_us": {
+            "confidence_interval_95": [
+              226553.86377174058,
+              292038.5884621343
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 259296.22611693744,
+            "missing_values": 0,
+            "n": 16
+          },
+          "transport_elapsed_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              242626.56560124614,
+              274362.37305091304
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 258494.4693260796,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "complete_windows": 16,
+      "distance": 5,
+      "exclusion": null,
+      "factory_count": 2,
+      "half_window_diagnostic": {
+        "binary_stationarity_verdict": null,
+        "difference_definition": "second-half accepted output rate minus first-half rate within the same seed",
+        "eligible_seed_count": 16,
+        "ineligible_seed_count": 0,
+        "interpretation": "finite-window temporal diagnostic, not an asymptotic steady-state proof; a difference interval containing zero does not establish stationarity",
+        "sampling_unit": "independent production seed, not individual factory lines or output states",
+        "schema": "nadit.single_fast_half_window_diagnostic/1",
+        "statistics": {
+          "first_half_rate_per_second": {
+            "confidence_interval_95": [
+              3.8135696681151816,
+              4.402162148946453
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 4.107865908530817,
+            "missing_values": 0,
+            "n": 16
+          },
+          "paired_rate_difference_per_second": {
+            "confidence_interval_95": [
+              -0.20006469353252798,
+              0.6213842738946631
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 0.21065979018106756,
+            "missing_values": 0,
+            "n": 16
+          },
+          "second_half_rate_per_second": {
+            "confidence_interval_95": [
+              4.0168651614121,
+              4.62018623601167
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 4.318525698711885,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "missing_seeds": [],
+      "observation_policy": {
+        "basis": "separate pilot duration divided by completed cycles; window frozen before production",
+        "boundary_convention": "[warmup_us, stop_us)",
+        "cycle_us": 519202.07414043916,
+        "pilot_completion_sha256": "a2d0c3503ddd753bc82c78478fb4edf2b3dcee1ebe7c92fef5c2030b27d6cbfd",
+        "pilot_seed": 20261025,
+        "schema": "nadit.single_fast_observation/1",
+        "stop_us": 8826435.260387465,
+        "warmup_us": 519202.07414043916
+      },
+      "observed_window_secondary": {
+        "accepted_outputs": 560,
+        "budget_abort_seed_count": 0,
+        "covered_seed_count": 16,
+        "incurred_costs": {
+          "allocated_scene_bbox_area_time_um2_us": 56356269935499.83,
+          "busy_atom_time_us": 6540246936.4833355,
+          "configured_atom_time_us": 78154449816.21202,
+          "home_area_time_um2_us": 25519820348150.867,
+          "idle_atom_time_us": 71614202879.72868,
+          "movement_distance_atom_um": 4821755017.816835,
+          "transport_elapsed_us": 119255590.1884585
+        },
+        "observed_window_us": 132915730.97995242,
+        "pooled_accepted_outputs_per_second": 4.2131958036213515,
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 100636196313.39255,
+          "busy_atom_time_us": 11679012.386577385,
+          "configured_atom_time_us": 139561517.52895004,
+          "home_area_time_um2_us": 45571107764.55512,
+          "idle_atom_time_us": 127882505.14237265,
+          "movement_distance_atom_um": 8610276.817530064,
+          "transport_elapsed_us": 212956.41105081874
+        },
+        "primary_excluded_but_covered_seeds": [],
+        "rate_statistics": {
+          "confidence_interval_95": [
+            3.997253616768165,
+            4.429137990474538
+          ],
+          "eligible_valid_seeds": 16,
+          "mean": 4.2131958036213515,
+          "missing_values": 0,
+          "n": 16
+        },
+        "schema": "nadit.single_fast_observed_window_diagnostic/1",
+        "scope": "secondary descriptive observed-window statistic including pre-stop line budget aborts; zero-output covered seeds contribute costs; truly truncated windows excluded; primary planned conditional statistics unchanged",
+        "steady_state_claim": false,
+        "uncovered_seeds": []
+      },
+      "pooled_atom_time_shares": {
+        "gate": 0.0014631111122770646,
+        "idle": 0.9163163843918883,
+        "other_active": 3.439560365010074e-16,
+        "readout": 0.007796612829111923,
+        "reset": 0.00039256574733938845,
+        "transport": 0.0740313259193829
+      },
+      "recorded_seeds": 16,
+      "statistics": {
+        "all_seed_incurred_costs": {
+          "accepted_outputs": 560,
+          "actual_observation_us": 132915730.97995242,
+          "basis": "observed window intersections including failed and incomplete seeds; diagnostic, not steady-state throughput",
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 56356269935499.83,
+            "busy_atom_time_us": 6540246936.4833355,
+            "configured_atom_time_us": 78154449816.21202,
+            "home_area_time_um2_us": 25519820348150.867,
+            "idle_atom_time_us": 71614202879.72868,
+            "movement_distance_atom_um": 4821755017.816835,
+            "transport_elapsed_us": 119255590.1884585
+          },
+          "delivered_outputs": 560,
+          "per_accepted_output": {
+            "allocated_scene_bbox_area_time_um2_us": 100636196313.39255,
+            "busy_atom_time_us": 11679012.386577385,
+            "configured_atom_time_us": 139561517.52895004,
+            "home_area_time_um2_us": 45571107764.55512,
+            "idle_atom_time_us": 127882505.14237265,
+            "movement_distance_atom_um": 8610276.817530064,
+            "transport_elapsed_us": 212956.41105081874
+          }
+        },
+        "complete_seed_count": 16,
+        "complete_window_totals": {
+          "accepted_outputs": 560,
+          "actual_observation_us": 132915730.97995242,
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 56356269935499.83,
+            "busy_atom_time_us": 6540246936.4833355,
+            "configured_atom_time_us": 78154449816.21202,
+            "home_area_time_um2_us": 25519820348150.867,
+            "idle_atom_time_us": 71614202879.72868,
+            "movement_distance_atom_um": 4821755017.816835,
+            "transport_elapsed_us": 119255590.1884585
+          }
+        },
+        "distance": 5,
+        "excluded_seeds": [],
+        "factory_count": 2,
+        "interval_basis": "two-sided Student-t 95%; independent seeds conditional on complete windows; excludes calibration uncertainty and model discrepancy",
+        "pooled_accepted_outputs_per_second": 4.2131958036213515,
+        "pooled_cost_basis": "all complete observation windows, including zero-output seeds, divided by their total accepted outputs",
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 100636196313.39255,
+          "busy_atom_time_us": 11679012.386577385,
+          "configured_atom_time_us": 139561517.52895004,
+          "home_area_time_um2_us": 45571107764.55512,
+          "idle_atom_time_us": 127882505.14237265,
+          "movement_distance_atom_um": 8610276.817530064,
+          "transport_elapsed_us": 212956.41105081874
+        },
+        "schema": "nadit.center_factory_sample_statistics/1",
+        "seed_count": 16,
+        "statistics": {
+          "accepted_outputs_per_second": {
+            "confidence_interval_95": [
+              3.997253616768165,
+              4.429137990474538
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 4.2131958036213515,
+            "missing_values": 0,
+            "n": 16
+          },
+          "allocated_scene_bbox_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              96445827615.12234,
+              106518131689.80435
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 101481979652.46335,
+            "missing_values": 0,
+            "n": 16
+          },
+          "busy_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              11353842.599753143,
+              12132100.109656328
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 11742971.354704736,
+            "missing_values": 0,
+            "n": 16
+          },
+          "configured_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              133750345.84361306,
+              147718541.1169928
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 140734443.48030293,
+            "missing_values": 0,
+            "n": 16
+          },
+          "delivered_outputs_per_second": {
+            "confidence_interval_95": [
+              3.997253616768165,
+              4.429137990474538
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 4.2131958036213515,
+            "missing_values": 0,
+            "n": 16
+          },
+          "home_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              43673582316.28182,
+              48234625670.854805
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 45954103993.56831,
+            "missing_values": 0,
+            "n": 16
+          },
+          "idle_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              122385199.1490754,
+              135597745.102121
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 128991472.12559819,
+            "missing_values": 0,
+            "n": 16
+          },
+          "movement_distance_atom_um_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              8370526.507276772,
+              8944343.943728713
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 8657435.225502742,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_attempts": {
+            "confidence_interval_95": [
+              779.0663464114025,
+              810.8086535885975
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 794.9375,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_rejections": {
+            "confidence_interval_95": [
+              169.73596164971747,
+              187.13903835028253
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 178.4375,
+            "missing_values": 0,
+            "n": 16
+          },
+          "s_calls": {
+            "confidence_interval_95": [
+              218.44719034410807,
+              231.80280965589193
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 225.125,
+            "missing_values": 0,
+            "n": 16
+          },
+          "standalone_ec_calls": {
+            "confidence_interval_95": [
+              11091.47449664683,
+              11524.77550335317
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 11308.125,
+            "missing_values": 0,
+            "n": 16
+          },
+          "startup_deliverable_latency_us": {
+            "confidence_interval_95": [
+              346338.3161221762,
+              436944.48040169076
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 391641.3982619335,
+            "missing_values": 0,
+            "n": 16
+          },
+          "transport_elapsed_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              204074.1262449346,
+              225423.40303624127
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 214748.76464058793,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "complete_windows": 16,
+      "distance": 5,
+      "exclusion": null,
+      "factory_count": 4,
+      "half_window_diagnostic": {
+        "binary_stationarity_verdict": null,
+        "difference_definition": "second-half accepted output rate minus first-half rate within the same seed",
+        "eligible_seed_count": 16,
+        "ineligible_seed_count": 0,
+        "interpretation": "finite-window temporal diagnostic, not an asymptotic steady-state proof; a difference interval containing zero does not establish stationarity",
+        "sampling_unit": "independent production seed, not individual factory lines or output states",
+        "schema": "nadit.single_fast_half_window_diagnostic/1",
+        "statistics": {
+          "first_half_rate_per_second": {
+            "confidence_interval_95": [
+              4.008854960847041,
+              4.615541003575859
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 4.31219798221145,
+            "missing_values": 0,
+            "n": 16
+          },
+          "paired_rate_difference_per_second": {
+            "confidence_interval_95": [
+              -0.21358613240439364,
+              0.5837318819504409
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 0.18507287477302362,
+            "missing_values": 0,
+            "n": 16
+          },
+          "second_half_rate_per_second": {
+            "confidence_interval_95": [
+              4.200846488450909,
+              4.7936952255180385
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 4.497270856984474,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "missing_seeds": [],
+      "observation_policy": {
+        "basis": "separate pilot duration divided by completed cycles; window frozen before production",
+        "boundary_convention": "[warmup_us, stop_us)",
+        "cycle_us": 844262.0248463074,
+        "pilot_completion_sha256": "48aab05b299ea831db350f4fa0fb29c5cdfac435659f5ada75f296c2975d7960",
+        "pilot_seed": 20261025,
+        "schema": "nadit.single_fast_observation/1",
+        "stop_us": 14352454.422387226,
+        "warmup_us": 844262.0248463074
+      },
+      "observed_window_secondary": {
+        "accepted_outputs": 952,
+        "budget_abort_seed_count": 0,
+        "covered_seed_count": 16,
+        "incurred_costs": {
+          "allocated_scene_bbox_area_time_um2_us": 188466300330490.88,
+          "busy_atom_time_us": 16719971972.214779,
+          "configured_atom_time_us": 254170148152.1299,
+          "home_area_time_um2_us": 89910528598032.34,
+          "idle_atom_time_us": 237450176179.91513,
+          "movement_distance_atom_um": 13833107975.843472,
+          "transport_elapsed_us": 201058450.80467746
+        },
+        "observed_window_us": 216131078.36065468,
+        "pooled_accepted_outputs_per_second": 4.404734419597962,
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 197968802868.1627,
+          "busy_atom_time_us": 17562995.769133173,
+          "configured_atom_time_us": 266985449.73963225,
+          "home_area_time_um2_us": 94443832560.95834,
+          "idle_atom_time_us": 249422453.9704991,
+          "movement_distance_atom_um": 14530575.604877597,
+          "transport_elapsed_us": 211195.85168558557
+        },
+        "primary_excluded_but_covered_seeds": [],
+        "rate_statistics": {
+          "confidence_interval_95": [
+            4.1806586591181985,
+            4.628810180077726
+          ],
+          "eligible_valid_seeds": 16,
+          "mean": 4.404734419597962,
+          "missing_values": 0,
+          "n": 16
+        },
+        "schema": "nadit.single_fast_observed_window_diagnostic/1",
+        "scope": "secondary descriptive observed-window statistic including pre-stop line budget aborts; zero-output covered seeds contribute costs; truly truncated windows excluded; primary planned conditional statistics unchanged",
+        "steady_state_claim": false,
+        "uncovered_seeds": []
+      },
+      "pooled_atom_time_shares": {
+        "gate": 0.0007557399150712986,
+        "idle": 0.9342174047826859,
+        "other_active": 4.971545550982456e-17,
+        "readout": 0.004027257191983862,
+        "reset": 0.00020274501303416673,
+        "transport": 0.060796853097224796
+      },
+      "recorded_seeds": 16,
+      "statistics": {
+        "all_seed_incurred_costs": {
+          "accepted_outputs": 952,
+          "actual_observation_us": 216131078.36065468,
+          "basis": "observed window intersections including failed and incomplete seeds; diagnostic, not steady-state throughput",
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 188466300330490.88,
+            "busy_atom_time_us": 16719971972.214779,
+            "configured_atom_time_us": 254170148152.1299,
+            "home_area_time_um2_us": 89910528598032.34,
+            "idle_atom_time_us": 237450176179.91513,
+            "movement_distance_atom_um": 13833107975.843472,
+            "transport_elapsed_us": 201058450.80467746
+          },
+          "delivered_outputs": 952,
+          "per_accepted_output": {
+            "allocated_scene_bbox_area_time_um2_us": 197968802868.1627,
+            "busy_atom_time_us": 17562995.769133173,
+            "configured_atom_time_us": 266985449.73963225,
+            "home_area_time_um2_us": 94443832560.95834,
+            "idle_atom_time_us": 249422453.9704991,
+            "movement_distance_atom_um": 14530575.604877597,
+            "transport_elapsed_us": 211195.85168558557
+          }
+        },
+        "complete_seed_count": 16,
+        "complete_window_totals": {
+          "accepted_outputs": 952,
+          "actual_observation_us": 216131078.36065468,
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 188466300330490.88,
+            "busy_atom_time_us": 16719971972.214779,
+            "configured_atom_time_us": 254170148152.1299,
+            "home_area_time_um2_us": 89910528598032.34,
+            "idle_atom_time_us": 237450176179.91513,
+            "movement_distance_atom_um": 13833107975.843472,
+            "transport_elapsed_us": 201058450.80467746
+          }
+        },
+        "distance": 5,
+        "excluded_seeds": [],
+        "factory_count": 4,
+        "interval_basis": "two-sided Student-t 95%; independent seeds conditional on complete windows; excludes calibration uncertainty and model discrepancy",
+        "pooled_accepted_outputs_per_second": 4.404734419597962,
+        "pooled_cost_basis": "all complete observation windows, including zero-output seeds, divided by their total accepted outputs",
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 197968802868.1627,
+          "busy_atom_time_us": 17562995.769133173,
+          "configured_atom_time_us": 266985449.73963225,
+          "home_area_time_um2_us": 94443832560.95834,
+          "idle_atom_time_us": 249422453.9704991,
+          "movement_distance_atom_um": 14530575.604877597,
+          "transport_elapsed_us": 211195.85168558557
+        },
+        "schema": "nadit.center_factory_sample_statistics/1",
+        "seed_count": 16,
+        "statistics": {
+          "accepted_outputs_per_second": {
+            "confidence_interval_95": [
+              4.1806586591181985,
+              4.628810180077726
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 4.404734419597962,
+            "missing_values": 0,
+            "n": 16
+          },
+          "allocated_scene_bbox_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              189942393210.98724,
+              209220405887.81012
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 199581399549.39868,
+            "missing_values": 0,
+            "n": 16
+          },
+          "busy_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              17118200.918581594,
+              18174988.041948352
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 17646594.480264973,
+            "missing_values": 0,
+            "n": 16
+          },
+          "configured_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              256160842.22032225,
+              282159629.9587898
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 269160236.08955604,
+            "missing_values": 0,
+            "n": 16
+          },
+          "delivered_outputs_per_second": {
+            "confidence_interval_95": [
+              4.1806586591181985,
+              4.628810180077726
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 4.404734419597962,
+            "missing_values": 0,
+            "n": 16
+          },
+          "home_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              90614719696.98474,
+              99811569781.3406
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 95213144739.16267,
+            "missing_values": 0,
+            "n": 16
+          },
+          "idle_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              239016413.0795803,
+              264010870.13900185
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 251513641.60929108,
+            "missing_values": 0,
+            "n": 16
+          },
+          "movement_distance_atom_um_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              14162440.396058407,
+              15037077.718463738
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 14599759.057261072,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_attempts": {
+            "confidence_interval_95": [
+              1298.1583053817897,
+              1363.5916946182103
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 1330.875,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_rejections": {
+            "confidence_interval_95": [
+              281.78352878926734,
+              310.84147121073266
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 296.3125,
+            "missing_values": 0,
+            "n": 16
+          },
+          "s_calls": {
+            "confidence_interval_95": [
+              364.685269042314,
+              390.814730957686
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 377.75,
+            "missing_values": 0,
+            "n": 16
+          },
+          "standalone_ec_calls": {
+            "confidence_interval_95": [
+              18564.3130055693,
+              19448.1869944307
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 19006.25,
+            "missing_values": 0,
+            "n": 16
+          },
+          "startup_deliverable_latency_us": {
+            "confidence_interval_95": [
+              607017.3113754957,
+              684990.7073341685
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 646004.0093548321,
+            "missing_values": 0,
+            "n": 16
+          },
+          "transport_elapsed_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              202621.6693858397,
+              223215.55789490286
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 212918.61364037127,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "complete_windows": 13,
+      "distance": 5,
+      "exclusion": null,
+      "factory_count": 8,
+      "half_window_diagnostic": {
+        "binary_stationarity_verdict": null,
+        "difference_definition": "second-half accepted output rate minus first-half rate within the same seed",
+        "eligible_seed_count": 13,
+        "ineligible_seed_count": 3,
+        "interpretation": "finite-window temporal diagnostic, not an asymptotic steady-state proof; a difference interval containing zero does not establish stationarity",
+        "sampling_unit": "independent production seed, not individual factory lines or output states",
+        "schema": "nadit.single_fast_half_window_diagnostic/1",
+        "statistics": {
+          "first_half_rate_per_second": {
+            "confidence_interval_95": [
+              3.7422831474281315,
+              4.192850331730866
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 3.9675667395794987,
+            "missing_values": 0,
+            "n": 13
+          },
+          "paired_rate_difference_per_second": {
+            "confidence_interval_95": [
+              -0.16896951131632285,
+              0.35039855596616754
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 0.09071452232492236,
+            "missing_values": 0,
+            "n": 13
+          },
+          "second_half_rate_per_second": {
+            "confidence_interval_95": [
+              3.918328192268329,
+              4.198234331540513
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 4.058281261904421,
+            "missing_values": 0,
+            "n": 13
+          }
+        }
+      },
+      "missing_seeds": [],
+      "observation_policy": {
+        "basis": "separate pilot duration divided by completed cycles; window frozen before production",
+        "boundary_convention": "[warmup_us, stop_us)",
+        "cycle_us": 2013925.6980038788,
+        "pilot_completion_sha256": "0879c2c0b1932d83d17c4189003b8ddd1f42630fc2f976f949e4573ddf0e5ab2",
+        "pilot_seed": 20261025,
+        "schema": "nadit.single_fast_observation/1",
+        "stop_us": 34236736.86606594,
+        "warmup_us": 2013925.6980038788
+      },
+      "observed_window_secondary": {
+        "accepted_outputs": 2029,
+        "budget_abort_seed_count": 3,
+        "covered_seed_count": 16,
+        "incurred_costs": {
+          "allocated_scene_bbox_area_time_um2_us": 911518882322139.6,
+          "busy_atom_time_us": 60815860780.74914,
+          "configured_atom_time_us": 1212608829876.5115,
+          "home_area_time_um2_us": 445448141587289.94,
+          "idle_atom_time_us": 1151792969095.7625,
+          "movement_distance_atom_um": 54586212915.19657,
+          "transport_elapsed_us": 493851065.5393152
+        },
+        "observed_window_us": 515564978.688993,
+        "pooled_accepted_outputs_per_second": 3.935488413428416,
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 449245383106.03235,
+          "busy_atom_time_us": 29973317.289674293,
+          "configured_atom_time_us": 597638654.4487488,
+          "home_area_time_um2_us": 219540730205.66287,
+          "idle_atom_time_us": 567665337.1590747,
+          "movement_distance_atom_um": 26903012.77239851,
+          "transport_elapsed_us": 243396.28661375813
+        },
+        "primary_excluded_but_covered_seeds": [
+          5,
+          11,
+          13
+        ],
+        "rate_statistics": {
+          "confidence_interval_95": [
+            3.7737747093636784,
+            4.097202117493153
+          ],
+          "eligible_valid_seeds": 16,
+          "mean": 3.935488413428416,
+          "missing_values": 0,
+          "n": 16
+        },
+        "schema": "nadit.single_fast_observed_window_diagnostic/1",
+        "scope": "secondary descriptive observed-window statistic including pre-stop line budget aborts; zero-output covered seeds contribute costs; truly truncated windows excluded; primary planned conditional statistics unchanged",
+        "steady_state_claim": false,
+        "uncovered_seeds": []
+      },
+      "pooled_atom_time_shares": {
+        "gate": 0.00034501478249578067,
+        "idle": 0.9493759267977097,
+        "other_active": 1.175099597437081e-15,
+        "readout": 0.0018387767287524925,
+        "reset": 9.255375073925919e-05,
+        "transport": 0.04834772794030164
+      },
+      "recorded_seeds": 16,
+      "statistics": {
+        "all_seed_incurred_costs": {
+          "accepted_outputs": 2029,
+          "actual_observation_us": 515564978.688993,
+          "basis": "observed window intersections including failed and incomplete seeds; diagnostic, not steady-state throughput",
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 911518882322139.6,
+            "busy_atom_time_us": 60815860780.74914,
+            "configured_atom_time_us": 1212608829876.5115,
+            "home_area_time_um2_us": 445448141587289.94,
+            "idle_atom_time_us": 1151792969095.7625,
+            "movement_distance_atom_um": 54586212915.19657,
+            "transport_elapsed_us": 493851065.5393152
+          },
+          "delivered_outputs": 2029,
+          "per_accepted_output": {
+            "allocated_scene_bbox_area_time_um2_us": 449245383106.03235,
+            "busy_atom_time_us": 29973317.289674293,
+            "configured_atom_time_us": 597638654.4487488,
+            "home_area_time_um2_us": 219540730205.66287,
+            "idle_atom_time_us": 567665337.1590747,
+            "movement_distance_atom_um": 26903012.77239851,
+            "transport_elapsed_us": 243396.28661375813
+          }
+        },
+        "complete_seed_count": 13,
+        "complete_window_totals": {
+          "accepted_outputs": 1681,
+          "actual_observation_us": 418896545.1848068,
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 740609091886738.5,
+            "busy_atom_time_us": 49877098512.64739,
+            "configured_atom_time_us": 985244674274.6655,
+            "home_area_time_um2_us": 361926615039673.06,
+            "idle_atom_time_us": 935367575762.0182,
+            "movement_distance_atom_um": 44768132242.64325,
+            "transport_elapsed_us": 401254701.5351329
+          }
+        },
+        "distance": 5,
+        "excluded_seeds": [
+          {
+            "seed": 5,
+            "window_status": "failed"
+          },
+          {
+            "seed": 11,
+            "window_status": "failed"
+          },
+          {
+            "seed": 13,
+            "window_status": "failed"
+          }
+        ],
+        "factory_count": 8,
+        "interval_basis": "two-sided Student-t 95%; independent seeds conditional on complete windows; excludes calibration uncertainty and model discrepancy",
+        "pooled_accepted_outputs_per_second": 4.012924000741959,
+        "pooled_cost_basis": "all complete observation windows, including zero-output seeds, divided by their total accepted outputs",
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 440576497255.64453,
+          "busy_atom_time_us": 29671087.752913382,
+          "configured_atom_time_us": 586106290.466785,
+          "home_area_time_um2_us": 215304351600.04346,
+          "idle_atom_time_us": 556435202.7138716,
+          "movement_distance_atom_um": 26631845.474505205,
+          "transport_elapsed_us": 238700.000913226
+        },
+        "schema": "nadit.center_factory_sample_statistics/1",
+        "seed_count": 16,
+        "statistics": {
+          "accepted_outputs_per_second": {
+            "confidence_interval_95": [
+              3.877606485376995,
+              4.148241516106923
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 4.012924000741959,
+            "missing_values": 0,
+            "n": 13
+          },
+          "allocated_scene_bbox_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              426928931374.5564,
+              456762349352.83154
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 441845640363.694,
+            "missing_values": 0,
+            "n": 13
+          },
+          "busy_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              29039982.102830324,
+              30404442.430562545
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 29722212.266696434,
+            "missing_values": 0,
+            "n": 13
+          },
+          "configured_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              567950705.0865138,
+              607638600.496527
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 587794652.7915204,
+            "missing_values": 0,
+            "n": 13
+          },
+          "delivered_outputs_per_second": {
+            "confidence_interval_95": [
+              3.877606485376995,
+              4.148241516106923
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 4.012924000741959,
+            "missing_values": 0,
+            "n": 13
+          },
+          "home_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              208634952888.92346,
+              223214179774.23438
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 215924566331.57892,
+            "missing_values": 0,
+            "n": 13
+          },
+          "idle_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              538829315.6081635,
+              577315565.4414846
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 558072440.524824,
+            "missing_values": 0,
+            "n": 13
+          },
+          "movement_distance_atom_um_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              26065399.637377124,
+              27290077.088624585
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 26677738.363000855,
+            "missing_values": 0,
+            "n": 13
+          },
+          "raw_attempts": {
+            "confidence_interval_95": [
+              2830.150904415559,
+              2944.772172507518
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 2887.4615384615386,
+            "missing_values": 0,
+            "n": 13
+          },
+          "raw_rejections": {
+            "confidence_interval_95": [
+              610.0736094194904,
+              653.6186982728173
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 631.8461538461538,
+            "missing_values": 0,
+            "n": 13
+          },
+          "s_calls": {
+            "confidence_interval_95": [
+              801.6456617522821,
+              848.9697228631024
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 825.3076923076923,
+            "missing_values": 0,
+            "n": 13
+          },
+          "standalone_ec_calls": {
+            "confidence_interval_95": [
+              40670.967777601414,
+              42105.18606855243
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 41388.07692307692,
+            "missing_values": 0,
+            "n": 13
+          },
+          "startup_deliverable_latency_us": {
+            "confidence_interval_95": [
+              1168751.2962354666,
+              1281237.0968314793
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 1224994.196533473,
+            "missing_values": 0,
+            "n": 13
+          },
+          "transport_elapsed_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              231303.5075622165,
+              247472.14982256352
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 239387.82869239,
+            "missing_values": 0,
+            "n": 13
+          }
+        }
+      },
+      "status": "partial_failure"
+    },
+    {
+      "complete_windows": 16,
+      "distance": 7,
+      "exclusion": null,
+      "factory_count": 1,
+      "half_window_diagnostic": {
+        "binary_stationarity_verdict": null,
+        "difference_definition": "second-half accepted output rate minus first-half rate within the same seed",
+        "eligible_seed_count": 16,
+        "ineligible_seed_count": 0,
+        "interpretation": "finite-window temporal diagnostic, not an asymptotic steady-state proof; a difference interval containing zero does not establish stationarity",
+        "sampling_unit": "independent production seed, not individual factory lines or output states",
+        "schema": "nadit.single_fast_half_window_diagnostic/1",
+        "statistics": {
+          "first_half_rate_per_second": {
+            "confidence_interval_95": [
+              2.3604950907470954,
+              2.7740596876855754
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 2.5672773892163354,
+            "missing_values": 0,
+            "n": 16
+          },
+          "paired_rate_difference_per_second": {
+            "confidence_interval_95": [
+              -0.2733922161160502,
+              0.24005095132103288
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": -0.01667063239750867,
+            "missing_values": 0,
+            "n": 16
+          },
+          "second_half_rate_per_second": {
+            "confidence_interval_95": [
+              2.3637083709753695,
+              2.7375051426622843
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 2.550606756818827,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "missing_seeds": [],
+      "observation_policy": {
+        "basis": "separate pilot duration divided by completed cycles; window frozen before production",
+        "boundary_convention": "[warmup_us, stop_us)",
+        "cycle_us": 468638.4903531033,
+        "pilot_completion_sha256": "26fafd592eb7e969409b4b9e2d041962ef56ee4a7d7914b4ff10de006cd68c24",
+        "pilot_seed": 20261025,
+        "schema": "nadit.single_fast_observation/1",
+        "stop_us": 7966854.336002757,
+        "warmup_us": 468638.4903531033
+      },
+      "observed_window_secondary": {
+        "accepted_outputs": 307,
+        "budget_abort_seed_count": 0,
+        "covered_seed_count": 16,
+        "incurred_costs": {
+          "allocated_scene_bbox_area_time_um2_us": 41174202851631.375,
+          "busy_atom_time_us": 7994314903.552381,
+          "configured_atom_time_us": 69823385954.68958,
+          "home_area_time_um2_us": 17467843634025.432,
+          "idle_atom_time_us": 61829071051.13719,
+          "movement_distance_atom_um": 5363488024.722449,
+          "transport_elapsed_us": 105711124.34088448
+        },
+        "observed_window_us": 119971453.53039445,
+        "pooled_accepted_outputs_per_second": 2.5589420730175814,
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 134117924598.1478,
+          "busy_atom_time_us": 26040113.692353033,
+          "configured_atom_time_us": 227437739.26608983,
+          "home_area_time_um2_us": 56898513465.88088,
+          "idle_atom_time_us": 201397625.5737368,
+          "movement_distance_atom_um": 17470645.031669214,
+          "transport_elapsed_us": 344335.9099051612
+        },
+        "primary_excluded_but_covered_seeds": [],
+        "rate_statistics": {
+          "confidence_interval_95": [
+            2.40938114928141,
+            2.7085029967537526
+          ],
+          "eligible_valid_seeds": 16,
+          "mean": 2.5589420730175814,
+          "missing_values": 0,
+          "n": 16
+        },
+        "schema": "nadit.single_fast_observed_window_diagnostic/1",
+        "scope": "secondary descriptive observed-window statistic including pre-stop line budget aborts; zero-output covered seeds contribute costs; truly truncated windows excluded; primary planned conditional statistics unchanged",
+        "steady_state_claim": false,
+        "uncovered_seeds": []
+      },
+      "pooled_atom_time_shares": {
+        "gate": 0.0025457278327256716,
+        "idle": 0.8855066279836369,
+        "other_active": 3.047525967678354e-15,
+        "readout": 0.013014030371898602,
+        "reset": 0.0006529800062916858,
+        "transport": 0.09828063380544418
+      },
+      "recorded_seeds": 16,
+      "statistics": {
+        "all_seed_incurred_costs": {
+          "accepted_outputs": 307,
+          "actual_observation_us": 119971453.53039445,
+          "basis": "observed window intersections including failed and incomplete seeds; diagnostic, not steady-state throughput",
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 41174202851631.375,
+            "busy_atom_time_us": 7994314903.552381,
+            "configured_atom_time_us": 69823385954.68958,
+            "home_area_time_um2_us": 17467843634025.432,
+            "idle_atom_time_us": 61829071051.13719,
+            "movement_distance_atom_um": 5363488024.722449,
+            "transport_elapsed_us": 105711124.34088448
+          },
+          "delivered_outputs": 307,
+          "per_accepted_output": {
+            "allocated_scene_bbox_area_time_um2_us": 134117924598.1478,
+            "busy_atom_time_us": 26040113.692353033,
+            "configured_atom_time_us": 227437739.26608983,
+            "home_area_time_um2_us": 56898513465.88088,
+            "idle_atom_time_us": 201397625.5737368,
+            "movement_distance_atom_um": 17470645.031669214,
+            "transport_elapsed_us": 344335.9099051612
+          }
+        },
+        "complete_seed_count": 16,
+        "complete_window_totals": {
+          "accepted_outputs": 307,
+          "actual_observation_us": 119971453.53039445,
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 41174202851631.375,
+            "busy_atom_time_us": 7994314903.552381,
+            "configured_atom_time_us": 69823385954.68958,
+            "home_area_time_um2_us": 17467843634025.432,
+            "idle_atom_time_us": 61829071051.13719,
+            "movement_distance_atom_um": 5363488024.722449,
+            "transport_elapsed_us": 105711124.34088448
+          }
+        },
+        "distance": 7,
+        "excluded_seeds": [],
+        "factory_count": 1,
+        "interval_basis": "two-sided Student-t 95%; independent seeds conditional on complete windows; excludes calibration uncertainty and model discrepancy",
+        "pooled_accepted_outputs_per_second": 2.5589420730175814,
+        "pooled_cost_basis": "all complete observation windows, including zero-output seeds, divided by their total accepted outputs",
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 134117924598.1478,
+          "busy_atom_time_us": 26040113.692353033,
+          "configured_atom_time_us": 227437739.26608983,
+          "home_area_time_um2_us": 56898513465.88088,
+          "idle_atom_time_us": 201397625.5737368,
+          "movement_distance_atom_um": 17470645.031669214,
+          "transport_elapsed_us": 344335.9099051612
+        },
+        "schema": "nadit.center_factory_sample_statistics/1",
+        "seed_count": 16,
+        "statistics": {
+          "accepted_outputs_per_second": {
+            "confidence_interval_95": [
+              2.40938114928141,
+              2.7085029967537526
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 2.5589420730175814,
+            "missing_values": 0,
+            "n": 16
+          },
+          "allocated_scene_bbox_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              127129315622.54655,
+              144423598227.0008
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 135776456924.77367,
+            "missing_values": 0,
+            "n": 16
+          },
+          "busy_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              24673405.670399603,
+              28052233.835578877
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 26362819.75298924,
+            "missing_values": 0,
+            "n": 16
+          },
+          "configured_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              215586426.84243035,
+              244914143.84648734
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 230250285.34445885,
+            "missing_values": 0,
+            "n": 16
+          },
+          "delivered_outputs_per_second": {
+            "confidence_interval_95": [
+              2.40938114928141,
+              2.7085029967537526
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 2.5589420730175814,
+            "missing_values": 0,
+            "n": 16
+          },
+          "home_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              53933649051.98945,
+              61270617429.636696
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 57602133240.81307,
+            "missing_values": 0,
+            "n": 16
+          },
+          "idle_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              190909096.51038274,
+              216865834.6725565
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 203887465.59146962,
+            "missing_values": 0,
+            "n": 16
+          },
+          "movement_distance_atom_um_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              16553067.962391587,
+              18821484.765166506
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 17687276.363779046,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_attempts": {
+            "confidence_interval_95": [
+              443.59079103782005,
+              450.40920896217995
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 447.0,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_rejections": {
+            "confidence_interval_95": [
+              98.23397345147679,
+              108.01602654852321
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 103.125,
+            "missing_values": 0,
+            "n": 16
+          },
+          "s_calls": {
+            "confidence_interval_95": [
+              118.56640414146437,
+              128.80859585853563
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 123.6875,
+            "missing_values": 0,
+            "n": 16
+          },
+          "standalone_ec_calls": {
+            "confidence_interval_95": [
+              8784.61533955065,
+              8869.13466044935
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 8826.875,
+            "missing_values": 0,
+            "n": 16
+          },
+          "startup_deliverable_latency_us": {
+            "confidence_interval_95": [
+              300638.0125914098,
+              387425.00617971964
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 344031.5093855647,
+            "missing_values": 0,
+            "n": 16
+          },
+          "transport_elapsed_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              326384.1566726425,
+              370807.45228581206
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 348595.8044792273,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "complete_windows": 16,
+      "distance": 7,
+      "exclusion": null,
+      "factory_count": 2,
+      "half_window_diagnostic": {
+        "binary_stationarity_verdict": null,
+        "difference_definition": "second-half accepted output rate minus first-half rate within the same seed",
+        "eligible_seed_count": 16,
+        "ineligible_seed_count": 0,
+        "interpretation": "finite-window temporal diagnostic, not an asymptotic steady-state proof; a difference interval containing zero does not establish stationarity",
+        "sampling_unit": "independent production seed, not individual factory lines or output states",
+        "schema": "nadit.single_fast_half_window_diagnostic/1",
+        "statistics": {
+          "first_half_rate_per_second": {
+            "confidence_interval_95": [
+              2.791669613525919,
+              3.245397507624354
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 3.0185335605751367,
+            "missing_values": 0,
+            "n": 16
+          },
+          "paired_rate_difference_per_second": {
+            "confidence_interval_95": [
+              -0.2093308969247048,
+              0.4708644906207455
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 0.13076679684802034,
+            "missing_values": 0,
+            "n": 16
+          },
+          "second_half_rate_per_second": {
+            "confidence_interval_95": [
+              2.9131157633872387,
+              3.3854849514590755
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 3.149300357423157,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "missing_seeds": [],
+      "observation_policy": {
+        "basis": "separate pilot duration divided by completed cycles; window frozen before production",
+        "boundary_convention": "[warmup_us, stop_us)",
+        "cycle_us": 716925.1083587987,
+        "pilot_completion_sha256": "0cfdd91d799d1c039baecd30819114ae194b06f75e754f90eb1ad22958fa1595",
+        "pilot_seed": 20261025,
+        "schema": "nadit.single_fast_observation/1",
+        "stop_us": 12187726.842099577,
+        "warmup_us": 716925.1083587987
+      },
+      "observed_window_secondary": {
+        "accepted_outputs": 566,
+        "budget_abort_seed_count": 0,
+        "covered_seed_count": 16,
+        "incurred_costs": {
+          "allocated_scene_bbox_area_time_um2_us": 131703157186118.12,
+          "busy_atom_time_us": 20374021339.9166,
+          "configured_atom_time_us": 213632211489.18826,
+          "home_area_time_um2_us": 61079725071822.9,
+          "idle_atom_time_us": 193258190149.27167,
+          "movement_distance_atom_um": 15615885637.882471,
+          "transport_elapsed_us": 167223991.4795964
+        },
+        "observed_window_us": 183532827.73985246,
+        "pooled_accepted_outputs_per_second": 3.0839169589991466,
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 232691090434.83768,
+          "busy_atom_time_us": 35996504.134128265,
+          "configured_atom_time_us": 377442069.7688839,
+          "home_area_time_um2_us": 107914708607.46095,
+          "idle_atom_time_us": 341445565.6347556,
+          "movement_distance_atom_um": 27589903.953855958,
+          "transport_elapsed_us": 295448.7481971668
+        },
+        "primary_excluded_but_covered_seeds": [],
+        "rate_statistics": {
+          "confidence_interval_95": [
+            2.926727276965149,
+            3.241106641033144
+          ],
+          "eligible_valid_seeds": 16,
+          "mean": 3.0839169589991466,
+          "missing_values": 0,
+          "n": 16
+        },
+        "schema": "nadit.single_fast_observed_window_diagnostic/1",
+        "scope": "secondary descriptive observed-window statistic including pre-stop line budget aborts; zero-output covered seeds contribute costs; truly truncated windows excluded; primary planned conditional statistics unchanged",
+        "steady_state_claim": false,
+        "uncovered_seeds": []
+      },
+      "pooled_atom_time_shares": {
+        "gate": 0.0015049359727115324,
+        "idle": 0.904630386972569,
+        "other_active": 0.0,
+        "readout": 0.007692689007563769,
+        "reset": 0.0003859982042276084,
+        "transport": 0.08578598984292798
+      },
+      "recorded_seeds": 16,
+      "statistics": {
+        "all_seed_incurred_costs": {
+          "accepted_outputs": 566,
+          "actual_observation_us": 183532827.73985246,
+          "basis": "observed window intersections including failed and incomplete seeds; diagnostic, not steady-state throughput",
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 131703157186118.12,
+            "busy_atom_time_us": 20374021339.9166,
+            "configured_atom_time_us": 213632211489.18826,
+            "home_area_time_um2_us": 61079725071822.9,
+            "idle_atom_time_us": 193258190149.27167,
+            "movement_distance_atom_um": 15615885637.882471,
+            "transport_elapsed_us": 167223991.4795964
+          },
+          "delivered_outputs": 566,
+          "per_accepted_output": {
+            "allocated_scene_bbox_area_time_um2_us": 232691090434.83768,
+            "busy_atom_time_us": 35996504.134128265,
+            "configured_atom_time_us": 377442069.7688839,
+            "home_area_time_um2_us": 107914708607.46095,
+            "idle_atom_time_us": 341445565.6347556,
+            "movement_distance_atom_um": 27589903.953855958,
+            "transport_elapsed_us": 295448.7481971668
+          }
+        },
+        "complete_seed_count": 16,
+        "complete_window_totals": {
+          "accepted_outputs": 566,
+          "actual_observation_us": 183532827.73985246,
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 131703157186118.12,
+            "busy_atom_time_us": 20374021339.9166,
+            "configured_atom_time_us": 213632211489.18826,
+            "home_area_time_um2_us": 61079725071822.9,
+            "idle_atom_time_us": 193258190149.27167,
+            "movement_distance_atom_um": 15615885637.882471,
+            "transport_elapsed_us": 167223991.4795964
+          }
+        },
+        "distance": 7,
+        "excluded_seeds": [],
+        "factory_count": 2,
+        "interval_basis": "two-sided Student-t 95%; independent seeds conditional on complete windows; excludes calibration uncertainty and model discrepancy",
+        "pooled_accepted_outputs_per_second": 3.0839169589991466,
+        "pooled_cost_basis": "all complete observation windows, including zero-output seeds, divided by their total accepted outputs",
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 232691090434.83768,
+          "busy_atom_time_us": 35996504.134128265,
+          "configured_atom_time_us": 377442069.7688839,
+          "home_area_time_um2_us": 107914708607.46095,
+          "idle_atom_time_us": 341445565.6347556,
+          "movement_distance_atom_um": 27589903.953855958,
+          "transport_elapsed_us": 295448.7481971668
+        },
+        "schema": "nadit.center_factory_sample_statistics/1",
+        "seed_count": 16,
+        "statistics": {
+          "accepted_outputs_per_second": {
+            "confidence_interval_95": [
+              2.926727276965149,
+              3.241106641033144
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 3.0839169589991466,
+            "missing_values": 0,
+            "n": 16
+          },
+          "allocated_scene_bbox_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              222786097137.91556,
+              246568226133.53085
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 234677161635.7232,
+            "missing_values": 0,
+            "n": 16
+          },
+          "busy_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              34932903.591668986,
+              37471223.64467289
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 36202063.61817094,
+            "missing_values": 0,
+            "n": 16
+          },
+          "configured_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              361375441.84578276,
+              399951804.93231595
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 380663623.38904935,
+            "missing_values": 0,
+            "n": 16
+          },
+          "delivered_outputs_per_second": {
+            "confidence_interval_95": [
+              2.926727276965149,
+              3.241106641033144
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 3.0839169589991466,
+            "missing_values": 0,
+            "n": 16
+          },
+          "home_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              103321088527.72897,
+              114350481685.11575
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 108835785106.42236,
+            "missing_values": 0,
+            "n": 16
+          },
+          "idle_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              326399727.1753333,
+              362523392.36642355
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 344461559.77087843,
+            "missing_values": 0,
+            "n": 16
+          },
+          "movement_distance_atom_um_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              26774671.86394015,
+              28720287.079201773
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 27747479.47157096,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_attempts": {
+            "confidence_interval_95": [
+              785.4489710611227,
+              816.8010289388773
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 801.125,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_rejections": {
+            "confidence_interval_95": [
+              170.1519380292139,
+              187.5980619707861
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 178.875,
+            "missing_values": 0,
+            "n": 16
+          },
+          "s_calls": {
+            "confidence_interval_95": [
+              220.26105757108843,
+              234.11394242891157
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 227.1875,
+            "missing_values": 0,
+            "n": 16
+          },
+          "standalone_ec_calls": {
+            "confidence_interval_95": [
+              15667.611630625206,
+              16271.138369374794
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 15969.375,
+            "missing_values": 0,
+            "n": 16
+          },
+          "startup_deliverable_latency_us": {
+            "confidence_interval_95": [
+              474989.65385689685,
+              599400.8109147961
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 537195.2323858464,
+            "missing_values": 0,
+            "n": 16
+          },
+          "transport_elapsed_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              282851.3866485787,
+              313097.04230718175
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 297974.2144778802,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "complete_windows": 16,
+      "distance": 7,
+      "exclusion": null,
+      "factory_count": 4,
+      "half_window_diagnostic": {
+        "binary_stationarity_verdict": null,
+        "difference_definition": "second-half accepted output rate minus first-half rate within the same seed",
+        "eligible_seed_count": 16,
+        "ineligible_seed_count": 0,
+        "interpretation": "finite-window temporal diagnostic, not an asymptotic steady-state proof; a difference interval containing zero does not establish stationarity",
+        "sampling_unit": "independent production seed, not individual factory lines or output states",
+        "schema": "nadit.single_fast_half_window_diagnostic/1",
+        "statistics": {
+          "first_half_rate_per_second": {
+            "confidence_interval_95": [
+              2.8154936471969974,
+              3.2415805762150427
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 3.02853711170602,
+            "missing_values": 0,
+            "n": 16
+          },
+          "paired_rate_difference_per_second": {
+            "confidence_interval_95": [
+              -0.12938686538080196,
+              0.4283411725449155
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 0.14947715358205677,
+            "missing_values": 0,
+            "n": 16
+          },
+          "second_half_rate_per_second": {
+            "confidence_interval_95": [
+              2.973706465296469,
+              3.382322065279684
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 3.1780142652880765,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "missing_seeds": [],
+      "observation_policy": {
+        "basis": "separate pilot duration divided by completed cycles; window frozen before production",
+        "boundary_convention": "[warmup_us, stop_us)",
+        "cycle_us": 1202106.781497943,
+        "pilot_completion_sha256": "f0a28ff27750722affc172a6ecfb55407b3321795e57083c75d29ea4a49428c8",
+        "pilot_seed": 20261025,
+        "schema": "nadit.single_fast_observation/1",
+        "stop_us": 20435815.28546503,
+        "warmup_us": 1202106.781497943
+      },
+      "observed_window_secondary": {
+        "accepted_outputs": 955,
+        "budget_abort_seed_count": 0,
+        "covered_seed_count": 16,
+        "incurred_costs": {
+          "allocated_scene_bbox_area_time_um2_us": 451268962403477.4,
+          "busy_atom_time_us": 53987044208.51703,
+          "configured_atom_time_us": 716417174355.7661,
+          "home_area_time_um2_us": 217633258464088.4,
+          "idle_atom_time_us": 662430130147.2491,
+          "movement_distance_atom_um": 46010931500.30882,
+          "transport_elapsed_us": 289792592.0634599
+        },
+        "observed_window_us": 307739336.0634734,
+        "pooled_accepted_outputs_per_second": 3.1032756884970483,
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 472532944925.1072,
+          "busy_atom_time_us": 56530936.34399689,
+          "configured_atom_time_us": 750175051.6814305,
+          "home_area_time_um2_us": 227888228758.20776,
+          "idle_atom_time_us": 693644115.3374337,
+          "movement_distance_atom_um": 48178985.86419772,
+          "transport_elapsed_us": 303447.74038058624
+        },
+        "primary_excluded_but_covered_seeds": [],
+        "rate_statistics": {
+          "confidence_interval_95": [
+            2.94795887618853,
+            3.2585925008055665
+          ],
+          "eligible_valid_seeds": 16,
+          "mean": 3.1032756884970483,
+          "missing_values": 0,
+          "n": 16
+        },
+        "schema": "nadit.single_fast_observed_window_diagnostic/1",
+        "scope": "secondary descriptive observed-window statistic including pre-stop line budget aborts; zero-output covered seeds contribute costs; truly truncated windows excluded; primary planned conditional statistics unchanged",
+        "steady_state_claim": false,
+        "uncovered_seeds": []
+      },
+      "pooled_atom_time_shares": {
+        "gate": 0.0007522840912972906,
+        "idle": 0.924643006699184,
+        "other_active": 1.3977969146857641e-14,
+        "readout": 0.003845091796518054,
+        "reset": 0.00019294933866473055,
+        "transport": 0.070566668074322
+      },
+      "recorded_seeds": 16,
+      "statistics": {
+        "all_seed_incurred_costs": {
+          "accepted_outputs": 955,
+          "actual_observation_us": 307739336.0634734,
+          "basis": "observed window intersections including failed and incomplete seeds; diagnostic, not steady-state throughput",
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 451268962403477.4,
+            "busy_atom_time_us": 53987044208.51703,
+            "configured_atom_time_us": 716417174355.7661,
+            "home_area_time_um2_us": 217633258464088.4,
+            "idle_atom_time_us": 662430130147.2491,
+            "movement_distance_atom_um": 46010931500.30882,
+            "transport_elapsed_us": 289792592.0634599
+          },
+          "delivered_outputs": 955,
+          "per_accepted_output": {
+            "allocated_scene_bbox_area_time_um2_us": 472532944925.1072,
+            "busy_atom_time_us": 56530936.34399689,
+            "configured_atom_time_us": 750175051.6814305,
+            "home_area_time_um2_us": 227888228758.20776,
+            "idle_atom_time_us": 693644115.3374337,
+            "movement_distance_atom_um": 48178985.86419772,
+            "transport_elapsed_us": 303447.74038058624
+          }
+        },
+        "complete_seed_count": 16,
+        "complete_window_totals": {
+          "accepted_outputs": 955,
+          "actual_observation_us": 307739336.0634734,
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 451268962403477.4,
+            "busy_atom_time_us": 53987044208.51703,
+            "configured_atom_time_us": 716417174355.7661,
+            "home_area_time_um2_us": 217633258464088.4,
+            "idle_atom_time_us": 662430130147.2491,
+            "movement_distance_atom_um": 46010931500.30882,
+            "transport_elapsed_us": 289792592.0634599
+          }
+        },
+        "distance": 7,
+        "excluded_seeds": [],
+        "factory_count": 4,
+        "interval_basis": "two-sided Student-t 95%; independent seeds conditional on complete windows; excludes calibration uncertainty and model discrepancy",
+        "pooled_accepted_outputs_per_second": 3.1032756884970483,
+        "pooled_cost_basis": "all complete observation windows, including zero-output seeds, divided by their total accepted outputs",
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 472532944925.1072,
+          "busy_atom_time_us": 56530936.34399689,
+          "configured_atom_time_us": 750175051.6814305,
+          "home_area_time_um2_us": 227888228758.20776,
+          "idle_atom_time_us": 693644115.3374337,
+          "movement_distance_atom_um": 48178985.86419772,
+          "transport_elapsed_us": 303447.74038058624
+        },
+        "schema": "nadit.center_factory_sample_statistics/1",
+        "seed_count": 16,
+        "statistics": {
+          "accepted_outputs_per_second": {
+            "confidence_interval_95": [
+              2.94795887618853,
+              3.2585925008055665
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 3.1032756884970483,
+            "missing_values": 0,
+            "n": 16
+          },
+          "allocated_scene_bbox_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              453525292338.60767,
+              499028829704.58594
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 476277061021.5968,
+            "missing_values": 0,
+            "n": 16
+          },
+          "busy_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              55080822.60944585,
+              58514509.286004744
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 56797665.947725296,
+            "missing_values": 0,
+            "n": 16
+          },
+          "configured_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              719999236.6095736,
+              792238894.9483607
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 756119065.7789671,
+            "missing_values": 0,
+            "n": 16
+          },
+          "delivered_outputs_per_second": {
+            "confidence_interval_95": [
+              2.94795887618853,
+              3.2585925008055665
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 3.1032756884970483,
+            "missing_values": 0,
+            "n": 16
+          },
+          "home_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              218721417581.7399,
+              240666385956.82162
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 229693901769.28076,
+            "missing_values": 0,
+            "n": 16
+          },
+          "idle_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              664832939.0215968,
+              733809860.6408869
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 699321399.8312418,
+            "missing_values": 0,
+            "n": 16
+          },
+          "movement_distance_atom_um_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              46943162.03248341,
+              49869382.743655644
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 48406272.388069525,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_attempts": {
+            "confidence_interval_95": [
+              1309.2477797728268,
+              1373.2522202271732
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 1341.25,
+            "missing_values": 0,
+            "n": 16
+          },
+          "raw_rejections": {
+            "confidence_interval_95": [
+              283.53421231559275,
+              313.09078768440725
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 298.3125,
+            "missing_values": 0,
+            "n": 16
+          },
+          "s_calls": {
+            "confidence_interval_95": [
+              366.83064273458774,
+              393.16935726541226
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 380.0,
+            "missing_values": 0,
+            "n": 16
+          },
+          "standalone_ec_calls": {
+            "confidence_interval_95": [
+              26169.10039723465,
+              27379.02460276535
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 26774.0625,
+            "missing_values": 0,
+            "n": 16
+          },
+          "startup_deliverable_latency_us": {
+            "confidence_interval_95": [
+              859865.5540522835,
+              965299.9209277411
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 912582.7374900123,
+            "missing_values": 0,
+            "n": 16
+          },
+          "transport_elapsed_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              291230.1594553396,
+              320478.77562785527
+            ],
+            "eligible_valid_seeds": 16,
+            "mean": 305854.46754159743,
+            "missing_values": 0,
+            "n": 16
+          }
+        }
+      },
+      "status": "complete"
+    },
+    {
+      "complete_windows": 13,
+      "distance": 7,
+      "exclusion": null,
+      "factory_count": 8,
+      "half_window_diagnostic": {
+        "binary_stationarity_verdict": null,
+        "difference_definition": "second-half accepted output rate minus first-half rate within the same seed",
+        "eligible_seed_count": 13,
+        "ineligible_seed_count": 3,
+        "interpretation": "finite-window temporal diagnostic, not an asymptotic steady-state proof; a difference interval containing zero does not establish stationarity",
+        "sampling_unit": "independent production seed, not individual factory lines or output states",
+        "schema": "nadit.single_fast_half_window_diagnostic/1",
+        "statistics": {
+          "first_half_rate_per_second": {
+            "confidence_interval_95": [
+              2.5771447965070853,
+              2.8874304774023574
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 2.7322876369547213,
+            "missing_values": 0,
+            "n": 13
+          },
+          "paired_rate_difference_per_second": {
+            "confidence_interval_95": [
+              -0.08895467642958615,
+              0.3191112764137384
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 0.11507829999207611,
+            "missing_values": 0,
+            "n": 13
+          },
+          "second_half_rate_per_second": {
+            "confidence_interval_95": [
+              2.7060731089094254,
+              2.9886587649841703
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 2.847365936946798,
+            "missing_values": 0,
+            "n": 13
+          }
+        }
+      },
+      "missing_seeds": [],
+      "observation_policy": {
+        "basis": "separate pilot duration divided by completed cycles; window frozen before production",
+        "boundary_convention": "[warmup_us, stop_us)",
+        "cycle_us": 2924430.2493314063,
+        "pilot_completion_sha256": "3050309cb007e96bd45bf30f59ace0cef49d4304298529b9a0961be48b315c55",
+        "pilot_seed": 20261025,
+        "schema": "nadit.single_fast_observation/1",
+        "stop_us": 49715314.23863391,
+        "warmup_us": 2924430.2493314063
+      },
+      "observed_window_secondary": {
+        "accepted_outputs": 2049,
+        "budget_abort_seed_count": 3,
+        "covered_seed_count": 16,
+        "incurred_costs": {
+          "allocated_scene_bbox_area_time_um2_us": 2219010882308681.8,
+          "busy_atom_time_us": 201442506518.92078,
+          "configured_atom_time_us": 3485733693667.079,
+          "home_area_time_um2_us": 1090040433414791.1,
+          "idle_atom_time_us": 3284291187148.158,
+          "movement_distance_atom_um": 184286246019.60266,
+          "transport_elapsed_us": 722951998.6749731
+        },
+        "observed_window_us": 748654143.82884,
+        "pooled_accepted_outputs_per_second": 2.7369113186508316,
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 1082972612156.5065,
+          "busy_atom_time_us": 98312594.68956602,
+          "configured_atom_time_us": 1701187747.0312734,
+          "home_area_time_um2_us": 531986546322.49445,
+          "idle_atom_time_us": 1602875152.3417072,
+          "movement_distance_atom_um": 89939602.74260744,
+          "transport_elapsed_us": 352831.62453634606
+        },
+        "primary_excluded_but_covered_seeds": [
+          5,
+          11,
+          13
+        ],
+        "rate_statistics": {
+          "confidence_interval_95": [
+            2.6183818011679745,
+            2.8554408361336887
+          ],
+          "eligible_valid_seeds": 16,
+          "mean": 2.7369113186508316,
+          "missing_values": 0,
+          "n": 16
+        },
+        "schema": "nadit.single_fast_observed_window_diagnostic/1",
+        "scope": "secondary descriptive observed-window statistic including pre-stop line budget aborts; zero-output covered seeds contribute costs; truly truncated windows excluded; primary planned conditional statistics unchanged",
+        "steady_state_claim": false,
+        "uncovered_seeds": []
+      },
+      "pooled_atom_time_shares": {
+        "gate": 0.00033575141315721636,
+        "idle": 0.941653574672134,
+        "other_active": 0.0,
+        "readout": 0.0017165177223285356,
+        "reset": 8.611363352039788e-05,
+        "transport": 0.05620804255885993
+      },
+      "recorded_seeds": 16,
+      "statistics": {
+        "all_seed_incurred_costs": {
+          "accepted_outputs": 2049,
+          "actual_observation_us": 748654143.82884,
+          "basis": "observed window intersections including failed and incomplete seeds; diagnostic, not steady-state throughput",
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 2219010882308681.8,
+            "busy_atom_time_us": 201442506518.92078,
+            "configured_atom_time_us": 3485733693667.079,
+            "home_area_time_um2_us": 1090040433414791.1,
+            "idle_atom_time_us": 3284291187148.158,
+            "movement_distance_atom_um": 184286246019.60266,
+            "transport_elapsed_us": 722951998.6749731
+          },
+          "delivered_outputs": 2049,
+          "per_accepted_output": {
+            "allocated_scene_bbox_area_time_um2_us": 1082972612156.5065,
+            "busy_atom_time_us": 98312594.68956602,
+            "configured_atom_time_us": 1701187747.0312734,
+            "home_area_time_um2_us": 531986546322.49445,
+            "idle_atom_time_us": 1602875152.3417072,
+            "movement_distance_atom_um": 89939602.74260744,
+            "transport_elapsed_us": 352831.62453634606
+          }
+        },
+        "complete_seed_count": 13,
+        "complete_window_totals": {
+          "accepted_outputs": 1697,
+          "actual_observation_us": 608281491.8609325,
+          "costs": {
+            "allocated_scene_bbox_area_time_um2_us": 1802946341875804.0,
+            "busy_atom_time_us": 165246331794.64093,
+            "configured_atom_time_us": 2832158626104.502,
+            "home_area_time_um2_us": 885657852149517.8,
+            "idle_atom_time_us": 2666912294309.861,
+            "movement_distance_atom_um": 151172684275.52942,
+            "transport_elapsed_us": 587398999.2070612
+          }
+        },
+        "distance": 7,
+        "excluded_seeds": [
+          {
+            "seed": 5,
+            "window_status": "failed"
+          },
+          {
+            "seed": 11,
+            "window_status": "failed"
+          },
+          {
+            "seed": 13,
+            "window_status": "failed"
+          }
+        ],
+        "factory_count": 8,
+        "interval_basis": "two-sided Student-t 95%; independent seeds conditional on complete windows; excludes calibration uncertainty and model discrepancy",
+        "pooled_accepted_outputs_per_second": 2.78982678695076,
+        "pooled_cost_basis": "all complete observation windows, including zero-output seeds, divided by their total accepted outputs",
+        "pooled_cost_per_accepted_output": {
+          "allocated_scene_bbox_area_time_um2_us": 1062431550899.1184,
+          "busy_atom_time_us": 97375563.81534527,
+          "configured_atom_time_us": 1668920816.7969959,
+          "home_area_time_um2_us": 521896200441.67224,
+          "idle_atom_time_us": 1571545252.9816504,
+          "movement_distance_atom_um": 89082312.47821416,
+          "transport_elapsed_us": 346139.6577531297
+        },
+        "schema": "nadit.center_factory_sample_statistics/1",
+        "seed_count": 16,
+        "statistics": {
+          "accepted_outputs_per_second": {
+            "confidence_interval_95": [
+              2.6820811687957327,
+              2.897572405105787
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 2.78982678695076,
+            "missing_values": 0,
+            "n": 13
+          },
+          "allocated_scene_bbox_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              1025245083896.6942,
+              1107647638059.5273
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 1066446360978.1107,
+            "missing_values": 0,
+            "n": 13
+          },
+          "busy_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              95234791.96528444,
+              99946634.47450024
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 97590713.21989234,
+            "missing_values": 0,
+            "n": 13
+          },
+          "configured_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              1610506447.5786128,
+              1739948516.4659781
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 1675227482.0222955,
+            "missing_values": 0,
+            "n": 13
+          },
+          "delivered_outputs_per_second": {
+            "confidence_interval_95": [
+              2.6820811687957327,
+              2.897572405105787
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 2.78982678695076,
+            "missing_values": 0,
+            "n": 13
+          },
+          "home_area_time_um2_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              503629164019.4287,
+              544107611678.36426
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 523868387848.8965,
+            "missing_values": 0,
+            "n": 13
+          },
+          "idle_atom_time_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              1515136285.3021283,
+              1640137252.3026776
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 1577636768.802403,
+            "missing_values": 0,
+            "n": 13
+          },
+          "movement_distance_atom_um_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              87124179.98833469,
+              91434051.68535137
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 89279115.83684303,
+            "missing_values": 0,
+            "n": 13
+          },
+          "raw_attempts": {
+            "confidence_interval_95": [
+              2837.695515130097,
+              2961.22756179298
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 2899.4615384615386,
+            "missing_values": 0,
+            "n": 13
+          },
+          "raw_rejections": {
+            "confidence_interval_95": [
+              611.4508933033993,
+              656.7029528504469
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 634.0769230769231,
+            "missing_values": 0,
+            "n": 13
+          },
+          "s_calls": {
+            "confidence_interval_95": [
+              805.293120827022,
+              852.5530330191318
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 828.9230769230769,
+            "missing_values": 0,
+            "n": 13
+          },
+          "standalone_ec_calls": {
+            "confidence_interval_95": [
+              57079.71624569654,
+              59137.20683122654
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 58108.46153846154,
+            "missing_values": 0,
+            "n": 13
+          },
+          "startup_deliverable_latency_us": {
+            "confidence_interval_95": [
+              1693897.3253350002,
+              1850509.3724955576
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 1772203.348915279,
+            "missing_values": 0,
+            "n": 13
+          },
+          "transport_elapsed_us_per_accepted_output": {
+            "conditioning": "complete windows with positive accepted output; descriptive seed-ratio mean, not pooled cost",
+            "confidence_interval_95": [
+              334021.5084249698,
+              360874.47321683454
+            ],
+            "eligible_valid_seeds": 13,
+            "mean": 347447.99082090217,
+            "missing_values": 0,
+            "n": 13
+          }
+        }
+      },
+      "status": "partial_failure"
+    }
+  ],
+  "complete_observation_windows": 183,
+  "configuration": {
+    "cost_basis": "reference_intrinsic_plus_center_transport",
+    "distances": [
+      3,
+      5,
+      7
+    ],
+    "ec": {
+      "mode": "after_rotation",
+      "rounds": "distance"
+    },
+    "factory_counts": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "hardware": {
+      "aod_count": 1,
+      "cnot_target_offset_um": [
+        0.0,
+        0.0
+      ],
+      "factory_gap_um": 40,
+      "finite_aod_capacity_qualified": false,
+      "layout": "vertical",
+      "movement_us_per_um": 1.0,
+      "patch_gap_um": 40,
+      "readout_assignment": "source_order_preserving_common_translation",
+      "readout_gap_um": 50
+    },
+    "input_z_error": 0.01,
+    "limits": {
+      "batches": 4,
+      "max_component_calls": 200000,
+      "max_cycles": 256,
+      "raw_attempts": 8
+    },
+    "observation": {
+      "pilot_cycles": 2,
+      "target_cycles": 16,
+      "warmup_cycles": 1
+    },
+    "omissions": [
+      "Transversal S is an assumed cost model, not a verified surface logical gate realization.",
+      "Additional SE syndromes are unobserved cost receipts; noisy decoding and logical correction are omitted.",
+      "Waiting-period SE maintenance is omitted; elapsed waiting remains part of cost.",
+      "Generic preparation correction is a one-Pauli-layer resource envelope.",
+      "External output transport, consumption and reset costs are excluded; next-cycle preparation is counted.",
+      "Input p and ideal-Clifford 15-to-1 acceptance are reference assumptions, not decoded physical output quality.",
+      "Dynamic occupied-area-time and unavailable atom exposure must remain unknown in a summary-only model.",
+      "Raw supply acceptance is held at its archived per-distance/role reference; new geometry noise is reported as exposure, not re-simulated detector rejection.",
+      "AOD atomic capture closure, microscopic docking, spectator illumination and trajectory collision checks are not performed by the block-center model."
+    ],
+    "output_sink": {
+      "acknowledge_excluded_costs": true,
+      "kind": "ideal_external"
+    },
+    "physical_compilation_allowed_in_fast_run": false,
+    "pilot_seed": 20261025,
+    "production_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "raw_supply_probability": {
+      "basis": "archived_singleton_detector_acceptance",
+      "geometry_noise_recomputed": false,
+      "held_fixed_across_N": true,
+      "input_quality_separate": true
+    },
+    "reference_file": "experiments/msd/center-reference-costs.json",
+    "s": {
+      "duration_us": 1.0,
+      "pauli_error": [
+        0.0001,
+        0.0001,
+        0.0001
+      ]
+    },
+    "schema": "nadit.single_level_fast_plan/1",
+    "scope": "single_level_only",
+    "status": "approved_center_cost_model"
+  },
+  "configured_trajectories": 192,
+  "cost_scope": "reference intrinsic operations plus block-center transport; independent assumed transversal S; declared post-rotation EC",
+  "coverage_complete": true,
+  "covered_windows_with_budget_abort": 9,
+  "expected_final_trajectories": 192,
+  "final_report_complete": true,
+  "final_report_definition": "all 192 hash-checked production trajectories recorded; 16 seeds per requested cell; smoke/pilot/production guards passed; failed windows remain explicit",
+  "identity": {
+    "config_sha256": "9ac326dee00696c95c79c4ff4439dba5ef2b068ed6669356fccb9608cfebaccb",
+    "reference_payload_sha256": "fcc39fae291d025753ef227da7b3ae7deb1d28931c6a2c973d5e3828c2e3de9f",
+    "source_sha256": "c90d8a5ec101a00d3c2d5bcfb77e112f8fc0c5b8f257d25f327799c7cf742de2"
+  },
+  "manifest_sha256": "84f4994abdafeeedfb2fdcb4f3ba6d64a4ad525f77f78edc9fbdf6b22db4643b",
+  "native_legality_verified": false,
+  "observation_coverage_complete_windows": 192,
+  "omissions": [
+    "Native AOD capture, collision, finite-capacity and trajectory legality are unverified.",
+    "Raw acceptance uses archived supply references fixed across geometry; accepted-input quality p is separate.",
+    "SE syndrome outcomes and general decoding are not simulated; Pauli canonicalization is a cost envelope.",
+    "Waiting maintenance and external output transport/consumption/reset are excluded.",
+    "Category partitions preserve cost integrals, not native operation order; clipped exposure is uniform aggregate modeling.",
+    "Noise exposure is not decoded output logical error or a hardware result."
+  ],
+  "physical_execution": false,
+  "pilots": [
+    {
+      "distance": 3,
+      "factory_count": 1,
+      "guard_passed": true,
+      "recorded": true
+    },
+    {
+      "distance": 3,
+      "factory_count": 2,
+      "guard_passed": true,
+      "recorded": true
+    },
+    {
+      "distance": 3,
+      "factory_count": 4,
+      "guard_passed": true,
+      "recorded": true
+    },
+    {
+      "distance": 3,
+      "factory_count": 8,
+      "guard_passed": true,
+      "recorded": true
+    },
+    {
+      "distance": 5,
+      "factory_count": 1,
+      "guard_passed": true,
+      "recorded": true
+    },
+    {
+      "distance": 5,
+      "factory_count": 2,
+      "guard_passed": true,
+      "recorded": true
+    },
+    {
+      "distance": 5,
+      "factory_count": 4,
+      "guard_passed": true,
+      "recorded": true
+    },
+    {
+      "distance": 5,
+      "factory_count": 8,
+      "guard_passed": true,
+      "recorded": true
+    },
+    {
+      "distance": 7,
+      "factory_count": 1,
+      "guard_passed": true,
+      "recorded": true
+    },
+    {
+      "distance": 7,
+      "factory_count": 2,
+      "guard_passed": true,
+      "recorded": true
+    },
+    {
+      "distance": 7,
+      "factory_count": 4,
+      "guard_passed": true,
+      "recorded": true
+    },
+    {
+      "distance": 7,
+      "factory_count": 8,
+      "guard_passed": true,
+      "recorded": true
+    }
+  ],
+  "primary_eligibility_definition": "requested horizon observed without a pre-stop line failure or budget abort; coverage alone does not imply primary eligibility",
+  "primary_eligible_observation_windows": 183,
+  "recorded_trajectories": 192,
+  "requested_grid_exact": true,
+  "schema": "nadit.single_fast_report/1",
+  "secondary_observed_window_scope": "separately reports fully observed fixed windows including line budget aborts; no extrapolation for truncated runs; not an asymptotic steady-state estimate",
+  "smoke_passed": true,
+  "source_sha256": "c90d8a5ec101a00d3c2d5bcfb77e112f8fc0c5b8f257d25f327799c7cf742de2",
+  "statistical_scope": "production-seed variability conditional on complete windows; pooled costs include complete zero-output trajectories; calibration uncertainty and model discrepancy excluded",
+  "throughput_interpretation": "finite fixed-window output rates after configured warmup; per-cell paired half-window diagnostics are reported; asymptotic steady state is not established"
+}

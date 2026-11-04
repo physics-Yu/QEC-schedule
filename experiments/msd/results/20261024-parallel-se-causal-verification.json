@@ -1,0 +1,349 @@
+{
+  "git_revision": "dbff6e9637f2bb8f9cfe601b77b56a198ce1fcb7",
+  "source_tree_sha256": "3bb88c358293dc3132b3aed0383ba6db4e273462dbecbc1c45c2865f6b4f13eb",
+  "complete_case_count": 39,
+  "comparisons": [
+    {
+      "d": 3,
+      "N": 1,
+      "joint_us": 3128.8174904678644,
+      "serial_us": 3128.8174904678644,
+      "solo_us": [
+        3128.8174904678644
+      ],
+      "G_us": 0.0,
+      "J_us": 0.0,
+      "gate_batches_joint": 12,
+      "gate_batches_solo": 12,
+      "readout_leg_max_by_factory_um": {
+        "0": 110.0
+      },
+      "readout_y_ranges_um": {
+        "0": [
+          50.0,
+          65.0
+        ]
+      },
+      "CZ_illuminated_atoms": 102,
+      "CZ_unowned_spectators": 85,
+      "peak_active_AOD_rows_columns": {
+        "rows": 4,
+        "columns": 4
+      },
+      "peak_active_factory_count": 1,
+      "serial_speedup": 1.0
+    },
+    {
+      "d": 3,
+      "N": 2,
+      "joint_us": 3328.8174904678644,
+      "serial_us": 6457.634980935727,
+      "solo_us": [
+        3128.8174904678644,
+        3328.8174904678644
+      ],
+      "G_us": 200.0,
+      "J_us": 0.0,
+      "gate_batches_joint": 12,
+      "gate_batches_solo": 12,
+      "readout_leg_max_by_factory_um": {
+        "0": 130.0,
+        "1": 210.0
+      },
+      "readout_y_ranges_um": {
+        "0": [
+          70.0,
+          85.0
+        ],
+        "1": [
+          50.0,
+          65.0
+        ]
+      },
+      "CZ_illuminated_atoms": 204,
+      "CZ_unowned_spectators": 170,
+      "peak_active_AOD_rows_columns": {
+        "rows": 8,
+        "columns": 4
+      },
+      "peak_active_factory_count": 2,
+      "serial_speedup": 1.9399186045577128
+    },
+    {
+      "d": 3,
+      "N": 4,
+      "joint_us": 3728.8174904678644,
+      "serial_us": 13715.269961871454,
+      "solo_us": [
+        3128.8174904678644,
+        3328.8174904678644,
+        3528.8174904678644,
+        3728.8174904678644
+      ],
+      "G_us": 600.0,
+      "J_us": 0.0,
+      "gate_batches_joint": 12,
+      "gate_batches_solo": 12,
+      "readout_leg_max_by_factory_um": {
+        "0": 170.0,
+        "1": 250.0,
+        "2": 330.0,
+        "3": 410.0
+      },
+      "readout_y_ranges_um": {
+        "0": [
+          110.0,
+          125.0
+        ],
+        "1": [
+          90.0,
+          105.0
+        ],
+        "2": [
+          70.0,
+          85.0
+        ],
+        "3": [
+          50.0,
+          65.0
+        ]
+      },
+      "CZ_illuminated_atoms": 408,
+      "CZ_unowned_spectators": 340,
+      "peak_active_AOD_rows_columns": {
+        "rows": 16,
+        "columns": 4
+      },
+      "peak_active_factory_count": 4,
+      "serial_speedup": 3.678182157462087
+    },
+    {
+      "d": 5,
+      "N": 1,
+      "joint_us": 3208.8174904678644,
+      "serial_us": 3208.8174904678644,
+      "solo_us": [
+        3208.8174904678644
+      ],
+      "G_us": 0.0,
+      "J_us": 0.0,
+      "gate_batches_joint": 12,
+      "gate_batches_solo": 12,
+      "readout_leg_max_by_factory_um": {
+        "0": 150.0
+      },
+      "readout_y_ranges_um": {
+        "0": [
+          50.0,
+          75.0
+        ]
+      },
+      "CZ_illuminated_atoms": 294,
+      "CZ_unowned_spectators": 245,
+      "peak_active_AOD_rows_columns": {
+        "rows": 6,
+        "columns": 6
+      },
+      "peak_active_factory_count": 1,
+      "serial_speedup": 1.0
+    },
+    {
+      "d": 5,
+      "N": 2,
+      "joint_us": 3488.8174904678644,
+      "serial_us": 6697.634980935727,
+      "solo_us": [
+        3208.8174904678644,
+        3488.8174904678644
+      ],
+      "G_us": 280.0,
+      "J_us": 0.0,
+      "gate_batches_joint": 12,
+      "gate_batches_solo": 12,
+      "readout_leg_max_by_factory_um": {
+        "0": 180.0,
+        "1": 290.0
+      },
+      "readout_y_ranges_um": {
+        "0": [
+          80.0,
+          105.0
+        ],
+        "1": [
+          50.0,
+          75.0
+        ]
+      },
+      "CZ_illuminated_atoms": 588,
+      "CZ_unowned_spectators": 490,
+      "peak_active_AOD_rows_columns": {
+        "rows": 12,
+        "columns": 6
+      },
+      "peak_active_factory_count": 2,
+      "serial_speedup": 1.9197435805211889
+    },
+    {
+      "d": 5,
+      "N": 4,
+      "joint_us": 4048.8174904678644,
+      "serial_us": 14515.269961871454,
+      "solo_us": [
+        3208.8174904678644,
+        3488.8174904678644,
+        3768.8174904678644,
+        4048.8174904678644
+      ],
+      "G_us": 840.0,
+      "J_us": 0.0,
+      "gate_batches_joint": 12,
+      "gate_batches_solo": 12,
+      "readout_leg_max_by_factory_um": {
+        "0": 240.0,
+        "1": 350.0,
+        "2": 460.0,
+        "3": 570.0
+      },
+      "readout_y_ranges_um": {
+        "0": [
+          140.0,
+          165.0
+        ],
+        "1": [
+          110.0,
+          135.0
+        ],
+        "2": [
+          80.0,
+          105.0
+        ],
+        "3": [
+          50.0,
+          75.0
+        ]
+      },
+      "CZ_illuminated_atoms": 1176,
+      "CZ_unowned_spectators": 980,
+      "peak_active_AOD_rows_columns": {
+        "rows": 24,
+        "columns": 6
+      },
+      "peak_active_factory_count": 4,
+      "serial_speedup": 3.585064033151598
+    },
+    {
+      "d": 7,
+      "N": 1,
+      "joint_us": 3288.8174904678644,
+      "serial_us": 3288.8174904678644,
+      "solo_us": [
+        3288.8174904678644
+      ],
+      "G_us": 0.0,
+      "J_us": 0.0,
+      "gate_batches_joint": 12,
+      "gate_batches_solo": 12,
+      "readout_leg_max_by_factory_um": {
+        "0": 190.0
+      },
+      "readout_y_ranges_um": {
+        "0": [
+          50.0,
+          85.0
+        ]
+      },
+      "CZ_illuminated_atoms": 582,
+      "CZ_unowned_spectators": 485,
+      "peak_active_AOD_rows_columns": {
+        "rows": 8,
+        "columns": 8
+      },
+      "peak_active_factory_count": 1,
+      "serial_speedup": 1.0
+    },
+    {
+      "d": 7,
+      "N": 2,
+      "joint_us": 3648.8174904678644,
+      "serial_us": 6937.634980935727,
+      "solo_us": [
+        3288.8174904678644,
+        3648.8174904678644
+      ],
+      "G_us": 360.0,
+      "J_us": 0.0,
+      "gate_batches_joint": 12,
+      "gate_batches_solo": 12,
+      "readout_leg_max_by_factory_um": {
+        "0": 230.0,
+        "1": 370.0
+      },
+      "readout_y_ranges_um": {
+        "0": [
+          90.0,
+          125.0
+        ],
+        "1": [
+          50.0,
+          85.0
+        ]
+      },
+      "CZ_illuminated_atoms": 1164,
+      "CZ_unowned_spectators": 970,
+      "peak_active_AOD_rows_columns": {
+        "rows": 16,
+        "columns": 8
+      },
+      "peak_active_factory_count": 2,
+      "serial_speedup": 1.901337898938365
+    },
+    {
+      "d": 7,
+      "N": 4,
+      "joint_us": 4368.817490467864,
+      "serial_us": 15315.269961871454,
+      "solo_us": [
+        3288.8174904678644,
+        3648.8174904678644,
+        4008.8174904678644,
+        4368.817490467864
+      ],
+      "G_us": 1080.0,
+      "J_us": 0.0,
+      "gate_batches_joint": 12,
+      "gate_batches_solo": 12,
+      "readout_leg_max_by_factory_um": {
+        "0": 310.0,
+        "1": 450.0,
+        "2": 590.0,
+        "3": 730.0
+      },
+      "readout_y_ranges_um": {
+        "0": [
+          170.0,
+          205.0
+        ],
+        "1": [
+          130.0,
+          165.0
+        ],
+        "2": [
+          90.0,
+          125.0
+        ],
+        "3": [
+          50.0,
+          85.0
+        ]
+      },
+      "CZ_illuminated_atoms": 2328,
+      "CZ_unowned_spectators": 1940,
+      "peak_active_AOD_rows_columns": {
+        "rows": 32,
+        "columns": 8
+      },
+      "peak_active_factory_count": 4,
+      "serial_speedup": 3.505587037061444
+    }
+  ]
+}

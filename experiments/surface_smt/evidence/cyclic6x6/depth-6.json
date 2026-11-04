@@ -1,0 +1,41 @@
+{
+  "depth": 6,
+  "metrics": {
+    "action_counts": {
+      "CZPulse": 4,
+      "Load": 6,
+      "Move": 6,
+      "Reset": 1,
+      "Rotation": 20,
+      "Store": 6
+    },
+    "atom_load_count": 57,
+    "atom_steps": 49,
+    "atom_store_count": 57,
+    "cz_gates_per_pulse": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "duration_us": 323.67190428182636,
+    "load_batch_sizes": [
+      9,
+      6,
+      16,
+      9,
+      9,
+      8
+    ],
+    "max_parallel_atoms": 16,
+    "program_duration_us": 323.67190428182636,
+    "transport_duration_us": 292.23190428182636
+  },
+  "model_build_s": 1.2793308962136507,
+  "solve_s": 6.550867009907961,
+  "solver": "4.16.0",
+  "source_and_inputs_verified": true,
+  "status": "sat",
+  "validated": true,
+  "worker_wall_s": 7.947819797322154
+}

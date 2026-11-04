@@ -123,9 +123,8 @@ the actual executed output without requiring network access or a C++ compiler.
 The candidate command uses that checked-in oracle by default and reports the
 first differing stage. Its `--expected PATH` option selects another portable
 oracle generated from the same fixture input.
-`test_pipeline_reference_data.py` checks source identity, stage structure, source
-failure preservation, generated movement replay, and zone coverage. These checks
-do not replace the source-versus-local stage comparison or physical validation.
+The original stage-by-stage checks are archived at
+`6bbe046:modules/physical_compiler/tests/test_pipeline_reference_data.py`.
 
 Pulse-region count is independent of entanglement-array count. A separate
 executed comparison with two arrays under one declared Rydberg region matches

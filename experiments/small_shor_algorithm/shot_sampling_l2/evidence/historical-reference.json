@@ -1,0 +1,70 @@
+{
+  "outcomes": [
+    {
+      "name": "Single X pi pulse actually flips state",
+      "observed_p1": 1,
+      "expected_p1": 1,
+      "error": 0
+    },
+    {
+      "name": "Single Y pi pulse actually flips state",
+      "observed_p1": 1,
+      "expected_p1": 1,
+      "error": 0
+    },
+    {
+      "name": "2pi pulse from 100 percent angle error returns zero",
+      "observed_p1": 0,
+      "expected_p1": 0,
+      "error": 0
+    },
+    {
+      "name": "Static Ramsey decay",
+      "observed_p1": 0.4302,
+      "expected_p1": 0.43233235838169365,
+      "error": 0.002132358381693622
+    },
+    {
+      "name": "Hahn cancels static phase",
+      "observed_p1": 0,
+      "expected_p1": 0,
+      "error": 0
+    },
+    {
+      "name": "XY4 cancels static phase",
+      "observed_p1": 0,
+      "expected_p1": 0,
+      "error": 0
+    },
+    {
+      "name": "OU Hahn echo agrees analytic Gaussian phase variance",
+      "observed_p1": 0.1462,
+      "expected_p1": 0.14275364387316392,
+      "error": 0.003446356126836081
+    }
+  ],
+  "small_x_probes": [
+    {
+      "x": 0.01,
+      "echoG": 8.302156119868731e-08,
+      "cubic_reference": 8.333333333333335e-08
+    },
+    {
+      "x": 0.0001,
+      "echoG": 8.333020688408577e-14,
+      "cubic_reference": 8.333333333333334e-14
+    },
+    {
+      "x": 1e-06,
+      "echoG": 8.343274530454858e-20,
+      "cubic_reference": 8.333333333333332e-20
+    },
+    {
+      "x": 1e-08,
+      "echoG": 1.6543612251060553e-24,
+      "cubic_reference": 8.333333333333334e-26
+    }
+  ],
+  "source_html_sha256": "2f3d1aa27252bd8009404e0b53a4d6f6044c4d6df855e1a127917c15ac9e3a66",
+  "scope": "Independent focused probes of imported worker; not complete circuit verification or finite-width drive simulation"
+}

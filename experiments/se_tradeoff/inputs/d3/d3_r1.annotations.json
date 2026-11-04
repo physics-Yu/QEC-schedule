@@ -1,0 +1,134 @@
+{
+  "schema": "nadit.stim.annotations/1",
+  "qasm_sha256": "ddbf463f8ab17f031fb4cb19408c90df3ab9abb5f5f6e7b05ef1745bc3ed1ea1",
+  "measurement_ids": [
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80
+  ],
+  "detectors": [
+    {
+      "measurement_ids": [
+        60
+      ],
+      "coordinates": [
+        0.0,
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        57
+      ],
+      "coordinates": [
+        2.0,
+        2.0,
+        0.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        62
+      ],
+      "coordinates": [
+        4.0,
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        59
+      ],
+      "coordinates": [
+        6.0,
+        2.0,
+        0.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        78,
+        75,
+        60
+      ],
+      "coordinates": [
+        0.0,
+        4.0,
+        1.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        76,
+        75,
+        73,
+        72,
+        57
+      ],
+      "coordinates": [
+        2.0,
+        2.0,
+        1.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        80,
+        79,
+        77,
+        76,
+        62
+      ],
+      "coordinates": [
+        4.0,
+        4.0,
+        1.0
+      ]
+    },
+    {
+      "measurement_ids": [
+        77,
+        74,
+        59
+      ],
+      "coordinates": [
+        6.0,
+        2.0,
+        1.0
+      ]
+    }
+  ],
+  "observables": [
+    {
+      "measurement_ids": [
+        74,
+        73,
+        72
+      ],
+      "index": 0
+    }
+  ],
+  "workload": {
+    "kind": "rotated_surface_memory",
+    "distance": 3,
+    "rounds": 1,
+    "basis": "z",
+    "stim_version": "1.16.0"
+  }
+}

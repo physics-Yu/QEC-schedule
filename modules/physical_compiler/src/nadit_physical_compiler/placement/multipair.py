@@ -60,7 +60,10 @@ class MultiPairPlacer:
             ValueError: If pair capacity or free storage is insufficient, or
                 current gate-site anchors cannot satisfy the selected layer.
         """
-        if not layer.operation_ids or dag.nodes[layer.operation_ids[0]].name != "cz":
+        if not layer.operation_ids or dag.nodes[layer.operation_ids[0]].name not in (
+            "cz",
+            "cp",
+        ):
             return PairPlacer(self.aod_id).place(
                 dag,
                 layer,

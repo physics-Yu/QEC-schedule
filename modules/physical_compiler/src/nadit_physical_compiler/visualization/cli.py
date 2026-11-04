@@ -21,9 +21,20 @@ def configure(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--json", type=Path, dest="json_output", help="Optional trace JSON sidecar."
     )
+    parser.add_argument(
+        "--qec",
+        type=Path,
+        dest="qec_metadata",
+        help="Optional QEC overlay JSON: check supports by physical qubit.",
+    )
 
 
-def load_saved_trace(path: Path, device_override: Path | None = None) -> dict[str, Any]:
+def load_saved_trace(
+    path: Path,
+    device_override: Path | None = None,
+    *,
+    qec: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     """Read a result and its Device without reading QASM or invoking a compiler.
 
     Version-one Device paths resolve relative to the result file. Version two
@@ -37,7 +48,7 @@ def load_saved_trace(path: Path, device_override: Path | None = None) -> dict[st
         device = document.get("job", {}).get("device")
         if isinstance(device, str):
             device = json.loads((path.parent / device).read_text(encoding="utf-8-sig"))
-    return build_result_trace(document, device, title=path.stem)
+    return build_result_trace(document, device, title=path.stem, qec=qec)
 
 
 def view_results(
@@ -46,6 +57,7 @@ def view_results(
     *,
     device_override: Path | None = None,
     json_output: Path | None = None,
+    qec_metadata: Path | None = None,
 ) -> dict[str, Any]:
     """Export one standalone HTML from saved results, with optional trace JSON.
 
@@ -54,6 +66,7 @@ def view_results(
         output: HTML destination; parents are created as needed.
         device_override: Optional Device JSON applied to every input.
         json_output: Optional sidecar path; no sidecar is written by default.
+        qec_metadata: Optional QEC annotation file for all input results.
     Returns:
         Absolute output paths and per-trace counts for JSON CLI stdout.
     Raises:
@@ -65,6 +78,8 @@ def view_results(
     inputs = {path.resolve() for path in results}
     if device_override is not None:
         inputs.add(device_override.resolve())
+    if qec_metadata is not None:
+        inputs.add(qec_metadata.resolve())
     destinations = [output.resolve()]
     if json_output is not None:
         destinations.append(json_output.resolve())
@@ -72,7 +87,12 @@ def view_results(
         raise ValueError(
             "view output paths must be distinct from inputs and each other"
         )
-    traces = [load_saved_trace(path, device_override) for path in results]
+    qec = (
+        json.loads(qec_metadata.read_text(encoding="utf-8-sig"))
+        if qec_metadata is not None
+        else None
+    )
+    traces = [load_saved_trace(path, device_override, qec=qec) for path in results]
     html_path = write_html(traces, output)
     if json_output is not None:
         json_output = json_output.resolve()

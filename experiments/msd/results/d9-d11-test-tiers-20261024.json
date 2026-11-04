@@ -1,0 +1,61 @@
+{
+  "baseline_fast_passed": 372,
+  "iteration": {
+    "fast": {
+      "collected": 380,
+      "selected": 380,
+      "passed": 380,
+      "failed": 0,
+      "skipped": 0,
+      "not_run": 0
+    },
+    "slow": {
+      "collected": 506,
+      "selected": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "not_run": 506
+    },
+    "bench": {
+      "collected": 1,
+      "selected": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "not_run": 1
+    }
+  },
+  "precommit": {
+    "fast": {
+      "collected": 949,
+      "selected": 949,
+      "passed": 949,
+      "failed": 0,
+      "skipped": 0,
+      "not_run": 0
+    },
+    "slow": {
+      "collected": 2418,
+      "selected": 2418,
+      "passed": 2418,
+      "failed": 0,
+      "skipped": 0,
+      "not_run": 0
+    },
+    "bench": {
+      "collected": 14,
+      "selected": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "not_run": 14
+    }
+  },
+  "test_workflow_source": "83ed2a8",
+  "prior_agent_content_preserved": true,
+  "notes": [
+    "The module map now includes MSD and generic/d9/d11 providers plus their consumers.",
+    "Bench was excluded; component production is the explicitly requested deliverable."
+  ]
+}

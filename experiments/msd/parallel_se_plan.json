@@ -1,0 +1,37 @@
+{
+  "schema": "nadit.msd.parallel_se_plan/1",
+  "standard": "nadit.msd.standard/2",
+  "distance": [3, 5, 7],
+  "pipelines": [1, 2, 4],
+  "active_role_per_factory": "W1",
+  "joint_instances": "N complete se_round calls, all submitted at time zero",
+  "retained_world": "6*N patches including all spectators",
+  "hardware": "unchanged single flexible transport AOD; original unlimited row/column/readout counts",
+  "timing": "standard/2: measurement100, processing0, LOAD10, STORE10 us; other reference values unchanged",
+  "geometry": "unchanged: factories top-to-bottom below y=0; readout y>=50um",
+  "implementation": "one combined source DAG, one compile_physical call, existing NonZonedStrategy and ReadyScheduler",
+  "controls": [
+    "joint: only source-local dependencies and barriers",
+    "serial: same sources with explicit cross-instance barriers",
+    "solo i: one selected factory at its actual position, identical complete world"
+  ],
+  "expected_cases": 39,
+  "decomposition": {
+    "slowest_index": "one argmax over total solo durations; deterministic smallest-index tie break",
+    "position_effect_us": "slowest_solo - top_solo",
+    "net_joint_effect_us": "joint - slowest_solo, signed",
+    "identity": "joint = top_solo + position_effect + net_joint_effect",
+    "phase_effects": "apply both differences using the same slowest_index in every exclusive phase",
+    "interpretation": "net joint effect includes resource constraints, batching, changed joint destinations and scheduler choices; not a pure contention estimate or a physical lower bound"
+  },
+  "evidence": [
+    "exact source/measurement ownership and no cross-instance DAG edges in joint mode",
+    "all joint sources ready at zero with one global physical clock",
+    "real multi-owner gate actions and transport batches, excluding spectator illumination as concurrency evidence",
+    "time partition, transport batch structure, distances and readout destinations",
+    "native-DAG semantic validation and exact return-home replay",
+    "all joint, serial and solo full result/schedule artifacts retained"
+  ],
+  "limits": {"cell_timeout_s": 120, "campaign_timeout_s": 1800, "max_atoms": 20000},
+  "not_claimed": ["optimal scheduling", "N independent AOD hardware", "full distillation production throughput", "decoded quantum error rate"]
+}

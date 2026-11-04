@@ -10,8 +10,9 @@ from typing import Any, NoReturn
 
 from .compiler import CompilationResult
 from .compilers.contracts import InvalidProgramResult
+from .compilers.evidence import compiler_evidence
 from .device import load_device, loads_device
-from .errors import SearchExhausted
+from .errors import BoundedSearchFailure, SearchExhausted
 from .job import compile_job, load_job
 from .serialization import (
     RESULT_SCHEMA_V2,
@@ -41,6 +42,9 @@ def _parser() -> argparse.ArgumentParser:
     compile_command.add_argument("-o", "--output", type=Path)
     compile_command.add_argument("--validate", action="store_true")
     compile_command.add_argument("--text", type=Path)
+    compile_command.add_argument(
+        "--evidence", type=Path, help="Optional compiler-evidence sidecar path."
+    )
     validate_command = commands.add_parser("validate", help="Validate a saved result.")
     validate_command.add_argument("result", type=Path)
     validate_command.add_argument(
@@ -59,7 +63,17 @@ def _parser() -> argparse.ArgumentParser:
     cost_command.add_argument("--params", type=Path)
     cost_command.add_argument("--into", type=Path)
     from .experiments.cli import configure
+    from .methods.cli import configure as configure_methods
     from .visualization.cli import configure as configure_view
+
+    configure_methods(
+        commands.add_parser(
+            "method", help="Translate a saved result using a NADiT method."
+        ),
+        commands.add_parser(
+            "memory", help="Prepare or sample a surface-memory workload."
+        ),
+    )
 
     configure_view(
         commands.add_parser("view", help="Export offline replay from saved results.")
@@ -91,9 +105,23 @@ def _validation_status(report: ValidationReport) -> int:
 
 def _compile(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
     job = load_job(args.job)
+    evidence_path = args.evidence or (args.output or args.job).with_suffix(
+        ".evidence.json"
+    )
+    if evidence_path.resolve() in {
+        path.resolve()
+        for path in (args.job, args.output, args.text)
+        if path is not None
+    }:
+        raise ValueError("Compiler evidence must not overwrite the job or result.")
     try:
         result = compile_job(job)
-    except (SearchExhausted, InvalidProgramResult):
+    except BoundedSearchFailure:
+        evidence = compiler_evidence(job.strategy, job.document["strategy"])
+        if evidence is not None:
+            evidence_path.write_text(_json(evidence), encoding="utf-8", newline="\n")
+        raise
+    except (SearchExhausted, InvalidProgramResult, UnsupportedJob):
         raise
     except Exception as error:
         raise _CompilationError(f"{type(error).__name__}: {error}") from error
@@ -117,6 +145,9 @@ def _compile(args: argparse.Namespace) -> tuple[dict[str, Any], int]:
         args.output.write_text(_json(document), encoding="utf-8", newline="\n")
     if args.text is not None:
         args.text.write_text(result.program.to_text(), encoding="utf-8", newline="\n")
+    evidence = compiler_evidence(job.strategy, job.document["strategy"], document)
+    if evidence is not None:
+        evidence_path.write_text(_json(evidence), encoding="utf-8", newline="\n")
     return document, _validation_status(validation) if validation is not None else 0
 
 
@@ -259,6 +290,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         args = _parser().parse_args(argv)
         if args.command == "compile":
             document, status = _compile(args)
+        elif args.command in ("method", "memory"):
+            from .methods.cli import execute as execute_method
+
+            document, status = execute_method(args), 0
         elif args.command == "view":
             from .visualization.cli import view_results
 
@@ -268,6 +303,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                     args.output,
                     device_override=args.device,
                     json_output=args.json_output,
+                    qec_metadata=args.qec_metadata,
                 ),
                 0,
             )
@@ -308,6 +344,9 @@ def main(argv: Sequence[str] | None = None) -> int:
             ),
             end="",
         )
+        return 2
+    except BoundedSearchFailure as error:
+        print(_json(error.document()), end="")
         return 2
     except InvalidProgramResult as error:
         print(_json(error.report), end="")

@@ -1,6 +1,6 @@
 """Emit closed AOD readout trips while preserving measurement identities."""
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from math import hypot
 
 from ..atom_ir import AtomAction, AtomStep, Load, Measure, Move, Store
@@ -9,6 +9,7 @@ from ..device import Device
 from ..physical_ir import PhysicalDAG
 from ..state import AODGrid, AtomLayout, AtomState, SLMHolder
 from ..transport.rules import rules_for
+from .joint import lower_joint_readout
 from .planning import ReadoutBatch, plan_readout
 
 
@@ -26,13 +27,23 @@ class BatchReadout:
         device: Device,
         *,
         retained_atoms: tuple[AtomState, ...] = (),
+        transport_target: AtomLayout | None = None,
     ) -> AtomFragment:
         """Construct readout actions without advancing the DAG or sampling results.
 
         Inputs are an already-ready measurement layer and its SLM entry layout.
         Planning raises ValueError for unsupported devices or unreachable readout.
         Returned completed IDs and ResultRefs refer to the original physical DAG.
+        An explicit transport_target jointly routes disjoint permanent SLM
+        relocations through the same AOD batches; it does not add quantum gates.
         """
+        if transport_target is not None:
+            return replace(
+                lower_joint_readout(
+                    dag, layer, layout, transport_target, device, self.aod_id
+                ),
+                retained_atoms=retained_atoms,
+            )
         batches = plan_readout(dag, layer, layout, device, self.aod_id)
         steps = tuple(
             step

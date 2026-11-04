@@ -1,0 +1,61 @@
+{
+  "attempts": [
+    {
+      "depth": 6,
+      "metrics": {
+        "action_counts": {
+          "CZPulse": 4,
+          "Load": 6,
+          "Move": 6,
+          "Reset": 1,
+          "Rotation": 20,
+          "Store": 6
+        },
+        "atom_load_count": 47,
+        "atom_steps": 49,
+        "atom_store_count": 47,
+        "cz_gates_per_pulse": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "duration_us": 342.6845997283474,
+        "load_batch_sizes": [
+          8,
+          8,
+          4,
+          11,
+          10,
+          6
+        ],
+        "max_parallel_atoms": 11,
+        "program_duration_us": 342.6845997283474,
+        "transport_duration_us": 311.2445997283474
+      },
+      "model_build_s": 1.298703595995903,
+      "solve_s": 56.4323128182441,
+      "solver": "4.16.0",
+      "source_and_inputs_verified": true,
+      "status": "sat",
+      "validated": true,
+      "worker_wall_s": 57.84796884469688
+    }
+  ],
+  "best_feasible_depth": 6,
+  "final_home": true,
+  "manifest_sha256": "5a6a09c6a4b02a5cebf98fe9f01187f47a8cbbefaf46674b2c46264b67ea9cdc",
+  "minimum_move_depth": null,
+  "output_hashes": {
+    "depth-6.checks.json": "f453392ff69cb5746f12d5ac16c405c6923dc0ecbe12ce20b6278111ea1967ee",
+    "depth-6.json": "f58564fd9f9a05c4ba3271b22865078c83d17f8fe842f434781cbd859b4e8e88",
+    "depth-6.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "depth-6.result.json": "2f1c607a6b306bf850bdc0c7bc3c46ce8d171e9b98157845e8f65adf42c7ab52",
+    "depth-6.witness.json": "1c6515385334423c25dede2d57f06c65771b7619baf407f5403d9e7f8b4c1cfe"
+  },
+  "readout_included": false,
+  "scope": "Fixed four N/Z matchings; free atom assignment to a 5x5 double-trap bank; initially isolated atoms; full-field CZ; flexible AOD; unlimited line capacity; all endpoints SLM; final home required: True.",
+  "source_and_inputs_verified": true,
+  "status": "feasible_unproved",
+  "wall_s": 58.44989335350692
+}

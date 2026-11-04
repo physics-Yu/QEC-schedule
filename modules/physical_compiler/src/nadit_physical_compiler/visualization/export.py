@@ -44,6 +44,7 @@ def write_html(
                 "analysis.js",
                 "loss-panel.js",
                 "dashboard.js",
+                "qec.js",
             )
         ),
         "SCRIPT": assets.joinpath("viewer.js").read_text(encoding="utf-8"),

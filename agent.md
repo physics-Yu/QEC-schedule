@@ -1,86 +1,80 @@
-# Engineering Standards (AI Collaboration Rules)
+# Working on NADiT
 
-## 0. Communication
-- Respond to me in Simplified Chinese.
-- Write code, comments, commit messages, and docs in English.
+Discuss work with the owner in Simplified Chinese. Write repository code,
+comments, documentation and commit messages in English.
 
-## 1. Core Principles
-- **Small steps**: each change solves one problem and can be tested and reverted independently.
-- **Verify before claiming done**: never say "done" or "fixed" without running the tests.
-- **Ask when uncertain**: stop and confirm on ambiguous requirements, architectural changes, or code deletion.
-- **Report honestly**: state failed tests, skipped steps, and unverified parts explicitly, with actual output.
+## From a change request to acceptance
 
-## 2. Workflow (mandatory for every task)
-1. **Understand**: restate the requirement; list assumptions and affected files.
-2. **Plan**: for changes touching >3 files or >50 lines, present a plan and wait for my approval.
-3. **Baseline**: run the existing test suite before changing anything; record pass/fail counts.
-4. **Test first**: write tests for new features; for bugs, first write a failing test that reproduces it.
-5. **Implement**: make the minimal necessary change. Do not refactor unrelated code.
-6. **Verify**: run the full suite and compare with the baseline. No new failures allowed.
-7. **Commit**: only after tests pass, following Section 5.
-8. **Report**: use the format in Section 9.
+1. **Define the observable change.** Name a supported entry point, one input,
+   the current result and what the owner should see after the change. Identify
+   the module that owns the decision and the consumers of its output. Start
+   with the [architecture](architecture.md) and the [method guide](docs/methods.md).
+2. **Agree on scope once.** For a change spanning more than three files or
+   50 lines, agree on a short plan before editing. An explicit request that
+   already defines that scope supplies approval. Bring a changed contract,
+   design assumption or acceptance criterion back to the owner.
+3. **Make one reversible change.** Exercise the example through its normal
+   entry point. For a known defect, capture the failing input and the wrong
+   output. Use the smallest existing or new regression that distinguishes
+   the fix. For a new feature, show the resulting artifact for human review.
+4. **Hand over the evidence.** Show the diff, expected and observed behavior,
+   a way to reproduce it, and any failed, skipped or unverified checks. For
+   estimates or simulations, identify the inputs and assumptions behind the
+   number. The owner decides when the result meets the criterion and when to
+   merge or publish.
 
-## 3. Testing
-- Framework: pytest (replace per project).
-- Every new or modified public function must have tests. Every bug fix must include a regression test.
-- Cover the happy path, edge cases, and invalid input.
-- Tests must be deterministic: fix random seeds; no dependence on network, wall-clock time, or execution order.
-- Never change a test's assertions just to make it pass, unless you explain why and I approve.
-- Never use skip/xfail to hide failures without my approval.
-- Commands:
-  - Full suite: `pytest -q`
-  - Quick check: `pytest -q -x --lf`
+## Verification
 
-## 4. Rollback & Safety
-- Before starting, confirm the working tree is clean (`git status`). If not, ask me.
-- Work on a dedicated branch per task: `feat/xxx`, `fix/xxx`, `refactor/xxx`.
-- Commit after each verifiable step so there is always a known-good state to return to.
-- If tests go from passing to failing and two fix attempts don't resolve it:
-  stop, propose reverting to the last passing commit, and explain the cause. Ask before running `git reset --hard`.
-- Always ask before:
-  - `git push`, `git push --force`, `git reset --hard`, `git rebase`
-  - Deleting files or directories
-  - Changing dependencies (requirements / pyproject / package.json)
-  - Changing CI config, database schemas, or public interfaces
-- Never commit secrets, tokens, large data files, or build artifacts.
+The [testing workflow](docs/testing.md) defines selection during iteration,
+the commit and PR checks, bench authorization and reporting. Its
+[retention rule](docs/testing.md#retaining-a-regression) governs permanent
+pytest cases. The [test manifest](tests/test-map.json) owns the ceiling and
+consumer map. Raising the ceiling requires explicit owner approval.
 
-## 5. Commit Messages (Conventional Commits)
-Format: `<type>(<scope>): <short summary>`
-- `feat`: new feature
-- `fix`: bug fix
-- `test`: tests only
-- `refactor`: restructuring, no behavior change
-- `docs`: documentation
-- `chore`: build, dependencies, misc
-- `perf`: performance
+- For a local change, exercise the affected behavior and its direct consumers.
+  A module with no applicable regression can still be reviewed using its
+  acceptance example. For a shared contract, follow the changed data through
+  the callers that consume it. Expand the checks when the impact warrants it.
+- For a scientific calculation, use a reference input or an independent
+  calculation that can distinguish the expected result. Keep tests
+  deterministic and fix seeds where sampling is part of the reproducer.
+- For prose and navigation changes, check paths, links and agreement with
+  implementation. For read-only analysis, cite the inspected source. An
+  executable example or configuration change needs its normal execution or
+  loading check.
+- Reuse a passing check for the same revision and scope. If an intended
+  change invalidates an assertion, explain the changed expectation for
+  review. Report failures directly. Skipping or marking a failure as
+  expected requires explicit owner approval.
 
-One logical change per commit. The body explains *why*, not just *what*.
+## Working tree and integration
 
-## 6. Code Quality
-- Formatter: `ruff format`; linter: `ruff check`; type checker: `mypy` (replace per project).
-- Must pass before commit: `ruff format --check . && ruff check . && mypy . && pytest -q`
-- Public functions and classes require type hints and docstrings (args, returns, raises).
-- Use clear names without cryptic abbreviations. Functions do one thing; consider splitting beyond ~50 lines.
-- Never swallow exceptions: no bare `except:`. Error messages must include context.
-- No dead code, debug prints, or commented-out code blocks.
-- Extract magic numbers into named constants or config.
-- Match the style of surrounding code; reuse existing utilities before writing new ones.
+Inspect the branch, worktree and staged diff before editing. Use a dedicated
+task branch. Preserve unrelated edits in their own worktree. If they overlap
+the requested change, resolve ownership with the owner before proceeding.
 
-## 7. Documentation
-- Update README and docstrings when public interfaces change.
-- Record significant design decisions in `docs/decisions/NNNN-title.md`
-  (ADR: context, decision, alternatives, consequences).
-- Add user-visible changes to the `Unreleased` section of `CHANGELOG.md`.
+Obtain explicit authorization for file deletion, dependency or CI changes,
+schema or public-interface changes, and destructive Git operations such as a
+hard reset, rebase or force-push. Approval for the specified action applies
+throughout the agreed scope. Merge and push each require an owner request.
+If two repair attempts leave a previously passing check failing, report the
+counterexample and agree on the next step.
 
-## 8. Never
-- Claim "it should work now" without running tests.
-- Hardcode expected values or special-case test inputs to pass tests.
-- Rewrite large amounts of code that weren't part of the request.
-- Add a dependency without justifying it.
-- Guess at uncertain APIs or parameters. Check the docs or ask.
+Make one logical change per commit. Use a Conventional Commit subject and
+explain the reason in the body. Report the resulting revision and destination.
+Keep secrets, large generated data and build output out of commits.
 
-## 9. Report Format (end of every task)
-- **Changes**: files touched and what changed in each
-- **Verification**: commands run and results (pass/fail counts vs. baseline)
-- **Commits**: hash and message
-- **Open items / Risks**: what's not done, not verified, or needs my decision
+## Code and documentation
+
+Follow the owning module's conventions for types, docstrings, Ruff and mypy.
+Reuse existing contracts and helpers. Keep functions focused, preserve error
+context and derive results from their inputs. Keep independently computed
+checks where the output could disagree with the implementation.
+
+When a contract changes, update its owning reference and the affected
+callers. Update the [architecture map](architecture.md) when ownership or a
+handoff changes and the [method guide](docs/methods.md) when a runnable
+entry point changes. Record significant design decisions in
+[ADRs](docs/decisions/) and user-visible changes in the
+[changelog](CHANGELOG.md). Dated studies and earlier commits document the
+behavior of the revision they examined.

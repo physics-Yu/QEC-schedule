@@ -1,9 +1,9 @@
 """Shared action counts and distance-profile timing for compiled programs."""
 
 from collections import Counter
-from typing import TypedDict
+from typing import NotRequired, TypedDict
 
-from .atom_ir import AtomProgram, CZPulse, Load, Move, Store
+from .atom_ir import AtomProgram, CPhasePulse, CZPulse, Load, Move, Store
 from .compiler import CompilationResult
 
 
@@ -15,6 +15,7 @@ class CompilationMetrics(TypedDict):
     duration_us: float
     action_counts: dict[str, int]
     cz_gates_per_pulse: list[int]
+    cphase_gates_per_pulse: NotRequired[list[int]]
     load_batch_sizes: list[int]
     atom_load_count: int
     atom_store_count: int
@@ -39,7 +40,7 @@ def program_metrics(
         duration instead sums the maximum action duration in each step.
     """
     actions = [action for step in program.steps for action in step.actions]
-    return {
+    metrics: CompilationMetrics = {
         "atom_steps": len(program.steps),
         "program_duration_us": program.duration_us,
         "duration_us": program.duration_us if duration_us is None else duration_us,
@@ -66,6 +67,12 @@ def program_metrics(
             if isinstance(action, Load | Move | Store)
         ),
     }
+    cp = [
+        len(action.source_ids) for action in actions if isinstance(action, CPhasePulse)
+    ]
+    if cp:
+        metrics["cphase_gates_per_pulse"] = cp
+    return metrics
 
 
 def collect_metrics(result: CompilationResult) -> CompilationMetrics:

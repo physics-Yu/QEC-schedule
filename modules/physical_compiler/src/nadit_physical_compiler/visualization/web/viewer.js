@@ -15,14 +15,14 @@
     slm: '#4772b1', aod: '#147b7b', cz: '#9b65a8', local: '#c58b35', readout: '#b96c25', warn: '#b96c25',
     risk: '#b25138', wait: '#b8c3cb',
   };
-  const kindColor = kind => kind === 'CZPulse' ? colors.cz
+  const kindColor = kind => ['CZPulse', 'CPhasePulse'].includes(kind) ? colors.cz
     : kind === 'Measure' ? colors.readout
       : kind === 'Load' ? '#529e9e' : kind === 'Store' ? '#8ab8b1' : kind === 'Move' ? colors.aod
         : ['Rotation', 'LocalU', 'GlobalRY', 'Reset'].includes(kind) ? colors.local
           : colors.wait;
-  const KIND_PRIORITY = ['CZPulse', 'Measure', 'Move', 'Load', 'Store', 'GlobalRY', 'Rotation', 'LocalU', 'Reset', 'Wait'];
+  const KIND_PRIORITY = ['CZPulse', 'CPhasePulse', 'Measure', 'Move', 'Load', 'Store', 'GlobalRY', 'Rotation', 'LocalU', 'Reset', 'Wait'];
   const KIND_LABELS = {Load: 'Load: SLM → AOD', Move: 'Move atoms', Store: 'Store: AOD → SLM',
-    CZPulse: 'CZ pulse', Measure: 'Readout', Rotation: 'Local rotation', LocalU: 'Local gate',
+    CZPulse: 'CZ pulse', CPhasePulse: 'CPhase pulse', Measure: 'Readout', Rotation: 'Local rotation', LocalU: 'Local gate',
     GlobalRY: 'Global Y rotation', Reset: 'Reset', Wait: 'Wait'};
   const numeric = (value, digits = 2) => (Math.abs(value) < 1e-9 ? 0 : Number(value)).toLocaleString('en-US', { maximumFractionDigits: digits });
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
@@ -32,7 +32,7 @@
   let playing = false, previousTimestamp = null, animationId = null, selectedAtom = null;
   let currentStep = -1, currentMeasurementCount = -1, selectedIssue = null;
   let actionCards = [], drag = null, presenting = false, idleTimer = null;
-  let analysis, risk;
+  let analysis, risk, qec;
   let hoveredStep = null, focusBeforePresent = null;
   const dashboard = new AtomReplayDashboard.Dashboard(
     time => { const target = replay.cursorAtTime(time); seek(target.step, target.fraction); },
@@ -71,6 +71,11 @@
     const height = (bounds[3] - bounds[1]) * camera.scale;
     if (fill) { context.fillStyle = fill; context.fillRect(top[0], top[1], width, height); }
     if (stroke) { context.strokeStyle = stroke; context.strokeRect(top[0], top[1], width, height); }
+  }
+  function square(x, y, radius, fill, stroke) {
+    const point = toScreen(x, y);
+    if (fill) { context.fillStyle = fill; context.fillRect(point[0] - radius, point[1] - radius, radius * 2, radius * 2); }
+    if (stroke) { context.strokeStyle = stroke; context.strokeRect(point[0] - radius, point[1] - radius, radius * 2, radius * 2); }
   }
   function worldBounds() {
     const extent = [Infinity, Infinity, -Infinity, -Infinity];
@@ -191,7 +196,7 @@
   function drawPulses() {
     for (const action of frame.actions) {
       if (!action.coverage || actionProgress(action) === 1) continue;
-      const color = action.kind === 'CZPulse' ? colors.cz : colors.local;
+      const color = ['CZPulse', 'CPhasePulse'].includes(action.kind) ? colors.cz : colors.local;
       context.lineWidth = sceneSize(.15);
       for (const bounds of action.coverage.regions) rectangle(bounds, alpha(color, .08), alpha(color, .55));
       context.save();
@@ -208,27 +213,30 @@
     const highlights = new Map();
     for (const action of frame.actions) {
       if (actionProgress(action) === 1) continue;
-      if (!['CZPulse', 'Measure', 'Rotation', 'LocalU', 'GlobalRY', 'Reset'].includes(action.kind)) continue;
+      if (!['CZPulse', 'CPhasePulse', 'Measure', 'Rotation', 'LocalU', 'GlobalRY', 'Reset'].includes(action.kind)) continue;
       for (const atomId of action.atoms) highlights.set(atomId, kindColor(action.kind));
     }
     return highlights;
   }
-  function drawAtoms() {
+  function drawAtoms(structure) {
     const highlights = actionHighlights();
+    const checks = new Map(structure.markers.filter(marker => marker.basis !== 'D').map(marker => [marker.atom.id, marker]));
     const radius = markRadius('atom');
     const margin = Math.max(40, radius * 3);
     for (const atom of frame.atoms.values()) {
       const point = toScreen(atom.x, atom.y);
       if (point[0] < -margin || point[0] > camera.width + margin || point[1] < -margin || point[1] > camera.height + margin) continue;
       const lossColour = $('risk-toggle').checked && risk;
+      const check = checks.get(atom.id);
       const core = lossColour ? `hsl(${175 - 155 * (risk.atoms.get(atom.id) / analysis.maxAtomLoss)} 48% 47%)`
-        : atom.holder.kind === 'aod' ? colors.aod : colors.slm;
+        : check ? check.color : atom.holder.kind === 'aod' ? colors.aod : colors.slm;
       if (highlights.has(atom.id)) {
         const tint = highlights.get(atom.id);
         circle(atom.x, atom.y, radius * 2.4, alpha(tint, .16));
         context.lineWidth = sceneSize(.2 * displayScale.atom); circle(atom.x, atom.y, radius * 1.9, null, tint);
       }
-      context.lineWidth = sceneSize(.14 * displayScale.atom); circle(atom.x, atom.y, radius, core, '#ffffff');
+      context.lineWidth = sceneSize(.14 * displayScale.atom);
+      (check ? square : circle)(atom.x, atom.y, radius, core, '#ffffff');
       if (risk?.maximum.atom === atom.id) {
         context.lineWidth = sceneSize(.2 * displayScale.atom); circle(atom.x, atom.y, radius + sceneSize(.8 * displayScale.atom), null, colors.risk);
         context.fillStyle = colors.risk; context.font = 600 + ' ' + 11 + 'px ' + FONT;
@@ -245,6 +253,23 @@
       circle(selectedIssue.x, selectedIssue.y, radius + sceneSize(1.4 * displayScale.atom), null, colors.warn);
     }
   }
+  function qecScene() {
+    return qec.scene(frame.atoms, {
+      X: $('qec-x-toggle').checked, Z: $('qec-z-toggle').checked,
+      links: $('qec-links-toggle').checked,
+    });
+  }
+  function drawQECLinks(scene) {
+    context.save();
+    context.setLineDash([sceneSize(.45), sceneSize(.4)]);
+    context.lineWidth = sceneSize(.12);
+    for (const edge of scene.edges) {
+      const focused = edge.from.id === selectedAtom || edge.to.id === selectedAtom;
+      context.strokeStyle = alpha(edge.color, focused ? .85 : selectedAtom !== null ? .15 : .4);
+      line(edge.from.x, edge.from.y, edge.to.x, edge.to.y);
+    }
+    context.restore();
+  }
   function drawScale() {
     const target = 110 / camera.scale;
     const exponent = Math.pow(10, Math.floor(Math.log10(target)));
@@ -258,7 +283,9 @@
     context.fillText(numeric(distance) + ' µm', right - width, y - 8);
   }
   function draw() {
-    drawField(); drawAxes(); drawZones(); drawMoves(); drawGrids(); drawPulses(); drawAtoms(); drawScale();
+    const structure = qecScene();
+    drawField(); drawAxes(); drawZones(); drawQECLinks(structure);
+    drawMoves(); drawGrids(); drawPulses(); drawAtoms(structure); drawScale();
     const fallback = [...frame.movePaths.values()].some(path => path.reason);
     $('path-note').textContent = replay.motion === 'direct' ? 'Direct preview, recorded timing' : fallback ? 'No display lane, direct preview' : 'Lane preview, recorded timing';
   }
@@ -314,10 +341,10 @@
       const card = element('article', 'action-card');
       card.dataset.kind = action.kind;
       const heading = element('div', 'action-title');
-      heading.append(element('strong', null, action.kind), element('span', null, numeric(action.duration_us) + ' µs'));
+      heading.append(element('strong', null, action.gate_label || action.kind), element('span', null, numeric(action.duration_us) + ' µs'));
       card.append(heading, element('pre', null, action.text));
       const details = ['Action ' + action.index, action.source_ids.length ? 'source ' + action.source_ids.join(', ') : 'no source ID'];
-      if (action.pairs.length) details.push(action.pairs.length + (action.pairs.length === 1 ? ' CZ pair' : ' CZ pairs'));
+      if (action.pairs.length) details.push(action.pairs.length + (action.kind === 'CPhasePulse' ? ' CP' : ' CZ') + (action.pairs.length === 1 ? ' pair' : ' pairs'));
       card.append(element('div', 'action-meta', details.join(', ')));
       const progress = element('div', 'action-progress'), bar = element('i'); progress.append(bar); card.append(progress);
       container.append(card); actionCards.push({ card, bar, action });
@@ -333,6 +360,7 @@
     inspector.className = 'detail-grid';
     const holder = atom.holder;
     const details = [['Atom', atom.id], ['Physical qubit', atom.qubit === null ? 'none' : atom.qubit], ['x (µm)', numeric(atom.x, 4)], ['y (µm)', numeric(atom.y, 4)], ['Trap', holder.kind === 'slm' ? 'SLM site ' + holder.site_id : 'AOD ' + holder.aod_id], ...(holder.kind === 'aod' ? [['Row, column', holder.row + ', ' + holder.column]] : [])];
+    details.push(...qec.describe(atom.id));
     for (const [label, value] of details) { const cell = element('div'); cell.append(element('small', null, label), element('strong', null, String(value))); inspector.append(cell); }
   }
   function updateMeasurements() {
@@ -348,7 +376,7 @@
     }
   }
   function stepLabel() {
-    return cursor.step < trace.steps.length ? [...new Set(frame.actions.map(action => KIND_LABELS[action.kind] || action.kind))].join(' + ') : frame.time_us < trace.duration_us ? 'Waiting for measurement results' : 'Final layout';
+    return cursor.step < trace.steps.length ? [...new Set(frame.actions.map(action => action.gate_label || KIND_LABELS[action.kind] || action.kind))].join(' + ') : frame.time_us < trace.duration_us ? 'Waiting for measurement results' : 'Final layout';
   }
   function updateControls() {
     $('step-slider').value = cursor.step;
@@ -443,6 +471,11 @@
   function loadTrace(index) {
     setPlaying(false); trace = data.traces[index]; replay = new AtomReplayModel.Replay(trace, { motion: $('path-select').value });
     analysis = new AtomReplayAnalysis.Analysis(trace); dashboard.load(trace, analysis);
+    qec = new AtomReplayQEC.Overlay(trace.qec);
+    $('qec-controls').hidden = !qec.checks.length;
+    $('qec-title').textContent = qec.title;
+    $('qec-x-toggle').disabled = !qec.checks.some(check => check.basis === 'X');
+    $('qec-z-toggle').disabled = !qec.checks.some(check => check.basis === 'Z');
     cursor = { step: 0, fraction: 0 }; selectedAtom = null; selectedIssue = null; currentStep = -1; currentMeasurementCount = -1; stripStep = -1; hoveredStep = null;
     $('trace-title').textContent = trace.title; $('trace-description').textContent = trace.description;
     $('atom-count').textContent = trace.initial.atoms.length; $('step-count').textContent = trace.steps.length;
@@ -539,7 +572,7 @@
     if (event.key === 'Enter') { event.preventDefault(); commitTime(); }
   });
   $('fit-button').addEventListener('click', fitView);
-  for (const id of ['sites-toggle', 'grid-toggle', 'labels-toggle', 'trails-toggle', 'risk-toggle']) $(id).addEventListener('change', render);
+  for (const id of ['sites-toggle', 'grid-toggle', 'labels-toggle', 'trails-toggle', 'risk-toggle', 'qec-x-toggle', 'qec-z-toggle', 'qec-links-toggle']) $(id).addEventListener('change', render);
   function toggleIR(open) { $('ir-panel').hidden = !open; $('ir-toggle').setAttribute('aria-expanded', String(open)); $('ir-toggle').textContent = open ? 'Hide Atom IR' : 'Show Atom IR'; }
   $('ir-toggle').addEventListener('click', () => toggleIR($('ir-panel').hidden));
   $('ir-close').addEventListener('click', () => toggleIR(false));

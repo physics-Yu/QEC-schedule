@@ -17,6 +17,7 @@ def build_result_trace(
     *,
     title: str = "Saved compilation",
     description: str = "",
+    qec: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build playback from saved JSON using the public codecs and replay API.
 
@@ -26,6 +27,8 @@ def build_result_trace(
             embedded version-two snapshot. Version-one results require it.
         title: Viewer label for the saved case.
         description: Optional description shown beside the label.
+        qec: Optional explicit QEC annotation overriding document.qec. Supplying
+            it does not change the saved result or its noise-report identity.
 
     Returns:
         A replay trace with copied job, provenance, metrics, and optional
@@ -50,7 +53,24 @@ def build_result_trace(
         description=description,
         measurements=result.measurements,
         operations=result.operations,
+        qec=qec if qec is not None else document.get("qec"),
     )
+    nodes = {n["id"]: n for n in document.get("dag", {}).get("nodes", [])}
+    for step in trace["steps"]:
+        for action in step["actions"]:
+            sources = [nodes[i] for i in action["source_ids"] if i in nodes]
+            if sources and len({n["name"] for n in sources}) == 1:
+                name = sources[0]["name"]
+                action["gate_label"] = {
+                    "h": "H",
+                    "t": "T",
+                    "tdg": "T dagger",
+                    "p": "Phase",
+                    "cp": "CPhase",
+                    "cz": "CZ",
+                }.get(name, name)
+                if name in ("p", "cp"):
+                    action["gate_label"] += f"({sources[0]['params'][0]:.8g} rad)"
     trace["compilation"] = deepcopy(
         {
             key: document[key]

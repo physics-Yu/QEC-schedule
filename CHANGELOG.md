@@ -4,6 +4,332 @@
 
 ### Added
 
+- The [method guide](docs/methods.md#replay-and-inspect-saved-studies) links
+  the Small Shor native replay and offline shot labs, the uniform-rigid d3
+  depth study, and the frozen MSD results with their original model versions.
+
+- The [method guide](docs/methods.md) connects fixed-schedule retiming, native
+  controlled-phase compilation, component-wave scheduling and MSD calibration
+  reuse to their callable entry points. `nadit describe` includes `retiming/v1`.
+
+- [Small-circuit pipeline](experiments/small_circuit/README.md) for QASM to
+  Circuit IR, ideal feedback sampling and fixed-slot Small Shor L2 sampling.
+- Optional bounded SMT ProgramCompiler for static native circuits, with explicit
+  coordinate domains, shared AOD line states, flexible/rigid transport, timed
+  Atom IR lowering and independent witness checks. A four-case d3 surface-code
+  experiment records constructive bounds, SAT/UNSAT/UNKNOWN evidence and replay.
+  Process deadlines retain validated incumbents, while CLI and experiment
+  sidecars preserve solver status and bind saved result hashes. UNSAT is not
+  classified as budget exhaustion; conformance fixtures follow each compiler's
+  declared entry and feedback capabilities.
+
+- Fixed-layer d3 MOVE-depth experiments include compact open/cyclic witnesses,
+  original solver responses and explicit subdomain lower-bound provenance.
+  Saved certificates can be checked and replayed without new solver queries.
+
+- QEC overlays add explicit X/Z checks and moving support edges to the shared
+  viewer through CLI sidecars or Python metadata, preserving unannotated results.
+
+- Pin the byte-hashed MSD reference JSON to LF so Windows worktrees preserve its
+  original provenance and existing geometry-hash regression expectations.
+
+- Publish the audited single-level fast MSD grid: d=3/5/7, N=1/2/4/8 and
+  16 seeds per cell, using explicit center-distance transport estimates.
+  Reports retain line retry-budget stops, seed/line ledgers, operation exposure,
+  and both conditional and inclusive finite-window output rates. All 192
+  trajectories passed the no-atom execution guard; native legality and actual
+  output logical error remain outside this model.
+
+- Append-only logical DAG validation now checks only newly submitted nodes,
+  and frontier traversal excludes started history. Scheduling snapshots and
+  admissions remain identical to the full-history reference implementation.
+
+- Add an independent assumed-transversal-S cost profile, explicit code-owned
+  post-rotation EC rounds through the existing batch scheduler, and a no-atom
+  execution guard. Single-level grid cost coverage remains explicit and missing
+  calibration never triggers physical compilation. See
+  [the experiment status](docs/experiments/single-level-fast-20261025.md).
+
+
+- A queued same-distance L2 server scan uses completed L1 arrivals and 3,600 s
+  calibration limits, including explicit supplementary timeout rechecks. It
+  preserves the shared worker/time/storage budget and source-specific evidence.
+  Reporting validates full results one at a time and exports representatives
+  individually, retaining original hashes and supply-window statistics.
+
+- Freeze the first MSD server scope to single-level d3/5/7 and equal-distance
+  two-level factories. A declared candidate cap retains excluded coverage,
+  independent arrival-source scores and per-distance allocation. Optional warm
+  pilot replay separates preparation cost from repeated execution cost; supply
+  reports distinguish buffer residence from unconsumed output age. Mixed target
+  distances remain a later extension and do not gate the first campaign.
+
+- Native same-atom transport goals can share nonzoned frontiers with gates and
+  readout. Offline joint calibration caches explicit world transitions while
+  ordinary frontiers retain strict return-home checks. Resource transport leases
+  and reserved-output handoff receipts preserve token identities. Stateful fast
+  waves now commit exact current-world bindings, missing tasks restore snapshots,
+  and atomic role exchange requires committed native transport receipts.
+- Same-distance two-level supply now connects real accepted L1 outputs to L2
+  through a finite producer-held FIFO, native carrier exchange and explicit
+  surplus retention. Pilot and frozen-window adapters distinguish final-level
+  outputs from whole-world costs. Formal multi-stage campaign execution and
+  cross-distance delivery remain separate integration work.
+- Optional validated read indexes avoid repeated cache JSON decoding without
+  changing scientific keys or source artifacts. Explicit cache preparation
+  forbids physical/probability production and reports its software cost.
+- Arrival-driven two-level campaign adapters reuse the existing dependency
+  runner, with separate preallocated stage budgets, frozen observed supply,
+  capacity-specific pilot windows and terminal reports. Complete SLM footprint
+  budgets include empty parking grids; missing protocols and excluded candidates
+  remain visible. Formal server execution is still pending.
+- Continuous factory cycles on the existing shared clock and resource ledger,
+  with explicit output sinks, bounded horizons and audited consumption/release.
+  The opt-in ideal external sink records excluded costs and does not claim
+  physical delivery. Whole-world action accounting retains waiting exposure and
+  distinguishes supply and buffer waits without inventing logical error rates.
+- Separate durable joint action/probability caches and dependency tasks in the
+  existing isolated experiment runner. MSD pilots and production request missing
+  complete frontiers automatically; frozen source, task, budget and artifact
+  identities govern recovery. Formal campaign and physical two-level acceptance
+  remain separate gates.
+- Grid factory placement, serialized plan validation and static joint component
+  contracts, avoiding mandatory singleton compilation before joint calibration.
+  A same-atom block translation adapter reuses native transport into vacant SLM
+  sites; it does not allocate receivers or change code distance.
+
+### Fixed
+
+- Bounded Windows file-access retries preserve atomic experiment status writes
+  and worker handshake reads during transient sharing/access failures. Persistent
+  errors still propagate, and retries do not reset worker or campaign deadlines.
+
+- Failed producer cleanup preserves resources already owned by another consumer,
+  including a reserved output whose handoff did not finish role reassignment.
+- Merged shared-AOD factory profiles with replaceable placement and scoped
+  calibration interfaces. Explicit factory plans must match calibrated carriers;
+  joint group and contextual calibration provenance coexist without changing
+  the one-AOD budget, standard/2 timings, noise or default physical world.
+
+- Logical placement is a separate, validated geometry module with explicit-user
+  and vertical-factory strategies. The MSD builder preserves its existing default
+  coordinates and Device/atom construction while accepting every positive factory
+  count. Fast factory execution consumes plans separately from cost profiles;
+  calibration applicability checks component, Device/readout and spectator context
+  instead of treating component names or factory count as sufficient. Missing
+  context remains an explicit cache miss. See
+  [ADR 0056](docs/decisions/0056-logical-placement-and-calibration-context.md).
+- Independently integrated the committed tiered-test and mandatory-batching
+  runtime with shared-AOD joint profiles. Final MX calls require one exact
+  complete-frontier calibration; legacy per-role coverage cannot silently
+  serialize them. Historical factory timings remain version-scoped pending
+  updated physical calibration.
+
+- Correct generic factory parallel admission to use the original shared AOD
+  with exact joint-frontier time and raw-acceptance calibration. Preserve the
+  single-AOD cohort grouping barriers, actual source gates and standard/2
+  parameters. Withdraw whole-component exclusive-AOD scaling as parallel
+  acceptance; missing joint coverage now fails explicitly. Multi-AOD independent
+  progression is outside this correction.
+
+- Integrated all distance-component work with the mandatory batching runtime.
+  Preparation parameters and three-round raw probability identities survive
+  shared execution; calibration preserves distinct raw and distilled consumption
+  models. Existing component experiments and their frozen results remain intact.
+
+- Logical and fast factory compilation always fill compatible ready component
+  frontiers under declared device constraints. Single-factory execution now
+  uses the same cooperative runtime as factory arrays, including independent
+  final-MX groups, transactional wave budgets and terminal resource cleanup.
+  Artificial serial/width controls and their comparison entry, configuration
+  and report files are removed. Offline calibration consumes validated member
+  projections from batched physical cases. See
+  [ADR 0055](docs/decisions/0055-mandatory-component-batching.md).
+
+- MSD standard/2 changes only LOAD and STORE to 10 us each; measurement remains
+  100 us and result processing zero. Full conditional injection/growth replays
+  preserve all transport actions, stage boundaries and occupied spectator atoms.
+
+- Raw-T now injects at d3 and grows to the requested target distance. The staged
+  version-3 postselection API rejects only small-patch injection events, then
+  executes ordinary target SE with an explicit decoded Pauli-frame handoff.
+  Defaults retain three injection rounds; target growth uses d rounds. Probability
+  caches separate the acceptance event from target delivery and reject stale
+  all-d profiles. Injection transport planning accounts for unused target atoms.
+  The previous all-d implementation remains an explicitly named control.
+
+- Normal raw-T postselection now uses total SE rounds equal to distance, while
+  preserving the raw-T primitive. Logical preparation calls explicitly carry the
+  resolved round count. Protocol and fast-profile versioning reject stale
+  two-round probability/cost caches; historical short rounds require an explicit
+  control policy. The unchanged MSD layout, timing and illustrative noise support
+  a new d3/5/7 acceptance and resource comparison.
+
+- Readout placement searches geometry/occupancy-derived destinations when the
+  nearest point, corners or fixed-grid anchors are occupied. Candidate search
+  no longer scales with readout-region area; AOD ordering, capture and occupied
+  positions remain checked. Finite execution windows can represent unlimited
+  readout experiments without enumerating a huge grid.
+
+- Full and fast factory-array experiments now select the theoretical joint
+  15-to-1 MX checks with an explicit accepted-input Z-error parameter. The
+  confirmed reference study uses p=0.01; raw rejection remains a separate supply
+  model. Physical no-fault diagnostics include the full owned-carrier window,
+  including raw loss and other patches' storage during retries, and no longer
+  control theoretical output acceptance. Historical proxy mode requires explicit
+  selection and retains its old artifacts and scope limitations.
+
+### Added
+
+- Distance-generic fast surface factory profiles reuse the logical compiler's
+  factory state machine and support arbitrary positive module counts. Explicit
+  position-specific physical calibration, accepted-only d3-to-d growth, bounded
+  Pauli correction cost, resource leases and complete time schedules retain the
+  10 us transfer standard. Shared-AOD estimates are conservative; independent
+  module controls explicitly use additional hardware. Physical execution rejects
+  estimation-only parallel claims.
+
+- Audited fast/slow/bench test tiers, explicit module/consumer selection, and
+  per-tier outcome reports. Routine pytest excludes bench; expensive tests
+  require an explicit profile or marker selection. Existing tests are retained.
+  Logical compiler module-local pytest loads the same tier policy, and logical
+  compiler/code tests are registered with their transitive consumers.
+
+- Complete d9/d11 surface component providers and explicit translation entries.
+  A shared catalog and production command export all 16 supported operations per
+  distance, including real S, carrier-rotating H, joint CNOT, fixed-d3 raw injection
+  and conditional postselection/growth under the current 10 us transfer standard.
+  Saved sources, templates, pending outputs, validation and resource metrics are
+  kept together; full factory execution and decoded output LER remain separate.
+
+- Distance-aware raw-T detector acceptance from actual compiled injection and
+  repeated-SE traces. Explicit noise profiles, code/source/device fingerprints,
+  exact small-space convolution and bounded-memory Monte Carlo with Wilson
+  intervals replace the missing generic probability producer. Legacy d3 APIs
+  retain their bounds and behavior. A fixed-standard d3/5/7 experiment includes
+  zero-noise and analytic readout-only controls; accepted-state quality and
+  generic joint preparation-class/fast-factory integration remain unsupported.
+
+- Joint SE scaling on the unchanged vertical MSD world: all N W1 rounds enter
+  one physical DAG and existing global scheduler. Full joint/serial/per-position
+  solo traces, actual transport batches and signed phase-wise controls separate
+  position cost from the net effects of shared scheduling without assuming
+  independent hardware or attributing every residual to pure AOD contention.
+
+- Odd-distance rotated-surface definitions and concrete components, preserving
+  d3 source conventions and adding the d5 facade. Real S/Sdag, raw preparation
+  with repeated-SE postselection, retained logical readout, transversal CNOT,
+  and H with explicit carrier rotation follow the existing template contract.
+  Generic joint preparation-class/canonicalization adapters remain future work.
+- Versioned MSD timing and vertical-layout experiment standard, bounded compact
+  component calibration, full-world exposure accounting, source fingerprints,
+  a first-level benchmark plan and explicit second-level input requirements.
+- Audited fast/slow/bench test tiers, explicit module/consumer selection, and
+  per-tier outcome reports. Routine pytest excludes bench; expensive tests
+  require an explicit profile or marker selection. Existing tests are retained.
+
+- Explicit factory and downstream physical no-fault cost-proxy ports with
+  disjoint scope evidence, once-only loss accounting and opt-in ideal routing.
+  Actual noisy resource quality and logical success remain unknown. Raw detector
+  events still use their actual compiled source; inventory and loss replacement
+  are outside this experiment.
+
+- Actual-source raw-A joint acceptance/byproduct events from explicit `noise/v1`
+  Pauli/readout channels, retaining the complete occupied world and provenance.
+  Noisy accepted-state quality is explicitly unsupported rather than inferred
+  from rejection or a physical no-fault proxy.
+
+- Code-owned six-patch 15-to-1 recipe, ideal joint preparation classes and final
+  four-check reference probabilities; retained-atom logical X/Z readout and real
+  local preparation corrections. The complete 102-atom layout supports shared
+  composition with explicit resource consumption and reset boundaries. Global
+  frame/decoding, full physical-noise factory qualification and supply policies
+  remain outside this first pipeline.
+
+- User-selected `noise/v1` illustrative raw-T postselection profile: two total
+  SE rounds and twelve detectors, with explicit example/non-calibrated labeling
+  and physical loss retained separately from Pauli/readout acceptance.
+
+- Portable event-probability ports with immutable joint outcomes, local branch
+  steps and complete model fingerprints. Surface-code producers estimate raw-T
+  postselection and specified logical T-consumption measurement branches;
+  the logical compiler owns occurrence sampling and dynamic case expansion.
+  The detailed syndrome/decoder backend remains reserved.
+
+- Required raw-T resource-use composition: preserve the one-round injection
+  primitive, append at least one ordinary SE, and postselect four initial
+  boundary detectors plus all adjacent-round syndrome differences. Results,
+  detector readiness and final physical completion gate resource use; exports
+  include the complete sequence without fabricating measurement values.
+
+- Approved d3 physical logical Pauli, H with real six-stroke atom permutation,
+  independent mid-cycle S/Sdag extraction, transversal CNOT, raw-T center
+  injection and composed Y preparation. Relative templates retain explicit
+  physical exits, participant identities, local syndrome relations and raw-T
+  acceptance; source/action quantum checks and animation exporters are included.
+
+- Callable d3 `initialize_0`, `initialize_plus` and `se_round` components using
+  full N/Z stabilizer measurement, relative Atom IR binding and checked entry/exit
+  layouts. Outputs preserve measurement identity, availability and symbolic
+  correction relations; frame management and decoding are not implemented.
+
+- `stim/v1` saved-result method with explicit `noise/v1` evaluation, native
+  Clifford conversion, duration-aware channel insertion and stable measurement
+  identity mapping. Loss/leakage remain separate from Pauli simulation.
+- Standard rotated-memory preparation at d3/d5/d7/d9 with rounds=d, explicit
+  surface-code homes for nonzoned and Search Smarter QEC, and Stim/PyMatching
+  sampling with decoded failures and confidence intervals. Formal scans are not run.
+- Configurable zero-default load/store Pauli channels alongside movement noise.
+
+- Fast logical factory experiments with an explicit code/profile entry and the
+  common factory state machine, event sampler and resource ledger. Offline
+  calibration supports component timing and scoped no-fault estimates without
+  per-case atom compilation. Accounting separates member work, shared busy time,
+  makespan and software time; fixed-capacity seed sweeps keep physical validation
+  marked not run and decoded logical success unknown.
+
+- Code-declared joint and measurement component waves: corresponding translated
+  transversal CNOT pairs share one AOD with both participants and signed relative
+  geometry checked; MX/MZ retain nine distinct results per member. Local Pauli
+  and canonicalization families align real physical pulses without a global
+  Pauli frame. Actual device capacity and dependency constraints determine
+  which ready members can share a wave.
+
+- Synchronized factory arrays on one AOD with configurable shared/readout area
+  and capacity budgets, cooperative stage barriers, independent retries and
+  per-line success/failure resource histories. Costs select each line's actual
+  atoms and preserve peer-wait exposure inside their factory evaluation windows.
+
+- Shared-AOD component admission and physical grid composition. Same-component
+  waves share rows and combine separate column bands with aggregate grid/readout
+  capacity checks. The factory array defaults to one AOD, retains independent
+  retries, and exports the actual Device inventory and fused-action evidence.
+
+- Patch/component frontiers and declaration-based single-patch batching, including
+  SE/S/X/Z, raw preparation and initialization. Actual lockstep composition retains
+  full physical validation, independent raw retries and configurable AOD allocation.
+  Component timelines and ledgers retain the actual admitted waves.
+
+- Fixed-seed factory cost experiments with real raw rejection/reset/retry,
+  disjoint physical no-fault proxies for batch acceptance and algorithm
+  delivery, and static JSONL/CSV experiment ledgers. Proxy outcomes remain
+  separate from unknown decoded logical success.
+
+- Design documentation for protocol-aware fake measurement cases, T-resource
+  consumption, factory acceptance/retries and shared resource scheduling.
+  One AOD is an initial study configuration, with configurable resource interfaces
+  reserved for future implementations; no runtime behavior changes.
+
+- Explicit d3/d5 logical QASM entry points, code-owned component references,
+  logical dependency construction and accuracy-checked Clifford+T synthesis.
+  Initializers are named initialize_0/initialize_plus; safe H/inverse/phase
+  reductions remove redundant gates. Outputs remain logical-only, with explicit
+  source-profile, precision and expansion limits.
+
+- Code-library and logical-compiler workspaces with independent rotated-surface
+  d3/d5 component directories, shared contract/protocol locations and documented
+  ownership. This is a documentation skeleton; executable interfaces remain open.
+
 - Packaged `nadit view` for saved results and `experiment summarize --viewers`
   for anomaly exports, without depending on examples or rerunning compilation.
   Demo compilation now uses job/registry and delegates export to the same CLI.
@@ -80,6 +406,11 @@
 
 ### Fixed
 
+- Component exit and readout times now follow the same ordered AtomStep additions
+  as a concatenated physical program. Raw probability documents rebase their
+  private timing records consistently at large absolute clocks, retaining public
+  events, real gaps and delivery delays without loosening validation tolerances.
+
 - Place GlobalRY participants inside its configured coverage before pulsing,
   including atoms retained in a gate zone; move illuminated spectators out.
   Preserve the pinned original trace and record the resulting placement change.
@@ -101,6 +432,10 @@
   can no longer create false cross-pair anchors.
 
 ### Changed
+
+- Reduce the pytest ceiling to 49 cases across all tiers. The retained cases
+  cover observed defects. Prior checks remain in Git at `6bbe046`. See the
+  [regression policy](docs/testing.md#retaining-a-regression).
 
 - Default viewer motion to diagonal departure followed by axis-aligned display
   lanes, with matching trails and synchronized AOD lines. Keep Atom IR and

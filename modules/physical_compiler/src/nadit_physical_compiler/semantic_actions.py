@@ -2,11 +2,12 @@
 
 from collections import Counter
 from itertools import combinations
-from math import hypot
+from math import hypot, pi
 
 from .atom_ir import (
     AtomAction,
     AtomStep,
+    CPhasePulse,
     CZPulse,
     GlobalRY,
     LocalU,
@@ -24,7 +25,7 @@ from .semantic_geometry import contains, intersects_segment
 from .state import COORDINATE_TOLERANCE, AODHolder, AtomLayout, AtomState
 
 type AddressedAction = Rotation | LocalU | GlobalRY | Reset | Measure
-type SemanticAction = CZPulse | AddressedAction
+type SemanticAction = CPhasePulse | CZPulse | AddressedAction
 
 
 def check_action_semantics(
@@ -48,11 +49,26 @@ def check_action_semantics(
         Motion and delay actions are handled by the transport/timing checks.
         Cross-action readout spacing is reported on the later Measure action.
     """
-    if not isinstance(action, CZPulse | Rotation | LocalU | GlobalRY | Reset | Measure):
+    if not isinstance(
+        action, CPhasePulse | CZPulse | Rotation | LocalU | GlobalRY | Reset | Measure
+    ):
         return ()
     failures: list[ConstraintResult] = []
     sources = _sources(dag, layout, action, failures)
-    if isinstance(action, CZPulse):
+    if isinstance(action, CPhasePulse | CZPulse):
+        if any(
+            other is not action
+            and isinstance(other, CPhasePulse | CZPulse)
+            and other.channel == action.channel
+            and (isinstance(action, CPhasePulse) or isinstance(other, CPhasePulse))
+            for other in step.actions
+        ):
+            failures.append(
+                ConstraintResult(
+                    "channel_conflict",
+                    "A CPhase channel permits only one uniform-angle pulse per step.",
+                )
+            )
         _check_cz(device, layout, action, sources, step, failures)
         _check_concurrent_cz(dag, device, layout, action, step, failures)
     else:
@@ -99,11 +115,12 @@ def _sources(
 
 
 def _matches_operation(action: SemanticAction, source: PhysicalOperation) -> bool:
-    if isinstance(action, CZPulse):
+    if isinstance(action, CPhasePulse | CZPulse):
         return (
-            source.name == "cz"
+            source.name == ("cp" if isinstance(action, CPhasePulse) else "cz")
             and len(source.qubits) == len(set(source.qubits)) == 2
-            and not source.params
+            and source.params
+            == ((action.angle,) if isinstance(action, CPhasePulse) else ())
         )
     if isinstance(action, GlobalRY):
         return source.name == "global_ry" and source.params == (action.angle,)
@@ -114,11 +131,17 @@ def _matches_operation(action: SemanticAction, source: PhysicalOperation) -> boo
             action.angle,
         )
     if isinstance(action, LocalU):
-        return source.name == "u" and source.params == (
-            action.theta,
-            action.phi,
-            action.lam,
-        )
+        angles = (action.theta, action.phi, action.lam)
+        if source.name == "p":
+            return len(source.params) == 1 and angles == (0.0, 0.0, source.params[0])
+        if source.name == "u":
+            return angles == source.params
+        expected = {
+            "h": (pi / 2, 0.0, pi),
+            "t": (0.0, 0.0, pi / 4),
+            "tdg": (0.0, 0.0, -pi / 4),
+        }
+        return not source.params and angles == expected.get(source.name)
     return (
         source.name == ("reset" if isinstance(action, Reset) else "measure")
         and not source.params
@@ -136,12 +159,12 @@ def _illuminated(
 def _check_cz(
     device: Device,
     layout: AtomLayout,
-    action: CZPulse,
+    action: CPhasePulse | CZPulse,
     sources: tuple[PhysicalOperation, ...],
     step: AtomStep,
     failures: list[ConstraintResult],
 ) -> None:
-    capability = device.cz
+    capability = device.cphase if isinstance(action, CPhasePulse) else device.cz
     if capability is None:
         failures.append(
             ConstraintResult("zone_capability", "Device has no CZ capability.")
@@ -215,7 +238,7 @@ def _check_cz(
                 )
             )
         if not any(
-            "cz" in zone.operations
+            ("cp" if isinstance(action, CPhasePulse) else "cz") in zone.operations
             and all(contains(zone.bounds, atom.position) for atom in pair_atoms)
             for zone in device.zones
         ):
@@ -232,17 +255,18 @@ def _check_concurrent_cz(
     dag: PhysicalDAG,
     device: Device,
     layout: AtomLayout,
-    action: CZPulse,
+    action: CPhasePulse | CZPulse,
     step: AtomStep,
     failures: list[ConstraintResult],
 ) -> None:
-    capability = device.cz
+    capability = device.cphase if isinstance(action, CPhasePulse) else device.cz
     if capability is None or action.channel != capability.channel:
         return
     pulses = tuple(
         candidate
         for candidate in step.actions
-        if isinstance(candidate, CZPulse) and candidate.channel == action.channel
+        if isinstance(candidate, CPhasePulse | CZPulse)
+        and candidate.channel == action.channel
     )
     atoms = {atom.id: atom for atom in layout.atoms}
     previous: set[int] = set()
@@ -281,7 +305,7 @@ def _check_concurrent_cz(
 
 def _moving_in_pulse(
     layout: AtomLayout,
-    pulse: CZPulse,
+    pulse: CPhasePulse | CZPulse,
     step: AtomStep,
     failures: list[ConstraintResult],
 ) -> None:

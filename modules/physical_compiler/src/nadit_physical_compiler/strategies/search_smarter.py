@@ -139,7 +139,7 @@ def _retained_after(
     retained_atoms: tuple[AtomState, ...],
 ) -> tuple[AtomState, ...]:
     final_atoms = {atom.id: atom for atom in exit_layout.atoms}
-    if layer.operation_ids and dag.nodes[layer.operation_ids[0]].name == "cz":
+    if layer.operation_ids and dag.nodes[layer.operation_ids[0]].name in ("cz", "cp"):
         executing = {atom.id: atom for atom in execution.atoms}
         candidates = (executing[execution.qubit_to_atom[q]] for q in reuse_qubits)
         return tuple(atom for atom in candidates if final_atoms.get(atom.id) == atom)

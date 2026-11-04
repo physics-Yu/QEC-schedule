@@ -1,13 +1,14 @@
 """Fixed-pair placement and AOD readout placement for at most two atoms."""
 
 from dataclasses import dataclass
-from itertools import combinations
+from itertools import combinations, pairwise, product
 from math import hypot
 
 from ..contracts import GateLayer, PlacementPlan
 from ..device import Device, Position, Region, SLMSite
-from ..physical_ir import PhysicalDAG
+from ..physical_ir import LOCAL_UNITARY_GATES, PhysicalDAG
 from ..state import (
+    COORDINATE_TOLERANCE,
     AODGrid,
     AODHolder,
     AODLine,
@@ -62,7 +63,7 @@ class PairPlacer:
         if not layer.operation_ids:
             return PlacementPlan(layout, layout)
         operation = dag.nodes[layer.operation_ids[0]]
-        if operation.name == "cz":
+        if operation.name in ("cz", "cp"):
             atom_ids = tuple(layout.qubit_to_atom[q] for q in operation.qubits)
             execution = self._place_cz(layout, device, atom_ids)
         elif operation.name == "measure":
@@ -76,7 +77,7 @@ class PairPlacer:
             execution = (
                 self._replace_atoms(layout, replacements) if replacements else layout
             )
-        elif operation.name in ("rx", "ry", "rz", "u", "reset"):
+        elif operation.name in (*LOCAL_UNITARY_GATES, "reset"):
             execution = self._place_local(dag, layer, layout, device)
         else:
             raise ValueError(f"Unsupported placement operation {operation.name!r}.")
@@ -177,21 +178,49 @@ class PairPlacer:
         workspace = device.aod(self.aod_id).workspace
         atom = layout.atom(atom_id)
         candidates: set[Position] = set()
+        regions = []
         for zone in device.zones:
             if "measure" in zone.operations:
                 bounds = _intersection(zone.bounds, workspace)
                 if bounds is not None:
+                    regions.append(bounds)
                     candidates.update(_readout_candidates(bounds, atom.position))
+        stationary = tuple(
+            other.position for other in layout.atoms if other.id != atom_id
+        )
         candidates = {
             point
             for point in candidates
             if all(
-                _distance(point, other.position) >= capability.min_spacing_um
-                and point != other.position
-                for other in layout.atoms
-                if other.id != atom_id
+                _distance(point, other) >= capability.min_spacing_um
+                and _distance(point, other) > COORDINATE_TOLERANCE
+                for other in stationary
             )
         }
+        if not candidates:
+            for bounds in regions:
+                xs = _axis_options(
+                    (atom.position.x,),
+                    bounds.x_min,
+                    bounds.x_max,
+                    max(device.aod(self.aod_id).min_spacing, capability.min_spacing_um),
+                    tuple(point.x for point in stationary),
+                )
+                ys = _axis_options(
+                    (atom.position.y,),
+                    bounds.y_min,
+                    bounds.y_max,
+                    max(device.aod(self.aod_id).min_spacing, capability.min_spacing_um),
+                    tuple(point.y for point in stationary),
+                )
+                for x, y in product(xs, ys):
+                    point = Position(x[0], y[0])
+                    if all(
+                        _distance(point, other) >= capability.min_spacing_um
+                        and _distance(point, other) > COORDINATE_TOLERANCE
+                        for other in stationary
+                    ):
+                        candidates.add(point)
         if not candidates:
             raise ValueError("No reachable readout position meets readout spacing.")
         target = min(
@@ -254,4 +283,56 @@ def _readout_candidates(bounds: Region, current: Position) -> tuple[Position, ..
         Position(bounds.x_min, bounds.y_max),
         Position(bounds.x_max, bounds.y_min),
         Position(bounds.x_max, bounds.y_max),
+    )
+
+
+def _axis_options(
+    source: tuple[float, ...],
+    low: float,
+    high: float,
+    spacing: float,
+    obstacles: tuple[float, ...] = (),
+) -> tuple[tuple[float, ...], ...]:
+    """Return monotone axes from source coordinates and finite obstacle events.
+
+    Candidate count depends on active axes and obstacles, never region extent.
+    Translate both the source projection and a compact axis through boundaries,
+    obstacle coordinates, and intervening free intervals. Endpoint occupancy and
+    readout spacing are checked by the caller against the complete atom layout.
+    """
+    n = len(source)
+    if (n - 1) * spacing > high - low + COORDINATE_TOLERANCE:
+        return ()
+    nearest: list[float] = []
+    for index, value in enumerate(source):
+        lower = nearest[-1] + spacing if nearest else low
+        nearest.append(max(lower, min(value, high - (n - index - 1) * spacing)))
+    options = {tuple(nearest), tuple(low + index * spacing for index in range(n))}
+    for base in tuple(options):
+        minimum, maximum = low - base[0], high - base[-1]
+        events = {minimum, maximum, max(minimum, min(0.0, maximum))}
+        for value in base:
+            for obstacle in obstacles:
+                for offset in (-spacing, 0.0, spacing):
+                    shift = obstacle - value + offset
+                    if minimum <= shift <= maximum:
+                        events.add(shift)
+        ordered = sorted(events)
+        events.update(
+            left + (right - left) / 2
+            for left, right in pairwise(ordered)
+            if right - left > 2 * COORDINATE_TOLERANCE
+        )
+        options.update(tuple(value + shift for value in base) for shift in events)
+    return tuple(
+        sorted(
+            options,
+            key=lambda axis: (
+                max(
+                    abs(value - origin)
+                    for value, origin in zip(axis, source, strict=True)
+                ),
+                axis,
+            ),
+        )
     )

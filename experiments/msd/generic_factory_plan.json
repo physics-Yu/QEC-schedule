@@ -1,0 +1,16 @@
+{
+  "schema": "nadit.generic_factory_plan/1",
+  "standard": "nadit.msd.standard/2",
+  "distances": [3, 5, 7],
+  "factory_counts": [1, 2, 4],
+  "seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+  "witness_seed": 0,
+  "input_z_error": 0.01,
+  "noise_params": "modules/physical_compiler/cost_params/noise_illustrative.json",
+  "acceptance_shots": 65536,
+  "acceptance_seed": 20261024,
+  "limits": {"raw_attempts": 8, "batches": 1},
+  "max_calibration_world_atoms": 3000,
+  "calibration_parallel_processes": 2,
+  "scope": "one-batch performance and complete time schedules; no steady-state or physical output LER claim"
+}

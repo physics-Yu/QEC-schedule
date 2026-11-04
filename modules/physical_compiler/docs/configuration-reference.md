@@ -528,6 +528,14 @@ timing or compiler scoring. See [noise ADR](../../../docs/decisions/0034-modular
 and `nadit describe` for model-specific options. The model choices include
 `additive/v1`, `noise/v1`, and optional pinned `hsim-aqc`.
 
+`nadit describe` also exposes the result method `stim/v1`, which explicitly calls
+`noise/v1`. It exports a full Clifford circuit and measurement-identity annotations;
+it does not change compiler selection. `transport.load_pauli`, `store_pauli` and
+`move_pauli` configure independent `[pX,pY,pZ]` channels, each defaulting to zero.
+See [Stim memory](stim-memory.md) for method options, Python API, annotations,
+standard surface-memory jobs and decoded sampling. Loss/leakage are retained
+separately and are excluded from the reported Pauli/readout logical failure rate.
+
 Sources: [experiment spec](../src/nadit_physical_compiler/experiments/spec.py),
 [suite](../src/nadit_physical_compiler/experiments/suite.py),
 [budget mapping](../src/nadit_physical_compiler/compilers/budgets.py),

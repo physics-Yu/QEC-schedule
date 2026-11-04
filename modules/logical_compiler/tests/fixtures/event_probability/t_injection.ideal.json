@@ -1,0 +1,93 @@
+{
+  "branches": [
+    {
+      "key": "no_correction",
+      "steps": [],
+      "transition": "continue"
+    },
+    {
+      "key": "apply_s",
+      "steps": [
+        {
+          "component_id": "rotated_surface_d3/logical_s",
+          "participant_roles": [
+            "data"
+          ]
+        }
+      ],
+      "transition": "continue"
+    }
+  ],
+  "model": {
+    "assumptions": [
+      "Data and magic resource are independent; data may be entangled with an external reference independent of the resource",
+      "Ideal logical CNOT(data, magic), then ideal logical Z measurement of magic",
+      "Canonical T|+> resource",
+      "Canonical logical bases are inputs; no frame correction or propagation is inferred",
+      "Only measurement branch statistics are certified, not output gate fidelity"
+    ],
+    "evidence": {
+      "calculation": "p_m0=(1+z_data*z_magic)/2; p_m1=(1-z_data*z_magic)/2",
+      "canonical_magic_kraus": [
+        "T/sqrt(2)",
+        "exp(i*pi/4)*T_dagger/sqrt(2)"
+      ],
+      "scope": "logical_branch_statistics_only",
+      "source": "https://arxiv.org/pdf/quant-ph/0403025",
+      "source_location": "Section III, Eq. (2), A_theta with theta=pi/4",
+      "z_data": null,
+      "z_magic": 0.0
+    },
+    "id": "ideal_equatorial_magic",
+    "kind": "ideal_exact",
+    "parameters": {
+      "data_density": null,
+      "density_validation_atol": 1e-12,
+      "magic_density": {
+        "imag": [
+          [
+            0.0,
+            -0.3535533905932738
+          ],
+          [
+            0.3535533905932738,
+            0.0
+          ]
+        ],
+        "real": [
+          [
+            0.5,
+            0.3535533905932738
+          ],
+          [
+            0.3535533905932738,
+            0.5
+          ]
+        ]
+      },
+      "unknown_data": true
+    }
+  },
+  "outcomes": [
+    {
+      "branch_id": "no_correction",
+      "key": "m0",
+      "probability": 0.5,
+      "values": {
+        "logical_m": 0
+      }
+    },
+    {
+      "branch_id": "apply_s",
+      "key": "m1",
+      "probability": 0.5,
+      "values": {
+        "logical_m": 1
+      }
+    }
+  ],
+  "port_id": "rotated_surface_d3.t_injection.logical_z",
+  "protocol_id": "rotated_surface_d3.t_injection.data_to_magic_mz",
+  "protocol_version": "1",
+  "schema": "nadit.event_probability/1"
+}

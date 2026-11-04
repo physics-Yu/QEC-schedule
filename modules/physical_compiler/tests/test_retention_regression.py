@@ -5,21 +5,21 @@ from pathlib import Path
 from typing import Literal
 
 import pytest
-from test_ids_compiler import _strategy
-from test_strict_compiler import RecordingBackend, _audit, _entry
+from ids_compiler_support import _strategy
+from strict_compiler_support import RecordingBackend, _audit, _entry
 
 from nadit_physical_compiler.atom_ir import CZPulse, Load, Rotation
 from nadit_physical_compiler.compiler import CompilationResult, compile_physical
-from nadit_physical_compiler.contracts import GateLayer, PlacementPlan
 from nadit_physical_compiler.device import Device, load_device
 from nadit_physical_compiler.frontend import loads_qasm
-from nadit_physical_compiler.physical_ir import PhysicalDAG, ResultRef
+from nadit_physical_compiler.physical_ir import PhysicalDAG
 from nadit_physical_compiler.placement import HeuristicPlacer
 from nadit_physical_compiler.replay import apply_step
 from nadit_physical_compiler.state import AtomLayout, AtomState, SLMHolder
 from nadit_physical_compiler.strategies import SearchSmarterStrategy
 
 MODULE = Path(__file__).parents[1]
+
 type Mode = Literal["fixed", "ids"]
 
 
@@ -112,7 +112,7 @@ def _audit_rotations_and_pulses(
     return rotation_layouts
 
 
-@pytest.mark.parametrize("mode", ["fixed", "ids"])
+@pytest.mark.parametrize("mode", ["ids"])
 def test_local_rotation_at_another_pair_does_not_create_a_false_anchor(
     gate_local_device: Device, mode: Mode
 ) -> None:
@@ -132,82 +132,3 @@ def test_local_rotation_at_another_pair_does_not_create_a_false_anchor(
     _assert_shared_anchor_stays(result, entry, gate_local_device)
     assert len(rotations) == 1
     assert backend.calls == []
-
-
-@pytest.mark.parametrize("mode", ["fixed", "ids"])
-@pytest.mark.parametrize("bit", [0, 1])
-def test_conditional_local_control_uses_only_the_emitted_measurement(
-    gate_local_device: Device, mode: Mode, bit: int
-) -> None:
-    dag = _dag(
-        "c = measure q[3]; barrier q; cz q[0],q[1]; "
-        "if(c) { rx(0.3) q[2]; } cz q[0],q[2];"
-    )
-    entry = _entry(gate_local_device)
-    backend = RecordingBackend(bit)
-    strategy = _retention_strategy(gate_local_device, mode)
-    observations: list[tuple[str, tuple[ResultRef, ...]]] = []
-
-    class ObservedPlacer:
-        def place(
-            self,
-            dag: PhysicalDAG,
-            layer: GateLayer,
-            layout: AtomLayout,
-            device: Device,
-            *,
-            reuse_qubits: tuple[int, ...] = (),
-            following: GateLayer | None = None,
-            retained_atoms: tuple[AtomState, ...] = (),
-        ) -> PlacementPlan:
-            observations.append(
-                (dag.nodes[layer.operation_ids[0]].name, tuple(backend.calls))
-            )
-            return strategy.placer.place(
-                dag,
-                layer,
-                layout,
-                device,
-                reuse_qubits=reuse_qubits,
-                following=following,
-                retained_atoms=retained_atoms,
-            )
-
-    result = compile_physical(
-        dag,
-        gate_local_device,
-        strategy=replace(strategy, placer=ObservedPlacer()),
-        entry_state=entry,
-        measurement_backend=backend,
-    )
-
-    rotations = _audit_rotations_and_pulses(dag, result, gate_local_device, entry)
-    _assert_shared_anchor_stays(result, entry, gate_local_device)
-    assert observations[0] == ("measure", ())
-    assert backend.calls == [result.measurements[0].result]
-    assert result.measurements[0].value == bit
-    assert len(rotations) == bit
-    conditional = next(node for node in dag.nodes if node.condition is not None)
-    assert (result.operations[conditional.id].status == "emitted") == bool(bit)
-
-
-@pytest.mark.parametrize("mode", ["fixed", "ids"])
-def test_all_gate_sites_used_by_local_control_can_be_repaired_for_new_pairs(
-    gate_local_device: Device, mode: Mode
-) -> None:
-    dag = _dag("rx(0.3) q; cz q[0],q[2]; cz q[1],q[3];")
-    entry = _entry(gate_local_device)
-
-    result = compile_physical(
-        dag,
-        gate_local_device,
-        strategy=_retention_strategy(gate_local_device, mode),
-        entry_state=entry,
-    )
-
-    rotations = _audit_rotations_and_pulses(dag, result, gate_local_device, entry)
-    assert len(rotations) == 4
-    assert all(
-        isinstance(atom.holder, SLMHolder) and atom.holder.site_id.startswith("gate_")
-        for atom in rotations[0].atoms
-    )

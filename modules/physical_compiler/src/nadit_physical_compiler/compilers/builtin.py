@@ -4,7 +4,11 @@ from typing import Any
 
 from ..job_fields import integer_at, keys_at
 from ..nonzoned.support import require_capabilities
+from ..physical_ir import NAMED_LOCAL_GATES
 from ..registry import StrategyContext, check_strategy, construct_strategy
+from ..smt.adapter import admit as smt_admit
+from ..smt.adapter import build as smt_build
+from ..smt.adapter import schema as smt_schema
 from ..strategies.nonzoned import NonZonedStrategy
 from ..support import UnsupportedJob
 from .contracts import CompilerContext
@@ -13,6 +17,51 @@ from .registry import Compiler, CompilerRegistration, Reasons
 
 def _search_admit(context: CompilerContext, options: dict[str, Any]) -> Reasons:
     """All configured stage support predicates must pass before construction."""
+    if any(node.name == "cp" for node in context.dag.nodes):
+        reasons: Reasons = []
+        if options.get("scheduler", {}).get("kind") != "ready":
+            reasons.append(
+                {
+                    "stage": "scheduler",
+                    "kind": "search_smarter",
+                    "reason": "native CP requires ready scheduling",
+                }
+            )
+        cp, cz = context.device.cphase, context.device.cz
+        if cp is None or cz is None:
+            reasons.append(
+                {
+                    "stage": "strategy",
+                    "kind": "search_smarter",
+                    "reason": "native CP requires explicit CPhase and CZ capabilities",
+                }
+            )
+        elif (cp.channel, cp.radius_um, cp.holder_pairs, cp.allow_spectators) != (
+            cz.channel,
+            cz.radius_um,
+            cz.holder_pairs,
+            cz.allow_spectators,
+        ):
+            reasons.append(
+                {
+                    "stage": "strategy",
+                    "kind": "search_smarter",
+                    "reason": "native CP requires the same channel and geometry as CZ",
+                }
+            )
+        if any(
+            "cz" in zone.operations and "cp" not in zone.operations
+            for zone in context.device.zones
+        ):
+            reasons.append(
+                {
+                    "stage": "strategy",
+                    "kind": "search_smarter",
+                    "reason": "CZ interaction zones must explicitly permit cp",
+                }
+            )
+        if reasons:
+            return reasons
     try:
         _, resolved = check_strategy(
             options,
@@ -53,6 +102,22 @@ def _nonzoned_admit(context: CompilerContext, options: dict[str, Any]) -> Reason
     ):
         raise ValueError("strategy.max_cz_gates: expected a positive integer.")
     reasons: Reasons = []
+    if any(node.name == "cp" for node in context.dag.nodes):
+        reasons.append(
+            {
+                "stage": "strategy",
+                "kind": "nonzoned",
+                "reason": "native CP is unavailable in nonzoned",
+            }
+        )
+    if any(node.name in NAMED_LOCAL_GATES for node in context.dag.nodes):
+        reasons.append(
+            {
+                "stage": "strategy",
+                "kind": "nonzoned",
+                "reason": "native named local gates are unavailable in nonzoned",
+            }
+        )
     try:
         require_capabilities(
             context.device,
@@ -98,7 +163,7 @@ def _nonzoned_schema() -> dict[str, Any]:
 
 
 def register_builtins(registry: dict[str, CompilerRegistration]) -> None:
-    """Register the two current layer compilers and their independent defaults."""
+    """Register layer and whole-program compilers with independent defaults."""
     registry.update(
         search_smarter=CompilerRegistration(
             "search_smarter",
@@ -123,5 +188,15 @@ def register_builtins(registry: dict[str, CompilerRegistration]) -> None:
             ("enola_initial", "explicit"),
             _nonzoned_admit,
             _nonzoned_build,
+        ),
+        smt=CompilerRegistration(
+            "smt",
+            "1",
+            smt_schema,
+            ("explicit",),
+            smt_admit,
+            smt_build,
+            defaults={"timeout_s": 60, "time_quantum_us": 0.001},
+            supports_feedback=False,
         ),
     )

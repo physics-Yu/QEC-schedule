@@ -1,10 +1,12 @@
 """Bind selected operations to atom IDs, device channels, and durations."""
 
+from math import pi
 from typing import Literal
 
 from ..atom_ir import (
     AtomAction,
     AtomStep,
+    CPhasePulse,
     CZPulse,
     GlobalRY,
     LocalU,
@@ -13,8 +15,9 @@ from ..atom_ir import (
     Rotation,
 )
 from ..contracts import AtomFragment, GateLayer
+from ..coverage import RegionSet
 from ..device import Device, Region
-from ..physical_ir import PhysicalDAG, PhysicalOperation
+from ..physical_ir import NAMED_LOCAL_GATES, PhysicalDAG, PhysicalOperation
 from ..state import AtomLayout
 
 _ROTATION_AXES: dict[str, Literal["X", "Y", "Z"]] = {"rx": "X", "ry": "Y", "rz": "Z"}
@@ -37,12 +40,56 @@ def emit_layer(
     Raises:
         ValueError: If an operation or required control capability is unsupported.
     """
+    if layer.operation_ids and dag.nodes[layer.operation_ids[0]].name == "cp":
+        return emit_cphase_layer(dag, layer, layout, device)
     actions = tuple(
         _emit_operation(dag.nodes[operation_id], layout, device)
         for operation_id in layer.operation_ids
     )
     steps = (AtomStep(actions),) if actions else ()
     return AtomFragment(steps, layout, layer.operation_ids)
+
+
+def _pair_region(operation: PhysicalOperation, layout: AtomLayout) -> Region:
+    positions = [
+        layout.atom(layout.qubit_to_atom[q]).position for q in operation.qubits
+    ]
+    return Region(
+        min(point.x for point in positions),
+        min(point.y for point in positions),
+        max(point.x for point in positions),
+        max(point.y for point in positions),
+    )
+
+
+def emit_cphase_layer(
+    dag: PhysicalDAG,
+    layer: GateLayer,
+    layout: AtomLayout,
+    device: Device,
+    coverage: Region | RegionSet | None = None,
+) -> AtomFragment:
+    """Emit a single common-angle pulse over declared coverage or selected pairs."""
+    if device.cphase is None:
+        raise ValueError("CPhase emission requires a CPhase capability.")
+    nodes = [dag.nodes[i] for i in layer.operation_ids]
+    if (
+        not nodes
+        or len(nodes[0].params) != 1
+        or any(node.name != "cp" or node.params != nodes[0].params for node in nodes)
+    ):
+        raise ValueError("A CPhase pulse requires CP operations with one common angle.")
+    if coverage is None:
+        regions = tuple(_pair_region(node, layout) for node in nodes)
+        coverage = regions[0] if len(regions) == 1 else RegionSet(regions)
+    pulse = CPhasePulse(
+        device.cphase.channel,
+        coverage,
+        nodes[0].params[0],
+        duration_us=device.cphase.duration_us,
+        source_ids=layer.operation_ids,
+    )
+    return AtomFragment((AtomStep((pulse,)),), layout, layer.operation_ids)
 
 
 def _emit_operation(
@@ -72,16 +119,9 @@ def _emit_operation(
     if operation.name == "cz":
         if device.cz is None:
             raise ValueError("CZ emission requires a CZ capability.")
-        positions = tuple(layout.atom(atom_id).position for atom_id in atom_ids)
-        coverage = Region(
-            min(point.x for point in positions),
-            min(point.y for point in positions),
-            max(point.x for point in positions),
-            max(point.y for point in positions),
-        )
         return CZPulse(
             device.cz.channel,
-            coverage,
+            _pair_region(operation, layout),
             duration_us=device.cz.duration_us,
             source_ids=sources,
         )
@@ -97,7 +137,7 @@ def _emit_operation(
             duration_us=device.readout.duration_us,
             source_ids=sources,
         )
-    if operation.name in (*_ROTATION_AXES, "u", "reset"):
+    if operation.name in (*_ROTATION_AXES, "u", *NAMED_LOCAL_GATES, "reset"):
         return _emit_local(operation, atom_ids, device)
     raise ValueError(f"Unsupported Atom IR emission operation {operation.name!r}.")
 
@@ -114,11 +154,21 @@ def _emit_local(
             duration_us=device.local.reset_us,
             source_ids=(operation.id,),
         )
-    if operation.name == "u":
+    if operation.name == "u" or operation.name in NAMED_LOCAL_GATES:
+        angles = operation.params
+        if operation.name == "h":
+            angles = (pi / 2, 0.0, pi)
+        elif operation.name == "t":
+            angles = (0.0, 0.0, pi / 4)
+        elif operation.name == "tdg":
+            angles = (0.0, 0.0, -pi / 4)
+        elif operation.name == "p":
+            (angle,) = operation.params
+            angles = (0.0, 0.0, angle)
         return LocalU(
             device.local.channel,
             atom_ids,
-            *operation.params,
+            *angles,
             duration_us=device.local.rotation_us,
             source_ids=(operation.id,),
         )

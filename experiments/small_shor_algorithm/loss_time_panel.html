@@ -1,0 +1,21 @@
+<section class="parameter-panel" aria-label="Time and loss parameters">
+  <div class="parameter-title"><h2>Time &amp; atom-loss sensitivity</h2><span>Fixed paths · actual action timing · offline</span></div>
+  <div class="scenario-kpis">
+    <div><small>Total execution time</small><strong id="scenario-duration">—</strong></div>
+    <div><small>Final mean per-atom loss</small><strong id="scenario-loss">—</strong></div>
+    <div><small>Expected lost atoms</small><strong id="scenario-expected">—</strong></div>
+    <div><small>P(no atom lost), independent model</small><strong id="scenario-survival">—</strong></div>
+  </div>
+  <div class="parameter-actions"><button id="preset-reference">Reference timing + example trap</button><button id="preset-original">Restore saved timing</button><button id="preset-nal-loss">Reset NAL event losses</button><button id="export-scenario">Export scenario JSON</button></div>
+  <p id="parameter-error" role="alert"></p>
+  <div id="parameter-groups"></div>
+  <p id="transport-detail" class="parameter-note"></p><p id="heating-warning" class="heating-warning"></p>
+  <details class="model-notes"><summary>Model, equations, assumptions and sources</summary>
+    <p>Only physical atom loss is estimated. No Pauli errors, quantum-state fidelity, loss-correcting decoder or logical error rate is simulated. The animation retains the selected ideal/forced measurement case; loss does not resample its branch or suppress later gates.</p>
+    <p><a href="https://arxiv.org/html/2609.10079v1#S6.SS2" target="_blank" rel="noopener">Sharma et al., NAL model, Table II and Eqs. (2)–(4)</a>: LOAD and STORE each cost 0.2% per atom; Rydberg gates and imaging each cost 0.1%. Single-qubit and reset loss default to zero. CPhase uses a separate editable 0.1% proxy; the paper does not calibrate arbitrary CP angles.</p>
+    <p>MOVE: Δn = (50/3)mℓ²/(ℏω³t⁴), U₀ = mω²a²/2, η = (U − Δnℏω)/(kBT), p = (1 + η + η²/2)e<sup>−η</sup>. If η ≤ 0, p = 1. For σᵤ &gt; 0, deterministic quadrature averages over a positive-truncated Gaussian depth distribution. Each recorded MOVE is treated separately using its endpoint displacement; visual lane interpolation is not a calibrated physical trajectory.</p>
+    <p>The NAL paper does not specify all trap numbers. The example uses <a href="https://arxiv.org/html/2410.22627v1" target="_blank" rel="noopener">Hwang et al.</a>'s 87Rb, 90 kHz, 27 µK and 0.73 µm harmonic width as an illustrative mapping to a. σᵤ/U₀ = 0 is an explicit homogeneous-trap assumption. These are not claimed to reproduce the authors' exact architecture simulations.</p>
+    <p>Survival of atom i is ∏ₑ(1 − pᵢₑ), and expected lost atoms is Σᵢ[1 − ∏ₑ(1 − pᵢₑ)]. Loss is booked on event completion. Source contributions count first loss, so an atom is never counted lost twice. For simultaneous hazards, attribution is proportional to their hazards. No background lifetime or reloading is added.</p>
+    <p>Timing follows the referenced analysis chat's speed / transfer / exposure controls, applied to the actual saved paths. Each parallel step lasts its longest action. Feedback availability is readout end plus latency; waiting is inserted before dependent work when needed. This is fixed-order retiming, not a new routing optimization. The original compiler validation does not certify modified hardware timing limits.</p>
+  </details>
+</section>

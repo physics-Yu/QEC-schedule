@@ -8,7 +8,7 @@ from ..coverage import RegionSet
 from ..device import Device, Region
 from ..physical_ir import PhysicalDAG
 from ..state import AtomLayout
-from .actions import emit_layer
+from .actions import emit_cphase_layer, emit_layer
 
 
 @dataclass(frozen=True, slots=True)
@@ -25,7 +25,7 @@ class WholeLayerEmitter:
     def __call__(
         self, dag: PhysicalDAG, layer: GateLayer, layout: AtomLayout, device: Device
     ) -> AtomFragment:
-        """Emit a single CZ pulse, or delegate an addressed/readout layer.
+        """Emit one entangling pulse or delegate an addressed/readout layer.
 
         Args:
             dag: Native physical operations.
@@ -41,6 +41,8 @@ class WholeLayerEmitter:
         """
         if not layer.operation_ids:
             return AtomFragment((), layout)
+        if dag.nodes[layer.operation_ids[0]].name == "cp":
+            return emit_cphase_layer(dag, layer, layout, device, self.coverage)
         if not all(dag.nodes[index].name == "cz" for index in layer.operation_ids):
             return emit_layer(dag, layer, layout, device)
         if device.cz is None:

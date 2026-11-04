@@ -1,0 +1,91 @@
+{
+  "schema": "nadit.msd.experiment_plan/1",
+  "status": "design_ready_pending_fast_logical_runner",
+  "standard": "nadit.msd.standard/2",
+  "protocol": "existing six-patch four-plus-eleven 15-to-1",
+  "logical_s": "actual measured half-cycle fold implementation",
+  "axes": {
+    "distance": [3, 5, 7, 9],
+    "pipelines": [1, 2, 4, 8],
+    "combine": "cartesian_product"
+  },
+  "layout": {
+    "factory_order": "top_to_bottom",
+    "patch_roles_left_to_right": ["W1", "W2", "W3", "W4", "W5", "R"],
+    "patch_gap_um": 40,
+    "factory_gap_um": 40,
+    "site_pitch_um": 10,
+    "pair_separation_um": 2,
+    "gates_halfplane": "y <= 0",
+    "readout_halfplane": "y >= 50",
+    "execution_window_padding_um": 20,
+    "window_enlargement_acceptance": "same actual targets, trajectories, illuminated atom sets and timing with enlarged padding; empty coverage rectangles may differ"
+  },
+  "timing_us": {
+    "measure": 100,
+    "result_processing": 0,
+    "load": 10,
+    "store": 10,
+    "cz": 0.5,
+    "rotation": 1,
+    "reset": 5,
+    "movement_us_per_um": 1
+  },
+  "hardware": {
+    "aod_count": 1,
+    "aod_motion": "flexible_order_preserving",
+    "aod_min_spacing_um": 1,
+    "aod_row_count_limit": null,
+    "aod_column_count_limit": null,
+    "readout_min_spacing_um": 5,
+    "readout_atom_count_limit": null,
+    "inherit_other_capabilities_from": "modules/codes/rotated_surface_d3/configs/nonzoned_cnot_reference.json"
+  },
+  "production_measurement": {
+    "seeds": [11, 29, 47, 71, 101],
+    "warmup_accepted_outputs": 16,
+    "measurement_accepted_outputs": 64,
+    "max_batch_attempts_per_seed": 4096,
+    "startup": "from unprepared world to first accepted, canonical, deliverable state",
+    "steady_state": "accepted deliverable output count / measured interval after warmup",
+    "retry_cost": "include all raw and final rejections, cleanup, resets and waiting",
+    "output_sink": "explicit handoff/release required before carrier reuse",
+    "acceptance_model": "must be named and versioned by the logical runner; no implicit acceptance=1",
+    "ec_policy": "must record raw extra rounds, inter-operation and waiting maintenance policy",
+    "output_error": "null unless supported by an independently checked model"
+  },
+  "run_limits": {
+    "per_cell_timeout_s": 120,
+    "campaign_timeout_s": 1800,
+    "maximum_atoms": 20000,
+    "on_limit": "record censored/unsupported cell; do not report it as a completed result",
+    "initial_scope": "geometry and component calibration only",
+    "extension": "next odd distance and doubled N only after supported prior cells pass"
+  },
+  "metrics": [
+    "startup_latency_us", "accepted_output_throughput_per_s",
+    "configured_atom_count", "peak_owned_atom_count", "occupied_footprint_um2",
+    "atom_time_per_accepted_output_us", "area_time_per_accepted_output_um2_us",
+    "movement_distance_atom_um", "transport_elapsed_us", "atom_idle_us",
+    "exposure_by_operation", "rejection_counts", "buffer_age_us",
+    "compile_wall_s", "validation_wall_s", "source_and_configuration_hashes"
+  ],
+  "level2_design_inputs": [
+    "level1 accepted output arrival traces by seed and pipeline",
+    "output carrier coordinates, occupancy and logical state convention",
+    "output quality evidence and unsupported fields",
+    "release/reset and transfer protocols",
+    "component durations/exposure at actual source and target locations",
+    "shared AOD/readout admission constraints and retained resource claims"
+  ],
+  "level2_candidate_layouts": [
+    "central second-level factory with adjacent first-level buffers",
+    "first-level factories surrounding the second-level factory",
+    "grouped nearest-supply clusters"
+  ],
+  "level2_comparison": {
+    "status": "deferred_until_level1_arrival_and_quality_data",
+    "match": ["atom budget", "occupied area budget", "AOD and control capabilities", "noise model", "EC policy"],
+    "matched_output_error_target": "only when both candidates have supported quality estimates"
+  }
+}

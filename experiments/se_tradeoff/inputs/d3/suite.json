@@ -1,0 +1,31 @@
+{
+  "schema": "nadit.suite/1",
+  "name": "surface-memory-d3",
+  "circuits": [
+    {
+      "id": "d3_r1",
+      "file": "d3_r1.qasm3",
+      "sha256": "ddbf463f8ab17f031fb4cb19408c90df3ab9abb5f5f6e7b05ef1745bc3ed1ea1",
+      "qubits": 17
+    },
+    {
+      "id": "d3_r2",
+      "file": "d3_r2.qasm3",
+      "sha256": "0fdcac34d8989eee4b718e718e744d12797588feed5b18c9fec68f87e03dc32f",
+      "qubits": 17
+    },
+    {
+      "id": "d3_r3",
+      "file": "d3_r3.qasm3",
+      "sha256": "bc59a04b1a3515c611c3ce145c3de8886fedd3d3460738fcdd519c90dcc6adb7",
+      "qubits": 17
+    }
+  ],
+  "gate_set": [
+    "rx",
+    "ry",
+    "rz",
+    "cz"
+  ],
+  "source": "stim rotated_memory_z via methods.surface_memory"
+}

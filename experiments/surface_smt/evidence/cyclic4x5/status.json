@@ -1,0 +1,73 @@
+{
+  "attempts": [
+    {
+      "depth": 6,
+      "model_build_s": 1.2809624057263136,
+      "solve_s": 50.16997929289937,
+      "solver": "4.16.0",
+      "source_and_inputs_verified": true,
+      "status": "unsat",
+      "worker_wall_s": 51.45895940065384
+    },
+    {
+      "depth": 7,
+      "metrics": {
+        "action_counts": {
+          "CZPulse": 4,
+          "Load": 7,
+          "Move": 7,
+          "Reset": 1,
+          "Rotation": 20,
+          "Store": 7
+        },
+        "atom_load_count": 59,
+        "atom_steps": 52,
+        "atom_store_count": 59,
+        "cz_gates_per_pulse": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "duration_us": 388.4786279232446,
+        "load_batch_sizes": [
+          12,
+          10,
+          8,
+          7,
+          5,
+          11,
+          6
+        ],
+        "max_parallel_atoms": 12,
+        "program_duration_us": 388.4786279232446,
+        "transport_duration_us": 357.0386279232446
+      },
+      "model_build_s": 1.4773032516241074,
+      "solve_s": 116.69034293293953,
+      "solver": "4.16.0",
+      "source_and_inputs_verified": true,
+      "status": "sat",
+      "validated": true,
+      "worker_wall_s": 118.28647506050766
+    }
+  ],
+  "best_feasible_depth": 7,
+  "final_home": true,
+  "manifest_sha256": "181da22c58ca1864c6aada51e087235f4f0960e4ed1d710e01e7d8ed3e01cc11",
+  "minimum_move_depth": null,
+  "output_hashes": {
+    "depth-6.json": "7d241506e57424c3398bc4a7009988081beb1296cfd1ace2c333f54d41ab13fd",
+    "depth-6.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "depth-7.checks.json": "4a62aa6b6db04912fb52169f90c9fcd1696943c14bbcdbe292f66e2766ad3324",
+    "depth-7.json": "a19e7563b3db2b90b9f7d4e546bcc5c98de5ba9db512eb1768873664d9bc37f3",
+    "depth-7.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "depth-7.result.json": "fa99e9a60a4793165397920524656a4bc34e6e0cb721be32a0d883216d90e837",
+    "depth-7.witness.json": "550f0aae85a5b063998e821a42da29d435b9739a62c131b4e9767e4789559286"
+  },
+  "readout_included": false,
+  "scope": "Fixed four N/Z matchings; free atom assignment to a 4x5 double-trap bank; initially isolated atoms; full-field CZ; flexible AOD; unlimited line capacity; all endpoints SLM; final home required: True.",
+  "source_and_inputs_verified": true,
+  "status": "feasible_unproved",
+  "wall_s": 171.02695579454303
+}

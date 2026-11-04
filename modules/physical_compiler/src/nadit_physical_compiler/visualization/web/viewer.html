@@ -63,7 +63,7 @@
           <span><i class="swatch slm"></i>SLM atom</span>
           <span><i class="swatch aod"></i>AOD atom</span>
           <span><i class="swatch beam"></i>AOD beams</span>
-          <span><i class="swatch cz"></i>Rydberg CZ</span>
+          <span><i class="swatch cz"></i>Rydberg CZ / CP</span>
           <span><i class="swatch local"></i>Local gate</span>
           <span><i class="swatch readout"></i>Readout</span>
           <span id="legend-risk" class="legend-risk" hidden><i class="swatch risk"></i>Loss colour on</span>
@@ -75,6 +75,13 @@
           <label for="site-size">SLM sites <input id="site-size" type="range" min="0.25" max="3" step="0.05" value="1"><output id="site-size-value" for="site-size">100%</output></label>
           <label for="aod-size">AOD spots <input id="aod-size" type="range" min="0.25" max="3" step="0.05" value="1"><output id="aod-size-value" for="aod-size">100%</output></label>
           <button id="reset-sizes" class="ghost-button" type="button">Reset sizes</button>
+        </div>
+        <div id="qec-controls" class="qec-controls" role="group" aria-label="QEC structure display" hidden>
+          <span id="qec-title" class="size-title">QEC structure</span>
+          <label class="qec-x"><input id="qec-x-toggle" type="checkbox" checked> X checks</label>
+          <label class="qec-z"><input id="qec-z-toggle" type="checkbox" checked> Z checks</label>
+          <label><input id="qec-links-toggle" type="checkbox" checked> Check–data links</label>
+          <span class="qec-note">X: purple · Z: green · labels via Atom IDs</span>
         </div>
         <div class="transport">
           <div class="transport-buttons">
@@ -89,7 +96,7 @@
               <input id="step-slider" type="range" min="0" max="0" step="1" value="0" aria-label="Step" aria-describedby="step-preview">
             </div>
             <div id="step-preview" class="step-preview">Initial layout</div>
-            <div class="strip-legend" aria-label="Step colours"><span class="load">Load</span><span class="move">Move</span><span class="store">Store</span><span class="cz">CZ</span><span class="local">Local</span><span class="readout">Readout</span><span class="wait">Wait</span></div>
+            <div class="strip-legend" aria-label="Step colours"><span class="load">Load</span><span class="move">Move</span><span class="store">Store</span><span class="cz">CZ / CP</span><span class="local">Local</span><span class="readout">Readout</span><span class="wait">Wait</span></div>
           </div>
           <label class="compact-field">Speed<select id="speed-select"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option><option value="8">8×</option></select></label>
         </div>

@@ -122,8 +122,6 @@ their implementation step begins.
 | `src/nadit_physical_compiler/transport/occupancy.py`, `transport/strict.py` | Current occupancy, batch closure, and direct parallel actions |
 | `src/nadit_physical_compiler/emission/layer.py` | One region pulse for a complete placed CZ layer |
 | `examples/compile_multipair.py`, `examples/multipair_feedback.qasm3`, `configs/multipair_flexible.json` | Multi-pair compilation, partner changes, and conditional CZ study |
-| `tests/test_device.py`, `tests/test_state.py`, `tests/test_motion.py` | Geometry, atom state, and grouped transport checks |
-| `tests/test_atom_ir.py`, `tests/test_native_frontend.py`, `tests/test_contracts.py`, `tests/test_compiler.py` | Action, frontend, handoff, feedback, and pipeline checks |
 
 Stage algorithms live in their respective packages; the strategy composes
 them. Create each package when its implementation begins.

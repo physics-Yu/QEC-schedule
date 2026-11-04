@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Literal, Protocol, cast
 
 from .atom_ir import AtomProgram, AtomStep, Measure, Wait
-from .contracts import AtomFragment, GateLayer
+from .contracts import AtomFragment, GateLayer, TransportGoal, validate_transport_goals
 from .device import Device
 from .execution import FakeBackend, MeasurementBackend
 from .physical_ir import PhysicalDAG, ResultRef
@@ -62,7 +62,8 @@ class CompilationResult:
     """Case-specific actions, final layout, node decisions, and sampled results.
 
     Operations follow native DAG ID order; measurement records follow emission
-    order. Layers contain only operations passed to the strategy.
+    order. Layers contain only operations passed to the strategy. Optional
+    transport goals retain concrete mechanical destinations for replay validation.
     """
 
     program: AtomProgram
@@ -70,6 +71,7 @@ class CompilationResult:
     operations: tuple[CompiledOperation, ...]
     measurements: tuple[MeasurementRecord, ...]
     layers: tuple[GateLayer, ...]
+    transport_goals: tuple[TransportGoal, ...] = ()
 
     @property
     def duration_us(self) -> float:
@@ -136,6 +138,8 @@ class _Compilation:
         self.dag = dag
         self.device = device
         self.strategy = strategy
+        self.transport_goals = getattr(strategy, "transport_goals", ())
+        validate_transport_goals(dag, device, self.transport_goals)
         self.layout = layout
         self.retained_atoms: tuple[AtomState, ...] = ()
         self.backend = backend
@@ -184,13 +188,14 @@ class _Compilation:
             tuple(self.operations[index] for index in range(len(self.dag.nodes))),
             tuple(self.results.values()),
             tuple(self.layers),
+            self.transport_goals,
         )
 
     def _following(self, layer: GateLayer) -> GateLayer | None:
         if (
             not self.strategy.lookahead_enabled
             or not layer.operation_ids
-            or self.dag.nodes[layer.operation_ids[0]].name != "cz"
+            or self.dag.nodes[layer.operation_ids[0]].name not in ("cz", "cp")
         ):
             return None
         return next_cz_layer(

@@ -1,0 +1,19 @@
+{
+  "schema": "nadit.factory_array_configuration/1",
+  "code": "rotated_surface_d3",
+  "world": {
+    "factory_count": 2,
+    "factory_id_prefix": "factory",
+    "aod_id": "transport",
+    "block_spacing_columns": 10,
+    "factory_gap_columns": 2,
+    "shared_padding_columns": 2,
+    "shared_top_margin_um": 15,
+    "readout_extra_height_um": 20,
+    "aod_max_rows": 4,
+    "aod_max_columns": null,
+    "max_readout_atoms": null
+  },
+  "limits": {"raw_attempts": 8, "batches": 1, "max_component_calls": 2000},
+  "coordination_policy": "cohort_stage_barriers"
+}

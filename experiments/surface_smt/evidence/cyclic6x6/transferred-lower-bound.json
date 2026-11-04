@@ -1,0 +1,39 @@
+{
+  "lower_bound": 6,
+  "model_sha256": "7576e5aff86d7a10b9801d636c6b0d4681ed7e99bc503893935a527527c3cf19",
+  "reason": "Same SMT model and circuit; 6x6 coordinate domain is a subset of 7x7 with identical bit widths. Any 6x6 witness is also a 7x7 witness. Prior depth 4/5 UNSAT excludes them here; depths below 4 excluded by idle four-stage bound.",
+  "schema": "nadit.transferred-depth-bound/1",
+  "source_grid": [
+    7,
+    7
+  ],
+  "source_manifest_sha256": "a072d1a57ab1a48a0de604181e6cdfcacaf94cb51aaa126be5ba0b0e9bf9da7e",
+  "source_response_hashes": {
+    "4": "c9078fa0d29c85fe33829caceb4df188e622d2ca8dc8424575458870f821bb4d",
+    "5": "1cc3fce93c5b01aba36261164dfc42728fdf19f8a61fce21c82c39e6bf5597c9"
+  },
+  "source_responses": {
+    "4": {
+      "depth": 4,
+      "model_build_s": 0.8981022387742996,
+      "solve_s": 0.2714798226952553,
+      "solver": "4.16.0",
+      "source_and_inputs_verified": true,
+      "status": "unsat",
+      "worker_wall_s": 1.1767038404941559
+    },
+    "5": {
+      "depth": 5,
+      "model_build_s": 1.092775709927082,
+      "solve_s": 69.32932050898671,
+      "solver": "4.16.0",
+      "source_and_inputs_verified": true,
+      "status": "unsat",
+      "worker_wall_s": 70.43030032888055
+    }
+  },
+  "target_grid": [
+    6,
+    6
+  ]
+}

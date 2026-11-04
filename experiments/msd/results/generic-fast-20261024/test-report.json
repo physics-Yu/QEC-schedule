@@ -1,0 +1,31 @@
+{
+  "tiers": {
+    "fast": {
+      "collected": 840,
+      "selected": 840,
+      "passed": 840,
+      "failed": 0,
+      "skipped": 0,
+      "not_run": 0
+    },
+    "slow": {
+      "collected": 2520,
+      "selected": 2520,
+      "passed": 2520,
+      "failed": 0,
+      "skipped": 0,
+      "not_run": 0
+    },
+    "bench": {
+      "collected": 14,
+      "selected": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "not_run": 14
+    }
+  },
+  "test_seconds": 454.9291536000026,
+  "scope": "collected files only",
+  "exitstatus": 0
+}

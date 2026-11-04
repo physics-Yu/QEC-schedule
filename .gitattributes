@@ -1,3 +1,9 @@
 /modules/physical_compiler/tests/fixtures/enola/* -text
 /modules/physical_compiler/tests/fixtures/enola/router_mis.py.txt -whitespace
 /modules/physical_compiler/src/nadit_physical_compiler/placement/enola_source/* -text -whitespace
+/experiments/small_circuit/feedback.qasm3 text eol=lf
+/experiments/small_circuit/shor/inputs/*.qasm3 text eol=lf
+/experiments/small_circuit/shor/browser_engine.js text eol=crlf
+/modules/codes/rotated_surface_d3/configs/nonzoned_cnot_reference.json text eol=lf
+/experiments/surface_smt/evidence/** -text
+/experiments/se_tradeoff/inputs/** -text

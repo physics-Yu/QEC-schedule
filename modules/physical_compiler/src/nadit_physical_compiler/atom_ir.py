@@ -98,6 +98,20 @@ class CZPulse(_TimedAction):
 
 
 @dataclass(frozen=True, slots=True)
+class CPhasePulse(_TimedAction):
+    """Apply diag(1, 1, 1, exp(i*angle)) to each illuminated interacting pair."""
+
+    channel: str
+    coverage: Region | RegionSet | tuple[int, ...]
+    angle: float
+
+    def __post_init__(self) -> None:
+        _TimedAction.__post_init__(self)
+        if not isfinite(self.angle):
+            raise ValueError("CPhase angle must be finite.")
+
+
+@dataclass(frozen=True, slots=True)
 class Rotation(_TimedAction):
     """Apply one addressed single-qubit rotation to each target atom.
 
@@ -229,6 +243,7 @@ type AtomAction = (
     | Move
     | Store
     | CZPulse
+    | CPhasePulse
     | Rotation
     | LocalU
     | GlobalRY
@@ -329,16 +344,25 @@ def _transport_text(action: Load | Move | Store, parameters: str) -> str:
 
 
 def _pulse_text(
-    action: CZPulse | Rotation | LocalU | GlobalRY | Reset | Measure | Wait,
+    action: CPhasePulse
+    | CZPulse
+    | Rotation
+    | LocalU
+    | GlobalRY
+    | Reset
+    | Measure
+    | Wait,
     parameters: str,
 ) -> str:
     if isinstance(action, Wait):
         return f"WAIT({parameters})"
     parameters += f",channel={_json(action.channel)}"
     targets: list[str]
-    if isinstance(action, CZPulse | GlobalRY):
+    if isinstance(action, CPhasePulse | CZPulse | GlobalRY):
         name = "CZ_PULSE" if isinstance(action, CZPulse) else "GLOBAL_RY"
-        if isinstance(action, GlobalRY):
+        if isinstance(action, CPhasePulse):
+            name = "CPHASE_PULSE"
+        if isinstance(action, CPhasePulse | GlobalRY):
             parameters += f",angle={action.angle!r}"
         if isinstance(action.coverage, Region | RegionSet):
             parameters += _coverage_parameters(action.coverage)

@@ -1,0 +1,230 @@
+{
+  "schema": "nadit.msd.raw_t_independent_verification/1",
+  "status": "passed",
+  "verified_at_utc": "2026-10-24T05:07:40.530205+00:00",
+  "check_count": 890,
+  "errors": [],
+  "source_sha256": "a5e4a409962907a6416b549c2a9e58e2d45e5007ad5e04ce2b67cb48e55e1fbd",
+  "plan_sha256": "939d3d24d02c1fb3bc2617d5e82bf10e773055461a5180ae905599a3a3740151",
+  "completed_cases": 3,
+  "completed_ports": 9,
+  "cases": [
+    {
+      "distance": 3,
+      "boundary_checks": 4,
+      "random_checks": 4,
+      "detector_count": 12,
+      "world_atoms": 102,
+      "duration_us": 6265.634980935729,
+      "semantic_revalidation": {
+        "ok": true,
+        "failure": null,
+        "failures": [],
+        "failure_count": 0,
+        "checks": [
+          "motion",
+          "coverage",
+          "replay",
+          "pulse",
+          "addressing",
+          "timing"
+        ],
+        "semantic": "checked"
+      },
+      "replay_ok": true,
+      "ports": {
+        "zero_noise": {
+          "probability": 1.0,
+          "kind": "pauli_exact",
+          "ci95": null,
+          "accepted": null,
+          "shots": null,
+          "seed": null,
+          "channel_count": 0,
+          "effective_channel_count": 0,
+          "independent_exact_probability": 1.0
+        },
+        "readout_only": {
+          "probability": 0.9841233861841164,
+          "kind": "pauli_exact",
+          "ci95": null,
+          "accepted": null,
+          "shots": null,
+          "seed": null,
+          "channel_count": 16,
+          "effective_channel_count": 16,
+          "independent_exact_probability": 0.9841233861841163
+        },
+        "illustrative": {
+          "probability": 0.8373162959696302,
+          "kind": "pauli_exact",
+          "ci95": null,
+          "accepted": null,
+          "shots": null,
+          "seed": null,
+          "channel_count": 1815,
+          "effective_channel_count": 845,
+          "independent_exact_probability": 0.8373162959696173
+        }
+      }
+    },
+    {
+      "distance": 5,
+      "boundary_checks": 8,
+      "random_checks": 16,
+      "detector_count": 32,
+      "world_atoms": 294,
+      "duration_us": 6425.634980935729,
+      "semantic_revalidation": {
+        "ok": true,
+        "failure": null,
+        "failures": [],
+        "failure_count": 0,
+        "checks": [
+          "motion",
+          "coverage",
+          "replay",
+          "pulse",
+          "addressing",
+          "timing"
+        ],
+        "semantic": "checked"
+      },
+      "replay_ok": true,
+      "ports": {
+        "zero_noise": {
+          "probability": 1.0,
+          "kind": "pauli_exact",
+          "ci95": null,
+          "accepted": null,
+          "shots": null,
+          "seed": null,
+          "channel_count": 0,
+          "effective_channel_count": 0,
+          "independent_exact_probability": 1.0
+        },
+        "readout_only": {
+          "probability": 0.9523162841796875,
+          "kind": "estimated",
+          "ci95": [
+            0.9514938912836663,
+            0.953125420782085
+          ],
+          "accepted": 249644,
+          "shots": 262144,
+          "seed": 20261024,
+          "channel_count": 48,
+          "effective_channel_count": 48,
+          "analytic_reference": 0.9531261773144367,
+          "residual_standard_errors": -1.9618115785612014,
+          "analytic_in_ci95": false
+        },
+        "illustrative": {
+          "probability": 0.5628738403320312,
+          "kind": "estimated",
+          "ci95": [
+            0.5609740984105049,
+            0.5647717395737386
+          ],
+          "accepted": 147554,
+          "shots": 262144,
+          "seed": 20261024,
+          "channel_count": 5547,
+          "effective_channel_count": 2771
+        }
+      }
+    },
+    {
+      "distance": 7,
+      "boundary_checks": 20,
+      "random_checks": 28,
+      "detector_count": 68,
+      "world_atoms": 582,
+      "duration_us": 6585.634980935729,
+      "semantic_revalidation": {
+        "ok": true,
+        "failure": null,
+        "failures": [],
+        "failure_count": 0,
+        "checks": [
+          "motion",
+          "coverage",
+          "replay",
+          "pulse",
+          "addressing",
+          "timing"
+        ],
+        "semantic": "checked"
+      },
+      "replay_ok": true,
+      "ports": {
+        "zero_noise": {
+          "probability": 1.0,
+          "kind": "pauli_exact",
+          "ci95": null,
+          "accepted": null,
+          "shots": null,
+          "seed": null,
+          "channel_count": 0,
+          "effective_channel_count": 0,
+          "independent_exact_probability": 1.0
+        },
+        "readout_only": {
+          "probability": 0.9084625244140625,
+          "kind": "estimated",
+          "ci95": [
+            0.9073526272679333,
+            0.909560450513941
+          ],
+          "accepted": 238148,
+          "shots": 262144,
+          "seed": 20261024,
+          "channel_count": 96,
+          "effective_channel_count": 96,
+          "analytic_reference": 0.9084458688146003,
+          "residual_standard_errors": 0.029569346689976364,
+          "analytic_in_ci95": true
+        },
+        "illustrative": {
+          "probability": 0.29759979248046875,
+          "kind": "estimated",
+          "ci95": [
+            0.29585257243560015,
+            0.2993529443846894
+          ],
+          "accepted": 78014,
+          "shots": 262144,
+          "seed": 20261024,
+          "channel_count": 11255,
+          "effective_channel_count": 5863
+        }
+      }
+    }
+  ],
+  "statistical_observations": [
+    {
+      "distance": 5,
+      "control": "readout_only",
+      "issue": "The pointwise 95% Wilson interval does not cover the known analytic reference; fixed seed and all outcomes retained.",
+      "reference": 0.9531261773144367,
+      "ci95": [
+        0.9514938912836663,
+        0.953125420782085
+      ],
+      "upper_gap": 7.565323517644273e-07
+    }
+  ],
+  "scope": {
+    "physical_compiler_rerun": false,
+    "monte_carlo_resampling": false,
+    "semantic_revalidation_and_replay": "all three saved complete results",
+    "deterministic_noise_and_channel_hash_reconstruction": "all nine saved ports",
+    "exact_probability_crosscheck": "independent Walsh characteristic-function inversion for d3 and identity for empty channels",
+    "estimated_probability_crosscheck": "saved accepted/shots and independently calculated Wilson interval, no second sampler",
+    "confidence_interval": "pointwise two-sided 95% binomial MC uncertainty only",
+    "accepted_output_quality_estimated": false,
+    "physical_loss_conditioned_out": true,
+    "full_factory_yield_estimated": false
+  },
+  "verifier_sha256": "2635dadcdc4815a6db76fa9bf79744b456323ed9338173d893c9b6472070000c"
+}

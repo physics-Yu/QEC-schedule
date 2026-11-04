@@ -1,0 +1,622 @@
+{
+  "schema": 1,
+  "max_collected_tests": 49,
+  "repository": "..",
+  "roots": [
+    "tests",
+    "modules/physical_compiler/tests",
+    "modules/codes",
+    "modules/logical_compiler/tests",
+    "experiments/msd/tests",
+    "experiments/se_tradeoff/tests"
+  ],
+  "areas": {
+    "physical.core": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/"
+      ],
+      "consumers": [
+        "physical.device",
+        "physical.frontend",
+        "physical.scheduling",
+        "physical.placement",
+        "physical.transport",
+        "physical.compiler",
+        "physical.results",
+        "physical.validation",
+        "physical.cost",
+        "physical.simulation",
+        "physical.jobs",
+        "physical.experiments",
+        "physical.viewer",
+        "codes.contracts",
+        "se_tradeoff"
+      ]
+    },
+    "physical.device": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/device.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/device_pairs.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/capabilities.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/architectures/"
+      ],
+      "consumers": [
+        "physical.frontend",
+        "physical.scheduling",
+        "physical.placement",
+        "physical.transport",
+        "physical.validation",
+        "physical.smt",
+        "physical.smt_depth"
+      ]
+    },
+    "physical.frontend": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/frontend/",
+        "modules/physical_compiler/src/nadit_physical_compiler/qasm.py"
+      ],
+      "consumers": [
+        "physical.compiler",
+        "physical.smt",
+        "physical.smt_depth",
+        "small_circuit"
+      ]
+    },
+    "physical.scheduling": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/scheduling/"
+      ],
+      "consumers": [
+        "physical.compiler"
+      ]
+    },
+    "physical.placement": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/placement/",
+        "modules/physical_compiler/src/nadit_physical_compiler/reuse/"
+      ],
+      "consumers": [
+        "physical.compiler"
+      ]
+    },
+    "physical.transport": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/transport/",
+        "modules/physical_compiler/src/nadit_physical_compiler/readout/",
+        "modules/physical_compiler/src/nadit_physical_compiler/motion.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/emission/"
+      ],
+      "consumers": [
+        "physical.compiler",
+        "physical.validation",
+        "physical.smt",
+        "physical.smt_depth"
+      ]
+    },
+    "physical.compiler": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/compiler.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/compilers/",
+        "modules/physical_compiler/src/nadit_physical_compiler/strategies/",
+        "modules/physical_compiler/src/nadit_physical_compiler/nonzoned/",
+        "modules/physical_compiler/src/nadit_physical_compiler/registry.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/strategy_selection.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/support.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/execution.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/semantic_actions.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/semantic_geometry.py"
+      ],
+      "consumers": [
+        "physical.jobs",
+        "physical.simulation",
+        "codes.d3",
+        "codes.surface"
+      ]
+    },
+    "physical.results": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/serialization.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/metrics.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/activity.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/provenance.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/coverage.py"
+      ],
+      "consumers": [
+        "physical.jobs",
+        "physical.cost",
+        "physical.validation",
+        "physical.viewer",
+        "small_circuit",
+        "se_tradeoff"
+      ]
+    },
+    "physical.validation": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/validation.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/validation_durations.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/validation_timing.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/replay.py"
+      ],
+      "consumers": [
+        "physical.compiler",
+        "small_circuit",
+        "se_tradeoff"
+      ]
+    },
+    "physical.cost": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/cost/",
+        "modules/physical_compiler/cost_params/"
+      ],
+      "consumers": [
+        "physical.jobs",
+        "physical.simulation",
+        "codes.d3",
+        "se_tradeoff"
+      ]
+    },
+    "physical.simulation": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/methods/"
+      ],
+      "consumers": [
+        "physical.jobs",
+        "se_tradeoff"
+      ]
+    },
+    "physical.jobs": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/job.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/job_fields.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/job_geometry.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/cli.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/discovery.py",
+        "modules/physical_compiler/src/nadit_physical_compiler/schemas/",
+        "modules/physical_compiler/configs/",
+        "modules/physical_compiler/examples/"
+      ],
+      "consumers": [
+        "physical.experiments",
+        "physical.viewer",
+        "small_circuit"
+      ]
+    },
+    "physical.experiments": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/experiments/",
+        "modules/physical_compiler/experiments/",
+        "modules/physical_compiler/suites/",
+        "modules/physical_compiler/reference/",
+        "modules/physical_compiler/prototypes/"
+      ],
+      "consumers": [
+        "se_tradeoff"
+      ]
+    },
+    "physical.viewer": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/visualization/"
+      ],
+      "consumers": [
+        "msd",
+        "small_circuit"
+      ]
+    },
+    "codes.contracts": {
+      "sources": [
+        "modules/codes/contracts/",
+        "modules/codes/_support/",
+        "modules/codes/registry.py",
+        "modules/codes/_surface.py"
+      ],
+      "consumers": [
+        "codes.d3",
+        "logical",
+        "codes.surface"
+      ]
+    },
+    "codes.d3": {
+      "sources": [
+        "modules/codes/rotated_surface_d3/"
+      ],
+      "consumers": [
+        "logical",
+        "msd",
+        "codes.surface"
+      ]
+    },
+    "logical": {
+      "sources": [
+        "modules/logical_compiler/"
+      ],
+      "consumers": [
+        "msd"
+      ]
+    },
+    "testing": {
+      "sources": [
+        "tools/testing/",
+        "tools/__init__.py",
+        "tests/test-map.json",
+        "pytest.ini",
+        "modules/logical_compiler/pytest.ini",
+        "modules/physical_compiler/pyproject.toml",
+        "modules/physical_compiler/uv.lock"
+      ],
+      "consumers": [
+        "physical.core",
+        "physical.device",
+        "physical.frontend",
+        "physical.scheduling",
+        "physical.placement",
+        "physical.transport",
+        "physical.compiler",
+        "physical.results",
+        "physical.validation",
+        "physical.cost",
+        "physical.simulation",
+        "physical.jobs",
+        "physical.experiments",
+        "physical.viewer",
+        "codes.contracts",
+        "codes.d3",
+        "logical",
+        "codes.surface",
+        "msd",
+        "logical.placement",
+        "logical.calibration",
+        "codes.frontend",
+        "se_tradeoff"
+      ]
+    },
+    "codes.frontend": {
+      "sources": [
+        "modules/codes/__init__.py",
+        "modules/codes/registry.py",
+        "modules/codes/_surface.py",
+        "modules/codes/rotated_surface_d5/"
+      ],
+      "consumers": [
+        "logical"
+      ]
+    },
+    "codes.surface": {
+      "sources": [
+        "modules/codes/rotated_surface/",
+        "modules/codes/rotated_surface_d5/",
+        "modules/codes/rotated_surface_d9/",
+        "modules/codes/rotated_surface_d11/"
+      ],
+      "consumers": [
+        "logical",
+        "msd"
+      ]
+    },
+    "msd": {
+      "sources": [
+        "experiments/msd/",
+        "experiments/analysis/"
+      ],
+      "consumers": []
+    },
+    "logical.placement": {
+      "sources": [
+        "modules/logical_compiler/src/placement/"
+      ],
+      "consumers": [
+        "logical",
+        "msd",
+        "codes.d3",
+        "codes.surface"
+      ]
+    },
+    "logical.calibration": {
+      "sources": [
+        "modules/logical_compiler/src/estimation/calibration.py"
+      ],
+      "consumers": [
+        "logical",
+        "codes.d3"
+      ]
+    },
+    "physical.smt": {
+      "sources": [
+        "modules/physical_compiler/src/nadit_physical_compiler/smt/",
+        "experiments/surface_smt/"
+      ],
+      "consumers": [
+        "physical.experiments",
+        "physical.jobs",
+        "physical.smt_depth"
+      ]
+    },
+    "physical.smt_depth": {
+      "sources": [
+        "experiments/surface_smt/depth/"
+      ],
+      "consumers": []
+    },
+    "small_circuit": {
+      "sources": [
+        "experiments/small_circuit/",
+        "experiments/small_shor_algorithm/"
+      ],
+      "consumers": []
+    },
+    "se_tradeoff": {
+      "sources": [
+        "experiments/se_tradeoff/"
+      ],
+      "consumers": []
+    }
+  },
+  "tests": {
+    "modules/codes/rotated_surface_d3/tests/test_component_time.py": {
+      "areas": [
+        "codes.d3",
+        "physical.compiler",
+        "physical.core",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_raw_t_postselection.py": {
+      "areas": [
+        "codes.d3",
+        "physical.device"
+      ],
+      "tier": "slow"
+    },
+    "modules/codes/rotated_surface_d3/tests/test_raw_t_postselection_quantum.py": {
+      "areas": [
+        "codes.d3",
+        "physical.device"
+      ],
+      "tier": "bench",
+      "reason": "Dense multi-round source/action quantum evidence and bounded adversarial fault sweeps."
+    },
+    "modules/codes/rotated_surface_d3/tests/test_raw_t_world.py": {
+      "areas": [
+        "codes.d3",
+        "physical.core",
+        "physical.cost",
+        "physical.device",
+        "physical.results"
+      ],
+      "tier": "slow"
+    },
+    "modules/logical_compiler/tests/test_factory_execution.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_protocol_physical.py": {
+      "areas": [
+        "logical",
+        "physical.results",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/logical_compiler/tests/test_resources.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_theoretical_fast_factory.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_astar_source_precision.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.experiments",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_batch_readout.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.jobs",
+        "physical.placement",
+        "physical.results",
+        "physical.scheduling",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_global_rotation_placement.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.placement",
+        "physical.scheduling",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_initial_placement.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_pipeline_comparison.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.experiments",
+        "physical.results",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_placement_arithmetic.py": {
+      "areas": [
+        "physical.placement"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_retention_regression.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core",
+        "physical.device",
+        "physical.frontend",
+        "physical.placement",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_reuse_feedback_timing.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.core"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_source_layout_candidates.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.placement"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_source_layout_reference.py": {
+      "areas": [
+        "physical.experiments"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_source_queue.py": {
+      "areas": [
+        "physical.placement",
+        "physical.scheduling"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_source_reuse.py": {
+      "areas": [
+        "physical.compiler",
+        "physical.device",
+        "physical.frontend",
+        "physical.placement",
+        "physical.transport"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_staged_admission.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_transport_source_scope.py": {
+      "areas": [
+        "physical.core",
+        "physical.device",
+        "physical.experiments",
+        "physical.transport",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_validation_semantics.py": {
+      "areas": [
+        "physical.core",
+        "physical.jobs",
+        "physical.validation"
+      ],
+      "tier": "slow"
+    },
+    "tests/test_testing_policy.py": {
+      "areas": [
+        "testing"
+      ],
+      "tier": "fast"
+    },
+    "experiments/msd/tests/test_standard.py": {
+      "areas": [
+        "msd"
+      ],
+      "tier": "fast"
+    },
+    "modules/codes/_support/tests/test_pauli_detector_events.py": {
+      "areas": [
+        "codes.contracts"
+      ],
+      "tier": "fast"
+    },
+    "modules/codes/rotated_surface/tests/test_small_injection_growth.py": {
+      "areas": [
+        "codes.surface"
+      ],
+      "tier": "slow"
+    },
+    "experiments/msd/tests/test_factory_scan.py": {
+      "areas": [
+        "msd",
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/codes/rotated_surface/tests/test_joint_factory_profile.py": {
+      "areas": [
+        "codes.surface",
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "experiments/msd/tests/test_joint_factory_calibration.py": {
+      "areas": [
+        "msd",
+        "codes.surface",
+        "logical"
+      ],
+      "tier": "slow"
+    },
+    "modules/physical_compiler/tests/test_experiment_tasks.py": {
+      "areas": [
+        "physical.experiments"
+      ],
+      "tier": "fast"
+    },
+    "modules/logical_compiler/tests/test_factory_supply.py": {
+      "areas": [
+        "logical"
+      ],
+      "tier": "fast"
+    },
+    "modules/physical_compiler/tests/test_smt_publication.py": {
+      "areas": [
+        "physical.smt",
+        "physical.jobs",
+        "physical.experiments"
+      ],
+      "tier": "slow"
+    },
+    "experiments/se_tradeoff/tests/test_retiming.py": {
+      "areas": [
+        "se_tradeoff"
+      ],
+      "tier": "slow"
+    }
+  }
+}

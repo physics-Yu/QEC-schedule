@@ -1,0 +1,11 @@
+{
+  "actual_geometry_clifford_tableau": true,
+  "cz_gates": 24,
+  "cz_layers": 4,
+  "final_home_restored": true,
+  "free_initial_layout": true,
+  "independent_geometry": true,
+  "measurements": 0,
+  "move_depth": 7,
+  "semantic_validation": true
+}

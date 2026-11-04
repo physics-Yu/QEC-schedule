@@ -1,25 +1,38 @@
 """One isolated compile/validate job; invoked only by the experiment runner."""
 
 import hashlib
+import importlib
 import json
+import os
 import sys
 import time
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
-from ..activity import _area
-from ..compilers.contracts import InvalidProgramResult
-from ..compilers.registry import identity as compiler_identity
-from ..errors import SearchExhausted
-from ..job import compile_job, loads_job
-from ..serialization import encode_result
-from ..support import UnsupportedJob
-from ..validation import validate_result
 from .journal import write_json
+
+if TYPE_CHECKING:
+    from ..validation import ValidationReport
+
+
+def validate_result(*args: Any, **kwargs: Any) -> "ValidationReport":
+    """Keep the existing overridable validation seam without task startup imports."""
+    from ..validation import validate_result as validate
+
+    return validate(*args, **kwargs)
 
 
 def execute(run: dict[str, Any]) -> dict[str, Any]:
     """Classify every admission/compile/validation outcome without losing errors."""
+    from ..activity import _area
+    from ..compilers.contracts import InvalidProgramResult
+    from ..compilers.evidence import compiler_evidence
+    from ..compilers.registry import identity as compiler_identity
+    from ..errors import BoundedSearchFailure, SearchExhausted
+    from ..job import compile_job, loads_job
+    from ..serialization import encode_result
+    from ..support import UnsupportedJob
+
     started = time.perf_counter()
     record = {key: value for key, value in run.items() if key != "job"}
     record.update(
@@ -67,6 +80,11 @@ def execute(run: dict[str, Any]) -> dict[str, Any]:
         except SearchExhausted as error:
             record.update(status="search_exhausted", reason=str(error))
             record["compile"]["budget_hit"] = True
+        except BoundedSearchFailure as error:
+            record.update(status=error.status, reason=str(error))
+            record["compile"]["budget_hit"] = error.budget_hit
+        except UnsupportedJob as error:
+            record.update(status="unsupported", reason=error.document()["reasons"])
         except Exception as error:
             record.update(
                 status="compile_error", reason=f"{type(error).__name__}: {error}"
@@ -102,14 +120,78 @@ def execute(run: dict[str, Any]) -> dict[str, Any]:
                 record["provenance"]["job_hash"] = document["provenance"]["job_hash"]
         if record["compile"]["wall_s"] is None:
             record["compile"]["wall_s"] = time.perf_counter() - compile_start
+        evidence = compiler_evidence(
+            job.strategy, job.document["strategy"], record.get("result")
+        )
+        if evidence is not None:
+            record["compiler_evidence"] = evidence
+            record["compile"]["budget_hit"] = evidence["evidence"].get(
+                "budget_hit", False
+            )
     record["worker_wall_s"] = time.perf_counter() - started
     return record
+
+
+def execute_task_run(run: dict[str, Any]) -> dict[str, Any]:
+    """Call the explicit task adapter, preserving telemetry and software failures."""
+    from .task_plan import WORKER_STATUSES, resident_bytes, validate_task
+
+    started = time.perf_counter()
+    observed = 0
+    try:
+        task = validate_task(run["task"])
+        initial = resident_bytes(os.getpid())
+        if initial is None:
+            return {
+                "status": "budget_exceeded",
+                "reason": "Worker RSS monitoring unavailable",
+            }
+        observed = initial
+        if initial > task["memory_bytes"]:
+            return {
+                "status": "budget_exceeded",
+                "reason": "memory_bytes exceeded at worker startup",
+                "resource_usage": {"peak_observed_worker_rss_bytes": observed},
+            }
+        module, function = run["executor"].split(":")
+        handler = getattr(importlib.import_module(module), function)
+        record = handler(task)
+        if not isinstance(record, dict) or record.get("status") not in WORKER_STATUSES:
+            raise ValueError("Task handler must return a supported status object")
+        observed = max(observed, resident_bytes(os.getpid()) or 0)
+        if observed > task["memory_bytes"]:
+            record = {
+                "status": "budget_exceeded",
+                "reason": "memory_bytes exceeded before worker publication",
+            }
+    except Exception as error:
+        record = {
+            "status": "software_error",
+            "reason": f"{type(error).__name__}: {error}",
+            "failure_kind": "handler",
+        }
+    return {
+        **record,
+        "worker_wall_s": time.perf_counter() - started,
+        "resource_usage": {
+            **record.get("resource_usage", {}),
+            "peak_observed_worker_rss_bytes": observed,
+        },
+    }
 
 
 def main() -> None:
     """Read one resolved run and atomically write its completion record."""
     run = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
-    write_json(Path(sys.argv[2]), execute(run))
+    output = Path(sys.argv[2])
+    if run.get("schema") == "nadit.experiment_task/1":
+        write_json(
+            output.with_suffix(".started.json"),
+            {"run_id": run["run_id"], "pid": os.getpid()},
+        )
+        write_json(output, execute_task_run(run))
+    else:
+        write_json(output, execute(run))
 
 
 if __name__ == "__main__":

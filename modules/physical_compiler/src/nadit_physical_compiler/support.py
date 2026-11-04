@@ -3,6 +3,7 @@
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 
+from .physical_ir import NAMED_LOCAL_GATES
 from .transport.staging_geometry import StagingGeometry
 
 if TYPE_CHECKING:
@@ -60,13 +61,15 @@ def array_geometry(context: "StrategyContext") -> Support:
 
 def placement_arrays(context: "StrategyContext") -> Support:
     """CZ needs regular or explicit arrays; local-only placement stays lazy."""
-    if not any(node.name == "cz" for node in context.dag.nodes):
+    if not any(node.name in ("cz", "cp") for node in context.dag.nodes):
         return Support()
     return array_geometry(context)
 
 
 def source_scheduler(context: "StrategyContext") -> Support:
     """Static circuit with regular or explicit storage/paired entanglement arrays."""
+    if any(node.name in NAMED_LOCAL_GATES for node in context.dag.nodes):
+        return Support(False, "native named local gates require ready scheduling")
     arrays = array_geometry(context)
     if not arrays.ok:
         return arrays

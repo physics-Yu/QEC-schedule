@@ -1,0 +1,267 @@
+{
+  "schema": "nadit.surface-depth-evidence/1",
+  "scope": "Historical solver responses and compact witnesses; rechecking SAT geometry is not rerunning or independently proving Z3 UNSAT. Readout excluded; time not optimized.",
+  "cases": {
+    "open5x5": {
+      "origin_directory": "surface-d3-depth-free",
+      "minimum_move_depth": 4,
+      "witness": "depth-4.witness.json",
+      "files_sha256": {
+        "problem.json": "0f5e5f1ad573e600bdf1ff0bfd3b2fbda0b2bc0db3a7616722c0061925c6046e",
+        "circuit.qasm3": "343610b6f467bed3e1c3f3832236b44b45528fc9899b666e91c3b20c9417a1c3",
+        "device.json": "5bc252b75c6b39d39a2adf165a78a45a950d55613799cdd352d310000a4f145d",
+        "manifest.json": "68fa15d2c1a0a67a69bf573b908b92f641e07a1646c24d212ed504de4dec39dc",
+        "manifest.sha256": "1de287967a5954b5d8b83cea59a57b60d35debe5faabdbc67b8d011d5b14e194",
+        "status.json": "146673cb5e3d45906549bf80d547a9c9f957aaf86aa9c25371e1f6b1904bc992",
+        "depth-3.json": "4671fe88eed37c8e548b81aa6b11e397151ddc8c69fece9371051c8e47809e00",
+        "depth-4.checks.json": "648fe2ee2618cca375e6577f6ced8ca9c2e7d0bb424b8e994043017745d3b8f8",
+        "depth-4.json": "244fee6ce3d5f267619cd91e2c098437a349210fdf74c3b85968f26ef3022333",
+        "depth-4.witness.json": "27cd7f7c840d35ce4f4fca8bd8556aa46397d14a1df8fd5b5f3fee63cc0763f0"
+      },
+      "model_file": "models/e9343dcf7351636447f83a35f7e37c52c21f375fa559deec8f0475d123c4a505.py.txt",
+      "model_sha256": "e9343dcf7351636447f83a35f7e37c52c21f375fa559deec8f0475d123c4a505",
+      "expected_program_sha256": "66313d477d0d7d303904fc6c353b07dc35e2b47ea15b6a3f6fe734aa6b8236b7",
+      "expected_metrics": {
+        "action_counts": {
+          "CZPulse": 4,
+          "Load": 4,
+          "Move": 4,
+          "Reset": 1,
+          "Rotation": 20,
+          "Store": 4
+        },
+        "atom_load_count": 34,
+        "atom_steps": 43,
+        "atom_store_count": 34,
+        "cz_gates_per_pulse": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "duration_us": 216.16135954999578,
+        "load_batch_sizes": [
+          6,
+          8,
+          9,
+          11
+        ],
+        "max_parallel_atoms": 11,
+        "program_duration_us": 216.16135954999578,
+        "transport_duration_us": 184.72135954999578
+      },
+      "lower_bound_case": null
+    },
+    "cyclic7x7": {
+      "origin_directory": "surface-d3-depth-cyclic7",
+      "minimum_move_depth": 6,
+      "witness": "depth-6.witness.json",
+      "files_sha256": {
+        "problem.json": "4f27fa4013fac7ada5f1da7af8400cd242221224aad636769e82da69f7fb5a76",
+        "circuit.qasm3": "343610b6f467bed3e1c3f3832236b44b45528fc9899b666e91c3b20c9417a1c3",
+        "device.json": "6aff0c474f56b6e9b0967cea9dc4ea0f752bb3446c37c36da809350d52b3a165",
+        "manifest.json": "a072d1a57ab1a48a0de604181e6cdfcacaf94cb51aaa126be5ba0b0e9bf9da7e",
+        "manifest.sha256": "b0334d1739c0d74e21774011a00b2c4ee35de073891811ad7a0abf8946bd8372",
+        "status.json": "de206c5e76cd4ffd59142f27f1b3418fa9fec10f5c0d50145db19986f467fef4",
+        "depth-4.json": "c9078fa0d29c85fe33829caceb4df188e622d2ca8dc8424575458870f821bb4d",
+        "depth-5.json": "1cc3fce93c5b01aba36261164dfc42728fdf19f8a61fce21c82c39e6bf5597c9",
+        "depth-6.checks.json": "f453392ff69cb5746f12d5ac16c405c6923dc0ecbe12ce20b6278111ea1967ee",
+        "depth-6.json": "63a9ce492d9eef70bbd6d2689a3d594c521f7a9edd4d2b505fcf44f352011c17",
+        "depth-6.witness.json": "67fa82d5a50cbc8172de36a4339492c934e09e01c02ac12ede9045fe47510e96"
+      },
+      "model_file": "models/7576e5aff86d7a10b9801d636c6b0d4681ed7e99bc503893935a527527c3cf19.py.txt",
+      "model_sha256": "7576e5aff86d7a10b9801d636c6b0d4681ed7e99bc503893935a527527c3cf19",
+      "expected_program_sha256": "4e9e67f7017d69aaafdaabf083d66ac7d2bd97ee9de8349b7b90913b18d22d55",
+      "expected_metrics": {
+        "action_counts": {
+          "CZPulse": 4,
+          "Load": 6,
+          "Move": 6,
+          "Reset": 1,
+          "Rotation": 20,
+          "Store": 6
+        },
+        "atom_load_count": 44,
+        "atom_steps": 49,
+        "atom_store_count": 44,
+        "cz_gates_per_pulse": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "duration_us": 332.3032957056057,
+        "load_batch_sizes": [
+          5,
+          8,
+          9,
+          9,
+          7,
+          6
+        ],
+        "max_parallel_atoms": 9,
+        "program_duration_us": 332.3032957056057,
+        "transport_duration_us": 300.8632957056057
+      },
+      "lower_bound_case": null
+    },
+    "cyclic6x6": {
+      "origin_directory": "surface-d3-depth-cyclic6",
+      "minimum_move_depth": 6,
+      "witness": "depth-6.witness.json",
+      "files_sha256": {
+        "problem.json": "0ebd046994b6ca2669f4e1d4d410ade88386dbf6979675388328e40afe801ee9",
+        "circuit.qasm3": "343610b6f467bed3e1c3f3832236b44b45528fc9899b666e91c3b20c9417a1c3",
+        "device.json": "4291758dd88d39a15169e3161da6c460244de1f4621510d5ddf9f4c992db6c88",
+        "manifest.json": "13c6734e10c4822b6cef5edc53d16babfe8389d802900779af7a38bdde3f9d07",
+        "manifest.sha256": "76108d9a0445b2861a41d8751fa56d07713fba855b36f3d1324a72e23c27aebf",
+        "status.json": "4abfe1e349310014b668b8e41825d42ad927666eed441cdb7e9cae67845739af",
+        "depth-6.checks.json": "f453392ff69cb5746f12d5ac16c405c6923dc0ecbe12ce20b6278111ea1967ee",
+        "depth-6.json": "09d62f2d8c9ccba086806ba7f6f1d0ede86290af1aa74cc9ee7ce180f152b03b",
+        "depth-6.witness.json": "440d69b02423395833b5987bf901f1f1e2468c73c76a7f9f54c39f355740db87",
+        "transferred-lower-bound.json": "313813ef55fce3e88bb633dfea0082cea9e36d67c8c92c6c67ccd8ecdd13840b"
+      },
+      "model_file": "models/7576e5aff86d7a10b9801d636c6b0d4681ed7e99bc503893935a527527c3cf19.py.txt",
+      "model_sha256": "7576e5aff86d7a10b9801d636c6b0d4681ed7e99bc503893935a527527c3cf19",
+      "expected_program_sha256": "796f78d2025ac84e0a450b736295a0c790984f3f43469cc572fbd856f2ae2abc",
+      "expected_metrics": {
+        "action_counts": {
+          "CZPulse": 4,
+          "Load": 6,
+          "Move": 6,
+          "Reset": 1,
+          "Rotation": 20,
+          "Store": 6
+        },
+        "atom_load_count": 57,
+        "atom_steps": 49,
+        "atom_store_count": 57,
+        "cz_gates_per_pulse": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "duration_us": 323.67190428182636,
+        "load_batch_sizes": [
+          9,
+          6,
+          16,
+          9,
+          9,
+          8
+        ],
+        "max_parallel_atoms": 16,
+        "program_duration_us": 323.67190428182636,
+        "transport_duration_us": 292.23190428182636
+      },
+      "lower_bound_case": "cyclic7x7"
+    },
+    "cyclic5x5": {
+      "origin_directory": "surface-d3-depth-cyclic5",
+      "minimum_move_depth": 6,
+      "witness": "depth-6.witness.json",
+      "files_sha256": {
+        "problem.json": "74e1001e75f58e73bdb06b5cc30d499afc234432ce7a4ddb87a6cc9babd95ad3",
+        "circuit.qasm3": "343610b6f467bed3e1c3f3832236b44b45528fc9899b666e91c3b20c9417a1c3",
+        "device.json": "5bc252b75c6b39d39a2adf165a78a45a950d55613799cdd352d310000a4f145d",
+        "manifest.json": "5a6a09c6a4b02a5cebf98fe9f01187f47a8cbbefaf46674b2c46264b67ea9cdc",
+        "manifest.sha256": "934fc18070fdc49ba6cd3d1ce0ad14228e03471def31c7c5afa11ce4177022ec",
+        "status.json": "287a07c30d6c2eab0793a8d467a41812e6f4b921e5892c566e484e3cebf82c78",
+        "depth-6.checks.json": "f453392ff69cb5746f12d5ac16c405c6923dc0ecbe12ce20b6278111ea1967ee",
+        "depth-6.json": "f58564fd9f9a05c4ba3271b22865078c83d17f8fe842f434781cbd859b4e8e88",
+        "depth-6.witness.json": "1c6515385334423c25dede2d57f06c65771b7619baf407f5403d9e7f8b4c1cfe",
+        "transferred-lower-bound.json": "68e57fc34efdc92bee2d255009d9fbf74e1e2ff0bfd4400a84f2ec1b18a3a339"
+      },
+      "model_file": "models/7576e5aff86d7a10b9801d636c6b0d4681ed7e99bc503893935a527527c3cf19.py.txt",
+      "model_sha256": "7576e5aff86d7a10b9801d636c6b0d4681ed7e99bc503893935a527527c3cf19",
+      "expected_program_sha256": "d95f73303475007516d5afdf96ded3662a1e02358706ccde6df1727f2b09a1ed",
+      "expected_metrics": {
+        "action_counts": {
+          "CZPulse": 4,
+          "Load": 6,
+          "Move": 6,
+          "Reset": 1,
+          "Rotation": 20,
+          "Store": 6
+        },
+        "atom_load_count": 47,
+        "atom_steps": 49,
+        "atom_store_count": 47,
+        "cz_gates_per_pulse": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "duration_us": 342.6845997283474,
+        "load_batch_sizes": [
+          8,
+          8,
+          4,
+          11,
+          10,
+          6
+        ],
+        "max_parallel_atoms": 11,
+        "program_duration_us": 342.6845997283474,
+        "transport_duration_us": 311.2445997283474
+      },
+      "lower_bound_case": "cyclic7x7"
+    },
+    "cyclic4x5": {
+      "origin_directory": "surface-d3-depth-cyclic4x5",
+      "minimum_move_depth": 7,
+      "witness": "depth-7.witness.json",
+      "files_sha256": {
+        "problem.json": "884b40139fd32ae668ec2f0c44cfbc7be95ce16fb137c1015ce7568001f75b2f",
+        "circuit.qasm3": "343610b6f467bed3e1c3f3832236b44b45528fc9899b666e91c3b20c9417a1c3",
+        "device.json": "0f083be9c49ca300a764fce21de0bb1a0d9f8918adf764b7aa877b128dedec7e",
+        "manifest.json": "181da22c58ca1864c6aada51e087235f4f0960e4ed1d710e01e7d8ed3e01cc11",
+        "manifest.sha256": "62a5f162d68023fa65f75c9d2d3ffd7acfb13c6d12a02e0aee7e3464cc92dd39",
+        "status.json": "5dd22ea2d0a61bec7e153cfce66c330b79c513e87e59d4cf49255b22e34a32e6",
+        "depth-6.json": "7d241506e57424c3398bc4a7009988081beb1296cfd1ace2c333f54d41ab13fd",
+        "depth-7.checks.json": "4a62aa6b6db04912fb52169f90c9fcd1696943c14bbcdbe292f66e2766ad3324",
+        "depth-7.json": "a19e7563b3db2b90b9f7d4e546bcc5c98de5ba9db512eb1768873664d9bc37f3",
+        "depth-7.witness.json": "550f0aae85a5b063998e821a42da29d435b9739a62c131b4e9767e4789559286",
+        "transferred-lower-bound.json": "2d8c1ccd8ae0dae699bf7db4fd3807f805ebd526b3f5b015f02f7a5b15aae0a6"
+      },
+      "model_file": "models/7576e5aff86d7a10b9801d636c6b0d4681ed7e99bc503893935a527527c3cf19.py.txt",
+      "model_sha256": "7576e5aff86d7a10b9801d636c6b0d4681ed7e99bc503893935a527527c3cf19",
+      "expected_program_sha256": "ff313ea3b464ae0cdaab419c641ec2e3c4efd371b7d9d8e720b56f091dce9d82",
+      "expected_metrics": {
+        "action_counts": {
+          "CZPulse": 4,
+          "Load": 7,
+          "Move": 7,
+          "Reset": 1,
+          "Rotation": 20,
+          "Store": 7
+        },
+        "atom_load_count": 59,
+        "atom_steps": 52,
+        "atom_store_count": 59,
+        "cz_gates_per_pulse": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "duration_us": 388.4786279232446,
+        "load_batch_sizes": [
+          12,
+          10,
+          8,
+          7,
+          5,
+          11,
+          6
+        ],
+        "max_parallel_atoms": 12,
+        "program_duration_us": 388.4786279232446,
+        "transport_duration_us": 357.0386279232446
+      },
+      "lower_bound_case": "cyclic7x7"
+    }
+  }
+}

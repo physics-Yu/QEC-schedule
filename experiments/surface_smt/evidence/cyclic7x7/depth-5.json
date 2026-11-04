@@ -1,0 +1,9 @@
+{
+  "depth": 5,
+  "model_build_s": 1.092775709927082,
+  "solve_s": 69.32932050898671,
+  "solver": "4.16.0",
+  "source_and_inputs_verified": true,
+  "status": "unsat",
+  "worker_wall_s": 70.43030032888055
+}

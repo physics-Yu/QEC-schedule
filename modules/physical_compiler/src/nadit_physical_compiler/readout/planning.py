@@ -2,13 +2,13 @@
 
 from dataclasses import dataclass
 from itertools import product
-from math import floor, hypot
+from math import hypot
 
 from ..contracts import GateLayer
 from ..device import Device, Position, Region
 from ..physical_ir import PhysicalDAG
-from ..placement.pair import _intersection
-from ..state import COORDINATE_TOLERANCE, AtomLayout, SLMHolder
+from ..placement.pair import _axis_options, _intersection
+from ..state import AtomLayout, SLMHolder
 from ..transport.occupancy import Occupancy
 from ..transport.rules import MoveRequest, TransportRules, rules_for
 
@@ -62,6 +62,7 @@ def plan_readout(
         ),
         max(aod.min_spacing, capability.min_spacing_um),
         capability.max_atoms,
+        {atom.id: atom.position for atom in layout.atoms},
     )
     pending = set(operations)
     batches = []
@@ -82,6 +83,7 @@ class _Selector:
     regions: tuple[Region, ...]
     spacing: float
     max_atoms: int | None
+    positions: dict[int, Position]
 
     def select(self, pending: set[int]) -> tuple[MoveRequest, ...]:
         for seed in self.sources:
@@ -140,17 +142,24 @@ class _Selector:
         source, _, bindings = self.rules.frames(identities)
         options = []
         for region in self.regions:
+            obstacles = tuple(
+                point
+                for atom, point in self.positions.items()
+                if atom not in selected and region.contains(point)
+            )
             xs = _axis_options(
                 tuple(c.coordinate for c in source.columns),
                 region.x_min,
                 region.x_max,
                 self.spacing,
+                tuple(point.x for point in obstacles),
             )
             ys = _axis_options(
                 tuple(r.coordinate for r in source.rows),
                 region.y_min,
                 region.y_max,
                 self.spacing,
+                tuple(point.y for point in obstacles),
             )
             for columns, rows in product(xs, ys):
                 if self.occupied.at_grid(columns, rows) - selected:
@@ -168,36 +177,3 @@ class _Selector:
                     )
                     options.append((distance, columns, rows, moves))
         return min(options, key=lambda item: item[:3])[3] if options else None
-
-
-def _axis_options(
-    source: tuple[float, ...], low: float, high: float, spacing: float
-) -> tuple[tuple[float, ...], ...]:
-    n = len(source)
-    if (n - 1) * spacing > high - low + COORDINATE_TOLERANCE:
-        return ()
-    nearest: list[float] = []
-    for i, value in enumerate(source):
-        lower = nearest[-1] + spacing if nearest else low
-        nearest.append(max(lower, min(value, high - (n - i - 1) * spacing)))
-    return tuple(
-        dict.fromkeys(
-            (
-                tuple(nearest),
-                tuple(high - (n - i - 1) * spacing for i in range(n)),
-                *(
-                    tuple(low + (shift + i) * spacing for i in range(n))
-                    for shift in range(
-                        1
-                        + max(
-                            0,
-                            floor(
-                                (high - low - (n - 1) * spacing + COORDINATE_TOLERANCE)
-                                / spacing
-                            ),
-                        )
-                    )
-                ),
-            )
-        )
-    )

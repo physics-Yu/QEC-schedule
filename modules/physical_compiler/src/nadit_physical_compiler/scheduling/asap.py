@@ -1,7 +1,7 @@
 """Deterministic ready-layer selection with configurable CZ capacity."""
 
 from ..contracts import GateLayer
-from ..physical_ir import PhysicalDAG
+from ..physical_ir import LOCAL_UNITARY_GATES, PhysicalDAG
 
 
 class ReadyScheduler:
@@ -40,26 +40,36 @@ class ReadyScheduler:
             return GateLayer(())
         ordered = sorted(ready)
         first = ordered[0]
-        if dag.nodes[first].name == "cz":
+        if dag.nodes[first].name in ("cz", "cp"):
             first = next(
                 (
                     index
                     for index in ordered
-                    if dag.nodes[index].name in ("rx", "ry", "rz", "u", "global_ry")
+                    if dag.nodes[index].name in (*LOCAL_UNITARY_GATES, "global_ry")
                 ),
                 first,
             )
         name = dag.nodes[first].name
-        if name not in ("rx", "ry", "rz", "u", "reset", "cz", "measure"):
+        if name not in (
+            *LOCAL_UNITARY_GATES,
+            "reset",
+            "cz",
+            "cp",
+            "measure",
+        ):
             return GateLayer((ordered[0],))
-        capacity = self.max_cz_gates if name == "cz" else len(ordered)
+        capacity = self.max_cz_gates if name in ("cz", "cp") else len(ordered)
         if name == "measure" and self.max_measurements is not None:
             capacity = self.max_measurements
         selected: list[int] = []
         occupied: set[int] = set()
         for operation_id in ordered:
             operation = dag.nodes[operation_id]
-            if operation.name == name and occupied.isdisjoint(operation.qubits):
+            if (
+                operation.name == name
+                and occupied.isdisjoint(operation.qubits)
+                and (name != "cp" or operation.params == dag.nodes[first].params)
+            ):
                 selected.append(operation_id)
                 occupied.update(operation.qubits)
                 if len(selected) == capacity:

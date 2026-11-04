@@ -96,9 +96,8 @@ the loss panels are populated.
    `src/nadit_physical_compiler/visualization/web/` with the files in `web/`.
    The other JS modules need no change.
 2. `write_html` needs no change: the template placeholders and asset order are identical.
-3. Run the existing suite, including `tests/web/*.test.cjs`
-   (`replay-model`, `loss-model`, `analysis-model`, `dashboard`) and
-   `tests/test_visualization_noise.py`.
+3. Run `node --test tests/web/viewer-controls.test.cjs` for zoom behavior
+   and inspect playback on one of the reference traces.
 4. Add a browser check for presentation mode (enter with F, controls hidden
    after idle, Esc restores layout and re-fits) and for the step strip colour
    of a CZ step.

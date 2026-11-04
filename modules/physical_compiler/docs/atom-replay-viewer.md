@@ -236,12 +236,11 @@ trace. The viewer exports recorded validation metadata when present; viewing
 a trace does not run validation. Its boundary observations remain the focused
 SLM/AOD intersection checks described above.
 
-Python tests reconstruct every transport boundary from sparse patches and check
-parallel durations, holder changes, coverage, recorded results, and observations.
-The DOM-independent browser model is checked separately:
+The zoom regression checks that atom and trap radii follow scene geometry
+while label sizes stay fixed. From the physical compiler module run
 
 ```text
-node --test tests/web/*.test.cjs
+node --test tests/web/viewer-controls.test.cjs
 ```
 
 The initial release has 1,112 passing Python tests and 10 passing Node tests.

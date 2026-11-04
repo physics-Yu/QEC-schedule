@@ -3,6 +3,9 @@
 from dataclasses import dataclass
 from math import isfinite
 
+NAMED_LOCAL_GATES = ("h", "t", "tdg", "p")
+LOCAL_UNITARY_GATES = ("rx", "ry", "rz", "u", *NAMED_LOCAL_GATES)
+
 
 @dataclass(frozen=True, slots=True)
 class ResultRef:

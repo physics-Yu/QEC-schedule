@@ -88,7 +88,10 @@ class HeuristicPlacer:
             ValueError: If capacity, safe spectator storage, compatible anchors,
                 or a complete gate/storage assignment is unavailable.
         """
-        if not layer.operation_ids or dag.nodes[layer.operation_ids[0]].name != "cz":
+        if not layer.operation_ids or dag.nodes[layer.operation_ids[0]].name not in (
+            "cz",
+            "cp",
+        ):
             return PairPlacer(self.aod_id).place(
                 dag,
                 layer,

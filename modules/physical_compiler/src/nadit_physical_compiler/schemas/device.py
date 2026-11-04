@@ -51,6 +51,7 @@ def device_schema() -> dict[str, Any]:
             "aods": array(obj(AOD_PROPERTIES, ("id", "workspace", "min_spacing"))),
             "timing": TIMING,
             "cz": nullable(CZ),
+            "cphase": nullable(CZ),
             "local": nullable(LOCAL),
             "readout": nullable(READOUT),
             "global_control": nullable(GLOBAL),

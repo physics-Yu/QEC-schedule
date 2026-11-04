@@ -89,6 +89,7 @@ def parameter_schema() -> dict[str, Any]:
             "aod": obj({**AOD_PROPERTIES, "margin": NONNEGATIVE}),
             "timing": {"oneOf": [{"enum": ["linear", "paper"]}, TIMING]},
             "cz": CZ,
+            "cphase": CZ,
             "local": nullable(LOCAL),
             "global_control": nullable(GLOBAL),
             "shared_zones": array(fixed([STRING, STRING])),

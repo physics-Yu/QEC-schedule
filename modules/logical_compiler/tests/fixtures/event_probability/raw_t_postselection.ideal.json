@@ -1,0 +1,57 @@
+{
+  "branches": [
+    {
+      "key": "deliver",
+      "steps": [],
+      "transition": "deliver"
+    },
+    {
+      "key": "retry",
+      "steps": [],
+      "transition": "retry"
+    }
+  ],
+  "model": {
+    "assumptions": [
+      "Ideal raw T|+> center injection and complete ordinary SE rounds",
+      "Four first-boundary and every adjacent-round parity are zero",
+      "No physical noise or loss; no intermediate Pauli correction",
+      "Acceptance does not resolve the random first-round bulk signs"
+    ],
+    "evidence": {
+      "calculation": "Ideal deterministic stabilizer boundary and repeated parities",
+      "detector_count": 12,
+      "logical_error_rate_claimed": false,
+      "postselection_scope": "first_boundary_and_adjacent_round_parities",
+      "source_profile_sha256": "ad055d80cd9220ad19ca671c92f14ea4f5005fd73aba4bb7308c211bd5748a6c",
+      "terminal_boundary": "open_after_last_se"
+    },
+    "id": "raw_t_postselection.ideal.v1",
+    "kind": "ideal_exact",
+    "parameters": {
+      "extra_rounds": 1
+    }
+  },
+  "outcomes": [
+    {
+      "branch_id": "deliver",
+      "key": "accepted",
+      "probability": 1.0,
+      "values": {
+        "accepted": true
+      }
+    },
+    {
+      "branch_id": "retry",
+      "key": "rejected",
+      "probability": 0.0,
+      "values": {
+        "accepted": false
+      }
+    }
+  ],
+  "port_id": "rotated_surface_d3.raw_t_postselection.acceptance",
+  "protocol_id": "rotated_surface_d3.raw_t_postselection",
+  "protocol_version": "1",
+  "schema": "nadit.event_probability/1"
+}

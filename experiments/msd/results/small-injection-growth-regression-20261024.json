@@ -1,0 +1,11 @@
+{
+  "selected_scope": "all modules/codes, experiments/msd/tests, logical fast_acceptance/fast_entry/fast_experiment_review",
+  "tests": 909,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "source_tree_sha256": "272582385f4456d9cc66a049ab67a5534e788264983d8e3d50560dfd7f10278f",
+  "mypy": "10 changed runtime files passed",
+  "ruff": "format and E4,E7,E9,F,I,UP,B passed",
+  "baseline": "61 focused tests passed before implementation"
+}

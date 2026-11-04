@@ -1,0 +1,385 @@
+{
+  "runs": 81,
+  "rejected": 39,
+  "configurations": [
+    {
+      "architecture": "shared",
+      "motion": "flexible",
+      "readout": "batch",
+      "compiler": "nonzoned",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    },
+    {
+      "architecture": "shared",
+      "motion": "flexible",
+      "readout": "batch",
+      "compiler": "ss-qec",
+      "admitted": [],
+      "rejected": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "reasons": [
+        "cannot infer storage/pair arrays: 'storage'"
+      ]
+    },
+    {
+      "architecture": "shared",
+      "motion": "flexible",
+      "readout": "batch",
+      "compiler": "ss-qec-reuse",
+      "admitted": [],
+      "rejected": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "reasons": [
+        "cannot infer storage/pair arrays: 'storage'"
+      ]
+    },
+    {
+      "architecture": "shared",
+      "motion": "flexible",
+      "readout": "single<=1",
+      "compiler": "nonzoned",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    },
+    {
+      "architecture": "shared",
+      "motion": "flexible",
+      "readout": "single<=1",
+      "compiler": "ss-qec",
+      "admitted": [],
+      "rejected": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "reasons": [
+        "cannot infer storage/pair arrays: 'storage'"
+      ]
+    },
+    {
+      "architecture": "shared",
+      "motion": "flexible",
+      "readout": "single<=1",
+      "compiler": "ss-qec-reuse",
+      "admitted": [],
+      "rejected": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "reasons": [
+        "cannot infer storage/pair arrays: 'storage'"
+      ]
+    },
+    {
+      "architecture": "shared",
+      "motion": "rigid",
+      "readout": "single<=1",
+      "compiler": "nonzoned",
+      "admitted": [],
+      "rejected": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "reasons": [
+        "requires flexible AOD motion"
+      ]
+    },
+    {
+      "architecture": "shared",
+      "motion": "rigid",
+      "readout": "single<=1",
+      "compiler": "ss-qec",
+      "admitted": [],
+      "rejected": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "reasons": [
+        "cannot infer storage/pair arrays: 'storage'"
+      ]
+    },
+    {
+      "architecture": "shared",
+      "motion": "rigid",
+      "readout": "single<=1",
+      "compiler": "ss-qec-reuse",
+      "admitted": [],
+      "rejected": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "reasons": [
+        "cannot infer storage/pair arrays: 'storage'"
+      ]
+    },
+    {
+      "architecture": "zoned-1row",
+      "motion": "flexible",
+      "readout": "batch",
+      "compiler": "nonzoned",
+      "admitted": [],
+      "rejected": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "reasons": [
+        "global shared-array pulses require cz.allow_spectators=true"
+      ]
+    },
+    {
+      "architecture": "zoned-1row",
+      "motion": "flexible",
+      "readout": "batch",
+      "compiler": "ss-qec",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    },
+    {
+      "architecture": "zoned-1row",
+      "motion": "flexible",
+      "readout": "batch",
+      "compiler": "ss-qec-reuse",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    },
+    {
+      "architecture": "zoned-1row",
+      "motion": "flexible",
+      "readout": "single<=1",
+      "compiler": "nonzoned",
+      "admitted": [],
+      "rejected": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "reasons": [
+        "global shared-array pulses require cz.allow_spectators=true"
+      ]
+    },
+    {
+      "architecture": "zoned-1row",
+      "motion": "flexible",
+      "readout": "single<=1",
+      "compiler": "ss-qec",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    },
+    {
+      "architecture": "zoned-1row",
+      "motion": "flexible",
+      "readout": "single<=1",
+      "compiler": "ss-qec-reuse",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    },
+    {
+      "architecture": "zoned-1row",
+      "motion": "rigid",
+      "readout": "single<=1",
+      "compiler": "nonzoned",
+      "admitted": [],
+      "rejected": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "reasons": [
+        "global shared-array pulses require cz.allow_spectators=true",
+        "requires flexible AOD motion"
+      ]
+    },
+    {
+      "architecture": "zoned-1row",
+      "motion": "rigid",
+      "readout": "single<=1",
+      "compiler": "ss-qec",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    },
+    {
+      "architecture": "zoned-1row",
+      "motion": "rigid",
+      "readout": "single<=1",
+      "compiler": "ss-qec-reuse",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    },
+    {
+      "architecture": "zoned-3row",
+      "motion": "flexible",
+      "readout": "batch",
+      "compiler": "nonzoned",
+      "admitted": [],
+      "rejected": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "reasons": [
+        "global shared-array pulses require cz.allow_spectators=true"
+      ]
+    },
+    {
+      "architecture": "zoned-3row",
+      "motion": "flexible",
+      "readout": "batch",
+      "compiler": "ss-qec",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    },
+    {
+      "architecture": "zoned-3row",
+      "motion": "flexible",
+      "readout": "batch",
+      "compiler": "ss-qec-reuse",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    },
+    {
+      "architecture": "zoned-3row",
+      "motion": "flexible",
+      "readout": "single<=1",
+      "compiler": "nonzoned",
+      "admitted": [],
+      "rejected": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "reasons": [
+        "global shared-array pulses require cz.allow_spectators=true"
+      ]
+    },
+    {
+      "architecture": "zoned-3row",
+      "motion": "flexible",
+      "readout": "single<=1",
+      "compiler": "ss-qec",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    },
+    {
+      "architecture": "zoned-3row",
+      "motion": "flexible",
+      "readout": "single<=1",
+      "compiler": "ss-qec-reuse",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    },
+    {
+      "architecture": "zoned-3row",
+      "motion": "rigid",
+      "readout": "single<=1",
+      "compiler": "nonzoned",
+      "admitted": [],
+      "rejected": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "reasons": [
+        "global shared-array pulses require cz.allow_spectators=true",
+        "requires flexible AOD motion"
+      ]
+    },
+    {
+      "architecture": "zoned-3row",
+      "motion": "rigid",
+      "readout": "single<=1",
+      "compiler": "ss-qec",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    },
+    {
+      "architecture": "zoned-3row",
+      "motion": "rigid",
+      "readout": "single<=1",
+      "compiler": "ss-qec-reuse",
+      "admitted": [
+        "d3_r1",
+        "d3_r2",
+        "d3_r3"
+      ],
+      "rejected": [],
+      "reasons": []
+    }
+  ]
+}

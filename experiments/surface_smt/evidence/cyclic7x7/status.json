@@ -1,0 +1,83 @@
+{
+  "attempts": [
+    {
+      "depth": 4,
+      "model_build_s": 0.8981022387742996,
+      "solve_s": 0.2714798226952553,
+      "solver": "4.16.0",
+      "source_and_inputs_verified": true,
+      "status": "unsat",
+      "worker_wall_s": 1.1767038404941559
+    },
+    {
+      "depth": 5,
+      "model_build_s": 1.092775709927082,
+      "solve_s": 69.32932050898671,
+      "solver": "4.16.0",
+      "source_and_inputs_verified": true,
+      "status": "unsat",
+      "worker_wall_s": 70.43030032888055
+    },
+    {
+      "depth": 6,
+      "metrics": {
+        "action_counts": {
+          "CZPulse": 4,
+          "Load": 6,
+          "Move": 6,
+          "Reset": 1,
+          "Rotation": 20,
+          "Store": 6
+        },
+        "atom_load_count": 44,
+        "atom_steps": 49,
+        "atom_store_count": 44,
+        "cz_gates_per_pulse": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "duration_us": 332.3032957056057,
+        "load_batch_sizes": [
+          5,
+          8,
+          9,
+          9,
+          7,
+          6
+        ],
+        "max_parallel_atoms": 9,
+        "program_duration_us": 332.3032957056057,
+        "transport_duration_us": 300.8632957056057
+      },
+      "model_build_s": 1.2906317077577114,
+      "solve_s": 1.3759884964674711,
+      "solver": "4.16.0",
+      "source_and_inputs_verified": true,
+      "status": "sat",
+      "validated": true,
+      "worker_wall_s": 2.7796691190451384
+    }
+  ],
+  "best_feasible_depth": 6,
+  "final_home": true,
+  "manifest_sha256": "a072d1a57ab1a48a0de604181e6cdfcacaf94cb51aaa126be5ba0b0e9bf9da7e",
+  "minimum_move_depth": 6,
+  "output_hashes": {
+    "depth-4.json": "c9078fa0d29c85fe33829caceb4df188e622d2ca8dc8424575458870f821bb4d",
+    "depth-4.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "depth-5.json": "1cc3fce93c5b01aba36261164dfc42728fdf19f8a61fce21c82c39e6bf5597c9",
+    "depth-5.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "depth-6.checks.json": "f453392ff69cb5746f12d5ac16c405c6923dc0ecbe12ce20b6278111ea1967ee",
+    "depth-6.json": "63a9ce492d9eef70bbd6d2689a3d594c521f7a9edd4d2b505fcf44f352011c17",
+    "depth-6.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "depth-6.result.json": "d4522e47dcb45e7e11b6429d10e7d56bcdc8993ae47675b900fa3b8f2ef7a2f9",
+    "depth-6.witness.json": "67fa82d5a50cbc8172de36a4339492c934e09e01c02ac12ede9045fe47510e96"
+  },
+  "readout_included": false,
+  "scope": "Fixed four N/Z matchings; free atom assignment to a 7x7 double-trap bank; initially isolated atoms; full-field CZ; flexible AOD; unlimited line capacity; all endpoints SLM; final home required: True.",
+  "source_and_inputs_verified": true,
+  "status": "optimal_in_declared_model",
+  "wall_s": 76.2040392626077
+}

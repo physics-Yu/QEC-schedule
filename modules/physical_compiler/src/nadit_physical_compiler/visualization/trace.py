@@ -1,7 +1,7 @@
 """Export existing Atom IR and replay boundaries as an inspectable trace."""
 
 from bisect import bisect_left
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from itertools import combinations
 from math import hypot
 from typing import Any
@@ -10,6 +10,7 @@ from ..atom_ir import (
     AtomAction,
     AtomProgram,
     AtomStep,
+    CPhasePulse,
     CZPulse,
     GlobalRY,
     Load,
@@ -31,6 +32,7 @@ from ..state import (
     AtomState,
     SLMHolder,
 )
+from .qec import build_overlay
 
 type _Record = dict[str, Any]
 
@@ -44,6 +46,7 @@ def build_trace(
     description: str = "",
     measurements: Sequence[MeasurementRecord] = (),
     operations: Sequence[CompiledOperation] = (),
+    qec: Mapping[str, Any] | None = None,
 ) -> _Record:
     """Build a JSON-compatible trace without compiling or sampling results.
 
@@ -55,6 +58,7 @@ def build_trace(
         description: Optional explanation of the compiled case.
         measurements: Already sampled results and their availability times.
         operations: Compiler decisions and native operation intervals.
+        qec: Optional explicit nadit.qec-overlay/1 stabilizer annotation.
 
     Returns:
         Version-one trace with sparse completion patches and endpoint
@@ -97,7 +101,7 @@ def build_trace(
         action_index += len(actions)
         issues.extend(_observations(exit_state, step_index, start + step.duration_us))
         layout = exit_state
-    return {
+    record = {
         "schema_version": 1,
         "title": title,
         "description": description,
@@ -132,6 +136,9 @@ def build_trace(
         "issues": issues,
         "atom_ir": program.to_text(),
     }
+    if qec is not None:
+        record["qec"] = build_overlay(qec, entry_state)
+    return record
 
 
 def _bounds(region: Region) -> list[float]:
@@ -206,7 +213,7 @@ def _action_atoms(action: AtomAction, layout: AtomLayout) -> tuple[int, ...]:
         return action.atoms
     if isinstance(action, Measure):
         return tuple(atom for atom, _ in action.results)
-    if isinstance(action, CZPulse | GlobalRY):
+    if isinstance(action, CPhasePulse | CZPulse | GlobalRY):
         coverage = action.coverage
         if isinstance(coverage, tuple):
             return coverage
@@ -245,7 +252,7 @@ def _action(
         "parameters": _parameters(action),
         "coverage": _coverage(action, atoms),
         "pairs": _pairs(atoms, entry_atoms, device)
-        if isinstance(action, CZPulse)
+        if isinstance(action, CPhasePulse | CZPulse)
         else [],
         "patch": patch,
     }
@@ -265,6 +272,8 @@ def _parameters(action: AtomAction) -> _Record:
                 for atom, position in action.targets
             ],
         }
+    if isinstance(action, CPhasePulse):
+        return {"channel": action.channel, "angle": action.angle}
     if isinstance(action, Rotation):
         return {"channel": action.channel, "axis": action.axis, "angle": action.angle}
     if isinstance(action, LocalU):
@@ -291,7 +300,7 @@ def _parameters(action: AtomAction) -> _Record:
 
 
 def _coverage(action: AtomAction, atoms: tuple[int, ...]) -> _Record | None:
-    if not isinstance(action, CZPulse | GlobalRY):
+    if not isinstance(action, CPhasePulse | CZPulse | GlobalRY):
         return None
     coverage = action.coverage
     regions = (

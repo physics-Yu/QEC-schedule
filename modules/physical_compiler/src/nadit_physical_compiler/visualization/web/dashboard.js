@@ -4,7 +4,7 @@
   const $ = id => document.getElementById(id);
   const fmt = (x, digits=3) => Number(x).toLocaleString('en-US', {maximumFractionDigits:digits});
   const pct = x => fmt(x * 100, 4) + '%';
-  const palette = {Load:'#57a7a1', Move:'#188b86', Store:'#87b9b2', CZPulse:'#aa72b7', Rotation:'#cba056', GlobalRY:'#cba056', LocalU:'#cba056', Measure:'#ca793d', Reset:'#8797ad', Wait:'#b8c3cb'};
+  const palette = {Load:'#57a7a1', Move:'#188b86', Store:'#87b9b2', CZPulse:'#aa72b7', CPhasePulse:'#8853ab', Rotation:'#cba056', GlobalRY:'#cba056', LocalU:'#cba056', Measure:'#ca793d', Reset:'#8797ad', Wait:'#b8c3cb'};
   class Dashboard {
     constructor(seek, select) {
       this.seek = seek; this.select = select; this.time = 0;

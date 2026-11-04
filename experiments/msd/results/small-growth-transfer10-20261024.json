@@ -1,0 +1,631 @@
+{
+  "schema": "nadit.msd.small_injection_growth/1",
+  "plan": {
+    "schema": "nadit.msd.small_injection_growth_plan/1",
+    "distances": [
+      3,
+      5,
+      7
+    ],
+    "pipelines": 1,
+    "factory_index": 0,
+    "patch_role": "R",
+    "injection_rounds": 3,
+    "growth_rounds": "target_distance_including_deformation; zero_at_d3",
+    "max_world_atoms": 1000,
+    "noise_params": "modules/physical_compiler/cost_params/noise_illustrative.json",
+    "estimator": "exact_on_20_injection_detectors",
+    "hardware_timing": "msd_standard_2_load_store_10us",
+    "scope": "single_preparation_conditional_resource_cost; no_output_LER_claim"
+  },
+  "source_tree_sha256": "4b5c39f4a0f0d81a02f09ad59fbda724b4309ce84366e37ab78eb96f0c8312fc",
+  "noise_sha256": "c9e3c635d7f9f53cbbdaa7c58cd4518a9013d964abad42f4e232f71fcd8ceaff",
+  "cases": [
+    {
+      "distance": 3,
+      "protocol": {
+        "protocol": "small_injection_then_growth",
+        "version": "3",
+        "target_distance": 3,
+        "injection_distance": 3,
+        "injection_rounds": 3,
+        "growth_rounds": 0,
+        "postselection_scope": "d3_injection_only",
+        "growth_decoder": "phenomenological_mwpm_open_boundary/1"
+      },
+      "preparation_sha256": "af4d956fdeff27c661aa70718e5a16d2234cf75411aabddf3c5de80b0156c8cb",
+      "injection_active_atoms": 17,
+      "target_atoms": 17,
+      "world_atoms": 102,
+      "injection_detectors": 20,
+      "probabilities": {
+        "zero": {
+          "acceptance": 1.0,
+          "content_sha256": "3d1706167b6f9f66923238e1c3d2e55cf93a3c4239026592f3081c8aa9bd4e7d"
+        },
+        "readout": {
+          "acceptance": 0.9762739905004649,
+          "content_sha256": "f0d3890decc7152072325a9aee68ba5d1c1e2a819dfe8fb0becfefb0c8e4f696"
+        },
+        "illustrative": {
+          "acceptance": 0.7833908767519296,
+          "content_sha256": "a3caa9ca481cbcfa5c17f27b3f60ec6fa158c2b5d0c5ef94afdb73523b4e1ae4"
+        }
+      },
+      "injection_metrics": {
+        "execution_duration_us": 2374.4524714035933,
+        "atom_count": 102,
+        "atom_time_us": 242194.15208316653,
+        "atom_idle_us": 227882.11320807543,
+        "atom_busy_us": 14312.038875091006,
+        "movement_distance_atom_um": 6246.725843520889,
+        "transport_elapsed_us": 1985.4524714035942,
+        "transport_action_sum_us": 1985.4524714035942,
+        "trajectory_bbox_um": [
+          0.0,
+          -60.0,
+          562.0,
+          65.0
+        ],
+        "trajectory_bbox_area_um2": 70250.0,
+        "exposure_by_action": {
+          "Reset": {
+            "action_count": 33,
+            "atom_events": 33,
+            "atom_us": 165.0
+          },
+          "Rotation": {
+            "action_count": 347,
+            "atom_events": 347,
+            "atom_us": 347.0
+          },
+          "Load": {
+            "action_count": 39,
+            "atom_events": 168,
+            "atom_us": 1680.0
+          },
+          "Move": {
+            "action_count": 42,
+            "atom_events": 192,
+            "atom_us": 7428.038875091004
+          },
+          "Store": {
+            "action_count": 39,
+            "atom_events": 168,
+            "atom_us": 1680.0
+          },
+          "CZPulse": {
+            "action_count": 12,
+            "atom_events": 1224,
+            "atom_us": 612.0
+          },
+          "Measure": {
+            "action_count": 3,
+            "atom_events": 24,
+            "atom_us": 2400.0
+          }
+        },
+        "accepted_outputs": null,
+        "accepted_output_throughput_per_s": null,
+        "logical_error_probability": null,
+        "physical_validation_ok": true
+      },
+      "growth_metrics": null,
+      "raw_unpostselected_metrics": {
+        "execution_duration_us": 796.8174904678644,
+        "atom_count": 102,
+        "atom_time_us": 81275.38402772218,
+        "atom_idle_us": 76467.37106935849,
+        "atom_busy_us": 4808.012958363667,
+        "movement_distance_atom_um": 2082.2419478402962,
+        "transport_elapsed_us": 661.8174904678643,
+        "transport_action_sum_us": 661.8174904678643,
+        "trajectory_bbox_um": [
+          0.0,
+          -60.0,
+          562.0,
+          65.0
+        ],
+        "trajectory_bbox_area_um2": 70250.0,
+        "exposure_by_action": {
+          "Reset": {
+            "action_count": 17,
+            "atom_events": 17,
+            "atom_us": 85.0
+          },
+          "Rotation": {
+            "action_count": 123,
+            "atom_events": 123,
+            "atom_us": 123.0
+          },
+          "Load": {
+            "action_count": 13,
+            "atom_events": 56,
+            "atom_us": 560.0
+          },
+          "Move": {
+            "action_count": 14,
+            "atom_events": 64,
+            "atom_us": 2476.0129583636676
+          },
+          "Store": {
+            "action_count": 13,
+            "atom_events": 56,
+            "atom_us": 560.0
+          },
+          "CZPulse": {
+            "action_count": 4,
+            "atom_events": 408,
+            "atom_us": 204.0
+          },
+          "Measure": {
+            "action_count": 1,
+            "atom_events": 8,
+            "atom_us": 800.0
+          }
+        },
+        "accepted_outputs": null,
+        "accepted_output_throughput_per_s": null,
+        "logical_error_probability": null,
+        "physical_validation_ok": true
+      },
+      "expected_per_output": {
+        "execution_duration_us": 3030.9932651353724,
+        "atom_time_us": 309161.313043808,
+        "atom_idle_us": 290891.9671785214,
+        "atom_busy_us": 18269.34586528647,
+        "movement_distance_atom_um": 7973.957865607096,
+        "transport_elapsed_us": 2534.4339975410667
+      },
+      "expected_time_formula": "injection_time / injection_acceptance + growth_time",
+      "conditional_output_rate_per_s": 329.92485054411276,
+      "expected_injection_attempts": 1.276501973250146,
+      "growth_quality_estimated": false,
+      "output_frame": "caller must decode and retain/apply",
+      "branch_evidence": "unobserved physical cost references; no sampled acceptance or hardware execution",
+      "growth_source_sha256": "4e60a0deda7ee9d829904e581ebb31ee4b4a9ae1797281044a27ed0f698a9420"
+    },
+    {
+      "distance": 5,
+      "protocol": {
+        "protocol": "small_injection_then_growth",
+        "version": "3",
+        "target_distance": 5,
+        "injection_distance": 3,
+        "injection_rounds": 3,
+        "growth_rounds": 5,
+        "postselection_scope": "d3_injection_only",
+        "growth_decoder": "phenomenological_mwpm_open_boundary/1"
+      },
+      "preparation_sha256": "ea0479a34539374f72cdecb2b4c9a2f9e0323acd9bb30716f28abecb89fe6aff",
+      "injection_active_atoms": 17,
+      "target_atoms": 49,
+      "world_atoms": 294,
+      "injection_detectors": 20,
+      "probabilities": {
+        "zero": {
+          "acceptance": 1.0,
+          "content_sha256": "d13de1c536704c92e5d8f89c6ed07b75ac20334db9998ebe7386a8a4731b8e09"
+        },
+        "readout": {
+          "acceptance": 0.9762739905004649,
+          "content_sha256": "2179d75c48b576ccf9210553eba81f40ba842b1777a0df4b4599c1873cd63ed2"
+        },
+        "illustrative": {
+          "acceptance": 0.7791076605693193,
+          "content_sha256": "39b535d303eff990aedddda030f9012b94076843c957eaddc7ce58e2ecc84cb6"
+        }
+      },
+      "injection_metrics": {
+        "execution_duration_us": 4601.8984636253535,
+        "atom_count": 294,
+        "atom_time_us": 1352958.1483058538,
+        "atom_idle_us": 1338077.2239255013,
+        "atom_busy_us": 14880.924380352682,
+        "movement_distance_atom_um": 6062.954832997517,
+        "transport_elapsed_us": 3612.898463625351,
+        "transport_action_sum_us": 3612.898463625351,
+        "trajectory_bbox_um": [
+          0.0,
+          -100.0,
+          800.0,
+          60.0
+        ],
+        "trajectory_bbox_area_um2": 128000.0,
+        "exposure_by_action": {
+          "Reset": {
+            "action_count": 33,
+            "atom_events": 33,
+            "atom_us": 165.0
+          },
+          "Rotation": {
+            "action_count": 347,
+            "atom_events": 347,
+            "atom_us": 347.0
+          },
+          "Load": {
+            "action_count": 57,
+            "atom_events": 168,
+            "atom_us": 1680.0
+          },
+          "Move": {
+            "action_count": 66,
+            "atom_events": 192,
+            "atom_us": 6844.9243803526915
+          },
+          "Store": {
+            "action_count": 57,
+            "atom_events": 168,
+            "atom_us": 1680.0
+          },
+          "CZPulse": {
+            "action_count": 12,
+            "atom_events": 3528,
+            "atom_us": 1764.0
+          },
+          "Measure": {
+            "action_count": 9,
+            "atom_events": 24,
+            "atom_us": 2400.0
+          }
+        },
+        "accepted_outputs": null,
+        "accepted_output_throughput_per_s": null,
+        "logical_error_probability": null,
+        "physical_validation_ok": true
+      },
+      "growth_metrics": {
+        "execution_duration_us": 4351.087452339322,
+        "atom_count": 294,
+        "atom_time_us": 1279219.7109877607,
+        "atom_idle_us": 1195406.1616816996,
+        "atom_busy_us": 83813.54930606108,
+        "movement_distance_atom_um": 38370.69913067161,
+        "transport_elapsed_us": 3709.0874523393186,
+        "transport_action_sum_us": 3709.0874523393186,
+        "trajectory_bbox_um": [
+          0.0,
+          -100.0,
+          802.0,
+          75.0
+        ],
+        "trajectory_bbox_area_um2": 140350.0,
+        "exposure_by_action": {
+          "Reset": {
+            "action_count": 136,
+            "atom_events": 136,
+            "atom_us": 680.0
+          },
+          "Rotation": {
+            "action_count": 1860,
+            "atom_events": 1860,
+            "atom_us": 1860.0
+          },
+          "Load": {
+            "action_count": 65,
+            "atom_events": 920,
+            "atom_us": 9200.0
+          },
+          "Move": {
+            "action_count": 70,
+            "atom_events": 1040,
+            "atom_us": 47933.549306061184
+          },
+          "Store": {
+            "action_count": 65,
+            "atom_events": 920,
+            "atom_us": 9200.0
+          },
+          "CZPulse": {
+            "action_count": 20,
+            "atom_events": 5880,
+            "atom_us": 2940.0
+          },
+          "Measure": {
+            "action_count": 5,
+            "atom_events": 120,
+            "atom_us": 12000.0
+          }
+        },
+        "accepted_outputs": null,
+        "accepted_output_throughput_per_s": null,
+        "logical_error_probability": null,
+        "physical_validation_ok": true
+      },
+      "raw_unpostselected_metrics": {
+        "execution_duration_us": 5890.38694021444,
+        "atom_count": 294,
+        "atom_time_us": 1731773.7604230454,
+        "atom_idle_us": 1642962.569656867,
+        "atom_busy_us": 88811.19076617865,
+        "movement_distance_atom_um": 40391.684075004116,
+        "transport_elapsed_us": 4913.3869402144355,
+        "transport_action_sum_us": 4913.3869402144355,
+        "trajectory_bbox_um": [
+          0.0,
+          -100.0,
+          802.0,
+          75.0
+        ],
+        "trajectory_bbox_area_um2": 140350.0,
+        "exposure_by_action": {
+          "Reset": {
+            "action_count": 153,
+            "atom_events": 153,
+            "atom_us": 765.0
+          },
+          "Rotation": {
+            "action_count": 1983,
+            "atom_events": 1983,
+            "atom_us": 1983.0
+          },
+          "Load": {
+            "action_count": 84,
+            "atom_events": 976,
+            "atom_us": 9760.0
+          },
+          "Move": {
+            "action_count": 92,
+            "atom_events": 1104,
+            "atom_us": 50215.190766178755
+          },
+          "Store": {
+            "action_count": 84,
+            "atom_events": 976,
+            "atom_us": 9760.0
+          },
+          "CZPulse": {
+            "action_count": 24,
+            "atom_events": 7056,
+            "atom_us": 3528.0
+          },
+          "Measure": {
+            "action_count": 8,
+            "atom_events": 128,
+            "atom_us": 12800.0
+          }
+        },
+        "accepted_outputs": null,
+        "accepted_output_throughput_per_s": null,
+        "logical_error_probability": null,
+        "physical_validation_ok": true
+      },
+      "expected_per_output": {
+        "execution_duration_us": 10257.714606104691,
+        "atom_time_us": 3015768.094194779,
+        "atom_idle_us": 2912854.5858798707,
+        "atom_busy_us": 102913.50831490807,
+        "movement_distance_atom_um": 46152.6208596495,
+        "transport_elapsed_us": 8346.313661853532
+      },
+      "expected_time_formula": "injection_time / injection_acceptance + growth_time",
+      "conditional_output_rate_per_s": 97.48760210240869,
+      "expected_injection_attempts": 1.2835196605168373,
+      "growth_quality_estimated": false,
+      "output_frame": "caller must decode and retain/apply",
+      "branch_evidence": "unobserved physical cost references; no sampled acceptance or hardware execution",
+      "growth_source_sha256": "665538df7b6aaaeeef04bd0f69381dd1c0cc8d295d721ef5cef7cced04a8c2ae"
+    },
+    {
+      "distance": 7,
+      "protocol": {
+        "protocol": "small_injection_then_growth",
+        "version": "3",
+        "target_distance": 7,
+        "injection_distance": 3,
+        "injection_rounds": 3,
+        "growth_rounds": 7,
+        "postselection_scope": "d3_injection_only",
+        "growth_decoder": "phenomenological_mwpm_open_boundary/1"
+      },
+      "preparation_sha256": "79b1beb05685a6a5d9a45bb081f2438646cecfa4fb9e5efce7730b2ddd5a9c44",
+      "injection_active_atoms": 17,
+      "target_atoms": 97,
+      "world_atoms": 582,
+      "injection_detectors": 20,
+      "probabilities": {
+        "zero": {
+          "acceptance": 1.0,
+          "content_sha256": "f2797c227244adb8209d0663dac6402c5d67da1cfe1bf86344d978df03e723a2"
+        },
+        "readout": {
+          "acceptance": 0.9762739905004649,
+          "content_sha256": "7ce26052f207654a9f259d055861b499fbb9527b18aefdbaba9a01adcf2735f9"
+        },
+        "illustrative": {
+          "acceptance": 0.7791076605693193,
+          "content_sha256": "4f9e0f05318065f6094594fd6b0221b6ca6988055ab0a05a9fb852fbe3121568"
+        }
+      },
+      "injection_metrics": {
+        "execution_duration_us": 4601.8984636253535,
+        "atom_count": 582,
+        "atom_time_us": 2678304.905829956,
+        "atom_idle_us": 2661695.981449603,
+        "atom_busy_us": 16608.92438035268,
+        "movement_distance_atom_um": 6062.954832997517,
+        "transport_elapsed_us": 3612.898463625351,
+        "transport_action_sum_us": 3612.898463625351,
+        "trajectory_bbox_um": [
+          0.0,
+          -140.0,
+          1040.0,
+          60.0
+        ],
+        "trajectory_bbox_area_um2": 208000.0,
+        "exposure_by_action": {
+          "Reset": {
+            "action_count": 33,
+            "atom_events": 33,
+            "atom_us": 165.0
+          },
+          "Rotation": {
+            "action_count": 347,
+            "atom_events": 347,
+            "atom_us": 347.0
+          },
+          "Load": {
+            "action_count": 57,
+            "atom_events": 168,
+            "atom_us": 1680.0
+          },
+          "Move": {
+            "action_count": 66,
+            "atom_events": 192,
+            "atom_us": 6844.9243803526915
+          },
+          "Store": {
+            "action_count": 57,
+            "atom_events": 168,
+            "atom_us": 1680.0
+          },
+          "CZPulse": {
+            "action_count": 12,
+            "atom_events": 6984,
+            "atom_us": 3492.0
+          },
+          "Measure": {
+            "action_count": 9,
+            "atom_events": 24,
+            "atom_us": 2400.0
+          }
+        },
+        "accepted_outputs": null,
+        "accepted_output_throughput_per_s": null,
+        "logical_error_probability": null,
+        "physical_validation_ok": true
+      },
+      "growth_metrics": {
+        "execution_duration_us": 6648.722433275051,
+        "atom_count": 582,
+        "atom_time_us": 3869556.4561660797,
+        "atom_idle_us": 3603971.8212062595,
+        "atom_busy_us": 265584.63495981955,
+        "movement_distance_atom_um": 125829.85544417451,
+        "transport_elapsed_us": 5752.722433275045,
+        "transport_action_sum_us": 5752.722433275045,
+        "trajectory_bbox_um": [
+          0.0,
+          -140.0,
+          1042.0,
+          85.0
+        ],
+        "trajectory_bbox_area_um2": 234450.0,
+        "exposure_by_action": {
+          "Reset": {
+            "action_count": 376,
+            "atom_events": 376,
+            "atom_us": 1880.0
+          },
+          "Rotation": {
+            "action_count": 5432,
+            "atom_events": 5432,
+            "atom_us": 5432.0
+          },
+          "Load": {
+            "action_count": 91,
+            "atom_events": 2688,
+            "atom_us": 26880.0
+          },
+          "Move": {
+            "action_count": 98,
+            "atom_events": 3024,
+            "atom_us": 162764.63495981955
+          },
+          "Store": {
+            "action_count": 91,
+            "atom_events": 2688,
+            "atom_us": 26880.0
+          },
+          "CZPulse": {
+            "action_count": 28,
+            "atom_events": 16296,
+            "atom_us": 8148.0
+          },
+          "Measure": {
+            "action_count": 7,
+            "atom_events": 336,
+            "atom_us": 33600.0
+          }
+        },
+        "accepted_outputs": null,
+        "accepted_output_throughput_per_s": null,
+        "logical_error_probability": null,
+        "physical_validation_ok": true
+      },
+      "raw_unpostselected_metrics": {
+        "execution_duration_us": 8188.02192115017,
+        "atom_count": 582,
+        "atom_time_us": 4765428.758109399,
+        "atom_idle_us": 4494270.4816894615,
+        "atom_busy_us": 271158.27641993714,
+        "movement_distance_atom_um": 127850.84038850701,
+        "transport_elapsed_us": 6957.021921150163,
+        "transport_action_sum_us": 6957.021921150163,
+        "trajectory_bbox_um": [
+          0.0,
+          -140.0,
+          1042.0,
+          85.0
+        ],
+        "trajectory_bbox_area_um2": 234450.0,
+        "exposure_by_action": {
+          "Reset": {
+            "action_count": 393,
+            "atom_events": 393,
+            "atom_us": 1965.0
+          },
+          "Rotation": {
+            "action_count": 5555,
+            "atom_events": 5555,
+            "atom_us": 5555.0
+          },
+          "Load": {
+            "action_count": 110,
+            "atom_events": 2744,
+            "atom_us": 27440.0
+          },
+          "Move": {
+            "action_count": 120,
+            "atom_events": 3088,
+            "atom_us": 165046.27641993712
+          },
+          "Store": {
+            "action_count": 110,
+            "atom_events": 2744,
+            "atom_us": 27440.0
+          },
+          "CZPulse": {
+            "action_count": 32,
+            "atom_events": 18624,
+            "atom_us": 9312.0
+          },
+          "Measure": {
+            "action_count": 10,
+            "atom_events": 344,
+            "atom_us": 34400.0
+          }
+        },
+        "accepted_outputs": null,
+        "accepted_output_throughput_per_s": null,
+        "logical_error_probability": null,
+        "physical_validation_ok": true
+      },
+      "expected_per_output": {
+        "execution_duration_us": 12555.349587040419,
+        "atom_time_us": 7307213.459657524,
+        "atom_idle_us": 7020310.943715484,
+        "atom_busy_us": 286902.51594203967,
+        "movement_distance_atom_um": 133611.7771731524,
+        "transport_elapsed_us": 10389.948642789259
+      },
+      "expected_time_formula": "injection_time / injection_acceptance + growth_time",
+      "conditional_output_rate_per_s": 79.64732427938095,
+      "expected_injection_attempts": 1.2835196605168373,
+      "growth_quality_estimated": false,
+      "output_frame": "caller must decode and retain/apply",
+      "branch_evidence": "unobserved physical cost references; no sampled acceptance or hardware execution",
+      "growth_source_sha256": "1452ba8b1e676aca77c7f14990a3d5fb60d79fab50c1d5237452cb548b0a03a5"
+    }
+  ]
+}

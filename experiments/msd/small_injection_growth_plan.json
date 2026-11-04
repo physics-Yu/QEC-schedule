@@ -1,0 +1,14 @@
+{
+  "schema": "nadit.msd.small_injection_growth_plan/1",
+  "distances": [3, 5, 7],
+  "pipelines": 1,
+  "factory_index": 0,
+  "patch_role": "R",
+  "injection_rounds": 3,
+  "growth_rounds": "target_distance_including_deformation; zero_at_d3",
+  "max_world_atoms": 1000,
+  "noise_params": "modules/physical_compiler/cost_params/noise_illustrative.json",
+  "estimator": "exact_on_20_injection_detectors",
+  "hardware_timing": "msd_standard_2_load_store_10us",
+  "scope": "single_preparation_conditional_resource_cost; no_output_LER_claim"
+}

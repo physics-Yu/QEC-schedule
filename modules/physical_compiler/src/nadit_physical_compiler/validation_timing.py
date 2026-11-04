@@ -6,6 +6,7 @@ from typing import TypedDict
 
 from .atom_ir import (
     AtomAction,
+    CPhasePulse,
     CZPulse,
     GlobalRY,
     Load,
@@ -48,6 +49,7 @@ _KINDS: dict[type[AtomAction], str] = {
     Move: "MOVE",
     Store: "STORE",
     CZPulse: "CZ_PULSE",
+    CPhasePulse: "CPHASE_PULSE",
     Rotation: "ROT",
     LocalU: "U",
     GlobalRY: "GLOBAL_RY",

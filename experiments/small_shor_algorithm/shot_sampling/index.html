@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Small Shor · 简化电路采样模拟</title>
+<style>
+:root{font:14px/1.6 "Microsoft YaHei",system-ui,sans-serif;color:#203b49;background:#f3f6f7;--accent:#087e82;--muted:#617883;--border:#dce5e8}*{box-sizing:border-box}body{margin:0}main{max-width:1350px;margin:auto;padding:24px}h1,h2,h3,p{margin:0}h1{font-size:24px}h2{font-size:18px}h3{font-size:14px}p{margin:7px 0}.muted,small{color:var(--muted)}small{font-size:11px}.notice{background:#e7f3f3;border-left:3px solid var(--accent);padding:10px 14px;margin:15px 0}.layout{display:grid;grid-template-columns:350px minmax(0,1fr);gap:18px}.card{background:white;border:1px solid var(--border);border-radius:9px;padding:18px;min-width:0}.card+.card{margin-top:16px}button,input,select{font:inherit;color:inherit}button,select,input[type=number]{border:1px solid #bdcdd3;border-radius:5px;padding:6px 9px;background:white}button{cursor:pointer}button.primary{background:var(--accent);color:white;border-color:var(--accent)}button:disabled{cursor:default;opacity:.5}.actions,.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.row{justify-content:space-between}.run-settings{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.run-settings label{display:flex;flex-direction:column;gap:4px}.run-settings input{width:100%}details{border-top:1px solid var(--border);padding:10px 0}summary{cursor:pointer;font-weight:600;color:var(--accent)}.field{margin:12px 0}.field-top{display:grid;grid-template-columns:1fr 84px 58px;gap:6px;align-items:center}.field input[type=number]{width:84px;padding:3px 5px;font-size:12px}.field input[type=range]{width:100%;accent-color:var(--accent);margin:5px 0 0}.field small{display:block}.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:15px 0}.kpis div{background:#f3f8f8;border-radius:6px;padding:10px}.kpis strong{display:block;font-size:22px;color:var(--accent)}#status{margin:10px 0;min-height:24px}#status.error{color:#a03629}.chart{position:relative;height:310px}canvas{width:100%;height:100%;display:block}.loss-line{display:grid;grid-template-columns:105px 1fr 85px;gap:8px;align-items:center;margin:12px 0}.bar{background:#f1e8e6;border-radius:4px;height:16px;overflow:hidden}.bar i{display:block;height:100%;background:#bd6351}.table-wrap{max-height:340px;overflow:auto}table{width:100%;border-collapse:collapse;font-size:12px;text-align:right}th,td{border-bottom:1px solid var(--border);padding:7px}th{position:sticky;top:0;background:#f3f8f8}th:first-child,td:first-child{text-align:left}.details-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.formulas{margin-top:16px}.formulas p{font-size:12px}.formulas math{font-size:17px;margin:15px 0;overflow:auto}.badge{background:#edf4f4;color:var(--accent);padding:3px 8px;border-radius:4px;font-size:12px}.empty{color:var(--muted);padding:60px 12px;text-align:center}a{color:var(--accent)}footer{font-size:11px;color:var(--muted);margin-top:20px}#download{margin-left:auto}@media(max-width:1000px){.layout{grid-template-columns:1fr}.parameters{max-height:520px;overflow:auto}}@media(max-width:600px){main{padding:12px}.card{padding:13px}.kpis{grid-template-columns:1fr 1fr}.details-grid{grid-template-columns:1fr}.field-top{grid-template-columns:1fr 80px 55px}.chart{height:260px}}
+</style></head><body><main>
+<div class="row"><h1>Small Shor · 简化电路采样模拟</h1><span class="badge">模拟结果，不是实验测量</span></div>
+<p class="muted">使用 NADiT 收录的 N=15 和 N=21 简化电路；逆 QFT 采用逐位测量与经典条件 Phase 门（semiclassical）。单行纠缠区、rigid AOD，每个电路只编译一份带条件的物理程序。</p>
+<div class="notice">条件不满足时，门不作用，但保留该时间槽并计算等待退相干。原子首次丢失后，该次模拟终止并计入“丢失运行”。</div>
+<div class="layout"><aside class="card parameters"><div class="row"><h2>模拟参数</h2><button id="defaults" type="button">恢复默认</button></div><p><small>移动速度下限为 0.01 μm/μs，其余滑轨下限为 0。概率使用 0–1：例如 0.002 表示 0.2%。默认值是模型输入，需用实验标定检验。</small></p><div id="parameter-groups"></div></aside>
+<section><div class="card"><div class="row"><h2>采样与结果</h2><select id="circuit" aria-label="电路"><option value="15">N = 15 · 12 比特</option><option value="21">N = 21 · 14 比特</option></select></div>
+<div class="run-settings"><label>采样次数（shot）<input id="shots" type="number" min="1" max="10000" step="1" value="1000"></label><label>随机种子<input id="seed" type="number" min="0" max="4294967295" step="1" value="17" disabled></label></div>
+<label><input id="fixed-seed" type="checkbox"> 固定随机种子，便于复现；不勾选时每次使用新种子</label>
+<div class="actions" style="margin-top:12px"><button id="run" class="primary" disabled>开始采样</button><button id="stop" disabled>停止接收</button><button id="download" disabled>导出结果 JSON</button></div>
+<p id="status" role="status">正在加载模型参数…</p><small>“停止接收”仅取消浏览器等待；已提交的后台计算仍会完成。参数修改后需点击“开始采样”，结果不会与旧参数混合。</small>
+<div id="results" hidden><div class="kpis"><div><small>总运行次数</small><strong id="total-shots"></strong></div><div><small>无丢失运行次数</small><strong id="valid-shots"></strong></div><div><small>丢失运行比例</small><strong id="loss-rate"></strong></div><div><small>每次计划时长</small><strong id="duration"></strong></div></div>
+<h3>最终读数分布</h3><p><small>纵轴按全部运行次数归一化；横轴为读数的十进制值。柱子的概率之和加上“丢失运行比例”等于 1。</small></p><div class="chart"><canvas id="histogram" aria-label="最终读数概率分布"></canvas></div><p id="chart-hover" class="muted">将鼠标移到柱子上可查看读数与频数。</p>
+<div class="loss-line"><span>丢失运行</span><div class="bar"><i id="loss-bar"></i></div><strong id="loss-count"></strong></div>
+<p id="uncertainty" class="muted"></p><p id="run-description" class="muted"></p>
+<details><summary>查看全部非零读数</summary><div class="table-wrap"><table><thead><tr><th>比特串</th><th>十进制</th><th>次数</th><th>占全部运行</th><th>占有效读数</th></tr></thead><tbody id="histogram-rows"></tbody></table></div></details>
+<details><summary>首次丢失发生在哪里</summary><p><small>这里只统计每次运行的第一次丢失；不是全部原子的最终丢失数量。</small></p><div class="details-grid"><div><h3>按原因</h3><table><tbody id="loss-causes"></tbody></table></div><div><h3>按原子</h3><table><tbody id="loss-atoms"></tbody></table></div></div></details>
+</div><div id="empty" class="empty">选择参数并开始采样。这里将显示这组参数实际采样得到的分布。</div></div>
+<section class="card formulas"><details><summary>怎么计算：模型、公式与适用范围</summary>
+<p><strong>本次电路：</strong>附件中的简化计算部分保持不变，只将末端相干逆 QFT 改为逐位测量：先测量控制位，再根据读数决定是否作用后续 Phase 门。无噪声时，对照附件原电路的计数寄存器分布检验等价性；加入读出和门噪声后，两种实现的分布不必相同。本页仅读出计数寄存器，不将工作寄存器的最终状态解释为模余数。b[0] 是读数的最低位，显示比特串时最高位在左。</p>
+<p><strong>时间：</strong>MOVE 使用记录的移动距离与当前速度计算耗时；转移、门和读出使用各自设置的时间。测量曝光结束时结果立即可用，后续条件门仍遵守原有动作顺序。几何和动作顺序固定，不为每个 shot 重新做布局搜索。</p>
+<p><strong>T₂：</strong>对当前时间段内的每颗存活原子，根据其所在陷阱或转移阶段计算相位噪声。</p>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>p</mi><mi>Z</mi></msub><mo>=</mo><mfrac><mrow><mn>1</mn><mo>−</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>Δ</mi><mi>t</mi><mo>/</mo><msub><mi>T</mi><mn>2</mn></msub></mrow></msup></mrow><mn>2</mn></mfrac></math>
+<p>Δt 是这段物理时间；T₂ 是对应环境的相干时间；pZ 是施加 Z 错误的概率。两者必须使用相同单位。T₂=0 且时间为正时，pZ=1/2，表示完全退相干。本页假设指数、独立的纯退相干，不包含未标定的额外搬运相位漂移。</p>
+<p><strong>采用的理论假设：</strong>原子丢失采用 Sharma 等人的 <a href="https://arxiv.org/html/2609.10079v1#S6.SS2" target="_blank" rel="noopener">Loss-correcting fault-tolerant quantum computing architecture for neutral atoms（arXiv:2609.10079，Table II、式 2–4）</a> 中的 NAL 模型。搬运的峰值激发近似来自 Hwang 等人的 <a href="https://arxiv.org/html/2410.22627v1" target="_blank" rel="noopener">Fast and reliable atom transport by optical tweezers（arXiv:2410.22627，Methods）</a>，假设使用其平滑 STA 轨迹。这里是论文假设下的估计，不是实验设备的已标定结果。</p><p><strong>STA 搬运丢失：</strong>每个完整 MOVE 使用一次 NAL/STA 估计，不按动画帧或数值积分小步重复计算。</p>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mi>Δ</mi><msub><mi>n</mi><mtext>peak</mtext></msub><mo>=</mo><mfrac><mrow><mn>50</mn><mi>m</mi><msup><mi>ℓ</mi><mn>2</mn></msup></mrow><mrow><mn>3</mn><mi>ℏ</mi><msup><mi>ω</mi><mn>3</mn></msup><msup><mi>t</mi><mn>4</mn></msup></mrow></mfrac></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><mi>η</mi><mo>=</mo><mfrac><mrow><mi>U</mi><mo>−</mo><mi>Δ</mi><msub><mi>n</mi><mtext>peak</mtext></msub><mi>ℏ</mi><mi>ω</mi></mrow><mrow><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi></mrow></mfrac><mo>,</mo><mspace width="1em"/><mi>p</mi><mo>=</mo><mo>(</mo><mn>1</mn><mo>+</mo><mi>η</mi><mo>+</mo><mfrac><msup><mi>η</mi><mn>2</mn></msup><mn>2</mn></mfrac><mo>)</mo><msup><mi>e</mi><mrow><mo>−</mo><mi>η</mi></mrow></msup></math>
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>U</mi><mn>0</mn></msub><mo>=</mo><mfrac><mrow><mi>m</mi><msup><mi>ω</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup></mrow><mn>2</mn></mfrac><mo>,</mo><mspace width="1em"/><mi>ω</mi><mo>=</mo><mn>2</mn><mi>π</mi><mi>f</mi></math>
+<p>Δnpeak：搬运中的峰值振动激发；m：原子质量；ℓ：移动距离；t：MOVE 耗时；ℏ：约化普朗克常数；ω：陷阱角频率；f：陷阱频率；U：阱深；U₀：平均阱深；a：有效阱宽；kB：玻尔兹曼常数；T：温度；η：剩余阱深与热能之比；p：该次搬运丢失概率。η≤0 时取 p=1；有阱深波动时按正值截断高斯分布平均。各次 MOVE 独立评估，不累计峰值激发为温度。</p>
+<p>门的 Pauli 错误作为额外事件噪声处理。如果实测门错误已经包含相同时间段的 T₂ 退相干，应先分离这部分，避免重复计算。</p>
+<p><strong>测量与条件门：</strong>先从当前量子态的概率分布采样并坍缩，再按读出误判概率翻转控制器收到的比特。门条件读取已返回的比特；不使用模拟器内部未观测的噪声记录。</p>
+<p><strong>丢失与量子错误分开：</strong>原子丢失不是比特变成 0，也不是 Z 错误。此版本首次丢失后终止该次模拟；读数分布仅包含无丢失运行，所有运行分母仍包含丢失运行。没有合成“平均 loss”指标，也没有把读数分布当成完整量子态。</p>
+<p>参考：<a href="https://arxiv.org/html/2609.10079v1#S6.SS2" target="_blank" rel="noopener">NAL 的事件丢失模型</a>；<a href="https://arxiv.org/html/2410.22627v1" target="_blank" rel="noopener">STA 搬运模型</a>。该模拟用于研究所选假设下的结果，不能替代陷阱、转移相干性及门噪声的实验标定。</p>
+</details></section></section></div><!-- INDEPENDENT_ANIMATION --><footer>本地计算 · 不上传参数或结果 · 固定带条件物理程序 · 每次独立量子采样</footer></main>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const groups=[
+ ['时间与相干',true,[
+  ['speed','移动平均速度','μm/μs',2,.01,'耗时由距离除以速度得到；最小值 0.01 μm/μs。'],
+  ['transfer','每次 LOAD／STORE','μs',1000,1,'每次并行转移的时间，可调范围 0–1000 μs。'],
+  ['readout','每次读出曝光','μs',1000,10,'曝光结束即得到测量结果，可立即判断条件门；没有额外返回延迟。'],
+  ['t2Slm','SLM 的 T₂','ms',3000,10,'SLM 中的相干时间；默认值为示例。'],
+  ['t2Aod','AOD 的 T₂','ms',3000,10,'AOD 中的相干时间；默认值为示例。'],
+  ['t2Transfer','转移阶段的 T₂','ms',3000,10,'LOAD／STORE 阶段单独使用的有效相干时间，需标定。']]],
+ ['每次操作的原子丢失概率',false,[
+  ['loadLoss','LOAD 丢失概率','概率',.05,.0001,'每颗原子、每次装载；NAL 默认 0.002。'],
+  ['storeLoss','STORE 丢失概率','概率',.05,.0001,'每颗原子、每次卸载；NAL 默认 0.002。'],
+  ['czLoss','CZ 丢失概率','概率',.05,.0001,'每颗参与原子、每次 CZ 的丢失概率。'],
+  ['imagingLoss','成像丢失概率','概率',.05,.0001,'每颗被测原子的成像丢失概率。'],
+  ['singleLoss','单比特门丢失概率','概率',.05,.0001,'仅实际执行的单比特门计入。'],
+  ['resetLoss','初始化丢失概率','概率',.05,.0001,'每颗原子、每次初始化。']]],
+ ['门时间与量子错误',false,[
+  ['singleTime','单比特门时间','μs',10,.1,'条件为假时也保留同样长的空闲时间槽。'],
+  ['czTime','CZ 门时间','μs',10,.01,'一个并行 CZ 脉冲的时间。'],
+  ['resetTime','初始化时间','μs',500,1,'每次初始化的时间。'],
+  ['singlePauli','单比特 Pauli 错误','概率',.1,.0001,'总错误概率；非零时 X、Y、Z 等概率，属于噪声假设。'],
+  ['czPauli','CZ Pauli 错误','概率',.1,.0001,'每对原子的总错误概率；15 个非平凡双比特 Pauli 等概率。'],
+  ['readoutError','读出误判概率','概率',.1,.0001,'测量坍缩后，翻转报告比特的概率；与成像丢失分开。'],
+  ['resetError','初始化错误概率','概率',.1,.0001,'初始化后处于错误计算基态的概率。']]],
+ ['搬运模型参数（论文假设）',false,[
+  ['mass','原子质量','u',180,.001,'87Rb 示例；0 时物理模型无定义。'],
+  ['frequency','陷阱频率 f','kHz',500,1,'角频率 ω=2πf；0 时模型无定义。'],
+  ['width','有效阱宽 a','μm',3,.01,'用于计算平均阱深；0 时模型无定义。'],
+  ['temperature','原子温度 T','μK',200,1,'每次搬运独立使用这一温度；0 为零温极限。'],
+  ['depthSpread','阱深相对标准差','比例',.5,.01,'标准差除以平均阱深；0 为均匀阱深。']]]
+];
+let defaults={},parameters={},lastResult=null,lastRequest=null,controller=null,requestVersion=0,chartBins=[];
+const number=x=>Number(x).toLocaleString('zh-CN',{maximumFractionDigits:4});
+const percent=x=>number(100*x)+'%';
+function element(tag,text){const el=document.createElement(tag);if(text!==undefined)el.textContent=text;return el;}
+function status(text,error=false){$('status').textContent=text;$('status').className=error?'error':'';}
+function errorText(text){const labels=Object.fromEntries(groups.flatMap(group=>group[2].map(spec=>[spec[0],spec[1]])));const zero=text.match(/^(\w+)=0: no finite physical simulation is defined\.$/);if(zero)return (labels[zero[1]]||zero[1])+'为 0，当前物理模型无法完成有限时间的计算，请输入正值。';const probability=text.match(/^(\w+) must be between 0 and 1\.$/);if(probability)return (labels[probability[1]]||probability[1])+'必须在 0 到 1 之间。';return text;}
+function stale(){if(lastResult)status('参数已修改。图中仍为上次采样结果；点击“开始采样”更新。');}
+function sync(){for(const [,,specs] of groups)for(const [key] of specs){const range=$('range-'+key),input=$('number-'+key);if(range){range.value=parameters[key];input.value=parameters[key];}}}
+function buildParameters(){
+ for(const [title,open,specs] of groups){const section=element('details');section.open=open;section.append(element('summary',title));
+  for(const [key,label,unit,max,step,note] of specs){if(!(key in defaults))continue;const field=element('div');field.className='field';const top=element('div');top.className='field-top';const caption=element('label',label);caption.htmlFor='range-'+key;const input=element('input');input.type='number';input.id='number-'+key;input.min=key==='speed'?0.01:0;if(key==='transfer')input.max=1000;input.step=step;input.setAttribute('aria-label',label+'数值');const range=element('input');range.type='range';range.id='range-'+key;range.min=key==='speed'?0.01:0;range.max=max;range.step=step;range.setAttribute('aria-label',label);top.append(caption,input,element('small',unit));field.append(top,range,element('small',note));section.append(field);
+   function update(event){const value=Number(event.target.value);if(event.target.value===''||!Number.isFinite(value)||value<(key==='speed'?0.01:0)||(key==='transfer'&&value>1000)){event.target.value=parameters[key];status(key==='speed'?'移动速度不能小于 0.01 μm/μs。':key==='transfer'?'LOAD／STORE 时间必须在 0–1000 μs。':'请输入非负有限数。',true);return;}parameters[key]=value;sync();stale();}input.addEventListener('change',update);range.addEventListener('input',update);
+  }$('parameter-groups').append(section);
+ }sync();
+}
+function wilson(k,n){const z=1.95996398454,p=k/n,d=1+z*z/n,c=(p+z*z/(2*n))/d,h=z*Math.sqrt(p*(1-p)/n+z*z/(4*n*n))/d;return [Math.max(0,c-h),Math.min(1,c+h)];}
+function rows(id,records){const root=$(id);root.replaceChildren();for(const cells of records){const tr=element('tr');for(const cell of cells)tr.append(element('td',String(cell)));root.append(tr);}}
+function draw(){
+ if(!lastResult)return;const canvas=$('histogram'),rect=canvas.getBoundingClientRect();if(rect.width<=0||rect.height<=0)return;const dpr=window.devicePixelRatio||1;canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.height*dpr);const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);const w=rect.width,h=rect.height,pad={left:49,right:14,top:20,bottom:34};const bins=2**(lastRequest.n===15?8:9);chartBins=Array(bins).fill(0);for(const [key,value] of Object.entries(lastResult.histogram))chartBins[parseInt(key,2)]=value/lastResult.shots;const ceiling=Math.max(.01,...chartBins)*1.08;const plotW=w-pad.left-pad.right,plotH=h-pad.top-pad.bottom;
+ ctx.font='11px "Microsoft YaHei",sans-serif';ctx.textAlign='right';for(let i=0;i<=4;i++){const y=pad.top+plotH*(1-i/4);ctx.strokeStyle='#e0e8eb';ctx.beginPath();ctx.moveTo(pad.left,y);ctx.lineTo(w-pad.right,y);ctx.stroke();ctx.fillStyle='#617883';ctx.fillText(percent(ceiling*i/4),pad.left-7,y+4);}
+ ctx.fillStyle='#087e82';for(let i=0;i<bins;i++){const barH=chartBins[i]/ceiling*plotH;ctx.fillRect(pad.left+i*plotW/bins,pad.top+plotH-barH,Math.max(.8,plotW/bins),barH);}ctx.textAlign='center';ctx.fillStyle='#617883';for(let i=0;i<=4;i++){const value=Math.round(i*(bins-1)/4);ctx.fillText(String(value),pad.left+(value+.5)*plotW/bins,h-10);}
+}
+function render(result,request){
+ lastResult=result;lastRequest=request;$('results').hidden=false;$('empty').hidden=true;$('download').disabled=false;
+ $('total-shots').textContent=number(result.shots);$('valid-shots').textContent=number(result.valid_shots);$('loss-rate').textContent=percent(result.lost_shots/result.shots);$('duration').textContent=number(result.plan_duration_us/1000)+' ms';$('loss-bar').style.width=100*result.lost_shots/result.shots+'%';$('loss-count').textContent=result.lost_shots+' / '+result.shots;
+ const ci=wilson(result.lost_shots,result.shots);$('uncertainty').textContent='丢失运行比例的 95% Wilson 区间：'+percent(ci[0])+'–'+percent(ci[1])+'。采样误差不包含物理模型和标定误差。';$('run-description').textContent='本次结果：N='+request.n+'，种子 '+result.seed+'，采样用时 '+number(result.elapsed_seconds)+' s。完整参数可导出。';
+ rows('histogram-rows',Object.entries(result.histogram).sort((a,b)=>parseInt(a[0],2)-parseInt(b[0],2)).map(([bits,count])=>[bits,parseInt(bits,2),count,percent(count/result.shots),result.valid_shots?percent(count/result.valid_shots):'—']));
+ const names={load:'装载 LOAD',store:'卸载 STORE',move:'搬运',cz:'CZ 门',imaging:'成像',single:'单比特门',reset:'初始化'};
+ rows('loss-causes',Object.entries(result.first_loss_by_cause||{}).map(([key,count])=>[names[key]||key,count]));rows('loss-atoms',Object.entries(result.first_loss_by_atom||{}).map(([key,count])=>['原子 '+key,count]));draw();syncReplay(request,result);
+}
+
+// The standard compiler viewer owns animation; this page only shares parameters.
+let replayRequest=null,replayRisk=null,replayTime=0;
+function sendReplay(){const frame=$('compile-animation');if(frame&&replayRequest)frame.contentWindow.postMessage(replayRequest,'*');}
+function syncReplay(request,result){
+ const rows=Object.entries(result?.histogram||{}).sort((a,b)=>b[1]-a[1]);
+ replayRequest={type:'shor-replay-parameters',n:request.n,parameters:{...request.parameters},bitstring:rows[0]?.[0]||null,
+  selection_label:rows.length?'本次无丢失样本中出现次数最多的测量分支':result?'未取得无丢失的完整读数，使用固定参考分支':'尚未采样，使用固定参考分支'};
+ replayTime=0;sendReplay();
+}
+function drawRisk(){
+ const canvas=$('atom-risk-curve');if(!canvas||!replayRisk)return;
+ const points=replayRisk.curve,box=canvas.getBoundingClientRect(),dpr=window.devicePixelRatio||1;
+ canvas.width=Math.round(box.width*dpr);canvas.height=Math.round(box.height*dpr);
+ const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);const w=box.width,h=box.height,left=64,right=18,top=18,bottom=38;
+ const end=Math.max(replayRisk.duration_us,1),peak=Math.min(1,Math.max(.001,...points.map(p=>p.mean_loss))*1.12);
+ const x=t=>left+(w-left-right)*t/end,y=p=>h-bottom-(h-top-bottom)*p/peak;
+ ctx.font='11px "Microsoft YaHei",sans-serif';ctx.lineWidth=1;
+ for(let i=0;i<=4;i++){const v=peak*i/4;ctx.strokeStyle='#e4ecef';ctx.beginPath();ctx.moveTo(left,y(v));ctx.lineTo(w-right,y(v));ctx.stroke();ctx.fillStyle='#617883';ctx.textAlign='right';ctx.fillText(percent(v),left-8,y(v)+4);ctx.textAlign='center';ctx.fillText(number(end*i/4000),x(end*i/4),h-bottom+18);}
+ ctx.fillText('时间（ms）',w/2,h-3);ctx.strokeStyle='#087e82';ctx.lineWidth=2;ctx.beginPath();let last=0;
+ for(const p of points){ctx.lineTo(x(p.time_us),y(last));ctx.lineTo(x(p.time_us),y(p.mean_loss));last=p.mean_loss;}ctx.lineTo(x(end),y(last));ctx.stroke();
+ let current=0;for(const p of points){if(p.time_us>replayTime)break;current=p.mean_loss;}
+ const marker=Math.max(0,Math.min(replayTime,end));ctx.strokeStyle='#bd6351';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x(marker),top);ctx.lineTo(x(marker),h-bottom);ctx.stroke();
+ $('risk-at-time').textContent='动画时刻 '+number(marker/1000)+' ms：平均原子丢失概率 '+percent(current)+'；计划结束时 '+percent(replayRisk.final_mean_loss)+'。';
+}
+window.addEventListener('message',event=>{
+ const frame=$('compile-animation');if(!frame||event.source!==frame.contentWindow)return;
+ const data=event.data||{};
+ if(data.type==='shor-replay-ready')sendReplay();
+ else if(data.type==='shor-replay-risk'){
+  replayRisk=data;replayTime=0;
+  $('replay-description').textContent='N='+data.n+'；'+data.selection_label+'：'+data.bitstring+'。时间和曲线使用本次提交的参数；动画显示计划，不回放随机 Pauli 错误，也不随机移除原子。';drawRisk();
+ }else if(data.type==='shor-replay-error'){$('replay-description').textContent='动画更新失败：'+data.message;}else if(data.type==='shor-replay-clock'&&Number.isFinite(data.time_us)){replayTime=data.time_us;drawRisk();}
+});
+if($('compile-animation')){$('compile-animation').addEventListener('load',sendReplay);new ResizeObserver(drawRisk).observe($('atom-risk-curve'));}
+
+$('fixed-seed').addEventListener('change',()=>{$('seed').disabled=!$('fixed-seed').checked;});
+$('defaults').addEventListener('click',()=>{parameters={...defaults};sync();stale();});$('circuit').addEventListener('change',stale);
+$('run').addEventListener('click',async()=>{
+ const shots=Number($('shots').value);if(!Number.isInteger(shots)||shots<1||shots>10000){status('采样次数必须是 1–10000 的整数。',true);return;}
+ const seed=$('fixed-seed').checked?Number($('seed').value):crypto.getRandomValues(new Uint32Array(1))[0];if(!Number.isInteger(seed)||seed<0||seed>4294967295){status('随机种子必须是 0–4294967295 的整数。',true);return;}
+ const request={n:Number($('circuit').value),parameters:{...parameters},shots,seed},version=++requestVersion;controller=new AbortController();$('run').disabled=true;$('stop').disabled=false;$('results').hidden=true;$('download').disabled=true;$('empty').hidden=false;$('empty').textContent='正在计算本次参数…';status('正在独立采样 '+shots+' 次…');
+ try{let result;if(window.ShorOffline){result=await window.ShorOffline.run(request,controller.signal);}else{const response=await fetch('/api/sample',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(request),signal:controller.signal});result=await response.json();if(!response.ok)throw Error(result.error||'服务返回错误');}if(version!==requestVersion)return;render(result,request);const changed=JSON.stringify(parameters)!==JSON.stringify(request.parameters)||Number($('circuit').value)!==request.n;status(changed?'采样完成；参数已在计算期间修改，当前图仍对应所提交的参数。':'采样完成。');}
+ catch(error){if(version===requestVersion){$('empty').textContent='本次参数尚未生成结果。';status(error.name==='AbortError'?(window.ShorOffline?'已停止本次采样。':'已停止接收；后台计算可能仍在继续。'):errorText(error.message),error.name!=='AbortError');}}
+ finally{if(version===requestVersion){controller=null;$('run').disabled=false;$('stop').disabled=true;}}
+});
+$('stop').addEventListener('click',()=>{if(controller)controller.abort();});
+$('download').addEventListener('click',()=>{if(!lastResult)return;const url=URL.createObjectURL(new Blob([JSON.stringify({request:lastRequest,result:lastResult},null,2)],{type:'application/json'}));const a=element('a');a.href=url;a.download='shor-'+lastRequest.n+'-shots-'+lastResult.seed+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+$('histogram').addEventListener('mousemove',event=>{if(!lastResult)return;const rect=event.currentTarget.getBoundingClientRect(),x=event.clientX-rect.left;const index=Math.floor((x-49)/(rect.width-63)*chartBins.length);if(index<0||index>=chartBins.length)return;const bits=index.toString(2).padStart(lastRequest.n===15?8:9,'0'),count=lastResult.histogram[bits]||0;$('chart-hover').textContent='读数 '+index+'（'+bits+'）：'+count+' 次，占全部运行 '+percent(count/lastResult.shots)+'。';});
+new ResizeObserver(draw).observe($('histogram'));
+(async()=>{try{if(window.ShorOffline){defaults=window.ShorOffline.defaults;$('stop').textContent='停止采样';}else{const response=await fetch('/api/defaults');if(!response.ok)throw Error('无法读取模型参数');defaults=await response.json();}parameters={...defaults};buildParameters();$('run').disabled=false;status('参数已载入，尚未采样。');syncReplay({n:Number($('circuit').value),parameters},null);}catch(error){status(error.message+'。请先启动本地 server.py。',true);}})();
+</script></body></html>

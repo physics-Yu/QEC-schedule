@@ -49,6 +49,9 @@ class HsimModel:
         seconds. Nonideal pulse duration must match the compiled duration.
         The returned product is not a propagated circuit-state fidelity.
         """
+        if any(event.kind == "CPhasePulse" for event in activity.events):
+            raise ValueError("This cost model does not support native CPhasePulse.")
+
         require_validated(result)
         keys_at(dict(params), {"single", "cz", "background"}, "hsim.params")
         uftqc = _backend()

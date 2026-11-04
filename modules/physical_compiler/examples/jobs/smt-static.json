@@ -1,0 +1,129 @@
+{
+  "schema": "nadit.job/1",
+  "circuit": {
+    "qasm": "../circuits/smt-static.qasm3"
+  },
+  "device": {
+    "name": "smt-static",
+    "zones": [
+      {
+        "id": "shared",
+        "bounds": {
+          "x_min": -1,
+          "y_min": -1,
+          "x_max": 3,
+          "y_max": 1
+        },
+        "operations": [
+          "cz",
+          "measure"
+        ],
+        "role": null
+      }
+    ],
+    "slm_sites": [
+      {
+        "id": "left",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": "right",
+        "position": {
+          "x": 2,
+          "y": 0
+        }
+      }
+    ],
+    "aods": [
+      {
+        "id": "transport",
+        "workspace": {
+          "x_min": -1,
+          "y_min": -1,
+          "x_max": 3,
+          "y_max": 1
+        },
+        "min_spacing": 1,
+        "max_rows": null,
+        "max_columns": null,
+        "motion": "flexible"
+      }
+    ],
+    "timing": {
+      "load_us": 3,
+      "store_us": 5,
+      "move_us_per_um": 1,
+      "move_profile": "linear"
+    },
+    "cz": {
+      "channel": "cz",
+      "radius_um": 2.1,
+      "duration_us": 0.4,
+      "holder_pairs": [
+        [
+          "slm",
+          "slm"
+        ],
+        [
+          "slm",
+          "aod"
+        ],
+        [
+          "aod",
+          "aod"
+        ]
+      ],
+      "allow_spectators": false
+    },
+    "readout": {
+      "channel": "readout",
+      "duration_us": 5,
+      "latency_us": 1,
+      "min_spacing_um": 0,
+      "retain_atoms": true,
+      "holders": [
+        "slm",
+        "aod"
+      ],
+      "max_atoms": 2
+    },
+    "local": null,
+    "global_control": null,
+    "pair_arrays": []
+  },
+  "aod": "transport",
+  "strategy": {
+    "kind": "smt",
+    "xs": [
+      0,
+      2
+    ],
+    "ys": [
+      0
+    ],
+    "horizon": 2,
+    "timeout_s": 20,
+    "time_quantum_us": 0.1
+  },
+  "entry": {
+    "kind": "explicit",
+    "atoms": [
+      [
+        7,
+        "left",
+        0
+      ],
+      [
+        11,
+        "right",
+        1
+      ]
+    ]
+  },
+  "case": {
+    "seed": 17
+  }
+}

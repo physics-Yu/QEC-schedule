@@ -6,7 +6,13 @@ from math import isfinite
 from pathlib import Path
 from typing import Literal
 
-from .capabilities import CZCapability, GlobalControl, LocalControl, ReadoutCapability
+from .capabilities import (
+    CPhaseCapability,
+    CZCapability,
+    GlobalControl,
+    LocalControl,
+    ReadoutCapability,
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -217,6 +223,7 @@ class Device:
         local: Optional addressed rotation and reset channel.
         global_control: Optional global single-qubit rotation channel.
         pair_arrays: Device-owned interaction pairs referencing fixed sites.
+        cphase: Optional uniform-angle controlled-phase channel and fixed duration.
 
     Raises:
         ValueError: If a zone, site, or AOD ID is empty or duplicated.
@@ -232,6 +239,7 @@ class Device:
     local: LocalControl | None = None
     global_control: GlobalControl | None = None
     pair_arrays: tuple[PairArray, ...] = ()
+    cphase: CPhaseCapability | None = None
     _sites_by_id: dict[str, SLMSite] = field(init=False, repr=False, compare=False)
     _aods_by_id: dict[str, AOD] = field(init=False, repr=False, compare=False)
 
@@ -348,6 +356,9 @@ def loads_device(source: str) -> Device:
     cz = data.get("cz")
     if cz is not None and "holder_pairs" in cz:
         cz["holder_pairs"] = tuple((pair[0], pair[1]) for pair in cz["holder_pairs"])
+    cphase = data.get("cphase")
+    if cphase is not None and "holder_pairs" in cphase:
+        cphase["holder_pairs"] = tuple(tuple(pair) for pair in cphase["holder_pairs"])
     readout = data.get("readout")
     local = data.get("local")
     global_control = data.get("global_control")
@@ -405,6 +416,7 @@ def loads_device(source: str) -> Device:
             GlobalControl(**global_control) if global_control is not None else None
         ),
         pair_arrays=pairs,
+        cphase=CPhaseCapability(**cphase) if cphase is not None else None,
     )
     if pairs:
         validate_pair_arrays(device)

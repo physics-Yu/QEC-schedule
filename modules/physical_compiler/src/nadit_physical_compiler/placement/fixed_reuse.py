@@ -37,8 +37,9 @@ class FixedReusePlacer:
         retained_atoms: tuple[AtomState, ...] = (),
     ) -> PlacementPlan:
         """Clear spectators home, place gates, and retain selected endpoints."""
-        cz = (
-            bool(layer.operation_ids) and dag.nodes[layer.operation_ids[0]].name == "cz"
+        cz = bool(layer.operation_ids) and dag.nodes[layer.operation_ids[0]].name in (
+            "cz",
+            "cp",
         )
         prepared = layout
         if cz:

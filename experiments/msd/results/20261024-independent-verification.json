@@ -1,0 +1,173 @@
+{
+  "schema": "nadit.msd.independent_endpoint_verification/1",
+  "completed_utc": "2026-10-24T03:32:15.146038+00:00",
+  "ok": true,
+  "source_commit": "323533d8e7f7a3e9ac8f25223eb5aec0984eb130",
+  "source_tree_sha256": "6b85d35ced74baa3ea892a98b8a32c51fc79e343cf71dce2da3015ff2b909dcb",
+  "expected_cell_count": 72,
+  "observed_cell_count": 72,
+  "status_counts": {
+    "passed": 72
+  },
+  "check_count": 1623,
+  "errors": [],
+  "witness_validation": {
+    "ok": true,
+    "failure": null,
+    "failures": [],
+    "failure_count": 0,
+    "checks": [
+      "motion",
+      "coverage",
+      "replay",
+      "pulse",
+      "addressing",
+      "timing"
+    ],
+    "semantic": "checked"
+  },
+  "witness_replay_matches_entry_and_exit": true,
+  "independently_recomputed_witness_metrics": {
+    "execution_duration_us": 4548.291396637524,
+    "atom_count": 102,
+    "atom_time_us": 463925.7224570274,
+    "atom_busy_us": 16759.801360721623,
+    "atom_idle_us": 447165.92109630577,
+    "movement_distance_atom_um": 2354.0303501982507,
+    "transport_elapsed_us": 4419.791396637524,
+    "transport_action_sum_us": 4419.791396637524,
+    "trajectory_bbox_um": [
+      0.0,
+      -60.0,
+      560.0,
+      65.0
+    ],
+    "trajectory_bbox_area_um2": 70000.0,
+    "exposure_by_action": {
+      "Reset": {
+        "action_count": 8,
+        "atom_events": 8,
+        "atom_us": 40.0
+      },
+      "Rotation": {
+        "action_count": 117,
+        "atom_events": 117,
+        "atom_us": 117.0
+      },
+      "Load": {
+        "action_count": 19,
+        "atom_events": 64,
+        "atom_us": 6400.0
+      },
+      "Move": {
+        "action_count": 20,
+        "atom_events": 72,
+        "atom_us": 2747.8013607216217
+      },
+      "Store": {
+        "action_count": 19,
+        "atom_events": 64,
+        "atom_us": 6400.0
+      },
+      "CZPulse": {
+        "action_count": 5,
+        "atom_events": 510,
+        "atom_us": 255.0
+      },
+      "Measure": {
+        "action_count": 1,
+        "atom_events": 8,
+        "atom_us": 800.0
+      }
+    }
+  },
+  "artifact_sha256": {
+    "manifest.json": "adb8e205168b4dccf5f615abc30558cf37458bcf566dcb0494da975649a42997",
+    "source-snapshot.json": "0e6551ebba5ec7aa627253e96cd2b428c06d9ea1a0b75df248bb96070b61d664",
+    "journal.jsonl": "d19636aab172c0cdab4e67f554d83c5a1494ab89801c750273c13aeb2a1b73e3",
+    "summary.json": "3929a27ddc8e12805c21005e1dbbfb3df19d478c45d22f7d9c5a57e4cadb2b54",
+    "d3-n1-logical_s.result.json": "7d03ad872d32ded3ad77a09edfc294659a56731a4196600a073cee2dec581b2a",
+    "d3-n1-initialize_0.json": "7042fb81477c2041de214ced8cb8728db6447b98938ffa60bfb0b20a032e6a54",
+    "d3-n1-initialize_plus.json": "a6ba533395f8a3323841aa63891a20da87d08c7f829403743e9e5ecaaf44a851",
+    "d3-n1-se_round.json": "c3edf9d2c4a43f1a834294272dbfdfbd73e159e64a7d3441286b0f623079a283",
+    "d3-n1-logical_s.json": "92bcefbc5724b93c7495d66c29f65d6f09bf5565f1ed591c7b3ac1f4ec664cf4",
+    "d3-n1-raw_t.json": "640c5ea5cd4aacdd075052330492768cc7a5a51dafeaab55c64507bfe2a58645",
+    "d3-n1-logical_mx.json": "b15076cff6cabbecf3f7f430e40f6a993a18c373c08818d1d1d312cf29144387",
+    "d3-n1-logical_mz.json": "53d19b4b9272e1a77c0c6374db6d0d7df938bdf145e6d0881bdcf93dab06be3a",
+    "d3-n1-transversal_cnot.json": "2fc509d3a7b45bf1c52e898f6531955ccd0f1d80dd17e7b81ee485f4f2f5c5a3",
+    "d3-n2-initialize_0.json": "5f593774e4011a8bf0aea1b180515788cdeb76970bec83ab047c1af89f3a9cf6",
+    "d3-n2-initialize_plus.json": "9a43d25c03df034a015c213b4bce307277f647c646a2f7842d07b6169bd5ff28",
+    "d3-n2-se_round.json": "5934d27e5c3ab4b690540513f8a730639a48a6d0651dfa852ea109d9a7e6c202",
+    "d3-n2-logical_s.json": "93478ccadf120adfff612a41245fb5cdbb0bf65d89c6a4047d9423558a7618c3",
+    "d3-n2-raw_t.json": "dbb6cb3e4459e5302affeadc91f4518bdad97cf563e953ec9e9bf47b3c34fd6f",
+    "d3-n2-logical_mx.json": "cfb5f96127e981fc1a4c2c327d5f2a458e07c2f0f66a3d1946540049e45f9128",
+    "d3-n2-logical_mz.json": "e8c72f095d580792ce4e006773d6192775594b447a5204ea485714c595a3da28",
+    "d3-n2-transversal_cnot.json": "8549f58b1663d202385b7f2f91f99604261bd535f7ed4c1e2ec161c7ab125469",
+    "d3-n4-initialize_0.json": "92c3fe0de194b1c691e53c152fc2b3ce8da831d77d60c2f629a8be45463b0055",
+    "d3-n4-initialize_plus.json": "d8ce2dac509fcc00e27473e8495615dacc8ecb541f13fed94caeb01847687c2c",
+    "d3-n4-se_round.json": "ced9802904edc49c7a30d9aa1abaf93dd1a39199e4680d8edeeedc8453a8d8e5",
+    "d3-n4-logical_s.json": "c3fbb4d6bb398955de7f39c3a63ef321c50e6b5c4da1d97cf299b7e94050a6aa",
+    "d3-n4-raw_t.json": "aae2bef5c8cc55bc4b8df0eac5c92046ac6b850ad7528567bc544b07a8bfd397",
+    "d3-n4-logical_mx.json": "d4ebea7783b3ab94cc15f82fc58025b3e37422703a25028e7d8103a8f4f821a9",
+    "d3-n4-logical_mz.json": "bbf0769e9eb54660f06d1e191a1fbf5b4f29afa5a558c34ff27001c6dd7099c6",
+    "d3-n4-transversal_cnot.json": "c147eef546f8a09dc91192d706d984063eb1f20b4f7e14b6e93af025c12fff3b",
+    "d5-n1-initialize_0.json": "05b4368834587413e54dd6692154d09f01f21950bcddb400d4ae5bc019246fa7",
+    "d5-n1-initialize_plus.json": "a774a028a538cee90f9e00aadf5f7950abe495291956b65b377ec1865b892d81",
+    "d5-n1-se_round.json": "3b6d7abaac9bbc06c5b151ae42858a7cc0368e7f3fb483f0901d9027f450231a",
+    "d5-n1-logical_s.json": "663750821306e175e164e60b9b1415fd641b54e1aa41d74deb82f25dc51d1e9f",
+    "d5-n1-raw_t.json": "880bab8d474a937dedf5c3c34e079eaf3abc5767a48686bcc6a94240df416357",
+    "d5-n1-logical_mx.json": "fc64431c0f76068065d9b1e953ddc80d0c8bf9abfbab30fd54e520976489bb1b",
+    "d5-n1-logical_mz.json": "d146209acd98a6e57b52d6b77eab00394bd0899d6216de4e3e32084213ad7340",
+    "d5-n1-transversal_cnot.json": "0f2cd268fe46f11da3c9052df52facbb242fe7397e53a1a18a021b319c6d129c",
+    "d5-n2-initialize_0.json": "836773dd80a4d92fef29930343099c8530761a17bf1a42aa898be57c6c705ef6",
+    "d5-n2-initialize_plus.json": "6343f05d4413d8d8fdbd3e54b7f7335ef78f179ab6b1e42314a907f75c34a7dc",
+    "d5-n2-se_round.json": "8271d4c3d4e06096dedf8c4bb3c2eec0b00a38a98c22807f6c8b8b62e4bec509",
+    "d5-n2-logical_s.json": "c75c35e4f196df45a46db6ff8b7ed79dc28f11eca2f70923919083e2a4c99611",
+    "d5-n2-raw_t.json": "21949034f28b65393db72f223f1fc3baec3e3252edaaf270bf2742403368d0dc",
+    "d5-n2-logical_mx.json": "6ef0842f91baa46cad4bba71dd7003bac98dc2bd64d32ecbd4c1f9d3299c92f8",
+    "d5-n2-logical_mz.json": "d5e028877d4183371e2c85781581c8a855b24a779a131a739422c74986bc1f00",
+    "d5-n2-transversal_cnot.json": "073000339db283a05f227494b2766341bb184647ae2d01dbbefd6a6e054e1a9f",
+    "d5-n4-initialize_0.json": "643423df9a120033c05b4b6d2eaf399fd44581d4ecc0fc60ad446678c31839bb",
+    "d5-n4-initialize_plus.json": "764330b22f71e587e2f65ee3e3df8eb386b9521946105f43a8a4104f4410f227",
+    "d5-n4-se_round.json": "1389f2304e622b4e0c43324f497af5dd69aa3794000c24411c49d714d1451358",
+    "d5-n4-logical_s.json": "740f882fac591cdbdba6b287be9a53bf31f40452ca00bf70d70cc0d90c5402bb",
+    "d5-n4-raw_t.json": "c1216ad1e85c79d1c7edfbf6abb98eaa60019c299e44d83552e731a91fad9722",
+    "d5-n4-logical_mx.json": "5067bdb0ded644dfe9cbf76914bf22034faf7ac76f9861e7ed1d5c775753a268",
+    "d5-n4-logical_mz.json": "38ee48f9b137e7a500fe5fcbb78c9996a3a5648c814eef93918b3fbcddd013f4",
+    "d5-n4-transversal_cnot.json": "b41d476664d0885a352032d4744be8cbc4c031cf79e766dddf30e84c71379d5e",
+    "d7-n1-initialize_0.json": "11dc72b0bbab28e6b8d914cc5ce1e392e41b0beddc2bf15a06565e6737475958",
+    "d7-n1-initialize_plus.json": "cfa535eac3996e1b0a2472ff990e38e1acb7a5f187ee3ab64128a66dc021cad1",
+    "d7-n1-se_round.json": "104c5d01d196ed5dafdce55956da00790dd10bfba8b7311f38f5874dfc382685",
+    "d7-n1-logical_s.json": "9b5e9d45f63eaf412cc1e4c27273196aac5f163143f348cd94a9d91d61718f5f",
+    "d7-n1-raw_t.json": "3efb5c20ce25d7aca9d0af2aebfb1a5a5f6f45c1b2ec401f6cdc99a346e6e1ba",
+    "d7-n1-logical_mx.json": "997386b14c00310acd76e27c4a1a90044afdbe4f31a5b6ec90d4cb8590096325",
+    "d7-n1-logical_mz.json": "1f643fb8a4bf9e566e7efde5d8b3edb4921bca6932e39f50ff71a26ed37fc356",
+    "d7-n1-transversal_cnot.json": "628bedb3a0f46ec0ff571451755476cfa926c60de8b18c5417c1378e0a6ffe0c",
+    "d7-n2-initialize_0.json": "4d70467a1592eed2e023a4a89dfa8ba792cb770a543ee9dac64441ac218ef034",
+    "d7-n2-initialize_plus.json": "0512def7a10c24489e91d95431933cb9f3a5ec4ffb8f3188774f8ebae3d1f7ff",
+    "d7-n2-se_round.json": "e7373e10201bd330dc43c8201cd58179ba23fa994b6e86fb6ab79bc890e37c3c",
+    "d7-n2-logical_s.json": "2e2db73e94d7335b952c6bb6d7f1632f52ffba645492a69d8b47370d9ff9453a",
+    "d7-n2-raw_t.json": "12325f92a99ef34bbc35524b931887c708b498e10d94ea8c35cf9b0d656bbaba",
+    "d7-n2-logical_mx.json": "bb5c86743705c1fd8630bf939c31ffc23eb72325434e8a9c44aa188ac1103669",
+    "d7-n2-logical_mz.json": "1c07f61f5c331dd60b81963c708737c7875ab2736b2961667f5346ab809935f3",
+    "d7-n2-transversal_cnot.json": "027ff33f9ecc5fe7126ba17d71b8d96b6a9089ec3dc769556e5a8674595d260a",
+    "d7-n4-initialize_0.json": "f8600ea2b69b058e599a83663d0cfb059e3c04269852d40e254998cdfef5014f",
+    "d7-n4-initialize_plus.json": "38b7b6f8de971601eb16891690dbee8106dd2b394e81dab7dda9c793ffb9b5cc",
+    "d7-n4-se_round.json": "068a154535438848459aba60f70945c78add4ce689bcecc93b43a23246ac6daf",
+    "d7-n4-logical_s.json": "cada1dcf7c76eb095b35681ddb2794ccb35be31cae1d8dc5888a0a7d575ac83e",
+    "d7-n4-raw_t.json": "3bb795fb2c17c7a70c56e8a89058d18ec9d38c18d0ea496261d2d205e05145d8",
+    "d7-n4-logical_mx.json": "81a590b201755bd49da5418f8ec485aac67bb02f68f8a3b22602e6195ee2ed5b",
+    "d7-n4-logical_mz.json": "5210be994be501043abdc14fca722c9e931ecfc0e573c747ede8b98d58bfef8c",
+    "d7-n4-transversal_cnot.json": "6d06810258620806eec120185a31209e7c33aa3e1a7ad5edb0b0dc3e11b52f3b"
+  },
+  "scope": "Completed component calibrations only. No parallel factory throughput, accepted output, quantum-state sampling, or logical-error claim.",
+  "prior_verification_attempt": {
+    "file": "independent-verification-initial.json",
+    "diagnosis": "The initial verifier reconstructed default padding 20.0 instead of recorded CLI padding 20. This changes JSON numeric encoding and hashes but not geometry; final verification reconstructs the exact recorded parameters."
+  },
+  "verification_limits": [
+    "All 72 compact records checked against frozen geometry/timing identities and analytic invariants.",
+    "Only retained d3 N1 S full witness independently revalidated/replayed; other complete schedules not retained.",
+    "Source reference and actual module path checked; third-party dependency packages not independently reconstructed."
+  ]
+}

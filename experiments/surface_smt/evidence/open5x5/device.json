@@ -1,0 +1,425 @@
+{
+  "aods": [
+    {
+      "id": "transport",
+      "max_columns": null,
+      "max_rows": null,
+      "min_spacing": 1,
+      "motion": "flexible",
+      "workspace": {
+        "x_max": 43,
+        "x_min": -1,
+        "y_max": 41,
+        "y_min": -1
+      }
+    }
+  ],
+  "cz": {
+    "allow_spectators": true,
+    "channel": "rydberg",
+    "duration_us": 0.36,
+    "holder_pairs": [
+      [
+        "slm",
+        "slm"
+      ],
+      [
+        "slm",
+        "aod"
+      ],
+      [
+        "aod",
+        "aod"
+      ]
+    ],
+    "radius_um": 4.6
+  },
+  "global_control": null,
+  "local": {
+    "channel": "local",
+    "holders": [
+      "slm",
+      "aod"
+    ],
+    "reset_us": 10,
+    "rotation_us": 1
+  },
+  "name": "depth-shared-bank",
+  "pair_arrays": [],
+  "readout": null,
+  "slm_sites": [
+    {
+      "id": "s_0_0",
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "s_1_0",
+      "position": {
+        "x": 2,
+        "y": 0
+      }
+    },
+    {
+      "id": "s_2_0",
+      "position": {
+        "x": 10,
+        "y": 0
+      }
+    },
+    {
+      "id": "s_3_0",
+      "position": {
+        "x": 12,
+        "y": 0
+      }
+    },
+    {
+      "id": "s_4_0",
+      "position": {
+        "x": 20,
+        "y": 0
+      }
+    },
+    {
+      "id": "s_5_0",
+      "position": {
+        "x": 22,
+        "y": 0
+      }
+    },
+    {
+      "id": "s_6_0",
+      "position": {
+        "x": 30,
+        "y": 0
+      }
+    },
+    {
+      "id": "s_7_0",
+      "position": {
+        "x": 32,
+        "y": 0
+      }
+    },
+    {
+      "id": "s_8_0",
+      "position": {
+        "x": 40,
+        "y": 0
+      }
+    },
+    {
+      "id": "s_9_0",
+      "position": {
+        "x": 42,
+        "y": 0
+      }
+    },
+    {
+      "id": "s_0_1",
+      "position": {
+        "x": 0,
+        "y": 10
+      }
+    },
+    {
+      "id": "s_1_1",
+      "position": {
+        "x": 2,
+        "y": 10
+      }
+    },
+    {
+      "id": "s_2_1",
+      "position": {
+        "x": 10,
+        "y": 10
+      }
+    },
+    {
+      "id": "s_3_1",
+      "position": {
+        "x": 12,
+        "y": 10
+      }
+    },
+    {
+      "id": "s_4_1",
+      "position": {
+        "x": 20,
+        "y": 10
+      }
+    },
+    {
+      "id": "s_5_1",
+      "position": {
+        "x": 22,
+        "y": 10
+      }
+    },
+    {
+      "id": "s_6_1",
+      "position": {
+        "x": 30,
+        "y": 10
+      }
+    },
+    {
+      "id": "s_7_1",
+      "position": {
+        "x": 32,
+        "y": 10
+      }
+    },
+    {
+      "id": "s_8_1",
+      "position": {
+        "x": 40,
+        "y": 10
+      }
+    },
+    {
+      "id": "s_9_1",
+      "position": {
+        "x": 42,
+        "y": 10
+      }
+    },
+    {
+      "id": "s_0_2",
+      "position": {
+        "x": 0,
+        "y": 20
+      }
+    },
+    {
+      "id": "s_1_2",
+      "position": {
+        "x": 2,
+        "y": 20
+      }
+    },
+    {
+      "id": "s_2_2",
+      "position": {
+        "x": 10,
+        "y": 20
+      }
+    },
+    {
+      "id": "s_3_2",
+      "position": {
+        "x": 12,
+        "y": 20
+      }
+    },
+    {
+      "id": "s_4_2",
+      "position": {
+        "x": 20,
+        "y": 20
+      }
+    },
+    {
+      "id": "s_5_2",
+      "position": {
+        "x": 22,
+        "y": 20
+      }
+    },
+    {
+      "id": "s_6_2",
+      "position": {
+        "x": 30,
+        "y": 20
+      }
+    },
+    {
+      "id": "s_7_2",
+      "position": {
+        "x": 32,
+        "y": 20
+      }
+    },
+    {
+      "id": "s_8_2",
+      "position": {
+        "x": 40,
+        "y": 20
+      }
+    },
+    {
+      "id": "s_9_2",
+      "position": {
+        "x": 42,
+        "y": 20
+      }
+    },
+    {
+      "id": "s_0_3",
+      "position": {
+        "x": 0,
+        "y": 30
+      }
+    },
+    {
+      "id": "s_1_3",
+      "position": {
+        "x": 2,
+        "y": 30
+      }
+    },
+    {
+      "id": "s_2_3",
+      "position": {
+        "x": 10,
+        "y": 30
+      }
+    },
+    {
+      "id": "s_3_3",
+      "position": {
+        "x": 12,
+        "y": 30
+      }
+    },
+    {
+      "id": "s_4_3",
+      "position": {
+        "x": 20,
+        "y": 30
+      }
+    },
+    {
+      "id": "s_5_3",
+      "position": {
+        "x": 22,
+        "y": 30
+      }
+    },
+    {
+      "id": "s_6_3",
+      "position": {
+        "x": 30,
+        "y": 30
+      }
+    },
+    {
+      "id": "s_7_3",
+      "position": {
+        "x": 32,
+        "y": 30
+      }
+    },
+    {
+      "id": "s_8_3",
+      "position": {
+        "x": 40,
+        "y": 30
+      }
+    },
+    {
+      "id": "s_9_3",
+      "position": {
+        "x": 42,
+        "y": 30
+      }
+    },
+    {
+      "id": "s_0_4",
+      "position": {
+        "x": 0,
+        "y": 40
+      }
+    },
+    {
+      "id": "s_1_4",
+      "position": {
+        "x": 2,
+        "y": 40
+      }
+    },
+    {
+      "id": "s_2_4",
+      "position": {
+        "x": 10,
+        "y": 40
+      }
+    },
+    {
+      "id": "s_3_4",
+      "position": {
+        "x": 12,
+        "y": 40
+      }
+    },
+    {
+      "id": "s_4_4",
+      "position": {
+        "x": 20,
+        "y": 40
+      }
+    },
+    {
+      "id": "s_5_4",
+      "position": {
+        "x": 22,
+        "y": 40
+      }
+    },
+    {
+      "id": "s_6_4",
+      "position": {
+        "x": 30,
+        "y": 40
+      }
+    },
+    {
+      "id": "s_7_4",
+      "position": {
+        "x": 32,
+        "y": 40
+      }
+    },
+    {
+      "id": "s_8_4",
+      "position": {
+        "x": 40,
+        "y": 40
+      }
+    },
+    {
+      "id": "s_9_4",
+      "position": {
+        "x": 42,
+        "y": 40
+      }
+    }
+  ],
+  "timing": {
+    "load_us": 15,
+    "move_profile": "linear",
+    "move_us_per_um": 1,
+    "store_us": 15
+  },
+  "zones": [
+    {
+      "bounds": {
+        "x_max": 43,
+        "x_min": -1,
+        "y_max": 41,
+        "y_min": -1
+      },
+      "id": "shared",
+      "operations": [
+        "cz",
+        "rotate",
+        "reset"
+      ],
+      "role": null
+    }
+  ]
+}

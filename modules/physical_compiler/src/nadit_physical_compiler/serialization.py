@@ -10,6 +10,7 @@ from .atom_ir import (
     AtomAction,
     AtomProgram,
     AtomStep,
+    CPhasePulse,
     CZPulse,
     GlobalRY,
     Load,
@@ -22,7 +23,7 @@ from .atom_ir import (
     Wait,
 )
 from .compiler import CompilationResult, CompiledOperation, MeasurementRecord
-from .contracts import GateLayer
+from .contracts import GateLayer, TransportGoal
 from .coverage import RegionSet
 from .device import Device, Position, Region, loads_device
 from .metrics import collect_metrics
@@ -38,6 +39,7 @@ _ACTION_CLASSES: dict[str, type[AtomAction]] = {
         Load,
         Move,
         Store,
+        CPhasePulse,
         CZPulse,
         Rotation,
         LocalU,
@@ -93,7 +95,7 @@ def _read_grid(value: Mapping[str, Any]) -> AODGrid:
 
 def _action(action: AtomAction) -> dict[str, Any]:
     encoded: dict[str, Any] = {"kind": type(action).__name__, **_arrays(asdict(action))}
-    if isinstance(action, CZPulse | GlobalRY):
+    if isinstance(action, CPhasePulse | CZPulse | GlobalRY):
         encoded["coverage"] = _coverage(action.coverage)
     return encoded
 
@@ -114,7 +116,7 @@ def _read_action(value: Mapping[str, Any]) -> AtomAction:
         fields["targets"] = tuple(
             (atom, Position(**position)) for atom, position in fields["targets"]
         )
-    if kind in ("CZPulse", "GlobalRY"):
+    if kind in ("CPhasePulse", "CZPulse", "GlobalRY"):
         fields["coverage"] = _read_coverage(fields["coverage"])
         if kind == "GlobalRY" and isinstance(fields["coverage"], tuple):
             raise ValueError("GlobalRY coverage must use a region or regions.")
@@ -240,6 +242,9 @@ def encode_device(device: Device) -> dict[str, Any]:
         JSON fields containing explicit SLM sites and excluding lookup caches.
     """
     result: dict[str, Any] = _arrays(device)
+    if device.cphase is None:
+        # Keep historical Device snapshots and their content hashes unchanged.
+        result.pop("cphase")
     return result
 
 
@@ -356,6 +361,8 @@ def encode_result(
     }
     if validation is not None:
         document["validation"] = deepcopy(dict(validation))
+    if result.transport_goals:
+        document["transport_goals"] = [_arrays(goal) for goal in result.transport_goals]
     if dag is not None and device is not None and inputs is not None:
         from .compilers.registry import identity as compiler_identity
 
@@ -420,4 +427,10 @@ def decode_result(document: Mapping[str, Any]) -> CompilationResult:
             for item in document["measurements"]
         ),
         tuple(GateLayer(tuple(item["operation_ids"])) for item in document["layers"]),
+        tuple(
+            TransportGoal(
+                item["operation_id"], tuple(tuple(target) for target in item["targets"])
+            )
+            for item in document.get("transport_goals", ())
+        ),
     )

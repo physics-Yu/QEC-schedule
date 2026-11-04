@@ -16,6 +16,8 @@ TRANSPORT_DEFAULTS: dict[str, Any] = {
     "aod_loss_per_us": 0.0,
     "slm_loss_per_us": 0.0,
     "move_pauli": [0.0, 0.0, 0.0],
+    "load_pauli": [0.0, 0.0, 0.0],
+    "store_pauli": [0.0, 0.0, 0.0],
 }
 EXPOSURE_DEFAULTS: dict[str, Any] = {
     "slm_t2_us": None,
@@ -128,7 +130,8 @@ def resolve(params: Mapping[str, Any]) -> dict[str, Any]:
         t[key] = number_at(t[key], key)
         if t[key] < 0:
             raise ValueError(f"{key}: expected a nonnegative hazard.")
-    t["move_pauli"] = probabilities(t["move_pauli"], 3, "move_pauli")
+    for key in ("move_pauli", "load_pauli", "store_pauli"):
+        t[key] = probabilities(t[key], 3, key)
     for key in ("slm_t2_us", "aod_t2_us"):
         value = p["exposure"][key]
         if value is not None and number_at(value, key) <= 0:

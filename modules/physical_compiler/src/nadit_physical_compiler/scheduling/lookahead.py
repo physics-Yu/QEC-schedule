@@ -3,7 +3,7 @@
 from collections.abc import Collection, Mapping, Sequence
 
 from ..contracts import GateLayer, Scheduler
-from ..physical_ir import PhysicalDAG, ResultRef
+from ..physical_ir import LOCAL_UNITARY_GATES, PhysicalDAG, ResultRef
 
 
 def next_cz_layer(
@@ -76,9 +76,9 @@ def next_cz_layer(
         if not selected.operation_ids:
             return None
         names = tuple(dag.nodes[index].name for index in selected.operation_ids)
-        if all(name == "cz" for name in names):
+        if all(name in ("cz", "cp") for name in names):
             return selected
-        if not all(name in ("rx", "ry", "rz", "u", "global_ry") for name in names):
+        if not all(name in (*LOCAL_UNITARY_GATES, "global_ry") for name in names):
             return None
         for index in selected.operation_ids:
             finish(index)

@@ -1,0 +1,61 @@
+{
+  "attempts": [
+    {
+      "depth": 6,
+      "metrics": {
+        "action_counts": {
+          "CZPulse": 4,
+          "Load": 6,
+          "Move": 6,
+          "Reset": 1,
+          "Rotation": 20,
+          "Store": 6
+        },
+        "atom_load_count": 57,
+        "atom_steps": 49,
+        "atom_store_count": 57,
+        "cz_gates_per_pulse": [
+          6,
+          6,
+          6,
+          6
+        ],
+        "duration_us": 323.67190428182636,
+        "load_batch_sizes": [
+          9,
+          6,
+          16,
+          9,
+          9,
+          8
+        ],
+        "max_parallel_atoms": 16,
+        "program_duration_us": 323.67190428182636,
+        "transport_duration_us": 292.23190428182636
+      },
+      "model_build_s": 1.2793308962136507,
+      "solve_s": 6.550867009907961,
+      "solver": "4.16.0",
+      "source_and_inputs_verified": true,
+      "status": "sat",
+      "validated": true,
+      "worker_wall_s": 7.947819797322154
+    }
+  ],
+  "best_feasible_depth": 6,
+  "final_home": true,
+  "manifest_sha256": "13c6734e10c4822b6cef5edc53d16babfe8389d802900779af7a38bdde3f9d07",
+  "minimum_move_depth": null,
+  "output_hashes": {
+    "depth-6.checks.json": "f453392ff69cb5746f12d5ac16c405c6923dc0ecbe12ce20b6278111ea1967ee",
+    "depth-6.json": "09d62f2d8c9ccba086806ba7f6f1d0ede86290af1aa74cc9ee7ce180f152b03b",
+    "depth-6.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "depth-6.result.json": "83b6797a171b3a679d63973d038437930e474d17c438bc68cbaf8c3e7687d791",
+    "depth-6.witness.json": "440d69b02423395833b5987bf901f1f1e2468c73c76a7f9f54c39f355740db87"
+  },
+  "readout_included": false,
+  "scope": "Fixed four N/Z matchings; free atom assignment to a 6x6 double-trap bank; initially isolated atoms; full-field CZ; flexible AOD; unlimited line capacity; all endpoints SLM; final home required: True.",
+  "source_and_inputs_verified": true,
+  "status": "feasible_unproved",
+  "wall_s": 8.586356401443481
+}

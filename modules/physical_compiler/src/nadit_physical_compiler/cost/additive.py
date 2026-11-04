@@ -52,6 +52,9 @@ class AdditiveModel:
         params: Mapping[str, Any],
     ) -> CostReport:
         """Return deterministic log contributions using a shared activity record."""
+        if any(event.kind == "CPhasePulse" for event in activity.events):
+            raise ValueError("This cost model does not support native CPhasePulse.")
+
         require_validated(result)
         p = resolved_params(params)
         counts = {

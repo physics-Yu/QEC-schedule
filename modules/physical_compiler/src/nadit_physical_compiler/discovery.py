@@ -17,8 +17,10 @@ def describe() -> dict[str, Any]:
     from .cost.hsim import HSIM_COMMIT
     from .cost.noise.config import CZ_BACKENDS, SINGLE_BACKENDS
     from .cost.noise.config import DEFAULTS as NOISE_DEFAULTS
+    from .methods import describe_methods
 
     return {
+        "methods": describe_methods(),
         "entry_providers": {
             "explicit": {
                 "description": "User-supplied atom/site/qubit mapping; no search."

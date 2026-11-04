@@ -6,6 +6,7 @@ from typing import Any
 
 from .atom_ir import (
     AtomAction,
+    CPhasePulse,
     CZPulse,
     GlobalRY,
     Load,
@@ -43,6 +44,8 @@ def check_duration(
         expected = device.timing.move_duration(distance)
         if action.duration_us + TOLERANCE_US >= expected:
             return ConstraintResult()
+    elif isinstance(action, CPhasePulse) and device.cphase:
+        expected = device.cphase.duration_us
     elif isinstance(action, CZPulse) and device.cz:
         expected = device.cz.duration_us
     elif isinstance(action, Rotation | LocalU) and device.local:

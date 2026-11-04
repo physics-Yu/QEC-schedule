@@ -1,0 +1,737 @@
+{
+  "schema": "nadit.msd.raw_t_acceptance/1",
+  "standard": "nadit.msd.standard/1",
+  "plan": {
+    "schema": "nadit.msd.raw_t_acceptance_plan/1",
+    "distances": [
+      3,
+      5,
+      7
+    ],
+    "pipelines": 1,
+    "factory_index": 0,
+    "patch_role": "W1",
+    "extra_rounds": 1,
+    "noise_profile": "modules/physical_compiler/cost_params/noise_illustrative.json",
+    "readout_control_flip": 0.001,
+    "estimator": {
+      "method": "auto",
+      "shots": 262144,
+      "seed": 20261024,
+      "batch_size": 65536
+    },
+    "max_world_atoms": 2048,
+    "scope": "One raw-T attempt plus repeated SE in the complete standard world; binary detector acceptance, not accepted-state fidelity or complete factory yield"
+  },
+  "plan_sha256": "939d3d24d02c1fb3bc2617d5e82bf10e773055461a5180ae905599a3a3740151",
+  "source_sha256": "a5e4a409962907a6416b549c2a9e58e2d45e5007ad5e04ce2b67cb48e55e1fbd",
+  "noise_profile_sha256": "58094b9b6e317ccf9973e7dbd940c90f13cb593e1b465c752b2a757a7257869c",
+  "noise_profile": {
+    "single": {
+      "backend": "pauli",
+      "probabilities": [
+        0.0001,
+        0.0001,
+        0.0001
+      ]
+    },
+    "single_overrides": {
+      "Z": {
+        "backend": "pauli",
+        "probabilities": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "cz": {
+      "backend": "pauli",
+      "probabilities": [
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001,
+        0.0001
+      ]
+    },
+    "transport": {
+      "backend": "rates/v1",
+      "load_loss": 0.0001,
+      "store_loss": 0.0001,
+      "move_loss": 2e-05,
+      "loss_per_um": 1e-06,
+      "loss_per_us": 0,
+      "aod_loss_per_us": 1e-08,
+      "slm_loss_per_us": 0,
+      "move_pauli": [
+        1e-05,
+        1e-05,
+        1e-05
+      ]
+    },
+    "exposure": {
+      "slm_t2_us": 1500000,
+      "aod_t2_us": 1500000,
+      "include_transport": true
+    },
+    "readout_flip": 0.001,
+    "reset_flip": 0.001,
+    "cz_atom_loss": 0,
+    "spectator_pauli": [
+      0,
+      0,
+      0
+    ]
+  },
+  "physical_execution": false,
+  "accepted_state_quality_estimated": false,
+  "cases": [
+    {
+      "distance": 3,
+      "parameters": {
+        "distance": 3,
+        "pipelines": 1,
+        "patch_gap_um": 40.0,
+        "factory_gap_um": 40.0,
+        "window_padding_um": 20.0
+      },
+      "factory_index": 0,
+      "patch_role": "W1",
+      "total_rounds": 2,
+      "first_deterministic_checks": 4,
+      "first_random_checks": 4,
+      "checks_per_round": 8,
+      "detector_count": 12,
+      "compile_wall_s": 0.2663248000026215,
+      "physical_metrics": {
+        "execution_duration_us": 6265.634980935729,
+        "atom_count": 102,
+        "atom_time_us": 639094.7680554444,
+        "atom_idle_us": 609374.742138717,
+        "atom_busy_us": 29720.025916727325,
+        "movement_distance_atom_um": 4164.483895680592,
+        "transport_elapsed_us": 6003.634980935727,
+        "transport_action_sum_us": 6003.634980935727,
+        "trajectory_bbox_um": [
+          0.0,
+          -60.0,
+          560.0,
+          65.0
+        ],
+        "trajectory_bbox_area_um2": 70000.0,
+        "exposure_by_action": {
+          "Reset": {
+            "action_count": 25,
+            "atom_events": 25,
+            "atom_us": 125.0
+          },
+          "Rotation": {
+            "action_count": 235,
+            "atom_events": 235,
+            "atom_us": 235.0
+          },
+          "Load": {
+            "action_count": 26,
+            "atom_events": 112,
+            "atom_us": 11200.0
+          },
+          "Move": {
+            "action_count": 28,
+            "atom_events": 128,
+            "atom_us": 4952.025916727334
+          },
+          "Store": {
+            "action_count": 26,
+            "atom_events": 112,
+            "atom_us": 11200.0
+          },
+          "CZPulse": {
+            "action_count": 8,
+            "atom_events": 816,
+            "atom_us": 408.0
+          },
+          "Measure": {
+            "action_count": 2,
+            "atom_events": 16,
+            "atom_us": 1600.0
+          }
+        },
+        "accepted_outputs": null,
+        "accepted_output_throughput_per_s": null,
+        "logical_error_probability": null,
+        "physical_validation_ok": true
+      },
+      "result_sha256": "0bf49fbc5d6d84e17cfabbcbc821e871a1b82226a3108ac94c06b5f6a307604f",
+      "template_content_sha256": "70e86cf48b58418173d89a70f55ea4703df57016b6a74b007de800a388e7530a",
+      "estimates": {
+        "zero_noise": {
+          "probability": 1.0,
+          "model_kind": "pauli_exact",
+          "estimator": {
+            "accepted": null,
+            "batch_size": null,
+            "calculation": "empty_xor_exact",
+            "channel_count": 0,
+            "channel_probabilities_renormalized": false,
+            "ci95": null,
+            "ci_method": null,
+            "cross_channel_cancellations_preserved": true,
+            "detector_count": 12,
+            "effective_channel_count": 0,
+            "effective_detector_rank": 0,
+            "exclusive_branches_preserved": true,
+            "kind": "exact",
+            "max_state_bytes": 67108864,
+            "method": "exact_xor_convolution",
+            "normalization_absolute_tolerance": 1e-12,
+            "numpy_version": "2.5.4",
+            "probability": 1.0,
+            "sampling": null,
+            "seed": null,
+            "shots": null
+          },
+          "analytic_reference": 1.0,
+          "analytic_residual": 0.0,
+          "analysis_wall_s": 0.27119730002596043,
+          "port_content_sha256": "1a7174e192b99c85f01fa87b5bf3813bc81e89b3155061c2677fa6d82bec7fc2",
+          "noise_params_hash": "3cf7058ada87e6147df6e7a75d0de88ca2bd072005dee17175e48cea4c2edbfc",
+          "channel_signatures_sha256": "f6b8eb243dbac5acef9ab091e053e1bb66901407f96c248ede4a82881364a91a",
+          "physical_loss": {
+            "all_atoms_survive_probability": 1.0,
+            "event_count": 0,
+            "full_loss_evidence": "See the corresponding full probability port."
+          },
+          "logical_error_probability": null
+        },
+        "readout_only": {
+          "probability": 0.9841233861841164,
+          "model_kind": "pauli_exact",
+          "estimator": {
+            "accepted": null,
+            "batch_size": null,
+            "calculation": "finite_xor_convolution",
+            "channel_count": 16,
+            "channel_probabilities_renormalized": false,
+            "ci95": null,
+            "ci_method": null,
+            "cross_channel_cancellations_preserved": true,
+            "detector_count": 12,
+            "effective_channel_count": 16,
+            "effective_detector_rank": 12,
+            "exclusive_branches_preserved": true,
+            "kind": "exact",
+            "max_state_bytes": 67108864,
+            "method": "exact_xor_convolution",
+            "normalization_absolute_tolerance": 1e-12,
+            "numpy_version": "2.5.4",
+            "probability": 0.9841233861841164,
+            "sampling": null,
+            "seed": null,
+            "shots": null
+          },
+          "analytic_reference": 0.9841233861841165,
+          "analytic_residual": -1.1102230246251565e-16,
+          "analysis_wall_s": 0.2836267000238877,
+          "port_content_sha256": "b864673cf6c1fe31b5477b6215fb8677e987e5f4729f70a6bc9b0b2ff4d12cbe",
+          "noise_params_hash": "970864b591c63abc746788df7df12cc7e1052f33b4e1acb935bd69941ff540d3",
+          "channel_signatures_sha256": "7d03530890c3efcf99b0ca1935efa292dc83986d502dd814fd74f38915202cdb",
+          "physical_loss": {
+            "all_atoms_survive_probability": 1.0,
+            "event_count": 0,
+            "full_loss_evidence": "See the corresponding full probability port."
+          },
+          "logical_error_probability": null
+        },
+        "illustrative": {
+          "probability": 0.8373162959696302,
+          "model_kind": "pauli_exact",
+          "estimator": {
+            "accepted": null,
+            "batch_size": null,
+            "calculation": "finite_xor_convolution",
+            "channel_count": 1815,
+            "channel_probabilities_renormalized": false,
+            "ci95": null,
+            "ci_method": null,
+            "cross_channel_cancellations_preserved": true,
+            "detector_count": 12,
+            "effective_channel_count": 845,
+            "effective_detector_rank": 12,
+            "exclusive_branches_preserved": true,
+            "kind": "exact",
+            "max_state_bytes": 67108864,
+            "method": "exact_xor_convolution",
+            "normalization_absolute_tolerance": 1e-12,
+            "numpy_version": "2.5.4",
+            "probability": 0.8373162959696302,
+            "sampling": null,
+            "seed": null,
+            "shots": null
+          },
+          "analytic_reference": null,
+          "analytic_residual": null,
+          "analysis_wall_s": 0.35130260000005364,
+          "port_content_sha256": "ae3a3b60b9f4cffa674d9876822261da0855c127598f3d6628d409e23ab8bc95",
+          "noise_params_hash": "bed49a92b37927e88d385c4f16fe6d0443f0f4aa05c34cef5febc52754e315f4",
+          "channel_signatures_sha256": "13a6d1312de980b1298988ef12542d88816b265663047a61b1f176c82023f53b",
+          "physical_loss": {
+            "all_atoms_survive_probability": 0.971122024362668,
+            "event_count": 608,
+            "full_loss_evidence": "See the corresponding full probability port."
+          },
+          "logical_error_probability": null
+        }
+      }
+    },
+    {
+      "distance": 5,
+      "parameters": {
+        "distance": 5,
+        "pipelines": 1,
+        "patch_gap_um": 40.0,
+        "factory_gap_um": 40.0,
+        "window_padding_um": 20.0
+      },
+      "factory_index": 0,
+      "patch_role": "W1",
+      "total_rounds": 2,
+      "first_deterministic_checks": 8,
+      "first_random_checks": 16,
+      "checks_per_round": 24,
+      "detector_count": 32,
+      "compile_wall_s": 0.8411375000141561,
+      "physical_metrics": {
+        "execution_duration_us": 6425.634980935729,
+        "atom_count": 294,
+        "atom_time_us": 1889136.6843951042,
+        "atom_idle_us": 1789259.2646726798,
+        "atom_busy_us": 99877.41972242443,
+        "movement_distance_atom_um": 15348.279652268639,
+        "transport_elapsed_us": 6163.634980935727,
+        "transport_action_sum_us": 6163.634980935727,
+        "trajectory_bbox_um": [
+          0.0,
+          -100.0,
+          800.0,
+          75.0
+        ],
+        "trajectory_bbox_area_um2": 140000.0,
+        "exposure_by_action": {
+          "Reset": {
+            "action_count": 73,
+            "atom_events": 73,
+            "atom_us": 365.0
+          },
+          "Rotation": {
+            "action_count": 763,
+            "atom_events": 763,
+            "atom_us": 763.0
+          },
+          "Load": {
+            "action_count": 26,
+            "atom_events": 368,
+            "atom_us": 36800.0
+          },
+          "Move": {
+            "action_count": 28,
+            "atom_events": 416,
+            "atom_us": 19173.41972242445
+          },
+          "Store": {
+            "action_count": 26,
+            "atom_events": 368,
+            "atom_us": 36800.0
+          },
+          "CZPulse": {
+            "action_count": 8,
+            "atom_events": 2352,
+            "atom_us": 1176.0
+          },
+          "Measure": {
+            "action_count": 2,
+            "atom_events": 48,
+            "atom_us": 4800.0
+          }
+        },
+        "accepted_outputs": null,
+        "accepted_output_throughput_per_s": null,
+        "logical_error_probability": null,
+        "physical_validation_ok": true
+      },
+      "result_sha256": "70486713d8b04ccdaf89c8ebda5b2dd0aa1be96e75072569bf409c2747528fe8",
+      "template_content_sha256": "ca3c0f90e834297e37a346454d6b7824d393167a7e398cfec70a5d7e498f3672",
+      "estimates": {
+        "zero_noise": {
+          "probability": 1.0,
+          "model_kind": "pauli_exact",
+          "estimator": {
+            "accepted": null,
+            "batch_size": null,
+            "calculation": "empty_xor_exact",
+            "channel_count": 0,
+            "channel_probabilities_renormalized": false,
+            "ci95": null,
+            "ci_method": null,
+            "cross_channel_cancellations_preserved": true,
+            "detector_count": 32,
+            "effective_channel_count": 0,
+            "effective_detector_rank": 0,
+            "exclusive_branches_preserved": true,
+            "kind": "exact",
+            "max_state_bytes": 67108864,
+            "method": "exact_xor_convolution",
+            "normalization_absolute_tolerance": 1e-12,
+            "numpy_version": "2.5.4",
+            "probability": 1.0,
+            "sampling": null,
+            "seed": null,
+            "shots": null
+          },
+          "analytic_reference": 1.0,
+          "analytic_residual": 0.0,
+          "analysis_wall_s": 1.1516454999800771,
+          "port_content_sha256": "6b50b69b932e8864cb24ab6829cf51b6f71b26caa70c10ad75d4588760c3eb02",
+          "noise_params_hash": "3cf7058ada87e6147df6e7a75d0de88ca2bd072005dee17175e48cea4c2edbfc",
+          "channel_signatures_sha256": "f6b8eb243dbac5acef9ab091e053e1bb66901407f96c248ede4a82881364a91a",
+          "physical_loss": {
+            "all_atoms_survive_probability": 1.0,
+            "event_count": 0,
+            "full_loss_evidence": "See the corresponding full probability port."
+          },
+          "logical_error_probability": null
+        },
+        "readout_only": {
+          "probability": 0.9523162841796875,
+          "model_kind": "estimated",
+          "estimator": {
+            "accepted": 249644,
+            "batch_size": 65536,
+            "calculation": "independent_exclusive_channel_samples",
+            "channel_count": 48,
+            "channel_probabilities_renormalized": false,
+            "ci95": [
+              0.9514938912836663,
+              0.953125420782085
+            ],
+            "ci_method": "wilson_score",
+            "cross_channel_cancellations_preserved": true,
+            "detector_count": 32,
+            "effective_channel_count": 48,
+            "effective_detector_rank": 32,
+            "exclusive_branches_preserved": true,
+            "kind": "estimated",
+            "max_state_bytes": 67108864,
+            "method": "exclusive_channel_monte_carlo",
+            "normalization_absolute_tolerance": 1e-12,
+            "numpy_version": "2.5.4",
+            "packed_word_count": 1,
+            "probability": 0.9523162841796875,
+            "sampling": {
+              "active_shots": "binomial_uniform_subset",
+              "branches": "conditional_categorical",
+              "confidence_interval": "Wilson score, two-sided 95%",
+              "requested_batch_size": 65536,
+              "rng": "numpy.PCG64"
+            },
+            "seed": 20261024,
+            "shots": 262144,
+            "state_allocation_bytes": 524288
+          },
+          "analytic_reference": 0.9531261773144367,
+          "analytic_residual": -0.0008098931347492178,
+          "analysis_wall_s": 1.137391900003422,
+          "port_content_sha256": "7f06f99737e248b6288aca0a3f6998d33ab0e5dc6fe63dd9a81d783d512a4872",
+          "noise_params_hash": "970864b591c63abc746788df7df12cc7e1052f33b4e1acb935bd69941ff540d3",
+          "channel_signatures_sha256": "9584d51d3e521739fabf13340652ad28d35077a50a5c346d3d6140dcbaad1493",
+          "physical_loss": {
+            "all_atoms_survive_probability": 1.0,
+            "event_count": 0,
+            "full_loss_evidence": "See the corresponding full probability port."
+          },
+          "logical_error_probability": null
+        },
+        "illustrative": {
+          "probability": 0.5628738403320312,
+          "model_kind": "estimated",
+          "estimator": {
+            "accepted": 147554,
+            "batch_size": 65536,
+            "calculation": "independent_exclusive_channel_samples",
+            "channel_count": 5547,
+            "channel_probabilities_renormalized": false,
+            "ci95": [
+              0.5609740984105049,
+              0.5647717395737386
+            ],
+            "ci_method": "wilson_score",
+            "cross_channel_cancellations_preserved": true,
+            "detector_count": 32,
+            "effective_channel_count": 2771,
+            "effective_detector_rank": 32,
+            "exclusive_branches_preserved": true,
+            "kind": "estimated",
+            "max_state_bytes": 67108864,
+            "method": "exclusive_channel_monte_carlo",
+            "normalization_absolute_tolerance": 1e-12,
+            "numpy_version": "2.5.4",
+            "packed_word_count": 1,
+            "probability": 0.5628738403320312,
+            "sampling": {
+              "active_shots": "binomial_uniform_subset",
+              "branches": "conditional_categorical",
+              "confidence_interval": "Wilson score, two-sided 95%",
+              "requested_batch_size": 65536,
+              "rng": "numpy.PCG64"
+            },
+            "seed": 20261024,
+            "shots": 262144,
+            "state_allocation_bytes": 524288
+          },
+          "analytic_reference": null,
+          "analytic_residual": null,
+          "analysis_wall_s": 1.551909700006945,
+          "port_content_sha256": "943f8c9aee35cd7b0bd2b1e9247d4c851509ada9cf55f58517b792916902561f",
+          "noise_params_hash": "bed49a92b37927e88d385c4f16fe6d0443f0f4aa05c34cef5febc52754e315f4",
+          "channel_signatures_sha256": "7b854f4ec844399a4b16a5cdce8cdcb629d64692c5c4db13ed2adc1ee50cdc2e",
+          "physical_loss": {
+            "all_atoms_survive_probability": 0.9067579100891434,
+            "event_count": 1984,
+            "full_loss_evidence": "See the corresponding full probability port."
+          },
+          "logical_error_probability": null
+        }
+      }
+    },
+    {
+      "distance": 7,
+      "parameters": {
+        "distance": 7,
+        "pipelines": 1,
+        "patch_gap_um": 40.0,
+        "factory_gap_um": 40.0,
+        "window_padding_um": 20.0
+      },
+      "factory_index": 0,
+      "patch_role": "W1",
+      "total_rounds": 2,
+      "first_deterministic_checks": 20,
+      "first_random_checks": 28,
+      "checks_per_round": 48,
+      "detector_count": 68,
+      "compile_wall_s": 2.38771850001649,
+      "physical_metrics": {
+        "execution_duration_us": 6585.634980935729,
+        "atom_count": 582,
+        "atom_time_us": 3832839.5589045943,
+        "atom_idle_us": 3618495.377487503,
+        "atom_busy_us": 214344.18141709128,
+        "movement_distance_atom_um": 35951.38726976414,
+        "transport_elapsed_us": 6323.634980935727,
+        "transport_action_sum_us": 6323.634980935727,
+        "trajectory_bbox_um": [
+          0.0,
+          -140.0,
+          1040.0,
+          85.0
+        ],
+        "trajectory_bbox_area_um2": 234000.0,
+        "exposure_by_action": {
+          "Reset": {
+            "action_count": 145,
+            "atom_events": 145,
+            "atom_us": 725.0
+          },
+          "Rotation": {
+            "action_count": 1587,
+            "atom_events": 1587,
+            "atom_us": 1587.0
+          },
+          "Load": {
+            "action_count": 26,
+            "atom_events": 768,
+            "atom_us": 76800.0
+          },
+          "Move": {
+            "action_count": 28,
+            "atom_events": 864,
+            "atom_us": 46504.18141709136
+          },
+          "Store": {
+            "action_count": 26,
+            "atom_events": 768,
+            "atom_us": 76800.0
+          },
+          "CZPulse": {
+            "action_count": 8,
+            "atom_events": 4656,
+            "atom_us": 2328.0
+          },
+          "Measure": {
+            "action_count": 2,
+            "atom_events": 96,
+            "atom_us": 9600.0
+          }
+        },
+        "accepted_outputs": null,
+        "accepted_output_throughput_per_s": null,
+        "logical_error_probability": null,
+        "physical_validation_ok": true
+      },
+      "result_sha256": "fe1bd1760b4f858e3930d0a5060365e208c8b86b82beefad96e4487e559a6844",
+      "template_content_sha256": "6d961ff547e6feb9c41b6ba9153cb8797aa10abc127d2d92d90050de662315df",
+      "estimates": {
+        "zero_noise": {
+          "probability": 1.0,
+          "model_kind": "pauli_exact",
+          "estimator": {
+            "accepted": null,
+            "batch_size": null,
+            "calculation": "empty_xor_exact",
+            "channel_count": 0,
+            "channel_probabilities_renormalized": false,
+            "ci95": null,
+            "ci_method": null,
+            "cross_channel_cancellations_preserved": true,
+            "detector_count": 68,
+            "effective_channel_count": 0,
+            "effective_detector_rank": 0,
+            "exclusive_branches_preserved": true,
+            "kind": "exact",
+            "max_state_bytes": 67108864,
+            "method": "exact_xor_convolution",
+            "normalization_absolute_tolerance": 1e-12,
+            "numpy_version": "2.5.4",
+            "probability": 1.0,
+            "sampling": null,
+            "seed": null,
+            "shots": null
+          },
+          "analytic_reference": 1.0,
+          "analytic_residual": 0.0,
+          "analysis_wall_s": 3.401539699989371,
+          "port_content_sha256": "d7b25c6e5f062bde2dff577d32db666a7e1d8c870e92dba5796cb63ca3a4775a",
+          "noise_params_hash": "3cf7058ada87e6147df6e7a75d0de88ca2bd072005dee17175e48cea4c2edbfc",
+          "channel_signatures_sha256": "f6b8eb243dbac5acef9ab091e053e1bb66901407f96c248ede4a82881364a91a",
+          "physical_loss": {
+            "all_atoms_survive_probability": 1.0,
+            "event_count": 0,
+            "full_loss_evidence": "See the corresponding full probability port."
+          },
+          "logical_error_probability": null
+        },
+        "readout_only": {
+          "probability": 0.9084625244140625,
+          "model_kind": "estimated",
+          "estimator": {
+            "accepted": 238148,
+            "batch_size": 65536,
+            "calculation": "independent_exclusive_channel_samples",
+            "channel_count": 96,
+            "channel_probabilities_renormalized": false,
+            "ci95": [
+              0.9073526272679333,
+              0.909560450513941
+            ],
+            "ci_method": "wilson_score",
+            "cross_channel_cancellations_preserved": true,
+            "detector_count": 68,
+            "effective_channel_count": 96,
+            "effective_detector_rank": 68,
+            "exclusive_branches_preserved": true,
+            "kind": "estimated",
+            "max_state_bytes": 67108864,
+            "method": "exclusive_channel_monte_carlo",
+            "normalization_absolute_tolerance": 1e-12,
+            "numpy_version": "2.5.4",
+            "packed_word_count": 2,
+            "probability": 0.9084625244140625,
+            "sampling": {
+              "active_shots": "binomial_uniform_subset",
+              "branches": "conditional_categorical",
+              "confidence_interval": "Wilson score, two-sided 95%",
+              "requested_batch_size": 65536,
+              "rng": "numpy.PCG64"
+            },
+            "seed": 20261024,
+            "shots": 262144,
+            "state_allocation_bytes": 1048576
+          },
+          "analytic_reference": 0.9084458688146003,
+          "analytic_residual": 1.665559946217865e-05,
+          "analysis_wall_s": 3.340449899988016,
+          "port_content_sha256": "0819f91b7db0389ad47033e76b44ccbfbbf57208605f6bb3f690ecf67b493441",
+          "noise_params_hash": "970864b591c63abc746788df7df12cc7e1052f33b4e1acb935bd69941ff540d3",
+          "channel_signatures_sha256": "0f2de0062a16036104bc1ac4179b7d4ccead3c38a43ea90d85311cc40e4cf8fe",
+          "physical_loss": {
+            "all_atoms_survive_probability": 1.0,
+            "event_count": 0,
+            "full_loss_evidence": "See the corresponding full probability port."
+          },
+          "logical_error_probability": null
+        },
+        "illustrative": {
+          "probability": 0.29759979248046875,
+          "model_kind": "estimated",
+          "estimator": {
+            "accepted": 78014,
+            "batch_size": 65536,
+            "calculation": "independent_exclusive_channel_samples",
+            "channel_count": 11255,
+            "channel_probabilities_renormalized": false,
+            "ci95": [
+              0.29585257243560015,
+              0.2993529443846894
+            ],
+            "ci_method": "wilson_score",
+            "cross_channel_cancellations_preserved": true,
+            "detector_count": 68,
+            "effective_channel_count": 5863,
+            "effective_detector_rank": 68,
+            "exclusive_branches_preserved": true,
+            "kind": "estimated",
+            "max_state_bytes": 67108864,
+            "method": "exclusive_channel_monte_carlo",
+            "normalization_absolute_tolerance": 1e-12,
+            "numpy_version": "2.5.4",
+            "packed_word_count": 2,
+            "probability": 0.29759979248046875,
+            "sampling": {
+              "active_shots": "binomial_uniform_subset",
+              "branches": "conditional_categorical",
+              "confidence_interval": "Wilson score, two-sided 95%",
+              "requested_batch_size": 65536,
+              "rng": "numpy.PCG64"
+            },
+            "seed": 20261024,
+            "shots": 262144,
+            "state_allocation_bytes": 1048576
+          },
+          "analytic_reference": null,
+          "analytic_residual": null,
+          "analysis_wall_s": 5.020263900019927,
+          "port_content_sha256": "509082f1efa783727fd6d293d5b1008d22080bdb3b7595d9a70671da58c33f05",
+          "noise_params_hash": "bed49a92b37927e88d385c4f16fe6d0443f0f4aa05c34cef5febc52754e315f4",
+          "channel_signatures_sha256": "0df6debf3684bfdc15068ea30f308cf3f3966faf0b62bcd69ed009f4c17c4fcf",
+          "physical_loss": {
+            "all_atoms_survive_probability": 0.8120703680637047,
+            "event_count": 4128,
+            "full_loss_evidence": "See the corresponding full probability port."
+          },
+          "logical_error_probability": null
+        }
+      }
+    }
+  ],
+  "full_artifact_directory": "modules/physical_compiler/artifacts/msd-raw-t-distance-20261024"
+}

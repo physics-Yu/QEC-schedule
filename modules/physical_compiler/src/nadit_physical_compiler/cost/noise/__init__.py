@@ -88,6 +88,9 @@ class NoiseModel:
         params: Mapping[str, Any],
     ) -> CostReport:
         """Consume validated shared activity without compiling or sampling branches."""
+        if any(event.kind == "CPhasePulse" for event in activity.events):
+            raise ValueError("This cost model does not support native CPhasePulse.")
+
         require_validated(result)
         p = resolve(params)
         layout = decode_layout(result["entry_state"])

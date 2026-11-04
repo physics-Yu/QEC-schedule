@@ -1,6 +1,7 @@
 """Device operation channels, timing, and allowed trap holders."""
 
 from dataclasses import dataclass
+from math import isfinite
 
 
 @dataclass(frozen=True, slots=True)
@@ -29,6 +30,18 @@ class CZCapability:
     def __post_init__(self) -> None:
         if type(self.allow_spectators) is not bool:
             raise ValueError("cz.allow_spectators must be a boolean.")
+
+
+@dataclass(frozen=True, slots=True)
+class CPhaseCapability(CZCapability):
+    """Uniform-angle CP channel with explicit fixed study-model duration."""
+
+    def __post_init__(self) -> None:
+        CZCapability.__post_init__(self)
+        if not isfinite(self.radius_um) or self.radius_um <= 0:
+            raise ValueError("CPhase radius must be finite and positive.")
+        if not isfinite(self.duration_us) or self.duration_us < 0:
+            raise ValueError("CPhase duration must be finite and nonnegative.")
 
 
 @dataclass(frozen=True, slots=True)
