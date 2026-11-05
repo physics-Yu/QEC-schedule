@@ -1,6 +1,20 @@
 # 项目工作记录
 
 What's new
+### 2026-11-05
+
+今天把 d=5 nonzoned color code 工厂定为基线，补上回放里的执行阶段标注，并提交了 PR。当前基线的整厂模型时长约为 206 ms。[PR #6](https://github.com/itpyi/color-code-distillation/pull/6)
+
+接着优化长控制码的 SE。验收时发现，原先按每个根辅助原子的路线分批，把本来能并行做的相邻接缝拆散了。我把三面检查的根换到中间，按相邻接缝统一排程，让其中两组 CZ 共用一次装载。改完后，整厂模型时长从 159.2 ms 降到 154.1 ms。门配对和读出记录已核对，含噪条件下的容错性还待验证。[Issue #5](https://github.com/itpyi/color-code-distillation/issues/5#issuecomment-6655626292)
+
+### 2026-11-04
+
+今天主要用 Stim 比较弱色轮换、论文 color code 调度和 surface code N/Z，扫描了 d=3/5/7/9/11 及不同 CNOT 错误率。目前没有看到弱色轮换优于论文方案的明确证据，轮换也没能完全补回 hook error 带来的码距损失。这次只考虑 CNOT 噪声，还没有加入原子搬运和退相干。
+
+继续整理长控制码的 SE、辅助比特融合和 shrink，并生成了 d=5 factory 的完整 schedule 和原子回放。但辅助原子的初始布局、合并码 SE 的实现仍需修改，还没有完成验收。
+
+NADiT 方面，明确先采用人工指定布局、选择组件模板，再由组合器接续执行的方式，做出了可运行原型。同时整理了工作树和 GitHub 首页，将已有方法同步到 QEC-schedule 的 develop 分支。
+
 ### 2026-11-03
 
 今天主要把 color code 的组件组装成 d=5 的 15-to-1 factory，接通层间 SE、T 注入、测量反馈和输出，并做成从 component schedule 到原子动作的完整展示。目前 T 态输入仍作虚拟供给。
