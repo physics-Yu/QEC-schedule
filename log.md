@@ -1,6 +1,12 @@
 # 项目工作记录
 
 What's new
+### 2026-11-06
+
+今天把 d=5 color code 工厂的倒置布局合入主线，定为新的整厂基线，模型时长是 154.114 ms。核对了倒置前后的 ZZ 检查，确认它们作用的数据比特和访问顺序一致。也整理了 README，把当前排程和早期的故障验证分开，方便后续对照。[PR #9](https://github.com/itpyi/color-code-distillation/pull/9)
+
+接下来要把倒置布局的面门序和长 X 合并对上，检查故障怎么传播。不同位置插入 SE 的 32 套排程已备齐，后面需要统一噪声模型和解码规则，再比较输出错误率、接受率和耗时。[Issue #5](https://github.com/itpyi/color-code-distillation/issues/5) · [Issue #7](https://github.com/itpyi/color-code-distillation/issues/7)
+
 ### 2026-11-05
 
 今天把 d=5 nonzoned color code 工厂定为基线，补上回放里的执行阶段标注，并提交了 PR。当前基线的整厂模型时长约为 206 ms。[PR #6](https://github.com/itpyi/color-code-distillation/pull/6)
